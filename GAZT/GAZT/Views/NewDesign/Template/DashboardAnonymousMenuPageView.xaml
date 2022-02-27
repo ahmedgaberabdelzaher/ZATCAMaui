@@ -25,8 +25,8 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-            <Color x:Key="ShadowLvl1">#232323</Color>
-            <Color x:Key="ShadowLvl2">#232323</Color>
+            <!--<Color x:Key="ShadowLvl1"> "{StaticResource NeutralBlack}" </Color>
+            <Color x:Key="ShadowLvl2"> "{StaticResource NeutralBlack}</Color>-->
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="CornerRadius" Value="14" />
@@ -89,6 +89,16 @@
 
                             <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
+                             <StackLayout Orientation="Horizontal" Spacing="20">
+                                <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}"/>
+
+
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnZatcaInfoMenuTapped" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
 
                             <StackLayout Orientation="Horizontal" Spacing="20">
                                 <Image Source="taxEvasion.png" Style="{StaticResource SmallIcon}"/>
@@ -171,7 +181,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

@@ -35,10 +35,29 @@
                 <inputLayout:SfTextInputLayout Grid.Row="0" x:Name="notesInputLayout" ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}" Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}" ContainerType="Outlined" ShowHint="True">
                     <Entry x:Name="notes" IsSpellCheckEnabled="false"  MaxLength="132" TextChanged="notes_TextChanged"/>
                 </inputLayout:SfTextInputLayout>
-                <StackLayout HorizontalOptions="End" VerticalOptions="EndAndExpand" Grid.Row="1" Orientation="Horizontal">
-                    <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ESTZZVoid}" HorizontalOptions="Center" Clicked="Void_Button_Clicked" />
-                    <buttons:SfButton Style="{StaticResource PrimaryButtonStyle}" Padding="20,0" Text="{x:Static ResourceManager:AppResources.ZZCancel}" HorizontalOptions="Center" Clicked="CancelButton_Clicked" />
-                </StackLayout>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
+                    <buttons:SfButton Grid.Row="0"
+                                      Grid.Column="0"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Padding="20,0"
+                                      Text="{x:Static ResourceManager:AppResources.ESTZZVoid}"
+                                      HorizontalOptions="FillAndExpand"
+                                      Clicked="Void_Button_Clicked" />
+                    <buttons:SfButton Grid.Row="0"
+                                      Grid.Column="1"
+                                      Style="{StaticResource PrimaryButtonStyle}"
+                                      Padding="20,0"
+                                      Text="{x:Static ResourceManager:AppResources.ZZCancel}"
+                                      HorizontalOptions="FillAndExpand"
+                                      Clicked="CancelButton_Clicked" />
+                </Grid>
             </Grid>
         </yummy:PancakeView>
     </pages:PopupPage.Content>

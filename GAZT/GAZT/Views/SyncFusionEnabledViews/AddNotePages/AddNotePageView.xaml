@@ -40,8 +40,8 @@
                 </Frame>
                 <custom:GAZTBorderlessEditor BackgroundColor="White"  Grid.Row="1"    Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding NoteText}"  Style="{StaticResource GAZTTextBoxStyleForEntry}" Margin="12"  FontFamily="{StaticResource GAZT_FONT_REGULAR}">
                 </custom:GAZTBorderlessEditor>
-                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesSaveandClose}" HeightRequest="56" Command="{Binding OnAddButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450"  Margin="0" Padding="0" CornerRadius="0"></buttons:SfButton>
-                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesClearandClose}" HeightRequest="56" Command="{Binding OnClearButtonClicked}" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0"  Style="{StaticResource SfButtonStyle}" BackgroundColor="#006450"  Margin="0" Padding="0" CornerRadius="0">
+                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesSaveandClose}" HeightRequest="56" Command="{Binding OnAddButtonClicked}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{StaticResource Primary}"  Margin="0" Padding="0" CornerRadius="0"></buttons:SfButton>
+                <buttons:SfButton Text="{x:Static local:AppResources.ZVatNotesClearandClose}" HeightRequest="56" Command="{Binding OnClearButtonClicked}" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0"  Style="{StaticResource SfButtonStyle}" BackgroundColor="{StaticResource Primary}"  Margin="0" Padding="0" CornerRadius="0">
                 </buttons:SfButton>
             </Grid>
         </ScrollView>

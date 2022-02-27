@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Threading.Tasks;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
@@ -41,15 +42,29 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 viewModel = App.Locator.VatInstalmentPlanListPageView;
                 this.BindingContext = viewModel;
                 viewModel.ResetData();
+                VATInstalmentDisplayViewPage.DataSource.DisplayItems.CollectionChanged += DisplayItems_CollectionChanged;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
 
         }
 
+        private void DisplayItems_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (VATInstalmentDisplayViewPage.DataSource.DisplayItems.Count == 0)
+            {
+                VATInstalmentDisplayViewPage.IsVisible = false;
+                NoDataLable.IsVisible = true;
+            }
+            if (VATInstalmentDisplayViewPage.DataSource.DisplayItems.Count > 0)
+            {
+                VATInstalmentDisplayViewPage.IsVisible = true;
+                NoDataLable.IsVisible = false;
+            }
+        }
 
         protected override void OnDisappearing()
         {
@@ -92,7 +107,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

@@ -22,7 +22,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
     [Preserve(AllMembers = true)]
     public class UnlockAccountTINPageViewModel: ViewModelBase
     {
-
         private string captcha = string.Empty;
         private string GUID = string.Empty;
         public bool IsAPICalledSuccessfully = false;
@@ -60,9 +59,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _currentAttempts = value;
                 if (_currentAttempts == 5)
                 {
-                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
                     _currentAttempts = 0;
@@ -159,7 +158,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-        private Color _verifybuttonDisableColor = Color.FromHex("#d99b29");
+        private Color _verifybuttonDisableColor = (Color)Application.Current.Resources["Secondary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -511,7 +510,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             }
         }
 
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d99b29");
+        private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -537,11 +536,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d99b29");
+                    ContinueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
@@ -600,7 +599,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#999999");
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["NeutralGreay"];
         public Color ButtonDisableColor
         {
             get
@@ -626,9 +625,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
 
@@ -701,8 +700,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             IsResendOTPEnabled = false;
             IsOTPEntryEnable = true;
 
-            VerifyButtonDisableColor = Color.FromHex("#d99b29");
-            ButtonDisableColor = Color.FromHex("#999999");
+            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
+            ButtonDisableColor =  (Color)Application.Current.Resources["NeutralGreay"];
 
             OtpFirstDigit = string.Empty;
             OtpSecondDigit = string.Empty;
@@ -793,9 +792,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         if (TotalSec < 0)
                         {
                             OTPValidDuration = " 0:00";
-                            ButtonDisableColor = Color.FromHex("#006450");
+                            ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                             IsResendOTPEnabled = true;
-                            VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                            VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                             IsVerifyOTPEnabled = false;
                             IsOTPEntryEnable = false;
                             return false;
@@ -822,7 +821,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
         public async void VerifyTinBtnCommand()
         {
-            if(!IsAPICalledSuccessfully)
+            if (!IsAPICalledSuccessfully)
             {
                 return;
             }
@@ -834,10 +833,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                 });
                 
                 UnlockAccountModel.Tin = TxtTIN;
-                UnlockAccountModel.TaxpayerGuid = GUID;
-                UnlockAccountModel.Zcaptcha = captcha;
                 //Action for validating TIN and sending OTP
                 UnlockAccountModel.Action = "01";
+                UnlockAccountModel.TaxpayerGuid = GUID;
+                UnlockAccountModel.Zcaptcha = captcha;
                 UnlockAccountModelResponse = await VatRegistrationWebServiceManager.GaztUnlockAccount(UnlockAccountModel);
                 totalAttempts = Convert.ToInt16(UnlockAccountModelResponse.D.Attempts);
                 numberOfSeconds = 120;
@@ -898,7 +897,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
                 forgotPasswordOTP.d = d;
                 forgotPasswordOTP = await WebServiceManager.GAZTCaptchaAndGUID(forgotPasswordOTP);
-                 PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                 if (forgotPasswordOTP?.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.Captcha))
                 {
@@ -934,7 +933,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    
+
                     //var _navigation = Application.Current.MainPage.Navigation;
                     //_navigation.PopToRootAsync();
                     await PopupNavigation.Instance.PopAsync();
@@ -1067,8 +1066,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
         public async void ExecuteResendOTPClickCommand(object obj)
         {
             IsResendOTPEnabled = false;
-            ButtonDisableColor = Color.FromHex("#999999");
-            VerifyButtonDisableColor = Color.FromHex("#d99b29");
+            ButtonDisableColor =  (Color)Application.Current.Resources["NeutralGreay"];
+            VerifyButtonDisableColor = (Color)Application.Current.Resources["Secondary"];
             IsVerifyOTPEnabled = true;
             IsOTPEntryEnable = true;
             //string _mobileNumber = App.TP.Mobile.Substring(App.TP.Mobile.Length - 4);

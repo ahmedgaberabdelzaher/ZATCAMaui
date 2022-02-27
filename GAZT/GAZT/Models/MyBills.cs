@@ -419,20 +419,20 @@ namespace EGAZT.Models
                 if (_status == Enum.GetName(typeof(BillStatus), 0))
                 {
                     StatusImage = "ic_check_circle.png";
-                    Colorcode = "#006450";
+                    Colorcode = "{StaticResource Primary}";
                     StatusText = AppResources.Paid;
 
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 1))
                 {
                     StatusImage = "ic_loading.png";
-                    Colorcode = "#D99A29";
+                    Colorcode = "{StaticResource Secondary}";
                     StatusText = AppResources.PartiallyPaid;
                 }
                 else if (_status == Enum.GetName(typeof(BillStatus), 2))
                 {
                     StatusImage = "ic_money.png";
-                    Colorcode = " #AA0C19";
+                    Colorcode = " #e84941";
                     StatusText = AppResources.UnPaid;
                 }
             }

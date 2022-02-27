@@ -61,11 +61,14 @@
                                                     HorizontalOptions="Start" />
 
                                     <custom:CustomLabel x:Name="ReferenceNumberTxt" Grid.Row="0" Grid.Column="1"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Style="{StaticResource ValueLabelBlack}" />
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="End"
+                                                        Style="{StaticResource ValueLabelBlack}" />
 
                                     <Image Grid.Row="0" Grid.Column="2">
                                         <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
+                                            <FontImageSource FontFamily="UserIconFont"
+                                                             Color="{StaticResource SecondaryNew}" Size="25"
                                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
                                         </Image.Source>
                                     </Image>
@@ -90,12 +93,15 @@
                                                     VerticalOptions="Center"  Style="{StaticResource CaptionLabelGrey}"
                                                     HorizontalOptions="StartAndExpand" />
 
-                                    <custom:CustomLabel x:Name="ContractNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
+                                    <custom:CustomLabel x:Name="ContractNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="15"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="End"
+                                                        Style="{StaticResource ValueLabelBlack}" />
 
                                     <Image Grid.Row="0" Grid.Column="2">
                                         <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
+                                            <FontImageSource FontFamily="UserIconFont"
+                                                             Color="{StaticResource SecondaryNew}" Size="25"
                                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
                                         </Image.Source>
                                     </Image>
@@ -108,11 +114,12 @@
                             <buttons:SfButton 
                                 Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
                             Clicked="Download_AcknowledgementForm"
-                                CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                CornerRadius="10" VerticalOptions="End" 
                                 HeightRequest="48"
                                 WidthRequest="366"
+                                FontFamily="{StaticResource SomarBold}"
                                 Margin="10,20,10,24" FontSize="15" Grid.ColumnSpan="2"
-                                 BackgroundColor="#d49504" TextColor="White" />
+                                 BackgroundColor="{StaticResource Secondary}" TextColor="White" />
 
 
                             <custom:CustomLabel Margin="10,0,10,15"
@@ -141,7 +148,7 @@
                                                                ViewBoxWidth="70"
                                                                TitlePlacement="Bottom"
                                                                ViewBoxHeight="70"
-                                                               TextColor="#D99A29" />
+                                                               TextColor="{StaticResource Secondary}" />
                             </StackLayout>
                         </StackLayout>
                     </Grid>

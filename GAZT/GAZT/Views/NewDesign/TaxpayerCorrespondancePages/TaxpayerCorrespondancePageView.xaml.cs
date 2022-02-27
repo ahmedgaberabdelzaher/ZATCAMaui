@@ -9,6 +9,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 {
@@ -43,19 +44,19 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     case Xamarin.Forms.Device.iOS:
                         {
                       
-                        TaxTypeDownPicker.HeaderFontFamily = "SSTArabic-Medium";
-                        TaxTypeDownPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                        TaxTypeDownPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                        TaxTypeDownPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        TaxTypeDownPicker.HeaderFontFamily = "Somar-SemiBold";
+                        TaxTypeDownPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                        TaxTypeDownPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                        TaxTypeDownPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
                  
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        TaxTypeDownPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypeDownPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypeDownPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypeDownPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        TaxTypeDownPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypeDownPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypeDownPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypeDownPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
@@ -130,11 +131,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 this.Padding = safeInsets;
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    TaxTypeDownPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                    TaxTypeDownPicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
                 }
                 else
                 {
-                    TaxTypeDownPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                    TaxTypeDownPicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
                 }
 
                 
@@ -198,15 +199,23 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             }
         }
 
-        private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        //private void ListView_Correspondance_ItemTapped(object sender, ItemTappedEventArgs e)
+        //{
+
+        //    CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
+        //    viewModel.ShowCorrespondenceDetails(Correspondence);
+        //    ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+        //}
+
+        private void ListView_Correspondance_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
 
-            CorrespondanceModel Correspondence = ((Xamarin.Forms.ListView)sender).SelectedItem as CorrespondanceModel;
+            CorrespondanceModel Correspondence = e.ItemData as CorrespondanceModel;
             viewModel.ShowCorrespondenceDetails(Correspondence);
-            ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            
+            
         }
 
-     
 
         private async  void ChipGroup_statusFilter_SelectionChanged(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
@@ -235,6 +244,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
         private void btn_TaxTypeClicked(object sender, EventArgs e)
         {
             TaxTypeDownPicker.IsOpen = true;
+        }
+
+        void SfListView_ItemTapped(System.Object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
+        {
         }
     }
 }

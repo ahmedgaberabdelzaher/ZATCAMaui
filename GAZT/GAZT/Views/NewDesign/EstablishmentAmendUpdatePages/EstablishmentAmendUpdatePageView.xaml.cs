@@ -90,35 +90,35 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            dobPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            dobPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            dobPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            dobPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            dobPicker.HeaderFontFamily = "Somar-SemiBold";
+                            dobPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            dobPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            dobPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            dobHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            dobHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            dobHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            dobHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            dobHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            dobHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportIssuePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            passportIssuePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            passportIssuePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            passportIssuePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            passportIssuePicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportIssuePicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportIssueHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            passportIssueHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            passportIssueHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportIssueHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportExpiryPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            passportExpiryPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            passportExpiryPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            passportExpiryPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            passportExpiryPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportExpiryPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
 
-                            passportExpiryHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            passportExpiryHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            passportExpiryHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            passportExpiryHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
@@ -245,50 +245,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
         }
-
-         void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-            viewModel.isFinaceDetailsChanged = true;
-
-            if (viewModel.SelectedPeriod != null)
-            {
-
-                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
-            }
-
-        }
-
-        void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-
-            try {
-                string selectedItem = e.AddedItems[0] as string;
-
-                if(selectedItem == AppResources.NDAccounting) {
-
-                    viewModel.IsFinancePeriodVisible = true;
-                }
-                else {
-                    viewModel.IsFinancePeriodVisible = false;
-
-                }
-
-
-            }
-            catch (Exception ex) {
-
-            }
-
-
-
-
-
-            viewModel.isFinaceDetailsChanged = true;
-
-        }
-
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
@@ -353,7 +311,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
         }
 
         private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)

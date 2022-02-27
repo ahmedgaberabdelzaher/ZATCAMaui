@@ -7,6 +7,7 @@ using GAZT.Models;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.PlatformConfiguration;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 {
@@ -44,22 +45,22 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            Picker_Tins.HeaderFontFamily = "SSTArabic-Medium";
-                            Picker_Tins.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            Picker_Tins.SelectedItemFontFamily = "SSTArabic-Medium";
-                            Picker_Tins.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            Picker_Tins.HeaderFontFamily = "Somar-SemiBold";
+                            Picker_Tins.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            Picker_Tins.SelectedItemFontFamily = "Somar-SemiBold";
+                            Picker_Tins.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        Picker_Tins.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        Picker_Tins.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        Picker_Tins.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        Picker_Tins.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        Picker_Tins.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Tins.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Tins.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Tins.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -88,13 +89,13 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.PasswordCardBackgroundImg = "FP_selected_tile";
             viewModel.UserNameCardBackgroundImg = "FP_unselected_tile";
             viewModel.PasswordTextColor = Color.White;
-            viewModel.UserNameTextColor = Color.Black;
+            viewModel.UserNameTextColor = (Color)Application.Current.Resources["Primary"];
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
 
             // Managing UserName tile
             viewModel.MaximumUserNameCharacter = 10;
             viewModel.CorporateCardBackgroundImg = "FP_unselected_tile";
-            viewModel.CorporateTextColor = Color.Black;
+            viewModel.CorporateTextColor = (Color)Application.Current.Resources["Primary"];
             viewModel.IndividualOrPersonalBusinessCardBackgroundImg = "FP_selected_tile";
             viewModel.IndividualOrPersonalBusinessTextColor = Color.White;
             viewModel.UserIcon = "vat_user";
@@ -126,7 +127,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             viewModel.UserNameCardBackgroundImg = "FP_selected_tile";
             viewModel.UserIcon = "user_profile";
             viewModel.PasswordIcon = "Green_Key";
-            viewModel.PasswordTextColor = Color.Black;
+            viewModel.PasswordTextColor = (Color)Application.Current.Resources["Primary"];
             viewModel.UserNameTextColor = Color.White;
             viewModel.SetIDNumberEnability = true;// Enabling IDNumber Field as per tapping on Password Tile
             
@@ -169,7 +170,7 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -318,11 +319,11 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                Picker_Tins.BackgroundColor = Color.FromHex("#f7f7f7");
+                Picker_Tins.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                Picker_Tins.BackgroundColor = Color.FromHex("#FFFFFF");
+                Picker_Tins.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
 
             // Reset values

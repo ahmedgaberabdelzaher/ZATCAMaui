@@ -20,6 +20,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
         {
             InitializeComponent();
             viewModel = App.Locator.VATRefundsInstructionsPageView;
+            viewModel.IsInstructionsVisible = true;
             this.BindingContext = viewModel;
             SetLTR();
         }

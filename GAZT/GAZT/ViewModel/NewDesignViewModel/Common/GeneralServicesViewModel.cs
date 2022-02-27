@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using EGAZT.Manager;
-using EGAZT.Models;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -50,8 +46,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 RaisePropertyChanged("RefundRequestMenuList");
             }
         }
-
-        
         public ObservableCollection<GeneralServicesListModel> _fillingFrquencyMenuList { get; set; }
         public ObservableCollection<GeneralServicesListModel> FillingFrquencyMenuList
         {
@@ -101,36 +95,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             generalServicesListData.Add(new GeneralServicesListModel
                 {
                     ZDTitle = AppResources.NDTaxEvasionReport,
-                    ZDImageSource = "tax_evasion_green.png",
+                    ZDImageSource = "taxEvasion.png",
                     ArrowImageSource = fileImage
                 });
-
-            if (App.LoginDataRetrieved.TpMpVip == null)
-            {
-
-            }
-            else
-            {
-                if (App.LoginDataRetrieved.TpMpVip.Equals("X"))
-                {
-                    generalServicesListData.Add(new GeneralServicesListModel
-                    {
-                        ZDTitle = AppResources.NDRelationContact,
-                        ZDImageSource = "details.png",
-                        ArrowImageSource = fileImage
-                    });
-                }
-            }
-
-            generalServicesListData.Add(new GeneralServicesListModel
-            {
-                ZDTitle = AppResources.NDBankAccManagement,
-                ZDImageSource = "tax_evasion_green.png",
-                ArrowImageSource = fileImage
-            });
-            
-
-            GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
+                GeneralServicesList = new ObservableCollection<GeneralServicesListModel>(generalServicesListData);
         }
         
         public void PopulateRefundRequestMenuListData()

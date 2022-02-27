@@ -155,7 +155,7 @@ namespace EGAZT.Models
         //            }
         //            else if (string.Equals(_status, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
         //            {
-        //                BorderColour = "#005e4b";
+        //                BorderColour = "#003672";
         //                StatusImage = "ic_Paid.png";
         //            }
         //            else if (string.Equals(_status, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
@@ -165,7 +165,7 @@ namespace EGAZT.Models
         //            }
         //            else if (string.Equals(_status, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
         //            {
-        //                BorderColour = "#005e4b";
+        //                BorderColour = "#003672";
         //                StatusImage = "ic_Paid.png";
         //            }
         //            //For Image

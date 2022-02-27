@@ -1,4 +1,4 @@
-using CommonServiceLocator;
+﻿using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
@@ -46,16 +46,12 @@ namespace EGAZT
         public static string GAZTNewDesignStyleTestUIPageView = "GAZTNewDesignStyleTestUIPageView";
         public static string GAZTNewDesignForgotPasswordPageView = "GAZTNewDesignForgotPasswordPageView";
         public static string VATLookUpNewPageView = "VATLookUpNewPageView";
-        public static string RelationShipManagerInfoPageView = "RelationShipManagerInfoPageView";
-        public static string GAZTBankAccountManagementPageView = "BankAccountManagementPageView";
-        public static string GAZTBankAccountAddOrUpdatePageView = "BankAccountAddorUpdateIBANPageView";
-        public static string UpdateVatEffectiveDatePageView = "UpdateVatEffectiveDatePageView";
-        public static string FilterVatEffectiveDatePageView = "FilterVatEffectiveDatePageView";
-
         public static string ZAKATReturnDetailsView = "ZAKATReturnDetailsView";
         public static string TaxEvasionVerifyMobileNumberPage = "TaxEvasionVerifyMobileNumberPage";
         public static string TaxEvasionPageWebView = "TaxEvasionPageWebView";
         public static string NewTaxEvasionFormSuccessPaveView = "NewTaxEvasionFormSuccessPaveView";
+        public static string TaxpayerSubsidyRequest = "TaxpayerSubsidyRequest";
+
 
         public static string MyReturnsNewPageView = "MyReturnsNewPageView";
         public static string ZakatDeregistrationPageView = "ZakatDeregistrationPageView";
@@ -116,6 +112,8 @@ namespace EGAZT
         public static string EstablishmentSignUPPageView = "EstablishmentSignUPPageView";
         public static string SignUpForEstablishmentPageView = "SignUpForEstablishmentPageView";
         public static string SupportPageView = "SupportPageView";
+        public static string ZatcaInfoMenuPageView = "ZatcaInfoMenuPageView";
+
         public static string NotesDescriptionPopUpPageView = "NotesDescriptionPopUpPageView";
         public static string NotesPopUpPageView = "NotesPopUpPageView";
         public static string TaxManagementPageView = "TaxManagementPageView";
@@ -162,7 +160,6 @@ namespace EGAZT
         public static string OldZakatInstalmentPlanListPageView = "OldZakatInstalmentPlanListPageView";
         public static string OldZakatInstalmentPlanSuccessPage = "OldZakatInstalmentPlanSuccessPage";
         public static string AddNotesPopupPageView = "AddNotesPopupPageView";
-        public static string ZakatRejectionReasonPopupPageView = "ZakatRejectionReasonPopupPageView";
 
         #endregion
 
@@ -288,6 +285,7 @@ namespace EGAZT
         public static bool IsJailBrokenDevice = false;
         public static string CalType = "G";
         public static string ACCalType = "G";
+        public static bool ZakatReturnBilldetails = false;
 
         // public static bool IsArabic = false;
         public static bool PreviousIsArabic = true;//true
@@ -310,6 +308,7 @@ namespace EGAZT
         public static DateTime TimeAtSleep { get; set; }
         public static DateTime TimeAtResume { get; set; }
         public static double TimeDifference { get; set; }
+        public static int CurrentTimeDifference { get; set; }
         public static bool IsComingFromSleepMode { get; set; } = false;
         public static bool IsComingFromDashboardToLogOff = false;
         public static bool IsZakatLoadingFromMyReturns = false;
@@ -328,14 +327,8 @@ namespace EGAZT
         public static string selectedForm12Fbguid = string.Empty;
         public static bool isMybillsRefresh = false;
 
-        public static bool isVatEffectDateNav = false;
-
         //in Seconds
         public static int IdleTimeToLogout = 100;
-
-        public static string SelectedIBAN = string.Empty;
-        public static string IBanValidatedResponse = string.Empty;
-
 
         public static bool IsLoginPageRefreshed;
         private INavigationService _navigationService;
@@ -355,12 +348,12 @@ namespace EGAZT
         public static double idleTimeSpan = 0;
         public static bool IsAppRunningInBackground = false;
 
+        public static bool isAndroidRefresh = false;//#CR2068
+
         #endregion
 
         public string acntStatementsSelectedTaxTypeFilterId = string.Empty;
         public string acntStatementsStatementFilterId = string.Empty;
-
-
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;
@@ -369,7 +362,8 @@ namespace EGAZT
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
 
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
+           // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
             bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
@@ -484,7 +478,7 @@ namespace EGAZT
                             _ = Task.Run(() => WebServiceManager.GAZTLogOff());
 
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -557,16 +551,16 @@ namespace EGAZT
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        fontFamilyBold = "GE_SS_Two_Bold";
-                        fontFamilyMedium = "GE_SS_Two_Medium";
-                        fontFamilyLight = "GE_SS_Two_Light";
-                        fontFamilyRoman = "SSTArabic-Roman";
+                        fontFamilyBold = "Somar-Bold";
+                        fontFamilyMedium = "Somar-SemiBold";
+                        fontFamilyLight = "Somar-Light";
+                        fontFamilyRoman = "Somar-Regular";
                         break;
                     case Device.Android:
-                        fontFamilyBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
-                        fontFamilyMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        fontFamilyLight = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
-                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
+                        fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
+                        fontFamilyMedium = "Somar-SemiBold.otf#Somar-SemiBold";//GE_SS_Two_Medium
+                        fontFamilyLight = "Somar-Light.otf#Somar-Light";
+                        fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
                         break;
                 }
             }
@@ -575,20 +569,20 @@ namespace EGAZT
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        fontFamilyBold = "SSTArabic-Bold";
-                        fontFamilyMedium = "SSTArabic-Medium";
-                        fontFamilyLight = "SSTArabic-Light";
-                        fontFamilyRoman = "SSTArabic-Roman";
+                        fontFamilyBold = "Somar-Bold";
+                        fontFamilyMedium = "Somar-SemiBold";
+                        fontFamilyLight = "Somar-Light";
+                        fontFamilyRoman = "Somar-Regular";
                         break;
                     case Device.Android:
-                        fontFamilyBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
-                        fontFamilyMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
-                        fontFamilyLight = "SSTArabic-Light.ttf#SSTArabic-Light";
-                        fontFamilyRoman = "SSTArabic-Roman.ttf#SSTArabic-Roman";
+                        fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
+                        fontFamilyMedium = "Somar-SemiBold.otf#SomarSemiBold";
+                        fontFamilyLight = "Somar-Light.otf#Somar-Light";
+                        fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
                         break;
                 }
             }
-            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "SSTArabic-Bold" });
+            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "Somar-Bold" });
             GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
             MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
             ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });

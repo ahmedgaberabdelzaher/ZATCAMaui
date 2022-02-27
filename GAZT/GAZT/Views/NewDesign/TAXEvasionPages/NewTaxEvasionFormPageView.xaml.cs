@@ -11,6 +11,7 @@ using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.TAXEvasionPages
 {
@@ -46,43 +47,43 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            RegionPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            RegionPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            RegionPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            RegionPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            RegionPicker.HeaderFontFamily = "Somar-SemiBold";
+                            RegionPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            RegionPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            RegionPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
 
-                            CityPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            CityPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            CityPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            CityPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+                            CityPicker.HeaderFontFamily = "Somar-SemiBold";
+                            CityPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            CityPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            CityPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//dd      
 
 
-                            ReportTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            ReportTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            ReportTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            ReportTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            ReportTypePicker.HeaderFontFamily = "Somar-SemiBold";
+                            ReportTypePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            ReportTypePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            ReportTypePicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        RegionPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        RegionPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        RegionPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        RegionPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
-                        CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        CityPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        CityPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        CityPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        CityPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        ReportTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ReportTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ReportTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ReportTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        ReportTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        ReportTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ReportTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ReportTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -93,15 +94,15 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             base.OnAppearing();
             if (Device.RuntimePlatform == Device.Android)
             {
-                RegionPicker.BackgroundColor = Color.FromHex("#f7f7f7");
-                CityPicker.BackgroundColor = Color.FromHex("#f7f7f7");
-                ReportTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                RegionPicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                CityPicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                ReportTypePicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                RegionPicker.BackgroundColor = Color.FromHex("#FFFFFF");
-                CityPicker.BackgroundColor = Color.FromHex("#FFFFFF");
-                ReportTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                RegionPicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                CityPicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                ReportTypePicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
 
             GetCameraCommand();
@@ -134,7 +135,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                      viewModel.UploadAttachment();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -149,7 +150,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                      viewModel.AddAttachment();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -165,7 +166,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
                 MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -213,7 +214,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.CList.Clear();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
 
                     }
@@ -226,7 +227,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.RList.Clear();
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
 
                     }
@@ -253,7 +254,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
                 TFSAddress.Text = string.Empty;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -327,12 +328,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         // Handle permission exception
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         // Unable to get location
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
 
@@ -391,12 +392,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 {
                     // Handle permission exception
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Unable to get location
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -545,7 +546,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 // Handle permission exception
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Unable to get location
             }

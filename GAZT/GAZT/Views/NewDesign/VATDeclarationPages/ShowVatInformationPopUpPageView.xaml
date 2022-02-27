@@ -20,14 +20,14 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView x:Name="MainPanCakeView" CornerRadius="8,8,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView x:Name="MainPanCakeView" CornerRadius="8,8,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>
+            <!--<custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>-->
             <ListView  x:Name="InformationList"
                            Grid.Row="1"
            ItemsSource="{Binding HeaderWithInfoList}"
@@ -84,7 +84,7 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout BackgroundColor="White" Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
+            <StackLayout  Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
 
                 <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}"/>
 

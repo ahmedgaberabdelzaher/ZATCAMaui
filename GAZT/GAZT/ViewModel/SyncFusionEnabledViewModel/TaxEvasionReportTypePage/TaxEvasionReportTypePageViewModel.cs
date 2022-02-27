@@ -102,7 +102,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 }
             }
         }
-        private Color _nextbuttonDisableColor = Color.FromHex("#005e4b");
+        private Color _nextbuttonDisableColor =  (Color)Application.Current.Resources["Primary"];
         public Color NextbuttonDisableColor
         {
             get

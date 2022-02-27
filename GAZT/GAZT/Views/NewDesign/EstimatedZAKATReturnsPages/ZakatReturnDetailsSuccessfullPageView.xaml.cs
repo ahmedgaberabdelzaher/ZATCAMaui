@@ -74,9 +74,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     // put Mesage already latest SADADID available
                 }
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
            
         }

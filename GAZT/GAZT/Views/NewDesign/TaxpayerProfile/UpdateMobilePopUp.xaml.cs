@@ -13,6 +13,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.TaxpayerProfile
 {
@@ -30,7 +31,14 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             this.BindingContext = viewModel;
 
             viewModel.CountryCode = "+966";
-            Label_InternationalnoCode.StyleId = "LTRLabelText";
+            if (App.IsArabic == false)
+            {
+                Label_InternationalnoCode.StyleId = "LTRLabelText";
+            }
+            else
+            {
+                Label_InternationalnoCode.StyleId = "RTLLabelText";
+            }
 
             if (Device.RuntimePlatform == Device.Android)
                 Label_InternationalnoCode.Margin = new Thickness(0);
@@ -49,6 +57,19 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             else
             {
                 Mobile_Entry.HorizontalTextAlignment = TextAlignment.Start;
+            }
+
+            if (App.IsArabic)
+            {
+                viewModel.Arabictext = true;
+                viewModel.engText = false;
+            }
+            else
+            {
+                // OTPSentOnThisMobileNumberLbl.FlowDirection = FlowDirection.LeftToRight;
+                viewModel.Arabictext = false;
+                viewModel.engText = true;
+
             }
         }
 
@@ -105,7 +126,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                     var result = Regex.Match(viewModel.NewMobileNumberEntryText, @"(.{3})\s*$");
                     viewModel.OTPSentOnThisMobileNumber = "********" + result;
-
+                    viewModel.OTPSentOnThisMobileNumber2 = "********" + result;
                     // Start timer period for valid OTP
                     viewModel.StartOTPTimer();
                 }
@@ -155,7 +176,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 {
                     // * Start timer period for valid OTP
                     viewModel.StartOTPTimer();
-                    viewModel.ResendOTPTextColor = Color.FromHex("#c7c7c7");
+                    viewModel.ResendOTPTextColor =  (Color)Application.Current.Resources["ResendOTPTextColor"];
 
                 }
             }
@@ -219,9 +240,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 else
                     viewModel.CurrentMobileNumberEntryText = "+" + App.TP.Mobile.Remove(0, 2);
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
             {

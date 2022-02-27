@@ -18,7 +18,7 @@
                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                         <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>

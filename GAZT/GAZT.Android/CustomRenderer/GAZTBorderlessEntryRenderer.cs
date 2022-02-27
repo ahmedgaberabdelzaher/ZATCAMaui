@@ -33,18 +33,11 @@ namespace GAZT.Droid.CustomRenderer
             }
             if (App.IsArabic)
             {
-                //  Typeface font = Typeface.CreateFromAsset(_context.Assets, "SSTArabic-Light.ttf");
-                //   Control.Typeface = font;
-                //Control.TextAlignment = Android.Views.TextAlignment.TextEnd;
-                //Control.Gravity = Android.Views.GravityFlags.Right;
+               
                 Control.TextDirection = Android.Views.TextDirection.Rtl;
                 Control.Gravity = Android.Views.GravityFlags.Right;
             }
-            else
-            {
-                //  Typeface font = Typeface.CreateFromAsset(_context.Assets, "SSTArabic-Light.ttf");
-                //  Control.Typeface = font;
-            }
+            
         }
     }
 }

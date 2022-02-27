@@ -30,15 +30,16 @@ namespace GAZTeServicesApp.Converters
                 case "0" when (bool)value:
                     return Color.FromRgba(255, 255, 255, 0.6);
                 case "1" when (bool)value:
-                    return Color.FromHex("#FF4A4A");
+                    return  (Color)Application.Current.Resources["Red"];
                 case "2" when (bool)value:
-                    return Color.FromHex("#FF4A4A");
+                    return  (Color)Application.Current.Resources["Red"];
                 case "2":
-                    return Color.FromHex("#ced2d9");
+                    return  (Color)Application.Current.Resources["Gray"];
                 case "3" when (bool)value:
-                    return Color.FromHex("#959eac");
+                    Application.Current.Resources.TryGetValue("Gray-500", out var retGray);
+                    return (Color)retGray;
                 case "3":
-                    return Color.FromHex("#ced2d9");
+                    return  (Color)Application.Current.Resources["Gray"];
                 case "4" when (bool)value:
                     Application.Current.Resources.TryGetValue("PrimaryColor", out var retVal);
                     return (Color)retVal;

@@ -56,7 +56,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.setMoreOptioButtons();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -135,7 +135,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -276,7 +276,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.EnableBillsContinue();
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -484,7 +484,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

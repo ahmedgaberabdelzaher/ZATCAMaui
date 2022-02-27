@@ -139,11 +139,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             try
             {
                 App.DisplayProgressView();
-
                 VatRefundsDisplayDataModel = await VATDeregistrationWebServiceManager.GAZTGetVATRefundDisplayBankIdTypeData("");
-
                 App.HideProgressView();
-
                 IsInstructionsVisible = true;
 
                

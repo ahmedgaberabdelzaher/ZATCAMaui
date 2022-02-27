@@ -53,9 +53,9 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="0" Padding="20,10,20,0">
                 <StackLayout Orientation="Vertical" Spacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.OutletDetail}}">
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-10,0,0"/>
-                    <custom:CustomLabel Text="{Binding OutletActNumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-5,0,0"/>
-                    <custom:CustomLabel TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SSTArRoman}" FontSize="12" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
+                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TinDeregistrationOutletNumber}" TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SomarRegular}" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-10,0,0"/>
+                    <custom:CustomLabel Text="{Binding OutletActNumber}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarSemiBold}" FontSize="15" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,-5,0,0"/>
+                    <custom:CustomLabel TextColor="{StaticResource NeutralGreay}" FontFamily="{StaticResource SomarRegular}" FontSize="11" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                         <custom:CustomLabel.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.ESTOutletCommercialName}"/>
@@ -71,7 +71,7 @@
                             Style="{StaticResource TextInputLayout}">
                         <Entry Placeholder="{x:Static ResourceManager:AppResources.ESTName}" IsSpellCheckEnabled="false"
                                Text="{Binding OutletName}" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}"
-                               TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" Style="{StaticResource DefaultEntry}" FontSize="16" />
+                               TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" Style="{StaticResource DefaultEntry}" FontSize="15" />
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
                 <ScrollView  Orientation="Vertical" VerticalOptions="Fill" VerticalScrollBarVisibility="Never" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:EstablishmentRegistrationOutletTabsEnum.ActivityDetails}}">
@@ -165,7 +165,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Text="{Binding HouseNumber}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" Style="{StaticResource DefaultEntry}" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Text="{Binding HouseNumber}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" Style="{StaticResource DefaultEntry}" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                             </inputLayout:SfTextInputLayout>
                             <inputLayout:SfTextInputLayout Grid.Column="1" Grid.Row="1"  Margin="0,-6,0,-6"
                             HorizontalOptions="FillAndExpand"
@@ -173,7 +173,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Text="{Binding BuildingNumber}" Style="{StaticResource DefaultEntry}" MaxLength="20" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Text="{Binding BuildingNumber}" Style="{StaticResource DefaultEntry}" MaxLength="20" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                             </inputLayout:SfTextInputLayout>
                         </Grid>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -190,7 +190,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" Text="{Binding FloorNumber}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" Text="{Binding FloorNumber}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -206,7 +206,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="60" Text="{Binding Street}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="60" Text="{Binding Street}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -222,7 +222,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                            <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" MaxLength="40" Text="{Binding Quarter}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                            <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" MaxLength="40" Text="{Binding Quarter}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                             <custom:CustomLabel.FormattedText>
@@ -238,7 +238,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                            <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false"  Text="{Binding PostalCode}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" Keyboard="Numeric">
                                 <customOne:GAZTBorderlessEntry.Behaviors>
                                     <customOne:NumericValidationBehavior />
                                 </customOne:GAZTBorderlessEntry.Behaviors>
@@ -251,7 +251,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                            <custom:GAZTBorderlessEntry  VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16">
+                            <custom:GAZTBorderlessEntry  VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumber}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15">
                             </custom:GAZTBorderlessEntry>
                         </inputLayout:SfTextInputLayout>
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -262,7 +262,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Country}" FontFamily="{StaticResource SSTArBold}" FontSize="16"  Command="{Binding OnCountrySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Country}" FontFamily="{StaticResource SomarBold}" FontSize="15"  Command="{Binding OnCountrySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -273,7 +273,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Provinance}" FontFamily="{StaticResource SSTArBold}" FontSize="16" Command="{Binding OnProvinanceSelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding Provinance}" FontFamily="{StaticResource SomarBold}" FontSize="15" Command="{Binding OnProvinanceSelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -284,7 +284,7 @@
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
-                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding City}" FontFamily="{StaticResource SSTArBold}" FontSize="16" Command="{Binding OnCitySelectButtonClick}"
+                        <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding City}" FontFamily="{StaticResource SomarBold}" FontSize="15" Command="{Binding OnCitySelectButtonClick}"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ESTPostalAddress}" Margin="0,10,0,0" Style="{StaticResource ValueLabelBlackBold}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand" HorizontalTextAlignment="Start" />
@@ -317,7 +317,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                    <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" Text="{Binding HouseNumberSame}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}" Text="{Binding HouseNumberSame}" MaxLength="10" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                                 </inputLayout:SfTextInputLayout>
                                 <inputLayout:SfTextInputLayout Grid.Column="1" Grid.Row="1"  Margin="0,-6,0,-6"
                             HorizontalOptions="FillAndExpand"
@@ -325,7 +325,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                    <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}"  Text="{Binding BuildingNumberSame}" MaxLength="20" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                    <Entry VerticalTextAlignment="Center" IsSpellCheckEnabled="false" Style="{StaticResource DefaultEntry}"  Text="{Binding BuildingNumberSame}" MaxLength="20" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                                 </inputLayout:SfTextInputLayout>
                             </Grid>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -342,7 +342,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding FloorNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding FloorNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>
@@ -358,7 +358,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" Text="{Binding StreetSame}" MaxLength="60" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" Text="{Binding StreetSame}" MaxLength="60" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>
@@ -374,7 +374,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" Text="{Binding QuarterSame}" MaxLength="40" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" />
+                                <Entry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" Text="{Binding QuarterSame}" MaxLength="40" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" />
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
                                 <custom:CustomLabel.FormattedText>
@@ -390,7 +390,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" Keyboard="Numeric">
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false"  Text="{Binding PostalCodeSame}" MaxLength="6" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" Keyboard="Numeric">
                                      <customOne:GAZTBorderlessEntry.Behaviors>
                                         <custom:NumericValidationBehavior/>
                                     </customOne:GAZTBorderlessEntry.Behaviors>
@@ -403,7 +403,7 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"  InputViewPadding="16,0,16,0"
                             Style="{StaticResource TextInputLayout}">
-                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SSTArRoman}" FontSize="16" >
+                                <custom:GAZTBorderlessEntry VerticalTextAlignment="Center" Style="{StaticResource DefaultEntry}" IsSpellCheckEnabled="false" MaxLength="10" Text="{Binding AddNumberSame}" HorizontalTextAlignment="Start" Margin="10" HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="48" PlaceholderColor="{StaticResource NeutralGreay}" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarRegular}" FontSize="15" >
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -425,7 +425,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding ProvinanceSame}" FontFamily="{StaticResource SSTArBold}" FontSize="16"  Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same"
+                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png" ImageAlignment="End" Text="{Binding ProvinanceSame}" FontFamily="{StaticResource SomarBold}" FontSize="15"  Command="{Binding OnProvinanceSelectButtonClick}" CommandParameter="same"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Margin="0,10,0,0">
@@ -436,7 +436,7 @@
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
-                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png"  FontFamily="{StaticResource SSTArBold}" FontSize="16" ImageAlignment="End" Text="{Binding CitySame}"  Command="{Binding OnCitySelectButtonClick}" CommandParameter="same"
+                            <buttons:SfButton ShowIcon="True" ImageSource="arrowDropdown.png"  FontFamily="{StaticResource SomarBold}" FontSize="15" ImageAlignment="End" Text="{Binding CitySame}"  Command="{Binding OnCitySelectButtonClick}" CommandParameter="same"
                                                        Style="{StaticResource NoBackgroundButtonStyle}" BorderColor="{StaticResource NeutralGreay}" BorderWidth="1" CornerRadius="10" 
                                                        TextColor="{StaticResource NeutralBlack}" HorizontalTextAlignment="Start" Padding="5" Margin="0,5,0,0" />
                         </StackLayout>
@@ -459,16 +459,38 @@
 
                     <Image Grid.Column="1" Grid.Row="0" Source="ic_logo_gazt.png" HeightRequest="27" WidthRequest="27" />
                 </Grid>
-                <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
-                <custom:CustomLabel Text="{Binding SelectedOutletTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SSTArBold}" FontSize="28"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SSTArRoman}" FontSize="16"/>
+                <commonView:PageIndicatorView MarkSize="24" DotSize="12" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" HorizontalOptions="End"/>
+                <custom:CustomLabel Text="{Binding SelectedOutletTabText}" HorizontalOptions="Start" VerticalOptions="Center" Padding="0,-5,0,-10" Style="{StaticResource SectionTitleBlack}" FontFamily="{StaticResource SomarBold}" FontSize="28"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand" Style="{StaticResource forLightLabel}" FontFamily="{StaticResource SomarRegular}" FontSize="15"/>
                 <BoxView BackgroundColor="WhiteSmoke" HeightRequest="1" Margin="0,15" />
-                <buttons:SfChipGroup Type="Choice" SelectedItem="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" ChipBackgroundColor="Transparent" HorizontalOptions="Start" ItemsSource="{x:Binding OutletTabSfChipGroupTabList}" SelectionChanging="SfChipGroup_SelectionChanging" SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
-                </buttons:SfChipGroup>
+                <!--<buttons:SfChipGroup Type="Choice" SelectedItem="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" ChipBackgroundColor="Transparent" HorizontalOptions="Start" ItemsSource="{x:Binding OutletTabSfChipGroupTabList}" SelectionChanging="SfChipGroup_SelectionChanging" SelectedChipBackgroundColor="{StaticResource BackgroundGray}" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="{StaticResource Primary}" ChipBorderWidth="1" >
+                </buttons:SfChipGroup>-->
+                <buttons:SfChipGroup Margin="0,10,0,0" x:Name="TabSfChipGroup" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent" SelectedItem="{x:Static ResourceManager:AppResources.ESTOutletsTabTitleLabel}" 
+                                         ItemsSource="{x:Binding OutletTabSfChipGroupTabList}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource NeutralLightGrey}"
+                                         ChipBorderWidth="1" VerticalOptions="Center" SelectionChanging="SfChipGroup_SelectionChanging" >
+                                    <buttons:SfChipGroup.ItemTemplate>
+                                        <DataTemplate >
+                                            <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                                <custom:CustomLabel Text="{Binding }" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </buttons:SfChipGroup.ItemTemplate>
+                 </buttons:SfChipGroup>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" x:Name="OutletTabScrollView">
-                <buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedOutletTabText}" x:Name="OutletTabSfChipGroup" ItemsSource="{x:Binding OutletTabSfChipTabList}"  SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="OutletTabSfChipGroup_SelectionChanging" Margin="0,10" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="#E5EFED" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="#006450" ChipBorderWidth="1" >
+                <!--<buttons:SfChipGroup Type="Choice" SelectedItem="{Binding SelectedOutletTabText}" x:Name="OutletTabSfChipGroup" ItemsSource="{x:Binding OutletTabSfChipTabList}"  SelectionChanged="SfChipGroup_SelectionChanged" SelectionChanging="OutletTabSfChipGroup_SelectionChanging" Margin="0,10" ChipBackgroundColor="Transparent" HorizontalOptions="Start"  SelectedChipBackgroundColor="{StaticResource BackgroundGray}" ChipBorderColor="{StaticResource NeutralLightGrey}" SelectedChipTextColor="{StaticResource Primary}" ChipBorderWidth="1" >
                    
-                </buttons:SfChipGroup>
+                </buttons:SfChipGroup>-->
+                    <buttons:SfChipGroup Margin="0,10,0,0" x:Name="OutletTabSfChipGroup" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent" SelectedItem="{Binding SelectedOutletTabText}" SelectionChanged="SfChipGroup_SelectionChanged"
+                                         ItemsSource="{x:Binding OutletTabSfChipTabList}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource NeutralLightGrey}"
+                                         ChipBorderWidth="1" VerticalOptions="Center" SelectionChanging="SfChipGroup_SelectionChanging">
+                                    <buttons:SfChipGroup.ItemTemplate>
+                                        <DataTemplate >
+                                            <StackLayout Margin="0" Orientation="Horizontal" Spacing="2" Padding="5,-2,5,-2"  >
+                                                <custom:CustomLabel Text="{Binding }" HorizontalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                                            </StackLayout>
+                                        </DataTemplate>
+                                    </buttons:SfChipGroup.ItemTemplate>
+                    </buttons:SfChipGroup>
                     </ScrollView>
             </StackLayout>
             <Grid Grid.Row="2" Padding="20,15" BackgroundColor="White" Margin="0,0,0,20">
@@ -480,7 +502,7 @@
 	                        EnableAnimation="True" 
 	                        AnimationType="SingleCircle" 
 	                        IsBusy="True" 
-	                        TextColor="#D99A29"
+	                        TextColor="{StaticResource Secondary}"
 	                        ViewBoxWidth="70"
                             ViewBoxHeight="70"
                             TitlePlacement="Bottom" />
@@ -500,7 +522,7 @@
                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

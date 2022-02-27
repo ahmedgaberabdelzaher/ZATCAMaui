@@ -28,7 +28,7 @@
             <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
                 <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
-                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                       <Image HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start" VerticalOptions="Center"/>
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,5"  HorizontalOptions="End"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>

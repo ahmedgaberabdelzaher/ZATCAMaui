@@ -52,7 +52,7 @@ namespace EGAZT.Models
 
         public string ActiveOutletDocumentOptions { get; set; }
         public bool ActiveOutletDocumentOptionsIsSelected { get; set; }
-        private Color textCol = Color.Black;
+        private Color textCol = (Color)App.Current.Resources["Primary"];
         public Color TextCol
         {
             get { return textCol; }
@@ -192,7 +192,7 @@ namespace EGAZT.Models
         public string StartDt { get; set; }
         public string EndDt { get; set; }
         public string Txt50 { get; set; }
-        private Color textCol = Color.Black;
+        private Color textCol = (Color)App.Current.Resources["Primary"];
         public Color TextCol {
             get { return textCol; }
             set {

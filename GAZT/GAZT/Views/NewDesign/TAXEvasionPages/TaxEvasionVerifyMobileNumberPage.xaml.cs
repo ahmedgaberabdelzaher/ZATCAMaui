@@ -53,7 +53,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

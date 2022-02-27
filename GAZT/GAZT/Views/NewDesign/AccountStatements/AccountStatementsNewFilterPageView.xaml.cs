@@ -61,7 +61,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(0, 0, 50, 0)
             };
             doneButton.Clicked += PeriodOkayClicked;
@@ -71,7 +72,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZZCancel,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(50, 0, 0, 0)
             };
             CancelButton.Clicked += DateCancelClicked;
@@ -81,7 +83,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(0, 0, 50, 0)
             };
             doneButton1.Clicked += PeriodOkayClicked;
@@ -91,7 +94,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZZCancel,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(50, 0, 0, 0)
             };
             CancelButton1.Clicked += DateCancelClicked;
@@ -101,7 +105,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(0, 0, 50, 0)
             };
             doneButton2.Clicked += DateOkayClicked;
@@ -111,7 +116,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZZCancel,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(50, 0, 0, 0)
             };
             CancelButton2.Clicked += DateCancelClicked;
@@ -121,7 +127,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZDone,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.End,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(0, 0, 50, 0)
             };
             doneButton3.Clicked += DateOkayClicked;
@@ -131,7 +138,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 Text = AppResources.ZZCancel,
                 BackgroundColor = Color.White,
                 HorizontalOptions = LayoutOptions.Start,
-                TextColor = Color.Black,
+                //TextColor = Color.Black,
+                TextColor = (Color)App.Current.Resources["Primary"],
                 Margin = new Thickness(50, 0, 0, 0)
             };
             CancelButton3.Clicked += DateCancelClicked;

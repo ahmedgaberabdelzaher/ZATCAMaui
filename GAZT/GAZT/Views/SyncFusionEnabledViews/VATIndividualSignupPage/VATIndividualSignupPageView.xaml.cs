@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -27,8 +28,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
             // image_estimated_icon.Source = "vat_new_Establishment_W.png";
             viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
-            viewModel.EstimatedTileColor = Color.FromHex("#006450");
-            viewModel.IndividualTileColor = Color.FromHex("#006450");
+            viewModel.EstimatedTileColor =  (Color)Application.Current.Resources["Primary"];
+            viewModel.IndividualTileColor =  (Color)Application.Current.Resources["Primary"];
             SetLTR();
         }
       
@@ -61,8 +62,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
 
             viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
-            viewModel.EstimatedTileColor = Color.FromHex("#006450");
-            viewModel.IndividualTileColor = Color.FromHex("#006450");
+            viewModel.EstimatedTileColor =  (Color)Application.Current.Resources["Primary"];
+            viewModel.IndividualTileColor =  (Color)Application.Current.Resources["Primary"];
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)

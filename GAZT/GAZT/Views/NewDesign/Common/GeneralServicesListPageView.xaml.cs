@@ -27,15 +27,13 @@ namespace EGAZT.Views.NewDesign.Common
             _viewModel.PopulateGeneralServicesListData();
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
-            //Check for Large Tax payer or not
-           // await _viewModel.CheckUserIsLargeTaxPayerOrNot();
         }
 
         private void SetLTR()
@@ -64,7 +62,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -90,17 +88,7 @@ namespace EGAZT.Views.NewDesign.Common
                     _viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
                     AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                else if(selectedItem.ZDTitle== AppResources.NDRelationContact)
-                {
-                    //var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Relationship manager contact details Tapped", "Relationship manager contact details");
-                    _viewModel._navigationService.NavigateTo(App.RelationShipManagerInfoPageView);
-                   // AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                }
-                else if (selectedItem.ZDTitle == AppResources.NDBankAccManagement)
-                {
-                    _viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
-                }
-
+            
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }

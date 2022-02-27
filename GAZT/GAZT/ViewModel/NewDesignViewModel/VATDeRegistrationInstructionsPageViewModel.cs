@@ -18,7 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public readonly IDialogService _dialogService;
         public ICommand GoBackClick { get; set; }
         #endregion
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -67,11 +67,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnabled");
             }

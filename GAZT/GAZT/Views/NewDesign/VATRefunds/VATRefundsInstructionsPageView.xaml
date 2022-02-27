@@ -22,20 +22,28 @@
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout Margin="8">
                     <StackLayout Orientation="Horizontal" Spacing="0">
-                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                       <Image HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start" VerticalOptions="Center" Margin="10,0,10,0"/>
                        <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.VatRefundsConfirmationTit}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatRefundsConfirmDetails}" HorizontalOptions="StartAndExpand"
+                        <Label Text="{x:Static ResourceManager:AppResources.VatRefundsConfirmDetails}"
+                                            LineHeight="0.8"
+                                            HorizontalOptions="StartAndExpand"
                             Style="{StaticResource CaptionLabelGrey}" />
 
                     <StackLayout Orientation="Horizontal" Spacing="0">
-                       <Image HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start" VerticalOptions="Center"/>
+                            <Image HeightRequest="24"
+                                   WidthRequest="24"
+                                   Source="ic_vat_info.png"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Center"
+                                   Margin="10,0,10,0" />
                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZInstructions}" Margin="10,0,0,0"  HorizontalOptions="StartAndExpand"
                             Style="{StaticResource ValueLabelBlack}"/>
                     </StackLayout>
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}" HorizontalOptions="Start"
-                            Style="{StaticResource CaptionLabelGrey}" />
+                        <Label  Text="{x:Static ResourceManager:AppResources.ZVatRefundInstructions}"
+                                HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}" LineHeight="0.8"/>
                 
                 </StackLayout>
                 </ScrollView>
@@ -74,7 +82,7 @@
                                    Style="{StaticResource PrimaryButtonStyle}">
                 <buttons:SfButton.Triggers>
                     <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsInstructionsChecked}"  Value="true">
-                        <Setter Property="BackgroundColor" Value="#d49504" />
+                        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
                     </DataTrigger>
                     <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsInstructionsChecked}"  Value="false">
                         <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />

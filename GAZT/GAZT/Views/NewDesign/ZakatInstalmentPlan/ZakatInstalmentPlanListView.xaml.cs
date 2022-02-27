@@ -8,7 +8,6 @@ using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using ItemTappedEventArgs = Syncfusion.ListView.XForms.ItemTappedEventArgs;
 using EGAZT.Models.ZakatInstalationModels;
 using Xamarin.Forms.Internals;
-using Syncfusion.XForms.Buttons;
 
 namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 {
@@ -43,10 +42,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 _ = viewModel.onPageLoad();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
+
         }
 
 
@@ -66,37 +66,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else
             {
                 Resources["StyleReverseBack"] = App.Current.Resources["Back"];
-            }
-        }
-
-        public void getYesCommandToReject()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Reject", async (sender, arg) =>
-                {
-                    Task.Run(async () => await viewModel.GetZakatInstalmentData( 2, arg));
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-        }
-
-        public void getNoCommandToReject()
-        {
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "RejectCancelled", (sender, arg) =>
-                {
-                });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -127,13 +96,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.ResetData();
                 viewModel.EnableCreateZakatInstalment();
                 await viewModel.GetZakatInstalmentPlanList();
-                getYesCommandToReject();
-                getNoCommandToReject();
-
-                /*MessagingCenter.Subscribe<object, string>(this, "InstallmentPlanApproveOrReject", async (sender, arg) =>
-                {
-                    OnAppearing();
-                });*/
             }
             catch (Exception )
             {
@@ -147,11 +109,18 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var item = e.ItemData as ZakatListModel;
             if (item != null)
             {
+
+
                 if (item.statusType == "E0013")
                 {
                     App.selectedZakatItem = item.fbNum;
 
+
+
+
                     viewModel._navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
+
+
 
                 }
                 else
@@ -164,6 +133,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     viewModel.EnableZakatInstalmentSummary();
                 }
             }
+
+
+
+
+
         }
 
         private void RevokListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
@@ -213,19 +187,5 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         }
 
-        /*private void ApproveTapped(object sender, EventArgs e)
-        {
-            var button = (SfButton)sender;
-
-            var ob = button.BindingContext as InstalmentPlanModel;
-        }*/
-
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            MessagingCenter.Unsubscribe<object, string>(this, "RejectCancelled");
-            MessagingCenter.Unsubscribe<object, string>(this, "Reject");
-            //MessagingCenter.Unsubscribe<object, string>(this, "InstallmentPlanApproveOrReject");
-        }
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -27,7 +27,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>x86_64</MtouchArch>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
@@ -49,6 +49,9 @@
  --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <ExternalConsole>false</ExternalConsole>
+    <Commandlineparameters></Commandlineparameters>
+    <RunWithWarnings>true</RunWithWarnings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -56,7 +59,7 @@
     <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchLink>None</MtouchLink>
+    <MtouchLink>Full</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
@@ -75,7 +78,10 @@
  --linkskip=System.Threading.Tasks
  --linkskip=System.Xml
  --linkskip=System.Xml.Linq
- --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
+ --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms
+ --optimize=experimental-xforms-product-type
+ --warn-on-type-ref=UIKit.UIWebView
+ --optimize=force-rejected-types-removal</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -91,7 +97,7 @@
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
@@ -121,10 +127,10 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -134,11 +140,11 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
-    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
+    <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
-    <MtouchLink>SdkOnly</MtouchLink>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -157,9 +163,10 @@
     <MtouchFloat32>true</MtouchFloat32>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARM64</MtouchArch>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
-    <CodesignProvision>eGazt Inhouse Provisioning Profile</CodesignProvision>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <MtouchSdkVersion>15.2</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
@@ -183,7 +190,6 @@
     <Compile Include="CustomRenderer\CustomButtonRenderer.cs" />
     <Compile Include="CustomRenderer\MyEntryRenderer.cs" />
     <BundleResource Include="Resources\UIFontIcons.ttf" />
-    <BundleResource Include="Resources\SSTArabic-Roman.ttf" />
     <BundleResource Include="Resources\sf_Tax_Evasion%403x.png" />
     <BundleResource Include="Resources\sf_TIN_Status%403x.png" />
     <BundleResource Include="Resources\sf_VAT_Lookup%403x.png" />
@@ -264,91 +270,25 @@
     <BundleResource Include="Resources\ic_GAZT_Logo_Text.png" />
     <BundleResource Include="Resources\ic_star_180.png" />
     <BundleResource Include="Resources\log_out%402x.png" />
+    <BundleResource Include="Resources\Somar-SemiBold.otf" />
+    <BundleResource Include="Resources\Somar-Regular.otf" />
+    <BundleResource Include="Resources\Somar-Light.otf" />
     <BundleResource Include="Resources\education%403x.png" />
+    <BundleResource Include="Resources\Somar-Bold.otf" />
+    <BundleResource Include="Resources\vat_tile_listofsignup_W.png" />
+    <BundleResource Include="Resources\vat_tile_listofsignup.png" />
+    <BundleResource Include="Resources\ZATCA_MAIN LOGO-01%403x.png" />
+    <BundleResource Include="Resources\returnsubmission_onboarding_ar%403x.png" />
+    <BundleResource Include="Resources\inbox_onboarding_ar%403x.png" />
+    <BundleResource Include="Resources\committments_onboarding_ar%403x.png" />
+    <BundleResource Include="Resources\unchecked_box.png" />
+    <BundleResource Include="Resources\thumbnail_chat%403x.png" />
+    <BundleResource Include="Resources\registration_w%403x.png" />
+    <BundleResource Include="Resources\declaration_blue%403x.png" />
+    <BundleResource Include="Resources\taxpayer_subsidy%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242-x-2688.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\828-x1792.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\LaunchImage-1242%403x~iphone6s-landscape_2208x1242.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\LaunchImage-Landscape%402x~ipad_2048x1496.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-Landscape_-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-Landscape_2048x1536.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splash-screen-new-landscape_2688x1242.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_1024x768.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_1024x768-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Landscape_2048x1536.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\landscape_2436x1125.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x960.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1004.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\320x480.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x960-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\640x1136-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1125x2436.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1242x2208.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\750x1334.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2008.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\768x1024-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\1536x2048-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\2048x2732.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\40.png">
@@ -471,7 +411,34 @@
     <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\1024.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\76.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\152.png">
@@ -480,51 +447,49 @@
     <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\167.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\80.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\76.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\48.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\29.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\55.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\58.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\88.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\20.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\100.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\40.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\172.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\80-1.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\196.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\120.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\216.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\120-1.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\16.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\180.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\32.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\40-1.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\64.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\60.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\128.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\58-1.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\256.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\87.png">
+    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\512.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon-2.appiconset\40-2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+<!--    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\Contents.json" />-->
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -546,42 +511,42 @@
       <Version>2.0.0.4</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Cards">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Expander">
       <Version>18.1.0.54</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator">
-      <Version>18.1.0.55</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfChart">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>18.1.0.42</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
-      <Version>18.1.0.55</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfTabView">
-      <Version>18.1.0.54</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="System.Linq">
       <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
-      <Version>1.7.0</Version>
+      <Version>1.7.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.3</Version>
     </PackageReference>
@@ -601,13 +566,13 @@
       <Version>2.1.41</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>18.1.0.55</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="ZXing.Net.Mobile.Forms">
       <Version>2.4.1</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
-      <Version>18.1.0.48</Version>
+      <Version>19.4.0.53</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms.GoogleMaps">
       <Version>3.3.0</Version>
@@ -617,6 +582,9 @@
     </PackageReference>
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.CommunityToolkit">
+      <Version>2.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -643,8 +611,6 @@
     <BundleResource Include="Resources\ic_envelop%403x.png" />
     <BundleResource Include="Resources\ic_location%403x.png" />
     <BundleResource Include="Resources\SSTArabic-Bold.ttf" />
-    <BundleResource Include="Resources\SSTArabic-Light.ttf" />
-    <BundleResource Include="Resources\SSTArabic-Medium.ttf" />
     <BundleResource Include="Resources\ic_pdf%403x.png" />
     <BundleResource Include="Resources\ic_dropdownOne%403x.png" />
   </ItemGroup>
@@ -787,16 +753,10 @@
     <BundleResource Include="Resources\vat_ic_taxpayerDetail%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\vat_tile_listofsignup%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\vat_ic_location%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\vat_ic_phone%403x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\vat_tile_listofsignup_W%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ministryJustice%403x%403x.png" />
@@ -1166,9 +1126,6 @@
     <BundleResource Include="Resources\MainGrayCopy%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\unchecked_box.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\checked_box.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1191,5 +1148,8 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Account_statment_Gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\zatca.css" />
   </ItemGroup>
 </Project>

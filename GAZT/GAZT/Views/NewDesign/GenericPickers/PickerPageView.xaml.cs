@@ -40,32 +40,32 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            PickerDoneButton.FontFamily = "SSTArabic-Medium";
-                            PickerCancelButton.FontFamily = "SSTArabic-Medium";
+                            PickerDoneButton.FontFamily = "Somar-SemiBold";
+                            PickerCancelButton.FontFamily = "Somar-SemiBold";
 
-                            PickerTitle.FontFamily = "SSTArabic-Medium";
+                            PickerTitle.FontFamily = "Somar-SemiBold";
 
-                            genericPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            genericPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            genericPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            genericPicker.HeaderFontFamily = "Somar-SemiBold";
+                            genericPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            genericPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        //PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //PickerCancelButton.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        //PickerDoneButton.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        //PickerTitle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        //PickerCancelButton.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
 
                         //genericPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                        //genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //genericPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-                        PickerDoneButton.FontFamily = "SSTArabic-Medium";
-                        PickerCancelButton.FontFamily = "SSTArabic-Medium";
+                        //genericPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        //genericPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        PickerDoneButton.FontFamily = "Somar-SemiBold";
+                        PickerCancelButton.FontFamily = "Somar-SemiBold";
 
-                        PickerTitle.FontFamily = "SSTArabic-Medium";
+                        PickerTitle.FontFamily = "Somar-SemiBold";
 
-                        genericPicker.HeaderFontFamily = "SSTArabic-Medium";
-                        genericPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                        genericPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                        genericPicker.HeaderFontFamily = "Somar-SemiBold";
+                        genericPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                        genericPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
                         break;
                 }

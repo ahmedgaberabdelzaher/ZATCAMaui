@@ -19,7 +19,7 @@ namespace GAZT.Droid.CustomRenderer
             if (e.OldElement == null)
             {
                 Control.Background = null;
-                Control.SetTextColor(global::Android.Graphics.Color.Black);
+                Control.SetTextColor(global::Android.Graphics.Color.ParseColor("#042e66"));
                 var layoutParams = new MarginLayoutParams(Control.LayoutParameters);
                 layoutParams.SetMargins(0, 0, 0, 0);
                 LayoutParameters = layoutParams;

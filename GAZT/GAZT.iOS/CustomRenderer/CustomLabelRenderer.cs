@@ -83,6 +83,10 @@ namespace GAZT.iOS.CustomRenderer
                             {
                                 Control.TextAlignment = UITextAlignment.Left;
                             }
+                            if (StyleId.Equals("RTLLabelText"))
+                            {
+                                Control.TextAlignment = UITextAlignment.Right;
+                            }
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-using CommonServiceLocator;
+﻿using CommonServiceLocator;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount;
@@ -135,14 +135,6 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
-using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
-using EGAZT.Views.NewDesign.SupportPages;
-using EGAZT.ViewModel.NewDesignViewModel.IBanAccManagementsViewModel;
-using EGAZT.Views.NewDesign.IBanAccountsManagements;
-using EGAZT.ViewModel.NewDesignViewModel.UpdateVatEffectiveDateVM;
-using EGAZT.Views.NewDesign.UpdateVatEffectiveDate;
-using EGAZT.ViewModel.NewDesignViewModel.ZakatRejectionPopUpViewModel;
-using EGAZT.Views.NewDesign.ZakatRejectPopUp;
 
 namespace EGAZT
 {
@@ -172,9 +164,6 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
             SimpleIoc.Default.Register<VATAmendReactivationSuccesssulPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebView>();
-            SimpleIoc.Default.Register<BankAccountManagementPageViewModel>();
-            SimpleIoc.Default.Register<BankAccountAddorUpdateIBANViewModel>();
-
             // SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
 
             SimpleIoc.Default.Register<StyleTestUIPageViewModel>();
@@ -183,12 +172,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
             SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
-            SimpleIoc.Default.Register<UpdateActivityInstructionsPageViewModel>();
             SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
             SimpleIoc.Default.Register<PickerPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
             SimpleIoc.Default.Register<GeneralServicesViewModel>();
-            SimpleIoc.Default.Register<UpdateVatEffectiveDateViewModel>();
             SimpleIoc.Default.Register<TINDeregistrationCloseIndividualOutletsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
             SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
@@ -219,14 +206,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<DashboardAnonymousMenuPageViewModel>();
             SimpleIoc.Default.Register<VATCreditCarriedForwardPopUpPageViewModel>();
             SimpleIoc.Default.Register<SupportPageViewModel>();
+            SimpleIoc.Default.Register<ZatcaInfoMenuPageViewModel>();
+
             SimpleIoc.Default.Register<NotesDescriptionPopUpPageViewModel>();
             SimpleIoc.Default.Register<NotesPopUpPageViewModel>();
             SimpleIoc.Default.Register<TaxManagementPageViewModel>();
             SimpleIoc.Default.Register<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
             SimpleIoc.Default.Register<TaxEvasionPageWebViewModel>();
-            SimpleIoc.Default.Register<RelationShipManagerInfoPageViewModel>();
-            SimpleIoc.Default.Register<ZakatRejectionReasonPopupViewModel>();
-            SimpleIoc.Default.Register<FilterVatEffectiveDatePageViewModel>();
+            SimpleIoc.Default.Register<TaxpayerSubsidyViewModel>();
             #endregion
 
             #region NewDesignRelease2IOC
@@ -274,8 +261,6 @@ namespace EGAZT
             #endregion
 
             #region OldIOC
-            
-
 
             SimpleIoc.Default.Register<SFLoginPageViewModel>();
             SimpleIoc.Default.Register<PdfViewModel>();
@@ -380,7 +365,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ViewModel.NewDesignViewModel.VATServicesPageViewModel.VATServicesPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -394,7 +379,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxManagementPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -408,7 +393,21 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionPageWebViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TaxpayerSubsidyViewModel TaxpayerSubsidyRequest
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxpayerSubsidyViewModel>();
+                }
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -422,7 +421,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NotesPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -436,7 +435,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NotesDescriptionPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -450,7 +449,22 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SupportPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ZatcaInfoMenuPageViewModel ZatcaInfoMenuPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZatcaInfoMenuPageViewModel>();
+                }
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -465,7 +479,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATCreditCarriedForwardPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -479,7 +493,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<DashboardAnonymousMenuPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -493,7 +507,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TINDeregistrationCloseIndividualOutletsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -508,7 +522,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SignUpForEstablishmentPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -523,7 +537,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<EstablishmentSignUPPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -538,7 +552,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignOnBoardingAnimationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -552,7 +566,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionMyReportsListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -569,7 +583,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<TaxpayerCorrespondancePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondancePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -583,7 +597,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondanceDetailPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -598,7 +612,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxpayersCertificatesPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -612,7 +626,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -626,7 +640,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -640,7 +654,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignDashBoardPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -655,7 +669,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -669,7 +683,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignForgotPasswordPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -683,7 +697,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -697,7 +711,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -714,7 +728,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<VATLookUpNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookUpNewPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -730,7 +744,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<VATDeRegistrationDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -746,24 +760,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<VATDeRegistrationInstructionsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATDeRegistrationInstructionsPageViewModel>();
                 }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        
-        public UpdateActivityInstructionsPageViewModel UpdateActivityInstructionsPage
-        {
-            get
-            {
-                try
-                {
-                    SimpleIoc.Default.Unregister<UpdateActivityInstructionsPageViewModel>();
-                    SimpleIoc.Default.Register<UpdateActivityInstructionsPageViewModel>();
-                    return ServiceLocator.Current.GetInstance<UpdateActivityInstructionsPageViewModel>();
-                }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -777,7 +774,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATDeregistrationSuccessPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -791,7 +788,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -808,7 +805,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<EstablishmentRegistrationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -825,7 +822,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdatePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -839,7 +836,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -856,7 +853,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<OutletDetailsAmendUpdatePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -870,7 +867,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -884,7 +881,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ActivityItemAmendUpdatePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -898,7 +895,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<RegistrationSuccessfulViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -912,7 +909,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<EstablishmentAmendUpdateSuccessfulPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -926,7 +923,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionVerifyMobileViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -941,7 +938,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -955,7 +952,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewTaxEvasionFormPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -971,7 +968,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewTaxpayerProfileViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -985,7 +982,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<UpdateMobileViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -999,7 +996,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<UpdateEmailViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1013,7 +1010,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VerificationEmailPasswordViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1027,7 +1024,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<UpdatePasswordViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1041,7 +1038,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxpayerProfileSuccessViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1060,7 +1057,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<PaymnetProcessWebviewViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1168,7 +1165,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1184,7 +1181,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<PdfViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1198,7 +1195,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<StyleTestUIPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1212,7 +1209,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<FinancialDetailAttachmentPopupPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1226,7 +1223,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATIndividualSignupTnCPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1241,7 +1238,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<InternationalMobileNumberCodePagesViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1255,7 +1252,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<InternationalCodeSearchPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1272,7 +1269,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1287,7 +1284,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1301,7 +1298,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1315,7 +1312,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1330,7 +1327,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1344,7 +1341,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1359,7 +1356,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ICRListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1374,7 +1371,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1388,7 +1385,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1402,7 +1399,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<DisplayNotesPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1416,7 +1413,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AttachmentPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1430,7 +1427,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AddNotePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1444,7 +1441,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<CreditCarriedPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1458,7 +1455,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AddPopPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1473,7 +1470,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignShowVatInformationPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1487,7 +1484,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1501,7 +1498,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1515,7 +1512,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1529,7 +1526,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1543,7 +1540,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1557,7 +1554,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportAttachmentPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1571,7 +1568,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<FormBundleStatusPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1585,7 +1582,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SignUpTAndCPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1599,7 +1596,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SignUpFormPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1613,7 +1610,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1627,7 +1624,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<CreateGaztAccountPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1641,7 +1638,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AccountCreatedPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1655,7 +1652,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AccountCreatedSuccessfullyPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1673,7 +1670,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<SFLoginPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1687,7 +1684,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ReturnsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1701,7 +1698,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<FAQPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1715,7 +1712,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AboutUsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1729,7 +1726,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<PrivacyAndPolicyPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1743,7 +1740,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<MyReturnsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1757,7 +1754,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ContactUsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1771,7 +1768,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1785,7 +1782,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1799,7 +1796,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<RegistrationSuccessfulPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1813,7 +1810,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRegistrationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1830,7 +1827,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<VATAmendReactivationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1844,7 +1841,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1858,7 +1855,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRegistrationSuccessfullPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1872,7 +1869,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATAmendReactivationSuccesssulPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1886,7 +1883,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<FileAttachmentPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1900,7 +1897,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewAccountPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1915,7 +1912,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<UnlockAccountTINPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1930,7 +1927,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<UnlockAccountSuccessPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1945,7 +1942,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TINDeregestrationSuccessPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1960,7 +1957,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverUsernameViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1975,7 +1972,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignRecoverPasswordPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -1990,7 +1987,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2005,7 +2002,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRefundListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2020,7 +2017,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRefundDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2037,7 +2034,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<VATRefundsNewRequestViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundsNewRequestViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2052,7 +2049,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRefundsSuccessPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2067,7 +2064,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2084,7 +2081,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsSuccessfullPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2115,7 +2112,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AttachmentPopUpViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2131,7 +2128,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatObjectionSuccessfullPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2145,7 +2142,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatAcknowledgmentPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2160,7 +2157,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<QuickActionPopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2176,7 +2173,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATDeclarationAttachmentPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2194,7 +2191,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<AccountStatementsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2212,7 +2209,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementBillsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2248,7 +2245,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AccountStatementsDownloadPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2264,7 +2261,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AccountStatementsFiltersPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2305,6 +2302,8 @@ namespace EGAZT
             navigationService.Configure(App.DashboardAnonymousMenuPageView, typeof(DashboardAnonymousMenuPageView));
             navigationService.Configure(App.VATCreditCarriedForwardPopUpPageView, typeof(VATCreditCarriedForwardPopUpPageView));
             navigationService.Configure(App.SupportPageView, typeof(SupportPageView));
+            navigationService.Configure(App.ZatcaInfoMenuPageView, typeof(ZatcaInfoMenuPageView));
+
             navigationService.Configure(App.NotesPopUpPageView, typeof(NotesPopUpPageView));
             navigationService.Configure(App.NotesDescriptionPopUpPageView, typeof(NotesDescriptionPopUpPageView));
             navigationService.Configure(App.TaxManagementPageView, typeof(TaxManagementPageView));
@@ -2313,12 +2312,8 @@ namespace EGAZT
             navigationService.Configure(App.VATAmendReactivationPageView, typeof(VATAmendReactivationPageView));
             navigationService.Configure(App.VATServicesPageView, typeof(Views.NewDesign.VATServices.VATServicesPageView));
             navigationService.Configure(App.TaxEvasionPageWebView, typeof(TaxEvasionPageWebView));
-            navigationService.Configure(App.GAZTBankAccountManagementPageView, typeof(BankAccountManagementPageView));
-            navigationService.Configure(App.GAZTBankAccountAddOrUpdatePageView, typeof(BankAccountAddorUpdateIBANPageView));
+            navigationService.Configure(App.TaxpayerSubsidyRequest, typeof(TaxpayerSubsidyRequest));
 
-            navigationService.Configure(App.RelationShipManagerInfoPageView, typeof(RelationShipManagerInfoPageView));
-            navigationService.Configure(App.ZakatRejectionReasonPopupPageView, typeof(ZakatRejectionReasonPopupPageView));
-            navigationService.Configure(App.UpdateVatEffectiveDatePageView, typeof(UpdateVatEffectiveDatePageView));
             #endregion
 
             #region NewDesignRelease2
@@ -2422,7 +2417,6 @@ namespace EGAZT
 
             navigationService.Configure(App.ZakatRegistrationDetailsListPageView, typeof(ZakatRegistrationDetailsListPageView));
             navigationService.Configure(App.GeneralServicesListPageView, typeof(GeneralServicesListPageView));
-            navigationService.Configure(App.FilterVatEffectiveDatePageView, typeof(FilterVatEffectiveDatePageView));
             navigationService.Configure(App.RefundRequestMenuListPageView, typeof(RefundRequestMenuListPageView));
             navigationService.Configure(App.FillingFreuencyMenuListPageView, typeof(FillingFreuencyMenuListPageView));
             navigationService.Configure(App.ZakatRegistrationTaxPayerDetails, typeof(ZakatRegistrationTaxPayerDetails));
@@ -2492,7 +2486,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2511,7 +2505,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<InstalmentPlanViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2529,7 +2523,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2544,7 +2538,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2561,7 +2555,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2576,7 +2570,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<MorePopUpViewModelRTwo>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2591,7 +2585,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<MyBillsMultiplePayableListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2605,7 +2599,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<AddNotePopUpViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2620,80 +2614,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
                 }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-
-        public BankAccountManagementPageViewModel BankAccountManagementPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<BankAccountManagementPageViewModel>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        public BankAccountAddorUpdateIBANViewModel BankAccountAddOrUpdatePageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<BankAccountAddorUpdateIBANViewModel>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        public RelationShipManagerInfoPageViewModel RelationShipManagerInfoPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<RelationShipManagerInfoPageViewModel>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        
-        public ZakatRejectionReasonPopupViewModel ZakatRejectionReasonPopupPageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<ZakatRejectionReasonPopupViewModel>();
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        
-        public FilterVatEffectiveDatePageViewModel FilterVatEffectiveDatePageView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<FilterVatEffectiveDatePageViewModel>();
-                }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2708,11 +2629,9 @@ namespace EGAZT
             {
                 try
                 {
-                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanViewModel>();
-                    SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2726,7 +2645,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2741,7 +2660,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2755,7 +2674,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2778,7 +2697,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<ContractReleaseViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2795,7 +2714,7 @@ namespace EGAZT
                     SimpleIoc.Default.Register<ContractReleaseListViewModel>();
                     return ServiceLocator.Current.GetInstance<ContractReleaseListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2814,7 +2733,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2828,7 +2747,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2844,7 +2763,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2858,7 +2777,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VatReviewListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2874,7 +2793,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2903,7 +2822,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2918,7 +2837,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2935,7 +2854,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2949,7 +2868,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportDetailPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2967,7 +2886,7 @@ namespace EGAZT
 
                     return ServiceLocator.Current.GetInstance<TINDeregistrationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2982,7 +2901,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<CalendarPickerPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -2996,7 +2915,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3010,7 +2929,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3024,22 +2943,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<GeneralServicesViewModel>();
                 }
-                catch (Exception)
-                {
-                    return null;
-                }
-            }
-        }
-        
-        public UpdateVatEffectiveDateViewModel UpdateVatEffectiveDateView
-        {
-            get
-            {
-                try
-                {
-                    return ServiceLocator.Current.GetInstance<UpdateVatEffectiveDateViewModel>();
-                }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3054,7 +2958,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3069,7 +2973,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3084,7 +2988,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3099,7 +3003,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<VATReturnSuccessfullPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3129,7 +3033,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<MorePopUpPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3144,7 +3048,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3160,7 +3064,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<RefundAccountPopupPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -3174,7 +3078,7 @@ namespace EGAZT
                 {
                     return ServiceLocator.Current.GetInstance<NewAccountPopPageViewModel>();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }

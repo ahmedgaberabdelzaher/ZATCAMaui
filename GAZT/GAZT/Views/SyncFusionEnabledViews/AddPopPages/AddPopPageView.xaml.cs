@@ -27,13 +27,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
                     {
                         if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
                         {
-                            Message_label.FontFamily = "SSTArabic-Bold.ttf#SSTArabic";
+                            Message_label.FontFamily = "Somar-Bold.otf#SomarBold";
                         }
                         else
                         {
-                            Message_label.FontFamily = "SSTArabic-Bold";
+                            Message_label.FontFamily = "Somar-Bold";
                         }
-                        //Msglabel.FontFamily = "SSTArBold";
                     }
                     if(string.IsNullOrEmpty(objPopUP.HeaderText))
                     {
@@ -61,7 +60,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
                     }
                     else
                     {
-                        viewModel.IsRed = "#7D858D";
+                        viewModel.IsRed = "{StaticResource ForgotPasswordGrayTextColor}";
                     }
                     viewModel.FlowDirections = objPopUP.FlowDirections;
                 }
@@ -85,7 +84,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
                     }
                     else
                     {
-                        viewModel.IsRed = "#7D858D";
+                        viewModel.IsRed = "{StaticResource ForgotPasswordGrayTextColor}";
                     }
                     viewModel.FlowDirections = objPopUP.FlowDirections;
                     SetLTR();
@@ -106,7 +105,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
         private void CloseImage_Tapped(object sender, EventArgs e)
         {
             viewModel.IsBold = "Bold";
-            viewModel.IsRed = "#7D858D";
+            viewModel.IsRed = "{StaticResource ForgotPasswordGrayTextColor}";
             PopupNavigation.Instance.PopAsync();
         }
     }

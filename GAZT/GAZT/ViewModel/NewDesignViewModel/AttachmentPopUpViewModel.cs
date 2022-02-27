@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
@@ -11,6 +13,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -193,9 +196,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 string[] filetypes;
 
                 filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForZakat();
-
-                var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                attachment = fileData.DataArray;
+                PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                 var fileData = await FilePicker.PickAsync(options);
+                        var stream = await fileData.OpenReadAsync();
+                        attachment = UtilityManager.ReadFully(stream as Stream);
+                //attachment = fileData.DataArray;
                 await Task.Run(() =>
                 {
                     IsLoading = true;
@@ -207,7 +213,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         AttachmentName = fileData.FileName;
                         if (fileData.FileName.Contains("."))
                         {
-                            string Extention = AttachmentName.Split('.')[1];
+                            //string Extention = AttachmentName.Split('.')[1];
+                            string[] ExtentionArray = AttachmentName.Split('.');
+                            string Extention = ExtentionArray.Last();
                             string ContentType = UtilityManager.GetContentType(Extention);
                             bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
                             decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
@@ -355,7 +363,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -525,7 +533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             }

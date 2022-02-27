@@ -175,12 +175,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
                 if (_isWithDrawEnable == value) return;
 
                 _isWithDrawEnable = value;
-                WithdrawBackgroundColor = Color.FromHex(_isWithDrawEnable ? "#d49504" : "#9EA4A9");
+                WithdrawBackgroundColor = (_isWithDrawEnable ? (Color)Application.Current.Resources["Secondary"]  : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsWithDrawEnable");
             }
         }
 
-        private Color _WithdrawBackgroundColor = Color.FromHex("#d49504");
+        private Color _WithdrawBackgroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color WithdrawBackgroundColor
         {
             get

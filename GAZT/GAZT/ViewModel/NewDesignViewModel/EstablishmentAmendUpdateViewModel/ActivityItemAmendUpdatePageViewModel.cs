@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,6 +18,7 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -30,7 +32,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         public bool IsEditingMode { get; set; }
         public EstablishmentOutletActivitiesTabsEnum PageType { get; set; }
         private bool _displayCompleteDetailsLabel;
-
         public bool DisplayCompleteDetailsLabel
         {
             get => _displayCompleteDetailsLabel;
@@ -197,20 +198,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                 _AddLicenseEnabled = value;
                 RaisePropertyChanged(nameof(AddLicenseEnabled));
-            }
-        }
-
-
-        private bool _UpdateButtonEnabled = true;
-        public bool UpdateButtonEnabled
-        {
-            get => _UpdateButtonEnabled;
-            set
-            {
-                if (_UpdateButtonEnabled == value) return;
-
-                _UpdateButtonEnabled = value;
-                RaisePropertyChanged(nameof(UpdateButtonEnabled));
             }
         }
 
@@ -714,7 +701,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
         #region commands
         public Command OnNextButtonClick { get; private set; }
-        public Command OnUpdateButtonClick { get; private set; }
         public ICommand OnPreButtonClick { get; private set; }
         public Command OnIssueCountrySelectButtonClick { get; set; }
         public Command OnIssueBySelectButtonClick { get; set; }
@@ -738,8 +724,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             ActivityDetails = new ActivityDetails();
             LicenseDetails = new LicenseDetails();
             OnNextButtonClick = new Command(() => navigateToNext(), () => CanExecute);
-            OnUpdateButtonClick = new Command(() => updateActivityCrOrLicense());
-
             OnPreButtonClick = new Command(() =>
             {
 
@@ -1384,85 +1368,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     break;
             }
         }
-
-        private async void updateActivityCrOrLicense()
-        {
-            string type = string.Empty;
-            try
-            {
-                if ((CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails))
-                {
-                    type = "1";
-                }
-                else if ((CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails))
-                {
-                    type = "2";
-                }
-                await updateActivityLicense(type);
-
-            }
-            catch(Exception e)
-            {
-
-            }
-        }
-
-        private async Task updateActivityLicense(String pageType)
-        {
-            IsLoading = true;
-            /*UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
-            updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
-            updateActivityModel.Idtype = "BUP002";
-            updateActivityModel.Idnumber = "1010419035";
-            updateActivityModel.Activity = "229999";
-            updateActivityModel.MainGrp = "";
-            updateActivityModel.SubGrp = "";
-            updateActivityModel.UpdFlg = false;
-
-
-            String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel, pageType);
-
-            IsLoading = false;*/
-
-
-            Nreg_ActivityItem item;
-            try
-            {
-                if (await ValidateForm())
-                {
-                    if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails || CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                    {
-                        DateTime.TryParseExact(CRValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime crIssueDate);
-                        DateTime.TryParseExact(ValidFrom, "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime issueDate);
-                        DateTime.TryParseExact("9999/12/31", "yyyy/MM/dd", new CultureInfo("en-US"), DateTimeStyles.None, out DateTime maxDate);
-                        item = new Nreg_ActivityItem
-                        {
-                            Type = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? "BUP002" : "ZS0004",
-
-                            Idnumber = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRNumber : LicenseNumber,
-
-                            Activity = CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails ? CRAcitivity.IndSector : LicenseAcitivity.IndSector
-                        };
-                        UpdateActivityLicenseModel updateActivityModel = new UpdateActivityLicenseModel();
-                        updateActivityModel.Taxpayer = App.LoginDataRetrieved.TIN;
-                        updateActivityModel.Idtype = item.Type;
-                        updateActivityModel.Idnumber = item.Idnumber;
-                        updateActivityModel.Activity = CRAcitivity.IndSector;
-                        updateActivityModel.MainGrp = "";
-                        updateActivityModel.SubGrp = "";
-                        updateActivityModel.UpdFlg = false;
-
-                        String Response = await EstablishmentRegistrationWebServiceManager.UpdateUserLicenseInActivityPage(updateActivityModel, pageType);
-                        IsLoading = false;
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
-
         private async void navigateToNext()
         {
             CanExecute = false;
@@ -1588,11 +1493,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             try
             {
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
-                var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-                if (fileData != null)
+                var fileData = await FilePicker.PickAsync(options);
+                var stream = await fileData.OpenReadAsync();
+              var attachmentByte = UtilityManager.ReadFully(stream as Stream);
+
+                if (attachmentByte != null)
                 {
-                    var attachmentByte = fileData.DataArray;
+                    //var attachmentByte = fileData.DataArray;
 
                     string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                     var attachmentName = fileData.FileName;
@@ -1605,7 +1515,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                         if (fileData.FileName.Contains("."))
                         {
-                            string Extention = fileData.FileName.Split('.')[1];
+                            string[] ExtentionArray = fileData.FileName.Split('.');
+                            string Extention = ExtentionArray.Last();
+                            
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
@@ -1619,7 +1531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception)
+                                        catch (Exception ex)
                                         {
                                         }
                                     }

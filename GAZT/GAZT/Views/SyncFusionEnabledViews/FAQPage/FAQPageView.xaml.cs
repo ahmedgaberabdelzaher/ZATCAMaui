@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel;
+using GAZT.Helper;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -38,11 +39,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
             if (App.IsArabic)
             {
                // viewModel.WebUrl = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
-                viewModel.WebUrl = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/default.aspx";
+                viewModel.WebUrl = Constants.GAZTFAQARUrl;
             }
             else
             {
-                viewModel.WebUrl = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/default.aspx";
+                viewModel.WebUrl = Constants.GAZTFAQEnUrl;
             }
 
         }

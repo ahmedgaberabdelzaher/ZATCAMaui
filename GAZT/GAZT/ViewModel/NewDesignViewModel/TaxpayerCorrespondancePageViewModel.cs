@@ -629,9 +629,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             childVAT.TaxtpFg = itemVAT.TaxtpFg;
                         }
-                        catch(Exception)
+                        catch(Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemVAT.Cdate != null)

@@ -1,13 +1,16 @@
 ﻿using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -208,15 +211,52 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
 
             OnChangeFromEstimateToAccountingBasisButtonClicked = new Xamarin.Forms.Command(async () =>
             {
+                //try
+                //{
+                //    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
+
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.Write(ex.ToString());
+                //    Console.Write(ex.StackTrace.ToString());
+                //}
+
+
                 try
                 {
-                    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
 
+
+                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType);
+
+                    if (App.IsArabic)
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                        };
+                    }
+                    else
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                        };
+                    }
+                    //VisitPortalPopup.OnGotoPortal = () =>
+                    //{
+                    //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                    //};
+                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                 }
                 catch (Exception ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+
                 }
             });
             

@@ -271,7 +271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -1701,7 +1701,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -1811,7 +1811,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {

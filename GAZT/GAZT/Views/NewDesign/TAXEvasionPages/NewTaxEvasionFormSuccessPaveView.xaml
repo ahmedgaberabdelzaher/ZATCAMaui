@@ -23,18 +23,18 @@
             <StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                     <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
-                    <Label  Text="{x:Static local:AppResources.NDTaxEvasionReport}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <Label  Text="{Binding SuccessResponse}"  FontFamily="{StaticResource SSTArabicMedium}"
+                    <Label  Text="{x:Static local:AppResources.NDTaxEvasionReport}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label  Text="{Binding SuccessResponse}"  FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
                 
-                <buttons:SfButton x:Name="btnDashboard" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+                <buttons:SfButton x:Name="btnDashboard" FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                       Clicked="btnDashboard_Clicked"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
             <buttons:SfButton x:Name="btnReportList"  Text="{x:Static local:AppResources.NDTaxEvasion}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="OnGotoReportPageClicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      HeightRequest="46" Clicked="OnGotoReportPageClicked"  FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  BackgroundColor="Transparent" TextColor="White"  />
-                <!--TextColor="#d49504"-->
+                <!--TextColor="{StaticResource Green}"-->
             </StackLayout>
         <!--</ScrollView>-->
     </ContentPage.Content>

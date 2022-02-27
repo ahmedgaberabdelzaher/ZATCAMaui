@@ -1132,7 +1132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -1268,7 +1268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {

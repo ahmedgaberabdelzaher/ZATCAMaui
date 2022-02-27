@@ -57,7 +57,7 @@
                                    Style="{StaticResource PrimaryButtonStyle}"/>
                         
                          <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  x:Name="btnGoToDasboard" Clicked="btnGoToDasboard_Clicked" Text="{x:Static ResourceManager:AppResources.ZZZZGotoDashboard}"
-                                   Style="{StaticResource NoBackgroundButtonStyle}" TextColor="#d49504"/>
+                                   Style="{StaticResource NoBackgroundButtonStyle}" TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                     </yummy:PancakeView>
                     

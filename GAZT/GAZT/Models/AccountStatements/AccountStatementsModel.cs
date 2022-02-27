@@ -479,7 +479,7 @@ namespace EGAZT.Models.AccountStatements
         }
 
         [JsonIgnore]
-        private Color _StatusBG = Color.FromHex("#E5EFED");
+        private Color _StatusBG =  (Color)Application.Current.Resources["BackgroundGray"];
         [JsonIgnore]
         public Color StatusBG
         {
@@ -503,7 +503,7 @@ namespace EGAZT.Models.AccountStatements
         }
 
         [JsonIgnore]
-        private Color _AmountTextColor = Color.FromHex("#006450");
+        private Color _AmountTextColor =  (Color)Application.Current.Resources["Primary"];
         [JsonIgnore]
         public Color AmountTextColor
         {

@@ -139,7 +139,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                 }
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                         }
 
@@ -218,10 +218,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
             {
                 viewModel.DocTypeString = "RVBT";
-            }
-            else if (viewModel.IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
-            {
-                viewModel.DocTypeString = "ZVRA";
             }
             else if (viewModel.IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
             {
@@ -313,7 +309,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             });
@@ -386,7 +382,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {

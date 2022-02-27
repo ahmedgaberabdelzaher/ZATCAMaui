@@ -118,7 +118,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //}
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -167,7 +167,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Send<Object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
                 PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

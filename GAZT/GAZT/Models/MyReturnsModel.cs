@@ -36,10 +36,6 @@ namespace GAZT.Models
         public string FbtText { get; set; }
         public string Fbsta { get; set; }
         public string Fbust { get; set; }
-        public string Err2064 { get; set; }
-        public string Cr2215 { get; set; }
-
-
         private string _CalendarTyp;
         public string CalendarTyp 
         {
@@ -115,9 +111,9 @@ namespace GAZT.Models
                     }
                 }
     
-                catch(Exception)
+                catch(Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
                 }
             }
         }
@@ -358,6 +354,7 @@ namespace GAZT.Models
     {
         public string TemplateType { get; set; }
         public string Text { get; set; }
+        public Color TextColor { get; set; }
         public ImageSource ImageSource { get; set; }
   
     }

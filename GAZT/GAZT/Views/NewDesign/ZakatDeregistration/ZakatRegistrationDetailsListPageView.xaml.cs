@@ -24,24 +24,40 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         public ZakatRegistrationDetailsListPageView()
         {
-            InitializeComponent();
-            ChangeAeroIcon();
-            Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
-            SetLTR();
+            try
+            {
+                InitializeComponent();
+                ChangeAeroIcon();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                SetLTR();
 
-            viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
-            On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            this.BindingContext = viewModel;
-            viewModel.PopulateZakatRegListData();
+                viewModel = App.Locator.ZakatRegistrationDetailsListPageView;
+                On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                this.BindingContext = viewModel;
+                viewModel.PopulateZakatRegListData();
+            }
+            catch (Exception ex)
+            {
+                viewModel.HandleExceptipon(ex);
+            }
+
         }
 
-        protected override  void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
-            App.isVatEffectDateNav = false;
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
+            try
+            {
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+            }
+            catch (Exception e)
+            {
+
+            }
+
+
         }
 
         private void SetLTR()
@@ -70,7 +86,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -82,7 +98,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             var selectedLv = sender as SfListView;
             try
             {
-                
+
                 if (selectedLv.SelectedItem == null) return;
 
                 ZakatDeregistrationDetailsListModel selectedItem = (ZakatDeregistrationDetailsListModel)selectedLv.SelectedItem;
@@ -188,7 +204,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     });*/
                     //AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                 }
-                
+
                 else
                 {
                     var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("ZakatRegistrationDetailsListPageView", "RegistrationDetailsListView_SelectionChanged", "TIN Deregistration eService");

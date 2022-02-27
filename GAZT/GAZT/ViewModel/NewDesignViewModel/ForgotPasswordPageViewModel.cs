@@ -18,6 +18,7 @@ using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.ForgotPasswordPages;
 using Xamarin.Forms.Internals;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -233,7 +234,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _resendOTPTextColor = Color.FromHex("#909090");
+        private Color _resendOTPTextColor =  (Color)Application.Current.Resources["DarkGrayTextColor"];
         public Color ResendOTPTextColor
         {
             get
@@ -794,7 +795,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _userNameTextColor = Color.Black;
+        private Color _userNameTextColor = (Color)Application.Current.Resources["Primary"];
         public Color UserNameTextColor
         {
             get
@@ -810,7 +811,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _passwordTextColor = Color.Black;
+        private Color _passwordTextColor = (Color)Application.Current.Resources["Primary"];
         public Color PasswordTextColor
         {
             get
@@ -1192,8 +1193,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#005e4b");
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     // IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -1413,7 +1414,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("NewPasswordVisibility");
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -1459,7 +1460,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsSubmitEnabled");
             }
         }
-        private Color _submitDisableButtonColor = Color.FromHex("#9EA4A9");
+        private Color _submitDisableButtonColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color SubmitDisableButtonColor
         {
             get
@@ -1474,7 +1475,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("SubmitDisableButtonColor");
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Primary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -1593,7 +1594,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private Color _corporateTextColor = Color.Black;
+        private Color _corporateTextColor = (Color)Application.Current.Resources["Primary"];
         public Color CorporateTextColor
         {
             get
@@ -1839,7 +1840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 CorporateCardBackgroundImg = "FP_selected_tile";
                 CorporateTextColor = Color.White;
                 IndividualOrPersonalBusinessCardBackgroundImg = "FP_unselected_tile";
-                IndividualOrPersonalBusinessTextColor = Color.Black;
+                IndividualOrPersonalBusinessTextColor = (Color)Application.Current.Resources["Primary"];
                 IDNumber = string.Empty;
 
             });
@@ -1851,7 +1852,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IndividualOrPersonalBusinessCardBackgroundImg = "FP_selected_tile";
                 IndividualOrPersonalBusinessTextColor = Color.White;
                 CorporateCardBackgroundImg = "FP_unselected_tile";
-                CorporateTextColor = Color.Black;
+                CorporateTextColor = (Color)Application.Current.Resources["Primary"];
                 IDNumber = string.Empty;
             });
 
@@ -1935,35 +1936,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             PasswordTextColor = Color.Black;
             UserNameTextColor = Color.Black;
 
-            //IDNumberOrCorporateIDOrUserName = AppResources.IDNumber;
-            //string lang = UtilityManager.GetLanguageParameter();
-            //try
-            //{
-            //    StringBuilder captcha = GetCaptcha();
-            //    Captcha = captcha.ToString();
-            //    List<ForgotUserNamePassword> list = new List<ForgotUserNamePassword>
-            //{
-            //    new ForgotUserNamePassword{ id = "1" , TaxPayerType = AppResources.Individual},
-            //    new ForgotUserNamePassword{ id = "2" , TaxPayerType = AppResources.Company}
-            //};
-            //    TaxpayerTypeList = list;
-            //    List<ForgotCredentialType> forgotCredentialListlist = new List<ForgotCredentialType>
-            //{
-            //    new ForgotCredentialType{ id = "1" , CredentialType = AppResources.ForgotUsername},
-            //    new ForgotCredentialType{ id = "2" , CredentialType = AppResources.ForgotPassword}
-            //};
-            //    ForgotTypeList = forgotCredentialListlist;
-            //    if (ForgotTypeList != null && ForgotTypeList.Count != 0)
-            //    {
-            //        SelectedForgotType = ForgotTypeList.Where(x => x.id == "2").FirstOrDefault();
-            //        ForgotTypeIndex = 1;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //}
-            //VerifyButtonDisableColor = Color.FromHex("#005e4b");
-            //IsVerifyOTPEnabled = true;
         }
         private void SetLayoutVisibilityForSelectedForgotType()
         {
@@ -2217,12 +2189,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         forgotPasswordOTP.d = d;
                         forgotPasswordOTP = await WebServiceManager.GAZTFogotPasswordSendOTP(forgotPasswordOTP);
                         PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                        if (forgotPasswordOTP.d != null && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId))
+                        if (forgotPasswordOTP.d != null/* && !string.IsNullOrEmpty(forgotPasswordOTP.d.EmailId)*/)
                         {
                             ContinueButtonEnability = true;
                             IsResendOTPEnabled = false;
                             StartOTPTimer();
-                            ResendOTPTextColor = Color.FromHex("#909090");
+                            ResendOTPTextColor =  (Color)Application.Current.Resources["DarkGrayTextColor"];
                             IsAPICalledSuccessfully = true;
 
                             OTPFirstDigit = string.Empty;
@@ -2237,50 +2209,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             UserIDLayoutVisibility = false;
                             VerificationCodeVisibility = true;
                             string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
-                            MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            //MobileNumber = "XXXXXXXXXX" + _mobileNumber;
+                            MobileNumber = forgotPasswordOTP.d.MobileNo;
                             OTPSentOnThisMobileNumber = AppResources.MobileNumber + " " + MobileNumber;
 
-
-
-                            //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-
-                            //    Device.BeginInvokeOnMainThread(() =>
-                            //    {
-                            //        // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
-                            //        MainPageLayoutVisibility = false;
-                            //        OTPLayoutVisibility = true;
-                            //        ButtonDisableColor = Color.FromHex("#9EA4A9");
-                            //        VerifyButtonDisableColor = Color.FromHex("#005e4b");
-                            //        IsResendOTPEnabled = false;
-                            //        IsVerifyOTPEnabled = true;
-                            //        IsOTPEntryEnable = true;
-                            //        string _mobileNumber = forgotPasswordOTP.d.MobileNo.Substring(forgotPasswordOTP.d.MobileNo.Length - 4);
-                            //        MobileNumber = "XXXXXXXXXX" + _mobileNumber;
-                            //        numberOfSeconds = 120;
-                            //        TimerStart(numberOfSeconds);
-                            //    });
-                            //}
-                            //else
-                            //{
-                            //    Device.BeginInvokeOnMainThread(async () =>
-                            //    {
-                            //        await _dialogService.ShowMessageBox(AppResources.ZPleaseEnterAValidUserID, AppResources.ZError);
-                            //    });
                         }
-                        else
-                        {
-                            IsAPICalledSuccessfully = false;
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NDEntervaliduserid));
-
-                                //   await _dialogService.ShowMessageBox(AppResources.NDEntervaliduserid, AppResources.ZError);
-
-                                SetIDNumberEnability = true;
-                                IDNumber = String.Empty;
-                                //  UserIDLayoutVisibility = true;
-                            });
-                        }
+                      
+                    }
+                    catch (GAZTVATRegistrationInProcessException ex)
+                    {
+                        IsAPICalledSuccessfully = false;
+                        SetIDNumberEnability = true;
+                        IDNumber = String.Empty;
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
                     catch (Exception ex)
                     {
@@ -2619,7 +2560,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     forgotPassword.d = d;
                     forgotPassword = await WebServiceManager.GAZTSendUserNameToEmail(forgotPassword);
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                    if (forgotPassword!=null&&forgotPassword?.d != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                    if (forgotPassword!=null&&forgotPassword?.d != null)
                     {
                         //IsAPICalledSuccessfully = true;
                         //RecoverUserNameLayout = true;
@@ -2727,7 +2668,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             forgotPassword = await WebServiceManager.GAZTChangePassword(forgotPassword);
                             PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                            if (forgotPassword != null && !string.IsNullOrEmpty(forgotPassword.d.EmailId))
+                            if (forgotPassword != null && forgotPassword.d != null)
                             {
                                 StartPage = StartPage + 1;
                                 //  RecoverPasswordLayout = true;
@@ -2779,6 +2720,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     IsLoading = false;
                 });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
+
             }
             catch (InternetException ex)
             {
@@ -2969,9 +2915,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (TotalSec <= 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
                         return false;
@@ -3112,7 +3058,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ContinueButtonEnability = false;
                 IsResendOTPEnabled = true;
-                ResendOTPTextColor = Color.FromHex("#005e4b");
+                ResendOTPTextColor =  (Color)Application.Current.Resources["Primary"];
 
                 otpTimer.Stop();
             }

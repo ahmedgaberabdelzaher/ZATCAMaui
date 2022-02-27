@@ -275,6 +275,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
             }
         }
 
+      
+
         #endregion
 
         #region Constructor
@@ -310,11 +312,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                 //        }
                 //    }
                 //    _navigationService.GoBack();
-                if (_navigation.NavigationStack.Count > 0)
-                {
-                    Xamarin.Forms.Page pg =_navigation.NavigationStack[_navigation.NavigationStack.Count - 2];
-                    _navigation.RemovePage(pg);
+
+                if(!App.ZakatReturnBilldetails) {
+
+                    if (_navigation.NavigationStack.Count > 0)
+                    {
+                        Xamarin.Forms.Page pg = _navigation.NavigationStack[_navigation.NavigationStack.Count - 2];
+                        _navigation.RemovePage(pg);
+                    }
+
+                    App.ZakatReturnBilldetails = false;
                 }
+
+                
                 _navigationService.GoBack();
             });
             

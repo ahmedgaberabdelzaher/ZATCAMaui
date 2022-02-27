@@ -42,25 +42,25 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
                         {
                             if (App.IsArabic)
                             {
-                                TinsPicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TinsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";// "GE SS Two";
-                                TinsPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TinsPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                                TinsPicker.HeaderFontFamily = "Somar-SemiBold";
+                                TinsPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                                TinsPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                                TinsPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
                             }
                             else
                             {
-                                TinsPicker.HeaderFontFamily = "SSTArabic-Medium";
-                                TinsPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                                TinsPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                                TinsPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                                TinsPicker.HeaderFontFamily = "Somar-SemiBold";
+                                TinsPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                                TinsPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                                TinsPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
                             }
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        TinsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TinsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TinsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TinsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        TinsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        TinsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TinsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TinsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
                         break;
                 }
             }

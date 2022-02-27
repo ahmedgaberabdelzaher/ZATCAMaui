@@ -126,7 +126,7 @@ namespace GettingStarted.Droid
             }
             else
             {
-               
+
                 //Set the config of Bitmap format we required to render the PDF pages
                 bitmap.SetConfig(m_bitmapConfig);
                 //Open the PDF page with the specified page index to render the page as bitmap
@@ -188,6 +188,35 @@ namespace GettingStarted.Droid
                     ms.Write(buffer, 0, read);
                 }
                 return ms.ToArray();
+            }
+        }
+
+        public void Render(Bitmap bitmap, int pageIndex, int x, int y, int width, int height)
+        {
+            if (bitmap == null)
+            {
+                throw new System.NullReferenceException("object reference is not set to an instance: bitmap");
+            }
+            if (m_pdfiumCore == null)
+            {
+                throw new System.NullReferenceException("object reference is not set to an instance: m_pdfiumCore");
+            }
+            else if (m_pdfDocument == null)
+            {
+                throw new System.NullReferenceException("object reference is not set to an instance: m_pdfDocument");
+            }
+            else if (pageIndex < 0 && pageIndex > m_pageCount - 1)
+            {
+                throw new System.ArgumentOutOfRangeException("pageIndex", "Index was out of range. Must be non-negative and less than the size of the PageCount.");
+            }
+            else
+            {
+
+                //Set the config of Bitmap format we required to render the PDF pages
+                bitmap.SetConfig(m_bitmapConfig);
+                //Open the PDF page with the specified page index to render the page as bitmap
+                m_pdfiumCore.OpenPage(m_pdfDocument, pageIndex);
+                m_pdfiumCore.RenderPageBitmap(m_pdfDocument, bitmap, pageIndex, 0, 0, width, height);
             }
         }
     }

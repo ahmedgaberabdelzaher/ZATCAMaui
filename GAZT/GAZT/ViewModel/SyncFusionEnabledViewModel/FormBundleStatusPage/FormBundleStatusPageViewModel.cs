@@ -337,7 +337,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 

@@ -12,7 +12,6 @@ namespace GAZT.iOS.CustomRenderer
         {
             base.OnElementChanged(e);
             (this.Subviews[0] as UIKit.UIScrollView).ShowsVerticalScrollIndicator = false;
-
         }
     }
 }

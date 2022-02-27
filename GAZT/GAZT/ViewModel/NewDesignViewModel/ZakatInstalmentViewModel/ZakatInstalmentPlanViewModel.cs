@@ -214,7 +214,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_vATDueAmount == value&&string.IsNullOrEmpty(value)) return;
+                if (_vATDueAmount == value) return;
 
                 _vATDueAmount = value;
                 RaisePropertyChanged("VATDueAmount");
@@ -229,7 +229,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_selectedFrequencyType == value && string.IsNullOrEmpty(value)) return;
+                if (_selectedFrequencyType == value) return;
 
                 _selectedFrequencyType = value;
                 RaisePropertyChanged("SelectedFrequencyType");
@@ -243,7 +243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_selectedFrequencyName == value && string.IsNullOrEmpty(value)) return;
+                if (_selectedFrequencyName == value) return;
 
                 _selectedFrequencyName = value;
                 RaisePropertyChanged("SelectedFrequencyName");
@@ -258,7 +258,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_vATPenalityAmount == value && string.IsNullOrEmpty(value)) return;
+                if (_vATPenalityAmount == value) return;
 
                 _vATPenalityAmount = value;
                 RaisePropertyChanged("VATPenalityAmount");
@@ -273,7 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_vATLiabilityAmount == value && string.IsNullOrEmpty(value)) return;
+                if (_vATLiabilityAmount == value) return;
 
                 _vATLiabilityAmount = value;
                 RaisePropertyChanged("VATLiabilityAmount");
@@ -288,7 +288,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_vATBillDueAmount == value && string.IsNullOrEmpty(value)) return;
+                if (_vATBillDueAmount == value) return;
 
                 _vATBillDueAmount = value;
                 RaisePropertyChanged("VATBillDueAmount");
@@ -615,7 +615,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (minInstalmentsTitle == value && string.IsNullOrEmpty(value)) return;
+                if (minInstalmentsTitle == value) return;
 
                 if (minInstalmentsTitle != value)
                 {
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (minAmountTitle == value && string.IsNullOrEmpty(value)) return;
+                if (minAmountTitle == value) return;
 
                 if (minAmountTitle != value)
                 {
@@ -650,7 +650,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (maxAmountTitle == value && string.IsNullOrEmpty(value)) return;
+                if (maxAmountTitle == value) return;
 
                 if (maxAmountTitle != value)
                 {
@@ -667,7 +667,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (maxInstalmentsTitle == value && string.IsNullOrEmpty(value)) return;
+                if (maxInstalmentsTitle == value) return;
 
                 if (maxInstalmentsTitle != value)
                 {
@@ -722,7 +722,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (totalAmountSAR == value && string.IsNullOrEmpty(value)) return;
+                if (totalAmountSAR == value) return;
 
                 if (totalAmountSAR != value)
                 {
@@ -740,7 +740,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (downPaymentSAR == value && string.IsNullOrEmpty(value)) return;
+                if (downPaymentSAR == value) return;
 
                 if (downPaymentSAR != value)
                 {
@@ -777,7 +777,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             set
             {
-                if (inputData == value && string.IsNullOrEmpty(value)) return;
+                if (inputData == value) return;
 
                 if (inputData != value)
                 {
@@ -867,7 +867,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashBankY1 == value && string.IsNullOrEmpty(value)) return;
+                if (cashBankY1 == value) return;
 
                 cashBankY1 = value;
                 RaisePropertyChanged("CashBankY1");
@@ -883,7 +883,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashBankY2 == value && string.IsNullOrEmpty(value)) return;
+                if (cashBankY2 == value) return;
 
                 cashBankY2 = value;
                 RaisePropertyChanged("CashBankY2");
@@ -899,7 +899,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashBankY3 == value && string.IsNullOrEmpty(value)) return;
+                if (cashBankY3 == value) return;
 
                 cashBankY3 = value;
                 RaisePropertyChanged("CashBankY3");
@@ -915,7 +915,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashRatioY1 == value && string.IsNullOrEmpty(value)) return;
+                if (cashRatioY1 == value) return;
 
                 cashRatioY1 = value;
                 RaisePropertyChanged("CashRatioY1");
@@ -931,7 +931,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashRatioY2 == value && string.IsNullOrEmpty(value)) return;
+                if (cashRatioY2 == value) return;
 
                 cashRatioY2 = value;
                 RaisePropertyChanged("CashRatioY2");
@@ -947,7 +947,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (cashRatioY3 == value && string.IsNullOrEmpty(value)) return;
+                if (cashRatioY3 == value) return;
 
                 cashRatioY3 = value;
                 RaisePropertyChanged("CashRatioY3");
@@ -963,7 +963,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (debitorsY1 == value && string.IsNullOrEmpty(value)) return;
+                if (debitorsY1 == value) return;
 
                 debitorsY1 = value;
                 RaisePropertyChanged("DebitorsY1");
@@ -979,7 +979,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (debitorsY2 == value && string.IsNullOrEmpty(value)) return;
+                if (debitorsY2 == value) return;
 
                 debitorsY2 = value;
                 RaisePropertyChanged("DebitorsY2");
@@ -994,7 +994,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (debitorsY3 == value && string.IsNullOrEmpty(value)) return;
+                if (debitorsY3 == value) return;
 
                 debitorsY3 = value;
                 RaisePropertyChanged("DebitorsY3");
@@ -1010,7 +1010,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (inventoryY1 == value && string.IsNullOrEmpty(value)) return;
+                if (inventoryY1 == value) return;
 
                 inventoryY1 = value;
                 RaisePropertyChanged("InventoryY1");
@@ -1025,7 +1025,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (inventoryY2 == value && string.IsNullOrEmpty(value)) return;
+                if (inventoryY2 == value) return;
 
                 inventoryY2 = value;
                 RaisePropertyChanged("InventoryY2");
@@ -1041,7 +1041,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (inventoryY3 == value && string.IsNullOrEmpty(value)) return;
+                if (inventoryY3 == value) return;
 
                 inventoryY3 = value;
                 RaisePropertyChanged("InventoryY3");
@@ -1057,7 +1057,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (ncFlowY1 == value && string.IsNullOrEmpty(value)) return;
+                if (ncFlowY1 == value) return;
 
                 ncFlowY1 = value;
                 RaisePropertyChanged("NcFlowY1");
@@ -1073,7 +1073,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (ncFlowY2 == value && string.IsNullOrEmpty(value)) return;
+                if (ncFlowY2 == value) return;
 
                 ncFlowY2 = value;
                 RaisePropertyChanged("NcFlowY2");
@@ -1089,7 +1089,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (ncFlowY3 == value && string.IsNullOrEmpty(value)) return;
+                if (ncFlowY3 == value) return;
 
                 ncFlowY3 = value;
                 RaisePropertyChanged("NcFlowY3");
@@ -1105,7 +1105,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (netIncomeY1 == value && string.IsNullOrEmpty(value)) return;
+                if (netIncomeY1 == value) return;
 
                 netIncomeY1 = value;
                 RaisePropertyChanged("NetIncomeY1");
@@ -1121,7 +1121,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (netIncomeY2 == value && string.IsNullOrEmpty(value)) return;
+                if (netIncomeY2 == value) return;
 
                 netIncomeY2 = value;
                 RaisePropertyChanged("NetIncomeY2");
@@ -1137,7 +1137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (netIncomeY3 == value && string.IsNullOrEmpty(value)) return;
+                if (netIncomeY3 == value) return;
 
                 netIncomeY3 = value;
                 RaisePropertyChanged("NetIncomeY3");
@@ -1154,7 +1154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (profitRatioY1 == value && string.IsNullOrEmpty(value)) return;
+                if (profitRatioY1 == value) return;
 
                 profitRatioY1 = value;
                 RaisePropertyChanged("ProfitRatioY1");
@@ -1170,7 +1170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (profitRatioY2 == value && string.IsNullOrEmpty(value)) return;
+                if (profitRatioY2 == value) return;
 
                 profitRatioY2 = value;
                 RaisePropertyChanged("ProfitRatioY2");
@@ -1186,7 +1186,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (profitRatioY3 == value && string.IsNullOrEmpty(value)) return;
+                if (profitRatioY3 == value) return;
 
                 profitRatioY3 = value;
                 RaisePropertyChanged("ProfitRatioY3");
@@ -1202,7 +1202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (revenueY1 == value && string.IsNullOrEmpty(value)) return;
+                if (revenueY1 == value) return;
 
                 revenueY1 = value;
                 RaisePropertyChanged("RevenueY1");
@@ -1219,7 +1219,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (revenueY2 == value && string.IsNullOrEmpty(value)) return;
+                if (revenueY2 == value) return;
 
                 revenueY2 = value;
                 RaisePropertyChanged("RevenueY2");
@@ -1235,7 +1235,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (revenueY3 == value && string.IsNullOrEmpty(value)) return;
+                if (revenueY3 == value) return;
 
                 revenueY3 = value;
                 RaisePropertyChanged("RevenueY3");
@@ -1252,7 +1252,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (stiY1 == value && string.IsNullOrEmpty(value)) return;
+                if (stiY1 == value) return;
 
                 stiY1 = value;
                 RaisePropertyChanged("StiY1");
@@ -1267,7 +1267,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (stiY2 == value && string.IsNullOrEmpty(value)) return;
+                if (stiY2 == value) return;
 
                 stiY2 = value;
                 RaisePropertyChanged("StiY2");
@@ -1282,7 +1282,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (stiY3 == value && string.IsNullOrEmpty(value)) return;
+                if (stiY3 == value) return;
 
                 stiY3 = value;
                 RaisePropertyChanged("StiY3");
@@ -1299,7 +1299,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcAssetsY1 == value && string.IsNullOrEmpty(value)) return;
+                if (tcAssetsY1 == value) return;
 
                 tcAssetsY1 = value;
                 RaisePropertyChanged("TcAssetsY1");
@@ -1315,7 +1315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcAssetsY2 == value && string.IsNullOrEmpty(value)) return;
+                if (tcAssetsY2 == value) return;
 
                 tcAssetsY2 = value;
                 RaisePropertyChanged("TcAssetsY2");
@@ -1331,7 +1331,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcAssetsY3 == value && string.IsNullOrEmpty(value)) return;
+                if (tcAssetsY3 == value) return;
 
                 tcAssetsY3 = value;
                 RaisePropertyChanged("TcAssetsY3");
@@ -1348,7 +1348,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcLiabltyY1 == value && string.IsNullOrEmpty(value)) return;
+                if (tcLiabltyY1 == value) return;
 
                 tcLiabltyY1 = value;
                 RaisePropertyChanged("TcLiabltyY1");
@@ -1364,7 +1364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcLiabltyY2 == value && string.IsNullOrEmpty(value)) return;
+                if (tcLiabltyY2 == value) return;
 
                 tcLiabltyY2 = value;
                 RaisePropertyChanged("TcLiabltyY2");
@@ -1379,7 +1379,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (tcLiabltyY3 == value && string.IsNullOrEmpty(value)) return;
+                if (tcLiabltyY3 == value) return;
 
                 tcLiabltyY3 = value;
                 RaisePropertyChanged("TcLiabltyY3");
@@ -1395,7 +1395,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (year1 == value && string.IsNullOrEmpty(value)) return;
+                if (year1 == value) return;
 
                 year1 = value;
                 RaisePropertyChanged("Year1");
@@ -1411,7 +1411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (year2 == value && string.IsNullOrEmpty(value)) return;
+                if (year2 == value) return;
 
                 year2 = value;
                 RaisePropertyChanged("Year2");
@@ -1426,7 +1426,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (year3 == value && string.IsNullOrEmpty(value)) return;
+                if (year3 == value) return;
 
                 year3 = value;
                 RaisePropertyChanged("Year3");
@@ -1442,7 +1442,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (zakatY1 == value && string.IsNullOrEmpty(value)) return;
+                if (zakatY1 == value) return;
 
                 zakatY1 = value;
                 RaisePropertyChanged("ZakatY1");
@@ -1458,7 +1458,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (zakatY2 == value && string.IsNullOrEmpty(value)) return;
+                if (zakatY2 == value) return;
 
                 zakatY2 = value;
                 RaisePropertyChanged("ZakatY2");
@@ -1475,7 +1475,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (zakatY3 == value && string.IsNullOrEmpty(value)) return;
+                if (zakatY3 == value) return;
 
                 zakatY3 = value;
                 RaisePropertyChanged("ZakatY3");
@@ -1686,7 +1686,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_subTxtSelectedStatusZakat == value && string.IsNullOrEmpty(value)) return;
+                if (_subTxtSelectedStatusZakat == value) return;
 
                 _subTxtSelectedStatusZakat = value;
                 RaisePropertyChanged("SubTxtSelectedStatusZakat");
@@ -2093,16 +2093,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -2242,7 +2242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             set
             {
-                if (_successMessage == value && string.IsNullOrEmpty(value)) return;
+                if (_successMessage == value) return;
                 _successMessage = value;
                 RaisePropertyChanged("SuccessMessage");
             }
@@ -2376,7 +2376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             get { return _idType; }
             set
             {
-                if (_idType == value && string.IsNullOrEmpty(value)) return;
+                if (_idType == value) return;
 
                 _idType = value;
                 RaisePropertyChanged("IDType");
@@ -2946,14 +2946,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 if (_isDeclarationEnabled == value) return;
                 _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+                DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
 
 
 
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
-        private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _declarationButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color DeclarationButtonBackGroundColor
         {
             get
@@ -4572,6 +4572,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             ZakatInstalmentPlanRequest _postData = new ZakatInstalmentPlanRequest();
 
+
+
             _postData.Fbguid = App.LoginDataRetrieved.FbGuid;
             _postData.UserTyp = "TP";
             _postData.TxnTp = ZakatInstalments.d.TxnTp;
@@ -4579,10 +4581,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.FormGuid = "";
             _postData.Fbnum = ZakatInstalments.d.Fbnum;
             _postData.DataVersion = ZakatInstalments.d.DataVersion;
-            _postData.DownPayReq = ZakatInstalments.d.DownPayReq;
-            _postData.OfcReason = ZakatInstalments.d.OfcReason;
-            
-            _postData.Operation = "01";
+            _postData.Operation = ZakatInstalments.d.Operation;
             _postData.Euser = "";
             _postData.StepNumber = ZakatInstalments.d.StepNumber;
             _postData.Email = ZakatInstalments.d.Email;
@@ -4613,6 +4612,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             _postData.PaymtDt = ZakatInstalments.d.PaymtDt;
             _postData.PenlAmt = ZakatInstalments.d.PenlAmt;
             _postData.InsDtOff = ZakatInstalments.d.InsDtOff;
+
+
+
 
             if (ZakatInstalments.d.NotesSet.results == null)
             {
@@ -4703,10 +4705,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 ZakatInvoicesList[index].InvCb = "X";
 
+
             }
+
+
             if (ZakatInvoicesList != null)
             {
+
                 var invoicesList = ZakatInvoicesList.ToList();
+
+
+
+
 
                 if (invoicesList.Count != 0)
                 {
@@ -4747,7 +4757,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 _postData.invDtlsSet = new ZakatInvoicesResult[0];
             }
+
+
+
+
+
+
             return _postData;
+
+
         }
 
         #endregion

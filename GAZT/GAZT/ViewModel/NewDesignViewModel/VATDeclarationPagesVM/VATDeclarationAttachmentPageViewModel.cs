@@ -17,8 +17,9 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Xamarin.Forms.Internals;
-using System.IO;
+using System.Linq;
 using Xamarin.Essentials;
+using System.IO;
 
 namespace EGAZT
 {
@@ -32,7 +33,6 @@ namespace EGAZT
         public ICommand GoBackClick { get; set; }
         public static Decimal AttachmentUploadedSize = 0;
         public static bool isToBeFilled = false;
-        public bool isUploadHappened = false;
         public static bool attachmentSizeVisibility = false;
         public List<decimal> SizeList = new List<decimal>();
         byte[] attachment;
@@ -80,21 +80,6 @@ namespace EGAZT
                 RaisePropertyChanged("VATDeclarationDataForAttch");
             }
         }
-
-        private string _CR2215flag;
-        public string CR2215flag
-        {
-            get
-            {
-                return _CR2215flag;
-            }
-            set
-            {
-                _CR2215flag = value;
-                RaisePropertyChanged("CR2215flag");
-            }
-        }
-
         private string _dateSubmitted;
         public string DateSubmitted
         {
@@ -134,22 +119,6 @@ namespace EGAZT
                 RaisePropertyChanged("AttachmentSize");
             }
         }
-
-        private bool _isAttachEnabled = false;
-        public bool IsAttachEnabled
-        {
-            get
-            {
-                return _isAttachEnabled;
-            }
-            set
-            {
-                _isAttachEnabled = value;
-                RaisePropertyChanged("IsAttachEnabled");
-            }
-        }
-
-
         public decimal _totalAttachmentSize = 0;
         public decimal TotalAttachmentSize
         {
@@ -271,44 +240,26 @@ namespace EGAZT
             {
                 try
                 {
-                    if (AttachmentCount < 40)
+                    if (AttachmentCount <= 40)
                     {
                         string[] filetypes;
+
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-
-                        PickOptions options= UtilityManager.GetFilePickerOptionsForChooser(filetypes);
-
-                        /*FilePickerFileType customFileType =
-    new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-    {
-        { DevicePlatform.iOS, filetypes }, // or general UTType values
-        { DevicePlatform.Android, filetypes } // or general UTType values
-    });
-                        var options = new PickOptions
-                        {
-                            PickerTitle = "Please select a file",
-                            FileTypes = customFileType,
-                        };*/
-                        
-                       // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                        PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                        //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
                         var fileData = await FilePicker.PickAsync(options);
                         var stream = await fileData.OpenReadAsync();
-                        attachment = UtilityManager.ReadFully(stream as Stream);
+                        var attachment = UtilityManager.ReadFully(stream as Stream);
+
                         if (fileData != null && attachment != null && attachment.Length > 0)
                         {
-                           // attachment = fileData.DataArray;
+                            //attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
-
-                            string ext = Path.GetExtension(fileData.FileName);
-
-
-                            //if (fileData.FileName.Contains("."))
-                            if (ext != null && ext != "")
+                            if (fileData.FileName.Contains("."))
                             {
-                                if (ext.Contains("."))
-                                {
-                                string Extention = ext.Split('.')[1];
+                                string[] ExtensionArray = fileData.FileName.Split('.');
+                                string Extention = ExtensionArray.Last();
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                                 {
                                     if (TotalAttachmentSize <= 300)
@@ -372,21 +323,13 @@ namespace EGAZT
                                                                     }
                                                                 }
                                                             }
-                                                            catch (Exception)
+                                                            catch (Exception )
                                                             {
                                                             }
                                                         }
                                                         AttachmentCount++;
                                                         CloneAttachmentList(VatAttachmentsList);
                                                         AttachmentName = string.Empty;
-                                                        isUploadHappened = true;
-                                                        /*if(CR2215flag.Equals("X"))
-                                                       {
-                                                           VATDeclarationDataForAttch.d.ATTACHSet.results.Clear();
-                                                           //Array.Clear(VATDeclarationDataForAttch.d.ATTACHSet.results, 0, VATDeclarationDataForAttch.d.ATTACHSet.results.Count);
-
-                                                           string NotifyResponse = await WebServiceManager.SendNotificationToAuditorafterUploadingAttachments(VATDeclarationDataForAttch.d);
-                                                       }*/
                                                     }
                                                     else
                                                     {
@@ -429,19 +372,18 @@ namespace EGAZT
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
                                 }
                             }
-                        }
-                        else
-                        {
-                            AttachmentName = string.Empty;
-                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
+                            else
+                            {
+                                AttachmentName = string.Empty;
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly));
 
-                        }
+                            }
                         }
                     }
                     else
                     {
                         AttachmentName = string.Empty;
-                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ReturnAttachmentLimitMessage));
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoofallowedattachmentsare40));
 
                     }
                 }
@@ -461,7 +403,6 @@ namespace EGAZT
         }
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType)
         {
-
             AttachmentRootOject _attachment = null;
             await Task.Run(() =>
             {
@@ -486,7 +427,7 @@ namespace EGAZT
                         _attachment = null;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //  return null;
                 }
@@ -545,7 +486,7 @@ namespace EGAZT
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

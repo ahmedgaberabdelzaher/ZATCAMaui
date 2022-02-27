@@ -82,7 +82,7 @@ namespace EGAZT.Views.NewDesign.Common
                         {
                             ClassId = i.ToString(),
 
-                            BackgroundColor = Color.FromHex("#C9842B"),
+                            BackgroundColor =  (Color)Application.Current.Resources["Secondary"],
                             HeightRequest = DotSize,
                             WidthRequest = DotSize,
                             CornerRadius = DotSize / 2,
@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.Common
                         {
                             ClassId = i.ToString(),
 
-                            BackgroundColor = Color.FromHex("#EBEBEB"),
+                            BackgroundColor =  (Color)Application.Current.Resources["NeutralLightGrey"],
                             HeightRequest = DotSize,
                             WidthRequest = DotSize,
                             CornerRadius = DotSize / 2,
@@ -135,13 +135,13 @@ namespace EGAZT.Views.NewDesign.Common
                     {
                         if (counter <= MinNum)
                         {
-                            box.BackgroundColor = Color.FromHex("#C9842B");
+                            box.BackgroundColor =  (Color)Application.Current.Resources["Secondary"];
                             if (childCounter - 1 > 0)
-                                Children[childCounter - 1].BackgroundColor = Color.FromHex("#C9842B");
+                                Children[childCounter - 1].BackgroundColor =  (Color)Application.Current.Resources["Secondary"];
                         }
                         else
                         {
-                            box.BackgroundColor = Color.FromHex("#EBEBEB");
+                            box.BackgroundColor =  (Color)Application.Current.Resources["NeutralLightGrey"];
                             if (childCounter - 1 > 0)
                                 Children[childCounter - 1].BackgroundColor = Color.Transparent;
                         }

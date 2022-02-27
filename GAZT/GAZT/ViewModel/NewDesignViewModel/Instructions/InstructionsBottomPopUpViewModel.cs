@@ -164,12 +164,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             set
             {
                 _isContinueEnabled = value;
-                ContinueBackGroundColor = Color.FromHex(_isContinueEnabled ? "#d49504" : "#9EA4A9");
+                ContinueBackGroundColor = (_isContinueEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
 
                 RaisePropertyChanged("IsBillContinueEnabled");
             }
         }
-        private Color _continueBackGroundColor = Color.FromHex("#d49504");
+        private Color _continueBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueBackGroundColor
         {
             get

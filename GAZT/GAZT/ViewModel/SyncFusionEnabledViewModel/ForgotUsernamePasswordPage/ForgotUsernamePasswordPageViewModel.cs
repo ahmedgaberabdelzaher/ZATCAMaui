@@ -335,8 +335,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#005e4b");
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     IsResendOTPEnabled = true;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -565,7 +565,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 RaisePropertyChanged("NewPasswordVisibility");
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -618,7 +618,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 RaisePropertyChanged("IsSubmitEnabled");
             }
         }
-        private Color _submitDisableButtonColor = Color.FromHex("#9EA4A9");
+        private Color _submitDisableButtonColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color SubmitDisableButtonColor
         {
             get
@@ -631,7 +631,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 RaisePropertyChanged("SubmitDisableButtonColor");
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#005e4b");
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Primary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -860,7 +860,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             catch (Exception ex)
             {
             }
-            VerifyButtonDisableColor = Color.FromHex("#005e4b");
+            VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
             IsVerifyOTPEnabled = true;
         }
         private void SetLayoutVisibilityForSelectedForgotType()
@@ -1061,8 +1061,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 // await _dialogService.ShowMessageBox("OTP sent to registered mobile", AppResources.Information);
                                 MainPageLayoutVisibility = false;
                                 OTPLayoutVisibility = true;
-                                ButtonDisableColor = Color.FromHex("#9EA4A9");
-                                VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                                ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
+                                VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                                 IsResendOTPEnabled = false;
                                 IsVerifyOTPEnabled = true;
                                 IsOTPEntryEnable = true;
@@ -1563,9 +1563,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#005e4b");
+                        ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
                         return false;

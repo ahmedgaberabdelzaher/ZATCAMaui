@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
-              BackgroundColor="#005e4b"
+             BackgroundImageSource="partials_background"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.AboutUs.AboutUsPageView"
            >
     <ContentPage.Resources>
@@ -21,14 +21,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <!--<StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZZZAboutUs}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZAboutUs}"  FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Clicked="BackButtonClicked"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -48,8 +48,8 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZAboutUs}"  FontFamily="{StaticResource SSTArBold}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
-                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZAboutUs}"  FontFamily="{StaticResource SomarBold}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                        <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="{StaticResource SecondaryNew}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer      Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
@@ -98,7 +98,7 @@
                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

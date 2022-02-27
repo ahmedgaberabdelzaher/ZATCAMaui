@@ -27,6 +27,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 {
@@ -110,69 +111,69 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            IDTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            IDTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            IDTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            IDTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            IDTypePicker.HeaderFontFamily = "Somar-SemiBold";
+                            IDTypePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            IDTypePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            IDTypePicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
 
-                            ddlLIssuedBy.HeaderFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedBy.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedBy.SelectedItemFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedBy.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+                            ddlLIssuedBy.HeaderFontFamily = "Somar-SemiBold";
+                            ddlLIssuedBy.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            ddlLIssuedBy.SelectedItemFontFamily = "Somar-SemiBold";
+                            ddlLIssuedBy.UnSelectedItemFontFamily = "Somar-SemiBold";//dd      
 
 
-                            ddlLIssuedByCity.HeaderFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedByCity.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedByCity.SelectedItemFontFamily = "SSTArabic-Medium";
-                            ddlLIssuedByCity.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
-
-
-
-                            DpDbo.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDbo.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            ddlLIssuedByCity.HeaderFontFamily = "Somar-SemiBold";
+                            ddlLIssuedByCity.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            ddlLIssuedByCity.SelectedItemFontFamily = "Somar-SemiBold";
+                            ddlLIssuedByCity.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
 
 
-                            DpDboHijri.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDbo.HeaderFontFamily = "Somar-SemiBold";
+                            DpDbo.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDbo.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDbo.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+
+
+
+                            DpDboHijri.HeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDboHijri.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        IDTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        IDTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        IDTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        IDTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        IDTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        IDTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        IDTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        IDTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
-                        ddlLIssuedBy.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedBy.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedBy.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedBy.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        ddlLIssuedBy.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedBy.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedBy.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedBy.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        ddlLIssuedByCity.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedByCity.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedByCity.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ddlLIssuedByCity.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        ddlLIssuedByCity.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedByCity.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedByCity.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ddlLIssuedByCity.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
 
-                        DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
 
 
 
-                        DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -187,7 +188,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         public async Task loadPageData()
         {
             viewModel.SetDefaultDate();
-
+            
             //ClearFields();
             viewModel.OnPageLoad();
             viewModel.SetIssueIdList();
@@ -200,7 +201,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.IsHijriCal = false;
 
             }
-            catch (Exception)
+            catch (Exception )
             {
 
             }
@@ -352,15 +353,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                IDTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
-                ddlLIssuedBy.BackgroundColor = Color.FromHex("#f7f7f7");
-                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#f7f7f7");
+                IDTypePicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                ddlLIssuedBy.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                ddlLIssuedByCity.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                IDTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
-                ddlLIssuedBy.BackgroundColor = Color.FromHex("#FFFFFF");
-                ddlLIssuedByCity.BackgroundColor = Color.FromHex("#FFFFFF");
+                IDTypePicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                ddlLIssuedBy.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                ddlLIssuedByCity.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
 
             MessagingCenter.Subscribe<InternationalCodeSearchPage, string>(this, "SelectedItem", (sender, arg) =>
@@ -620,7 +621,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                             }
                         }
                     }
-                    catch (InternetException)
+                    catch (InternetException )
                     {
                         //viewModel._dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                         PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
@@ -1247,7 +1248,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1260,7 +1261,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1391,7 +1392,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1404,7 +1405,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1535,7 +1536,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 });
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -1548,7 +1549,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1637,7 +1638,28 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        {
+
+                            var ConvertedDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                            var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                            //Select today dates
+                            todaycollection.Add(ConvertedDateArray[2].ToString());
+                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                            todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                            viewModel.SelectedGregDate = ConvertedDateArray[2] + "/" + ConvertedDateArray[1] + "/" + ConvertedDateArray[0];
+
+
+                            DpDbo.SelectedItem = todaycollection;
+                        }
 
                     }
                 }
@@ -1650,14 +1672,35 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+
+                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        {
+
+                            var ConvertedDate = UtilityManager.ConvertToHijri(viewModel.PkrDBO);
+                            var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                            //Select today dates
+                            todaycollection.Add(ConvertedDateArray[2].ToString());
+                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                            todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                            DpDboHijri.SelectedItem = todaycollection;
+
+                            viewModel.SelectedHijriDate = ConvertedDateArray[2] + "/" + ConvertedDateArray[1] + "/" + ConvertedDateArray[0];
+                        }
 
                     }
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception )
             {
             }
             if (!string.IsNullOrEmpty(viewModel.PkrDBO))
@@ -1669,7 +1712,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             }
         }
-        private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
+        private  void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!string.IsNullOrEmpty(EntryIDNumber.Text))
             {
@@ -1895,7 +1938,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     //  TxtIDType = _selectedSignUpUsing.SUType;
                 }
-                catch (Exception)
+                catch (Exception )
                 {
                 }
                 viewModel.SelectedSignUpUsingSetForCancle = viewModel.SelectedSignUpUsing;
@@ -1986,7 +2029,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     }
                     SiguupModel.ACommId = "";
                 }
-                catch (Exception)
+                catch (Exception )
                 {
                 }
                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2000,7 +2043,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             SiguupModel.AMobile = newCountryCodeString + viewModel.TxtMobileNumber;
             // viewModel.TxtMobileNumberwithCountryCode = newCountryCodeString + viewModel.TxtMobileNumber;
             SiguupModel.ACountry = viewModel.MobileCountryCode;
-
+            
 
             // SiguupModel.AMobile = "00966" + viewModel.TxtMobileNumber;
 
@@ -2016,9 +2059,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 SiguupModel.AIdtype = "ZS0003";
             }
-
-            // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
-            SiguupModel.CaseGuid = viewModel.Guid;
+            
+           // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+            SiguupModel.CaseGuid = viewModel.Guid; 
 
             string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
             SignUpModelRootObject ResultFirstSubmitModel = JsonConvert.DeserializeObject<SignUpModelRootObject>(ResultFirstSubmit);
@@ -2037,8 +2080,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         }
                         Message.Append(itemerror.message);
                     }
-
-
                 }
                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -2113,7 +2154,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 }
                 else if (viewModel.CurrentTab == EstablishmentSignUPTabEnum.MobileVerification)
                 {
-                    viewModel.IsResendOTPEnabled = false;
                     //viewModel.TimerStart(viewModel.numberOfSeconds);
                     await EstablishmentSignUpDataAsync();
                 }
@@ -2455,9 +2495,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 });
                 // viewModel.otpTimer.Stop();
                 viewModel.StartOTPTimer();
-                viewModel.ButtonDisableColor = Color.FromHex("#9EA4A9");
+                viewModel.ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                 viewModel.ButtonDisableTextColor = Color.Gray;
-                viewModel.VerifyButtonDisableColor = Color.FromHex("#006450");
+                viewModel.VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                 viewModel.VerifyButtonDisableTextColor = Color.White;
                 viewModel.IsResendOTPEnabled = false;
                 viewModel.IsOTPEntryEnable = true;
@@ -2580,7 +2620,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             SiguupModel.ACommId = "";
                                         }
-                                        catch (Exception)
+                                        catch (Exception ex)
                                         {
                                         }
                                         //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2730,7 +2770,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     viewModel._navigationService.GoBack();
                                 });
                             }
-                            catch (HttpRequestException)
+                            catch (HttpRequestException )
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2753,7 +2793,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (Exception)
+                            catch (Exception )
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2851,7 +2891,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception)
+                                    catch (Exception )
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -2907,7 +2947,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             Message.Append(itemerror.message);
                                         }
-
                                     }
                                     // viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -2962,7 +3001,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                 });
                             }
-                            catch (HttpRequestException)
+                            catch (HttpRequestException )
                             {
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -2975,7 +3014,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     //_navigationService.GoBack();
                                 });
                             }
-                            catch (Exception)
+                            catch (Exception )
                             {
 
                                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3034,7 +3073,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     });
                 }
-                catch (HttpRequestException)
+                catch (HttpRequestException )
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3047,7 +3086,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception )
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3150,7 +3189,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception)
+                                    catch (Exception ex)
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3186,7 +3225,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 {
                                     SiguupModel.AIdtype = "ZS0003";
                                 }
-                                // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
+                               // SiguupModel.CaseGuid = ResutGuid.d.results[0].CaseGuid;
                                 SiguupModel.CaseGuid = viewModel.Guid;
 
                                 string ResultFirstSubmit = WebServiceManager.GAZTSignUpFirstSubmit(SiguupModel);
@@ -3307,7 +3346,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3320,7 +3359,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3413,7 +3452,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception)
+                                catch (Exception )
                                 {
                                 }
                                 //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3517,7 +3556,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3530,7 +3569,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3640,7 +3679,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception)
+                                    catch (Exception )
                                     {
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
@@ -3698,7 +3737,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             Message.Append(itemerror.message);
                                         }
-
                                     }
                                     //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
@@ -3798,7 +3836,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -3811,7 +3849,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3904,7 +3942,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     SiguupModel.ACommId = "";
                                 }
-                                catch (Exception)
+                                catch (Exception )
                                 {
                                 }
                             }
@@ -3958,26 +3996,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         Message.Append(itemerror.message);
                                     }
-                                    else if (itemerror.code.Contains("ZD_AUTH_TAXPAYER/006"))
-                                    {
-                                        if (Message.Length > 0)
-                                        {
-                                            Message.Append(Environment.NewLine);
-                                        }
-                                        Message.Append(itemerror.message);
-                                    }
                                 }
                                 //  viewModel._dialogService.ShowMessage(Message.ToString(), AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Message.ToString()));
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(() =>
-                               {
-                                   viewModel.IsLoading = true;
+                                Device.BeginInvokeOnMainThread( () =>
+                                {
+                                    viewModel.IsLoading = true;
 
 
-                               });
+                                });
                                 await NavigateToVerifyOTPScreenAsync(ResultFirstSubmitModel);
                                 //viewModel._navigationService.NavigateTo(App.CreateGaztAccountPageView, ResultFirstSubmitModel);
                             }
@@ -4020,7 +4050,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                             });
                         }
-                        catch (HttpRequestException)
+                        catch (HttpRequestException )
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
@@ -4033,7 +4063,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                 viewModel._navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception )
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -4187,7 +4217,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
 
                     }
                     else
@@ -4207,7 +4238,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
                     }
                     else
                     {
@@ -4226,7 +4258,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -4265,12 +4297,50 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.IsHijriCal = true;
                     if (DpDboHijri.SelectedItem != null)
                     {
+                        if (!string.IsNullOrEmpty(viewModel.SelectedHijriDate))  {
+
+                            if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedHijriDate)) {
+
+                                var ConvertedDateArray = viewModel.SelectedHijriDate.Split('/');
+
+                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                //Select today dates
+                                todaycollection.Add(ConvertedDateArray[0].ToString());
+                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                todaycollection.Add(ConvertedDateArray[2].ToString());
+
+                                DpDboHijri.SelectedItem = todaycollection;
+
+                            }
+
+                        }
+                        
+
+
                         var selectedItem = DpDboHijri.SelectedItem as ObservableCollection<object>;
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        {
+
+                            var ConvertedDate = UtilityManager.HijriToGreg(viewModel.PkrDBO);
+                            var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                            //Select today dates
+                            todaycollection.Add(ConvertedDateArray[2].ToString());
+                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                            todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                            DpDbo.SelectedItem = todaycollection;
+                        }
 
                     }
                     else
@@ -4286,12 +4356,55 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                     viewModel.IsHijriCal = false;
                     if (DpDbo.SelectedItem != null)
                     {
+
+                        if (!string.IsNullOrEmpty(viewModel.SelectedGregDate))
+                        {
+
+                            if (!DpDboHijri.SelectedItem.ToString().Equals(viewModel.SelectedGregDate))
+                            {
+
+                                var ConvertedDateArray = viewModel.SelectedGregDate.Split('/');
+
+                                ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                                //Select today dates
+                                todaycollection.Add(ConvertedDateArray[0].ToString());
+                                todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                                todaycollection.Add(ConvertedDateArray[2].ToString());
+
+                                DpDbo.SelectedItem = todaycollection;
+
+                            }
+
+                        }
+
                         var selectedItem = DpDbo.SelectedItem as ObservableCollection<object>;
                         string month = selectedItem[1].ToString();
                         string day = selectedItem[0].ToString();
                         string year = selectedItem[2].ToString();
                         viewModel.PkrDBO = year + "/" + month + "/" + day;
-                        viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        //viewModel.PickerDobToDisplay = day + "/" + month + "/" + year;
+                        viewModel.PickerDobToDisplay = year + "/" + month + "/" + day;
+
+                        if (!string.IsNullOrEmpty(viewModel.PkrDBO))
+                        {
+
+                            var ConvertedDate = UtilityManager.ConvertToHijri(viewModel.PkrDBO);
+                            var ConvertedDateArray = ConvertedDate.Split('/');
+
+
+
+                            ObservableCollection<object> todaycollection = new ObservableCollection<object>();
+                            //Select today dates
+                            todaycollection.Add(ConvertedDateArray[2].ToString());
+                            todaycollection.Add(ConvertedDateArray[1].ToString());//day
+                            todaycollection.Add(ConvertedDateArray[0].ToString());
+
+                            DpDboHijri.SelectedItem = todaycollection;
+                        }
+
+
+
+
                     }
                     else
                     {
@@ -4310,8 +4423,38 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+            }
+        }
+
+        private void OTPTap(object sender, EventArgs e)
+        {
+            var aaa = e as TappedEventArgs;
+            if (Convert.ToInt32(aaa.Parameter) == 1)
+            {
+                OTPFirstEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 2)
+            {
+                OTPSecondEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 3)
+            {
+                OTPThirdEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 4)
+            {
+                OTPFourthEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 5)
+            {
+                MobOTPFirstEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 6)
+            {
+                MobOTPSecondEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 7)
+            {
+                MobOTPThirdEntry.Focus();
+            }else if (Convert.ToInt32(aaa.Parameter) == 8)
+            {
+                MobOTPFourthEntry.Focus();
             }
         }
     }

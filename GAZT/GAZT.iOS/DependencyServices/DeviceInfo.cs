@@ -110,8 +110,9 @@ namespace GAZT.iOS.DependencyServices
             {
                 return UIDevice.CurrentDevice.IdentifierForVendor.AsString();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return "";
             }
         }
@@ -167,7 +168,7 @@ namespace GAZT.iOS.DependencyServices
                 return paths.Any(System.IO.File.Exists);
                 //return false;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }
@@ -181,7 +182,7 @@ namespace GAZT.iOS.DependencyServices
             {
                 base64Image = System.IO.File.ReadAllBytes(filePath);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 base64Image = null;
             }

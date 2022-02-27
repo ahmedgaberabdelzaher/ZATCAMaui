@@ -15,6 +15,8 @@ using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
+using WebView = Xamarin.Forms.WebView;
 
 namespace EGAZT.Views.NewDesign
 {
@@ -62,11 +64,11 @@ namespace EGAZT.Views.NewDesign
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                BranchLocation.BackgroundColor = Color.FromHex("#f7f7f7");
+                BranchLocation.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                BranchLocation.BackgroundColor = Color.FromHex("#FFFFFF");
+                BranchLocation.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
 
 
@@ -94,11 +96,11 @@ namespace EGAZT.Views.NewDesign
                 if (App.IsArabic)
                 {
 
-                    ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
+                    ChatWebView.Source = Constants.GAZTChatPartialUrlar;
                 }
                 else
                 {
-                    ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=en";
+                    ChatWebView.Source = Constants.GAZTChatPartialUrlen;
                 }
             }
             else {
@@ -131,22 +133,22 @@ namespace EGAZT.Views.NewDesign
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            BranchLocation.HeaderFontFamily = "SSTArabic-Medium";
-                            BranchLocation.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            BranchLocation.SelectedItemFontFamily = "SSTArabic-Medium";
-                            BranchLocation.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            BranchLocation.HeaderFontFamily = "Somar-SemiBold";
+                            BranchLocation.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            BranchLocation.SelectedItemFontFamily = "Somar-SemiBold";
+                            BranchLocation.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        BranchLocation.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BranchLocation.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BranchLocation.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BranchLocation.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        BranchLocation.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        BranchLocation.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        BranchLocation.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        BranchLocation.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -184,12 +186,12 @@ namespace EGAZT.Views.NewDesign
                 {
                     // Handle permission exception
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Unable to get location
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -267,12 +269,13 @@ namespace EGAZT.Views.NewDesign
             if (App.IsArabic)
             {
                 //ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
-                ContactWebView.Source = "https://gazt.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+                ContactWebView.Source = Constants.GAZTFAQARUrl;
             }
             else
             {
+
                 // ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservices.aspx";
-                ContactWebView.Source = "https://gazt.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+                ContactWebView.Source = Constants.GAZTFAQEnUrl;
 
             }
         }
@@ -280,14 +283,17 @@ namespace EGAZT.Views.NewDesign
         private void OnChatTapped(object sender, EventArgs e)
         {
             viewModel.setChat();
+            //var browser = new WebView();
+            //var htmlSource = new HtmlWebViewSource();
+
             if (App.IsArabic)
             {
 
-                ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=ar";
+                ChatWebView.Source = Constants.GAZTChatPartialUrlar;
             }
             else
             {
-                ChatWebView.Source = "https://chat.gazt.gov.sa/I3root/index.html?lang=en";
+                ChatWebView.Source = Constants.GAZTChatPartialUrlen;
             }
         }
 
@@ -307,7 +313,7 @@ namespace EGAZT.Views.NewDesign
 
         private void ChatWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            if (e.Url.Contains(Constants.GAZTChatPartialUrl))
+            if (e.Url.Contains(Constants.GAZTChatPartialUrlen) || e.Url.Contains(Constants.GAZTChatPartialUrlar))
             {
                 viewModel.IsLoading = false;
             }
@@ -330,12 +336,12 @@ namespace EGAZT.Views.NewDesign
             if (App.IsArabic)
             {
                 //ContactUsWebView.Source = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
-                ContactUsWebView.Source = "https://gazt.gov.sa/ar/ContactUs/Pages/SuggestAndComplaintMV.aspx";
+                ContactUsWebView.Source = Constants.GAZTSuggestURLar;
             }
             else
             {
                 //ContactUsWebView.Source = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
-                ContactUsWebView.Source = "https://gazt.gov.sa/en/ContactUs/Pages/SuggestAndComplaintMV.aspx";
+                ContactUsWebView.Source = Constants.GAZTSuggestURLen;
             }
         }
 
@@ -353,8 +359,8 @@ namespace EGAZT.Views.NewDesign
 
 
             viewModel.PageTitle = AppResources.NDGAZT;
-            //  ContactUsWebView.IsVisible = true;
-            Uri uri = new Uri("https://twitter.com/GAZT_KSA");
+        //  ContactUsWebView.IsVisible = true;        
+            Uri uri = new Uri("https://twitter.com/zatca_care");
             Launcher.OpenAsync(uri);
             //   ContactUsWebView.Source = "https://twitter.com/GAZT_KSA";
 
@@ -390,7 +396,7 @@ namespace EGAZT.Views.NewDesign
             {
                 // Email is not supported on this device
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Some other exception occurred
             }
@@ -410,7 +416,7 @@ namespace EGAZT.Views.NewDesign
             {
                 // Phone Dialer is not supported on this device.
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Other error has occurred.
             }
@@ -430,7 +436,7 @@ namespace EGAZT.Views.NewDesign
             {
                 // Phone Dialer is not supported on this device.
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // Other error has occurred.
             }

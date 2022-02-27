@@ -194,12 +194,13 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </Frame>-->
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                <Image  HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+
+                                            <Label Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                         </StackLayout>
                                     </Grid>
 
@@ -291,12 +292,13 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </Frame>-->
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                            <Image  HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                         </StackLayout>
                                     </Grid>
 
@@ -356,12 +358,13 @@
                                                         <ColumnDefinition Width="auto"/>
                                                     </Grid.ColumnDefinitions>
 
-                                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                     HasShadow="False">
-                                                    </Frame>
-                                                    <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="return_vatRefunds"/>
-                                                    <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                        <Label Text="{x:Static ResourceManager:AppResources.VatReturns}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                    </Frame>-->
+                                                    <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="return_vatRefunds"/>
+
+                                                        <Label Text="{x:Static ResourceManager:AppResources.VatReturns}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                                     </StackLayout>
                                                 </Grid>
 
@@ -466,12 +469,13 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </Frame>-->
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                            <Image  HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                         </StackLayout>
 
                                     </Grid>
@@ -553,12 +557,13 @@
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
-                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                        </Frame>-->
+                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="amount"/>
+
+                                            <Label Text="{x:Static ResourceManager:AppResources.NAIBAN}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                         </StackLayout>
 
                                     </Grid>
@@ -609,13 +614,13 @@
          
 
                               <!--  <CheckBox x:Name="CBTermsAndCondition  CheckedChanged="TermsAndConditions_CheckedChanged"/>-->
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,10,0,10"
-                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SSTArRoman}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" >
+                                <custom:CustomLabel  LineSpacing="0.8"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="5,10,0,10"
+                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SomarRegular}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="Black"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions1}" TextColor="{StaticResource PrimaryColor}"  />
                                             <Span  Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions2}" TextColor="Blue" />
-                                            <Span LineHeight="1" Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="Black"  />
+                                            <Span Text="{x:Static ResourceManager:AppResources.VATRefundTermsAndConditions3}" TextColor="{StaticResource PrimaryColor}"  />
 
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
@@ -640,11 +645,11 @@
                                                                              Style="{StaticResource CheckboxHeightWidth32}"/>
          
                                 <!--<CheckBox x:Name="CBAcknowledment"   VerticalOptions="CenterAndExpand" CheckedChanged="Acknowledgment_CheckedChanged"/>-->
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start"
-                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SSTArRoman}">
+                                <custom:CustomLabel LineSpacing="0.8"  Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Margin="0" HorizontalOptions="Start" HorizontalTextAlignment="Start"
+                                                    Style="{DynamicResource IsInstructionCheckedStyle}" FontFamily="{StaticResource SomarRegular}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span LineHeight="1" Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="Black"   />
+                                            <Span  Text="{x:Static ResourceManager:AppResources.VATRefundAcknowledgment}" TextColor="{StaticResource PrimaryColor}"   />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                         <!--<custom:CustomLabel.Triggers>
@@ -699,7 +704,7 @@
                                         Style="{StaticResource PrimaryButtonStyle}">
                                             <!--<buttons:SfButton.Triggers>
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsEnabled,Source={x:Reference btnConfirmSummary}}" Value="true">
-                                                    <Setter Property="BackgroundColor" Value="#d49504" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
                                                 </DataTrigger>
                                                 <DataTrigger TargetType="buttons:SfButton" Value="false" Binding="{Binding btnConfirmSummary.IsEnabled,Source={x:Reference btnConfirmSummary}}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource NeutralGreay}" />
@@ -732,7 +737,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

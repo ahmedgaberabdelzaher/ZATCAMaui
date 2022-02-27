@@ -36,12 +36,12 @@
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
                 <Setter Property="HorizontalTextAlignment" Value="End"/>
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="16" />
             </Style>
             <Style TargetType="Label" x:Key="SectionTitleBlackTopNegative10" >
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="Margin" Value="0,-10,0,0"/>
             </Style>
@@ -89,7 +89,7 @@
 
                                     <Label Text="{x:Static ResourceManager:AppResources.ZZTotalUndisputedAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Label Text="{Binding Undisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                        <Label Text="{Binding Undisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder >
@@ -99,7 +99,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTotaldisputedAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Disamt}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" FontSize="12" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{Binding Disamt}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" FontSize="11" HorizontalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder >
@@ -109,7 +109,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Totamt}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{Binding Totamt}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -122,7 +122,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZSADADInvoiceNumber}" Style="{StaticResource CaptionLabelGrey}"  VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Sopbel}" Style="{StaticResource ValueLabelBlack}" FontSize="12" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel Text="{Binding Sopbel}" Style="{StaticResource ValueLabelBlack}" FontSize="11" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -132,7 +132,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Sadadid}" Style="{StaticResource ValueLabelBlack}" FontSize="12" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel Text="{Binding Sadadid}" Style="{StaticResource ValueLabelBlack}" FontSize="11" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -142,7 +142,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZTheUndisputedAmount}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Undisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
+                                        <custom:CustomLabel Text="{Binding Undisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -153,7 +153,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZ25oftheDisputedAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Sdisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="12" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel Text="{Binding Sdisamt}" Style="{StaticResource ValueLabelBlack}" FontSize="11" HorizontalOptions="Start" VerticalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
@@ -163,7 +163,7 @@
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TotalAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                     <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding Stotamt}" Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="Start" FontSize="12" VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel Text="{Binding Stotamt}" Style="{StaticResource ValueLabelBlack}"  HorizontalOptions="Start" FontSize="11" VerticalTextAlignment="Center"/>
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>

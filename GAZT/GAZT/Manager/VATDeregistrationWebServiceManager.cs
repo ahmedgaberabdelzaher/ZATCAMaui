@@ -48,7 +48,7 @@ namespace EGAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -92,7 +92,7 @@ namespace EGAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return DeleteToken;
                 }
@@ -165,7 +165,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -242,7 +242,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -319,7 +319,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -389,7 +389,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -707,7 +707,7 @@ namespace EGAZT.Manager
                     throw new GAZTUnlockAccountException(ex.Message);
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }

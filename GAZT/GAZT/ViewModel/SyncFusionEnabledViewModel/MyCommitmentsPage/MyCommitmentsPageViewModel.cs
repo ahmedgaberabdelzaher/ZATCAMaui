@@ -128,9 +128,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
+                Console.WriteLine(ex.Message);
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -434,8 +435,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
 
                             objReturnInfoRtnTot.ReturnCount = RtnTotstr;
 
-                            objReturnInfoRtnTot.BackgroundGradientStart = "#006450";
-                            objReturnInfoRtnTot.BackgroundGradientEnd = "#CCE0DC";
+                            objReturnInfoRtnTot.BackgroundGradientStart = "{StaticResource Primary}";
+                            objReturnInfoRtnTot.BackgroundGradientEnd = "#b6e7fc";
                             objReturnInfoRtnTot.iConImagePath = "sf_ic_Submited_Returns_White.png";
                             objReturnInfoRtnTot.ReturnTypeName = AppResources.Submitted;
                             _returnInfoItems.Add(objReturnInfoRtnTot);
@@ -459,7 +460,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                             }
                             objReturnInfoNrtnTot.ReturnCount = NrtnTotstr;
 
-                            objReturnInfoNrtnTot.BackgroundGradientStart = "#5D6770";
+                            objReturnInfoNrtnTot.BackgroundGradientStart = "{StaticResource EntryTextColor}";
                             objReturnInfoNrtnTot.BackgroundGradientEnd = "#DFE1E2";
                             objReturnInfoNrtnTot.iConImagePath = "sf_ic_Unsubmited_Returns_White.png";
                             objReturnInfoNrtnTot.ReturnTypeName = AppResources.UnSubmitted;
@@ -486,7 +487,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                             }
                             objReturnInfoDueIcr.ReturnCount = DueIcrstr;
 
-                            objReturnInfoDueIcr.BackgroundGradientStart = "#AA0C19";
+                            objReturnInfoDueIcr.BackgroundGradientStart = "#e84941";
                             objReturnInfoDueIcr.BackgroundGradientEnd = "#EECED1";
                             objReturnInfoDueIcr.iConImagePath = "sf_ic_Overdue_Returns_White.png";
                             objReturnInfoDueIcr.ReturnTypeName = AppResources.OverDue;
@@ -546,8 +547,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                         objBillInfoPbillsTot.BillCount = PaidBillsstr;
                         objBillInfoPbillsTot.BillAmount = ConvertintoCommaSeperated(PaidBillsAmountstr);
 
-                        objBillInfoPbillsTot.BackgroundGradientStart = "#006450";
-                        objBillInfoPbillsTot.BackgroundGradientEnd = "#CCE0DC";
+                        objBillInfoPbillsTot.BackgroundGradientStart = "{StaticResource Primary}";
+                        objBillInfoPbillsTot.BackgroundGradientEnd = "#b6e7fc";
                         objBillInfoPbillsTot.iConImagePath = "sf_ic_Paid.png";
                         objBillInfoPbillsTot.BillTypeName = AppResources.Paid;
 
@@ -584,7 +585,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                         objBillInfoPrbillsTot.BillCount = PartialPaidBillsstr;
                         objBillInfoPrbillsTot.BillAmount = ConvertintoCommaSeperated(PartialPaidBillsAmountstr);
 
-                        objBillInfoPrbillsTot.BackgroundGradientStart = "#D99A29";
+                        objBillInfoPrbillsTot.BackgroundGradientStart = "{StaticResource Secondary}";
                         objBillInfoPrbillsTot.BackgroundGradientEnd = "#F7EBD4";
                         objBillInfoPrbillsTot.iConImagePath = "sf_ic_Partially_Paid.png";
                         objBillInfoPrbillsTot.BillTypeName = AppResources.Partial;
@@ -619,7 +620,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                         objBillInfoUpbillsTot.BillCount = UnpaidBillsstr;
                         objBillInfoUpbillsTot.BillAmount = ConvertintoCommaSeperated(UnpaidBillsAmountstr);
 
-                        objBillInfoUpbillsTot.BackgroundGradientStart = " #AA0C19";
+                        objBillInfoUpbillsTot.BackgroundGradientStart = " #e84941";
                         objBillInfoUpbillsTot.BackgroundGradientEnd = "#EECED1";
                         objBillInfoUpbillsTot.iConImagePath = "sf_ic_Unpaid.png";
                         objBillInfoUpbillsTot.BillTypeName = AppResources.UnPaid;
@@ -667,12 +668,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                         BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + AppResources.ZSAR + " " + item.Amount
                             + " | " + item.Txt50;
 
-                        BillOrReturnDueEvent.Color = Color.FromHex("#AA0C19");
+                        BillOrReturnDueEvent.Color =  (Color)Application.Current.Resources["ErrorColor"];
                     }
                     else
                     {
                         BillOrReturnDueEvent.Subject = item.Incotext + " | " + AppResources.SADADNumber + " : " + item.Fbnum + " | " + AppResources.ZStatus + " : " + item.IcrStatus + " | " + item.Txt50;
-                        BillOrReturnDueEvent.Color = Color.FromHex("#7D858D");
+                        BillOrReturnDueEvent.Color = (Color)Application.Current.Resources["ForgotPasswordGrayTextColor"];
                     }
 
                     BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
@@ -698,24 +699,24 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
                     {
 
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
 
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                        eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Declaration.png" });
                     }
 
                 }
             }
 
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
-            //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Correspondence.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Form_Bundle_Status.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyBills, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.MyCertificate, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_My_Certificate.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_TIN_Status.png" });
+            //eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZCorrespondence, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Correspondence.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Tax_Evasion.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.VATLookup, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Lookup.png" });
         }
 
         public void NavigateToMyBills(BillInfo billInfo)

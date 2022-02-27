@@ -97,132 +97,158 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         }
         public void PopulateZakatRegListData()
         {
-            List<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new List<ZakatDeregistrationDetailsListModel>();
-            string fileImage = string.Empty;
-            if (App.IsArabic)
+            try
             {
-                fileImage = "arrowLeft.png";
-            }
-            else
-            {
-                fileImage = "arrowRight.png";
-
-            }
-
-
-            if (App.LoginDataRetrieved.ZkReg == "X" || App.LoginDataRetrieved.VtReg == "X")
-            {
-                if (App.LoginDataRetrieved.ZkReg == "X")
+                List<ZakatDeregistrationDetailsListModel> tempZakatRegListData = new List<ZakatDeregistrationDetailsListModel>();
+                string fileImage = string.Empty;
+                if (App.IsArabic)
                 {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.DBSMTaxpayerDetails,
-                        ZDImageSource = "vat_ic_taxpayerDetail",
-                        ArrowImageSource = fileImage
-                    });
+                    fileImage = "arrowLeft.png";
                 }
-             
-                if (App.LoginDataRetrieved.ZkReg == "X")
+                else
                 {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.DBSMOutlets,
-                        ZDImageSource = "establishments",
-                        ArrowImageSource = fileImage
-                    });
+                    fileImage = "arrowRight.png";
+
                 }
 
-                if (App.LoginDataRetrieved.ZkReg == "X")
-                {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.DBSMFinancialDetails,
-                        ZDImageSource = "details",
-                        ArrowImageSource = fileImage
-                    });
-                }
 
-                if (App.LoginDataRetrieved.VtReg == "X")
+                if (App.LoginDataRetrieved.ZkReg == "X" || App.LoginDataRetrieved.VtReg == "X")
                 {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    if (App.LoginDataRetrieved.ZkReg == "X")
                     {
-                        ZDTitle = AppResources.DBSMVATRegistrationDetails,
-                        ZDImageSource = "details",
-                        ArrowImageSource = fileImage
-                    });
-                }
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMTaxpayerDetails,
+                            ZDImageSource = "user_profile",
+                            ArrowImageSource = fileImage
+                        });
+                    }
 
-                if (App.LoginDataRetrieved.ZkReg == "X")
-                {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    if (App.LoginDataRetrieved.ZkReg == "X")
                     {
-                        ZDTitle = AppResources.DBSMAmend,
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMOutlets,
+                            ZDImageSource = "establishments_White",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMFinancialDetails,
+                            ZDImageSource = "documents_White",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMVATRegistrationDetails,
+                            ZDImageSource = "documents_White",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMAmend,
+                            ZDImageSource = "registration_w",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMAmendmentOfVATRegistration,
+                            ZDImageSource = "registration_w",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                    {
+                        ZDTitle = AppResources.Registrations,
                         ZDImageSource = "registration.png",
                         ArrowImageSource = fileImage
-                    });
-                }
+                    });*/
 
-                if (App.LoginDataRetrieved.VtReg == "X")
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMVATDeregistration,
+                            ZDImageSource = "ic_vatDe",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                    //TODO  Add this after  approval
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
+                        {
+                            ZDTitle = AppResources.DBSMTINDeregistration,
+                            ZDImageSource = "ic_vatDe",
+                            ArrowImageSource = fileImage
+                        });
+                    }
+
+                }
+                else if (App.LoginDataRetrieved.ZkReg == "U")
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.DBSMAmendmentOfVATRegistration,
-                        ZDImageSource = "registration.png",
+                        ZDTitle = AppResources.TPUpdate,
+                        ZDImageSource = "sf_ic_Paid.png",
                         ArrowImageSource = fileImage
+
                     });
                 }
-
-                /*tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.Registrations,
-                    ZDImageSource = "registration.png",
-                    ArrowImageSource = fileImage
-                });*/
-
-                if (App.LoginDataRetrieved.VtReg == "X")
+                if (App.LoginDataRetrieved.VtReg == "R")
                 {
                     tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
                     {
-                        ZDTitle = AppResources.DBSMVATDeregistration,
-                        ZDImageSource = "deregistration",
+                        ZDTitle = AppResources.VatReactivationDashboardTitle,
+                        ZDImageSource = "registration_w.png",
                         ArrowImageSource = fileImage
                     });
                 }
-
-                //TODO  Add this after  approval
-
-                if (App.LoginDataRetrieved.ZkReg == "X")
-                {
-                    tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                    {
-                        ZDTitle = AppResources.DBSMTINDeregistration,
-                        ZDImageSource = "deregistration",
-                        ArrowImageSource = fileImage
-                    });
-                }
-
+                ZakatRegListData = new List<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
             }
-            else if (App.LoginDataRetrieved.ZkReg == "U")
+            catch (Exception ex)
             {
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.TPUpdate,
-                    ZDImageSource = "sf_ic_Paid.png",
-                    ArrowImageSource = fileImage
-
-                });
+               
             }
-            if (App.LoginDataRetrieved.VtReg == "R")
-            {
-                tempZakatRegListData.Add(new ZakatDeregistrationDetailsListModel
-                {
-                    ZDTitle = AppResources.VatReactivationDashboardTitle,
-                    ZDImageSource = "registration.png",
-                    ArrowImageSource = fileImage
-                });
-            }
-            ZakatRegListData = new List<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
         }
+
+        public void HandleExceptipon(Exception ex)
+        {
+            Console.Write(ex.ToString());
+            Console.Write(ex.StackTrace.ToString());
+            try
+            {
+                _navigationService.GoBack();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                });
+            }
+            catch (Exception mex)
+            {
+                Console.WriteLine(mex.Message);
+            }
+        }
+
 
         public async void GetNewTinDeregistrationDataCliked()
         {

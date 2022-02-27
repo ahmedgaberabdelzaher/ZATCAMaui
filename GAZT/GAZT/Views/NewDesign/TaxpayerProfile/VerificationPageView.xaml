@@ -84,7 +84,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                                 <custom:BorderlessEntry
                                                         x:Name="OTPFirstEntry"
                                                         FontAttributes="Bold"
@@ -111,7 +111,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                                 <custom:BorderlessEntry
                                                         x:Name="OTPSecondEntry"
                                                         FontAttributes="Bold"
@@ -138,7 +138,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                                 <custom:BorderlessEntry
                                                         x:Name="OTPThirdEntry"
                                                         FontAttributes="Bold"
@@ -165,7 +165,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                                 <custom:BorderlessEntry
                                                         x:Name="OTPFourthEntry"
                                                         FontAttributes="Bold"
@@ -202,7 +202,7 @@
                                 </StackLayout>
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CurrentPassword}" Style="{StaticResource CaptionLabelGrey}"/>
-                                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
 
                                     <control:BorderlessEntry x:Name="CurrentPassword"
@@ -231,7 +231,7 @@
 
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewPassword}" Style="{StaticResource CaptionLabelGrey}"/>
-                                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                                <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
                                     <control:BorderlessEntry x:Name="NewPassword"
                                                              Style="{StaticResource DefaultEntry}"
@@ -258,7 +258,7 @@
                                 </inputLayout:SfTextInputLayout>
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZConfirmpassword}" Style="{StaticResource CaptionLabelGrey}"/>
-                                <inputLayout:SfTextInputLayout Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                                <inputLayout:SfTextInputLayout Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
 
                                     <control:BorderlessEntry x:Name="ConfirmPassword"
                                                              Style="{StaticResource DefaultEntry}"
@@ -310,7 +310,7 @@
                             </StackLayout>
                             <StackLayout Grid.Column="2" Grid.Row="0" BackgroundColor="White">
                                 <Image HorizontalOptions="End"
-                                   Source="closeGrey.png">
+                                   Source="close.png">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer NumberOfTapsRequired="1"
                                               Tapped="OnBackArrowTapped" />
@@ -347,7 +347,7 @@
                                                        IsBusy="True"
                                                        ViewBoxWidth = "70"
                                                        TitlePlacement="Bottom"
-                                                       ViewBoxHeight="70" TextColor="#006450"/>
+                                                       ViewBoxHeight="70" TextColor="{StaticResource Primary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

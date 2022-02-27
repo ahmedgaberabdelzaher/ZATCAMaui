@@ -19,7 +19,7 @@
              x:Class="EGAZT.Views.SyncFusionEnabledViews.ICRList.ICRListPageView"
              NavigationPage.HasNavigationBar="False"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" ios:Page.UseSafeArea="true"
-            BackgroundColor="#005e4b">
+            BackgroundColor="{StaticResource Primary}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -38,7 +38,7 @@
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
                              />
@@ -112,7 +112,7 @@
                 </Image>-->
                 <inputLayout:SfTextInputLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7"  Margin="10,0,10,0"
     ContainerType="Outlined" x:Name="FrmLicenseIssuedBy" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
                     <custom:BorderlessEntry IsSpellCheckEnabled="False"  Text="{Binding TxtSelectedStatus}" FontSize="Small">
                     </custom:BorderlessEntry>
                 </inputLayout:SfTextInputLayout>
@@ -133,13 +133,13 @@
                    BackgroundColor="#EAF7CC"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                    HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
+                    HeaderBackgroundColor="{StaticResource Primary}"
+                    SelectedItemTextColor="{StaticResource Primary}"
                     BorderColor="Black"
-                    UnSelectedItemTextColor="#006450"
-                             SelectedItemFontSize="14"     
+                    UnSelectedItemTextColor="{StaticResource Primary}"
+                             SelectedItemFontSize="13"     
                    ItemHeight="40"
-                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"
+                    OKButtonTextColor="{StaticResource Primary}"  CancelButtonTextColor="{StaticResource Primary}"
                   SelectionChanged="SelectedICR" ItemsSource="{Binding ICRStatusList}" DisplayMemberPath="Txt30"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" 
                     PickerHeight="200"
                     PickerWidth="270"
@@ -170,7 +170,7 @@
                             <DataTemplate>
                                 <ViewCell>
                                     <!--Margin="10"-->
-                                    <cards:SfCardView HasShadow="True" Margin="0,10,0,10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770" ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
+                                    <cards:SfCardView HasShadow="False" Margin="0,10,0,10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}" ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="3"  IndicatorColor="{Binding BorderColour}" IndicatorPosition="Left" IndicatorThickness="5">
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,10" Padding="10" >
                                             <Grid  ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                         <Grid.ColumnDefinitions>
@@ -190,12 +190,12 @@
                                                        Style="{StaticResource MiniGoldLabelStyle}"
                                                        HorizontalOptions="Start"
                                                        VerticalOptions="CenterAndExpand"
-                                                       TextColor="#005e4b"
+                                                       TextColor="{StaticResource Primary}"
                                    Grid.Row="0"
                                    Grid.Column="1" Grid.ColumnSpan="4"/>-->
                                                 <local1:CustomLabel Text="{x:Static local:AppResources.ZVATReturnForm}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                       FontFamily="{StaticResource SSTArabicMedium}"
+                                                       FontFamily="{StaticResource SomarSemiBold}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="0"
@@ -210,7 +210,7 @@
                                    Grid.Column="1" Grid.ColumnSpan="4" />-->
                                                 <local1:CustomLabel Text="{Binding Incotext}" 
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                                                         FontFamily="{StaticResource SSTArabicMedium}"
+                                                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="1"
@@ -232,7 +232,7 @@
                                                         </Label>-->
                                                 <local1:CustomLabel Text="{Binding FormBundleNumber}" x:Name="Fbnumber"
                                                        Style="{StaticResource MicroGrayLabelStyleNew}"
- FontFamily="{StaticResource SSTArabicMedium}"                                                       HorizontalOptions="StartAndExpand"
+ FontFamily="{StaticResource SomarSemiBold}"                                                       HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="StartAndExpand"
                                                        Grid.Row="2"
                                                        Grid.Column="0"
@@ -269,7 +269,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZTaxPeriod}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding FormatTaxPeriod}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SomarSemiBold}" Text="{Binding FormatTaxPeriod}"></Span>
                                                         </FormattedString>
                                                     </local1:CustomLabel.FormattedText>
                                                 </local1:CustomLabel>
@@ -304,7 +304,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text="{x:Static local:AppResources.ZStatus}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"    FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Text=" : "></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SSTArabicMedium}" Text="{Binding StatusTxt}"></Span>
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}"    FontFamily="{StaticResource SomarSemiBold}" Text="{Binding StatusTxt}"></Span>
                                                         </FormattedString>
                                                     </local1:CustomLabel.FormattedText>
                                                 </local1:CustomLabel>
@@ -327,7 +327,7 @@
                                    Grid.Column="0" Orientation="Horizontal">
 
                                                     <local1:CustomLabel
-                                    FontFamily="{StaticResource SSTArabicMedium}"
+                                    FontFamily="{StaticResource SomarSemiBold}"
                                                         LineBreakMode="CharacterWrap"
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="0,0,0,0"
@@ -346,7 +346,7 @@
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
                                                         LineBreakMode="CharacterWrap"
-                                                           FontFamily="{StaticResource SSTArabicMedium}"
+                                                           FontFamily="{StaticResource SomarSemiBold}"
                                                  Text="{Binding FormatedDate}"
                                                           >
                                                     </local1:CustomLabel>
@@ -394,7 +394,7 @@
                                                     </local1:CustomLabel>
                                                     <local1:CustomLabel
                                    Style="{StaticResource MicroGrayLabelStyleNewEn}"
-                                                     FontFamily="{StaticResource SSTArabicMedium}" 
+                                                     FontFamily="{StaticResource SomarSemiBold}" 
                                                    VerticalOptions="CenterAndExpand"
                                                     Margin="-5,0,-5,0"
                                                     FlowDirection="LeftToRight"
@@ -459,7 +459,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
+                                        TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                     <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>

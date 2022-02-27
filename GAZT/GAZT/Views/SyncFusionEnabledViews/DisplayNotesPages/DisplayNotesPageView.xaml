@@ -25,14 +25,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title=""  FontSize="14"   BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title=""  FontSize="13"   BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -86,8 +86,8 @@
                                    Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                          FontFamily="{StaticResource SSTArabicMedium}"
-                                                       FontSize="12"
+                                                          FontFamily="{StaticResource SomarSemiBold}"
+                                                       FontSize="11"
                                    Grid.Row="1"
                                    Grid.Column="0" />
                                                 <Label Text="{Binding Namez}" 
@@ -95,8 +95,8 @@
                                    Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
                                                        HorizontalOptions="StartAndExpand"
                                                        VerticalOptions="CenterAndExpand"
-                                                       FontSize="12"
-                                                         FontFamily="{StaticResource SSTArabicMedium}"
+                                                       FontSize="11"
+                                                         FontFamily="{StaticResource SomarSemiBold}"
                                    Grid.Row="2"
                                    Grid.Column="0" />
                                                 <Label 
@@ -108,9 +108,9 @@
                                    Grid.Column="0">
                                                     <Label.FormattedText >
                                                         <FormattedString>
-                                                            <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SSTArabicMedium}" FontSize="12"/>
+                                                            <Span Text="{Binding Strdt}"   FontFamily="{StaticResource SomarSemiBold}" FontSize="11"/>
                                                             <Span Text="  " />
-                                                            <Span Text="{Binding Strtime}" FontFamily="{StaticResource SSTArabicMedium}" FontSize="12"/>
+                                                            <Span Text="{Binding Strtime}" FontFamily="{StaticResource SomarSemiBold}" FontSize="11"/>
                                                         </FormattedString>
                                                     </Label.FormattedText>
                                                 </Label>

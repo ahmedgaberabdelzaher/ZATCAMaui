@@ -394,12 +394,21 @@ namespace EGAZT.Models
 
         public string GoliveFg { get; set; }
         [DataMember]
-        public string GovsupYesno { get; set; }
+        public string Cr3487golive { get; set; }
         [DataMember]
-        public string Yesno { get; set; }
-        
+        public string Cr1317golive { get; set; }
+        [DataMember]
+        public string Cr2215 { get; set; }
+        [DataMember]
+        public string GovsupYesno { get; set; }
+
         [DataMember]
         public string ReviewNaMsg { get; set; }
+        [DataMember]
+        public string Cr1645GoliveFg { get; set; }
+        [DataMember]
+
+        public string Yesno { get; set; }
         [DataMember]
         public string TcFlg { get; set; }
         [DataMember]
@@ -420,10 +429,6 @@ namespace EGAZT.Models
         public string Idnumber { get; set; }
         [DataMember]
         public string TotalsalesAmt { get; set; }
-        [DataMember]
-        public string Cr2215 { get; set; }
-        [DataMember]
-        public string Cr1645GoliveFg { get; set; }
         //public string _totalsalesAmt;
         //public string TotalsalesAmt
         //{ 
@@ -788,7 +793,7 @@ namespace EGAZT.Models
     public class VATDeclarationTabbedPageName : INotifyPropertyChanged
     {
         [DataMember]
-        Color textColor = Color.FromHex("#FFFFFF");
+        Color textColor =  (Color)Application.Current.Resources["White"];
         [DataMember]
         Font _font = Font.Default;
         [DataMember]

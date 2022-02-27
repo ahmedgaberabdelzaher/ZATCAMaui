@@ -27,6 +27,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         #endregion
 
         #region Properties
+        //engText
+        private bool _Arabictext { get; set; }
+        public bool Arabictext
+        {
+            get => _Arabictext;
+            set
+            {
+                _Arabictext = value;
+                RaisePropertyChanged("Arabictext");
+
+            }
+        }
+
+        private bool _engText { get; set; }
+        public bool engText
+        {
+            get => _engText;
+            set
+            {
+                _engText = value;
+                RaisePropertyChanged("engText");
+
+            }
+        }
 
         private bool _isOTPEntryEnable { get; set; }
         public bool IsOTPEntryEnable
@@ -309,6 +333,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
+        private string _OTPSentOnThisMobileNumber2;
+        public string OTPSentOnThisMobileNumber2
+        {
+            get
+            {
+                return _OTPSentOnThisMobileNumber2;
+            }
+            set
+            {
+                if (_OTPSentOnThisMobileNumber2 == value) return;
+
+                _OTPSentOnThisMobileNumber2 = value;
+                RaisePropertyChanged("OTPSentOnThisMobileNumber2");
+            }
+        }
+
         private bool _BtnEnableFlag = true;
         public bool BtnEnableFlag
         {
@@ -322,7 +362,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             }
         }
 
-        private Color _resendOTPTextColor = Color.FromHex("#c7c7c7");
+        private Color _resendOTPTextColor =  (Color)Application.Current.Resources["ResendOTPTextColor"];
         public Color ResendOTPTextColor
         {
             get
@@ -405,7 +445,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 otpTimer.Stop();
                 IsOTPEntryEnable = false;
                 BtnEnableFlag = false;
-                ResendOTPTextColor = Color.FromHex("#006450");
+                ResendOTPTextColor =  (Color)Application.Current.Resources["Primary"];
             }
         }
         //public void StartOTPTimer()
@@ -444,7 +484,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         //    if (countDownSeconds == 0)
         //    {
         //        otpTimer.Stop();
-        //        ResendOTPTextColor = Color.FromHex("#006450");
+        //        ResendOTPTextColor =  (Color)Application.Current.Resources["Primary"];
         //    }
         //}
 

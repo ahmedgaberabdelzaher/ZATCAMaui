@@ -27,8 +27,8 @@
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" />
 
-                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{Binding SuccessMessage}" FontFamily="{StaticResource SSTArabicMedium}"
+                 <Label Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{Binding SuccessMessage}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
 
 
@@ -62,13 +62,15 @@
                                     </Grid.ColumnDefinitions>
                                     <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    VerticalOptions="Center" FontSize="11" TextColor="{StaticResource DarkGrayTextColor}"
                                                     HorizontalOptions="Start" />
 
  
 
-                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding ZakatReferanceNumber}" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" />
+                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding ZakatReferanceNumber}" FontSize="15"
+                                                        VerticalOptions="Center"
+                                                        HorizontalOptions="End"
+                                                        Style="{StaticResource ValueLabelBlack}" />
 
  
 
@@ -78,7 +80,8 @@
                                               Tapped="Instalment_copy_Tapped"/>
                                         </Image.GestureRecognizers>
                                         <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                            <FontImageSource FontFamily="UserIconFont"
+                                                             Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentCopy}"/>
                                         </Image.Source>
                                     </Image>
@@ -94,13 +97,13 @@
                                           Clicked="Download_Acknowledgement"
                                           CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" Command="{Binding DownloadConfirmationTapped}"/>
+                                          BackgroundColor="{StaticResource Secondary}" TextColor="White" Command="{Binding DownloadConfirmationTapped}"/>
 
  
 
                             <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
-                                            TextColor="#d49504" HorizontalOptions="Center"
+                                            TextColor="{StaticResource Primary}" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                                 <custom:CustomLabel.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Instalment_plan_Tapped" />
@@ -124,7 +127,7 @@
                                                                ViewBoxWidth="70"
                                                                TitlePlacement="Bottom"
                                                                ViewBoxHeight="70"
-                                                               TextColor="#D99A29" />
+                                                               TextColor="{StaticResource Secondary}" />
                                 <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                             </StackLayout>
                         </StackLayout>

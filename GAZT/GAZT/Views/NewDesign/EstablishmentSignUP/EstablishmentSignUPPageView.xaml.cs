@@ -55,8 +55,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
-                viewModel.IndividualBackImg = "FP_unselected_tile.png";
-                viewModel.EstablishmentBackImg = "FP_selected_tile.png";
+                viewModel.IndividualBackImg = "vat_tile_listofsignup_W.png";
+                viewModel.EstablishmentBackImg = "vat_tile_listofsignup.png";
 
             });
 
@@ -73,8 +73,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
-                viewModel.IndividualBackImg = "FP_selected_tile.png";
-                viewModel.EstablishmentBackImg = "FP_unselected_tile.png";
+                viewModel.IndividualBackImg = "vat_tile_listofsignup.png";
+                viewModel.EstablishmentBackImg = "vat_tile_listofsignup_W.png";
 
             });
 

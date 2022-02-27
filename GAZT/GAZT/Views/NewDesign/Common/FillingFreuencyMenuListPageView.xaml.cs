@@ -64,7 +64,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -91,7 +91,7 @@ namespace EGAZT.Views.NewDesign.Common
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

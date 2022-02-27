@@ -273,7 +273,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber)
             {
                 NewValue.Text = UtilityManager.GetCommaSeparatedAmount(NewValue.Text);
-                NewValue.TextColor = Color.Black;
+                //NewValue.TextColor = Color.Black;
+                //TextColor = Color.Black,
+                NewValue.TextColor = (Color)App.Current.Resources["Primary"];
             }
             else
             {
@@ -285,7 +287,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             if (NewValue.Text.Contains(","))
             {
                 NewValue.Text = NewValue.Text.Replace(",", "");
-                NewValue.TextColor = Color.Black;
+                NewValue.TextColor = (Color)App.Current.Resources["Primary"];
             }
         }
 
@@ -294,7 +296,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             if (NewValue.Text.Contains(","))
             {
                 NewValue.Text = NewValue.Text.Replace(",", "");
-                NewValue.TextColor = Color.Black;
+                NewValue.TextColor = (Color)App.Current.Resources["Primary"];
             }
         }
 

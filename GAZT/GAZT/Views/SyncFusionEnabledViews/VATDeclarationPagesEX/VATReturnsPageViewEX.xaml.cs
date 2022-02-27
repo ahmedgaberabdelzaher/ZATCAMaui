@@ -2,6 +2,7 @@
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AddNotePage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using EGAZT.Views.SyncFusionEnabledViews.ICRList;
 using GAZT.Helper;
@@ -18,11 +19,13 @@ using System.Resources;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 using Entry = Xamarin.Forms.Entry;
 namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
 {
@@ -845,12 +848,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         {
             if (current != null)
             {
-                current.TextColor = Color.FromHex("#c49b2d");
+                current.TextColor = (Color)Application.Current.Resources["VTTabTextColor"];
             }
             if (previous != null)
             {
                 //Reset the previous to defaulr color
-                previous.TextColor = Color.FromHex("#FFFFFF");
+                previous.TextColor =  (Color)Application.Current.Resources["White"];
             }
         }
         public void NewSetColor(object sender, VATDeclarationTabbedPageName current)
@@ -867,11 +870,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                         var b = (VATDeclarationTabbedPageName)item;
                         if (b.pageName == current.pageName)
                         {
-                            b.TextColor = Color.FromHex("#c49b2d");
+                            b.TextColor = (Color)Application.Current.Resources["VTTabTextColor"];
                         }
                         else
                         {
-                            b.TextColor = Color.FromHex("#FFFFFF");
+                            b.TextColor =  (Color)Application.Current.Resources["White"];
                         }
                     }
                 }
@@ -1038,12 +1041,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                     //{
                     //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    //    EntryVatAmount.TextColor = Color.Black;
+                    //    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                     //{
                     //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     CheckMandetoryFields();
                     // char LastChar = ' ';
@@ -1093,22 +1096,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
                     //{
                     //    EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
-                    //    EntrySalesGccAmt.TextColor = Color.Black;
+                    //    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
                     //{
                     //    EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
-                    //    EntryZerosalesAmt.TextColor = Color.Black;
+                    //    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
                     //{
                     //    EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
-                    //    EntryExportsAmt.TextColor = Color.Black;
+                    //    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
                     //{
                     //    EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
-                    //    EntryExemptsalesAmt.TextColor = Color.Black;
+                    //    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1165,22 +1168,22 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
                     //{
                     //    EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
-                    //    EntrySalesGccAdj.TextColor = Color.Black;
+                    //    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
                     //{
                     //    EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
-                    //    EntryZerosalesAdj.TextColor = Color.Black;
+                    //    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
                     //{
                     //    EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
-                    //    EntryExportsAdj.TextColor = Color.Black;
+                    //    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
                     //{
                     //    EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
-                    //    EntryExemptsalesAdj.TextColor = Color.Black;
+                    //    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1280,12 +1283,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                     //{
                     //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                     //{
                     //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1341,12 +1344,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                     //{
                     //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                     //{
                     //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1391,12 +1394,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
                     //{
                     //    EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
-                    //    EntryZeropurchaseAmt.TextColor = Color.Black;
+                    //    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
                     //{
                     //    EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
-                    //    EntryExemptpurchaseAmt.TextColor = Color.Black;
+                    //    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1453,12 +1456,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
                     //{
                     //    EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
-                    //    EntryZeropurchaseAdj.TextColor = Color.Black;
+                    //    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
                     //{
                     //    EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
-                    //    EntryExemptpurchaseAdj.TextColor = Color.Black;
+                    //    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -1515,17 +1518,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 //if (!string.IsNullOrEmpty(EntryStdpurchasesVat.Text) && EntryStdpurchasesVat.Text.Contains(","))
                 //{
                 //    EntryStdpurchasesVat.Text = EntryStdpurchasesVat.Text.Replace(",", "");
-                //    EntryStdpurchasesVat.TextColor = Color.Black;
+                //    EntryStdpurchasesVat.TextColor = (Color)App.Current.Resources["Primary"];;
                 //}
                 //if (!string.IsNullOrEmpty(EntryImportspaidVat.Text) && EntryImportspaidVat.Text.Contains(","))
                 //{
                 //    EntryImportspaidVat.Text = EntryImportspaidVat.Text.Replace(",", "");
-                //    EntryImportspaidVat.TextColor = Color.Black;
+                //    EntryImportspaidVat.TextColor = (Color)App.Current.Resources["Primary"];;
                 //}
                 //if (!string.IsNullOrEmpty(EntryImportsaccVat.Text) && EntryImportsaccVat.Text.Contains(","))
                 //{
                 //    EntryImportsaccVat.Text = EntryImportsaccVat.Text.Replace(",", "");
-                //    EntryImportsaccVat.TextColor = Color.Black;
+                //    EntryImportsaccVat.TextColor = (Color)App.Current.Resources["Primary"];;
                 //}
                 if (!string.IsNullOrEmpty(senderObj.Text))
                 {
@@ -2818,7 +2821,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
                     //{
                     //    EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                    //   // EntryPreperiodcorr.TextColor = Color.Black;
+                    //   // EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -2915,14 +2918,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount.Text);
                     EntryVatAmount.Text = ValueWithComma;
-                    EntryVatAmount.TextColor = Color.Black;
+                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -2942,14 +2945,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR.Text);
                     EntryVatAdjustmentWithSAR.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3018,14 +3021,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAmt.Text);
                     EntrySalesGccAmt.Text = ValueWithComma;
-                    EntrySalesGccAmt.TextColor = Color.Black;
+                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3045,14 +3048,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAdj.Text);
                     EntrySalesGccAdj.Text = ValueWithComma;
-                    EntrySalesGccAdj.TextColor = Color.Black;
+                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3171,14 +3174,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAmt.Text);
                     EntryZerosalesAmt.Text = ValueWithComma;
-                    EntryZerosalesAmt.TextColor = Color.Black;
+                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3198,14 +3201,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAdj.Text);
                     EntryZerosalesAdj.Text = ValueWithComma;
-                    EntryZerosalesAdj.TextColor = Color.Black;
+                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3313,14 +3316,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAmt.Text);
                     EntryExportsAmt.Text = ValueWithComma;
-                    EntryExportsAmt.TextColor = Color.Black;
+                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3363,14 +3366,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAdj.Text);
                     EntryExportsAdj.Text = ValueWithComma;
-                    EntryExportsAdj.TextColor = Color.Black;
+                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3485,14 +3488,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAmt.Text);
                     EntryExemptsalesAmt.Text = ValueWithComma;
-                    EntryExemptsalesAmt.TextColor = Color.Black;
+                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3540,14 +3543,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAdj.Text);
                     EntryExemptsalesAdj.Text = ValueWithComma;
-                    EntryExemptsalesAdj.TextColor = Color.Black;
+                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3671,14 +3674,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt.Text);
                     EntryStdpurchaseAmt.Text = ValueWithComma;
-                    EntryStdpurchaseAmt.TextColor = Color.Black;
+                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3698,14 +3701,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj.Text);
                     EntryStdpurchaseAdj.Text = ValueWithComma;
-                    EntryStdpurchaseAdj.TextColor = Color.Black;
+                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3780,14 +3783,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR.Text);
                     EntryZVatAmountWithSAR.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3807,14 +3810,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj.Text);
                     EntryImportspaidAdj.Text = ValueWithComma;
-                    EntryImportspaidAdj.TextColor = Color.Black;
+                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3867,14 +3870,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt.Text);
                     EntryImportsaccAmt.Text = ValueWithComma;
-                    EntryImportsaccAmt.TextColor = Color.Black;
+                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3894,14 +3897,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
                     EntryImportsaccAdj.Text = ValueWithComma;
-                    EntryImportsaccAdj.TextColor = Color.Black;
+                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3954,14 +3957,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAmt.Text);
                     EntryZeropurchaseAmt.Text = ValueWithComma;
-                    EntryZeropurchaseAmt.TextColor = Color.Black;
+                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -3981,14 +3984,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAdj.Text);
                     EntryZeropurchaseAdj.Text = ValueWithComma;
-                    EntryZeropurchaseAdj.TextColor = Color.Black;
+                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4041,14 +4044,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAmt.Text);
                     EntryExemptpurchaseAmt.Text = ValueWithComma;
-                    EntryExemptpurchaseAmt.TextColor = Color.Black;
+                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4068,14 +4071,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAdj.Text);
                     EntryExemptpurchaseAdj.Text = ValueWithComma;
-                    EntryExemptpurchaseAdj.TextColor = Color.Black;
+                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4218,14 +4221,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryPreperiodcorr.Text);
                     EntryPreperiodcorr.Text = ValueWithComma;
-                    EntryPreperiodcorr.TextColor = Color.Black;
+                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch
@@ -4393,7 +4396,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    EntryVatAmount.TextColor = Color.Black;
+                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4429,7 +4432,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4452,7 +4455,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
                 {
                     EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
-                    EntrySalesGccAmt.TextColor = Color.Black;
+                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4475,7 +4478,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
                 {
                     EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
-                    EntrySalesGccAdj.TextColor = Color.Black;
+                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4498,7 +4501,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
                 {
                     EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
-                    EntryZerosalesAmt.TextColor = Color.Black;
+                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4521,7 +4524,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
                 {
                     EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
-                    EntryZerosalesAdj.TextColor = Color.Black;
+                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4544,7 +4547,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
                 {
                     EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
-                    EntryExportsAmt.TextColor = Color.Black;
+                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4567,7 +4570,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
                 {
                     EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
-                    EntryExportsAdj.TextColor = Color.Black;
+                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4590,7 +4593,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
                 {
                     EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
-                    EntryExemptsalesAmt.TextColor = Color.Black;
+                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4657,7 +4660,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
-                    EntryStdpurchaseAmt.TextColor = Color.Black;
+                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4676,7 +4679,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
-                    EntryStdpurchaseAdj.TextColor = Color.Black;
+                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4695,7 +4698,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4714,7 +4717,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                 {
                     EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                    EntryImportspaidAdj.TextColor = Color.Black;
+                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4733,7 +4736,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                 {
                     EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                    EntryImportsaccAmt.TextColor = Color.Black;
+                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4752,7 +4755,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                 {
                     EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                    EntryImportsaccAdj.TextColor = Color.Black;
+                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4771,7 +4774,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
                 {
                     EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
-                    EntryZeropurchaseAmt.TextColor = Color.Black;
+                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4791,7 +4794,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
                 {
                     EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
-                    EntryZeropurchaseAdj.TextColor = Color.Black;
+                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4810,7 +4813,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
                 {
                     EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
-                    EntryExemptpurchaseAmt.TextColor = Color.Black;
+                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4829,7 +4832,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
                 {
                     EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
-                    EntryExemptpurchaseAdj.TextColor = Color.Black;
+                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -4848,7 +4851,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
                 {
                     EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                    EntryPreperiodcorr.TextColor = Color.Black;
+                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5270,7 +5273,43 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
         }
         private void ChangeRegistrationTapped(object sender, EventArgs e)
         {
-            viewModel._dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+            //viewModel._dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+
+            try {
+
+
+                var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZZChangeRegistationNote);
+                if (App.IsArabic)
+                {
+                    VisitPortalPopup.OnGotoPortal = () =>
+                    {
+
+                        Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                    };
+                }
+                else
+                {
+                    VisitPortalPopup.OnGotoPortal = () =>
+                    {
+
+                        Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                    };
+                }
+                //VisitPortalPopup.OnGotoPortal = () =>
+                //{
+                //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                //};
+                PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+            }
+            catch(Exception ex) {
+
+            }
+
+
+
         }
         private async void Switch_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -5418,7 +5457,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
                 {
                     EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
-                    EntryExemptsalesAdj.TextColor = Color.Black;
+                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5860,7 +5899,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!String.IsNullOrEmpty(EntryVatAmount15.Text) && EntryVatAmount15.Text.Contains(","))
                 {
                     EntryVatAmount15.Text = EntryVatAmount15.Text.Replace(",", "");
-                    EntryVatAmount15.TextColor = Color.Black;
+                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5879,7 +5918,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAdjustmentWithSAR15.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR15.Text = EntryVatAdjustmentWithSAR15.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR15.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5905,14 +5944,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount15.Text);
                     EntryVatAmount15.Text = ValueWithComma;
-                    EntryVatAmount15.TextColor = Color.Black;
+                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5933,14 +5972,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR15.Text);
                     EntryVatAdjustmentWithSAR15.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR15.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -5959,12 +5998,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                     //{
                     //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    //    EntryVatAmount.TextColor = Color.Black;
+                    //    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                     //{
                     //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     CheckMandetoryFields();
                     // char LastChar = ' ';
@@ -6042,7 +6081,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!String.IsNullOrEmpty(EntryVatAmount5.Text) && EntryVatAmount5.Text.Contains(","))
                 {
                     EntryVatAmount5.Text = EntryVatAmount5.Text.Replace(",", "");
-                    EntryVatAmount5.TextColor = Color.Black;
+                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6066,14 +6105,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount5.Text);
                     EntryVatAmount5.Text = ValueWithComma;
-                    EntryVatAmount5.TextColor = Color.Black;
+                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6097,7 +6136,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAdjustmentWithSAR5.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR5.Text = EntryVatAdjustmentWithSAR5.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6122,14 +6161,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR5.Text);
                     EntryVatAdjustmentWithSAR5.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR5.TextColor = Color.Black;
+                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6149,7 +6188,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && EntryStdpurchaseAmt15.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt15.Text = EntryStdpurchaseAmt15.Text.Replace(",", "");
-                    EntryStdpurchaseAmt15.TextColor = Color.Black;
+                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6169,7 +6208,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) && EntryStdpurchaseAdj15.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj15.Text = EntryStdpurchaseAdj15.Text.Replace(",", "");
-                    EntryStdpurchaseAdj15.TextColor = Color.Black;
+                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6207,14 +6246,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt15.Text);
                     EntryStdpurchaseAmt15.Text = ValueWithComma;
-                    EntryStdpurchaseAmt15.TextColor = Color.Black;
+                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6235,14 +6274,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj15.Text);
                     EntryStdpurchaseAdj15.Text = ValueWithComma;
-                    EntryStdpurchaseAdj15.TextColor = Color.Black;
+                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6262,7 +6301,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && EntryStdpurchaseAmt5.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt5.Text = EntryStdpurchaseAmt5.Text.Replace(",", "");
-                    EntryStdpurchaseAmt5.TextColor = Color.Black;
+                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6295,14 +6334,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt5.Text);
                     EntryStdpurchaseAmt5.Text = ValueWithComma;
-                    EntryStdpurchaseAmt5.TextColor = Color.Black;
+                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6322,7 +6361,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) && EntryStdpurchaseAdj5.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj5.Text = EntryStdpurchaseAdj5.Text.Replace(",", "");
-                    EntryStdpurchaseAdj5.TextColor = Color.Black;
+                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6348,14 +6387,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj5.Text);
                     EntryStdpurchaseAdj5.Text = ValueWithComma;
-                    EntryStdpurchaseAdj5.TextColor = Color.Black;
+                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6375,7 +6414,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) && EntryZVatAmountWithSAR15.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR15.Text = EntryZVatAmountWithSAR15.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR15.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6401,14 +6440,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR15.Text);
                     EntryZVatAmountWithSAR15.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR15.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6428,7 +6467,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj15.Text) && EntryImportspaidAdj15.Text.Contains(","))
                 {
                     EntryImportspaidAdj15.Text = EntryImportspaidAdj15.Text.Replace(",", "");
-                    EntryImportspaidAdj15.TextColor = Color.Black;
+                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6454,14 +6493,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj15.Text);
                     EntryImportspaidAdj15.Text = ValueWithComma;
-                    EntryImportspaidAdj15.TextColor = Color.Black;
+                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6481,7 +6520,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) && EntryZVatAmountWithSAR5.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR5.Text = EntryZVatAmountWithSAR5.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR5.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6507,14 +6546,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR5.Text);
                     EntryZVatAmountWithSAR5.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR5.TextColor = Color.Black;
+                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6534,7 +6573,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj5.Text) && EntryImportspaidAdj5.Text.Contains(","))
                 {
                     EntryImportspaidAdj5.Text = EntryImportspaidAdj5.Text.Replace(",", "");
-                    EntryImportspaidAdj5.TextColor = Color.Black;
+                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6560,14 +6599,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj5.Text);
                     EntryImportspaidAdj5.Text = ValueWithComma;
-                    EntryImportspaidAdj5.TextColor = Color.Black;
+                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6587,7 +6626,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt15.Text) && EntryImportsaccAmt15.Text.Contains(","))
                 {
                     EntryImportsaccAmt15.Text = EntryImportsaccAmt15.Text.Replace(",", "");
-                    EntryImportsaccAmt15.TextColor = Color.Black;
+                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6613,14 +6652,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt15.Text);
                     EntryImportsaccAmt15.Text = ValueWithComma;
-                    EntryImportsaccAmt15.TextColor = Color.Black;
+                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6640,7 +6679,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj15.Text) && EntryImportsaccAdj15.Text.Contains(","))
                 {
                     EntryImportsaccAdj15.Text = EntryImportsaccAdj15.Text.Replace(",", "");
-                    EntryImportsaccAdj15.TextColor = Color.Black;
+                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6666,14 +6705,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj15.Text);
                     EntryImportsaccAdj15.Text = ValueWithComma;
-                    EntryImportsaccAdj15.TextColor = Color.Black;
+                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6693,7 +6732,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt5.Text) && EntryImportsaccAmt5.Text.Contains(","))
                 {
                     EntryImportsaccAmt5.Text = EntryImportsaccAmt5.Text.Replace(",", "");
-                    EntryImportsaccAmt5.TextColor = Color.Black;
+                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6719,14 +6758,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt5.Text);
                     EntryImportsaccAmt5.Text = ValueWithComma;
-                    EntryImportsaccAmt5.TextColor = Color.Black;
+                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6746,7 +6785,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj5.Text) && EntryImportsaccAdj5.Text.Contains(","))
                 {
                     EntryImportsaccAdj5.Text = EntryImportsaccAdj5.Text.Replace(",", "");
-                    EntryImportsaccAdj5.TextColor = Color.Black;
+                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6772,14 +6811,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj5.Text);
                     EntryImportsaccAdj5.Text = ValueWithComma;
-                    EntryImportsaccAdj5.TextColor = Color.Black;
+                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
                 else
                 {
                     viewModel.IsUnFocusedTextBox = true;
                     viewModel.IsMainButtonEnabled = false;
                     CheckMandetoryFields();
-                    // UserName.TextColor = Color.Black;
+                    // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception ex)
@@ -6798,12 +6837,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                     //{
                     //    EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    //    EntryVatAmount.TextColor = Color.Black;
+                    //    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                     //{
                     //    EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    //    EntryVatAdjustmentWithSAR.TextColor = Color.Black;
+                    //    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     CheckMandetoryFields();
                     // char LastChar = ' ';
@@ -7007,12 +7046,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                     //{
                     //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                     //{
                     //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -7097,12 +7136,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                     //{
                     //    EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                    //    EntryZVatAmountWithSAR.TextColor = Color.Black;
+                    //    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                     //{
                     //    EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                    //    EntryImportspaidAdj.TextColor = Color.Black;
+                    //    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -7186,12 +7225,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                     //{
                     //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                     //{
                     //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {
@@ -7265,12 +7304,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATDeclarationPagesEX
                     //if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                     //{
                     //    EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                    //    EntryImportsaccAmt.TextColor = Color.Black;
+                    //    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     //if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                     //{
                     //    EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                    //    EntryImportsaccAdj.TextColor = Color.Black;
+                    //    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
                     //}
                     if (!string.IsNullOrEmpty(senderObj.Text))
                     {

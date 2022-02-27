@@ -95,25 +95,25 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            validFromPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            validFromPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            validFromPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            validFromPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            validFromPicker.HeaderFontFamily = "Somar-SemiBold";
+                            validFromPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            validFromPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            validFromPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
-                            validFromHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            validFromHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            validFromHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            validFromHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            validFromHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            validFromHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
-                            crValidFromPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            crValidFromPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            crValidFromPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            crValidFromPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            crValidFromPicker.HeaderFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            crValidFromPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
-                            crValidFromHijiriPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            crValidFromHijiriPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            crValidFromHijiriPicker.HeaderFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            crValidFromHijiriPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:

@@ -22,8 +22,8 @@ xmlns:custom2="clr-namespace:EGAZT"
         <StackLayout IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}" Margin="0" BackgroundColor="Transparent" >
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                 <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
-                <Label Text="{x:Static custom2:AppResources.TinDeregistration}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static custom2:AppResources.TinDeregistrationSuccess}" FontFamily="{StaticResource SSTArabicMedium}"
+                <Label Text="{x:Static custom2:AppResources.TinDeregistration}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static custom2:AppResources.TinDeregistrationSuccess}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20"  Margin="0,20,0,0" VerticalOptions="Fill">
@@ -33,7 +33,7 @@ xmlns:custom2="clr-namespace:EGAZT"
                         <StackLayout Orientation="Horizontal" Padding="15,10,15,10">
                             <Label  Text="{x:Static custom2:AppResources.VATRSName}" WidthRequest="80" Style="{StaticResource ValueLabelGrey}" HorizontalOptions="StartAndExpand"/>
                             <StackLayout  HorizontalOptions="End" Orientation="Horizontal" >
-                                <Label x:Name="Label_Name" LineHeight="0.7" Text="Sandeep Kumar Saini Sankhala Jilla abc  Jhunjhunu" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
+                                <Label x:Name="Label_Name" Text="Sandeep Kumar Saini Sankhala Jilla abc  Jhunjhunu" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
 
                             </StackLayout>
 
@@ -70,17 +70,14 @@ xmlns:custom2="clr-namespace:EGAZT"
                         </StackLayout>
                     </border:SfBorder>
                     <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZTINDeregDownloadAcknowledgement}"
-                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                          CornerRadius="10" VerticalOptions="End" FontFamily="{StaticResource SomarBold}"
                                           HeightRequest="46" Margin="10,0,15,0" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" Clicked="SfButton_Clicked"/>
+                                          BackgroundColor="{StaticResource Secondary}" TextColor="White" Clicked="SfButton_Clicked"/>
 
 
-                    <!--<buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static custom2:AppResources.VatDeregistrationRegistrationServices}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                       Clicked="btnRegistrationDetailsClicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}"  />-->
                     <buttons:SfButton x:Name="btnDash"   Text="{x:Static local:AppResources.ZZZZGotoDashboard}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnDash_Clicked" FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
+                                      HeightRequest="46" Clicked="btnDash_Clicked" FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" />
                 </StackLayout>
             </yummy:PancakeView>
 

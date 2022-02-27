@@ -1,9 +1,8 @@
-using EGAZT.Models;
+﻿using EGAZT.Models;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.PaymentOptions;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
@@ -17,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -154,22 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsLoading = true;
                         });
-
-                         if (_selectedListItem.Err2064 == "X")
-                        {
-
-                            Device.BeginInvokeOnMainThread(async () =>
-                            {
-                                await Task.Run(() =>
-                                {
-                                    IsLoading = false;
-                                });
-                                //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatReturnsErrorMessage));
-                            });
-                        }
-                         else {
-
+                      
                             if (_selectedListItem.Open)
                             {
                                 if (_selectedListItem.TaxType.Equals("ITAX") || _selectedListItem.TaxType.Equals("ZAKT"))
@@ -205,15 +190,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                 IsLoading = false;
                                             });
                                             // await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+
+                                            var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                            if (App.IsArabic)
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                                                };
+                                            }
+                                            else
+                                            {
+                                                VisitPortalPopup.OnGotoPortal = () =>
+                                                {
+
+                                                    Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                                                };
+                                            }
+                                            //VisitPortalPopup.OnGotoPortal = () =>
+                                            //{
+                                            //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                                            //};
+                                            await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                                         });
                                     }
                                 }
 
                                 if (_selectedListItem.TaxType.Equals("VATX") || _selectedListItem.TaxType.Equals("VTEP"))
                                 {
-                                    //Vat
-                                    await GetVATAllReturnsAsync(_selectedListItem);
+                                //Vat
+                                await GetVATAllReturnsAsync(_selectedListItem);
                                 }
                                 if (_selectedListItem.TaxType.Equals("ETAX"))
                                 {
@@ -225,7 +236,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             IsLoading = false;
                                         });
                                         //await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                        //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+
+                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                        if (App.IsArabic)
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                                            };
+                                        }
+
+                                        //VisitPortalPopup.OnGotoPortal = () =>
+                                        //{
+                                        //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                                        //};
+                                        await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                                     });
 
                                 }
@@ -239,7 +277,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                             IsLoading = false;
                                         });
                                         //    await _dialogService.ShowMessageBox(AppResources.ZZFormFiveTappedMessage, AppResources.Information);
-                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+                                        //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZFormFiveTappedMessage));
+
+                                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZFormFiveTappedMessage);
+                                        if (App.IsArabic)
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            VisitPortalPopup.OnGotoPortal = () =>
+                                            {
+
+                                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                                            };
+                                        }
+
+                                        //VisitPortalPopup.OnGotoPortal = () =>
+                                        //{
+                                        //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                                        //};
+                                        await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                                     });
 
                                 }
@@ -258,11 +323,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
 
                             }
-                        }
-
-
-
-                       
 
      
                     });
@@ -417,22 +477,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        private MyReturnsResult _selectedReturnsVATItem;
-        public MyReturnsResult selectedReturnsVATItem
-        {
-            get
-            {
-                return _selectedReturnsVATItem;
-            }
-            set
-            {
-                if (_selectedReturnsVATItem == value) return;
-
-                _selectedReturnsVATItem = value;
-                RaisePropertyChanged("selectedReturnsVATItem");
-
-            }
-        }
         private GenericPickerModel _pickerModel { get; set; }
         public GenericPickerModel PickerModel
         {
@@ -506,7 +550,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             try
             {
-                selectedReturnsVATItem = SelectedReturnsVAT;
                 try
                 {
                     await Task.Run(() =>
@@ -521,7 +564,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (isStatusNotValid(SelectedReturnsVAT))
                             {
-                               await GetVatAllReturnsForSelectedItem(SelectedReturnsVAT,false);
+                                String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
+                                App.ICRStatus = SelectedReturnsVAT.Stat;
+                                App.VATDeclrationFbguid = SelectedReturnsVAT.Fbguid;
+                                VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
+                                PopToRootPage();
+                                if (_vATDeclaration != null && _vATDeclaration.d != null)
+                                {
+                                    _vATDeclaration.d.Fbguid = SelectedICRGUID;
+                                    VATDeclaration vATDeclaration = new VATDeclaration();
+                                    VATDeclarationD vATDeclarationD = new VATDeclarationD();
+                                    if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
+                                        numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
+                                    Result5 result5 = new Result5();
+                                    List<Result5> lst = new List<Result5>();
+                                    ADRSet _aDRSet = new ADRSet();
+                                    lst.Add(result5);
+                                    vATDeclaration.d = vATDeclarationD;
+                                    vATDeclaration.d.ADRSet = _aDRSet;
+                                    vATDeclaration.d.ADRSet.results = lst;
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
+                                        // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        IsLoading = false;
+
+                                        // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
+
+                                    });
+
+                                }
                             }
                             else
                             {
@@ -536,17 +615,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     }
                                     else
                                     {
-                                        if (SelectedReturnsVAT.Cr2215 != null && SelectedReturnsVAT.Cr2215 == "X")
-                                        {
-                                            MessagingCenter.Subscribe<App, string>(this, "OnlyAddAttachments",async (sender, arg) => {
-                                                IsLoading = true;
-                                               await GetVatAllReturnsForSelectedItem(selectedReturnsVATItem, true);
-                                                MessagingCenter.Unsubscribe<App, string>(this, "OnlyAddAttachments");
-                                            });
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZZReturnUnderReviewAddAttachments));
-                                        }
-                                        else
-                                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
+                                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZZReturnUnderReview));
                                     }
                                 });
 
@@ -583,55 +652,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public async Task GetVatAllReturnsForSelectedItem(MyReturnsResult SelectedReturnsVAT,bool navigateToAttachments)
-        {
-            String SelectedICRGUID = SelectedReturnsVAT.Fbguid;
-            App.ICRStatus = SelectedReturnsVAT.Stat;
-            App.VATDeclrationFbguid = SelectedReturnsVAT.Fbguid;
-            VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(SelectedReturnsVAT.Fbguid, SelectedReturnsVAT.Fbnum, App.TP.Tin, SelectedReturnsVAT.Persl);
-            IsLoading = false;
-            PopToRootPage();
-            if (_vATDeclaration != null && _vATDeclaration.d != null)
-            {
-                _vATDeclaration.d.Fbguid = SelectedICRGUID;
-                VATDeclaration vATDeclaration = new VATDeclaration();
-                VATDeclarationD vATDeclarationD = new VATDeclarationD();
-                if (_vATDeclaration.d.ATTACHSet != null && _vATDeclaration.d.ATTACHSet.results != null && _vATDeclaration.d.ATTACHSet.results.Count > 0)
-                    numberOfAttachmentComingFromServer = _vATDeclaration.d.ATTACHSet.results.Count;
-                Result5 result5 = new Result5();
-                List<Result5> lst = new List<Result5>();
-                ADRSet _aDRSet = new ADRSet();
-                lst.Add(result5);
-                vATDeclaration.d = vATDeclarationD;
-                vATDeclaration.d.ADRSet = _aDRSet;
-                vATDeclaration.d.ADRSet.results = lst;
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    if (navigateToAttachments)
-                    {
-                        _vATDeclaration.d.Cr2215 = SelectedReturnsVAT.Cr2215;
-                        PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(_vATDeclaration));
-                        //MessagingCenter.Send<Object, string>(this, "IsCR2215AttachmentEnable", SelectedReturnsVAT.Cr2215);
-
-                }
-                    else
-                        _navigationService.NavigateTo(App.GAZTNewDesignVATReturnUpdatedUIPageView, _vATDeclaration);
-                    // _navigationService.NavigateTo(App.VATReturnsPageViewEX, _vATDeclaration);
-                });
-            }
-            else
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    IsLoading = false;
-
-                    // await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
-
-                });
-
-            }
-        }
 
         
 
@@ -755,7 +775,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PopToRootPage();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -1523,9 +1543,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
                {
-                new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png"},
-                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "clockNew.png"},
-                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "unsubmitted.png"},
+                new ChipModel(){Text =AppResources.Submitted, TemplateType = "Submitted", ImageSource="submited.png",TextColor=(Color)App.Current.Resources["Success"]},
+                new ChipModel(){Text =AppResources.OverDue, TemplateType = "OverDue",ImageSource = "clockNew.png",TextColor=(Color)App.Current.Resources["Error"]},
+                new ChipModel(){Text =AppResources.UnSubmitted, TemplateType = "UnSubmitted",ImageSource = "unsubmitted.png",TextColor=(Color)App.Current.Resources["Error"]},
                 //new ChipModel(){Text =AppResources.All, TemplateType = "All",ImageSource = "clockNew.png"},
                };
 

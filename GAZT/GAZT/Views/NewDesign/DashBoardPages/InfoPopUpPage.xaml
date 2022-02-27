@@ -58,7 +58,7 @@
             
             <!--Zakat Ends-->
 
-            <buttons:SfButton x:Name="btnLogout" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static ResourceManager:AppResources.ZLogout}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
+            <buttons:SfButton x:Name="btnLogout" FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static ResourceManager:AppResources.ZLogout}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
                                     Clicked="btnLogout_Clicked" Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource PrimaryButtonStyle}"  />
         </StackLayout>

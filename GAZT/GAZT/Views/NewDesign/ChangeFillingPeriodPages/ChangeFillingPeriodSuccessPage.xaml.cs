@@ -90,7 +90,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

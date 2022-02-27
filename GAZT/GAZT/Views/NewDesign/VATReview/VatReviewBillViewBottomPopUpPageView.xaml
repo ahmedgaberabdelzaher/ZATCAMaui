@@ -59,24 +59,24 @@
                                             <RowDefinition Height="auto" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="auto" />
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                                CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
                                                Opacity=".2" IsClippedToBounds="True"
                                                BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                               HasShadow="False" />
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
-                                               HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                               HasShadow="False" />-->
+                                     
+                                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"
+                                                     Padding="8,0" Orientation="Horizontal">
+                                               <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                               HorizontalOptions="Start" VerticalOptions="Center" Aspect="AspectFit"
                                                Source="vat_user" />
-                                        <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
-                                                     Padding="8,0">
                                             <Label Text="{x:Static ResourceManager:AppResources.VRBillDetails}"
                                                    VerticalOptions="CenterAndExpand"
-                                                   Style="{StaticResource SectionTitleBlackBold}" />
+                                                   Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                         </StackLayout>
                                     
                                    

@@ -24,29 +24,10 @@ namespace GAZT.CustomControl
         public CustomNavigation(Page root) : base(root)
         {
             InitializeComponent();
-            BarBackgroundColor = Color.FromHex("#005e4b");
+            BarBackgroundColor =  (Color)Application.Current.Resources["Primary"];
             BarTextColor = Color.White;
         }
 
-
-
-        //public CustomNavigation(Page root) : base(root)
-        //{
-        //    InitializeComponent();
-        //    BarBackgroundColor = Color.FromHex("#005e4b");
-        //    BarTextColor = Color.White;
-            
-        //    //if (App.IsArabic)
-        //    //{
-        //    //    NavPage.FlowDirection = FlowDirection.RightToLeft;
-        //    //}
-        //    //else
-        //    //{
-        //    //    NavPage.FlowDirection = FlowDirection.LeftToRight;
-        //    //}
-
-
-        //}
 
 
 

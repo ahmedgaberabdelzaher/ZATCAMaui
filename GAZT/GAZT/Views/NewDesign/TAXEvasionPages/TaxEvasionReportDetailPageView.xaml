@@ -28,7 +28,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 <Setter Property="HeightRequest" Value="24" />
@@ -36,7 +36,7 @@
             </Style>
 
             <Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="#E5EFED"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="HasShadow" Value="False"/>
@@ -98,13 +98,13 @@
                                     <Setter Property="TextColor" Value="{StaticResource Primary}"/>
                                 </DataTrigger>
                                 <DataTrigger TargetType="Label" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
-                                    <Setter Property="TextColor" Value="#aa0c19" />
+                                    <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                 </DataTrigger>
                             </custom:CustomLabel.Triggers>
                         </custom:CustomLabel>
                         <yummy:PancakeView.Triggers>
                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
-                                <Setter Property="BackgroundColor" Value="#E5EFED" />
+                                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
                             </DataTrigger>
                             <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
                                 <Setter Property="BackgroundColor" Value="#F5F5F5"/>
@@ -116,11 +116,12 @@
                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" Padding="16">
-                            <Frame Style="{StaticResource circleFrame}" BackgroundColor="#E5EFED">
-                                <Image Source="vat_user" HeightRequest="30">
+                            <Image Source="vat_user" HeightRequest="30"/>
+                            <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
+                                
 
-                                </Image>
-                            </Frame>
+
+                            </Frame>-->
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                         </StackLayout> 
 
@@ -149,11 +150,12 @@
                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" Padding="16">
-                            <Frame Style="{StaticResource circleFrame}" BackgroundColor="#E5EFED">
-                                <Image Source="ic_company.png">
+                            <Image Source="ic_company.png"/>
+                            <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
+                                
 
-                                </Image>
-                            </Frame>
+
+                            </Frame>-->
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/> 
                         </StackLayout>
 
@@ -195,11 +197,12 @@
                 <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" Padding="16">
-                            <Frame Style="{StaticResource circleFrame}" BackgroundColor="#E5EFED">
-                                <Image Source="zakat_details">
+                             <Image Source="zakat_details"/>
+                            <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
+                               
 
-                                </Image>
-                            </Frame>
+
+                            </Frame>-->
                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                         </StackLayout>
 

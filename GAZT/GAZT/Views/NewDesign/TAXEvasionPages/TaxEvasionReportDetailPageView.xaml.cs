@@ -87,13 +87,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 {
                     // Handle permission exception
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     // Unable to get location
                 }
                 //}
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

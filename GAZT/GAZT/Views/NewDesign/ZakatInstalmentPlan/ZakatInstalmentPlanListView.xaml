@@ -7,28 +7,20 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:local1="clr-namespace:EGAZT.CustomControl"
+            xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              ios:Page.UseSafeArea="true"
-             mc:Ignorable="d"
-             FlowDirection="RightToLeft"
-             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-             x:Name="zakatListPage"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanListPageView"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundImageSource="partials_background.png">
+             mc:Ignorable="d" FlowDirection="RightToLeft"
+                                                                xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+
+              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.ZakatInstalmentPlanListPageView" 
+             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+  <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -51,64 +43,39 @@
             <Grid BackgroundColor="Transparent">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView Grid.Row="1"
-                                       BackgroundColor="Black"
-                                       CornerRadius="15,15,0,0"
-                                       Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand"
-                              VerticalOptions="FillAndExpand"
-                              Margin="0"
-                              Padding="0,0,0,0"
-                              x:Name="VATRMainGrid">
+                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
+                  Padding="0,0,0,0" x:Name="VATRMainGrid">
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
                             <ContentPresenter VerticalOptions="FillAndExpand"
-                                              HorizontalOptions="FillAndExpand"
-                                              Grid.Column="0"
-                                              Grid.Row="0"
-                                              BackgroundColor="White" />
+                        HorizontalOptions="FillAndExpand"
+                        Grid.Column="0"
+                        Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="0,10,0,10"
-                          Grid.Row="0">
+                    <Grid Padding="0,10,0,10" Grid.Row="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*" />
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="60*"/>
+                            <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1"
-                               Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}"
-                               HorizontalOptions="CenterAndExpand"
-                               VerticalOptions="Center"
-                               Style="{StaticResource SectionTitleWhiteBold}" />
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               Style="{StaticResource IconLabelStyle}"
-                               Text="{DynamicResource StyleReverseBack}"
-                               TextColor="White"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand">
+                        <Label Grid.Column="1" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentPageTitle}"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource SectionTitleWhiteBold}"  />
+                        <Label Grid.Row="0" Grid.Column="0"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="White" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
-                        <Label Grid.Row="0"
-                               Grid.Column="2"
-                               Style="{StaticResource IconLabelStyle}"
-                               TextColor="White"
-                               Text="{StaticResource Close}"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="EndAndExpand">
+                        <Label Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>
@@ -118,84 +85,46 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand"
-                    VerticalOptions="FillAndExpand">
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>
 
                 <!--Landing Page-->
-                <Grid IsVisible="{Binding IsZakatLandingPageVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="20,10,20,0"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsZakatLandingPageVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0"
-                                            Grid.Column="0"
-                                            Text="{Binding SelectionType}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            FontSize="28" />
-
-                        <custom:CustomLabel Grid.Row="1"
-                                            Grid.Column="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanSubTitle}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}" />
-                        <BoxView Grid.Row="2"
-                                 Grid.Column="0"
-                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{Binding SelectionType}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28"/>
+                        
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentPlanSubTitle}" HorizontalOptions="StartAndExpand"
+                                         Style="{StaticResource BodyLabelGrey}"/>
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
                     </Grid>
 
-                    <Grid Grid.Row="1"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                        <listView:SfListView x:Name="outletDecisionOptionsListView"
-                                             HorizontalOptions="FillAndExpand"
-                                             VerticalOptions="StartAndExpand"
-                                             AutoFitMode="Height"
-                                             ItemSpacing="5"
-                                             ItemsSource="{Binding OutletDecisionOptions}"
-                                             SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
-                                             SelectionMode="Single"
-                                             SelectionBackgroundColor="Transparent"
-                                             SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
+                        <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="FillAndExpand"   VerticalOptions="StartAndExpand" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  SelectionMode="Single"
+                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
 
                             <listView:SfListView.ItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True"
-                                                      BackgroundColor="Transparent"
-                                                      CornerRadius="20"
-                                                      HeightRequest="120">
-                                        <Grid HorizontalOptions="FillAndExpand"
-                                              VerticalOptions="FillAndExpand"
-                                              ColumnSpacing="20"
-                                              RowSpacing="10">
-                                            <Image Source="vat_tile_listofsignup_W"
-                                                   Aspect="Fill"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand" />
-                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}"
-                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                VerticalOptions="EndAndExpand"
-                                                                Margin="20,0,20,20"
-                                                                TextColor="Black"
-                                                                HorizontalTextAlignment="Start"
-                                                                LineHeight="0.8">
+                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                            <Image Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="{StaticResource PrimaryColor}" HorizontalTextAlignment="Start">
                                             </custom:CustomLabel>
                                         </Grid>
                                     </cards:SfCardView>
@@ -207,26 +136,11 @@
                             <listView:SfListView.SelectedItemTemplate>
 
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="True"
-                                                      BackgroundColor="Transparent"
-                                                      CornerRadius="20"
-                                                      HeightRequest="120">
-                                        <Grid HorizontalOptions="FillAndExpand"
-                                              VerticalOptions="FillAndExpand"
-                                              ColumnSpacing="20"
-                                              RowSpacing="10">
-                                            <Image Source="vat_tile_listofsignup"
-                                                   Aspect="Fill"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand" />
-                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}"
-                                                                Style="{StaticResource CaptionLabelBlack}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                VerticalOptions="EndAndExpand"
-                                                                Margin="20,0,20,20"
-                                                                TextColor="White"
-                                                                HorizontalTextAlignment="Start"
-                                                                LineHeight="0.8">
+                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="120">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="20" RowSpacing="10">
+                                            <Image Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Text="{Binding ActiveOutletDecisionOptions}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"
+                                                                    Margin="20,0,20,20" TextColor="White" HorizontalTextAlignment="Start">
                                             </custom:CustomLabel>
                                         </Grid>
                                     </cards:SfCardView>
@@ -237,8 +151,7 @@
 
                             <listView:SfListView.LayoutManager>
 
-                                <listView:GridLayout x:Name="GridLayout"
-                                                     SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
+                                <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
 
                             </listView:SfListView.LayoutManager>
 
@@ -247,77 +160,43 @@
                     </Grid>
                 </Grid>
 
-                <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}"
-                             Margin="20">
+                <StackLayout IsVisible="{Binding CreateZakatInstalmentBtnVisible}" Margin="20">
 
 
                     <!-- Display Submitted list-->
 
-                    <listView:SfListView  Grid.Row="2"
-                                          x:Name="VATInstalmentPlanListViewPage"
-                                          HorizontalOptions="CenterAndExpand"
-                                          Margin="0"
-                                          Padding="0"
-                                          VerticalOptions="StartAndExpand"
-                                          AutoFitMode="Height"
-                                          ItemSpacing="0"
-                                          ItemTapped="SummaryattachmentsListView_ItemTapped"
-                                          ItemsSource="{Binding ZakatListData}"
-                                          SelectionMode="Single"
-                                          SelectionBackgroundColor="Transparent">
+                    <listView:SfListView  Grid.Row="2" x:Name="VATInstalmentPlanListViewPage" HorizontalOptions="CenterAndExpand" Margin="0" Padding="0"
+                                                   VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="SummaryattachmentsListView_ItemTapped"
+                                      ItemsSource="{Binding ZakatListData}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                         <listView:SfListView.HeaderTemplate>
                             <DataTemplate>
                                 <ViewCell>
                                     <ViewCell.View>
                                         <Grid Grid.Row="0">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="1" />
-                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="1"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
-                                            <custom:CustomLabel Grid.Row="0"
-                                                                Grid.Column="0"
-                                                                Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource SectionTitleBlackBold}"
-                                                                FontSize="28" />
-                                            <custom:CustomLabel Grid.Row="1"
-                                                                Grid.Column="0"
-                                                                Text="{Binding NumberOfInstalmentPlans}"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                Style="{StaticResource BodyLabelGrey}" />
-                                            <BoxView Grid.Row="2"
-                                                     Grid.Column="0"
-                                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriodMyRequests}" HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfInstalmentPlans}" HorizontalOptions="StartAndExpand"
+                                         Style="{StaticResource BodyLabelGrey}"/>
+                                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
 
-                                            <cards:SfCardView Margin="0,10,0,10"
-                                                              Grid.Row="3"
-                                                              Padding="12"
-                                                              HasShadow="False"
-                                                              BorderColor="Gray"
-                                                              BorderWidth="0.2"
-                                                              CornerRadius="15">
+                                            <cards:SfCardView Margin="0,10,0,10" Grid.Row="3" Padding="12" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
 
-                                                <Grid>
+                                                <Grid >
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="auto"></RowDefinition>
                                                     </Grid.RowDefinitions>
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="auto" />
-                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="auto"/>
+                                                        <ColumnDefinition Width="*"/>
                                                     </Grid.ColumnDefinitions>
-                                                    <Image Grid.Row="0"
-                                                           Grid.Column="0"
-                                                           Source="add"
-                                                           WidthRequest="30"
-                                                           HeightRequest="30"
-                                                           HorizontalOptions="Start"></Image>
-                                                    <custom:CustomLabel Grid.Row="0"
-                                                                        Grid.Column="1"
-                                                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCreateNewRequest}"
-                                                                        HorizontalOptions="StartAndExpand"
-                                                                        Style="{StaticResource GAZTSmallGreenLabelStyle}" />
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="add" WidthRequest="30" HeightRequest="30" HorizontalOptions="Start"></Image>
+                                                    <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentCreateNewRequest}" HorizontalOptions="StartAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" />
                                                     <Grid.GestureRecognizers>
                                                         <TapGestureRecognizer Command="{Binding ReqInstalmentBtnTapped}"></TapGestureRecognizer>
                                                     </Grid.GestureRecognizers>
@@ -332,75 +211,38 @@
 
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <border:SfBorder x:Name="Item"
-                                                 Padding="10"
-                                                 Grid.Column="0"
-                                                 CornerRadius="15"
-                                                 Margin="0,15,0,0"
-                                                 HasShadow="True"
-                                                 Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <Grid Padding="0"
-                                          RowSpacing="0"
-                                          Margin="0">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
+                                <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <Grid Padding="0" RowSpacing="0" Margin="0">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <custom:CustomLabel Grid.Row="0"
-                                                            Grid.ColumnSpan="2"
-                                                            Text="{Binding Fbtyp}"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            Style="{StaticResource SectionTitleBlack}"
-                                                            Margin="0" />
+                                            <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Fbtyp}" HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource SectionTitleBlack}" Margin="0" />
 
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Grid.Column="0"
-                                                            Text="{Binding referanceNumber}"
-                                                            Style="{StaticResource ValueLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"
-                                                            VerticalOptions="CenterAndExpand" />
+                                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding referanceNumber}" Style="{StaticResource ValueLabelGrey}"    HorizontalTextAlignment="Start" 
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                      
+                                        <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
-                                        <StackLayout Grid.Row="1"
-                                                     Grid.Column="1"
-                                                     VerticalOptions="FillAndExpand"
-                                                     HorizontalOptions="FillAndExpand">
+                                            <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
-                                            <yummy:PancakeView Padding="8,3,8,3"
-                                                               CornerRadius="14"
-                                                               BorderThickness="1"
-                                                               BackgroundColor="#E5EFED"
-                                                               VerticalOptions="CenterAndExpand"
-                                                               HorizontalOptions="Center">
-
-                                                <Label Style="{StaticResource CaptionLabelBlack}"
-                                                       TextColor="DarkGoldenrod"
-                                                       Text="{Binding status}"
-                                                       HorizontalTextAlignment="Center"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       VerticalOptions="CenterAndExpand">
+                                                <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding status}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                     <Label.Triggers>
 
-                                                        <DataTrigger TargetType="Label"
-                                                                     Binding="{Binding status}"
-                                                                     Value="{x:Static ResourceManager:AppResources.NDBilled}">
-                                                            <Setter Property="Text"
-                                                                    Value="{x:Static ResourceManager:AppResources.NDBilled}" />
-                                                            <Setter Property="TextColor"
-                                                                    Value="{StaticResource Primary}" />
-                                                            <Setter Property="HorizontalTextAlignment"
-                                                                    Value="Center" />
+                                                        <DataTrigger TargetType="Label" Binding="{Binding status}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                            <Setter Property="HorizontalTextAlignment" Value="Center"/>
                                                         </DataTrigger>
 
                                                     </Label.Triggers>
@@ -408,98 +250,28 @@
                                             </yummy:PancakeView>
                                         </StackLayout>
 
-                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                                 Margin="0,5,0,5"
-                                                 HeightRequest="1"
-                                                 Grid.Row="2"
-                                                 Grid.ColumnSpan="2" />
+                                        <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" Margin="0,5,0,5" HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="2"/>
 
-                                        <StackLayout Grid.Row="3"
-                                                     Grid.Column="0"
-                                                     Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}"
-                                                   Style="{StaticResource CaptionLabelGrey}" />
-                                            <Label Text="{Binding dueamount}"
-                                                   Style="{StaticResource ValueLabelBlack}" />
+                                        <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding dueamount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
-                                        <!--,Converter={StaticResource commaSeparatorConverter}-->
-                                        <StackLayout Grid.Row="3"
-                                                     Grid.Column="1"
-                                                     Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}"
-                                                   Style="{StaticResource CaptionLabelGrey}" />
-                                            <Label Text="{Binding instalmentAmount}"
-                                                   Style="{StaticResource ValueLabelBlack}" />
+                                        <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding instalmentAmount,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
 
-                                        <StackLayout Grid.Row="4"
-                                                     Grid.Column="0"
-                                                     Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}"
-                                                   Style="{StaticResource CaptionLabelGrey}" />
-                                            <Label Text="{Binding noOfInstalments}"
-                                                   Style="{StaticResource ValueLabelBlack}" />
+                                        <StackLayout Grid.Row="4" Grid.Column="0" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding noOfInstalments}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
-                                        <StackLayout Grid.Row="4"
-                                                     Grid.Column="1"
-                                                     Spacing="-5"
-                                                     HorizontalOptions="FillAndExpand"
-                                                     VerticalOptions="FillAndExpand">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}"
-                                                   Style="{StaticResource CaptionLabelGrey}" />
-                                            <Label Text="{Binding downpayment}"
-                                                   Style="{StaticResource ValueLabelBlack}"
-                                                   HorizontalOptions="FillAndExpand"
-                                                   VerticalOptions="FillAndExpand" />
+                                        <StackLayout Grid.Row="4" Grid.Column="1" Spacing="-5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding downpayment,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                         </StackLayout>
-                                        <!--,Converter={StaticResource commaSeparatorConverter}-->
-                                        <StackLayout Grid.Row="5"
-                                                     Grid.ColumnSpan="2"
-                                                     Spacing="-5">
-                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}"
-                                                   Style="{StaticResource CaptionLabelGrey}" />
-                                            <Label Text="{Binding dateOfSubmission}"
-                                                   Style="{StaticResource ValueLabelBlack}" />
-                                        </StackLayout>
-                                        <BoxView Grid.Row="6"
-                                                 Grid.ColumnSpan="2"
-                                                 Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                                 IsVisible="{Binding isShowApproveView}"
-                                                 Margin="0,5,0,5"
-                                                 HeightRequest="1" />
-
-                                        <StackLayout Grid.Row="7"
-                                                     Grid.Column="0"
-                                                     Spacing="-5"
-                                                     IsVisible="{Binding isShowApproveView}">
-                                            <buttons:SfButton  Margin="0,16,0,16"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmetConfirm}"
-                                                               Style="{StaticResource PrimaryButtonStyle}"
-                                                               HeightRequest="48"
-                                                               WidthRequest="366"
-                                                               BindingContext="{Binding Source={x:Reference zakatListPage},Path=BindingContext}"
-                                                               Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}"
-                                                               CommandParameter="{Binding Source={x:Reference Item},Path=BindingContext}">
-                                                <!--Clicked="ApproveTapped"-->
-                                                <!--BindingContext="{Binding.}"-->
-                                                <!--Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}"-->
-                                                <!--<buttons:SfButton.GestureRecognizers>
-                                                    <TapGestureRecognizer Command="{Binding BindingContext.ApproveButtonTapped,Source={x:Reference zakatListPage}}" 
-                                                                          CommandParameter="{Binding Source={x:Reference zakatListPage}, Path=BindingContext}"/>
-                                                </buttons:SfButton.GestureRecognizers>-->
-                                            </buttons:SfButton>
-                                        </StackLayout>
-                                        <StackLayout Grid.Row="7"
-                                                     Grid.Column="1"
-                                                     Spacing="-5"
-                                                     IsVisible="{Binding isShowApproveView}">
-                                            <buttons:SfButton  Margin="0,16,0,16"
-                                                               Text="{x:Static ResourceManager:AppResources.ZakatInstalmetReject}"
-                                                               Style="{StaticResource PrimaryButtonStyle}"
-                                                               HeightRequest="48"
-                                                               WidthRequest="366"
-                                                               Command="{Binding BindingContext.RejecteButtonTapped,Source={x:Reference zakatListPage}}"
-                                                               CommandParameter="{Binding Source={x:Reference Item},Path=BindingContext}" />
+                                        <StackLayout Grid.Row="5" Grid.ColumnSpan="2" Spacing="-5">
+                                            <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <Label Text="{Binding dateOfSubmission}" Style="{StaticResource ValueLabelBlack}" />
                                         </StackLayout>
 
 
@@ -516,185 +288,87 @@
                 </StackLayout>
                 <!--Summary View-->
 
-                <Grid IsVisible="{Binding IsZakatSummaryVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="20,10,20,0"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsZakatSummaryVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*" />
-                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="2">
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
                         <StackLayout Orientation="Vertical">
-                            <custom:CustomLabel Grid.Row="0"
-                                                Grid.Column="0"
-                                                Text="{x:Static ResourceManager:AppResources.ZVatSummary}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource SectionTitleBlackBold}"
-                                                FontSize="28" />
-                            <custom:CustomLabel Grid.Row="1"
-                                                Grid.Column="0"
-                                                Text="{x:Static ResourceManager:AppResources.NDReviewBelow}"
-                                                HorizontalOptions="StartAndExpand"
-                                                Style="{StaticResource BodyLabelGrey}"
-                                                Margin="0,0,0,8" />
-                            <BoxView Grid.Row="2"
-                                     Grid.Column="0"
-                                     Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZVatSummary}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.NDReviewBelow}" HorizontalOptions="StartAndExpand"
+                                             Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                         </StackLayout>
-                        <border:SfBorder Margin="0,16,0,10"
-                                         Grid.Row="3"
-                                         Grid.Column="0"
-                                         HasShadow="False"
-                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <border:SfBorder Margin="0,16,0,10" Grid.Row="3" Grid.Column="0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
-                                <Grid Padding="15"
-                                      RowSpacing="0">
+                                <Grid Padding="15" RowSpacing="0" >
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           CornerRadius="32"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center"
-                                           Opacity=".2"
-                                           IsClippedToBounds="True"
-                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                           HasShadow="False">
-                                    </Frame>
-                                    <Image Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center"
-                                           Aspect="AspectFit"
-                                           Source="establishments" />
-                                    <StackLayout  HorizontalOptions="FillAndExpand"
-                                                  Grid.Row="0"
-                                                  Grid.Column="1"
-                                                  Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.Bills}"
-                                               VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                    HasShadow="False">
+                                    </Frame>-->
+                                    <StackLayout  HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
+
+                                        <Label Text="{x:Static ResourceManager:AppResources.Bills}" VerticalOptions="CenterAndExpand"
+                                               Style="{StaticResource SectionTitleBlackBold}" Padding="8,0" />
                                     </StackLayout>
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
 
-                                <listView:SfListView  Grid.Row="3"
-                                                      Grid.Column="0"
-                                                      Grid.ColumnSpan="2"
-                                                      HorizontalOptions="Center"
-                                                      IsScrollBarVisible="False"
-                                                      IsScrollingEnabled="False"
-                                                      VerticalOptions="Center"
-                                                      AutoFitMode="Height"
-                                                      ItemSpacing="5"
-                                                      SelectionMode="SingleDeselect"
-                                                      SelectionBackgroundColor="Transparent"
-                                                      ItemsSource="{Binding SummarySelectedBillsList}">
-
+                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent"
+                                      ItemsSource="{Binding SummarySelectedBillsList}"  >
+                                   
 
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Padding="0"
-                                                  RowSpacing="0"
-                                                  Margin="10,0,10,0"
-                                                  HorizontalOptions="FillAndExpand"
-                                                  VerticalOptions="FillAndExpand">
+                                            <Grid Padding="0" RowSpacing="0" Margin="10,0,10,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                                                 <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="50*" />
-                                                    <ColumnDefinition Width="50*" />
+                                                    <ColumnDefinition Width="50*"/>
+                                                    <ColumnDefinition Width="50*"/>
                                                 </Grid.ColumnDefinitions>
 
-                                                <custom:CustomLabel Grid.Row="0"
-                                                                    Grid.ColumnSpan="2"
-                                                                    Text="{Binding billNumber}"
-                                                                    Style="{StaticResource SectionTitleBlackBold}"
-                                                                    HorizontalOptions="StartAndExpand" />
+                                                <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding billNumber}" Style="{StaticResource SectionTitleBlackBold}"  HorizontalOptions="StartAndExpand" />
 
-                                                <custom:CustomLabel Grid.Row="1"
-                                                                    Grid.Column="1"
-                                                                    Text="{Binding billType}"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="End"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="FillAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="1"
-                                                                    Grid.Column="0"
-                                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryBillType}"
-                                                                    Style="{StaticResource BodyLabelGrey}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{Binding billType}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstallmentSummaryBillType}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" ></custom:CustomLabel>
 
-                                                <custom:CustomLabel Grid.Row="2"
-                                                                    Grid.Column="0"
-                                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}"
-                                                                    Style="{StaticResource BodyLabelGrey}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    VerticalOptions="FillAndExpand"
-                                                                    HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="2"
-                                                                    Grid.Column="1"
-                                                                    Text="{Binding saadNumber}"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="End"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="2" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInvoiceNumber}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="2" Grid.Column="1" Text="{Binding saadNumber}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
 
-                                                <custom:CustomLabel Grid.Row="3"
-                                                                    Grid.Column="0"
-                                                                    Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}"
-                                                                    Style="{StaticResource BodyLabelGrey}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="Start"
-                                                                    VerticalOptions="FillAndExpand"
-                                                                    HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                                <custom:CustomLabel Grid.Row="3"
-                                                                    Grid.Column="1"
-                                                                    Text="{Binding taxPeriod}"
-                                                                    Style="{StaticResource ValueLabelBlack}"
-                                                                    LineHeight="0.7"
-                                                                    HorizontalTextAlignment="End"
-                                                                    HorizontalOptions="FillAndExpand"
-                                                                    VerticalOptions="FillAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueDate}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" VerticalOptions="FillAndExpand" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                                <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{Binding taxPeriod}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="End" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></custom:CustomLabel>
 
                                             </Grid>
                                         </DataTemplate>
@@ -706,87 +380,38 @@
                         <!-- Installment Agreement Section-->
 
 
-                        <border:SfBorder Margin="0,16,0,10"
-                                         Grid.Row="4"
-                                         Grid.Column="0"
-                                         HasShadow="False"
-                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <border:SfBorder Margin="0,16,0,10" Grid.Row="4" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
-                                <Grid Padding="15"
-                                      RowSpacing="0">
+                                <Grid Padding="15" RowSpacing="0" >
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           CornerRadius="32"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center"
-                                           Opacity=".2"
-                                           IsClippedToBounds="True"
-                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                           HasShadow="False">
-                                    </Frame>
-                                    <Image Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center"
-                                           Aspect="AspectFit"
-                                           Source="establishments" />
-                                    <StackLayout HorizontalOptions="FillAndExpand"
-                                                 Grid.Row="0"
-                                                 Grid.Column="1"
-                                                 Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}"
-                                               VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
-                                    </StackLayout>
+                                    <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                    </Frame>-->
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="establishments"/>
 
+                                        <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAgrement}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
+                                    </StackLayout>
+                                   
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                <Grid Grid.Row="3"
-                                      Grid.ColumnSpan="2"
-                                      Padding="8">
-                                    <custom:CustomLabel Grid.Column="0"
-                                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}"
-                                                        Style="{StaticResource BodyLabelGrey}"
-                                                        LineHeight="0.7"
-                                                        HorizontalTextAlignment="Start"
-                                                        HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="1"
-                                                        Text="{Binding NoOfInstalments}"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        LineHeight="0.7"
-                                                        HorizontalTextAlignment="End"
-                                                        HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                <Grid Grid.Row="3" Grid.ColumnSpan="2" Padding="8">
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetNumberOfInstalments}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding NoOfInstalments}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                 </Grid>
-                                <Grid Grid.Row="4"
-                                      Grid.ColumnSpan="2"
-                                      Padding="8">
-                                    <custom:CustomLabel Grid.Column="0"
-                                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}"
-                                                        Style="{StaticResource BodyLabelGrey}"
-                                                        LineHeight="0.7"
-                                                        HorizontalTextAlignment="Start"
-                                                        HorizontalOptions="StartAndExpand"></custom:CustomLabel>
-                                    <custom:CustomLabel Grid.Column="1"
-                                                        Text="{Binding SelectedFrequencyName}"
-                                                        Style="{StaticResource ValueLabelBlack}"
-                                                        LineHeight="0.7"
-                                                        HorizontalTextAlignment="End"
-                                                        HorizontalOptions="EndAndExpand"></custom:CustomLabel>
+                                <Grid Grid.Row="4" Grid.ColumnSpan="2" Padding="8">
+                                    <custom:CustomLabel Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetFrequency}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                    <custom:CustomLabel Grid.Column="1" Text="{Binding SelectedFrequencyName}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                 </Grid>
 
                             </StackLayout>
@@ -795,99 +420,48 @@
                         <!--Summary Attachments-->
 
 
-                        <border:SfBorder  Margin="0,16,0,10"
-                                          Grid.Row="5"
-                                          Grid.Column="0"
-                                          HasShadow="False"
-                                          Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <border:SfBorder  Margin="0,16,0,10" Grid.Row="5" Grid.Column="0"  HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout Padding="0">
-                                <Grid Padding="15"
-                                      RowSpacing="0">
+                                <Grid Padding="15" RowSpacing="0" >
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto" />
-                                        <RowDefinition Height="auto" />
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
                                     </Grid.RowDefinitions>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="auto" />
-                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           CornerRadius="32"
-                                           HorizontalOptions="Start"
-                                           VerticalOptions="Center"
-                                           Opacity=".2"
-                                           IsClippedToBounds="True"
-                                           BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                           HasShadow="False">
-                                    </Frame>
-                                    <Image Grid.Row="0"
-                                           Grid.Column="0"
-                                           HeightRequest="24"
-                                           WidthRequest="24"
-                                           HorizontalOptions="Center"
-                                           VerticalOptions="Center"
-                                           Aspect="AspectFit"
-                                           Source="ic_attachment" />
-                                    <StackLayout HorizontalOptions="FillAndExpand"
-                                                 Grid.Row="0"
-                                                 Grid.Column="1"
-                                                 Padding="8,0">
-                                        <Label Text="{x:Static ResourceManager:AppResources.Attachments}"
-                                               VerticalOptions="CenterAndExpand"
-                                               Style="{StaticResource SectionTitleBlackBold}" />
+                                    <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                HasShadow="False">
+                                    </Frame>-->
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_attachment"/>
+
+                                        <Label Text="{x:Static ResourceManager:AppResources.Attachments}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                     </StackLayout>
                                 </Grid>
 
                                 <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" />
-                                <listView:SfListView  Grid.Row="3"
-                                                      Grid.Column="0"
-                                                      Grid.ColumnSpan="2"
-                                                      x:Name="SummaryattachmentsListView"
-                                                      HorizontalOptions="Center"
-                                                      IsScrollBarVisible="False"
-                                                      IsScrollingEnabled="False"
-                                                      VerticalOptions="Center"
-                                                      AutoFitMode="Height"
-                                                      ItemSpacing="5"
-                                                      ItemsSource="{Binding Attachments}"
-                                                      SelectionMode="None"
-                                                      SelectionBackgroundColor="Transparent">
+                                <listView:SfListView  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" x:Name="SummaryattachmentsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
+                                      ItemsSource="{Binding Attachments}" SelectionMode="None" SelectionBackgroundColor="Transparent">
                                     <listView:SfListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Padding="0"
-                                                  RowSpacing="0"
-                                                  Margin="10,5,10,0">
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
+                                            <Grid Padding="0" RowSpacing="0" Margin="10,5,10,0">
+                                                <Grid.RowDefinitions >
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
                                                 </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Row="0"
-                                                             Grid.Column="0"
-                                                             Spacing="-5">
-                                                    <Image Grid.Row="0"
-                                                           Grid.Column="0"
-                                                           Source="newui_ic_pdf"
-                                                           Margin="5,0"
-                                                           WidthRequest="25"
-                                                           HeightRequest="25"
-                                                           HorizontalOptions="Start"
-                                                           VerticalOptions="Center" />
+                                                <StackLayout Grid.Row="0" Grid.Column="0" Spacing="-5">
+                                                    <Image Grid.Row="0" Grid.Column="0" Source="newui_ic_pdf" Margin="5,0" WidthRequest="25" HeightRequest="25"
+                                                       HorizontalOptions="Start" VerticalOptions="Center"/>
                                                 </StackLayout>
-                                                <StackLayout Grid.Row="0"
-                                                             Grid.Column="1"
-                                                             Spacing="-5">
-                                                    <Label Text="{Binding Filename}"
-                                                           Style="{StaticResource ValueLabelBlack}"
-                                                           HorizontalTextAlignment="End"
-                                                           HorizontalOptions="EndAndExpand" />
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="-5">
+                                                    <Label Text="{Binding Filename}" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
                                                 </StackLayout>
                                             </Grid>
                                         </DataTemplate>
@@ -900,70 +474,50 @@
                     </Grid>
 
 
-                    <Grid Grid.Row="1"
-                          Grid.ColumnSpan="2"
-                          HorizontalOptions="FillAndExpand"
-                          VerticalOptions="FillAndExpand">
+                    <Grid Grid.Row="1"  Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*" />
-                            <ColumnDefinition Width="50*" />
+                            <ColumnDefinition Width="50*"/>
+                            <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Grid Grid.Row="0"
-                              Grid.Column="0"
-                              Grid.ColumnSpan="2"
-                              Margin="0,10,0,0">
+                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0">
 
                             <Frame CornerRadius="10"
-                                   HasShadow="False"
-                                   Style="{StaticResource SfStyleForZakatPlanGreen}"
-                                   Padding="0">
-                                <StackLayout Padding="10"
-                                             Orientation="Horizontal">
+                               HasShadow="False"
+                               Style="{StaticResource SfStyleForZakatPlanGreen}"
+                                Padding="0">
+                                <StackLayout Padding="10" Orientation="Horizontal">
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalInstalmentsRequestAmount}"
-                                                        HorizontalOptions="StartAndExpand"
-                                                        Style="{StaticResource BodyLabelBlack}"
-                                                        VerticalTextAlignment="Center" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentTotalInstalmentsRequestAmount}" HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelBlack}" VerticalTextAlignment="Center" />
 
-                                    <custom:CustomLabel  Text="{Binding TotalAmount,Converter={StaticResource commaSeparatorConverter}}"
-                                                         HorizontalOptions="EndAndExpand"
-                                                         Style="{StaticResource SectionTitleBlackBold}"
-                                                         VerticalTextAlignment="Center" />
+                                    <custom:CustomLabel  Text="{Binding TotalAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource SectionTitleBlackBold}" VerticalTextAlignment="Center"/>
 
                                 </StackLayout>
                             </Frame>
                         </Grid>
 
-                        <Grid Grid.Row="1"
-                              Grid.Column="0"
-                              Grid.ColumnSpan="2"
-                              Margin="0,10,0,0"
-                              HorizontalOptions="FillAndExpand"
-                              VerticalOptions="FillAndExpand">
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-                            <Frame CornerRadius="10"
-                                   Style="{StaticResource SfStyleForZakatPlanGreen}"
-                                   HasShadow="False"
-                                   Padding="0">
-                                <StackLayout Padding="10"
-                                             Orientation="Horizontal">
+                            <Frame CornerRadius="10"  
+                               Style="{StaticResource SfStyleForZakatPlanGreen}"
+                                HasShadow="False"
+                                     Padding="0">
+                                <StackLayout Padding="10" Orientation="Horizontal">
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDownPaymentAmount}"
-                                                        HorizontalOptions="Start"
-                                                        VerticalOptions="Center"
-                                                        Style="{StaticResource BodyLabelBlack}" />
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDownPaymentAmount}" HorizontalOptions="Start"
+                                                VerticalOptions="Center"
+                                                Style="{StaticResource BodyLabelBlack}" />
 
-                                    <custom:CustomLabel Text="{Binding InstalmentAmount,Converter={StaticResource commaSeparatorConverter}}"
-                                                        HorizontalOptions="EndAndExpand"
-                                                        VerticalOptions="Center"
-                                                        Style="{StaticResource SectionTitleBlackBold}" />
+                                    <custom:CustomLabel Text="{Binding InstalmentAmount,Converter={StaticResource commaSeparatorConverter}}" HorizontalOptions="EndAndExpand" VerticalOptions="Center"
+                                                Style="{StaticResource SectionTitleBlackBold}" />
 
                                 </StackLayout>
                             </Frame>
@@ -971,134 +525,86 @@
 
 
 
-                        <Grid IsVisible="{Binding IsZakatSummaryRevokeVisible}"
-                              Grid.Row="2"
-                              Grid.Column="0"
-                              Grid.ColumnSpan="2"
-                              Margin="0,10,0,10">
+                        <Grid IsVisible="{Binding IsZakatSummaryRevokeVisible}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10">
 
-                            <StackLayout>
+                            <StackLayout >
 
-                                <buttons:SfButton  Margin="0,16,0,16"
-                                                   x:Name="SummaryRevokebtnContinue"
-                                                   Text="{x:Static ResourceManager:AppResources.ZVATRevokeButton}"
-                                                   Style="{StaticResource PrimaryButtonStyle}"
-                                                   Command="{Binding SummaryRevokeBtnTapped}" />
+                                <buttons:SfButton  Margin="0,16,0,16"  x:Name="SummaryRevokebtnContinue" Text="{x:Static ResourceManager:AppResources.ZVATRevokeButton}"
+                                   Style="{StaticResource PrimaryButtonStyle}" Command="{Binding SummaryRevokeBtnTapped}" />
 
                             </StackLayout>
                         </Grid>
 
-                        <StackLayout  Grid.Row="3"
-                                      Orientation="Vertical"
-                                      Grid.ColumnSpan="2">
-                            <buttons:SfButton  Margin="0,16,0,16"
-                                               Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
-                                               Style="{StaticResource PrimaryButtonStyle}"
-                                               Command="{Binding Download_Acknowledgement}" />
+                        <StackLayout  Grid.Row="3" Orientation="Vertical" Grid.ColumnSpan="2">
+                        <buttons:SfButton  Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.DownloadAcknowlwdgement}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding Download_Acknowledgement}" />
+
+ 
 
 
-
-
-                            <buttons:SfButton  Margin="0,16,0,16"
-                                               Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
-                                               Style="{StaticResource PrimaryButtonStyle}"
-                                               Command="{Binding ZDownloadForm}" />
+                        <buttons:SfButton  Margin="0,16,0,16"
+                                          Text="{x:Static ResourceManager:AppResources.ZDownloadForm}"
+                                          Style="{StaticResource PrimaryButtonStyle}"
+                                          Command="{Binding ZDownloadForm}" />
                         </StackLayout>
 
                     </Grid>
                 </Grid>
 
-                <Grid IsVisible="{Binding IsNoteViewVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="15"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsNoteViewVisible}" BackgroundColor="Transparent"  Margin="15" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
 
 
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZVatNotes}"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            FontSize="28" />
-                        <custom:CustomLabel Grid.Row="1"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokNotes}"
-                                            Style="{StaticResource BodyLabelGrey}" />
-                        <BoxView Grid.Row="2"
-                                 Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                 HeightRequest="1" />
+                        <custom:CustomLabel Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZVatNotes}" Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                        <custom:CustomLabel Grid.Row="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokNotes}"  Style="{StaticResource BodyLabelGrey}"/>
+                        <BoxView Grid.Row="2" Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
                     </Grid>
 
-                    <cards:SfCardView Grid.Row="1"
-                                      Padding="10,0,10,0"
-                                      Margin="10"
-                                      VerticalOptions="FillAndExpand"
-                                      HorizontalOptions="FillAndExpand"
-                                      HasShadow="False"
-                                      BorderColor="Gray"
-                                      BorderWidth="0.2"
-                                      CornerRadius="15">
-                        <custom:BorderlessEntry  Text="{Binding NoteEditor}"
-                                                 VerticalTextAlignment="Start"
-                                                 HorizontalTextAlignment="Start"
-                                                 HorizontalOptions="FillAndExpand"
-                                                 VerticalOptions="FillAndExpand"
-                                                 Style="{StaticResource SectionTitleBlackBold}" />
+                    <cards:SfCardView Grid.Row="1" Padding="10,0,10,0" Margin="10" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" HasShadow="False" BorderColor="Gray" BorderWidth="0.2" CornerRadius="15">
+                        <custom:BorderlessEntry  Text="{Binding NoteEditor}" VerticalTextAlignment="Start" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand"
+                                                 VerticalOptions="FillAndExpand" Style="{StaticResource SectionTitleBlackBold}"  />
                     </cards:SfCardView>
 
 
 
-                    <StackLayout Grid.Row="2"
-                                 VerticalOptions="FillAndExpand"
-                                 HorizontalOptions="FillAndExpand">
+                    <StackLayout Grid.Row="2" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 
 
 
-                        <buttons:SfButton  Margin="0,16,0,16"
-                                           Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
-                                           Style="{StaticResource PrimaryButtonStyle}"
-                                           Command="{Binding NoteContinueTapped}" />
+                        <buttons:SfButton  Margin="0,16,0,16" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetContinue}"
+                                   Style="{StaticResource PrimaryButtonStyle}" Command="{Binding NoteContinueTapped}" />
                     </StackLayout>
                 </Grid>
-                <Grid IsVisible="{Binding IsOTPPageVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="20,10,20,0"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsOTPPageVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0"
-                          Grid.Column="0">
+                    <Grid Grid.Row="0" Grid.Column="0" >
 
-                        <StackLayout>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}"
-                                                Style="{StaticResource SectionTitleBlackBold}"
-                                                FontSize="28" />
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}"
-                                                Style="{StaticResource BodyLabelGrey}" />
-                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}"
-                                     HeightRequest="1" />
+                        <StackLayout >
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VerificationCode}" Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
+                            <BoxView Style="{StaticResource NeutralGrayOpacity90BoxView}" HeightRequest="1"/>
 
-                            <StackLayout Padding="0,15,0,0">
-                                <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}"
-                                                    Style="{StaticResource BodyLabelGrey}"
-                                                    HorizontalOptions="Center"
-                                                    HorizontalTextAlignment="Center" />
+                            <StackLayout Padding="0,15,0,0" >
+                                <custom:CustomLabel Text="{Binding OTPSentOnThisMobileNumber}" Style="{StaticResource BodyLabelGrey}" HorizontalOptions="Center"  HorizontalTextAlignment="Center"/>
 
-                                <StackLayout Padding="0,0,0,0">
+                                <StackLayout Padding="0,0,0,0" >
                                     <Grid>
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="*" />
@@ -1106,124 +612,117 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
-                                        <Grid Grid.Row="0"
-                                              ColumnSpacing="20"
-                                              Padding="30,20,30,20"
-                                              FlowDirection="LeftToRight">
+                                        <Grid Grid.Row="0" ColumnSpacing="20" Padding="30,20,30,20" FlowDirection="LeftToRight">
 
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
 
                                             <!--First OTP Digit Start-->
-                                            <inputLayout:SfTextInputLayout Grid.Column="0"
-                                                                           ContainerType="Outlined"
-                                                                           UnfocusedColor="#B1B1B1"
-                                                                           OutlineCornerRadius="8"
-                                                                           FocusedColor="#005e4b"
-                                                                           ErrorColor="#B00020"
-                                                                           HasError="False">
-                                                <custom:BorderlessEntry x:Name="OTPFirstEntry"
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Small"
-                                                                        WidthRequest="8"
-                                                                        HorizontalTextAlignment="Center"
-                                                                        Text="{Binding OTPFirstDigit}"
-                                                                        TextChanged="OtpFirstEntry_TextChanged"
-                                                                        ReturnType="Next"
-                                                                        Keyboard="Numeric"
-                                                                        MaxLength="1"
-                                                                        TextColor="#bbbbbb"
-                                                                        HorizontalOptions="CenterAndExpand">
+                                            <inputLayout:SfTextInputLayout
+                                                    Grid.Column="0"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
+                                                <custom:BorderlessEntry
+                                                        x:Name="OTPFirstEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        Text="{Binding OTPFirstDigit}"
+                                                        TextChanged="OtpFirstEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
                                                     <custom:BorderlessEntry.Behaviors>
-                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
                                                     </custom:BorderlessEntry.Behaviors>
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <!--First OTP Digit End-->
 
                                             <!--Second OTP Digit Start-->
-                                            <inputLayout:SfTextInputLayout Grid.Column="1"
-                                                                           ContainerType="Outlined"
-                                                                           UnfocusedColor="#B1B1B1"
-                                                                           OutlineCornerRadius="8"
-                                                                           FocusedColor="#005e4b"
-                                                                           ErrorColor="#B00020"
-                                                                           HasError="False">
-                                                <custom:BorderlessEntry x:Name="OTPSecondEntry"
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Small"
-                                                                        WidthRequest="8"
-                                                                        HorizontalTextAlignment="Center"
-                                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                                        Text="{Binding OTPSecondDigit}"
-                                                                        TextChanged="OtpSecondEntry_TextChanged"
-                                                                        ReturnType="Next"
-                                                                        Keyboard="Numeric"
-                                                                        MaxLength="1"
-                                                                        TextColor="#bbbbbb"
-                                                                        HorizontalOptions="CenterAndExpand">
+                                            <inputLayout:SfTextInputLayout
+                                                    Grid.Column="1"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
+                                                <custom:BorderlessEntry
+                                                        x:Name="OTPSecondEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPSecondDigit}"
+                                                        TextChanged="OtpSecondEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
                                                     <custom:BorderlessEntry.Behaviors>
-                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
                                                     </custom:BorderlessEntry.Behaviors>
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <!--Second OTP Digit End-->
 
                                             <!--Third OTP Digit Start-->
-                                            <inputLayout:SfTextInputLayout Grid.Column="2"
-                                                                           ContainerType="Outlined"
-                                                                           UnfocusedColor="#B1B1B1"
-                                                                           OutlineCornerRadius="8"
-                                                                           FocusedColor="#005e4b"
-                                                                           ErrorColor="#B00020"
-                                                                           HasError="False">
-                                                <custom:BorderlessEntry x:Name="OTPThirdEntry"
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Small"
-                                                                        WidthRequest="8"
-                                                                        HorizontalTextAlignment="Center"
-                                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                                        Text="{Binding OTPThirdDigit}"
-                                                                        TextChanged="OtpThirdEntry_TextChanged"
-                                                                        ReturnType="Next"
-                                                                        Keyboard="Numeric"
-                                                                        MaxLength="1"
-                                                                        TextColor="#bbbbbb"
-                                                                        HorizontalOptions="CenterAndExpand">
+                                            <inputLayout:SfTextInputLayout
+                                                    Grid.Column="2"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
+                                                <custom:BorderlessEntry
+                                                        x:Name="OTPThirdEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPThirdDigit}"
+                                                        TextChanged="OtpThirdEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
                                                     <custom:BorderlessEntry.Behaviors>
-                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                        <local1:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
                                                     </custom:BorderlessEntry.Behaviors>
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <!--Third OTP Digit End-->
 
                                             <!--Fourth OTP Digit Start-->
-                                            <inputLayout:SfTextInputLayout Grid.Column="3"
-                                                                           ContainerType="Outlined"
-                                                                           UnfocusedColor="#B1B1B1"
-                                                                           OutlineCornerRadius="8"
-                                                                           FocusedColor="#005e4b"
-                                                                           ErrorColor="#B00020"
-                                                                           HasError="False">
-                                                <custom:BorderlessEntry x:Name="OTPFourthEntry"
-                                                                        FontAttributes="Bold"
-                                                                        FontSize="Small"
-                                                                        WidthRequest="8"
-                                                                        HorizontalTextAlignment="Center"
-                                                                        IsEnabled="{Binding IsOTPEntryEnable}"
-                                                                        Text="{Binding OTPFourthDigit}"
-                                                                        TextChanged="OtpFourthEntry_TextChanged"
-                                                                        ReturnType="Next"
-                                                                        Keyboard="Numeric"
-                                                                        MaxLength="1"
-                                                                        TextColor="#bbbbbb"
-                                                                        HorizontalOptions="CenterAndExpand"
-                                                                        Unfocused="OtpFourthEntry_Unfocused">
+                                            <inputLayout:SfTextInputLayout
+                                                    Grid.Column="3"
+                                                    ContainerType="Outlined"
+                                                    UnfocusedColor="#B1B1B1"
+                                                    OutlineCornerRadius="8"
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
+                                                <custom:BorderlessEntry
+                                                        x:Name="OTPFourthEntry"
+                                                        FontAttributes="Bold"
+                                                        FontSize="Small"
+                                                        WidthRequest="8"
+                                                        HorizontalTextAlignment="Center"
+                                                        IsEnabled="{Binding IsOTPEntryEnable}"
+                                                        Text="{Binding OTPFourthDigit}"
+                                                        TextChanged="OtpFourthEntry_TextChanged"
+                                                        ReturnType="Next"
+                                                        Keyboard="Numeric"
+                                                        MaxLength="1"
+                                                        TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand"
+                                                        Unfocused="OtpFourthEntry_Unfocused">
                                                 </custom:BorderlessEntry>
                                             </inputLayout:SfTextInputLayout>
                                             <!--Fourth OTP Digit End-->
@@ -1236,32 +735,15 @@
                                     </Grid>
                                 </StackLayout>
 
-                                <StackLayout Orientation="Horizontal"
-                                             HorizontalOptions="Center">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                                     <Image Source="clock">
                                     </Image>
-                                    <custom:CustomLabel  Text="{Binding LblCountDownTimer}"
-                                                         Style="{StaticResource CaptionLabelGrey}"
-                                                         VerticalOptions="Center" />
+                                    <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
                                 </StackLayout>
-                                <buttons:SfButton  Command="{Binding OnResendOTPClicked}"
-                                                   IsEnabled="{Binding IsResendOTPEnabled}"
-                                                   Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
-                                                   VerticalOptions="EndAndExpand"
-                                                   Margin="0,50,0,0"
-                                                   BackgroundColor="Transparent"
-                                                   TextColor="{StaticResource Primary}" />
+                                <buttons:SfButton  Command="{Binding OnResendOTPClicked}" IsEnabled="{Binding IsResendOTPEnabled}" Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0" BackgroundColor="Transparent" TextColor="{StaticResource Primary}"/>
                             </StackLayout>
-                            <StackLayout Grid.Row="2"
-                                         Margin="20,0,20,0"
-                                         Padding="0,8,0,0"
-                                         BackgroundColor="White">
-                                <buttons:SfButton Command="{Binding OnContinueClick}"
-                                                  x:Name="btnprimary"
-                                                  Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}"
-                                                  Style="{StaticResource PrimaryButtonStyle}"
-                                                  IsEnabled="{Binding ContinueButtonEnability}"
-                                                  Margin="0,0,0,10" />
+                            <StackLayout Grid.Row="2" Margin="20,0,20,0"  Padding="0,8,0,0" BackgroundColor="White">
+                                <buttons:SfButton Command="{Binding OnContinueClick}" x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}" Style="{StaticResource PrimaryButtonStyle}" IsEnabled="{Binding ContinueButtonEnability}" Margin="0,0,0,10"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -1271,127 +753,66 @@
 
                 </Grid>
 
-                <Grid IsVisible="{Binding IsRevokZakatInstalmentVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="20,10,20,0"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsRevokZakatInstalmentVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*" />
-                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0"
-                          Grid.Column="0"
-                          Grid.ColumnSpan="2">
+                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0"
-                                            Grid.Column="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevok}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            FontSize="28" />
-                        <custom:CustomLabel Grid.Row="1"
-                                            Grid.Column="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokSubTitle}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}"
-                                            Margin="0,0,0,8" />
-                        <BoxView Grid.Row="2"
-                                 Grid.Column="0"
-                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevok}" HorizontalOptions="StartAndExpand"
+                                             Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentRevokSubTitle}" HorizontalOptions="StartAndExpand"
+                                            Style="{StaticResource BodyLabelGrey}" Margin="0,0,0,8" />
+                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                        <listView:SfListView  Grid.Row="3"
-                                              HorizontalOptions="CenterAndExpand"
-                                              IsScrollBarVisible="False"
-                                              Margin="0"
-                                              Padding="0"
-                                              IsScrollingEnabled="False"
-                                              VerticalOptions="StartAndExpand"
-                                              AutoFitMode="Height"
-                                              ItemSpacing="0"
-                                              ItemTapped="RevokListView_ItemTapped"
-                                              ItemsSource="{Binding RevokList}"
-                                              SelectionMode="Single"
-                                              SelectionBackgroundColor="Transparent">
+                        <listView:SfListView  Grid.Row="3"  HorizontalOptions="CenterAndExpand" IsScrollBarVisible="False" Margin="0" Padding="0"
+                                                  IsScrollingEnabled="False" VerticalOptions="StartAndExpand" AutoFitMode="Height"  ItemSpacing="0" ItemTapped="RevokListView_ItemTapped"
+                                      ItemsSource="{Binding RevokList}" SelectionMode="Single" SelectionBackgroundColor="Transparent">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <border:SfBorder Padding="10"
-                                                     Grid.Column="0"
-                                                     CornerRadius="15"
-                                                     Margin="0,15,0,0"
-                                                     HasShadow="True"
-                                                     Style="{StaticResource GreyBorderFrameWithShadow}">
-                                        <Grid Padding="0"
-                                              RowSpacing="0"
-                                              Margin="0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
-                                                <RowDefinition Height="auto" />
+                                    <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Grid Padding="0" RowSpacing="0" Margin="0">
+                                            <Grid.RowDefinitions >
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="50*" />
-                                                <ColumnDefinition Width="50*" />
+                                                <ColumnDefinition Width="50*"/>
+                                                <ColumnDefinition Width="50*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <custom:CustomLabel  Grid.Row="0"
-                                                                 Grid.ColumnSpan="2"
-                                                                 Text="{Binding SelectionType}"
-                                                                 HorizontalOptions="StartAndExpand"
-                                                                 Style="{StaticResource SectionTitleBlack}"
-                                                                 Margin="0" />
+                                                <custom:CustomLabel  Grid.Row="0" Grid.ColumnSpan="2"  Text="{Binding SelectionType}" HorizontalOptions="StartAndExpand"
+                                                            Style="{StaticResource SectionTitleBlack}" Margin="0" />
 
-                                            <Label Grid.Row="0"
-                                                   Grid.Column="1"
-                                                   Text="{Binding Fbnum}"
-                                                   Style="{StaticResource ValueLabelGrey}"
-                                                   LineHeight="0.7"
-                                                   HorizontalTextAlignment="Start"
-                                                   HorizontalOptions="StartAndExpand"
-                                                   VerticalOptions="CenterAndExpand" />
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}"    HorizontalTextAlignment="Start" 
+                                               HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+                                            
+                                            <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
-                                            <StackLayout Grid.Row="1"
-                                                         Grid.Column="1"
-                                                         VerticalOptions="FillAndExpand"
-                                                         HorizontalOptions="FillAndExpand">
+                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
-                                                <yummy:PancakeView Padding="8,3,8,3"
-                                                                   CornerRadius="14"
-                                                                   BorderThickness="1"
-                                                                   BackgroundColor="#E5EFED"
-                                                                   VerticalOptions="CenterAndExpand"
-                                                                   HorizontalOptions="Center">
-
-                                                    <Label Style="{StaticResource CaptionLabelBlack}"
-                                                           TextColor="DarkGoldenrod"
-                                                           Text="{Binding Status}"
-                                                           HorizontalTextAlignment="Center"
-                                                           HorizontalOptions="CenterAndExpand"
-                                                           VerticalOptions="CenterAndExpand">
+                                                    <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding Status}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
 
-                                                            <DataTrigger TargetType="Label"
-                                                                         Binding="{Binding Status}"
-                                                                         Value="{x:Static ResourceManager:AppResources.NDBilled}">
-                                                                <Setter Property="Text"
-                                                                        Value="{x:Static ResourceManager:AppResources.NDBilled}" />
-                                                                <Setter Property="TextColor"
-                                                                        Value="{StaticResource Primary}" />
-                                                                <Setter Property="HorizontalTextAlignment"
-                                                                        Value="Center" />
+                                                            <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.NDBilled}">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NDBilled}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                <Setter Property="HorizontalTextAlignment" Value="Center"/>
                                                             </DataTrigger>
 
                                                         </Label.Triggers>
@@ -1399,50 +820,26 @@
                                                 </yummy:PancakeView>
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="2"
-                                                         Grid.Column="0"
-                                                         Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}"
-                                                       Style="{StaticResource CaptionLabelGrey}" />
-                                                <Label Text="{Binding TotAmt,Converter={StaticResource commaSeparatorConverter}}"
-                                                       Style="{StaticResource ValueLabelBlack}" />
+                                            <StackLayout Grid.Row="2" Grid.Column="0" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatDueAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding TotAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
-                                            <StackLayout Grid.Row="2"
-                                                         Grid.Column="1"
-                                                         Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}"
-                                                       Style="{StaticResource CaptionLabelGrey}" />
-                                                <Label Text="{Binding DueAmt,Converter={StaticResource commaSeparatorConverter}}"
-                                                       Style="{StaticResource ValueLabelBlack}" />
+                                            <StackLayout Grid.Row="2" Grid.Column="1" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentInstalmentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding DueAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
 
-                                            <StackLayout Grid.Row="3"
-                                                         Grid.Column="0"
-                                                         Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}"
-                                                       Style="{StaticResource CaptionLabelGrey}" />
-                                                <Label Text="{Binding PlanDur}"
-                                                       Style="{StaticResource ValueLabelBlack}" />
+                                            <StackLayout Grid.Row="3" Grid.Column="0" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentNumberOfInstalments}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding PlanDur}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
-                                            <StackLayout Grid.Row="3"
-                                                         Grid.Column="1"
-                                                         Spacing="-5"
-                                                         HorizontalOptions="FillAndExpand"
-                                                         VerticalOptions="FillAndExpand">
-                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}"
-                                                       Style="{StaticResource CaptionLabelGrey}" />
-                                                <Label Text="{Binding DpAmt,Converter={StaticResource commaSeparatorConverter}}"
-                                                       Style="{StaticResource ValueLabelBlack}"
-                                                       HorizontalOptions="FillAndExpand"
-                                                       VerticalOptions="FillAndExpand" />
+                                            <StackLayout Grid.Row="3" Grid.Column="1" Spacing="-5" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmetDownPaymentAmount}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding DpAmt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                                             </StackLayout>
-                                            <StackLayout Grid.Row="4"
-                                                         Grid.ColumnSpan="2"
-                                                         Spacing="-5">
-                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}"
-                                                       Style="{StaticResource CaptionLabelGrey}" />
-                                                <Label Text="{Binding SubmitDt}"
-                                                       Style="{StaticResource ValueLabelBlack}" />
+                                            <StackLayout Grid.Row="4" Grid.ColumnSpan="2" Spacing="-5">
+                                                <Label Text="{x:Static ResourceManager:AppResources.ZakatInstalmentSubmissionDate}" Style="{StaticResource CaptionLabelGrey}"/>
+                                                <Label Text="{Binding SubmitDt}" Style="{StaticResource ValueLabelBlack}" />
                                             </StackLayout>
 
                                         </Grid>
@@ -1455,192 +852,86 @@
 
                     </Grid>
                 </Grid>
-                <Grid IsVisible="{Binding IsDueBillsVisible}"
-                      BackgroundColor="Transparent"
-                      Margin="20,10,20,0"
-                      HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand">
+                <Grid IsVisible="{Binding IsDueBillsVisible}" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
-                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
 
                     </Grid.RowDefinitions>
 
 
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto" />
-                            <RowDefinition Height="1" />
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="1"/>
                         </Grid.RowDefinitions>
 
-                        <custom:CustomLabel Grid.Row="0"
-                                            Grid.Column="0"
-                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoices}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlackBold}"
-                                            FontSize="28" />
-                        <BoxView Grid.Row="1"
-                                 Grid.Column="0"
-                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoices}" HorizontalOptions="StartAndExpand"
+                                             Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
+                        <BoxView Grid.Row="1" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                     </Grid>
 
-                    <custom:CustomLabel Grid.Row="1"
-                                        Style="{StaticResource CaptionLabelBlack}"
-                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoiceText}"
-                                        HorizontalTextAlignment="Start"
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand" />
+                    <custom:CustomLabel Grid.Row="1" Style="{StaticResource CaptionLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentDueInvoiceText}" HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
 
-                    <listView:SfListView  Grid.Row="2"
-                                          HorizontalOptions="CenterAndExpand"
-                                          VerticalOptions="FillAndExpand"
-                                          AutoFitMode="Height"
+                    <listView:SfListView  Grid.Row="2" HorizontalOptions="CenterAndExpand"  
+                                          VerticalOptions="FillAndExpand" AutoFitMode="Height"
                                           IsScrollingEnabled="False"
                                           IsScrollBarVisible="False"
-                                          ItemSpacing="0"
-                                          ItemsSource="{Binding DueInvoicesList}"
+                                          ItemSpacing="0" ItemsSource="{Binding DueInvoicesList}"
                                           SelectionMode="None">
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <border:SfBorder Padding="10"
-                                                 Grid.Column="0"
-                                                 CornerRadius="15"
-                                                 Margin="0,15,0,0"
-                                                 HasShadow="True"
-                                                 Style="{StaticResource
-                                    GreyBorderFrameWithShadow}"
-                                                 HorizontalOptions="FillAndExpand"
-                                                 VerticalOptions="FillAndExpand">
-                                    <Grid Padding="0"
-                                          RowSpacing="0"
-                                          Margin="0"
-                                          HorizontalOptions="FillAndExpand"
-                                          VerticalOptions="FillAndExpand">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
+                                <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15"
+                                    Margin="0,15,0,0" HasShadow="False" Style="{StaticResource
+                                    GreyBorderFrameWithShadow}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid Padding="0" RowSpacing="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <custom:CustomLabel Grid.Row="0"
-                                                            Grid.ColumnSpan="2"
+                                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static
                                             ResourceManager:AppResources.ZakatInstalmentSADADBillNo}" />
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Grid.ColumnSpan="2"
+                                        <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="2"
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding Vtre2}" />
 
-                                        <BoxView Grid.Row="2"
-                                                 Grid.ColumnSpan="2"
-                                                 Margin="0,5,0,5"
-                                                 HeightRequest="1"
-                                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                        <custom:CustomLabel Grid.Row="3"
-                                                            Grid.Column="0"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillNumber}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Grid.Row="4"
-                                                            Grid.Column="0"
-                                                            Text="{Binding Opbel}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillNumber}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{Binding Opbel}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="3"
-                                                            Grid.Column="1"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel Grid.Row="4"
-                                                            Grid.Column="1"
-                                                            Text="{Binding RetFbn}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding RetFbn}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="5"
-                                                            Grid.Column="0"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillStartDate}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Grid.Row="6"
-                                                            Grid.Column="0"
-                                                            Text="{Binding Abrzu}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillStartDate}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding Abrzu}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="5"
-                                                            Grid.Column="1"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillDueDate}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel Grid.Row="6"
-                                                            Grid.Column="1"
-                                                            Text="{Binding Abrzo}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillDueDate}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding Abrzo}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="7"
-                                                            Grid.Column="0"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillAmount}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Grid.Row="8"
-                                                            Grid.Column="0"
-                                                            Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="7" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentBillAmount}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="8" Grid.Column="0" Text="{Binding Betrh,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="7"
-                                                            Grid.Column="1"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel Grid.Row="8"
-                                                            Grid.Column="1"
-                                                            Text="{Binding Perslt}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="7" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="8" Grid.Column="1" Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
                                     </Grid>
                                 </border:SfBorder>
@@ -1648,123 +939,56 @@
                         </listView:SfListView.ItemTemplate>
 
                     </listView:SfListView>
-
-
+                   
+                   
                     <!--NotiSet12-->
-                    <listView:SfListView  Grid.Row="3"
-                                          HorizontalOptions="FillAndExpand"
+                    <listView:SfListView  Grid.Row="3" HorizontalOptions="FillAndExpand"  
                                           IsScrollBarVisible="False"
                                           IsScrollingEnabled="False"
-                                          VerticalOptions="FillAndExpand"
-                                          AutoFitMode="Height"
-                                          ItemSpacing="0"
-                                          ItemsSource="{Binding DueInvoicesListSet12}"
-                                          SelectionMode="None">
+                                          VerticalOptions="FillAndExpand"  AutoFitMode="Height"
+                                          ItemSpacing="0" ItemsSource="{Binding DueInvoicesListSet12}"
+                                          SelectionMode="None" >
                         <listView:SfListView.ItemTemplate>
                             <DataTemplate>
-                                <border:SfBorder Padding="10"
-                                                 Grid.Column="0"
-                                                 CornerRadius="15"
-                                                 Margin="0,15,0,0"
-                                                 HasShadow="True"
-                                                 Style="{StaticResource
-                                    GreyBorderFrameWithShadow}"
-                                                 HorizontalOptions="FillAndExpand"
-                                                 VerticalOptions="FillAndExpand">
-                                    <Grid Padding="0"
-                                          RowSpacing="0"
-                                          Margin="0"
-                                          HorizontalOptions="FillAndExpand"
-                                          VerticalOptions="FillAndExpand">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
+                                <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15"
+                                    Margin="0,15,0,0" HasShadow="False" Style="{StaticResource
+                                    GreyBorderFrameWithShadow}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Grid Padding="0" RowSpacing="0" Margin="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions >
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="50*"/>
+                                            <ColumnDefinition Width="50*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <custom:CustomLabel Grid.Row="0"
-                                                            Grid.ColumnSpan="2"
+                                        <custom:CustomLabel Grid.Row="0" Grid.ColumnSpan="2"
                                                             Style="{StaticResource SectionTitleBlackBold}"
                                                             Text="{x:Static
                                             ResourceManager:AppResources.ZakatInstalmentReturnTaxType}" />
-                                        <custom:CustomLabel Grid.Row="1"
-                                                            Grid.ColumnSpan="2"
+                                        <custom:CustomLabel Grid.Row="1" Grid.ColumnSpan="2"
                                                             Style="{StaticResource ValueLabelBlack}"
                                                             Text="{Binding IncoText}" />
 
-                                        <BoxView Grid.Row="2"
-                                                 Grid.ColumnSpan="2"
-                                                 Margin="0,5,0,5"
-                                                 HeightRequest="1"
-                                                 Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+                                        <BoxView Grid.Row="2" Grid.ColumnSpan="2" Margin="0,5,0,5" HeightRequest="1" Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
-                                        <custom:CustomLabel Grid.Row="3"
-                                                            Grid.Column="0"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Grid.Row="4"
-                                                            Grid.Column="0"
-                                                            Text="{Binding Perslt}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnPeriodDesc}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="0" Text="{Binding Perslt}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="3"
-                                                            Grid.Column="1"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel Grid.Row="4"
-                                                            Grid.Column="1"
-                                                            Text="{Binding RetFbn}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="3" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnFBN}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="4" Grid.Column="1" Text="{Binding RetFbn}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="5"
-                                                            Grid.Column="0"
-                                                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnCreationDate}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand" />
-                                        <custom:CustomLabel Grid.Row="6"
-                                                            Grid.Column="0"
-                                                            Text="{Binding Cdate}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Start"
-                                                            HorizontalOptions="StartAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReturnCreationDate}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="0" Text="{Binding Cdate}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand"></custom:CustomLabel>
 
-                                        <custom:CustomLabel Grid.Row="5"
-                                                            Grid.Column="1"
-                                                            Text="{x:Static ResourceManager:AppResources.ZaaktInstalmentReturnDueDate}"
-                                                            Style="{StaticResource BodyLabelGrey}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand" />
-                                        <custom:CustomLabel Grid.Row="6"
-                                                            Grid.Column="1"
-                                                            Text="{Binding Faedn}"
-                                                            Style="{StaticResource ValueLabelBlack}"
-                                                            LineHeight="0.7"
-                                                            HorizontalTextAlignment="Center"
-                                                            HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
+                                        <custom:CustomLabel Grid.Row="5" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZaaktInstalmentReturnDueDate}" Style="{StaticResource BodyLabelGrey}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                        <custom:CustomLabel Grid.Row="6" Grid.Column="1" Text="{Binding Faedn}" Style="{StaticResource ValueLabelBlack}"    HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></custom:CustomLabel>
 
 
                                     </Grid>
@@ -1775,34 +999,22 @@
                     </listView:SfListView>
 
                 </Grid>
-                <Grid IsVisible="{Binding IsLoading}"
-                      BackgroundColor="Transparent">
-                    <StackLayout Grid.Row="0"
-                                 Grid.Column="0"
-                                 Orientation="Vertical"
-                                 BackgroundColor="Black"
-                                 Opacity="0.4"
-                                 VerticalOptions="FillAndExpand" />
-                    <StackLayout Grid.Row="0"
-                                 Grid.Column="0"
-                                 Orientation="Vertical"
-                                 BackgroundColor="Transparent"
-                                 Opacity="0.8"
-                                 VerticalOptions="Center"
-                                 HorizontalOptions="Center"
-                                 Padding="15,15">
-                        <StackLayout VerticalOptions="Center"
-                                     HorizontalOptions="Center">
+                <Grid IsVisible="{Binding IsLoading}" BackgroundColor="Transparent">
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black"
+                                     Opacity="0.4" VerticalOptions="FillAndExpand" />
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent"
+                                     Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                             <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
-                                                           EnableAnimation="True"
-                                                           AnimationType="SingleCircle"
-                                                           HorizontalOptions="CenterAndExpand"
-                                                           VerticalOptions="CenterAndExpand"
-                                                           IsBusy="True"
-                                                           ViewBoxWidth="70"
-                                                           TitlePlacement="Bottom"
-                                                           ViewBoxHeight="70"
-                                                           TextColor="#D99A29" />
+                                                               EnableAnimation="True"
+                                                               AnimationType="SingleCircle"
+                                                               HorizontalOptions="CenterAndExpand"
+                                                               VerticalOptions="CenterAndExpand"
+                                                               IsBusy="True"
+                                                               ViewBoxWidth="70"
+                                                               TitlePlacement="Bottom"
+                                                               ViewBoxHeight="70"
+                                                               TextColor="{StaticResource Secondary}" />
                             <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                         </StackLayout>
                     </StackLayout>

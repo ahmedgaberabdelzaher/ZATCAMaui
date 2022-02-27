@@ -595,7 +595,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
 
-        public Color _BoxColorOne = Color.FromHex("#DDDDDD");
+        public Color _BoxColorOne = (Color)Application.Current.Resources["Gray"];
         public Color BoxColorOne
         {
             get { return _BoxColorOne; }
@@ -607,7 +607,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorOne");
             }
         }
-        public Color _BoxColorTwo = Color.FromHex("#DDDDDD");
+        public Color _BoxColorTwo = (Color)Application.Current.Resources["Gray"];
         public Color BoxColorTwo
         {
             get { return _BoxColorTwo; }
@@ -619,7 +619,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("BoxColorTwo");
             }
         }
-        public Color _BoxColorThree = Color.FromHex("#DDDDDD");
+        public Color _BoxColorThree = (Color)Application.Current.Resources["Gray"];
         public Color BoxColorThree
         {
             get { return _BoxColorThree; }
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public Color _BoxColorFour = Color.FromHex("#DDDDDD");
+        public Color _BoxColorFour = (Color)Application.Current.Resources["Gray"];
         public Color BoxColorFour
         {
             get { return _BoxColorFour; }
@@ -645,7 +645,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
-        public Color _BoxColorFive = Color.FromHex("#DDDDDD");
+        public Color _BoxColorFive = (Color)Application.Current.Resources["Gray"];
         public Color BoxColorFive
         {
             get { return _BoxColorFive; }
@@ -1418,7 +1418,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("SetCountryVisibility");
             }
         }
-        private string _oTPValidDuration = "0:00";
+        private string _oTPValidDuration = "";
         public string OTPValidDuration
         {
             get
@@ -1432,10 +1432,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#d49504");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
                     ButtonDisableTextColor = Color.White;
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     VerifyButtonDisableTextColor = Color.Gray;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -1533,7 +1533,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged(() => IsOTPEntryEnable);
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#d49504");
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Secondary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -1548,7 +1548,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("VerifyButtonDisableColor");
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -1627,18 +1627,20 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             OnResendButtonClick = new Xamarin.Forms.Command(async () =>
             {
                 // ContinueButtonText = AppResources.ZZZZContinue;
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
+                
                 if (IsResendOTPEnabled)
                 {
+                    await Task.Run(() =>
+                    {
+                        IsLoading = true;
+                    });
                     await SetRequestObjectResendOtp();
+                    await Task.Run(() =>
+                    {
+                        IsLoading = false;
+                    });
                 }
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+               
 
             });
 
@@ -1671,7 +1673,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         public void ClearData()
         {
             SetDefaultDate();
-            VerifyButtonDisableColor = Color.FromHex("#d49504");
+            VerifyButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
             IsVerifyOTPEnabled = true;
             IsResendOTPEnabled = false;
             ButtonDisableColor = Color.Gray;
@@ -2704,6 +2706,23 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
+                string MessageForTheUser = AppResources.Somethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                     IsLoading = false;
+                    IsVerifyOTPEnabled = true;
+
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+                    
+                });
+                ///only for dev purpose
+                ///
+                #if DEBUG
+                await App.Current.MainPage.DisplayAlert("Error", ex.ToString(), "OK");
+                #endif
+
             }
         }
 
@@ -2785,9 +2804,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 {
                     int timeToExpireOTP = 120;
                     TimerStart(timeToExpireOTP);
-                    ButtonDisableColor = Color.FromHex("#9EA4A9");//9EA4A9
+                    ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     IsResendOTPEnabled = false;
-                    VerifyButtonDisableColor = Color.FromHex("#d49504");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
                     IsVerifyOTPEnabled = true;
                     OTP = string.Empty;
 
@@ -2884,6 +2903,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
+                string MessageForTheUser = AppResources.Somethingwentwrong;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    IsLoading = false;
+
+                    IsVerifyOTPEnabled = true;
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
+
+                });
             }
         }
 
@@ -3012,48 +3042,48 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             if (visiliblityItemName.Equals("IndividualRegistrationView"))
 
             {
-                BoxColorOne = Color.FromHex("#006450");
-                BoxColorTwo = Color.FromHex("#DDDDDD");
-                BoxColorThree = Color.FromHex("#DDDDDD");
-                BoxColorFour = Color.FromHex("#DDDDDD");
-                BoxColorFive = Color.FromHex("#DDDDDD");
+                BoxColorOne =  (Color)Application.Current.Resources["Primary"];
+                BoxColorTwo =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorThree =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorFour =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorFive =  (Color)Application.Current.Resources["TabGray"];
                 CurrentIndex = 1;
             }
             else if (visiliblityItemName.Equals("NationalAddressView"))
             {
-                BoxColorOne = Color.FromHex("#006450");
-                BoxColorTwo = Color.FromHex("#006450");
-                BoxColorThree = Color.FromHex("#DDDDDD");
-                BoxColorFour = Color.FromHex("#DDDDDD");
-                BoxColorFive = Color.FromHex("#DDDDDD");
+                BoxColorOne =  (Color)Application.Current.Resources["Primary"];
+                BoxColorTwo =  (Color)Application.Current.Resources["Primary"];
+                BoxColorThree =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorFour =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorFive =  (Color)Application.Current.Resources["TabGray"];
                 CurrentIndex = 2;
             }
             //ContactInformationView
             else if (visiliblityItemName.Equals("ContactInformationView"))
             {
-                BoxColorOne = Color.FromHex("#006450");
-                BoxColorTwo = Color.FromHex("#006450");
-                BoxColorThree = Color.FromHex("#006450");
-                BoxColorFour = Color.FromHex("#DDDDDD");
-                BoxColorFive = Color.FromHex("#DDDDDD");
+                BoxColorOne =  (Color)Application.Current.Resources["Primary"];
+                BoxColorTwo =  (Color)Application.Current.Resources["Primary"];
+                BoxColorThree =  (Color)Application.Current.Resources["Primary"];
+                BoxColorFour =  (Color)Application.Current.Resources["TabGray"];
+                BoxColorFive =  (Color)Application.Current.Resources["TabGray"];
                 CurrentIndex = 3;
             }
             else if (visiliblityItemName.Equals("SummeryView"))
             {
-                BoxColorOne = Color.FromHex("#006450");
-                BoxColorTwo = Color.FromHex("#006450");
-                BoxColorThree = Color.FromHex("#006450");
-                BoxColorFour = Color.FromHex("#006450");
-                BoxColorFive = Color.FromHex("#DDDDDD");
+                BoxColorOne =  (Color)Application.Current.Resources["Primary"];
+                BoxColorTwo =  (Color)Application.Current.Resources["Primary"];
+                BoxColorThree =  (Color)Application.Current.Resources["Primary"];
+                BoxColorFour =  (Color)Application.Current.Resources["Primary"];
+                BoxColorFive =  (Color)Application.Current.Resources["TabGray"];
                 CurrentIndex = 4;
             }
             else if (visiliblityItemName.Equals("PasswordView"))
             {
-                BoxColorOne = Color.FromHex("#006450");
-                BoxColorTwo = Color.FromHex("#006450");
-                BoxColorThree = Color.FromHex("#006450");
-                BoxColorFour = Color.FromHex("#006450");
-                BoxColorFive = Color.FromHex("#006450");
+                BoxColorOne =  (Color)Application.Current.Resources["Primary"];
+                BoxColorTwo =  (Color)Application.Current.Resources["Primary"];
+                BoxColorThree =  (Color)Application.Current.Resources["Primary"];
+                BoxColorFour =  (Color)Application.Current.Resources["Primary"];
+                BoxColorFive =  (Color)Application.Current.Resources["Primary"];
             }
 
 
@@ -3076,10 +3106,19 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                     else
                     {
-                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference);
+                        
+                     
+                        TotalSec = TotalSec - Convert.ToInt32(App.TimeDifference) - (120-App.CurrentTimeDifference);
                         App.IsComingFromSleepMode = false;
                         StopTimer = true;
-                        TimerStart(TotalSec);
+
+                        if (TotalSec > 0)
+                        {
+                            IsResendOTPEnabled = false;
+                               //TimerStart(TotalSec);
+                               ButtonDisableColor = Color.Gray;
+                        }
+                           
                     }
                 }
                 if (CTS.IsCancellationRequested)
@@ -3097,15 +3136,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //    return false;
                     //}
                     //else
-                    //{#006450 green 
+                    //{{StaticResource Primary} green 
                     //}#d49504 golden
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#d49504");
+                        ButtonDisableColor =  (Color)Application.Current.Resources["Secondary"];
                         ButtonDisableTextColor = Color.White;
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                         VerifyButtonDisableTextColor = Color.Gray;
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;
@@ -3116,6 +3155,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     //    TotalSec = 120;
                     //}
                     TotalSec = TotalSec - 1;
+                    App.CurrentTimeDifference = TotalSec;
                     numberOfSeconds = TotalSec;
                     TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
                     Device.BeginInvokeOnMainThread(() =>

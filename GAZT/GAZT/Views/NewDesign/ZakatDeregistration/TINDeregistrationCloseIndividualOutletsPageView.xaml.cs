@@ -217,7 +217,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -284,7 +284,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -405,7 +405,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
@@ -471,7 +471,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -528,7 +528,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                ).ToList();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -586,7 +586,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -640,7 +640,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -1096,7 +1096,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1661,7 +1661,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //    viewModel.FrameIDError = true;
                 //}
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

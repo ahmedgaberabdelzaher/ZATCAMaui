@@ -15,15 +15,15 @@
              xmlns:local1="clr-namespace:GAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.InternationalCodeSearchPage">
     <ScrollView>
-        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Margin="0,150,0,0">
+        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Margin="0,150,0,0">
 
             <Grid>
 
                 <StackLayout Padding="22,22,22,0">
- <Label Text="{x:Static local:AppResources.CountryText}"  VerticalOptions="Start"  FontSize="Medium" TextColor="Black" FontFamily="{StaticResource SSTArBold}"  />
+ <Label Text="{x:Static local:AppResources.CountryText}"  VerticalOptions="Start"  FontSize="Medium" TextColor="{StaticResource PrimaryColor}" FontFamily="{StaticResource SomarBold}"  />
                                     <Image HorizontalOptions="EndAndExpand">
                     <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25"
+                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
@@ -59,8 +59,8 @@
                                                             <ColumnDefinition Width="70*"/>
                                                             <ColumnDefinition Width="30*"/>
                                                         </Grid.ColumnDefinitions>
-                                                        <Label Text="{Binding Landx}" Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="0" TextColor="Black" />
-                                                        <Label Text="{Binding Telefto}" HorizontalOptions="End" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SSTArabicMedium}" Grid.Row="0" Grid.Column="1"  TextColor="Black"/>
+                                                        <Label Text="{Binding Landx}" Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SomarSemiBold}" Grid.Row="0" Grid.Column="0" TextColor="{StaticResource PrimaryColor}" />
+                                                        <Label Text="{Binding Telefto}" HorizontalOptions="End" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SomarSemiBold}" Grid.Row="0" Grid.Column="1"  TextColor="{StaticResource PrimaryColor}"/>
                                                        
                                                     </Grid>
                                                 </StackLayout>
@@ -77,11 +77,11 @@
                     </Grid.ColumnDefinitions>
                      <StackLayout Orientation="Horizontal" Grid.Row="0" Spacing="10" Grid.RowSpan="2"  >
                   <local1:CustomLabel Text="{Binding Landx}" Margin="10,0,30,0" LineBreakMode="WordWrap"  Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
-                                 HorizontalTextAlignment="Start" TextColor="Black"   />
+                                 HorizontalTextAlignment="Start" TextColor="{StaticResource PrimaryColor}"   />
              <local1:CustomLabel Text="{Binding Telefto}"   Margin="60,0,50,0" HorizontalOptions="End"
                                  Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }"
                                  FontSize="Small"
-                                 HorizontalTextAlignment="End" LineBreakMode="WordWrap"  VerticalOptions="FillAndExpand" TextColor="Black" />
+                                 HorizontalTextAlignment="End" LineBreakMode="WordWrap"  VerticalOptions="FillAndExpand" TextColor="{StaticResource PrimaryColor}" />
 
                          </StackLayout>
                     </Grid>

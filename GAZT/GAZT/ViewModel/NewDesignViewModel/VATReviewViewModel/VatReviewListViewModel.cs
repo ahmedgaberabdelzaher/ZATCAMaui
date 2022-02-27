@@ -8,12 +8,15 @@ using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Models.VatReviewModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.VatReview;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -394,20 +397,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        private bool _lateFilingObjectionsSummaryVisible = true;
-
-        public bool LateFilingObjectionsSummaryVisible
-        {
-            get { return _lateFilingObjectionsSummaryVisible; }
-            set
-            {
-                if (_lateFilingObjectionsSummaryVisible == value) return;
-
-                _lateFilingObjectionsSummaryVisible = value;
-                RaisePropertyChanged("LateFilingObjectionsSummaryVisible");
-            }
-        }
-
         private List<VATObjectionListModel.Result3> _vatReviewListSet;
 
         public List<VATObjectionListModel.Result3> VATReviewListSet
@@ -563,25 +552,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        public ObservableCollection<Attachment> _lateFilingAttachmentsListViewData { get; set; }
-
-        public ObservableCollection<Attachment> LateFilingAttachmentsListViewData
-        {
-            get { return _lateFilingAttachmentsListViewData; }
-
-            set
-            {
-                if (_lateFilingAttachmentsListViewData == value)
-                {
-                    return;
-                }
-
-                _lateFilingAttachmentsListViewData = value;
-                RaisePropertyChanged("LateFilingAttachmentsListViewData");
-            }
-        }
-
-
         private bool isSecurityPaymentsTabVisible = false;
         public bool IsSecurityPaymentsTabVisible
         {
@@ -619,18 +589,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
         }
 
-        public string _lateFlngDetails = "";
-        public string LateFlngDetails
-        {
-            get { return _lateFlngDetails; }
-            set
-            {
-                if (_lateFlngDetails == value) return;
-
-                _lateFlngDetails = value;
-                RaisePropertyChanged("LateFlngDetails");
-            }
-        }
         public ObservableCollection<Attachment> bankGuranteeAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> BankGuranteeAttachmentsListViewData
@@ -663,8 +621,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
 
 
-            GoBackClick = new Command(() =>
-            {
+            GoBackClick = new Command(() => {
                 if (IsVatListVisible)
                 {
                     _navigationService.GoBack();
@@ -953,43 +910,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     reasonList.Add(obj);
                 }
             }
-            foreach (var note in responseModel.d.NotesSet.results)
-            {
-
-                if (note.Rcodez == "RVT_OVRDUE" && !String.IsNullOrEmpty(note.Strline) && string.IsNullOrEmpty(LateFlngDetails))
-                {
-                    LateFlngDetails = string.Concat(LateFlngDetails, note.Strline);
-
-                }
-
-            }
-
-
-
-            var lateFilngAttachments = new ObservableCollection<Attachment>();
-            if (responseModel.d.OVERDUEFG=="X")
-            {
-                LateFilingObjectionsSummaryVisible = true;
-                lateFilngAttachments = new ObservableCollection<Attachment>();
-                foreach (var attach in responseModel.d.AttdetSet.results)
-                {
-
-                    if (attach.Dotyp == "ZVRA")
-                    {
-                        lateFilngAttachments.Add(attach);
-                    }
-                }
-
-                LateFilingAttachmentsListViewData = lateFilngAttachments;
-
-            }
-            else
-            {
-                LateFilingObjectionsSummaryVisible = false;
-            }
-
-
-
 
             modelVATReviewsReturn.ListReviewReason = reasonList;
 
@@ -1092,7 +1012,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             TaxPeriodFrom = strTaxPeriodFromDate;
 
-
+          
             //ReportDetails = responseModel.d.NotesSet.results[0].Tdline;
             RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(responseModel.d.SecurityDtl.Disamt);
             string strTaxPeriodToDate = "";
@@ -1191,15 +1111,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             BankGuranteeAttachmentsListViewData = bankAttachments;
             AttachmentsListViewData = attachments;
 
-            if (responseModel.d.Fbstax.Equals("IP011") && responseModel.d.Fbustx.Equals("E0018"))
-            {
+            if(responseModel.d.Fbstax.Equals("IP011") && responseModel.d.Fbustx.Equals("E0018")){
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogService.ShowMessage(AppResources.VATReviewPleaseVisitPortal,
-                                        AppResources.Information);
+                    //await _dialogService.ShowMessage(AppResources.VATReviewPleaseVisitPortal,
+                    //                    AppResources.Information);
+
+                    try
+                    {
+
+
+                        var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.VATReviewPleaseVisitPortal);
+
+                        if (App.IsArabic)
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+
+                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                            };
+                        }
+                        else
+                        {
+                            VisitPortalPopup.OnGotoPortal = () =>
+                            {
+
+                                Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                            };
+                        }
+                        await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
 
                 });
-
+                
             }
 
             foreach (var note in responseModel.d.NotesSet.results)

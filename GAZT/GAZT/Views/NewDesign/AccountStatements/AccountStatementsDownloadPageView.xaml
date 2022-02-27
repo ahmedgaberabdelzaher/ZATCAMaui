@@ -98,7 +98,7 @@
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                 <Image Margin="5,0" HorizontalOptions="EndAndExpand">
                                     <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="20"
                                                         Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                                     </Image.Source>
                                 </Image>
@@ -113,7 +113,7 @@
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
                                 <Image Margin="5,0" HorizontalOptions="EndAndExpand">
                                     <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="20"
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="20"
                                                         Glyph="{x:Static FontImage:IconFonts.CalendarMonth}"/>
                                     </Image.Source>
                                 </Image>

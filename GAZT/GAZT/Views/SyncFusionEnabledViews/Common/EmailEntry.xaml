@@ -32,7 +32,7 @@
                 <inputLayout:SfTextInputLayout   Margin="10,-6,10,-6" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static localres:AppResources.TinEmail}" 
     ContainerType="Outlined" x:Name="EmailInputLayout" UnfocusedColor="#B1B1B1" 
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False"  >
                     <custom:GAZTBorderlessEntry x:Name="Email" Unfocused="Email_UnFocused"   Text="{Binding Email}" FontSize="Small" TextColor="White"  PlaceholderColor="Gray" >
                     </custom:GAZTBorderlessEntry>
                     <!--<control:GAZTBorderlessEntry  x:Name="PasswordEntry" IsPassword="True" IsFocused="{Binding IsFocused}" FontSize="Small" Text="{Binding Password}" TextColor="White" PlaceholderColor="Gray">
@@ -52,7 +52,7 @@
             <Label
                 x:Name="ValidationLabel"
                 Margin="15,-5,0,0"
-                FontSize="12"
+                FontSize="11"
                 IsVisible="{Binding Path=IsFocused, 
                 Source={x:Reference Email}, 
                 Converter={StaticResource StringToBooleanConverter}, 
@@ -76,8 +76,8 @@
                                                   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
    IsVisible="{Binding IsVisibleTinIds}" 
     ContainerType="Outlined" x:Name="TINSLayout" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False"  >
-                    <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" FontAttributes="Bold">
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False"  >
+                    <custom:GAZTBorderlessEntry x:Name="TinDropdown" Text="{Binding TINID}" TextColor="White" FontSize="Small" FontFamily="{StaticResource SomarBold}">
                     </custom:GAZTBorderlessEntry>
                 </inputLayout:SfTextInputLayout>
                 <custom:CustomButton x:Name="TinsButton" FontSize="Small" IsVisible="{Binding IsVisibleTinIds}" Clicked="TINs_Clicked" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="Transparent" Margin="10,0,10,0" TextColor="White">
@@ -91,13 +91,13 @@
                     SelectedIndex="{Binding TINIndex}"
                     ColumnHeaderHeight="46"
                     PickerMode="Dialog"
-                                    OKButtonTextColor="#006450"  CancelButtonTextColor="#006450"              
+                                    OKButtonTextColor="{StaticResource Primary}"  CancelButtonTextColor="{StaticResource Primary}"              
                    ItemHeight="40"
                    DisplayMemberPath="Tin" ItemsSource="{Binding TINs}"     Margin="10,0,10,0"
                     PickerWidth="270"
                                      PickerHeight="200"
-                                     HeaderBackgroundColor="#006450"
-                    SelectedItemTextColor="#006450"
+                                     HeaderBackgroundColor="{StaticResource Primary}"
+                    SelectedItemTextColor="{StaticResource Primary}"
                     BorderColor="Black"
                                              BackgroundColor="#EAF7CC"
                       ShowFooter="True"

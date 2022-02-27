@@ -42,20 +42,21 @@ namespace GAZTeServicesApp.Converters
                 {
                     return Color.FromRgba(255, 255, 255, 0.6);
                 }
-                return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.Transparent;
+                return bindingContext.IsInvalidEmail ?  (Color)Application.Current.Resources["Red"] : Color.Transparent;
             }
             // For Simple login page
             else
             {
                 var emailEntry = parameter as BorderlessEntry;
-                if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext)) return Color.FromHex("#ced2d9");
+                if (!(emailEntry.BindingContext is SFLoginPageViewModel bindingContext)) return  (Color)Application.Current.Resources["Gray"];
                 var isFocused1 = (bool)value;
                 bindingContext.IsInvalidEmail = !isFocused1 && !CheckValidEmail(bindingContext.Email);
                 if (isFocused1)
                 {
-                    return Color.FromHex("#959eac");
+                    Application.Current.Resources.TryGetValue("Gray-500", out var retGray);
+                    return (Color)retGray;
                 }
-                return bindingContext.IsInvalidEmail ? Color.FromHex("#FF4A4A") : Color.FromHex("#ced2d9");
+                return bindingContext.IsInvalidEmail ?  (Color)Application.Current.Resources["Red"] :  (Color)Application.Current.Resources["Gray"];
             }
         }
         /// <summary>

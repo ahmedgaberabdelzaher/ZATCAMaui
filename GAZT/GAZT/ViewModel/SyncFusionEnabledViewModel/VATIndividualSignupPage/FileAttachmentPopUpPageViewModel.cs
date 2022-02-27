@@ -13,10 +13,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -403,11 +405,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
 
-            var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+            PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+            //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-            if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+            var fileData = await FilePicker.PickAsync(options);
+            var stream = await fileData.OpenReadAsync();
+            attachment = UtilityManager.ReadFully(stream as Stream);
+
+            if (fileData != null && attachment != null && attachment.Length > 0)
             {
-                attachment = fileData.DataArray;
+                //attachment = fileData.DataArray;
 
                 fname = fileData.FileName ?? "null";
 
@@ -429,8 +436,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         string[] filetypes;
 
                         filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-                        
-                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                        PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                        //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                        var fileData = await FilePicker.PickAsync(options);
+                        var stream = await fileData.OpenReadAsync();
+                        attachment = UtilityManager.ReadFully(stream as Stream);
                         if (IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                         {
                             if (VatAttachmentsList != null)
@@ -464,13 +476,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     
 
                         }
-                        if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+                        if (fileData != null && attachment != null && attachment.Length > 0)
                         {
-                            attachment = fileData.DataArray;
+                           // attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = fileData.FileName.Split('.')[1];
+                                string[] ExtensionArray = fileData.FileName.Split('.');
+                                string Extention = ExtensionArray.Last();
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                                 {
                                     if (TotalAttachmentSize <= 300)

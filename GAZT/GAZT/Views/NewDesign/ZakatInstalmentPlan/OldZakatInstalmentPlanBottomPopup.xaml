@@ -19,7 +19,7 @@
 
     </pages:PopupPage.Resources>
     
-    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <StackLayout Spacing="15">
             <custom:CustomLabel Text="Instructions and Conditions" HorizontalOptions="Center" Style="{StaticResource SectionTitleBlack}"/>
             <ScrollView Grid.Row="1">

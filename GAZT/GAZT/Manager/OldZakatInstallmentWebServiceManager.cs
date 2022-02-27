@@ -82,7 +82,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -159,7 +159,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -277,6 +277,7 @@ namespace EGAZT.Manager
                     String url = Constants.GetOldZAKATPostdata;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.Timeout = TimeSpan.FromMinutes(10);
 
                     var serilized = JsonConvert.SerializeObject(_zakatInstalmentDetails);
                     client.DefaultRequestHeaders.Add("Token", "123");
@@ -315,12 +316,17 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
+                catch (TimeoutException exx)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
                 catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
                 }
-
+                
             }
             else
             {

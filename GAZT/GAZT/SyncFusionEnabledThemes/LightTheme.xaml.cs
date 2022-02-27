@@ -35,14 +35,14 @@ namespace GAZTeServicesApp.Themes
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        strGAZTFontBold = "GE_SS_Two_Bold";
-                        strGAZTFontMedium = "GE_SS_Two_Medium";
-                        strGAZTFontRegular = "GE_SS_Two_Light";
+                        strGAZTFontBold = "Somar-SemiBold";
+                        strGAZTFontMedium = "Somar-SemiBold";
+                        strGAZTFontRegular = "Somar-Light";
                         break;
                     case Device.Android:
-                        strGAZTFontBold = "GE_SS_Two_Bold.ttf#GE_SS_Two_Bold";
-                        strGAZTFontMedium = "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        strGAZTFontRegular = "GE_SS_Two_Light.ttf#GE_SS_Two_Light";
+                        strGAZTFontBold = "Somar-SemiBold.otf#Somar-SemiBold";
+                        strGAZTFontMedium = "Somar-SemiBold.otf#Somar-SemiBold";
+                        strGAZTFontRegular = "Somar-Light.otf#Somar-Light";
                         break;
                 }
             }
@@ -51,14 +51,14 @@ namespace GAZTeServicesApp.Themes
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        strGAZTFontBold = "SSTArabic-Bold";
-                        strGAZTFontMedium = "SSTArabic-Medium";
-                        strGAZTFontRegular = "SSTArabic-Light";
+                        strGAZTFontBold = "Somar-SemiBold";
+                        strGAZTFontMedium = "Somar-SemiBold";
+                        strGAZTFontRegular = "Somar-Light";
                         break;
                     case Device.Android:
-                        strGAZTFontBold = "SSTArabic-Bold.ttf#SSTArabic-Bold";
-                        strGAZTFontMedium = "SSTArabic-Medium.ttf#SSTArabic-Medium";
-                        strGAZTFontRegular = "SSTArabic-Light.ttf#SSTArabic-Light";
+                        strGAZTFontBold = "Somar-SemiBold.otf#Somar-SemiBold";
+                        strGAZTFontMedium = "Somar-SemiBold.otf#SomarSemiBold";
+                        strGAZTFontRegular = "Somar-Light.otf#Somar-Light";
                         break;
                 }
             }

@@ -20,8 +20,8 @@ xmlns:custom2="clr-namespace:EGAZT"
              <StackLayout IsVisible="true" Margin="0" BackgroundColor="Transparent" >
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                 <Image Source="errorNew.png"   Aspect="AspectFit"/>
-                <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SSTArabicMedium}"
+                <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
 

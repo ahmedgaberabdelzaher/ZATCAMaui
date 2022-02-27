@@ -9,7 +9,7 @@
              xmlns:local="clr-namespace:EGAZT;assembly:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
          
                NavigationPage.HasNavigationBar="False"
-              BackgroundColor="#005e4b"
+              BackgroundColor="{StaticResource Primary}"
                          x:Class="EGAZT.Views.SyncFusionEnabledViews.ContactUsPage.ContactUsPageView"
              >
     <ContentPage.Resources>
@@ -22,14 +22,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <!--<StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZZZContactus}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZZZContactus}"  FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Clicked="BackButtonClicked"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -102,7 +102,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Secondary}"/>
                         <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>

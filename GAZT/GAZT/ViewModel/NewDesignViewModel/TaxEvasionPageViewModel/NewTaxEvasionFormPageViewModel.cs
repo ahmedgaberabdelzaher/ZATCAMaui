@@ -1710,7 +1710,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
 
@@ -1839,7 +1839,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
                                                         }
-                                                        catch (Exception)
+                                                        catch (Exception ex)
                                                         {
                                                         }
                                                     }
@@ -1870,7 +1870,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
 

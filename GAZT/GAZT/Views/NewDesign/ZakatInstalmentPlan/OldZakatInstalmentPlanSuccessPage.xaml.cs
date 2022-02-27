@@ -77,13 +77,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             Device.BeginInvokeOnMainThread(() =>
             {
-
-
                 var _navigation = Application.Current.MainPage.Navigation;
-
-
-
-
                 foreach (var item in _navigation.NavigationStack)
                 {
                     if (item.GetType().Name == App.OldZakatInstalmentPlanPageView)
@@ -92,8 +86,6 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         break;
                     }
                 }
-
-
 
                 foreach (var item in _navigation.NavigationStack)
                 {

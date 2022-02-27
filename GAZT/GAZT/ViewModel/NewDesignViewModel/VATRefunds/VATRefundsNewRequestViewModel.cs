@@ -226,40 +226,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
             set
             {
-                //if (_selectedIbanData == value) return;
+                if (_selectedIbanData == value) return;
 
                 _selectedIbanData = value;
-
-
-                if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
-                {
-                    try {
-                        var SlectedIban = IBanListResponse.D.Results.Where(m => m.Iban == SelectedIbanData.Iban).FirstOrDefault();
-
-                        if(SlectedIban != null) {
-
-                            SelectedIdtype = SlectedIban.IdtypeDesc;
-                            SelectedIdNumber = SlectedIban.IdNumber;
-
-                            IBANType idType = IBANTypesList.Where(m => m.key == SlectedIban.IdType).FirstOrDefault();
-                            SelectedIDTypeCode = idType.key;
-                          
-                            _ = SetIBANIdNumber(idType.key);
-                        }
-
-
-                       
-
-                    }
-                    catch(Exception ex) {
-
-                    }
-
-               
-                }
-
-
-                    RaisePropertyChanged("SelectedIbanData");
+                RaisePropertyChanged("SelectedIbanData");
             }
         }
 
@@ -277,25 +247,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
 
                 _isAddAccountVisisble = value;
                 RaisePropertyChanged("IsAddAccountVisisble");
-            }
-        }
-
-
-
-        private bool _isTypeEditable = true;
-        public bool IsTypeEditable
-        {
-            get
-            {
-                return _isTypeEditable;
-            }
-
-            set
-            {
-                if (_isTypeEditable == value) return;
-
-                _isTypeEditable = value;
-                RaisePropertyChanged("IsTypeEditable");
             }
         }
 
@@ -417,9 +368,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
-
-        public IBanListResponseModel IBanListResponse;
-
 
 
         public VATRefundsNewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
@@ -682,12 +630,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>(VatRefundsIbanDataModel.IbanSet.Results);
                 VatRefundsDisplayDataModel.Rfamt = VatRefundsDisplayDataModel.Rfamt.Replace("-", string.Empty);
 
-                if (VatRefundsDisplayDataModel.Cr1645GoliveFg == "X") {
-
-                    GetAllIbanList();
-                }
-
-
                 if(VatRefundsDisplayDataModel.Fbnumx == string.Empty)
                 {
                     IsVoidBtnVisible = false;
@@ -795,58 +737,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
         }
 
-
-
-        public async void GetAllIbanList()
-        {
-            
-                try
-                {
-                     IBanListResponse = await WebServiceManager.GetIBanDataForCR1645();
-
-                IbanData = new ObservableCollection<VarRefundIbanDataModelMetadataResult>();
-
-                if (IBanListResponse != null && IBanListResponse.D != null && IBanListResponse.D.Results != null && IBanListResponse.D.Results.Count > 0)
-                {
-
-
-                    for (int i = 0; i < IBanListResponse.D.Results.Count; i++)
-                    {
-                        var IbanListsResults = new VarRefundIbanDataModelMetadataResult()
-                        {
-                            Iban = IBanListResponse.D.Results[i].Iban
-                        };
-                        IbanData.Add(IbanListsResults);
-                    }
-
-
-
-
-                }
-                if(IbanData.Count > 0) {
-
-                    SelectedIbanData = IbanData.FirstOrDefault();
-
-                  
-
-                    IsTypeEditable = false;
-                }
-
-
-
-
-                }
-                catch (InternetException ex)
-                {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        _ = _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    });
-                }
-            
-            
-        }
-
         public async Task LoadDraftsData(VatRefundsListResultModel draftsData)
         {
             try
@@ -872,9 +762,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IBANType idType = IBANTypesList.Where(m => m.key == SelectedIDTypeCode).FirstOrDefault();
                         SelectedIdtype = idType.Text;
                     }
-                    catch(Exception)
+                    catch(Exception ex)
                     {
                         Console.WriteLine("No ID type");
+                        Console.WriteLine(ex.Message);
                     }
                 }
 

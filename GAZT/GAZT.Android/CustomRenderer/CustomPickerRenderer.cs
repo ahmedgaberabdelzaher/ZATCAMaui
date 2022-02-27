@@ -22,10 +22,11 @@ namespace GAZT.Droid.CustomRenderer
             base.OnElementChanged(e);
             if (Control != null)
             {
-                this.Control.SetTextColor(Android.Graphics.Color.Black);
+                Color colorPrimary = (Color)App.Current.Resources["Primary"];
+                this.Control.SetTextColor(Android.Graphics.Color.ParseColor("#042e66"));
                 Control.SetBackgroundColor(global::Android.Graphics.Color.White);
                 Control.InputType = InputTypes.TextFlagNoSuggestions;
-                Control.SetHintTextColor(Android.Graphics.Color.Black);
+                Control.SetHintTextColor(Android.Graphics.Color.ParseColor("#042e66"));
                 element = (CustomPicker)this.Element;
                 //if (Control != null && this.Element != null && !string.IsNullOrEmpty(element.Image))
                 //    Control.Background = AddPickerStyles(element.Image);

@@ -73,7 +73,7 @@
                                             <custom:CustomLabel Text="00894790088" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
                                         </StackLayout>
                                         <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                            <buttons:SfButton  Text="Closed" HeightRequest="32" TextColor="#d99a29" Padding="12,0,12,0" CornerRadius="15" BackgroundColor="Maroon"/>
+                                            <buttons:SfButton  Text="Closed" HeightRequest="32" TextColor="{StaticResource Secondary}" Padding="12,0,12,0" CornerRadius="15" BackgroundColor="Maroon"/>
                                         </StackLayout>
                                     </StackLayout>
 

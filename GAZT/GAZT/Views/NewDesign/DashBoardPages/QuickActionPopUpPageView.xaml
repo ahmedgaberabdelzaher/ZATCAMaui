@@ -38,7 +38,7 @@
                 </Grid.RowDefinitions>
 
             </Grid>
-            <StackLayout Padding="24" Spacing="24" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
+            <StackLayout Padding="20" Spacing="24" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
 
                 <border:SfBorder x:Name="ZAKATReturn"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
@@ -91,7 +91,12 @@
 
 
             </StackLayout>
-            <Frame  Grid.Row="2" Grid.ColumnSpan="3" Opacity="0.5" CornerRadius="10">
+            <Frame  Grid.Row="2"
+                    Grid.ColumnSpan="3"
+                    Opacity="0.5"
+                    CornerRadius="10"
+                    WidthRequest="24"
+                    HeightRequest="24">
                 <Frame.Margin>
                     <OnPlatform x:TypeArguments="Thickness" >
                         <On Platform="iOS" Value="2,-6,2,0"/>
@@ -100,15 +105,15 @@
                 </Frame.Margin>
                 <Frame.HeightRequest>
                     <OnPlatform x:TypeArguments="x:Double" >
-                        <On Platform="iOS" Value="5"/>
-                        <On Platform="Android" Value="5"/>
+                        <On Platform="iOS" Value="4"/>
+                        <On Platform="Android" Value="4"/>
                     </OnPlatform>
                 </Frame.HeightRequest>
             </Frame>
 
-            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Padding="0,0,0,12" >
+            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Padding="0,0,0,16" >
 
-                <Image x:Name="CloseIcon"  Margin="0,8,0,0" Source="quick_Actions_Close.png">
+                <Image x:Name="CloseIcon"  Margin="0,8,0,0" HeightRequest="56" WidthRequest="56" Source="quick_Actions_Close.png">
 
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnCloseTapped"/>

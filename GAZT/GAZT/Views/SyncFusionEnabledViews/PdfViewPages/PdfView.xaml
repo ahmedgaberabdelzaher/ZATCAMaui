@@ -50,7 +50,7 @@
                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                         <!--Title="{x:Static local1:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
@@ -61,14 +61,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls1:TitleView   FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls1:TitleView   FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls1:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -78,7 +78,7 @@
                             x:Name="ShareButton"
                             Clicked="Share_Clicked"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource Share}"
                                IsEnabled="{TemplateBinding BindingContext.IsShareButtonEnable}"

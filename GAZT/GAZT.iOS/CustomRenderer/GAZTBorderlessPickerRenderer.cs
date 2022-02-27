@@ -25,9 +25,9 @@ namespace GAZT.iOS.CustomRenderer
                 this.Control.BackgroundColor = UIColor.White;
                 this.Control.BorderStyle = UITextBorderStyle.None;
                 if (App.IsArabic)
-                    this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
+                    this.Control.Font = UIFont.FromName("Somar-SemiBold", 12);
                 else
-                    this.Control.Font = UIFont.FromName("GE_SS_Two_Medium", 12);
+                    this.Control.Font = UIFont.FromName("Somar-SemiBold", 12);
 
                 if (App.IsArabic)
                 {

@@ -11,7 +11,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"    
                               xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.FileAttachmentPopupPageView">
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
+    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="End" BackgroundColor="White">
         <Grid>
             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
@@ -22,7 +22,7 @@
             </Label>-->
                 <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
                     <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Tapped="OnClosedTapped"/>
@@ -54,8 +54,8 @@
                     </Label>
                 </Grid>
 
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,0,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,0,0,0" TextColor="{StaticResource Primary}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                <Label HorizontalTextAlignment="Center" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,0,0,0" TextColor="{StaticResource Primary}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300" SeparatorVisibility="None">
@@ -63,7 +63,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
-                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                    <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" >
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                 <Grid.ColumnDefinitions>
@@ -76,7 +76,7 @@
                                                     <RowDefinition Height="30" />
                                                 </Grid.RowDefinitions>
                                                 <Label Text="{Binding Filename}" LineBreakMode="TailTruncation" Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" Grid.Row="0" Grid.Column="0"/>
+                                                   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SomarBold}" Grid.Row="0" Grid.Column="0"/>
                                                 <!--<Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
@@ -87,7 +87,7 @@
                                                         <TapGestureRecognizer  />
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label Text="{Binding Erfdt}" Margin="3,0,3,-5" Style="{StaticResource MiniGrayLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FlowDirection="LeftToRight" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SSTArBold}"/>
+                                                <Label Text="{Binding Erfdt}" Margin="3,0,3,-5" Style="{StaticResource MiniGrayLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FlowDirection="LeftToRight" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SomarBold}"/>
                                             </Grid>
                                         </StackLayout>
                                     </cards1:SfCardView>
@@ -97,8 +97,8 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <buttons:SfButton x:Name="btnAddAttachment" Text="{x:Static custom2:AppResources.FAPAddAttachment}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                HeightRequest="56" Margin="0,0,0,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
+                HeightRequest="56" Margin="0,0,0,20" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
+                BackgroundColor="{StaticResource Secondary}" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
             </StackLayout>
 
             <!--<Grid Grid.Row="0"    Grid.Column="0"  IsVisible="{Binding IsLoading}" >
@@ -116,7 +116,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                     </StackLayout>
 
                 </StackLayout>

@@ -96,7 +96,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AddPopPage_ViewModel
                 RaisePropertyChanged("IsBold");
             }
         }
-        private string _iSRed = "#7D858D";
+        private string _iSRed = "{StaticResource ForgotPasswordGrayTextColor}";
         public string IsRed
         {
             get

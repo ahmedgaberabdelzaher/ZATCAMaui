@@ -79,9 +79,15 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 }
                 string newHTMLContent = HTMLContent.Replace("<img ", "<img src='ic_GAZT_Logo_Text.png' width='40%' ");
 
+                newHTMLContent = newHTMLContent.Replace("FABB33", "0996d4");
+
+
+                newHTMLContent = newHTMLContent.Replace("</html>", "<head><style type='text/css'>@font-face {font-family: MyFont;src:url('Somar-Regular.otf') format('opentype');}body { font-family: MyFont }</style></head></html>");
+                
+
                 if (Device.RuntimePlatform == Device.iOS)
                 {
-                    string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;'>");
+                    string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:40px;margin:15;color:#042e66'>");
                     var htmlSource = new HtmlWebViewSource();
                     htmlSource.Html = newHTMLForFonts;
                     htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();
@@ -89,7 +95,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 }
                 else
                 {
-                    string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:16px;margin:10;'>");
+                    string newHTMLForFonts = newHTMLContent.Replace("<body>", "<body style='font-size:16px;margin:10;color:#042e66'>");
                     var htmlSource = new HtmlWebViewSource();
                     htmlSource.Html = newHTMLForFonts;
                     htmlSource.BaseUrl = DependencyService.Get<IBaseUrl>().Get();

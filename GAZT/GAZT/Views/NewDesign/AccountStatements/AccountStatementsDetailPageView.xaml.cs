@@ -1,4 +1,4 @@
-﻿using EGAZT.Models;
+using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.NewDesignConverters;
 using GAZT.Manager;
@@ -43,6 +43,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
         }
         public void ChangeAeroIcon()
         {
@@ -65,7 +69,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             this.Padding = safeInsets;
 
             LableTaxPeriod.Text = ""+ myBills.PeriodPart1 +" - "+myBills.PeriodPart2;
-            LableFbNum.Text = "" + myBills.Fbnum;
+            //LableFbNum.Text = "" + myBills.Fbnum;
+            LableFbNum.Text = AppResources.ASFBNum + " : " + myBills.Fbnum;
             LableDueDate.Text = "" + myBills.FormatedFaedn;
             LableSadadNum.Text = "" + myBills.VTRE2;
             //LableTransactionDate.Text = "" + myBills.FormatedFaedn;
@@ -99,10 +104,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             FrameCardStatus.BackgroundColor = color;
             CardAmount.BackgroundColor = color;
             CardAmountRemaining.BackgroundColor = color;
+            LableCardStatus.TextColor = color;
 
-           
 
-           
+
+
+
 
             if (myBills.IsPartiallyPaidVisibile) {
                 LableAmountTitle.Text = AppResources.MyBillsPaidAmount;
@@ -142,6 +149,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     paidAmount = "0.00";
                 }
                 LableAmount.Text = paidAmount + " " + AppResources.ZSAR;
+
+                if(myBills.StatusText == AppResources.UnPaid) {
+
+                    LableAmount.TextColor = (Color)Application.Current.Resources["ErrorColor"];
+                    LableAmountTitle.TextColor = (Color)Application.Current.Resources["ErrorColor"];
+                }
+
             }
 
           
@@ -154,15 +168,15 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             Color StatusColor;
             if (value == AppResources.Paid)
             {
-                StatusColor = Color.FromHex("#006450");
+                StatusColor =  (Color)Application.Current.Resources["SuccessColor"];
             }
             else if (value==AppResources.PartiallyPaid)
             {
-                StatusColor = Color.Orange;
+                StatusColor = (Color)Application.Current.Resources["Partial"];
             }
             else 
             {
-                StatusColor = Color.FromHex("#AA0C19");
+                StatusColor =  (Color)Application.Current.Resources["ErrorColor"];
             }
 
             return StatusColor;

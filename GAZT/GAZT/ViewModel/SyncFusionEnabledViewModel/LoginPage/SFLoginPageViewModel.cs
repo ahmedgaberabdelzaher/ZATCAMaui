@@ -477,7 +477,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
         private async void ForgotPasswordClicked(object obj)
         {
             var label = obj as Label;
-            label.BackgroundColor = Color.FromHex("#70FFFFFF");
+            label.BackgroundColor = (Color)Application.Current.Resources["FPButtonTextColor"];
             await Task.Delay(100);
             label.BackgroundColor = Color.Transparent;
             _navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);

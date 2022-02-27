@@ -103,12 +103,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() => { passportIssueHijiriPicker.FutureDay = false;
-                    Device.StartTimer(TimeSpan.FromSeconds(1), () => {
-                        viewModel.updateDatePickers();
-                        passportIssueHijiriPicker.IsOpen = true; return false; });
-                     });
-                
+                passportIssueHijiriPicker.IsOpen = true;
             }
         }
 
@@ -131,7 +126,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
         }
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
@@ -200,53 +195,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception) { }
-        }
-
-        void FinacialPeriodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-            viewModel.isFinaceDetailsChanged = true;
-
-            if(viewModel.SelectedPeriod != null) {
-
-                viewModel.TaxDate = viewModel.SelectedPeriod.ConvretedToDate;
-            }
-
-
-        }
-
-        void FinacialMethodSelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
-        {
-
-            try
-            {
-                string selectedItem = e.AddedItems[0] as string;
-
-                if (selectedItem == AppResources.NDAccounting)
-                {
-
-                    viewModel.IsFinancePeriodVisible = true;
-                    viewModel.udpdateDates();
-                }
-                else
-                {
-                    viewModel.IsFinancePeriodVisible = false;
-
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-
-
-
-
-            viewModel.isFinaceDetailsChanged = true;
-
+            catch (Exception ex) { }
         }
 
         private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
@@ -303,7 +252,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             else
             {
-                Device.BeginInvokeOnMainThread(() => passportIssueHijiriPicker.FutureDay = true);
                 selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
                 viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
                 DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);

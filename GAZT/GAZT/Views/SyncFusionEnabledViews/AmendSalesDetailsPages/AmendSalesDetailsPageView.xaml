@@ -27,14 +27,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.ZAmendSalesDetails}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.ZAmendSalesDetails}"  FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -93,8 +93,8 @@
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.OldValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry  Grid.Row="2" IsReadOnly="True" Text="{Binding OldValue}"  TextColor="#7D858D"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SSTArabicMedium}">
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
+                                <custom:GAZTBorderlessEntry  Grid.Row="2" IsReadOnly="True" Text="{Binding OldValue}"  TextColor="{StaticResource ForgotPasswordGrayTextColor}"  Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SomarSemiBold}">
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom:AlphaNumericValidatorBehaviour/>
                                     </custom:GAZTBorderlessEntry.Behaviors>
@@ -114,8 +114,8 @@
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.ZNewValue}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                                <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric" TextChanged="OnNewValueTextChanged"    Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SSTArabicMedium}">
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
+                                <custom:GAZTBorderlessEntry x:Name="NewValue"  Text="{Binding NewValue}"  Unfocused="OnEntryUnFocussed" Focused="OnEntryFocussed"  Keyboard="Numeric" TextChanged="OnNewValueTextChanged"    Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource SomarSemiBold}">
                                 </custom:GAZTBorderlessEntry>
                             </inputLayout:SfTextInputLayout>
                             <!--<Label Text="{x:Static local:AppResources.ZChangeReason}"  Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" >
@@ -135,7 +135,7 @@
                             <inputLayout:SfTextInputLayout  Margin="10,-6,10,-6" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
     Hint="{x:Static local:AppResources.ZChangeReason}" 
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
                                 <custom:GAZTBorderlessEntry Text="{Binding ChangeReason}" Style="{StaticResource GAZTTextBoxStyleForEntry}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                                     <custom:GAZTBorderlessEntry.Behaviors>
                                         <custom1:AlphabetandArabicCharacters/>
@@ -156,8 +156,8 @@
                              <inputLayout:SfTextInputLayout    Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
         Hint="{x:Static local:AppResources.ZZAttachment}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
-                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" TextColor="Black" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
+    OutlineCornerRadius="8" FocusedColor="#{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
+                            <custom:GAZTBorderlessEntry Text="{Binding AttachmentName}" TextColor="{StaticResource PrimaryColor}" Grid.Row="12" IsReadOnly="True" Grid.Column="0"    Style="{StaticResource GAZTTextBoxStyleForEntry}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
                             </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                              <Image Grid.Row="12"  Grid.Column="1"   Margin="13,2,13,1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_attachment.png">
@@ -213,7 +213,7 @@
                                         <DataTemplate>
                                             <ViewCell>
                                                 <ContentView>
-                                                    <cards1:SfCardView HasShadow="True" Margin="10,10,10,0" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                    <cards1:SfCardView HasShadow="False" Margin="10,10,10,0" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" >
                                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="White" Margin="0">
                                                                 <!--<Grid.RowDefinitions>
@@ -239,20 +239,20 @@
                                    />-->
                                                                 <Label Text="{Binding Filename}" 
                                    Style="{StaticResource MiniGrayLabelStyle}"
-  FontFamily="{StaticResource SSTArabicMedium}"
+  FontFamily="{StaticResource SomarSemiBold}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
                                                                            LineBreakMode="WordWrap"
-                                                                       TextColor="Black"
+                                                                       TextColor="{StaticResource PrimaryColor}"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                                                           Grid.ColumnSpan="2"
                                    />
                                                                 <Label Text="{Binding UploadededDateToShow}" 
                                                                        Margin="0,0,0,0"
-                                                                       TextColor="Black"
+                                                                       TextColor="{StaticResource PrimaryColor}"
                                                                        Style="{StaticResource MiniGrayLabelStyle}"
-                                                                         FontFamily="{StaticResource SSTArabicMedium}"
+                                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                                         HorizontalOptions="StartAndExpand"
                                                                          VerticalOptions="CenterAndExpand"
                                                                          LineBreakMode="CharacterWrap"
@@ -284,7 +284,7 @@
                         </Grid>
                     </ScrollView>
                 <!--</Grid>-->
-                <buttons:SfButton Text="{x:Static local:AppResources.Save}" FontAttributes="Bold" TextColor="White"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56"  IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}" >
+                <buttons:SfButton Text="{x:Static local:AppResources.Save}" FontFamily="{StaticResource SomarBold}" TextColor="White"  Command="{Binding OnZakatReturnDataUpdateClicked}" Grid.Row="1" Grid.Column="0" CornerRadius="0" Margin="0" Padding="0" VerticalOptions="EndAndExpand" HeightRequest="56"  IsEnabled = "{Binding IsSaveButtonEnable}" BackgroundColor="{Binding ButtonBackgroundColor}" >
                     <VisualStateManager.VisualStateGroups>
                         <VisualStateGroup x:Name="CommonStates">
                             <VisualState x:Name="Disabled">
@@ -317,7 +317,7 @@
                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                         <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>

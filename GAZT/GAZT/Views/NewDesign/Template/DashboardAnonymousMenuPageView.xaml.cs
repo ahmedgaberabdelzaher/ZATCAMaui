@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using GAZT.Helper;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -6,10 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Essentials;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 
@@ -77,7 +77,7 @@ namespace EGAZT.Views.NewDesign.Template
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -96,7 +96,7 @@ namespace EGAZT.Views.NewDesign.Template
                 this.FlowDirection = FlowDirection.LeftToRight;
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -106,6 +106,13 @@ namespace EGAZT.Views.NewDesign.Template
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnTaxEvasionTapped", "Tax Evasion eService");
             //  viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
             viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
+        private void OnZatcaInfoMenuTapped(object sender, EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnZatcaInfoMenuTapped", "Zatca Info menu eService");
+            viewModel._navigationService.NavigateTo(App.ZatcaInfoMenuPageView);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
@@ -137,25 +144,25 @@ namespace EGAZT.Views.NewDesign.Template
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
-        private void SwitchUser_Tapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.GoBack();
-        }
-
-
         private void OnEduLinkTapped(object sender, EventArgs e)
         {
+
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "EduLink_Tapped", "Education Link");
             //  viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
-            Uri uri = new Uri("https://edujourneys.gazt.gov.sa/home/tracks");
+            Uri uri = new Uri("https://edujourneys.zatca.gov.sa/home/tracks");
             OpenBrowser(uri);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
-
-        
         public async void OpenBrowser(Uri uri)
         {
             await Launcher.OpenAsync(uri);
+        }
+
+        private void SwitchUser_Tapped(object sender, EventArgs e)
+        {
+            App.isAndroidRefresh = false;//#CR2068
+            viewModel._navigationService.GoBack();
+           // App.isAndroidRefresh = false;//#CR2068
         }
     }
 }

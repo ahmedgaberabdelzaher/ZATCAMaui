@@ -34,14 +34,14 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="2" x:Name="ParentView" HorizontalOptions="StartAndExpand">
+                    <Grid Grid.Row="2" x:Name="ParentView" HorizontalOptions="FillAndExpand" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="5*"/>
+                            <ColumnDefinition Width="5*"/>
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Row="0" Grid.Column="0">
@@ -59,7 +59,7 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDIndividuals}" Style="{StaticResource ValueLabelWhiteMedium}">
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding IndividualBackImg}" Value="vat_tile_listofsignup_W.png">
-                                            <Setter Property="TextColor" Value="Black"/>
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>
                                 </custom:CustomLabel>
@@ -85,7 +85,7 @@
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEstablishments}" Style="{StaticResource ValueLabelWhiteMedium}">
                                     <custom:CustomLabel.Triggers>
                                         <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding EstablishmentBackImg}" Value="vat_tile_listofsignup_W.png">
-                                            <Setter Property="TextColor" Value="Black"/>
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
                                         </DataTrigger>
                                     </custom:CustomLabel.Triggers>
                                 </custom:CustomLabel>
@@ -192,7 +192,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

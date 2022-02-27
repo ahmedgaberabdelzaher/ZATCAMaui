@@ -61,7 +61,7 @@
 
                 Text="{Binding Content}"
                 LineBreakMode="CharacterWrap"
-                LineHeight=".6"
+                LineHeight="1.3"
                 VerticalTextAlignment="Center" 
                 />
 

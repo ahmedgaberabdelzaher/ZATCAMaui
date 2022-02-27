@@ -15,7 +15,7 @@
                 <Image Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
                     <Image Style="{DynamicResource CardIcon}" Source="{Binding SelectedCardIcon}" IsVisible="{Binding IsSelectedCardIconVisible}" Margin="0"></Image>
-                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.8" Padding="0" Margin="0,-10"/> 
+                    <Label Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}"  FontSize="Small" Padding="0"/> 
                 </StackLayout>
             </Grid>
         </cards:SfCardView>

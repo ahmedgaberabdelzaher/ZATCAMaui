@@ -38,39 +38,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         {
             this.SkipCommand = new Command(this.Skip);
             this.NextCommand = new Command(this.Next);
-           // this.ChangeLangCommand = new Command(this.ChangeLanguage);
-
-            this.Boardings = new ObservableCollection<Boarding>
-            {
+            // this.ChangeLangCommand = new Command(this.ChangeLanguage);
+           
+                this.Boardings = new ObservableCollection<Boarding>
+                 {
                 new Boarding()
                 {
-                    ImagePath = "committments_onboarding.png",
+                    ImagePath = AppResources.NDCommitmentsImage,
                     Header = AppResources.NDCommitments,
                     Content = AppResources.NDDontMissObligation,
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
-                    ImagePath = "returnsubmission_onboarding.png",
+                    ImagePath =AppResources.NDSubmisitionsImage,//Correspondence 
                     Header = AppResources.NDReturnSubmission,
-                    Content = AppResources.NDVATZAKATReturnSubmission,
+                    Content = AppResources.NDNewEasyWayToCommunicate,
                     RotatorItem = new WalkthroughItemPage()
                 },
-                //new Boarding()
-                //{
-                //    ImagePath = "paymentmethod_onboarding.png",
-                //    Header = AppResources.NDNewPaymentMethods,
-                //    Content = AppResources.NDMakeTransactionsFast,
-                //    RotatorItem = new WalkthroughItemPage()
-                //},
                 new Boarding()
                 {
-                    ImagePath = "inbox_onboarding.png",
+                    ImagePath = AppResources.NDInboxImage, // VAT RETURN
                     Header = AppResources.NDInboxnNotification,
                     Content = AppResources.NDNewEasyWayToCommunicate,
                     RotatorItem = new WalkthroughItemPage()
-                }
-            };
+                },
+               };
+            
 
             // Set bindingcontext to content view.
             foreach (var boarding in this.Boardings)
@@ -264,36 +258,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         public void test()
         {
             this.Boardings = new ObservableCollection<Boarding>
-            {
+                 {
                 new Boarding()
                 {
-                    ImagePath = "committments_onboarding.png",
+                    ImagePath = AppResources.NDCommitmentsImage,
                     Header = AppResources.NDCommitments,
                     Content = AppResources.NDDontMissObligation,
                     RotatorItem = new WalkthroughItemPage()
                 },
                 new Boarding()
                 {
-                    ImagePath = "returnsubmission_onboarding.png",
+                    ImagePath =AppResources.NDSubmisitionsImage,//Correspondence 
                     Header = AppResources.NDReturnSubmission,
-                    Content = AppResources.NDVATZAKATReturnSubmission,
+                    Content = AppResources.NDNewEasyWayToCommunicate,
                     RotatorItem = new WalkthroughItemPage()
                 },
-                //new Boarding()
-                //{
-                //    ImagePath = "paymentmethod_onboarding.png",
-                //    Header = AppResources.NDNewPaymentMethods,
-                //    Content = AppResources.NDMakeTransactionsFast,
-                //    RotatorItem = new WalkthroughItemPage()
-                //},
                 new Boarding()
                 {
-                    ImagePath = "inbox_onboarding.png",
+                    ImagePath = AppResources.NDInboxImage, // VAT RETURN
                     Header = AppResources.NDInboxnNotification,
                     Content = AppResources.NDNewEasyWayToCommunicate,
                     RotatorItem = new WalkthroughItemPage()
-                }
-            };
+                },
+               };
 
             // Set bindingcontext to content view.5
             foreach (var boarding in this.Boardings)

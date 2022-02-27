@@ -1518,7 +1518,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 2, Filter = "Income Tax" });
                 CorresFilterZakat = FiltersZAKAT;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -1953,16 +1953,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -2429,7 +2429,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -2741,7 +2741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     CashRatioY1 = "0.00";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -2817,7 +2817,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -2888,7 +2888,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     CashRatioY3 = "0.00";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -2929,14 +2929,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             set
             {
                 _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+                DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
 
 
 
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
-        private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _declarationButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color DeclarationButtonBackGroundColor
         {
             get
@@ -3593,7 +3593,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     });
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
 
@@ -3811,7 +3811,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -3822,6 +3822,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
         {
             try
             {
+                IsLoading = true;
 
                 ZakatInstalments.d.AOneYrTb = Year1;
                 ZakatInstalments.d.ATwoYrTb = Year2;
@@ -3973,6 +3974,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
+                    IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
@@ -4887,7 +4889,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -4933,7 +4935,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -5270,7 +5272,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
 
 
-
                 if (IsFinsancialStatementsEditable)
                 {
 
@@ -5349,7 +5350,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                         return response;
 
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
                         return null;
@@ -5371,9 +5372,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 return response;
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
-                return response;
+                IsLoading = false;
+
+                //throw GAZTErrorException(ex.ToString());
+                return null;
             }
 
         }

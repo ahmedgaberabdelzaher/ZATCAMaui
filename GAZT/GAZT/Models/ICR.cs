@@ -177,7 +177,7 @@ namespace GAZT.Models
                         }
                         else if (string.Equals(_status, "E0006") || string.Equals(_status, "E0045") || string.Equals(_status, "E0090"))
                         {
-                            BorderColour = "#005e4b";
+                            BorderColour = "#003672";
                             StatusImage = "ic_Paid.png";
                         }
                         else if (string.Equals(_status, "E0020") || string.Equals(_status, "E0055") || string.Equals(_status, "E0057") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089"))
@@ -220,7 +220,7 @@ namespace GAZT.Models
                 //    }
                 //    else if (string.Equals(_statusTxt, "Amended") || string.Equals(_statusTxt, "Billed") || string.Equals(_statusTxt, "GSTC – Escalation Completed"))
                 //    {
-                //        BorderColour = "#005e4b";
+                //        BorderColour = "#003672";
                 //        StatusImage = "ic_Paid.png";
                 //    }
                 //    else if (string.Equals(_statusTxt, "In Additional Clarif. with TP") || string.Equals(_statusTxt, "Submitted") || string.Equals(_statusTxt, "Draft in Amendment by GAZT") || string.Equals(_statusTxt, "Amendment Submitted") || string.Equals(_statusTxt, "In Supervisor's Pool") || string.Equals(_statusTxt, "For Supervisor's Review") || string.Equals(_statusTxt, "For Officer's Review") || string.Equals(_statusTxt, "GSTC – Escalation In Process"))

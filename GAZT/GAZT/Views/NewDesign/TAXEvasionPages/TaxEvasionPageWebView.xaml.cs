@@ -30,13 +30,11 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             if (App.IsArabic)
             {
-                // taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "ar");
-                taxEvasionWebView.Source = "https://gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+                taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
             }
             else
             {
-                //taxEvasionWebView.Source = string.Format("https://gazt.gov.sa/{0}/ContactUs/Pages/ReportFraud.aspx", "en");
-                taxEvasionWebView.Source = "https://gazt.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+                taxEvasionWebView.Source = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
             }
         }
 

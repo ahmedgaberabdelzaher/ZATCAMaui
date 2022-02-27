@@ -58,25 +58,25 @@ namespace EGAZT.Views.NewDesign.GenericPickers
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            CalendarTitle.FontFamily = "SSTArabic-Medium";
-                            FutureCalendarTitle.FontFamily = "SSTArabic-Medium";
-                            CalendarDoneButton.FontFamily = "SSTArabic-Medium";
+                            CalendarTitle.FontFamily = "Somar-SemiBold";
+                            FutureCalendarTitle.FontFamily = "Somar-SemiBold";
+                            CalendarDoneButton.FontFamily = "Somar-SemiBold";
 
-                            calendarPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            futureCalendarPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            calendarPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            futureCalendarPicker.HeaderFontFamily = "SSTArabic-Medium";
+                            calendarPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            calendarPicker.HeaderFontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.HeaderFontFamily = "Somar-SemiBold";
 
-                            calendarPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            calendarPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";
-                            futureCalendarPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            futureCalendarPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            calendarPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            calendarPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
 
-                        CalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
+                        CalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
                         CalendarDoneButton.FontFamily = "GAZT_FONT_MEDIUM";
 
                         calendarPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
@@ -84,14 +84,14 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         calendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
                         futureCalendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
 
-                        calendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        calendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-                        futureCalendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        futureCalendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        calendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        calendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        futureCalendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        futureCalendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -144,7 +144,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

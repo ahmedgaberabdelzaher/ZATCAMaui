@@ -34,7 +34,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 viewModel.ResidenceText = App.TP.TpType;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

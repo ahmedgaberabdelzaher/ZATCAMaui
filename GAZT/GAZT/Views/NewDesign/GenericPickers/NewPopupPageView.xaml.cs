@@ -31,7 +31,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 var selectedItem = items.FirstOrDefault(x => x.Id == sSelectedTaxTypeForFilter.Id && x.TaxType == sSelectedTaxTypeForFilter.TaxType);
                 TaxTypePicker.SelectedItem = selectedItem;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -71,21 +71,21 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            TaxTypePicker.HeaderFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -99,7 +99,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
                 TaxTypePicker.SelectedItem = selectedReturntype;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

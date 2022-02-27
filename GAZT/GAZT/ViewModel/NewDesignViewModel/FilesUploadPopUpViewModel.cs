@@ -80,7 +80,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
         }
 
-        private string _TitleOne = AppResources.ZFilesizeshouldnotbemorethan5MB;
+        private string _TitleOne = AppResources.ZZZZVATRAttachmentNote1;
         public string TitleOne
         {
             get
@@ -96,7 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
 
 
-        private string _TitleTwo = AppResources.ZChooseonlyfilewithextension;
+        private string _TitleTwo = AppResources.ZZZZVATRAttachmentNote2;
         public string TitleTwo
         {
             get
@@ -415,7 +415,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
 
-                                    await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
 
@@ -430,23 +430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof5attachmentscanbeuploaded));
 
-                                    await PopupNavigation.Instance.PopAsync();
-                                    return;
-                                }
-                            }
-
-                        }
-                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
-                        {
-                           
-                            if (VatAttachmentsList != null)
-                            {
-                                int ListCount = VatAttachmentsList.Count();
-                                if (ListCount >=9)
-                                {
-                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZMaximumnoof9attachmentscanbeuploaded1));
-
-                                   // await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -463,7 +447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
 
-                                    await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -492,7 +476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.OldZakatInstalmentAttachmentLimitReached));
 
-                                    await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -506,7 +490,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZakatInstalmentAttachmentLimitReached));
 
-                                    await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
                             }
@@ -520,39 +504,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                 {
                                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATReviewAttachmentLimitReached));
 
-                                    await PopupNavigation.Instance.PopAsync();
+                                    //await PopupNavigation.Instance.PopAsync();
                                     return;
                                 }
                             }
                         }
 
+                        PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                        //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-
-                        /*FilePickerFileType customFileType =
-    new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-    {
-        { DevicePlatform.iOS, filetypes }, // or general UTType values
-        { DevicePlatform.Android, filetypes } // or general UTType values
-    });
-                        var options = new PickOptions
-                        {
-                            PickerTitle = "",
-                            FileTypes = customFileType,
-                        };*/
-                        PickOptions options= UtilityManager.GetFilePickerOptionsForChooser(filetypes);
-
-                        // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
                         var fileData = await FilePicker.PickAsync(options);
                         var stream = await fileData.OpenReadAsync();
                         attachment = UtilityManager.ReadFully(stream as Stream);
+
                         VatAttachmentCount++;
                         if (fileData != null && attachment != null && attachment.Length > 0)
                         {
-                            //attachment = fileData.DataArray;
+                            // attachment = attachment;
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = (Path.GetExtension(fileData.FileName)).Split('.')[1];//fileData.FileName.Split('.')[1];
+
+                                string[] ExtensionArray = fileData.FileName.Split('.');
+                                string Extention = ExtensionArray.Last();
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls")
                                 {
                                     if (TotalAttachmentSize <= 300)
@@ -561,7 +535,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                         decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
                                         double fileSize = (attachment.Length / 1024) / 1024.0;
 
-                                        if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration)
+                                        if (IsComeForWhichAttachment == WhichAttachment.TINDeregistration || IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentFinance || IsComeForWhichAttachment == WhichAttachment.OldZakatInstalmentBankStatements)
                                         {
                                             if (AttachmentName.Contains(" "))
                                             {
@@ -628,7 +602,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception)
+                                                                catch (Exception ex)
                                                                 {
                                                                     await Task.Run(() =>
                                                                     {
@@ -747,7 +721,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception)
+                                                                catch (Exception ex)
                                                                 {
                                                                     await Task.Run(() =>
                                                                     {
@@ -1024,7 +998,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             });
         }
 
-      
         public async Task DeleteAttachment(bool result, VATAttachment attachment)
         {
             try
@@ -1069,10 +1042,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
                         }
-                        else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
-                        {
-                            APiMethod = "ZDP_INDTAX_ATT_SRV";
-                        }
                         else if (IsComeForWhichAttachment == WhichAttachment.VatReviewBankGuranteeAttach)
                         {
                             APiMethod = "ZDP_INDTAX_ATT_SRV";
@@ -1096,7 +1065,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 
                         string results = string.Empty;
 
-                        if(IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
+                        if (IsComeForWhichAttachment == WhichAttachment.VATDeregistration)
                         {
                             results = UploadAttachementsWebServiceManager.GAZTGenericDeleteAttachment(attachment.Filename, returnIdz, APiMethod, attachment.Doguid, attachment.Dotyp);
                         }
@@ -1145,7 +1114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
@@ -1173,7 +1142,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1238,13 +1207,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
                         AttachmentName = attName;
                     }
-                    else if (IsComeForWhichAttachment == WhichAttachment.VatReviewLateFiling)
-                    {
-                        APiMethod = "ZDP_INDTAX_ATT_SRV";
-                        AttachmentName = AttachmentName.Replace("-", "_").Replace(" ", "");
-                        string attName = "1SpaceAdded-SpaceAdded" + AttachmentName;
-                        AttachmentName = attName;
-                    }
                     else if (IsComeForWhichAttachment == WhichAttachment.ZakatObjectionsWithdrawAttachment)
                     {
                         APiMethod = "Z_SAVE_ATTACH_SRV";
@@ -1274,7 +1236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         _attachment = null;
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     //  return null;
                 }
@@ -1286,7 +1248,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             return _attachment;
 
         }
-     
+
         public decimal GetAttachMentSize(List<decimal> SizeList)
         {
             decimal TotalSize = 0;

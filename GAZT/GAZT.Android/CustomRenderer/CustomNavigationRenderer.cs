@@ -93,24 +93,24 @@ namespace GAZT.Droid.CustomRenderer
                       textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
                     if (App.IsArabic)
                     {
-                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "GE_SS_Two_Medium.ttf");
+                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Somar-SemiBold.otf");
                         textView.Typeface = spaceFont;
                     }
                     else
                     {
-                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "GE_SS_Two_Medium.ttf");
+                        var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Somar-SemiBold.otf");
                         textView.Typeface = spaceFont;
                     }
             });         
                  textView = (Android.Support.V7.Widget.AppCompatTextView)e.Child;
                 if (App.IsArabic)
                 {
-                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "GE_SS_Two_Medium.ttf");
+                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Somar-SemiBold.otf");
                     textView.Typeface = spaceFont;
                 }
                 else
                 {
-                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "GE_SS_Two_Medium.ttf");
+                    var spaceFont = Typeface.CreateFromAsset(Forms.Context.ApplicationContext.Assets, "Somar-SemiBold.otf");
                     textView.Typeface = spaceFont;
                 }
                 _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;

@@ -41,7 +41,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 viewModel.ResetData();
                 _ = viewModel.GetVATChangeFillingData();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -284,7 +284,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                         }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }

@@ -21,6 +21,7 @@
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
              xmlns:ResourceManager="clr-namespace:EGAZT"  
              BackgroundImageSource="partials_background.png"
+             FlowDirection="RightToLeft"
              x:Class="EGAZT.Views.NewDesign.EstablishmentSignUP.SignUpForEstablishmentPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -72,18 +73,14 @@
                         <!--<CheckBox VerticalOptions="CenterAndExpand" IsEnabled="True" IsChecked="{Binding IsDeclarationCheckedForInstruction}">
                             <CheckBox.Triggers>
                                 <DataTrigger TargetType="CheckBox" Value="false">
-                                    <Setter Property="Color" Value="#ff0000" />
+                                    <Setter Property="Color" Value="#e84941" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>-->
-                        <custom:CustomLabel  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"   FontFamily="{StaticResource GAZT_FONT_MEDIUM}">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span  Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
-                                    <Span Text="&#160;"/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}"  />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
+                            <custom:CustomLabel  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                                                 FontFamily="{StaticResource GAZT_FONT_MEDIUM}"
+                                                 Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeTheseTermsCond}">
+                            
                             <custom:CustomLabel.GestureRecognizers>
                                 <!--<TapGestureRecognizer Tapped="OnInCTapped"/>-->
                             </custom:CustomLabel.GestureRecognizers>
@@ -114,10 +111,10 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid Grid.Column="0">
-                              <!--<cards:SfCardView HasShadow="True" WidthRequest="366" HeightRequest="48" BackgroundColor="Transparent" CornerRadius="20" >                              </cards:SfCardView>-->
+                              <!--<cards:SfCardView HasShadow="False" WidthRequest="366" HeightRequest="48" BackgroundColor="Transparent" CornerRadius="20" >                              </cards:SfCardView>-->
 
            
-                                <Image Source="{Binding ImgBackgroundYes}">
+                                <Image Source="{Binding ImgBackgroundYes}" Aspect="AspectFill" >
 
                                 </Image>
                         
@@ -135,7 +132,7 @@
                         </Grid>
                         <Grid Grid.Column="1">
          
-                                <Image x:Name="NoBackGroungImg" Source="{Binding ImgBackgroundNo}">
+                                <Image x:Name="NoBackGroungImg" Source="{Binding ImgBackgroundNo}" Aspect="AspectFill">
                                 </Image>
 
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZNoText}" Style="{StaticResource ButtonLabelBlackBold}" Margin="16,0,16,0" VerticalOptions="End" Padding="16,8,16,8">
@@ -217,13 +214,13 @@
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
-                                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" 
+                                                         PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" 
                                                          BackgroundColor="White" SelectedItemFontSize="15"
                                                          ShowFooter="False" ItemHeight="40" 
                                                          DisplayMemberPath="SUType" Margin="10,0,10,0" PickerHeight="250" 
                                                          SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" 
                                                          UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                         PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                                                         PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                                                          FooterHeight="46" SelectionChanged="IDTypePicker_SelectionChanged" 
                                                          ItemsSource="{Binding SignUpUsingList}" SelectedIndex="{Binding IDTypeIndex}"  OkButtonClicked="DDlIDType_OkayButtonClicked">
                                         <syncfusion:SfPicker.Behaviors>
@@ -272,7 +269,7 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
                            
-                                <buttons:SfChipGroup  x:Name="ChipGroup_statusFilter" Margin="0,0,0,5" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
+                                <buttons:SfChipGroup  x:Name="ChipGroup_statusFilter" Margin="0,0,0,5" Type="Choice"  HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource NeutralLightGrey}"  ChipBorderWidth="1" SelectionChanged="ChipGroup_statusFilter_SelectionChanged" VerticalOptions="Center" >
                                     <buttons:SfChipGroup.ItemTemplate>
                                         <DataTemplate >
                                             <StackLayout WidthRequest="80" >
@@ -320,9 +317,9 @@
 								x:Name="DpDbo"
                                
                      
-                             OKButtonTextColor="#006450" 
+                             OKButtonTextColor="{StaticResource Primary}" 
                                 
-                                             CancelButtonTextColor="#006450"
+                                             CancelButtonTextColor="{StaticResource Primary}"
                                
                             
                             SelectedItem="{Binding TodayDate}"
@@ -354,8 +351,8 @@
                                 PickerMode="Dialog"
 								HeaderText="{x:Static ResourceManager:AppResources.ZZDateofBirth}"
 								x:Name="DpDboHijri"
-                             OKButtonTextColor="#006450"    
-                             CancelButtonTextColor="#006450"
+                             OKButtonTextColor="{StaticResource Primary}"    
+                             CancelButtonTextColor="{StaticResource Primary}"
                            
                             HorizontalOptions="FillAndExpand"
                                Closed="DpDbo_Closed"
@@ -532,13 +529,13 @@
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
-                                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" 
+                                                         PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" 
                                                          BackgroundColor="White"      SelectedItemFontSize="15"   
                                                          ShowFooter="False" ItemHeight="40" 
                                                          Margin="10,0,10,0" PickerHeight="250" 
                                                          SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" 
                                                          UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                         PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                                                         PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                                                          FooterHeight="46" SelectionChanged="ddlLIssuedBy_OkButtonClicked" 
                                                          ItemsSource="{Binding IssuedByList}"  DisplayMemberPath="txt50"  OkButtonClicked="DDlIDType_OkayButtonClicked">
                                     <syncfusion:SfPicker.Behaviors>
@@ -577,13 +574,13 @@
                                                          HeaderHeight="55"
                                                          HeaderText="{x:Static ResourceManager:AppResources.ZZIDType}"
                                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" 
-                                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" 
+                                                         PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" 
                                                          BackgroundColor="White" SelectedItemFontSize="15"
                                                          ShowFooter="False" ItemHeight="40" 
                                                          Margin="10,0,10,0" PickerHeight="250" 
                                                          SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" 
                                                          UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                         PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                                                         PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                                                          FooterHeight="46" SelectionChanged="ddlLIssuedByCity_OkButtonClicked" 
                                                          ItemsSource="{Binding CityList}"  DisplayMemberPath="CityName"  OkButtonClicked="DDlIDType_OkayButtonClicked">
                                     <syncfusion:SfPicker.Behaviors>
@@ -643,7 +640,7 @@
                                         </Image.GestureRecognizers>   
                                                                        
                                                                 </Image>
-                                                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" 
+                                                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource PrimaryColor}" 
                                                                  Text="{Binding TxtCountryCode}" x:Name="IntnlCodes"
                                                                  Clicked="CountryCodeTapped"
                                                                  BackgroundColor="Transparent"/>
@@ -652,7 +649,7 @@
                                                              Text="{Binding TxtMobileNumber}"
                                                              HorizontalOptions="FillAndExpand"
                                                              IsSpellCheckEnabled="False"
-                                                             Keyboard="Telephone" TextColor="Black"
+                                                             Keyboard="Telephone" TextColor="{StaticResource PrimaryColor}"
                                                             Style="{StaticResource DefaultEntry}"
                                                              Unfocused="EntryMobileNumber_Unfocused">
 
@@ -721,14 +718,17 @@
                                         <inputLayout:SfTextInputLayout
                                                     Grid.Column="0"
                                                     ContainerType="Outlined"
-                                                    UnfocusedColor="#B1B1B1"
+                                                                           UnfocusedColor="#B1B1B1"
+                                            IsClippedToBounds="True"
+                                            Padding="0"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
+                                                BackgroundColor="Red"
                                                         x:Name="OTPFirstEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding OTPFirstDigit}"
@@ -741,6 +741,10 @@
                                                     <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
                                                 </custom:BorderlessEntry.Behaviors>
                                             </custom:BorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OTPTap"
+                                                                          CommandParameter="1" />
+                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                                         </inputLayout:SfTextInputLayout>
                                         <!--First OTP Digit End-->
 
@@ -750,12 +754,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="OTPSecondEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding OTPSecondDigit}"
@@ -768,7 +772,11 @@
                                                     <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
                                                 </custom:BorderlessEntry.Behaviors>
                                             </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OTPTap"
+                                                                          CommandParameter="2" />
+                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            </inputLayout:SfTextInputLayout>
                                         <!--Second OTP Digit End-->
 
                                         <!--Third OTP Digit Start-->
@@ -777,12 +785,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="OTPThirdEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding OTPThirdDigit}"
@@ -791,11 +799,15 @@
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                                <custom:BorderlessEntry.Behaviors>
-                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
-                                                </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                    <custom:BorderlessEntry.Behaviors>
+                                                        <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                                    </custom:BorderlessEntry.Behaviors>
+                                                </custom:BorderlessEntry>
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OTPTap"
+                                                                          CommandParameter="3" />
+                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            </inputLayout:SfTextInputLayout>
                                         <!--Third OTP Digit End-->
 
                                         <!--Fourth OTP Digit Start-->
@@ -804,12 +816,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="OTPFourthEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding OTPFourthDigit}"
@@ -820,7 +832,11 @@
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand">
 
                                             </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OTPTap"
+                                                                          CommandParameter="4" />
+                                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                            </inputLayout:SfTextInputLayout>
                                         <!--Fourth OTP Digit End-->
 
                                     </Grid>
@@ -878,12 +894,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="MobOTPFirstEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding MOTPFirstDigit}"
@@ -892,11 +908,15 @@
                                                         Keyboard="Numeric"
                                                         MaxLength="1"
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand" >
-                                                <custom:BorderlessEntry.Behaviors>
-                                                    <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry"/>
-                                                </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                        <custom:BorderlessEntry.Behaviors>
+                                                            <local:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                                        </custom:BorderlessEntry.Behaviors>
+                                                    </custom:BorderlessEntry>
+                                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OTPTap"
+                                                                              CommandParameter="5" />
+                                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                </inputLayout:SfTextInputLayout>
                                         <!--First OTP Digit End-->
 
                                         <!--Second OTP Digit Start-->
@@ -905,12 +925,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="MobOTPSecondEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding MOTPSecondDigit}"
@@ -922,7 +942,11 @@
                                                 <custom:BorderlessEntry.Behaviors>
                                                     <local:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry"/>
                                                 </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
+                                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OTPTap"
+                                                                                  CommandParameter="6" />
+                                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    </custom:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
                                         <!--Second OTP Digit End-->
 
@@ -932,12 +956,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="MobOTPThirdEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding IsOTPEntryEnable}"
                                                         Text="{Binding MOTPThirdDigit}"
@@ -949,7 +973,11 @@
                                                 <custom:BorderlessEntry.Behaviors>
                                                     <local:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry"/>
                                                 </custom:BorderlessEntry.Behaviors>
-                                            </custom:BorderlessEntry>
+                                                        <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                            <TapGestureRecognizer Tapped="OTPTap"
+                                                                                  CommandParameter="7" />
+                                                        </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                    </custom:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
                                         <!--Third OTP Digit End-->
 
@@ -959,12 +987,12 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                             <custom:BorderlessEntry
                                                         x:Name="MobOTPFourthEntry"
-                                                        FontAttributes="Bold"
+                                                        FontFamily="{StaticResource SomarBold}"
                                                         FontSize="Small"
-                                                        WidthRequest="8"
+                                                        WidthRequest="15"
                                                         HorizontalTextAlignment="Center"
                                                         IsEnabled="{Binding MIsOTPEntryEnable}"
                                                         Text="{Binding MOTPFourthDigit}"
@@ -975,7 +1003,11 @@
                                                         TextColor="#bbbbbb" HorizontalOptions="CenterAndExpand">
 
                                             </custom:BorderlessEntry>
-                                        </inputLayout:SfTextInputLayout>
+                                                    <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OTPTap"
+                                                                              CommandParameter="8" />
+                                                    </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                                </inputLayout:SfTextInputLayout>
                                         <!--Fourth OTP Digit End-->
 
                                     </Grid>
@@ -988,9 +1020,9 @@
                                 <Image Source="clock">
                                 </Image>
 
-                                        <custom:CustomLabel  FontFamily="{StaticResource SSTArBold}"  FontSize="12"  Text="{Binding LblCountDownTimer}" TextColor="{StaticResource Primary}"/>
+                                        <custom:CustomLabel  FontFamily="{StaticResource SomarBold}"  FontSize="11"  Text="{Binding LblCountDownTimer}" TextColor="{StaticResource Primary}"/>
                                 </StackLayout>
-                                    <buttons:SfButton  Command="{Binding OnResendOTPClicked}"  Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0"  BackgroundColor="Transparent" IsEnabled="{Binding IsResendOTPEnabled}" FontAttributes="Bold"  TextColor="{Binding ButtonDisableTextColor}">
+                                    <buttons:SfButton  Command="{Binding OnResendOTPClicked}"  Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}" VerticalOptions="EndAndExpand" Margin="0,50,0,0"  BackgroundColor="Transparent" IsEnabled="{Binding IsResendOTPEnabled}" FontFamily="{StaticResource SomarBold}"  TextColor="{Binding ButtonDisableTextColor}">
                                         <buttons:SfButton.Triggers>
                                             <DataTrigger TargetType="buttons:SfButton" Binding="{Binding IsResendOTPEnabled}" Value="True">
                                                 <Setter Property="TextColor" Value="{StaticResource Primary}"/>
@@ -1115,7 +1147,6 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
@@ -1126,13 +1157,19 @@
 
                                         </Image>
                                     </Frame>-->
-                                     <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                     <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="vat_user"/>
+                                        </Frame>-->
+
+                                     <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+
+                                           <Image HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="vat_user"/>
                                     
-                                        <custom:CustomLabel  Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZIndividualInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <buttons:SfButton  Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_indiviadualInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_indiviadualInfo_Clicked" HorizontalOptions="End"/>
+                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.ZZZIndividualInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" Padding="8,0"/>
+                                      </StackLayout>
+                                    
+                                      
+                                        <buttons:SfButton  Grid.Row="0" Grid.Column="1" x:Name="Btn_Edit_indiviadualInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_indiviadualInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>
 
 
@@ -1191,7 +1228,6 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
@@ -1202,13 +1238,18 @@
 
                                         </Image>
                                     </Frame>-->
-                                         <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                         <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_company"/>
+                                        </Frame>-->
+
+                                         <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+
+                                            <Image  HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="ic_company"/>
                                     
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZBusinessInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <buttons:SfButton Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_BusinessInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_BusinessInfo_Clicked" HorizontalOptions="End"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZBusinessInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" Padding="8,0"/>
+                                      </StackLayout>
+                                       
+                                        <buttons:SfButton Grid.Row="0" Grid.Column="1" x:Name="Btn_Edit_BusinessInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_BusinessInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>
                            
 
@@ -1274,7 +1315,6 @@
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="auto"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="auto"/>
                                         </Grid.ColumnDefinitions>
@@ -1285,13 +1325,21 @@
 
                                         </Image>
                                     </Frame>-->
-                                    <Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                    <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="15" WidthRequest="15" CornerRadius="28" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                        </Frame>
-                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center" VerticalOptions="Center"  Aspect="AspectFit" Source="phone_Green" />
+                                        </Frame>-->
+
+
+                                    <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+
+                                          <Image  HeightRequest="24" WidthRequest="24" HorizontalOptions="Start" VerticalOptions="Center"  Aspect="AspectFit" Source="phone_Green" />
                                     
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center"/>
-                                        <buttons:SfButton Grid.Row="0" Grid.Column="2" x:Name="Btn_Edit_ContactInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_ContactInfo_Clicked" HorizontalOptions="End"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" Style="{StaticResource SectionTitleBlack}" VerticalTextAlignment="Center" Padding="8,0"/>
+                                      </StackLayout>
+
+
+                                       
+                                        <buttons:SfButton Grid.Row="0" Grid.Column="1" x:Name="Btn_Edit_ContactInfo" Style="{StaticResource NoBackgroundButtonStylePrimary}" Text="{x:Static ResourceManager:AppResources.NDEdit}" Clicked="Btn_Edit_ContactInfo_Clicked" HorizontalOptions="End"/>
                                     </Grid>
 
 
@@ -1350,10 +1398,10 @@
                         </buttons:SfButton>
                     </StackLayout>
                 
-                <StackLayout Grid.Row="1" Padding="0,15,0,8" BackgroundColor="White">
-                    <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" Completed="{Binding MarkComplete}"/>
-                    <custom:CustomLabel Text="{Binding PageTitle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource PageTitleBlack}" Margin="0,10,0,0"/>
-                    <custom:CustomLabel Text="{Binding BodyText}" Style="{StaticResource BodyLabelGrey}" Padding="0,-10,0,8"/>
+                <StackLayout Grid.Row="1" Padding="0,15,0,8" >
+                    <commonView:PageIndicatorView MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" Completed="{Binding MarkComplete}" HorizontalOptions="End"/>
+                    <custom:CustomLabel Text="{Binding PageTitle}"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Style="{StaticResource PageTitleBlack}" Margin="0,10,0,0" Padding="0,10,0,0"/>
+                    <custom:CustomLabel Text="{Binding BodyText}"  Style="{StaticResource BodyLabelGrey}" Padding="0,10,0,8"/>
                     <BoxView Style="{StaticResource SeparatorStyle}" BackgroundColor="{StaticResource NeutralLightGrey}"
                                  HeightRequest="1" />
                 </StackLayout>
@@ -1381,7 +1429,7 @@
                         </Image>
                     </StackLayout>
                     <StackLayout Grid.Column="2" Padding="0,8,0,0">
-                        <Image Source="closeGrey.png" HorizontalOptions="End">
+                        <Image Source="close.png" HorizontalOptions="End">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Closed_Tapped"/>
                             </Image.GestureRecognizers>
@@ -1410,7 +1458,7 @@
                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

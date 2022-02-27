@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
@@ -150,7 +151,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             var attachment = e.ItemData as Attachment;
 
             //if (attachment.Filename.Contains(".")) ;
-            string Extention = attachment.Filename.Split('.')[1];
+            string[] Extentionarray = attachment.Filename.Split('.');
+            string Extention = Extentionarray.Last();
+
             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
             {
                 if (attachment.DocUrl != null)
@@ -235,7 +238,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             });

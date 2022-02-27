@@ -10,7 +10,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
             xmlns:local="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.RegistrationSuccessfulPageView"
-              BackgroundColor="#006450"><!--BackgroundColor="DarkGreen"-->
+             BackgroundImageSource="partials_background.png"><!--BackgroundColor="DarkGreen"-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,10 +21,10 @@
                 <Setter Property="WidthRequest" Value="10"/>
             </Style>
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
             </Style>
             <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="{StaticResource SSTArBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -38,22 +38,23 @@
                                          Glyph="{x:Static FontImage:IconFonts.CheckboxMarkedCircle}"/>
                     </Image.Source>
                 </Image>-->
-                <Image Source="vat_ic_success.png"   Aspect="AspectFit"/>
+                <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                 <!--ZZZZRegistrationSuccessful Text="Registration Successful" Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"-->
-                <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SSTArabicMedium}"
+                <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" HasShadow="False" Margin="0,20,0,0">
                         <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label   Text="{x:Static local:AppResources.TINS}" VerticalOptions="Center" FontSize="12" TextColor="#909090" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
+                            <Label   Text="{x:Static local:AppResources.TINS}" VerticalOptions="Center" FontSize="11" TextColor="{StaticResource DarkGrayTextColor}" FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="StartAndExpand"/>
                             <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="#010101" Text="{Binding TINnumber}" />
+                                <Label x:Name="Label_Tin" FontFamily="{StaticResource SomarSemiBold}" FontSize="15" TextColor="#010101" Text="{Binding TINnumber}" />
                                 <Image x:Name="Image_Copy">
                                     <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                            <FontImageSource FontFamily="UserIconFont"
+                                                             Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentPaste}"/>
                                     </Image.Source>
                                     <Image.GestureRecognizers>
@@ -63,12 +64,10 @@
                             </StackLayout>
                         </StackLayout>
                     </Frame>
-                    <!--<buttons:SfButton x:Name="btnVATRegistration" FontFamily="{StaticResource SSTArabicMedium}" Text="{x:Static local:AppResources.ZZZZProceedtoVATregistration}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="56" Clicked="btnVATRegistration_Clicked"   Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="#d49504" />--> 
+                    
                     <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZProceedtoHomescreen}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SSTArabicMedium}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="#d49504" />
+                                      HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" />
                 </StackLayout>
             </yummy:PancakeView>
         </StackLayout>

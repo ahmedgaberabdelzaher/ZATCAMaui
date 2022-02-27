@@ -22,7 +22,7 @@ using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Models.PaymentModel;
 using EGAZT.Helper;
 using Newtonsoft.Json.Linq;
-using EGAZT.Views.NewDesign.DashBoardPages;
+using Xamarin.Essentials;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
@@ -237,7 +237,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsMainButtonEnabled");
             }
         }
-
         private bool _TaxisMainButtonEnabled = false;
         public bool TaxIsMainButtonEnabled
         {
@@ -438,6 +437,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _isTaxAmendGrid = value;
                 RaisePropertyChanged("IsTaxAmendGrid");
+            }
+        }
+        
+        private bool _isFivePercentTaxAmendGrid = true;
+        public bool IsFivePercentTaxAmendGrid
+        {
+            get
+            {
+                return _isFivePercentTaxAmendGrid;
+            }
+            set
+            {
+
+                _isFivePercentTaxAmendGrid = value;
+                RaisePropertyChanged("IsFivePercentTaxAmendGrid");
             }
         }
         private bool _isTaxNoBoxEnabled = false;
@@ -1288,7 +1302,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("StdsalesVat15");
             }
         }
-
         public string _stdsalesVatGovt = "0.00";
         public string StdsalesVatGovt
         {
@@ -1304,7 +1317,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("StdsalesVatGovt");
             }
         }
-
         public string _stdsalesVat5 = "0.00";
         public string StdsalesVat5
         {
@@ -1467,7 +1479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (_entryVatAmountTextColor == value) return;
 
                 _entryVatAmountTextColor = value;
-                if (_entryVatAmountTextColor == Color.FromHex("#ff0000"))
+                if (_entryVatAmountTextColor ==  (Color)Application.Current.Resources["ErrorColor"])
                 {
                     IsMainButtonEnabled = false;
                 }
@@ -2275,7 +2287,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsSwitchToggledFor15PercentChange");
             }
         }
-
         private bool _isSwitchToggledForSaleTax = false;
         public bool IsSwitchToggledForSaleTax
         {
@@ -2303,7 +2314,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsSwitchToggledForSaleTax");
             }
         }
-
 
         private bool _isYesChecked = false;
         public bool IsYesChecked
@@ -2346,7 +2356,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsTaxNoChecked");
             }
         }
-
         private bool _isTaxYesChecked = false;
         public bool IsTaxYesChecked
         {
@@ -2434,7 +2443,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //        RaisePropertyChanged("IsNavigatedToBilled");
         //    }
         //}
+        private bool _isFivePersenctEditable = false;
+        public bool IsFivePersenctEditable
+        {
+            get
+            {
+                return _isFivePersenctEditable;
+            }
+            set
+            {
+                if (_isFivePersenctEditable == value) return;
 
+                _isFivePersenctEditable = value;
+                RaisePropertyChanged("IsFivePersenctEditable");
+            }
+        }
 
         private bool _isFivePersenctVisible = false;
         public bool IsFivePersenctVisible
@@ -2449,22 +2472,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _isFivePersenctVisible = value;
                 RaisePropertyChanged("IsFivePersenctVisible");
-            }
-        }
-
-        private bool _isFivePersenctEditable = false;
-        public bool IsFivePersenctEditable
-        {
-            get
-            {
-                return _isFivePersenctEditable;
-            }
-            set
-            {
-                if (_isFivePersenctEditable == value) return;
-
-                _isFivePersenctEditable = value;
-                RaisePropertyChanged("IsFivePersenctEditable");
             }
         }
 
@@ -2483,6 +2490,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsFifteenPersenctVisible");
             }
         }
+
         private bool _isSaleSubjecttoTaxVisible = false;
         public bool IsSaleSubjecttoTaxVisible
         {
@@ -2496,6 +2504,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 _isSaleSubjecttoTaxVisible = value;
                 RaisePropertyChanged("IsSaleSubjecttoTaxVisible");
+            }
+        }
+
+        private bool _isGovtYesNoVisible = false;
+        public bool IsGovtYesNoVisible
+        {
+            get
+            {
+                return _isGovtYesNoVisible;
+            }
+            set
+            {
+                if (_isGovtYesNoVisible == value) return;
+
+                _isGovtYesNoVisible = value;
+                RaisePropertyChanged("IsGovtYesNoVisible");
             }
         }
         private bool _isSaleSubjecttoTaxEditable = false;
@@ -2641,7 +2665,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxNoBackgroundImage");
             }
         }
-
         private Color _yesLabelColor;
         public Color YesLabelColor
         {
@@ -2674,7 +2697,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-
         private Color _TaxyesLabelColor;
         public Color TaxYesLabelColor
         {
@@ -2706,7 +2728,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("TaxNoLabelColor");
             }
         }
-
         #endregion
 
         #region Constructor
@@ -2757,7 +2778,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
                                 newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                                newDesignPopUp.MainHeader = AppResources.ZZZConfirmationMsg;
+                                newDesignPopUp.MainHeader = "";
 
                                 PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
                             }
@@ -2814,21 +2835,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
-                    HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
-                    NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
-                    headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
-                    headerAmountInfo.IsLinkAvailable = false;
-                    headerAmountInfo.Message = AppResources.ZZZChangeRegistationNote;
+                    //List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+                    //HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+                    //NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+                    //headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+                    //headerAmountInfo.IsLinkAvailable = false;
+                    //headerAmountInfo.Message = AppResources.ZZZChangeRegistationNote;
 
-                    headerWithInfos.Add(headerAmountInfo);
+                    //headerWithInfos.Add(headerAmountInfo);
 
 
-                    newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
-                    newDesignPopUp.HeaderWithInfos = headerWithInfos;
-                    newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+                    //newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+                    //newDesignPopUp.HeaderWithInfos = headerWithInfos;
+                    //newDesignPopUp.MainHeader = "";
 
-                    PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+                    //PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
+
+
+                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZZChangeRegistationNote);
+
+                    if (App.IsArabic)
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                        };
+                    }
+                    else
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                        };
+                    }
+
+                    //VisitPortalPopup.OnGotoPortal = () =>
+                    //{
+                    //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                    //};
+                    PopupNavigation.Instance.PushAsync(VisitPortalPopup);
 
                 }
                 catch (Exception ex)
@@ -2844,30 +2894,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             onSecondButtonClicked = new Xamarin.Forms.Command(async () =>
             {
-                if (CreditDetailsText == AppResources.Confirm)
+                if (CreditDetailsText == AppResources.Submit)
                 {
 
                     if (IsDeclarationCheckedForSummary)
                     {
-                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false /*&& IsResetClicked == false*/))
+                        if (IsDeclarationCheckedForSummary && (IsVoidClicked == false))
                         {
                             if (((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && (IsAmendClicked == true)) || (App.ICRStatus == "E0001" || IsCheckedDraftMode()))
                             {
-                                if(VATDeclarationData.d.ReviewNaMsg.Equals(""))
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    Device.BeginInvokeOnMainThread(() =>
-                                    {
-                                        IsNewLoading = true;
-                                    });
-                                    await SubmitClicked();
-                                    Device.BeginInvokeOnMainThread(() =>
-                                    {
-                                        IsNewLoading = false;
-                                    });
-                                }else if (VATDeclarationData.d.ReviewNaMsg == "X")
+                                    IsNewLoading = true;
+                                });
+                                await SubmitClicked();
+                                Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    displayPopUpToSubmitOrCancelApplication();
-                                }
+                                    IsNewLoading = false;
+                                });
                             }
                         }
                     }
@@ -2918,7 +2962,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     case VATReturnUpdatedUITabEnum.Sales:
                         currentTab = VATReturnUpdatedUITabEnum.VATReturns;
-
                         break;
 
                     case VATReturnUpdatedUITabEnum.Purchase:
@@ -2936,12 +2979,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
             });
-        }
-
-        public async void displayPopUpToSubmitOrCancelApplication()
-        {
-            await PopupNavigation.Instance.PushAsync(new VatReturnNewYesCancelPopUp(AppResources.CR2406PopUp));
-
         }
 
         public bool checkforrefundclicked()
@@ -3270,7 +3307,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsNewLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -3569,6 +3606,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             IsEnableSwitchToggledFor15PercentChange = true;
                         }
+
                         IsDeclarationCheckEnabled = false;
                         IsTaxPayerCheckEnabled = false;
                         IsAmendClicked = true;
@@ -3680,7 +3718,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
 
-
                 if (IsAmendClicked)
                 {
 
@@ -3688,21 +3725,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         IsTaxAmendGrid = false;
-                      
+
                     }
                     else
                     {
 
                         IsTaxAmendGrid = true;
-                       
+
 
 
                     }
                 }
-                else {
+                else
+                {
                     IsTaxAmendGrid = true;
                 }
+                
+                if (IsAmendClicked)
+                {
 
+                    if (VATDeclarationData.d.Yesno == "X")
+                    {
+
+                        IsFivePercentTaxAmendGrid = false;
+
+                    }
+                    else
+                    {
+
+                        IsFivePercentTaxAmendGrid = true;
+
+
+                    }
+                }
+                else
+                {
+                    IsFivePercentTaxAmendGrid = true;
+                }
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Sales)
             {
@@ -3713,10 +3772,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 IsVisibleAmendButton = false;
                 IsPayNowVisible = false;
                 ContinueText = AppResources.ZZZZContinue;
-
-
-                
-               
             }
             else if (currentTab == VATReturnUpdatedUITabEnum.Purchase)
             {
@@ -3795,7 +3850,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             isBtnVisible = true;
                             IsMainButtonVisible = false;
                             IsRefundButtonVisible = false;
-                            CreditDetailsText = AppResources.Confirm;
+                            CreditDetailsText = AppResources.Submit;
                             IsPayNowVisible = false;
                         }
                     }
@@ -3853,10 +3908,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 string status = VATDeclarationData.d.Statusz;
                 if (status == "E057" || status == "E0057" || status == "E058" || status == "E0058")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
-                    });
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
+                    //});
+
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT));
                 }
                 string FormBundleNumber = VATDeclarationData.d.Fbnum;
                 string Gpart = VATDeclarationData.d.Gpart;
@@ -4034,7 +4091,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
 
-
             if (IsDeclarationCheckedForSummary == true)
             {
                 VATDeclarationData.d.DecFg = "1";
@@ -4059,7 +4115,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     VATDeclarationData.d.Yesno = string.Empty;
                 }
-
                 if (IsTaxYesChecked == true)
                 {
                     VATDeclarationData.d.GovsupYesno = "X";
@@ -4068,7 +4123,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     VATDeclarationData.d.GovsupYesno = string.Empty;
                 }
-
 
 
 
@@ -4105,8 +4159,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     VATDeclarationData.d.ATTACHSet.results = ATTACHSetsList;
                 }
-                
-
                 VATDeclaration response = await WebServiceManager.SaveVATDeclarationData(VATDeclarationData);
                 PopToRootPage();
                 if (response != null && response.d != null && !string.IsNullOrEmpty(response.d.Fbnum))
@@ -4130,8 +4182,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         VATNewModelFor15Percent = VATDeclarationData.d.VATPERITEMSet.results.Where(x => x.Type == "002").FirstOrDefault();
                                     }
-
-                                    
                                 }
                             }
                             SetCommasforAll();
@@ -4401,7 +4451,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //Masseges.Append(Environment.NewLine);
                         //Masseges.Append(AppResources.CreditReturnMsg);
                         //headerAmountInfo.IsLinkAvailable = false;
-                        //headerAmountInfo.IsRed = "#ff0000";
+                        //headerAmountInfo.IsRed = "#e84941";
                         //headerAmountInfo.IsBold = "Bold";
                         //headerAmountInfo.Message = Masseges.ToString();
 
@@ -4521,7 +4571,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 result = false;
                 return result;
@@ -4939,7 +4989,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATNewModelFor15Percent.GovsupsalesAmt = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.GovsupsalesAmt);
                 VATNewModelFor15Percent.GovsupsalesAdj = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor15Percent.GovsupsalesAdj);
 
-
                 VATNewModelFor5Percent.ImportsaccAdj = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor5Percent.ImportsaccAdj);
                 VATNewModelFor5Percent.ImportsaccAmt = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor5Percent.ImportsaccAmt);
                 VATNewModelFor5Percent.ImportsaccVat = UtilityManager.GetCommaSeparatedAmount(VATNewModelFor5Percent.ImportsaccVat);
@@ -5054,7 +5103,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -5173,6 +5222,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public string TotalAmountForSixVar(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6, string Amount7)
         {
+            if(string.IsNullOrEmpty(Amount7))
+            {
+                Amount7 = "0.00";
+            }
             String TotalAmount = "0.00";
             try
             {
@@ -5199,18 +5252,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(Amount6) && Amount6.Contains(","))
                 {
                     Amount6 = Amount6.Replace(",", "");
-                }if (!string.IsNullOrEmpty(Amount7) && Amount7.Contains(","))
+                }
+                if (!string.IsNullOrEmpty(Amount7) && Amount7.Contains(","))
                 {
                     Amount7 = Amount7.Replace(",", "");
                 }
-                
-                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6)&& !string.IsNullOrEmpty(Amount7) )
+
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6) && !string.IsNullOrEmpty(Amount7))
                 {
-                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != "."&& Amount7 != "." )
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != "." && Amount7 != ".")
                     {
-                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-") && !Amount7.Contains("-") )
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-") && !Amount7.Contains("-"))
                         {
-                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6))+ (String.IsNullOrEmpty(Amount7) ? 0.00 : Convert.ToDouble(Amount7)))).ToString();
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)) + (String.IsNullOrEmpty(Amount7) ? 0.00 : Convert.ToDouble(Amount7)))).ToString();
                             if (TotalAmount == "0")
                             {
                                 TotalAmount = "0.00";
@@ -5234,7 +5288,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return TotalAmount;
         }
-
         public string TotalAmountForSixVarForNegative(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6)
         {
             String TotalAmount = "0.00";
@@ -5361,7 +5414,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5,string Amount6)
+        public string TotalAmount(string Amount1, string Amount2, string Amount3, string Amount4, string Amount5, string Amount6)
         {
             String TotalAmount = "0.00";
             try
@@ -5385,18 +5438,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(Amount5) && Amount5.Contains(","))
                 {
                     Amount5 = Amount5.Replace(",", "");
-                } if (!string.IsNullOrEmpty(Amount6) && Amount6.Contains(","))
+                }
+                if (!string.IsNullOrEmpty(Amount6) && Amount6.Contains(","))
                 {
                     Amount6 = Amount6.Replace(",", "");
                 }
-               
-                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6) )
+
+                if (!string.IsNullOrEmpty(Amount1) && !string.IsNullOrEmpty(Amount2) && !string.IsNullOrEmpty(Amount3) && !string.IsNullOrEmpty(Amount4) && !string.IsNullOrEmpty(Amount5) && !string.IsNullOrEmpty(Amount6))
                 {
-                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != "." )
+                    if (Amount1 != "." && Amount2 != "." && Amount3 != "." && Amount4 != "." && Amount5 != "." && Amount6 != ".")
                     {
-                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-")&& !Amount6.Contains("-") )
+                        if (!Amount1.Contains("-") && !Amount2.Contains("-") && !Amount3.Contains("-") && !Amount4.Contains("-") && !Amount5.Contains("-") && !Amount6.Contains("-"))
                         {
-                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) +  (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5))+(String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)))).ToString();
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Amount1) ? 0.00 : Convert.ToDouble(Amount1)) + (String.IsNullOrEmpty(Amount2) ? 0.00 : Convert.ToDouble(Amount2)) + (String.IsNullOrEmpty(Amount3) ? 0.00 : Convert.ToDouble(Amount3)) + (String.IsNullOrEmpty(Amount4) ? 0.00 : Convert.ToDouble(Amount4)) + (String.IsNullOrEmpty(Amount5) ? 0.00 : Convert.ToDouble(Amount5)) + (String.IsNullOrEmpty(Amount6) ? 0.00 : Convert.ToDouble(Amount6)))).ToString();
                             if (TotalAmount == "0")
                             {
                                 TotalAmount = "0.00";
@@ -5420,8 +5474,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return TotalAmount;
         }
-
-        public string TotalAdjustmentForSixVar(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5,string Adjustment6, string Adjustment7)
+        public string TotalAdjustmentForSixVar(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5, string Adjustment6, string Adjustment7)
         {
             String TotalAmount = "0.00";
             try
@@ -5449,15 +5502,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(Adjustment6) && Adjustment6.Contains(","))
                 {
                     Adjustment6 = Adjustment6.Replace(",", "");
-                }if (!string.IsNullOrEmpty(Adjustment7) && Adjustment7.Contains(","))
+                }
+                if (!string.IsNullOrEmpty(Adjustment7) && Adjustment7.Contains(","))
                 {
                     Adjustment7 = Adjustment7.Replace(",", "");
                 }
-                if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5) && !string.IsNullOrEmpty(Adjustment6)&& !string.IsNullOrEmpty(Adjustment7))
+                if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5) && !string.IsNullOrEmpty(Adjustment6) && !string.IsNullOrEmpty(Adjustment7))
                 {
-                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != "." && Adjustment6 != "."&& Adjustment7 != ".")
+                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != "." && Adjustment6 != "." && Adjustment7 != ".")
                     {
-                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-") && !Adjustment6.Contains("-")&& !Adjustment7.Contains("-"))
+                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-") && !Adjustment6.Contains("-") && !Adjustment7.Contains("-"))
                         {
                             TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)) + (String.IsNullOrEmpty(Adjustment6) ? 0 : Convert.ToDouble(Adjustment6)) + (String.IsNullOrEmpty(Adjustment7) ? 0 : Convert.ToDouble(Adjustment7)))).ToString();
                             if (TotalAmount == "0")
@@ -5483,7 +5537,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return TotalAmount;
         }
-
         public string TotalAdjustment(string Adjustment1, string Adjustment2, string Adjustment3, string Adjustment4, string Adjustment5, string Adjustment6)
         {
             String TotalAmount = "0.00";
@@ -5508,17 +5561,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(Adjustment5) && Adjustment5.Contains(","))
                 {
                     Adjustment5 = Adjustment5.Replace(",", "");
-                } if (!string.IsNullOrEmpty(Adjustment6) && Adjustment6.Contains(","))
+                }
+                if (!string.IsNullOrEmpty(Adjustment6) && Adjustment6.Contains(","))
                 {
                     Adjustment6 = Adjustment6.Replace(",", "");
                 }
                 if (!string.IsNullOrEmpty(Adjustment1) && !string.IsNullOrEmpty(Adjustment2) && !string.IsNullOrEmpty(Adjustment3) && !string.IsNullOrEmpty(Adjustment4) && !string.IsNullOrEmpty(Adjustment5) && !string.IsNullOrEmpty(Adjustment6))
                 {
-                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != "."&& Adjustment6 != ".")
+                    if (Adjustment1 != "." && Adjustment2 != "." && Adjustment3 != "." && Adjustment4 != "." && Adjustment5 != "." && Adjustment6 != ".")
                     {
-                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-")&& !Adjustment6.Contains("-"))
+                        if (!Adjustment1.Contains("-") && !Adjustment2.Contains("-") && !Adjustment3.Contains("-") && !Adjustment4.Contains("-") && !Adjustment5.Contains("-") && !Adjustment6.Contains("-"))
                         {
-                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5))+ (String.IsNullOrEmpty(Adjustment6) ? 0 : Convert.ToDouble(Adjustment6)))).ToString();
+                            TotalAmount = Convert.ToDouble(((String.IsNullOrEmpty(Adjustment1) ? 0 : Convert.ToDouble(Adjustment1)) + (String.IsNullOrEmpty(Adjustment2) ? 0 : Convert.ToDouble(Adjustment2)) + (String.IsNullOrEmpty(Adjustment3) ? 0 : Convert.ToDouble(Adjustment3)) + (String.IsNullOrEmpty(Adjustment4) ? 0 : Convert.ToDouble(Adjustment4)) + (String.IsNullOrEmpty(Adjustment5) ? 0 : Convert.ToDouble(Adjustment5)) + (String.IsNullOrEmpty(Adjustment6) ? 0 : Convert.ToDouble(Adjustment6)))).ToString();
                             if (TotalAmount == "0")
                             {
                                 TotalAmount = "0.00";
@@ -5577,7 +5631,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             return TotalAmount;
         }
 
-        public string AddTwoAmount(string Amount1, string Amount2,string Amount3)
+        public string AddTwoAmount(string Amount1, string Amount2, string Amount3)
         {
             String TotalAmount = "0.00";
             try
@@ -5589,7 +5643,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (!string.IsNullOrEmpty(Amount2) && Amount2.Contains(","))
                 {
                     Amount2 = Amount2.Replace(",", "");
-                }if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
+                }
+                if (!string.IsNullOrEmpty(Amount3) && Amount3.Contains(","))
                 {
                     Amount2 = Amount2.Replace(",", "");
                 }
@@ -5600,13 +5655,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 if (String.IsNullOrEmpty(Amount2))
                 {
                     Amount2 = "0.00";
-                }if (String.IsNullOrEmpty(Amount3))
+                }
+                if (String.IsNullOrEmpty(Amount3))
                 {
                     Amount2 = "0.00";
                 }
                 if (!String.IsNullOrEmpty(Amount1) && !String.IsNullOrEmpty(Amount2) && !String.IsNullOrEmpty(Amount3))
                 {
-                    TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2)+ Convert.ToDouble(Amount3))).ToString();
+                    TotalAmount = Convert.ToDouble((Convert.ToDouble(Amount1) + Convert.ToDouble(Amount2) + Convert.ToDouble(Amount3))).ToString();
                     if (TotalAmount == "0")
                     {
                         TotalAmount = "0.00";
@@ -5627,7 +5683,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             return TotalAmount;
         }
-
         public string TotalVatAmount(string Amount1, string Amount2, string Amount3)
         {
             String TotalAmount = "0.00";

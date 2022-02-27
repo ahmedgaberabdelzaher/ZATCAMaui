@@ -66,7 +66,8 @@
 
                             <Image HorizontalOptions="EndAndExpand" Rotation="90">
                                 <Image.Source>
-                                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                            <FontImageSource FontFamily="UserIconFont"
+                                                             Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Attachment}"/>
                                 </Image.Source>
                                 <Image.GestureRecognizers>
@@ -106,7 +107,7 @@
 
                                                 <Image HorizontalOptions="EndAndExpand">
                                                     <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
                                                     </Image.Source>
                                                     <Image.GestureRecognizers>
@@ -165,7 +166,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
+                                        TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

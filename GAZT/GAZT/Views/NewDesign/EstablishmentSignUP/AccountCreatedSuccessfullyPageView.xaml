@@ -37,12 +37,13 @@
                     <StackLayout>
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" HasShadow="False" Margin="0,20,0,0">
                             <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label   Text="{x:Static ResourceManager:AppResources.TINS}" VerticalOptions="Center" FontSize="12" TextColor="#909090" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="StartAndExpand"/>
+                                <Label   Text="{x:Static ResourceManager:AppResources.TINS}" VerticalOptions="Center" FontSize="11" TextColor="{StaticResource DarkGrayTextColor}" FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="StartAndExpand"/>
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                    <Label x:Name="Label_Tin" FontFamily="{StaticResource SSTArabicMedium}" FontSize="16" TextColor="#010101" Text="{Binding TINnumber}" />
+                                    <Label x:Name="Label_Tin" FontFamily="{StaticResource SomarSemiBold}" FontSize="15" TextColor="#010101" Text="{Binding TINnumber}" />
                                     <Image x:Name="Image_Copy">
                                         <Image.Source>
-                                            <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
+                                        <FontImageSource FontFamily="UserIconFont"
+                                                         Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.ContentPaste}"/>
                                         </Image.Source>
                                         <Image.GestureRecognizers>

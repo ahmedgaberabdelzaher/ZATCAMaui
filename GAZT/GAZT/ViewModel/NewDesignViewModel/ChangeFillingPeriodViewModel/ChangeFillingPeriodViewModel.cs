@@ -27,6 +27,7 @@ using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Xamarin.Forms.Internals;
 using EGAZT.Manager;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -314,11 +315,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isFrequencyDetailsEnabled == value) return;
 
                 _isFrequencyDetailsEnabled = value;
-                FrequencyDetailsButtonBackGroundColor = Color.FromHex(_isFrequencyDetailsEnabled ? "#d49504" : "#9EA4A9");
+                FrequencyDetailsButtonBackGroundColor = (_isFrequencyDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsFrequencyDetailsEnabled");
             }
         }
-        private Color _frequencyDetailsButtonBackGroundColor = Color.FromHex("#9EA4A9");
+        private Color _frequencyDetailsButtonBackGroundColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color FrequencyDetailsButtonBackGroundColor
         {
             get
@@ -344,11 +345,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isAttachmentsEnabled == value) return;
 
                 _isAttachmentsEnabled = value;
-                AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
+                AttachButtonBackGroundColor = (_isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsAttachmentsEnabled");
             }
         }
-        private Color _attachButtonBackGroundColor = Color.FromHex("#9EA4A9");
+        private Color _attachButtonBackGroundColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color AttachButtonBackGroundColor
         {
             get
@@ -374,11 +375,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_isDeclarationEnabled == value) return;
 
                 _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+                DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
         }
-        private Color _declarationButtonBackGroundColor = Color.FromHex("#9EA4A9");
+        private Color _declarationButtonBackGroundColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color DeclarationButtonBackGroundColor
         {
             get
@@ -973,7 +974,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZNationalIDstartswith1));
+
                             IDNumber = string.Empty;
                         }
                         else
@@ -999,7 +1003,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                                 IDNumber = string.Empty;
                             }
                             else
@@ -1027,7 +1034,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZIqamaIDstartswith2));
+
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                             IDNumber = string.Empty;
                         }
                         else
@@ -1053,7 +1063,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                                 {
                                     popUp.FlowDirections = "LeftToRight";
                                 }
-                                await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(Messages.ToString()));
+
                                 IDNumber = string.Empty;
                             }
                             else
@@ -1082,7 +1094,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGCCIDdonotstartwith0));
+
                             IDNumber = string.Empty;
                         }
                         else if (!(IDNumber.Length <= 15 && IDNumber.Length >= 7))
@@ -1098,7 +1112,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                             {
                                 popUp.FlowDirections = "LeftToRight";
                             }
-                            await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            //await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGulfCooperationCouncilGCCIDlengthisbetween7to15digit));
+
                             IDNumber = string.Empty;
                         }
                         else
@@ -1480,6 +1496,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 if (_selectedOutletOptionIndex == value) return;
 
                 _selectedOutletOptionIndex = value;
+                EnableAttachments();
+
                 RaisePropertyChanged("SelectedOutletOptionIndex");
             }
         }
@@ -1846,9 +1864,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
         }
         public void EnableAttachments()
         {
-            if (YearsattachmentsListViewData != null && MonthsattachmentsListViewData != null)
-            {
-                if (YearsattachmentsListViewData.Count != 0 && MonthsattachmentsListViewData.Count != 0)
+            
+                if ((IsTwoYearsAtachmentsVisible&&YearsattachmentsListViewData != null&&YearsattachmentsListViewData.Count != 0 )
+                || (IsMonthsAtachmentsVisible&&MonthsattachmentsListViewData != null&&MonthsattachmentsListViewData.Count != 0)
+                || (IsOthersAtachmentsVisible && OtherAttachmentsListViewData != null&& OtherAttachmentsListViewData.Count != 0))
                 {
                     IsAttachmentsEnabled = true;
                 }
@@ -1856,11 +1875,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 {
                     IsAttachmentsEnabled = false;
                 }
-            }
-            else
-            {
-                IsAttachmentsEnabled = false;
-            }
+            
+            
         }
 
 

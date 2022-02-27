@@ -58,7 +58,7 @@ namespace EGAZT.Models.ZakatInstalationModels
         Others = 16,
         OldZakatInstalmentBankStatements = 17,
         OldZakatInstalmentFinance = 18,
-        VatReviewLateFiling=19
+
 
     }
     

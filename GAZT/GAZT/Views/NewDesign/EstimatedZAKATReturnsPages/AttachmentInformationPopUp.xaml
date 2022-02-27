@@ -15,7 +15,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="False" BackgroundColor="White">
 
         <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
             <!--<Image HorizontalOptions="EndAndExpand">
@@ -28,7 +28,7 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-            <Label x:Name="InfromatationText" HorizontalOptions="StartAndExpand" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
+            <Label x:Name="InfromatationText" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
                             <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
 
         </StackLayout>

@@ -31,7 +31,7 @@ namespace EGAZT.Manager
                 {
                     char Lang = WebServiceManager.GetLangZParameter();
                     string url = Constants.Z_RET_F05_ZKTE + "(Auditorz='',Taxpayerz='',RegIdz='',PeriodKeyz='',Submitz='',Savez='',Fbnumz='',Langz='" + Lang + "',OfficerUidz='',ObjSubmitz='',Approvez='',Rejectz='',CreateTxAssesz='',Euser='" + App.TP.Userid + "',Fbguid='" + Fbguid + "')?&$expand=GEN_SUB_SCH,GP03_2Set,GP03_3Set,GP03_4Set,GP03_5Set,GP03_6Set,GP03_7Set,GP03_8Set,GP06_1Set,GP06_2Set,GP06_3Set,MAIN_ACTIVITYSet,SCH_GP01,SCH_GP02,SCH_GP03,SCH_GP04,SCH_GP05,SCH_GP06,SCH_GP07,SCH_GP08,SCH_GP09,SCH_GP10,SCH_GP11,SCH_GP12,SUB_SCH_CAPITALSet,SCH_200Set,SCH_800Set,SCH_GP3S1Set,SCH_GP3S2Set,AttDetSet,LONG_TEXTSet&$format=json";
-                    HttpResponseMessage GAZTZakatForm5Response = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    HttpResponseMessage GAZTZakatForm5Response = await GetServiceManager.MakeGetAPICallForZakatForm5Response(url, false, "");
                     if (GAZTZakatForm5Response != null)
                     {
                         if (GAZTZakatForm5Response.StatusCode == HttpStatusCode.Unauthorized)
@@ -78,7 +78,7 @@ namespace EGAZT.Manager
                 {
                     Console.WriteLine(ex);
                     App.IsSessionExpired = true;
-                    return null;
+                    throw;
                 }
             }
             else

@@ -37,7 +37,7 @@
                          IsVisible="True">
                         <Image Margin="24,16,24,8" HorizontalOptions="Start">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
                                              Glyph="{x:Static FontImage:IconFonts.Close}"/>
                             </Image.Source>
                             <Image.GestureRecognizers>
@@ -57,17 +57,18 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"
                             OutlineCornerRadius="8"
-                            FocusedColor="#005e4b" ErrorColor="#B00020"
+                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0">
 
                                 <Entry  FlowDirection="LeftToRight"
                                         x:Name="Mobile_Entry"
                                         Text="{Binding CurrentMobileNumberEntryText}"
                                         Style="{StaticResource DefaultEntry}"
-                                        VerticalTextAlignment="Center" 
+                                        VerticalTextAlignment="Center"
                                         Keyboard="Telephone"
                                         IsReadOnly="True"
-                                        TextColor="{StaticResource NeutralBlack}" HorizontalOptions="FillAndExpand">
+                                        TextColor="{StaticResource NeutralBlack}"
+                                        HorizontalOptions="FillAndExpand">
                                 </Entry>
                             </inputLayout:SfTextInputLayout>
 
@@ -82,7 +83,7 @@
                                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                         </Image.GestureRecognizers>                                  
                                 </Image>
-                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="Black" 
+                                <custom:CustomButton HorizontalOptions="Center" VerticalOptions="Center" TextColor="{StaticResource PrimaryColor}" 
                                     Text="{Binding CountryCode}" x:Name="Label_InternationalnoCode"
                                     Clicked="TapGestureRecognizer_Tapped"
                                     BackgroundColor="Transparent"/>
@@ -91,10 +92,13 @@
                                 Text="{Binding NewMobileNumberEntryText}"
                                 HorizontalOptions="FillAndExpand"
                                 IsSpellCheckEnabled="False"
-                                Keyboard="Telephone" TextColor="Black"
+                                Keyboard="Telephone" TextColor="{StaticResource PrimaryColor}"
                             Style="{StaticResource DefaultEntry}"
-                                Unfocused="Mobile_entry_Unfocused">                               
-                                </custom:GAZTBorderlessEntry>
+                                Unfocused="Mobile_entry_Unfocused">
+                                        <Entry.Behaviors>
+                                            <custom1:OnlyNumericValuesBehaviour />
+                                        </Entry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
                             </StackLayout>
                                 </Frame>
                         </StackLayout>
@@ -107,9 +111,11 @@
                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" Style="{StaticResource BodyLabelGrey}"/>
                         <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1"/>
 
-                        <StackLayout Padding="0,15,0,0" >
-                            <StackLayout Orientation="Horizontal"
+                        <StackLayout  Padding="0,15,0,0" >
+
+                            <StackLayout IsVisible="{Binding engText}" Orientation="Horizontal"
                                          Spacing="5"
+                                        
                                          FlowDirection="LeftToRight"
                                          HorizontalOptions="CenterAndExpand"
                                          VerticalOptions="CenterAndExpand">
@@ -119,6 +125,23 @@
                                         HorizontalTextAlignment="Center"/>
                                 <custom:CustomLabel x:Name="OTPSentOnThisMobileNumberLbl"
                                         Text="{Binding OTPSentOnThisMobileNumber}"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                            
+                            <StackLayout  IsVisible="{Binding Arabictext}" Orientation="Horizontal"
+                                         Spacing="5"
+                                         FlowDirection="LeftToRight"
+                                        
+                                         HorizontalOptions="CenterAndExpand"
+                                         VerticalOptions="CenterAndExpand">
+                                 <custom:CustomLabel x:Name="OTPSentOnThisMobileNumberLbl2"
+                                        Text="{Binding OTPSentOnThisMobileNumber2}"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        HorizontalOptions="Center"
+                                        HorizontalTextAlignment="Center"/>
+                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}"
                                         Style="{StaticResource BodyLabelGrey}"
                                         HorizontalOptions="Center"
                                         HorizontalTextAlignment="Center"/>
@@ -146,7 +169,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry
                                                         x:Name="OTPFirstEntry"
                                                         FontAttributes="Bold"
@@ -173,7 +196,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry
                                                         x:Name="OTPSecondEntry"
                                                         FontAttributes="Bold"
@@ -200,7 +223,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry
                                                         x:Name="OTPThirdEntry"
                                                         FontAttributes="Bold"
@@ -227,7 +250,7 @@
                                                     ContainerType="Outlined"
                                                     UnfocusedColor="#B1B1B1"
                                                     OutlineCornerRadius="8"
-                                                    FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                                    FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                                         <custom:BorderlessEntry
                                                         x:Name="OTPFourthEntry"
                                                         FontAttributes="Bold"
@@ -254,6 +277,7 @@
                                 <custom:CustomLabel  Text="{Binding LblCountDownTimer}" Style="{StaticResource CaptionLabelGrey}" VerticalOptions="Center" />
                             </StackLayout>
                             <buttons:SfButton Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                      FontFamily="{StaticResource SomarRegular}"
                                       VerticalOptions="EndAndExpand"
                                       Margin="0,10,0,0" BackgroundColor="Transparent"
                                       TextColor="{Binding ResendOTPTextColor}"
@@ -289,7 +313,7 @@
                                                        IsBusy="True"
                                                        ViewBoxWidth = "70"
                                                        TitlePlacement="Bottom"
-                                                       ViewBoxHeight="70" TextColor="#006450"/>
+                                                       ViewBoxHeight="70" TextColor="{StaticResource Primary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

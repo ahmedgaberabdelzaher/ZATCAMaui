@@ -171,12 +171,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isReleaseDetailsEnabled == value) return;
 
                 _isReleaseDetailsEnabled = value;
-                ReleaseDetailsButtonBackGroundColor = Color.FromHex(_isReleaseDetailsEnabled ? "#d49504" : "#9EA4A9");
+                ReleaseDetailsButtonBackGroundColor = (_isReleaseDetailsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsReleaseDetailsEnabled");
             }
         }
 
-        private Color _releaseDetailsButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _releaseDetailsButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ReleaseDetailsButtonBackGroundColor
         {
             get
@@ -204,12 +204,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isAttachmentsEnabled == value) return;
 
                 _isAttachmentsEnabled = value;
-                AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
+                AttachButtonBackGroundColor = (_isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsAttachmentsEnabled");
             }
         }
 
-        private Color _attachButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _attachButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color AttachButtonBackGroundColor
         {
             get
@@ -237,7 +237,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 if (_isDeclarationEnabled == value) return;
 
                 _isDeclarationEnabled = value;
-                DeclarationButtonBackGroundColor = Color.FromHex(_isDeclarationEnabled ? "#d49504" : "#9EA4A9");
+                DeclarationButtonBackGroundColor = (_isDeclarationEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
 
                 RaisePropertyChanged("IsDeclarationEnabled");
             }
@@ -274,7 +274,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 RaisePropertyChanged("charCountRemarksText");
             }
         }
-        private Color _declarationButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _declarationButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color DeclarationButtonBackGroundColor
         {
             get
@@ -2020,7 +2020,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
         private void EnableAttachments()
         {
-
+           
             if (InvoiceAttachmentsListViewData == null)
             {
                 IsAttachmentsEnabled = false;

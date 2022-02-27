@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,6 +16,7 @@ using GAZT.Helper;
 using GAZT.Manager;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -887,11 +889,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 string[] filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
 
-                var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-                if (fileData != null)
+                var fileData = await FilePicker.PickAsync(options);
+                var stream = await fileData.OpenReadAsync();
+                var attachmentByte = UtilityManager.ReadFully(stream as Stream);
+
+                if (attachmentByte != null)
                 {
-                    var attachmentByte = fileData.DataArray;
+                    //var attachmentByte = fileData.DataArray;
 
                     string base64String = Convert.ToBase64String(attachmentByte, 0, attachmentByte.Length);
                     var attachmentName = fileData.FileName;
@@ -904,7 +911,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                         if (fileData.FileName.Contains("."))
                         {
-                            string Extention = fileData.FileName.Split('.')[1];//pdf
+                            string[] ExtentionArray = fileData.FileName.Split('.');
+                            string Extention = ExtentionArray.Last();
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                             {
                                 attachmentSize = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachmentByte.Length) / 1048576.0)), 2);
@@ -1510,7 +1518,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";

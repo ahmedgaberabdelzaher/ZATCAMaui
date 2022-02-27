@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using Org.Json;
 namespace GAZT.PUSH_Notification
 {
-    [Service]
+    [Service(Exported = true)]
     [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     class MyFirebaseMessagingService:FirebaseMessagingService
     { 

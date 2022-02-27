@@ -3,7 +3,6 @@ using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
-using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.MyBillsPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -159,7 +158,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private bool _accountStatementVisible = false;
         private bool _IsToolbarTaxVisible = true;
         private bool _liveChatVisible = false;
-        private Color _homeIndicatorColor = Color.FromHex("#005e4b");
+        private Color _homeIndicatorColor =  (Color)Application.Current.Resources["Primary"];
         private Color _menuIndicatorColor = Color.White;
         private Color _tabbarColor = Color.DarkGray;
         private Color _stackMenuColor = Color.White;
@@ -173,7 +172,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         private string _PartiallyPaidString = AppResources.Partiallynewui;
         private string _UnPaidString = AppResources.UnPaid;
         private string _TotalString = AppResources.NDTotalNumberOfBills;
-        private Dashboard DashboardData = null;
+        public Dashboard DashboardData = null;
         private CalendarEventCollection _CommittmentsSchedule = null;
         public bool isPayNowTapped = false;
 
@@ -322,21 +321,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        public async Task  getActivityUpdateStatus()
-        {
-           
-            await Task.Run(async () =>
-            {
-                DashBoardUpdateViewResponseModel dashBoardUpdateViewResponse = await WebServiceManager.getTaxPayerActivityUpdateStatus();
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-                if(dashBoardUpdateViewResponse != null && dashBoardUpdateViewResponse.d!=null&&dashBoardUpdateViewResponse.d.results!=null
-                && dashBoardUpdateViewResponse.d.results.Count>0&& dashBoardUpdateViewResponse.d.results[0]!=null
-                && !string.IsNullOrEmpty(dashBoardUpdateViewResponse.d.results[0].Msg))
-                PopupNavigation.Instance.PushAsync(new UpdateActivityInstructionsPageView(false, dashBoardUpdateViewResponse.d.results[0].Msg));
-            });
-
-        }
 
         public List<TaxRelationSetResult> TaxTypeFilter
         {
@@ -1118,6 +1102,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsEstablishmentRegistrationTileVisible");
             }
         }
+
+        private bool _isSubsidyTileVisible = false;
+        public bool IsSubsidyTileVisible
+        {
+            get
+            {
+                return _isSubsidyTileVisible;
+            }
+            set
+            {
+                if (_isSubsidyTileVisible == value) return;
+
+                _isSubsidyTileVisible = value;
+                RaisePropertyChanged("IsSubsidyTileVisible");
+            }
+        }
+        
         public bool MenuViewVisible
         {
             get
@@ -1178,7 +1179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (_homeViewVisible)
                     {
-                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        _homeIndicatorColor =  (Color)Application.Current.Resources["Primary"];
                         MenuIndicatorColor = Color.White;
                     }
 
@@ -1202,7 +1203,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (_accountStatementVisible)
                     {
-                        _homeIndicatorColor = Color.FromHex("#005e4b");
+                        _homeIndicatorColor =  (Color)Application.Current.Resources["Primary"];
                         MenuIndicatorColor = Color.White;
                     }
 
@@ -1224,7 +1225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _liveChatVisible = value;
                 if (_liveChatVisible)
                 {
-                    _homeIndicatorColor = Color.FromHex("#005e4b");
+                    _homeIndicatorColor =  (Color)Application.Current.Resources["Primary"];
                     MenuIndicatorColor = Color.White;
                 }
 
@@ -1459,6 +1460,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 this._IsToolbarTaxVisible = value;
 
                 this.RaisePropertyChanged("IsToolbarTaxVisible");
+            }
+        }
+
+        private bool _isMenuLogoVisible = true;
+        public bool IsMenuLogoVisible
+        {
+            get
+            {
+                return _isMenuLogoVisible;
+            }
+            set
+            {
+                if (_isMenuLogoVisible == value) return;
+
+                this._isMenuLogoVisible = value;
+
+                this.RaisePropertyChanged("IsMenuLogoVisible");
             }
         }
 
@@ -2144,6 +2162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 IsLoading = false;
             }
 
@@ -2534,7 +2553,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             catch (Exception e)
                             {
-
+                                Console.WriteLine(e.Message);
 
                             }
 
@@ -2625,7 +2644,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             catch (Exception e)
                             {
-
+                                Console.WriteLine(e.Message);
 
                             }
 
@@ -2698,9 +2717,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             var items = new ObservableCollection<InstalmentPlanResult>();
 
             ChartColorCollection ColorsChild = new ChartColorCollection();
-            ColorsChild.Add(Color.FromHex("#00674e"));
-            ColorsChild.Add(Color.FromHex("#95d600"));
-            ColorsChild.Add(Color.FromHex("#cccccc"));
+            ColorsChild.Add( (Color)Application.Current.Resources["Primary"]);
+            ColorsChild.Add((Color)Application.Current.Resources["NewProgressLightGreenColor"]);
+            ColorsChild.Add((Color)Application.Current.Resources["TabGray"]);
 
 
             foreach (InstalmentPlanResult singleItem in InstalmentResponse.INST_PLAN_itemSet.results)
@@ -2789,7 +2808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Bill.IsUnSubmittedReturn = false;
                         Bill.IsPaymentOverdue = true;
-                        Bill.ColorCode = Color.FromHex("#AA0C19");
+                        Bill.ColorCode =  (Color)Application.Current.Resources["ErrorColor"];
 
                         BillsAndReturnsCommitmentsTemp.Add(Bill);
                     }
@@ -2801,7 +2820,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         UnsubmittedReturn.IsUnSubmittedReturn = true;
                         UnsubmittedReturn.IsPaymentOverdue = false;
-                        UnsubmittedReturn.ColorCode = Color.FromHex("#5D6770");
+                        UnsubmittedReturn.ColorCode = (Color)Application.Current.Resources["EntryTextColor"];
                         BillsAndReturnsCommitmentsTemp.Add(UnsubmittedReturn);
                     }
                 }
@@ -3135,7 +3154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(PartiallyPaidBillCountAndAmount);
 
-                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#E39800") });
+                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = PartiallyPaidBillCountAndAmount.BillCount, BillType = PartiallyPaidBillCountAndAmount.BillTypeName, BillColor = (Color)Application.Current.Resources["ColorYellow"] });
                         BillCount = PartiallyPaidBillCountAndAmount.BillCount.ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(227, 152, 0));
 
@@ -3173,7 +3192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         SegregatedBillTypeCorrepsondingCountAndAmount.Add(UnPaidBillCountAndAmount);
 
-                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = Xamarin.Forms.Color.FromHex("#EC0000") });
+                        MyBillsChartModelsTemp.Add(new MyBillsChartModel { BillCount = UnPaidBillCountAndAmount.BillCount, BillType = UnPaidBillCountAndAmount.BillTypeName, BillColor = (Color)Application.Current.Resources["NewRedColor"] });
                         BillCount = UnPaidBillCountAndAmount.BillCount.ToString();
                         ColorsChild.Add(System.Drawing.Color.FromArgb(236, 0, 0));
 
@@ -3315,26 +3334,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     if (ItemType == "05" && DashboardData.results[0].EstimateZkat == "X")
                     {
-                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
+                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.EstimateZakat, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Estimated_Zakat_Returns.png" });
                     }
                     if (ItemType == "03" || ItemType == "13")
                     {
-                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                        eServicesAvailableToTheTPTemp.Add(new eServiceInfo { eServiceName = AppResources.VatReturns, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Declaration.png" });
                     }
                 }
             }
 
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Form_Bundle_Status.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Bills, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Bills.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Certificates, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_My_Certificate.png" });
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_TIN_Status.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZFormBundleStatus, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Form_Bundle_Status.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Bills, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_My_Bills.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.Certificates, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_My_Certificate.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTINStatus, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_TIN_Status.png" });
 
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Service_6.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZRealEstateServiceTitle, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Service_6.png" });
 
             //Tax Evasion Section
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_Tax_Evasion.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZTEReportReportScreenTitle, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_Tax_Evasion.png" });
             //Tax Evasion Section
-            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Lookup.png" });
+            eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZVatLookUpTitleTextNew, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Lookup.png" });
             //TaxRegistration
             //If tehe value is "X" that means the registration of the user is completed and hence we will not show the Tile.
 
@@ -3342,16 +3361,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 if (App.LoginDataRetrieved.VtReg == null)
                 {
-                    eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                    eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Declaration.png" });
                 }
                 else if (App.LoginDataRetrieved.VtReg != "X")
                 {
-                    eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                    eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Declaration.png" });
                 }
             }
             catch
             {
-                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "#006450", BackgroundGradientEnd = "#CCE0DC", iConImagePath = "sf_VAT_Declaration.png" });
+                eServicesAvailableToTheTP.Add(new eServiceInfo { eServiceName = AppResources.ZZZZVatRegistrationTile, BackgroundGradientStart = "{StaticResource Primary}", BackgroundGradientEnd = "#b6e7fc", iConImagePath = "sf_VAT_Declaration.png" });
             }
         }
 
@@ -3405,46 +3424,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         public async Task LogOut()
         {
-            if (App.TP != null)
-                App.TP = null;
-            if (App.PreviousIsArabic)
-            {
-                String langName = "ar-AE";
-                AppResources.Culture = new CultureInfo(langName);
-            }
-            else
-            {
-                String langName = "en-US";
-                AppResources.Culture = new CultureInfo(langName);
-            }
+           
+                if (App.TP != null)
+                    App.TP = null;
+                if (App.PreviousIsArabic)
+                {
+                    String langName = "ar-AE";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
+                else
+                {
+                    String langName = "en-US";
+                    AppResources.Culture = new CultureInfo(langName);
+                }
 
-            try
+                try
+                {
+                    await WebServiceManager.GAZTLogOff();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
+            Device.BeginInvokeOnMainThread(() =>
             {
-                await WebServiceManager.GAZTLogOff();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+                IsLoading = false;
+                App.IsLogOut = true;
+                App.IsLoginCalled = false;
+                App.IsSamlApiCalledAndroid = false;
 
-            IsLoading = false;
-            App.IsLogOut = true;
-            App.IsLoginCalled = false;
-            App.IsSamlApiCalledAndroid = false;
-
-            try
-            {
-                App.httpClientHandler = new HttpClientHandler();
-                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-            _navigationService.GoBack();
+                try
+                {
+                    App.httpClientHandler = new HttpClientHandler();
+                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                }
+                catch (Exception ex)
+                {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
+                _navigationService.GoBack();
+            });
         }
 
         #endregion

@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="True" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <StackLayout HorizontalOptions="CenterAndExpand" BackgroundColor="White">
 
             
@@ -44,7 +44,7 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                             <custom:CustomLabel BackgroundColor="White" Text="{Binding}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}"/>
                             </StackLayout>
                         </ViewCell>

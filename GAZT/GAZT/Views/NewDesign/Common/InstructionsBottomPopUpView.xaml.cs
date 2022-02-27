@@ -128,7 +128,7 @@ namespace EGAZT.Views.NewDesign
 
 
             }
-            catch (Exception) { }
+            catch (Exception ex) { }
         }
 
 
@@ -136,13 +136,23 @@ namespace EGAZT.Views.NewDesign
 
         private void SetLTR()
 
-
-
         {
-            if (!App.IsArabic)
+
+
+            if (App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+            else
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
+
+
+            //if (!App.IsArabic)
+            //{
+            //    this.FlowDirection = FlowDirection.LeftToRight;
+            //}
         }
         protected override bool OnBackButtonPressed() => true;
         protected override void OnDisappearing()

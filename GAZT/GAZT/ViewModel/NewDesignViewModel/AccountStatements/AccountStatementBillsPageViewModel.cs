@@ -70,13 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 if (value == null) return;
                 _selectedTransactionTypeFilter = value;
-
-
-              
-
                 FilterIfTypeAndStausFilterSelected(true);
-
-
                 RaisePropertyChanged("SelectedTransactionTypeFilter");
 
             }
@@ -319,9 +313,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-      
-
-        public string _searchText = "VAT";
+        public string _searchText = "";
         public string SearchText
         {
             get
@@ -330,13 +322,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             set
             {
+                if (_searchText == value) return;
+
                 _searchText = value;
 
                 RaisePropertyChanged("SearchText");
             }
         }
-
-
 
         private ObservableCollection<object> _todayDateNormal;
         public ObservableCollection<object> TodayDateNormal
@@ -958,18 +950,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             {
                 IsLoading = true;
             });
+            if(SelectedTransactionTypeFilter != null)
+            {
 
-            if(SelectedTransactionTypeFilter.StatementFilter == "10") {
 
-                calculateMyBills = true;
-
+                if (SelectedTransactionTypeFilter.StatementFilter == "10")
+                {
+                    calculateMyBills = true;
+                }
+                else
+                {
+                    calculateMyBills = true;
+                }
             }
-            else {
-                calculateMyBills = false;
-
-            }
-
-
             if (MyBillsOriginal != null)
             {
                 try
@@ -1102,9 +1095,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     {
                         var filterItems = MyBills;
                         MyBills = new ObservableCollection<MyBills>(filterItems.Where(p => Convert.ToDouble(p.BETRW) >= Convert.ToDouble(FromTxAmount) && Convert.ToDouble(p.BETRW) <= Convert.ToDouble(ToTxAmount)));
-
-                        FilterOnTaxType(MyBills);
-
                     }
 
 
@@ -1235,62 +1225,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
             });
 
-            switch (SelectedTransactionTypeFilter.StatementFilter)
-            {
-                case "10":
-                    MyBills = new ObservableCollection<MyBills>(BillsToProcss);
-                    break;
-                case "01":
-                    if (App.IsArabic)
+            if(SelectedTransactionTypeFilter != null) {
+
+                try{
+
+                    switch (SelectedTransactionTypeFilter.StatementFilter)
                     {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الزكاة") || x.Abtypt.Equals("الزكاة")).ToList());
+                        case "10":
+                            MyBills = new ObservableCollection<MyBills>(BillsToProcss);
+                            break;
+                        case "01":
+                            if (App.IsArabic)
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("الزكاة") || x.Abtypt.Equals("الزكاة")).ToList());
+                            }
+                            else
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat") || x.Abtypt.Equals("Voluntary Zakat")).ToList());
+                            }
+                            break;
+                        case "06":
+                            if (App.IsArabic)
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة") || x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
+                            }
+                            else
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
+                            }
+                            break;
+                        case "07":
+                            if (!App.IsArabic)
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
+                            }
+                            else
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة السلع الانتقائية")).ToList());
+                            }
+                            break;
+                        case "03":
+                            if (!App.IsArabic)
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
+                            }
+                            else
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Withholding Tax")).ToList());
+                            }
+                            break;
+                        case "02":
+                            if (!App.IsArabic)
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
+                            }
+                            else
+                            {
+                                MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الدخل")).ToList());
+                            }
+                            break;
                     }
-                    else
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Zakat") || x.Abtypt.Equals("Voluntary Zakat")).ToList());
-                    }
-                    break;
-                case "06":
-                    if (App.IsArabic)
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة القيمة المضافة") || x.Abtypt.Equals("ضريبة القيمة المضافة")).ToList());
-                    }
-                    else
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("VAT") || x.Abtypt.Equals("VAT Eligible Person")).ToList());
-                    }
-                    break;
-                case "07":
-                    if (!App.IsArabic)
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Excise Tax") || x.Abtypt.Equals("ETAX")).ToList());
-                    }
-                    else
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة السلع الانتقائية")).ToList());
-                    }
-                    break;
-                case "03":
-                    if (!App.IsArabic)
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Withholding Tax")).ToList());
-                    }
-                    else
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الاستقطاع") || x.Abtypt.Equals("Withholding Tax")).ToList());
-                    }
-                    break;
-                case "02":
-                    if (!App.IsArabic)
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("Income Tax")).ToList());
-                    }
-                    else
-                    {
-                        MyBills = new ObservableCollection<MyBills>(BillsToProcss.Where(x => x.Abtypt.Equals("ضريبة الدخل")).ToList());
-                    }
-                    break;
+                }
+                catch (Exception ex) {
+
+                }
+
+
+
+              
             }
+
+
+           
 
 
             if (MyBills != null)
@@ -1361,10 +1367,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public void populateStatusChips()
         {
+
+
             var statusList = new ObservableCollection<ChipModel>();
-            var chipmodelPaid = new ChipModel { TemplateType = "00FF00", Text = AppResources.Paid, ImageSource = null };
-            var chipmodelPartiallyPaid = new ChipModel { TemplateType = "FFFFE0", Text = AppResources.PartiallyPaid, ImageSource = null };
-            var chipmodelUnPaid = new ChipModel { TemplateType = "FF7F50", Text = AppResources.UnPaid, ImageSource = null };
+            var chipmodelPaid = new ChipModel { TemplateType = "00FF00", Text = AppResources.Paid, ImageSource = null , TextColor = (Color)App.Current.Resources["Success"] };
+            var chipmodelPartiallyPaid = new ChipModel { TemplateType = "FFFFE0", Text = AppResources.PartiallyPaid, ImageSource = null, TextColor = (Color)App.Current.Resources["Partial"] };
+            var chipmodelUnPaid = new ChipModel { TemplateType = "FF7F50", Text = AppResources.UnPaid, ImageSource = null, TextColor = (Color)App.Current.Resources["Error"] };
             statusList.Add(chipmodelPaid);
             statusList.Add(chipmodelPartiallyPaid);
             statusList.Add(chipmodelUnPaid);

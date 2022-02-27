@@ -65,7 +65,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

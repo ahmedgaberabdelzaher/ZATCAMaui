@@ -444,7 +444,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
         public void ResetData()
         {
             ObjectionsList = new ObservableCollection<ZakatObjectionListModel.Result>();
-            ObjectionsCount = 0 + " " + AppResources.ZakatObjection;
+            ObjectionsCount = 0 + "  " + AppResources.ZakatObjection;
             AttachmentsListViewData = null;
 
             EnableListView();
@@ -542,7 +542,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                                 objectionsList.Add(objection);
                             }
                             ObjectionsList = objectionsList;
-                            ObjectionsCount = ObjectionsList.Count + " " + AppResources.ZakatObjection;
+                            ObjectionsCount = ObjectionsList.Count + "  " + AppResources.ZakatObjection;
                         }
 
                         else

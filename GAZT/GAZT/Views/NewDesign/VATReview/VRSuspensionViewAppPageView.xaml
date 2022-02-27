@@ -128,7 +128,8 @@
 
                         <Image Grid.Row="0" Grid.Column="0 ">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="24"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="24"
                                                  Glyph="{x:Static FontImage:IconFonts.InformationOutline}" />
                             </Image.Source>
                         </Image>
@@ -155,24 +156,24 @@
                                 <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                    CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
                                    Opacity=".2" IsClippedToBounds="True"
                                    BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                   HasShadow="False" />
-                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
-                                   HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                   HasShadow="False" />-->
+                         
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"
+                                         Padding="8,0" Orientation="Horizontal">
+                                   <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                                   HorizontalOptions="Start" VerticalOptions="Center" Aspect="AspectFit"
                                    Source="vat_user" />
-                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
-                                         Padding="8,0">
                                 <Label Text="{x:Static ResourceManager:AppResources.VRRequestDetails}"
                                        VerticalOptions="CenterAndExpand"
-                                       Style="{StaticResource SectionTitleBlackBold}" />
+                                       Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                             </StackLayout>
 
                         </Grid>
@@ -354,19 +355,20 @@
                                 <ColumnDefinition Width="auto" />
                             </Grid.ColumnDefinitions>
 
-                            <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
+                            <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
                                    CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center"
                                    Opacity=".2" IsClippedToBounds="True"
                                    BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
-                                   HasShadow="False" />
-                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24"
-                                   HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
+                                   HasShadow="False" />-->
+                        
+                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0"
+                                         Padding="8,0" Orientation="Horizontal">
+                                <Image  HeightRequest="24" WidthRequest="24"
+                                   HorizontalOptions="Start" VerticalOptions="Center" Aspect="AspectFit"
                                    Source="establishments" />
-                            <StackLayout HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1"
-                                         Padding="8,0">
                                 <Label Text="{x:Static ResourceManager:AppResources.VRDeclaration}"
                                        VerticalOptions="CenterAndExpand"
-                                       Style="{StaticResource SectionTitleBlackBold}" />
+                                       Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                             </StackLayout>
 
                         </Grid>

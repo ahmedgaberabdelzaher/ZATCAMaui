@@ -111,7 +111,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -359,7 +359,7 @@ namespace EGAZT.Manager
                     throw new GAZTErrorException(ex.Message);
                 }
 
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
@@ -448,7 +448,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     App.IsSessionExpired = true;
                     return null;

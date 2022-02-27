@@ -237,10 +237,52 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     this.FlowDirection = FlowDirection.LeftToRight;
                 }
 
-                if (hybridWebView != null)
-                    loginGrid.Children.Remove(hybridWebView);
+                var platform = Xamarin.Essentials.DeviceInfo.Platform;
+                if (platform == DevicePlatform.Android && App.isAndroidRefresh == false)
+                {
+                    if (hybridWebView != null)
+                    {
+                        loginGrid.Children.Remove(hybridWebView);
+                    }
+                    hybridWebView = new HybridWebView();
+                    //App.isAndroidRefresh = true;
+                    ContinuedFunc(lang);
 
-                hybridWebView = new HybridWebView();
+
+                }
+                else
+                {
+                    if (platform == DevicePlatform.iOS)
+                    {
+                        if (hybridWebView != null)
+                        {
+                            loginGrid.Children.Remove(hybridWebView);
+                        }
+
+                        hybridWebView = new HybridWebView();
+                        ContinuedFunc(lang);
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+                if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
+                {
+                    loginGrid.Margin = new Thickness(0, -50, 0, -30);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
+
+        private void ContinuedFunc(string lang)
+            {
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -254,23 +296,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     }
                 });
 
-                //try
-                //{
-                //    await WebServiceManager.GAZTLogOff();
-                //}
-                //catch (Exception ex)
-                //{
-
-                //}
-
                 hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
-
-                //NSHttpCookie langCookieTemp = new NSHttpCookie(GAZT.Helper.Constants.LanguageCookieNameForLogin, langVal, "/", GAZT.Helper.Constants.DomainUrlForCookies);
-                //Cookie langCookie = new Cookie(Constants.LanguageCookieNameForLogin, lang, "/", Constants.DomainUrlForCookies);
-                //CookieContainer loginWebViewCookieContainer = new CookieContainer();
-                //loginWebViewCookieContainer.Add(langCookie);
-                //hybridWebView.Cookies = loginWebViewCookieContainer;
 
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
@@ -307,6 +334,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             {
                                 hybridWebView.Opacity = 0;
                                 viewModel.IsLoading = false;
+                                App.isAndroidRefresh = false;
 
                                 if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
                                 {
@@ -316,6 +344,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
                                 {
                                     App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
+
                                 }
 
                                 await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
@@ -392,7 +421,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                             if (data == "navigateToForgotUsernamePage")
                             {
                                 hybridWebView.Opacity = 0;
-                              //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+                                //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
                                 await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
                                 //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
                             }
@@ -525,21 +554,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 loginGrid.Children.Add(hybridWebView, 0, 0);
                 loginGrid.LowerChild(hybridWebView);
-                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
-                if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
-                {
-                    loginGrid.Margin = new Thickness(0, -50, 0, -30);
-                }
             }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-        }
 
-        private async Task LogoffUser()
-        {
+
+            private async Task LogoffUser()
+            {
             viewModel.IsLoading = true;
 
             if (App.TP != null)
@@ -762,6 +781,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             sessionExpiredView.IsVisible = false;
             loginGrid.Opacity = 1;
             App.Current.Properties["IsSessionExpired"] = false;
+            App.isAndroidRefresh = false;
 
             OnAppearing();
 

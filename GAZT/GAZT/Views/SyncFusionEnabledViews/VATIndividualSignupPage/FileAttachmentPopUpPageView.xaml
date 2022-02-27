@@ -21,7 +21,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
+    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="End" BackgroundColor="White">
         <Grid>
             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
@@ -64,8 +64,8 @@
                     </Label>
                 </Grid>
 
-                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="5,10,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="12"/>
-                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="5,0,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="12"/>
+                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="5,10,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="11"/>
+                <Label HorizontalTextAlignment="Start" Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="5,0,5,0" Style="{StaticResource BodyLabelGrey}" FontSize="11"/>
                 <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
 
                 <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">
@@ -73,7 +73,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
-                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                    <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" >
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                 <Grid.ColumnDefinitions>
@@ -86,7 +86,7 @@
                                                     <RowDefinition Height="30" />
                                                 </Grid.RowDefinitions>
                                                 <Label Text="{Binding Filename}" LineBreakMode="TailTruncation" Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SSTArBold}" Grid.Row="0" Grid.Column="0"/>
+                                                   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SomarBold}" Grid.Row="0" Grid.Column="0"/>
                                                 <!--<Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
@@ -97,7 +97,7 @@
                                                         <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label Text="{Binding Erfdt}" Margin="3,0,3,-5" Style="{StaticResource MiniGrayLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FlowDirection="LeftToRight" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SSTArBold}"/>
+                                                <Label Text="{Binding Erfdt}" Margin="3,0,3,-5" Style="{StaticResource MiniGrayLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FlowDirection="LeftToRight" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SomarBold}"/>
                                             </Grid>
                                         </StackLayout>
                                     </cards1:SfCardView>
@@ -107,11 +107,11 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <buttons:SfButton x:Name="btnAddAttachment" Text="{x:Static custom2:AppResources.FAPAddAttachment}" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
-                HeightRequest="48" Margin="0,0,0,10" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
+                HeightRequest="48" Margin="0,0,0,10" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
+                BackgroundColor="{StaticResource Secondary}" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
                 <buttons:SfButton x:Name="btnDone" Text="{x:Static custom2:AppResources.ZZZZDone}" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
-                HeightRequest="48" Margin="0,0,0,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                BackgroundColor="#d49504" BorderWidth="0" Command="{Binding GoButtonClick}"/>
+                HeightRequest="48" Margin="0,0,0,20" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
+                BackgroundColor="{StaticResource Secondary}" BorderWidth="0" Command="{Binding GoButtonClick}"/>
             </StackLayout>
 
             <Grid Grid.Row="0"    Grid.Column="0"  IsVisible="{Binding IsLoading}" >
@@ -129,7 +129,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                     <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                 </StackLayout>

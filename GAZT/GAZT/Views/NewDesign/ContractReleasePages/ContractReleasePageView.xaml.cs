@@ -63,7 +63,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     viewModel.IsHijriCal = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -82,27 +82,27 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            NormalCalendar.HeaderFontFamily = "SSTArabic-Medium";
-                            NormalCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
-                            NormalCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            NormalCalendar.HeaderFontFamily = "Somar-SemiBold";
+                            NormalCalendar.SelectedItemFontFamily = "Somar-SemiBold";
+                            NormalCalendar.UnSelectedItemFontFamily = "Somar-SemiBold";
 
 
 
-                            HijriCalendar.HeaderFontFamily = "SSTArabic-Medium";
-                            HijriCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
-                            HijriCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            HijriCalendar.HeaderFontFamily = "Somar-SemiBold";
+                            HijriCalendar.SelectedItemFontFamily = "Somar-SemiBold";
+                            HijriCalendar.UnSelectedItemFontFamily = "Somar-SemiBold";
 
 
 
-                            EndDateNormalCalendar.HeaderFontFamily = "SSTArabic-Medium";
-                            EndDateNormalCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
-                            EndDateNormalCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            EndDateNormalCalendar.HeaderFontFamily = "Somar-SemiBold";
+                            EndDateNormalCalendar.SelectedItemFontFamily = "Somar-SemiBold";
+                            EndDateNormalCalendar.UnSelectedItemFontFamily = "Somar-SemiBold";
 
 
 
-                            EndDateHijriCalendar.HeaderFontFamily = "SSTArabic-Medium";
-                            EndDateHijriCalendar.SelectedItemFontFamily = "SSTArabic-Medium";
-                            EndDateHijriCalendar.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            EndDateHijriCalendar.HeaderFontFamily = "Somar-SemiBold";
+                            EndDateHijriCalendar.SelectedItemFontFamily = "Somar-SemiBold";
+                            EndDateHijriCalendar.UnSelectedItemFontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Xamarin.Forms.Device.Android:

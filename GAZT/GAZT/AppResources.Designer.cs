@@ -1487,6 +1487,12 @@ namespace EGAZT {
             }
         }
         
+        public static string ZBillDetails {
+            get {
+                return ResourceManager.GetString("ZBillDetails", resourceCulture);
+            }
+        }
+        
         public static string ZZPleaseusetheOTPtoactivatethenewnobilenumber {
             get {
                 return ResourceManager.GetString("ZZPleaseusetheOTPtoactivatethenewnobilenumber", resourceCulture);
@@ -1496,12 +1502,6 @@ namespace EGAZT {
         public static string ZAmendSalesDetails {
             get {
                 return ResourceManager.GetString("ZAmendSalesDetails", resourceCulture);
-            }
-        }
-        
-        public static string ZBillDetails {
-            get {
-                return ResourceManager.GetString("ZBillDetails", resourceCulture);
             }
         }
         
@@ -15864,375 +15864,9 @@ namespace EGAZT {
             }
         }
         
-        public static string VatApproved {
-            get {
-                return ResourceManager.GetString("VatApproved", resourceCulture);
-            }
-        }
-        
-        public static string VATRegistrationSuccessMessage {
-            get {
-                return ResourceManager.GetString("VATRegistrationSuccessMessage", resourceCulture);
-            }
-        }
-        
-        public static string NDRelationContact {
-            get {
-                return ResourceManager.GetString("NDRelationContact", resourceCulture);
-            }
-        }
-        
-        public static string RMName {
-            get {
-                return ResourceManager.GetString("RMName", resourceCulture);
-            }
-        }
-        
-        public static string RMSupName {
-            get {
-                return ResourceManager.GetString("RMSupName", resourceCulture);
-            }
-        }
-        
-        public static string RMTitle {
-            get {
-                return ResourceManager.GetString("RMTitle", resourceCulture);
-            }
-        }
-        
-        public static string RM_Email {
-            get {
-                return ResourceManager.GetString("RM_Email", resourceCulture);
-            }
-        }
-        
-        public static string RM_Name {
-            get {
-                return ResourceManager.GetString("RM_Name", resourceCulture);
-            }
-        }
-        
-        public static string RM_phone {
-            get {
-                return ResourceManager.GetString("RM_phone", resourceCulture);
-            }
-        }
-        
-        public static string RM_ShareOpenion {
-            get {
-                return ResourceManager.GetString("RM_ShareOpenion", resourceCulture);
-            }
-        }
-        
-        public static string RM_SubmitComplaint {
-            get {
-                return ResourceManager.GetString("RM_SubmitComplaint", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZCRUpdateSuccess {
-            get {
-                return ResourceManager.GetString("ZZZZCRUpdateSuccess", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZLicenseUpdateSuccess {
-            get {
-                return ResourceManager.GetString("ZZZZLicenseUpdateSuccess", resourceCulture);
-            }
-        }
-        
-        public static string FinacialPeriodNormal {
-            get {
-                return ResourceManager.GetString("FinacialPeriodNormal", resourceCulture);
-            }
-        }
-        
-        public static string FinacialPeriodSmall {
-            get {
-                return ResourceManager.GetString("FinacialPeriodSmall", resourceCulture);
-            }
-        }
-        
-        public static string FinacialPeriodLong {
-            get {
-                return ResourceManager.GetString("FinacialPeriodLong", resourceCulture);
-            }
-        }
-        
-        public static string FinacialYearOptions {
-            get {
-                return ResourceManager.GetString("FinacialYearOptions", resourceCulture);
-            }
-        }
-        
-        public static string FinacialDetailsLastFulfilledreturn {
-            get {
-                return ResourceManager.GetString("FinacialDetailsLastFulfilledreturn", resourceCulture);
-            }
-        }
-        
-        public static string FinacialDetailsZyear {
-            get {
-                return ResourceManager.GetString("FinacialDetailsZyear", resourceCulture);
-            }
-        }
-        
-        public static string AmendRegistrationSubmitWarning {
-            get {
-                return ResourceManager.GetString("AmendRegistrationSubmitWarning", resourceCulture);
-            }
-        }
-        
-        public static string ZakatReturnsErrorMessage {
-            get {
-                return ResourceManager.GetString("ZakatReturnsErrorMessage", resourceCulture);
-            }
-        }
-        
-        public static string RMNameInfo {
-            get {
-                return ResourceManager.GetString("RMNameInfo", resourceCulture);
-            }
-        }
-        
-        public static string TPFinacialPeriodMonthValidation {
-            get {
-                return ResourceManager.GetString("TPFinacialPeriodMonthValidation", resourceCulture);
-            }
-        }
-        
-        public static string TPFinacialPeriodValidation {
-            get {
-                return ResourceManager.GetString("TPFinacialPeriodValidation", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZReturnUnderReviewAddAttachments {
-            get {
-                return ResourceManager.GetString("ZZZZReturnUnderReviewAddAttachments", resourceCulture);
-            }
-        }
-        
-        public static string GOTOPORTALFORSURVEY {
-            get {
-                return ResourceManager.GetString("GOTOPORTALFORSURVEY", resourceCulture);
-            }
-        }
-        
         public static string AcFilterEmptyState {
             get {
                 return ResourceManager.GetString("AcFilterEmptyState", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccManagement {
-            get {
-                return ResourceManager.GetString("NDBankAccManagement", resourceCulture);
-            }
-        }
-        
-        public static string IBAN {
-            get {
-                return ResourceManager.GetString("IBAN", resourceCulture);
-            }
-        }
-        
-        public static string IBANAccName {
-            get {
-                return ResourceManager.GetString("IBANAccName", resourceCulture);
-            }
-        }
-        
-        public static string IBANBankName {
-            get {
-                return ResourceManager.GetString("IBANBankName", resourceCulture);
-            }
-        }
-        
-        public static string IBANIdNumber {
-            get {
-                return ResourceManager.GetString("IBANIdNumber", resourceCulture);
-            }
-        }
-        
-        public static string IBANIdType {
-            get {
-                return ResourceManager.GetString("IBANIdType", resourceCulture);
-            }
-        }
-        
-        public static string IBANRefNum {
-            get {
-                return ResourceManager.GetString("IBANRefNum", resourceCulture);
-            }
-        }
-        
-        public static string IBANStatus {
-            get {
-                return ResourceManager.GetString("IBANStatus", resourceCulture);
-            }
-        }
-        
-        public static string IBANUpdate {
-            get {
-                return ResourceManager.GetString("IBANUpdate", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccAddNewIBan {
-            get {
-                return ResourceManager.GetString("NDBankAccAddNewIBan", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccOwnerName {
-            get {
-                return ResourceManager.GetString("NDBankAccOwnerName", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccIDType {
-            get {
-                return ResourceManager.GetString("NDBankAccIDType", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccIBAN {
-            get {
-                return ResourceManager.GetString("NDBankAccIBAN", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccIdNumber {
-            get {
-                return ResourceManager.GetString("NDBankAccIdNumber", resourceCulture);
-            }
-        }
-        
-        public static string NDBankAccBankName {
-            get {
-                return ResourceManager.GetString("NDBankAccBankName", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANValidationforSA {
-            get {
-                return ResourceManager.GetString("NDIBANValidationforSA", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANValidationforLenght {
-            get {
-                return ResourceManager.GetString("NDIBANValidationforLenght", resourceCulture);
-            }
-        }
-        
-        public static string AddNewIban {
-            get {
-                return ResourceManager.GetString("AddNewIban", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANIsActivated {
-            get {
-                return ResourceManager.GetString("NDIBANIsActivated", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANIsDeActivated {
-            get {
-                return ResourceManager.GetString("NDIBANIsDeActivated", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANSuccessMessage {
-            get {
-                return ResourceManager.GetString("NDIBANSuccessMessage", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANIncomplete {
-            get {
-                return ResourceManager.GetString("NDIBANIncomplete", resourceCulture);
-            }
-        }
-        
-        public static string NDIBANCertifyAck {
-            get {
-                return ResourceManager.GetString("NDIBANCertifyAck", resourceCulture);
-            }
-        }
-        
-        public static string IBANRefundInfo {
-            get {
-                return ResourceManager.GetString("IBANRefundInfo", resourceCulture);
-            }
-        }
-        
-        public static string ReturnAttachmentLimitMessage {
-            get {
-                return ResourceManager.GetString("ReturnAttachmentLimitMessage", resourceCulture);
-            }
-        }
-        
-        public static string IBanRefundsInfo {
-            get {
-                return ResourceManager.GetString("IBanRefundsInfo", resourceCulture);
-            }
-        }
-        
-        public static string PleaseGoToIBan {
-            get {
-                return ResourceManager.GetString("PleaseGoToIBan", resourceCulture);
-            }
-        }
-        
-        public static string VisitIBanManagement {
-            get {
-                return ResourceManager.GetString("VisitIBanManagement", resourceCulture);
-            }
-        }
-        
-        public static string IBanActivate {
-            get {
-                return ResourceManager.GetString("IBanActivate", resourceCulture);
-            }
-        }
-        
-        public static string IBanDeactivate {
-            get {
-                return ResourceManager.GetString("IBanDeactivate", resourceCulture);
-            }
-        }
-        
-        public static string IBanInsertIDNumber {
-            get {
-                return ResourceManager.GetString("IBanInsertIDNumber", resourceCulture);
-            }
-        }
-        
-        public static string IBanInsertIDType {
-            get {
-                return ResourceManager.GetString("IBanInsertIDType", resourceCulture);
-            }
-        }
-        
-        public static string IBanInsertName {
-            get {
-                return ResourceManager.GetString("IBanInsertName", resourceCulture);
-            }
-        }
-        
-        public static string IBanSelectBank {
-            get {
-                return ResourceManager.GetString("IBanSelectBank", resourceCulture);
-            }
-        }
-        
-        public static string ZZIBANRequired {
-            get {
-                return ResourceManager.GetString("ZZIBANRequired", resourceCulture);
             }
         }
         
@@ -16242,231 +15876,75 @@ namespace EGAZT {
             }
         }
         
-        public static string IBanSubmitSuccess {
+        public static string ZZZVatNoData {
             get {
-                return ResourceManager.GetString("IBanSubmitSuccess", resourceCulture);
+                return ResourceManager.GetString("ZZZVatNoData", resourceCulture);
             }
         }
         
-        public static string VRSecurityBankGuarante {
+        public static string VatInstalmentAgrPenalty {
             get {
-                return ResourceManager.GetString("VRSecurityBankGuarante", resourceCulture);
+                return ResourceManager.GetString("VatInstalmentAgrPenalty", resourceCulture);
             }
         }
         
-        public static string VatLateFilingObjection {
+        public static string ddmmyyyyformat {
             get {
-                return ResourceManager.GetString("VatLateFilingObjection", resourceCulture);
+                return ResourceManager.GetString("ddmmyyyyformat", resourceCulture);
             }
         }
         
-        public static string VATReviewlateFilingHint {
+        public static string ChangeFillingPeriodMyNewRequests {
             get {
-                return ResourceManager.GetString("VATReviewlateFilingHint", resourceCulture);
+                return ResourceManager.GetString("ChangeFillingPeriodMyNewRequests", resourceCulture);
             }
         }
         
-        public static string VatReviewLateObj {
+        public static string ZZZZIAgreeTheseTermsCond {
             get {
-                return ResourceManager.GetString("VatReviewLateObj", resourceCulture);
+                return ResourceManager.GetString("ZZZZIAgreeTheseTermsCond", resourceCulture);
             }
         }
         
-        public static string VatReviewLateFilingInfo {
+        public static string ZZZApplicationSaved {
             get {
-                return ResourceManager.GetString("VatReviewLateFilingInfo", resourceCulture);
+                return ResourceManager.GetString("ZZZApplicationSaved", resourceCulture);
             }
         }
         
-        public static string IBanOtherBankName {
+        public static string ZZZZNewVATREInstructionsandConditions {
             get {
-                return ResourceManager.GetString("IBanOtherBankName", resourceCulture);
+                return ResourceManager.GetString("ZZZZNewVATREInstructionsandConditions", resourceCulture);
             }
         }
         
-        public static string IBanSelectedOtherBankName {
+        public static string NDInboxImage {
             get {
-                return ResourceManager.GetString("IBanSelectedOtherBankName", resourceCulture);
+                return ResourceManager.GetString("NDInboxImage", resourceCulture);
             }
         }
         
-        public static string IBanCommercialIdShouldbe10 {
+        public static string NDCommitmentsImage {
             get {
-                return ResourceManager.GetString("IBanCommercialIdShouldbe10", resourceCulture);
+                return ResourceManager.GetString("NDCommitmentsImage", resourceCulture);
             }
         }
         
-        public static string IBanCompanyIdStartswith7 {
+        public static string NDSubmisitionsImage {
             get {
-                return ResourceManager.GetString("IBanCompanyIdStartswith7", resourceCulture);
+                return ResourceManager.GetString("NDSubmisitionsImage", resourceCulture);
             }
         }
         
-        public static string REQToUpdateVatEffDate {
+        public static string GovtSalesAdjText {
             get {
-                return ResourceManager.GetString("REQToUpdateVatEffDate", resourceCulture);
+                return ResourceManager.GetString("GovtSalesAdjText", resourceCulture);
             }
         }
         
-        public static string EffectDateAfterUpdate {
+        public static string GovtSalesAmountText {
             get {
-                return ResourceManager.GetString("EffectDateAfterUpdate", resourceCulture);
-            }
-        }
-        
-        public static string EffectDateBeforeUpdate {
-            get {
-                return ResourceManager.GetString("EffectDateBeforeUpdate", resourceCulture);
-            }
-        }
-        
-        public static string EffectModifyDate {
-            get {
-                return ResourceManager.GetString("EffectModifyDate", resourceCulture);
-            }
-        }
-        
-        public static string EffectUpdatedBy {
-            get {
-                return ResourceManager.GetString("EffectUpdatedBy", resourceCulture);
-            }
-        }
-        
-        public static string EffectSortfromNewToOld {
-            get {
-                return ResourceManager.GetString("EffectSortfromNewToOld", resourceCulture);
-            }
-        }
-        
-        public static string EffectSortfromOldToNew {
-            get {
-                return ResourceManager.GetString("EffectSortfromOldToNew", resourceCulture);
-            }
-        }
-        
-        public static string RMHeading {
-            get {
-                return ResourceManager.GetString("RMHeading", resourceCulture);
-            }
-        }
-        
-        public static string ZZZNewVATRAdditionalInformationInstrunctionsFirstLine {
-            get {
-                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsFirstLine", resourceCulture);
-            }
-        }
-        
-        public static string ZZZNewVATRAdditionalInformationInstrunctionsSecondLine {
-            get {
-                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsSecondLine", resourceCulture);
-            }
-        }
-        
-        public static string ZZZNewVATRAdditionalInformationInstrunctionsThirdLine {
-            get {
-                return ResourceManager.GetString("ZZZNewVATRAdditionalInformationInstrunctionsThirdLine", resourceCulture);
-            }
-        }
-        
-        public static string ZZZZNewVatDateTerms {
-            get {
-                return ResourceManager.GetString("ZZZZNewVatDateTerms", resourceCulture);
-            }
-        }
-        
-        public static string VatEffGazt {
-            get {
-                return ResourceManager.GetString("VatEffGazt", resourceCulture);
-            }
-        }
-        
-        public static string VatEffTaxPayer {
-            get {
-                return ResourceManager.GetString("VatEffTaxPayer", resourceCulture);
-            }
-        }
-        
-        public static string VatEffNoData {
-            get {
-                return ResourceManager.GetString("VatEffNoData", resourceCulture);
-            }
-        }
-        
-        public static string VATRNewVATEligibleStartDate {
-            get {
-                return ResourceManager.GetString("VATRNewVATEligibleStartDate", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmentApproved {
-            get {
-                return ResourceManager.GetString("ZakatInstalmentApproved", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmentRejected {
-            get {
-                return ResourceManager.GetString("ZakatInstalmentRejected", resourceCulture);
-            }
-        }
-        
-        public static string VatCancel {
-            get {
-                return ResourceManager.GetString("VatCancel", resourceCulture);
-            }
-        }
-        
-        public static string VatOkay {
-            get {
-                return ResourceManager.GetString("VatOkay", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmetClose {
-            get {
-                return ResourceManager.GetString("ZakatInstalmetClose", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmetConfirm {
-            get {
-                return ResourceManager.GetString("ZakatInstalmetConfirm", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmetReason {
-            get {
-                return ResourceManager.GetString("ZakatInstalmetReason", resourceCulture);
-            }
-        }
-        
-        public static string ZakatInstalmetReject {
-            get {
-                return ResourceManager.GetString("ZakatInstalmetReject", resourceCulture);
-            }
-        }
-        
-        public static string VATEffNewRequest {
-            get {
-                return ResourceManager.GetString("VATEffNewRequest", resourceCulture);
-            }
-        }
-        
-        public static string SortEffectiveDateAUpdate {
-            get {
-                return ResourceManager.GetString("SortEffectiveDateAUpdate", resourceCulture);
-            }
-        }
-        
-        public static string ZMaximumnoof9attachmentscanbeuploaded1 {
-            get {
-                return ResourceManager.GetString("ZMaximumnoof9attachmentscanbeuploaded1", resourceCulture);
-            }
-        }
-        
-        public static string CR2406PopUp {
-            get {
-                return ResourceManager.GetString("CR2406PopUp", resourceCulture);
+                return ResourceManager.GetString("GovtSalesAmountText", resourceCulture);
             }
         }
         
@@ -16482,15 +15960,45 @@ namespace EGAZT {
             }
         }
         
-        public static string GovtSalesAdjText {
+        public static string ZZZZVisitPortal {
             get {
-                return ResourceManager.GetString("GovtSalesAdjText", resourceCulture);
+                return ResourceManager.GetString("ZZZZVisitPortal", resourceCulture);
             }
         }
         
-        public static string GovtSalesAmountText {
+        public static string DashBoardNewMyTaxObligations {
             get {
-                return ResourceManager.GetString("GovtSalesAmountText", resourceCulture);
+                return ResourceManager.GetString("DashBoardNewMyTaxObligations", resourceCulture);
+            }
+        }
+        
+        public static string ZatcaInfoMenu {
+            get {
+                return ResourceManager.GetString("ZatcaInfoMenu", resourceCulture);
+            }
+        }
+        
+        public static string CustomsZATCAIntegrat {
+            get {
+                return ResourceManager.GetString("CustomsZATCAIntegrat", resourceCulture);
+            }
+        }
+        
+        public static string CustomsZatcaDelca {
+            get {
+                return ResourceManager.GetString("CustomsZatcaDelca", resourceCulture);
+            }
+        }
+        
+        public static string ZZUploadDoc {
+            get {
+                return ResourceManager.GetString("ZZUploadDoc", resourceCulture);
+            }
+        }
+        
+        public static string TaxPayerSubsidyRequest {
+            get {
+                return ResourceManager.GetString("TaxPayerSubsidyRequest", resourceCulture);
             }
         }
     }

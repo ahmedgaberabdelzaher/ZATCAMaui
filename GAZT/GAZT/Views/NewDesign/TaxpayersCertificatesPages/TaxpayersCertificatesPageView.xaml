@@ -83,7 +83,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <StackLayout Spacing="-5" Grid.Row="0">
+            <StackLayout Spacing="5" Grid.Row="0">
 
                 <Grid>
                     <Grid.RowDefinitions>
@@ -93,7 +93,7 @@
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="30"/>
                     </Grid.ColumnDefinitions>
-                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}">
+                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}" Padding="0,10,0,0">
                     </custom:CustomLabel>
 
                     <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
@@ -111,7 +111,7 @@
 
                     </custom:CustomButton>
 
-                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
+                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
@@ -172,7 +172,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#D99A29"/>
+                                        TextColor="{StaticResource Secondary}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

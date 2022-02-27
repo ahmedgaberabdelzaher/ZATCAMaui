@@ -151,27 +151,4 @@ namespace EGAZT.Models
         public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
     }
 
-    public class VatCommencementDateFormatModel
-    {
-        [DataMember]
-        public string id { get; set; }
-        [DataMember]
-        public string uri { get; set; }
-        [DataMember]
-        public string type { get; set; }
-    }
-
-    public class CommencementModel
-    {
-        [DataMember]
-        public VatCommencementDateFormatModel __metadata { get; set; }
-        [DataMember]
-        public DateTime? VatTaxDt { get; set; }
-    }
-
-    public class VatCommencementDateFormat
-    {
-        [DataMember]
-        public CommencementModel d { get; set; }
-    }
 }

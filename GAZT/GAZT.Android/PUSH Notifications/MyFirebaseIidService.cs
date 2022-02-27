@@ -8,7 +8,7 @@ using Firebase.Iid;
 using Newtonsoft.Json;
 namespace GAZT.PUSH_Notification
 {
-    [Service]
+    [Service(Exported = true)]
     [IntentFilter(new[] { "com.google.firebase.INSTANCE_ID_EVENT" })]
     class MyFirebaseIIdService: FirebaseInstanceIdService 
     {

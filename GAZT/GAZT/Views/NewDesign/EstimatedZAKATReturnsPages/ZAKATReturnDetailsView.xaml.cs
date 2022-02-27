@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 {
@@ -51,7 +52,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 scrollView.ScrollToAsync(0, 500, true);
 
@@ -80,14 +81,14 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             if (viewModel.isThresholdValueLessThanTotalVATSales)
             {
-                TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-                ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-                ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-                PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
-             //   RealEstateValueInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                TotalVATSalesInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                AverageNumberOfLabourInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+                ImportValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+                ExportValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+                PurchaseValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
+             //   RealEstateValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
 
                 TVSA.IsVisible = true;
                 TVSNA.IsVisible = false;
@@ -166,16 +167,16 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             else
             {
-                TotalVATSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#F3F3F3");
+                TotalVATSalesInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["ContainerBackgroundColor"];
                 //TotalVATSales.Text = "ABC";// AppResources.ZNA;
 
-                AverageNumberOfLabourInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                ImportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                ExportValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                PurchaseValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
-                RealEstateValueInputLayout.ContainerBackgroundColor = Color.FromHex("#FFFFFF");
+                AverageNumberOfLabourInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                ImportValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                SalesFromPointOfSalesInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                ContractFromETIMADSystemInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                ExportValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                PurchaseValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
+                RealEstateValueInputLayout.ContainerBackgroundColor =  (Color)Application.Current.Resources["White"];
 
                 TVSA.IsVisible = false;
                 TVSNA.IsVisible = true;
@@ -445,6 +446,18 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         }
 
+        private void OnBillsDetailsClicked(object sender, EventArgs e)
+        {
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                App.ZakatReturnBilldetails = true;
+                viewModel._navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, viewModel.ZakatReturnDetail);
+
+            });
+
+        }
+
         private void OnTotalVATSaleEditImageClicked(object sender, EventArgs e)
         {
             if (viewModel.isThresholdValueLessThanTotalVATSales)
@@ -635,7 +648,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(TotalVATSales.Text) && TotalVATSales.Text.Contains(","))
                 {
                     TotalVATSales.Text = TotalVATSales.Text.Replace(",", "");
-                    TotalVATSales.TextColor = Color.Black;
+                    TotalVATSales.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -654,7 +667,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(TotalVATSales.Text) && TotalVATSales.Text.Contains(","))
                 {
                     TotalVATSales.Text = UtilityManager.GetCommaSeparatedAmount(TotalVATSales.Text);
-                    TotalVATSales.TextColor = Color.Black;
+                    TotalVATSales.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -674,7 +687,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text) && AverageNumberOfLabour.Text.Contains(","))
                 {
                     AverageNumberOfLabour.Text = AverageNumberOfLabour.Text.Replace(",", "");
-                    AverageNumberOfLabour.TextColor = Color.Black;
+                    AverageNumberOfLabour.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -693,7 +706,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(AverageNumberOfLabour.Text))
                 {
                     AverageNumberOfLabour.Text = UtilityManager.GetCommaSeparatedAmount(AverageNumberOfLabour.Text);
-                    AverageNumberOfLabour.TextColor = Color.Black;
+                    AverageNumberOfLabour.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -716,7 +729,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ImportValue.Text) && ImportValue.Text.Contains(","))
                 {
                     ImportValue.Text = ImportValue.Text.Replace(",", "");
-                    ImportValue.TextColor = Color.Black;
+                    ImportValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -735,7 +748,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ImportValue.Text))
                 {
                     ImportValue.Text = UtilityManager.GetCommaSeparatedAmount(ImportValue.Text);
-                    ImportValue.TextColor = Color.Black;
+                    ImportValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -761,7 +774,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text) && SalesFromPointOfSales.Text.Contains(","))
                 {
                     SalesFromPointOfSales.Text = SalesFromPointOfSales.Text.Replace(",", "");
-                    SalesFromPointOfSales.TextColor = Color.Black;
+                    SalesFromPointOfSales.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -780,7 +793,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(SalesFromPointOfSales.Text))
                 {
                     SalesFromPointOfSales.Text = UtilityManager.GetCommaSeparatedAmount(SalesFromPointOfSales.Text);
-                    SalesFromPointOfSales.TextColor = Color.Black;
+                    SalesFromPointOfSales.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -799,7 +812,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ContractFromETIMADSystem.Text) && ContractFromETIMADSystem.Text.Contains(","))
                 {
                     ContractFromETIMADSystem.Text = ContractFromETIMADSystem.Text.Replace(",", "");
-                    ContractFromETIMADSystem.TextColor = Color.Black;
+                    ContractFromETIMADSystem.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -818,7 +831,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ContractFromETIMADSystem.Text))
                 {
                     ContractFromETIMADSystem.Text = UtilityManager.GetCommaSeparatedAmount(ContractFromETIMADSystem.Text);
-                    ContractFromETIMADSystem.TextColor = Color.Black;
+                    ContractFromETIMADSystem.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -837,7 +850,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ExportValue.Text) && ExportValue.Text.Contains(","))
                 {
                     ExportValue.Text = ExportValue.Text.Replace(",", "");
-                    ExportValue.TextColor = Color.Black;
+                    ExportValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -856,7 +869,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(ExportValue.Text))
                 {
                     ExportValue.Text = UtilityManager.GetCommaSeparatedAmount(ExportValue.Text);
-                    ExportValue.TextColor = Color.Black;
+                    ExportValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -875,7 +888,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(PurchaseValue.Text) && PurchaseValue.Text.Contains(","))
                 {
                     PurchaseValue.Text = PurchaseValue.Text.Replace(",", "");
-                    PurchaseValue.TextColor = Color.Black;
+                    PurchaseValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -894,7 +907,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(PurchaseValue.Text))
                 {
                     PurchaseValue.Text = UtilityManager.GetCommaSeparatedAmount(PurchaseValue.Text);
-                    PurchaseValue.TextColor = Color.Black;
+                    PurchaseValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -912,10 +925,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(RealEstateValue.Text) && RealEstateValue.Text.Contains(","))
                 {
                     RealEstateValue.Text = RealEstateValue.Text.Replace(",", "");
-                    RealEstateValue.TextColor = Color.Black;
+                    RealEstateValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -931,10 +944,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(RealEstateValue.Text))
                 {
                     RealEstateValue.Text = UtilityManager.GetCommaSeparatedAmount(RealEstateValue.Text);
-                    RealEstateValue.TextColor = Color.Black;
+                    RealEstateValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -950,7 +963,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(CapitalAmount.Text) && CapitalAmount.Text.Contains(","))
                 {
                     CapitalAmount.Text = CapitalAmount.Text.Replace(",", "");
-                    CapitalAmount.TextColor = Color.Black;
+                    CapitalAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )
@@ -969,7 +982,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 if (!String.IsNullOrEmpty(CapitalAmount.Text))
                 {
                     CapitalAmount.Text = UtilityManager.GetCommaSeparatedAmount(CapitalAmount.Text);
-                    CapitalAmount.TextColor = Color.Black;
+                    CapitalAmount.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
             catch (Exception )

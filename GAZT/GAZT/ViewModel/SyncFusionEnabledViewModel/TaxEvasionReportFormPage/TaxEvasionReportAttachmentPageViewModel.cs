@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -309,7 +311,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                     //viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -350,12 +352,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                 //            {
                 //                filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
                 //            }
-                var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                // var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                var fileData = await FilePicker.PickAsync(options);
+                var stream = await fileData.OpenReadAsync();
+                attachment = UtilityManager.ReadFully(stream as Stream);
                 //if (AttachmentSize < 10)
                 //{
                 if (fileData != null)
                 {
-                    attachment = fileData.DataArray;
+                   // attachment = fileData.DataArray;
 
                     string base64String = Convert.ToBase64String(attachment, 0, attachment.Length);
                     AttachmentName = fileData.FileName;
@@ -364,7 +372,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage
                     //AttachmentSize = AttachmentSize + sizemb;
                     if (fileData.FileName.Contains("."))
                     {
-                        string Extention = fileData.FileName.Split('.')[1];//pdf
+                        string[] ExtensionArray = fileData.FileName.Split('.');
+                        string Extention = ExtensionArray.Last();
                         if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "jpeg")
                         {
                             if (TotalAttachmentSize <= 30)

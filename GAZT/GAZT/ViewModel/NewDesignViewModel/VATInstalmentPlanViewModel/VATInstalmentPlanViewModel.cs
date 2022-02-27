@@ -478,11 +478,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             {
                 if (_isBillContinueEnabled == value) return;
                 _isBillContinueEnabled = value;
-                IsBillContinueBackGroundColor = Color.FromHex(_isBillContinueEnabled ? "#d49504" : "#9EA4A9");
+                IsBillContinueBackGroundColor = (_isBillContinueEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsBillContinueEnabled");
             }
         }
-        private Color _isBillContinueBackGroundColor = Color.FromHex("#d49504");
+        private Color _isBillContinueBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color IsBillContinueBackGroundColor
         {
             get
@@ -497,7 +497,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private Color _isSelectionContinueBackGroundColor = Color.FromHex("#d49504");
+        private Color _isSelectionContinueBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
 
         private bool _IsFirstCheckboxChecked = false;
         public bool IsFirstCheckboxChecked
@@ -511,7 +511,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 if (_IsFirstCheckboxChecked == value) return;
 
                 _IsFirstCheckboxChecked = value;
-                IsSelectionContinueBackGroundColor = Color.FromHex(_IsFirstCheckboxChecked ? "#d49504" : "#9EA4A9");
+                IsSelectionContinueBackGroundColor = (_IsFirstCheckboxChecked ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsFirstCheckboxChecked");
             }
         }
@@ -1027,7 +1027,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 3, Filter = "Other Reason" });
                 SubCorresFilterZakat = FiltersZAKAT;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -1550,11 +1550,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
@@ -1635,7 +1635,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
         }
 
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -1708,7 +1708,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -1848,7 +1848,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -1958,7 +1958,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 

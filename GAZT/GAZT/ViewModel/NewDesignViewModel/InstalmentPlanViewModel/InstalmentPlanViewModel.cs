@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.InstalmentPlanModel;
 using GalaSoft.MvvmLight;
@@ -62,8 +63,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                //_navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
-                _navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
+                 _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
+                //_navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
             }
             catch (GAZTUnlockAccountException)
             {
@@ -85,8 +86,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
         {
             try
             {
-                //_navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
-                _navigationService.NavigateTo(App.ZakatInstalmentPlanListPageView);
+                _navigationService.NavigateTo(App.OldZakatInstalmentPlanListPageView);
 
             }
             catch (GAZTUnlockAccountException)
@@ -260,10 +260,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel
             }
 
 
-
-
-
             OutletDecisionOptions = outletDecisionOptions;
+
+            Task startupWork = new Task(() => { SimulateStartup(); });
+            startupWork.Start();
+        }
+        async void SimulateStartup()
+        {
+            await Task.Delay(3000); // Simulate a bit of startup work.
 
         }
     }

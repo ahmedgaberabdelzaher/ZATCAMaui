@@ -167,7 +167,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -195,7 +195,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -240,7 +240,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -427,7 +427,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -564,7 +564,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -640,7 +640,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             selectedItem.ImgSource = "vat_tile_listofsignup";
             if (RemovedItem != null)
             {
-                RemovedItem.TextCol = Color.Black;
+                RemovedItem.TextCol = (Color)App.Current.Resources["Primary"];
                 RemovedItem.ImgSource = "vat_tile_listofsignup_W";
             }
             viewModel.AddOutletDocumentOptions();
@@ -678,7 +678,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 }
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                         }
 
@@ -757,7 +757,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 viewModel.IsLoading = false;
             }
@@ -810,7 +810,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             selectedItem.ImgSource = "vat_tile_listofsignup";
             if (RemovedItem != null)
             {
-                RemovedItem.TextCol = Color.Black;
+                RemovedItem.TextCol = (Color)App.Current.Resources["Primary"];
                 RemovedItem.ImgSource = "vat_tile_listofsignup_W";
             }
         }
@@ -1116,7 +1116,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -1251,7 +1251,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1386,7 +1386,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -1471,7 +1471,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {

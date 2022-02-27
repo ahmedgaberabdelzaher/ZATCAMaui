@@ -1,4 +1,5 @@
 ﻿using EGAZT.Models;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
@@ -12,10 +13,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -2602,7 +2605,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 if (_entryVatAmountTextColor == value) return;
 
                 _entryVatAmountTextColor = value;
-                if (_entryVatAmountTextColor == Color.FromHex("#ff0000"))
+                if (_entryVatAmountTextColor ==  (Color)Application.Current.Resources["ErrorColor"])
                 {
                     IsMainButtonEnabled = false;
                 }
@@ -2636,7 +2639,43 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             });
             ChangeRegistrationClicked = new Command(async () =>
             {
-                await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+                //await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
+
+
+                try
+                {
+
+
+                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.ZZZChangeRegistationNote);
+                    if (App.IsArabic)
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                        };
+                    }
+                    else
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                        };
+                    }
+                    //VisitPortalPopup.OnGotoPortal = () =>
+                    //{
+                    //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                    //};
+                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                }
+                catch (Exception ex)
+                {
+
+                }
             });
             // OnStepButtonClicked = new Command(ExecuteStepBtnClickCommand, CanExecuteStepBtnClickCommand);
             OnStepButtonClicked = new Xamarin.Forms.Command(async () =>
@@ -2839,10 +2878,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     //                {
                     //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
                     //                }
-                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                    attachment = fileData.DataArray;
+                    PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                    //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                    var fileData = await FilePicker.PickAsync(options);
+                    var stream = await fileData.OpenReadAsync();
+                    attachment = UtilityManager.ReadFully(stream as Stream);
                     AttachmentName = fileData.FileName;
-                    string ContentType = UtilityManager.GetContentType(AttachmentName.Split('.')[1].ToLower());
+
+                    string ContentType = UtilityManager.GetContentType(AttachmentName.Split('.').Last());
                     AttachmentRootOject _attachment = await WebServiceManager.GAZTSaveVATDeclarationAttachment(attachment, AttachmentName, VATDeclarationData.d.ReturnIdz, "VTA0", ContentType);
                     PopToRootPage();
                     if (_attachment != null && _attachment.d != null)
@@ -3760,7 +3804,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                 Masseges.Append(AppResources.CreditReturnMsg);
                                 PopUp Pop = new PopUp();
                                 Pop.IsLinkAvailable = false;
-                                Pop.IsRed = "#ff0000";
+                                Pop.IsRed = "#e84941";
                                 Pop.IsBold = "Bold";
                                 Pop.Message = Masseges.ToString();
                                 PopupNavigation.Instance.PushAsync(new AddPopPageView(Pop));
@@ -4581,10 +4625,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 string status = VATDeclarationData.d.Statusz;
                 if (status == "E057" || status == "E0057" || status == "E058" || status == "E0058")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
-                    {
-                        await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
-                    });
+                    //Device.BeginInvokeOnMainThread(async () =>
+                    //{
+                    //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
+                    //});
+
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT));
+
                 }
                 string FormBundleNumber = VATDeclarationData.d.Fbnum;
                 string Gpart = VATDeclarationData.d.Gpart;

@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -61,7 +62,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             base.OnAppearing();
             viewModel.IsButtonEnabled = false;
             viewModel.IschkTAndC = false;
-            viewModel.VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+            viewModel.VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
             viewModel.IsLoading = false;
         }
         public void ChangeAeroIcon()

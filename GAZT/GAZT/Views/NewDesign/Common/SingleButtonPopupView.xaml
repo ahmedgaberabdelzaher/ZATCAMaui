@@ -17,14 +17,16 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView BorderColor="Transparent" BorderThickness="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
+    <yummy:PancakeView BorderColor="Transparent"
+                       BorderThickness="0"
+                       Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
         <ScrollView VerticalScrollBarVisibility="Never">
 
             <StackLayout>
-                <custom:CustomLabel x:Name="lblPopupHeader" Text="{x:Static ResourceManager:AppResources.ZVatRefundTermsAndConditions}" HorizontalOptions="StartAndExpand"
+                <custom:CustomLabel x:Name="lblPopupHeader" Text="{x:Static ResourceManager:AppResources.ZVatRefundTermsAndConditions}" HorizontalOptions="StartAndExpand" 
                             Style="{StaticResource SectionTitleBlackBold}" Margin="0,0,0,16"  />
                 <border:SfBorder BorderColor="Transparent" BorderWidth="0"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
-                    <custom:CustomLabel Margin="10" x:Name="MessageText" Style="{StaticResource BodyLabelBlack}"/>
+                    <custom:CustomLabel Margin="5" x:Name="MessageText" Style="{StaticResource BodyLabelBlack}" LineSpacing="1"/>
                 </border:SfBorder>
                 <buttons:SfButton  x:Name="btnOK" HorizontalOptions="FillAndExpand" 
                                   Style="{StaticResource PrimaryButtonStyle}" Clicked="OnOkayButtonClicked" />

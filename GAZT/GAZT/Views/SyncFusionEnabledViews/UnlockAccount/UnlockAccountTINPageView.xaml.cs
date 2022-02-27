@@ -34,7 +34,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
             OtpGAZTDarkGrayLabelStyleFourthEntry.Text = string.Empty;
             viewModel.EnableTINView();
             Task.Run(async () => { await viewModel.GetCaptchAndGUID(); });
-            
         }
 
         public void ChangeAeroIcon()

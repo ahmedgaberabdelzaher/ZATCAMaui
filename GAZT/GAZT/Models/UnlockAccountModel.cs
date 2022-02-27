@@ -12,15 +12,13 @@ namespace EGAZT.Models
 
         [JsonProperty("Langu")]
         public string Language { get; set; }
+        [JsonProperty("TaxpayerGuid")]
+        public string TaxpayerGuid { get; set; }
+        [JsonProperty("Zcaptcha")]
+        public string Zcaptcha { get; set; }
 
         [JsonProperty("RdBt")]
         public string UserLocked { get; set; }
-
-        [JsonProperty("TaxpayerGuid")]
-        public string TaxpayerGuid { get; set; }
-        
-        [JsonProperty("Zcaptcha")]
-        public string Zcaptcha { get; set; }
 
         [JsonProperty("Tin")]
         public string Tin { get; set; }
@@ -28,12 +26,6 @@ namespace EGAZT.Models
     [Preserve(AllMembers = true)]
     public class UnlockAccountModelOtp:UnlockAccountModel
     {
-        [JsonProperty("TaxpayerGuid")]
-        public string TaxpayerGuid { get; set; }
-
-        [JsonProperty("Zcaptcha")]
-        public string Zcaptcha { get; set; }
-
         [JsonProperty("Otp")]
         public string Otp { get; set; }
     }

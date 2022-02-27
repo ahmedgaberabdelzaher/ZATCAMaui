@@ -209,7 +209,7 @@ namespace GAZT
                         }
                         picker.Items.Add((actualValue ?? "").ToString());
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         //throw;
                     }

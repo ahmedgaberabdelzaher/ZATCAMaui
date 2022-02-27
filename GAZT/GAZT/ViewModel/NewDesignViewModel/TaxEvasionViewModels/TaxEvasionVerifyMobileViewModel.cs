@@ -24,7 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         public TaxEvasionVerifySmsResponseModel taxEvasionVerifySmsResponseModel;
 
         #region proprety
-        private Color _ResendOtpButtonColor = Color.FromHex("#999999");
+        private Color _ResendOtpButtonColor =  (Color)Application.Current.Resources["NeutralGreay"];
         public Color ResendOtpButtonColor
         {
             get
@@ -302,11 +302,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 _isResendOTPEnabled = value;
                 if (_isResendOTPEnabled)
                 {
-                    ResendOtpButtonColor = Color.DarkGreen;
+                    ResendOtpButtonColor = Color.Green;
                 }
                 else
                 {
-                    ResendOtpButtonColor = Color.FromHex("#999999");
+                    ResendOtpButtonColor =  (Color)Application.Current.Resources["NeutralGreay"];
                 }
                 RaisePropertyChanged("IsResendOTPEnabled");
             }

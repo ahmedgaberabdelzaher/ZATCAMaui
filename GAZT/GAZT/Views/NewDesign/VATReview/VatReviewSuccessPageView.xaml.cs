@@ -81,7 +81,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                    
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 

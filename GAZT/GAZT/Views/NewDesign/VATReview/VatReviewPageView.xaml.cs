@@ -11,7 +11,6 @@ using GAZT.Manager;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
-using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 
 namespace EGAZT.Views.NewDesign.VatReview
 {
@@ -44,7 +43,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
 
             viewModel.setMoreOptioButtons();
-
+            
         }
 
         private void SetLTR()
@@ -267,7 +266,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -295,7 +294,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -328,7 +327,8 @@ namespace EGAZT.Views.NewDesign.VatReview
         }
 
 
-        private void SADAD_CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+
+        private void SADAD_CheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableSecurityPaymentsConButton();
 
@@ -337,7 +337,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                 return;
             }
 
-            if (e.Value)
+            if (e)
             {
                 viewModel.ShowSadadGenerateButton();
             }
@@ -373,12 +373,6 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel.ReportDetails = Report_Details_Tx.Text;
             viewModel.EnableReportDetailsConButton();
         }
-        private void LateFiling_Details_UnFocused(object sender, FocusEventArgs e)
-        {
-            viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
-            viewModel.EnableLateFilingsDetailsConButton();
-        }
-
 
         private void ContactPersonTextUnFocus(object sender, FocusEventArgs e)
         {
@@ -396,12 +390,12 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel.ValidateIdNumber();
         }
 
-        private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void CheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableSecurityPaymentsConButton();
         }
 
-        private void DecCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        private void DecCheckBox_CheckedChanged(object sender, Boolean e)
         {
             viewModel.EnableDeclarationConButton();
         }
@@ -430,7 +424,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
                 viewModel.IsRRAmountEdit = false;
                 viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInfull;
-                //                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
+//                viewModel.RequestedReviewAmount = viewModel.TotalTaxLiability;
                 viewModel.RequestedReviewAmount = UtilityManager.GetCommaSeparatedAmount(viewModel.TotalTaxLiability.ToString());
             }
             else if (selectedITem.SelectionTitle.Equals(AppResources.VRInpartial))
@@ -457,28 +451,6 @@ namespace EGAZT.Views.NewDesign.VatReview
                 viewModel.EnablebankGuranteeSecurityView();
             }
             viewModel.EnableSecurityPaymentsConButton();
-        }
-
-        private void LateFiling_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            viewModel.charCountLateFilingDetails = LateFiling_Details_Txx.Text.Length + "/" + 3000;
-            viewModel.LateFlngDetails = LateFiling_Details_Txx.Text;
-
-            viewModel.EnableLateFilingsDetailsConButton();
-            
-
-        }
-
-        private async void OnInfoButtonTapped(object sender, EventArgs e)
-        {
-            try
-            {
-                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VatReviewLateFilingInfo));
-            }
-            catch (Exception)
-            {
-
-            }
         }
 
         //private void VRAttachTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)

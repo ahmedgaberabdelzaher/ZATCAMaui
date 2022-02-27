@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="EGAZT.Views.SyncFusionEnabledViews.SFLogin.SFLoginPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -9,8 +9,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     FlowDirection="RightToLeft"
     xmlns:custom2="clr-namespace:EGAZT"
-     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
     NavigationPage.HasNavigationBar="False"
     Title="Login"
     BackgroundColor="White">
@@ -26,7 +24,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
-            <Grid x:Name="loginGrid" Margin="{OnPlatform UWP= '*', Android='0,-40,0,0', iOS='0,-50,0,-35'}"> <!--/* please dont remove UWP it gives error on run time */-->
+            <Grid x:Name="loginGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*"></RowDefinition>
                 </Grid.RowDefinitions>
@@ -66,7 +64,7 @@
                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#d99a29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>
@@ -74,8 +72,8 @@
             <StackLayout x:Name="sessionExpiredView" IsVisible="false" Margin="0" BackgroundColor="Transparent" >
                 <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
                     <Image Source="errorNew.png"   Aspect="AspectFit"/>
-                    <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SSTArabicMedium}"
+                    <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                    <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                 </StackLayout>
 

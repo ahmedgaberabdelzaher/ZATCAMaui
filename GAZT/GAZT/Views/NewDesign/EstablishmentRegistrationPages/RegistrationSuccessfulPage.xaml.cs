@@ -43,7 +43,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                             Xamarin.Forms.Page pg1 = Navigation.NavigationStack[indexToRemoveThePage];
                             Navigation.RemovePage(pg1);
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

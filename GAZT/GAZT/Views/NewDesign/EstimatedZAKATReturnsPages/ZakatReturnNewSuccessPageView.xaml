@@ -37,12 +37,12 @@
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
                 <Setter Property="HorizontalTextAlignment" Value="End"/>
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="16" />
             </Style>
             <Style TargetType="Label" x:Key="SectionTitleBlackTopNegative10" >
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="20" />
                 <Setter Property="Margin" Value="0,-10,0,0"/>
             </Style>
@@ -69,7 +69,7 @@
                     <Label Text="{x:Static ResourceManager:AppResources.NDZakatReturnSubmittedSuccessMessage}"  TextColor="White" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}" Margin="0,-10,0,0" IsVisible="{Binding SetSuccessMessageVisibility}"/>
                 </StackLayout>
 
-                <yummy:PancakeView  Grid.Row="1" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="True" BackgroundColor="White">
+                <yummy:PancakeView  Grid.Row="1" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="False" BackgroundColor="White">
                     <Grid HorizontalOptions="FillAndExpand" x:Name="MainGrid" Padding="0,0,0,0" VerticalOptions="FillAndExpand" RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -110,7 +110,7 @@
                                     </Grid>
                                     <!--<StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                        <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
+                                        <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
                                        
                                     </StackLayout>-->
                                 </border:SfBorder >
@@ -119,7 +119,7 @@
                                     <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxablePeriod}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
                                         <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                            <custom:CustomLabel Text="{Binding TaxablePeriod}" Style="{StaticResource ValueLabelBlack}" FontSize="12" VerticalTextAlignment="Center"  HorizontalOptions="Start"/>
+                                            <custom:CustomLabel Text="{Binding TaxablePeriod}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center"  HorizontalOptions="Start"/>
                                         </StackLayout>
                                     </StackLayout>
                                 </border:SfBorder >

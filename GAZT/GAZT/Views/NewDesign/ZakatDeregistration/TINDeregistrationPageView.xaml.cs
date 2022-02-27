@@ -26,6 +26,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ZakatDeregistration
 {
@@ -48,9 +49,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             viewModel.TinDeregistrationData = tinDeregistrationResponseModel;
-            if (!string.IsNullOrEmpty(tinDeregistrationResponseModel.Cr2021popup))
-                viewModel.PopUpMsgFor2021 = tinDeregistrationResponseModel.Cr2021popup;
-
             //viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>();
             this.BindingContext = viewModel;
             viewModel.LoadReasonSet();
@@ -135,12 +133,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 if (args)
                 {
                     Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxSelectedFontStyle"];
-                    viewModel.OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    viewModel.OutletContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
                     Resources["IsOutletCheckedStyle"] = App.Current.Resources["CheckboxUnselectedFontStyle"];
-                    viewModel.OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    viewModel.OutletContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
             });
             MessagingCenter.Subscribe<TINDeregistrationPageViewModel, bool>(this, "IsDeclarationChecked", (sender, args) =>
@@ -757,7 +755,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -852,7 +850,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -891,7 +889,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
@@ -975,7 +973,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
             finally
@@ -1139,7 +1137,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -1199,7 +1197,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
 
@@ -1385,7 +1383,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         {
             if (viewModel.IsEnteredTINValid == false)
             {
-                DateEntry23.TextColor = Color.Black;
+                DateEntry23.TextColor = (Color)App.Current.Resources["Primary"];
                 if (viewModel.IsDOBHijriCal)
                 {
 
@@ -1516,23 +1514,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDbo2.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo2.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo2.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDbo2.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDbo2.HeaderFontFamily = "Somar-SemiBold";
+                            DpDbo2.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDbo2.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDbo2.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDbo2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDbo2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1548,23 +1546,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDbo.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDbo.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDbo.HeaderFontFamily = "Somar-SemiBold";
+                            DpDbo.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDbo.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDbo.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDbo.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1580,23 +1578,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDboHijri.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDboHijri.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDboHijri.HeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDboHijri.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDboHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1612,23 +1610,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDboHijri2.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri2.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri2.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDboHijri2.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDboHijri2.HeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri2.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri2.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDboHijri2.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDboHijri2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDboHijri2.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri2.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri2.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri2.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1644,23 +1642,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDbo3.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo3.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDbo3.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDbo3.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDbo3.HeaderFontFamily = "Somar-SemiBold";
+                            DpDbo3.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDbo3.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDbo3.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDbo3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDbo3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDbo3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDbo3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1676,23 +1674,23 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DpDboHijri3.HeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri3.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpDboHijri3.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpDboHijri3.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DpDboHijri3.HeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri3.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpDboHijri3.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpDboHijri3.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
                         {
-                            DpDboHijri3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                            DpDboHijri3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                            DpDboHijri3.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri3.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri3.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                            DpDboHijri3.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1771,7 +1769,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var obj = viewModel.TinDeregistrationData.AttDetSet.Results;
                 viewModel.NewAttachmentClicked();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return;
@@ -1804,7 +1802,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         //            viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
         //        }
         //    }
-        //    catch (Exception)
+        //    catch (Exception ex)
         //    {
         //        return;
         //    }

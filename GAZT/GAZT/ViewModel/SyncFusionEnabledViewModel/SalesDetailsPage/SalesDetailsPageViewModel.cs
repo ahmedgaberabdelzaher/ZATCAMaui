@@ -294,7 +294,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 RaisePropertyChanged("ConfirmButtonVisibility");
             }
         }
-        private Color _refreshButtonDisableColor = Color.FromHex("#005e4b");
+        private Color _refreshButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
         public Color RefreshButtonDisableColor
         {
             get
@@ -1019,7 +1019,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
         //            if (estimatedZAKATReturnsSADADNumber != null && estimatedZAKATReturnsSADADNumber.d != null)
         //            {
         //                // RefreshiButtonDisability = false;
-        //                RefreshButtonDisableColor = Color.FromHex("#9EA4A9");
+        //                RefreshButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         //                EstimatedZAKATSADADNumber = estimatedZAKATReturnsSADADNumber.d.InvoiceSet.results[0];
         //                //if(Convert.ToDouble(EstimatedZAKATSADADNumber.Undisamt) > 0)
         //                //{
@@ -1140,13 +1140,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 salesDetails1.HelpIconVisibility = true;
                 if (IsThresholdGreaterLessVATAmount)
                 {
-                    VATBackgroundColor = Color.FromHex("#EEEDED");
+                    VATBackgroundColor = (Color)Application.Current.Resources["VATBgColor"];
                     CapitalBackgroundColor = Color.White;
                 }
                 else
                 {
                     VATBackgroundColor = Color.White;
-                    CapitalBackgroundColor = Color.FromHex("#EEEDED");
+                    CapitalBackgroundColor = (Color)Application.Current.Resources["VATBgColor"];
                 }
                 salesDetails1.DisableItemBackgroundColor = VATBackgroundColor;
                 SalesDetailsDummyList.Add(salesDetails1);

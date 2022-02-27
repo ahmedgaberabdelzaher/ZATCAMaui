@@ -34,7 +34,7 @@
                             Command="{TemplateBinding BindingContext.OnBackButtonClicked}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"
                              />
@@ -89,126 +89,7 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <StackLayout>
-            <!--<Frame Style="{StaticResource GAZTStandardFrameStyle}">
-            <StackLayout >
-                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                    <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                    </Image>
-                    <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
-                </StackLayout>
-                <BoxView Style="{StaticResource lineSeperator}"/>
-                <Grid Padding="10,5,10,10">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                    <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                    <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                    <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                    <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                    <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                    <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                    <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                    <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                    <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-                </Grid>
-            </StackLayout>
-        </Frame>
-
-            <Frame BorderColor="#c7c7c7" Padding="0" CornerRadius="8" Margin="10,10,10,10"  HasShadow="False">
-                <StackLayout >
-                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                        <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                        </Image>
-                        <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
-                    </StackLayout>
-                    <BoxView Style="{StaticResource lineSeperator}"/>
-                    <Grid Padding="10,5,10,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-                    </Grid>
-                </StackLayout>
-            </Frame>
             
-            <Frame BorderColor="#c7c7c7" Padding="0" CornerRadius="8" Margin="10,10,10,10"  HasShadow="False">
-                <StackLayout >
-                    <StackLayout Orientation="Horizontal" Padding="10,5,10,5">
-                        <Image Source="vat_ic_taxpayerDetail.png" HorizontalOptions="Start" VerticalOptions="CenterAndExpand">
-                        </Image>
-                        <Label Text="TaxpayerDetails" HorizontalOptions="Start" VerticalOptions="CenterAndExpand" Style="{StaticResource GAZTMediumBlackLabel}"/>
-                    </StackLayout>
-                    <BoxView Style="{StaticResource lineSeperator}"/>
-                    <Grid Padding="10,5,10,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="50*"/>
-                            <ColumnDefinition Width="50*"/>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Row="0" Grid.Column="0" Text="Tin" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="0" Grid.Column="1" Text="112233445566778" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="1" Grid.Column="0" Text="VAT Account Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="1" Grid.Column="1" Text="0223929283928392" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="2" Grid.Column="0" Text="Id Number" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="2" Grid.Column="1" Text="Q1234567" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="3" Grid.Column="0" Text="Taxpayer Name" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="3" Grid.Column="1" Text="Zaed" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-
-                        <Label Grid.Row="4" Grid.Column="0" Text="Address" Style="{StaticResource GAZTMicroMediumGrayLabelForHorizontalStart}"/>
-                        <Label Grid.Row="4" Grid.Column="1" Text="Olya Street,Al Wurud,Riyadh 12253" Style="{StaticResource GAZTMicroMediumBlackLabelForHorizontalEnd}"/>
-                    </Grid>
-                </StackLayout>
-            </Frame>-->
-
 
 
             <ScrollView>
@@ -237,10 +118,11 @@
                             <ColumnDefinition Width="50*"/>
                             <ColumnDefinition Width="50*"/>
                         </Grid.ColumnDefinitions>
-                        <Label Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                        <Label Text="Standard Rated Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"></Label>
                         <Image Style="{StaticResource ImageStyleForInputTable}" Grid.Row="0" Grid.Column="1">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
@@ -265,10 +147,11 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
-                        <Label Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                        <Label Text="Private HealthCare/Private Education" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"></Label>
                         <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="3" Grid.Column="1">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
@@ -291,10 +174,11 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
-                        <Label Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                        <Label Text="Zero Rated Domestic Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"></Label>
                         <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="6" Grid.Column="1">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
@@ -317,10 +201,11 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
-                        <Label Text="Exports" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                        <Label Text="Exports" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2"></Label>
                         <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="9" Grid.Column="1">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
@@ -343,10 +228,11 @@
                             </inputLayout:SfTextInputLayout.TrailingView>
                         </inputLayout:SfTextInputLayout>
 
-                        <Label Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
+                        <Label Text="Exempt Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" Margin="10,0,10,0" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2"></Label>
                         <Image  Style="{StaticResource ImageStyleForInputTable}" Grid.Row="12" Grid.Column="1">
                             <Image.Source>
-                                <FontImageSource FontFamily="UserIconFont" Color="#909090" Size="30"
+                                <FontImageSource FontFamily="UserIconFont"
+                                                 Color="{StaticResource SecondaryNew}" Size="30"
                                                         Glyph="{x:Static FontImage:IconFonts.Information}"/>
                             </Image.Source>
                         </Image>
@@ -371,16 +257,16 @@
 
                         <BoxView Style="{StaticResource InputTableBoxViewStyle}" Grid.Row="15" Grid.Column="0" Grid.ColumnSpan="2" />
 
-                        <Label Text="Total Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"  Margin="10,0,10,0" Grid.Row="16" Grid.Column="0" ></Label>
+                        <Label Text="Total Sales" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold"  Margin="10,0,10,0" Grid.Row="16" Grid.Column="0" ></Label>
 
                         <StackLayout Grid.Row="17" Grid.Column="0"  Margin="10,0,10,0">
                             <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
-                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" ></Label>
                         </StackLayout>
 
                         <StackLayout Grid.Row="17" Grid.Column="1" Margin="10,0,10,0">
                             <Label Text="Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9" ></Label>
-                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}"  FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold" ></Label>
+                            <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}"  FontFamily="{StaticResource SomarBold}" FontAttributes="Bold" ></Label>
                         </StackLayout>
 
                         <!--<Label Text="Amount" Style="{StaticResource GAZTSmallBlackLblForInputTable}" Grid.Row="17" Grid.Column="0" ></Label>
@@ -392,7 +278,7 @@
                         <yummy:PancakeView  Grid.Row="18" CornerRadius="0,0,8,8" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#ADD8E6" Padding="0"  Margin="0,0,0,0">
                             <StackLayout  Padding="0" Margin="10,0,10,0">
                                 <Label Text="VAT Amount" Style="{StaticResource ValueLabelBlack}" Margin="0,0,0,-9"  ></Label>
-                                <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SSTArBold}" FontAttributes="Bold"></Label>
+                                <Label Text="500.00 SAR" Style="{StaticResource ValueLabelBlack}" FontFamily="{StaticResource SomarBold}" FontAttributes="Bold"></Label>
                             </StackLayout>
                         </yummy:PancakeView>
 

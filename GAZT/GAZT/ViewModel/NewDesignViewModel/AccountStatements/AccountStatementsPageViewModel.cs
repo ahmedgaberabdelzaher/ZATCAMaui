@@ -357,7 +357,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
         }
 
-        private Color _TotalBalanceBackground = Color.FromHex("#AA0C19");
+        private Color _TotalBalanceBackground =  (Color)Application.Current.Resources["ErrorColor"];
         public Color TotalBalanceBackground
         {
             get
@@ -389,11 +389,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 if (_headerSet != null && _headerSet.D != null && !String.IsNullOrEmpty(_headerSet.D.Close) && Double.Parse(_headerSet.D.Close) < 0)
                 {
-                    TotalBalanceBackground = Color.FromHex("#006450");                    
+                    TotalBalanceBackground =  (Color)Application.Current.Resources["Primary"];                    
                 }
                 else
                 {
-                    TotalBalanceBackground = Color.FromHex("#AA0C19");
+                    TotalBalanceBackground =  (Color)Application.Current.Resources["ErrorColor"];
 
                 }
 
@@ -1936,7 +1936,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     //IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {

@@ -1,10 +1,13 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
@@ -15,6 +18,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -59,13 +63,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
             }
         }
+
+        public ICommand onMoreOptionClicked { get; set; }
+
         public bool MarkComplete { get; private set; } = false;
         public int MaxIndex { get; private set; } = 5;
         #endregion
 
 
         #region Properties
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+
+       
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -327,75 +336,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
         }
-
-        public async Task getVatEligibleDate(string vatEligibleStartDate)
-        {
-            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
-
-            // throw new NotImplementedException();
-
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate+ "T00:00:00","");
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (vATcommencementData != null && vATcommencementData.d != null
-                &&vATcommencementData.d.__metadata!=null&& vATcommencementData.d.__metadata.uri!=null)
-                {
-                    try
-                    {
-                        if(!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
-                        {
-                          String dateSource=await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
-
-                            // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
-                            VatEligibleStartDate =UtilityManager.ConvertDateFormatToDDMMYYYYY(dateSource);
-                        }
-                        IsLoading = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                        IsLoading = false;                    }
-                }
-                IsLoading = false;
-            });
-        }
-
-        private async Task<string> filerDateFromResponse(string uri)
-        {
-            try
-            {
-                int startPos = uri.LastIndexOf("taxDateSet(datetime'") + "taxDateSet(datetime'".Length;
-                int length = uri.IndexOf("T00%3A00%3A00')") - startPos;
-                string sub = uri.Substring(startPos, length);
-                return sub;
-            }
-            catch(Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-                return "";
-            }
-           
-        }
-
         private string _startdateToshow = string.Empty;
         public string StartdateToshow
         {
@@ -1814,6 +1763,26 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+        public void setMoreOptioButtons()
+        {
+            var listOfActionButtonsApplicable = new List<string>();
+        
+            ListOfActionButtonsApplicable = ListOfActionButtonsApplicableForRegistration;
+        }
+
+        private List<String> _ListOfActionButtonsApplicable;
+        public List<String> ListOfActionButtonsApplicable
+        {
+            get
+            {
+                return _ListOfActionButtonsApplicable;
+            }
+            set
+            {
+                _ListOfActionButtonsApplicable = value;
+                RaisePropertyChanged("ListOfActionButtonsApplicable");
+            }
+        }
 
         #endregion
 
@@ -1830,6 +1799,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
+            onMoreOptionClicked = new Command(async () =>
+            {
+                await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(ListOfActionButtonsApplicable));
+            });
 
         }
 
@@ -1899,6 +1873,29 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
         }
 
+
+
+        public async void VoidMsg()
+        {
+            List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
+            HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
+            NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
+            headerAmountInfo.HeaderText = AppResources.ZZZInformationNew;
+            headerAmountInfo.IsLinkAvailable = false;
+            headerAmountInfo.Message = AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost;
+
+            headerWithInfos.Add(headerAmountInfo);
+
+            newDesignPopUp.HeaderWithInfos = new List<HeaderWithInfo>();
+            newDesignPopUp.HeaderWithInfos = headerWithInfos;
+            newDesignPopUp.MainHeader = AppResources.ZZZInformationNew;
+
+            await PopupNavigation.Instance.PushAsync(new ShowVatInformationConfirmationPageView(newDesignPopUp));
+        }
+
+
+
+
         public async Task<VATRegistrationDetails> SubmitClicked()
         {
             VATRegistrationDetails response = new VATRegistrationDetails();
@@ -1911,7 +1908,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 setDATA();
                 ATTDETSet ATTDETSetnew = new ATTDETSet();
                 ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
-                VATRegistrationDetailsData.d.NresFg = string.Empty;
                 //VATRegistrationDetails vATRegistrationDetails = new VATRegistrationDetails();
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
@@ -1935,14 +1931,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 string displayMessage = AppResources.VATRSaveasdraftMessage;
                                 //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-                            }
-                            if (response.d.Operationz.Equals("25"))
-                            {
-                                //  string number = response.d.Fbnumz;
-                                string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.d.Fbnumz + " " + AppResources.VatApproved;
-                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-                                //_navigationService.GoBack();
                             }
 
 
@@ -2010,6 +1998,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     VATRegistrationOtherDetails = vATRegistrationOther;
 
                     SetApplicableButtons();
+                    setMoreOptioButtons();
                 }
                IsLoading = false;
             });
@@ -2034,7 +2023,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion3First = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion3FirstTextColor = Color.Black;
+                    TextQuestion3FirstTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value2forimage3second == "1")
@@ -2045,7 +2034,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion3Second = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion3SecondTextColor = Color.Black;
+                    TextQuestion3SecondTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value1forimage4first == "1")
@@ -2056,7 +2045,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion4First = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion4FirstTextColor = Color.Black;
+                    TextQuestion4FirstTextColor = (Color)App.Current.Resources["Primary"];;
                 }
 
                 if (value2forimage4second == "1")
@@ -2067,7 +2056,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 else
                 {
                     ImageforTextQuestion4Second = "vat_tile_IbanCard_background_white.png";
-                    TextQuestion4SecondTextColor = Color.Black;
+                    TextQuestion4SecondTextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
 
@@ -2235,7 +2224,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             else
                             {
                                 ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                                ImporterTextColor = Color.Black;
+                                ImporterTextColor = (Color)App.Current.Resources["Primary"];;
                             }
                             if (VATRegistrationDetailsData.d.ExFg == "1")
                             {
@@ -2245,7 +2234,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             else
                             {
                                 ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                                ExporterTextColor = Color.Black;
+                                ExporterTextColor = (Color)App.Current.Resources["Primary"];;
                             }
 
 
@@ -2287,6 +2276,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                 VATRegistrationOtherDetails = vATRegistrationOther;
 
                                 SetApplicableButtons();
+                            setMoreOptioButtons();
                             }
 
 

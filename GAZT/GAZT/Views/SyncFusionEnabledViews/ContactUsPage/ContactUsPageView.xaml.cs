@@ -31,11 +31,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ContactUsPage
         {
             if (App.IsArabic)
             {
-                viewModel.WebUrl = "https://gazt.gov.sa/ar/contactus/Pages/default.aspx";
+                viewModel.WebUrl = "https://zatca.gov.sa/ar/contactus/Pages/default.aspx";
             }
             else
             {
-                viewModel.WebUrl = "https://gazt.gov.sa/en/contactus/Pages/default.aspx";
+                viewModel.WebUrl = "https://zatca.gov.sa/en/contactus/Pages/default.aspx";
             }
 
         }

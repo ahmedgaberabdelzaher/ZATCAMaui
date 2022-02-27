@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GAZT.CustomControl.CheckboxCustom"
-             HeightRequest="32" WidthRequest="32">
+             HeightRequest="20" WidthRequest="20">
     <ContentView.Content>
         <Image x:Name="img" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                Source="unchecked_box.png">

@@ -41,7 +41,7 @@
                 BackgroundColor="Transparent"
                 Command="{Binding SkipCommand}"
                 CornerRadius="20"                  
-                FontFamily="{StaticResource SSTArBold}"
+                FontFamily="{StaticResource SomarBold}"
                 HorizontalOptions="Start"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{x:Static ResourceManager:AppResources.NDSkip}"
@@ -53,7 +53,7 @@
                 Margin="10"
                 BackgroundColor="Transparent"
                 CornerRadius="20"
-                FontFamily="{StaticResource SSTArBold}"
+                FontFamily="{StaticResource SomarBold}"
                 HorizontalOptions="EndAndExpand"
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
@@ -72,7 +72,7 @@
                 Margin="{OnPlatform Android='0,0,0,0', iOS='0,10,0,0'}"
                
                 BackgroundColor="Transparent"
-                SelectedDotColor="{StaticResource Yellow}"
+                SelectedDotColor="{StaticResource Primary}"
                 DotsBorderColor="Transparent"
                 
                 EnableLooping="False"

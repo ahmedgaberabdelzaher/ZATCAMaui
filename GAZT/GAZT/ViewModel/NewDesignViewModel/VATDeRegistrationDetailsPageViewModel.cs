@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -849,7 +851,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged("IsDeclarationChecked");
             }
         }
-        private Color _declarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _declarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color DeclarationContinueButtonnBackroundColor
         {
             get
@@ -878,11 +880,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 _iSDeclarationContinueButtonEnabled = value;
                 //if (_iSDeclarationContinueButtonEnabled)
                 //{
-                //    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                //    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 //}
                 //else
                 //{
-                //    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                //    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 //}
                 RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
             }
@@ -1671,7 +1673,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //                        }
         //                    }
         //                }
-        //                catch (Exception)
+        //                catch (Exception ex)
         //                {
         //                }
 
@@ -2596,11 +2598,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     string[] filetypes;
                     filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
-                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+                    filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForAll();
+                    PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                    //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
 
-                    if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+                    var fileData = await FilePicker.PickAsync(options);
+                    var stream = await fileData.OpenReadAsync();
+                    var attachment = UtilityManager.ReadFully(stream as Stream);
+                    if (fileData != null && attachment != null && attachment.Length > 0)
                     {
-                        attachment = fileData.DataArray;
+                        //attachment = fileData.DataArray;
                         AttachmentName = fileData.FileName;
                         FileName = fileData.FileName;
                         //SelectedAttachment.AttachmentName = AttachmentName;
@@ -2610,8 +2617,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         if (fileData.FileName.Contains("."))
                         {
-                            string Extention = fileData.FileName.Split('.')[1];
-
+                            string[] ExtensionArray = fileData.FileName.Split('.');
+                            string Extention = ExtensionArray.Last();
                             if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf"
                                 || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png")
                             {
@@ -3262,7 +3269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return response;
             }
 
-            catch (Exception)
+            catch (Exception ex)
             {
                 return response;
             }

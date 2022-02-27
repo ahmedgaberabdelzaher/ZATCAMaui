@@ -63,6 +63,14 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                Filinglbl.HorizontalOptions = LayoutOptions.StartAndExpand;
+                Filinglbl.HorizontalTextAlignment = TextAlignment.Start;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+                Filinglbl.HorizontalOptions = LayoutOptions.EndAndExpand;
+                Filinglbl.HorizontalTextAlignment = TextAlignment.Start;
             }
         }
         public void ChangeAeroIcon()

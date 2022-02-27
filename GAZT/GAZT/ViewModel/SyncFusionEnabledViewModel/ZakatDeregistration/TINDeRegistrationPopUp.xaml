@@ -17,11 +17,11 @@
 
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="100"/>
             </Grid.RowDefinitions>
 
             <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-             <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZSaveAsDraft}" FontFamily="{StaticResource SSTArabicMedium}" TextColor="Black" Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="18" Clicked="OnSaveAsDraftClicked" HeightRequest="50"></buttons:SfButton>
+             <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZSaveAsDraft}" FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource Primary}" Grid.Row="0" Grid.Column="0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="18" Clicked="OnSaveAsDraftClicked" HeightRequest="50"></buttons:SfButton>
 </StackLayout>
                 
         </Grid>

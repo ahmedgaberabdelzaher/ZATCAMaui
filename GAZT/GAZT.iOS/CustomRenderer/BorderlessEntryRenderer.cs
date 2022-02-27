@@ -37,7 +37,7 @@ namespace GAZT
                 
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
-                Control.TextColor = UIColor.Black;
+                //Control.TextColor = UIColor.Black;
                 AddDoneButton();
 
             }

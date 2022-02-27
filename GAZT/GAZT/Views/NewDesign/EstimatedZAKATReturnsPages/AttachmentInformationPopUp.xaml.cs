@@ -1,5 +1,4 @@
 ﻿using System;
-using EGAZT.ViewModel.NewDesignViewModel;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -18,7 +17,6 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             InitializeComponent();
             InfromatationText.Text = infromationText;
-          
             SetLTR();
         }
 
@@ -36,27 +34,19 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         {
             OnDone?.Invoke();
             PopupNavigation.Instance.PopAsync();
-
-            if (InfromatationText.Text.Equals(AppResources.ZZZZReturnUnderReviewAddAttachments))
-            {
-                MessagingCenter.Send<App, string>
-                    ((App)Xamarin.Forms.Application.Current, "OnlyAddAttachments", "add vat attachments");
-
-            }
-            /*else if (InfromatationText.Text.Contains("Instalment Plan request"))
-            {
-                MessagingCenter.Send<App, string>
-                    ((App)Xamarin.Forms.Application.Current, "InstallmentPlanApproveOrReject", "InstallmentPlanApproveOrReject");
-
-            }*/
-
         }
 
-             private void SetLTR()
+        private void SetLTR()
         {
             if (!App.IsArabic)
             {
                 this.FlowDirection = FlowDirection.LeftToRight;
+                InfromatationText.HorizontalOptions = LayoutOptions.StartAndExpand;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+                InfromatationText.HorizontalOptions = LayoutOptions.StartAndExpand;
             }
         }
 

@@ -424,33 +424,32 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         int iBillsCount = -1;
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0)).ToList().Count) > 0)
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = (Color)Application.Current.Resources["Primary"] });
                             ColorsChild.Add(System.Drawing.Color.FromArgb(0, 100, 80));
                             SetNoDataLabelVisibilityPAID = false;
                             SetNoDataLabelVisibilityPAIDList = true;
                         }
                         else
                         {
-                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms.Color.FromHex("#006450") });
+                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.Paid, BillColor = Xamarin.Forms. (Color)Application.Current.Resources["Primary"] });
                             SetNoDataLabelVisibilityPAID = true;
                             SetNoDataLabelVisibilityPAIDList = false;
                         }
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList().Count) > 0)
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = (Color)Application.Current.Resources["ErrorColor"] });
                             ColorsChild.Add(System.Drawing.Color.FromArgb(170, 12, 25));
                             SetNoDataLabelVisibilityUNPAID = false;
                             SetNoDataLabelVisibilityUNPAIDList = true;
                         }
                         else
                         {
-                            //  myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.UnPaid, BillColor = Xamarin.Forms.Color.FromHex("#AA0C19") });
                             SetNoDataLabelVisibilityUNPAID = true;
                             SetNoDataLabelVisibilityUNPAIDList = false;
                         }
                         if ((iBillsCount = MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 1)).ToList().Count) > 0)
                         {
-                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#D99A29") });
+                            myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor =  (Color)Application.Current.Resources["Secondary"] });
                             //ColorsChild.Add(System.Drawing.Color.FromArgb(243, 108, 33));
                             ColorsChild.Add(System.Drawing.Color.FromArgb(217, 154, 41));
                             SetNoDataLabelVisibilityPPAID = false;
@@ -458,7 +457,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                         }
                         else
                         {
-                            // myBillsChartModels.Add(new MyBillsChartModel { BillCount = iBillsCount, BillType = AppResources.PartiallyPaid, BillColor = Xamarin.Forms.Color.FromHex("#F36C21") });
                             SetNoDataLabelVisibilityPPAID = true;
                             SetNoDataLabelVisibilityPPAIDList = false;
                         }

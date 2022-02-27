@@ -8,8 +8,11 @@ using GAZT.Models;
 using Plugin.FilePicker;
 using System;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -195,7 +198,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 RaisePropertyChanged("SalesType");
             }
         }
-        private Color _buttonBackgroundColor = Color.FromHex("#9EA4A9");
+        private Color _buttonBackgroundColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonBackgroundColor
         {
             get
@@ -248,23 +251,28 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
 
                     filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForZakat();
 
-    //                if (Device.RuntimePlatform == Device.iOS)
-    //                {
-    //                    filetypes = new string[] {
-    ////            UTType.PDF,
-    ////            "org.openxmlformats.wordprocessingml.document",
-    ////            "com.microsoft.word.doc",
-    ////"org.openxmlformats.spreadsheetml.sheet",
-    ////            UTType.JPEG,
-    ////            "com.microsoft.excel.xls",
-    //                        };
-    //                }
-    //                else
-    //                {
-    //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
-    //                }
-                    var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                    attachment = fileData.DataArray;
+                    //                if (Device.RuntimePlatform == Device.iOS)
+                    //                {
+                    //                    filetypes = new string[] {
+                    ////            UTType.PDF,
+                    ////            "org.openxmlformats.wordprocessingml.document",
+                    ////            "com.microsoft.word.doc",
+                    ////"org.openxmlformats.spreadsheetml.sheet",
+                    ////            UTType.JPEG,
+                    ////            "com.microsoft.excel.xls",
+                    //                        };
+                    //                }
+                    //                else
+                    //                {
+                    //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" };
+                    //                }
+                    PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                    //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                    var fileData = await FilePicker.PickAsync(options);
+                    var stream = await fileData.OpenReadAsync();
+                    var attachment = UtilityManager.ReadFully(stream as Stream);
+                   // attachment = fileData.DataArray;
                     await Task.Run(() =>
                     {
                         IsLoading = true;
@@ -276,7 +284,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = AttachmentName.Split('.')[1];
+                                string[] ExtentionArray = AttachmentName.Split('.');
+                                string Extention = ExtentionArray.Last();
+
                                 string ContentType = UtilityManager.GetContentType(Extention);
                                 bool isFileAlreayUploaded = IsFileAlreadyAttached(AttachmentName);
                                 decimal AttachmentSizeTillFourDecimal = Math.Round(Convert.ToDecimal((Convert.ToDouble(attachment.Length) / 1048576.0)), 4);
@@ -571,22 +581,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 if (attachmentCount != SelectedSalesDetails.estimateZakatAttachment.Count)
                 {
                     IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = Color.FromHex("#006450");
+                    ButtonBackgroundColor =  (Color)Application.Current.Resources["Primary"];
                 }
                 else if (newValue != NewValue && !isOnLoad)
                 {
                     IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = Color.FromHex("#006450");
+                    ButtonBackgroundColor =  (Color)Application.Current.Resources["Primary"];
                 }
                 else if (changeReason != ChangeReason && !isOnLoad)// && !string.IsNullOrEmpty(ChangeReason)
                 {
                     IsSaveButtonEnable = true;
-                    ButtonBackgroundColor = Color.FromHex("#006450");
+                    ButtonBackgroundColor =  (Color)Application.Current.Resources["Primary"];
                 }
                 else
                 {
                     IsSaveButtonEnable = false;
-                    ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                    ButtonBackgroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
             });
         }
@@ -649,17 +659,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 {
                     if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
                     {
-                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        ButtonBackgroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                         IsSaveButtonEnable = false;
                     }
                     else if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count == 0) && string.IsNullOrEmpty(NewValue) && string.IsNullOrEmpty(ChangeReason))
                     {
-                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        ButtonBackgroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                         IsSaveButtonEnable = false;
                     }
                     else if ((ZakatReturnAttachmentsList != null && ZakatReturnAttachmentsList.Count != 0) || (!string.IsNullOrEmpty(NewValue) && NewValue.Equals(OldValue)) || !string.IsNullOrEmpty(ChangeReason))
                     {
-                        ButtonBackgroundColor = Color.FromHex("#006450");
+                        ButtonBackgroundColor =  (Color)Application.Current.Resources["Primary"];
                         IsSaveButtonEnable = true;
                     }
                     //else if(NewValue.Length)
@@ -667,7 +677,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
 
                     if(ElevenDotTwoDecimalPlacesAndNoNegativeValue.iSValiedNumber == false)
                     {
-                        ButtonBackgroundColor = Color.FromHex("#9EA4A9");
+                        ButtonBackgroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                         IsSaveButtonEnable = false;
                     }
                 });

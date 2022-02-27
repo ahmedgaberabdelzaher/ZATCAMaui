@@ -759,8 +759,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             ChipDataFilterlist = new ObservableCollection<ChipModel>()
             {
-                new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png"},
-                new ChipModel(){Text =AppResources.Partiallynewui, TemplateType = AppResources.PartiallyPaid,ImageSource = "partially_clock.png"}
+                new ChipModel(){Text =AppResources.UnPaid, TemplateType = AppResources.UnPaid,ImageSource = "ic_unpaid.png", TextColor=(Color)App.Current.Resources["Error"]},
+                new ChipModel(){Text =AppResources.PartiallyPaid, TemplateType = AppResources.PartiallyPaid,ImageSource = "clock.png",TextColor=(Color)App.Current.Resources["Partial"]}
             };
         }
         public void PopToRootPage()

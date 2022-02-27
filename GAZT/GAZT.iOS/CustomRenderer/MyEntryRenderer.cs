@@ -24,7 +24,7 @@ namespace GAZT.iOS.CustomRenderer
                 base.OnElementPropertyChanged(sender, e);
                 Control.Layer.BorderWidth = 0;
                 Control.BorderStyle = UITextBorderStyle.None;
-                Control.TextColor = UIColor.Black;
+                Control.TextColor = UIColor.FromRGB(4,46,102);
                 this.AddDoneButton();
 
             }

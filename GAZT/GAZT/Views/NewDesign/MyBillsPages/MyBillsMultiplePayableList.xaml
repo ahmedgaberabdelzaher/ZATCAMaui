@@ -48,7 +48,7 @@
                 <listView:SfListView.ItemTemplate>
                     <DataTemplate>
 
-                        <cards:SfCardView CornerRadius="16" Margin="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                        <cards:SfCardView CornerRadius="16" Margin="2" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasShadow="False" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
 
                             <StackLayout Spacing="2" Margin="12" Orientation="Vertical">
                                 <Grid HorizontalOptions="FillAndExpand">
@@ -62,7 +62,7 @@
                                         <custom:CustomLabel Text="{Binding TestDueAmount,Converter={StaticResource 
                                                                         commaSeparatorConverter}}" 
                                                                                             Style="{StaticResource 
-                                                                        BodyLabelBlackMedium}" Margin="0,-5,0,-5">
+                                                                        BodyLabelBlackMedium}" >
 
                                             <custom:CustomLabel.FormattedText>
 
@@ -76,44 +76,60 @@
 
                                         </custom:CustomLabel>
 
-                                            <custom:CustomLabel Margin="0,-5,0,-5" Text="{Binding Txt30}" 
+                                            <custom:CustomLabel  Text="{Binding Txt30}" 
                                                                                         Style="{StaticResource 
                                                                         CaptionLabelGrey}" VerticalOptions="End"></custom:CustomLabel>
 
+
                                     </StackLayout>
-
-                                    <StackLayout Orientation="Vertical" Grid.Row="0" >
-
-                                        <border:SfBorder Grid.Row="0" HasShadow="False" BorderWidth="0" HorizontalOptions="EndAndExpand" 
+                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                        <border:SfBorder HasShadow="False" BorderWidth="0" HorizontalOptions="EndAndExpand" 
                                                                      VerticalOptions="CenterAndExpand" Padding="12,2,12,2" 
-                                                                     CornerRadius="20" HeightRequest="32"  BackgroundColor="#fbf4e9" >
+                                                                     CornerRadius="20" HeightRequest="32" >
                                             <border:SfBorder.Triggers>
-                                                    <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                    <Setter Property="BackgroundColor" Value="#f6e6e8" />
-                                                </DataTrigger>
                                                     <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.BillsNotPaid}">
-                                                        <Setter Property="BackgroundColor" Value="#f6e6e8" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
+                                                </DataTrigger>
+                                                    <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
+                                                    </DataTrigger>
+                                                 <DataTrigger TargetType="border:SfBorder" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                        <Setter Property="BackgroundColor" Value="{StaticResource SuccessBg}" />
                                                     </DataTrigger>
                                                 </border:SfBorder.Triggers>
                                            
                                                 
-                                                <Label FontFamily="{StaticResource SSTArRoman}" Text="{Binding StatusText}" FontSize="12" TextColor="#D99A29" VerticalOptions="CenterAndExpand">
+                                                <Label FontFamily="{StaticResource SomarRegular}" Text="{Binding StatusText}" FontSize="11" VerticalOptions="CenterAndExpand">
                                                     <Label.Triggers>
-                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                            <Setter Property="TextColor" Value="#AA0C19" />
-                                                        </DataTrigger>
                                                         <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.BillsNotPaid}">
-                                                            <Setter Property="TextColor" Value="#AA0C19" />
+                                                            <Setter Property="TextColor" Value="{StaticResource Error}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
+                                                            <Setter Property="TextColor" Value="{StaticResource Partial}" />
+                                                        </DataTrigger>
+                                                        <DataTrigger TargetType="Label" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
+                                                            <Setter Property="TextColor" Value="{StaticResource Success}" />
                                                         </DataTrigger>
                                                     </Label.Triggers>
 
                                                 </Label>
 
                                         </border:SfBorder>
+                                    </StackLayout>
 
-                                        <custom:CustomLabel Margin="0,0,0,0"
+                                </Grid>
+                                
+
+                                <Grid HorizontalOptions="FillAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+
+                                       <custom:CustomLabel Margin="0,0,0,0" 
                                                                                         Style="{StaticResource 
-                                                                        CaptionLabelGrey}" HorizontalOptions="EndAndExpand">
+                                                                        CaptionLabelGrey}" HorizontalOptions="End">
 
                                             <custom:CustomLabel.FormattedText>
 
@@ -124,7 +140,6 @@
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
                                         </custom:CustomLabel>
-
                                     </StackLayout>
 
                                 </Grid>

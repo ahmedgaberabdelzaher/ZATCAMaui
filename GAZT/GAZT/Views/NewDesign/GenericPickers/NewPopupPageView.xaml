@@ -48,9 +48,9 @@
                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55"
                                     HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" 
                                         HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
-                                    PickerMode="Default" HeaderBackgroundColor="#006450" BorderColor="White"
-                                        BackgroundColor="White" SelectedItemFontSize="16" ShowFooter="False"
-                                     UnSelectedItemFontSize="16"
+                                    PickerMode="Default" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="White"
+                                        BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
+                                     UnSelectedItemFontSize="15"
                                         SelectedItemFontAttribute="Bold"
                                      SelectionBackgroundColor="LightGray"
                                     IsOpen="True"
@@ -58,11 +58,11 @@
                                     UnSelectedItemTextColor="{StaticResource NeutralBlack}"
                                     ItemHeight="56" DisplayMemberPath="TaxType"
                                     PickerWidth="300" ShowHeader="False" 
-                                    CancelButtonTextColor="#006450" 
-                                     HeaderFontFamily="{OnPlatform iOS=SSTArabic-Bold, Android=GAZT_FONT_BOLD}"
-                                     ColumnHeaderFontFamily="{OnPlatform iOS=SSTArabic-Bold, Android=GAZT_FONT_BOLD}"
-                                     SelectedItemFontFamily="{OnPlatform iOS=SSTArabic-Bold, Android=GAZT_FONT_BOLD}"
-                                     UnSelectedItemFontFamily="{OnPlatform iOS=SSTArabic-Bold, Android=GAZT_FONT_BOLD}">
+                                    CancelButtonTextColor="{StaticResource Primary}" 
+                                     HeaderFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
+                                     ColumnHeaderFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
+                                     SelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
+                                     UnSelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}">
 
                    
                     <syncfusion:SfPicker.Behaviors>

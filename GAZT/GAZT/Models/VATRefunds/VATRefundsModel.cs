@@ -538,9 +538,6 @@ namespace EGAZT.Models.VATRefunds
         [JsonProperty("AdditionalNo")]
         public string AdditionalNo { get; set; }
 
-        [JsonProperty("Cr1645GoliveFg")]
-        public string Cr1645GoliveFg { get; set; }
-
         [JsonProperty("Idtype")]
         public string Idtype { get; set; }
 

@@ -280,7 +280,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -367,7 +367,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }

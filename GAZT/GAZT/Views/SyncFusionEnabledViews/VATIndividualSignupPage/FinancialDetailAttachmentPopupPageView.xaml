@@ -12,14 +12,14 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.FinancialDetailAttachmentPopupPageView">
     <Grid>
-        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="True" VerticalOptions="End" BackgroundColor="White">
+        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="End" BackgroundColor="White">
             <Grid>
 
 
                 <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 
-                    <!--<Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-            <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,8,0,0" TextColor="#005e4b"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+                    <!--<Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote1}" Margin="0,8,0,0" TextColor="{StaticResource Primary}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
+            <Label Text="{x:Static custom2:AppResources.ZZZZVATRAttachmentNote2}" Margin="0,8,0,0" TextColor="{StaticResource Primary}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
             <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>
             -->
                     <!--ItemTapped="Attachmentlist_ItemTapped"-->
@@ -36,7 +36,7 @@
                                     <ColumnDefinition Width="20*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0" Text="{Binding .}" Style="{StaticResource MicroGrayLabelStyleNew}" 
-                                       LineBreakMode="TailTruncation" FontFamily="{StaticResource SSTArBold}"/>
+                                       LineBreakMode="TailTruncation" FontFamily="{StaticResource SomarBold}"/>
 
                                 <Image Grid.Column="1"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png">
                                     <Image.GestureRecognizers>
@@ -51,12 +51,10 @@
                 </ListView.ItemTemplate>
             </ListView>
             <buttons:SfButton x:Name="btnAddAttachment" Text="Add Attachment" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                              HeightRequest="56" Margin="0,0,0,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                              BackgroundColor="#d49504" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>-->
+                              HeightRequest="56" Margin="0,0,0,20" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
+                              BackgroundColor="{StaticResource Secondary}" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>-->
 
-                    <!--<Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}" FontFamily="{StaticResource SSTArabicMedium}"  Text="{x:Static custom2:AppResources.ZZZContactInformation}"   VerticalOptions="Center"  TextColor="Black" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-            <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Text="{x:Static custom2:AppResources.ZZZZCompletethebelowdetails}" />
-            <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,15"/>-->
+                    
 
 
 
@@ -87,11 +85,11 @@
                            <!-- Divya created a new label and setting visibility when vat amend/reactivation selected -->
                             <Label  Text="{Binding AttachmentHeaderTitle}" IsVisible="{Binding TitleIsVisible}" HorizontalOptions="Center" VerticalOptions="Center" Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
 
-                            <Label  Text="{x:Static custom2:AppResources.VATRMPAttachments}" IsVisible="{Binding RegAttachmentTitle}" HorizontalOptions="Center"   VerticalOptions="Center" FontSize="Large" TextColor="Black" FontFamily="{StaticResource SSTArBold}" />
+                            <Label  Text="{x:Static custom2:AppResources.VATRMPAttachments}" IsVisible="{Binding RegAttachmentTitle}" HorizontalOptions="Center"   VerticalOptions="Center" FontSize="Large" TextColor="{StaticResource PrimaryColor}" FontFamily="{StaticResource SomarBold}" />
                             <StackLayout Grid.Row="2">
 
                             </StackLayout>
-                            <!--<Label Text="type of document that you are submitting to prove whether or not eligible." HorizontalOptions="Center" FontFamily="{StaticResource SSTArBold}"/>-->
+                            <!--<Label Text="type of document that you are submitting to prove whether or not eligible." HorizontalOptions="Center" FontFamily="{StaticResource SomarBold}"/>-->
                         </StackLayout>
                         <StackLayout Padding="15,0,15,15">
                             <Grid>
@@ -100,13 +98,13 @@
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Text="{x:Static custom2:AppResources.VATRAttachmentCategory}"  Grid.Row="0" Padding="0,0,0,0" FontFamily="{StaticResource SSTArBold}"/>
+                                <Label Text="{x:Static custom2:AppResources.VATRAttachmentCategory}"  Grid.Row="0" Padding="0,0,0,0" FontFamily="{StaticResource SomarBold}"/>
                                 <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6" 
                                 ContainerType="Outlined" x:Name="FrmIDType"  UnfocusedColor="#B1B1B1"
-                                OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+                                OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
                                     <StackLayout Orientation="Horizontal">
                                         <custom:BorderlessEntry Text="{Binding AttachmentTypeTxt}"  FontSize="Small" 
-                                                        TextColor="Black"  IsSpellCheckEnabled="False" HorizontalOptions="FillAndExpand" >
+                                                        TextColor="{StaticResource PrimaryColor}"  IsSpellCheckEnabled="False" HorizontalOptions="FillAndExpand" >
                                         </custom:BorderlessEntry>
                                         <!--<Image HorizontalOptions="EndAndExpand" Rotation="270" >
                                             --><!--Rotation="270"--><!--
@@ -125,17 +123,17 @@
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="AttachmentTypePicker" Grid.Row="1"
                                     HeaderHeight="40" HeaderText="{x:Static custom2:AppResources.VATRAttachmentCategory}"
                                     HeaderTextColor="White"
-                                    UnSelectedItemFontSize="14" 
+                                    UnSelectedItemFontSize="13" 
                                     ColumnHeaderHeight="46"
                                     PickerMode="Dialog"
-                              HeaderBackgroundColor="#006450"
-                        SelectedItemTextColor="#006450"
+                              HeaderBackgroundColor="{StaticResource Primary}"
+                        SelectedItemTextColor="{StaticResource Primary}"
                         BorderColor="Black"
                                                        SelectedIndex="{Binding SelectedAttachmentType}"
                                                     
                                                        
-                                                 OKButtonTextColor="#006450"      
-                                                 CancelButtonTextColor="#006450"
+                                                 OKButtonTextColor="{StaticResource Primary}"      
+                                                 CancelButtonTextColor="{StaticResource Primary}"
                                                  ShowColumnHeader="False"
                                                
                                                  OKButtonBackgroundColor="#EAF7CC"
@@ -153,16 +151,17 @@
                                 </syncfusion:SfPicker>
                                 <!--OkButtonClicked="DDlIDType_OkButtonClicked"  CancelButtonClicked="DDlIDType_CancelButtonClicked"-->
                                 <StackLayout Grid.Row="2" IsVisible="{Binding IsAttachmentVisibile}">
-                                    <Label  Text="{x:Static custom2:AppResources.Attachment}"  Grid.Row="2"  FontFamily="{StaticResource SSTArBold}"/>
+                                    <Label  Text="{x:Static custom2:AppResources.Attachment}"  Grid.Row="2"  FontFamily="{StaticResource SomarBold}"/>
                                     <inputLayout:SfTextInputLayout Grid.Row="3" Margin="0,-6,0,-6"
                                             ContainerType="Outlined" x:Name="FrmAttachmentOptional" UnfocusedColor= "#bbbbbb"
                                             OutlineCornerRadius="8" FocusedColor="#bbbbbb" ErrorColor="#B00020" HasError="False" >
                                         <StackLayout Orientation="Horizontal" x:Name="ExploreAttachmentLayout">
-                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" FontFamily="{StaticResource SSTArBold}" Placeholder="{x:Static custom2:AppResources.ZZExplore}" FontSize="Small">
+                                            <custom:BorderlessEntry  x:Name="EntryExploreAttachment"  IsEnabled="False" FontFamily="{StaticResource SomarBold}" Placeholder="{x:Static custom2:AppResources.ZZExplore}" FontSize="Small">
                                             </custom:BorderlessEntry>
                                             <Image HorizontalOptions="EndAndExpand" Rotation="270">
                                                 <Image.Source>
-                                                    <FontImageSource FontFamily="UserIconFont" Color="#bbbbbb" Size="25"
+                                                    <FontImageSource FontFamily="UserIconFont"
+                                                                     Color="{StaticResource SecondaryNew}" Size="25"
                                                     Glyph="{x:Static FontImage:IconFonts.Attachment}" />
                                                 </Image.Source>
                                             </Image>
@@ -191,7 +190,7 @@
                                 <DataTemplate>
                                     <ViewCell>
                                         <ContentView>
-                                            <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                            <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" >
                                                 <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                                     <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                         <Grid.ColumnDefinitions>
@@ -208,7 +207,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                                                           FontFamily="{StaticResource SSTArBold}"
+                                                                           FontFamily="{StaticResource SomarBold}"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                    />
@@ -230,7 +229,7 @@
                                                                    FlowDirection="LeftToRight"
                                    Grid.Row="1"
                                    Grid.Column="0" Grid.ColumnSpan="2" 
-                                                                   FontFamily="{StaticResource SSTArBold}"
+                                                                   FontFamily="{StaticResource SomarBold}"
                                    />
                                                     </Grid>
                                                 </StackLayout>
@@ -241,8 +240,8 @@
                             </ListView.ItemTemplate>
                         </ListView>
                         <buttons:SfButton x:Name="btnDone" Text="{x:Static custom2:AppResources.ZZZZDone}" CornerRadius="14" VerticalOptions="End" FontAttributes="Bold" 
-                                  HeightRequest="48" Margin="10,0,10,20" FontSize="16" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource Montserrat-SemiBold}" 
-                              BackgroundColor="#d49504" Clicked="Close_Tapped" BorderWidth="0" />
+                                  HeightRequest="48" Margin="10,0,10,20" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
+                              BackgroundColor="{StaticResource Secondary}" Clicked="Close_Tapped" BorderWidth="0" />
 
 
                     </StackLayout>
@@ -264,7 +263,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                         </StackLayout>
                         <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>

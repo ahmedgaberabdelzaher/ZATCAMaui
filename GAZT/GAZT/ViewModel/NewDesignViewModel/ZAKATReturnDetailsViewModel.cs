@@ -16,6 +16,7 @@ using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -470,6 +471,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        private Color _iCRStatusBg;
+        public Color ICRStatusBG
+        {
+            get
+            {
+                return _iCRStatusBg;
+            }
+            set
+            {
+                if (_iCRStatusBg == value) return;
+
+                _iCRStatusBg = value;
+                RaisePropertyChanged("ICRStatusBG");
+            }
+        }
+
+        private Color _iCRStatusTextColor;
+        public Color ICRStatusTextColor
+        {
+            get
+            {
+                return _iCRStatusTextColor;
+            }
+            set
+            {
+                if (_iCRStatusTextColor == value) return;
+
+                _iCRStatusTextColor = value;
+                RaisePropertyChanged("ICRStatusTextColor");
+            }
+        }
+
 
         private bool _changeFromEstimateTAccountringBasisButtonVisibility = false;
         public bool ChangeFromEstimateTAccountringBasisButtonVisibility
@@ -806,12 +839,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 try
                 {
-                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
+                   // await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
+
 
                     //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                }
+
+
+                try
+                {
+
+
+                    var VisitPortalPopup = new ReturnPortalNavigationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType);
+
+                    if (App.IsArabic)
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+
+                        };
+                    }
+                    else
+                    {
+                        VisitPortalPopup.OnGotoPortal = () =>
+                        {
+
+                            Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+
+                        };
+                    }
+                    //VisitPortalPopup.OnGotoPortal = () =>
+                    //{
+                    //    Launcher.OpenAsync(Constants.GAZTVisitPortalUrl);
+
+                    //};
+                    await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
+                }
+                catch (Exception ex)
+                {
+
                 }
             });
 
@@ -1047,6 +1118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
 
                         ZakatReturnDetail.Fbguid = ZAKATReturnDetailsViewModel.Fbguid;
+                        App.ZakatReturnBilldetails = false;
                         _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                     }
                     else
@@ -1088,6 +1160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             }
                             else {
+                                App.ZakatReturnBilldetails = false;
                                 _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                             }
 
@@ -1138,6 +1211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
+                            App.ZakatReturnBilldetails = false;
                             _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                         }
                         else
@@ -1176,6 +1250,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             else
                             {
+                                App.ZakatReturnBilldetails = false;
                                 _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                             }
 
@@ -1195,6 +1270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                             {
+                                App.ZakatReturnBilldetails = false;
                                 _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                             }
                             else
@@ -1211,6 +1287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         if (ElevenDotTwoDecimalPlacesAndNoNegativeValue.IsValiedNumber == true)
                         {
+                            App.ZakatReturnBilldetails = false;
                             _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
                         }
                         else
@@ -1574,7 +1651,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
 
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
                             }
                         }
@@ -1605,7 +1682,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
                                 //}
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
                             }
                             //Device.BeginInvokeOnMainThread(async () => {
@@ -1657,7 +1734,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
             }
@@ -1768,6 +1845,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                            App.ZakatReturnBilldetails = false;
                             _navigationService.NavigateTo(App.ZakatReturnDetailsSuccessfullPageView, ZakatReturnDetail);
 
                         });
@@ -2038,7 +2116,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ReleaseOrBillDetailsVisible = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -2261,63 +2339,90 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 ICRStatus = AppResources.UnSubmitted;
                 ICRStatusImage = "ic_unsubmitted.png";
+                ICRStatusBG = (Color)Application.Current.Resources["ErrorBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Error"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
             {
                 ICRStatusImage = "submited_check.png";
                 ICRStatusImage = AppResources.Paid;
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
+
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
                 ICRStatus = AppResources.NDInProcessing;
+                ICRStatusBG = (Color)Application.Current.Resources["NeutralLightGrey"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["NeutralGreay"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "submited_check.png";
                 ICRStatus = AppResources.Paid;
 
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
+
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_Paid.png";
                 ICRStatus = AppResources.NDBilled;
+                ICRStatusBG = (Color)Application.Current.Resources["NeutralLightGrey"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["NeutralGreay"];
 
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
             {
                 ICRStatusImage = "ic_loading.png";
                 ICRStatus = AppResources.ToBeApproved;
+                ICRStatusBG = (Color)Application.Current.Resources["NeutralLightGrey"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["NeutralGreay"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0004"))//Amend without Objection
             {
+
                 ICRStatusImage = "submited_check.png";
                 ICRStatus = AppResources.Submitted;
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0003"))// In Build state 
             {
                 ICRStatusImage = "submited_check.png";
                 ICRStatus = AppResources.NDBilled;
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0011"))// In Paid state 
             {
                 ICRStatusImage = "submited_check.png";
                 ICRStatus = AppResources.Paid;
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0005"))// In Processing
             {
                 ICRStatusImage = "ic_loading.png";
                 ICRStatus = AppResources.NDInProcessing;
+                ICRStatusBG = (Color)Application.Current.Resources["NeutralLightGrey"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["NeutralGreay"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0002"))// Status when the return released by GAZT officer
             {
                 ICRStatusImage = "submited_check.png";
                 ICRStatus = AppResources.NDBilled;
+                ICRStatusBG = (Color)Application.Current.Resources["SuccessBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Success"];
             }
             else if (string.Equals(ZakatReturnDetail.Statusz, "E0001"))// UnSubmitted
             {
                 ICRStatusImage = "unsubmitted.png";
                 ICRStatus = AppResources.UnSubmitted;
+                ICRStatusBG = (Color)Application.Current.Resources["ErrorBg"];
+                ICRStatusTextColor = (Color)Application.Current.Resources["Error"];
             }
         }
 

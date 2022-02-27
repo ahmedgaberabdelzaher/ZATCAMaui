@@ -21,12 +21,16 @@ namespace GAZT.Helper
 
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
+
         public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa";
         public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
+
         public static string UatBaseUrlForODataServices = "https://sapgatewayuat.gazt.gov.sa";
         public static string UatBaseUrlForAuthentication = "https://loginu.gazt.gov.sa";
+
         public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa";
         public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa";
+
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
@@ -36,6 +40,7 @@ namespace GAZT.Helper
         public static string QADomainForCookies = "loginqa.gazt.gov.sa";
         public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
         public static string UatDomainForCookies = "loginu.gazt.gov.sa";
+
         public static string ProdDomainForCookies = "login.gazt.gov.sa";
 
         public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
@@ -59,7 +64,6 @@ namespace GAZT.Helper
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
 
         //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
@@ -104,7 +108,6 @@ namespace GAZT.Helper
         public static string GetTinStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTIN_STAT_SRV/HeaderSet(Langz='";
         public static string GetVATLookUpDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVAT_TAXPAYER_LOOKUP_SRV/TaxpayerSet?saml2=enabled&sap-language='";
         public static string GAZTGetAllVATDeclarationReturnData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet(Periodkeyz='";
-        public static string GAZTGetNotifyAuditorForAddingAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet";
         public static string GetMyICRs = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_WI_SRV/ICR_HDRSet(Fbnum='',Lang='";
         public static string SaveVATDeclarationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VATR_M_SRV/HDRSet?saml2=enabled";
         public static string GAZTSaveAttachment = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_INDTAX_ATT_SRV/AttachSet(OutletRef=";
@@ -156,9 +159,6 @@ namespace GAZT.Helper
         public static string GAZTGetUnSubmittedReturnSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/UnSubmittedReturnSet?$filter=Langz eq '";
         public static string GAZTGetPaymentOverdueSetForDashboard = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/PaymentOverdueSet?$filter=Langz eq '";
         public static string GAZTGetReturnList = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDSM_TAXPAYER_SRV/ICR_LISTSet?$filter=Gpart eq '";
-        public static string GAZTGetTpActivityStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTAXPAYERDBNEW_SRV/ISIC4Set?$filter=Taxpayer%20eq%20%27";
-        public static string GAZTPostActivityStatus = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTAXPAYERDBNEW_SRV/ISIC4Set";
-
         #endregion
         #region TES
         public static string GAZTGetFAQ = "http://tstcrmmwintg1.mygazt.gov.sa:82/IntegrationServices.svc/FAQRetrieveAll";
@@ -194,20 +194,8 @@ namespace GAZT.Helper
         public static string GAZTGetVATRegistrationOtherDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VRUH_SRV/VR_UI_HDRSet(Fbnum='";
         public static string SaveVATRegistrationData = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet";
         public static string SaveVATRegistration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV/VRNHSet?sap-language=";
-        public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV";
         #endregion
 
-        //RM Contact details
-        public static string GetRMContactDetails = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_VOC_SURVEY_SRV/RelationManagerSurveySet(Gpart";
-        public static string ComplaintsEngUrl = "https://gazt.gov.sa/en/ContactUs/Pages/default.aspx#topic_complaint";
-        public static string ComplaintsARUrl = "https://gazt.gov.sa/ar/ContactUs/Pages/default.aspx#topic_complaint";
-        public static string CheckVocAvailability = "https://vocstg.gazt.gov.sa/v1/response/survey/availability";
-
-        //Update Vat effective date.
-        public static string GetRequestedUpdateVatEffDates = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VT_EFDT_SRV/HeaderSet(Gpart='{0}')?&$expand=ItemSet&$format=json";
-
-        //CR1645 GETIBAN URLS                                                                                                           
-        public static string GAZTGetValidIBanNumbers= BaseUrlOfODataServices+ "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanDataSet?$filter=";
         #region GAZTUnlock Account
         public static string GAZTUnlockAccountAllOperations = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_UNLOCK_USER_SRV/HeaderSet";
         #endregion
@@ -275,7 +263,7 @@ namespace GAZT.Helper
         public static string SaveVATInstalmentdata = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VTIA_SRV/VTIA_HEADERSet";
         public static string VATObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/NotesSet('001')";
         public static string ZakatObjectionsNotesSet = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_NOTES_TP09_SRV/znotesSet(1)";
-        public static string UpdateLicenseAndCR = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_NEW_REGISTRATON_SRV/ISIC4Set";
+
 
         #endregion
 
@@ -354,7 +342,7 @@ namespace GAZT.Helper
         public static string GetVATObjectionEnableSubmitURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_REV_SRV/GetSubmitEnabledSet(";
         //Excel sheet API7 To validate ID and fetch taxpayer name
         public static string GetVATObjectionValidateTaxPayerNameURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SRV/taxpayer_nameSet(";
-        //Excel sheet API9 To Called on the press of Download Acknowledgement Button
+        //Excel sheet API9 To Called on the press of Download Acknowledgementr Button
         public static string GetVATObjectionDownloadAckURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(";
         //API10 To generate SADAD && API11 On press of refresh button for SADAD
         public static string GetVATObjectionGenrateorRefreshSADADURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_GEN_SADAD_SRV/GetSADADSet(";
@@ -373,6 +361,7 @@ namespace GAZT.Helper
         public static string GetVATObjSuspensionDetailSetURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_DREG_SRV/GetSuspensionDetailSet?$filter=";
 
         #endregion
+
 
         #region ZAKATObjections
         public static string GetZAKATObjectionListURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_TP_DASHBOARD_SRV/HeaderSet(";
@@ -419,6 +408,9 @@ namespace GAZT.Helper
         public static string GetTPProfileChangePWDURL = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_TP_PROFILE_N_SRV/ChangePasswordSet";
         public static string ZOdownloadAckLetter = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_ACK_LETTER_SRV/Ack_letterSet(Fbnum=";
         public static string ZOdownloadCoverFormFile = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_COVER_FORM_SRV/cover_formSet(Fbnum=";
+
+        //Taxpayer subsidy 
+        public static string TaxPayerSubsidyPost = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_EXPENSE_CONTRACT_SRV/TpHeaderSet";
         #endregion
 
         #region
@@ -460,14 +452,32 @@ namespace GAZT.Helper
 
         #endregion
 
-        #region Bank Account Management
+        public static string GAZTChatPartialUrlen = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/en/index_PROD.html";
+        public static string GAZTChatPartialUrlar = "https://chatbot.zatca.gov.sa/maker/GaztProd/Main/ar/index_PROD.html";
 
-        public static string GetBankAccountInformation = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/HeaderSet(";
-        public static string PostBankAccountIBAN = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGW_BANK_MGMT_SRV/IbanListSet?&sap-language=";
+        //public static string GAZTChatPartialUrlen = "https://tstchatbot.gazt.gov.sa/GaztTesting/en/index_test.html";
+        //public static string GAZTChatPartialUrlar = "https://tstchatbot.gazt.gov.sa/GaztTesting/ar/index_test.html";
+
+        public static string GAZTFAQEnUrl = "https://zatca.gov.sa/en/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+        public static string GAZTFAQARUrl = "https://zatca.gov.sa/ar/HelpCenter/FAQs/Pages/FAQArchiveEservicesMV.aspx";
+
+        public static string GAZTSuggestURLen = "https://zatca.gov.sa/en/ContactUs/Pages/SuggestAndComplaintMV.aspx";
+        public static string GAZTSuggestURLar = "https://zatca.gov.sa/ar/ContactUs/Pages/SuggestAndComplaintMV.aspx";
+
+        public static string GAZTVisitPortalUrlEN = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=en&login=X";
+        public static string GAZTVisitPortalUrlAR = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=ar&login=X";
 
 
-        #endregion
+        public static string ZAtcaCustomsTarrifsEN = "https://www.customs.gov.sa/en/Integrated-Tariff-appview";
+        public static string ZAtcaCustomsTarrifsAr = "https://www.customs.gov.sa/ar/Integrated-Tariff-appview";
+       // public static string ZAtcaCustomsTarrifsAr = "http://10.112.42.23/ar/Integrated-Tariff-appView";
 
-        public static string GAZTChatPartialUrl = "I3root/ChatingPage.html#";
+        public static string ZAtcaCustomsdeclarationsEN = "https://eservices.zatca.gov.sa/sites/sc/en/app-view/pages/checkBayan.aspx";
+        public static string ZAtcaCustomsdeclarationsAr = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/pages/checkBayan.aspx";
+        //public static string ZAtcaCustomsdeclarationsAr = " https://esvc-web1-stg/sites/sc/ar/app-view/Pages/checkBayan.aspx";
+        // public static string ZAtcaCustomsdeclarationsAr = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/checkBayan.aspx";
+        // public static string ZAtcaCustomsdeclarationsAr = "https://10.113.98.41/sites/sc/ar/app-view/Pages/checkBayan.aspx";
+
+        public static string TaxpayerSubsidyRequest = string.Empty;
     }
 }

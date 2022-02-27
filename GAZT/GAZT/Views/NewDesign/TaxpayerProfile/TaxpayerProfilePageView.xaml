@@ -104,13 +104,13 @@
                             ContainerType="Outlined"
                             UnfocusedColor="#B1B1B1"
                             OutlineCornerRadius="8"
-                            FocusedColor="#005e4b" ErrorColor="#B00020"
+                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"
                             InputViewPadding="16,0,16,0" >
                                 <StackLayout Orientation="Horizontal"
                                    >
                                     <Entry x:Name="MobileNumberCodeEntry" FlowDirection="LeftToRight" VerticalTextAlignment="Center"
                                                          Style="{StaticResource DefaultEntry}"
-                                                         IsReadOnly="True" TextColor="Black" HorizontalOptions="FillAndExpand"
+                                                         IsReadOnly="True" TextColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand"
                                                          Text="{Binding MobileNumber}" 
                                                          />
                                 </StackLayout>
@@ -133,7 +133,7 @@
                             <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
                                                         LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b" ErrorColor="#B00020"
+                                                        FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"
                                                         InputViewPadding="16,0,16,0">
 
                                 <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
@@ -157,7 +157,7 @@
                             <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
                                                         LeadingViewPosition="Inside" ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
+                                                        FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
                                 <control:BorderlessEntry x:Name="Password"
                                                          Style="{StaticResource DefaultEntry}"
                                                          Text="{Binding PasswordEntry}"
@@ -219,7 +219,7 @@
                                                        IsBusy="True"
                                                        ViewBoxWidth = "70"
                                                        TitlePlacement="Bottom"
-                                                       ViewBoxHeight="70" TextColor="#006450"/>
+                                                       ViewBoxHeight="70" TextColor="{StaticResource Primary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

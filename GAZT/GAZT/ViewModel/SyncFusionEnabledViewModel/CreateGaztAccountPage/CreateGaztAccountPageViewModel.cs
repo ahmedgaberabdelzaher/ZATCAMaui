@@ -66,10 +66,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 _oTPValidDuration = value;
                 if (_oTPValidDuration.Equals(" 00:00"))
                 {
-                    ButtonDisableColor = Color.FromHex("#006450");
+                    ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                     ButtonDisableTextColor = Color.White;
                     IsResendOTPEnabled = true;
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                     VerifyButtonDisableTextColor = Color.Gray;
                     IsVerifyOTPEnabled = false;
                     IsOTPEntryEnable = false;
@@ -103,7 +103,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 RaisePropertyChanged("IsVerifyOTPEnabled");
             }
         }
-        private Color _buttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _buttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color ButtonDisableColor
         {
             get
@@ -129,7 +129,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                 RaisePropertyChanged("ButtonDisableTextColor");
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#006450");
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["Primary"];
         public Color VerifyButtonDisableColor
         {
             get
@@ -330,9 +330,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                             {
                                 _dialogService.ShowMessage(AppResources.ZZYournewEmailandSMSValidationCodehasbeenresenttoyou, AppResources.Information);
                             });
-                            ButtonDisableColor = Color.FromHex("#9EA4A9");
+                            ButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                             ButtonDisableTextColor = Color.Gray;
-                            VerifyButtonDisableColor = Color.FromHex("#006450");
+                            VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                             VerifyButtonDisableTextColor = Color.White;
                             IsResendOTPEnabled = false;
                             IsVerifyOTPEnabled = true;
@@ -399,10 +399,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                     if (TotalSec < 0)
                     {
                         OTPValidDuration = " 0:00";
-                        ButtonDisableColor = Color.FromHex("#006450");
+                        ButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                         ButtonDisableTextColor = Color.White;
                         IsResendOTPEnabled = true;
-                        VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                        VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                         VerifyButtonDisableTextColor = Color.Gray;
                         IsVerifyOTPEnabled = false;
                         IsOTPEntryEnable = false;

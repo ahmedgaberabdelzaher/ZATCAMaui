@@ -54,12 +54,12 @@
                         </Frame>
                         <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachments}"   VerticalOptions="Center" HorizontalOptions="CenterAndExpand" Style="{StaticResource GAZTSmallGreenLabelStyle}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
                         </local1:CustomLabel>
-                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
-                        <local1:CustomLabel  Text="{x:Static custom2:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SSTArBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentSizeNotfication}"  Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel Text="{x:Static custom2:AppResources.ZVatAttachmentTypeNotfication}"  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
+                        <local1:CustomLabel  Text="{x:Static custom2:AppResources.ZVatAttachmentMaxSizeNotfication}"  Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2"  HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" Padding="0" FontFamily="{StaticResource SomarBold}" Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"/>
                         <!--<Frame Grid.Row="4" IsVisible="{Binding AttachmentSizeVisibility}" CornerRadius="8" Margin="20,0,20,0" Style="{StaticResource GAZTFrameStyleForEntry}"  Grid.Column="0" Grid.ColumnSpan="2">
                         </Frame>-->
-                        <local1:CustomLabel  IsVisible="{Binding AttachmentSizeVisibility}" FontFamily="{StaticResource SSTArBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="10,0,10,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="Start" HorizontalTextAlignment="Start">
+                        <local1:CustomLabel  IsVisible="{Binding AttachmentSizeVisibility}" FontFamily="{StaticResource SomarBold}"   Grid.Row="4" Grid.Column="0" Padding="0" VerticalOptions="CenterAndExpand" Grid.ColumnSpan="2" Margin="10,0,10,0"   Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" HorizontalOptions="Start" HorizontalTextAlignment="Start">
                             <local1:CustomLabel.FormattedText>
                                 <FormattedString>
                                     <Span Text="{Binding TotalAttachmentSize}"  />
@@ -79,7 +79,7 @@
                          <inputLayout:SfTextInputLayout    Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"    Margin="10,0,10,-6"
         Hint="{x:Static custom2:AppResources.ZZAttachment}"
     ContainerType="Outlined" UnfocusedColor="#B1B1B1"
-    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False" >
+    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
                             <custom:GAZTBorderlessEntry   Text="{Binding AttachmentName}" Margin="20,0,20,0"   Grid.Column="0"   Style="{StaticResource GAZTTextBoxStyleForEntry}" IsReadOnly="True">
                         </custom:GAZTBorderlessEntry>
                     </inputLayout:SfTextInputLayout>
@@ -109,7 +109,7 @@
                                     <DataTemplate>
                                         <ViewCell>
                                             <ContentView>
-                                                <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="8"  IndicatorColor="#005e4b" IndicatorPosition="Left" IndicatorThickness="5" >
+                                                <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" >
                                                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
                                                         <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
                                                             <Grid.ColumnDefinitions>
@@ -126,7 +126,7 @@
                                    Style="{StaticResource MicroGrayLabelStyleNew}"
                                                    HorizontalOptions="StartAndExpand"
                                                    VerticalOptions="CenterAndExpand"
-                                                                           FontFamily="{StaticResource SSTArBold}"
+                                                                           FontFamily="{StaticResource SomarBold}"
                                    Grid.Row="0"
                                    Grid.Column="0"
                                    />
@@ -148,7 +148,7 @@
                                                                    FlowDirection="LeftToRight"
                                    Grid.Row="1"
                                    Grid.Column="0" Grid.ColumnSpan="2" 
-                                                                   FontFamily="{StaticResource SSTArBold}"
+                                                                   FontFamily="{StaticResource SomarBold}"
                                    />
                                                         </Grid>
                                                     </StackLayout>
@@ -179,7 +179,7 @@
                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#006450"/>
+                                       TextColor="{StaticResource Primary}"/>
                         <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
@@ -190,14 +190,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title=""  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title=""  FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />

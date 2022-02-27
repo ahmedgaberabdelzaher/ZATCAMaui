@@ -89,6 +89,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             OnClearButtonClicked = new Command(() =>
             {
+                NoteString = string.Empty;
                 //if (!string.IsNullOrEmpty(NoteText))
                 //{
                 //    NoteText = PreviousNoteText;
@@ -113,8 +114,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     NoteText = PreviousNoteText;
                 }
                 ClearNoteClicked = true;
-                MessagingCenter.Send<Object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
                 PopupNavigation.Instance.PopAsync();
+                MessagingCenter.Send<Object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
+                
             });
             OnAddButtonClicked = new Command(() =>
             {

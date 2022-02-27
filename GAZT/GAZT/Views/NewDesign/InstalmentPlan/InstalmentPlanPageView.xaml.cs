@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.ViewModel.NewDesignViewModel.InstalmentPlanViewModel;
 using Xamarin.Essentials;
@@ -30,8 +31,9 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
 
                 viewModel = App.Locator.InstalmentPlanPageView;
                 this.BindingContext = viewModel;
+                viewModel.AddOutletDecisionOptions();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -60,8 +62,7 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             base.OnAppearing();
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-            viewModel.AddOutletDecisionOptions();
+            this.Padding = safeInsets;  
         }
 
         public void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)

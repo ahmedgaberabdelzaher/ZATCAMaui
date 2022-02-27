@@ -85,7 +85,7 @@
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image Source="ColorChat.png"/>
+                                    <Image Source="thumbnail_chat.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBSMChat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
@@ -96,7 +96,7 @@
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image Source="customerServiceColor.png"/>
+                                    <Image Source="customerService.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactus}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
@@ -150,7 +150,7 @@
                             <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never" >
                             <StackLayout >
                         <!--<WebView x:Name="ContactUsWebView" WidthRequest="1000" Navigating="ContactWebView_Navigating" Navigated="ContactWebView_Navigated" VerticalOptions="FillAndExpand" />-->
-                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" Style="{StaticResource PageTitleBlack}" />
+                                    <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.ZZZLandingPageTitle}" Style="{StaticResource SectionTitleBlackBold}" />
                                     <!--<custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDHeadquaeterRiyadh}" Style="{StaticResource SectionTitleBlack}" />
                                     <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False">
                                         <Grid Padding="16">
@@ -215,10 +215,10 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
                                 <StackLayout Grid.Column="0" Orientation="Horizontal">
-                                                <Image Source="Grey_message.png" VerticalOptions="CenterAndExpand" Margin="0,3,0,0"/>
+                                                <Image Source="message.png" VerticalOptions="CenterAndExpand" />
                                                 <custom:CustomLabel VerticalOptions="StartAndExpand" VerticalTextAlignment="Start" Text="{x:Static ResourceManager:AppResources.NDContactEmail}" Style="{StaticResource BodyLabelGrey}"/>
                                 </StackLayout>
-                                <custom:CustomLabel x:Name="Email" Grid.Column="1" Text="info@gazt.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel x:Name="Email" Grid.Column="1" Text="info@zatca.gov.sa" Style="{StaticResource ValueLabelBlack}" HorizontalTextAlignment="End"/>
                             </Grid>
                         </border:SfBorder>
 
@@ -227,25 +227,26 @@
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnTwitterGAZTTapped"/>
                                         </border:SfBorder.GestureRecognizers>
-                                        <StackLayout Orientation="Horizontal" Spacing="16">
+                                        <StackLayout Orientation="Horizontal" Spacing="5">
 
                                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" HasShadow="False" BorderWidth="0" BackgroundColor="{StaticResource Primary}" Padding="12">
                                                 <Image>
                                                     <Image.Source>
-                                                        <FontImageSource FontFamily="UserIconFont" Color="White" Size="30" Glyph="{x:Static FontImage:IconFonts.Twitter}"/>
+                                                        <FontImageSource FontFamily="UserIconFont"
+                                                                         Color="{StaticResource SecondaryNew}" Size="30" Glyph="{x:Static FontImage:IconFonts.Twitter}"/>
                                                     </Image.Source>
                                                 </Image>
                                             </border:SfBorder>
 
-                                            <StackLayout VerticalOptions="CenterAndExpand">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDGAZT}" Style="{StaticResource ButtonLabelBlackBold}"/>
-                                                <custom:CustomLabel Margin="0,-16,0,0" Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
+                                            <StackLayout VerticalOptions="StartAndExpand">
+                                                <Label Text="{x:Static ResourceManager:AppResources.NDGAZT}" Style="{StaticResource CaptionLabelBlackBold}"/>
+                                                <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDTwitter}" Style="{StaticResource CaptionLabelGrey}"/>
                                             </StackLayout>
-                                            <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="16,0,16,0"/>
+                                            <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="6,0,16,0"/>
                                         </StackLayout>
                                     </border:SfBorder>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <!--<border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <border:SfBorder.GestureRecognizers>
                                             <TapGestureRecognizer Tapped="OnTwitterVATTapped"/>
                                         </border:SfBorder.GestureRecognizers>
@@ -265,7 +266,7 @@
                                     </StackLayout>
                                             <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" Style="{DynamicResource BackButtonArrow}" Margin="16,0,16,0"/>
                                 </StackLayout>
-                            </border:SfBorder>
+                            </border:SfBorder>-->
                         </StackLayout>
                             </ScrollView>
                             <StackLayout Grid.Row="1" BackgroundColor="White" Padding="0,8,0,42">
@@ -300,9 +301,9 @@
                                 </custom:CustomButton>
 
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="BranchLocation" HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Red" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Red" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding ReturnTypeForFilter}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" SelectionChanged="BranchLocation_SelectionChanged">
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
@@ -379,7 +380,7 @@
                                         
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70"
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

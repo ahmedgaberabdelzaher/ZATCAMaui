@@ -113,7 +113,7 @@
 
                             <Image Grid.Column="2" IsVisible="false">
                                 <Image.Source>
-                                    <FontImageSource Color="White"
+                                    <FontImageSource Color="{StaticResource SecondaryNew}"
                                                      FontFamily="UserIconFont"
                                                      Glyph="{x:Static FontImage:IconFonts.Close}"/>
                                 </Image.Source>
@@ -136,7 +136,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout Grid.Row="0">
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout Padding="10">
                         <control:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
                                              Style="{StaticResource SectionTitleBlack}" />
@@ -162,12 +162,13 @@
 										                ContainerType="Outlined"
                                                         UnfocusedColor="#B1B1B1"
 										                OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b"
+                                                        FocusedColor="{StaticResource Primary}"
+                                                       
                                                         ErrorColor="#B00020"
                                                         HasError="False">
                                             <control:BorderlessEntry  Text="{Binding TxtSearchParameter}"
                                                                      Style="{StaticResource DefaultEntry}"   
-                                                                      TextColor="#bbbbbb" >
+                                                                      TextColor="{StaticResource Primary}" >
                                             </control:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
                                         <control:CustomButton x:Name="PPicker_btn"
@@ -186,7 +187,7 @@
                                             ColumnHeaderHeight="46"
                                             PickerMode="Dialog"
                                             
-                                            HeaderBackgroundColor="#006450"              
+                                            HeaderBackgroundColor="{StaticResource Primary}"              
                                             BorderColor="Black"
                                             BackgroundColor="white"
                                             UnSelectedItemTextColor="{StaticResource NeutralGreay}"
@@ -199,9 +200,9 @@
                                             Grid.Column="0" 
                                             PickerHeight="250"
                                             PickerWidth="300"
-                                            HeaderFontSize="14"
-                                            OKButtonTextColor="#006450"
-                                            CancelButtonTextColor="#006450"
+                                            HeaderFontSize="13"
+                                            OKButtonTextColor="{StaticResource Primary}"
+                                            CancelButtonTextColor="{StaticResource Primary}"
                                             ShowFooter="False"
                                             SelectionChanged="PPicker_SelectionChanged"
                                             OKButtonBackgroundColor="#EAF7CC"
@@ -221,7 +222,7 @@
 										                            ContainerType="Outlined"
                                                                     UnfocusedColor="#B1B1B1"
 										                            OutlineCornerRadius="8"
-                                                                    FocusedColor="#005e4b"
+                                                                    FocusedColor="{StaticResource Primary}"
                                                                     ErrorColor="#B00020"
                                                                     HasError="False">
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
@@ -229,7 +230,7 @@
                                                                    TextChanged="BorderlessEntry_TextChanged"
                                                                      Style="{StaticResource DefaultEntry}"  
                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
-                                                                    TextColor="#bbbbbb" >
+                                                                    TextColor="{StaticResource Primary}" >
                                         <!--IsReadOnly="{Binding IsNameVisible}"-->
                                         <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
@@ -243,7 +244,7 @@
                                                     FontSize="Title"
                                                     VerticalOptions="Center"
                                                     Style="{StaticResource IconLabelStyle}"
-                                                    TextColor="#005e4b"
+                                                    TextColor="{StaticResource SecondaryNew}"
                                                     Text="{StaticResource Help}"  >
                                                 <Label.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
@@ -316,7 +317,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                         TextColor="#D99A29"/>
+                                         TextColor="{StaticResource Secondary}"/>
                         <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>

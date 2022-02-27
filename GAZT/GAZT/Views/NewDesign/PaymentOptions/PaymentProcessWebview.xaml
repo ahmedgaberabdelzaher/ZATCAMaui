@@ -107,7 +107,7 @@
                                        
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#d99a29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

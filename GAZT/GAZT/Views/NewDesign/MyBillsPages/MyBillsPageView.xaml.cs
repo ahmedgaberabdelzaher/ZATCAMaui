@@ -3,9 +3,11 @@ using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.PaymentOptions;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
+using GAZT.Manager;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.XForms.Border;
+using Syncfusion.XForms.Buttons;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,6 +18,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.MyBillsPages
 {
@@ -55,16 +58,16 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
+                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["Secondary"];
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipPaidColor"];
                         viewModel.FilterIfTypeAndStausFilterSelected(false);
 
                     }
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
+                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["Secondary"];
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipUnPaidColor"];
                         viewModel.FilterIfTypeAndStausFilterSelected(false);
                     }
                     ChipGroup_statusFilter.SelectedItem = viewModel.SelectedChipFilterItem;
@@ -77,7 +80,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -261,25 +264,28 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             try
             {
+               
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     if (selectedReturntype.Text == AppResources.UnPaid)
                     {
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#AA0C19");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#f6e6e8");
+                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["ErrorColor"];
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipPaidColor"];
                     }
-                    else if (selectedReturntype.Text == AppResources.Partiallynewui)
+                    else if (selectedReturntype.Text == AppResources.PartiallyPaid)
                     {
-                        ChipGroup_statusFilter.SelectedChipTextColor = Color.FromHex("#D99A29");
-                        ChipGroup_statusFilter.SelectedChipBackgroundColor = Color.FromHex("#fbf4e9");
+                        ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Partial"];
+                        ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["PartialBg"];
+
                     }
                 });
+
                 //viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -337,7 +343,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

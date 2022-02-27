@@ -76,7 +76,7 @@ namespace EGAZT.Views.NewDesign.VATRegistrationDetails
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

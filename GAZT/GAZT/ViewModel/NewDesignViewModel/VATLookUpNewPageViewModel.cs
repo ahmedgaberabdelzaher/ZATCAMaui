@@ -299,7 +299,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ParameterTypeList = VATParameterList;
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -413,7 +413,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     return;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsLoading = false;
                 isMandatoryDataEntered = false;
@@ -561,7 +561,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //  viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     Device.BeginInvokeOnMainThread(async () =>

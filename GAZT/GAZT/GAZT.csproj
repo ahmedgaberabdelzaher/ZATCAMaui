@@ -2,7 +2,6 @@
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>EGAZT</RootNamespace>
-		<UserSecretsId>8295b39d-86e9-4fff-8cab-b892e5d4f379</UserSecretsId>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<DebugType>pdbonly</DebugType>
@@ -11,7 +10,6 @@
 	<ItemGroup>
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <Compile Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <Compile Remove="Views\NewDesign\NewFolder1\**" />
 	  <Compile Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <Compile Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -27,7 +25,6 @@
 	  <Compile Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <EmbeddedResource Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <EmbeddedResource Remove="Views\NewDesign\NewFolder1\**" />
 	  <EmbeddedResource Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -43,7 +40,6 @@
 	  <EmbeddedResource Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondancePage\**" />
 	  <None Remove="ViewModel\SyncFusionEnabledViewModel\CorrespondenceDetailsPage\**" />
-	  <None Remove="Views\NewDesign\NewFolder1\**" />
 	  <None Remove="Views\NewDesign\Template\NewFolder\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\AccountCreatedPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\CheckTINStatusPages\**" />
@@ -57,41 +53,52 @@
 	  <None Remove="Views\SyncFusionEnabledViews\SigupPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\TaxEvasionPages\**" />
 	  <None Remove="Views\SyncFusionEnabledViews\VATLookUpPages\**" />
+	  <None Remove="ViewModel\SyncFusionEnabledViewModel\Customs\" />
+	  <!-- <EmbeddedResource Remove="Views\NewDesign\EstimatedZAKATReturnsPages\ReturnPortalNavigationPopUp.xaml" />
+	  <EmbeddedResource Remove="Views\NewDesign\SupportPages\ZatcaInfoMenuPageView.xaml" />
+	  <Compile Remove="ViewModel\NewDesignViewModel\SupportPageVM\ZatcaInfoMenuPageViewModel.cs" />
+	  <Compile Remove="Models\MyBillsFilterDropdown.cs" />
+	  <Compile Remove="Models\EnumModels\CustomsEnum.cs" />
+	  <Compile Remove="Views\NewDesign\EstimatedZAKATReturnsPages\ReturnPortalNavigationPopUp.xaml.cs" />
+	  <Compile Remove="Views\NewDesign\SupportPages\ZatcaInfoMenuPageView.xaml.cs" /> -->
+	  <None Remove="ViewModel\NewDesignViewModel\ZakatExemptionRequest\" />
+	  <None Remove="Xamarin.CommunityToolkit" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.0.0.4" />
-		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.1.0.55" />
-		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.1.0.54" />
-		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.1.0.42" />
-		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="18.1.0.55" />
-		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.1.0.54" />
 		<PackageReference Include="System.Linq" Version="4.3.0" />
-		<PackageReference Include="System.ServiceModel.Duplex" Version="4.7.0" />
-		<PackageReference Include="System.ServiceModel.Http" Version="4.7.0" />
-		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.7.0" />
-		<PackageReference Include="System.ServiceModel.Security" Version="4.7.0" />
+		<PackageReference Include="System.ServiceModel.Duplex" Version="4.9.0" />
+		<PackageReference Include="System.ServiceModel.Http" Version="4.9.0" />
+		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.9.0" />
+		<PackageReference Include="System.ServiceModel.Security" Version="4.9.0" />
 		<PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
-		<PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-		<PackageReference Include="Xamarin.Forms" Version="4.7.0.1179" />
+		<PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
 		<PackageReference Include="CardsView" Version="2.6.1" />
 		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="CommonServiceLocator" Version="2.0.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
-		<PackageReference Include="Xamarin.Forms.Maps" Version="4.6.0.800" />
+		<PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2337" />
 		<PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
 		<PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
-		<PackageReference Include="Syncfusion.Xamarin.Core" Version="18.1.0.55" />
 		<PackageReference Include="ZXing.Net.Mobile.Forms" Version="2.4.1" />
-		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="18.1.0.48" />
-		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.2.0" />
+		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="19.4.0.53" />
+	    <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.53" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="19.4.0.53" />
+		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
 		<PackageReference Include="Xamarin.Build.Download" Version="0.10.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2020.4.0" />
+		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.0" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -104,6 +111,7 @@
 	<ItemGroup>
 		<Folder Include="Connected Services\" />
 		<Folder Include="Effect\" />
+		<Folder Include="SyncFusionEnabledBehaviors\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\TaxEvasionRegistrationPage\" />
 		<Folder Include="Views\SyncFusionEnabledViews\ActivityIndicator\" />
 		<Folder Include="Views\SyncFusionEnabledViews\UnlockAccount\" />
@@ -133,6 +141,7 @@
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\ChecKTINStatusPage\" />
 		<Folder Include="ViewModel\NewDesignViewModel\PaymnetOptions\" />
 		<Folder Include="EGAZT\ViewModel\" />
+		<Folder Include="ViewModel\SyncFusionEnabledViewModel\Customs\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -141,11 +150,6 @@
 	<ItemGroup>
 		<Compile Update="AppResources.ar.Designer.cs">
 			<DependentUpon>AppResources.ar.resx</DependentUpon>
-		</Compile>
-		<Compile Update="AppResources.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>AppResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="SyncfusionControl.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -207,6 +211,9 @@
 		<Compile Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml.cs">
 			<DependentUpon>ZakatRegistrationFinancialDetails.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="AppResources.Designer.cs">
+		  <DependentUpon>AppResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">
@@ -249,9 +256,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\TaxManagementPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\DashBoardPages\UpdateActivityInstructionsPageView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\ActivityItemAmendUpdatePage.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -352,12 +356,6 @@
 		<EmbeddedResource Update="Views\NewDesign\TestPage.xaml">
 		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\UpdateVatEffectiveDate\FilterVatEffectiveDatePageView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\UpdateVatEffectiveDate\UpdateVatEffectiveDatePageView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -406,9 +404,6 @@
 		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATCreditCarriedForwardPopUpPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VatReturnNewYesCancelPopUp.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\VATDeclarationPages\VATReturnSuccessfullPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
@@ -432,9 +427,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="Views\NewDesign\ZakatRejectPopUp\ZakatRejectionReasonPopupPageView.xaml">
-		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

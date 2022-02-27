@@ -31,9 +31,9 @@
                     
                     <DataTemplate>
                         <StackLayout>
-                            <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="16" Padding="10"
+                            <custom:CustomLabel Text="{Binding .}" Style="{StaticResource CaptionLabelBlack}" FontSize="15" Padding="10"
 
-                                            FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
+                                            FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HorizontalTextAlignment="Center" />
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup>
                                     <VisualState x:Name="Selected">

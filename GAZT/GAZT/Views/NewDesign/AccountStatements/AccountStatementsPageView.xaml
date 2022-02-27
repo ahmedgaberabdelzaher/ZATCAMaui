@@ -52,7 +52,7 @@
                                             <Label  Text="{Binding Desc}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                             <Label Text="{Binding TaxtypeDesc}" Style="{StaticResource CaptionLabelGrey}"/>
                                         </StackLayout>
-                                        <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                        <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="110"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" HasShadow="False">
                                             <yummy:PancakeView.Triggers>
                                                 <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                     <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
@@ -483,13 +483,13 @@
                             <syncfusion:SfPicker  x:Name="TransactionTypePicker"  HeaderHeight="55"
                                          HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
                                          HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
-                                         PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black"
+                                         PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black"
                                          BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
                                          SelectedItemFontAttribute="Bold"
                                          SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                          ItemHeight="40" DisplayMemberPath="Txt30" ItemsSource="{Binding TransactionTypeFilter}"  Grid.Row="0" Grid.Column="0"
-                                         Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="#006450"
-                                         CancelButtonTextColor="#006450" OKButtonBackgroundColor="#EAF7CC"
+                                         Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="{StaticResource Primary}"
+                                         CancelButtonTextColor="{StaticResource Primary}" OKButtonBackgroundColor="#EAF7CC"
                                          CancelButtonBackgroundColor="#EAF7CC" SelectedItem="{Binding SelectedTransactionTypeFilter}" >
                                 <syncfusion:SfPicker.Behaviors>
                                     <customcontrol:SfPickerBehavior />
@@ -499,7 +499,7 @@
                             <!--{Binding IsYearsChipVisible}-->
                             <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsYearsChipVisible}" HorizontalOptions="Start">
                                 <buttons:SfChipGroup Margin="0,10,0,0" x:Name="ChipGroup_Years" Type="Choice" HorizontalOptions="Start"   ChipBackgroundColor="Transparent"
-                                         ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="#F9F0DF"  ChipBorderColor="{StaticResource NeutralLightGrey}"
+                                         ItemsSource="{Binding ChipDataFilterlistForYears}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource NeutralLightGrey}"
                                          ChipBorderWidth="1" VerticalOptions="Center" SelectionChanged="yearChipGroup_SelectionChanged">
                                     <buttons:SfChipGroup.ItemTemplate>
                                         <DataTemplate >
@@ -579,13 +579,13 @@
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="ascending">
                                                     <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TransactionDateFilterItem}" Value="descending">
                                                     <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>
@@ -601,13 +601,13 @@
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="ascending">
                                                     <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding TaxperiodFilterItem}" Value="descending">
                                                     <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>
@@ -623,13 +623,13 @@
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="ascending">
                                                     <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding DueDateFilterItem}" Value="descending">
                                                     <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>
@@ -645,13 +645,13 @@
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="ascending">
                                                     <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillDescriptionFilterItem}" Value="descending">
                                                     <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>
@@ -667,13 +667,13 @@
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="ascending">
                                                     <Setter Property="ImageSource" Value="ArrowUp" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
 
                                                 <DataTrigger TargetType="buttons:SfButton" Binding="{Binding BillAmountFilterItem}" Value="descending">
                                                     <Setter Property="ImageSource" Value="Entry_DropDown" />
-                                                    <Setter Property="BackgroundColor" Value="#F9F0DF" />
+                                                    <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     <Setter Property="ShowIcon" Value="True" />
                                                 </DataTrigger>
                                             </buttons:SfButton.Triggers>
@@ -828,7 +828,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

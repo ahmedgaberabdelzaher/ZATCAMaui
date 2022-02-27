@@ -1225,7 +1225,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {

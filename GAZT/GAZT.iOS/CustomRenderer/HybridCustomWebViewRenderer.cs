@@ -119,11 +119,10 @@ namespace GAZT.iOS.CustomRenderer
             isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
 
-            //speradsso.eradsso
-
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
                 element.InvokeAction("displayLoadingIndicator");
+                Clear();
             }
 
             if (apiUrl.ToString().Contains("IsFGTCK=Y"))
@@ -307,6 +306,25 @@ namespace GAZT.iOS.CustomRenderer
             decisionHandler(WKNavigationResponsePolicy.Allow);
         }
 
+        public void Clear()
+        {
+            NSHttpCookieStorage.SharedStorage.RemoveCookiesSinceDate(NSDate.DistantPast);
+
+            WKWebsiteDataStore.DefaultDataStore.FetchDataRecordsOfTypes(WKWebsiteDataStore.AllWebsiteDataTypes, (NSArray records) => {
+
+                for (nuint i = 0; i < records.Count; i++)
+                {
+                    var record = records.GetItem<WKWebsiteDataRecord>(i);
+                    WKWebsiteDataRecord[] recordArray = new WKWebsiteDataRecord[record.DataTypes.Count];
+                    WKWebsiteDataStore.DefaultDataStore.RemoveDataOfTypes(record.DataTypes, NSDate.DistantPast, () => { });
+                }
+
+            });
+
+        }
+
     }
+
+
 
 }

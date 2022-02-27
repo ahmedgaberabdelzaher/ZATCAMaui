@@ -1,4 +1,4 @@
-using EGAZT.Models;
+﻿using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
 using EGAZT.Views.NewDesign.DashBoardPages;
 using EGAZT.Views.NewDesign.GenericPickers;
@@ -49,42 +49,10 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     return;
                 } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             };
-
        // SetPickerFont();
           //  App.HideProgressView();
-
         }
-        //public void SetPickerFont()
-        //{
-        //    try
-        //    {
-        //        switch (Xamarin.Forms.Device.RuntimePlatform)
-        //        {
-
-        //            case Xamarin.Forms.Device.iOS:
-        //                {
-                         
-        //                        TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-        //                        TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-        //                        TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-        //                        TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
-
-        //                }
-        //                break;
-        //            case Xamarin.Forms.Device.Android:
-        //                TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-        //                TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-        //                TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-        //                TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
-        //                break;
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //    }
-
-        //}
+        
         protected async override void OnAppearing()
         {
 
@@ -106,23 +74,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = true;
                 });
 
-                //if (Device.RuntimePlatform == Device.Android)
-                //{
-                //    TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
-                //}
-                //else
-                //{
-                //    TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
-                //}
+              
                 await viewModel.OnPageLoad();
-                //if (TaxTypePicker.SelectedItem != null)
-                //{
-                //    viewModel.SelectedReturnTypeForFilter = (ReturnTypes)TaxTypePicker.SelectedItem;
-                //}
-                //else
-                //{
-                //    TaxTypePicker.SelectedItem = viewModel.ReturnTypeForFilter.FirstOrDefault();
-                //}
+              
                 
                 viewModel.SelectedChipFilterItem = null;
                // viewModel.FilterAllData();
@@ -168,9 +122,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
             
@@ -224,7 +178,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         //        //viewModel.SelectedReturnTypeForFilter = selectedReturntype;
 
         //    }
-        //    catch (Exception)
+        //    catch (Exception ex)
         //    { 
 
         //    }
@@ -237,8 +191,28 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedChipFilterItem = selectedReturntype;
+
+                if (selectedReturntype.Text == AppResources.UnSubmitted)
+                {
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorBg"];
+
+
+                }
+                else if (selectedReturntype.Text == AppResources.OverDue)
+                {
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
+                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorBg"];
+
+                }
+                else if (selectedReturntype.Text == AppResources.Submitted)
+                {
+                    ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Success"];
+                    ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["SuccessBg"];
+
+                }
             }
-            catch (Exception)
+            catch (Exception ex)
             { 
             
             }

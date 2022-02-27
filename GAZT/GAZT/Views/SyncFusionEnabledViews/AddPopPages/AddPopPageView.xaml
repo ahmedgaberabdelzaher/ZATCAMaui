@@ -22,14 +22,14 @@
             <Frame Margin="10,0,10,0" CornerRadius="2" BorderColor="Gray" Opacity="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.Column="0"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="White">
                 <StackLayout  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" BackgroundColor="White">
                     <StackLayout Orientation="Horizontal"  BackgroundColor="White"  VerticalOptions="Center">
-                        <Label Margin="0,0,0,0" Text="{Binding HeaderText}"  FontFamily="{StaticResource SSTArabicMedium}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
+                        <Label Margin="0,0,0,0" Text="{Binding HeaderText}"  FontFamily="{StaticResource SomarSemiBold}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTSmallGreenLabelStyle}"/>
                         <Image  Grid.Row="0" Grid.Column="1"  HorizontalOptions="End" Source="ic_close.png">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="CloseImage_Tapped"></TapGestureRecognizer>
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
-                    <local1:CustomLabel x:Name="Message_label" FontFamily="{StaticResource SSTArabicMedium}" Margin="0,0,0,0"  Padding="2" Text="{Binding PopMessage}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontAttributes="{Binding IsBold}" TextColor="{Binding IsRed}"  FlowDirection="{Binding FlowDirections}" />
+                    <Label x:Name="Message_label" FontFamily="{StaticResource SomarSemiBold}" LineHeight="0.8" Margin="0,0,0,0" Padding="2" Text="{Binding PopMessage}"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}" FontAttributes="{Binding IsBold}" TextColor="{Binding IsRed}"  FlowDirection="{Binding FlowDirections}" />
                     <Label  x:Name="xyz" FlowDirection="{Binding FlowDirections}"  Margin="0,0,0,0" Text="{Binding LinkMessage}" TextDecorations="Underline"  IsVisible="{Binding IsVisibleLink}"   HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"  Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding onLinkClicked}"></TapGestureRecognizer>

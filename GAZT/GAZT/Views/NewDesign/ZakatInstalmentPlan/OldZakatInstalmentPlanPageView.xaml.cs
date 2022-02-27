@@ -60,7 +60,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.setMoreOptioButtons();
                 downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 viewModel.IsLoading = false;
@@ -87,7 +87,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 });
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -533,7 +533,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                                 }
                             }
-                            catch (Exception)
+                            catch (Exception ex)
                             {
 
                             }
@@ -606,7 +606,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -637,7 +637,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                    downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -758,7 +758,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -785,7 +785,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

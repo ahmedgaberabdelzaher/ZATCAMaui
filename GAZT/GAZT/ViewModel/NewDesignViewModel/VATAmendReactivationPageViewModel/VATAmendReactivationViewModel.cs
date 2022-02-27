@@ -28,7 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
         public VATRegistrationDetails VATRegistrationData = new VATRegistrationDetails();
         public string OriginalData;
         public string ModifiedData;
-        // public bool isNewEligibleStartDateIsValid = false;
+
 
         public int DefaultMonth;
         public readonly INavigationService _navigationService;
@@ -71,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
 
         #region Properties
-        private Color _continueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
             get
@@ -328,11 +328,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 _isContinueButtonEnable = value;
                 if (_isContinueButtonEnable)
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    ContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    ContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsContinueButtonEnable");
             }
@@ -1118,29 +1118,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 RaisePropertyChanged("AddAdditionalInfoCheckBoxEnabled");
             }
         }
-
-        private bool _isNewStartDateInfoChecked = false;
-        public bool IsNewStartDateInfoChecked
-        {
-            get
-            {
-                return _isNewStartDateInfoChecked;
-            }
-            set
-            {
-                if (_isNewStartDateInfoChecked == value) return;
-
-                _isNewStartDateInfoChecked = value;
-
-                if (_isNewStartDateInfoChecked)
-                {
-                    //isNewEligibleStartDateIsValid = true;
-                    CheckCR1450FieldsValid();
-                }
-
-                RaisePropertyChanged("IsNewStartDateInfoChecked");
-            }
-        }
         private bool _isFDChangeSectionChecked = false;
         public bool IsFDChangeSectionChecked
         {
@@ -1202,8 +1179,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 }
                 else
                 {
-                    
-                    
                     IsFDNameMobEmailEnable = false;
                     IsAddFinancialRepresentativeCheckBoxEnabled = true;
                     IsAddFinancialRepButtonEnabled = true;
@@ -1220,32 +1195,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         }
                         ListFinanceRepresenatives = items;
 
-                        //bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
-                        //  if(isFinancialRepresentativeAvailable == true)
-                        //  {
-                        //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
-                        //      IsChangeEmailChecked = true;
-                        //      IsChangeEmailCheckBoxEnabled = true;
-                        //  }
-                        //  else
-                        //  {
-                        //      IsChangeEmailCheckBoxEnabled = false;
-                        //      IsChangeEmailChecked = false;
-                        //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
+                      //bool isFinancialRepresentativeAvailable = IsFinancialRepresentativeDataAvailable(ListFinanceRepresenatives);
+                      //  if(isFinancialRepresentativeAvailable == true)
+                      //  {
+                      //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", true);
+                      //      IsChangeEmailChecked = true;
+                      //      IsChangeEmailCheckBoxEnabled = true;
+                      //  }
+                      //  else
+                      //  {
+                      //      IsChangeEmailCheckBoxEnabled = false;
+                      //      IsChangeEmailChecked = false;
+                      //      MessagingCenter.Send<VATAmendReactivationPageViewModel, bool>(this, "IsChangeEmailChecked", false);
 
 
-                        //  }
+                      //  }
 
                     }
+
                 }
 
                 IsAddFinancialRepresentativeCheckBoxEnabled = !value;
 
-                if (App.isVatEffectDateNav)
-                {
-                    IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                    IsAddFinancialRepButtonEnabled = false;
-                }
                 RaisePropertyChanged("IsChangeEmailChecked");
             }
         }
@@ -1262,10 +1233,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 if (_IsAddFinancialRepresentativeCheckBoxEnabled == value) return;
 
                 _IsAddFinancialRepresentativeCheckBoxEnabled = value;
-                if(App.isVatEffectDateNav)
-                {
-                    IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                }
 
 
                 RaisePropertyChanged("IsAddFinancialRepresentativeCheckBoxEnabled");
@@ -1419,21 +1386,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                 _vatEligibleStartDate = value;
                 RaisePropertyChanged("VatEligibleStartDate");
-            }
-        }
-        private string _newVatEligibleStartDate = string.Empty;
-        public string NewVatEligibleStartDate
-        {
-            get
-            {
-                return _newVatEligibleStartDate;
-            }
-            set
-            {
-                if (_newVatEligibleStartDate == value) return;
-
-                _newVatEligibleStartDate = value;
-                RaisePropertyChanged("NewVatEligibleStartDate");
             }
         }
 
@@ -2059,53 +2011,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             }
         }
 
-        private bool _isNewVatEligibleDateInsVisible = false;
-        public bool IsNewVatEligibleDateInsVisible
-        {
-            get
-            {
-                return _isNewVatEligibleDateInsVisible;
-            }
-            set
-            {
-                if (_isNewVatEligibleDateInsVisible == value) return;
-
-                _isNewVatEligibleDateInsVisible = value;
-                RaisePropertyChanged("IsNewVatEligibleDateInsVisible");
-            }
-        }
-        private bool _vatEligibleStartDateInsVisible = true;
-        public bool VatEligibleStartDateInsVisible
-        {
-            get
-            {
-                return _vatEligibleStartDateInsVisible;
-            }
-            set
-            {
-                if (_vatEligibleStartDateInsVisible == value) return;
-
-                _vatEligibleStartDateInsVisible = value;
-                RaisePropertyChanged("VatEligibleStartDateInsVisible");
-            }
-        }
-
-        private bool _isCheckEnabled = true;
-        public bool IsCheckEnabled
-        {
-            get
-            {
-                return _isCheckEnabled;
-            }
-            set
-            {
-                if (_isCheckEnabled == value) return;
-
-                _isCheckEnabled = value;
-                RaisePropertyChanged("IsCheckEnabled");
-            }
-        }
-
         private string _isNewAccountText;
         public string NewAccountText
 
@@ -2592,31 +2497,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 {
                     string[] date1 = VatEligibleStartDate.Split('/');
                     Bdt = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
-                    if (App.VATType == Enums.PageExecutionType.Reactivation)
-                    {
-                        VATRegistrationDetailsData.d.VatTaxDt = Bdt;
-                    }
-                }
-                if (App.isVatEffectDateNav)
-                {
-                    var Bdt2 = DateTime.Today.Year.ToString() + "-" + DateTime.Today.Month.ToString() + "-" + DateTime.Today.Day.ToString() + "T00:00:00";
-                    if (!string.IsNullOrEmpty(NewVatEligibleStartDate))
-                    {
-                        string[] date1 = NewVatEligibleStartDate.Split('/');
-                        Bdt2 = date1[2] + "-" + date1[1] + "-" + date1[0] + "T00:00:00";
-                        if (App.VATType == Enums.PageExecutionType.Amend)
-                        {
-                            VATRegistrationDetailsData.d.EffDtAfter = Bdt2;
-                        }
-                    }
-                }
 
-                if (App.VATType == Enums.PageExecutionType.Amend)
-                {
-                    VATRegistrationDetailsData.d.TxnTpz = VATRegistrationDetailsData.d.TxnTpz;
                 }
-
-
 
                 //Step 4
                 if (IsAddNewRepresentativeChecked)
@@ -2806,11 +2688,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     VATRegistrationDetailsData.d.CONTACTDTSet.results[i].MobNumber = ListFinanceRepresenatives[i].MobNumberFR;
                     VATRegistrationDetailsData.d.CONTACTDTSet.results[i].SmtpAddr = ListFinanceRepresenatives[i].SmtpAddrFR;
                 }
-                VATRegistrationDetailsData.d.NresBgFrom = null;
-                VATRegistrationDetailsData.d.NresBgTo = null;
-
                 var ATTDETSetnew = VATRegistrationDetailsData.d.ATTDETSet;
-
                 response = await VatRegistrationWebServiceManager.SaveVATRegistrationData(VATRegistrationDetailsData);
                 PopToRootPage();
                 if (TempDataContacts != null)
@@ -2848,15 +2726,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     IsAddAdditionalInfoChecked = true;
                                 }
                             }
-                            if (response.d.Operationz.Equals("25"))
-                            {
-                                //  string number = response.d.Fbnumz;
-                                string displayMessage = AppResources.VATRegistrationSuccessMessage + " " + response.d.Fbnumz + " " + AppResources.VatApproved;
-                                //await _dialogService.ShowMessage(displayMessage, AppResources.Information);
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(displayMessage));
-                                //_navigationService.GoBack();
-                            }
-
                             VATRegistrationDetailsData = response;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetnew;
                             VATRegistrationDetailsData.d.ATTDETSet = ATTDETSetObject;
@@ -2866,7 +2735,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         IsLoading = false;
                         return null;
@@ -2935,7 +2804,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 else
                 {
                     ImageforTextQuestion3First = "unselected171x136.png";
-                    TextQuestion3FirstTextColor = Color.Black;
+                    TextQuestion3FirstTextColor = (Color)App.Current.Resources["Primary"]; 
                 }
 
                 if (value2forimage3second == "1")
@@ -2947,7 +2816,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 else
                 {
                     ImageforTextQuestion3Second = "unselected171x136.png";
-                    TextQuestion3SecondTextColor = Color.Black;
+                    TextQuestion3SecondTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value1forimage4first == "1")
@@ -2959,7 +2828,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 else
                 {
                     ImageforTextQuestion4First = "unselected171x136.png";
-                    TextQuestion4FirstTextColor = Color.Black;
+                    TextQuestion4FirstTextColor = (Color)App.Current.Resources["Primary"];
                 }
 
                 if (value2forimage4second == "1")
@@ -2971,7 +2840,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 else
                 {
                     ImageforTextQuestion4Second = "unselected171x136.png";
-                    TextQuestion4SecondTextColor = Color.Black;
+                    TextQuestion4SecondTextColor = (Color)App.Current.Resources["Primary"];
                 }
             }
         }
@@ -3037,47 +2906,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     {
                         string pageType = string.Empty;
                         if (App.VATType == Enums.PageExecutionType.Amend)
-                        {
-                            if (App.isVatEffectDateNav)
-                            {
-                                pageType = "16";
-                            }
-
-                            else
-                                pageType = "05";
-                        }
-
+                            pageType = "05";
                         else if (App.VATType == Enums.PageExecutionType.Reactivation)
                             pageType = "07";
                         else
                             pageType = "04";
 
                         vATRegistration = await VatRegistrationWebServiceManager.GAZTGetVATRegistrationData(pageType);
-                        //  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                      //  PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                         if (vATRegistration != null && vATRegistration.d != null)
                         {
-                            if (App.VATType == Enums.PageExecutionType.Amend)
-                            {
-                                if (App.isVatEffectDateNav)
-                                {
-                                    if (vATRegistration.d.TxnTpz == "VT_EFDT")
-                                    {
-                                        IsCheckEnabled = false;
-                                        IsChangeEmailCheckBoxEnabled = false;
-                                        IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                        VatEligibleStartDateInsVisible = false;
-                                        IsNewVatEligibleDateInsVisible = true;
-                                    }
-
-                                    else
-                                        IsCheckEnabled = true;
-
-                                }
-                            }
-
-
-
                             //step 4 and 5 data set
                             if (vATRegistration.d.CONTACT_PERSONSet != null)
                             {
@@ -3087,37 +2926,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                     {
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
-                                            if (App.isVatEffectDateNav)
-                                            {
-                                                if (vATRegistration.d.TxnTpz == "VT_EFDT")
-                                                {
-                                                    IsCheckEnabled = false;
-                                                    IsChangeEmailCheckBoxEnabled = false;
-                                                    IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                                    VatEligibleStartDateInsVisible = false;
-                                                    IsNewVatEligibleDateInsVisible = true;
-                                                }
-                                               
-                                            }
-                                            else
-                                            {
-                                                IsChangeEmailCheckBoxEnabled = true;
-                                            }
-
+                                            IsChangeEmailCheckBoxEnabled = true;
                                         });
                                     }
-
+                                    
                                     else
                                     {
                                         Device.BeginInvokeOnMainThread(() =>
                                         {
                                             IsChangeEmailCheckBoxEnabled = false;
                                         });
-                                    }
+                                     }
                                 }
-
-
-
                                 GpartFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
                                 IdnumberFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Idnumber;
                                 FirstnmFR = vATRegistration.d.CONTACT_PERSONSet.results[0].Firstnm;
@@ -3277,21 +3097,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             switch (App.VATType)
                             {
                                 case Enums.PageExecutionType.Amend:
-                                    if (App.isVatEffectDateNav)
-                                    {
-                                        if (vATRegistration.d.TxnTpz == "VT_EFDT")
-                                        {
-                                            IsCheckEnabled = false;
-                                            IsChangeEmailCheckBoxEnabled = false;
-                                            IsAddFinancialRepresentativeCheckBoxEnabled = false;
-                                        }
-                                        else
-                                            IsCheckEnabled = true;
-
-                                    }
-
-                                    IsInstrunctionChecked = true;
-                                    break;
                                 case Enums.PageExecutionType.Reactivation:
                                     IsInstrunctionChecked = true;
                                     break;
@@ -3315,10 +3120,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             {
                                 SelectedIdTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault();
                                 TxtIDTypeSR = IdTypeListSR.Where(x => x.ID == vATRegistration.d.DecidTy)?.FirstOrDefault()?.Name;
-                            
-                                //myList.FindIndex(a => a.Prop == oProp);
-
-                                IDTypeIndexSR = IdTypeListSR.FindIndex(x => x.ID == SelectedIdTypeSR.ID);
                             }
                             if (vATRegistration.d.Decconno != null)
                                 IdNumberSR = vATRegistration.d.DecidNo;
@@ -3354,7 +3155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             else
                             {
                                 ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                                ImporterTextColor = Color.Black;
+                                ImporterTextColor = (Color)App.Current.Resources["Primary"];
                             }
                             if (VATRegistrationDetailsData.d.ExFg == "1")
                             {
@@ -3364,7 +3165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             else
                             {
                                 ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                                ExporterTextColor = Color.Black;
+                                ExporterTextColor = (Color)App.Current.Resources["Primary"];
                             }
                             if (VATRegistrationDetailsData.d.QUESCONFIG_MSet.results.Count != 0)
                             {
@@ -3404,7 +3205,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             }
                             OriginalData = JsonConvert.SerializeObject(VATRegistrationDetailsData);
                             VATRegistrationData = JsonConvert.DeserializeObject<VATRegistrationDetails>(OriginalData);
-
                         }
                         else
                         {
@@ -3546,7 +3346,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
         private bool IsFinancialRepresentativeDataAvailable(List<FinancialRepresentativesModel> financialRepresentativeList)
         {
-            if (!string.IsNullOrEmpty(financialRepresentativeList[0].FirstnmFR) ||
+            if(!string.IsNullOrEmpty(financialRepresentativeList[0].FirstnmFR) ||
                 !string.IsNullOrEmpty(financialRepresentativeList[0].GpartFR) ||
                 !string.IsNullOrEmpty(financialRepresentativeList[0].IdnumberFR) ||
                 !string.IsNullOrEmpty(financialRepresentativeList[0].LastnmFR) ||
@@ -3562,144 +3362,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 return false;
             }
         }
-
-        public async Task getVatEligibleDate(string vatEligibleStartDate)
-        {
-            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
-
-            // throw new NotImplementedException();
-
-            await Task.Run(() =>
-            {
-                IsLoading = true;
-            });
-
-            await Task.Run(async () =>
-            {
-                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
-
-                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                if (vATcommencementData != null && vATcommencementData.d != null
-                && vATcommencementData.d.__metadata != null && vATcommencementData.d.__metadata.uri != null)
-                {
-                    try
-                    {
-                        if (!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
-                        {
-                            String dateSource = await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
-
-                            // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
-                            VatEligibleStartDate = UtilityManager.ConvertDateFormatToDDMMYYYYY(dateSource);
-                        }
-                        IsLoading = false;
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                        IsLoading = false;
-                    }
-                }
-                IsLoading = false;
-            });
-        }
-
-        public async Task GetNewVatEligibleDateAsync(string newVatDate)
-        {
-            try
-            {
-                await Task.Run(() =>
-                {
-                    IsLoading = true;
-                });
-
-                await Task.Run(async () =>
-                {
-                    VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(newVatDate + "T00:00:00", "VT_EFDT");
-
-                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
-
-                    if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
-                    {
-                        try
-                        {
-                            if (!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
-                            {
-                                //String dateSource = await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
-
-                                // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
-                                NewVatEligibleStartDate = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
-
-                                //isNewEligibleStartDateIsValid = true;
-                                CheckCR1450FieldsValid();
-
-                            }
-                            IsLoading = false;
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
-                            IsLoading = false;
-                            NewVatEligibleStartDate = string.Empty;
-                        }
-                    }
-                    IsLoading = false;
-                });
-            }
-            catch (GAZTVATRegistrationInProcessException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    NewVatEligibleStartDate = string.Empty;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //_navigationService.GoBack();
-                    IsLoading = false;
-                });
-            }
-            catch (InternetException ex)
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    NewVatEligibleStartDate = string.Empty;
-                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    _navigationService.GoBack();
-                    IsLoading = false;
-                });
-            }
-        }
-
-        public void CheckCR1450FieldsValid()
-        {
-            if (IsNewStartDateInfoChecked && !string.IsNullOrEmpty(NewVatEligibleStartDate))
-            {
-                IsContinueButtonEnable = true;
-            }
-            else
-            {
-                IsContinueButtonEnable = false;
-            }
-        }
-
-        private async Task<string> filerDateFromResponse(string uri)
-        {
-            try
-            {
-                int startPos = uri.LastIndexOf("taxDateSet(datetime'") + "taxDateSet(datetime'".Length;
-                int length = uri.IndexOf("T00%3A00%3A00')") - startPos;
-                string sub = uri.Substring(startPos, length);
-                return sub;
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-                return "";
-            }
-
-        }
-
         #endregion
     }
 }

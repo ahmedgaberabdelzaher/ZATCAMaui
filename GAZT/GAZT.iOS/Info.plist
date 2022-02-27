@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCameraUsageDescription</key>
-	<string>To take picture</string>
+	<string>Please grant access to camera usage to capture needed document images . </string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
@@ -12,19 +12,16 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>fa-brands-400.ttf</string>
-		<string>SSTArabic-Bold.ttf</string>
-		<string>SSTArabic-Light.ttf</string>
-		<string>SSTArabic-Medium.ttf</string>
 		<string>UIFontIcons.ttf</string>
-		<string>GE_SS_Two_Light.otf</string>
-		<string>SSTArabic-Roman.ttf</string>
+		<string>Somar-SemiBold.otf</string>
+		<string>Somar-Regular.otf</string>
+		<string>Somar-Light.otf</string>
+		<string>Somar-Bold.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
@@ -39,22 +36,16 @@
 	<string>GAZT</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon-2.appiconset</string>
-	<key>XSLaunchImageAssets</key>
-	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>Custom Property</key>
-	<string></string>
-	<key>Custom Property1</key>
-	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Picking Media</string>
+	<string>Please grant access to share supported images of docuemts</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>To select date</string>
+	<string>Please grant access to your calender to schedule notifications.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Can we use your location when your application is being used?</string>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Can we use your location at all times?</string>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Can we use your location at all times?</string>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -69,7 +60,7 @@
 	<key>UIStatusBarStyle</key>
 	<string>UIStatusBarStyleDefault</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Can we use your photos to save attachments?</string>
+	<string>Please allow access for saving attchments to Photo Library.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>gamekit</string>
@@ -84,19 +75,28 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.4.66</string>
+	<string>5.0.0.43</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.4.66</string>
-	<key>UIApplicationSceneManifest</key>
-	<dict>
-		<key>UIApplicationSupportsMultipleScenes</key>
-		<false/>
-	</dict>
+	<string>5.0.0.43</string>
+	<key>NSContactsUsageDescription</key>
+	<string>please grant access to ZATCA app to your contacts list</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please Grant Access to Microphone Usage </string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Please Grant Access to Bluetooth</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Please grant access to siri </string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Please grant us access to use music for library usage and we are not going to do anything with it.</string>
+	<key>NSAppleMusicUsageDescription </key>
+	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
 </dict>
 </plist>

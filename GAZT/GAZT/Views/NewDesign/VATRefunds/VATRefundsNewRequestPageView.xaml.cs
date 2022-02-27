@@ -33,8 +33,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             DraftsRequestDataModel = null;
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
@@ -54,8 +53,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             this.BindingContext = viewModel;
             DraftsRequestDataModel = draftsRequestData;
 
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
-            {
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
                 Console.WriteLine(arg);
             });
@@ -174,12 +172,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
             try
             {
-                if (DraftsRequestDataModel == null)
+                if(DraftsRequestDataModel == null)
                 {
                     await viewModel.ReloadData();
                     if (viewModel.VatRefundsDisplayDataModel.Fbnumx != string.Empty)
                     {
-
+                        
                     }
                 }
                 else
@@ -187,7 +185,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     await viewModel.LoadDraftsData(DraftsRequestDataModel);
                 }
             }
-            catch (GAZTErrorException ex)
+            catch(GAZTErrorException ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -212,7 +210,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             App.DisplayProgressView();
                         });
 
-                        viewModel.OnVoidBtnClicked();
+                         viewModel.OnVoidBtnClicked();
 
 
 
@@ -266,7 +264,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             App.DisplayProgressView();
                         });
 
-                        viewModel.OnVoidBtnClicked();
+                         viewModel.OnVoidBtnClicked();
 
                         await Task.Run(() =>
                         {
@@ -364,7 +362,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             // viewModel.IsNewAccountClicked = true;
             PopupNavigation.Instance.PushAsync(new NewAccountPopUpPageView(string.Empty));
         }
-
+        
         void ContinueButton_Tapped(object sender, EventArgs e)
         {
             try
@@ -397,12 +395,6 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     viewModel.OnVoidBtnClicked();
                 }
             }
-        }
-
-        private void IBANAccManagementTapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
-
         }
     }
 }

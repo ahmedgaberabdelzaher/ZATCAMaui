@@ -34,9 +34,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 viewModel.OnPageLoad();
                 SetLTR();
             }
-            catch(Exception)
+            catch(Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+               
             }
           
     }
@@ -61,7 +62,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     //  await viewModel.OnReleaseOrBillsClicked();
                 });
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -94,7 +95,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await PopupNavigation.Instance.PopAsync();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -183,7 +184,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     });
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                 }
             });

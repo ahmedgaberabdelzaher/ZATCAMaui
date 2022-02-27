@@ -11,8 +11,11 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -257,14 +260,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                         //                {
                         //                    filetypes = new string[] { "application/pdf", "application/msword", "application/vnd.openxmlformats-officedocument.wordprocessingml.document", "image/jpeg", "image/jpg", "application/vnd.ms-excel", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "image/png", "application/vnd.ms-powerpoint", "application/vnd.openxmlformats-officedocument.presentationml.presentation", "image/gif", "text/plain" };
                         //                }
-                        var fileData = await CrossFilePicker.Current.PickFile(filetypes);
-                        if (fileData != null && fileData.DataArray != null && fileData.DataArray.Length > 0)
+                        PickOptions options = UtilityManager.GetFilePickerOptionsForChooser(filetypes);
+                        //var fileData = await CrossFilePicker.Current.PickFile(filetypes);
+
+                        var fileData = await FilePicker.PickAsync(options);
+                        var stream = await fileData.OpenReadAsync();
+                        attachment = UtilityManager.ReadFully(stream as Stream);
+                        if (fileData != null && attachment != null && attachment.Length > 0)
                         {
-                            attachment = fileData.DataArray;
+                           // attachment = fileData.DataArray;
                             AttachmentName = fileData.FileName;
                             if (fileData.FileName.Contains("."))
                             {
-                                string Extention = fileData.FileName.Split('.')[1];
+                                // string Extention = fileData.FileName.Split('.')[1];
+                                string[] ExtentionArray = fileData.FileName.Split('.');
+                                string Extention = ExtentionArray.Last();
                                 if (Extention.ToLower() == "doc" || Extention.ToLower() == "docx" || Extention.ToLower() == "jpg" || Extention.ToLower() == "jpeg" || Extention.ToLower() == "pdf" || Extention.ToLower() == "xlsx" || Extention.ToLower() == "xls" || Extention.ToLower() == "png" || Extention.ToLower() == "ppt" || Extention.ToLower() == "pptx" || Extention.ToLower() == "gif" || Extention.ToLower() == "txt")
                                 {
                                     if (TotalAttachmentSize <= 300)

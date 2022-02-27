@@ -70,12 +70,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ischkTAndC == true)
                 {
                     IsButtonEnabled = true;
-                    VerifyButtonDisableColor = Color.FromHex("#005e4b");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
                 }
                 else
                 {
                     IsButtonEnabled = false;
-                    VerifyButtonDisableColor = Color.FromHex("#9EA4A9");
+                    VerifyButtonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IschkTAndC");
             }
@@ -95,7 +95,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IsButtonEnabled");
             }
         }
-        private Color _verifybuttonDisableColor = Color.FromHex("#9EA4A9");
+        private Color _verifybuttonDisableColor =  (Color)Application.Current.Resources["ButtonGray"];
         public Color VerifyButtonDisableColor
         {
             get

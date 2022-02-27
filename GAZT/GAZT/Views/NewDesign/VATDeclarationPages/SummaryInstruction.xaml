@@ -62,7 +62,7 @@
                 <!--<CheckBox VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox"  Value="false">
-                            <Setter Property="Color" Value="#ff0000" />
+                            <Setter Property="Color" Value="#e84941" />
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>-->

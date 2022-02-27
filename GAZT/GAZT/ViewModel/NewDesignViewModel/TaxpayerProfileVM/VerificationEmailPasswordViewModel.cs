@@ -246,7 +246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
         }
 
 
-        private Color _resendOTPTextColor = Color.FromHex("#c7c7c7");
+        private Color _resendOTPTextColor =  (Color)Application.Current.Resources["ResendOTPTextColor"];
         public Color ResendOTPTextColor
         {
             get
@@ -321,7 +321,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             if (countDownSeconds == 0)
             {
                 otpTimer.Stop();
-                ResendOTPTextColor = Color.FromHex("#006450");
+                ResendOTPTextColor =  (Color)Application.Current.Resources["Primary"];
 
             }
         }

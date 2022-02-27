@@ -3,18 +3,18 @@
     x:Class="GAZTeServicesApp.Themes.LightTheme"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-    <Color x:Key="GAZTPrimaryColor">#D99A29</Color>
-    <Color x:Key="PrimaryColor">#F36C21</Color>
+    <Color x:Key="GAZTPrimaryColor">#0996d4</Color>
+    <Color x:Key="PrimaryColor">#042e66</Color>
     <Color x:Key="PrimaryDarkColor">#d0424f</Color>
     <Color x:Key="PrimaryDarkenColor">#ab3641</Color>
     <Color x:Key="PrimaryLighterColor">#edcacd</Color>
     <Color x:Key="PrimaryGradient">#e83f94</Color>
     <Color x:Key="PrimaryLight">#ffe8f4</Color>
     <Color x:Key="SecondaryGradient">#7644ad</Color>
-    <Color x:Key="Secondary">#d54381</Color>
+    <Color x:Key="Secondary">#042e66</Color><!--d54381-->
     <Color x:Key="Green">#7ed321</Color>
     <Color x:Key="Red">#ff4a4a</Color>
-    <Color x:Key="Orange">#ff844a</Color>
+    <Color x:Key="Orange">#0996d4</Color>
     <Color x:Key="Blue">#4acaff</Color>
     <Color x:Key="HyperLink">#567cd7</Color>
     <Color x:Key="Gray-100">#f6f7f8</Color>
@@ -39,134 +39,133 @@
             <On Platform="UWP" Value="Assets/UIFontIcons.ttf#UIFontIcons" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-SemiBold" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarSemiBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold"/>
-            <On Platform="iOS" Value="GE SS Two" />
-            <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold"/>
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Regular" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarRegular" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE SS Three" />
-            <On Platform="UWP" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
+            <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
+            <On Platform="iOS" Value="Somar-Light" />
+            <On Platform="UWP" Value="Somar-Light.otf#Somar-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Medium" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarMedium" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Medium.ttf#SSTArabic-Medium" />
-            <On Platform="iOS" Value="GE SS Three" />
-            <On Platform="UWP" Value="GE_SS_Two_Medium#GE_SS_Two_Medium" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic-Medium" />
+            <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="UWP" Value="Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Bold" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE SS Two" />
-            <On Platform="UWP" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-SemiBold-en" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarSemiBold-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
-            <On Platform="iOS" Value="SSTArabic-Bold" />
-            <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Regular-en" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarRegular-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
-            <On Platform="iOS" Value="SSTArabic-Light" />
-            <On Platform="UWP" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
+            <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
+            <On Platform="iOS" Value="Somar-Light" />
+            <On Platform="UWP" Value="Somar-Light.otf#Somar-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Medium-en" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarMedium-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic-Medium" />
-            <On Platform="iOS" Value="SSTArabic-Medium" />
-            <On Platform="UWP" Value="SSTArabic-Medium#SSTArabic-Medium" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" /><!--SSTArabic-Medium-->
+            <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="UWP" Value="Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Bold-en" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarBold-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
-            <On Platform="iOS" Value="SSTArabic-Bold" />
-            <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-SemiBold-ar" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarSemiBold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE SS Two" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Assets/Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Regular-ar" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarRegular-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <On Platform="iOS" Value="GE SS Three" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#Montserrat-Regular" />
+            <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
+            <On Platform="iOS" Value="Somar-Light" />
+            <On Platform="UWP" Value="Assets/Somar-Light.otf#SomarRegular" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Medium-ar" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarMedium-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
-            <On Platform="iOS" Value="GE_SS_Two_Medium" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" />
+            <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="UWP" Value="Assets/Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <OnPlatform x:Key="Montserrat-Bold-ar" x:TypeArguments="x:String">
+    <OnPlatform x:Key="SomarBold-ar" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <On Platform="iOS" Value="GE SS Two" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Assets/Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
-            <!--<On Platform="iOS" Value="GE SS Two" />-->
-              <On Platform="iOS" Value="SSTArabic-Bold" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Bold.ttf#GE_SS_Two_Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            
+              <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Assets/Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_English_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
-            <On Platform="iOS" Value="SSTArabic-Bold" />
-            <On Platform="UWP" Value="SSTArabic-Bold.ttf#SSTArabic-Bold" />
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
+            <On Platform="iOS" Value="Somar-Bold" />
+            <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_English_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Medium.ttf#SSTArabic-Medium" />
-            <!--<On Platform="iOS" Value="SSTArabic-Medium" />-->
-               <On Platform="iOS" Value="SSTArabic-Medium" />
-            <On Platform="UWP" Value="SSTArabic-Medium#SSTArabic-Medium" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" /> <!--SSTArabic-Medium-->
+               <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="UWP" Value="Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_Arabic_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Medium.ttf#GE_SS_Two_Medium" />
-            <!--<On Platform="iOS" Value="GE SS Two" />-->
-            <On Platform="iOS" Value="SSTArabic-Medium" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Medium#GE_SS_Two_Medium" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" />
+            
+            <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="UWP" Value="Assets/Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_English_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
-            <On Platform="iOS" Value="SSTArabic-Light" />
-            <On Platform="UWP" Value="SSTArabic-Light.ttf#SSTArabic-Light" />
+            <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
+            <On Platform="iOS" Value="Somar-Light" />
+            <On Platform="UWP" Value="Somar-Light.otf#Somar-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
-            <!--<On Platform="iOS" Value="GE SS Two" />-->
-            <On Platform="iOS" Value="SSTArabic-Light" />
-            <On Platform="UWP" Value="Assets/GE_SS_Two_Light.ttf#GE_SS_Two_Light" />
+            <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
+            
+            <On Platform="iOS" Value="Somar-Light" />
+            <On Platform="UWP" Value="Assets/Somar-Light.otf#Somar-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <Style x:Key="GAZT_FONT_BOLD" TargetType="Label"></Style>

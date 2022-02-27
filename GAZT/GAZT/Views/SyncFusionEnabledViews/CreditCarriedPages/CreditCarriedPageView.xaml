@@ -25,14 +25,14 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title=""  FontSize="14"   BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title=""  FontSize="13"   BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.GoBackClick}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                             Style="{StaticResource IconButtonStyle}"
                              Text="{DynamicResource StyleReverseBack}"
                              />
@@ -62,7 +62,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <ContentView>
-                                    <cards1:SfCardView HasShadow="True" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="#5d6770"  ShadowColor="#5d6770" BackgroundColor="White" CornerRadius="3" >
+                                    <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" BorderWidth=".05" BorderColor="{StaticResource EntryTextColor}"  ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="3" >
                                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10,10,0,5" Padding="10" >
                                             <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="White" >
                                                 <Grid.ColumnDefinitions>
@@ -99,7 +99,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatSerialNumber}"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : "  FontFamily="{StaticResource GAZT_FONT_MEDIUM}" FontSize="11"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding LineNo}"  FontFamily="{StaticResource SSTArabicMedium}" FontSize="11"  
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding LineNo}"  FontFamily="{StaticResource SomarSemiBold}" FontSize="11"  
 ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -129,7 +129,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatReturnReferenceNumber}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding Fbnum}" FontSize="11"  FontFamily="{StaticResource SomarSemiBold}"
 ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -158,7 +158,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZVatDocumentNumber}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DocNo}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding DocNo}" FontSize="11"  FontFamily="{StaticResource SomarSemiBold}"
 ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>
@@ -187,7 +187,7 @@
                                                         <FormattedString>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}"  Text="{x:Static local:AppResources.ZAmount}" FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span>
                                                             <Span Style="{StaticResource MicroGrayLabelStyleNew}" Text=" : " FontSize="11"  FontFamily="{StaticResource GAZT_FONT_MEDIUM}"></Span >
-                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CreditAmt}" FontSize="11"  FontFamily="{StaticResource SSTArabicMedium}"
+                                                            <Span Style="{StaticResource MicroGrayLabelStyleNewEn}" Text="{Binding CreditAmt}" FontSize="11"  FontFamily="{StaticResource SomarSemiBold}"
 ></Span>
                                                         </FormattedString>
                                                     </Label.FormattedText>

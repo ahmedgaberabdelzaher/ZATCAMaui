@@ -43,7 +43,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily" Value="{StaticResource SSTArRoman}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 
@@ -51,7 +51,7 @@
             </Style>
 
             <Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="#E5EFED"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}"/>
                 <Setter Property="Padding" Value="10"/>
                 <Setter Property="CornerRadius" Value="50"/>
                 <Setter Property="HasShadow" Value="False"/>
@@ -104,7 +104,7 @@
                                                         LeadingViewPosition="Inside"
                                                         UnfocusedColor="#B1B1B1"
                                                         OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b"
+                                                        FocusedColor="{StaticResource Primary}"
                                                         ErrorColor="#B00020">
                         <inputLayout:SfTextInputLayout.LeadingView>
 
@@ -124,7 +124,7 @@
                                                         Text="{Binding TMobNumber}"
                                                         FontSize="Medium" 
                                                         HorizontalOptions="FillAndExpand"
-                                                        TextColor="Black"
+                                                        TextColor="{StaticResource PrimaryColor}"
                                                         PlaceholderColor="Gray"
                                                         Keyboard="Telephone"
                                                         IsReadOnly="True"
@@ -218,9 +218,9 @@
                             <custom:CustomButton   Clicked="RegionBtnClicked" BackgroundColor="Transparent"  />
 
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="RegionPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" ItemsSource="{Binding RList}" DisplayMemberPath="Name" SelectionChanged="RegionPicker_SelectionChanged" >
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
@@ -249,9 +249,9 @@
                                 <custom:CustomButton Clicked="CityPickerButton_Clicked" BackgroundColor="Transparent"  />
 
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="CityPicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" ItemsSource="{Binding CList}" DisplayMemberPath="Name" SelectionChanged="CityPicker_SelectionChanged">
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
@@ -312,9 +312,9 @@
                                 <custom:CustomButton Clicked="ReportTypeButton_Clicked" BackgroundColor="Transparent"  />
 
                                 <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="ReportTypePicker" HeaderHeight="55" HeaderText="" HeaderTextColor="White"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="#006450" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
+                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
                         ShowFooter="False" ItemHeight="40" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="14" OKButtonTextColor="#006450" CancelButtonTextColor="#006450" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
+                        PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
                         FooterHeight="46" ItemsSource="{Binding ReportTypes}" DisplayMemberPath="Title" SelectionChanged="ReportTypePicker_SelectionChanged">
                                     <syncfusion:SfPicker.Behaviors>
                                         <customcontrol:SfPickerBehavior />
@@ -332,7 +332,7 @@
                                 </custom:CustomLabel>
                                 <inputLayout:SfTextInputLayout x:Name="FrmReportDetail" HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6"
                                     ContainerType="Outlined" UnfocusedColor="#B1B1B1" 
-                                    OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" >
+                                    OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" >
                                     <StackLayout Orientation="Vertical" Margin="0,16,0,0">
                                          <Editor  MaxLength="999"
                                                 IsSpellCheckEnabled="False"
@@ -385,7 +385,7 @@
                                                 </custom:BorderlessEntry>
 
                                                 <inputLayout:SfTextInputLayout.TrailingView >
-                                                    <Image Source="closeGrey.png">
+                                                    <Image Source="close.png">
                                                         <Image.GestureRecognizers>
                                                             <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked"/>
                                                         </Image.GestureRecognizers>
@@ -411,11 +411,12 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal" Padding="16">
-                                    <Frame Style="{StaticResource circleFrame}">
-                                        <Image Source="vat_user" HeightRequest="30">
+                                    <Image Source="vat_user" HeightRequest="30"/>
+                                    <!--<Frame Style="{StaticResource circleFrame}">
                                         
-                                    </Image>
-                                            </Frame>
+
+
+                                            </Frame>-->
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center" LineBreakMode="TailTruncation" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
@@ -453,11 +454,12 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="16">
-                                        <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="ic_company.png">
+                                         <Image Source="ic_company.png"/>
+                                        <!--<Frame Style="{StaticResource circleFrame}">
+                                           
 
-                                            </Image>
-                                            </Frame>
+
+                                            </Frame>-->
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
@@ -511,11 +513,12 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Padding="16">
-                                        <Frame Style="{StaticResource circleFrame}">
-                                            <Image Source="zakat_details">
+                                        <Image Source="zakat_details"/>
+                                        <!--<Frame Style="{StaticResource circleFrame}">
+                                            
 
-                                            </Image>
-                                            </Frame>
+
+                                            </Frame>-->
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
                                             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEdit}" Style="{StaticResource ValueLabelBlackBold}" TextColor="{StaticResource Primary}" WidthRequest="50" VerticalTextAlignment="Center"  HorizontalOptions="EndAndExpand">
                                             <custom:CustomLabel.GestureRecognizers>
@@ -580,7 +583,7 @@
                     <!--End Of Summary-->
 
                     <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,25">
-                        <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" />
+                        <commonView:PageIndicatorView Grid.Row="1" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" Completed="{Binding MarkComplete}" DotSize="12" HorizontalOptions="End"/>
 
                         <custom:CustomLabel Text="{Binding PageTitle}" Style="{StaticResource PageTitleBlack}"/>
                         <custom:CustomLabel Text="{Binding BodyTitle}" Style="{StaticResource BodyLabelGrey}"/>
@@ -625,7 +628,7 @@
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
                         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="#D99A29"/>
+                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="{StaticResource Secondary}"/>
                         </StackLayout>
                     </StackLayout>
                 </Grid>

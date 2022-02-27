@@ -495,7 +495,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                             localPath =
                           Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
                         }
                     }

@@ -22,7 +22,7 @@
     </pages:PopupPage.Resources>
     <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}">
         <StackLayout>
-            <Image HorizontalOptions="EndAndExpand" Source="closeGrey.png">
+            <Image HorizontalOptions="EndAndExpand" Source="close.png">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnCloseTapped"/>
                 </Image.GestureRecognizers>
@@ -31,7 +31,7 @@
             <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatNotes}" Style="{StaticResource SectionTitleBlack}"/>
 
 
-            <inputLayout:SfTextInputLayout HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6" ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="#005e4b" ErrorColor="#B00020" >
+            <inputLayout:SfTextInputLayout HasError="{Binding IsReportDetailHasError}" Margin="0,-6,0,-6" ContainerType="Outlined" UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" >
                 <StackLayout Orientation="Vertical" Margin="0,16,0,0">
                     <Editor  MaxLength="999" HeightRequest="200" IsEnabled="{Binding IsEdit}"
                                                 IsSpellCheckEnabled="False"

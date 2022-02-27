@@ -26,6 +26,7 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using static GAZT.ErrorMessage;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -53,7 +54,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         List<Attachment> attachmentList;
         public bool IsDeRegistrationValid = true;
         public bool IsEnteredTINValid = false;
-        public string PopUpMsgFor2021 = string.Empty;
 
         //
         #endregion
@@ -617,7 +617,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("IsOutletChecked");
             }
         }
-        private Color _declarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _declarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color DeclarationContinueButtonnBackroundColor
         {
             get
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 RaisePropertyChanged("DeclarationContinueButtonnBackroundColor");
             }
         }
-        private Color _outletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+        private Color _outletContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color OutletContinueButtonnBackroundColor
         {
             get
@@ -659,11 +659,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 _iSDeclarationContinueButtonEnabled = value;
                 if (_iSDeclarationContinueButtonEnabled)
                 {
-                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    DeclarationContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    DeclarationContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsDeclarationContinueButtonEnabled");
             }
@@ -680,11 +680,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 _iSOutletContinueButtonEnabled = value;
                 if (value)
                 {
-                    OutletContinueButtonnBackroundColor = Color.FromHex("#d49504");
+                    OutletContinueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
                 }
                 else
                 {
-                    OutletContinueButtonnBackroundColor = Color.FromHex("#9EA4A9");
+                    OutletContinueButtonnBackroundColor =  (Color)Application.Current.Resources["ButtonGray"];
                 }
                 RaisePropertyChanged("IsOutletContinueButtonEnabled");
             }
@@ -2192,12 +2192,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 if (_isAttachmentsEnabled == value) return;
 
                 _isAttachmentsEnabled = value;
-                AttachButtonBackGroundColor = Color.FromHex(_isAttachmentsEnabled ? "#d49504" : "#9EA4A9");
+                AttachButtonBackGroundColor = (_isAttachmentsEnabled ? (Color)Application.Current.Resources["Secondary"] : (Color)Application.Current.Resources["ButtonGray"]);
                 RaisePropertyChanged("IsAttachmentsEnabled");
             }
         }
 
-        private Color _attachButtonBackGroundColor = Color.FromHex("#d49504");
+        private Color _attachButtonBackGroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color AttachButtonBackGroundColor
         {
             get
@@ -6763,11 +6763,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
-                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
-                            else
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6778,11 +6774,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
-                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
-                            else
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6792,12 +6784,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
-                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
-                            else
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
 
@@ -6808,13 +6796,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             // await _dialogService.ShowMessage("Data saved successfully", AppResources.Information);
                             isSaveAsDraftCalledForAttachment = true;
-                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
-                            else
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         break;
                     }
@@ -6825,12 +6809,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await SaveAsDraft();
                         if (isSubmitted == true)
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                             isSaveAsDraftCalledForAttachment = true;
-                            if (!string.IsNullOrEmpty(PopUpMsgFor2021))
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(PopUpMsgFor2021));
-                            else
-                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.TinDeregDataSavedSuccessfully));
                         }
                         else
                         {

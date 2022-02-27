@@ -28,7 +28,7 @@
             <StackLayout Grid.Row="0" Margin="0,45,0,0" Padding="20" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                 <Image Source="Forget_ic_success"/>
                 <custom:CustomLabel Margin="0,20,0,10" Text="{x:Static ResourceManager:AppResources.ZVatAcknowledgment}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTGAZTAcknowledgesTheReceiptRegApplication}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap" LineHeight="0.7" StyleId="OnBoardText"/>
+                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ESTGAZTAcknowledgesTheReceiptRegApplication}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" LineBreakMode="WordWrap" StyleId="OnBoardText"/>
             </StackLayout>
             <yummy:PancakeView Grid.Row="1" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand" Style="{StaticResource CommonTopCurves}">
                 <Grid VerticalOptions="Fill" HorizontalOptions="Fill" RowSpacing="15">
@@ -61,7 +61,7 @@
                             </border:SfBorder>
                         </StackLayout>
                     </ScrollView>
-                    <buttons:SfButton Grid.Row="1" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="#d49504" Clicked="GoToDashBoardButtonClick" />
+                    <buttons:SfButton Grid.Row="1" Text="{x:Static ResourceManager:AppResources.TinDeregistrationRegistrationDetails}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="White" TextColor="{StaticResource Primary}" Clicked="GoToDashBoardButtonClick" />
                 </Grid>
             </yummy:PancakeView>
         </Grid>

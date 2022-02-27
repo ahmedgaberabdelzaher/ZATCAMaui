@@ -16,6 +16,7 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
+using Android.Content;
 
 namespace GAZT.Droid
 {
@@ -72,9 +73,15 @@ namespace GAZT.Droid
 
 
             //Code for holding screenshots 
-          //  Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
+            //  Window.SetFlags(WindowManagerFlags.Secure, WindowManagerFlags.Secure);
 
+            if ((ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
+            || (ContextCompat.CheckSelfPermission(this, Manifest.Permission.ReadExternalStorage) != (int)Permission.Granted))
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage }, 0);
+            }
 
+           // RequestStorageAccess();
 
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
@@ -97,6 +104,15 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
              .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
         }
+
+        //private void RequestStorageAccess()
+        //{
+        //    if (!Android.OS.Environment.IsExternalStorageManager)
+        //    {
+        //        StartActivityForResult(new Intent(Android.Provider.Settings.ActionManageAllFilesAccessPermission), 3);
+        //    }
+        //}
+
         private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
         {
             var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
@@ -148,6 +164,7 @@ namespace GAZT.Droid
         public static long DISCONNECT_TIMEOUT = 60000; // 5 min = 5 * 60 * 1000 ms
 
         public Handler disconnectHandler;
+        private readonly int REQUEST;
 
         public void resetDisconnectTimer()
         {
@@ -170,16 +187,19 @@ namespace GAZT.Droid
         {
 
             base.OnStop();
+            App.isAndroidRefresh = false;//#CR2068
         }
 
         protected override void OnRestart()
         {
             base.OnRestart();
+            App.isAndroidRefresh = false;//#CR2068
         }
 
         protected override void OnPause()
         {
             base.OnPause();
+            App.isAndroidRefresh = false;//#CR2068
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)

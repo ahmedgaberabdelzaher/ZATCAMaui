@@ -32,8 +32,8 @@
                        HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
                        Source="Forget_ic_success" >
                 </Image>
-                <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SSTArBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SSTArabicMedium}"
+                <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+                <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <ScrollView>
@@ -54,15 +54,19 @@
                                 </Grid.ColumnDefinitions>
                                 <custom:CustomLabel Grid.Row="0" Grid.Column="0"
                                                     Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
-                                                    VerticalOptions="Center" FontSize="12" TextColor="#909090"
+                                                    VerticalOptions="Center" FontSize="11" TextColor="{StaticResource DarkGrayTextColor}"
                                                     HorizontalOptions="Start" />
 
-                                <custom:CustomLabel x:Name="ReferenceNumberTxt" Grid.Row="0" Grid.Column="1" FontSize="16"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="#010101" Text="{Binding ReferenceNumber}" />
+                                <custom:CustomLabel x:Name="ReferenceNumberTxt"
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontSize="15"
+                                                    Style="{StaticResource ValueLabelBlack}"
+                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="{StaticResource PrimaryColor}" Text="{Binding ReferenceNumber}" />
 
                                 <Image Grid.Row="0" Grid.Column="2">
                                     <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="DarkGray" Size="25"
+                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
                                                          Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
                                     </Image.Source>
                                 </Image>
@@ -75,13 +79,14 @@
                         <buttons:SfButton 
                                           Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
                                           Clicked="Download_Acknowledgement"
-                                          CornerRadius="10" VerticalOptions="End" FontAttributes="Bold"
+                                          CornerRadius="10" VerticalOptions="End"
+                                             FontFamily="{StaticResource SomarBold}"
                                           HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="#d49504" TextColor="White" />
+                                          BackgroundColor="{StaticResource Secondary}" TextColor="White" />
 
                         <custom:CustomLabel Margin="10,0,10,15"
                                             Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
-                                            TextColor="#d49504" HorizontalOptions="Center"
+                                            TextColor="{StaticResource Primary}" HorizontalOptions="Center"
                                             HorizontalTextAlignment="Center">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Dashboard_Tapped" />

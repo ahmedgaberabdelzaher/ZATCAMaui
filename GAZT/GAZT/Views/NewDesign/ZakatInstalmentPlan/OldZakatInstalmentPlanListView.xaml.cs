@@ -45,7 +45,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                // viewModel.onPageLoad();
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -107,7 +107,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

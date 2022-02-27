@@ -28,7 +28,7 @@ namespace EGAZT
         }
         private  void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            ((Entry)sender).TextColor = Color.Black;
+            ((Entry)sender).TextColor = (Color)App.Current.Resources["Primary"];
             //Int16 a = new Int16();
             //Max = Max;
             GetDecimalCount(args.NewTextValue);
@@ -104,13 +104,13 @@ namespace EGAZT
              GetCommaSeparatedAmount(((Entry)sender).Text);
             if(!iSValiedNumber)
             {
-                ((Entry)sender).TextColor =  Color.Red;
+                ((Entry)sender).TextColor =  (Color)App.Current.Resources["NewRedColor"];
 
                 IsValiedNumber = false;
             }
             else
             {
-                ((Entry)sender).TextColor = Color.Black;
+                ((Entry)sender).TextColor = (Color)App.Current.Resources["Primary"];
                 IsValiedNumber = true;
 
             }

@@ -7,6 +7,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.FormBundleStatusPages
 {
@@ -36,13 +37,13 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                BundleType.BackgroundColor = Color.FromHex("#f7f7f7");
-                BundleNumber.BackgroundColor = Color.FromHex("#f7f7f7");
+                BundleType.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                BundleNumber.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                BundleType.BackgroundColor = Color.FromHex("#FFFFFF");
-                BundleNumber.BackgroundColor = Color.FromHex("#FFFFFF");
+                BundleType.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                BundleNumber.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
         }
 
@@ -55,28 +56,24 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
 
                     case Xamarin.Forms.Device.iOS:
                         {
-                            //BundleNumber.HeaderFontFamily = "SSTArabic-Medium";
-                            //BundleNumber.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            //BundleNumber.SelectedItemFontFamily = "SSTArabic-Medium";
-                            //BundleNumber.UnSelectedItemFontFamily = "SSTArabic-Medium";
+                            
 
-
-                            BundleType.HeaderFontFamily = "SSTArabic-Medium";
-                            BundleType.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            BundleType.SelectedItemFontFamily = "SSTArabic-Medium";
-                            BundleType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            BundleType.HeaderFontFamily = "Somar-SemiBold";
+                            BundleType.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            BundleType.SelectedItemFontFamily = "Somar-SemiBold";
+                            BundleType.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        //BundleNumber.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //BundleNumber.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //BundleNumber.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        //BundleNumber.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        //BundleNumber.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        //BundleNumber.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        //BundleNumber.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        //BundleNumber.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
-                        BundleType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BundleType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BundleType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        BundleType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        BundleType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        BundleType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        BundleType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        BundleType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
                         break;
                 }
@@ -139,7 +136,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 viewModel.TxtFBtype = selectedfbtyp.Txt50;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -164,7 +161,7 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
                 viewModel.populate();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

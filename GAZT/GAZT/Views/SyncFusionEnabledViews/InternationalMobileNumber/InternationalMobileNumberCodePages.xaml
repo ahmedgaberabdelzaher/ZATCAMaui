@@ -16,14 +16,14 @@
         <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <controls:TitleView Title="{x:Static local:AppResources.InternationalCountryCode}"  FontSize="14"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
+                <controls:TitleView Title="{x:Static local:AppResources.InternationalCountryCode}"  FontSize="13"  FontFamily="{StaticResource GAZT_FONT_BOLD}" BackgroundColor="{DynamicResource Gray-White} ">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
                             Command="{TemplateBinding BindingContext.BackButtonClicked}"
                             CommandParameter="{x:Reference backButton}"
                             CornerRadius="4"
-                            TextColor="#006450"
+                            TextColor="{StaticResource Primary}"
                              Style="{StaticResource IconButtonStyle}"
                             Text="{DynamicResource StyleReverseBack}"/>
                     </controls:TitleView.LeadingView>
@@ -61,9 +61,9 @@
                     </Grid.ColumnDefinitions>
                      <StackLayout Orientation="Horizontal" Grid.Row="0">
              <local1:CustomLabel Text="{Binding Telefto}" LineBreakMode="WordWrap" Margin="10,0,10,0" Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
-                                 HorizontalTextAlignment="Start"  TextColor="Black" />
+                                 HorizontalTextAlignment="Start"  TextColor="{StaticResource PrimaryColor}" />
              <local1:CustomLabel Text="{Binding Landx}" Margin="30,0,30,0" LineBreakMode="WordWrap"  Style="{StaticResource MicroGrayLabelStyleNewEn}" FontFamily="{StaticResource GAZT_FONT_MEDIUM }" FontSize="Small"
-                                 HorizontalTextAlignment="Start" VerticalOptions="Start" TextColor="Black"   />
+                                 HorizontalTextAlignment="Start" VerticalOptions="Start" TextColor="{StaticResource PrimaryColor}"   />
                          </StackLayout>
                     </Grid>
                 </Frame>

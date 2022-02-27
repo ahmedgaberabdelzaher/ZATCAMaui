@@ -152,53 +152,6 @@ namespace GAZT.Manager
             Array.Reverse(arr);
             return new string(arr);
         }
-
-        public static byte[] ReadFully(Stream input)
-        {
-            byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
-            {
-                int read;
-                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    ms.Write(buffer, 0, read);
-                }
-                return ms.ToArray();
-            }
-        }
-
-        public static PickOptions GetFilePickerOptionsForChooser(string[] filetypes)
-        {
-            PickOptions options = null;
-            try
-            {
-                FilePickerFileType customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-    {
-        { DevicePlatform.iOS, filetypes }, // or general UTType values
-        { DevicePlatform.Android, filetypes } // or general UTType values
-    });
-                options = new PickOptions
-                {
-                    PickerTitle = "",
-                    FileTypes = customFileType,
-                };
-
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return options;
-
-        }
-
-        public static String ConvertDateFormatToDDMMYYYYY(string dateToConvert)
-        {
-            String result = DateTime
-                      .ParseExact(dateToConvert, "yyyy-MM-dd", CultureInfo.InvariantCulture)
-                      .ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
-            return result;
-        }
         public static string SingleDateConversion(string Date)
         {
             String StartDate = Date;
@@ -449,62 +402,6 @@ namespace GAZT.Manager
             }
             return date;
         }
-
-        public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
-        {
-            string requiredDate = string.Empty;
-
-            DateTime dateStart = new DateTime();
-
-            dateStart = (DateTime)dateToConvert;
-
-            GregorianCalendar hjCalendar = new GregorianCalendar();
-            int year = hjCalendar.GetYear(dateStart);
-            int month = hjCalendar.GetMonth(dateStart);
-            int day = hjCalendar.GetDayOfMonth(dateStart);
-
-            string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
-
-
-            string dt1 = string.Empty;
-            string[] dts = null;
-            dts = dateStr.Split('/');
-
-            dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-
-            requiredDate = dt1;
-
-            return dateStr;
-        }
-
-        public static string DDMMFormatDateToYYYYFromDateTypeString(DateTime? dateToConvert)
-        {
-            string requiredDate = string.Empty;
-
-            DateTime dateStart = new DateTime();
-
-            dateStart = (DateTime)dateToConvert;
-
-            GregorianCalendar hjCalendar = new GregorianCalendar();
-            int year = hjCalendar.GetYear(dateStart);
-            int month = hjCalendar.GetMonth(dateStart);
-            int day = hjCalendar.GetDayOfMonth(dateStart);
-
-            string dateStr = "" + day + "/" + month + "/" + year;
-            string dt1 = string.Empty;
-            string[] dts = null;
-            dts = dateStr.Split('/');
-
-            dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
-
-
-            requiredDate = dt1;
-
-            return dateStr;
-        }
-
-
         public static string RemoveDigits(string key)
         {
             string CValue = ConvertNumerals(key);
@@ -574,7 +471,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new InvalidDataException();
                 }
@@ -975,62 +872,62 @@ namespace GAZT.Manager
             {
                 Month = "Rabi II";
             }
-            else if (Month == "01" || Month == "1")
+            else if (Month == "01" || Month == "1" || Month == "January")
             {
                 Month = !App.IsArabic ? "Muharram" : " محرم";
             }
-            else if (Month == "02" || Month == "2")
+            else if (Month == "02" || Month == "2" || Month == "February")
             {
                 //Month = "Safar";
                 Month = !App.IsArabic ? "Safar" : "صفر";
             }
-            else if (Month == "03" || Month == "3")
+            else if (Month == "03" || Month == "3" || Month == "March")
             {
                 // Month = "Rabi I";
                 Month = !App.IsArabic ? "Rabi-Al-Awal" : "ربيع أول";
             }
-            else if (Month == "04" || Month == "4")
+            else if (Month == "04" || Month == "4" || Month == "April")
             {
                 // Month = "Rabi-Al-Thani";
                 Month = !App.IsArabic ? "Rabi-Al-Thani" : "ربيع ثاني";
             }
-            else if (Month == "05" || Month == "5")
+            else if (Month == "05" || Month == "5" || Month == "May")
             {
                 //  Month = " Jumada-Al-Awal";
                 Month = !App.IsArabic ? " Jumada-Al-Awal" : "جمادي أولى";
             }
-            else if (Month == "06" || Month == "6")
+            else if (Month == "06" || Month == "6" || Month == "June")
             {
                 //Month = "Jumada II"; Jumada - Al - Thani
-                Month = !App.IsArabic ? " Jumada-Al-Thani" : "جمادي ثاني";
+                Month = !App.IsArabic ? "Jumada-Al-Thani" : "جمادى الآخرة";
             }
-            else if (Month == "07" || Month == "7")
+            else if (Month == "07" || Month == "7" || Month == "July")
             {
                 //   Month = "Rajab";
                 Month = !App.IsArabic ? "Rajab" : "رجب";
             }
-            else if (Month == "08" || Month == "8")
+            else if (Month == "08" || Month == "8" || Month == "August")
             {
                 // Month = "Sha ban"; 
                 Month = !App.IsArabic ? "Shaban" : "شعبان";
             }
-            else if (Month == "09" || Month == "9")
+            else if (Month == "09" || Month == "9" || Month == "September")
             {
                 //Month = "Ramadan";
                 Month = !App.IsArabic ? "Ramadan" : "رمضان";
             }
-            else if (Month == "10")
+            else if (Month == "10" || Month == "October")
             {
 
                 //   Month = "shawwal";
                 Month = !App.IsArabic ? "Shawwal" : "شوال";
             }
-            else if (Month == "11")
+            else if (Month == "11" || Month == "November")
             {
                 // Month = "Dhul-Qi dah"; 
                 Month = !App.IsArabic ? "Dhul-Qa'dah" : "ذو القعدة";
             }
-            else if (Month == "12")
+            else if (Month == "12" || Month == "December")
             {
                 // Month = "Dhul-Hijjah"; Dhul - Hijjah
                 Month = !App.IsArabic ? "Dhul-Hijjah" : "ذو الحجة";
@@ -1110,7 +1007,7 @@ namespace GAZT.Manager
             else if (Month == "06")
             {
                 //Month = "Jumada II"; Jumada - Al - Thani
-                Month = !App.IsArabic ? " Jumada-Al-Thani" : "Y-جمادي ثاني-M";
+                Month = !App.IsArabic ? " Jumada-Al-Thani" : "Y-جمادى الآخرة-M";
             }
             else if (Month == "07")
             {
@@ -1160,7 +1057,7 @@ namespace GAZT.Manager
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return string.Empty;
             }
@@ -1238,11 +1135,11 @@ namespace GAZT.Manager
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
                 return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return null;
             }
-
+           
         }
 
 
@@ -1415,6 +1312,44 @@ namespace GAZT.Manager
                 return FlowDirection.LeftToRight;
             }
         }
+        public static byte[] ReadFully(Stream input)
+        {
+            byte[] buffer = new byte[16 * 1024];
+            using (MemoryStream ms = new MemoryStream())
+            {
+                int read;
+                while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+                {
+                    ms.Write(buffer, 0, read);
+                }
+                return ms.ToArray();
+            }
+        }
+
+        public static PickOptions GetFilePickerOptionsForChooser(string[] filetypes)
+        {
+            PickOptions options = null;
+            try
+            {
+                FilePickerFileType customFileType = new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+    {
+        { DevicePlatform.iOS, filetypes }, // or general UTType values
+        { DevicePlatform.Android, filetypes } // or general UTType values
+    });
+                options = new PickOptions
+                {
+                    PickerTitle = "",
+                    FileTypes = customFileType,
+                };
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            return options;
+
+        }
     }
 
 
@@ -1540,8 +1475,7 @@ namespace GAZT.Manager
         Invoice = 53,
         Release = 54,
         ReviseDownPayment = 55,
-        AddNote = 56,
-        Update = 57
+        AddNote = 56
     }
 
 

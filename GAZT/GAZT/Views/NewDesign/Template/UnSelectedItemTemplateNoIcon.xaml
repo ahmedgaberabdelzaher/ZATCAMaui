@@ -6,7 +6,7 @@
           x:Class="EGAZT.Views.NewDesign.Template.UnSelectedItemTemplateNoIcon">
     <ViewCell.View>
         <Grid Padding="4" >
-            <cards:SfCardView HasShadow="True" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="104"/>
@@ -16,7 +16,7 @@
                     </Grid.ColumnDefinitions>
                     <Image  Source="unselected171x136" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                     <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="End" HorizontalOptions="FillAndExpand">
-                        <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" LineHeight="0.6"/>
+                        <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelBlack}" FontSize="Small"/>
                     </StackLayout>
                 </Grid>
             </cards:SfCardView>

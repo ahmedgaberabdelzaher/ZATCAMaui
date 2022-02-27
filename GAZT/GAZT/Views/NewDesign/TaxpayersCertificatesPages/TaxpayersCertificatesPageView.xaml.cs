@@ -6,6 +6,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
 {
@@ -48,22 +49,22 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            TaxTypePicker.HeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            TaxTypePicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            TaxTypePicker.HeaderFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            TaxTypePicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -83,7 +84,7 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                 viewModel.SelectedTaxTypeForFilter = selectedReturntype;
            
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -100,11 +101,11 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                TaxTypePicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                TaxTypePicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                TaxTypePicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
             viewModel.IsLoading  = false;
         }
@@ -136,7 +137,7 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

@@ -1,6 +1,7 @@
 ﻿using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GAZT.Helper;
@@ -23,6 +24,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 {
@@ -50,7 +52,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.IsNewAccountClicked = false;
                 viewModel.IsInstrunctionChecked = false;
                 viewModel.NewAccountText = AppResources.ZTERNewAccount;
-               // viewModel.VatEligibleStartDate =string.Empty;
                 // App.IsArabic = false;
                 // App.IsArabic = false;
                 viewModel.SetDefaultDate();
@@ -60,7 +61,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 SetPickerFont();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -76,63 +77,63 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            DDlIDType.HeaderFontFamily = "SSTArabic-Medium";
-                            DDlIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DDlIDType.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DDlIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            DDlIDType.HeaderFontFamily = "Somar-SemiBold";
+                            DDlIDType.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DDlIDType.SelectedItemFontFamily = "Somar-SemiBold";
+                            DDlIDType.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
 
 
-                            DDlContactIDType.HeaderFontFamily = "SSTArabic-Medium";
-                            DDlContactIDType.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DDlContactIDType.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DDlContactIDType.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd  
+                            DDlContactIDType.HeaderFontFamily = "Somar-SemiBold";
+                            DDlContactIDType.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DDlContactIDType.SelectedItemFontFamily = "Somar-SemiBold";
+                            DDlContactIDType.UnSelectedItemFontFamily = "Somar-SemiBold";//dd  
 
-                            DpEStartDate.HeaderFontFamily = "SSTArabic-Medium";
-                            DpEStartDate.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            DpEStartDate.SelectedItemFontFamily = "SSTArabic-Medium";
-                            DpEStartDate.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd      
+                            DpEStartDate.HeaderFontFamily = "Somar-SemiBold";
+                            DpEStartDate.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            DpEStartDate.SelectedItemFontFamily = "Somar-SemiBold";
+                            DpEStartDate.UnSelectedItemFontFamily = "Somar-SemiBold";//dd      
 
-                            SignUpDOB.HeaderFontFamily = "SSTArabic-Medium";
-                            SignUpDOB.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            SignUpDOB.SelectedItemFontFamily = "SSTArabic-Medium";
-                            SignUpDOB.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd   
+                            SignUpDOB.HeaderFontFamily = "Somar-SemiBold";
+                            SignUpDOB.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            SignUpDOB.SelectedItemFontFamily = "Somar-SemiBold";
+                            SignUpDOB.UnSelectedItemFontFamily = "Somar-SemiBold";//dd   
 
-                            ContactDOBPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            ContactDOBPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            ContactDOBPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            ContactDOBPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//dd  
+                            ContactDOBPicker.HeaderFontFamily = "Somar-SemiBold";
+                            ContactDOBPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            ContactDOBPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            ContactDOBPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//dd  
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy 
+                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
-                        DDlContactIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlContactIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlContactIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DDlContactIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        DDlContactIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlContactIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlContactIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlContactIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        DpEStartDate.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpEStartDate.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpEStartDate.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        DpEStartDate.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        DpEStartDate.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DpEStartDate.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpEStartDate.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DpEStartDate.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        SignUpDOB.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        SignUpDOB.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        SignUpDOB.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        SignUpDOB.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        SignUpDOB.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        ContactDOBPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ContactDOBPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ContactDOBPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        ContactDOBPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy  
+                        ContactDOBPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        ContactDOBPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ContactDOBPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        ContactDOBPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
                         break;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -180,7 +181,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private async void DpEStartDate_Closed(object sender, EventArgs e)
+        private void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -188,13 +189,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
                 //          string DOB = year + month + day;
-              
-                await viewModel.getVatEligibleDate(year+"-"+ month+"-"+ day);
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -212,7 +211,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //          string DOB = year + month + day;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -300,7 +299,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     //                viewModel.IsNewAccountClicked = false;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -415,7 +414,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
 
                     viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                    viewModel.ImporterTextColor = Color.Black;
+                    viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
 
                 }
@@ -424,7 +423,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("0"))
                     {
                         viewModel.ImporterImageSource = "vat_tile_IbanCard_background_white.png";
-                        viewModel.ImporterTextColor = Color.Black;
+                        viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                         viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ImFg.Equals("1"))
@@ -439,7 +438,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (string.IsNullOrEmpty(viewModel.VATRegistrationDetailsData.d.ExFg))
                 {
                     viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                    viewModel.ExporterTextColor = Color.Black;
+                    viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
@@ -447,7 +446,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("0"))
                     {
                         viewModel.ExporterImageSource = "vat_tile_IbanCard_background_white.png";
-                        viewModel.ExporterTextColor = Color.Black;
+                        viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                         viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                     }
                     else if (viewModel.VATRegistrationDetailsData.d.ExFg.Equals("1"))
@@ -458,7 +457,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -500,21 +499,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     VATRegistrationDetails response = await viewModel.SubmitClicked();
                     if (response != null)
                     {
-                        if (response.d.Operationz.Equals("25"))
-                        {
-                            if (Navigation.NavigationStack.Count > 0)
-                            {
-                                Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                                Navigation.RemovePage(pg1);
-                                this.Navigation.PopAsync();
-                            }
-                            //viewModel._navigationService.GoBack();
-                        }
-                        else
-                        {
-                            viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
-                        }
+                        App.HasToRefreshLoaderOnDashboard = true;
+                        App.LoginDataRetrieved.VtReg = "X";
+                        viewModel._navigationService.NavigateTo(App.VATRegistrationSuccessfullPageView, response);
                     }
+
                 }
                 else
                 {
@@ -561,6 +550,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 setdefaultvalueforTPDetailscreen();
                 if (string.IsNullOrEmpty(viewModel.VatEligibleStartDate))
                 {
+
                     viewModel.IsContinueButtonEnable = false;
                 }
                 else
@@ -845,7 +835,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                     //  viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {
@@ -917,7 +907,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     await Task.Run(() =>
                     {
@@ -996,7 +986,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
@@ -1066,7 +1056,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         });
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                 }
@@ -1077,6 +1067,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
+            MessagingCenter.Unsubscribe<object, string>(this, "YesReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "NoReceived");
+            MessagingCenter.Unsubscribe<object, string>(this, "SaveCommandReceived");
             MessagingCenter.Unsubscribe<object, string>(this, "IbanReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "AttachmentReceived");
             MessagingCenter.Unsubscribe<object, ATTDETSet>(this, "EligibilitySetAttachmentReceived");
@@ -1101,13 +1094,13 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 if (Device.RuntimePlatform == Device.Android)
                 {
-                    DDlIDType.BackgroundColor = Color.FromHex("#f7f7f7");
-                    DDlContactIDType.BackgroundColor = Color.FromHex("#f7f7f7");
+                    DDlIDType.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
+                    DDlContactIDType.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
                 }
                 else
                 {
-                    DDlIDType.BackgroundColor = Color.FromHex("#FFFFFF");
-                    DDlContactIDType.BackgroundColor = Color.FromHex("#FFFFFF");
+                    DDlIDType.BackgroundColor =  (Color)Application.Current.Resources["White"];
+                    DDlContactIDType.BackgroundColor =  (Color)Application.Current.Resources["White"];
                 }
 
                 MessagingCenter.Subscribe<VATRegistrationPageViewModel, bool>(this, "IsInstrunctionChecked", (obj, res) =>
@@ -1145,7 +1138,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -1172,13 +1165,174 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 });
 
+
+                getYesCommand();
+                getNoCommand();
+                MessagingCenter.Subscribe<object, string>(this, "SaveCommandReceived", async (sender, arg) =>
+                {
+                    String OperationCode = String.Empty;
+                    await PopupNavigation.Instance.PopAsync();
+                    if (arg != null)
+                    {
+                        string message1 = arg;
+                        if (App.IsArabic)
+                        {
+                            ArButtons buttonId = ArButtons.None;
+                            if (!string.IsNullOrEmpty(message1))
+                            {
+                                message1 = message1.Replace(" ", "");
+                            }
+                            Enum.TryParse(message1, out buttonId);
+                            switch (buttonId)
+                            {
+                                case ArButtons.إضافةملاحظات:
+
+                                    break;
+                                case ArButtons.عرضملاحظات:
+
+                                    break;
+                                case ArButtons.المرفقات:
+                                    break;
+                                case ArButtons.إلغاء:
+                                    OperationCode = "04";
+                                    break;
+
+                                case ArButtons.حفظكمسودة:
+                                    OperationCode = "05";
+                                    break;
+
+                                case ArButtons.تقديم:
+                                    OperationCode = "01";
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Buttons buttonId = Buttons.None;
+                            if (!string.IsNullOrEmpty(message1))
+                            {
+                                message1 = message1.Replace(" ", "");
+                            }
+                            Enum.TryParse(message1, out buttonId);
+                            switch (buttonId)
+                            {
+                                case Buttons.CreateNotes:
+                                    break;
+                                case Buttons.DisplayNotes:
+                                    break;
+                                case Buttons.Attachments:
+                                    break;
+                                case Buttons.Void:
+                                    OperationCode = "04";
+                                    break;
+                                case Buttons.SaveasDraft:
+                                    OperationCode = "05";
+                                    break;
+                                case Buttons.Submit:
+                                    OperationCode = "01";
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+
+                        viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
+                        if (!string.IsNullOrEmpty(OperationCode))
+                        {
+                            if (OperationCode == "04")
+                            {
+
+
+                                viewModel.VoidMsg();
+
+                                //if (App.IsArabic)
+                                //{
+                                //    var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+                                //    if (!result)
+                                //    {
+                                //        await viewModel.SubmitClicked();
+                                //    }
+                                //}
+                                //else
+                                //{
+                                //    var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+                                //    if (result)
+                                //    {
+                                //        await viewModel.SubmitClicked();
+                                //    }
+                                //}
+                            }
+                            else
+                            {
+                                await viewModel.SubmitClicked();
+                            }
+                        }
+                    }
+                });
+
                 //await GetVatRegistrationData();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
         }
+
+        public void getYesCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                            //viewModel.VATSetReturnVoidAsync();
+
+                            viewModel.VATRegistrationDetailsData.d.Operationz = "04";
+                            await viewModel.SubmitClicked();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
+        public void getNoCommand()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "NoReceived", async (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        if (arg == AppResources.ZZGeneralMessage_AllInfoFilledInTheFormWillBeLost)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                        else if (arg == AppResources.ZZZRefundEnableMessage)
+                        {
+                            await PopupNavigation.Instance.PopAsync();
+                        }
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+            }
+        }
+
         public async Task GetVatRegistrationData()
         {
             try
@@ -1197,7 +1351,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1409,7 +1563,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -1501,7 +1655,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -1648,7 +1802,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
                 await PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1661,7 +1815,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (viewModel.ImporterImageSource == "selected171x136.png")
                 {
                     viewModel.ImporterImageSource = "unselected171x136.png";
-                    viewModel.ImporterTextColor = Color.Black;
+                    viewModel.ImporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
                 else
@@ -1672,7 +1826,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1697,7 +1851,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (viewModel.ExporterImageSource == "selected171x136.png")
                 {
                     viewModel.ExporterImageSource = "unselected171x136.png";
-                    viewModel.ExporterTextColor = Color.Black;
+                    viewModel.ExporterTextColor = (Color)App.Current.Resources["Primary"];
                     viewModel.VATRegistrationDetailsData.d.ExFg = "0";
                 }
                 else
@@ -1708,125 +1862,133 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
         {
-            String OperationCode = String.Empty;
-
-            try
-            {
-                if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
-                {
-                    String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
 
-                    if (App.IsArabic)
-                    {
-                        ArButtons buttonId = ArButtons.None;
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
 
-                        Enum.TryParse(action, out buttonId);
-                        switch (buttonId)
-                        {
-                            case ArButtons.إضافةملاحظات:
+            await PopupNavigation.Instance.PushAsync(new MoreMenuPopUpPageViewRTwo(viewModel.ListOfActionButtonsApplicable));
 
-                                break;
-                            case ArButtons.عرضملاحظات:
 
-                                break;
-                            case ArButtons.المرفقات:
-                                break;
-                            case ArButtons.إلغاء:
-                                OperationCode = "04";
-                                break;
+           
 
-                            case ArButtons.حفظكمسودة:
-                                OperationCode = "05";
-                                break;
+            //String OperationCode = String.Empty;
 
-                            case ArButtons.تقديم:
-                                OperationCode = "01";
-                                break;
+            //try
+            //{
+            //    if (viewModel.ListOfActionButtonsApplicableForRegistration != null && viewModel.ListOfActionButtonsApplicableForRegistration.Count() != 0)
+            //    {
+            //        String action = await DisplayActionSheet("", AppResources.ZZCancel, null, viewModel.ListOfActionButtonsApplicableForRegistration.ToArray());
 
-                            default:
-                                break;
-                        }
-                    }
-                    else
-                    {
-                        Buttons buttonId = Buttons.None;
 
-                        buttonId = Buttons.Attachments;
+            //        if (App.IsArabic)
+            //        {
+            //            ArButtons buttonId = ArButtons.None;
+            //            if (!string.IsNullOrEmpty(action))
+            //            {
+            //                action = action.Replace(" ", "");
+            //            }
 
-                        if (!string.IsNullOrEmpty(action))
-                        {
-                            action = action.Replace(" ", "");
-                        }
+            //            Enum.TryParse(action, out buttonId);
+            //            switch (buttonId)
+            //            {
+            //                case ArButtons.إضافةملاحظات:
 
-                        Enum.TryParse(action, out buttonId);
+            //                    break;
+            //                case ArButtons.عرضملاحظات:
 
-                        switch (buttonId)
-                        {
-                            case Buttons.CreateNotes:
-                                break;
-                            case Buttons.DisplayNotes:
-                                break;
-                            case Buttons.Attachments:
-                                break;
-                            case Buttons.Void:
-                                OperationCode = "04";
-                                break;
-                            case Buttons.SaveasDraft:
-                                OperationCode = "05";
-                                break;
-                            case Buttons.Submit:
-                                OperationCode = "01";
-                                break;
+            //                    break;
+            //                case ArButtons.المرفقات:
+            //                    break;
+            //                case ArButtons.إلغاء:
+            //                    OperationCode = "04";
+            //                    break;
 
-                            default:
-                                break;
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-            }
+            //                case ArButtons.حفظكمسودة:
+            //                    OperationCode = "05";
+            //                    break;
 
-            viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
-            if (!string.IsNullOrEmpty(OperationCode))
-            {
-                if (OperationCode == "04")
-                {
-                    if (App.IsArabic)
-                    {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
-                        if (!result)
-                        {
-                            await viewModel.SubmitClicked();
-                        }
-                    }
-                    else
-                    {
-                        var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
-                        if (result)
-                        {
-                            await viewModel.SubmitClicked();
-                        }
-                    }
-                }
-                else
-                {
-                    await viewModel.SubmitClicked();
-                }
-            }
+            //                case ArButtons.تقديم:
+            //                    OperationCode = "01";
+            //                    break;
+
+            //                default:
+            //                    break;
+            //            }
+            //        }
+            //        else
+            //        {
+            //            Buttons buttonId = Buttons.None;
+
+            //            buttonId = Buttons.Attachments;
+
+            //            if (!string.IsNullOrEmpty(action))
+            //            {
+            //                action = action.Replace(" ", "");
+            //            }
+
+            //            Enum.TryParse(action, out buttonId);
+
+            //            switch (buttonId)
+            //            {
+            //                case Buttons.CreateNotes:
+            //                    break;
+            //                case Buttons.DisplayNotes:
+            //                    break;
+            //                case Buttons.Attachments:
+            //                    break;
+            //                case Buttons.Void:
+            //                    OperationCode = "04";
+            //                    break;
+            //                case Buttons.SaveasDraft:
+            //                    OperationCode = "05";
+            //                    break;
+            //                case Buttons.Submit:
+            //                    OperationCode = "01";
+            //                    break;
+
+            //                default:
+            //                    break;
+            //            }
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+
+            //viewModel.VATRegistrationDetailsData.d.Operationz = OperationCode;
+            //if (!string.IsNullOrEmpty(OperationCode))
+            //{
+            //    if (OperationCode == "04")
+            //    {
+            //        if (App.IsArabic)
+            //        {
+            //            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZNo, AppResources.ZYes);
+            //            if (!result)
+            //            {
+            //                await viewModel.SubmitClicked();
+            //            }
+            //        }
+            //        else
+            //        {
+            //            var result = await this.DisplayAlert(AppResources.ZZZConfirmationMsg, AppResources.VATRVoidConfirmationMessage, AppResources.ZYes, AppResources.ZNo);
+            //            if (result)
+            //            {
+            //                await viewModel.SubmitClicked();
+            //            }
+            //        }
+            //    }
+            //    else
+            //    {
+            //        await viewModel.SubmitClicked();
+            //    }
+            //}
         }
         private void DDlIDTypeSR_OkayButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -1875,7 +2037,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -1926,7 +2088,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -1967,7 +2129,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -1981,7 +2143,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 ((Xamarin.Forms.CollectionView)sender).SelectedItem = null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -2121,7 +2283,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2234,7 +2396,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2276,7 +2438,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumber();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -2562,7 +2724,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string DOB = year + month + day;
                 ValidateIDNumberContact();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -2683,7 +2845,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2792,7 +2954,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2921,7 +3083,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     });
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3014,7 +3176,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -3090,7 +3252,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -3459,7 +3621,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
             }
-            catch (Exception)
+            catch (Exception ex)
             {
             }
         }
@@ -3479,7 +3641,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumber();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -3498,7 +3660,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 ValidateIDNumberContact();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -3509,10 +3671,5 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             viewModel._navigationService.GoBack();
         }
 
-        private void IBANAccManagementTapped(object sender, EventArgs e)
-        {
-            viewModel._navigationService.NavigateTo(App.GAZTBankAccountManagementPageView);
-
-        }
     }
 }

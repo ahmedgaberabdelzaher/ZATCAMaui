@@ -1,22 +1,16 @@
-﻿using EGAZT.Models;
-using EGAZT.ViewModel.NewDesignViewModel;
-using Rg.Plugins.Popup.Services;
-using Syncfusion.SfPicker.XForms;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
 using System.Resources;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
+using EGAZT.ViewModel.NewDesignViewModel;
+using Syncfusion.SfPicker.XForms;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Xamarin.Forms.Markup;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.ZakatForm5
 {
@@ -101,7 +95,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 //}
               
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 await Task.Run(() =>
                 {
@@ -168,55 +162,55 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             switch (BTNno)
             {
                 case 1:
-                    Cabsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Cabsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Cabsbtn.TextColor = Color.Green;
                     break;
                 case 2:
-                    ProfessionalBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    ProfessionalBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     ProfessionalBtn.TextColor = Color.Green;
                     break;
                 case 3:
-                    SellBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    SellBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     SellBtn.TextColor = Color.Green;
                     break;
                 case 4:
-                    LabourBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    LabourBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     LabourBtn.TextColor = Color.Green;
                     break;
                 case 5:
-                    IndustryBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    IndustryBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     IndustryBtn.TextColor = Color.Green;
                     break;
                 case 6:
-                    ContractingBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    ContractingBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     ContractingBtn.TextColor = Color.Green;
                     break;
                 case 7:
-                    InvestBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    InvestBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     InvestBtn.TextColor = Color.Green;
                     break;
                 case 8:
-                    Hotelsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Hotelsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Hotelsbtn.TextColor = Color.Green;
                     break;
                 case 9:
-                    EducationBtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    EducationBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     EducationBtn.TextColor = Color.Green;
                     break;
                 case 10:
-                    Poultrybtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Poultrybtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Poultrybtn.TextColor = Color.Green;
                     break;
                 case 11:
-                    Carsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Carsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Carsbtn.TextColor = Color.Green;
                     break;
                 case 12:
-                    Mineralsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Mineralsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Mineralsbtn.TextColor = Color.Green;
                     break;
                 case 13:
-                    Additionalbtn.BackgroundColor = Color.FromHex("#E5EFED");
+                    Additionalbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
                     Additionalbtn.TextColor = Color.Green;
                     break;
             }
@@ -253,20 +247,20 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
-            Additionalbtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Additionalbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
             Additionalbtn.TextColor = Color.Green;
 
         }
@@ -303,22 +297,22 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
-            Mineralsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Mineralsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
             Mineralsbtn.TextColor = Color.Green;
-            Additionalbtn.TextColor = Color.Black;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Cars_Clicked(object sender, EventArgs e)
@@ -351,23 +345,23 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
-            Carsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Carsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
             Carsbtn.TextColor = Color.Green;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Poultry_Clicked(object sender, EventArgs e)
@@ -399,24 +393,24 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
-            Poultrybtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Poultrybtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             Poultrybtn.TextColor = Color.Green;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Education_Clicked(object sender, EventArgs e)
@@ -447,25 +441,25 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
-            EducationBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            EducationBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
             EducationBtn.TextColor = Color.Green;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Hotels_Clicked(object sender, EventArgs e)
@@ -495,26 +489,26 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
-            Hotelsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Hotelsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
             Carsbtn.BackgroundColor = Color.White;
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             Hotelsbtn.TextColor = Color.Green;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Invest_Clicked(object sender, EventArgs e)
@@ -544,7 +538,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
-            InvestBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            InvestBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
             Poultrybtn.BackgroundColor = Color.White;
@@ -553,19 +547,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Additionalbtn.BackgroundColor = Color.White;
 
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             InvestBtn.TextColor = Color.Green;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Contracting_Clicked(object sender, EventArgs e)
@@ -594,7 +588,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
-            ContractingBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            ContractingBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
             EducationBtn.BackgroundColor = Color.White;
@@ -603,19 +597,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             ContractingBtn.TextColor = Color.Green;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Industry_Clicked(object sender, EventArgs e)
@@ -642,7 +636,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
-            IndustryBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            IndustryBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
             Hotelsbtn.BackgroundColor = Color.White;
@@ -652,19 +646,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             IndustryBtn.TextColor = Color.Green;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
 
         }
 
@@ -692,7 +686,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Cabsbtn.BackgroundColor = Color.White;
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
-            LabourBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            LabourBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
             InvestBtn.BackgroundColor = Color.White;
@@ -703,19 +697,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             LabourBtn.TextColor = Color.Green;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Sell_Clicked(object sender, EventArgs e)
@@ -740,7 +734,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
             Cabsbtn.BackgroundColor = Color.White;
             ProfessionalBtn.BackgroundColor = Color.White;
-            SellBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            SellBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
             ContractingBtn.BackgroundColor = Color.White;
@@ -752,19 +746,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
-            ProfessionalBtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
             SellBtn.TextColor = Color.Green;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
         }
 
         private void Professional_Clicked(object sender, EventArgs e)
@@ -788,7 +782,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isCabVisible = false;
 
             Cabsbtn.BackgroundColor = Color.White;
-            ProfessionalBtn.BackgroundColor = Color.FromHex("#E5EFED");
+            ProfessionalBtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
             IndustryBtn.BackgroundColor = Color.White;
@@ -801,19 +795,19 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             Mineralsbtn.BackgroundColor = Color.White;
             Additionalbtn.BackgroundColor = Color.White;
 
-            Cabsbtn.TextColor = Color.Black;
+            Cabsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
             ProfessionalBtn.TextColor = Color.Green;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
 
         }
 
@@ -837,7 +831,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             viewModel.isMineralVisible = false;
             viewModel.isAdditionalVisible = false;
 
-            Cabsbtn.BackgroundColor = Color.FromHex("#E5EFED");
+            Cabsbtn.BackgroundColor =  (Color)Application.Current.Resources["BackgroundGray"];
             ProfessionalBtn.BackgroundColor = Color.White;
             SellBtn.BackgroundColor = Color.White;
             LabourBtn.BackgroundColor = Color.White;
@@ -853,18 +847,18 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
 
 
             Cabsbtn.TextColor = Color.Green;
-            ProfessionalBtn.TextColor = Color.Black;
-            SellBtn.TextColor = Color.Black;
-            LabourBtn.TextColor = Color.Black;
-            IndustryBtn.TextColor = Color.Black;
-            ContractingBtn.TextColor = Color.Black;
-            InvestBtn.TextColor = Color.Black;
-            Hotelsbtn.TextColor = Color.Black;
-            EducationBtn.TextColor = Color.Black;
-            Poultrybtn.TextColor = Color.Black;
-            Carsbtn.TextColor = Color.Black;
-            Mineralsbtn.TextColor = Color.Black;
-            Additionalbtn.TextColor = Color.Black;
+            ProfessionalBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            SellBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            LabourBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            IndustryBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            ContractingBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            InvestBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Hotelsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            EducationBtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Poultrybtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Carsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Mineralsbtn.TextColor = (Color)App.Current.Resources["Primary"];;
+            Additionalbtn.TextColor = (Color)App.Current.Resources["Primary"];;
 
         }
     }

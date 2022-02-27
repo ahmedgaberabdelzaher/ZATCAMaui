@@ -11,6 +11,7 @@ using ZXing.Net.Mobile.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.VATLookUp
 {
@@ -70,17 +71,17 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                     case Xamarin.Forms.Device.iOS:
                         {
 
-                            PPicker.HeaderFontFamily = "SSTArabic-Medium";
-                            PPicker.ColumnHeaderFontFamily = "SSTArabic-Medium";
-                            PPicker.SelectedItemFontFamily = "SSTArabic-Medium";
-                            PPicker.UnSelectedItemFontFamily = "SSTArabic-Medium";//ddlLIssuedBy
+                            PPicker.HeaderFontFamily = "Somar-SemiBold";
+                            PPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
+                            PPicker.SelectedItemFontFamily = "Somar-SemiBold";
+                            PPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        PPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";
-                        PPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "GE_SS_Two_Medium.ttf#GE_SS_Two_Medium";//ddlLIssuedBy
+                        PPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        PPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        PPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        PPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
@@ -99,11 +100,11 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
             if (Device.RuntimePlatform == Device.Android)
             {
-                PPicker.BackgroundColor = Color.FromHex("#f7f7f7");
+                PPicker.BackgroundColor =  (Color)Application.Current.Resources["PickerBgGray"];
             }
             else
             {
-                PPicker.BackgroundColor = Color.FromHex("#FFFFFF");
+                PPicker.BackgroundColor =  (Color)Application.Current.Resources["White"];
             }
             
                         MessagingCenter.Send(this, "ScanData", "abc");

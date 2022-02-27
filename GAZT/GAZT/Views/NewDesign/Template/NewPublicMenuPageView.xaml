@@ -27,8 +27,8 @@
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
             <Color x:Key="ShadowLvl0">#EFEFEF</Color>
-            <Color x:Key="ShadowLvl1">#232323</Color>
-            <Color x:Key="ShadowLvl2">#232323</Color>
+            <!--<Color x:Key="ShadowLvl1">{StaticResource NeutralBlack}</Color>
+            <Color x:Key="ShadowLvl2">{StaticResource NeutralBlack}</Color>-->
             <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="CornerRadius" Value="14" />
@@ -167,7 +167,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                       TextColor="#D99A29"/>
+                                       TextColor="{StaticResource Secondary}"/>
                     </StackLayout>
                 </StackLayout>
             </Grid>

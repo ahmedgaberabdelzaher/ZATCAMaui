@@ -49,7 +49,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
-                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" Source="information" HorizontalOptions="Start"
+                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start"
                                VerticalOptions="Center" />
                         <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding InfoTitle,StringFormat='{0}'}"
                                             Margin="10,0,0,0" HorizontalOptions="StartAndExpand"

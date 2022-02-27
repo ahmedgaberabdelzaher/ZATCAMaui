@@ -346,16 +346,6 @@ namespace EGAZT.Models
         public __metadata __metadata { get; set; }
         [DataMember]
         public string SmartReg { get; set; }
-
-        [DataMember]
-        public string NresFg { get; set; } 
-        
-        [DataMember]
-        public string NresBgTo { get; set; }        
-        [DataMember]
-        public string NresBgFrom { get; set; }
-
-
         [DataMember]
         public string Source { get; set; }
         [DataMember]
@@ -388,9 +378,6 @@ namespace EGAZT.Models
         public string Euser { get; set; }
         [DataMember]
         public string ExAttch { get; set; }
-        
-        [DataMember]
-        public string EffDtAfter { get; set; }
         [DataMember]
         public string ExFg { get; set; }
         [DataMember]

@@ -11,12 +11,15 @@ namespace pdfjs.Droid
 	{
 		public PdfWebViewRenderer(Context context) : base(context)
 		{
-
-		}
+          
+        }
 
          protected override void OnElementChanged(ElementChangedEventArgs<WebView> e)
         {
+            
             base.OnElementChanged(e);
+            Control.VerticalScrollBarEnabled = false;
+
         }
 
         public override bool DispatchTouchEvent(MotionEvent e)
@@ -24,5 +27,7 @@ namespace pdfjs.Droid
             Parent.RequestDisallowInterceptTouchEvent(true);
             return base.DispatchTouchEvent(e);
         }
+
+
     }
 }

@@ -119,15 +119,16 @@
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start"
+                                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start"
                                                                VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True"
                                                                BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                                        </Frame>--> 
+                                                        
+                                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="details"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZTaxPayerDetails}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                                         </StackLayout>
                                                     </Grid>   
                     
@@ -153,7 +154,7 @@
 
 
                                                         <!--<Label Grid.Row="1" Grid.Column="0" Text="Import or Export" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>
-                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="Black" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
+                                                    <Label Grid.Row="1" Grid.Column="1" Text="Import" TextColor="{StaticResource PrimaryColor}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}"/>-->
 
                                                     </Grid>
                                                 </StackLayout>
@@ -172,13 +173,14 @@
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                                        </Frame>--> 
+                                                       
+                                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                             <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="positive"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="Al Rajhi Bank" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                            <Label Text="Al Rajhi Bank" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                                         </StackLayout>
                                                     </Grid>     
                               <BoxView Style="{StaticResource lineSeperator}"/>
@@ -224,13 +226,14 @@
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                                        </Frame>--> 
+                                                     
+                                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                               <Image HeightRequest="24" WidthRequest="24" HorizontalOptions="Start"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="finances"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.FORM5FinancialInfo}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                                         </StackLayout>
                                                     </Grid>
 
@@ -275,13 +278,14 @@
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
 
-                                                        <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                        <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                                         HasShadow="False">
-                                                        </Frame> 
-                                                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                                        </Frame>--> 
+                                                        
+                                                        <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                                            <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start"
                                                                VerticalOptions="Center"  Aspect="AspectFit"  Source="vat_user"/>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                                            <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                                            <Label Text="{x:Static custom2:AppResources.ZZZZVATRFinancialRepresentative}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                                         </StackLayout>
                                                     </Grid>
                                              
@@ -336,13 +340,14 @@
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                <!--<Frame Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start" VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True" BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
                                                 HasShadow="False">
-                                </Frame> 
-                                <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"
+                                </Frame>--> 
+                               
+                                <StackLayout Grid.Row="0" Grid.Column="0" Padding="8,0" Orientation="Horizontal">
+                                     <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Start"
                                        VerticalOptions="Center"  Aspect="AspectFit"  Source="declaration"/>
-                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="8,0">
-                                    <Label Text="{x:Static custom2:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
+                                    <Label Text="{x:Static custom2:AppResources.VatDeregDeclarationTitle}" FontSize="Medium" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}" Padding="8,0"/>
                                 </StackLayout>
                             </Grid>
 

@@ -200,14 +200,14 @@ namespace GAZTeServicesApp.Controls
                 titleView.titleLabel = new Label
                 {
                     Text = newText,
-                    TextColor = Color.FromHex("#006450"),
+                    TextColor =  (Color)Application.Current.Resources["Primary"],
                     FontSize = 16,
                     Margin = new Thickness(0, 8),
                     FontFamily = Device.RuntimePlatform == Device.Android
                             ? "GAZT_FONT_BOLD"
                             : Device.RuntimePlatform == Device.iOS
                                 ? "GAZT_FONT_BOLD"
-                                : "Assets/SSTArabic-Bold.ttf#SSTArabic-Bold",
+                                : "Assets/Somar-SemiBold.otf#Somar-SemiBold",
                     HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.Center,
                     VerticalOptions = LayoutOptions.Center,

@@ -41,23 +41,23 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             List<PaymentOptionsModel> paymentOptions = new List<PaymentOptionsModel>();
             if (isModaPaymentAvailable && !isAmountLess)
             {
-                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay", UnSelectedCardIcon = "ic_iconpay_white", CardLabel = AppResources.PaymentMethodCardPayment, IconHeight = 30 });
+                paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_iconpay.png", UnSelectedCardIcon = "ic_iconpay_white.png", CardLabel = AppResources.PaymentMethodCardPayment, IconHeight = 40 });
             }
             if (Device.RuntimePlatform == Device.iOS)
             {
 
                 if (!isAlreadyPaid && !isAmountLess)
                 {
-                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo", UnSelectedCardIcon = "ic_icon_applelogo_white", CardLabel = "", IconHeight = 60 });
+                    paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_icon_applelogo.png", UnSelectedCardIcon = "ic_icon_applelogo_white.png", CardLabel = AppResources.PaymentMethodApplePay, IconHeight = 25 });
 
                 }
             }
-            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad", UnSelectedCardIcon = "ic_sadad_white", CardLabel = AppResources.Sadad, IconHeight = 30 });
+            paymentOptions.Add(new PaymentOptionsModel() { SelectedCardIcon = "ic_sadad.png", UnSelectedCardIcon = "ic_sadad_white.png", CardLabel = AppResources.Sadad, IconHeight = 20 });
             paymentItemsListView.ItemsSource = paymentOptions;
 
             if (paymentOptions.Count > 2)
             {
-                paymentItemsListView.HeightRequest = 260;
+                paymentItemsListView.HeightRequest = 240;
             }
             else
             {

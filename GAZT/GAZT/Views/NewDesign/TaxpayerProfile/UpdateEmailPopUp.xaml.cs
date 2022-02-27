@@ -99,7 +99,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                          App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                                          App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                                      }
-                                     catch (Exception)
+                                     catch (Exception ex)
                                      {
                                      }
                                      await App.Current.MainPage.Navigation.PopToRootAsync();

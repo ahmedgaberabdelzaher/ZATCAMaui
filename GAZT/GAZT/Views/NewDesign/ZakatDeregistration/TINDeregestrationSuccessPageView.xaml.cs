@@ -104,7 +104,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -116,7 +116,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }
@@ -129,7 +129,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

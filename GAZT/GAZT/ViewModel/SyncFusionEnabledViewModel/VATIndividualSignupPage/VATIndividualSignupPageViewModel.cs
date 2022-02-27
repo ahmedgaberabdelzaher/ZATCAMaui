@@ -65,7 +65,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (_ImageEstimatedIcon.Equals("vat_new_individual_G.png"))
                 {
 
-                    IndividualTileColor = Color.FromHex("#006450");
+                    IndividualTileColor =  (Color)Application.Current.Resources["Primary"];
                     
 
 
@@ -114,13 +114,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 }
                 else
                 {
-                    EstimatedTileColor = Color.FromHex("#006450");
+                    EstimatedTileColor =  (Color)Application.Current.Resources["Primary"];
 
                 }
                 RaisePropertyChanged("ImageEstimatedIcon");
             }
         }
-        private Color _IndividualTileColor = Color.FromHex("#006450");
+        private Color _IndividualTileColor =  (Color)Application.Current.Resources["Primary"];
         public Color IndividualTileColor
         {
             get 
@@ -136,7 +136,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("IndividualTileColor");
             }
         }
-        private Color _EstimatedTileColor = Color.FromHex("#006450");
+        private Color _EstimatedTileColor =  (Color)Application.Current.Resources["Primary"];
         public Color EstimatedTileColor
         {
             get
@@ -184,8 +184,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 //viewModel.ImageIndividualIcon = "vat_new_individual_G.png";
                 //// image_estimated_icon.Source = "vat_new_Establishment_W.png";
                 //viewModel.ImageEstimatedIcon = "vat_new_Establishment_G.png";
-                //viewModel.EstimatedTileColor = Color.FromHex("#006450");
-                //viewModel.IndividualTileColor = Color.FromHex("#006450");
+                //viewModel.EstimatedTileColor =  (Color)Application.Current.Resources["Primary"];
+                //viewModel.IndividualTileColor =  (Color)Application.Current.Resources["Primary"];
             });
             
             Device.BeginInvokeOnMainThread( () =>

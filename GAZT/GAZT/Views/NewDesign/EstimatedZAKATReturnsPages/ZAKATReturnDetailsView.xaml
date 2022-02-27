@@ -9,7 +9,7 @@
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
              xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom1="clr-namespace:GAZT.CustomControl"
              BackgroundImageSource="partials_background"
              x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZAKATReturnDetailsView"
              Title= "{Binding ZAKATReturnsPagName}"
@@ -37,12 +37,12 @@
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
                 <Setter Property="HorizontalTextAlignment" Value="End"/>
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="14" />
             </Style>
             <Style TargetType="Label" x:Key="SectionTitleBlackTopNegative10" >
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                <Setter Property="FontFamily" Value="{StaticResource SSTArabicMedium}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="16" />
                 <Setter Property="Margin" Value="0,-10,0,0"/>
             </Style>
@@ -69,21 +69,19 @@
                             <StackLayout Orientation="Horizontal">
                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZAKAT}" Style="{StaticResource PageTitleBlack}" />
                                 <StackLayout VerticalOptions="Center" HorizontalOptions="EndAndExpand">
-                                    <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="{Binding ICRStatusImage}"  ShowIcon="True" Text="{Binding ICRStatus}" BackgroundColor="{StaticResource NeutralLightGrey}" CornerRadius="20" TextColor="Gray" VerticalTextAlignment="Center" />
+                                    <buttons:SfButton  HorizontalTextAlignment="Start"  Style="{StaticResource CaptionButtonBlack}" ImageSource="{Binding ICRStatusImage}"  ShowIcon="True" Text="{Binding ICRStatus}" BackgroundColor="{Binding ICRStatusBG}" CornerRadius="20" TextColor="{Binding ICRStatusTextColor}" VerticalTextAlignment="Center" />
                                 </StackLayout>
                             </StackLayout>
                             <!--Start of Return Details-->
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}" >
                                 <StackLayout >
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-
-                                        <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                        <Image Margin="0" Source="return_vatRefunds.png"/>
+                                        <!--<Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
                                                 HasShadow="False" Padding="10">
 
-                                            <Image Margin="0" Source="ic_vat_return"/>
-                                        </Frame>
-
-
+                                           
+                                        </Frame>-->
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" Style="{StaticResource SectionTitleBlackBold}" VerticalOptions="Center"/>
                                     </StackLayout>
@@ -108,7 +106,7 @@
                                              </FormattedString>
                                     </Label.FormattedText>-->
                                                 </custom:CustomLabel>
-                                                <custom:CustomLabel Margin="0,-10,0,0" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel" >
+                                                <custom:CustomLabel Margin="5" Text="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.ToDate}"  Style="{StaticResource HorizontalEnd}" StyleId="ValueLabel" >
                                                 </custom:CustomLabel>
 
                                             </StackLayout>
@@ -127,11 +125,11 @@
                             <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-
-                                        <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                        <Image  Source="zakat_manageTax"></Image>
+                                        <!--<Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
                                                 HasShadow="False" Padding="10">
-                                            <Image  Source="zakat_manageTax"></Image>
-                                        </Frame>
+                                            
+                                        </Frame>-->
 
 
 
@@ -224,8 +222,8 @@
 
                             <Frame  HorizontalOptions="FillAndExpand" Style="{StaticResource SfStyleForZakatPlanGreen}" HasShadow="False" CornerRadius="12" Margin="0,20,0,0" Padding="0">
                                 <StackLayout Orientation="Horizontal" BindingContext="{Binding ZakatReturnDetail}" HorizontalOptions="FillAndExpand" Padding="12">
-                                    <custom:CustomLabel Text="{x:Static local:AppResources.ZakatAmount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" FontSize="16"/>
-                                    <custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontSize="16">
+                                    <custom:CustomLabel Text="{x:Static local:AppResources.ZakatAmount}" Style="{StaticResource ValueLabelBlack}" VerticalOptions="Center" FontSize="15"/>
+                                    <custom:CustomLabel  Style="{StaticResource SectionTitleBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="Center" FontSize="15">
                                         <Label.FormattedText>
                                             <FormattedString>
                                                 <Span Text="{Binding Zkamt}"/>
@@ -247,17 +245,17 @@
                             <yummy:PancakeView Style="{StaticResource GreyBorderFrameWithShadow1}">
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
-
-                                        <Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
+                                         <Image Source="zakat_details"  ></Image>
+                                        <!--<Frame   HeightRequest="25" WidthRequest="25" CornerRadius="50"  VerticalOptions="CenterAndExpand" BackgroundColor="{StaticResource OpacityPrimary}"
                                                 HasShadow="False" Padding="10">
-                                            <Image Source="zakat_details"  ></Image>
-                                        </Frame>
+                                           
+                                        </Frame>-->
 
 
                                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSalesDetails}" Style="{StaticResource SectionTitleBlackBold}" VerticalOptions="Center"/>
                                         <!--{ Binding IsEditTextVisible}-->
 
-                                        <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="{x:Static local:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}" TextColor="Green">
+                                        <custom:CustomLabel IsVisible="{Binding IsEditTextVisible}" HorizontalOptions="EndAndExpand" Text="{x:Static local:AppResources.VATDeregistrationEdit}" Style="{StaticResource ValueLabelBlack}">
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Tapped="OnEditClicked"/>
                                             </custom:CustomLabel.GestureRecognizers>
@@ -292,7 +290,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout x:Name="TVSA" Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry x:Name="TotalVATSalesNew" Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
 
@@ -308,7 +306,7 @@
                                             </StackLayout>
 
                                             <StackLayout x:Name="TVSNA" Spacing="0" Grid.Row="2" Grid.Column="0" >
-                                                <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
+                                                <inputLayout:SfTextInputLayout  LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry  Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
 
@@ -323,7 +321,7 @@
                                             <custom:CustomLabel Text="{x:Static local:AppResources.ZEstimatedSales}" Grid.Row="1" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding TvtslE}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -336,7 +334,7 @@
                                             <custom:CustomLabel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Text="{x:Static local:AppResources.InformationFromRelatedPartiesNewValue}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
 
                                             <StackLayout x:Name="TotalVATSalesApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <inputLayout:SfTextInputLayout Margin="0" LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" x:Name="TotalVATSalesInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}"   Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
+                                                <inputLayout:SfTextInputLayout Margin="0" LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" x:Name="TotalVATSalesInputLayout" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}"   Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry x:Name="TotalVATSales" Text="{Binding TvtslI}" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource DefaultEntry}">
 
@@ -352,7 +350,7 @@
 
 
                                             <StackLayout x:Name="TotalVATSalesNotApplicableLayout"  Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}"  Style="{StaticResource TextInputLayout}" Margin="0"  Focused="TotalVATSalesInputFocused"  Unfocused="TotalVATSalesInputUnFocused">
 
                                                     <custom:GAZTBorderlessEntry  Text="0.00" Keyboard="Numeric" IsReadOnly="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.SetReadOnlyToTotalVATSales}"   Style="{StaticResource DefaultEntry}">
 
@@ -405,7 +403,7 @@
 
                                             <StackLayout x:Name="ANOLA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="AverageNumberOfLabourNew" Keyboard="Numeric" Text="{Binding LabnoI}" IsReadOnly="True"    Style="{StaticResource DefaultEntry}"  Focused="AverageNumberOfLabourInputFocused"  Unfocused="AverageNumberOfLabourInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -422,7 +420,7 @@
 
                                             <StackLayout x:Name="ANOLNA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}" IsReadOnly="True"    Style="{StaticResource DefaultEntry}"  Focused="AverageNumberOfLabourInputFocused"  Unfocused="AverageNumberOfLabourInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -440,7 +438,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Margin="0,0,0,0" Grid.Row="2" Grid.Column="1">
-                                                <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  ContainerBackgroundColor="#F3F3F3" OutlineCornerRadius="8" ContainerType="Outlined" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" OutlineCornerRadius="8" ContainerType="Outlined" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding LabnoE}" HeightRequest="48"  IsReadOnly="True"  Style="{StaticResource InputTableEntryLayoutStyle}">
 
                                                     </custom:GAZTBorderlessEntry>
@@ -475,7 +473,7 @@
 
                                             <StackLayout x:Name="AverageNumberOfLabourNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00" IsReadOnly="True"    Style="{StaticResource DefaultEntry}"  Focused="AverageNumberOfLabourInputFocused"  Unfocused="AverageNumberOfLabourInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -527,7 +525,7 @@
 
                                             <StackLayout x:Name="IVA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="ImportValueNew" Keyboard="Numeric" Text="{Binding ImpvalI}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -545,7 +543,7 @@
 
                                             <StackLayout x:Name="IVNA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -564,7 +562,7 @@
                                             <custom:CustomLabel  Grid.Row="1" Grid.Column="1" Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
 
                                             <StackLayout Spacing="0" Margin="0,0,10,0"  Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding ImpvalE}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -595,7 +593,7 @@
 
                                             <StackLayout x:Name="ImportValueNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00" IsReadOnly="True"   Style="{StaticResource DefaultEntry}"  Focused="ImportValueInputFocused"  Unfocused="ImportValueInputUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -647,7 +645,7 @@
 
                                             <StackLayout x:Name="POSA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="SalesFromPointOfSalesNew" Keyboard="Numeric" Text="{Binding PtoslI}"  IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="SalesFromPointOfSalesInputFocused"  Unfocused="SalesFromPointOfSalesUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -663,7 +661,7 @@
 
                                             <StackLayout x:Name="POSNA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}" IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="SalesFromPointOfSalesInputFocused"  Unfocused="SalesFromPointOfSalesUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -682,7 +680,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1"  Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PtoslI}" Keyboard="Numeric" IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -711,7 +709,7 @@
 
                                             <StackLayout x:Name="SalesFromPointOfSalesNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" Grid.ColumnSpan="2"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" Grid.ColumnSpan="2"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00" IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="SalesFromPointOfSalesInputFocused"  Unfocused="SalesFromPointOfSalesUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -760,7 +758,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout x:Name="ETIMADA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="ContractFromETIMADSystemNew" Keyboard="Numeric" Text="{Binding EtimadI}"   IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ContractFromETIMADSystemInputFocused"  Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -776,7 +774,7 @@
 
                                             <StackLayout x:Name="ETIMADNA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}"   IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ContractFromETIMADSystemInputFocused"  Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -795,7 +793,7 @@
 
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding EtimadI}"    IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -825,7 +823,7 @@
 
                                             <StackLayout x:Name="ContractFromETIMADSystemNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00"   IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ContractFromETIMADSystemInputFocused"  Unfocused="ContractFromETIMADSystemInputFocusedUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -873,7 +871,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout x:Name="EVA"  Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="ExportValueNew" Keyboard="Numeric" Text="{Binding ExamtI}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ExportValueInputFocused"  Unfocused="ExportValueUnFocused">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -890,7 +888,7 @@
 
                                             <StackLayout x:Name="EVNA" Spacing="0" Grid.Row="2" Grid.Column="0">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ExportValueInputFocused"  Unfocused="ExportValueUnFocused">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -908,7 +906,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1"  Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding ExamtI}"   Keyboard="Numeric" IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -938,7 +936,7 @@
 
                                             <StackLayout x:Name="ExportValueNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}" Focused="ExportValueInputFocused"  Unfocused="ExportValueUnFocused">
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue Max="14" numberOfDigitAfterDecimal="2" numberOfDigitBeforDecimal="11" isNegativeEnable="False"/>
@@ -985,7 +983,7 @@
 
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout x:Name="PVA" Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="PurchaseValueNew" Keyboard="Numeric" Text="{Binding PramtI}"  IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1005,7 +1003,7 @@
 
 
                                             <StackLayout x:Name="PVNA" Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}" IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1027,7 +1025,7 @@
                                                                 HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding PramtE}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -1050,7 +1048,7 @@
                                             </StackLayout>
 
                                             <StackLayout x:Name="PurchaseValueNotApplicableLayout" Spacing="0" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="0.00"  IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="PurchaseValueInputFocused"  Unfocused="PurchaseValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1099,7 +1097,7 @@
 
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}" Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout x:Name="REVA" Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="RealEstateValueNew" Keyboard="Numeric" Text="{Binding RestI}"  IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="RealEstateValueInputFocused"  Unfocused="RealEstateValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1119,7 +1117,7 @@
 
 
                                             <StackLayout x:Name="REVNA" Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Keyboard="Numeric" Text="{x:Static local:AppResources.ZNA}" IsReadOnly="True"    Style="{StaticResource DefaultEntry}" Focused="RealEstateValueInputFocused"  Unfocused="RealEstateValueUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1141,7 +1139,7 @@
                                                                 HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
 
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding RestE}"  IsReadOnly="True"   Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -1213,7 +1211,7 @@
                                             </StackLayout>
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static local:AppResources.ZInformationfromrelatedparties}"  Style="{StaticResource CaptionLabelGrey}"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Grid.Row="2" Grid.Column="0">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry x:Name="CapitalAmounNew" IsReadOnly="True"  Keyboard="Numeric" Text="{Binding Cpamt}"     Style="{StaticResource DefaultEntry}" Focused="CapitalAmountInputFocused"  Unfocused="CapitalAmountUnFocused">
 
                                                         <custom:GAZTBorderlessEntry.Behaviors>
@@ -1231,7 +1229,7 @@
                                             <custom:CustomLabel Grid.Row="1" Grid.Column="1"  Text="{x:Static local:AppResources.ZEstimatedSales}" Style="{StaticResource CaptionLabelGrey}" Margin="10,0,10,0"
                                                                 HorizontalOptions="EndAndExpand"></custom:CustomLabel>
                                             <StackLayout Spacing="0" Margin="0,0,10,0" Grid.Row="2" Grid.Column="1" HorizontalOptions="EndAndExpand">
-                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="#F3F3F3"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
+                                                <inputLayout:SfTextInputLayout LeadingViewPosition="Inside" ContainerType="Outlined" OutlineCornerRadius="8"  InputViewPadding="16,0,16,0" ContainerBackgroundColor="{StaticResource ContainerBackgroundColor}"  IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext. isEditVisible}" Style="{StaticResource TextInputLayout}" Margin="0">
                                                     <custom:GAZTBorderlessEntry  Text="{Binding Cpamt}"   IsReadOnly="True"  Style="{StaticResource DefaultEntry}">
                                                     </custom:GAZTBorderlessEntry>
 
@@ -1280,8 +1278,8 @@
                                                 <ColumnDefinition Width="auto"/>
                                                 <ColumnDefinition Width="12*"/>
                                             </Grid.ColumnDefinitions>
-                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}" FontSize="16" HorizontalOptions="FillAndExpand"/>
-                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}" FontSize="16" HorizontalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZEstimatedSalesForFiscalYear}" Style="{StaticResource BodyLabelBlack}" FontSize="15" HorizontalOptions="FillAndExpand"/>
+                                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{Binding Estsl}" Style="{StaticResource SectionTitleBlack}" FontSize="15" HorizontalOptions="FillAndExpand"/>
                                             <Image Grid.Row="0" Grid.Column="2" Source="ic_vat_info" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnEstimatedSalesForTheFiscalYearInfoClicked"/>
@@ -1290,17 +1288,35 @@
                                         </Grid>
 
                                     </StackLayout>
-                                    <Grid  Margin="-3">
+                                    <Grid >
                                         <Grid.RowDefinitions>
 
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="12*"/>
-                                            <ColumnDefinition Width="88*"/>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Row="0" Grid.Column="0" x:Name="checkBox"   VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
-                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}"  IsVisible="{Binding DesClaimerVisibility}" Margin="5"></custom:CustomLabel>
+                                        <!--<CheckBox Grid.Row="0" Grid.Column="0" x:Name="checkBox"   VerticalOptions="Start" CheckedChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}"></CheckBox>
+                                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}"  IsVisible="{Binding DesClaimerVisibility}" Margin="5"></custom:CustomLabel>-->
+
+
+                                         <custom1:CheckboxCustom x:Name="checkBox" Grid.Row="0" Grid.Column="0"  Style="{StaticResource CheckboxHeightWidth32}" VerticalOptions="CenterAndExpand" CheckChanged="OnCheckBoxCheckedChanged" IsChecked="{Binding CheckBoxStatus}" IsVisible="{Binding DesClaimerVisibility}" Margin="5"/>
+                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" HorizontalTextAlignment="Center" IsVisible="{Binding DesClaimerVisibility}" Margin="5">
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span   Text="{x:Static ResourceManager:AppResources.ZZDeclarationText}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                        <custom:CustomLabel.Triggers>
+                                                                     <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding CheckBoxStatus}" Value="True">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxSelectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding CheckBoxStatus}" Value="False">
+                                                                         <Setter Property="Style" Value="{StaticResource CheckboxUnselectedFontStyle}" />
+                                                                     </DataTrigger>
+                                                       </custom:CustomLabel.Triggers>
+                                                    </custom:CustomLabel>
 
                                     </Grid>
 
@@ -1317,16 +1333,17 @@
                             <buttons:SfButton Text="{Binding ReleaseOrBillDetailsButtonText}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnReleaseBillsButtonClicked" IsVisible="{Binding ReleaseOrBillDetailsVisible}"/>
                             <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Submit}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnSubmitClicked}" IsVisible="{Binding SetSubmitButtonVisibility}" Margin="0,10,0,0"/>
                             <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.Confirm}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnConfirmClicked" IsVisible="{Binding SetConfirmButtonVisibility}" Margin="0,10,0,0"/>
+                            <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.BillDetails}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnBillsDetailsClicked" IsVisible="{Binding SetAmendButtonVisibility}" Margin="0,10,0,0"/>
                             <buttons:SfButton  Text="{x:Static ResourceManager:AppResources.ZZAmend}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnAmendClick" IsVisible="{Binding SetAmendButtonVisibility}" Margin="0,10,0,0"/>
                             
 
-                            <Label  Text="{x:Static ResourceManager:AppResources.ChangeFromEstimateToAccountingBasis}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
+                            <Label  Text="{x:Static ResourceManager:AppResources.ChangeFromEstimateToAccountingBasis}"   Style="{StaticResource ValueLabelBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ChangeFromEstimateTAccountringBasisButtonVisibility}" >
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OnChangeFromEstimateToAccountingBasisButtonClicked}"/>
                                 </Label.GestureRecognizers>
                             </Label>
 
-                        <!--<Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="#d49504" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
+                        <!--<Label Margin="0,10,0,0" Text="{x:Static ResourceManager:AppResources.NDConfirmAndGenerateSADADBill}"   Style="{StaticResource ValueLabelBlack}" TextColor="{StaticResource Green}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" IsVisible="{Binding ConfirmAndGenerateSADADBillLabelVisibility}">
 
                         </Label>-->
 
@@ -1388,7 +1405,7 @@
                                          
                                        TitlePlacement="Bottom"
                                        ViewBoxHeight="70" 
-                                        TextColor="#006450"/>
+                                        TextColor="{StaticResource Primary}"/>
                         <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>

@@ -202,22 +202,6 @@ namespace GAZT.iOS.CustomRenderer
                 null
             );
         }
-        //public override void ViewDidLoad()
-        //{
-        //    base.ViewDidLoad();
-        //    this.NavigationBar.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-        //    this.NavigationBar.ShadowImage = new UIImage();
-        //    var height = NavigationBar.Bounds.Height;
-        //    App.NavigationBarHeightt = height;
-        //    UIFont ft;
-        //    this.NavigationBar.TintColor = UIColor.Yellow;
-        //    //this.NavigationBar.BarTintColor = UIColor.Green;
-        //    UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
-        //    {
-        //        Font = UIFont.FromName("GE SS Two", 16),
-        //        TextColor = UIColor.White
-        //    });
-
-        //}
+        
     }
 }

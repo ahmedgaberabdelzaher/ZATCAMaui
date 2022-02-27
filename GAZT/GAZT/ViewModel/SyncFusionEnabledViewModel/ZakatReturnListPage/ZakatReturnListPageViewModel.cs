@@ -412,7 +412,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Stat, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
@@ -422,12 +422,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Stat, "E0008"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Stat, "IP021"))//To be approved || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
@@ -445,12 +445,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "P"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "I"))//Paid|| string.Equals(_status, "I") || string.Equals(_status, "IP015")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP015"))//In processing || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
@@ -460,7 +460,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                             }
                             else if (string.Equals(myZakatReturnsListTemp[i].Statfg, "IP014"))//Build || string.Equals(_status, "IP019") || string.Equals(_status, "IP021") || string.Equals(_status, "E0058") || string.Equals(_status, "E0076") || string.Equals(_status, "E0077") || string.Equals(_status, "For Officer's Review") || string.Equals(_status, "E0089")
                             {
-                                myZakatReturnsListTemp[i].BorderColour = "#005e4b";
+                                myZakatReturnsListTemp[i].BorderColour = "#003672";
                                 myZakatReturnsListTemp[i].StatusImage = "ic_Paid.png";
                             }
                         }

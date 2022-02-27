@@ -16,7 +16,8 @@
              xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
              xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
-             NavigationPage.HasNavigationBar="False" BackgroundColor="#006450"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="partials_background.png"
              x:Class="EGAZT.Views.NewDesign.AccountStatements.AccountStatementsNewFilterPageView">
 
     <ContentPage.Resources>
@@ -185,7 +186,7 @@
                                             <Image Margin="5,0">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Color="{StaticResource SecondaryNew}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
                                                 </Image.Source>
                                             </Image>
@@ -210,7 +211,7 @@
                                             <Image Margin="5,0">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Color="{StaticResource SecondaryNew}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
                                                 </Image.Source>
                                             </Image>
@@ -230,7 +231,7 @@
                                     FlowDirection="LeftToRight" 
                                     Style="{StaticResource PickerStyle}" 
                                     Margin="2" 
-                                    HeaderBackgroundColor="Aqua"
+                                    HeaderBackgroundColor="{StaticResource SecondaryNew}"
                                     x:Name="TxDateNormalCalendar"
                                     SelectedItemFontSize="15"
                                     SelectionChanged="TxDateNormalCalendar_SelectionChanged"
@@ -245,8 +246,8 @@
                                     CancelButtonBackgroundColor="White"
                                     ColumnHeaderBackgroundColor="White"
                                     SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    OKButtonTextColor="Black"    
-                                    CancelButtonTextColor="Black"
+                                    OKButtonTextColor="{StaticResource PrimaryColor}"    
+                                    CancelButtonTextColor="{StaticResource PrimaryColor}"
                                     HeaderText="{x:Static 
                                     ResourceManager:AppResources.VRStartDate}"
                                     Closed="TxDateNormalCalendar_Closed"
@@ -268,7 +269,7 @@
                                     FlowDirection="LeftToRight" 
                                     Style="{StaticResource PickerStyle}" 
                                     Margin="2" 
-                                    HeaderBackgroundColor="Aqua"
+                                    HeaderBackgroundColor="{StaticResource SecondaryNew}"
                                     x:Name="TxDateHijriCalendar"
                                     SelectedItemFontSize="15"
                                     SelectionChanged="TxDateNormalCalendar_SelectionChanged"
@@ -283,8 +284,8 @@
                                     CancelButtonBackgroundColor="White"
                                     ColumnHeaderBackgroundColor="White"
                                     SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    OKButtonTextColor="Black"    
-                                    CancelButtonTextColor="Black"
+                                    OKButtonTextColor="{StaticResource PrimaryColor}"    
+                                    CancelButtonTextColor="{StaticResource PrimaryColor}"
                                     HeaderText="{x:Static 
                                     ResourceManager:AppResources.VREndDate}"
                                     Closed="TxDateNormalCalendar_Closed"
@@ -322,7 +323,7 @@
                                                 <Image Margin="5,0">
                                                    <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Color="{StaticResource SecondaryNew}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
                                                 </Image.Source>
                                                 </Image>
@@ -346,7 +347,7 @@
                                             <Image Margin="5,0">
                                                 <Image.Source>
                                                     <FontImageSource FontFamily="UserIconFont"
-                                                                 Color="{StaticResource NeutralGreay}" Size="24"
+                                                                 Color="{StaticResource SecondaryNew}" Size="24"
                                                                  Glyph="{x:Static FontImage:IconFonts.CalendarMonth}" />
                                                 </Image.Source>
                                             </Image>
@@ -366,7 +367,7 @@
                                     FlowDirection="LeftToRight" 
                                     Style="{StaticResource PickerStyle}" 
                                     Margin="2" 
-                                    HeaderBackgroundColor="Aqua"
+                                    HeaderBackgroundColor="{StaticResource SecondaryNew}"
                                     x:Name="TaxPeriodDateNormalCalendar"
                                     SelectedItemFontSize="15"
                                     SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
@@ -381,8 +382,8 @@
                                     CancelButtonBackgroundColor="White"
                                     ColumnHeaderBackgroundColor="White"
                                     SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    OKButtonTextColor="Black"    
-                                    CancelButtonTextColor="Black"
+                                    OKButtonTextColor="{StaticResource PrimaryColor}"    
+                                    CancelButtonTextColor="{StaticResource PrimaryColor}"
                                     HeaderText="{x:Static 
                                     ResourceManager:AppResources.VRStartDate}"
                                     SelectedItem="{Binding TodayDateNormal}"
@@ -401,7 +402,7 @@
                                     FlowDirection="LeftToRight" 
                                     Style="{StaticResource PickerStyle}" 
                                     Margin="2" 
-                                    HeaderBackgroundColor="Aqua"
+                                    HeaderBackgroundColor="{StaticResource SecondaryNew}"
                                     x:Name="TaxPeriodDateHijriCalendar"
                                     SelectedItemFontSize="15"
                                     SelectionChanged="TaxPeriodDateNormalCalendar_SelectionChanged"
@@ -416,8 +417,8 @@
                                     CancelButtonBackgroundColor="White"
                                     ColumnHeaderBackgroundColor="White"
                                     SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    OKButtonTextColor="Black"    
-                                    CancelButtonTextColor="Black"
+                                    OKButtonTextColor="{StaticResource PrimaryColor}"    
+                                    CancelButtonTextColor="{StaticResource PrimaryColor}"
                                     HeaderText="{x:Static 
                                     ResourceManager:AppResources.VREndDate}"
                                     SelectedItem="{Binding TodayDateinHijri}"
@@ -450,7 +451,7 @@
                                                        ViewBoxWidth="70"
                                                        TitlePlacement="Bottom"
                                                        ViewBoxHeight="70"
-                                                       TextColor="#D99A29" />
+                                                       TextColor="{StaticResource Secondary}" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

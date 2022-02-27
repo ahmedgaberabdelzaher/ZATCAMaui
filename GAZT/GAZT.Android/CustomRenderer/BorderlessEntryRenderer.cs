@@ -24,7 +24,7 @@ namespace GAZT.Droid.CustomRenderer
 				Control.Background = null;
 				//fontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label));
 				//Control.TextSize = (float)fontSize;
-				Control.SetTextColor(global::Android.Graphics.Color.Black);
+				//Control.SetTextColor(global::Android.Graphics.Color.Black);
 				var layoutParams = new MarginLayoutParams(Control.LayoutParameters);
 				layoutParams.SetMargins(0, 0, 0, 0);
 				LayoutParameters = layoutParams;

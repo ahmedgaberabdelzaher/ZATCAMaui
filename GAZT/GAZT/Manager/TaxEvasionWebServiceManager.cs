@@ -71,7 +71,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -118,7 +118,7 @@ namespace EGAZT.Manager
                     sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
                     return sendSmsResponse;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
@@ -171,7 +171,7 @@ namespace EGAZT.Manager
 
                     return verifySmsResponse;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("الرمز غير صحيح"))
@@ -233,7 +233,7 @@ namespace EGAZT.Manager
 
                     return verifySmsResponse;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
@@ -285,7 +285,7 @@ namespace EGAZT.Manager
 
                     return sendSmsResponse;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
@@ -330,7 +330,7 @@ namespace EGAZT.Manager
 
                     return registrationResponseModel;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
@@ -389,7 +389,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -447,7 +447,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -536,7 +536,7 @@ namespace EGAZT.Manager
                         }
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
@@ -662,7 +662,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -735,7 +735,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -814,7 +814,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -905,7 +905,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -959,7 +959,7 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    return null;
+                    throw ex;
                 }
             }
             else

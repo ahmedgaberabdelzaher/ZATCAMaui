@@ -7,23 +7,22 @@
      xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ResourceManager="clr-namespace:EGAZT"
+    
 >
     <ContentPage.Content>
          <yummy:PancakeView  VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="White">
-            <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="250">
-                 <ListView  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HasUnevenRows="True" x:Name="optionList" HeightRequest="220" SeparatorVisibility="None" ItemTapped="OptionItemTapped">
+            <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="130">
+                 <ListView  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HasUnevenRows="True" x:Name="optionList" HeightRequest="100" SeparatorVisibility="None" ItemTapped="OptionItemTapped">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="50">
-                                    <custom:CustomLabel Text="{Binding option}" FontFamily="{StaticResource SSTArabicMedium}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10"/>
+                                    <custom:CustomLabel Text="{Binding option}" FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10"/>
                                 </StackLayout>
                                </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
-               
-
+                </ListView> 
             </StackLayout>
     </yummy:PancakeView>
     </ContentPage.Content>

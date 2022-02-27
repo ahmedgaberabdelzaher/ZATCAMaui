@@ -129,7 +129,7 @@
 
                                                         <Frame Margin="10,10,10,0" Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" CornerRadius="32" HorizontalOptions="Start"
                                                                 VerticalOptions="Center" Opacity=".2" IsClippedToBounds="True"
-                                                                BackgroundColor="{StaticResource NewDarkBlueGreenColor}"
+                                                                BackgroundColor="Transparent"
                                                                         HasShadow="False">
                                                         </Frame> 
                                                         <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" HorizontalOptions="Center"

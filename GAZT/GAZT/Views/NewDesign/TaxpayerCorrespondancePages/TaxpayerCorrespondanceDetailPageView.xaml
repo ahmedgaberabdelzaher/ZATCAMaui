@@ -117,7 +117,7 @@
                         <ColumnDefinition Width="15*"/>
                     </Grid.ColumnDefinitions>
                     <StackLayout Grid.Row="0" Grid.Column="0" >
-                        <custom:CustomLabel LineHeight="0.6" Text="{Binding CorrespondenceTitle}"
+                        <custom:CustomLabel Text="{Binding CorrespondenceTitle}" Padding="0,10,0,0"
                                              Style="{StaticResource PageTitleBlack}" />
                         <StackLayout  Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                             <Label Text="{Binding CorrespondenceDateTime}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>

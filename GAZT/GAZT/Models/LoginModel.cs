@@ -40,9 +40,6 @@ namespace GAZT.Models
         [JsonProperty("DeviceId")]
         public string DeviceId { get; set; }
 
-        [JsonProperty("TpMpVip")]
-        public string TpMpVip { get; set; }
-
         [JsonProperty("Gpart")]
         public string TIN { get; set; }
 

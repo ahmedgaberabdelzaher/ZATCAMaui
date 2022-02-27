@@ -205,7 +205,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

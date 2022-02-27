@@ -23,9 +23,9 @@
                 <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
                                          Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Horizontal">
-                        <Button x:Name="PickerDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium"  Text="{x:Static ResourceManager:AppResources.ZDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontFamily ="{StaticResource SSTArBold}">
+                        <Button x:Name="PickerDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium"  Text="{x:Static ResourceManager:AppResources.ZDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand" VerticalOptions="Center" FontFamily ="{StaticResource SomarBold}">
                     </Button>
-                         <Button x:Name="PickerCancelButton" TextColor="{StaticResource Primary}" FontSize="Medium" Text="{x:Static ResourceManager:AppResources.ZZClose}" Clicked="PopupCancel_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" FontFamily ="{StaticResource SSTArBold}">
+                         <Button x:Name="PickerCancelButton" TextColor="{StaticResource Primary}" FontSize="Medium" Text="{x:Static ResourceManager:AppResources.ZZClose}" Clicked="PopupCancel_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="Center" FontFamily ="{StaticResource SomarBold}">
                     </Button>
                     </StackLayout>
                 </border:SfBorder>
@@ -33,7 +33,7 @@
 
                    <Label x:Name="PickerTitle" Text="{Binding PickerTitle}" 
                                     HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlack}"
-                                Margin="0,16,0,0" BackgroundColor="Transparent" FontFamily ="{StaticResource SSTArBold}"/>
+                                Margin="0,16,0,0" BackgroundColor="Transparent" FontFamily ="{StaticResource SomarBold}"/>
 
                     <syncfusion:SfPicker 
                         FlowDirection="RightToLeft"
@@ -43,16 +43,16 @@
 						Margin="2" 
                         HeaderBackgroundColor="Transparent"
 						x:Name="genericPicker" 
-                         UnSelectedItemFontSize="15"
-                        SelectedItemFontSize="15"
+                         UnSelectedItemFontSize="13"
+                        SelectedItemFontSize="13"
                         SelectionChanged="genericPicker_SelectionChanged"
 						ItemHeight="36"
-                        SelectedItemTextColor="#232323"
-                        UnSelectedItemTextColor="#232323"
-                        HeaderTextColor="#232323"
-                        HeaderFontFamily="{StaticResource SSTArBoldForSfPicker}"
-                        SelectedItemFontFamily="{StaticResource SSTArBoldForSfPicker}"
-                        UnSelectedItemFontFamily="{StaticResource SSTArBoldForSfPicker}">
+                        SelectedItemTextColor="{StaticResource NeutralBlack}"
+                        UnSelectedItemTextColor="{StaticResource NeutralBlack}"
+                        HeaderTextColor="{StaticResource NeutralBlack}"
+                        HeaderFontFamily="{StaticResource SomarBoldForSfPicker}"
+                        SelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}"
+                        UnSelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}">
                             <syncfusion:SfPicker.Behaviors>
                                 <customcontrol:SfPickerBehavior/>
                             </syncfusion:SfPicker.Behaviors>

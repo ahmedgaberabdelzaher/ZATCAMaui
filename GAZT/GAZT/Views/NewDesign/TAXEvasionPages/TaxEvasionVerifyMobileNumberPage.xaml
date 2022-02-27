@@ -119,7 +119,7 @@
 
                         <Image Grid.Column="2" IsVisible="false">
                             <Image.Source>
-                                <FontImageSource Color="White"
+                                <FontImageSource Color="{StaticResource SecondaryNew}"
                                                          FontFamily="UserIconFont"
                                                          Glyph="{x:Static FontImage:IconFonts.Close}"/>
                             </Image.Source>
@@ -152,7 +152,7 @@
                                                         LeadingViewPosition="Inside"
                                                         UnfocusedColor="#B1B1B1"
                                                         OutlineCornerRadius="8"
-                                                        FocusedColor="#005e4b"
+                                                        FocusedColor="{StaticResource Primary}"
                                                         ErrorColor="#B00020">
                         <inputLayout:SfTextInputLayout.LeadingView>
 
@@ -173,7 +173,7 @@
                                                         Unfocused="Mobile_Entry_Unfocused"
                                                         FontSize="Medium"
                                                         HorizontalOptions="FillAndExpand"
-                                                        TextColor="Black"
+                                                        TextColor="{StaticResource PrimaryColor}"
                                                         PlaceholderColor="Gray"
                                                         Keyboard="Telephone"
                                                         MaxLength="9">
@@ -206,7 +206,7 @@
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
-                                            FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                             <custom:BorderlessEntry
                                                 x:Name="OTPFirstEntry"
                                                 FontAttributes="Bold"
@@ -233,7 +233,7 @@
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
-                                            FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                             <custom:BorderlessEntry
                                                 x:Name="OTPSecondEntry"
                                                 FontAttributes="Bold"
@@ -260,7 +260,7 @@
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
-                                            FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                             <custom:BorderlessEntry
                                                 x:Name="OTPThirdEntry"
                                                 FontAttributes="Bold"
@@ -287,7 +287,7 @@
                                             ContainerType="Outlined"
                                             UnfocusedColor="#B1B1B1"
                                             OutlineCornerRadius="8"
-                                            FocusedColor="#005e4b" ErrorColor="#B00020" HasError="False">
+                                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False">
                             <custom:BorderlessEntry
                                                 x:Name="OTPFourthEntry"
                                                 FontAttributes="Bold"
@@ -319,7 +319,7 @@
                                                IsEnabled="{Binding IsResendOTPEnabled}"
                                                Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
                                                VerticalOptions="StartAndExpand"
-                                               Margin="0,50,0,0" FontFamily="{StaticResource SSTArRoman}"
+                                               Margin="0,50,0,0" FontFamily="{StaticResource SomarRegular}"
                                                BackgroundColor="Transparent"
                                                TextColor="{Binding ResendOtpButtonColor}"/>
                 </StackLayout>

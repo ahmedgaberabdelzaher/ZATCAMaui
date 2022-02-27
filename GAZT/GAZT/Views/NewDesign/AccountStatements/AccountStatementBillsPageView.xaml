@@ -73,9 +73,8 @@
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <SearchBar x:Name="searchBar" Grid.Column="0"  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}" >
+                                <SearchBar Grid.Column="0"  BackgroundColor="White" custom:RoundCornersEffect.CornerRadius="12" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="0" TextChanged="SearchBar_TextChanged" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                                 </SearchBar>
-
                                 <Image Grid.Column="1" WidthRequest="24" HeightRequest="24" Source="close" IsVisible="{TemplateBinding BindingContext.IsCloseButtonVisible}">
                                     <Image.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="CloseSearchButton_Tapped">
@@ -123,7 +122,7 @@
                         </Image>
                     </StackLayout>
 
-                    <custom:CustomLabel Padding="0,-10,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start">
+                    <custom:CustomLabel Padding="0,0,0,0"  HorizontalOptions="StartAndExpand" VerticalOptions="Start" VerticalTextAlignment="Start">
                         <custom:CustomLabel.FormattedText>
                             <FormattedString>
                                 <Span Text="{x:Static ResourceManager:AppResources.ACMyTaxObligations}" Style="{StaticResource CaptionLabelGrey}" ></Span>
@@ -160,20 +159,20 @@
                                                      >
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding Text}" Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Success}" />
                                                         </DataTrigger>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding Text}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                            <Setter Property="BackgroundColor" Value="Orange" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Partial}" />
                                                         </DataTrigger>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding Text}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                            <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Error}" />
                                                         </DataTrigger>
                                                     </Frame.Triggers>
                                                 </Frame>
                                                 <StackLayout Grid.Row="0"  Padding="10,0,10,0">
                                                     <!--TextColor="{Binding Status,Converter={StaticResource StringToColorConvertor}}" -->
                                                     <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}"
-                                                                             Text="{Binding Text}" HorizontalOptions="CenterAndExpand"  
+                                                                             Text="{Binding Text}" TextColor="{Binding TextColor}" HorizontalOptions="CenterAndExpand"  
                                                                                 VerticalOptions="CenterAndExpand" >
 
                                                     </custom:CustomLabel>
@@ -221,16 +220,16 @@
 
                                                 
 
-                                                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="15" CornerRadius="14" Opacity=".2"    VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" >
+                                                <Frame Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Primary}" Padding="15" CornerRadius="14" Opacity=".2"    VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand" HasShadow="False">
                                                     <Frame.Triggers>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                            <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Success}" />
                                                         </DataTrigger>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                            <Setter Property="BackgroundColor" Value="Orange" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Partial}" />
                                                         </DataTrigger>
                                                         <DataTrigger TargetType="Frame" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                            <Setter Property="BackgroundColor" Value="{StaticResource ErrorColor}" />
+                                                            <Setter Property="BackgroundColor" Value="{StaticResource Error}" />
                                                         </DataTrigger>
                                                     </Frame.Triggers>
                                                 </Frame>
@@ -243,13 +242,13 @@
                                                         </custom:CustomLabel.FormattedText>
                                                         <custom:CustomLabel.Triggers>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Success}" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                                <Setter Property="TextColor" Value="Orange" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Partial}" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
                                                             </DataTrigger>
                                                         </custom:CustomLabel.Triggers>
                                                     </custom:CustomLabel>
@@ -262,13 +261,13 @@
                                                         </custom:CustomLabel.FormattedText>
                                                         <custom:CustomLabel.Triggers>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.Paid}">
-                                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Success}" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
-                                                                <Setter Property="TextColor" Value="Orange" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Partial}" />
                                                             </DataTrigger>
                                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding StatusText}" Value="{x:Static ResourceManager:AppResources.UnPaid}">
-                                                                <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
+                                                                <Setter Property="TextColor" Value="{StaticResource Error}" />
                                                             </DataTrigger>
                                                         </custom:CustomLabel.Triggers>
                                                     </custom:CustomLabel>
@@ -307,7 +306,7 @@
                                                    ViewBoxWidth="70"
                                                    TitlePlacement="Bottom"
                                                    ViewBoxHeight="70"
-                                                   TextColor="#D99A29" />
+                                                   TextColor="{StaticResource Secondary}" />
                         <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
                     </StackLayout>
                 </StackLayout>
