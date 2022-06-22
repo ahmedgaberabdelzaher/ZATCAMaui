@@ -132,6 +132,7 @@ namespace EGAZT.Views.NewDesign
 
         private void CustomsView_Navigating(object sender, WebNavigatingEventArgs e)
         {
+            try { 
             if (e.Url.Contains(Constants.ZAtcaCustomsdeclarationsAr) || e.Url.Contains(Constants.ZAtcaCustomsdeclarationsEN))
             {
                 viewModel.IsLoading = false;
@@ -139,6 +140,12 @@ namespace EGAZT.Views.NewDesign
             else
             {
                 viewModel.IsLoading = true;
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -150,6 +157,7 @@ namespace EGAZT.Views.NewDesign
 
         private void CustomsTraffis_Navigating(object sender, WebNavigatingEventArgs er)
         {
+            try { 
             if (er.Url.Contains(Constants.ZAtcaCustomsTarrifsAr) || er.Url.Contains(Constants.ZAtcaCustomsTarrifsEN))
             {
                 viewModel.IsLoading = false;
@@ -157,6 +165,12 @@ namespace EGAZT.Views.NewDesign
             else
             {
                 viewModel.IsLoading = true;
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

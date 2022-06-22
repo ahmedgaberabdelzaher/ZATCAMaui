@@ -915,8 +915,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             else
             {
-                await _dialogService.ShowMessage(AppResources.ZakatRevokCannotLeaveEmpty, AppResources.Information);
-            }
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ZakatRevokCannotLeaveEmpty, AppResources.Information);
+                });
+                }
         }
 
 
@@ -2450,6 +2453,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                         IsLoading = false;
                         return null;
 

@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         {
             //string formguid = "005056B1F8FB1EDABC99B9AFD7873DBB"; //string.Empty;
             //string euser = "00000010000008327086"; //string.Empty;
-
+            try { 
             var item = e.ItemData as VATObjectionListModel.Result3;
 
 
@@ -103,12 +103,18 @@ namespace EGAZT.Views.NewDesign.VatReview
                 await _viewModel.OnPageLoad1(index);
 
             }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
-          
         }
 
         private async void BankGuranAttachTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             await Task.Run(() =>
             {
                 _viewModel.IsLoading = true;
@@ -134,11 +140,17 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
                 _viewModel.IsLoading = false;
             });
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private async void Attachments_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             await Task.Run(() =>
             {
                 _viewModel.IsLoading = true;
@@ -166,7 +178,12 @@ namespace EGAZT.Views.NewDesign.VatReview
             {
                 _viewModel.IsLoading = false;
             });
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
        
     }

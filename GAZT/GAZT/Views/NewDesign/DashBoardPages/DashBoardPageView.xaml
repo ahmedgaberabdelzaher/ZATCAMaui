@@ -1267,18 +1267,18 @@
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
                                     <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                    <!---->
+                                    <!-- Subsidy Request Starts-->
                                     <StackLayout Orientation="Vertical" Spacing="20" IsVisible="{Binding IsSubsidyTileVisible}">
                                         <StackLayout Orientation="Horizontal" Spacing="20">
                                             <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}"/>
                                             <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.TaxPayerSubsidyRequest}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                             <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer Tapped="TaxPayerSubsidyRequestTapped" />
+                                                <TapGestureRecognizer Tapped="TaxPayerSubsidyRequestTapped" NumberOfTapsRequired="1"/>
                                             </StackLayout.GestureRecognizers>
                                         </StackLayout>
                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     </StackLayout>
-                                    
+                                    <!--Subsidy Request Ends-->
 
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="language.png" Style="{StaticResource SmallIcon}"/>
@@ -1463,7 +1463,7 @@
                     </Grid>
                     <yummy:PancakeView.Triggers>
                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding MenuViewVisible}" Value="True">
-                            <Setter Property="BorderColor" Value="Transparent"/>
+                            <!--<Setter Property="BorderColor" Value="Transparent"/>-->
                             <Setter Property="BackgroundColor" Value="Transparent"/>
                         </DataTrigger>
                     </yummy:PancakeView.Triggers>

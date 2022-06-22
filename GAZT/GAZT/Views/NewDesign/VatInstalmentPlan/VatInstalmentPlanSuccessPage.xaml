@@ -38,7 +38,7 @@
             </StackLayout>
             <ScrollView>
                 <Grid>
-                    <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
+                    <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20"
                                    VerticalOptions="EndAndExpand">
                     <StackLayout>
                         <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"

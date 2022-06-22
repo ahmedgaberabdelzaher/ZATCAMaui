@@ -138,7 +138,8 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -163,7 +164,8 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -183,7 +185,14 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void BundleType_Closed(object sender, EventArgs e)

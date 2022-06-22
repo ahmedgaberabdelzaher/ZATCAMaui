@@ -173,6 +173,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 ListFormBudles = null;
@@ -339,6 +341,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -405,6 +409,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return null;
             }
         }

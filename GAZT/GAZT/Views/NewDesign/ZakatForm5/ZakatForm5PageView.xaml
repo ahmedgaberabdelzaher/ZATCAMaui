@@ -11,12 +11,12 @@
              xmlns:commonView="clr-namespace:EGAZT.Views.NewDesign.Common"
              xmlns:models="clr-namespace:EGAZT.Models"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              xmlns:custom="clr-namespace:GAZT"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
              NavigationPage.HasNavigationBar="False"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              x:Class="EGAZT.Views.NewDesign.ZakatForm5.ZakatForm5PageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -65,7 +65,7 @@
     <ContentPage.Content>
 
 
-        <yummy:PancakeView Grid.Row="0" CornerRadius="15,15,0,0"  HasShadow="False" BackgroundColor="White">
+        <yummy:PancakeView Grid.Row="0" CornerRadius="15,15,0,0"  BackgroundColor="White">
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="auto" />

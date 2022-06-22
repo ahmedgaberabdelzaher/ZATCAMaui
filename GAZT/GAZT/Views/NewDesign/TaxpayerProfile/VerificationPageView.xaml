@@ -40,9 +40,13 @@
                 <yummy:PancakeView Style="{StaticResource CommonTopCurves}"
                            
                            CornerRadius="10"
-                               BorderColor="DarkGray" 
-                               BorderThickness="1"
+                              
                                BackgroundColor="White">
+
+                    <yummy:PancakeView.Border>
+                        <yummy:Border Color="DarkGray" Thickness="1"/>
+                    </yummy:PancakeView.Border>
+                    
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>

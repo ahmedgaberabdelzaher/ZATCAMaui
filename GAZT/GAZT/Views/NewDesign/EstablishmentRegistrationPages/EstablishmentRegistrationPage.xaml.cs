@@ -126,11 +126,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         async void TapRentDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
+            try { 
             Image item = sender as Image;
             Attachment data = item.BindingContext as Attachment;
             string QuestionMark = string.Empty;
@@ -153,10 +158,17 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 }
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         async void TapPassportDeleteGestureRecognizer_Tapped(Object sender, EventArgs e)
         {
+            try { 
             Image item = sender as Image;
             Attachment data = item.BindingContext as Attachment;
             string QuestionMark = string.Empty;
@@ -178,6 +190,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 }
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void SfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
@@ -195,7 +213,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
@@ -226,6 +248,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         void dobPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
+            try { 
             if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
@@ -239,11 +262,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
                 viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void passportIssuePicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
+            try { 
             if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
@@ -257,11 +287,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);
                 viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void passportExpiryPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
+            try { 
             if (EstablishmentRegistrationPageViewModel.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
@@ -274,6 +311,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
                 DateTime.TryParseExact(viewModel?.DisplayPassportExpireDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _expiryDate);
                 viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

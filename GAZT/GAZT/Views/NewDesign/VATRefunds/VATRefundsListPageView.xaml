@@ -133,8 +133,13 @@
                                                 <Label  Text="{x:Static ResourceManager:AppResources.ZZVAT}" VerticalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"/>
                                                 <Label Text="{Binding RefundFbnum}" Style="{StaticResource CaptionLabelGrey}"/>
                                             </StackLayout>
-                                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="60"  HeightRequest="20" Opacity=".2"  BorderThickness="1"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                                                <yummy:PancakeView.Triggers>
+                                             <yummy:PancakeView Grid.Row="0" Grid.Column="1" BackgroundColor="{StaticResource Secondary}" Padding="10,10,10,10" CornerRadius="14" WidthRequest="60"  HeightRequest="20" Opacity=".2"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+
+                                            <yummy:PancakeView.Border>
+                                                <yummy:Border Thickness="1"/>
+                                            </yummy:PancakeView.Border>
+                                                 
+                                            <yummy:PancakeView.Triggers>
                                                         <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">
                                                             <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />

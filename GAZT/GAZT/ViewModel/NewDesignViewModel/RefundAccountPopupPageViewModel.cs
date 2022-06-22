@@ -977,7 +977,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-               // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                // MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async Task<bool> FirstCall()
@@ -1148,7 +1151,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-              //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+                //  MessagingCenter.Send<Object, string>(this, "RefundClickedForStop", "Yes");
                 result = false;
                 return result;
             }

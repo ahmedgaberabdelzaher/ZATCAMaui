@@ -283,7 +283,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ChecKTINStatus_ViewModel
             }
             catch (InternetException ex)
             {
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
         }
         public void PopToRootPage()

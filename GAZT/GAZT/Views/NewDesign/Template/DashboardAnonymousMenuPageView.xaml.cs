@@ -79,7 +79,8 @@ namespace EGAZT.Views.NewDesign.Template
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -98,7 +99,8 @@ namespace EGAZT.Views.NewDesign.Template
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private void OnTaxEvasionTapped(object sender, EventArgs e)

@@ -92,7 +92,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.DashBoardPageViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             _navigationService.GoBack();
         }

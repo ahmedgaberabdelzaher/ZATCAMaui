@@ -1227,6 +1227,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

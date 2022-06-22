@@ -41,8 +41,8 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
 
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;

@@ -128,7 +128,11 @@ namespace EGAZT.Views.NewDesign
 
 
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
 

@@ -75,7 +75,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 IntilizeAsync();
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -193,7 +195,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -213,7 +217,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -661,7 +667,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -701,7 +709,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -712,7 +722,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(viewModel.VATDeclarationData));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -729,7 +741,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -746,7 +760,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -761,7 +777,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -776,7 +794,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -804,7 +824,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -967,7 +989,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -986,7 +1010,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1005,7 +1031,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1017,7 +1045,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new NotesPopUpPageView(viewModel.VATDeclarationData));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1029,7 +1059,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new NotesDescriptionPopUpPageView(viewModel.VATDeclarationData));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1063,6 +1095,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     //scrollView.ScrollToAsync(0, 500, true);
 
 
@@ -1075,7 +1109,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1128,7 +1164,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -1143,7 +1181,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -1158,7 +1198,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -1178,7 +1220,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
             }
@@ -1314,7 +1358,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1365,7 +1411,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1425,7 +1473,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1470,6 +1520,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                 }
             });
@@ -1618,7 +1670,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1934,7 +1988,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
             return IsAllEntered;
         }
@@ -1992,7 +2048,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
             return IsAllEntered;
         }
@@ -2131,7 +2189,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
             return IsAllEntered;
         }
@@ -2302,7 +2362,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
             return IsAllEntered;
@@ -2781,7 +2843,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
             return IsAllEntered;
@@ -2927,7 +2991,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
             return IsAllEntered;
         }
@@ -3229,7 +3295,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
             return IsAllEntered;
@@ -3357,7 +3425,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -3489,7 +3559,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -3554,7 +3626,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccVat5.Text = "0.00";
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -3590,7 +3664,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3621,7 +3697,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3678,7 +3756,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3714,7 +3794,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3740,7 +3822,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntrySalesGccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3764,7 +3848,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZerosalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3788,7 +3874,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZerosalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3812,7 +3900,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExportsAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3836,7 +3926,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExportsAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3860,7 +3952,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptsalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3884,7 +3978,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptsalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3952,7 +4048,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryStdpurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -3972,7 +4070,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZVatAmountWithSARFocused(object sender, FocusEventArgs e)
@@ -3992,7 +4092,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryImportspaidAdjFocused(object sender, FocusEventArgs e)
@@ -4012,7 +4114,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryImportsaccAmtFocused(object sender, FocusEventArgs e)
@@ -4032,7 +4136,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryImportsaccAdjFocused(object sender, FocusEventArgs e)
@@ -4052,7 +4158,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZeropurchaseAmtFocused(object sender, FocusEventArgs e)
@@ -4072,7 +4180,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZeropurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -4092,7 +4202,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptpurchaseAmtFocused(object sender, FocusEventArgs e)
@@ -4112,7 +4224,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptpurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -4132,7 +4246,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryPreperiodcorrFocused(object sender, FocusEventArgs e)
@@ -4152,7 +4268,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -4179,7 +4297,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
@@ -4275,7 +4395,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4301,7 +4423,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
@@ -4381,7 +4505,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
@@ -4452,7 +4578,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4479,7 +4607,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckThreeaThreeb(decimal EntryZerosalesAmt, decimal EntryZerosalesAdj, string Massege)
@@ -4620,7 +4750,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4670,7 +4802,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj, string Massege)
@@ -4818,7 +4952,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4873,7 +5009,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj, string Message)
@@ -5034,7 +5172,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5061,7 +5201,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckSevenaSixa(decimal EntryStdpurchaseAmt, decimal LabelTotalsalesAmt)
@@ -5173,7 +5315,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5200,7 +5344,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckEightaEightb(decimal EntryZVatAmountWithSAR, decimal EntryImportspaidAdj)
@@ -5272,7 +5418,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5299,7 +5447,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckNineaNineb(decimal EntryImportsaccAmt, decimal EntryImportsaccAdj)
@@ -5372,7 +5522,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5399,7 +5551,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckTenaTenb(decimal EntryZeropurchaseAmt, decimal EntryZeropurchaseAdj)
@@ -5469,7 +5623,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5496,7 +5652,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void CheckElevenaElevenb(decimal EntryExemptpurchaseAmt, decimal EntryExemptpurchaseAdj)
@@ -5691,7 +5849,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -5711,7 +5871,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -5745,7 +5907,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -5773,7 +5937,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -5854,7 +6020,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -5935,7 +6103,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
        
@@ -5960,7 +6130,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -5992,7 +6164,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryVatSalesSubjecttoTaxAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -6016,7 +6190,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryVatSalesSubjecttoTaxAmount_Unfocused(object sender, FocusEventArgs e)
@@ -6047,7 +6223,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6075,7 +6253,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -6108,7 +6288,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryVatSalesSubjectToTaxAdjustmentFocused(object sender, FocusEventArgs e)
@@ -6127,7 +6309,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -6160,7 +6344,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void EntryStdpurchaseAmt15Focused(object sender, FocusEventArgs e)
@@ -6180,7 +6366,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6201,7 +6389,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6246,7 +6436,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6274,7 +6466,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6295,7 +6489,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6335,7 +6531,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6356,7 +6554,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6389,7 +6589,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6410,7 +6612,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6443,7 +6647,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6464,7 +6670,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6497,7 +6705,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6518,7 +6728,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6551,7 +6763,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6572,7 +6786,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6605,7 +6821,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6626,7 +6844,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6659,7 +6879,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6680,7 +6902,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6713,7 +6937,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6734,7 +6960,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6767,7 +6995,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6788,7 +7018,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6821,7 +7053,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6898,7 +7132,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -6968,7 +7204,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7037,7 +7275,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms15(object sender, TextChangedEventArgs e)
@@ -7126,7 +7366,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -7216,7 +7458,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -7297,7 +7541,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7377,7 +7623,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7397,7 +7645,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -7418,7 +7668,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -7493,7 +7745,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7567,7 +7821,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7612,7 +7868,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
@@ -7673,7 +7931,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
             //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
         }
@@ -7725,7 +7985,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
@@ -7788,7 +8050,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
@@ -7853,7 +8117,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7925,7 +8191,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7946,7 +8214,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -7990,7 +8260,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -8055,7 +8327,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8124,7 +8398,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8178,7 +8454,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8235,7 +8513,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8296,7 +8576,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -8358,7 +8640,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8417,7 +8701,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -8478,7 +8764,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8538,7 +8826,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8595,7 +8885,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8654,7 +8946,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8712,7 +9006,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8769,7 +9065,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8827,7 +9125,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8885,7 +9185,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -8944,7 +9246,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9002,7 +9306,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
 
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9060,7 +9366,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9095,7 +9403,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9134,7 +9444,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9169,7 +9481,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9389,7 +9703,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -9501,7 +9817,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 await viewModel.VATReturnAmendAsync();
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }

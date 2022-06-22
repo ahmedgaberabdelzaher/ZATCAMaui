@@ -269,6 +269,8 @@ namespace EGAZT.Droid.CustomRenderer
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
 

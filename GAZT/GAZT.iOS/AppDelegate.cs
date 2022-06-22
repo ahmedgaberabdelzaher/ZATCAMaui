@@ -78,6 +78,7 @@ namespace GAZT.iOS
 
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+
             AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
             config.CollectorURL = "https://eum.gazt.gov.sa:443";
             AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
@@ -168,5 +169,37 @@ namespace GAZT.iOS
             }
         }
 
+        //Export("AEDMApplicationDidBecomeActive:")]
+        //private static void AEDMApplicationDidBecomeActive(UIApplication application)
+        //{
+        //    DidBecomeActive(application);
+        //}
+        [Export("oneSignalApplicationDidBecomeActive:")]
+        public void OneSignalApplicationDidBecomeActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnActivated method.
+            OnActivated(application);
+        }
+
+        [Export("oneSignalApplicationWillResignActive:")]
+        public void OneSignalApplicationWillResignActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnResignActivation method.
+            OnResignActivation(application);
+        }
+
+        [Export("oneSignalApplicationDidEnterBackground:")]
+        public void OneSignalApplicationDidEnterBackground(UIApplication application)
+        {
+            // Remove line if you don't have a DidEnterBackground method.
+            DidEnterBackground(application);
+        }
+
+        [Export("oneSignalApplicationWillTerminate:")]
+        public void OneSignalApplicationWillTerminate(UIApplication application)
+        {
+            // Remove line if you don't have a WillTerminate method.
+            WillTerminate(application);
+        }
     }
 }

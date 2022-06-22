@@ -99,6 +99,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -240,6 +242,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -301,7 +305,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -315,7 +320,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportTypePage_Vi
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }

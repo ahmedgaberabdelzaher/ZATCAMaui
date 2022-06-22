@@ -17,9 +17,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView BorderColor="Transparent"
-                       BorderThickness="0"
+    <yummy:PancakeView 
                        Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
+        <yummy:PancakeView.Border>
+            <yummy:Border Color="Transparent" Thickness="0"/>
+        </yummy:PancakeView.Border>
         <ScrollView VerticalScrollBarVisibility="Never">
 
             <StackLayout>

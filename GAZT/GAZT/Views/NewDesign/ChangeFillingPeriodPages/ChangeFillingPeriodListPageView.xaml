@@ -179,11 +179,13 @@
 
                                             </StackLayout>
                                             <yummy:PancakeView Padding="8,3,8,3" Grid.Row="1" Grid.Column="1" CornerRadius="14"
-                                                                   BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"
+                                                                   BackgroundColor="{StaticResource PartialBg}"
                                                                    VerticalOptions="CenterAndExpand"
                                                                    HorizontalOptions="EndAndExpand" >
 
-
+                                                <yummy:PancakeView.Border>
+                                                    <yummy:Border  Thickness="1"/>
+                                                </yummy:PancakeView.Border>
                                                 <Label  Style="{StaticResource CaptionLabelBlack}"
                                                            TextColor="{StaticResource Partial}" Text="{Binding FbustTxt}"
                                                            HorizontalTextAlignment="Center"

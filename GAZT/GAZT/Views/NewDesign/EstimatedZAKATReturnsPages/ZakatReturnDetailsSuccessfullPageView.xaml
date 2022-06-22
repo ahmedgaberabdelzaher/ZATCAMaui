@@ -80,7 +80,7 @@
                     </custom:CustomLabel>
             </StackLayout>
 
-            <yummy:PancakeView  Grid.Row="2" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="False" BackgroundColor="White">
+            <yummy:PancakeView  Grid.Row="2" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" BackgroundColor="White">
                 <Grid HorizontalOptions="FillAndExpand" x:Name="MainGrid" Padding="0,0,0,0" VerticalOptions="FillAndExpand" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>

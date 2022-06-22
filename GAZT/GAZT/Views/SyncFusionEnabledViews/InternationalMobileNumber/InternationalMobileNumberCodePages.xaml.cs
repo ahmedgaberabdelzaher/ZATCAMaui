@@ -65,6 +65,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
         }
       private void OnTextChanged(object sender, TextChangedEventArgs e)
       {
+            try { 
             var searchPhrase = e.NewTextValue.Trim();
 
             if (searchPhrase.Length > 0)
@@ -75,15 +76,27 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
             {
                 viewModel.refreshList();
             }
-          
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private  void List_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
              var dataItem = e.Item as InternationalMobileData;
             MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
            
 
             viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

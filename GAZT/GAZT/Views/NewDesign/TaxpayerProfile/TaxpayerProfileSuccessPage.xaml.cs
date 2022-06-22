@@ -92,7 +92,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) {
+
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
                 try
                 {
                     if (viewModel.TPProfileSuccessId == 1)
@@ -118,7 +122,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                     }
                     //viewModel._navigationService.GoBack();
                 }
-                catch (Exception ex) { }
+                catch (Exception ex) {
+
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
             });
         }
     }

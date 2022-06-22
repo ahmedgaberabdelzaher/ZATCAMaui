@@ -36,7 +36,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
             // * Page content direction
@@ -100,6 +101,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
                 viewModel.IsLoading = false;
             }

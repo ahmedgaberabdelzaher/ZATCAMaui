@@ -497,6 +497,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
                     }
                     //    using (var httpClient = new HttpClient())

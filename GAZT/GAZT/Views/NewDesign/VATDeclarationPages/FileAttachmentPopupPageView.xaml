@@ -11,7 +11,7 @@
              xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"    
                               xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
                  x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.FileAttachmentPopupPageView">
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="End" BackgroundColor="White">
+    <yummy:PancakeView CornerRadius="22,22,0,0"  VerticalOptions="End" BackgroundColor="White">
         <Grid>
             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 

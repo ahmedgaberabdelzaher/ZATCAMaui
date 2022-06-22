@@ -55,7 +55,10 @@
                         </StackLayout>
                         <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                             <yummy:PancakeView    Padding="10,10,10,10"  
-                               CornerRadius="20"  BorderThickness="1" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                               CornerRadius="20"  BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                                <yummy:PancakeView.Border>
+                                    <yummy:Border Thickness="1"/>
+                                </yummy:PancakeView.Border>
                                 <Label Text="Submitted"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource Primary}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
                             </yummy:PancakeView>
                         </StackLayout>
@@ -237,8 +240,11 @@
                             </StackLayout>
                             <StackLayout Grid.Row="0" Grid.Column="1"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                                 <yummy:PancakeView    Padding="10,10,10,10"  
-                               CornerRadius="20"  BorderThickness="1" BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                               CornerRadius="20"  BackgroundColor="AliceBlue" VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
                                     <Label Text="Submitted" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <yummy:PancakeView.Border>
+                                        <yummy:Border  Thickness="1"/>
+                                    </yummy:PancakeView.Border>
                                 </yummy:PancakeView>
                             </StackLayout>
                         </Grid>

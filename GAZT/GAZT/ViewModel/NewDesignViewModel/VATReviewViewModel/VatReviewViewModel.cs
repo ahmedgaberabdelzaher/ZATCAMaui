@@ -3804,9 +3804,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             else
             {
-                await _dialogService.ShowMessage(message: AppResources.VRSadadAlert, title: AppResources.ZZZConfirmationMsg,
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                     _dialogService.ShowMessage(message: AppResources.VRSadadAlert, title: AppResources.ZZZConfirmationMsg,
                     buttonConfirmText: AppResources.ZZZOkayText, buttonCancelText: AppResources.ZZCancel,
                     afterHideCallback: GenerateSadadConfirmaton);
+                });
             }
         }
 
@@ -5289,7 +5292,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        throw ex;
+                        //throw ex;
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                            //_navigationService.GoBack();
+                        });
                     }
                     catch (InternetException ex)
                     {
@@ -5359,8 +5369,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                 });
-
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
             catch (InternetException ex)
             {
@@ -5401,7 +5413,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTErrorException ex)
             {
-                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
             catch (InternetException ex)
             {
@@ -5667,8 +5682,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 {
                     IsLoading = false;
                 });
-
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
             }
             catch (InternetException ex)
             {

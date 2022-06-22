@@ -366,6 +366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
                 await Task.Run(() =>
                 {
@@ -426,6 +427,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
                 await Task.Run(() =>
                 {

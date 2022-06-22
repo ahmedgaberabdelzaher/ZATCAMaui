@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
         <StackLayout Spacing="15">
             
             <custom:CustomLabel Text="Adjustment Amount" Style="{StaticResource SectionTitleBlack}"/>

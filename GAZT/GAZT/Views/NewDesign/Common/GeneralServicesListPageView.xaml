@@ -29,8 +29,12 @@
         <ControlTemplate>
             <Grid>
 
-                <StackLayout>
-                    <Grid Padding="15,5,15,5">
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Padding="15,5,15,5">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                         </Grid.RowDefinitions>
@@ -49,7 +53,7 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
+                    <yummy:PancakeView  Grid.Row="1" VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
 
@@ -62,7 +66,7 @@
                         Grid.Row="0" BackgroundColor="White"/>
                         </Grid>
                     </yummy:PancakeView>
-                </StackLayout>
+                </Grid>
 
             </Grid>
         </ControlTemplate>

@@ -651,7 +651,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyBills_ViewModel
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 else if (myBills[i].CalTyp == "G")

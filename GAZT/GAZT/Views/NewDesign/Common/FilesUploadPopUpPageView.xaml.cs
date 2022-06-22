@@ -141,6 +141,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
                         viewModel.filterList();
@@ -311,6 +313,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             await Task.Run(() =>
@@ -321,7 +325,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            try { 
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
@@ -347,6 +351,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
            
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private async void OnDeleteAttachmentClicked(object sender, EventArgs e)
@@ -384,6 +394,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;

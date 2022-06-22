@@ -251,9 +251,13 @@
                                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Fbnum}" Style="{StaticResource ValueLabelGrey}" HorizontalTextAlignment="Start" 
                                                HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
 
-                                            <yummy:PancakeView  Grid.Row="1" Grid.Column="1" Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+                                            <yummy:PancakeView  Grid.Row="1" Grid.Column="1" Padding="8,3,8,3" CornerRadius="14"  BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
-                                                    <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding FbustTxt}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                                                <yummy:PancakeView.Border>
+                                                    <yummy:Border  Thickness="1"/>
+                                                </yummy:PancakeView.Border>
+                                                
+                                                <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding FbustTxt}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
 
                                                             <DataTrigger TargetType="Label" Binding="{Binding FbustTxt}" Value="{x:Static ResourceManager:AppResources.NDBilled}">

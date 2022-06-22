@@ -254,6 +254,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     {
 
                         Console.WriteLine("Date exception", ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
 
@@ -765,6 +767,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     {
 
                         Console.WriteLine("Date exception", ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
 
@@ -882,6 +886,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     {
 
                         Console.WriteLine("Date exception", ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
 

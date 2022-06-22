@@ -168,7 +168,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                         }
                     }
@@ -196,7 +198,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                         }
                     }
@@ -241,7 +245,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //});
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -428,7 +434,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             });
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -565,7 +573,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             });
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -595,6 +605,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         public static double quarterDiff(DateTime first, DateTime second)
         {
+         
             int firstQuarter = getQuarter(first);
             int secondQuarter = getQuarter(second);
             return 1 + Math.Abs(firstQuarter - secondQuarter);
@@ -629,7 +640,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             //VATDeregistrationModel selectedItem = e.AddedItems[0] as VATDeregistrationModel;
             //viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             //viewModel.SelectedReasonListIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
-
+            try { 
             VATDeregistrationModel RemovedItem = null;
             if (e.RemovedItems != null && e.RemovedItems.Count > 0)
                 RemovedItem = e.RemovedItems[0] as VATDeregistrationModel;
@@ -644,7 +655,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 RemovedItem.ImgSource = "vat_tile_listofsignup_W";
             }
             viewModel.AddOutletDocumentOptions();
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private async void OnAttachmentClicked(object sender, EventArgs e)
@@ -679,7 +695,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             }
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                         }
 
                         viewModel.filterList();
@@ -758,7 +776,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 });
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 viewModel.IsLoading = false;
             }
             await Task.Run(() =>
@@ -798,7 +818,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
-
+            try { 
             ResultsAttachmentItemForElgblDocSet RemovedItem = null;
             if(e.RemovedItems!=null&&e.RemovedItems.Count>0)
                  RemovedItem = e.RemovedItems[0] as ResultsAttachmentItemForElgblDocSet;
@@ -812,6 +832,12 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             {
                 RemovedItem.TextCol = (Color)App.Current.Resources["Primary"];
                 RemovedItem.ImgSource = "vat_tile_listofsignup_W";
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
@@ -1117,7 +1143,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
 
             }
@@ -1252,7 +1280,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             });
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1387,7 +1417,9 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                             });
                         }
                         catch (Exception ex)
-                        {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1473,6 +1505,8 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -1531,10 +1565,17 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
         {
             //viewModel.ReasonTitle = e.NewTextValue;
             //OthersTxt.HelperText
+            try { 
             if (e.NewTextValue != null)
             {
                 viewModel.SetTextCount(e.NewTextValue.Length);
 
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

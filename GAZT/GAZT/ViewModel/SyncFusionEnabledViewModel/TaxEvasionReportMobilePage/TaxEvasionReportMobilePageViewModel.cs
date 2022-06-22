@@ -176,6 +176,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await Task.Run(() =>

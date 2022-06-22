@@ -556,6 +556,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                             }
                                                             catch (Exception ex)
                                                             {
+                                                                Console.WriteLine(ex.Message);
+                                                                Console.Write(ex.StackTrace.ToString());
+
                                                                 await Task.Run(() =>
                                                                 {
                                                                     IsLoading = false;
@@ -681,6 +684,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -713,7 +719,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -777,6 +784,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 catch (Exception ex)
                 {
                     //  return null;
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             await Task.Run(() =>

@@ -10,7 +10,7 @@
              xmlns:custom="clr-namespace:GAZT"
                  xmlns:custom2="clr-namespace:EGAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.VATRegistrationMenuPopUp">
-    <yummy:PancakeView CornerRadius="22,22,22,22" HasShadow="False" VerticalOptions="CenterAndExpand" BackgroundColor="White">
+    <yummy:PancakeView CornerRadius="22,22,22,22" VerticalOptions="CenterAndExpand" BackgroundColor="White">
         <StackLayout>
             <Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
                 <Label.GestureRecognizers>

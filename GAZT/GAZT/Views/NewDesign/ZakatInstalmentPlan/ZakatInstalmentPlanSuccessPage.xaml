@@ -43,7 +43,7 @@
 
  
 
-                    <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
+                    <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" 
                                    VerticalOptions="EndAndExpand">
                         <StackLayout>
 

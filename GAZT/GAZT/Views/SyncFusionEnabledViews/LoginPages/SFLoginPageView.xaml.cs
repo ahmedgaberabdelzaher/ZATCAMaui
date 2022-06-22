@@ -414,6 +414,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 catch (Exception ex)
                                 {
+                                    Console.WriteLine(ex.Message);
+                                    Console.Write(ex.StackTrace.ToString());
                                     await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }
                             }
@@ -548,6 +550,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
                     });
                 });
@@ -686,6 +690,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
             }
@@ -745,9 +751,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         }
         private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try { 
             TIN SelectedTin = (TIN)e.NewValue;
             viewModel.SelectedTinId = SelectedTin;
             viewModel.SelectedTinIdPrev = SelectedTin;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

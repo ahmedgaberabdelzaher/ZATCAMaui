@@ -69,9 +69,12 @@
                                         Style="{StaticResource ValueLabelBlackMedium}"
                                         Margin="0,-10,0,0"/>
                                     </StackLayout>
-                                    <yummy:PancakeView  Padding="10,0,10,0" CornerRadius="14"  HeightRequest="32" WidthRequest="59" BorderThickness="1"
+                                    <yummy:PancakeView  Padding="10,0,10,0" CornerRadius="14"  HeightRequest="32" WidthRequest="59" 
                                                         BackgroundColor="{StaticResource OpacityPrimary}"
                                                         VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                        <yummy:PancakeView.Border>
+                                            <yummy:Border Thickness="1"/>
+                                        </yummy:PancakeView.Border>
                                         <custom:CustomLabel Text="{Binding TinStatusLabelText}"
                                                         Style="{StaticResource CaptionLabelGrey}"
                                                         TextColor="{StaticResource Primary}"

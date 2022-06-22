@@ -300,7 +300,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
             }
         }
         public void SetSelectedParameterTypeData()
@@ -414,7 +416,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
                 isMandatoryDataEntered = false;
             }
@@ -563,6 +567,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     Device.BeginInvokeOnMainThread(async () =>
                     {

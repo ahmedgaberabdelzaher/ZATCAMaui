@@ -84,6 +84,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -155,6 +157,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -227,6 +231,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -299,6 +305,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -370,6 +378,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -512,6 +522,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -621,6 +633,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -686,6 +700,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -752,6 +768,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -818,6 +836,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }

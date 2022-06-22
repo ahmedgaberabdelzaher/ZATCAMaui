@@ -8,6 +8,7 @@ using EGAZT.Views.NewDesign.VATDeRegistration;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
 using Rg.Plugins.Popup.Services;
 using Syncfusion.SfChart.XForms;
@@ -106,9 +107,11 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TaxPayerSubsidyRequestTapped", "TaxPayer Subsidy Request");
             var a = App.LoginDataRetrieved;
-
+            viewModel.IsLoading = true;
             Task.Run(async () =>
             {
+               viewModel.IsLoading = true;
+
                 string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync();
 
                 if(response != null && response.Length > 0)
@@ -116,21 +119,39 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
                     if(subsidyResponseModel != null && subsidyResponseModel.D != null)
                     {
-                        String url = subsidyResponseModel.D.ExternalPortal;
-                        url += "?";
-                        url += "culture=" + WebServiceManager.GetLangZParameterAREN();
-                        url += "&tin=" + App.LoginDataRetrieved.TIN;
-                        url += "&token=" + subsidyResponseModel.D.Fbguid;
-                        url += "&device=MA";
-                        Constants.TaxpayerSubsidyRequest = url;
+                       
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid)) {
 
-                        
-                        Device.BeginInvokeOnMainThread(async () => {
-                            viewModel._navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
-                        });
-                        AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                            String url = subsidyResponseModel.D.ExternalPortal;
+                            url += "?";
+                            url += "culture=" + WebServiceManager.GetLangZParameterAREN();
+                            url += "&tin=" + App.LoginDataRetrieved.TIN;
+                            url += "&token=" + subsidyResponseModel.D.Fbguid;
+                            url += "&device=MA";
+                            Constants.TaxpayerSubsidyRequest = url;
+
+
+                            Device.BeginInvokeOnMainThread(async () => {
+                                viewModel.IsLoading = false;
+
+                                viewModel._navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
+                            });
+                            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                        }
+                        else {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
+                                viewModel.IsLoading = false;
+
+                                await viewModel._dialogService.ShowMessage(AppResources.UnderDevelopment, AppResources.Information);
+                            });
+                        }
+
+                       
                     }
                 }
+               
+
             });
         }
 
@@ -242,10 +263,22 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 viewModel.IsLoading = true;
 
-                viewModel.DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+                try {
 
-                viewModel.PopulateReturnsInformation();
-                viewModel.IsLoading = false;
+                    viewModel.DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+
+                    viewModel.PopulateReturnsInformation();
+                    viewModel.IsLoading = false;
+                }
+                catch(GAZTErrorException ex) {
+
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
+
+
+
+               
 
 
             }
@@ -418,9 +451,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 App.IsComingFromSleepMode = false;
 
 
-                LoadData();
                 try
                 {
+                    LoadData();
+
                     if (App.LoginDataRetrieved != null)
                     {
 
@@ -550,9 +584,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 counter = counter - 1;
                 if (counter == 0)
                 {
-                    counter = 120;
-                    App.HasToRefreshLoaderOnDashboard = true;
-                    OnDataLoad();
+                    if(App.TP != null) {
+
+                        counter = 120;
+                        App.HasToRefreshLoaderOnDashboard = true;
+                        OnDataLoad();
+                    }
+                    else {
+                        isTimerOff = true;
+
+                    }
+
+                   
                 }
                 return !isTimerOff;
             });
@@ -619,7 +662,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             try
             {
                 viewModel.IsLoading = true;
-                await viewModel.LoadDashboardData();
+
+
+                if (App.TP != null)
+                {
+                    await viewModel.LoadDashboardData();
+
+                }
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     viewModel.BillCount = string.Empty;
@@ -1108,7 +1157,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 }
                 catch (Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             });

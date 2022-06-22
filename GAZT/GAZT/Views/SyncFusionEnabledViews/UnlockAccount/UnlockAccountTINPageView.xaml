@@ -32,11 +32,11 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-       <yummy:PancakeView x:Name="mainContentView" BackgroundColor="Transparent" VerticalOptions="FillAndExpand"  CornerRadius="22,22,0,0" HasShadow="False">
+       <yummy:PancakeView x:Name="mainContentView" BackgroundColor="Transparent" VerticalOptions="FillAndExpand"  CornerRadius="22,22,0,0" >
         <StackLayout>
                 <ScrollView VerticalOptions="FillAndExpand" IsVisible="{Binding IsTinContentViewVisible}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                   <StackLayout Padding="0,0,0,0" BackgroundColor="Transparent" Margin="0,0,0,0" VerticalOptions="FillAndExpand" IsVisible="{Binding IsTinContentViewVisible}">
-                   <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" HasShadow="False">
+                   <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" >
                        <StackLayout Margin="15,10,15,0" VerticalOptions="EndAndExpand" BackgroundColor="Transparent">
                         <Grid VerticalOptions="EndAndExpand" BackgroundColor="Transparent" IsVisible="{Binding IsTinContentViewVisible}">
                         <Grid.RowDefinitions>
@@ -106,7 +106,7 @@
                 </ScrollView>
                 <ScrollView VerticalOptions="FillAndExpand" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" IsVisible="{Binding IsOTPContentViewVisible}">
                     <StackLayout Padding="0,0,0,0" BackgroundColor="Transparent" Margin="0,0,0,0" VerticalOptions="FillAndExpand" IsVisible="{Binding IsOTPContentViewVisible}">
-                    <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" HasShadow="False">
+                    <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" >
                     <StackLayout Padding="0,0,0,0" Margin="15,10,15,0" VerticalOptions="End" IsVisible="{Binding IsOTPContentViewVisible}">
                     <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="End" IsVisible="{Binding IsOTPContentViewVisible}" ColumnSpacing="0" RowSpacing="0">
                         <Grid.RowDefinitions>
@@ -231,7 +231,7 @@
                 </ScrollView>
                 <ScrollView VerticalOptions="FillAndExpand" IsVisible="{Binding IsChangePasswordViewVisible}" HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never">
                   <StackLayout Padding="0,0,0,0" BackgroundColor="Transparent" Margin="0,0,0,0" VerticalOptions="FillAndExpand" IsVisible="{Binding IsChangePasswordViewVisible}">
-                   <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" HasShadow="False">
+                   <yummy:PancakeView VerticalOptions="EndAndExpand" BackgroundColor="White" CornerRadius="22,22,0,0" >
                                        <StackLayout x:Name="ChangePasswordView" Padding="0,0,0,0" Margin="15,10,15,0" IsVisible="{Binding IsChangePasswordViewVisible}">
                     <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsChangePasswordViewVisible}" ColumnSpacing="0" RowSpacing="0">
                         <Grid.RowDefinitions>

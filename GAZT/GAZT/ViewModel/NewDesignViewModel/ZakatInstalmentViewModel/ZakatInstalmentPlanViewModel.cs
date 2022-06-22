@@ -2982,9 +2982,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-
-                    await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
-                    // await showAlert("Please accept VAT Instructions and Conditions to continue");
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.BPInstructionsAndConditionsAlert, AppResources.Information);
+                    });
+                        // await showAlert("Please accept VAT Instructions and Conditions to continue");
                 }
                 // _navigationService.NavigateTo(App.ZakatInstalmentPlanPageView);
             }
@@ -3042,8 +3044,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 else
                 {
-                    await _dialogService.ShowMessage(AppResources.ZakatInstalmentPleaseChooseOneReason, AppResources.Information);
-                }
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZakatInstalmentPleaseChooseOneReason, AppResources.Information);
+                    });
+                    }
 
             }
             catch (GAZTUnlockAccountException )
@@ -3062,7 +3067,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
         public async void showDialog(string msg)
         {
-            await _dialogService.ShowMessage(msg, AppResources.Information);
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                await _dialogService.ShowMessage(msg, AppResources.Information);
+            });
         }
 
         public void BillContinueBtnClicked()
@@ -3111,7 +3119,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             {
                 if (Year1.Length < 4 || Year2.Length < 4 || Year3.Length < 4)
                 {
-                    await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(AppResources.ZZPleasefillthemandatoryfields + "(" + AppResources.ZakatYearOne + ", " + AppResources.ZakatYearTwo + ", " + AppResources.ZakatYearThree + ")", AppResources.Information);
+                    });
                     return;
                 }
 
@@ -3971,6 +3982,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -3993,6 +4005,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -4080,6 +4093,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -4116,6 +4130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }

@@ -261,8 +261,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                         await SendOTPToRegisterMobileNumberToLogIn();
                     }
                     catch (Exception ex)
-                    { 
-                    
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     
                 });
@@ -273,6 +274,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         #endregion
@@ -467,8 +470,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.CreateGaztAccountPage_ViewM
                             IsLoading = false;
                         });
                         SignupErrorModelRootObject SignupErrorModelRootObjectModel = JsonConvert.DeserializeObject<SignupErrorModelRootObject>(ResultFirstSubmit);
-                        _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
-                       
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            _dialogService.ShowMessage(SignupErrorModelRootObjectModel.error.innererror.errordetails[0].message, AppResources.Information);
+                        });
                     }
                     else
                     {

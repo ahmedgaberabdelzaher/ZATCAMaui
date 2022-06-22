@@ -107,11 +107,19 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void Frequncy_Selected(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+            try { 
             var selectedItem = e.ItemData as InstalmentAgreementFrequencyModel;
             viewModel.updateInstalmentsOnSlider(selectedItem);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            try { 
             ZakatInstalmentPlanModel selectedItem = e.AddedItems[0] as ZakatInstalmentPlanModel;
             viewModel.SelectedOutletOptionIndex = viewModel.OutletDecisionOptions.IndexOf(selectedItem);
             //            viewModel.ReasonContinueBtnClicked();
@@ -141,7 +149,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.IDType = viewModel.IDTypeDictionary[AppResources.ZakatOtherReason];
 
             }
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
         }
 
@@ -164,14 +177,28 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void DownPayment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
+            try { 
             viewModel.DownPaymentAmount = args.NewValue;
             downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
+            try { 
             var newVal = args.NewValue;
             viewModel.NoOfInstalments = Convert.ToInt32(newVal);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -214,6 +241,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -566,6 +594,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

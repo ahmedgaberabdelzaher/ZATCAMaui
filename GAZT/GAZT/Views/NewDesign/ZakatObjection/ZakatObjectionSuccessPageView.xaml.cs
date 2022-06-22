@@ -34,7 +34,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            _viewModel = App.Locator.ZakatObjectionView;
+            _viewModel = App.Locator.ZakatObjectionSuccessView;
 
             this.BindingContext = _viewModel;
         }
@@ -52,7 +52,8 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -95,7 +96,8 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
 
             }

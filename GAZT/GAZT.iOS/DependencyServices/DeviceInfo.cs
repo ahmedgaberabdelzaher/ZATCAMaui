@@ -170,6 +170,9 @@ namespace GAZT.iOS.DependencyServices
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 return false;
             }
         }
@@ -184,6 +187,9 @@ namespace GAZT.iOS.DependencyServices
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 base64Image = null;
             }
 

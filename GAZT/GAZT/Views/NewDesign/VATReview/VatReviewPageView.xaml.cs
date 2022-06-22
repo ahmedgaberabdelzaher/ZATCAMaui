@@ -268,7 +268,8 @@ namespace EGAZT.Views.NewDesign.VatReview
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -296,7 +297,8 @@ namespace EGAZT.Views.NewDesign.VatReview
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -321,9 +323,16 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private void Report_Details_Tx_TextChanged(object sender, TextChangedEventArgs e)
         {
+            try { 
             viewModel.charCountReportDetails = Report_Details_Tx.Text.Length + "/" + 1000;
             viewModel.ReportDetails = Report_Details_Tx.Text;
             viewModel.EnableReportDetailsConButton();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
 
@@ -354,6 +363,7 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private void Security_Type_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             var selectedITem = e.ItemData as VatReviewViewModel.SelectionModel;
             if (selectedITem.SelectionTitle.Equals(AppResources.VRSADAD))
             {
@@ -366,6 +376,12 @@ namespace EGAZT.Views.NewDesign.VatReview
             }
 
             viewModel.EnableSecurityPaymentsConButton();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Report_Details_UnFocused(object sender, FocusEventArgs e)
@@ -382,7 +398,14 @@ namespace EGAZT.Views.NewDesign.VatReview
 
         private void IdNumberTextChanged(object sender, TextChangedEventArgs e)
         {
+            try { 
             viewModel._idNumber = e.NewTextValue;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void OnIDNumberFocusChanged(object sender, FocusEventArgs e)
@@ -419,6 +442,7 @@ namespace EGAZT.Views.NewDesign.VatReview
         }
         private void Dispute_Amount_ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             var selectedITem = e.ItemData as VatReviewViewModel.SelectionModel;
             if (selectedITem.SelectionTitle.Equals(AppResources.VRInfull))
             {
@@ -433,7 +457,12 @@ namespace EGAZT.Views.NewDesign.VatReview
                 viewModel.FetchSecurityAmount();
                 viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInpartial;
             }
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         public void SelectDefaultPaymentOption()

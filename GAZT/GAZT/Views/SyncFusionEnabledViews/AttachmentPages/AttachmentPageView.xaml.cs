@@ -168,7 +168,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     }
                     catch (Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
 
@@ -196,7 +197,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     }
                     catch (Exception ex)
                     {
-
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 }
@@ -252,6 +254,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopToRootPage()
@@ -310,8 +314,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                             }
                             catch (Exception ex)
                             {
-
-                            }
+                                    Console.Write(ex.ToString());
+                                    Console.Write(ex.StackTrace.ToString());
+                                }
                         }
                         else
                         {
@@ -408,6 +413,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
         }
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
@@ -425,6 +431,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 await email(attachment.Doguid, attachment);
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         public async Task email(string doguid, VATAttachment attachment)
         {
@@ -472,6 +484,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 catch (Exception ex)
                 {
                     viewModel.IsLoading = false;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             await Task.Run(async () =>

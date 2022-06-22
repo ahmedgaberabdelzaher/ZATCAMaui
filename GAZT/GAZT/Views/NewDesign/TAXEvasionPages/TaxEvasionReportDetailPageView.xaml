@@ -90,7 +90,10 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding CompanyName}" Style="{StaticResource PageTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                    <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14" Grid.Row="0" Grid.Column="1"  HeightRequest="24" BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                    <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14" Grid.Row="0" Grid.Column="1"  HeightRequest="24" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
+                        <yummy:PancakeView.Border>
+                            <yummy:Border  Thickness="1"/>
+                        </yummy:PancakeView.Border>
                         <custom:CustomLabel Text="{Binding Status}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                             <custom:CustomLabel.Triggers>
                                 <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->

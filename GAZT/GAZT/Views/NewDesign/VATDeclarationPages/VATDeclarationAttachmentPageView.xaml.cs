@@ -444,13 +444,23 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         public String WriteFileToPath(string fileName, string base64Data)
         {
+            try { 
             string getFilePath = PathToFolder(fileName, "GAZTFiles");
             File.WriteAllBytes(getFilePath, Convert.FromBase64String(base64Data));
 
             return getFilePath;
-        }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+                return null;
+            }
+}
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             VATAttachment attachment = (VATAttachment)Document.SelectedItem;
             //attachment.DocUrl;
@@ -470,6 +480,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 await PopupNavigation.Instance.PopAsync();
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
         public async Task email(string doguid, VATAttachment attachment)
         {

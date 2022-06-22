@@ -243,6 +243,9 @@
 
 
                             <yummy:PancakeView Style="{StaticResource GreyBorderFrameWithShadow1}">
+                                <yummy:PancakeView.Border>
+                                    <yummy:Border Color="{StaticResource NeutralLightGrey}" Thickness="1"/>
+                                </yummy:PancakeView.Border>
                                 <StackLayout>
                                     <StackLayout Orientation="Horizontal" Spacing="10" Padding="10">
                                          <Image Source="zakat_details"  ></Image>

@@ -340,6 +340,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -700,6 +702,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                         }
                         catch (Exception ex)
                         {
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -781,6 +785,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return ICRList;
             }
         }

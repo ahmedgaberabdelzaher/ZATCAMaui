@@ -51,6 +51,7 @@ namespace EGAZT.Manager
 
                     HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
+                     
                     _requestResponse = await res.Content.ReadAsStringAsync();
                     if (!string.IsNullOrEmpty(_requestResponse))
                     {
@@ -70,10 +71,13 @@ namespace EGAZT.Manager
                 catch (GAZTVATRegistrationInProcessException ex)
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
+                    
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
                     return null;
                 }
                 return _requestResponse;

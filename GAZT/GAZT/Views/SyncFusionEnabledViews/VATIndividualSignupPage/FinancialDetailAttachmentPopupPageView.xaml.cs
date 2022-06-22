@@ -64,7 +64,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
                 if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                 {
@@ -82,8 +83,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
             catch (Exception ex)
-            { 
-            
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             
         }
@@ -122,7 +124,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
                 viewModel.IsComeForWhichAttachment = attachment;
@@ -130,7 +133,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -162,7 +166,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -294,7 +299,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             catch (InternetException ex)
@@ -383,6 +389,8 @@ ResultsItemForDOCSetforsubmit();
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private void OnDownloadAttachmentClicked(object sender, EventArgs e)
@@ -399,7 +407,9 @@ ResultsItemForDOCSetforsubmit();
 
             }
             catch (Exception ex)
-            { 
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private void DDlIDTypee_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -421,7 +431,8 @@ ResultsItemForDOCSetforsubmit();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -461,7 +472,8 @@ ResultsItemForDOCSetforsubmit();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -495,7 +507,8 @@ ResultsItemForDOCSetforsubmit();
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -538,7 +551,8 @@ ResultsItemForDOCSetforsubmit();
             }
             catch (Exception ex) 
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             }
 

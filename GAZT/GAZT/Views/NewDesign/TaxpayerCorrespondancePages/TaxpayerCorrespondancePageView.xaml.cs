@@ -209,11 +209,16 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
         private void ListView_Correspondance_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
-
+            try { 
             CorrespondanceModel Correspondence = e.ItemData as CorrespondanceModel;
             viewModel.ShowCorrespondenceDetails(Correspondence);
-            
-            
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
+
         }
 
 

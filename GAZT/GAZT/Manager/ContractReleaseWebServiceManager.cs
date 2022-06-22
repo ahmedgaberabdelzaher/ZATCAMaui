@@ -90,7 +90,10 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    // App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -167,7 +170,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -216,7 +221,9 @@ namespace EGAZT.Manager
             }
             catch (Exception ex)
             {
-                App.IsSessionExpired = true;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                //App.IsSessionExpired = true;
                 return null;
             }
             return _contractReleasesubmitResponse;
@@ -284,7 +291,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
                     return null;
                 }
             }

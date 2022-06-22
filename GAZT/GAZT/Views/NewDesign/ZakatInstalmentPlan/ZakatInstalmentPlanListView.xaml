@@ -234,8 +234,12 @@
                                       
                                         <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
-                                            <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+                                            <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
+                                                <yummy:PancakeView.Border>
+                                                    <yummy:Border Thickness="1"/>
+                                                </yummy:PancakeView.Border>
+                                                
                                                 <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding status}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                     <Label.Triggers>
 
@@ -804,8 +808,12 @@
                                             
                                             <StackLayout Grid.Row="1" Grid.Column="1" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
-                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+                                                <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BackgroundColor="{StaticResource PartialBg}"  VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
 
+                                                    <yummy:PancakeView.Border>
+                                                        <yummy:Border Thickness="1"/>
+                                                    </yummy:PancakeView.Border>
+                                                    
                                                     <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding Status}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                         <Label.Triggers>
 

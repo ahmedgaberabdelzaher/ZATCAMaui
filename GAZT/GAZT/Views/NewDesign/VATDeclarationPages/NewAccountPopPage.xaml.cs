@@ -309,11 +309,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-              //  SetFocus();
+                //  SetFocus();
             }
-            catch(Exception er)
+            catch (Exception ex)
             {
-                Console.WriteLine(er.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -339,9 +340,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     IbanFour.Focus();
                 }
             }
-            catch(Exception er)
+            catch (Exception ex)
             {
-                Console.WriteLine(er.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

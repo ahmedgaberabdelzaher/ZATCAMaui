@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Linq;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
@@ -37,8 +38,15 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
         }
         async void AddressList_SelectionChanged(System.Object sender, Xamarin.Forms.SelectionChangedEventArgs e)
         {
+            try { 
             OnItemSelect?.Invoke(e.CurrentSelection.FirstOrDefault());
             await PopupNavigation.Instance.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
     }
 }

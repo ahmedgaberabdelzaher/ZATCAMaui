@@ -691,6 +691,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -819,6 +820,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
             }, CanExecuteClickCommand);
@@ -890,6 +892,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
             }, CanIssueByExecuteClickCommand);
@@ -959,6 +962,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                     }
 
                 }
@@ -1045,6 +1049,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (GAZTUnlockAccountException ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    throw new GAZTErrorException(ex.Message.ToString());
+
                 }
                 catch (InternetException ex)
                 {
@@ -1057,6 +1063,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
             });
@@ -1115,6 +1122,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (GAZTUnlockAccountException ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    throw new GAZTErrorException(ex.Message.ToString());
+
                 }
                 catch (InternetException ex)
                 {
@@ -1127,6 +1136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
             });
@@ -1187,6 +1197,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (GAZTUnlockAccountException ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                    throw new GAZTErrorException(ex.Message.ToString());
+
                 }
                 catch (InternetException ex)
                 {
@@ -1199,6 +1211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+
                 }
 
             });
@@ -1533,23 +1546,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                         }
                                         catch (Exception ex)
                                         {
+                                            Console.Write(ex.ToString());
+                                            Console.Write(ex.StackTrace.ToString());
                                         }
                                     }
                                     else
                                     {
                                         attachmentName = string.Empty;
-                                        await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            await _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                        });
                                     }
                                 }
                                 else
                                 {
-                                    await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        await _dialogService.ShowMessage(AppResources.ESTAttachmentSizeNotfication, AppResources.Information);
+                                    });
                                 }
 
                             }
                             else
                             {
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                });
                             }
                         }
                     }
@@ -1568,6 +1592,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
             }
         }
         private async void updateActivityList(string indSector)
@@ -1714,6 +1741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
             }
             finally
             {
@@ -1782,7 +1810,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             updateCRAttachments();
             if (validateCR?.NotFound == "X")
             {
-                await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(AppResources.ESTValidateCRNumberInValid, AppResources.Information);
+                });
                 return;
             }
             if (validateCR?.Excption == "X")
@@ -1925,6 +1956,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

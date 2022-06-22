@@ -157,8 +157,12 @@
                                                 <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
 
 
-                                                    <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BorderThickness="1" BackgroundColor="{StaticResource BackgroundGray}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                                    <yummy:PancakeView Padding="8,3,8,3" CornerRadius="14" BackgroundColor="{StaticResource BackgroundGray}"  VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
 
+                                                        <yummy:PancakeView.Border>
+                                                            <yummy:Border  Thickness="1"/>
+                                                        </yummy:PancakeView.Border>
+                                                        
                                                         <Label Style="{StaticResource CaptionLabelBlack}" TextColor="{StaticResource Partial}" Text="{Binding StatText}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                                             <Label.Triggers>
 

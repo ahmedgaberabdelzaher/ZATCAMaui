@@ -217,7 +217,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -269,6 +270,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
                 WebResponse myResp = myReq.GetResponse();
@@ -321,6 +324,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                             catch (Exception ex)
                             {
                                 IsShareButtonEnable = false;
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
                         else
@@ -358,6 +363,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
             catch (Exception ex)
             {
                 IsShareButtonEnable = false;
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

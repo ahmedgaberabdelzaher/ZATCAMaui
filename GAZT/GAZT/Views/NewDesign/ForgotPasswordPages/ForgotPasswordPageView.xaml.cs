@@ -62,7 +62,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -172,6 +173,8 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -183,9 +186,16 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
         private void Picker_Tins_SelectionChanged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try { 
             TIN selectedTinId = (TIN)e.NewValue;
             Picker_Tins.SelectedItem = selectedTinId;
             viewModel.SelectedTinId = selectedTinId;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
 

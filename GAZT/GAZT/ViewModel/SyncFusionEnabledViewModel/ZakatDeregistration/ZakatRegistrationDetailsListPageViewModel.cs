@@ -227,7 +227,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-               
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -317,8 +318,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             newMessage = AppResources.TinDeregistrationChangeApplicationInDraftError;
                         }
-
-                        await _dialogService.ShowMessage(newMessage, AppResources.Information, AppResources.ZYes, AppResources.ZNo, (async (bool isConfirmed) =>
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(newMessage, AppResources.Information, AppResources.ZYes, AppResources.ZNo, (async (bool isConfirmed) =>
                          {
                              if (isConfirmed == true)
                              {
@@ -377,10 +379,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                              }
                          }));
+                        });
                     }
                     else
                     {
-                        await _dialogService.ShowMessage(message, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(message, AppResources.Information);
+                        });
                     }
                 }
                 catch (Exception mex)

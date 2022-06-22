@@ -67,6 +67,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -95,7 +97,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

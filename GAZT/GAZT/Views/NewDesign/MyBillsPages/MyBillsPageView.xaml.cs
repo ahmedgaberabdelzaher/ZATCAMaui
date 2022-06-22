@@ -82,7 +82,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             ChangeAeroIcon();
             SetLTR();
@@ -216,6 +217,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 //scrollView.ScrollToAsync(0, 500, true);
             }
         }
@@ -287,7 +290,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             //
         }
@@ -345,7 +349,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

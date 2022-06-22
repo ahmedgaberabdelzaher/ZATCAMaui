@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel;
 using GAZT.Helper;
@@ -50,7 +51,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
                 viewModel.ResetData();
-                viewModel.GetVATChangeFillingList();
+                _ = viewModel.GetVATChangeFillingList();
             }
             catch (Exception e)
             {
@@ -85,8 +86,9 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
         }
 
-        private void Request_Item_Tapped(object sender, ItemTappedEventArgs e)
+        async void Request_Item_Tapped(System.Object sender, ItemTappedEventArgs e)
         {
+            try { 
             var item = e.ItemData as VATChangeFillingListModel.ChangeFillingFrequency;
             if (item.Fbust == "E0018" || item.Fbust == "E0075" || item.Fbust == "E0074" || item.Fbust == "E0013")
             {
@@ -96,10 +98,31 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
             }
             else
             {
-                viewModel.GetVATChangeFillingSummary(item);
-                viewModel.EnableSummaryView();
-            }
 
+                try {
+
+                    await viewModel.GetVATChangeFillingSummary(item);
+
+                    if(viewModel.vATChangingSummaryData != null) {
+
+                        viewModel.EnableSummaryView();
+
+                    }
+
+                }
+                catch(Exception ex) {
+
+                }
+
+
+               
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void Download_Acknowledgement(object sender, EventArgs e)

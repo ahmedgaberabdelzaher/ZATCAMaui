@@ -150,7 +150,8 @@ namespace EGAZT.Views.NewDesign
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -174,26 +175,35 @@ namespace EGAZT.Views.NewDesign
                     };
                     mapView.Pins.Add(pin);
                 }
-                catch (FeatureNotSupportedException)
+                catch (FeatureNotSupportedException ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     // Handle not supported on device exception
                 }
-                catch (FeatureNotEnabledException)
+                catch (FeatureNotEnabledException ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     // Handle not enabled on device exception
                 }
-                catch (PermissionException)
+                catch (PermissionException ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     // Handle permission exception
                 }
                 catch (Exception ex)
                 {
                     // Unable to get location
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -392,12 +402,16 @@ namespace EGAZT.Views.NewDesign
                 //await Email.ComposeAsync(message);
                 await Xamarin.Essentials.Email.ComposeAsync("", "", Email.Text);
             }
-            catch (FeatureNotSupportedException)
+            catch (FeatureNotSupportedException ex)
             {
                 // Email is not supported on this device
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 // Some other exception occurred
             }
         }
@@ -408,17 +422,23 @@ namespace EGAZT.Views.NewDesign
             {
                 PhoneDialer.Open(InternationalPhone.Text);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 // Number was null or white space
             }
-            catch (FeatureNotSupportedException)
+            catch (FeatureNotSupportedException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 // Phone Dialer is not supported on this device.
             }
             catch (Exception ex)
             {
                 // Other error has occurred.
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -428,17 +448,23 @@ namespace EGAZT.Views.NewDesign
             {
                 PhoneDialer.Open(LocalPhone.Text);
             }
-            catch (ArgumentNullException)
+            catch (ArgumentNullException ex)
             {
                 // Number was null or white space
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
-            catch (FeatureNotSupportedException)
+            catch (FeatureNotSupportedException ex)
             {
                 // Phone Dialer is not supported on this device.
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (Exception ex)
             {
                 // Other error has occurred.
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

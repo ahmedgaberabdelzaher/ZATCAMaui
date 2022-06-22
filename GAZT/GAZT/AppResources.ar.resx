@@ -6512,8 +6512,11 @@
     <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>ترحيل الرصيد للفترة القادمة</value>
+    <value>تفاصيل ترحيل الرصيد للفترة السابقة</value>
   </data>
+<!--  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
+    <value>ترحيل الرصيد للفترة القادمة</value>
+  </data>-->
   <data name="ESTAddOutlet" xml:space="preserve">
     <value>إضافة فرع</value>
   </data>

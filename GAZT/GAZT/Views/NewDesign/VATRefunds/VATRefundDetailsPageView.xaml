@@ -149,7 +149,12 @@
 
                                 </StackLayout>
                                 <yummy:PancakeView Grid.Row="0" Grid.Column="1" IsVisible="true" Padding="10,10,10,10" CornerRadius="14" 
-                                               WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  BorderThickness="1" VerticalOptions="Center" HorizontalOptions="EndAndExpand" >
+                                               WidthRequest="80"  HeightRequest="20" Opacity=".2" BackgroundColor="{StaticResource Secondary}"  VerticalOptions="Center" HorizontalOptions="EndAndExpand" >
+
+                                    <yummy:PancakeView.Border>
+                                        <yummy:Border Thickness="1"/>
+                                    </yummy:PancakeView.Border>
+                                    
                                     <yummy:PancakeView.Triggers>
                                         <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
                                         <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding VATRefundsHeaderSet.Status}" Value="{x:Static ResourceManager:AppResources.VATRefundsStatusTransferred}">

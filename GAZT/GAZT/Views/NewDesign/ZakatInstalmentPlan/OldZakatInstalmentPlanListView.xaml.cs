@@ -47,7 +47,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -109,13 +110,15 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
 
         private async void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+            try { 
             var item = e.ItemData as OldZakatListModel;
             if (item != null)
             {
@@ -145,7 +148,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
 
 
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
 
         }

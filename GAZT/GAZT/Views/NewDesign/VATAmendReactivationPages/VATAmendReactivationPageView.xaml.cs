@@ -4425,19 +4425,40 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private void SfCheckBox_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
         {
+            try { 
             viewModel.IsFDChangeSectionEnabled = e.IsChecked == true ? true : false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void AddAdditionalInfo_StateChanged(object sender, Syncfusion.XForms.Buttons.StateChangedEventArgs e)
         {
+            try { 
             viewModel.IsTaxPayerIBANEnabled = e.IsChecked == true ? true : false;
             viewModel.IsTaxPayerEligDateEnabled = e.IsChecked == true ? true : false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void AddAdditionalInfo_CheckedChanged(object sender, bool e)
         {
+            try { 
             viewModel.IsTaxPayerIBANEnabled = e;
             viewModel.IsTaxPayerEligDateEnabled = e;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void SfCheckBox_StateChanged(object sender, bool e)
@@ -4446,7 +4467,14 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
         }
         private void FD_CheckedCanged(object sender, bool e)
         {
+            try { 
             viewModel.IsFDChangeSectionEnabled = e;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
     }
 }

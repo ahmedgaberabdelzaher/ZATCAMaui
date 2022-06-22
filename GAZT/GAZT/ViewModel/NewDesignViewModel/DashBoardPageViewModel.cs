@@ -1948,11 +1948,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         private async Task<bool> ProcessApplePay()
         {
-            var Amount = Convert.ToDouble(PaymentData.d.Amount);
-            var BillAmount = Math.Round(Amount, 2);
-
-            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+            try
+            {
+                var Amount = Convert.ToDouble(PaymentData.d.Amount);
+                var BillAmount = Math.Round(Amount, 2);
+                DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
+                return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                return false;
+            }
         }
 
         public async Task UpdateApplePayPaymentGuid()
@@ -2064,7 +2072,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxpayerName = App.TP.NameOrg1;
                     }
                 }
-                DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+
+                try
+                {
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+
+                }
+                catch (GAZTErrorException ex)
+                {
+
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
 
                 if (App.isMybillsRefresh) {
 
@@ -2099,13 +2118,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     }
                 }
-
-
-                
-
-
-
-
             }
             catch (AggregateException ae)
             {
@@ -2132,12 +2144,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                     _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                });
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                     _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                });
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
@@ -2146,10 +2164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         });
                     }
-                    else
-                    {
-                        throw;
-                    }
+                   
                 }
             }
             catch (GAZTSessionExpiredException)
@@ -2164,6 +2179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Console.WriteLine(ex.Message);
                 IsLoading = false;
+                Console.Write(ex.StackTrace.ToString());
             }
 
             IsLoading = false;
@@ -2459,8 +2475,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            AllBills = TempBills;
+
+
+            try
+            {
+                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                AllBills = TempBills;
+
+           
+           
 
             if (TempBills != null)
             {
@@ -2551,9 +2574,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception ex)
                             {
-                                Console.WriteLine(e.Message);
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
 
                             }
 
@@ -2645,6 +2670,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             catch (Exception e)
                             {
                                 Console.WriteLine(e.Message);
+                                Console.Write(e.StackTrace.ToString());
 
                             }
 
@@ -2707,6 +2733,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 temp2.Add(ee);
             }
             Device.BeginInvokeOnMainThread(() => Returns = temp2);
+
+            }
+            catch (GAZTErrorException ex)
+            {
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
 
         }
         private async Task getDashboardInstalmentPlan()
@@ -2976,6 +3010,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                     if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
@@ -3070,10 +3106,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         });
                     }
                     // Rethrow any other exception.
-                    else
-                    {
-                        throw;
-                    }
+                    
                 }
             }
             catch (GAZTSessionExpiredException ex)
@@ -3084,8 +3117,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch
+            catch(Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
             }
         }

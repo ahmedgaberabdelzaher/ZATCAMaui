@@ -2218,8 +2218,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                     }
                     catch (Exception ex)
-                    { 
-                    
+                    {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     
                     CurrentTab = EstablishmentSignUPTabEnum.MobileVerification;
@@ -2825,7 +2826,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {

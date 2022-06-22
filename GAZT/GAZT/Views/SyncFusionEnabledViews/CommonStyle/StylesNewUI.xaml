@@ -367,10 +367,10 @@
         <!--<Setter Property="Margin" Value="10,0,10,0" />
          <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="HasShadow" Value="False" />
+        <!--  <Setter Property="HasShadow" Value="False" />-->
         <Setter Property="CornerRadius" Value="14" />
-        <Setter Property="BorderThickness" Value="1.5" />
-        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <!--  <Setter Property="BorderThickness" Value="1.5" />
+        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>
     <Style x:Key="GreyBorderFrameButtonWithShadow" TargetType="border:SfBorder">
         <Setter Property="HeightRequest" Value="56" />

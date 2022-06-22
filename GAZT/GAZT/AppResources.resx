@@ -6711,8 +6711,11 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>The new email must not match the old email</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>Carried Credit Details</value>
+    <value>Carried Previous Credit Details</value>
   </data>
+<!--  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
+    <value>Carried Credit Details</value>
+  </data>-->
   <data name="ESTAddOutlet" xml:space="preserve">
     <value>Add Outlet</value>
   </data>
@@ -9046,5 +9049,8 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="TaxPayerSubsidyRequest" xml:space="preserve">
     <value>E-invoicing Subsidy Request</value>
+  </data>
+   <data name="UnderDevelopment" xml:space="preserve">
+    <value>This process is under development</value>
   </data>
 </root>

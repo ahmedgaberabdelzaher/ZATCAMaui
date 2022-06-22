@@ -104,6 +104,10 @@ namespace GAZT.iOS.CustomRenderer
                     App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
                     element.InvokeAction("requestTimedout");
                 }
+                else
+                {
+
+                }
             }
             catch(Exception ex)
             {
@@ -161,6 +165,8 @@ namespace GAZT.iOS.CustomRenderer
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -217,6 +223,7 @@ namespace GAZT.iOS.CustomRenderer
                                 }
                                 catch (Exception ex)
                                 {
+                                    Console.WriteLine(ex.Message);
                                     Console.Write(ex.ToString());
                                     Console.Write(ex.StackTrace.ToString());
                                 }
@@ -265,6 +272,7 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);                  
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                     IsError = true;

@@ -27,7 +27,10 @@
             HasBackgroundAnimation="True"/>
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
-        <yummy:PancakeView VerticalOptions="EndAndExpand"  BackgroundColor="White" Padding="10" BorderThickness="1" BorderColor="Black">
+        <yummy:PancakeView VerticalOptions="EndAndExpand"  BackgroundColor="White" Padding="10">
+            <yummy:PancakeView.Border>
+                <yummy:Border Color="Black" Thickness="1"/>
+            </yummy:PancakeView.Border>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="300"/>

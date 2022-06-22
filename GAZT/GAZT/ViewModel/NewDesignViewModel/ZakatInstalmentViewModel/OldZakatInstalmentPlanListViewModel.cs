@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
@@ -11,19 +10,15 @@ using EGAZT.Models;
 using EGAZT.Models.InstalmentPlanModel;
 using EGAZT.Models.ZakatInstalationModels;
 using EGAZT.Models.ZakatInstalmentModels;
-using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
-using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Newtonsoft.Json;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
 {
@@ -273,6 +268,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1703,6 +1700,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception ex)
             {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1813,6 +1813,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;

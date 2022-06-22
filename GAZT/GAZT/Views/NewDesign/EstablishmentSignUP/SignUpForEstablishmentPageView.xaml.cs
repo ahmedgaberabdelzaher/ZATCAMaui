@@ -175,7 +175,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -391,6 +392,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         //email otp text changed events
@@ -2518,6 +2521,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2622,6 +2627,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         catch (Exception ex)
                                         {
+                                            Console.WriteLine(ex.Message);
+                                            Console.Write(ex.StackTrace.ToString());
                                         }
                                         //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                         //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
@@ -3191,6 +3198,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                     }
                                     catch (Exception ex)
                                     {
+                                        Console.WriteLine(ex.Message);
+                                        Console.Write(ex.StackTrace.ToString());
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                     //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
@@ -4260,6 +4269,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -4425,6 +4436,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

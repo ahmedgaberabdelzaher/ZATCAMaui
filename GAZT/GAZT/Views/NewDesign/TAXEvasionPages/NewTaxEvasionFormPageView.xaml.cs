@@ -85,7 +85,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -137,7 +138,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -152,7 +154,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -168,7 +171,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -216,7 +220,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 }
@@ -229,7 +234,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 }
@@ -256,6 +262,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -316,26 +324,36 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
 
                 }
-                    catch (FeatureNotSupportedException)
+                    catch (FeatureNotSupportedException ex)
                     {
-                        // Handle not supported on device exception
-                    }
-                    catch (FeatureNotEnabledException)
+                    // Handle not supported on device exception
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
+                    catch (FeatureNotEnabledException ex)
                     {
-                        // Handle not enabled on device exception
-                    }
-                    catch (PermissionException)
+                    // Handle not enabled on device exception
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
+                    catch (PermissionException ex)
                     {
-                        // Handle permission exception
-                    }
+                    // Handle permission exception
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
                     catch (Exception ex)
                     {
-                        // Unable to get location
-                    }
+                    // Unable to get location
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
                 }
                 catch (Exception ex)
                 {
-                }
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
 
             //});
            
@@ -371,9 +389,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         mapView.Pins.Clear();
                     }
-                    catch
+                    catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                     mapView.Pins.Add(pin);
 
@@ -534,21 +553,29 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 viewModel.RLocation = addrs.Thoroughfare + " " + addrs.SubThoroughfare + ", " + addrs.Locality + ", " + addrs.CountryName + " - " + addrs.PostalCode;
 
             }
-            catch (FeatureNotSupportedException)
+            catch (FeatureNotSupportedException ex)
             {
                 // Handle not supported on device exception
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
-            catch (FeatureNotEnabledException)
+            catch (FeatureNotEnabledException ex)
             {
                 // Handle not enabled on device exception
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
-            catch (PermissionException)
+            catch (PermissionException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 // Handle permission exception
             }
             catch (Exception ex)
             {
                 // Unable to get location
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

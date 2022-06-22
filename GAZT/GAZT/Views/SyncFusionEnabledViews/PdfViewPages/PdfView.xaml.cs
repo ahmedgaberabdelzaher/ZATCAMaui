@@ -40,12 +40,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("save", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("bookmark", false);
                 PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("annotation", false);
+                PdfViewForCertificate.Toolbar.SetToolbarItemVisibility("print", false);
+
                 SetLTR();
                 this.BindingContext = viewModel;
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         protected async override void OnAppearing()
@@ -99,6 +102,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async Task email()
@@ -144,6 +149,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
                 await Task.Run(() =>

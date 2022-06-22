@@ -80,7 +80,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                   // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -159,7 +161,8 @@ namespace EGAZT.Manager
                             }
                             catch (Exception ex)
                             {
-
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(ESTBranchesDropDownResponseJSON);
                         }
@@ -183,7 +186,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -265,7 +270,8 @@ namespace EGAZT.Manager
                             }
                             catch (Exception ex)
                             {
-
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                             taxPayer = JsonConvert.DeserializeObject<TaxPayerDetails>(replaceDString);
                         }
@@ -289,7 +295,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -388,7 +396,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                   // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -456,7 +466,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                   // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -494,6 +506,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -534,6 +548,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                     return DeleteToken;
                 }
             }
@@ -598,7 +614,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -663,7 +681,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -730,7 +750,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -797,7 +819,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                   // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -862,7 +886,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -954,7 +980,9 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                   // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1020,7 +1048,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -1135,7 +1165,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    throw new GAZTNetworkConnectivityIssueException();
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                    //throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else

@@ -39,6 +39,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 viewModel.HandleExceptipon(ex);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -88,7 +90,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -224,6 +227,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

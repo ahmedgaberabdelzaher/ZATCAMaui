@@ -120,6 +120,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -134,6 +135,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -163,6 +165,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
         private bool FilterRefundsList(object obj)
         {
+            try { 
             if (searchBar == null || searchBar.Text == null)
                 return true;
 
@@ -172,6 +175,13 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 return true;
             else
                 return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

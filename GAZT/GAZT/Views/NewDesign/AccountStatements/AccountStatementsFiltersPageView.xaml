@@ -10,7 +10,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="10,10,10,10" HasShadow="False" BackgroundColor="White">
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="10,10,10,10" BackgroundColor="White">
 
         <StackLayout VerticalOptions="Center">
             <listView:SfListView x:Name="Bills" ItemsSource="{Binding FilterList}" IsVisible="true" IsScrollBarVisible="False" HorizontalOptions="FillAndExpand"

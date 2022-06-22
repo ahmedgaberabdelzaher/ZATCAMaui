@@ -342,6 +342,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                                                             }
                                                             catch (Exception ex)
                                                             {
+                                                                Console.Write(ex.ToString());
+                                                                Console.Write(ex.StackTrace.ToString());
                                                             }
                                                         }
                                                         AttachmentCount++;
@@ -352,50 +354,74 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                                                     else
                                                     {
                                                         AttachmentName = string.Empty;
-                                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                        Device.BeginInvokeOnMainThread(async () =>
+                                                        {
+                                                            _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                                        });
                                                     }
                                                 }
                                                 else
                                                 {
                                                     AttachmentName = string.Empty;
-                                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                    Device.BeginInvokeOnMainThread(async () =>
+                                                    {
+                                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_FileWithTheSameNameAlreadyExists, AppResources.Information);
+                                                    });
                                                 }
                                             }
                                             else
                                             {
                                                 AttachmentName = string.Empty;
-                                                _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                Device.BeginInvokeOnMainThread(async () =>
+                                                {
+                                                    _dialogService.ShowMessage(AppResources.Somethingwentwrong, AppResources.Information);
+                                                });
                                             }
                                         }
                                         else
                                         {
                                             AttachmentName = string.Empty;
-                                            _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                            Device.BeginInvokeOnMainThread(async () =>
+                                            {
+                                                _dialogService.ShowMessage(AppResources.ZFilesizeshouldnotbemorethan20MB, AppResources.Information);
+                                            });
                                         }
                                     }
                                     else
                                     {
                                         AttachmentName = string.Empty;
-                                        _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                        Device.BeginInvokeOnMainThread(async () =>
+                                        {
+                                            _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                        });
                                     }
                                 }
                                 else
                                 {
                                     AttachmentName = string.Empty;
-                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    Device.BeginInvokeOnMainThread(async () =>
+                                    {
+                                        _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                    });
                                 }
                             }
                             else
                             {
                                 AttachmentName = string.Empty;
-                                _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(async () =>
+                                {
+                                    _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                });
                             }
                         }
                     }
                     else
                     {
                         AttachmentName = string.Empty;
-                        _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            _dialogService.ShowMessage(AppResources.ZMaximumnoofallowedattachmentsare40, AppResources.Information);
+                        });
                     }
                 }
                 catch (InternetException ex)
@@ -440,6 +466,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                 catch (Exception ex)
                 {
                     //  return null;
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             await Task.Run(() =>
@@ -533,7 +561,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -78,7 +78,8 @@ namespace EGAZT.Views.NewDesign.VATRegistrationDetails
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

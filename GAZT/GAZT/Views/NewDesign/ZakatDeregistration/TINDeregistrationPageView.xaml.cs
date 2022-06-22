@@ -362,6 +362,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            try { 
             TINDeregistrationModel selectedItem = e.AddedItems[0] as TINDeregistrationModel;
             viewModel.SelectedOutletOption = selectedItem;
 
@@ -381,7 +382,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
 
             viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
         {
@@ -757,7 +763,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -852,6 +859,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -891,6 +900,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -903,7 +914,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             }
@@ -975,6 +987,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -1139,6 +1153,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1199,6 +1215,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1481,6 +1499,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1532,7 +1552,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1564,7 +1585,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1596,7 +1618,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1628,7 +1651,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1660,7 +1684,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1692,7 +1717,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -1720,11 +1746,18 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
         private void attachmentsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            try { 
             viewModel.SelectedAttachment = e.SelectedItem as TinDeregestrationAttachmentsModel;
             viewModel.SelectedOutletOptionIndex = viewModel.AttachmentsListViewData.IndexOf(viewModel.SelectedAttachment);
             viewModel.NewAttachmentClicked();
             var view = sender as SfListView;
             view.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void EditOutlet_Tapped(object sender, TappedEventArgs e)
@@ -1755,6 +1788,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1865,6 +1900,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return;
             }
         }
@@ -1909,11 +1946,14 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
         private void attachmentsListViewChild_BindingContextChanged(object sender, EventArgs e)
         {
+            try { 
             int childElements = 0;
             foreach (var item in viewModel.AttachmentsListViewData)
             {
@@ -1921,6 +1961,12 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             if (((StackLayout)sender).Height > 0)
                 attachmentsListView.HeightRequest = (viewModel.AttachmentsListViewData.Count + childElements) * ((StackLayout)sender).Height;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void OnTinEntered(object sender, EventArgs e)
@@ -1942,7 +1988,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -90,11 +90,15 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 catch (Exception ex)
                 {
                     // Unable to get location
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
                 //}
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void ChangeAeroIcon()
