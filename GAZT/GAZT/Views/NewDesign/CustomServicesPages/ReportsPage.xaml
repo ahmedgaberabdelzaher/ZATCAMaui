@@ -1,14 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:settings="clr-namespace:EGAZT.AppConfigurations"
-             xmlns:gmaps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
@@ -20,8 +14,8 @@
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:helper="clr-namespace:EGAZT.Helper"
              BackgroundImageSource="partials_background.png"
              NavigationPage.HasNavigationBar="False"
-             x:Class="EGAZT.Views.NewDesign.ZatcaInfoMenuPageView">
-    <ContentPage.Resources>
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.ReportsPage">
+     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -53,61 +47,37 @@
                         <StackLayout Spacing="24" Padding="0,12,0,0">
 
                             <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
-                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image WidthRequest="25" HeightRequest="50" Source="education.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CustomsZATCAIntegrat}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
+                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="8,8,8,8">
+                                    <Image WidthRequest="25" HeightRequest="50" Source="warning"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Zakatortaxreport}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnMenu1Tapped"/>
+                                    <TapGestureRecognizer Command="{Binding NavigateToTaxEvasionPageCommand}"/>
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
 
                               <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
-                                <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image Source="ic_menu_Tax_check.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CustomsZatcaDelca}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
+                                <StackLayout Orientation="Horizontal" Padding="8,8,8,8">
+                                    <Image WidthRequest="25" Source="warning"/>
+                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Reportafinancialoradministrativeviolation}"  HorizontalOptions="FillAndExpand"  Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
+                                    <Image Source="arrowRight.png" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                                 <border:SfBorder.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnMenu2Tapped"/>
+                                    <TapGestureRecognizer Command="{Binding NavigateToBalaghPageCommand}"/>
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
                            
-                       <Frame IsVisible="{x:Static settings:PageSettings.IsIncludeExicesTaxs}" CornerRadius="14" Padding="5" HasShadow="False" BorderColor="{StaticResource NeutralLightGrey}">
-                                                           <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
-                                    <Image Source="ic_menu_Tax_check.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
-                                    <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
-                                </StackLayout>
-                              <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding NavigateToInquireaboutPaymentofInsurance}"/>
-                                </Frame.GestureRecognizers>
-                       </Frame>
+                       
                         </StackLayout>
                     </ScrollView>
                     <!--Parent View End-->
 
-                    <!--Chat View starts-->
-                       <Grid Padding="0,0,0,0"  IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.customsTarrifs}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <helper:MyWebView x:Name="CustomsTraffis"  Navigating="CustomsTraffis_Navigating" Navigated="CustomsTraffis_Navigated"/>
-                        </Grid>
-                    <!-- Chat View Ends-->
 
-                     <!--Customs View starts-->
-                       <Grid Padding="0,0,0,0"  IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.customsDelecrations}}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" BackgroundColor="AliceBlue">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-                            <helper:MyWebView x:Name="CustomsView"  Navigating="CustomsView_Navigating" Navigated="CustomsView_Navigated"/>
-                        </Grid>
-                    <!-- Customs View Ends-->
+               
                 </Grid>
             </yummy:PancakeView>
-                <Grid Grid.Row="1" IsVisible="{Binding IsLoading}" Margin="0,0,0,0">
+                <Grid Grid.Row="1" IsVisible="false" Margin="0,0,0,0">
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
                 </StackLayout>
                 <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
@@ -135,10 +105,10 @@
                 <StackLayout Grid.Column="0">
                     <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBackArrowTapped" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel Grid.Column="1" Text="{Binding PageTitle}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

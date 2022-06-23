@@ -1,7 +1,10 @@
-﻿using EGAZT.Helper;
+﻿using CommonServiceLocator;
+using EGAZT.AppConfigurations;
+using EGAZT.Helper;
 using EGAZT.Models.EnumModels;
 using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -97,9 +100,23 @@ namespace EGAZT.Views.NewDesign
         private void OnMenu1Tapped(object sender, EventArgs e)
         {
             viewModel.setMenu1Tab();
+            if (!PageSettings.IsIncludeTarrif)
+            {
+                if (App.IsArabic)
+                {
+
+                    CustomsTraffis.Source = Constants.ZAtcaCustomsTarrifsAr;
+                }
+                else
+                {
+                    CustomsTraffis.Source = Constants.ZAtcaCustomsTarrifsAr;
+                    // CustomsTraffis.Source = Constants.ZAtcaCustomsTarrifsEN;
+                }
+            }
+
             //var browser = new WebView();
             //var htmlSource = new HtmlWebViewSource();
-
+            /*
             if (App.IsArabic)
             {
 
@@ -109,28 +126,43 @@ namespace EGAZT.Views.NewDesign
             {
                 CustomsTraffis.Source = Constants.ZAtcaCustomsTarrifsAr;
                 // CustomsTraffis.Source = Constants.ZAtcaCustomsTarrifsEN;
-            }
+            }*/
         }
 
         private void OnMenu2Tapped(object sender, EventArgs e)
         {
             viewModel.setMenu2Tab();
-            //var browser = new WebView();
-            //var htmlSource = new HtmlWebViewSource();
-
-            if (App.IsArabic)
+            if (!PageSettings.IsIncludeInquiryVisible)
             {
+                if (App.IsArabic)
+                {
 
-                CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
+                    CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
+                }
+                else
+                {
+                    CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
+                    // CustomsView.Source = Constants.ZAtcaCustomsdeclarationsEN;
+                }
+               
             }
-            else
-            {
-                CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
-                // CustomsView.Source = Constants.ZAtcaCustomsdeclarationsEN;
-            }
-        }
+                //var browser = new WebView();
+                //var htmlSource = new HtmlWebViewSource();
+                /*
+                            if (App.IsArabic)
+                            {
 
-        private void CustomsView_Navigating(object sender, WebNavigatingEventArgs e)
+                                CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
+                            }
+                            else
+                            {
+                                CustomsView.Source = Constants.ZAtcaCustomsdeclarationsAr;
+                                // CustomsView.Source = Constants.ZAtcaCustomsdeclarationsEN;
+                            }*/
+
+            }
+
+    private void CustomsView_Navigating(object sender, WebNavigatingEventArgs e)
         {
             try { 
             if (e.Url.Contains(Constants.ZAtcaCustomsdeclarationsAr) || e.Url.Contains(Constants.ZAtcaCustomsdeclarationsEN))
