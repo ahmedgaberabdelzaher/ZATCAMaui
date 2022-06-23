@@ -450,7 +450,16 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Margin" Value="0" />
     </Style>
-
+       <Style x:Key="InputTableTextInputLayoutStyleWuthoutHeighandWidth" TargetType="inputLayout:SfTextInputLayout">
+        <Setter Property="Margin" Value="10,-6,10,-6" />
+        <Setter Property="ContainerType" Value="Outlined" />
+        <Setter Property="UnfocusedColor" Value="#B1B1B1" />
+        <Setter Property="OutlineCornerRadius" Value="14" />
+        <Setter Property="FocusedColor" Value="{StaticResource Primary}" />
+        <Setter Property="ErrorColor" Value="#B00020" />
+        <Setter Property="HasError" Value="False" />
+   
+    </Style>
     <Style x:Key="NeutralGrayOpacity90BoxView" TargetType="BoxView">
         <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="HeightRequest" Value="1" />
@@ -526,6 +535,18 @@
         <Setter Property="FontSize" Value="15" />
         <Setter Property="HeightRequest" Value="48"/>
         <Setter Property="WidthRequest" Value="171"/>
+        <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
+
+
+    </Style>
+      <Style x:Key="DefaultEntryWithoutHeigh"  TargetType="Entry">
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+        <Setter Property="FontSize" Value="15" />
+          <Setter Property="HeightRequest" Value="48"/>
+    <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 

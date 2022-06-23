@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.NewDesignViewModel;
+﻿using EGAZT.AppConfigurations;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using System;
 using System.Collections.Generic;
@@ -107,7 +108,15 @@ namespace EGAZT.Views.NewDesign.Template
         {
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "OnTaxEvasionTapped", "Tax Evasion eService");
             //  viewModel._navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-            viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+            //viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+            if (PageSettings.IsIncludeBalagh)
+            {
+                viewModel._navigationService.NavigateTo("ReportsPage");
+            }
+            else
+            {
+                viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+            }
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 

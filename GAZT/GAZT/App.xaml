@@ -1059,6 +1059,17 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
+                      <Style x:Key="MandatoryRedColorSpan" x:Name="MandatoryRedColorSpan" TargetType="Span">
+                <Setter Property="FontSize">
+                    <Setter.Value>
+                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="14" />
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontFamily"
+                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
+            </Style>
+
         </ResourceDictionary>
              <!--  <ControlTemplate x:Key="MainTemplet">
             <Grid>

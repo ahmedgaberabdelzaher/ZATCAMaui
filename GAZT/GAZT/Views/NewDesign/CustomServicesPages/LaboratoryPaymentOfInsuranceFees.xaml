@@ -89,7 +89,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.Port}"/>
-                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -128,7 +128,7 @@
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
                                             <Span Text="{x:Static ResourceManager:AppResources.RequestNumber}"/>
-                                                                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
 
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>

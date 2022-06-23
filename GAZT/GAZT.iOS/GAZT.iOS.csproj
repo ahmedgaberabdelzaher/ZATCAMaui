@@ -47,7 +47,6 @@
  --linkskip=System.Xml
  --linkskip=System.Xml.Linq
  --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <ExternalConsole>false</ExternalConsole>
     <Commandlineparameters>
@@ -287,6 +286,59 @@
     <BundleResource Include="Resources\registration_w%403x.png" />
     <BundleResource Include="Resources\declaration_blue%403x.png" />
     <BundleResource Include="Resources\taxpayer_subsidy%403x.png" />
+    <BundleResource Include="Resources\Unselected.png" />
+    <BundleResource Include="Resources\Unselected%402x.png" />
+    <BundleResource Include="Resources\Unselected%403x.png" />
+    <BundleResource Include="Resources\UnselectedCard.png" />
+    <BundleResource Include="Resources\UnselectedCard%402x.png" />
+    <BundleResource Include="Resources\UnselectedCard%403x.png" />
+    <BundleResource Include="Resources\CloseIcon.png" />
+    <BundleResource Include="Resources\CloseIcon%402x.png" />
+    <BundleResource Include="Resources\CloseIcon%403x.png" />
+    <BundleResource Include="Resources\DDlIcon.png" />
+    <BundleResource Include="Resources\DDlIcon%402x.png" />
+    <BundleResource Include="Resources\DDlIcon%403x.png" />
+    <BundleResource Include="Resources\GrayBackButton.png" />
+    <BundleResource Include="Resources\GrayBackButton%402x.png" />
+    <BundleResource Include="Resources\GrayBackButton%403x.png" />
+    <BundleResource Include="Resources\InfoIcon.png" />
+    <BundleResource Include="Resources\InfoIcon%402x.png" />
+    <BundleResource Include="Resources\InfoIcon%403x.png" />
+    <BundleResource Include="Resources\Information.png" />
+    <BundleResource Include="Resources\Information%402x.png" />
+    <BundleResource Include="Resources\LstArrow.png" />
+    <BundleResource Include="Resources\LstArrow%402x.png" />
+    <BundleResource Include="Resources\LstArrow%403x.png" />
+    <BundleResource Include="Resources\LstDetailsIcon.png" />
+    <BundleResource Include="Resources\LstDetailsIcon%402x.png" />
+    <BundleResource Include="Resources\LstDetailsIcon%403x.png" />
+    <BundleResource Include="Resources\Success.png" />
+    <BundleResource Include="Resources\Success%402x.png" />
+    <BundleResource Include="Resources\Success%403x.png" />
+    <BundleResource Include="Resources\SuccessIcon.png" />
+    <BundleResource Include="Resources\SuccessIcon%402x.png" />
+    <BundleResource Include="Resources\SuccessIcon%403x.png" />
+    <BundleResource Include="Resources\warning.png" />
+    <BundleResource Include="Resources\warning%402x.png" />
+    <BundleResource Include="Resources\warning%403x.png" />
+    <BundleResource Include="Resources\CheckedCheckbox.png" />
+    <BundleResource Include="Resources\CheckedCheckbox%402x.png" />
+    <BundleResource Include="Resources\CheckedCheckbox%403x.png" />
+    <BundleResource Include="Resources\PDF.png" />
+    <BundleResource Include="Resources\PDF%402x.png" />
+    <BundleResource Include="Resources\PDF%403x.png" />
+    <BundleResource Include="Resources\UncheckedCheckBox.png" />
+    <BundleResource Include="Resources\UncheckedCheckBox%402x.png" />
+    <BundleResource Include="Resources\UncheckedCheckBox%403x.png" />
+    <BundleResource Include="Resources\AddNew.png" />
+    <BundleResource Include="Resources\AddNew%402x.png" />
+    <BundleResource Include="Resources\AddNew%403x.png" />
+    <BundleResource Include="Resources\cancel.png" />
+    <BundleResource Include="Resources\cancel%402x.png" />
+    <BundleResource Include="Resources\cancel%403x.png" />
+    <BundleResource Include="Resources\Ellipse.png" />
+    <BundleResource Include="Resources\Ellipse%402x.png" />
+    <BundleResource Include="Resources\Ellipse%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
