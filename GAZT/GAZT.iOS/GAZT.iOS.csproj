@@ -62,8 +62,8 @@
     <MtouchLink>Full</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>Apple Development: Rohith Kunchamwar (Q5YD6SLB45)</CodesignKey>
-    <CodesignProvision>VS: com.gazt.egazt Development</CodesignProvision>
+    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
  --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
  --linkskip=System
@@ -339,6 +339,15 @@
     <BundleResource Include="Resources\Ellipse.png" />
     <BundleResource Include="Resources\Ellipse%402x.png" />
     <BundleResource Include="Resources\Ellipse%403x.png" />
+    <BundleResource Include="Resources\topsearchicon.png" />
+    <BundleResource Include="Resources\topsearchicon%402x.png" />
+    <BundleResource Include="Resources\topsearchicon%403x.png" />
+    <BundleResource Include="Resources\Copy.png" />
+    <BundleResource Include="Resources\Copy%402x.png" />
+    <BundleResource Include="Resources\Copy%403x.png" />
+    <BundleResource Include="Resources\Grabber.png" />
+    <BundleResource Include="Resources\Grabber%402x.png" />
+    <BundleResource Include="Resources\Grabber%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
