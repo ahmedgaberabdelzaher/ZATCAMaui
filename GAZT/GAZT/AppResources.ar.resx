@@ -3009,7 +3009,7 @@
     <comment>Tax Return Title</comment>
   </data>
   <data name="CancelText" xml:space="preserve">
-    <value>Cancel</value>
+    <value>إلغاء</value>
   </data>
   <data name="ZZNocommercialregistrationslinkedtotheTIN" xml:space="preserve">
     <value>لا يوجد سجلات تجارية مرتبطة بالرقم المميز</value>
@@ -6512,7 +6512,7 @@
     <value>حاصل ضرب "الربح التقديري الخاضع للزكاة" في "2.5 %"</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>تفاصيل ترحيل الرصيد للفترة السابقة</value>
+    <value>ترحيل الرصيد للفترة القادمة</value>
   </data>
 <!--  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>ترحيل الرصيد للفترة القادمة</value>
@@ -8969,5 +8969,327 @@ info@zatca.gov.sa</value>
   </data>
   <data name="TaxPayerSubsidyRequest" xml:space="preserve">
     <value>طلب دعم الفوترة الإلكترونية</value>
+  </data>
+    <data name="Inquiryaboutacustomsdeclaration" xml:space="preserve">
+     <value>الاستعلام عن بيان جمركي</value>
+  </data>
+  <data name="Inquirethrough" xml:space="preserve">
+     <value>الاستعلام بواسطه</value>
+  </data>
+    <data name="Port" xml:space="preserve">
+     <value>المنفذ</value>
+  </data>
+    <data name="Declarationtype" xml:space="preserve">
+     <value>نوع البيان</value>
+  </data>
+    <data name="DeclarationNumber" xml:space="preserve">
+     <value>رقم البيان</value>
+  </data>
+    <data name="DeclarationDate" xml:space="preserve">
+     <value>تاريخ البيان</value>
+  </data>
+    <data name="Billofladingnumber" xml:space="preserve">
+     <value>رقم البوليصة</value>
+  </data>
+  <data name="Shippingcompany" xml:space="preserve">
+     <value>شركه الشحن</value>
+  </data>
+     <data name="Details" xml:space="preserve">
+     <value>التفاصيل</value>
+  </data>
+   <data name="InQuerywithstatementinformation" xml:space="preserve">
+     <value>الاستعلام بمعلومات البيان</value>
+  </data>
+     <data name="Inquiryforpolicyinformation" xml:space="preserve">
+     <value>الاستعلام بمعلومات البوليصه</value>
+  </data>
+      <data name="Selecttheoptionandcompletedetails" xml:space="preserve">
+     <value>حدد الخيار وأكمل التفاصيل</value>
+  </data>
+    <data name="Importerinformation" xml:space="preserve">
+     <value>معلومات المستورد</value>
+  </data>
+    <data name="Inferentialnumber" xml:space="preserve">
+     <value>الرقم الاستدلالي</value>
+  </data>
+    <data name="Statementitems" xml:space="preserve">
+     <value>اصناف البيان</value>
+  </data>
+     <data name="Customsitem" xml:space="preserve">
+     <value>البند الجمركي</value>
+  </data>
+     <data name="Categoryseries" xml:space="preserve">
+     <value>مسلسل الصنف</value>
+  </data>
+  <data name="CountryofOrigin" xml:space="preserve">
+     <value>بلد المنشأ</value>
+  </data>
+  <data name="Customsitemdescription" xml:space="preserve">
+     <value>وصف البند الجمركي</value>
+  </data>
+  <data name="Feedetails" xml:space="preserve">
+     <value>تفاصيل الرسوم</value>
+  </data>
+  <data name="FeeType" xml:space="preserve">
+     <value>نوع الرسم</value>
+  </data>
+  <data name="Feedescription" xml:space="preserve">
+     <value>وصف الرسم</value>
+  </data>
+  <data name="FeeCost" xml:space="preserve">
+     <value>القيمة بالريال</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+     <value>الاجمالي</value>
+  </data>
+    <data name="Importerinformationtxt" xml:space="preserve">
+     <value>معلومات المستورد</value>
+  </data>
+    <data name="NoInternet" xml:space="preserve">
+     <value>لا يوجد اتصال بالانترنت</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+     <value>خطا بالسيرفر حاول مره اخري</value>
+  </data>
+    <data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
+    <value>حدث خطا حاول مره اخري</value>
+  </data>
+    <data name="Valueinforeigncurrency" xml:space="preserve">
+     <value>القيمة بالعملة الأجنبية</value>
+  </data>
+    <data name="Countrycurrency" xml:space="preserve">
+     <value>العملة</value>
+  </data>
+    <data name="Measuringunit" xml:space="preserve">
+     <value>وحده القياس</value>
+  </data>
+   <data name="CustomsfeesSAR" xml:space="preserve">
+     <value>الرسوم الجمركية (ريال سعودي)</value>
+  </data>
+    <data name="CustomsvalueSAR" xml:space="preserve">
+     <value>القيمة الجمركية(ريال سعودي)</value>
+  </data>
+   <data name="DeclarationNotAvailableMsg" xml:space="preserve">
+     <value>هذا البيان غير متواجد بنظام هيئة الزكاة والضريبة والجمارك ، يرجى التأكد من معلومات البيان والمحاولة مرة اخرى</value>
+  </data>
+    <data name="ItemDescription" xml:space="preserve">
+     <value>تفاصيل البند</value>
+  </data>
+      <data name="TariffSections" xml:space="preserve">
+     <value>التعريفة الجمركية</value>
+  </data>
+   <data name="HS" xml:space="preserve">
+     <value>رمز النظام المنسق</value>
+  </data>
+      <data name="TariffSections" xml:space="preserve">
+     <value>التعريفة الجمركية</value>
+  </data>
+   <data name="HS" xml:space="preserve">
+     <value>رمز النظام المنسق</value>
+  </data>
+    <data name="Effectivedate" xml:space="preserve">
+     <value>التحديث</value>
+  </data>
+     <data name="Free" xml:space="preserve">
+     <value>معفاة</value>
+  </data>
+  <data name="Duty" xml:space="preserve">
+     <value> فئة الرسم</value>
+  </data>
+  <data name="RequiredProcedures" xml:space="preserve">
+     <value> الإجراءات المطلوبة</value>
+     </data>
+     <value>التحديث</value>
+      <data name="InquiryDataRequiredAttentionMsg" xml:space="preserve">
+     <value>من فضلك ادخل كل البيانات المطلوبه</value>
+  </data>
+       <data name="NoDataFound" xml:space="preserve">
+     <value>لا توجد بيانات</value>
+    </data>
+     <data name="Searchbynameorsection" xml:space="preserve">
+     <value>البحث بالاسم أو القسم</value>
+  </data>
+    <data name="NameForImprter" xml:space="preserve">
+     <value>الاسم</value>
+  </data>
+    <data name="ItemDescriptions" xml:space="preserve">
+     <value>وصف الصنف </value>
+  </data>
+  <data name="Customsdutyrate" xml:space="preserve">
+     <value>نسبة الرسوم الجمركية </value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+     <value>الكمية</value>
+  </data>
+      <data name="FeeDescription" xml:space="preserve">
+     <value>وصف الرسوم</value>
+  </data>
+    <data name="Submitanewreport" xml:space="preserve">
+     <value>تقديم بلاغ جديد</value>
+  </data>
+  <data name="BalaghHint" xml:space="preserve">
+     <value> الرجاء تحرى الدقة والموضوعية والبعد عن الخلافات الشخصية
+وضوح اللغة وتجنب استخدام الرموز والإشارات الغير مفهومة أو تقديم معلومات ناقصة
+تقديم كامل المعلومات المتاحة لديك من التفاصيل والادلة وإرفاق ما يثبت ان وجد
+تذكر قول الله عز وجل فى كتابه العزيز (وَالَّذِينَ يُؤْذُونَ الْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ بِغَيْرِ مَا اكْتَسَبُوا فَقَدِ احْتَمَلُوا بُهْتَانًا وَإِثْمًا مُّبِينًا)</value>
+  </data>
+   <data name="ReportType" xml:space="preserve">
+     <value>نوع البلاغ </value>
+  </data>
+     <data name="ReportLocation" xml:space="preserve">
+     <value>مكان البلاغ </value>
+  </data>
+       <data name="ReportText" xml:space="preserve">
+     <value>نص البلاغ </value>
+  </data>
+     <data name="BalaghSupportedFileMsg" xml:space="preserve">
+    <value>JPG,PDF,PNG. الملفات المقبولة</value>
+  </data>
+     <data name="MaximumFileSizeMsg" xml:space="preserve">
+ <value>حجم الملف لا يزيد عن 2 ميجا بايت
+</value>
+</data>
+  <data name="Send" xml:space="preserve">
+     <value>إرسال</value>
+  </data>
+    <data name="Reportsubmittedsuccessfully" xml:space="preserve">
+    <value>تم تقديم البلاغ بنجاح</value>
+  </data>
+      <data name="Addattachments" xml:space="preserve">
+    <value>إضافة مرفقات</value>
+  </data>
+        <data name="BalaghPolicytxt" xml:space="preserve">
+    <value>لقد قرات سياسة البلاغات والشكاوى وأقر بإلتزامى بما ورد</value>
+  </data>
+       <data name="attachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+   <data name="ReportSentSuccess" xml:space="preserve">
+    <value>تم إرسال البلاغ بنجاح </value>
+  </data>
+     <data name="ReportSendingDate" xml:space="preserve">
+    <value>تاريخ تقديم البلاغ</value>
+  </data>
+  <data name="Thereportnumber" xml:space="preserve">
+    <value>رقم البلاغ</value>
+  </data>
+    <data name="Backtomainmenu" xml:space="preserve">
+    <value>العودة للقائمة الرئيسية</value>
+  </data>
+    <data name="MB" xml:space="preserve">
+    <value>م.ب</value>
+  </data>
+     <data name="FieldRequired" xml:space="preserve">
+    <value>حقل مطلوب</value>
+  </data>
+  <data name="Mailnotcorrect" xml:space="preserve">
+    <value>البريد غير صحيح</value>
+  </data>
+       <data name="PhoneNotCorrect" xml:space="preserve">
+    <value>رقم الجوال غير صحيح</value>
+  </data>
+     <data name="PhoneNumber" xml:space="preserve">
+    <value>رقم الجوال </value>
+  </data>
+  <data name="PolicyValidationMsg" xml:space="preserve">
+    <value>لابد من الموافقه علي سياسة البلاغات والشكاوي اولا</value>
+  </data>
+    <data name="Zakatortaxreport" xml:space="preserve">
+    <value>بلاغ زكوي أو ضريبي</value>
+  </data>
+      <data name="Reportafinancialoradministrativeviolation" xml:space="preserve">
+    <value>بلاغ مخالفة مالية أو إدارية</value>
+  </data>
+     <data name="IndicateTheTypeOfReport" xml:space="preserve">
+    <value>اذكر نوع البلاغ</value>
+  </data>
+    <data name="NameForImprter" xml:space="preserve">
+     <value>الاسم</value>
+  </data>
+    <data name="ItemDescriptions" xml:space="preserve">
+     <value>وصف الصنف </value>
+  </data>
+  <data name="Customsdutyrate" xml:space="preserve">
+     <value>نسبة الرسوم الجمركية </value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+     <value>الكمية</value>
+  </data>
+      <data name="FeeDescriptions" xml:space="preserve">
+     <value>وصف الرسوم</value>
+  </data>
+  <data name="BillInfoInquiryHint" xml:space="preserve">
+     <value>لا يمكن استخدام هذه الخدمة لبوليصة أقل من ألف ريال سعودي</value>
+  </data>
+     <data name="InquireaboutPaymentofInsuranceTitle" xml:space="preserve">
+     <value>الاستعلام عن صرف رسوم التأمين للمختبر الخاص</value>
+  </data>
+     <data name="Selecttheoptionandcompletedetails" xml:space="preserve">
+     <value>حدد الخيار وأكمل التفاصيل</value>
+  </data>
+  <data name="RequestNumber" xml:space="preserve">
+     <value>رقم الطلب</value>
+  </data>
+    <data name="RequestDate" xml:space="preserve">
+     <value>تاريخ الطلب</value>
+  </data>
+    <data name="InquiryResult" xml:space="preserve">
+     <value>نتيجة الاستعلام</value>
+  </data>
+      <data name="Inquire" xml:space="preserve">
+     <value> استعلام</value>
+  </data>
+   <data name="RequestNotFoundMsg" xml:space="preserve">
+     <value>هذا الطلب غير متواجد بنظام هيئة الزكاة
+والضريبة والجمارك ، يرجى التأكد من
+معلومات الطلب والمحاولة مرة اخرى</value>
+  </data>
+        <data name="Clear" xml:space="preserve">
+     <value>مسح</value>
+  </data>
+        <data name="Word" xml:space="preserve">
+     <value>كلمه</value>
+  </data>
+    <data name="HSHeading" xml:space="preserve">
+     <value>بند رئيسي</value>
+  </data>
+    <data name="SearchField" xml:space="preserve">
+     <value>حقل البحث</value>
+  </data>
+    <data name="SearchFor" xml:space="preserve">
+     <value>البحث عن</value>
+  </data>
+  <data name="BalaghHintFthLne" xml:space="preserve">
+     <value>الرجاء تحرى الدقة والموضوعية والبعد عن الخلافات الشخصية</value>
+  </data>
+   <data name="BalaghHintSecLne" xml:space="preserve">
+     <value>ضوح اللغة وتجنب استخدام الرموز والإشارات الغير مفهومة أو تقديم معلومات ناقصة</value>
+  </data>
+   <data name="BalaghHintThrdLne" xml:space="preserve">
+     <value>قديم كامل المعلومات المتاحة لديك من التفاصيل والادلة وإرفاق ما يثبت ان وجد</value>
+  </data>
+   <data name="BalaghHintFrthLne" xml:space="preserve">
+     <value>تذكر قول الله عز وجل فى كتابه العزيز (وَالَّذِينَ يُؤْذُونَ الْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ بِغَيْرِ مَا اكْتَسَبُوا فَقَدِ احْتَمَلُوا بُهْتَانًا وَإِثْمًا مُّبِينًا)</value>
+  </data>
+    <data name="OTPMsgBody" xml:space="preserve">
+     <value>رمز التحقق :</value>
+  </data>
+  <data name="FeesHint" xml:space="preserve">
+     <value>*الرسوم المذكورة تشمل جميع الرسوم والاجور الحكومية التي تم تحصيلها على الشحنة من قبل هيئة الزكاة والضريبة والجمارك، ولا تشمل أي رسوم أو أجور أخرى يتم فرضها من قبل المشغلين أو المخلصين أو شركات النقل والشحن.  </value>
+  </data>
+    <data name="SearchRsltCountText" xml:space="preserve">
+     <value>نتيجة تم العثور عليها</value>
+  </data>
+     <data name="SelectPortFirst" xml:space="preserve">
+     <value>من فضلك اختر المنفذ</value>
+  </data>
+    <data name="RequestInformation" xml:space="preserve">
+     <value>معلومات الطلب</value>
+  </data>
+     <data name="ExciseTax" xml:space="preserve">
+     <value>الأسعار للسلع الإنتقائية</value>
+  </data>
+      <data name="searchingandviewingtheindicativepricesforexciseGoods" xml:space="preserve">
+     <value>البحث والاطلاع على الأسعار الإسترشادية للسلع الانتقائية</value>
   </data>
 </root>

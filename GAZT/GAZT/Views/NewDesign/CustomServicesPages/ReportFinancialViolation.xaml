@@ -377,8 +377,10 @@
            <Image Source="Success" HeightRequest="120" WidthRequest="120"  HorizontalOptions="CenterAndExpand" Margin="0,137,0,50"></Image>
            <Label Text="{x:Static ResourceManager:AppResources.Reportsubmittedsuccessfully}" Margin="10,0,10,0" FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="28"></Label>
            <Label Text="{x:Static ResourceManager:AppResources.ReportSentSuccess}" TextColor="White" FontSize="16" HorizontalOptions="CenterAndExpand"></Label>
-           <yummy:PancakeView VerticalOptions="EndAndExpand" HasShadow="False" CornerRadius="14,14,0,0" BackgroundColor="White" Padding="24,38,24,38" BorderColor="#EBEBEB">
-               <StackLayout>
+
+           <yummy:PancakeView VerticalOptions="EndAndExpand" CornerRadius="14,14,0,0" BackgroundColor="White" Padding="24,38,24,38">
+
+                <StackLayout>
                    <Grid>
 
                    <Frame HasShadow="False" BorderColor="#0996D4" BackgroundColor="#0996D4" Opacity=".1" CornerRadius="14">

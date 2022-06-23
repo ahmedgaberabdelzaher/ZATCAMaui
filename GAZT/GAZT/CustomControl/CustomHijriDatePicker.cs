@@ -68,8 +68,8 @@ namespace GAZT.CustomControl
                 }
                 else
                 {
-
                     Headers.Add("يوم");
+                  
                     Headers.Add("شهر");//month
                     Headers.Add("عام");
                 }

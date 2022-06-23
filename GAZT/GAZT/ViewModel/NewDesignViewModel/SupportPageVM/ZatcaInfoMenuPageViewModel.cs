@@ -2,12 +2,18 @@
 using GalaSoft.MvvmLight.Views;
 using System;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms;
+using Prism;
+using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+using System.Windows.Input;
+using EGAZT.AppConfigurations;
 
 namespace EGAZT.ViewModel.NewDesignViewModel
 {
     [Preserve(AllMembers = true)]
     public class ZatcaInfoMenuPageViewModel : BaseViewModel
     {
+        
         #region Variable
         private CustomsEnum _currentTab = CustomsEnum.parentCstoms;
         public CustomsEnum currentTab
@@ -90,39 +96,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         #endregion
-
         #region Methods
         public void setMenuTab()
         {
             PageTitle = AppResources.ZatcaInfoMenu;
             currentTab = CustomsEnum.parentCstoms;
+            //var nav = PrismApplicationBase.Current.Container.Resolve<Prism.Navigation.INavigationService>();
+            //var res= App.container.Resolve(InquiryAboutCustomsDeclarationViewModel);
+            //var nav = new App().GetNavService();
+           // nav.NavigateAsync(App.InquiryAboutCustomsDeclarationView);
         }
-        public void setMenu1Tab()
+        public  void setMenu1Tab()
         {
-            PageTitle = AppResources.CustomsZATCAIntegrat;
-            currentTab = CustomsEnum.customsTarrifs;
+            if (PageSettings.IsIncludeTarrif)
+            {
+                _navigationService.NavigateTo(App.TraifSectionsView);
+            }
+            else
+            {
+                 PageTitle = AppResources.CustomsZATCAIntegrat;
+                 currentTab = CustomsEnum.customsTarrifs;
+            }
         }
-        public void setMenu2Tab()
+        public async void setMenu2Tab()
         {
-            PageTitle = AppResources.CustomsZatcaDelca;
-            currentTab = CustomsEnum.customsDelecrations;
+            if (PageSettings.IsIncludeInquiryVisible)
+            {
+                _navigationService.NavigateTo(App.InquiryAboutCustomsDeclarationView);
+            }
+            else
+            {
+                 PageTitle = AppResources.CustomsZatcaDelca;
+                currentTab = CustomsEnum.customsDelecrations;
+            }
+            // PageTitle = AppResources.CustomsZatcaDelca;
+            //currentTab = CustomsEnum.customsDelecrations;
+            //var nav = new App().GetNavService();
+            //await nav.NavigateAsync(App.InquiryAboutCustomsDeclarationView);
+
         }
-        //public void setMenu3Tab()
-        //{
-        //    PageTitle = AppResources.NDChat;
-        //    currentTab = SupportTabEnum.Chat;
-        //}
-        //public void setMenu4Tab()
-        //{
-        //    PageTitle = AppResources.ZZZContactus;
-        //    currentTab = SupportTabEnum.Chat;
-        //}
-        //public void SetBranchLocator()
-        //{
-        //    PageTitle = AppResources.NDBranchLocator;
-        //    currentTab = SupportTabEnum.BranchLocator;
-        //}
-        public void ChcekCurrentTabCustoms()
+            //public void setMenu3Tab()
+            //{
+            //    PageTitle = AppResources.NDChat;
+            //    currentTab = SupportTabEnum.Chat;
+            //}
+            //public void setMenu4Tab()
+            //{
+            //    PageTitle = AppResources.ZZZContactus;
+            //    currentTab = SupportTabEnum.Chat;
+            //}
+            //public void SetBranchLocator()
+            //{
+            //    PageTitle = AppResources.NDBranchLocator;
+            //    currentTab = SupportTabEnum.BranchLocator;
+            //}
+            public void ChcekCurrentTabCustoms()
         {
             if (currentTab == CustomsEnum.parentCstoms)
             {
@@ -134,6 +162,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
         #endregion
+
+        public ICommand NavigateToInquireaboutPaymentofInsurance
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("LaboratoryPaymentOfInsuranceFees", "OnInquireAboutLaboratoryPaymentOfInsuranceFees", "Inquire about Payment of insurance fees for private laboratories");
+                    _navigationService.NavigateTo(App.LaboratoryPaymentOfInsuranceFees);
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
     }
 }
 

@@ -9050,7 +9050,328 @@ I acknowledge that the above bank account information is correct and assume full
   <data name="TaxPayerSubsidyRequest" xml:space="preserve">
     <value>E-invoicing Subsidy Request</value>
   </data>
-   <data name="UnderDevelopment" xml:space="preserve">
-    <value>This process is under development</value>
+  <data name="Inquiryaboutacustomsdeclaration" xml:space="preserve">
+    <value>Inquiry about a customs declaration</value>
+  </data>
+    <data name="Inquirethrough" xml:space="preserve">
+     <value>Inquire through</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+     <value>Port</value>
+  </data>
+    <data name="Declarationtype" xml:space="preserve">
+     <value>Declaration type</value>
+  </data>
+    <data name="DeclarationNumber" xml:space="preserve">
+     <value>Declaration Number</value>
+  </data>
+  <data name="DeclarationDate" xml:space="preserve">
+     <value>Declaration Date</value>
+  </data>
+      <data name="Billofladingnumber" xml:space="preserve">
+     <value>Bill of lading number</value>
+  </data>
+  <data name="Shippingcompany" xml:space="preserve">
+     <value>Shipping company</value>
+  </data>
+    <data name="Details" xml:space="preserve">
+     <value>Details</value>
+  </data>
+    <data name="Inquiryforpolicyinformation" xml:space="preserve">
+     <value>Inquiry for policy information</value>
+  </data>
+      <data name="InQuerywithstatementinformation" xml:space="preserve">
+     <value>InQuery with statement information</value>
+  </data>
+     <data name="Selecttheoptionandcompletedetails" xml:space="preserve">
+     <value>Select the option and complete details</value>
+  </data>
+  <data name="Importerinformation" xml:space="preserve">
+     <value>Importer information</value>
+  </data>
+    <data name="Inferentialnumber" xml:space="preserve">
+     <value>Inferential number</value>
+  </data>
+    <data name="Statementitems" xml:space="preserve">
+     <value>Statement items</value>
+  </data>
+     <data name="Customsitem" xml:space="preserve">
+     <value>Customs item</value>
+  </data>
+     <data name="Categoryseries" xml:space="preserve">
+     <value>Category series</value>
+  </data>
+  <data name="CountryofOrigin" xml:space="preserve">
+     <value>Country of Origin</value>
+  </data>
+  <data name="Customsitemdescription" xml:space="preserve">
+     <value>Customs item description</value>
+  </data>
+  <data name="Feedetails" xml:space="preserve">
+     <value>Fee details</value>
+  </data>
+  <data name="FeeType" xml:space="preserve">
+     <value>Fee Type</value>
+  </data>
+  <data name="Feedescription" xml:space="preserve">
+     <value>Fee description</value>
+  </data>
+  <data name="FeeCost" xml:space="preserve">
+     <value>Fee Cost</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+     <value>Total</value>
+  </data>
+    <data name="Importerinformationtxt" xml:space="preserve">
+     <value>Importer information</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+     <value>No Internet Connection</value>
+  </data>
+    <data name="ServerError" xml:space="preserve">
+     <value>Server Error</value>
+  </data>
+  <data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
+     <value>Server Error Or NoInternet Connection</value>
+  </data>
+  <data name="Valueinforeigncurrency" xml:space="preserve">
+     <value>Value in foreign currency</value>
+  </data>
+  <data name="Countrycurrency" xml:space="preserve">
+     <value>Country currency</value>
+  </data>
+    <data name="Measuringunit" xml:space="preserve">
+     <value>Measuring unit</value>
+  </data>
+   <data name="CustomsfeesSAR" xml:space="preserve">
+     <value>Customs fees (SAR)</value>
+  </data>
+    <data name="CustomsvalueSAR" xml:space="preserve">
+     <value>Customs value (SAR)</value>
+  </data>
+  <data name="DeclarationNotAvailableMsg" xml:space="preserve">
+     <value>This declaration is not available in the Zakat, Tax and Customs Authority system, please check the statement information and try again</value>
+  </data>
+  <data name="ItemDescription" xml:space="preserve">
+     <value>Item Description</value>
+  </data>
+    <data name="InquiryDataRequiredAttentionMsg" xml:space="preserve">
+     <value>Please enter all required data</value>
+  </data>
+     <data name="NoDataFound" xml:space="preserve">
+     <value>No Data Found </value>
+     </data>
+    <data name="TariffSections" xml:space="preserve">
+     <value>Tariff Sections</value>
+  </data>
+  <data name="HS" xml:space="preserve">
+     <value>HS</value>
+  </data>
+    <data name="Effectivedate" xml:space="preserve">
+     <value>Effective date </value>
+  </data>
+    <data name="InquiryDataRequiredAttentionMsg" xml:space="preserve">
+     <value>Please enter all required data</value>
+  </data>
+  <data name="Duty" xml:space="preserve">
+     <value>Duty</value>
+  </data>
+  <data name="RequiredProcedures" xml:space="preserve">
+     <value>Required Procedures</value>
+  </data>
+  <data name="Searchbynameorsection" xml:space="preserve">
+     <value>Search by name or section</value>
+  </data>
+    <data name="Free" xml:space="preserve">
+     <value>Free</value>
+  </data>
+       <data name="NameForImprter" xml:space="preserve">
+     <value>Name</value>
+  </data>
+  <data name="NameForImprter" xml:space="preserve">
+     <value>Name</value>
+  </data>
+  <data name="ItemDescriptions" xml:space="preserve">
+     <value>Item Description</value>
+  </data>
+   <data name="Customsdutyrate" xml:space="preserve">
+     <value>Customs duty rate</value>
+  </data>
+    <data name="Quantity" xml:space="preserve">
+     <value>Quantity</value>
+  </data>
+      <data name="FeeDescription" xml:space="preserve">
+     <value>Fee Description</value>
+  </data>
+  <data name="Submitanewreport" xml:space="preserve">
+     <value>Submit new report</value>
+  </data>
+    <data name="BalaghHint" xml:space="preserve">
+     <value>Please seek accuracy, objectivity, and clarity and avoid personal disputes, ambiguity symbols and signs, or providing incomplete information. Please provide all the detailed information that you have and attach the evidence that proves the report.
+
+Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin)</value>
+  </data>
+     <data name="ReportType" xml:space="preserve">
+     <value>Report Type</value>
+  </data>
+     <data name="ReportLocation" xml:space="preserve">
+     <value>Report Location</value>
+  </data>
+       <data name="ReportText" xml:space="preserve">
+     <value>Report Text</value>
+  </data>
+      <data name="BalaghSupportedFileMsg" xml:space="preserve">
+    <value>Jpg, PDF, png. accepted files</value>
+  </data>
+    <data name="MaximumFileSizeMsg" xml:space="preserve">
+    <value>File size should not be more than 2MB</value>
+  </data>
+     <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Reportsubmittedsuccessfully" xml:space="preserve">
+    <value>Report submitted successfully</value>
+  </data>
+    <data name="Addattachments" xml:space="preserve">
+    <value>Add attachments</value>
+  </data>
+      <data name="BalaghPolicytxt" xml:space="preserve">
+    <value>I have read the Reports and Complaints Policy and agree to abide by what has been stated</value>
+  </data>
+        <data name="attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="ReportSentSuccess" xml:space="preserve">
+    <value>The report has been sent successfully</value>
+  </data>
+     <data name="ReportSendingDate" xml:space="preserve">
+    <value>date of sending the report</value>
+  </data>
+  <data name="Thereportnumber" xml:space="preserve">
+    <value>The report number</value>
+  </data>
+  <data name="Backtomainmenu" xml:space="preserve">
+    <value>Back to main menu</value>
+  </data>
+      <data name="MB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+   <data name="FieldRequired" xml:space="preserve">
+    <value>Field Required</value>
+  </data>
+    <data name="Mailnotcorrect" xml:space="preserve">
+    <value>Mail not correct</value>
+  </data>
+     <data name="PhoneNotCorrect" xml:space="preserve">
+    <value>The mobile number is incorrect</value>
+  </data>
+    <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+    <data name="PolicyValidationMsg" xml:space="preserve">
+    <value>The notifications and complaints policy must be approved first</value>
+  </data>
+      <data name="Zakatortaxreport" xml:space="preserve">
+    <value>Zakat or tax report</value>
+  </data>
+      <data name="Reportafinancialoradministrativeviolation" xml:space="preserve">
+    <value>Report a financial or administrative violation</value>
+  </data>
+   <data name="IndicateTheTypeOfReport" xml:space="preserve">
+    <value>Indicate report Type</value>
+  </data>
+       <data name="NameForImprter" xml:space="preserve">
+     <value>Name</value>
+  </data>
+  <data name="NameForImprter" xml:space="preserve">
+     <value>Name</value>
+  </data>
+  <data name="ItemDescriptions" xml:space="preserve">
+     <value>Item Description</value>
+  </data>
+   <data name="Customsdutyrate" xml:space="preserve">
+     <value>Customs duty rate</value>
+  </data>
+    <data name="Quantity" xml:space="preserve">
+     <value>Quantity</value>
+  </data>
+      <data name="FeeDescriptions" xml:space="preserve">
+     <value>Fee Description</value>
+  </data>
+    <data name="BillInfoInquiryHint" xml:space="preserve">
+     <value>This service cannot be used for a Bill of less than one thousand (SAR)</value>
+  </data>
+   <data name="InquireaboutPaymentofInsuranceTitle" xml:space="preserve">
+     <value> Inquire about Payment of Insurance fees for private laboratories</value>
+  </data>
+     <data name="Selecttheoptionandcompletedetails" xml:space="preserve">
+     <value>Select the option and complete details</value>
+  </data>
+  <data name="RequestNumber" xml:space="preserve">
+     <value>Request Number</value>
+  </data>
+    <data name="RequestDate" xml:space="preserve">
+     <value>Request Date</value>
+  </data>
+  <data name="InquiryResult" xml:space="preserve">
+     <value>Inquiry Result</value>
+  </data>
+     <data name="Inquire" xml:space="preserve">
+     <value>Inquire</value>
+  </data>
+     <data name="RequestNotFoundMsg" xml:space="preserve">
+     <value>This request is not available in
+the Zakat, Tax and Customs
+￼Authority system, please
+￼connect from the request
+￼information and try again</value>
+  </data>
+      <data name="Clear" xml:space="preserve">
+     <value>Clear</value>
+  </data>
+        <data name="Word" xml:space="preserve">
+     <value>Word</value>
+  </data>
+  <data name="HSHeading" xml:space="preserve">
+     <value>HS Heading</value>
+  </data>
+  <data name="SearchField" xml:space="preserve">
+     <value>Search Field </value>
+  </data>
+  <data name="SearchFor" xml:space="preserve">
+     <value>Search For</value>
+  </data>
+  <data name="BalaghHintFthLne" xml:space="preserve">
+     <value>Please seek accuracy, objectivity, and clarity and avoid personal disputes</value>
+  </data>
+   <data name="BalaghHintSecLne" xml:space="preserve">
+     <value>Ambiguity symbols and signs, or providing incomplete information</value>
+  </data>
+   <data name="BalaghHintThrdLne" xml:space="preserve">
+     <value>Please provide all the detailed information that you have and attach the evidence that proves the report</value>
+  </data>
+   <data name="BalaghHintFrthLne" xml:space="preserve">
+     <value>Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin)</value>
+  </data>
+    <data name="OTPMsgBody" xml:space="preserve">
+     <value>Activation code: </value>
+  </data>
+    <data name="FeesHint" xml:space="preserve">
+     <value>*The mentioned fees include all government fees and charges collected on the shipment by the Zakat, Tax and Customs Authority, and do not include any other fees or charges imposed by operators, brokers or transport and shipping companies.</value>
+  </data>
+    <data name="SearchRsltCountText" xml:space="preserve">
+     <value>Found</value>
+  </data>
+     <data name="SelectPortFirst" xml:space="preserve">
+     <value>Please select port</value>
+  </data>
+  <data name="RequestInformation" xml:space="preserve">
+     <value>Request Information</value>
+  </data>
+    <data name="ExciseTax" xml:space="preserve">
+     <value>Excise Tax</value>
+  </data>
+    <data name="searchingandviewingtheindicativepricesforexciseGoods" xml:space="preserve">
+     <value>Searching and viewing the indicative prices for excise Goods</value>
   </data>
 </root>

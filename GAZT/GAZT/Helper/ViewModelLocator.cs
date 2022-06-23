@@ -135,6 +135,10 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
+using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+using EGAZT.Views.NewDesign.CustomServicesPages;
+using EGAZT.Services.Interface;
+using EGAZT.Services.Classes;
 
 namespace EGAZT
 {
@@ -148,6 +152,11 @@ namespace EGAZT
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<ICustomInquiryService, CustomInquiryService>();
+            SimpleIoc.Default.Register<ITraiffSectionsServices, TraiffSectionsServices>();
+            SimpleIoc.Default.Register<IBalaghServices, BalaghServices>();
+            SimpleIoc.Default.Register<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>();
+            SimpleIoc.Default.Register<ICommonServices, CommonServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -352,6 +361,17 @@ namespace EGAZT
 
             //AccountStatementsDownloadPageView
             //
+            #endregion
+
+            #region Customs Service IoC
+            SimpleIoc.Default.Register<InquiryAboutCustomsDeclarationViewModel>();
+            SimpleIoc.Default.Register<TraifSectionsViewModel>();
+            SimpleIoc.Default.Register<ReportFinancialViolationViewModel>();
+            SimpleIoc.Default.Register<ReportsMenuViewModel>();
+            SimpleIoc.Default.Register<LaboratoryPaymentOfInsuranceFeesViewModel>();
+            SimpleIoc.Default.Register<SearchIndiactivePriceForExciseGoodsViewModel>();
+            SimpleIoc.Default.Register<ExciseTaxViewModel>();
+
             #endregion
         }
 
@@ -2798,11 +2818,127 @@ namespace EGAZT
             //AccountStatementsDownloadPageViewModel
             //AccountStatementsFiltersPageViewModel
             //End Account Statements
+
+            //Custom Services
+            navigationService.Configure(App.InquiryAboutCustomsDeclarationView, typeof(InquiryAboutCustomsDeclaration));
+            navigationService.Configure(App.TraifSectionsView, typeof(TraifSections));
+            navigationService.Configure("ReportFinancialViolation", typeof(ReportFinancialViolation));
+            navigationService.Configure("ReportsPage", typeof(ReportsPage));
+            navigationService.Configure(App.LaboratoryPaymentOfInsuranceFees, typeof(LaboratoryPaymentOfInsuranceFees));
+            navigationService.Configure("ExciseTax", typeof(ExciseTax));
+            navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
+
             #endregion
 
             return navigationService;
         }
         #endregion
+        public InquiryAboutCustomsDeclarationViewModel InquiryAboutCustomsDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InquiryAboutCustomsDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+    public TraifSectionsViewModel traifSectionsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TraifSectionsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ReportFinancialViolationViewModel reportFinancialViolationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportFinancialViolationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ReportsMenuViewModel reportsMenuViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportsMenuViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public LaboratoryPaymentOfInsuranceFeesViewModel LaboratoryPaymentOfInsuranceFeesViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LaboratoryPaymentOfInsuranceFeesViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ExciseTaxViewModel exciseTaxViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ExciseTaxViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public SearchIndiactivePriceForExciseGoodsViewModel searchIndiactivePriceForExciseGoodsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SearchIndiactivePriceForExciseGoodsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+
 
         #region Release2 FileUpload
 

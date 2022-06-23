@@ -61,11 +61,20 @@
 	  <Compile Remove="Models\EnumModels\CustomsEnum.cs" />
 	  <Compile Remove="Views\NewDesign\EstimatedZAKATReturnsPages\ReturnPortalNavigationPopUp.xaml.cs" />
 	  <Compile Remove="Views\NewDesign\SupportPages\ZatcaInfoMenuPageView.xaml.cs" /> -->
-	  <None Remove="Xamarin.CommunityToolkit" />
 	  <None Remove="ViewModel\NewDesignViewModel\ZakatExemptionRequest\" />
-	  <None Remove="AppDynamics.Agent" />
-	  <None Remove="MvvmLightLibsStd10" />
-	  <None Remove="MvvmLightLibs" />
+	  <None Remove="Xamarin.CommunityToolkit" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\" />
+	  <None Remove="ViewModel\NewDesignViewModel\CustomServicesViewModels\" />
+	  <None Remove="Models\CustomServices\" />
+	  <None Remove="Converters\" />
+	  <None Remove="Services\" />
+	  <None Remove="Prism.Unity.Forms" />
+	  <None Remove="Services\Interface\" />
+	  <None Remove="Services\Classes\" />
+	  <None Remove="Behaviors\" />
+	  <None Remove="Models\CustomServices\TraiffSection\" />
+	  <None Remove="Controls\" />
+	  <None Remove="Models\CustomServices\BalaghModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -88,6 +97,7 @@
 		<PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
 		<PackageReference Include="CardsView" Version="2.8.1" />
 		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
+		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="CommonServiceLocator" Version="2.0.6" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
@@ -101,7 +111,7 @@
 		<PackageReference Include="Xamarin.Build.Download" Version="0.11.2" />
 		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
 		<PackageReference Include="AppDynamics.Agent" Version="2020.11.0" />
-		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+	        <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -145,6 +155,17 @@
 		<Folder Include="ViewModel\NewDesignViewModel\PaymnetOptions\" />
 		<Folder Include="EGAZT\ViewModel\" />
 		<Folder Include="ViewModel\SyncFusionEnabledViewModel\Customs\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\" />
+		<Folder Include="ViewModel\NewDesignViewModel\CustomServicesViewModels\" />
+		<Folder Include="Models\CustomServices\" />
+		<Folder Include="Converters\" />
+		<Folder Include="Services\" />
+		<Folder Include="Services\Interface\" />
+		<Folder Include="Services\Classes\" />
+		<Folder Include="Behaviors\" />
+		<Folder Include="Models\CustomServices\TraiffSection\" />
+		<Folder Include="Controls\" />
+		<Folder Include="Models\CustomServices\BalaghModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

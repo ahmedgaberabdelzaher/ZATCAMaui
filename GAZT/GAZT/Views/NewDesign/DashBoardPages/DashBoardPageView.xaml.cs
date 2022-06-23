@@ -143,7 +143,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             {
                                 viewModel.IsLoading = false;
 
-                                await viewModel._dialogService.ShowMessage(AppResources.UnderDevelopment, AppResources.Information);
+                           //     await viewModel._dialogService.ShowMessage(AppResources.UnderDevelopment, AppResources.Information);
                             });
                         }
 
