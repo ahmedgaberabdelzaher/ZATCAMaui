@@ -346,6 +346,13 @@
     <BundleResource Include="Resources\Grabber.png" />
     <BundleResource Include="Resources\Grabber%402x.png" />
     <BundleResource Include="Resources\Grabber%403x.png" />
+    <BundleResource Include="Resources\CloseWhiteIcon.png" />
+    <BundleResource Include="Resources\CloseWhiteIcon%402x.png" />
+    <BundleResource Include="Resources\CloseWhiteIcon%403x.png" />
+    <BundleResource Include="Resources\infoWhiteIcon.png" />
+    <BundleResource Include="Resources\infoWhiteIcon%402x.png" />
+    <BundleResource Include="Resources\infoWhiteIcon%403x.png" />
+    <BundleResource Include="Resources\ic_downloadWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

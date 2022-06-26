@@ -78,8 +78,8 @@ namespace EGAZT.Helper
                     /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
                       client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
                     */
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.XZATCAClientSecretProd);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
 
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
