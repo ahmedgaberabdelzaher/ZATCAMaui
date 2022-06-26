@@ -1,4 +1,5 @@
-﻿using GAZT.Helper;
+﻿using EGAZT.AppConfigurations;
+using GAZT.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -74,8 +75,11 @@ namespace EGAZT.Helper
                         routPortCode = "1" + routPortCode;
                     }*/
                     client.DefaultRequestHeaders.Add("routePortCode",routPortCode);
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
+                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
+                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
+                    */
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.XZATCAClientSecretProd);
 
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
@@ -119,11 +123,15 @@ namespace EGAZT.Helper
                     var client = new System.Net.Http.HttpClient();
                     //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);
                     //var JsonObject = JsonConvert.SerializeObject(Data);
-                   // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
-
-                    jobject = JsonConvert.SerializeObject(Data);
+                    // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
+                    /*
+                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
+                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
+                    */
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret",PageSettings.XZATCAClientSecretProd);
+                    
+                     jobject = JsonConvert.SerializeObject(Data);
                     var JsonObject =jobject;
 
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");

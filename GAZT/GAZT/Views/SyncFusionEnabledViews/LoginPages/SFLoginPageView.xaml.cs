@@ -371,14 +371,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 try
                                 {
                                     string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+                                    double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+                                    double AppVer = Convert.ToDouble(App.LoginDataRetrieved.AppVersion.Split('-')[1].Replace(".", string.Empty));
 
                                     if (minMaxVersions.Count() > 1)
                                     {
-                                        double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
-                                        double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
-                                        double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+                                       // double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
+                                       // double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
 
-                                        if (currVer >= minVer && currVer <= maxVer)
+                                      //  if (currVer >= minVer && currVer <= maxVer)
+                                      if(currVer >= AppVer)
                                         {
                                             App.IsUserLoggedIn = true;
                                             Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
@@ -397,7 +399,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     {
                                         App.LoginDataRetrieved.AppVersion = string.Empty;
 
-                                        if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        // if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        if ( currVer>=AppVer)
                                         {
                                             App.IsUserLoggedIn = true;
                                             await viewModel.LoginCompletedInWebView();

@@ -29,7 +29,7 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
@@ -47,7 +47,6 @@
  --linkskip=System.Xml
  --linkskip=System.Xml.Linq
  --linkskip=System.Xml.XPath  --linkskip=Xamarin.Forms</MtouchExtraArgs>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <ExternalConsole>false</ExternalConsole>
     <Commandlineparameters>
     </Commandlineparameters>
@@ -141,7 +140,7 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
@@ -156,7 +155,7 @@
     <DefineConstants>
     </DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <MtouchVerbosity>
     </MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
@@ -165,7 +164,6 @@
     <MtouchArch>ARM64</MtouchArch>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <MtouchSdkVersion>15.4</MtouchSdkVersion>
   </PropertyGroup>
   <ItemGroup>
