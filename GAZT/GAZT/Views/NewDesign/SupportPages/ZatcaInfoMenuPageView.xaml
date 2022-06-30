@@ -74,7 +74,7 @@
                                 </border:SfBorder.GestureRecognizers>
                             </border:SfBorder>
                            
-                       <Frame IsVisible="{x:Static settings:PageSettings.IsIncludeExicesTaxs}" CornerRadius="14" Padding="5" HasShadow="False" BorderColor="{StaticResource NeutralLightGrey}">
+                       <Frame IsVisible="{x:Static settings:PageSettings.IsIncludeLapFees}" CornerRadius="14" Padding="5" HasShadow="False" BorderColor="{StaticResource NeutralLightGrey}">
                                                            <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ic_menu_Tax_check.png"/>
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>

@@ -175,5 +175,15 @@ namespace EGAZT.Views.NewDesign.Template
             viewModel._navigationService.GoBack();
            // App.isAndroidRefresh = false;//#CR2068
         }
+
+        void GoToExisTax(System.Object sender, System.EventArgs e)
+        {
+            
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "GoToExisTax_Tapped", "Excise Tax");
+                viewModel._navigationService.NavigateTo("ExciseTax");
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+
+            
+        }
     }
 }

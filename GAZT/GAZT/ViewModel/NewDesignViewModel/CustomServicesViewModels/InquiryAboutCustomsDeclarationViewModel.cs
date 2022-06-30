@@ -1325,7 +1325,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             try
             {
-                PhoneNo = "0551844232";
+                //PhoneNo = "0551844232";
                 Phone = PhoneNo;
                 IsLoading = true;
                 string otp = OTPHelper.Generate();

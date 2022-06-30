@@ -1311,6 +1311,15 @@
                                             <TapGestureRecognizer Tapped="OnSupportTapped"/>
                                         </StackLayout.GestureRecognizers>
                                     </StackLayout>
+                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
+
+                                        <Image Source="education.png" Style="{StaticResource SmallIcon}"/>
+                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ExciseTax}" Style="{StaticResource ButtonLabelWhiteBold}"/>
+                    <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="GoToExisTax" NumberOfTapsRequired="1"/>
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
                                     <!--<BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="log_out" Style="{StaticResource SmallIcon}"/>

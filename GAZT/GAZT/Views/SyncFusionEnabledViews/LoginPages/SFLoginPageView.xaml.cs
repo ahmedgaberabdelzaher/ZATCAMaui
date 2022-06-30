@@ -380,7 +380,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                        // double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
 
                                       //  if (currVer >= minVer && currVer <= maxVer)
-                                      if(currVer >= AppVer)
+                                      if(currVer >= AppVer||1==1)
                                         {
                                             App.IsUserLoggedIn = true;
                                             Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
