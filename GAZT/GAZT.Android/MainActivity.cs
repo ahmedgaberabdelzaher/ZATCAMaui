@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using Android.Content;
+using Acr.UserDialogs;
 
 namespace GAZT.Droid
 {
@@ -42,6 +43,7 @@ namespace GAZT.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this);
+            UserDialogs.Init(this);
 
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {

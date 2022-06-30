@@ -113,7 +113,7 @@
                             </Image.Triggers>
                         </Image>
 
-                        <Label Grid.Column="1" Margin="0"  Grid.Row="0" HorizontalOptions="CenterAndExpand"  Text="{Binding Title}" LineBreakMode="TailTruncation" MaxLines="1"  Style="{StaticResource SectionTitleWhiteBold}"/>
+                        <Label  Grid.Column="1" Margin="0"  Grid.Row="0" HorizontalOptions="CenterAndExpand"  Text="{Binding Title}" LineBreakMode="TailTruncation" MaxLines="1"  Style="{StaticResource SectionTitleWhiteBold}"/>
                         <Image HeightRequest="22" IsVisible="false" Grid.Column="2" VerticalOptions="CenterAndExpand" WidthRequest="19" Source="ic_downloadWhite" HorizontalOptions="EndAndExpand" >
                             <Image.Triggers>
                                 <DataTrigger TargetType="Image" Binding="{Binding IsSectionView}" Value="true">
@@ -132,13 +132,13 @@
                         </Image>
                          <Image HeightRequest="43" IsVisible="false" Grid.Column="2" VerticalOptions="CenterAndExpand" WidthRequest="43" Source="infoWhiteIcon" HorizontalOptions="EndAndExpand" >
                             <Image.Triggers>
-                                
+                                    <DataTrigger TargetType="Image" Binding="{Binding IsChapterSection}" Value="true">
+                                    <Setter Property="IsVisible" Value="True"></Setter>
+                                </DataTrigger>
                                 <DataTrigger TargetType="Image" Binding="{Binding IsHarmonizedTarrifs}" Value="True">
                                     <Setter Property="IsVisible" Value="True"></Setter>
                                 </DataTrigger>
-                                <DataTrigger TargetType="Image" Binding="{Binding IsChapterSection}" Value="true">
-                                    <Setter Property="IsVisible" Value="True"></Setter>
-                                </DataTrigger>
+
                             </Image.Triggers>
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenNoteCommand}" CommandParameter="2"></TapGestureRecognizer>
@@ -187,10 +187,16 @@
       
 
                                            </inputLayout:SfTextInputLayout>
-           <CollectionView VerticalScrollBarVisibility="Never"   ItemsSource="{Binding TraiffSections}" SelectionMode="Single" SelectedItem="{Binding SelectedTraiffSections}" SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}">
-     <CollectionView.ItemTemplate>
+           <ScrollView VerticalScrollBarVisibility="Never">
+           <CollectionView VerticalScrollBarVisibility="Never"  ItemSizingStrategy="MeasureAllItems"  ItemsSource="{Binding TraiffSections}" SelectionMode="Single" SelectedItem="{Binding SelectedTraiffSections}" SelectionChangedCommand="{Binding TraiffSectionsSelectionChangedCommand}">
+               <CollectionView.ItemsLayout>
+                   <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="0" HorizontalItemSpacing="4">
+                       
+                   </GridItemsLayout>
+               </CollectionView.ItemsLayout>
+               <CollectionView.ItemTemplate>
                    <DataTemplate>
-              <Grid Padding="24,6,24,6">
+              <StackLayout Padding="24,6,24,6">
                        <Frame HasShadow="False"  Padding="20,15,17,15" CornerRadius="14" BorderColor="#D8D8D8">
                            <StackLayout Orientation="Horizontal">
         <Label Text="{Binding Name}" FontSize="16" TextColor="{StaticResource Primary}" HorizontalOptions="StartAndExpand" ></Label>
@@ -206,11 +212,11 @@
                              </Image>
 
                            </StackLayout>
-                       </Frame></Grid>
+                       </Frame></StackLayout>
                    </DataTemplate>
                </CollectionView.ItemTemplate>
            </CollectionView>
-       </StackLayout>
+       </ScrollView></StackLayout>
 
               <Grid IsVisible="{Binding IsChapterSection}">
                  

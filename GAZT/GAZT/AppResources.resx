@@ -9374,4 +9374,7 @@ the Zakat, Tax and Customs
     <data name="searchingandviewingtheindicativepricesforexciseGoods" xml:space="preserve">
      <value>Searching and viewing the indicative prices for excise Goods</value>
   </data>
+     <data name="Copied" xml:space="preserve">
+     <value>Copied</value>
+  </data>
 </root>

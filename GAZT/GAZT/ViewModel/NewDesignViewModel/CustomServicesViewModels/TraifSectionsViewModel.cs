@@ -11,6 +11,8 @@ using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.CommunityToolkit.Extensions;
+using Acr.UserDialogs;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
@@ -527,7 +529,16 @@ Title= AppResources.CustomsZATCAIntegrat;
             {
                 return new Command(async () =>
                 {
-                  await  Clipboard.SetTextAsync(SelectedSubHarmonizedTariffs.hrmnzd_code);
+
+                    await  Clipboard.SetTextAsync(SelectedSubHarmonizedTariffs.hrmnzd_code);
+                    var toastConfig = new ToastConfig($"{SelectedSubHarmonizedTariffs.hrmnzd_code} {AppResources.Copied}");
+                    //toastConfig.
+                    toastConfig.SetDuration(1500);
+                    toastConfig.SetBackgroundColor(System.Drawing.Color.Black);
+                    toastConfig.SetPosition(ToastPosition.Bottom);
+                   
+                    UserDialogs.Instance.Toast(toastConfig);
+                    
                 });
             }
         }

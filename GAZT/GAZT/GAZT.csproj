@@ -75,6 +75,7 @@
 	  <None Remove="Models\CustomServices\TraiffSection\" />
 	  <None Remove="Controls\" />
 	  <None Remove="Models\CustomServices\BalaghModels\" />
+	  <None Remove="Acr.UserDialogs" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -112,6 +113,7 @@
 		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
 		<PackageReference Include="AppDynamics.Agent" Version="2020.11.0" />
 	        <PackageReference Include="Prism.Unity.Forms" Version="8.1.97" />
+	        <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
