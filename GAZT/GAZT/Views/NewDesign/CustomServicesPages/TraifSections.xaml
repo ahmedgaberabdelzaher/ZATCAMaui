@@ -245,7 +245,7 @@
                            <StackLayout BindableLayout.ItemsSource="{Binding SectionNotesLst}">
                                <BindableLayout.ItemTemplate>
                                    <DataTemplate>
-                                           <Label Text="{Binding note_arbc_desc}"></Label>
+                                           <Label Text="{Binding ChaptNote}"></Label>
                                    </DataTemplate>
                                </BindableLayout.ItemTemplate>
                            </StackLayout>
@@ -604,7 +604,7 @@
                            <StackLayout BindableLayout.ItemsSource="{Binding ChapterNotesLst}">
                                <BindableLayout.ItemTemplate>
                                    <DataTemplate>
-                                           <Label Text="{Binding note_arbc_desc}"></Label>
+                                           <Label Text="{Binding ChaptNote}"></Label>
                                    </DataTemplate>
                                </BindableLayout.ItemTemplate>
                            </StackLayout>

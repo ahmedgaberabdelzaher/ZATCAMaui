@@ -8,6 +8,20 @@ namespace EGAZT.Models.CustomServices.TraiffSection
     {
         public int note_seq { get; set; }
         public string note_arbc_desc { get; set; }
+        public string note_eng_desc { get; set; }
+        public string Note {
+            get
+            {
+                if (App.IsArabic)
+                {
+                    return note_arbc_desc;
+                }
+                else
+                {
+                    return note_eng_desc;
+                }
+            }
+        }
     }
 
     public class Section
