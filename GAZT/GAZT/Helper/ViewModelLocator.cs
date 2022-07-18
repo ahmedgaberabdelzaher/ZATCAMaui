@@ -139,6 +139,8 @@ using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
 using EGAZT.Views.NewDesign.CustomServicesPages;
 using EGAZT.Services.Interface;
 using EGAZT.Services.Classes;
+using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
+using EGAZT.Views.NewDesign.TahqaqViews;
 
 namespace EGAZT
 {
@@ -157,6 +159,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IBalaghServices, BalaghServices>();
             SimpleIoc.Default.Register<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>();
             SimpleIoc.Default.Register<ICommonServices, CommonServices>();
+            SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -371,6 +374,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<LaboratoryPaymentOfInsuranceFeesViewModel>();
             SimpleIoc.Default.Register<SearchIndiactivePriceForExciseGoodsViewModel>();
             SimpleIoc.Default.Register<ExciseTaxViewModel>();
+            SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
 
             #endregion
         }
@@ -2827,6 +2831,7 @@ namespace EGAZT
             navigationService.Configure(App.LaboratoryPaymentOfInsuranceFees, typeof(LaboratoryPaymentOfInsuranceFees));
             navigationService.Configure("ExciseTax", typeof(ExciseTax));
             navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
+            navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
 
             #endregion
 
@@ -2938,6 +2943,20 @@ namespace EGAZT
             }
         }
 
+        public TahqaqScanPageViewModel tahqaqScanPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TahqaqScanPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
 
         #region Release2 FileUpload

@@ -76,6 +76,8 @@
 	  <None Remove="Controls\" />
 	  <None Remove="Models\CustomServices\BalaghModels\" />
 	  <None Remove="Acr.UserDialogs" />
+	  <None Remove="Views\NewDesign\TahqaqViews\" />
+	  <None Remove="ViewModel\NewDesignViewModel\TahqaqViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -168,6 +170,8 @@
 		<Folder Include="Models\CustomServices\TraiffSection\" />
 		<Folder Include="Controls\" />
 		<Folder Include="Models\CustomServices\BalaghModels\" />
+		<Folder Include="Views\NewDesign\TahqaqViews\" />
+		<Folder Include="ViewModel\NewDesignViewModel\TahqaqViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

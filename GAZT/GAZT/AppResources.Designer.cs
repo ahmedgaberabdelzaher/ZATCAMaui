@@ -25019,5 +25019,10 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
             }
         }
+        public static string TahqaqService {
+            get {
+                return ResourceManager.GetString("TahqaqService", resourceCulture);
+            }
+        }
     }
 }

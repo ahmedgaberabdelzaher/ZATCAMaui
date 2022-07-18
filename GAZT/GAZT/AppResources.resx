@@ -9377,4 +9377,7 @@ the Zakat, Tax and Customs
      <data name="Copied" xml:space="preserve">
      <value>Copied</value>
   </data>
+       <data name="TahqaqService" xml:space="preserve">
+     <value>Tahqaq Service</value>
+  </data>
 </root>

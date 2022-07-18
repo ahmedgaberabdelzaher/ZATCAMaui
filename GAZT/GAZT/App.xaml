@@ -100,6 +100,12 @@
                 <ContentPresenter Content="{Binding RotatorItem}" />
             </DataTemplate>
 
+                <OnPlatform x:TypeArguments="x:String" x:Key="FontSomarBold"><!-- SomarBold-->
+                <On Platform="Android" Value="Somar-Bold.otf" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
+                <On Platform="iOS" Value="Somar-Bold" />
+            </OnPlatform>
+
+
             <!-- SST Arabic Bold.ttf -->
             <OnPlatform x:TypeArguments="x:String" x:Key="SomarBold"><!-- SomarBold-->
                 <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
