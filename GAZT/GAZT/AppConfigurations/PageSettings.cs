@@ -3,6 +3,7 @@ namespace EGAZT.AppConfigurations
 {
     public static class PageSettings
     {
+        public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
         public static bool IsIncludeInquiryVisible= true;
         public static bool IsIncludeTarrif = true;
         public static bool IsIncludeBalagh = false;

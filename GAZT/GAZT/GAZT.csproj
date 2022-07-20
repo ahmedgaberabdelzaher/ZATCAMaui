@@ -78,6 +78,7 @@
 	  <None Remove="Acr.UserDialogs" />
 	  <None Remove="Views\NewDesign\TahqaqViews\" />
 	  <None Remove="ViewModel\NewDesignViewModel\TahqaqViewModels\" />
+	  <None Remove="Models\TahqaqModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -172,6 +173,7 @@
 		<Folder Include="Models\CustomServices\BalaghModels\" />
 		<Folder Include="Views\NewDesign\TahqaqViews\" />
 		<Folder Include="ViewModel\NewDesignViewModel\TahqaqViewModels\" />
+		<Folder Include="Models\TahqaqModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

@@ -9298,4 +9298,49 @@ info@zatca.gov.sa</value>
      <data name="TahqaqService" xml:space="preserve">
      <value>خدمة تحقق</value>
   </data>
+      <data name="VerificationForm" xml:space="preserve">
+     <value>نموذج التحقق</value>
+  </data>
+   <data name="VerificationFormHint" xml:space="preserve">
+     <value> اختر نوع الرقم من القائمة أسفل ثم ادخل الرقم المكون من عشرة أرقام</value>
+  </data>
+    <data name="QRCode" xml:space="preserve">
+     <value>الرمز</value>
+  </data>
+    <data name="ScantheQRcode" xml:space="preserve">
+     <value>أمسح رمز الإستجابة السريع</value>
+  </data>
+    <data name="PlacetheQRCodeinsidetheframe" xml:space="preserve">
+     <value>ضع الرمز داخل الإطار</value>
+  </data>
+   <data name="Use" xml:space="preserve">
+     <value>استخدام</value>
+  </data>
+   <data name="Or" xml:space="preserve">
+     <value>أو</value>
+  </data>
+    <data name="Correcttaxstamp" xml:space="preserve">
+     <value>ختم ضريبي صحيح</value>
+  </data>
+    <data name="ProductDescription" xml:space="preserve">
+     <value>وصف المنتج</value>
+  </data>
+    <data name="OrganisationName" xml:space="preserve">
+     <value>المصنع</value>
+  </data>
+    <data name="ProductionDate" xml:space="preserve">
+     <value>تاريخ الإنتاج</value>
+  </data>
+    <data name="Incorrecttaxstamp" xml:space="preserve">
+     <value>ختم ضريبي غير صحيح</value>
+  </data>
+   <data name="Incorrecttaxstamp" xml:space="preserve">
+     <value>ختم ضريبي غير صحيح</value>
+  </data>
+    <data name="Submitareport" xml:space="preserve">
+     <value>تقديم بلاغ</value>
+  </data>
+    <data name="Exit" xml:space="preserve">
+     <value>خروج</value>
+  </data>
 </root>

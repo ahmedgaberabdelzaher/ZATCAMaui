@@ -25024,5 +25024,105 @@ namespace EGAZT {
                 return ResourceManager.GetString("TahqaqService", resourceCulture);
             }
         }
+
+        public static string VerificationForm
+        {
+            get {
+                return ResourceManager.GetString("VerificationForm", resourceCulture);
+            }
+        }
+ public static string VerificationFormHint
+        {
+            get {
+                return ResourceManager.GetString("VerificationFormHint", resourceCulture);
+            }
+        }
+ public static string QRCode
+        {
+            get {
+                return ResourceManager.GetString("QRCode", resourceCulture);
+            }
+        }
+
+        public static string ScantheQRcode
+        {
+            get
+            {
+                return ResourceManager.GetString("ScantheQRcode", resourceCulture);
+            }
+        }
+        public static string PlacetheQRCodeinsidetheframe
+        {
+            get
+            {
+                return ResourceManager.GetString("PlacetheQRCodeinsidetheframe", resourceCulture);
+            }
+        }
+        public static string Or
+        {
+            get
+            {
+                return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        public static string Use
+        {
+            get
+            {
+                return ResourceManager.GetString("Use", resourceCulture);
+            }
+        }
+        public static string Correcttaxstamp
+        {
+            get
+            {
+                return ResourceManager.GetString("Correcttaxstamp", resourceCulture);
+            }
+        }
+        public static string ProductDescription
+        {
+            get
+            {
+                return ResourceManager.GetString("ProductDescription", resourceCulture);
+            }
+        }
+        public static string OrganisationName
+        {
+            get
+            {
+                return ResourceManager.GetString("OrganisationName", resourceCulture);
+            }
+        }
+
+        public static string ProductionDate
+        {
+            get
+            {
+                return ResourceManager.GetString("ProductionDate", resourceCulture);
+            }
+        }
+
+        public static string Incorrecttaxstamp
+        {
+            get
+            {
+                return ResourceManager.GetString("Incorrecttaxstamp", resourceCulture);
+            }
+        }
+        public static string Submitareport
+        {
+            get
+            {
+                return ResourceManager.GetString("Submitareport", resourceCulture);
+            }
+        }
+        public static string Exit
+        {
+            get
+            {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+
     }
 }

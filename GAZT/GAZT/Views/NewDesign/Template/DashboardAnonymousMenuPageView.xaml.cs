@@ -185,5 +185,13 @@ namespace EGAZT.Views.NewDesign.Template
 
             
         }
+
+        void GoToTahqaqService(System.Object sender, System.EventArgs e)
+        {
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardAnonymousMenuPageView", "GoToTahqaqService_Tapped", "Tahqaq Service");
+            viewModel._navigationService.NavigateTo("TahqaqScanPage");
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
     }
 }

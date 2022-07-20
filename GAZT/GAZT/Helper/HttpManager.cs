@@ -114,7 +114,7 @@ namespace EGAZT.Helper
 
         }
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data) where T :  class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false) where T :  class
         {
             try
             {
@@ -128,9 +128,16 @@ namespace EGAZT.Helper
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
                     */
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret",PageSettings.XZATCAClientSecretProd);
-                    
+                    if (isTahqaq)
+                    {
+                        client.DefaultRequestHeaders.Add("client_id", "3d37d7dd9089b57f32820869df3d160f");
+                        client.DefaultRequestHeaders.Add("Client_Secret", "b762be58b8803813ef0b36254a1a14df");
+                    }
+                    else
+                    {
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.XZATCAClientSecretProd);
+                    }
                      jobject = JsonConvert.SerializeObject(Data);
                     var JsonObject =jobject;
 
