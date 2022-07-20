@@ -29,7 +29,6 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
@@ -61,7 +60,6 @@
     <MtouchLink>Full</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
  --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
@@ -92,11 +90,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchLink>Full</MtouchLink>
+    <MtouchLink>None</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>false</OptimizePNGs>
@@ -115,7 +112,7 @@
 --linkskip=GalaSoft.MvvmLight.Platform
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <CodesignProvision>iOS Team Provisioning Profile: com.gazt.egazt</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -127,7 +124,6 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
@@ -140,7 +136,6 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
@@ -155,7 +150,6 @@
     <DefineConstants>
     </DefineConstants>
     <WarningLevel>4</WarningLevel>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
     <MtouchVerbosity>
     </MtouchVerbosity>
     <MtouchUseLlvm>true</MtouchUseLlvm>
@@ -165,7 +159,7 @@
     <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
     <CodesignProvision>ZatcaAppStore</CodesignProvision>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
@@ -354,6 +348,18 @@
     <BundleResource Include="Resources\infoWhiteIcon%402x.png" />
     <BundleResource Include="Resources\infoWhiteIcon%403x.png" />
     <BundleResource Include="Resources\ic_downloadWhite.png" />
+    <BundleResource Include="Resources\ SuccessQr.png" />
+    <BundleResource Include="Resources\SuccessQr%402x.png" />
+    <BundleResource Include="Resources\SuccessQr%403x.png" />
+    <BundleResource Include="Resources\FailedIcon.png" />
+    <BundleResource Include="Resources\FailedIcon%402x.png" />
+    <BundleResource Include="Resources\FailedIcon%403x.png" />
+    <BundleResource Include="Resources\QrScanImage.png" />
+    <BundleResource Include="Resources\QrScanImage%402x.png" />
+    <BundleResource Include="Resources\QrScanImage%403x.png" />
+    <BundleResource Include="Resources\ThaqaqIcon.png" />
+    <BundleResource Include="Resources\ThaqaqIcon%402x.png" />
+    <BundleResource Include="Resources\ThaqaqIcon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

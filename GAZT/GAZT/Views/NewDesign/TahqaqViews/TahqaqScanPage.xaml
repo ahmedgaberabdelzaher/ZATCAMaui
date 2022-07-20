@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       FlowDirection="{Binding AppDirection}"
+         xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+             xmlns:models="clr-namespace:EGAZT.Models.EnumModels"
+             xmlns:custom="clr-namespace:GAZT"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+             xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:helper="clr-namespace:EGAZT.Helper" xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms" xmlns:controls="clr-namespace:EGAZT.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+             BackgroundImageSource="partials_background.png"
+             NavigationPage.HasNavigationBar="False"
+    x:Class="EGAZT.Views.NewDesign.TahqaqViews.TahqaqScanPage">
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <converters:SupportTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter"/>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
+            </Style>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+           <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <yummy:PancakeView IsVisible="{Binding IsShowScanView}" BackgroundColor="#ACACAC"  Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
+                        <StackLayout Spacing="24" Padding="0,12,0,0">
+                            <Label Text="{x:Static ResourceManager:AppResources.ScantheQRcode}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                            <Label Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>
+<Grid>
+
+                                <zxing:ZXingScannerView HorizontalOptions="CenterAndExpand"   IsScanning="{Binding IsScanning}" 
+                IsAnalyzing="{Binding IsAnalyzing}" HeightRequest="300" Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanCommand}"   x:Name="zxing" BackgroundColor="White" VerticalOptions="CenterAndExpand"/>
+<!--<Grid>
+    <Line  Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+    <Line Stroke="gray" StrokeThickness="10" Y2="90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
+    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="End"  VerticalOptions="Start"/>
+    <Line Stroke="gray" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand"  VerticalOptions="Start"/>
+    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
+    <Line Stroke="gray" StrokeThickness="10" Y2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
+    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
+    <Line Stroke="gray" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
+</Grid>-->
+
+
+</Grid>
+                           <Label TextColor="White" HorizontalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Or}" FontSize="24"  FontFamily="{StaticResource FontSomarBold}"></Span>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Use}" FontSize="16"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,27,27,40" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EnterCodeCommand}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+<Label Text="{x:Static ResourceManager:AppResources.VerificationForm}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame>
+                      </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+                      
+                     <yummy:PancakeView IsVisible="{Binding IsCheckWithCode}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
+                        <StackLayout Padding="0,12,0,0">
+                             <StackLayout Margin="24,10,24,0" IsVisible="{Binding IsMainPage}"  x:Name="Main">
+            <Label  Text="{x:Static ResourceManager:AppResources.VerificationForm}" TextColor="#58595B" FontSize="26"  Margin="0,34,0,5"></Label>
+            <Label Text="{x:Static ResourceManager:AppResources.VerificationFormHint}" FontSize="14"  TextColor="#868894"></Label>
+            <BoxView HeightRequest="1" Color="#EBEBEB"></BoxView>
+         </StackLayout>
+                                                        <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
+
+                                <custom:CustomLabel   Style="{StaticResource CaptionLabelGrey}"  >
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.QRCode}"/>
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout  Style="{StaticResource InputTableTextInputLayoutStyle}"
+                                                               LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        OutlineCornerRadius="14"
+                                                        InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" >
+                                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                             Text="{Binding scanCode}"
+                                                         Placeholder="10xxxxxxxxx"
+                                                     VerticalTextAlignment="Center" 
+                                                      >
+                                       
+
+                                    </control:BorderlessEntry>
+                        </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                                        <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,27,27,40" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GetDataForCodeCommand}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+<Label Text="نموذج التحقق" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame>
+                                 </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+                    <yummy:PancakeView IsVisible="{Binding IsShowRsltView}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
+                        <StackLayout Padding="0,12,0,0">
+                            <Image Source="SuccessQr" HeightRequest="70" WidthRequest="70"  HorizontalOptions="CenterAndExpand" Margin="0,10,0,10"></Image>
+                            <Label Text="{x:Static ResourceManager:AppResources.Correcttaxstamp}" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                                   <Frame Margin="0"  BorderColor="LightGray" Padding="0" CornerRadius="8"  HasShadow="False">
+                            <StackLayout Margin="16" >
+                                        <Label Text="{x:Static ResourceManager:AppResources.QRCode}"  Style="{StaticResource BodyLabelGrey}"/>
+                                        <Label Text="{Binding scanCode}"  Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.ProductDescription}"   Style="{StaticResource BodyLabelGrey}" Grid.Column="1"></Label>
+                                  <Label Text="{Binding QrRslt.ProductDescription}"  Style="{StaticResource BodyLabelBlack}"/>
+                                 <Label Text="{x:Static ResourceManager:AppResources.OrganisationName}"   Style="{StaticResource BodyLabelGrey}" Grid.Column="1"></Label>
+                                  <Label Text="{Binding QrRslt.OrganisationName}"  Style="{StaticResource BodyLabelBlack}"/>
+                                <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*">
+                                <Label Text="{x:Static ResourceManager:AppResources.CountryofOrigin}"   Style="{StaticResource BodyLabelGrey}" Grid.Row="0" Grid.Column="0"></Label>
+                                  <Label Text="{Binding QrRslt.CountryOfManufacture}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
+                                 <Label Text="{x:Static ResourceManager:AppResources.ProductionDate}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BodyLabelGrey}"></Label>
+                                  <Label Text="{Binding QrRslt.DateOfManufacture}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
+                           </Grid>
+                            </StackLayout>
+                        </Frame>
+                      </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+                                   <yummy:PancakeView IsVisible="{Binding IsShowFailRsltView}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
+                        <StackLayout Padding="0,12,0,0">
+                            <Image Margin="0,100,0,15" Source="FailedIcon" HeightRequest="95" WidthRequest="95"  HorizontalOptions="CenterAndExpand"></Image>
+                            <Label Text="{x:Static ResourceManager:AppResources.Incorrecttaxstamp}" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                                <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,100,27,27" HasShadow="False">
+<Label Text="{x:Static ResourceManager:AppResources.Submitareport}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame>
+                            <Label Text="{x:Static ResourceManager:AppResources.Exit}" HorizontalOptions="CenterAndExpand" TextColor="#00BBBD" FontSize="16">
+                                                <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Label.GestureRecognizers>
+                            </Label>
+
+                      </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+
+           
+            <Grid Grid.Row="0" Padding="20,5,20,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Image Source="arrowLeftwhite.png" Rotation="180" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+              <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.TahqaqService}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+                      <controls:Loader IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"></controls:Loader>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
