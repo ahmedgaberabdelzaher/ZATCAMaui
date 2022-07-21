@@ -9335,12 +9335,18 @@ info@zatca.gov.sa</value>
      <value>ختم ضريبي غير صحيح</value>
   </data>
    <data name="Incorrecttaxstamp" xml:space="preserve">
-     <value>ختم ضريبي غير صحيح</value>
+     <value>ختم ضريبي غير صحيح، هل ترغب في كتابة اى تعليق يخص هذا المسح؟</value>
   </data>
     <data name="Submitareport" xml:space="preserve">
      <value>تقديم بلاغ</value>
   </data>
     <data name="Exit" xml:space="preserve">
      <value>خروج</value>
+  </data>
+     <data name="EnterQrCodeHere" xml:space="preserve">
+     <value>ادخل الرمز هنا</value>
+  </data>
+        <data name="PleaseEnterQRCodeHer" xml:space="preserve">
+     <value>الرجاء إدخال رمز</value>
   </data>
 </root>

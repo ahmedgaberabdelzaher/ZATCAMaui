@@ -9414,12 +9414,18 @@ the Zakat, Tax and Customs
      <value>Production Date</value>
   </data>
   <data name="Incorrecttaxstamp" xml:space="preserve">
-     <value>Incorrect tax stamp</value>
+     <value>Invalid tax stamp. Would you like to write a comment regarding this survey?</value>
   </data>
       <data name="Submitareport" xml:space="preserve">
      <value>Submit a report</value>
   </data>
     <data name="Exit" xml:space="preserve">
      <value>Exit</value>
+  </data>
+      <data name="EnterQrCodeHere" xml:space="preserve">
+     <value>Enter code here</value>
+  </data>
+        <data name="PleaseEnterQRCodeHer" xml:space="preserve">
+     <value>please Enter code</value>
   </data>
 </root>

@@ -25124,5 +25124,20 @@ namespace EGAZT {
             }
         }
 
+        public static string EnterQrCodeHere
+        {
+            get
+            {
+                return ResourceManager.GetString("EnterQrCodeHere", resourceCulture);
+            }
+        }
+        public static string PleaseEnterQRCodeHer
+        {
+            get
+            {
+                return ResourceManager.GetString("PleaseEnterQRCodeHer", resourceCulture);
+            }
+        }
+
     }
 }

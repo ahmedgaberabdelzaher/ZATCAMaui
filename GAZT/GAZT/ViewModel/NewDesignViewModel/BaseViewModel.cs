@@ -194,6 +194,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        bool isShowMsgView { get; set; }
+
+        public bool IsShowMsgView
+        {
+            get { return isShowMsgView; }
+
+            set
+            {
+                isShowMsgView = value;
+                RaisePropertyChanged();
+            }
+        }
+        public ICommand CloseMsgViewCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsShowMsgView = false;
+                });
+            }
+        }
+
+
+        string messageTxt { get; set; }
+
+        public string MessageTxt
+        {
+            get { return messageTxt; }
+
+            set
+            {
+                messageTxt = value;
+                RaisePropertyChanged();
+            }
+        }
 
 
     }

@@ -150,8 +150,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                     try
                     {
+                        if (!String.IsNullOrEmpty(scanCode))
+                        {
+
                         FromCheckWithCode = true;
                        await CheckQr();
+                        }
+                        else
+                        {
+
+                            MessageTxt = AppResources.PleaseEnterQRCodeHer;
+                            IsShowMsgView = true;
+                        }
                     }
                     catch (Exception ex)
                     {

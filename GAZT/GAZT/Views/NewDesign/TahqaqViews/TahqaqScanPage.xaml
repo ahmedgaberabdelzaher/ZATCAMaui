@@ -97,7 +97,7 @@
                         <StackLayout Padding="0,12,0,0">
                              <StackLayout Margin="24,10,24,0" IsVisible="{Binding IsMainPage}"  x:Name="Main">
             <Label  Text="{x:Static ResourceManager:AppResources.VerificationForm}" TextColor="#58595B" FontSize="26"  Margin="0,34,0,5"></Label>
-            <Label Text="{x:Static ResourceManager:AppResources.VerificationFormHint}" FontSize="14"  TextColor="#868894"></Label>
+            <Label IsVisible="False"  Text="{x:Static ResourceManager:AppResources.VerificationFormHint}" FontSize="14"  TextColor="#868894"></Label>
             <BoxView HeightRequest="1" Color="#EBEBEB"></BoxView>
          </StackLayout>
                                                         <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
@@ -115,7 +115,7 @@
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" >
                                     <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
                                                              Text="{Binding scanCode}"
-                                                         Placeholder="10xxxxxxxxx"
+                                                         Placeholder="{x:Static ResourceManager:AppResources.EnterQrCodeHere}"
                                                      VerticalTextAlignment="Center" 
                                                       >
                                        
@@ -177,9 +177,9 @@
                     </Grid.RowDefinitions>
                     <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
                         <StackLayout Padding="0,12,0,0">
-                            <Image Margin="0,100,0,15" Source="FailedIcon" HeightRequest="95" WidthRequest="95"  HorizontalOptions="CenterAndExpand"></Image>
+                            <Image Margin="0,50,0,15" Source="FailedIcon" HeightRequest="95" WidthRequest="95"  HorizontalOptions="CenterAndExpand"></Image>
                             <Label Text="{x:Static ResourceManager:AppResources.Incorrecttaxstamp}" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
-                                <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,100,27,27" HasShadow="False">
+                                <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,50,27,27" HasShadow="False">
 <Label Text="{x:Static ResourceManager:AppResources.Submitareport}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
                             </Frame>
                             <Label Text="{x:Static ResourceManager:AppResources.Exit}" HorizontalOptions="CenterAndExpand" TextColor="#00BBBD" FontSize="16">
@@ -213,7 +213,7 @@
               <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.TahqaqService}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
             </Grid>
                       <controls:Loader IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"></controls:Loader>
-
+               <controls:MsgView IsVisible="{Binding IsShowMsgView}" Grid.Row="0" Grid.RowSpan="2"></controls:MsgView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
