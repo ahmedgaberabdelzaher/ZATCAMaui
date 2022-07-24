@@ -50,7 +50,8 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -61,7 +62,6 @@
     <MtouchLink>Full</MtouchLink>
     <MtouchArch>x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
     <MtouchExtraArgs>--linkskip=AppDynamics.Agent --linkskip=UIKit   --linkskip=Syncfusion.SfPdfViewer.XForms        --linkskip=Newtonsoft.Json
  --linkskip=Newtonsoft.Json.Linq --linkskip=Plugin.Connectivity
  --linkskip=System
@@ -80,6 +80,8 @@
  --optimize=experimental-xforms-product-type
  --warn-on-type-ref=UIKit.UIWebView
  --optimize=force-rejected-types-removal</MtouchExtraArgs>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,8 +94,6 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <DeviceSpecificBuild>true</DeviceSpecificBuild>
     <MtouchFastDev>true</MtouchFastDev>
@@ -113,7 +113,9 @@
 --linkskip=GalaSoft.MvvmLight.Platform
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
-    <CodesignProvision>iOS Team Provisioning Profile: com.gazt.egazt</CodesignProvision>
+    <IOSDebuggerPort>10001</IOSDebuggerPort>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -124,9 +126,9 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
     <DebugType>none</DebugType>
@@ -136,10 +138,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>ZatcaAppStore</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -159,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>ZatcaAppStore</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />

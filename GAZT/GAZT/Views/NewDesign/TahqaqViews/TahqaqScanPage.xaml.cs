@@ -4,6 +4,7 @@ using System.Diagnostics;
 using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing.Net.Mobile.Forms;
 
 namespace EGAZT.Views.NewDesign.TahqaqViews
 {
@@ -28,6 +29,20 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 _ = await Permissions.RequestAsync<Permissions.Camera>();
             }
 
+       /*  var  scanPage = new ZXingScannerPage();
+            scanPage.OnScanResult += (result) =>
+            {
+                scanPage.IsScanning = false;
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await Navigation.PopAsync();
+                    await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                });
+            };
+
+            await Navigation.PushAsync(scanPage);
+        */
             base.OnAppearing();
           // await viewModel.CheckQr()
 ;           // zxing.IsScanning = true;

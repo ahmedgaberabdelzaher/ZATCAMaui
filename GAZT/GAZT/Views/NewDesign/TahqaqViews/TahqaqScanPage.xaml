@@ -45,13 +45,13 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <ScrollView Grid.Row="0" Padding="0,0,0,32" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
-                        <StackLayout Spacing="24" Padding="0,12,0,0">
-                            <Label Text="{x:Static ResourceManager:AppResources.ScantheQRcode}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
-                            <Label Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>
-<Grid>
+                        <Grid RowDefinitions="auto,auto,*,auto,auto" Padding="0,12,0,0">
+                            <Label Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ScantheQRcode}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                            <Label Grid.Row="1" Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>
 
-                                <zxing:ZXingScannerView HorizontalOptions="CenterAndExpand"   IsScanning="{Binding IsScanning}" 
-                IsAnalyzing="{Binding IsAnalyzing}" HeightRequest="300" Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanCommand}"   x:Name="zxing" BackgroundColor="White" VerticalOptions="CenterAndExpand"/>
+
+                                <zxing:ZXingScannerView Grid.Row="2" HorizontalOptions="FillAndExpand" IsAnalyzing="True"  IsScanning="True"
+                 Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanCommand}"  x:Name="zxing" BackgroundColor="White" VerticalOptions="FillAndExpand"/>
 <!--<Grid>
     <Line  Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
     <Line Stroke="gray" StrokeThickness="10" Y2="90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
@@ -64,8 +64,8 @@
 </Grid>-->
 
 
-</Grid>
-                           <Label TextColor="White" HorizontalOptions="CenterAndExpand">
+
+                           <Label TextColor="White" Grid.Row="3" HorizontalOptions="CenterAndExpand">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.Or}" FontSize="24"  FontFamily="{StaticResource FontSomarBold}"></Span>
@@ -73,13 +73,13 @@
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
-                            <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,27,27,40" HasShadow="False">
+                            <Frame BackgroundColor="#00BBBD" Grid.Row="4" CornerRadius="14" Padding="12" Margin="21,27,27,40" HasShadow="False">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding EnterCodeCommand}"></TapGestureRecognizer>
                                 </Frame.GestureRecognizers>
 <Label Text="{x:Static ResourceManager:AppResources.VerificationForm}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
                             </Frame>
-                      </StackLayout>
+                      </Grid>
                     </ScrollView>
                 
 
@@ -158,7 +158,7 @@
                                 <Label Text="{x:Static ResourceManager:AppResources.CountryofOrigin}"   Style="{StaticResource BodyLabelGrey}" Grid.Row="0" Grid.Column="0"></Label>
                                   <Label Text="{Binding QrRslt.CountryOfManufacture}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
                                  <Label Text="{x:Static ResourceManager:AppResources.ProductionDate}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BodyLabelGrey}"></Label>
-                                  <Label Text="{Binding QrRslt.DateOfManufacture}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
+                                  <Label Text="{Binding QrRslt.DateOfManufacture,StringFormat='{0:dd/MM/yyy}'}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
                            </Grid>
                             </StackLayout>
                         </Frame>

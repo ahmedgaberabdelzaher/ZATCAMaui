@@ -67,10 +67,8 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>CFBundleDisplayName</key>
-	<string>ZATCA</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.enterprise.egazt2</string>
+	<string>com.gazt.enterprise.egazt</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -98,5 +96,7 @@
 	<string>5.0.65</string>
 	<key>CFBundleShortVersionString</key>
 	<string>5.0.60</string>
+	<key>CFBundleDisplayName</key>
+	<string>ZATCA</string>
 </dict>
 </plist>
