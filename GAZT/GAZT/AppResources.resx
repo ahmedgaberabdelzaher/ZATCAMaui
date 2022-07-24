@@ -9428,4 +9428,31 @@ the Zakat, Tax and Customs
         <data name="PleaseEnterQRCodeHer" xml:space="preserve">
      <value>please Enter code</value>
   </data>
-</root>
+  <data name="VATCalculator" xml:space="preserve">
+     <value>VAT Calculator</value>
+  </data>
+    <data name="VATCalculatorDesc" xml:space="preserve">
+     <value>Please complete the information to calculate the tax</value>
+  </data>
+      <data name="ConsumerCalculator" xml:space="preserve">
+     <value>Consumer Calculator</value>
+  </data>
+      <data name="MerchantCalculator" xml:space="preserve">
+     <value>Merchant Calculator</value>
+  </data>
+     <data name="Totaltaxablepurchases" xml:space="preserve">
+     <value>Total taxable purchases</value>
+  </data>
+       <data name="CalculateTheAmount" xml:space="preserve">
+     <value>Calculate Amount</value>
+  </data>
+      <data name="Totaltaxablesales" xml:space="preserve">
+     <value>Total taxable sales</value>
+  </data>
+     <data name="Totalnontaxablesales" xml:space="preserve">
+     <value>Total non-taxable sales</value>
+  </data>
+      <data name="Totalnontaxablepurchases" xml:space="preserve">
+     <value>Total non-taxable purchases</value>
+  </data>
+ </root>

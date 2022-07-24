@@ -50,6 +50,7 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -135,10 +136,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>ZatcaAppStore</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -360,6 +361,18 @@
     <BundleResource Include="Resources\ThaqaqIcon.png" />
     <BundleResource Include="Resources\ThaqaqIcon%402x.png" />
     <BundleResource Include="Resources\ThaqaqIcon%403x.png" />
+    <BundleResource Include="Resources\SelectedConsumer.png" />
+    <BundleResource Include="Resources\SelectedConsumer%402x.png" />
+    <BundleResource Include="Resources\SelectedConsumer%403x.png" />
+    <BundleResource Include="Resources\SelectedMerchant.png" />
+    <BundleResource Include="Resources\SelectedMerchant%402x.png" />
+    <BundleResource Include="Resources\SelectedMerchant%403x.png" />
+    <BundleResource Include="Resources\UnselectedConsumer.png" />
+    <BundleResource Include="Resources\UnselectedConsumer%402x.png" />
+    <BundleResource Include="Resources\UnselectedConsumer%403x.png" />
+    <BundleResource Include="Resources\UnSelectedMerchant.png" />
+    <BundleResource Include="Resources\UnSelectedMerchant%402x.png" />
+    <BundleResource Include="Resources\UnSelectedMerchant%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

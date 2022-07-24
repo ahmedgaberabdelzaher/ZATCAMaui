@@ -27,6 +27,7 @@ using GAZT.Helper;
 using EGAZT.Views.NewDesign.CustomServicesPages;
 using EGAZT.Views.NewDesign.Template;
 using EGAZT.Views.NewDesign.TahqaqViews;
+using EGAZT.Views.NewDesign.VAT;
 
 namespace EGAZT
 {
@@ -457,29 +458,31 @@ namespace EGAZT
             //NEw
             if (!hasKey)
             {
-               // navigationPage=new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
-               //  navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
+                // navigationPage=new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-               //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
 
-            navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
-               // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxCalculator()) { BarTextColor = Color.White };
 
             }
             else
             {
-              //  navigationPage = new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
-               // navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
-              //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new TaxCalculator()) { BarTextColor = Color.White };
 
             }
 

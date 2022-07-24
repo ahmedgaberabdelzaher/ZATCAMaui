@@ -25139,5 +25139,74 @@ namespace EGAZT {
             }
         }
 
+        public static string VATCalculator
+        {
+            get
+            {
+                return ResourceManager.GetString("VATCalculator", resourceCulture);
+            }
+        }
+        public static string VATCalculatorDesc
+        {
+            get
+            {
+                return ResourceManager.GetString("VATCalculatorDesc", resourceCulture);
+            }
+        }
+
+        public static string ConsumerCalculator
+        {
+            get
+            {
+                return ResourceManager.GetString("ConsumerCalculator", resourceCulture);
+            }
+        }
+        public static string MerchantCalculator
+        {
+            get
+            {
+                return ResourceManager.GetString("MerchantCalculator", resourceCulture);
+            }
+        }
+        public static string Totaltaxablepurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("Totaltaxablepurchases", resourceCulture);
+            }
+        }
+
+        public static string CalculateTheAmount
+        {
+            get
+            {
+                return ResourceManager.GetString("CalculateTheAmount", resourceCulture);
+            }
+        }
+
+        public static string Totaltaxablesales
+        {
+            get
+            {
+                return ResourceManager.GetString("Totaltaxablesales", resourceCulture);
+            }
+        }
+
+        public static string Totalnontaxablesales
+        {
+            get
+            {
+                return ResourceManager.GetString("Totalnontaxablesales", resourceCulture);
+            }
+        }
+
+
+        public static string Totalnontaxablepurchases
+        {
+            get
+            {
+                return ResourceManager.GetString("Totalnontaxablepurchases", resourceCulture);
+            }
+        }
     }
 }

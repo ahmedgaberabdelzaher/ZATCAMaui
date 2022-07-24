@@ -37,27 +37,29 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid RowDefinitions="auto,*">
+                                <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,5,20,0" >
+
             <ScrollView>
                 <StackLayout>
                              <StackLayout Margin="24,10,24,0">
             <Label  Text="{x:Static ResourceManager:AppResources.VATCalculator}" TextColor="#58595B" FontSize="26"  Margin="0,34,0,5"></Label>
             <Label   Text="{x:Static ResourceManager:AppResources.VATCalculatorDesc}" FontSize="14"  TextColor="#868894"></Label>
          </StackLayout>
-                               <Grid ColumnDefinitions="*,15,*">
+                               <Grid ColumnDefinitions="*,5,*">
                                    <Grid Grid.Column="0">
                                        <Grid.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding ConsumerCalcSelectedCommand}"></TapGestureRecognizer>
 
                                        </Grid.GestureRecognizers>
-                                       <Image Source="Unselected.png" HeightRequest="136" WidthRequest="171">
+                                       <Image Source="Unselected.png" HeightRequest="136" HorizontalOptions="FillAndExpand">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding calcBy}" Value="0">
                                                    <Setter Property="Source" Value="UnselectedCard"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
-                                        <Image Source="UnselectedConsumer.png" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="23" WidthRequest="20">
+                                        <Image Source="UnselectedConsumer.png" Margin="17,25,17,10" VerticalOptions="Start" HorizontalOptions="Start" HeightRequest="33" WidthRequest="30">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding calcBy}" Value="0">
                                                    <Setter Property="Source" Value="SelectedConsumer"></Setter>
@@ -96,6 +98,23 @@
 
                 </StackLayout>
             </ScrollView>
+                                    </yummy:PancakeView>
+                        <Grid Grid.Row="0" Padding="20,5,20,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0">
+                    <Image Source="arrowLeftwhite.png" Rotation="180" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+              <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.TahqaqService}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+            </Grid>
+                      <controls:Loader IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"></controls:Loader>
+               <controls:MsgView IsVisible="{Binding IsShowMsgView}" Grid.Row="0" Grid.RowSpan="2"></controls:MsgView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

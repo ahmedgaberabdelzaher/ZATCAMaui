@@ -9349,4 +9349,32 @@ info@zatca.gov.sa</value>
         <data name="PleaseEnterQRCodeHer" xml:space="preserve">
      <value>الرجاء إدخال رمز</value>
   </data>
+    <data name="VATCalculator" xml:space="preserve">
+     <value>حاسبة ضريبة القيمة المضافة</value>
+  </data>
+  <data name="VATCalculatorDesc" xml:space="preserve">
+     <value>الرجاء إكمال البيانات ليتم احتساب الضريبة</value>
+  </data>
+        <data name="ConsumerCalculator" xml:space="preserve">
+     <value>حاسبة المستهلك</value>
+  </data>
+      <data name="MerchantCalculator" xml:space="preserve">
+     <value>حاسبة التاجر</value>
+  </data>
+     <data name="Totaltaxablepurchases" xml:space="preserve">
+     <value>إجمالي المشتريات الخاضعة للضريبة</value>
+  </data>
+       <data name="CalculateTheAmount" xml:space="preserve">
+     <value>احسب قيمة المبلغ</value>
+  </data>
+      <data name="Totaltaxablesales" xml:space="preserve">
+     <value>إجمالي المبيعات الخاضعة للضريبة</value>
+  </data>
+     <data name="Totalnontaxablesales" xml:space="preserve">
+     <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
+  </data>
+      <data name="Totalnontaxablepurchases" xml:space="preserve">
+     <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
+  </data>
+     
 </root>

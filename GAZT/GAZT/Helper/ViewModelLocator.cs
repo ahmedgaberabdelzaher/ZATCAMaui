@@ -141,6 +141,8 @@ using EGAZT.Services.Interface;
 using EGAZT.Services.Classes;
 using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using EGAZT.Views.NewDesign.TahqaqViews;
+using EGAZT.Views.NewDesign.VAT;
+using EGAZT.ViewModel.NewDesignViewModel.VAT;
 
 namespace EGAZT
 {
@@ -160,6 +162,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>();
             SimpleIoc.Default.Register<ICommonServices, CommonServices>();
             SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
+            SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -375,6 +378,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<SearchIndiactivePriceForExciseGoodsViewModel>();
             SimpleIoc.Default.Register<ExciseTaxViewModel>();
             SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
+            SimpleIoc.Default.Register<TaxCalculatorViewModel>();
 
             #endregion
         }
@@ -2832,6 +2836,7 @@ namespace EGAZT
             navigationService.Configure("ExciseTax", typeof(ExciseTax));
             navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
             navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
+            navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
 
             #endregion
 
@@ -2958,6 +2963,20 @@ namespace EGAZT
             }
         }
 
+        public TaxCalculatorViewModel taxCalculatorViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxCalculatorViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         #region Release2 FileUpload
 
