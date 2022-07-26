@@ -630,7 +630,7 @@
 
                                 </StackLayout>
                                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                        <Label Text="{x:Static ResourceManager:AppResources.Feedescription}"  Style="{StaticResource BodyLabelGrey}"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.FeeDescription}"  Style="{StaticResource BodyLabelGrey}"/>
                                                                                                            <Label Text="{Binding acct_desc}" Style="{StaticResource BodyLabelBlack}"/>
 
                                 </StackLayout>
@@ -659,7 +659,7 @@
 
                                 </StackLayout>
                                                                    <StackLayout Grid.Row="0" Grid.Column="1">
-                                        <Label Text="{x:Static ResourceManager:AppResources.Feedescription}"  Style="{StaticResource BodyLabelGrey}"/>
+                                        <Label Text="{x:Static ResourceManager:AppResources.FeeDescription}"  Style="{StaticResource BodyLabelGrey}"/>
                                                                                                            <Label Text="United states" Style="{StaticResource BodyLabelBlack}"/>
 
                                 </StackLayout>

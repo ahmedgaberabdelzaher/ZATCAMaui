@@ -916,6 +916,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculate Amount.
+        /// </summary>
+        public static string CalculateTheAmount {
+            get {
+                return ResourceManager.GetString("CalculateTheAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string CancelText {
@@ -1258,6 +1267,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consumer Calculator.
+        /// </summary>
+        public static string ConsumerCalculator {
+            get {
+                return ResourceManager.GetString("ConsumerCalculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract Object No..
         /// </summary>
         public static string ContractObjectNo {
@@ -1335,6 +1353,15 @@ namespace EGAZT {
         public static string CorportaeID {
             get {
                 return ResourceManager.GetString("CorportaeID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct tax stamp.
+        /// </summary>
+        public static string Correcttaxstamp {
+            get {
+                return ResourceManager.GetString("Correcttaxstamp", resourceCulture);
             }
         }
         
@@ -3005,6 +3032,15 @@ namespace EGAZT {
         public static string EnterOTP {
             get {
                 return ResourceManager.GetString("EnterOTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter code here.
+        /// </summary>
+        public static string EnterQrCodeHere {
+            get {
+                return ResourceManager.GetString("EnterQrCodeHere", resourceCulture);
             }
         }
         
@@ -4773,6 +4809,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit.
+        /// </summary>
+        public static string Exit {
+            get {
+                return ResourceManager.GetString("Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
         public static string ExportValue {
@@ -4854,11 +4899,11 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fee description.
+        ///   Looks up a localized string similar to Fee Description.
         /// </summary>
-        public static string Feedescription {
+        public static string FeeDescription {
             get {
-                return ResourceManager.GetString("Feedescription", resourceCulture);
+                return ResourceManager.GetString("FeeDescription", resourceCulture);
             }
         }
         
@@ -6339,6 +6384,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid tax stamp. Would you like to write a comment regarding this survey?.
+        /// </summary>
+        public static string Incorrecttaxstamp {
+            get {
+                return ResourceManager.GetString("Incorrecttaxstamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicate report Type.
         /// </summary>
         public static string IndicateTheTypeOfReport {
@@ -6719,6 +6773,15 @@ namespace EGAZT {
         public static string Measuringunit {
             get {
                 return ResourceManager.GetString("Measuringunit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merchant Calculator.
+        /// </summary>
+        public static string MerchantCalculator {
+            get {
+                return ResourceManager.GetString("MerchantCalculator", resourceCulture);
             }
         }
         
@@ -8763,6 +8826,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OR.
+        /// </summary>
+        public static string Or {
+            get {
+                return ResourceManager.GetString("Or", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Organization Name.
+        /// </summary>
+        public static string OrganisationName {
+            get {
+                return ResourceManager.GetString("OrganisationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activation code: .
         /// </summary>
         public static string OTPMsgBody {
@@ -8970,6 +9051,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Place the QR Code inside the frame.
+        /// </summary>
+        public static string PlacetheQRCodeinsidetheframe {
+            get {
+                return ResourceManager.GetString("PlacetheQRCodeinsidetheframe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please change password.
         /// </summary>
         public static string Pleasechangepassword {
@@ -9002,6 +9092,15 @@ namespace EGAZT {
         public static string PleaseenterOTP {
             get {
                 return ResourceManager.GetString("PleaseenterOTP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to please Enter code.
+        /// </summary>
+        public static string PleaseEnterQRCodeHer {
+            get {
+                return ResourceManager.GetString("PleaseEnterQRCodeHer", resourceCulture);
             }
         }
         
@@ -9267,11 +9366,38 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Description.
+        /// </summary>
+        public static string ProductDescription {
+            get {
+                return ResourceManager.GetString("ProductDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Production Date.
+        /// </summary>
+        public static string ProductionDate {
+            get {
+                return ResourceManager.GetString("ProductionDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string PurchaseValue {
             get {
                 return ResourceManager.GetString("PurchaseValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string QRCode {
+            get {
+                return ResourceManager.GetString("QRCode", resourceCulture);
             }
         }
         
@@ -9694,6 +9820,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan the QR code.
+        /// </summary>
+        public static string ScantheQRcode {
+            get {
+                return ResourceManager.GetString("ScantheQRcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search by name or section.
         /// </summary>
         public static string Searchbynameorsection {
@@ -9793,7 +9928,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Select the option and complete the details.
         /// </summary>
         public static string SelectTheOptionAndCompleteDetails {
             get {
@@ -9928,6 +10063,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Submit a report.
+        /// </summary>
+        public static string Submitareport {
+            get {
+                return ResourceManager.GetString("Submitareport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submitted.
         /// </summary>
         public static string Submitted {
@@ -9969,6 +10113,15 @@ namespace EGAZT {
         public static string SummaryOfZakatCalculation {
             get {
                 return ResourceManager.GetString("SummaryOfZakatCalculation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tahqaq Service.
+        /// </summary>
+        public static string TahqaqService {
+            get {
+                return ResourceManager.GetString("TahqaqService", resourceCulture);
             }
         }
         
@@ -10795,6 +10948,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total non-taxable purchases.
+        /// </summary>
+        public static string Totalnontaxablepurchases {
+            get {
+                return ResourceManager.GetString("Totalnontaxablepurchases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total non-taxable sales.
+        /// </summary>
+        public static string Totalnontaxablesales {
+            get {
+                return ResourceManager.GetString("Totalnontaxablesales", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total no of returns.
         /// </summary>
         public static string TotalNoofReturns {
@@ -10899,6 +11070,24 @@ namespace EGAZT {
         public static string TotalSubmittedReturns {
             get {
                 return ResourceManager.GetString("TotalSubmittedReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total taxable purchases.
+        /// </summary>
+        public static string Totaltaxablepurchases {
+            get {
+                return ResourceManager.GetString("Totaltaxablepurchases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total taxable sales.
+        /// </summary>
+        public static string Totaltaxablesales {
+            get {
+                return ResourceManager.GetString("Totaltaxablesales", resourceCulture);
             }
         }
         
@@ -11237,6 +11426,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use.
+        /// </summary>
+        public static string Use {
+            get {
+                return ResourceManager.GetString("Use", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User account locked.
         /// </summary>
         public static string UserAccountLocked {
@@ -11404,6 +11602,24 @@ namespace EGAZT {
         public static string VATAmountDue {
             get {
                 return ResourceManager.GetString("VATAmountDue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Calculator.
+        /// </summary>
+        public static string VATCalculator {
+            get {
+                return ResourceManager.GetString("VATCalculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the information to calculate the tax.
+        /// </summary>
+        public static string VATCalculatorDesc {
+            get {
+                return ResourceManager.GetString("VATCalculatorDesc", resourceCulture);
             }
         }
         
@@ -13308,6 +13524,24 @@ namespace EGAZT {
         public static string VerificationCode {
             get {
                 return ResourceManager.GetString("VerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verification Form.
+        /// </summary>
+        public static string VerificationForm {
+            get {
+                return ResourceManager.GetString("VerificationForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose the number type from the list below and then enter the ten-digit number.
+        /// </summary>
+        public static string VerificationFormHint {
+            get {
+                return ResourceManager.GetString("VerificationFormHint", resourceCulture);
             }
         }
         
@@ -25017,195 +25251,6 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
-            }
-        }
-        public static string TahqaqService {
-            get {
-                return ResourceManager.GetString("TahqaqService", resourceCulture);
-            }
-        }
-
-        public static string VerificationForm
-        {
-            get {
-                return ResourceManager.GetString("VerificationForm", resourceCulture);
-            }
-        }
- public static string VerificationFormHint
-        {
-            get {
-                return ResourceManager.GetString("VerificationFormHint", resourceCulture);
-            }
-        }
- public static string QRCode
-        {
-            get {
-                return ResourceManager.GetString("QRCode", resourceCulture);
-            }
-        }
-
-        public static string ScantheQRcode
-        {
-            get
-            {
-                return ResourceManager.GetString("ScantheQRcode", resourceCulture);
-            }
-        }
-        public static string PlacetheQRCodeinsidetheframe
-        {
-            get
-            {
-                return ResourceManager.GetString("PlacetheQRCodeinsidetheframe", resourceCulture);
-            }
-        }
-        public static string Or
-        {
-            get
-            {
-                return ResourceManager.GetString("Or", resourceCulture);
-            }
-        }
-        public static string Use
-        {
-            get
-            {
-                return ResourceManager.GetString("Use", resourceCulture);
-            }
-        }
-        public static string Correcttaxstamp
-        {
-            get
-            {
-                return ResourceManager.GetString("Correcttaxstamp", resourceCulture);
-            }
-        }
-        public static string ProductDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("ProductDescription", resourceCulture);
-            }
-        }
-        public static string OrganisationName
-        {
-            get
-            {
-                return ResourceManager.GetString("OrganisationName", resourceCulture);
-            }
-        }
-
-        public static string ProductionDate
-        {
-            get
-            {
-                return ResourceManager.GetString("ProductionDate", resourceCulture);
-            }
-        }
-
-        public static string Incorrecttaxstamp
-        {
-            get
-            {
-                return ResourceManager.GetString("Incorrecttaxstamp", resourceCulture);
-            }
-        }
-        public static string Submitareport
-        {
-            get
-            {
-                return ResourceManager.GetString("Submitareport", resourceCulture);
-            }
-        }
-        public static string Exit
-        {
-            get
-            {
-                return ResourceManager.GetString("Exit", resourceCulture);
-            }
-        }
-
-        public static string EnterQrCodeHere
-        {
-            get
-            {
-                return ResourceManager.GetString("EnterQrCodeHere", resourceCulture);
-            }
-        }
-        public static string PleaseEnterQRCodeHer
-        {
-            get
-            {
-                return ResourceManager.GetString("PleaseEnterQRCodeHer", resourceCulture);
-            }
-        }
-
-        public static string VATCalculator
-        {
-            get
-            {
-                return ResourceManager.GetString("VATCalculator", resourceCulture);
-            }
-        }
-        public static string VATCalculatorDesc
-        {
-            get
-            {
-                return ResourceManager.GetString("VATCalculatorDesc", resourceCulture);
-            }
-        }
-
-        public static string ConsumerCalculator
-        {
-            get
-            {
-                return ResourceManager.GetString("ConsumerCalculator", resourceCulture);
-            }
-        }
-        public static string MerchantCalculator
-        {
-            get
-            {
-                return ResourceManager.GetString("MerchantCalculator", resourceCulture);
-            }
-        }
-        public static string Totaltaxablepurchases
-        {
-            get
-            {
-                return ResourceManager.GetString("Totaltaxablepurchases", resourceCulture);
-            }
-        }
-
-        public static string CalculateTheAmount
-        {
-            get
-            {
-                return ResourceManager.GetString("CalculateTheAmount", resourceCulture);
-            }
-        }
-
-        public static string Totaltaxablesales
-        {
-            get
-            {
-                return ResourceManager.GetString("Totaltaxablesales", resourceCulture);
-            }
-        }
-
-        public static string Totalnontaxablesales
-        {
-            get
-            {
-                return ResourceManager.GetString("Totalnontaxablesales", resourceCulture);
-            }
-        }
-
-
-        public static string Totalnontaxablepurchases
-        {
-            get
-            {
-                return ResourceManager.GetString("Totalnontaxablepurchases", resourceCulture);
             }
         }
     }
