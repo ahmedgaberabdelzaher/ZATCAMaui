@@ -93,9 +93,9 @@
 	<key>NSAppleMusicUsageDescription </key>
 	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
 	<key>CFBundleVersion</key>
-	<string>5.0.65</string>
+	<string>5.0.66</string>
 	<key>CFBundleShortVersionString</key>
-	<string>5.0.60</string>
+	<string>5.0.61</string>
 	<key>CFBundleDisplayName</key>
 	<string>ZATCA</string>
 </dict>

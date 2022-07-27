@@ -9455,4 +9455,10 @@ the Zakat, Tax and Customs
       <data name="Totalnontaxablepurchases" xml:space="preserve">
      <value>Total non-taxable purchases</value>
   </data>
+  <data name="ThetotalamountplusVAT" xml:space="preserve">
+     <value>The total amount plus VAT</value>
+  </data>
+  <data name="TotalPriceValue" xml:space="preserve">
+     <value>Total Price Value</value>
+  </data>
  </root>

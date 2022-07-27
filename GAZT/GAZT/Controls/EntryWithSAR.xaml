@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:GAZT" x:Name="CustomEntryWithSAR"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    x:Class="EGAZT.Controls.EntryWithSAR">
+         <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        
+        </ResourceDictionary>
+    </ContentView.Resources>
+                                                   <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
+                                <custom:CustomLabel  x:Name="Title" Style="{StaticResource CaptionLabelGrey}"  >
+                                   
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout FocusedColor="#999999" Style="{StaticResource InputTableTextInputLayoutStyle}"
+                                                               LeadingViewPosition="Inside" ContainerType="Outlined"
+                                                        OutlineCornerRadius="14"
+                                                        InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" >
+                                    <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
+                                                             x:Name="TextValue"
+                                                             Text="{Binding Source={x:Reference CustomEntryWithSAR},Path=ValueText}"
+                                                             Placeholder="{Binding Source={x:Reference CustomEntryWithSAR},Path=Placeholder}"
+                                                     VerticalTextAlignment="Center" 
+                                                      >
+                                        <control:BorderlessEntry.Behaviors>
+                                            <customcontrol:OnlyNumericWithDecimalValuesBehaviour/>
+                                        </control:BorderlessEntry.Behaviors>
+                                    </control:BorderlessEntry>
+<inputLayout:SfTextInputLayout.TrailingView>
+<Label Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="#999999" FontSize="16"></Label>
+</inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+</ContentView>

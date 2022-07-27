@@ -25208,5 +25208,20 @@ namespace EGAZT {
                 return ResourceManager.GetString("Totalnontaxablepurchases", resourceCulture);
             }
         }
+
+        public static string ThetotalamountplusVAT
+        {
+            get
+            {
+                return ResourceManager.GetString("ThetotalamountplusVAT", resourceCulture);
+            }
+        }
+        public static string TotalPriceValue
+        {
+            get
+            {
+                return ResourceManager.GetString("TotalPriceValue", resourceCulture);
+            }
+        }
     }
 }

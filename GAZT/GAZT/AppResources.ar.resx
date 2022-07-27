@@ -9376,5 +9376,10 @@ info@zatca.gov.sa</value>
       <data name="Totalnontaxablepurchases" xml:space="preserve">
      <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
   </data>
-     
+  <data name="ThetotalamountplusVAT" xml:space="preserve">
+     <value>المبلغ الإجمالي مضافا إليه ضريبة القيمة المضافة</value>
+  </data>
+  <data name="TotalPriceValue" xml:space="preserve">
+     <value>قيمة المبلغ الإجمالي</value>
+  </data>
 </root>

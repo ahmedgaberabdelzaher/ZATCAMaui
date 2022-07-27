@@ -375,6 +375,9 @@
     <BundleResource Include="Resources\UnSelectedMerchant.png" />
     <BundleResource Include="Resources\UnSelectedMerchant%402x.png" />
     <BundleResource Include="Resources\UnSelectedMerchant%403x.png" />
+    <BundleResource Include="Resources\Path.png" />
+    <BundleResource Include="Resources\Path%402x.png" />
+    <BundleResource Include="Resources\Path%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

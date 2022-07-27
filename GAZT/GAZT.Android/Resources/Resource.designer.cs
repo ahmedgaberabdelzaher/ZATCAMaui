@@ -51385,463 +51385,466 @@ namespace GAZT.Droid
 			public const int Password_unselected = 2131165826;
 			
 			// aapt resource value: 0x7F070285
-			public const int paymentmethod_onboarding = 2131165829;
+			public const int Path = 2131165829;
 			
 			// aapt resource value: 0x7F070286
-			public const int PDF = 2131165830;
+			public const int paymentmethod_onboarding = 2131165830;
 			
 			// aapt resource value: 0x7F070287
-			public const int phone_Green = 2131165831;
+			public const int PDF = 2131165831;
 			
 			// aapt resource value: 0x7F070288
-			public const int Pin = 2131165832;
+			public const int phone_Green = 2131165832;
 			
 			// aapt resource value: 0x7F070289
-			public const int positive = 2131165833;
+			public const int Pin = 2131165833;
 			
 			// aapt resource value: 0x7F07028A
-			public const int preference_list_divider_material = 2131165834;
+			public const int positive = 2131165834;
 			
 			// aapt resource value: 0x7F07028B
-			public const int QrScanImage = 2131165835;
-			
-			// aapt resource value: 0x7F07028F
-			public const int quickAction2 = 2131165839;
-			
-			// aapt resource value: 0x7F07028D
-			public const int quick_actions = 2131165837;
-			
-			// aapt resource value: 0x7F07028E
-			public const int quick_Actions_Close = 2131165838;
+			public const int preference_list_divider_material = 2131165835;
 			
 			// aapt resource value: 0x7F07028C
-			public const int quick_action_2 = 2131165836;
-			
-			// aapt resource value: 0x7F07029A
-			public const int RealStateVAT = 2131165850;
-			
-			// aapt resource value: 0x7F07029B
-			public const int refund = 2131165851;
-			
-			// aapt resource value: 0x7F07029C
-			public const int registration = 2131165852;
-			
-			// aapt resource value: 0x7F07029D
-			public const int registration_w = 2131165853;
-			
-			// aapt resource value: 0x7F07029F
-			public const int requestVerification = 2131165855;
-			
-			// aapt resource value: 0x7F07029E
-			public const int request_verification = 2131165854;
-			
-			// aapt resource value: 0x7F0702A1
-			public const int returnsubmission_onboarding = 2131165857;
-			
-			// aapt resource value: 0x7F0702A2
-			public const int returnsubmission_onboarding_ar = 2131165858;
-			
-			// aapt resource value: 0x7F0702A0
-			public const int return_vatRefunds = 2131165856;
+			public const int QrScanImage = 2131165836;
 			
 			// aapt resource value: 0x7F070290
-			public const int re_Property_Registration = 2131165840;
+			public const int quickAction2 = 2131165840;
 			
-			// aapt resource value: 0x7F070291
-			public const int re_Property_Registration_G = 2131165841;
+			// aapt resource value: 0x7F07028E
+			public const int quick_actions = 2131165838;
 			
-			// aapt resource value: 0x7F070292
-			public const int re_Property_Tile_Background_White = 2131165842;
+			// aapt resource value: 0x7F07028F
+			public const int quick_Actions_Close = 2131165839;
 			
-			// aapt resource value: 0x7F070293
-			public const int re_Request_Verification = 2131165843;
+			// aapt resource value: 0x7F07028D
+			public const int quick_action_2 = 2131165837;
 			
-			// aapt resource value: 0x7F070294
-			public const int re_Request_Verification_W = 2131165844;
+			// aapt resource value: 0x7F07029B
+			public const int RealStateVAT = 2131165851;
 			
-			// aapt resource value: 0x7F070295
-			public const int re_Termination_Request = 2131165845;
+			// aapt resource value: 0x7F07029C
+			public const int refund = 2131165852;
 			
-			// aapt resource value: 0x7F070296
-			public const int re_Termination_Request_W = 2131165846;
+			// aapt resource value: 0x7F07029D
+			public const int registration = 2131165853;
 			
-			// aapt resource value: 0x7F070297
-			public const int re_Tile_Background = 2131165847;
+			// aapt resource value: 0x7F07029E
+			public const int registration_w = 2131165854;
 			
-			// aapt resource value: 0x7F070298
-			public const int re_Tile_Background_S = 2131165848;
+			// aapt resource value: 0x7F0702A0
+			public const int requestVerification = 2131165856;
 			
-			// aapt resource value: 0x7F070299
-			public const int re_Tile_Background_White = 2131165849;
+			// aapt resource value: 0x7F07029F
+			public const int request_verification = 2131165855;
+			
+			// aapt resource value: 0x7F0702A2
+			public const int returnsubmission_onboarding = 2131165858;
 			
 			// aapt resource value: 0x7F0702A3
-			public const int roundedbg = 2131165859;
+			public const int returnsubmission_onboarding_ar = 2131165859;
+			
+			// aapt resource value: 0x7F0702A1
+			public const int return_vatRefunds = 2131165857;
+			
+			// aapt resource value: 0x7F070291
+			public const int re_Property_Registration = 2131165841;
+			
+			// aapt resource value: 0x7F070292
+			public const int re_Property_Registration_G = 2131165842;
+			
+			// aapt resource value: 0x7F070293
+			public const int re_Property_Tile_Background_White = 2131165843;
+			
+			// aapt resource value: 0x7F070294
+			public const int re_Request_Verification = 2131165844;
+			
+			// aapt resource value: 0x7F070295
+			public const int re_Request_Verification_W = 2131165845;
+			
+			// aapt resource value: 0x7F070296
+			public const int re_Termination_Request = 2131165846;
+			
+			// aapt resource value: 0x7F070297
+			public const int re_Termination_Request_W = 2131165847;
+			
+			// aapt resource value: 0x7F070298
+			public const int re_Tile_Background = 2131165848;
+			
+			// aapt resource value: 0x7F070299
+			public const int re_Tile_Background_S = 2131165849;
+			
+			// aapt resource value: 0x7F07029A
+			public const int re_Tile_Background_White = 2131165850;
 			
 			// aapt resource value: 0x7F0702A4
-			public const int roundedbgdark = 2131165860;
+			public const int roundedbg = 2131165860;
 			
 			// aapt resource value: 0x7F0702A5
-			public const int sadad_logo_ar = 2131165861;
+			public const int roundedbgdark = 2131165861;
 			
 			// aapt resource value: 0x7F0702A6
-			public const int search = 2131165862;
+			public const int sadad_logo_ar = 2131165862;
 			
 			// aapt resource value: 0x7F0702A7
-			public const int selected171x136 = 2131165863;
+			public const int search = 2131165863;
 			
 			// aapt resource value: 0x7F0702A8
-			public const int SelectedConsumer = 2131165864;
+			public const int selected171x136 = 2131165864;
 			
 			// aapt resource value: 0x7F0702A9
-			public const int SelectedMerchant = 2131165865;
+			public const int SelectedConsumer = 2131165865;
 			
 			// aapt resource value: 0x7F0702AA
-			public const int service_6 = 2131165866;
-			
-			// aapt resource value: 0x7F0702CF
-			public const int sfcheckbox_animation = 2131165903;
-			
-			// aapt resource value: 0x7F0702D0
-			public const int sfcheckbox_checked = 2131165904;
-			
-			// aapt resource value: 0x7F0702D1
-			public const int sfcheckbox_checked_indeterminate = 2131165905;
-			
-			// aapt resource value: 0x7F0702D2
-			public const int sfcheckbox_checked_unchecked = 2131165906;
-			
-			// aapt resource value: 0x7F0702D3
-			public const int sfcheckbox_indeterminate = 2131165907;
-			
-			// aapt resource value: 0x7F0702D4
-			public const int sfcheckbox_indeterminate_checked = 2131165908;
-			
-			// aapt resource value: 0x7F0702D5
-			public const int sfcheckbox_indeterminate_unchecked = 2131165909;
-			
-			// aapt resource value: 0x7F0702D6
-			public const int sfcheckbox_unchecked = 2131165910;
-			
-			// aapt resource value: 0x7F0702D7
-			public const int sfcheckbox_unchecked_checked = 2131165911;
-			
-			// aapt resource value: 0x7F0702D8
-			public const int sfcheckbox_unchecked_indeterminate = 2131165912;
-			
-			// aapt resource value: 0x7F0702D9
-			public const int sfprogressbar_determinate_linear = 2131165913;
-			
-			// aapt resource value: 0x7F0702DA
-			public const int sfprogressbar_indeterminate_circular = 2131165914;
-			
-			// aapt resource value: 0x7F0702DB
-			public const int sfprogressbar_indeterminate_linear = 2131165915;
+			public const int SelectedMerchant = 2131165866;
 			
 			// aapt resource value: 0x7F0702AB
-			public const int sf_BannerImage = 2131165867;
+			public const int service_6 = 2131165867;
 			
-			// aapt resource value: 0x7F0702AC
-			public const int sf_BgImage_Gradient_Landscape = 2131165868;
+			// aapt resource value: 0x7F0702D0
+			public const int sfcheckbox_animation = 2131165904;
 			
-			// aapt resource value: 0x7F0702AD
-			public const int sf_BgImage_Gradient_PhoneLandscape = 2131165869;
+			// aapt resource value: 0x7F0702D1
+			public const int sfcheckbox_checked = 2131165905;
 			
-			// aapt resource value: 0x7F0702AE
-			public const int sf_BgImage_Gradient_TabletLandscape = 2131165870;
+			// aapt resource value: 0x7F0702D2
+			public const int sfcheckbox_checked_indeterminate = 2131165906;
 			
-			// aapt resource value: 0x7F0702AF
-			public const int sf_Cancel_payment = 2131165871;
+			// aapt resource value: 0x7F0702D3
+			public const int sfcheckbox_checked_unchecked = 2131165907;
 			
-			// aapt resource value: 0x7F0702B0
-			public const int sf_Eservices = 2131165872;
+			// aapt resource value: 0x7F0702D4
+			public const int sfcheckbox_indeterminate = 2131165908;
 			
-			// aapt resource value: 0x7F0702B1
-			public const int sf_Estimated_Zakat_return = 2131165873;
+			// aapt resource value: 0x7F0702D5
+			public const int sfcheckbox_indeterminate_checked = 2131165909;
 			
-			// aapt resource value: 0x7F0702B2
-			public const int sf_Estimated_Zakat_Returns = 2131165874;
+			// aapt resource value: 0x7F0702D6
+			public const int sfcheckbox_indeterminate_unchecked = 2131165910;
 			
-			// aapt resource value: 0x7F0702B3
-			public const int sf_Form_Bundle_Status = 2131165875;
+			// aapt resource value: 0x7F0702D7
+			public const int sfcheckbox_unchecked = 2131165911;
 			
-			// aapt resource value: 0x7F0702B4
-			public const int sf_ic_Dashboard_Logo_White = 2131165876;
+			// aapt resource value: 0x7F0702D8
+			public const int sfcheckbox_unchecked_checked = 2131165912;
 			
-			// aapt resource value: 0x7F0702B5
-			public const int sf_ic_Help = 2131165877;
+			// aapt resource value: 0x7F0702D9
+			public const int sfcheckbox_unchecked_indeterminate = 2131165913;
 			
-			// aapt resource value: 0x7F0702B6
-			public const int sf_ic_Home = 2131165878;
+			// aapt resource value: 0x7F0702DA
+			public const int sfprogressbar_determinate_linear = 2131165914;
 			
-			// aapt resource value: 0x7F0702B7
-			public const int sf_ic_Menu = 2131165879;
-			
-			// aapt resource value: 0x7F0702B8
-			public const int sf_ic_Overdue_Returns_Commitments = 2131165880;
-			
-			// aapt resource value: 0x7F0702B9
-			public const int sf_ic_Overdue_Returns_White = 2131165881;
-			
-			// aapt resource value: 0x7F0702BA
-			public const int sf_ic_Paid = 2131165882;
-			
-			// aapt resource value: 0x7F0702BB
-			public const int sf_ic_Partially_Paid = 2131165883;
-			
-			// aapt resource value: 0x7F0702BC
-			public const int sf_ic_Submited_Returns = 2131165884;
-			
-			// aapt resource value: 0x7F0702BD
-			public const int sf_ic_Submited_Returns_White = 2131165885;
-			
-			// aapt resource value: 0x7F0702BE
-			public const int sf_ic_Unpaid = 2131165886;
-			
-			// aapt resource value: 0x7F0702BF
-			public const int sf_ic_Unpaid_Commitments = 2131165887;
-			
-			// aapt resource value: 0x7F0702C0
-			public const int sf_ic_Unsubmited_Returns_White = 2131165888;
-			
-			// aapt resource value: 0x7F0702C1
-			public const int sf_LoginBackground = 2131165889;
-			
-			// aapt resource value: 0x7F0702C2
-			public const int sf_LoginBackgroundLand = 2131165890;
-			
-			// aapt resource value: 0x7F0702C3
-			public const int sf_My_Bills = 2131165891;
-			
-			// aapt resource value: 0x7F0702C4
-			public const int sf_My_Certificate = 2131165892;
-			
-			// aapt resource value: 0x7F0702C5
-			public const int sf_Payment = 2131165893;
-			
-			// aapt resource value: 0x7F0702C6
-			public const int sf_Sadad_logo = 2131165894;
-			
-			// aapt resource value: 0x7F0702C7
-			public const int sf_Service_6 = 2131165895;
-			
-			// aapt resource value: 0x7F0702C8
-			public const int sf_Submited_Returns = 2131165896;
-			
-			// aapt resource value: 0x7F0702C9
-			public const int sf_Tax_Evasion = 2131165897;
-			
-			// aapt resource value: 0x7F0702CA
-			public const int sf_TIN_Status = 2131165898;
-			
-			// aapt resource value: 0x7F0702CB
-			public const int sf_Unsubmited_Returns = 2131165899;
-			
-			// aapt resource value: 0x7F0702CC
-			public const int sf_VAT_Declaration = 2131165900;
-			
-			// aapt resource value: 0x7F0702CD
-			public const int sf_VAT_Lookup = 2131165901;
-			
-			// aapt resource value: 0x7F0702CE
-			public const int sf_VerifyRequest = 2131165902;
+			// aapt resource value: 0x7F0702DB
+			public const int sfprogressbar_indeterminate_circular = 2131165915;
 			
 			// aapt resource value: 0x7F0702DC
-			public const int showPassword = 2131165916;
+			public const int sfprogressbar_indeterminate_linear = 2131165916;
+			
+			// aapt resource value: 0x7F0702AC
+			public const int sf_BannerImage = 2131165868;
+			
+			// aapt resource value: 0x7F0702AD
+			public const int sf_BgImage_Gradient_Landscape = 2131165869;
+			
+			// aapt resource value: 0x7F0702AE
+			public const int sf_BgImage_Gradient_PhoneLandscape = 2131165870;
+			
+			// aapt resource value: 0x7F0702AF
+			public const int sf_BgImage_Gradient_TabletLandscape = 2131165871;
+			
+			// aapt resource value: 0x7F0702B0
+			public const int sf_Cancel_payment = 2131165872;
+			
+			// aapt resource value: 0x7F0702B1
+			public const int sf_Eservices = 2131165873;
+			
+			// aapt resource value: 0x7F0702B2
+			public const int sf_Estimated_Zakat_return = 2131165874;
+			
+			// aapt resource value: 0x7F0702B3
+			public const int sf_Estimated_Zakat_Returns = 2131165875;
+			
+			// aapt resource value: 0x7F0702B4
+			public const int sf_Form_Bundle_Status = 2131165876;
+			
+			// aapt resource value: 0x7F0702B5
+			public const int sf_ic_Dashboard_Logo_White = 2131165877;
+			
+			// aapt resource value: 0x7F0702B6
+			public const int sf_ic_Help = 2131165878;
+			
+			// aapt resource value: 0x7F0702B7
+			public const int sf_ic_Home = 2131165879;
+			
+			// aapt resource value: 0x7F0702B8
+			public const int sf_ic_Menu = 2131165880;
+			
+			// aapt resource value: 0x7F0702B9
+			public const int sf_ic_Overdue_Returns_Commitments = 2131165881;
+			
+			// aapt resource value: 0x7F0702BA
+			public const int sf_ic_Overdue_Returns_White = 2131165882;
+			
+			// aapt resource value: 0x7F0702BB
+			public const int sf_ic_Paid = 2131165883;
+			
+			// aapt resource value: 0x7F0702BC
+			public const int sf_ic_Partially_Paid = 2131165884;
+			
+			// aapt resource value: 0x7F0702BD
+			public const int sf_ic_Submited_Returns = 2131165885;
+			
+			// aapt resource value: 0x7F0702BE
+			public const int sf_ic_Submited_Returns_White = 2131165886;
+			
+			// aapt resource value: 0x7F0702BF
+			public const int sf_ic_Unpaid = 2131165887;
+			
+			// aapt resource value: 0x7F0702C0
+			public const int sf_ic_Unpaid_Commitments = 2131165888;
+			
+			// aapt resource value: 0x7F0702C1
+			public const int sf_ic_Unsubmited_Returns_White = 2131165889;
+			
+			// aapt resource value: 0x7F0702C2
+			public const int sf_LoginBackground = 2131165890;
+			
+			// aapt resource value: 0x7F0702C3
+			public const int sf_LoginBackgroundLand = 2131165891;
+			
+			// aapt resource value: 0x7F0702C4
+			public const int sf_My_Bills = 2131165892;
+			
+			// aapt resource value: 0x7F0702C5
+			public const int sf_My_Certificate = 2131165893;
+			
+			// aapt resource value: 0x7F0702C6
+			public const int sf_Payment = 2131165894;
+			
+			// aapt resource value: 0x7F0702C7
+			public const int sf_Sadad_logo = 2131165895;
+			
+			// aapt resource value: 0x7F0702C8
+			public const int sf_Service_6 = 2131165896;
+			
+			// aapt resource value: 0x7F0702C9
+			public const int sf_Submited_Returns = 2131165897;
+			
+			// aapt resource value: 0x7F0702CA
+			public const int sf_Tax_Evasion = 2131165898;
+			
+			// aapt resource value: 0x7F0702CB
+			public const int sf_TIN_Status = 2131165899;
+			
+			// aapt resource value: 0x7F0702CC
+			public const int sf_Unsubmited_Returns = 2131165900;
+			
+			// aapt resource value: 0x7F0702CD
+			public const int sf_VAT_Declaration = 2131165901;
+			
+			// aapt resource value: 0x7F0702CE
+			public const int sf_VAT_Lookup = 2131165902;
+			
+			// aapt resource value: 0x7F0702CF
+			public const int sf_VerifyRequest = 2131165903;
 			
 			// aapt resource value: 0x7F0702DD
-			public const int SignaturePadBottomCorner = 2131165917;
+			public const int showPassword = 2131165917;
 			
 			// aapt resource value: 0x7F0702DE
-			public const int SignaturepadRoundedCorners = 2131165918;
+			public const int SignaturePadBottomCorner = 2131165918;
 			
 			// aapt resource value: 0x7F0702DF
-			public const int SignaturePadTopCorner = 2131165919;
+			public const int SignaturepadRoundedCorners = 2131165919;
 			
 			// aapt resource value: 0x7F0702E0
-			public const int splash = 2131165920;
+			public const int SignaturePadTopCorner = 2131165920;
 			
 			// aapt resource value: 0x7F0702E1
-			public const int submited = 2131165921;
+			public const int splash = 2131165921;
 			
 			// aapt resource value: 0x7F0702E2
-			public const int submited_check = 2131165922;
+			public const int submited = 2131165922;
 			
 			// aapt resource value: 0x7F0702E3
-			public const int Success = 2131165923;
+			public const int submited_check = 2131165923;
 			
 			// aapt resource value: 0x7F0702E4
-			public const int SuccessIcon = 2131165924;
+			public const int Success = 2131165924;
 			
 			// aapt resource value: 0x7F0702E5
-			public const int SuccessQr = 2131165925;
-			
-			// aapt resource value: 0x7F0702E8
-			public const int taxEvasion = 2131165928;
-			
-			// aapt resource value: 0x7F0702E9
-			public const int taxEvasion_green = 2131165929;
-			
-			// aapt resource value: 0x7F0702EA
-			public const int taxpayer_subsidy = 2131165930;
+			public const int SuccessIcon = 2131165925;
 			
 			// aapt resource value: 0x7F0702E6
-			public const int tax_evasion = 2131165926;
+			public const int SuccessQr = 2131165926;
 			
-			// aapt resource value: 0x7F0702E7
-			public const int tax_evasion_green = 2131165927;
+			// aapt resource value: 0x7F0702E9
+			public const int taxEvasion = 2131165929;
+			
+			// aapt resource value: 0x7F0702EA
+			public const int taxEvasion_green = 2131165930;
 			
 			// aapt resource value: 0x7F0702EB
-			public const int test_custom_background = 2131165931;
+			public const int taxpayer_subsidy = 2131165931;
+			
+			// aapt resource value: 0x7F0702E7
+			public const int tax_evasion = 2131165927;
+			
+			// aapt resource value: 0x7F0702E8
+			public const int tax_evasion_green = 2131165928;
 			
 			// aapt resource value: 0x7F0702EC
-			public const int ThaqaqIcon = 2131165932;
+			public const int test_custom_background = 2131165932;
 			
 			// aapt resource value: 0x7F0702ED
-			public const int thumbnail_chat = 2131165933;
+			public const int ThaqaqIcon = 2131165933;
 			
 			// aapt resource value: 0x7F0702EE
-			public const int timeline = 2131165934;
+			public const int thumbnail_chat = 2131165934;
 			
 			// aapt resource value: 0x7F0702EF
-			public const int tooltip_frame_dark = 2131165935;
+			public const int timeline = 2131165935;
 			
 			// aapt resource value: 0x7F0702F0
-			public const int tooltip_frame_light = 2131165936;
+			public const int tooltip_frame_dark = 2131165936;
 			
 			// aapt resource value: 0x7F0702F1
-			public const int topsearchicon = 2131165937;
-			
-			// aapt resource value: 0x7F0702F3
-			public const int UncheckedCheckBox = 2131165939;
+			public const int tooltip_frame_light = 2131165937;
 			
 			// aapt resource value: 0x7F0702F2
-			public const int unchecked_box = 2131165938;
+			public const int topsearchicon = 2131165938;
 			
 			// aapt resource value: 0x7F0702F4
-			public const int unlockaccount_clock = 2131165940;
+			public const int UncheckedCheckBox = 2131165940;
+			
+			// aapt resource value: 0x7F0702F3
+			public const int unchecked_box = 2131165939;
 			
 			// aapt resource value: 0x7F0702F5
-			public const int Unselected = 2131165941;
+			public const int unlockaccount_clock = 2131165941;
 			
 			// aapt resource value: 0x7F0702F6
-			public const int unselected171x136 = 2131165942;
+			public const int Unselected = 2131165942;
 			
 			// aapt resource value: 0x7F0702F7
-			public const int UnselectedCard = 2131165943;
+			public const int unselected171x136 = 2131165943;
 			
 			// aapt resource value: 0x7F0702F8
-			public const int UnselectedConsumer = 2131165944;
+			public const int UnselectedCard = 2131165944;
 			
 			// aapt resource value: 0x7F0702F9
-			public const int UnSelectedMerchant = 2131165945;
+			public const int UnselectedConsumer = 2131165945;
 			
 			// aapt resource value: 0x7F0702FA
-			public const int unsubmitted = 2131165946;
+			public const int UnSelectedMerchant = 2131165946;
 			
 			// aapt resource value: 0x7F0702FB
-			public const int user = 2131165947;
-			
-			// aapt resource value: 0x7F0702FD
-			public const int Username_selected = 2131165949;
-			
-			// aapt resource value: 0x7F0702FE
-			public const int Username_unselected = 2131165950;
+			public const int unsubmitted = 2131165947;
 			
 			// aapt resource value: 0x7F0702FC
-			public const int user_profile = 2131165948;
+			public const int user = 2131165948;
 			
-			// aapt resource value: 0x7F070314
-			public const int vatEstablishment_G = 2131165972;
+			// aapt resource value: 0x7F0702FE
+			public const int Username_selected = 2131165950;
 			
 			// aapt resource value: 0x7F0702FF
-			public const int vat_ic_individaualregistration = 2131165951;
+			public const int Username_unselected = 2131165951;
 			
-			// aapt resource value: 0x7F070300
-			public const int vat_ic_location = 2131165952;
-			
-			// aapt resource value: 0x7F070301
-			public const int vat_ic_phone = 2131165953;
-			
-			// aapt resource value: 0x7F070302
-			public const int vat_ic_success = 2131165954;
-			
-			// aapt resource value: 0x7F070303
-			public const int vat_ic_taxpayerDetai = 2131165955;
-			
-			// aapt resource value: 0x7F070304
-			public const int vat_ic_taxpayerDetail = 2131165956;
-			
-			// aapt resource value: 0x7F070305
-			public const int vat_new_Establishment_G = 2131165957;
-			
-			// aapt resource value: 0x7F070306
-			public const int vat_new_Establishment_W = 2131165958;
-			
-			// aapt resource value: 0x7F070307
-			public const int vat_new_Iconawesomephonealt = 2131165959;
-			
-			// aapt resource value: 0x7F070308
-			public const int vat_new_Iconawesomeusercircle = 2131165960;
-			
-			// aapt resource value: 0x7F070309
-			public const int vat_new_Iconioniciosstats = 2131165961;
-			
-			// aapt resource value: 0x7F07030A
-			public const int vat_new_Iconmetrolocation = 2131165962;
-			
-			// aapt resource value: 0x7F07030B
-			public const int vat_new_individual = 2131165963;
-			
-			// aapt resource value: 0x7F07030C
-			public const int vat_new_individual_G = 2131165964;
-			
-			// aapt resource value: 0x7F07030D
-			public const int vat_tile_IbanCard_backgroun = 2131165965;
-			
-			// aapt resource value: 0x7F07030E
-			public const int vat_tile_IbanCard_background = 2131165966;
-			
-			// aapt resource value: 0x7F07030F
-			public const int vat_tile_IbanCard_background_white = 2131165967;
-			
-			// aapt resource value: 0x7F070310
-			public const int vat_tile_listofsignup = 2131165968;
-			
-			// aapt resource value: 0x7F070311
-			public const int vat_tile_listofsignup_W = 2131165969;
-			
-			// aapt resource value: 0x7F070312
-			public const int vat_user = 2131165970;
-			
-			// aapt resource value: 0x7F070313
-			public const int vat_user_summary = 2131165971;
+			// aapt resource value: 0x7F0702FD
+			public const int user_profile = 2131165949;
 			
 			// aapt resource value: 0x7F070315
-			public const int Viewmode = 2131165973;
+			public const int vatEstablishment_G = 2131165973;
+			
+			// aapt resource value: 0x7F070300
+			public const int vat_ic_individaualregistration = 2131165952;
+			
+			// aapt resource value: 0x7F070301
+			public const int vat_ic_location = 2131165953;
+			
+			// aapt resource value: 0x7F070302
+			public const int vat_ic_phone = 2131165954;
+			
+			// aapt resource value: 0x7F070303
+			public const int vat_ic_success = 2131165955;
+			
+			// aapt resource value: 0x7F070304
+			public const int vat_ic_taxpayerDetai = 2131165956;
+			
+			// aapt resource value: 0x7F070305
+			public const int vat_ic_taxpayerDetail = 2131165957;
+			
+			// aapt resource value: 0x7F070306
+			public const int vat_new_Establishment_G = 2131165958;
+			
+			// aapt resource value: 0x7F070307
+			public const int vat_new_Establishment_W = 2131165959;
+			
+			// aapt resource value: 0x7F070308
+			public const int vat_new_Iconawesomephonealt = 2131165960;
+			
+			// aapt resource value: 0x7F070309
+			public const int vat_new_Iconawesomeusercircle = 2131165961;
+			
+			// aapt resource value: 0x7F07030A
+			public const int vat_new_Iconioniciosstats = 2131165962;
+			
+			// aapt resource value: 0x7F07030B
+			public const int vat_new_Iconmetrolocation = 2131165963;
+			
+			// aapt resource value: 0x7F07030C
+			public const int vat_new_individual = 2131165964;
+			
+			// aapt resource value: 0x7F07030D
+			public const int vat_new_individual_G = 2131165965;
+			
+			// aapt resource value: 0x7F07030E
+			public const int vat_tile_IbanCard_backgroun = 2131165966;
+			
+			// aapt resource value: 0x7F07030F
+			public const int vat_tile_IbanCard_background = 2131165967;
+			
+			// aapt resource value: 0x7F070310
+			public const int vat_tile_IbanCard_background_white = 2131165968;
+			
+			// aapt resource value: 0x7F070311
+			public const int vat_tile_listofsignup = 2131165969;
+			
+			// aapt resource value: 0x7F070312
+			public const int vat_tile_listofsignup_W = 2131165970;
+			
+			// aapt resource value: 0x7F070313
+			public const int vat_user = 2131165971;
+			
+			// aapt resource value: 0x7F070314
+			public const int vat_user_summary = 2131165972;
 			
 			// aapt resource value: 0x7F070316
-			public const int warning = 2131165974;
+			public const int Viewmode = 2131165974;
 			
 			// aapt resource value: 0x7F070317
-			public const int WhiteCircle_arrow_right = 2131165975;
+			public const int warning = 2131165975;
 			
 			// aapt resource value: 0x7F070318
-			public const int Whiteclock = 2131165976;
+			public const int WhiteCircle_arrow_right = 2131165976;
 			
 			// aapt resource value: 0x7F070319
-			public const int zakat_copy = 2131165977;
+			public const int Whiteclock = 2131165977;
 			
 			// aapt resource value: 0x7F07031A
-			public const int zakat_details = 2131165978;
+			public const int zakat_copy = 2131165978;
 			
 			// aapt resource value: 0x7F07031B
-			public const int zakat_manageTax = 2131165979;
+			public const int zakat_details = 2131165979;
 			
 			// aapt resource value: 0x7F07031C
-			public const int zatcaLogo = 2131165980;
+			public const int zakat_manageTax = 2131165980;
 			
 			// aapt resource value: 0x7F07031D
-			public const int zatcaname = 2131165981;
+			public const int zatcaLogo = 2131165981;
+			
+			// aapt resource value: 0x7F07031E
+			public const int zatcaname = 2131165982;
 			
 			static Drawable()
 			{
