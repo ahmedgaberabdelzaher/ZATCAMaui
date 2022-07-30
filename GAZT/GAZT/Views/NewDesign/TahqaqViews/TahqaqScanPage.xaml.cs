@@ -23,12 +23,12 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
         }
         protected override async void OnAppearing()
         {
-            PermissionStatus granted = await Permissions.CheckStatusAsync<Permissions.Camera>();
+           /* PermissionStatus granted = await Permissions.CheckStatusAsync<Permissions.Camera>();
             if (granted != PermissionStatus.Granted)
             {
                 _ = await Permissions.RequestAsync<Permissions.Camera>();
             }
-
+           */
        /*  var  scanPage = new ZXingScannerPage();
             scanPage.OnScanResult += (result) =>
             {
