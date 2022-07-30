@@ -2837,6 +2837,7 @@ namespace EGAZT
             navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
             navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
+            navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
 
             #endregion
 

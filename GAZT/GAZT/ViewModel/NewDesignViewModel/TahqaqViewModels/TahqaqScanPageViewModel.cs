@@ -20,7 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService,ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
         {
             _tahqaqServices = tahqaqServices;
-            scanCode = "SAA6216738003275";
+          //  scanCode = "SAA6216738003275";
        
         }
 
@@ -82,6 +82,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         scanCode = Result.Text;
                         Debug.WriteLine(scanCode);
                         await CheckQr();
+                        IsLoading = false;
+                       
+                    });
+
+                   
+                });
+            }
+        }
+  public ICommand ScanEnvoiceQrCommand
+        {
+            get
+            {
+                return new Command(() =>
+
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        IsLoading = true;
+                        scanCode = Result.Text;
+                       
                         IsLoading = false;
                        
                     });

@@ -47,7 +47,7 @@
                     <ScrollView Grid.Row="0" Padding="0,0,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
                         <Grid RowDefinitions="auto,auto,*,auto,auto" Padding="0,0,0,0">
                             
-                                <zxing:ZXingScannerView  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True"   IsScanning="True"
+                                <zxing:ZXingScannerView ScaleX="1" ScaleY="1"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True"   IsScanning="True"
                  Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanCommand}"   BackgroundColor="White">
                                 </zxing:ZXingScannerView>
                             <Grid Grid.Row="0"   HorizontalOptions="FillAndExpand">
@@ -60,9 +60,10 @@
   </StackLayout>
                             </Grid>
                           
-                         <Grid Grid.Row="1" Grid.RowSpan="2" Margin="2,0,2,-7">
-                             <Image Source="Path" Margin="0,-15,0,0" HeightRequest="90" Rotation="-90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"></Image>
-                             <Image Source="Path" Margin="0,-15,0,0"  HorizontalOptions="End" HeightRequest="90" Rotation="-180"  VerticalOptions="Start"></Image>
+                         <Grid Grid.Row="1" FlowDirection="RightToLeft" Grid.RowSpan="2" Margin="2,0,2,-7">
+                         
+                             <Image Source="Path" Margin="-3,-15,-3,0" HeightRequest="90" Rotation="-90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"></Image>
+                             <Image Source="Path"  Margin="-3,-15,-3,0"  HorizontalOptions="End" HeightRequest="90" Rotation="-180"  VerticalOptions="Start"></Image>
                              <Image Source="Path"  HeightRequest="90" HorizontalOptions="StartAndExpand"  VerticalOptions="End"></Image>
                              <Image Source="Path" HeightRequest="90" Rotation="90" HorizontalOptions="End"  VerticalOptions="End"></Image>
 
@@ -102,7 +103,7 @@
 </Grid>-->
 
 
-                            <Grid Grid.Row="3"  HorizontalOptions="FillAndExpand" >
+                            <Grid Grid.Row="4"   HorizontalOptions="FillAndExpand" >
                                 <Frame  BackgroundColor="Black" Opacity=".44"></Frame>
                                 <StackLayout>
                                 <Label TextColor="White" Grid.Row="3" Margin="0,40,27,0" HorizontalOptions="CenterAndExpand">

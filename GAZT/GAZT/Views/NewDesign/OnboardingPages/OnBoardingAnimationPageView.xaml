@@ -46,7 +46,7 @@
                 IsVisible="{Binding IsSkipButtonVisible}"
                 Text="{x:Static ResourceManager:AppResources.NDSkip}"
                 TextColor="{x:StaticResource WhiteTextColor}"
-                VerticalOptions="StartAndExpand"
+                VerticalOptions="EndAndExpand"
                  />
 
                 <buttons:SfButton

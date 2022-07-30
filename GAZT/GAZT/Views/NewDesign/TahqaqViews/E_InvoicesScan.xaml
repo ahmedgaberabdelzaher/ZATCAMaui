@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+   xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False"
+           FlowDirection="{Binding AppDirection}"
+         xmlns:ResourceManager="clr-namespace:EGAZT"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:EGAZT.Controls"
+    x:Class="EGAZT.Views.NewDesign.TahqaqViews.E_InvoicesScan">
+      <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+<Grid RowDefinitions="auto,*">
+           <!--#region Scan View-->
+            <yummy:PancakeView IsVisible="{Binding IsShowScanView}" Margin="0" Padding="0" Grid.Row="1" Style="{StaticResource CommonTopCurves}" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,0" VerticalScrollBarVisibility="Never">
+                        <Grid RowDefinitions="auto,auto,*,auto,auto" Padding="0,0,0,0">
+                            
+                                <zxing:ZXingScannerView  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True"   IsScanning="True"
+                 Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanEnvoiceQrCommand}"   BackgroundColor="White">
+                                </zxing:ZXingScannerView>
+                            <Grid Grid.Row="0"   HorizontalOptions="FillAndExpand">
+                                                                <Frame  BackgroundColor="Black" Opacity=".44"></Frame>
+
+                                <StackLayout Margin="0,60,0,50">
+                          
+                            <Label  Text="{x:Static ResourceManager:AppResources.ScantheQRcode}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                            <Label Margin="0,0,0,30" Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>
+  </StackLayout>
+                            </Grid>
+                          
+                         <Grid Grid.Row="1" Grid.RowSpan="2" Margin="2,0,2,-7">
+                             <Image Source="Path" Margin="0,-15,0,0" HeightRequest="90" Rotation="-90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"></Image>
+                             <Image Source="Path" Margin="0,-15,0,0"  HorizontalOptions="End" HeightRequest="90" Rotation="-180"  VerticalOptions="Start"></Image>
+                             <Image Source="Path"  HeightRequest="90" HorizontalOptions="StartAndExpand"  VerticalOptions="End"></Image>
+                             <Image Source="Path" HeightRequest="90" Rotation="90" HorizontalOptions="End"  VerticalOptions="End"></Image>
+
+                         </Grid>       
+                            <Grid Grid.Row="3"  HorizontalOptions="FillAndExpand" >
+                                <Frame  BackgroundColor="Black" Opacity=".44"></Frame>
+                                <StackLayout>
+                                <Label TextColor="White" Grid.Row="3" Margin="0,40,27,0" HorizontalOptions="CenterAndExpand">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Or}" FontSize="24"  FontFamily="{StaticResource FontSomarBold}"></Span>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Use}" FontSize="16"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Frame BackgroundColor="#00BBBD" Grid.Row="4" CornerRadius="14" Padding="12" Margin="21,27,27,40" HasShadow="False">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding EnterCodeCommand}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+<Label Text="{x:Static ResourceManager:AppResources.VerificationForm}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame></StackLayout></Grid>
+                      </Grid>
+                    </ScrollView>
+                </Grid>
+            </yummy:PancakeView>
+    <!--#endregion-->
+
+    <!--#region Success Result View-->
+                 <yummy:PancakeView IsVisible="{Binding IsShowRsltView}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" VerticalScrollBarVisibility="Never">
+                        <StackLayout Padding="0,12,0,0">
+                            <Image Source="SuccessQr" HeightRequest="70" WidthRequest="70"  HorizontalOptions="CenterAndExpand" Margin="0,10,0,10"></Image>
+                            <Label Text="{x:Static ResourceManager:AppResources.Correcttaxstamp}" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                                   <Frame Margin="0"  BorderColor="LightGray" Padding="0" CornerRadius="8"  HasShadow="False">
+                            <StackLayout Margin="16" >
+                                        <Label Text="{x:Static ResourceManager:AppResources.QRCode}"  Style="{StaticResource BodyLabelGrey}"/>
+                                        <Label Text="{Binding scanCode}"  Style="{StaticResource BodyLabelBlack}"/>
+                                    <Label Text="{x:Static ResourceManager:AppResources.ProductDescription}"   Style="{StaticResource BodyLabelGrey}" Grid.Column="1"></Label>
+                                  <Label Text="{Binding QrRslt.ProductDescription}"  Style="{StaticResource BodyLabelBlack}"/>
+                                 <Label Text="{x:Static ResourceManager:AppResources.OrganisationName}"   Style="{StaticResource BodyLabelGrey}" Grid.Column="1"></Label>
+                                  <Label Text="{Binding QrRslt.OrganisationName}"  Style="{StaticResource BodyLabelBlack}"/>
+                                <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*">
+                                <Label Text="{x:Static ResourceManager:AppResources.CountryofOrigin}"   Style="{StaticResource BodyLabelGrey}" Grid.Row="0" Grid.Column="0"></Label>
+                                  <Label Text="{Binding QrRslt.CountryOfManufacture}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
+                                 <Label Text="{x:Static ResourceManager:AppResources.ProductionDate}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BodyLabelGrey}"></Label>
+                                  <Label Text="{Binding QrRslt.DateOfManufacture,StringFormat='{0:dd/MM/yyy}'}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
+                           </Grid>
+                            </StackLayout>
+                        </Frame>
+                      </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+        <!--#endregion-->
+
+    <!--#region Fail Rslt View-->
+    <yummy:PancakeView IsVisible="{Binding IsShowFailRsltView}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0" Padding="0,0,0,32" VerticalScrollBarVisibility="Never">
+                        <StackLayout Padding="0,12,0,0">
+                            <Image Margin="0,50,0,15" Source="FailedIcon" HeightRequest="95" WidthRequest="95"  HorizontalOptions="CenterAndExpand"></Image>
+                            <Label Text="{x:Static ResourceManager:AppResources.Incorrecttaxstamp}" HorizontalOptions="CenterAndExpand" TextColor="{StaticResource PrimaryColor}" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
+                                <Frame BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,50,27,27" HasShadow="False">
+<Label Text="{x:Static ResourceManager:AppResources.Submitareport}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame>
+                            <Label Text="{x:Static ResourceManager:AppResources.Exit}" HorizontalOptions="CenterAndExpand" TextColor="#00BBBD" FontSize="16">
+                                                <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                    </Label.GestureRecognizers>
+                            </Label>
+
+                      </StackLayout>
+                    </ScrollView>
+                
+
+
+               
+                </Grid>
+            </yummy:PancakeView>
+     <!--#endregion-->
+    <!--Header-->
+  <controls:Header  TitleText="{x:Static ResourceManager:AppResources.Submitareport}" Grid.Row="0"></controls:Header>
+</Grid>
+</ContentPage>
