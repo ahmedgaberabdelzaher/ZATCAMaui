@@ -900,27 +900,51 @@ Title= AppResources.CustomsZATCAIntegrat;
         {
             get
             {
-                return new Command(async() =>
-                {
-                    if (SelectedTraiffChapters != null)
-                    {
-                        IsHarmonizedTarrifs = true;
-                        //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
-                        HarmonizedTariffs = await  GetHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
-                        Title = SelectedTraiffChapters.Name;
-                        MainHarmonizedTitle = Title;
-                        IsChapterSection = false;
-                        IsSectionView = false;
-                        //IsMainHarmonizedTariffs = true;
-                        Level1Title = SelectedTraiffChapters.Name;
-                        LevelNo = 0;
-                        ChapterNotesLst = SelectedTraiffChapters.notes;
+                return new Command(
 
-                        SelectedTraiffChapters = null;
+                      execute: async () =>
+                      {
+                          try
+                          {
+                              if (SelectedTraiffChapters != null)
+                              {
+                                  IsChapterSection = false;
+                                  IsHarmonizedTarrifs = true;
+                                  //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
+                                  HarmonizedTariffs = await GetHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
+                                  IsHarmonizedTarrifs = true;
+                                  Title = SelectedTraiffChapters.Name;
+                                  MainHarmonizedTitle = Title;
 
-                    }
-                });
+                                  IsSectionView = false;
+                                  //IsMainHarmonizedTariffs = true;
+                                  Level1Title = SelectedTraiffChapters.Name;
+                                  LevelNo = 0;
+                                  ChapterNotesLst = SelectedTraiffChapters.notes;
+
+                                  SelectedTraiffChapters = null;
+                                  RefreshCanExecutes();
+                              }
+
+                          }
+                          catch (Exception ex)
+                          {
+
+                          }
+
+                      },
+            canExecute: () =>
+            {
+                return !IsHarmonizedTarrifs;
+            });
+
+             
             }
+        }
+        void RefreshCanExecutes()
+        {
+            (TraiffChapterSelectionChangedCommand as Command).ChangeCanExecute();
+   
         }
         string level1Title;
         public string Level1Title { get { return level1Title; } set { level1Title = value; RaisePropertyChanged(); } }
@@ -938,6 +962,10 @@ Title= AppResources.CustomsZATCAIntegrat;
             {
                 return new Command(async () =>
                 {
+                    try
+                    {
+
+                  
                     if (SelectedHarmonizedTariffs != null)
                     {
                         //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
@@ -960,6 +988,11 @@ Title= AppResources.CustomsZATCAIntegrat;
                         IsHarmonizedTarrifs = false;
                         IsHarmonizedTariffs2lvl = true;
                     }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 });
             }
         }
@@ -970,6 +1003,9 @@ Title= AppResources.CustomsZATCAIntegrat;
             {
                 return new Command(async () =>
                 {
+                    try
+                    {
+
                     if (SelectedHarmonizedTariffslvl2 != null)
                     {
                         //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
@@ -1022,6 +1058,12 @@ Title= AppResources.CustomsZATCAIntegrat;
 
                         IsHarmonizedTariffs3lvl = true;
                     }
+                    
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 });
             }
         }
@@ -1032,6 +1074,9 @@ Title= AppResources.CustomsZATCAIntegrat;
             {
                 return new Command(async () =>
                 {
+                    try
+                    {
+
                     if (SelectedHarmonizedTariffslvl3 != null)
                     {
                         //GetMainHarmonizedTariffs(SelectedTraiffChapters.chpt_code);
@@ -1059,6 +1104,12 @@ Title= AppResources.CustomsZATCAIntegrat;
 
                         IsHarmonizedTariffs4lvl = true;
                     }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                 });
             }
         }
@@ -1070,6 +1121,9 @@ Title= AppResources.CustomsZATCAIntegrat;
             {
                 return new Command(() =>
                 {
+                    try
+                    {
+
                     if (SelectedMainHarmonizedTariffs != null)
                     {
                         GetSubHarmonizedTariffs(SelectedMainHarmonizedTariffs.chpt_code, SelectedMainHarmonizedTariffs.main_item_code);
@@ -1078,6 +1132,12 @@ Title= AppResources.CustomsZATCAIntegrat;
                         IsChapterSection= IsSectionView= IsMainHarmonizedTariffs = false;
                         //MainHarmonizedTitle = Title;
                         IsSubHarmonizedTariffs = true;
+                    }
+
+                    }
+                    catch (Exception ex)
+                    {
+
                     }
                 });
             }
