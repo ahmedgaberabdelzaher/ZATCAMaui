@@ -81,6 +81,8 @@
 	  <None Remove="Models\TahqaqModels\" />
 	  <None Remove="Views\NewDesign\VAT\" />
 	  <None Remove="ViewModel\NewDesignViewModel\VAT\" />
+	  <None Remove="Views\NewDesign\SubmitReport\" />
+	  <None Remove="ViewModel\NewDesignViewModel\SubmitReport\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -178,6 +180,8 @@
 		<Folder Include="Models\TahqaqModels\" />
 		<Folder Include="Views\NewDesign\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\VAT\" />
+		<Folder Include="Views\NewDesign\SubmitReport\" />
+		<Folder Include="ViewModel\NewDesignViewModel\SubmitReport\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

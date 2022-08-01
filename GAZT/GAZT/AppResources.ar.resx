@@ -9348,5 +9348,45 @@ info@zatca.gov.sa</value>
   </data>
 	<data name="Totalnontaxablepurchases" xml:space="preserve">
      <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
-  </data> 
+  </data>
+  <data name="ReportDetails" xml:space="preserve">
+     <value>تفاصيل البلاغ</value>
+  </data>
+   <data name="ReportDetailsNote" xml:space="preserve">
+     <value>الرجاء أكمل التفاصيل أدناه</value>
+  </data>
+   <data name="ReportNote" xml:space="preserve">
+     <value>في حال إبلاغك الهيئة عن معلومة كيدية أو كاذبة يعرضك للمساءلة القانونية</value>
+  </data>
+    <data name="ReportFullName" xml:space="preserve">
+     <value>الاسم كامل</value>
+  </data>
+  <data name="ReportDisclaimer" xml:space="preserve">
+     <value>الرجاء إبلاغنا عن اسم و موقع المكان الذى تم شراء المنتج من خلاله</value>
+  </data>
+  <data name="ReportCity" xml:space="preserve">
+     <value>المدينة</value>
+  </data>
+   <data name="ReportStreetName" xml:space="preserve">
+     <value>اسم الشارع</value>
+  </data>
+  <data name="ReportMerchantName" xml:space="preserve">
+     <value>اسم التاجر</value>
+  </data>
+   <data name="SendReportButton" xml:space="preserve">
+     <value>إرسال البلاغ</value>
+  </data>
+  <data name="AttachmentHelperText" xml:space="preserve">
+     <value>الإمدادات المسموحة (PDF,png,JPG)</value>
+  </data>
+  <data name="ReportSecondNote" xml:space="preserve">
+     <value>تمنح المكافأة وفقا لسلطة الهيئة التقدرية على ان يراعي تحقيق الشروط الأتية
+أن يكون البلاغ قد أدي إلى كشف أي المخالفات المذكورة في هذة اللائحة
+الا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى
+الا يكون الكشف عن الحالة محل محل البلاغ من واجبات المبلغ الوظيفة إذا كان موظفا عاما او في حكمه 
+الا تكون المخالفة قد سبق الابلاغ عنها او كؤفي عليها من قبل الهيئة. يكون استحقاق المكافأة بناء علي قرار يصدر من لجنة مكافآت المبلغين عن المخالفات</value>
+  </data>
+    <data name="RewardCheckBox" xml:space="preserve">
+     <value>لا أرغب بالحصول علي المكافآة المالية</value>
+  </data>
 </root> 

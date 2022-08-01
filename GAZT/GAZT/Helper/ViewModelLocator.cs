@@ -143,6 +143,9 @@ using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using EGAZT.Views.NewDesign.TahqaqViews;
 using EGAZT.Views.NewDesign.VAT;
 using EGAZT.ViewModel.NewDesignViewModel.VAT;
+using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
+using EGAZT.Views.NewDesign.SubmitReport;
+using EGAZT.Controls;
 
 namespace EGAZT
 {
@@ -163,7 +166,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ICommonServices, CommonServices>();
             SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
             SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
-
+            SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -379,6 +382,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ExciseTaxViewModel>();
             SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
+            SimpleIoc.Default.Register<SubmitReportViewModel>();
 
             #endregion
         }
@@ -2837,7 +2841,7 @@ namespace EGAZT
             navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
             navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
-
+            navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
             #endregion
 
             return navigationService;
@@ -3824,7 +3828,20 @@ namespace EGAZT
             }
         }
 
-
+        public SubmitReportViewModel submitReportViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SubmitReportViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
         //
     }

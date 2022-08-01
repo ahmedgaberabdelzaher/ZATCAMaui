@@ -9418,5 +9418,45 @@ the Zakat, Tax and Customs
   </data>
 	<data name="Totalnontaxablepurchases" xml:space="preserve">
      <value>Total non-taxable purchases</value>
+  </data>
+    <data name="ReportDetails" xml:space="preserve">
+     <value>Report Details</value>
+  </data>
+    <data name="ReportDetailsNote" xml:space="preserve">
+     <value>Please complete the details below</value>
+  </data>
+  <data name="ReportNote" xml:space="preserve">
+     <value>If the authority informs you of malicious or false information, it will expose you to legal accountability</value>
+  </data>
+  <data name="ReportFullName" xml:space="preserve">
+     <value>Full name</value>
+  </data>
+  <data name="ReportDisclaimer" xml:space="preserve">
+     <value>Please inform us of the name and location of the place where the product was purchased</value>
+  </data>
+   <data name="ReportCity" xml:space="preserve">
+     <value>City</value>
+  </data>
+ <data name="ReportStreetName" xml:space="preserve">
+     <value>Street name</value>
+  </data>
+    <data name="ReportMerchantName" xml:space="preserve">
+     <value>Merchant name</value>
+  </data>
+    <data name="SendReportButton" xml:space="preserve">
+     <value>Send Report</value>
+  </data>
+  <data name="AttachmentHelperText" xml:space="preserve">
+     <value>Allowed supplies (PDF,png,JPG)</value>
+  </data>
+  <data name="RewardCheckBox" xml:space="preserve">
+     <value>I don't want to get the reward</value>
+  </data>
+    <data name="ReportSecondNote" xml:space="preserve">
+     <value>The award is granted according to the discretionary authority of the authority, provided that the following conditions are met:
+That the report led to the detection of any violations mentioned in this regulation
+The amount shall not be a staff member of the Authority, a spouse, a son-in-law, or a first-degree relative
+The disclosure of the case in question is not one of the duties of the reporter, if he is a public servant or in Heqma
+The violation must not have been previously reported or sufficient for it by the Authority. The entitlement to the award is based on a decision issued by the Whistleblower Rewards Committee</value>
   </data> 
 </root>

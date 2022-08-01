@@ -653,6 +653,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed supplies (PDF,png,JPG).
+        /// </summary>
+        public static string AttachmentHelperText {
+            get {
+                return ResourceManager.GetString("AttachmentHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Attachment.
         /// </summary>
         public static string AttachmentPopUpAddAttachment {
@@ -9528,11 +9537,87 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        public static string ReportCity {
+            get {
+                return ResourceManager.GetString("ReportCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report Details.
+        /// </summary>
+        public static string ReportDetails {
+            get {
+                return ResourceManager.GetString("ReportDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the details below.
+        /// </summary>
+        public static string ReportDetailsNote {
+            get {
+                return ResourceManager.GetString("ReportDetailsNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please inform us of the name and location of the place where the product was purchased.
+        /// </summary>
+        public static string ReportDisclaimer {
+            get {
+                return ResourceManager.GetString("ReportDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full name.
+        /// </summary>
+        public static string ReportFullName {
+            get {
+                return ResourceManager.GetString("ReportFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Location.
         /// </summary>
         public static string ReportLocation {
             get {
                 return ResourceManager.GetString("ReportLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Merchant name.
+        /// </summary>
+        public static string ReportMerchantName {
+            get {
+                return ResourceManager.GetString("ReportMerchantName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the authority informs you of malicious or false information, it will expose you to legal accountability.
+        /// </summary>
+        public static string ReportNote {
+            get {
+                return ResourceManager.GetString("ReportNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The award is granted according to the discretionary authority of the authority, provided that the following conditions are met:
+        ///That the report led to the detection of any violations mentioned in this regulation
+        ///The amount shall not be a staff member of the Authority, a spouse, a son-in-law, or a first-degree relative
+        ///The disclosure of the case in question is not one of the duties of the reporter, if he is a public servant or in Heqma
+        ///The violation must not have been previously reported or sufficient for it [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string ReportSecondNote {
+            get {
+                return ResourceManager.GetString("ReportSecondNote", resourceCulture);
             }
         }
         
@@ -9551,6 +9636,15 @@ namespace EGAZT {
         public static string ReportSentSuccess {
             get {
                 return ResourceManager.GetString("ReportSentSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street name.
+        /// </summary>
+        public static string ReportStreetName {
+            get {
+                return ResourceManager.GetString("ReportStreetName", resourceCulture);
             }
         }
         
@@ -9708,6 +9802,15 @@ namespace EGAZT {
         public static string ReviewSADADBillDetailss {
             get {
                 return ResourceManager.GetString("ReviewSADADBillDetailss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I don&apos;t want to get the reward.
+        /// </summary>
+        public static string RewardCheckBox {
+            get {
+                return ResourceManager.GetString("RewardCheckBox", resourceCulture);
             }
         }
         
@@ -9942,6 +10045,15 @@ namespace EGAZT {
         public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send Report.
+        /// </summary>
+        public static string SendReportButton {
+            get {
+                return ResourceManager.GetString("SendReportButton", resourceCulture);
             }
         }
         

@@ -1,41 +1,61 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:ResourceManager="clr-namespace:EGAZT"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+	xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     x:Class="EGAZT.Controls.MsgView">
-     <ContentView.Resources>
-        <ResourceDictionary>
-          
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+	<ContentView.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+				<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+			<Style TargetType="Label">
+				<Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
+			</Style>
+			<Style TargetType="Button">
+				<Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
+			</Style>
+		</ResourceDictionary>
+	</ContentView.Resources>
+	<Grid Grid.Row="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
 
-            <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
-            </Style>
-            <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
-            </Style>
-        </ResourceDictionary>
-    </ContentView.Resources>
-                     <Grid Grid.Row="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
-                            <Grid.GestureRecognizers >
-                                <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}"></TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <yummy:PancakeView  Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" BackgroundColor="White">
+		<Grid.GestureRecognizers >
+			<TapGestureRecognizer Command="{Binding CloseMsgViewCommand}"/>
+        </Grid.GestureRecognizers>
 
-        <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
-         
+		<StackLayout Grid.Row="0"
+			   Grid.Column="0"
+			   Orientation="Vertical"
+			   BackgroundColor="Black"
+			   Opacity="0.4"
+			   VerticalOptions="FillAndExpand"/>
 
-            <Label Text="{Binding MessageTxt}"  HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
-                            <buttons:SfButton  Command="{Binding CloseMsgViewCommand}"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
+        <yummy:PancakeView  Style="{StaticResource CommonTopCurves}"
+							CornerRadius="15,15,0,0"
+							VerticalOptions="EndAndExpand"
+							Padding="20,20,20,10"
+							BackgroundColor="White">
 
-        </StackLayout>
-    </yummy:PancakeView>
-</Grid>
+			<StackLayout VerticalOptions="Center" Margin="0,0,0,0">
 
+				<Label  Text="{Binding MessageTxt}"
+						HorizontalTextAlignment="Start"
+						Style="{StaticResource BodyLabelBlack}"/>
+
+                <buttons:SfButton
+							Command="{Binding CloseMsgViewCommand}"
+							VerticalOptions="CenterAndExpand"
+							Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+							Style="{StaticResource PrimaryButtonStyle}"
+							Margin="0,0,0,10" />
+
+			</StackLayout>
+
+		</yummy:PancakeView>
+
+	</Grid>
 </ContentView>
+
