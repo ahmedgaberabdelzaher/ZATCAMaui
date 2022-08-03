@@ -9389,4 +9389,10 @@ info@zatca.gov.sa</value>
     <data name="RewardCheckBox" xml:space="preserve">
      <value>لا أرغب بالحصول علي المكافآة المالية</value>
   </data>
+  <data name="Einvoice" xml:space="preserve">
+     <value>الفاتورة الإلكترونية</value>
+  </data>
+  <data name="ReportCategory" xml:space="preserve">
+     <value>فئة البلاغ</value>
+  </data>
 </root> 

@@ -9458,5 +9458,11 @@ That the report led to the detection of any violations mentioned in this regulat
 The amount shall not be a staff member of the Authority, a spouse, a son-in-law, or a first-degree relative
 The disclosure of the case in question is not one of the duties of the reporter, if he is a public servant or in Heqma
 The violation must not have been previously reported or sufficient for it by the Authority. The entitlement to the award is based on a decision issued by the Whistleblower Rewards Committee</value>
-  </data> 
+  </data>
+  <data name="Einvoice" xml:space="preserve">
+     <value>E-invoice Certificate</value>
+  </data>
+  <data name="ReportCategory" xml:space="preserve">
+     <value>Report Category</value>
+  </data>
 </root>

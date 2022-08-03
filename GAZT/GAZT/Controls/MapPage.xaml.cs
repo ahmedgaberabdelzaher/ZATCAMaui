@@ -14,8 +14,15 @@ namespace EGAZT.Controls
         SubmitReportViewModel viewModel;
         public MapPage()
         {
-            InitializeComponent();
-            viewModel = App.Locator.submitReportViewModel;
+            try
+            {
+                InitializeComponent();
+                viewModel = App.Locator.submitReportViewModel;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         async void map_MapClicked(System.Object sender, Xamarin.Forms.GoogleMaps.MapClickedEventArgs e)
@@ -33,7 +40,7 @@ namespace EGAZT.Controls
 
                     Position position = new Position(location.Latitude, location.Longitude);
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
-                    viewModel.Street = possibleAddresses.FirstOrDefault();
+                    viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
                     var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
                     var placemark = placemarks?.FirstOrDefault();
                     string address = placemark?.SubThoroughfare ?? placemark?.Thoroughfare ?? placemark?.SubAdminArea ?? placemark?.AdminArea;
@@ -59,7 +66,7 @@ namespace EGAZT.Controls
                 
 
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
 
             }

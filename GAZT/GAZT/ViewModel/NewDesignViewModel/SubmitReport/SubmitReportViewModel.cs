@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Controls;
 using EGAZT.Models.CustomServices.BalaghModels;
+using EGAZT.Models.SubmitReportModel;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -13,35 +16,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 {
     public class SubmitReportViewModel : BaseViewModel
     {
-        string fullName;
-        public string FullName { get { return fullName; } set { fullName = value; RaisePropertyChanged(); } }
-
-        string email;
-        public string Email { get { return email; } set { email = value; RaisePropertyChanged(); } }
-
-        string phone;
-        public string PhoneNumber { get { return phone; } set { phone = value; RaisePropertyChanged(); } }
-
-        string location;
-        public string Location { get { return location; } set { location = value; RaisePropertyChanged(); } }
-
-        string region;
-        public string Region { get { return region; } set { region = value; RaisePropertyChanged(); } }
-
-        string city;
-        public string City { get { return city; } set { city = value; RaisePropertyChanged(); } }
-
-        string district;
-        public string District { get { return district; } set { district = value; RaisePropertyChanged(); } }
-
-        string street;
-        public string Street { get { return street; } set { street = value; RaisePropertyChanged(); } }
-
-        string merchant;
-        public string Merchant { get { return merchant; } set { merchant = value; RaisePropertyChanged(); } }
-
-        string editor;
-        public string Editor { get { return editor; } set { editor = value; RaisePropertyChanged(); } }
+        SubmitReportModel submitReport;
+        public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; RaisePropertyChanged(); } }
 
         bool isTherePDFUploaded;
         public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
@@ -52,8 +28,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         bool isRewardChecked;
         public bool IsRewardChecked { get { return isRewardChecked; } set { isRewardChecked = value; RaisePropertyChanged(); } }
 
+        bool isShowBottomSheet;
+        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+
+
         ObservableCollection<Ticketfile> reportUloadedFiles = new ObservableCollection<Ticketfile>();
         public ObservableCollection<Ticketfile> ReportUloadedFiles { get { return reportUloadedFiles; } set { reportUloadedFiles = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>()
+        {
+            new BottomSheetModel {Id= null, Name = AppResources.VATCertificates},
+            new BottomSheetModel {Id= "V2", Name =AppResources.ExciseCertificates},
+            new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
+            new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
+            new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
+            new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
+            new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
+        };
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+
 
         public ICommand SendReportCommand { get; set; }
 
@@ -78,13 +71,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
             }
         }
+        public ICommand ClosBottomSheetCommand
+        {
+            get
+            {
+                return new Command(() => { IsShowBottomSheet = false; });
+
+            }
+        }
 
         public ICommand ShowMapCommand
         {
             get
             {
-                return new Command(() => { IsShowMapView = true;  });
-                
+                return new Command(() => { IsShowMapView = true; });
+
             }
         }
 
@@ -99,9 +100,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         ReportUloadedFiles.Remove(e);
 
-                        if(ReportUloadedFiles.Count == 0) IsTherePDFUploaded = false;
+                        if (ReportUloadedFiles.Count == 0) IsTherePDFUploaded = false;
                     }
                 });
+            }
+        }
+        public ICommand SelectedItemCommand
+        {
+            get
+            {
+                return new Command<BottomSheetModel>((e) =>
+                {
+                    SubmitReport.ReportType = e.Name;
+                    SubmitReport.ReportCategory = e.Name;
+                    IsShowBottomSheet = false;
+
+                });
+            }
+        }
+        public ICommand OpenReportTypeCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>();
+                    IsShowBottomSheet = true;
+                });
+
+            }
+        }
+        public ICommand OpenReportCategoryCommand
+        {
+            get
+            {
+                return new Command(() => { IsShowBottomSheet = true; });
+
             }
         }
 
@@ -120,7 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
                     {
-                        
+
                         var lenght = new FileInfo(result.FullPath).Length;
                         double LenghtInKb = lenght / 1024;
                         double LenInMb = LenghtInKb / 1024;
@@ -133,8 +167,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             IsShowMsgView = true;
                         }
                         else if (ReportUloadedFiles != null && ReportUloadedFiles.Count >= 0 && ReportUloadedFiles.Count <= 5)
-                        { 
+                        {
                             var stream = await result.OpenReadAsync();
+                            //var file = new File("profilePicture", "img.png", new StreamContent(mediaFile.GetStream()));
                             string content = ConvertToBase64(stream);
                             Ticketfile ticketfile = new Ticketfile();
                             ticketfile.filecontent = content;

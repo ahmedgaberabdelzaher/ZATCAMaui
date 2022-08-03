@@ -11,7 +11,8 @@
     <Color x:Key="PrimaryGradient">#e83f94</Color>
     <Color x:Key="PrimaryLight">#ffe8f4</Color>
     <Color x:Key="SecondaryGradient">#7644ad</Color>
-    <Color x:Key="Secondary">#042e66</Color><!--d54381-->
+    <Color x:Key="Secondary">#042e66</Color>
+    <!--  d54381  -->
     <Color x:Key="Green">#7ed321</Color>
     <Color x:Key="Red">#ff4a4a</Color>
     <Color x:Key="Orange">#0996d4</Color>
@@ -28,9 +29,9 @@
     <Color x:Key="Gray-900">#333942</Color>
     <Color x:Key="Gray-Black">#000000</Color>
     <Color x:Key="Gray-White">#ffffff</Color>
-    <x:String x:Key="LargeLabelTest"></x:String>
+    <x:String x:Key="LargeLabelTest" />
     <Style x:Key="DummyStyle" TargetType="Label">
-        <Setter Property="FontFamily" Value="{DynamicResource LargeLabelTest}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource LargeLabelTest}" />
     </Style>
     <OnPlatform x:Key="FontIcons" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
@@ -41,7 +42,7 @@
     </OnPlatform>
     <OnPlatform x:Key="SomarSemiBold" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold"/>
+            <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
             <On Platform="iOS" Value="Somar-Bold" />
             <On Platform="UWP" Value="Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
@@ -83,7 +84,8 @@
     </OnPlatform>
     <OnPlatform x:Key="SomarMedium-en" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" /><!--SSTArabic-Medium-->
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" />
+            <!--  SSTArabic-Medium  -->
             <On Platform="iOS" Value="Somar-SemiBold" />
             <On Platform="UWP" Value="Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
@@ -126,8 +128,8 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_BOLD" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="Somar-Bold.otf#Somar-Bold" />
-            
-              <On Platform="iOS" Value="Somar-Bold" />
+
+            <On Platform="iOS" Value="Somar-Bold" />
             <On Platform="UWP" Value="Assets/Somar-Bold.otf#Somar-Bold" />
         </OnPlatform.Platforms>
     </OnPlatform>
@@ -140,15 +142,16 @@
     </OnPlatform>
     <OnPlatform x:Key="GAZT_English_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
-            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" /> <!--SSTArabic-Medium-->
-               <On Platform="iOS" Value="Somar-SemiBold" />
+            <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" /> 
+            <!--  SSTArabic-Medium  -->
+            <On Platform="iOS" Value="Somar-SemiBold" />
             <On Platform="UWP" Value="Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
     </OnPlatform>
     <OnPlatform x:Key="GAZT_Arabic_FONT_MEDIUM" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="Somar-SemiBold.otf#Somar-SemiBold" />
-            
+
             <On Platform="iOS" Value="Somar-SemiBold" />
             <On Platform="UWP" Value="Assets/Somar-SemiBold#Somar-SemiBold" />
         </OnPlatform.Platforms>
@@ -163,12 +166,12 @@
     <OnPlatform x:Key="GAZT_Arabic_FONT_REGULAR" x:TypeArguments="x:String">
         <OnPlatform.Platforms>
             <On Platform="Android" Value="Somar-Light.otf#Somar-Light" />
-            
+
             <On Platform="iOS" Value="Somar-Light" />
             <On Platform="UWP" Value="Assets/Somar-Light.otf#Somar-Light" />
         </OnPlatform.Platforms>
     </OnPlatform>
-    <Style x:Key="GAZT_FONT_BOLD" TargetType="Label"></Style>
-    <Style x:Key="GAZT_FONT_MEDIUM" TargetType="Label"></Style>
-    <Style x:Key="GAZT_FONT_REGULAR" TargetType="Label"></Style>
+    <Style x:Key="GAZT_FONT_BOLD" TargetType="Label" />
+    <Style x:Key="GAZT_FONT_MEDIUM" TargetType="Label" />
+    <Style x:Key="GAZT_FONT_REGULAR" TargetType="Label" />
 </ResourceDictionary>

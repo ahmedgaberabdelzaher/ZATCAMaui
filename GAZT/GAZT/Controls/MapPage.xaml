@@ -1,56 +1,59 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
+    x:Class="EGAZT.Controls.MapPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"		
-	xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"	
-	xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-    x:Class="EGAZT.Controls.MapPage">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
- 	<ContentView.Resources>
-		<ResourceDictionary>
-			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-				<ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-			</ResourceDictionary.MergedDictionaries>
-		</ResourceDictionary>
-	</ContentView.Resources>
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
 
-	<Grid  VerticalOptions="EndAndExpand" >
+    <Grid VerticalOptions="EndAndExpand">
 
-        <yummy:PancakeView  Style="{StaticResource CommonTopCurves}"
-							CornerRadius="15,15,0,0"
-							Padding="0"
-							HeightRequest="400"
-							VerticalOptions="EndAndExpand"
-							BackgroundColor="White">
+        <yummy:PancakeView
+            Padding="0"
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            HeightRequest="400"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
 
-			<gmaps:Map MapType="Street"
-					  x:Name="map"
-					  HasRotationEnabled="True"
-                      HasScrollEnabled="True"
-                      HasZoomEnabled="True"
-					  MyLocationEnabled="True"
-					  IsShowingUser="True"
-                      IsIndoorEnabled="True"
-					  MapClicked="map_MapClicked"/>
+            <gmaps:Map
+                x:Name="map"
+                HasRotationEnabled="True"
+                HasScrollEnabled="True"
+                HasZoomEnabled="True"
+                IsIndoorEnabled="True"
+                IsShowingUser="True"
+                MapClicked="map_MapClicked"
+                MapType="Street"
+                MyLocationEnabled="True" />
 
-		</yummy:PancakeView>
+        </yummy:PancakeView>
 
-		<Image Source="CloseIcon"
-			   Aspect="AspectFit"
-			   WidthRequest="25"
-			   HeightRequest="25"
-			   Margin="10"
-			   VerticalOptions="StartAndExpand"
-			   HorizontalOptions="StartAndExpand">
+        <Image
+            Margin="10"
+            Aspect="AspectFit"
+            HeightRequest="25"
+            HorizontalOptions="StartAndExpand"
+            Source="CloseIcon"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="25">
 
-			<Image.GestureRecognizers >
-			<TapGestureRecognizer Command="{Binding CloseMapCommand}"/>
-			</Image.GestureRecognizers>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseMapCommand}" />
+            </Image.GestureRecognizers>
 
-		</Image>
+        </Image>
 
-	</Grid>
+    </Grid>
 </ContentView>
 
 

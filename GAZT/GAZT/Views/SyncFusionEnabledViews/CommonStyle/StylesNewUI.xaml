@@ -5,14 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl"
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:custom1="clr-namespace:GAZT.CustomControl" 
-    xmlns:custom="clr-namespace:GAZT"
     xmlns:sfCardView="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:syncfusionListview="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-      xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" >
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
     <!--#region Colors-->
 
@@ -32,7 +32,7 @@
 
 
 
- 
+
 
     <!--#endregion-->
 
@@ -84,7 +84,7 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
     </Style>
 
-    <!-- Label Styles which is inside the frame and used as a button-->
+    <!--  Label Styles which is inside the frame and used as a button  -->
 
     <Style x:Key="CustomButtonTextStyle" TargetType="Label">
         <Setter Property="TextColor" Value="#042e66" />
@@ -114,7 +114,7 @@
     <Style x:Key="PageTitleBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
-       <Setter Property="LineHeight" Value="{OnPlatform Android=1.4,Default=.7}"/>
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.4, Default=.7}" />
         <Setter Property="FontSize" Value="24" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
@@ -144,7 +144,7 @@
 
     <!--#region Section Titles  Labels-->
     <Style x:Key="SectionTitleBlack" TargetType="Label">
-        <!--TODO-->
+        <!--  TODO  -->
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
         <Setter Property="FontSize" Value="17" />
@@ -165,19 +165,19 @@
         <Setter Property="FontSize" Value="17" />
     </Style>
     <Style x:Key="SectionTitleGrey" TargetType="Label">
-        <!--TODO-->
+        <!--  TODO  -->
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
         <Setter Property="FontSize" Value="18" />
     </Style>
     <Style x:Key="SectionTitleSmallMediumBlack" TargetType="Label">
-        <!--TODO-->
+        <!--  TODO  -->
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
     <Style x:Key="SectionTitleSmallMediumGrey" TargetType="Label">
-        <!--TODO-->
+        <!--  TODO  -->
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
         <Setter Property="FontSize" Value="16" />
@@ -203,7 +203,7 @@
     <!--#endregion-->
 
     <!--#region Value  Labels-->
-    <!--Changed the font from 16 to 14 : value label-->
+    <!--  Changed the font from 16 to 14 : value label  -->
     <Style x:Key="ValueLabelBlack" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
@@ -264,7 +264,7 @@
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="16" />
     </Style>
-     <Style x:Key="TCBodyLabelGrey" TargetType="Label">
+    <Style x:Key="TCBodyLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="12" />
@@ -303,7 +303,7 @@
         <!--<Setter Property="LineHeight" Value="16" />-->
         <Setter Property="FontSize" Value="12" />
     </Style>
-   
+
     <Style x:Key="CaptionLabelWhite" TargetType="Label">
         <Setter Property="TextColor" Value="White" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
@@ -312,14 +312,14 @@
     <!--#endregion-->
 
     <!--#endregion-->
-    <!--Tax payer profile -->
+    <!--  Tax payer profile  -->
     <Style x:Key="TPProfileLabelBlackBold" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
         <Setter Property="FontSize" Value="18" />
     </Style>
 
-    <!--Account Statements-->
+    <!--  Account Statements  -->
     <Color x:Key="BILLED">#FCE087</Color>
     <Color x:Key="BILLED_DUE">#E52027</Color>
     <Color x:Key="CLEARED">#99C97B</Color>
@@ -328,19 +328,19 @@
     <Color x:Key="UNDERREVIEW">#FCE087</Color>
     <Color x:Key="TRANSFERRED">#99C97B</Color>
     <Color x:Key="REFUNDED">#99C97B</Color>
-    <!--Account Statements-->
-    <!-- SST Arabic Bold.ttf -->
-    <OnPlatform x:TypeArguments="x:String" x:Key="SomarBold">
+    <!--  Account Statements  -->
+    <!--  SST Arabic Bold.ttf  -->
+    <OnPlatform x:Key="SomarBold" x:TypeArguments="x:String">
         <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" />
         <On Platform="iOS" Value="Somar-SemiBold" />
     </OnPlatform>
 
-    <OnPlatform x:TypeArguments="x:String" x:Key="SomarSemiBold">
+    <OnPlatform x:Key="SomarSemiBold" x:TypeArguments="x:String">
         <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" />
         <On Platform="iOS" Value="Somar-SemiBold" />
     </OnPlatform>
 
-    <!--Button-->
+    <!--  Button  -->
 
 
     <Style x:Key="InputTableGridStyle" TargetType="Grid">
@@ -351,7 +351,7 @@
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="8" />
-        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Margin" Value="10" />
         <Setter Property="HasShadow" Value="False" />
     </Style>
     <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
@@ -387,19 +387,19 @@
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="HasShadow" Value="False" />
-        <Setter Property="HeightRequest" Value="56"/>
-        <Setter Property="WidthRequest" Value="366"/>
+        <Setter Property="HeightRequest" Value="56" />
+        <Setter Property="WidthRequest" Value="366" />
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
     </Style>
-       <Style x:Key="GreyBorderFrameWithShadowSupportPageWithoutHeighandWidth" TargetType="border:SfBorder">
+    <Style x:Key="GreyBorderFrameWithShadowSupportPageWithoutHeighandWidth" TargetType="border:SfBorder">
         <!--<Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="HasShadow" Value="False" />
- <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
         <Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />
     </Style>
@@ -430,21 +430,21 @@
         <Setter Property="WidthRequest" Value="171" />
     </Style>
 
-    <Style x:Key="InputTableEntryLayoutStyle"  TargetType="Entry">
+    <Style x:Key="InputTableEntryLayoutStyle" TargetType="Entry">
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <!--<Setter Property="Margin" Value="15,0,15,0"/>-->
-        <Setter Property="FontSize" Value="Small"/>
+        <Setter Property="FontSize" Value="Small" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <!--<Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}"/>-->
         <Setter Property="Margin" Value="10,0,10,0" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
     </Style>
 
     <Style x:Key="InputTableLableStyleForSAR" TargetType="Label">
-        <!-- Medium font-->
+        <!--  Medium font  -->
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
@@ -461,7 +461,7 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Margin" Value="0" />
     </Style>
-       <Style x:Key="InputTableTextInputLayoutStyleWuthoutHeighandWidth" TargetType="inputLayout:SfTextInputLayout">
+    <Style x:Key="InputTableTextInputLayoutStyleWuthoutHeighandWidth" TargetType="inputLayout:SfTextInputLayout">
         <Setter Property="Margin" Value="10,-6,10,-6" />
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="UnfocusedColor" Value="#B1B1B1" />
@@ -469,7 +469,7 @@
         <Setter Property="FocusedColor" Value="{StaticResource Primary}" />
         <Setter Property="ErrorColor" Value="#B00020" />
         <Setter Property="HasError" Value="False" />
-   
+
     </Style>
     <Style x:Key="NeutralGrayOpacity90BoxView" TargetType="BoxView">
         <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
@@ -494,70 +494,70 @@
         <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
     </Style>
 
-    <!--Calendar Picker Styles-->
+    <!--  Calendar Picker Styles  -->
     <Style x:Key="CalendarPickerStyle" TargetType="custom1:CustomDatePicker">
         <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="HeaderBackgroundColor" Value="Transparent"/>
-        <Setter Property="SelectionBackgroundColor"  Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="ShowFooter" Value="False"/>
-        <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ShowColumnHeader" Value="True"/>
-        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent"/>
-        <Setter Property="ColumnHeaderHeight" Value="40"/>
-        <Setter Property="PickerMode" Value="Default"/>
-        <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
-        <Setter Property="ColumnHeaderFontSize" Value="16"/>
-        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="SelectedItemFontSize" Value="16"/>
-        <Setter Property="BorderColor" Value="Transparent"/>
-        <Setter Property="HeightRequest" Value="250"/>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeaderBackgroundColor" Value="Transparent" />
+        <Setter Property="SelectionBackgroundColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="ShowFooter" Value="False" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="ShowColumnHeader" Value="True" />
+        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent" />
+        <Setter Property="ColumnHeaderHeight" Value="40" />
+        <Setter Property="PickerMode" Value="Default" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="ColumnHeaderFontAttribute" Value="Bold" />
+        <Setter Property="ColumnHeaderFontSize" Value="16" />
+        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="SelectedItemFontSize" Value="16" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="250" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
 
-    <!--Picker Style-->
+    <!--  Picker Style  -->
     <Style x:Key="PickerStyle" TargetType="syncfusion:SfPicker">
         <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
-        <Setter Property="BackgroundColor" Value="Transparent"/>
-        <Setter Property="HeaderBackgroundColor" Value="Transparent"/>
-        <Setter Property="SelectionBackgroundColor"  Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="ShowFooter" Value="False"/>
-        <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ShowColumnHeader" Value="True"/>
-        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent"/>
-        <Setter Property="ColumnHeaderHeight" Value="0"/>
-        <Setter Property="PickerMode" Value="Default"/>
-        <Setter Property="ShowHeader" Value="False"/>
-        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="ColumnHeaderFontAttribute" Value="Bold"/>
-        <Setter Property="ColumnHeaderFontSize" Value="16"/>
-        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}"/>
-        <Setter Property="SelectedItemFontSize" Value="16"/>
-        <Setter Property="BorderColor" Value="Transparent"/>
-        <Setter Property="HeightRequest" Value="200"/>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="HeaderBackgroundColor" Value="Transparent" />
+        <Setter Property="SelectionBackgroundColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="ShowFooter" Value="False" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="ShowColumnHeader" Value="True" />
+        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent" />
+        <Setter Property="ColumnHeaderHeight" Value="0" />
+        <Setter Property="PickerMode" Value="Default" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="ColumnHeaderFontAttribute" Value="Bold" />
+        <Setter Property="ColumnHeaderFontSize" Value="16" />
+        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}" />
+        <Setter Property="SelectedItemFontSize" Value="16" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="HeightRequest" Value="200" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
 
     <Style x:Key="DefaultEntry" TargetType="Entry">
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="HeightRequest" Value="48"/>
-        <Setter Property="WidthRequest" Value="171"/>
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="WidthRequest" Value="171" />
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
 
     </Style>
-      <Style x:Key="DefaultEntryWithoutHeigh"  TargetType="Entry">
+    <Style x:Key="DefaultEntryWithoutHeigh" TargetType="Entry">
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="15" />
-          <Setter Property="HeightRequest" Value="48"/>
-    <Setter Property="VerticalOptions" Value="FillAndExpand"></Setter>
-        <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
@@ -575,46 +575,46 @@
     </Style>
 
 
-    <!--Styles for Onboarding-->
+    <!--  Styles for Onboarding  -->
 
     <Style x:Key="SfButtonStyleForOnbBoarding" TargetType="buttons:SfButton">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-        <Setter Property="VerticalOptions" Value="EndAndExpand"/>
-        <Setter Property="Margin" Value="0,10,0,24"/>
-        <Setter Property="CornerRadius" Value="20"/>
-        <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="WidthRequest" Value="245"/>
-        <Setter Property="HeightRequest" Value="48"/>
-        <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
-        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}"/>
-        <!--Value="{StaticResource Gray-White}"/>-->
-        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Margin" Value="0,10,0,24" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="WidthRequest" Value="245" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+        <!--  Value="{StaticResource Gray-White}"/>  -->
+        <Setter Property="TextColor" Value="White" />
     </Style>
 
     <Style x:Key="SfLabelStyleForOnboarding" TargetType="Label">
-        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
         <Setter Property="FontSize" Value="28" />
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
-        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
+        <Setter Property="TextColor" Value="White" />
     </Style>
 
     <Style x:Key="SfLabelTextStyleForOnboarding" TargetType="Label">
-        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="16" />
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25,Default=-1}"/>
-        <Setter Property="TextColor" Value="White"/>
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
+        <Setter Property="TextColor" Value="White" />
     </Style>
     <Style x:Key="SfGradientStyleForOnbBoarding" TargetType="gradient:SfGradientView">
         <Setter Property="BackgroundBrush">
             <Setter.Value>
                 <gradient:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                     <gradient:SfLinearGradientBrush.GradientStops>
-                        <gradient:SfGradientStop Color="Red" Offset="0.0" />
-                        <gradient:SfGradientStop Color="{StaticResource Primary}" Offset="0.0" />
+                        <gradient:SfGradientStop Offset="0.0" Color="Red" />
+                        <gradient:SfGradientStop Offset="0.0" Color="{StaticResource Primary}" />
                     </gradient:SfLinearGradientBrush.GradientStops>
                 </gradient:SfLinearGradientBrush>
             </Setter.Value>
@@ -623,22 +623,22 @@
 
     <Style x:Key="SFOnboardingCenterImage" TargetType="Image">
 
-        <Setter Property="WidthRequest" Value="288"/>
-        <Setter Property="HeightRequest" Value="318"/>
+        <Setter Property="WidthRequest" Value="288" />
+        <Setter Property="HeightRequest" Value="318" />
 
     </Style>
-    <!--Styles for Onboarding-->
+    <!--  Styles for Onboarding  -->
     <Style x:Key="SFQuickActionsCloseImage" TargetType="Image">
 
-        <Setter Property="WidthRequest" Value="414"/>
-        <Setter Property="HeightRequest" Value="88"/>
+        <Setter Property="WidthRequest" Value="414" />
+        <Setter Property="HeightRequest" Value="88" />
 
     </Style>
-    <!--#Styles for New Design R2-->
+    <!--  #Styles for New Design R2  -->
 
     <Style x:Key="SfStyleForZakatPlanGreen" TargetType="Frame">
 
-        <Setter Property="BackgroundColor" Value="{StaticResource TiffanyBG}"/>
+        <Setter Property="BackgroundColor" Value="{StaticResource TiffanyBG}" />
 
     </Style>
     <Style x:Key="ValueLabelWhiteBold" TargetType="Label">
@@ -684,9 +684,9 @@
         <Setter Property="VerticalOptions" Value="EndAndExpand" />
         <Setter Property="HorizontalOptions" Value="StartAndExpand" />
     </Style>
-    
+
     <Style x:Key="SFTaxPayerProfile" TargetType="StackLayout">
-        <Setter Property="HeightRequest" Value="80"/>
+        <Setter Property="HeightRequest" Value="80" />
     </Style>
     <!--#endregion-->
 
@@ -729,7 +729,7 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HeightRequest" Value="32" />
         <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
-        <Setter Property="ChipBorderWidth" Value="1"/>
+        <Setter Property="ChipBorderWidth" Value="1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="SelectedChipBackgroundColor" Value="#1A0996d4" />
@@ -740,14 +740,14 @@
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HeightRequest" Value="32" />
         <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
-        <Setter Property="ChipBorderWidth" Value="1"/>
+        <Setter Property="ChipBorderWidth" Value="1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-       
+
     </Style>
 
     <!--#endregion-->
-    <!--#region Taxpayer Correspondence -->
+    <!--#region Taxpayer Correspondence-->
 
     <Style x:Key="TPCorrCaptionLabelGrey" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
@@ -756,7 +756,7 @@
     </Style>
     <!--#endregion-->
 
-    <!--#region Component Styles -->
+    <!--#region Component Styles-->
 
     <Style x:Key="ComponentHeaderBlackBold" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
@@ -788,7 +788,7 @@
 
     <!--#endregion-->
 
-    <!--#region Checkbox -->
+    <!--#region Checkbox-->
 
     <Style x:Key="CheckboxHeightWidth32" TargetType="ContentView">
         <Setter Property="HeightRequest" Value="25" />
@@ -798,13 +798,13 @@
         <Setter Property="HorizontalTextAlignment" Value="Start" />
         <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
         <Setter Property="FontSize" Value="15" />
-        <Setter Property="HeightRequest" Value="48"/>
+        <Setter Property="HeightRequest" Value="48" />
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
 
 
     </Style>
-       <Style x:Key="SectionTitleBlackBold28" TargetType="Label">
+    <Style x:Key="SectionTitleBlackBold28" TargetType="Label">
         <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
         <Setter Property="FontSize" Value="22" />
