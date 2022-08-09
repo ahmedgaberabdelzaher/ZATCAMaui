@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.SubmitReport.ReportSuccessPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                    <Style x:Key="ArrowImage" TargetType="Image">
+                        <Setter Property="HeightRequest" Value="30" />
+                        <Setter Property="WidthRequest" Value="30" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowDefinitions="2.5*,*">
+
+            <!--#region Header-->
+            <StackLayout>
+
+                <!--  Title and Back  -->
+                <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
+
+                    <StackLayout>
+                        <!--  Back Button  -->
+                        <Image
+                            HorizontalOptions="Start"
+                            Rotation="180"
+                            Source="arrowLeftwhite.png"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <!--  Header Label  -->
+                    <custom:CustomLabel
+                        Grid.Column="1"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SectionTitleWhiteBold}"
+                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <!--  Success Icon and Msg  -->
+                <StackLayout
+                    HorizontalOptions="Start"
+                    Spacing="30"
+                    VerticalOptions="CenterAndExpand">
+
+                    <!--  Success icon  -->
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="150"
+                        Source="Forget_ic_success"
+                        WidthRequest="150" />
+
+                    <!--  Success Msg1 Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static ResourceManager:AppResources.ReportSentSuccess}"
+                        TextColor="White" />
+
+                    <!--  Success Msg2 Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.ReportSuccessMsg}"
+                        TextColor="White" />
+                </StackLayout>
+
+
+            </StackLayout>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+
+                <!--  ReportNote Frame  -->
+                <yummy:PancakeView
+                    Margin="0,15"
+                    CornerRadius="15"
+                    Shadow="{yummy:ShadowMarkup Color=#FF0000,
+                                                Offset='0,0'}"
+                    Style="{StaticResource CommonTopCurves}"
+                    VerticalOptions="Start">
+
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+
+                        <!--  ReportNumber Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+                        <!--  Report Number Result Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding ReportNumberResult}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+                        <!--  Report icon  -->
+                        <Image
+                            HorizontalOptions="End"
+                            Source="zakat_copy"
+                            Style="{StaticResource SmallIcon}" />
+
+                    </StackLayout>
+                </yummy:PancakeView>
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -6621,6 +6621,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please fill the missing fields.
+        /// </summary>
+        public static string InvalidValue {
+            get {
+                return ResourceManager.GetString("InvalidValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrong verification code.
         /// </summary>
         public static string Invalidverificationcodeentered {
@@ -9675,6 +9684,15 @@ namespace EGAZT {
         public static string Reportsubmittedsuccessfully {
             get {
                 return ResourceManager.GetString("Reportsubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We thank you for your cooperation with the Zakat, Tax and Customs Authority. We will respond as soon as possible.
+        /// </summary>
+        public static string ReportSuccessMsg {
+            get {
+                return ResourceManager.GetString("ReportSuccessMsg", resourceCulture);
             }
         }
         
@@ -13855,6 +13873,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Violation Date.
+        /// </summary>
+        public static string ViolationDate {
+            get {
+                return ResourceManager.GetString("ViolationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reason for void.
         /// </summary>
         public static string VoidReasonHint {
@@ -14895,6 +14922,15 @@ namespace EGAZT {
         public static string Word {
             get {
                 return ResourceManager.GetString("Word", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company business activity.
+        /// </summary>
+        public static string WorkType {
+            get {
+                return ResourceManager.GetString("WorkType", resourceCulture);
             }
         }
         

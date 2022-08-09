@@ -2842,6 +2842,7 @@ namespace EGAZT
             navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
+            navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
             #endregion
 
             return navigationService;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -43,6 +42,23 @@ namespace EGAZT.Views.NewDesign.SubmitReport
 
                 throw;
             }
+        }
+
+        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        {
+            viewModel.SubmitReport.HasViolationDateError = false;
+        }
+
+        private void reportReportDetailsEntry_Focused(object sender, FocusEventArgs e)
+        {
+            //var element = (GAZTBorderlessEditor)sender;
+            //if (element != null && string.IsNullOrWhiteSpace(element.Text))
+            //{
+            //    Device.BeginInvokeOnMainThread(async () => {
+            //        await Task.Delay(1000);
+            //        element.Unfocus();
+            //    });
+            //}
         }
     }
 }

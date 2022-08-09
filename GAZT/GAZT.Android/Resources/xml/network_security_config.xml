@@ -1,9 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
-     <debug-overrides>
-         <trust-anchors>
-            <certificates src="@raw/dzithqsccm2ca"/>
-            <certificates src="@raw/gaztca"/>
-         </trust-anchors>
-     </debug-overrides>
+  <debug-overrides>
+    <trust-anchors>
+      <certificates src="@raw/dzithqsccm2ca"/>
+      <certificates src="@raw/gaztca"/>
+    </trust-anchors>
+  </debug-overrides>
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">172.50.15.39</domain>
+    <!-- Debug port -->
+    <domain includeSubdomains="true">8080</domain>
+  </domain-config>
 </network-security-config>

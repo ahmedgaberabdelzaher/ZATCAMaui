@@ -179,7 +179,6 @@
 		<Folder Include="Models\TahqaqModels\" />
 		<Folder Include="Views\NewDesign\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\VAT\" />
-		<Folder Include="Views\NewDesign\SubmitReport\" />
 		<Folder Include="ViewModel\NewDesignViewModel\SubmitReport\" />
 	</ItemGroup>
 	<ItemGroup>
@@ -348,6 +347,9 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Views\NewDesign\SubmitReport\ReportSuccessPage.xaml">
+		  <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\SupportPages\SupportPageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>

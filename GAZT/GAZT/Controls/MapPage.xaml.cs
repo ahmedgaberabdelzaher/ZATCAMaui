@@ -39,6 +39,8 @@ namespace EGAZT.Controls
                     Geocoder geoCoder = new Geocoder();
 
                     Position position = new Position(location.Latitude, location.Longitude);
+                    viewModel.SubmitReport.Longitude = location.Longitude;
+                    viewModel.SubmitReport.Latitude = location.Latitude;
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
                     viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
                     var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
