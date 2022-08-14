@@ -14,5 +14,14 @@ namespace EGAZT.Views.NewDesign.VAT
             BindingContext = viewModel;
             InitializeComponent();
         }
+
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            if (viewModel.IsConsumerCalc)
+            {
+                viewModel.Totaltaxablepurchases = ConsumerTotaltaxablepurchases.Text;
+                viewModel.CalculateTaxCommand.Execute(null);
+            }
+        }
     }
 }

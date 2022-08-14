@@ -3,6 +3,7 @@ using GAZT.Helper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -90,6 +91,11 @@ namespace EGAZT.Helper
                             var JsonObject = JsonConvert.DeserializeObject<T>(responseJson);
                             return Tuple.Create(JsonObject, true, "");
                         }
+                        else if (response.StatusCode==System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Tuple.Create((T)Activator.CreateInstance(typeof(T)), true, "400");
+
+                        }
                         else
                         {
                             return Tuple.Create((T)Activator.CreateInstance(typeof(T)), false, AppResources.ServerError);
@@ -121,7 +127,7 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
                     var client = new System.Net.Http.HttpClient();
-                    //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);
+                     client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
                     /*
@@ -140,12 +146,16 @@ namespace EGAZT.Helper
                     }
                      jobject = JsonConvert.SerializeObject(Data);
                     var JsonObject =jobject;
+                    Debug.WriteLine(JsonObject);
 
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
                    // var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
                     if (response != null)
                     {
+                        Debug.WriteLine(requestUrl);
+                        Debug.WriteLine(response);
+                        Debug.WriteLine(response.StatusCode);
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();

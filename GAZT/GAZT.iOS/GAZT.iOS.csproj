@@ -161,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>-gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
-    <CodesignKey>Apple Development: Lama M (75YHGYCFP2)</CodesignKey>
+    <CodesignProvision>ZatcaAppStore</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
@@ -375,6 +375,9 @@
     <BundleResource Include="Resources\UnSelectedMerchant.png" />
     <BundleResource Include="Resources\UnSelectedMerchant%402x.png" />
     <BundleResource Include="Resources\UnSelectedMerchant%403x.png" />
+    <BundleResource Include="Resources\Path.png" />
+    <BundleResource Include="Resources\Path%402x.png" />
+    <BundleResource Include="Resources\Path%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -651,9 +654,6 @@
     <PackageReference Include="Syncfusion.Xamarin.Core">
       <Version>20.1.0.61</Version>
     </PackageReference>
-    <PackageReference Include="ZXing.Net.Mobile.Forms">
-      <Version>2.4.1</Version>
-    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
       <Version>20.1.0.61</Version>
     </PackageReference>
@@ -677,6 +677,9 @@
     </PackageReference>
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.2.0.564</Version>
+    </PackageReference>
+    <PackageReference Include="ZXing.Net.MobileX.Forms">
+      <Version>3.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

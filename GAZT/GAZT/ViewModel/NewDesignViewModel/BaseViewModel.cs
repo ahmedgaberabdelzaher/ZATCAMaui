@@ -64,7 +64,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         public FlowDirection AppDirection
         {
-            get { return appDirection; }
+            get
+            {
+                if (!App.IsArabic)
+                {
+                    appDirection = FlowDirection.LeftToRight;
+                }
+                else
+                {
+                    appDirection = FlowDirection.RightToLeft;
+                }
+                return appDirection;
+            }
 
             set
             {

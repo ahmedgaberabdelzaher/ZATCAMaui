@@ -206,10 +206,10 @@ namespace GAZT.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            for (int i = 0; i < permissions.Length; i++)
+           // PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+          /*   for (int i = 0; i < permissions.Length; i++)
             {
-                if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)
+               if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
@@ -217,8 +217,8 @@ namespace GAZT.Droid
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
-            }
-
+            }*/
+           
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }

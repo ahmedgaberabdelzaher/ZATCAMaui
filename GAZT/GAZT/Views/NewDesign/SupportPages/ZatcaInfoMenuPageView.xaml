@@ -77,7 +77,7 @@
                        <Frame IsVisible="{x:Static settings:PageSettings.IsIncludeLapFees}" CornerRadius="14" Padding="5" HasShadow="False" BorderColor="{StaticResource NeutralLightGrey}">
                                                            <StackLayout Orientation="Horizontal" Spacing="10" Padding="16,8,16,8">
                                     <Image Source="ic_menu_Tax_check.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
+                                    <custom:CustomLabel LineSpacing="1" Text="{x:Static ResourceManager:AppResources.InquireaboutPaymentofInsuranceTitle}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center"/>
                                     <Image Source="arrowRight.png" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Style="{DynamicResource BackButtonArrow}"/>
                                 </StackLayout>
                               <Frame.GestureRecognizers>

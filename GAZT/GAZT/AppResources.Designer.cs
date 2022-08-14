@@ -275,7 +275,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear taxpayer, when calculating the amendments, found that your
-        ///amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal.
+        ///    amendments do not match what was calculated by the General Authority for Zakat and Income, and in case if you want to continue it will be created as an appeal.
         /// </summary>
         public static string AmendmentsDoNotMatchText {
             get {
@@ -727,7 +727,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Please seek accuracy, objectivity, and clarity and avoid personal disputes, ambiguity symbols and signs, or providing incomplete information. Please provide all the detailed information that you have and attach the evidence that proves the report.
         ///
-        ///Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin).
+        ///    Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin).
         /// </summary>
         public static string BalaghHint {
             get {
@@ -1357,6 +1357,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Correct.
+        /// </summary>
+        public static string Correct {
+            get {
+                return ResourceManager.GetString("Correct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct tax invoice.
+        /// </summary>
+        public static string Correcttaxinvoice {
+            get {
+                return ResourceManager.GetString("Correcttaxinvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Correct tax stamp.
         /// </summary>
         public static string Correcttaxstamp {
@@ -1808,10 +1826,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer, 
-        ///Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
-        ///• Trial balance (TB) for the submitted return extracted from the system in PDF format which contains: beginning balances, movement, and ending balance for the return period
-        ///• Trial balance (TB) for the submitted return in MS Excel format which contains: beginning balances, movement, and ending balance for the return period
-        ///• Bank account sta [rest of string was truncated]&quot;;.
+        ///    Thank you for submitting your VAT return. Please provide us with the following information for us to be able to process your request as soon as possible
+        ///    • Trial balance (TB) for the submitted return extracted from the system in PDF format which contains: beginning balances, movement, and ending balance for the return period
+        ///    • Trial balance (TB) for the submitted return in MS Excel format which contains: beginning balances, movement, and ending balance for the return period
+        ///    •  [rest of string was truncated]&quot;;.
         /// </summary>
         public static string CreditReturnMsg {
             get {
@@ -1911,7 +1929,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. Must attach a copy of the contract required to release and amounts which disbursed depend on the release letter. The contract should be in Arabic and if it’s in English, an Arabic version must be submitted and approved by certified translation office. 
-        ///2. Must attached a copy of invoices and purchase orders required the release of their amount values..
+        ///    2. Must attached a copy of invoices and purchase orders required the release of their amount values..
         /// </summary>
         public static string CRInstructions {
             get {
@@ -2813,7 +2831,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to The ZAKAT,Tax and Customs Authority underwent several developmental phases and changed its name several times. It was established in 1355 AH / 1936 AD as the &quot;Zakat and Income Bureau&quot;, and then it became the &quot;Zakat and Income Authority&quot; in 1370 AH, and ultimately, the Royal Decree No. (A/133) dated 30/7/1437 AH, specified in Section 11 that the &quot;Zakat and Income Authority&quot; will be converted into the &quot;ZAKAT, Tax and Customs Authority&quot; (ZATCA), and chaired by the Minister of Finance.
         ///
-        ///In accordance with its r [rest of string was truncated]&quot;;.
+        ///    In accordance with i [rest of string was truncated]&quot;;.
         /// </summary>
         public static string DroidAboutUS {
             get {
@@ -2833,9 +2851,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to INFORMATION THE ZAKAT,TAX AND CUSTOMS AUTHORITY MAY COLLECT FROM YOU
         ///
-        ///The ZAKAT,Tax and Customs Authority (&quot;ZATCA&quot;) may collect and process the following information about you:
+        ///    The ZAKAT,Tax and Customs Authority (&quot;ZATCA&quot;) may collect and process the following information about you:
         ///
-        ///Information you give ZATCA: You may give ZATCA information about you by filling in forms and options on the ZATCA&apos;s sites or by corresponding with ZATCA by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send ZATCA an email or report a  [rest of string was truncated]&quot;;.
+        ///    Information you give ZATCA: You may give ZATCA information about you by filling in forms and options on the ZATCA&apos;s sites or by corresponding with ZATCA by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send ZATCA an email or r [rest of string was truncated]&quot;;.
         /// </summary>
         public static string DroidPrivacyPolicy {
             get {
@@ -2855,8 +2873,8 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to In order to ensure the rights of both the taxpayer and the general authority for Zakat and Income, the following should be clarified.
         ///
-        ///This agreement allows access to the site and the consent of the taxpayer and all terms and conditions, in the event of any violations that make the taxpayer legally liable.
-        ///This agreement is subject to update, so the taxpayer is required to keep trace of it and match it..
+        ///    This agreement allows access to the site and the consent of the taxpayer and all terms and conditions, in the event of any violations that make the taxpayer legally liable.
+        ///    This agreement is subject to update, so the taxpayer is required to keep trace of it and match it..
         /// </summary>
         public static string DroidT_CSecOne {
             get {
@@ -6384,6 +6402,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect.
+        /// </summary>
+        public static string Incorrect {
+            get {
+                return ResourceManager.GetString("Incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InCorrect tax invoice.
+        /// </summary>
+        public static string InCorrecttaxinvoice {
+            get {
+                return ResourceManager.GetString("InCorrecttaxinvoice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid tax stamp. Would you like to write a comment regarding this survey?.
         /// </summary>
         public static string Incorrecttaxstamp {
@@ -6555,6 +6591,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to InValid Code.
+        /// </summary>
+        public static string InValidCode {
+            get {
+                return ResourceManager.GetString("InValidCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid email.
         /// </summary>
         public static string InvalidEmail {
@@ -6600,6 +6645,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Thank you for scanning the QR code. QR code information has been transmitted to ZATCA.
+        /// </summary>
+        public static string InvalidQrMessage {
+            get {
+                return ResourceManager.GetString("InvalidQrMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Wrong verification code.
         /// </summary>
         public static string Invalidverificationcodeentered {
@@ -6618,6 +6672,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invoice Amount.
+        /// </summary>
+        public static string InvoiceAmount {
+            get {
+                return ResourceManager.GetString("InvoiceAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invoice Status.
         /// </summary>
         public static string InvoiceStatus {
@@ -6629,7 +6692,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to The ZAKAT,Tax and Customs Authority underwent several developmental phases and changed its name several times. It was established in 1355 AH / 1936 AD as the &quot;Zakat and Income Bureau&quot;, and then it became the &quot;Zakat and Income Authority&quot; in 1370 AH, and ultimately, the Royal Decree No. (A/133) dated 30/7/1437 AH, specified in Section 11 that the &quot;Zakat and Income Authority&quot; will be converted into the &quot;General Authority of Zakat and Tax&quot; (ZATCA), and chaired by the Minister of Finance.
         ///
-        ///In accordance with its [rest of string was truncated]&quot;;.
+        ///    In accordance with [rest of string was truncated]&quot;;.
         /// </summary>
         public static string IosAboutUs {
             get {
@@ -6640,9 +6703,9 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to INFORMATION THE ZAKAT,TAX AND CUSTOMS AUTHORITY MAY COLLECT FROM YOU
         ///
-        ///The ZAKAT,Tax and Customs Authority (&quot;ZATCA&quot;) may collect and process the following information about you:
+        ///    The ZAKAT,Tax and Customs Authority (&quot;ZATCA&quot;) may collect and process the following information about you:
         ///
-        ///Information you give ZATCA: You may give ZATCA information about you by filling in forms and options on the ZATCA&apos;s sites or by corresponding with ZATCA by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send ZATCA an email or report a  [rest of string was truncated]&quot;;.
+        ///    Information you give ZATCA: You may give ZATCA information about you by filling in forms and options on the ZATCA&apos;s sites or by corresponding with ZATCA by phone, e-mail or otherwise. This includes information you provide when you register to use the site (&quot;Site&quot;), set up a user profile, and when you send ZATCA an email or r [rest of string was truncated]&quot;;.
         /// </summary>
         public static string IosPrivacyPolicy {
             get {
@@ -8730,6 +8793,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not a VAT Registered.
+        /// </summary>
+        public static string NotRegistered {
+            get {
+                return ResourceManager.GetString("NotRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number.
         /// </summary>
         public static string Number {
@@ -8794,8 +8866,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. File size should be less than 1 MB
-        ///2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
-        ///3. Maximum no. of allowed attachments are 3..
+        ///    2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
+        ///    3. Maximum no. of allowed attachments are 3..
         /// </summary>
         public static string OldZakatAttachmentTitle {
             get {
@@ -8814,10 +8886,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. Acknowledged that I do not have enough financial liquidity to pay the full amount.
-        ///2. Acknowledged that if I delay in payment of two consecutive installments, ZATCA has the right to cancel the installment plan.
-        ///3. I promise that I provide recent statements to ZATCA for all banking activity accounts and my personal accounts.
-        ///4. ZATCA has the right to modify the amount and the period of the installments as they consider appropriate.
-        ///5. ZATCA has the right to cancel the installment plan in the case of prove [rest of string was truncated]&quot;;.
+        ///    2. Acknowledged that if I delay in payment of two consecutive installments, ZATCA has the right to cancel the installment plan.
+        ///    3. I promise that I provide recent statements to ZATCA for all banking activity accounts and my personal accounts.
+        ///    4. ZATCA has the right to modify the amount and the period of the installments as they consider appropriate.
+        ///    5. ZATCA has the right to cancel the installment plan in t [rest of string was truncated]&quot;;.
         /// </summary>
         public static string OldZakatInstructions {
             get {
@@ -9483,6 +9555,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Registered.
+        /// </summary>
+        public static string Registered {
+            get {
+                return ResourceManager.GetString("Registered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration certificate.
         /// </summary>
         public static string RegistrationCertificate {
@@ -9601,10 +9682,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to This request is not available in
-        ///the Zakat, Tax and Customs
-        ///￼Authority system, please
-        ///￼connect from the request
-        ///￼information and try again.
+        ///    the Zakat, Tax and Customs
+        ///    ￼Authority system, please
+        ///    ￼connect from the request
+        ///    ￼information and try again.
         /// </summary>
         public static string RequestNotFoundMsg {
             get {
@@ -10207,6 +10288,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The total amount plus VAT.
+        /// </summary>
+        public static string ThetotalamountplusVAT {
+            get {
+                return ResourceManager.GetString("ThetotalamountplusVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Stamp.
+        /// </summary>
+        public static string TimeStamp {
+            get {
+                return ResourceManager.GetString("TimeStamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TIN .
         /// </summary>
         public static string TIN {
@@ -10226,9 +10325,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.The maximum nuber of attachments you can upload is 5.
-        ///2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
-        ///3.Recommended settings for the scanner is: 1024 x 745
-        ///4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
+        ///    2.Alert, you must adjust the settings of the scanner so that the compressed file size less than 1MB.
+        ///    3.Recommended settings for the scanner is: 1024 x 745
+        ///    4.Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
         /// </summary>
         public static string TINDeregAttachmentsTitleTwo {
             get {
@@ -11056,6 +11155,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Price Value.
+        /// </summary>
+        public static string TotalPriceValue {
+            get {
+                return ResourceManager.GetString("TotalPriceValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total required to be paid.
         /// </summary>
         public static string TotalRequiredToBePaid {
@@ -11354,7 +11462,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer,
-        ///The account is now unlocked, and the password reset for TIN xxxxxx successfully..
+        ///    The account is now unlocked, and the password reset for TIN xxxxxx successfully..
         /// </summary>
         public static string UnlockAccountPasswordChangedSuccessfully {
             get {
@@ -11413,6 +11521,15 @@ namespace EGAZT {
         public static string UnPaid {
             get {
                 return ResourceManager.GetString("UnPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unregistered Facility.
+        /// </summary>
+        public static string UnregisteredFacility {
+            get {
+                return ResourceManager.GetString("UnregisteredFacility", resourceCulture);
             }
         }
         
@@ -11593,6 +11710,15 @@ namespace EGAZT {
         public static string VATAmendRegistrationFinancialDetailsChangeSection {
             get {
                 return ResourceManager.GetString("VATAmendRegistrationFinancialDetailsChangeSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Amount.
+        /// </summary>
+        public static string VATAmount {
+            get {
+                return ResourceManager.GetString("VATAmount", resourceCulture);
             }
         }
         
@@ -12408,7 +12534,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. File size should be less than 5 MB.
-        ///2. Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls..
+        ///    2. Choose only file with extension Doc, Docx, Jpg, PDF, xlsx, xls..
         /// </summary>
         public static string VATInstalmentsAttachmentTitle {
             get {
@@ -12481,10 +12607,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Kindly read the below instructions before completing the installment agreement form:
-        ///1. Please fill the requested information for each step.
-        ///2. The application cannot be successfully until all of the mandatory fields have been completed.
-        ///3. Taxpayers should ensure that their existing taxpayer details are completed and up to date before submitting their installment agreement form.
-        ///4. Please refer to the FAQ section before filling out the installment agreement form..
+        ///    1. Please fill the requested information for each step.
+        ///    2. The application cannot be successfully until all of the mandatory fields have been completed.
+        ///    3. Taxpayers should ensure that their existing taxpayer details are completed and up to date before submitting their installment agreement form.
+        ///    4. Please refer to the FAQ section before filling out the installment agreement form..
         /// </summary>
         public static string VatInstructions {
             get {
@@ -12620,7 +12746,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period..
+        ///    I acknowledge that the above bank account information is correct and assume full responsibility if the information is wrong. If the refund request fails, I agree to transfer the refund amount to be a Carry Forward balance for the next period..
         /// </summary>
         public static string VATRefundAcknowledgment {
             get {
@@ -12702,11 +12828,11 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.
+        ///        1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.
         ///    
-        ///    2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
+        ///        2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
         ///    
-        ///    3. ZATCA holds the right to open an audit case in order t [rest of string was truncated]&quot;;.
+        ///        3. ZATCA holds the right to open an audit cas [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VATRefundRequestTermsAndConditions {
             get {
@@ -12725,11 +12851,11 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///        Dear Taxpayer, ZATCA may request from you to upload the following information during the review of your refund request:
-        ///1. Trail balance for the return period
-        ///2. Sales list subject to VAT (0%-5%-Exempt)                      
-        ///3. Purchased list subject to VAT (5%, reverse charge)
-        ///    .
+        ///            Dear Taxpayer, ZATCA may request from you to upload the following information during the review of your refund request:
+        ///    1. Trail balance for the return period
+        ///    2. Sales list subject to VAT (0%-5%-Exempt)                      
+        ///    3. Purchased list subject to VAT (5%, reverse charge)
+        ///        .
         /// </summary>
         public static string VATRefundReturnSubmitConfirmation {
             get {
@@ -12883,11 +13009,11 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///    1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.
+        ///        1. It is assumed that the taxpayer has read and understood the Kingdom of Saudi Arabia’s VAT Law and Regulations and all the information provided is, to the best of the taxpayer’s knowledge, true, correct and complete.
         ///    
-        ///    2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
+        ///        2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this refund request.
         ///    
-        ///    3. ZATCA holds the right to open an audit case in order t [rest of string was truncated]&quot;;.
+        ///        3. ZATCA holds the right to open an audit cas [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VATRefundSummaryTermsandConditions {
             get {
@@ -13018,6 +13144,15 @@ namespace EGAZT {
         public static string VATRegistrationDetailsTitle {
             get {
                 return ResourceManager.GetString("VATRegistrationDetailsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Registration Number.
+        /// </summary>
+        public static string VATRegistrationNumber {
+            get {
+                return ResourceManager.GetString("VATRegistrationNumber", resourceCulture);
             }
         }
         
@@ -13482,8 +13617,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. It is assumed that taxpayer has read and understood the Kingdom of Saudi Arbia&apos;s VAT Law and Regulations and all the information provided is, to the best of the taxpayer&apos;s knowledge, true, correct and complete.
-        ///2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.
-        ///3. ZATCA holds the right to audit a business in order to verify that this request is valid,  [rest of string was truncated]&quot;;.
+        ///    2. ZATCA holds the right to request and obtain any financial or administrative information and records of the taxpayer and their business to cross check and verify the information provided in this request.
+        ///    3. ZATCA holds the right to audit a business in order to verify that this request is [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VatTerms {
             get {
@@ -13574,7 +13709,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to In Case you have revenue below SAR40 and want to request for quarterly filing kindly attach evidence that you have been filing for 2 years with a monthly Tax Period and your Revenurs during last 12 months.
-        ///In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding.
+        ///    In Case you want to request for an exception for quarterly filing, Kindly provide your previous 12 months average Days sales Outstanding.
         /// </summary>
         public static string VFCAttachmnetsInfo {
             get {
@@ -13665,10 +13800,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. Check eligibility and review potential consequences of request
-        ///− For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
-        ///Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below 40 million SAR
-        ///− For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
-        ///Taxpayer is required to provide evidence that he h [rest of string was truncated]&quot;;.
+        ///    − For taxpayers &lt;40M SAR annual taxable revenues requesting monthly VAT Tax Period:
+        ///    Taxpayers are eligible without providing further evidence; reverting to a quarterly Tax Period is again possible after having filed 2 years with a monthly Tax Period with the last 12 months revenues being below 40 million SAR
+        ///    − For taxpayers &lt;40M SAR annual taxable revenues requesting quarterly VAT Tax Period:
+        ///    Taxpayer is required to provide ev [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VFCInstructions {
             get {
@@ -13984,8 +14119,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Supporting Evidence and Documents:
-        ///Please provide us with supporting documents to support your reasons for a review.
-        ///Please enter an attachment name before choosing an attachment.
+        ///    Please provide us with supporting documents to support your reasons for a review.
+        ///    Please enter an attachment name before choosing an attachment.
         /// </summary>
         public static string VRHelperText {
             get {
@@ -14031,10 +14166,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.Please fill the requested information for each step.
-        ///2.The request cannot be successfully submitted until all of the mandatory fields have been completed.
-        ///3.Applicants should ensure that they have the reference or request number related to the decision they would like to review.
-        ///4.If you are submitting a review on a penalty related to a specific VAT return, you may be asked to submit a security deposit that includes the VAT due for that period.
-        ///5.Correction penalties and penalties for error in tax return  [rest of string was truncated]&quot;;.
+        ///    2.The request cannot be successfully submitted until all of the mandatory fields have been completed.
+        ///    3.Applicants should ensure that they have the reference or request number related to the decision they would like to review.
+        ///    4.If you are submitting a review on a penalty related to a specific VAT return, you may be asked to submit a security deposit that includes the VAT due for that period.
+        ///    5.Correction penalties and penalties for erro [rest of string was truncated]&quot;;.
         /// </summary>
         public static string VRInstructions {
             get {
@@ -14251,9 +14386,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Accept Terms and Conditions
-        ///I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
-        ///I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
-        ///I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period..
+        ///    I acknowledge to submit the original bank guarantee to the General Authority of Zakat and Taxes within 20 days, bearing in mind that the request will be cancelled automatically in the event of non-compliance.
+        ///    I acknowledge that the bank guarantee provided to the Authority is valid for at least one year and that it is extendable.
+        ///    I acknowledge to clarify in the original bank guarantee the TIN of the company and the objected period..
         /// </summary>
         public static string VRSecurityBankGurrantCheckBoxDesc1 {
             get {
@@ -14866,8 +15001,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. File size should be less than 5 MB
-        ///2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
-        ///3. Maximum no. of allowed attachments are 10..
+        ///    2. Choose only file with extension Doc,Docx,Jpg,PDF,xls,xlsx
+        ///    3. Maximum no. of allowed attachments are 10..
         /// </summary>
         public static string ZakatAttachmentTitle {
             get {
@@ -15867,9 +16002,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. I acknowledge that I do not have sufficient liquidity to pay the full amount.
-        ///2. I pledge to provide the ZAKAT,Tax and Customs Authority &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.
-        ///3. I pledge to provide the ZAKAT,Tax and Customs Authority &amp; Tax with any documents that are requested for the purpose of processing the application.
-        ///4. The ZAKAT,Tax and Customs Authority &amp; Tax has the right to estimate the amount and per [rest of string was truncated]&quot;;.
+        ///    2. I pledge to provide the ZAKAT,Tax and Customs Authority &amp; Tax with all recent bank statements of the business activity, as well as my personal account statements for the past three months.
+        ///    3. I pledge to provide the ZAKAT,Tax and Customs Authority &amp; Tax with any documents that are requested for the purpose of processing the application.
+        ///    4. The ZAKAT,Tax and Customs Authority &amp; Tax has the right to estimate the am [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZakatInstructions {
             get {
@@ -16239,8 +16374,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Attachment(Only One Allowed - Maximum Size 10MB)
-        ///Recommended settings for the scanner are: 1024 x 745
-        ///Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
+        ///    Recommended settings for the scanner are: 1024 x 745
+        ///    Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
         /// </summary>
         public static string ZContractReleaseChooseonlyfilewithextension {
             get {
@@ -16764,9 +16899,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Attachment(Only One Allowed - Maximum Size 10MB)
-        ///Caution, you must adjust the settings of the scanner so that the compressed file size less than 10MB.
-        ///Recommended settings for the scanner are: 1024 x 745
-        ///Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
+        ///    Caution, you must adjust the settings of the scanner so that the compressed file size less than 10MB.
+        ///    Recommended settings for the scanner are: 1024 x 745
+        ///    Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG.
         /// </summary>
         public static string ZOAttachmentsTitleTwo {
             get {
@@ -17110,12 +17245,12 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to 1. Taxpayer can object within 60 days from the notice of assessment or reassessment.
-        ///2. Taxpayer should pay the full undisputed amount (Revised Amount) before objecting.
-        ///3. Input the form bundle number for which objection is to be made.
-        ///4. Click on &quot;Return Details&quot; button and Amend the returns.
-        ///5. Input correct amount in the &quot;Revised Amount&quot; column which taxpayer agrees to pay based on the amended returns.
-        ///6. State reasons for your objections in the section provided.
-        ///7. Provide attachment if required to sup [rest of string was truncated]&quot;;.
+        ///    2. Taxpayer should pay the full undisputed amount (Revised Amount) before objecting.
+        ///    3. Input the form bundle number for which objection is to be made.
+        ///    4. Click on &quot;Return Details&quot; button and Amend the returns.
+        ///    5. Input correct amount in the &quot;Revised Amount&quot; column which taxpayer agrees to pay based on the amended returns.
+        ///    6. State reasons for your objections in the section provided.
+        ///    7. Provide attac [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZOTerms {
             get {
@@ -17413,7 +17548,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Request for Refund Amount is cancelled successfully!
-        ///.
+        ///    .
         /// </summary>
         public static string ZRefundRequestVoid {
             get {
@@ -18395,7 +18530,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • The total amount made on exempt supplies sold in KSA .
-        ///• For example,  Return of exempted goods, bad debt write-off.
+        ///    • For example,  Return of exempted goods, bad debt write-off.
         /// </summary>
         public static string ZToolTipExemptAdjustment {
             get {
@@ -18405,7 +18540,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services supplied during the current period that were exempted and sold in KSA
-        ///• Please refer to the below FAQ URL for the list of exempted goods and services..
+        ///    • Please refer to the below FAQ URL for the list of exempted goods and services..
         /// </summary>
         public static string ZToolTipExemptAmount {
             get {
@@ -18415,7 +18550,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments made to goods and services purchased during previous reporting periods that were exempted and either bought in KSA or imported from a country outside of KSA
-        ///• For example: return of exempt purchases to suppliers.
+        ///    • For example: return of exempt purchases to suppliers.
         /// </summary>
         public static string ZToolTipExemptpurchasesAdjustment {
             get {
@@ -18425,7 +18560,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services purchased during the current period that were exempted and either bought in KSA or imported from a country outside of KSA
-        ///• Please refer to the below FAQ URL for a list of zero rated goods and services..
+        ///    • Please refer to the below FAQ URL for a list of zero rated goods and services..
         /// </summary>
         public static string ZToolTipExemptpurchasesAmount {
             get {
@@ -18435,7 +18570,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of adjustments on supplies related to all goods and services (to be subject to zero rate) exported to GCC VAT implementing countries or countries outside GCC during the previous reporting periods.
-        ///• For example,write off of bad debt on exports reveivables..
+        ///    • For example,write off of bad debt on exports reveivables..
         /// </summary>
         public static string ZToolTipExportsAdjustment {
             get {
@@ -18445,7 +18580,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount related to all goods and services ( to be subject to zero rate) exported to GCC VAT implementing states and countries outside GCC.
-        ///• Please refer to the below FAQ URL for exported goods and services..
+        ///    • Please refer to the below FAQ URL for exported goods and services..
         /// </summary>
         public static string ZToolTipExportsAmount {
             get {
@@ -18482,8 +18617,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
-        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedAmount {
             get {
@@ -18493,8 +18628,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and imported and reverse charged.
-        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedAmount15 {
             get {
@@ -18504,8 +18639,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and imported and reverse charged.
-        ///• Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Reverse charge is where the taxable recipient of goods and services accounts for any VAT due as opposed to the taxable supplier. The customer acts as if he is both the supplier and the recipient for VAT purposes and self-assesses any VAT due.
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedAmount5 {
             get {
@@ -18515,9 +18650,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Under VAT amount display the following:
-        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
-        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
-        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim.
+        ///    • 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///    • No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///    • In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim.
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedVatAmount {
             get {
@@ -18527,9 +18662,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Under VAT amount display the following:
-        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
-        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
-        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
+        ///    • 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///    • No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///    • In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedVatAmount15 {
             get {
@@ -18539,9 +18674,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Under VAT amount display the following:
-        ///• 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
-        ///• No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
-        ///• In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
+        ///    • 100% of input VAT on reverse charged imports can be claimed back only when the input tax related to the reclaim is used for taxable goods and service supplies.
+        ///    • No input VAT can be claimed back for the proportion of reverse charged imports used to make exempt goods and services or not part of the economic activity.
+        ///    • In cases where reverse charged imports are used to make taxable supplies, then appropriate input tax must be deducted from the reclaim..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATaccountedVatAmount5 {
             get {
@@ -18578,7 +18713,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount {
             get {
@@ -18588,7 +18723,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the current period that were standard rated and imported. Designated importers must specify their standard rated imports.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount15 {
             get {
@@ -18598,7 +18733,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods (excluding VAT paid) purchased during the previous periods that were standard rated at 5% and imported. Designated importers must specify their standard rated imports.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipImportssubjecttoVATpaidatcustomsAmount5 {
             get {
@@ -18635,7 +18770,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA
-        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.
+        ///    • For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies.
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAdjustment {
             get {
@@ -18645,7 +18780,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated and bought in KSA.
-        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
+        ///    • For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAdjustment15 {
             get {
@@ -18655,7 +18790,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased that were standard rated at 5% and bought in KSA.
-        ///• For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
+        ///    • For example: return of taxable purchases to suppliers, adjustment to input tax by allocating inputs to taxable and exempt supplies..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAdjustment5 {
             get {
@@ -18665,7 +18800,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAmount {
             get {
@@ -18675,7 +18810,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated and bought in KSA.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAmount15 {
             get {
@@ -18685,7 +18820,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were standard rated at 5% and bought in KSA.
-        ///• Please refer to the below FAQ URL for the list of standard rates goods and services..
+        ///    • Please refer to the below FAQ URL for the list of standard rates goods and services..
         /// </summary>
         public static string ZToolTipStandardrateddomesticpurchasesAmount5 {
             get {
@@ -18695,7 +18830,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables.
+        ///    • For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables.
         /// </summary>
         public static string ZToolTipStandardRatedSalesAdjustment {
             get {
@@ -18705,7 +18840,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
+        ///    • For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAdjustment15 {
             get {
@@ -18715,7 +18850,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
+        ///    • For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAdjustment5 {
             get {
@@ -18726,7 +18861,7 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments subject to 5% rate (excluding VAT paid) made to the previous reporting periods supplies that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
         ///
-        ///• For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
+        ///    • For example, return of goods and services by customers on which you have paid VAT to ZATCA, write off of bad debt on standard rated receivables..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAdjustment5ForNew {
             get {
@@ -18736,7 +18871,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        ///    • Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount {
             get {
@@ -18746,7 +18881,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of standard rated goods and services (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        ///    • Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount15 {
             get {
@@ -18756,7 +18891,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total supplies amount of goods and services subject to 5% VAT rate as per the transitional provisions (excluding VAT paid) supplied during the current period that were sold in KSA, in addition to, nominal supplies and supplies subject to margin scheme.
-        ///• Please refer to the below FAQ URL for standard rated 5% goods and services..
+        ///    • Please refer to the below FAQ URL for standard rated 5% goods and services..
         /// </summary>
         public static string ZToolTipStandardRatedSalesAmount5 {
             get {
@@ -18766,7 +18901,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of supplies adjustments made to previous reporting periods supplies that were zero rated and sold in KSA
-        ///• For example, returned zero rates sales in Saudi Arabia, write off of bad debt on zero rated domestic receivables.
+        ///    • For example, returned zero rates sales in Saudi Arabia, write off of bad debt on zero rated domestic receivables.
         /// </summary>
         public static string ZToolTipZerorateddomesticsalesAdjustment {
             get {
@@ -18776,7 +18911,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of all goods and services supplied during the current period that were zero rated and sold in KSA
-        ///• Please refer to the below FAQ URL for zero rated goods and services..
+        ///    • Please refer to the below FAQ URL for zero rated goods and services..
         /// </summary>
         public static string ZToolTipZerorateddomesticsalesAmount {
             get {
@@ -18786,9 +18921,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of purchases adjustments (excluding VAT paid) made to goods and services purchased during previous reporting periods that were either,
-        /// – Zero rated and purchased in KSA or,
-        /// – Zero rated and imported from a country outside of KSA
-        ///• For example: return of zero taxed purchases to suppliers.
+        ///     – Zero rated and purchased in KSA or,
+        ///     – Zero rated and imported from a country outside of KSA
+        ///    • For example: return of zero taxed purchases to suppliers.
         /// </summary>
         public static string ZToolTipZeroratedpurchasesAdjustment {
             get {
@@ -18798,9 +18933,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to • Total amount of goods and services (excluding VAT paid) purchased during the current period that were either,
-        /// – Zero rated and purchased in KSA or,
-        /// – Zero rated and imported from a country outside of KSA
-        ///• Please refer to below FAQ URL for a list of zero rated goods and services.
+        ///     – Zero rated and purchased in KSA or,
+        ///     – Zero rated and imported from a country outside of KSA
+        ///    • Please refer to below FAQ URL for a list of zero rated goods and services.
         /// </summary>
         public static string ZToolTipZeroratedpurchasesAmount {
             get {
@@ -18918,7 +19053,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to For further information, please contact helpdesk - 19993
-        ///ZATCA reserves the right to investigate your return form further..
+        ///    ZATCA reserves the right to investigate your return form further..
         /// </summary>
         public static string ZVatAcknowledgmentHelpText {
             get {
@@ -19765,11 +19900,11 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Kindly read the below instructions before completing the ad-hoc refund form:
-        ///Please fill the requested information for each step
-        ///The request cannot be successfully submitted until all of the mandatory fields have been completed.
-        ///You should ensure that the existing details are complete and up to date before submitting your refund request.
-        ///Please refer to the FAQ section before filling out the refund form.
-        ///ZATCA has the right to audit and amend any credit balance that is requested to be refunded before allow  [rest of string was truncated]&quot;;.
+        ///    Please fill the requested information for each step
+        ///    The request cannot be successfully submitted until all of the mandatory fields have been completed.
+        ///    You should ensure that the existing details are complete and up to date before submitting your refund request.
+        ///    Please refer to the FAQ section before filling out the refund form.
+        ///    ZATCA has the right to audit and amend any credit balance that is requested to be re [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZVatRefundInstructions {
             get {
@@ -20761,12 +20896,12 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to TP estimated sales are calculated based on:
-        ///- VAT Sales if the TP has sales in his VAT returns.
-        ///- If TP has no VAT sales, system take the greater value of the following:
-        ///• The average number of labor x 6000 SAR
-        ///• The value of imports x 115%
-        ///• The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
-        ///• The value of purchases based on the VAT returns x 115%.
+        ///    - VAT Sales if the TP has sales in his VAT returns.
+        ///    - If TP has no VAT sales, system take the greater value of the following:
+        ///    • The average number of labor x 6000 SAR
+        ///    • The value of imports x 115%
+        ///    • The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
+        ///    • The value of purchases based on the VAT returns x 115%.
         /// </summary>
         public static string ZZEstimatedSalesInformationText {
             get {
@@ -20776,13 +20911,13 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to TP estimated sales are calculated based on:
-        ///- VAT Sales if the TP has sales in his VAT returns.
-        ///- If TP has no VAT sales, system take the greater value of the following:
-        ///• The average number of labor x 6000 SAR
-        ///• The value of imports x 115%
-        ///• The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
-        ///• The value of purchases based on the VAT returns x 115%
-        ///• Real estate sales.
+        ///    - VAT Sales if the TP has sales in his VAT returns.
+        ///    - If TP has no VAT sales, system take the greater value of the following:
+        ///    • The average number of labor x 6000 SAR
+        ///    • The value of imports x 115%
+        ///    • The sum of (sales through points of sale + contracts in ETIMAD platform + the value of exports)
+        ///    • The value of purchases based on the VAT returns x 115%
+        ///    • Real estate sales.
         /// </summary>
         public static string ZZEstimatedSalesInformationTextWithRealEstate {
             get {
@@ -21027,7 +21162,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Please note that the corrections amount must be at least equal to the amount of tax due and at most can be three times the value of goods or services for which tax evasion took place.
-        ///Click &quot;Ok&quot; to submit re-assessment or &quot;No&quot; to review the correction penalty before submitting re-assessment.
+        ///    Click &quot;Ok&quot; to submit re-assessment or &quot;No&quot; to review the correction penalty before submitting re-assessment.
         /// </summary>
         public static string ZZGeneralMessage_SubmitReAssesmentOrSayNoToReviewCorrectionPenalty {
             get {
@@ -21145,7 +21280,7 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Greater value of ( {(Estimated Sales ÷ 8) + (Estimated Sales ×
-        ///15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } ).
+        ///    15%)} or {TP Total Capital Amount of all the TP CRs and Licenses } ).
         /// </summary>
         public static string ZZGreatervalueofEstimatedSales {
             get {
@@ -23003,9 +23138,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Please note that this CR/Licence/Contract is already registered with another taxpayer in ZATCA, 
-        ///            please correct the ID if wrongly input or proceed further with this Licence Number. 
-        ///            Note that your registration application will
-        ///        remain pending until the previous CR/Licence/Contract is not deregistered Do you want you continue?.
+        ///                please correct the ID if wrongly input or proceed further with this Licence Number. 
+        ///                Note that your registration application will
+        ///            remain pending until the previous CR/Licence/Contract is not deregistered Do you want you continue?.
         /// </summary>
         public static string ZZZCRValidateMessg {
             get {
@@ -23393,9 +23528,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer, ZATCA may request from you to upload the following information during the review of your refund request:
-        ///1. Trail balance for the return period 
-        ///2. Sales list subject to VAT (0%-5%-Exempt) 
-        ///3. Purchased list subject to VAT (5%, reverse charge).
+        ///    1. Trail balance for the return period 
+        ///    2. Sales list subject to VAT (0%-5%-Exempt) 
+        ///    3. Purchased list subject to VAT (5%, reverse charge).
         /// </summary>
         public static string ZZZRefundYesMsg {
             get {
@@ -23405,9 +23540,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Dear Taxpayer, ZATCA may request from you to upload the following information during the review of your refund request:
-        ///1. Trail balance for the return period 
-        ///2. Sales list subject to VAT (0%-15%-Exempt) 
-        ///3. Purchased list subject to VAT (15%, reverse charge).
+        ///    1. Trail balance for the return period 
+        ///    2. Sales list subject to VAT (0%-15%-Exempt) 
+        ///    3. Purchased list subject to VAT (15%, reverse charge).
         /// </summary>
         public static string ZZZRefundYesMsgForFiteenPercent {
             get {
@@ -23660,9 +23795,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the ZAKAT,Tax And Customs Authority (ZATCA) has the full right to apply the proper procedures in accordance with the rules and regulations.
-        ///* Registration during the specified period, according to the VAT Law and its Regulations.
-        ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Paying VAT  [rest of string was truncated]&quot;;.
+        ///    * Registration during the specified period, according to the VAT Law and its Regulations.
+        ///    * Submitting VAT filing on time based on the annual revenues.
+        ///    * [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATAmendInstrunctionsAndConditions7 {
             get {
@@ -23735,10 +23870,10 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to Cannot be Less than January 1, 2018
-        ///Cannot be before the start of your business
-        ///You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed 1 million SAR
-        ///If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively
-        ///If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply..
+        ///    Cannot be before the start of your business
+        ///    You are eligible to defer your effective VAT registration date until 1/1/2019, provided that your annual taxable supplies do not exceed 1 million SAR
+        ///    If you are a KSA resident taxpayers, it should reflect the date when you exceeded the mandatory (or voluntary) threshold either prospectively or retrospectively
+        ///    If you are a non-resident taxpayer, it should reflect the date when you made your first taxable supply..
         /// </summary>
         public static string ZZZVATRAdditionalInformationInstrunctions {
             get {
@@ -23910,8 +24045,8 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to If you are a resident taxpayer,this section is optional and you can skip this section or enter the below details to continue.
-        ///*If you are a Non resident this is a Mandatory section.
-        ///*Please don’t use the Taxpayer&apos;s TIN or ID in the financial representative section..
+        ///    *If you are a Non resident this is a Mandatory section.
+        ///    *Please don’t use the Taxpayer&apos;s TIN or ID in the financial representative section..
         /// </summary>
         public static string ZZZVATRFR1 {
             get {
@@ -23984,9 +24119,9 @@ namespace EGAZT {
         
         /// <summary>
         ///   Looks up a localized string similar to I admit my compliance to meet all the requirements and procedures prescribed in the VAT Law and its Implementing Regulations including without limits the below. In the case of non-restriction of VAT system, the ZAKAT,Tax And Customs Authority (ZATCA) has the full right to apply the proper procedures in accordance with the rules and regulations.
-        ///* Registration during the specified period, according to the VAT Law and its Regulations.
-        ///* Submitting VAT filing on time based on the annual revenues.
-        ///* Paying VAT  [rest of string was truncated]&quot;;.
+        ///    * Registration during the specified period, according to the VAT Law and its Regulations.
+        ///    * Submitting VAT filing on time based on the annual revenues.
+        ///    * [rest of string was truncated]&quot;;.
         /// </summary>
         public static string ZZZVATRInstrunctionsAndConditions7 {
             get {
