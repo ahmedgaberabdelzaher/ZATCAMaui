@@ -1,31 +1,49 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView FlowDirection="{Binding AppDirection}" 
+<ContentView
+    x:Class="EGAZT.Controls.TraifItemsControl"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Controls.TraifItemsControl">
-                           <Grid Padding="24,6,24,6" x:Name="TraiffPage">
-                       <Frame HasShadow="False"  Padding="20,15,17,15" CornerRadius="14" BorderColor="#D8D8D8">
-                           <StackLayout Orientation="Horizontal">
-        <Label x:Name="nameLabl" FontSize="16" TextColor="{StaticResource Primary}" HorizontalOptions="StartAndExpand" >
-            <Label.FormattedText>
-                <FormattedString>
-                    <Span Text="{Binding Code}"></Span>
-                    <Span Text=" - "></Span>
-                    <Span Text="{Binding Name}"></Span>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-                             <Image x:Name="arrow" Source="LstArrow" Rotation="0" HeightRequest="20" WidthRequest="10" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                      <Image.Triggers>
-                                <DataTrigger TargetType="Image" Binding="{Binding Source={x:Reference nameLabl},
-                                       Path=FlowDirection}"
-                     Value="RightToLeft">
-                                    <Setter Property="Rotation" Value="180"></Setter>
-                                </DataTrigger>
-                                          </Image.Triggers>
-                             </Image>
+    FlowDirection="{Binding AppDirection}">
+    <Grid x:Name="TraiffPage" Padding="24,6,24,6">
+        <Frame
+            Padding="20,15,17,15"
+            BorderColor="#D8D8D8"
+            CornerRadius="14"
+            HasShadow="False">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    x:Name="nameLabl"
+                    FontSize="16"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="{StaticResource Primary}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Code}" />
+                            <Span Text=" - " />
+                            <Span Text="{Binding Name}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Image
+                    x:Name="arrow"
+                    HeightRequest="20"
+                    HorizontalOptions="EndAndExpand"
+                    Rotation="0"
+                    Source="LstArrow"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="10">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference nameLabl}, Path=FlowDirection}"
+                            TargetType="Image"
+                            Value="RightToLeft">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
 
-                           </StackLayout>
-                       </Frame></Grid>
+            </StackLayout>
+        </Frame>
+    </Grid>
 
 </ContentView>

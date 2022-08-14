@@ -1,21 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EGAZT.App"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:themes = "clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT"
-             xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-              xmlns:custom="clr-namespace:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
-    
+<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="EGAZT.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:textInputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:themes="clr-namespace:GAZTeServicesApp.Themes;assembly=GAZT"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
     <Application.Resources>
         <ResourceDictionary>
-            <!--SYNCFUSION INTEGRATION-->
+            <!--  SYNCFUSION INTEGRATION  -->
 
             <ResourceDictionary.MergedDictionaries>
                 <themes:LightTheme />
-            </ResourceDictionary.MergedDictionaries >
-            <!--Vat New UI-->
+            </ResourceDictionary.MergedDictionaries>
+            <!--  Vat New UI  -->
             <Style TargetType="Label">
-                        <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Color x:Key="Primary">#042e66</Color>
             <Color x:Key="Secondary">#0996d4</Color>
@@ -30,7 +33,7 @@
             <Color x:Key="NeturalInProgress">#fcf5e9</Color>
             <Color x:Key="White">#FFFFFF</Color>
             <Color x:Key="Yellow">#0996d4</Color>
-            <Color x:Key="SecondaryNew">#4FBBBD </Color>
+            <Color x:Key="SecondaryNew">#4FBBBD</Color>
             <Color x:Key="BackgroundGray">#E5EFED</Color>
             <Color x:Key="ButtonGray">#9EA4A9</Color>
             <Color x:Key="Red">#e84941</Color>
@@ -55,7 +58,7 @@
             <Color x:Key="Partial">#0996d4</Color>
             <Color x:Key="Error">#e84941</Color>
 
-             <Color x:Key="SuccessBorder">#61b34f</Color>
+            <Color x:Key="SuccessBorder">#61b34f</Color>
             <Color x:Key="PartialBorder">#0996d4</Color>
             <Color x:Key="ErrorBorder">#e84941</Color>
 
@@ -65,8 +68,8 @@
             <Color x:Key="TiffanyBG">#4D4FBBBD</Color>
 
 
-            <!--Vat New UI-->
-            <!--SYNCFUSION INTEGRATION-->
+            <!--  Vat New UI  -->
+            <!--  SYNCFUSION INTEGRATION  -->
             <Color x:Key="WhiteTextColor">#FFFFFF</Color>
             <Color x:Key="GrayTextColor">#c7c7c7</Color>
             <Color x:Key="GrayLineBarColor">#EBEBEB</Color>
@@ -86,7 +89,7 @@
             <x:String x:Key="Back">&#xe709;</x:String>
             <x:String x:Key="ReverseBack">&#xe71a;</x:String>
 
-            <!--New Ui Integration Color-->
+            <!--  New Ui Integration Color  -->
             <x:String x:Key="NewGrayColor">#909090</x:String>
             <x:String x:Key="NewBlackColor">#010101</x:String>
             <Color x:Key="NewDullOrangeColor">#0996d4</Color>
@@ -100,26 +103,33 @@
                 <ContentPresenter Content="{Binding RotatorItem}" />
             </DataTemplate>
 
-                <OnPlatform x:TypeArguments="x:String" x:Key="FontSomarBold"><!-- SomarBold-->
-                <On Platform="Android" Value="Somar-Bold.otf#SSTArabic" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
+
+            <OnPlatform x:Key="FontSomarBold" x:TypeArguments="x:String">
+                <!--  SomarBold  -->
+                <On Platform="Android" Value="Somar-Bold.otf#SSTArabic" />
+                <!--  "Somar-SemiBold.otf#SSTArabic"  -->
                 <On Platform="iOS" Value="Somar-Bold" />
             </OnPlatform>
 
 
-            <!-- SST Arabic Bold.ttf -->
-            <OnPlatform x:TypeArguments="x:String" x:Key="SomarBold"><!-- SomarBold-->
-                <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
+            <!--  SST Arabic Bold.ttf  -->
+            <OnPlatform x:Key="SomarBold" x:TypeArguments="x:String">
+                <!--  SomarBold  -->
+                <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" />
+                <!--  "Somar-SemiBold.otf#SSTArabic"  -->
                 <On Platform="iOS" Value="Somar-SemiBold" />
             </OnPlatform>
 
-             <!-- SST Arabic Bold.ttf for picker -->
-            <OnPlatform x:TypeArguments="x:String" x:Key="SomarBoldForSfPicker">
-                <On Platform="Android" Value="Somar-SemiBold.otf" /> <!-- "Somar-SemiBold.otf"-->
+            <!--  SST Arabic Bold.ttf for picker  -->
+            <OnPlatform x:Key="SomarBoldForSfPicker" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Somar-SemiBold.otf" />
+                <!--  "Somar-SemiBold.otf"  -->
                 <On Platform="iOS" Value="Somar-SemiBold" />
             </OnPlatform>
 
-            <!-- SST Arabic Light.ttf -->
-            <OnPlatform x:TypeArguments="x:String" x:Key="SomarLight"><!-- XSSTArLight -->
+            <!--  SST Arabic Light.ttf  -->
+            <OnPlatform x:Key="SomarLight" x:TypeArguments="x:String">
+                <!--  XSSTArLight  -->
                 <On Platform="Android" Value="Somar-Light.otf#SSTArabic" />
                 <On Platform="iOS" Value="Somar-Light" />
             </OnPlatform>
@@ -130,245 +140,319 @@
             <!--<OnPlatform x:TypeArguments="x:String" x:Key="Somar-SemiBold">
                 <On Platform="iOS" Value="Somar-SemiBold" />
             </OnPlatform>-->
-            <OnPlatform x:TypeArguments="x:String" x:Key="SomarSemiBold"><!--xSSTArabicMedium-->
+            <OnPlatform x:Key="SomarSemiBold" x:TypeArguments="x:String">
+                <!--  xSSTArabicMedium  -->
                 <On Platform="Android" Value="Somar-SemiBold.otf#SSTArabic" />
                 <On Platform="iOS" Value="Somar-SemiBold" />
             </OnPlatform>
 
-            <!-- SST Arabic Roman.ttf -->
-            <OnPlatform x:TypeArguments="x:String" x:Key="SomarRegular"><!-- SSTArRoman-->
+            <!--  SST Arabic Roman.ttf  -->
+            <OnPlatform x:Key="SomarRegular" x:TypeArguments="x:String">
+                <!--  SSTArRoman  -->
                 <On Platform="Android" Value="Somar-Regular.otf#SSTArabic" />
                 <On Platform="iOS" Value="Somar-Regular" />
             </OnPlatform>
 
             <Style x:Key="lineSeperator" TargetType="BoxView">
-                <Setter Property="HeightRequest" Value="1"/>
-                <Setter Property="BackgroundColor" Value="{StaticResource GrayLineBarColor}"/>
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="BackgroundColor" Value="{StaticResource GrayLineBarColor}" />
             </Style>
-            <Style x:Key="MiniGoldLabelStyle" x:Name="MiniGoldLabelStyle" TargetType="Label">
+            <Style
+                x:Key="MiniGoldLabelStyle"
+                x:Name="MiniGoldLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarBold}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
             <Style x:Key="MiniNewGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
 
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
             </Style>
             <Style x:Key="SmallMiniGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
-            <Style x:Key="ForgotPasswordTextColor" x:Name="ForgotPasswordTextColor" TargetType="Entry">
+            <Style
+                x:Key="ForgotPasswordTextColor"
+                x:Name="ForgotPasswordTextColor"
+                TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="Margin" Value="15,0,15,0"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Margin" Value="15,0,15,0" />
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
 
             <Style x:Key="EntryStyle" TargetType="Entry">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
 
             <Style x:Key="MicroGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Style x:Key="SmallGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="19" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="19" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
             <Style x:Key="MediumGoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="20" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
             <Style x:Key="DashboardChartStatusGrayLabel" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardChartStatusGrayTextColor}" />
             </Style>
-            <Style x:Key="InformationRedColorLabel" x:Name="InformationRedColorLabel" TargetType="Label">
+            <Style
+                x:Key="InformationRedColorLabel"
+                x:Name="InformationRedColorLabel"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
-            <Style x:Key="MandatoryRedColorLabel" x:Name="MandatoryRedColorLabel" TargetType="Label">
+            <Style
+                x:Key="MandatoryRedColorLabel"
+                x:Name="MandatoryRedColorLabel"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="13"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
-            <Style x:Key="InformationGrayColorLabel" x:Name="InformationGrayColorLabel" TargetType="Label">
+            <Style
+                x:Key="InformationGrayColorLabel"
+                x:Name="InformationGrayColorLabel"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
             </Style>
             <Style x:Key="MediumWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="20" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <Style x:Key="SmallWhiteLabelStyle" x:Name="SmallWhiteLabelStyle" TargetType="Label">
+            <Style
+                x:Key="SmallWhiteLabelStyle"
+                x:Name="SmallWhiteLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="20" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             <Style x:Key="MicroGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
             <Style x:Key="MiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             <Style x:Key="CalanderWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <Style x:Key="SmallMiniWhiteLabelStyle" x:Name="SmallMiniWhiteLabelStyle" TargetType="Label">
+            <Style
+                x:Key="SmallMiniWhiteLabelStyle"
+                x:Name="SmallMiniWhiteLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="20" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="13"
+                            Tablet="20" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             <Style x:Key="TPPfofileSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <Style x:Key="MyBillsSmallMiniWhiteLabelStyle" x:Name="MyBillsSmallMiniWhiteLabelStyle" TargetType="Label">
+            <Style
+                x:Key="MyBillsSmallMiniWhiteLabelStyle"
+                x:Name="MyBillsSmallMiniWhiteLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <Style x:Key="MyBillsMediumMiniWhiteLabelStyle" x:Name="MyBillsMediumMiniWhiteLabelStyle" TargetType="Label">
+            <Style
+                x:Key="MyBillsMediumMiniWhiteLabelStyle"
+                x:Name="MyBillsMediumMiniWhiteLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
             </Style>
             <Style x:Key="TaxPayerSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="Margin">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
@@ -376,162 +460,204 @@
             <Style x:Key="MyCertificateSmallMiniWhiteLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="20" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="20" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
             <Style x:Key="SmallMiniWhiteLabelStyleTwo" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="15" Tablet="19" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="15"
+                            Tablet="19" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <Style x:Key="MiniGrayLabelStyle" x:Name="MiniGrayLabelStyle" TargetType="Label">
+            <Style
+                x:Key="MiniGrayLabelStyle"
+                x:Name="MiniGrayLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="15" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="15" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordTextColor}" />
             </Style>
             <Style x:Key="DashboardMiniGrayLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
             <Style x:Key="DashboardMiniGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
             <Style x:Key="DashboardMiniGrayBoldLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
             <Style x:Key="MiniGreenLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
             <Style x:Key="MiniMaroonLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource MaroonLabelTextColor}" />
             </Style>
             <Style x:Key="FrameStyle" TargetType="Frame">
-           
-                <Setter Property="CornerRadius" Value="0"></Setter>
+
+                <Setter Property="CornerRadius" Value="0" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
             </Style>
-            <Style x:Key="MiniBlackLabelStyle" x:Name="MiniBlackLabelStyle" TargetType="Label">
+            <Style
+                x:Key="MiniBlackLabelStyle"
+                x:Name="MiniBlackLabelStyle"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
             <Style x:Key="SmallBlackLabelStyle" TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="16" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="16" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
 
-            <Style x:Key="PickerStyle" x:Name="PickerStyle" TargetType="Picker">
+            <Style
+                x:Key="PickerStyle"
+                x:Name="PickerStyle"
+                TargetType="Picker">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
-            <!--/For New Design/-->
-            <Style x:Key="GAZTSmallGreenLabelStyle" x:Name="GAZTSmallGreenLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  /For New Design/  -->
+            <Style
+                x:Key="GAZTSmallGreenLabelStyle"
+                x:Name="GAZTSmallGreenLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
             </Style>
 
-            <!--For VAT Sign Up-->
-            <Style x:Key="GAZTSmallGrayLabelStyle" x:Name="GAZTSmallGrayLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  For VAT Sign Up  -->
+            <Style
+                x:Key="GAZTSmallGrayLabelStyle"
+                x:Name="GAZTSmallGrayLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
 
-            <!--For VAT Sign Up-->
-            <Style x:Key="GAZTMediumGrayLabelStyle" x:Name="GAZTMediumGrayLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  For VAT Sign Up  -->
+            <Style
+                x:Key="GAZTMediumGrayLabelStyle"
+                x:Name="GAZTMediumGrayLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
-                <Setter Property="Margin" Value="14,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="14,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
             </Style>
 
-            <!--For UnlockAccount-->
-            <Style x:Key="GAZTDarkGrayLabelStyle" x:Name="GAZTDarkGrayLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  For UnlockAccount  -->
+            <Style
+                x:Key="GAZTDarkGrayLabelStyle"
+                x:Name="GAZTDarkGrayLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource DarkGrayTextColor}" />
-                <Setter Property="Margin" Value="14,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="14,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
             </Style>
 
-            <!--For UnlockAccount OTP Entry-->
+            <!--  For UnlockAccount OTP Entry  -->
             <Style x:Key="GAZTOTPEntry" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Center" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
@@ -540,439 +666,530 @@
             </Style>
 
 
-            <!--For VAT Sign Up-->
-            <Style x:Key="GAZTSmallBlackLabel" x:Name="GAZTSmallBlackLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  For VAT Sign Up  -->
+            <Style
+                x:Key="GAZTSmallBlackLabel"
+                x:Name="GAZTSmallBlackLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
 
-            <!--For VAT Sign Up-->
-            <Style x:Key="GAZTMediumBoldBlackLabelStyle" x:Name="GAZTMediumBoldBlackLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <!--  For VAT Sign Up  -->
+            <Style
+                x:Key="GAZTMediumBoldBlackLabelStyle"
+                x:Name="GAZTMediumBoldBlackLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
 
             <Style x:Key="GAZTWhiteLabelStyleForButton" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Style x:Key="GAZTSmallGoldLabelStyle" x:Name="GAZTSmallGoldLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+            <Style
+                x:Key="GAZTSmallGoldLabelStyle"
+                x:Name="GAZTSmallGoldLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,0"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-           
+
             <Style x:Key="GAZTSmallBlackLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,0"/>
-                <Setter Property="Padding" Value="0,0,0,-5"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="Margin" Value="10,0,10,0" />
+                <Setter Property="Padding" Value="0,0,0,-5" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Style x:Key="GAZTFrameStyleForEntry" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Margin" Value="10,2,10,1"/>
+                <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
             <Style x:Key="GAZTFrameStyleForEntryValidationRed" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="Red" />
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Margin" Value="10,2,10,1"/>
+                <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
             <Style x:Key="GAZTFrameStyleForVATReturnEditor" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Margin" Value="10,2,10,1"/>
+                <Setter Property="Margin" Value="10,2,10,1" />
             </Style>
             <Style x:Key="GAZTFrameStyleForButton" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="4"></Setter>
+                <Setter Property="CornerRadius" Value="4" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
                 <Setter Property="HasShadow" Value="True" />
-                <Setter Property="Margin" Value="10,10,10,1"/>
-                <Setter Property="Padding" Value="0,22,0,22"></Setter>
+                <Setter Property="Margin" Value="10,10,10,1" />
+                <Setter Property="Padding" Value="0,22,0,22" />
             </Style>
             <Style x:Key="GAZTImageStyleForEntry" TargetType="Image">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Margin" Value="13,0,13,0"/>
+                <Setter Property="Margin" Value="13,0,13,0" />
             </Style>
-            <Style x:Key="GAZTTextBoxStyleForEntry" x:Name="GAZTTextBoxStyleForEntry" TargetType="Entry">
+            <Style
+                x:Key="GAZTTextBoxStyleForEntry"
+                x:Name="GAZTTextBoxStyleForEntry"
+                TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="VerticalTextAlignment" Value="Center" />
-                <Setter Property="Margin" Value="15,0,15,0"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Margin" Value="15,0,15,0" />
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
             <Style x:Key="GAZTTextBoxStyleForVATReturnEditor" TargetType="Editor">
-                <Setter Property="Margin" Value="15,0,15,0"/>
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="Margin" Value="15,0,15,0" />
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
             </Style>
             <Style x:Key="GAZTPickerStyle" TargetType="Picker">
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Small" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
-            <Style x:Key="GAZTGreenLabelStyleForDashboardIcon" x:Name="GAZTGreenLabelStyleForDashboardIcon" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
+            <Style
+                x:Key="GAZTGreenLabelStyleForDashboardIcon"
+                x:Name="GAZTGreenLabelStyleForDashboardIcon"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
                 <Setter Property="FontSize" Value="12" />
-                <!-- Caption font size is 12-->
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
-            </Style>
-            <Style x:Key="GAZTCaptionGreenLabelStyle" x:Name="GAZTCaptionGreenLabelStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
-                <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
-            </Style>
-            <Style x:Key="GAZTCaptioSecondarylStyle" x:Name="GAZTCaptioSecondarylStyle" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource Secondary}"/>
-                <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="Margin" Value="10,0,10,1"/>
+                <!--  Caption font size is 12  -->
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Style x:Key="GAZTVerifyButton" x:Name="GAZTVerifyButton" TargetType="Button">
-                <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="CornerRadius" Value="9"/>
-                <Setter Property="Margin" Value="10,10,10,10"/>
+            <Style
+                x:Key="GAZTCaptionGreenLabelStyle"
+                x:Name="GAZTCaptionGreenLabelStyle"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+            </Style>
+            <Style
+                x:Key="GAZTCaptioSecondarylStyle"
+                x:Name="GAZTCaptioSecondarylStyle"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource Secondary}" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+            </Style>
+            <Style
+                x:Key="GAZTVerifyButton"
+                x:Name="GAZTVerifyButton"
+                TargetType="Button">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="CornerRadius" Value="9" />
+                <Setter Property="Margin" Value="10,10,10,10" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
-            <Style x:Key="GAZTGreenLabelStyleForEservicesIcon" x:Name="GAZTGreenLabelStyleForEservicesIcon" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
+            <Style
+                x:Key="GAZTGreenLabelStyleForEservicesIcon"
+                x:Name="GAZTGreenLabelStyleForEservicesIcon"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="FontAttributes" Value="Bold" />
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Style x:Key="GAZTGreenLabelStyleForMicro" x:Name="GAZTGreenLabelStyleForMicro" TargetType="Label">
-                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}"/>
+            <Style
+                x:Key="GAZTGreenLabelStyleForMicro"
+                x:Name="GAZTGreenLabelStyleForMicro"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Style x:Key="GAZTGoldLabelStyleForBillsItem" TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarBold}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
 
             </Style>
-            <Style x:Key="GAZTGoldLabelStyleForSmallFont" x:Name="GAZTGoldLabelStyleForSmallFont" TargetType="Label">
+            <Style
+                x:Key="GAZTGoldLabelStyleForSmallFont"
+                x:Name="GAZTGoldLabelStyleForSmallFont"
+                TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,-5"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <Setter Property="Padding" Value="0,0,0,-5" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
             </Style>
-            <Style x:Key="GAZTGoldLabelStyleForCaptionFont" x:Name="GAZTGoldLabelStyleForCaptionFont" TargetType="Label">
+            <Style
+                x:Key="GAZTGoldLabelStyleForCaptionFont"
+                x:Name="GAZTGoldLabelStyleForCaptionFont"
+                TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <!--<Setter Property="FontAttributes" Value="Bold" />-->
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
-            <Style x:Key="GAZTGrayLabelStyleForSmallFont" x:Name="GAZTGrayLabelStyleForSmallFont" TargetType="Label">
+            <Style
+                x:Key="GAZTGrayLabelStyleForSmallFont"
+                x:Name="GAZTGrayLabelStyleForSmallFont"
+                TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarBold}" />
-                    </Style>
-            <Style x:Key="GAZTGrayLabelStyleForCaptionFont" x:Name="GAZTGrayLabelStyleForCaptionFont" TargetType="Label">
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+            </Style>
+            <Style
+                x:Key="GAZTGrayLabelStyleForCaptionFont"
+                x:Name="GAZTGrayLabelStyleForCaptionFont"
+                TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource ForgotPasswordGrayTextColor}" />
                 <Setter Property="FontSize" Value="12" />
-                <!--Caption font size is 12  >-->
+                <!--  Caption font size is 12  >  -->
                 <Setter Property="Margin" Value="10,0,10,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <!-- commented as we are provideing bold font family inline -->
+                <Setter Property="Padding" Value="0,0,0,0" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <!--  commented as we are provideing bold font family inline  -->
             </Style>
             <Style x:Key="GAZTFrameStyleEntryForLableBackground" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="BackgroundColor" Value="#E6EFED" />
                 <Setter Property="BorderColor" Value="#F4FCFD" />
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Margin" Value="0,-2,0,2"/>
-                <Setter Property="Padding" Value="25"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="0,-2,0,2" />
+                <Setter Property="Padding" Value="25" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
             </Style>
             <Style x:Key="GAZTBoxViewStyle" TargetType="BoxView">
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
-                <Setter Property="Margin" Value="0,0,0,0"></Setter>
-                <Setter Property="HeightRequest" Value="1"></Setter>
-                <Setter Property="Color" Value="Black"></Setter>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="Color" Value="Black" />
             </Style>
-            <Style x:Key="GAZTDropdownStyle" x:Name="GAZTDropdownStyle" TargetType="Picker">
+            <Style
+                x:Key="GAZTDropdownStyle"
+                x:Name="GAZTDropdownStyle"
+                TargetType="Picker">
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="15,5,15,5" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
             <Style x:Key="GAZTFrameGridStyleForEntry" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="2"></Setter>
+                <Setter Property="CornerRadius" Value="2" />
                 <Setter Property="BackgroundColor" Value="{DynamicResource WhiteTextColor}" />
                 <Setter Property="BorderColor" Value="#B1B1B1" />
                 <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Margin" Value="0" />
             </Style>
-            <Style x:Key="GAZTSmallGreenLabelStyleForSteps" x:Name="GAZTSmallGreenLabelStyleForSteps" TargetType="Label">
-                <Setter Property="FontSize" Value="Micro"/>
+            <Style
+                x:Key="GAZTSmallGreenLabelStyleForSteps"
+                x:Name="GAZTSmallGreenLabelStyleForSteps"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
-                <Setter Property="Margin" Value="10,0,10,1"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                    </Style>
-            <Style x:Key="GAZTGreyLabelStyleForOptionMenu" x:Name="GAZTGreyLabelStyleForOptionMenu" TargetType="Label">
-                <Setter Property="FontSize" Value="Caption"/>
+                <Setter Property="Margin" Value="10,0,10,1" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+            </Style>
+            <Style
+                x:Key="GAZTGreyLabelStyleForOptionMenu"
+                x:Name="GAZTGreyLabelStyleForOptionMenu"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="TextColor" Value="{DynamicResource EntryTextColor}" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="Start"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                    </Style>
-            <Style x:Key="TabbedPageSmallMiniWhiteLabelStyle" x:Name="TabbedPageSmallMiniWhiteLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Caption"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Style x:Key="TabbedPageMediumMiniGoldLabelStyle" x:Name="TabbedPageMediumMiniGoldLabelStyle" TargetType="Label">
-                <Setter Property="FontSize" Value="Caption"/>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+            <Style
+                x:Key="TabbedPageSmallMiniWhiteLabelStyle"
+                x:Name="TabbedPageSmallMiniWhiteLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource WhiteTextColor}" />
             </Style>
-            <!-- new styles -->
-            <Style x:Key="MicroGrayLabelStyleNew" x:Name="MicroGrayLabelStyleNew" TargetType="Label">
+            <Style
+                x:Key="TabbedPageMediumMiniGoldLabelStyle"
+                x:Name="TabbedPageMediumMiniGoldLabelStyle"
+                TargetType="Label">
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
+            </Style>
+            <!--  new styles  -->
+            <Style
+                x:Key="MicroGrayLabelStyleNew"
+                x:Name="MicroGrayLabelStyleNew"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
             </Style>
-            <Style x:Key="MicroGrayLabelValue" x:Name="MicroGrayLabelValue" TargetType="Label">
+            <Style
+                x:Key="MicroGrayLabelValue"
+                x:Name="MicroGrayLabelValue"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="11" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="11"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
-            <Style x:Key="MicroGrayLabelStyleNewEn" x:Name="MicroGrayLabelStyleNewEn" TargetType="Label">
+            <Style
+                x:Key="MicroGrayLabelStyleNewEn"
+                x:Name="MicroGrayLabelStyleNewEn"
+                TargetType="Label">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="10.75" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="10.75"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                        <Setter Property="FontFamily"
-                                Value="{StaticResource SomarRegular}" />
-                        <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+                <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
             </Style>
-            <Style x:Key="PickerEntryStyle" x:Name="PickerEntryStyle" TargetType="Entry">
-                <Setter Property="FontAttributes" Value="Bold">
-                </Setter>
+            <Style
+                x:Key="PickerEntryStyle"
+                x:Name="PickerEntryStyle"
+                TargetType="Entry">
+                <Setter Property="FontAttributes" Value="Bold" />
                 <Setter Property="TextColor" Value="{DynamicResource GreenLabelTextColor}" />
             </Style>
-            <!-- new styles -->
-            <Style x:Key="forBoldLabel" x:Name="forBoldLabel" TargetType="Label">
-            </Style>
-            <Style x:Key="forLightLabel" x:Name="forLightLabel" TargetType="Label">
-            </Style>
+            <!--  new styles  -->
+            <Style
+                x:Key="forBoldLabel"
+                x:Name="forBoldLabel"
+                TargetType="Label" />
+            <Style
+                x:Key="forLightLabel"
+                x:Name="forLightLabel"
+                TargetType="Label" />
             <Style x:Key="StyleCheckBoxValidatorRed" TargetType="CheckBox">
-                <Setter Property="Color" Value="Red"/>
+                <Setter Property="Color" Value="Red" />
             </Style>
             <Style x:Key="StyleCheckBoxValidatorGreen" TargetType="CheckBox">
-                <Setter Property="Color" Value="Green"/>
+                <Setter Property="Color" Value="Green" />
             </Style>
 
 
-            <!-- VAT SignUp and VAT Registration Styles Starts  -->
+            <!--  VAT SignUp and VAT Registration Styles Starts  -->
 
-            <!-- Used for Heading-->
-            <Style x:Key="GAZTMediumBlackLabel" x:Name="GAZTMediumBlackLabel" TargetType="Label">
-                <!-- Medium font-->
+            <!--  Used for Heading  -->
+            <Style
+                x:Key="GAZTMediumBlackLabel"
+                x:Name="GAZTMediumBlackLabel"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for Descrption in gold color-->
-            <Style x:Key="GAZTSmallGoldLabel" x:Name="GAZTSmallGoldLabel" TargetType="Label">
-                <!-- Micro font-->
+            <!--  Used for Descrption in gold color  -->
+            <Style
+                x:Key="GAZTSmallGoldLabel"
+                x:Name="GAZTSmallGoldLabel"
+                TargetType="Label">
+                <!--  Micro font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource GoldLabelTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for Descrption in gray color-->
+            <!--  Used for Descrption in gray color  -->
 
-            <Style x:Key="GAZTSmallLightBlackLabel" x:Name="GAZTSmallLightBlackLabel" TargetType="Label">
-                <!-- Micro font-->
+            <Style
+                x:Key="GAZTSmallLightBlackLabel"
+                x:Name="GAZTSmallLightBlackLabel"
+                TargetType="Label">
+                <!--  Micro font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarLight}" />
                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <Style x:Key="GAZTMicroGrayLabel" x:Name="GAZTMicroGrayLabel" TargetType="Label">
-                <!-- Medium font-->
+            <Style
+                x:Key="GAZTMicroGrayLabel"
+                x:Name="GAZTMicroGrayLabel"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarLight}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
-            <Style x:Key="GAZTTermsConditions" x:Name="GAZTTermsConditions" TargetType="Label">
-                <!-- Medium font-->
+            <Style
+                x:Key="GAZTTermsConditions"
+                x:Name="GAZTTermsConditions"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="12" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for Checkbox label  in gray color-->
-            <Style x:Key="GAZTMicroMediumGrayLabel" x:Name="GAZTMicroMediumGrayLabel" TargetType="Label">
-                <!-- Medium font-->
+            <!--  Used for Checkbox label  in gray color  -->
+            <Style
+                x:Key="GAZTMicroMediumGrayLabel"
+                x:Name="GAZTMicroMediumGrayLabel"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
 
-            <!-- Used for SubHeading with bold font in medium font-->
-            <Style x:Key="GAZTSmallBlackLbl" x:Name="GAZTSmallBlackLbl" TargetType="Label">
-                <!-- Small font-->
+            <!--  Used for SubHeading with bold font in medium font  -->
+            <Style
+                x:Key="GAZTSmallBlackLbl"
+                x:Name="GAZTSmallBlackLbl"
+                TargetType="Label">
+                <!--  Small font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for label which has corressponding value with medium font in medium font-->
-            <Style x:Key="GAZTSmallBlackLblMediumFont" x:Name="GAZTSmallBlackLblMediumFont" TargetType="Label">
-                <!-- Small font-->
+            <!--  Used for label which has corressponding value with medium font in medium font  -->
+            <Style
+                x:Key="GAZTSmallBlackLblMediumFont"
+                x:Name="GAZTSmallBlackLblMediumFont"
+                TargetType="Label">
+                <!--  Small font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used  to show value coreessponding to label value with medium font in medium font-->
-            <Style x:Key="GAZTSmallGrayLblMediumFont" x:Name="GAZTSmallGrayLblMediumFont" TargetType="Label">
-                <!-- Small font-->
+            <!--  Used  to show value coreessponding to label value with medium font in medium font  -->
+            <Style
+                x:Key="GAZTSmallGrayLblMediumFont"
+                x:Name="GAZTSmallGrayLblMediumFont"
+                TargetType="Label">
+                <!--  Small font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource DashboardGrayTextColor}" />
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
 
 
-            <Style x:Key="GAZTCaptionBlackLabel" x:Name="GAZTSmallBlackLabel" TargetType="Label">
-                <!-- Caption font-->
+            <Style
+                x:Key="GAZTCaptionBlackLabel"
+                x:Name="GAZTSmallBlackLabel"
+                TargetType="Label">
+                <!--  Caption font  -->
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource BlackLabelTextColor}" />
                 <Setter Property="FontSize" Value="Caption" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
@@ -989,72 +1206,93 @@
             </Style>
 
 
-            <Style x:Key="GAZTPicker" x:Name="GAZTPicker" TargetType="Picker">
+            <Style
+                x:Key="GAZTPicker"
+                x:Name="GAZTPicker"
+                TargetType="Picker">
                 <Setter Property="FontSize" Value="Small" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource GrayTextColor}" />
             </Style>
 
 
-            <!-- Used for Standard Card View content for Gray-->
-            <Style x:Key="GAZTMicroMediumGrayLabelForHorizontalStart" x:Name="GAZTMicroMediumGrayLabelForHorizontalStart" TargetType="Label">
-                <!-- Medium font-->
+            <!--  Used for Standard Card View content for Gray  -->
+            <Style
+                x:Key="GAZTMicroMediumGrayLabelForHorizontalStart"
+                x:Name="GAZTMicroMediumGrayLabelForHorizontalStart"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalOptions" Value="StartAndExpand" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource NewGrayColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for Standard Card View content for Black-->
-            <Style x:Key="GAZTMicroMediumBlackLabelForHorizontalEnd" x:Name="GAZTMicroMediumBlackLabelForHorizontalEnd" TargetType="Label">
-                <!-- Medium font-->
+            <!--  Used for Standard Card View content for Black  -->
+            <Style
+                x:Key="GAZTMicroMediumBlackLabelForHorizontalEnd"
+                x:Name="GAZTMicroMediumBlackLabelForHorizontalEnd"
+                TargetType="Label">
+                <!--  Medium font  -->
                 <Setter Property="HorizontalOptions" Value="EndAndExpand" />
                 <Setter Property="HorizontalTextAlignment" Value="End" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="TextColor" Value="{DynamicResource NewBlackColor}" />
                 <Setter Property="FontSize" Value="Micro" />
                 <Setter Property="Margin" Value="0,0,0,0" />
-                <Setter Property="Padding" Value="0,0,0,0"/>
+                <Setter Property="Padding" Value="0,0,0,0" />
                 <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Commented as we are provideing inline fontfamily />-->
             </Style>
 
-            <!-- Used for Standard Card View FRAME content for Black-->
-            <Style x:Key="GAZTStandardFrameStyle" x:Name="GAZTStandardFrameStyle" TargetType="Frame">
-                <!-- Medium font-->
+            <!--  Used for Standard Card View FRAME content for Black  -->
+            <Style
+                x:Key="GAZTStandardFrameStyle"
+                x:Name="GAZTStandardFrameStyle"
+                TargetType="Frame">
+                <!--  Medium font  -->
                 <Setter Property="BorderColor" Value="{DynamicResource NewGrayColor}" />
                 <Setter Property="Padding" Value="0" />
                 <Setter Property="CornerRadius" Value="8" />
-                <Setter Property="Margin" Value="10"/>
+                <Setter Property="Margin" Value="10" />
                 <Setter Property="HasShadow" Value="False" />
 
             </Style>
 
-            <Style x:Key="TextInputLayout" x:Name="TextInputLayout" TargetType="textInputLayout:SfTextInputLayout">
+            <Style
+                x:Key="TextInputLayout"
+                x:Name="TextInputLayout"
+                TargetType="textInputLayout:SfTextInputLayout">
                 <Setter Property="OutlineCornerRadius" Value="14" />
 
             </Style>
 
-            <Style x:Key="CheckboxUnselectedFontStyle" x:Name="CheckboxUnselectedFontStyle" TargetType="Label">
+            <Style
+                x:Key="CheckboxUnselectedFontStyle"
+                x:Name="CheckboxUnselectedFontStyle"
+                TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralGreay}" />
-                <Setter Property="HorizontalTextAlignment" Value="Start"/>
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
 
             </Style>
-            <Style x:Key="CheckboxSelectedFontStyle" x:Name="CheckboxSelectedFontStyle" TargetType="Label">
+            <Style
+                x:Key="CheckboxSelectedFontStyle"
+                x:Name="CheckboxSelectedFontStyle"
+                TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="FontSize" Value="14" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
-                 <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
 
-           
+
             <Style x:Key="CardLabelBlack" TargetType="custom:CustomLabel">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
@@ -1065,19 +1303,24 @@
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
             </Style>
-                      <Style x:Key="MandatoryRedColorSpan" x:Name="MandatoryRedColorSpan" TargetType="Span">
+            <Style
+                x:Key="MandatoryRedColorSpan"
+                x:Name="MandatoryRedColorSpan"
+                TargetType="Span">
                 <Setter Property="FontSize">
                     <Setter.Value>
-                        <OnIdiom x:TypeArguments="x:Double" Phone="13" Tablet="14" />
+                        <OnIdiom
+                            x:TypeArguments="x:Double"
+                            Phone="13"
+                            Tablet="14" />
                     </Setter.Value>
                 </Setter>
-                <Setter Property="FontFamily"
-                        Value="{StaticResource SomarRegular}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
 
         </ResourceDictionary>
-             <!--  <ControlTemplate x:Key="MainTemplet">
+        <!--  <ControlTemplate x:Key="MainTemplet">
             <Grid>
 
                 <StackLayout>
@@ -1106,10 +1349,10 @@
                         </Image>
                     </Grid>
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
+                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
                   Padding="0,0,0,0" BackgroundColor="White">
 
-                          
+
                             <ContentPresenter VerticalOptions="FillAndExpand"
                         HorizontalOptions="FillAndExpand"
                         Grid.Column="0"
@@ -1119,9 +1362,8 @@
                 </StackLayout>
 
             </Grid>
-        </ControlTemplate>
--->
+        </ControlTemplate>-->
     </Application.Resources>
 
-    
+
 </Application>

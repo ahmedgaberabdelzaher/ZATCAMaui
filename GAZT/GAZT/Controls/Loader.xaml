@@ -1,25 +1,43 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
+    x:Class="EGAZT.Controls.Loader"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-    x:Class="EGAZT.Controls.Loader">
-   <Grid Grid.Row="0" VerticalOptions="FillAndExpand" Margin="0,0,0,0">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator  x:Name="busyindicatorForLanding"
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70"
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70"
-                                       TextColor="{StaticResource Secondary}"/>
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms">
+    <Grid
+        Grid.Row="0"
+        Margin="0,0,0,0"
+        VerticalOptions="FillAndExpand">
+        <StackLayout
+            Grid.Row="0"
+            Grid.Column="0"
+            BackgroundColor="Black"
+            Opacity="0.4"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand" />
+        <StackLayout
+            Grid.Row="0"
+            Grid.Column="0"
+            Padding="15,15"
+            BackgroundColor="Transparent"
+            HorizontalOptions="Center"
+            Opacity="0.8"
+            Orientation="Vertical"
+            VerticalOptions="Center">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <busyindicator:SfBusyIndicator
+                    x:Name="busyindicatorForLanding"
+                    AnimationType="SingleCircle"
+                    EnableAnimation="True"
+                    HorizontalOptions="CenterAndExpand"
+                    IsBusy="True"
+                    TextColor="{StaticResource Secondary}"
+                    TitlePlacement="Bottom"
+                    VerticalOptions="CenterAndExpand"
+                    ViewBoxHeight="70"
+                    ViewBoxWidth="70" />
+            </StackLayout>
+        </StackLayout>
+    </Grid>
 
 </ContentView>

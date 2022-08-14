@@ -81,7 +81,10 @@ namespace EGAZT.Helper
                     */
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
-
+                    if (App.IsArabic)
+                        client.DefaultRequestHeaders.Add("LanguageCode", "ar");
+                    else
+                        client.DefaultRequestHeaders.Add("LanguageCode", "en");
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
                     {

@@ -1,0 +1,1043 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.SubmitReport.SubmitReportPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                    <Style x:Key="ArrowImage" TargetType="Image">
+                        <Setter Property="HeightRequest" Value="30" />
+                        <Setter Property="WidthRequest" Value="30" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="180"
+                        Source="arrowLeftwhite.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                    VerticalOptions="Center" />
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView>
+
+                    <StackLayout>
+
+                        <!--  ReportDetails Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="28"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ReportDetails}"
+                            TextColor="#58595B" />
+
+                        <!--  ReportDetailsNote Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ReportDetailsNote}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            Margin="0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+                        <!--  ReportNote Frame  -->
+                        <yummy:PancakeView
+                            Margin="5,10"
+                            Padding="10"
+                            CornerRadius="15"
+                            Shadow="{yummy:ShadowMarkup Color=#FF0000,
+                                                        Offset='0,0'}"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+
+                                <!--  Information icon  -->
+                                <Image
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Source="information"
+                                    Style="{StaticResource SmallIcon}" />
+
+
+                                <!--  ReportNote Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarBold}"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ReportNote}"
+                                    TextColor="{StaticResource NeutralGreay}" />
+
+                            </StackLayout>
+
+
+                        </yummy:PancakeView>
+
+                        <!--  ReportSecondNote Frame  -->
+                        <yummy:PancakeView
+                            Margin="5,10"
+                            Padding="10"
+                            CornerRadius="15"
+                            Shadow="{yummy:ShadowMarkup Color=#FF0000,
+                                                        Offset='0,0'}"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--  ReportNote Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="12"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.ReportSecondNote}"
+                                TextColor="{StaticResource NeutralGreay}" />
+
+
+                        </yummy:PancakeView>
+
+                        <!--  Check Box  -->
+                        <buttons:SfCheckBox
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            IsChecked="{Binding SubmitReport.IsNeedReward}"
+                            Text="{x:Static ResourceManager:AppResources.RewardCheckBox}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Full name Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Name Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
+
+
+                            <!--  Name Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding IsNeedRewardError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="nameEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReporterNameAr}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference nameEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Email Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Email Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+
+
+                            <!--  Email Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReporterEmail}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Phone Field  -->
+                        <StackLayout Spacing="0">
+                            <!--  Phone Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                            <!--  Phone Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding IsNeedRewardError}"
+                                InputViewPadding="0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="phoneEntry"
+                                    Keyboard="Telephone"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReporterMobileNumber}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Image Aspect="AspectFit" Source="ic_Version" />
+                                </inputLayout:SfTextInputLayout.LeadingView>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="12"
+                                        Text=" 966+" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference phoneEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Report type Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Report Type Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ReportType}" />
+
+                            <!--  Report Type Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    x:Name="reportTypeEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReportTypeName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportTypeEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Report Category Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Report Category Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ReportCategory}" />
+
+                            <!--  Report Category Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    x:Name="reportCategoryEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.ReportCategoryName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportCategoryEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenReportCategoryeCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <!--  Company Name Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Company Name Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
+
+                            <!--  Company Name Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportCompanyNameEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.CompanyName}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportCompanyNameEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Commercial Registration Field  -->
+                        <StackLayout Spacing="0">
+                            <!--  Commercial Registration Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}" />
+                            <!--  Commercial Registration Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.VATNumber}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  TIN Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  TIN Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.TIN}" />
+
+                            <!--  TIN Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.TIN}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  ReportDisclaimer Frame  -->
+                        <yummy:PancakeView
+                            Margin="5,10"
+                            Padding="10"
+                            CornerRadius="15"
+                            Shadow="{yummy:ShadowMarkup Color=#FF0000,
+                                                        Offset='0,0'}"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <StackLayout Orientation="Horizontal" Spacing="10">
+
+                                <!--  ReportDisclaimer icon  -->
+                                <Image
+                                    Grid.Column="2"
+                                    HorizontalOptions="End"
+                                    Source="information"
+                                    Style="{StaticResource SmallIcon}" />
+
+
+                                <!--  ReportDisclaimer Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ReportDisclaimer}"
+                                    TextColor="{StaticResource NeutralGreay}" />
+
+                            </StackLayout>
+
+
+                        </yummy:PancakeView>
+
+                        <!--  Location Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Location Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}" />
+
+
+                            <!--  Location Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="location_Green" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ShowMapCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ShowMapCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Region Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Region Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}" />
+
+
+                            <!--  Region Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportRegionEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.Region}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportRegionEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <!--  City Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  City Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ReportCity}" />
+                            <!--  City Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportCityEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.City}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportCityEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <!--  District Field  -->
+
+                        <StackLayout Spacing="0">
+
+                            <!--  District Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}" />
+                            <!--  District Entry  -->
+
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportDistrictEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.District}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportDistrictEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Company Address Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Company Address Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
+
+                            <!--  Company Address Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportCompanyAddressEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.CompanyAddress}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportCompanyAddressEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  WorkType Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  WorkType Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.WorkType}" />
+
+                            <!--  WorkType Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportWorkTypeEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.WorkType}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportWorkTypeEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Street Field  -->
+                        <StackLayout Spacing="0">
+                            <!--  Street Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ReportStreetName}" />
+                            <!--  Street Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportStreetEntry"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.Street}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportStreetEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  ReportDetails Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  ReportDetails Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZTERReportFormPageTittle}" />
+
+                            <!--  ReportDetails Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding HasError}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:GAZTBorderlessEditor
+                                    x:Name="reportReportDetailsEntry"
+                                    AutoSize="TextChanges"
+                                    Focused="reportReportDetailsEntry_Focused"
+                                    HeightRequest="100"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsSpellCheckEnabled="True"
+                                    IsTextPredictionEnabled="False"
+                                    MaxLength="1000"
+                                    MinimumHeightRequest="100"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding SubmitReport.ReportDetails}" />
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference reportReportDetailsEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  ReportDetails Field  -->
+
+                        <!--<StackLayout Spacing="0">
+
+                        -->
+                        <!--  ReportDetails Label  -->
+                        <!--
+
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZTERReportFormPageTittle}" />
+
+                        -->
+                        <!--  ReportDetails Frame  -->
+                        <!--
+                            <yummy:PancakeView
+                                Margin="5,10"
+                                Padding="5"
+                                CornerRadius="15"
+                                Shadow="{yummy:ShadowMarkup Color=#FF0000,
+                                                            Offset='0,0'}"
+                                Style="{StaticResource CommonTopCurves}">
+
+                                <custom:GAZTBorderlessEditor
+                                    AutoSize="TextChanges"
+                                    Focused="GAZTBorderlessEditor_Focused"
+                                    HeightRequest="100"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsSpellCheckEnabled="True"
+                                    IsTextPredictionEnabled="False"
+                                    MaxLength="1000"
+                                    MinimumHeightRequest="100"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding SubmitReport.ReportDetails}" />
+
+                            </yummy:PancakeView>
+
+                        </StackLayout>-->
+
+                        <!--  ViolationDate Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  ViolationDate Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ViolationDate}" />
+
+                            <!--  ViolationDate Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HasError="{Binding SubmitReport.HasViolationDate}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <DatePicker
+                                    Date="{Binding SubmitReport.ViolationDate}"
+                                    DateSelected="DatePicker_DateSelected"
+                                    Format="dd'/'MM'/'yyyy" />
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="menu_calendar" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  PDfUploaded List  -->
+                        <StackLayout IsVisible="{Binding IsTherePDFUploaded}" Spacing="0">
+
+                            <!--  PDfUploaded Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.ZakatInstalmentAttachment}" />
+
+                            <!--  Files List  -->
+                            <StackLayout
+                                x:Name="filesLst"
+                                BindableLayout.ItemsSource="{Binding ReportUloadedFiles}"
+                                Spacing="0">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout x:Name="Item">
+
+                                            <!--  PDfUploaded Entry  -->
+                                            <inputLayout:SfTextInputLayout
+                                                ContainerBackgroundColor="White"
+                                                ContainerType="Outlined"
+                                                ErrorColor="#B00020"
+                                                FocusedColor="{StaticResource NeutralGreay}"
+                                                InputViewPadding="10"
+                                                LeadingViewPosition="Inside"
+                                                OutlineCornerRadius="15"
+                                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                                <custom:BorderlessEntry
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding filename}"
+                                                    TextColor="#58595B" />
+                                                <inputLayout:SfTextInputLayout.LeadingView>
+                                                    <Image Aspect="AspectFit" Source="documents_White" />
+                                                </inputLayout:SfTextInputLayout.LeadingView>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="Close">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                BindingContext="{Binding Source={x:Reference filesLst}, Path=BindingContext}"
+                                                                Command="{Binding DeleteAttatchementCommand}"
+                                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+
+                        </StackLayout>
+
+                        <!--  Uploaded file Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Uploaded files Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="12"
+                                Text="{x:Static ResourceManager:AppResources.FDANewAttachment}" />
+
+                            <!--  Uploaded files Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HelperText="{x:Static ResourceManager:AppResources.AttachmentHelperText}"
+                                InputViewPadding="10"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="ic_attachment" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Send Report Button  -->
+                        <buttons:SfButton
+                            Margin="0,40"
+                            BackgroundColor="{StaticResource SecondaryNew}"
+                            Command="{Binding SendReportCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.SendReportButton}" />
+
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.RowSpan="2" IsVisible="{Binding IsShowBottomSheet}" />
+
+            <!--  Loader  -->
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+            <!--  Popup Map  -->
+            <!--<controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+
+
