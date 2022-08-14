@@ -9415,4 +9415,10 @@ info@zatca.gov.sa</value>
     <data name="NotRegistered" xml:space="preserve">
      <value>غير مسجلة</value>
   </data>
+    <data name="InvalidQrMessage" xml:space="preserve">
+     <value>شكرًا لمسح رمز الاستجابة السريعة, تم مشاركة معلومات رمز الاستجابة السريعة مع الهيئة</value>
+  </data>
+    <data name="InValidCode" xml:space="preserve">
+     <value>كود غير صحيح</value>
+  </data>
 </root>

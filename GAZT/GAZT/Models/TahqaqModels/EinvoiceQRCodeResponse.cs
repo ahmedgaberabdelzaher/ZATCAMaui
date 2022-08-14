@@ -23,11 +23,11 @@ namespace EGAZT.Models.TahqaqModels
     }
   public class ErrorResponseResult
     {
-        string messageCode { get; set; }
-        bool success { get; set; }
-        Result result { get; set; }
+       public string messageCode { get; set; }
+        public bool success { get; set; }
+        public Result result { get; set; }
     }
-    class Result
+   public class Result
     {
         public string data { get; set; }
     }

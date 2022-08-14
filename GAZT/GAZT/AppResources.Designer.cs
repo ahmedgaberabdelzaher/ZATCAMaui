@@ -25302,5 +25302,21 @@ namespace EGAZT {
                 return ResourceManager.GetString("NotRegistered", resourceCulture);
             }
         }
+
+        public static string InvalidQrMessage
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidQrMessage", resourceCulture);
+            }
+        }
+
+        public static string InValidCode
+        {
+            get
+            {
+                return ResourceManager.GetString("InValidCode", resourceCulture);
+            }
+        }
     }
 }

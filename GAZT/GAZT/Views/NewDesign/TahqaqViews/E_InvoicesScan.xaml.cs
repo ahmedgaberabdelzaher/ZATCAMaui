@@ -18,14 +18,15 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             zxing = new ZXingScannerView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                VerticalOptions = LayoutOptions.FillAndExpand,
+                    VerticalOptions = LayoutOptions.FillAndExpand,
                 AutomationId = "zxingScannerView",
             };
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   
-                    viewModel.Result = result;
+                   // zxing.IsAnalyzing = false;
+                   // zxing.IsScanning = false;
+                    viewModel.scanCode = result.Text;
                      viewModel.ScanEnvoiceQrCommand.Execute(null);
                 });
 
@@ -40,6 +41,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
              {
                  _ = await Permissions.RequestAsync<Permissions.Camera>();
              }
+            zxing.IsAnalyzing = true;
             zxing.IsScanning = true;
             /*  var  scanPage = new ZXingScannerPage();
                  scanPage.OnScanResult += (result) =>

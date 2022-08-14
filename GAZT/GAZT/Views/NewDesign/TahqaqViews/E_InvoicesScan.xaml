@@ -3,6 +3,7 @@
    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
     xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasNavigationBar="False"
            FlowDirection="{Binding AppDirection}"
+                 BackgroundImageSource="partials_background.png"
          xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:EGAZT.Controls"
@@ -25,7 +26,7 @@
                                <!-- <zxing:ZXingScannerView  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True"   IsScanning="True"
                  Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanEnvoiceQrCommand}"   BackgroundColor="White">
                                 </zxing:ZXingScannerView>-->
-                            <Grid Grid.Row="0"   HorizontalOptions="FillAndExpand">
+                            <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
                                                                 <Frame  BackgroundColor="Black" Opacity=".44"></Frame>
 
                                 <StackLayout Margin="0,60,0,50">
@@ -58,25 +59,25 @@
                                    <Frame Margin="0"  BorderColor="LightGray" Padding="0" CornerRadius="8"  HasShadow="False">
                             <StackLayout Margin="16" >
                                                                     <Grid ColumnDefinitions="1.25*,*" Padding="8,0">
-                                                                                    <Label Text="{Binding eInvoiceQRModel.sellerName}" Grid.Row="0"  TextColor="{StaticResource PrimaryColor}" FontFamily="{StaticResource FontSomarBold}" Style="{StaticResource BodyLabelGrey}"/>
+                                                                                    <Label Text="{Binding SellerName}" Grid.Row="0"  TextColor="{StaticResource PrimaryColor}" FontFamily="{StaticResource FontSomarBold}" Style="{StaticResource BodyLabelGrey}"/>
                                         <Grid Grid.Column="1"  RowDefinitions="auto" >
                                         <Frame VerticalOptions="FillAndExpand" Padding="0"  HasShadow="False" BorderColor="#F5BF58"   CornerRadius="14">
                                         </Frame>
-                                            <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Margin="10,3,10,3" TextColor="#F5BF58" Text="{x:Static ResourceManager:AppResources.Correct}"></Label>
+                                            <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Margin="10,3,10,3" TextColor="#F5BF58" Text="{Binding RegisterStatus}"></Label>
 
                                         </Grid>
                                     </Grid>
                                                                 <BoxView Style="{StaticResource lineSeperator}"/>
                              <Grid RowDefinitions="auto,auto" ColumnSpacing="10" ColumnDefinitions="*,*">
                                 <Label Text="{x:Static ResourceManager:AppResources.VATRegistrationNumber}"   Style="{StaticResource BodyLabelGrey}" Grid.Row="0" Grid.Column="0"></Label>
-                                  <Label Text="{Binding eInvoiceQRModel.vatNumber}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
+                                  <Label Text="{Binding VatNumber}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
                                  <Label Text="{x:Static ResourceManager:AppResources.TimeStamp}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BodyLabelGrey}"></Label>
-                                  <Label Text="{Binding eInvoiceQRModel.timeStamp}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
+                                  <Label Text="{Binding TimeStamp}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
                            </Grid>
                                 <Label Text="{x:Static ResourceManager:AppResources.InvoiceAmount}"   Style="{StaticResource BodyLabelGrey}" Grid.Row="0" Grid.Column="0"></Label>
-                                  <Label Text="{Binding eInvoiceQRModel.invoiceAmount}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
+                                  <Label Text="{Binding InvoiceAmount}" Grid.Row="1" Grid.Column="0"  Style="{StaticResource BodyLabelBlack}"/>
                                  <Label Text="{x:Static ResourceManager:AppResources.VATAmount}" Grid.Row="0" Grid.Column="1"  Style="{StaticResource BodyLabelGrey}"></Label>
-                                  <Label Text="{Binding eInvoiceQRModel.vatAmount}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
+                                  <Label Text="{Binding VatAmount}" Grid.Row="1" Grid.Column="1"  Style="{StaticResource BodyLabelBlack}"/>
                           
                             </StackLayout>
                         </Frame>
@@ -91,7 +92,8 @@
         <!--#endregion-->
     <!--Header-->
 
-  <controls:Header  TitleText="{x:Static ResourceManager:AppResources.ScantheQRcode}" Grid.Row="0"></controls:Header>
-  <controls:Loader IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"></controls:Loader>
+  <controls:Header Padding="20" TitleText="{x:Static ResourceManager:AppResources.ScantheQRcode}" Grid.Row="0"></controls:Header>
+  <controls:MsgView IsVisible="{Binding IsShowMsgView}" Grid.Row="0" Grid.RowSpan="2"></controls:MsgView>
+    <controls:Loader  IsVisible="{Binding IsLoading}" Grid.Row="0" Grid.RowSpan="2"></controls:Loader>
 </Grid>
 </ContentPage>

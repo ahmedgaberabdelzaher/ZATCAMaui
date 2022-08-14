@@ -5,6 +5,7 @@ using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
 using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
 
@@ -22,7 +23,61 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                AutomationId = "zxingScannerView",
+                AutomationId = "zxingScannerView"
+            };
+            //zxing.AutoFocus();
+            zxing.Options = new MobileBarcodeScanningOptions()
+            {
+                UseFrontCameraIfAvailable = false,
+                PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX, BarcodeFormat.EAN_13 },
+                TryHarder = true,
+                AutoRotate = false,
+                TryInverted = true, UseCode39ExtendedMode = true,
+                DelayBetweenContinuousScans = 0,
+                CameraResolutionSelector = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+            };
+
+            var options = new MobileBarcodeScanningOptions
+            {
+                AutoRotate = true,
+                // UseNativeScanning = true,
+                TryHarder = true,
+                
+                TryInverted = true,
+                CameraResolutionSelector  = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+
             };
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
@@ -47,7 +102,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 CameraResolutionSelector = SelectLowestResolutionMatchingDisplayAspectRatio
 
             };*/
-            //zxing.AutoFocus();
+            zxing.AutoFocus();
             //zxing = new ZXingScannerView();
             // zxing.Options = options;
           /*  zxing.OnScanResult += (result) => Device.BeginInvokeOnMainThread(() => {
@@ -121,7 +176,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                                   orderby aspectRatioDiff, heightDiff
                                   select r;
 
-            return bestResolutions.LastOrDefault();
+            return bestResolutions.FirstOrDefault();
         }
     }
 }

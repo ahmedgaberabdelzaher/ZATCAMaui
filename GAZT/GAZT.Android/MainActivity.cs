@@ -206,7 +206,7 @@ namespace GAZT.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+           // PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
           /*   for (int i = 0; i < permissions.Length; i++)
             {
                if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)

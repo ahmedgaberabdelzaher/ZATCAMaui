@@ -37,8 +37,8 @@ namespace EGAZT
      // public static string CustomBaseUrl = "http://10.112.34.26:8024/";
       public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
      // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
-//public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
-      public static string VatBaseUrl = "http://172.50.15.39:8080/api";
+public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+   //   public static string VatBaseUrl = "http://172.50.15.39:8080/api";
   #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
@@ -464,8 +464,8 @@ namespace EGAZT
                 //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
 
-                  navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
-             //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+             navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
               //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new TaxCalculator()) { BarTextColor = Color.White };
@@ -479,12 +479,12 @@ namespace EGAZT
 
                 // navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
-              //  navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+               navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
                 //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new TaxCalculator()) { BarTextColor = Color.White };
-              // navigationPage = new CustomNavigation(new E_InvoicesScan()) { BarTextColor = Color.White };
+              //navigationPage = new CustomNavigation(new E_InvoicesScan()) { BarTextColor = Color.White };
 
             }
 

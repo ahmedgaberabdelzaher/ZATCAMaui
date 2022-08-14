@@ -9494,4 +9494,10 @@ the Zakat, Tax and Customs
     <data name="NotRegistered" xml:space="preserve">
      <value>Not a VAT Registered</value>
   </data>
+  <data name="InvalidQrMessage" xml:space="preserve">
+     <value>Thank you for scanning the QR code. QR code information has been transmitted to ZATCA</value>
+  </data>
+  <data name="InValidCode" xml:space="preserve">
+     <value>InValid Code</value>
+  </data>
  </root>

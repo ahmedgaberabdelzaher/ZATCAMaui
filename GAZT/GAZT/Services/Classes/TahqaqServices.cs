@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.AppConfigurations;
@@ -17,9 +18,15 @@ namespace EGAZT.Services.Classes
             return response;
         }
 
-        public async Task<Tuple<EinvoiceQRCodeResponse,bool,string>> GetEInvoiceData(int id)
+        public async Task<HttpResponseMessage> GetEInvoiceData(string id)
         {
-            var response = await HttpManager.GetAsync<EinvoiceQRCodeResponse>(App.VatBaseUrl + $"api/Report/QRCodeRead?id={id}").ConfigureAwait(false);
+            var response = await HttpManager.PostAsync(App.VatBaseUrl + $"/Report/QRCodeRead?id={id}",new QrScanModel() {  ScanCode=""}).ConfigureAwait(false);
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> AddQrData(List<EInvoiceQRModel> qrScanModel)
+        {
+            var response = await HttpManager.PostAsync(App.VatBaseUrl+"/QRLog/AddQRLogs", qrScanModel).ConfigureAwait(false);
             return response;
         }
     }
