@@ -23,7 +23,7 @@
         <Grid ColumnSpacing="0" RowSpacing="5">
             <Grid.RowDefinitions>
                 <!--  Skip Button  -->
-                <RowDefinition Height="96" />
+                <RowDefinition Height="98" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -33,35 +33,6 @@
 
             <Image Grid.RowSpan="5"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Aspect="AspectFill" BackgroundColor="Transparent"
                    Source="partials_background.png" />
-            <StackLayout Grid.Row="0" Orientation="Horizontal">
-                <!--  Skip button  -->
-
-                <buttons:SfButton
-                Margin="10"
-                BackgroundColor="Transparent"
-                Command="{Binding SkipCommand}"
-                CornerRadius="20"                  
-                FontFamily="{StaticResource SomarBold}"
-                HorizontalOptions="Start"
-                IsVisible="{Binding IsSkipButtonVisible}"
-                Text="{x:Static ResourceManager:AppResources.NDSkip}"
-                TextColor="{x:StaticResource WhiteTextColor}"
-                VerticalOptions="StartAndExpand"
-                 />
-
-                <buttons:SfButton
-                Margin="10"
-                BackgroundColor="Transparent"
-                CornerRadius="20"
-                FontFamily="{StaticResource SomarBold}"
-                HorizontalOptions="EndAndExpand"
-                IsVisible="{Binding IsSkipButtonVisible}"
-                Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
-                TextColor="{x:StaticResource WhiteTextColor}"
-                VerticalOptions="EndAndExpand"
-                Clicked="ChangeLangButton_Clicked" />
-            </StackLayout>
-
             <Image Source="centered.png"  Aspect="AspectFit" Margin="{OnPlatform Android='0,-35,0,0', iOS='0,-45,0,0'}" Grid.Row="1">
             </Image>
 
@@ -103,6 +74,40 @@
 
             <commonView:OnBoardingPageIndicator Grid.Row="3"  HorizontalOptions="Center" MaxNum="{Binding MaxIndex}"
                                         MinNum="{Binding SelectedIndex}" DotSize="12" FlowDirection="LeftToRight"/>
+             <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <StackLayout.Margin>
+                      <OnPlatform x:TypeArguments="Thickness">
+       <On Platform="iOS" Value="0,35,0,0" />
+       <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+       </OnPlatform>
+                </StackLayout.Margin>
+                <!--  Skip button  -->
+
+                <buttons:SfButton
+                Margin="10"
+                BackgroundColor="Transparent"
+                Command="{Binding SkipCommand}"
+                CornerRadius="20" IsEnabled="True"                 
+                FontFamily="{StaticResource SomarBold}"
+                HorizontalOptions="Start"
+                IsVisible="{Binding IsSkipButtonVisible}"
+                Text="{x:Static ResourceManager:AppResources.NDSkip}"
+                TextColor="{x:StaticResource WhiteTextColor}"
+                VerticalOptions="StartAndExpand"
+                 />
+
+                <buttons:SfButton
+                Margin="10"
+                BackgroundColor="Transparent"
+                CornerRadius="20"
+                FontFamily="{StaticResource SomarBold}"
+                HorizontalOptions="EndAndExpand"
+                IsVisible="{Binding IsSkipButtonVisible}"
+                Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
+                TextColor="{x:StaticResource WhiteTextColor}"
+                VerticalOptions="EndAndExpand"
+                Clicked="ChangeLangButton_Clicked" />
+            </StackLayout>
 
         </Grid>
     </ContentPage.Content>

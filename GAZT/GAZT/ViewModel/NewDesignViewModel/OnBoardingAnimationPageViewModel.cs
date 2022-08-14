@@ -214,7 +214,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// Invoked when the Skip button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Skip(object obj)
+        private void Skip()
         {
             this.MoveToNextPage();
         }
