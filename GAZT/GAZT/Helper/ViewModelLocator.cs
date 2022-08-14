@@ -146,6 +146,8 @@ using EGAZT.ViewModel.NewDesignViewModel.VAT;
 using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
 using EGAZT.Views.NewDesign.SubmitReport;
 using EGAZT.Controls;
+using EGAZT.ViewModel.NewDesignViewModel.MyReportsVM;
+using EGAZT.Views.NewDesign.MyReports;
 
 namespace EGAZT
 {
@@ -167,6 +169,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
             SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
             SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
+            SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -383,6 +386,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
             SimpleIoc.Default.Register<SubmitReportViewModel>();
+            SimpleIoc.Default.Register<MyReportsViewModel>();
 
             #endregion
         }
@@ -2843,6 +2847,7 @@ namespace EGAZT
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
+            navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
             navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
             #endregion
 
@@ -3837,6 +3842,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<SubmitReportViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public MyReportsViewModel myReportsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyReportsViewModel>();
                 }
                 catch (Exception ex)
                 {

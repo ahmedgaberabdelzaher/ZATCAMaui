@@ -86,6 +86,8 @@
 	  <None Remove="ZXing.Net.Mobile.Forms" />
 	  <None Remove="Views\NewDesign\SubmitReport\" />
 	  <None Remove="ViewModel\NewDesignViewModel\SubmitReport\" />
+	  <None Remove="Views\NewDesign\MyReports\" />
+	  <None Remove="ViewModel\NewDesignViewModel\MyReportsVM\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -183,6 +185,8 @@
 		<Folder Include="Views\NewDesign\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\SubmitReport\" />
+		<Folder Include="Views\NewDesign\MyReports\" />
+		<Folder Include="ViewModel\NewDesignViewModel\MyReportsVM\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -256,6 +260,9 @@
 		  <DependentUpon>AppResources.resx</DependentUpon>
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
+		</Compile>
+		<Compile Update="Views\NewDesign\MyReports\MyReportsPage.xaml.cs">
+		  <DependentUpon>MyReportsPage.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
