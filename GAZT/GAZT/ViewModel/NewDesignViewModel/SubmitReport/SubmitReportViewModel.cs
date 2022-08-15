@@ -60,22 +60,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    if (IsValidateReport())
+                    try
                     {
-                        IsLoading = true;
-                        SubmitReport.ViolationDate = Convert.ToDateTime(SubmitReport.ViolationDate ?? "1994-01-01 00:00:00", new CultureInfo("en-US")).ToString("d'/'M'/'yyyy");
-                        var json = JsonConvert.SerializeObject(SubmitReport);
-                        var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-                        var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary,ReportUloadedFiles);
-                        IsLoading = false;
-                        if(reportResult.Success)
+                        if (IsValidateReport())
                         {
-                            ReportNumberResult = reportResult.Result?.Data;
-                            _navigationService.NavigateTo("ReportSuccessPage");
-                        }
-                            
-                    }
+                            IsLoading = true;
+                            //SubmitReport.ViolationDate = Convert.ToDateTime(SubmitReport.ViolationDate ?? "1994-01-01 00:00:00", new CultureInfo("en-US")).ToString("d'/'M'/'yyyy");
+                            var date = DateTime.Parse(SubmitReport.ViolationDate);
+                            string dt = date.Date.ToString("dd/MM/yyyy");
+                            submitReport.ViolationDate = dt;
+                            var json = JsonConvert.SerializeObject(SubmitReport);
+                            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles);
+                            IsLoading = false;
+                            if (reportResult.Success)
+                            {
+                                ReportNumberResult = reportResult.Result?.Data;
+                                _navigationService.NavigateTo("ReportSuccessPage");
+                            }
 
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                 
                 });
             }
         }

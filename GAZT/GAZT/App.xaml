@@ -1318,7 +1318,9 @@
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="TextColor" Value="{DynamicResource InformationRedColor}" />
             </Style>
-
+            <Style TargetType="Frame">
+                <Setter Property="HasShadow" Value="False"></Setter>
+            </Style>
         </ResourceDictionary>
         <!--  <ControlTemplate x:Key="MainTemplet">
             <Grid>

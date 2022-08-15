@@ -146,6 +146,7 @@ using EGAZT.ViewModel.NewDesignViewModel.VAT;
 using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
 using EGAZT.Views.NewDesign.SubmitReport;
 using EGAZT.Controls;
+using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 
 namespace EGAZT
 {
@@ -383,6 +384,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
             SimpleIoc.Default.Register<SubmitReportViewModel>();
+            SimpleIoc.Default.Register<E_DeclerationViewModel>();
 
             #endregion
         }
@@ -2844,6 +2846,10 @@ namespace EGAZT
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
             navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
+            navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
+            navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
+            navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
+
             #endregion
 
             return navigationService;
@@ -2976,6 +2982,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TaxCalculatorViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public E_DeclerationViewModel eDeclerationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<E_DeclerationViewModel>();
                 }
                 catch (Exception ex)
                 {
