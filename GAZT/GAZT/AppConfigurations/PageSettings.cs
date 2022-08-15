@@ -47,6 +47,30 @@ namespace EGAZT.AppConfigurations
             }
             return key;
         }
+        const string EdclerationBaseURL = "http://10.112.42.23/";
+        public static string GetNewEDeclarationLinks()
+        {
+            if (App.IsArabic)
+            {
+                return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
+            }
+            else
+            {
+                return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
+            }
+        }
+
+        public static string GetPreviousEDeclarationLink()
+        {
+            if (App.IsArabic)
+            {
+                return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDeccheck";
+            }
+            else
+            {
+                return $"{EdclerationBaseURL}en/edeclaration?AppViewEDeccheck";
+            }
+        }
 
     }
 }

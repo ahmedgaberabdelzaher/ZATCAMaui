@@ -2388,6 +2388,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs Declaration for Travelers.
+        /// </summary>
+        public static string CustomsDeclarationforTravelers {
+            get {
+                return ResourceManager.GetString("CustomsDeclarationforTravelers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs duty rate.
         /// </summary>
         public static string Customsdutyrate {
@@ -2942,6 +2951,15 @@ namespace EGAZT {
         public static string Duty {
             get {
                 return ResourceManager.GetString("Duty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Declaration.
+        /// </summary>
+        public static string eDeclaration {
+            get {
+                return ResourceManager.GetString("eDeclaration", resourceCulture);
             }
         }
         
@@ -9910,6 +9928,15 @@ namespace EGAZT {
         public static string RetypePassword {
             get {
                 return ResourceManager.GetString("RetypePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review a previous request.
+        /// </summary>
+        public static string Reviewapreviousrequest {
+            get {
+                return ResourceManager.GetString("Reviewapreviousrequest", resourceCulture);
             }
         }
         

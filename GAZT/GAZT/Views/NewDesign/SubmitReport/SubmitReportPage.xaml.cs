@@ -39,8 +39,6 @@ namespace EGAZT.Views.NewDesign.SubmitReport
             }
             catch (Exception ex)
             {
-
-                throw;
             }
         }
 

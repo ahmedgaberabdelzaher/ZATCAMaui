@@ -88,6 +88,7 @@
 	  <None Remove="ViewModel\NewDesignViewModel\SubmitReport\" />
 	  <None Remove="Views\NewDesign\MyReports\" />
 	  <None Remove="ViewModel\NewDesignViewModel\MyReportsVM\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -187,6 +188,7 @@
 		<Folder Include="ViewModel\NewDesignViewModel\SubmitReport\" />
 		<Folder Include="Views\NewDesign\MyReports\" />
 		<Folder Include="ViewModel\NewDesignViewModel\MyReportsVM\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
