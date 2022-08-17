@@ -9531,4 +9531,10 @@ The violation must not have been previously reported or sufficient for it by the
     <data name="CustomsDeclarationforTravelers" xml:space="preserve">
         <value>Customs Declaration for Travelers</value>
     </data>
+    <data name="Home" xml:space="preserve">
+        <value>Home</value>
+    </data>
+    <data name="ZATCAServices" xml:space="preserve">
+        <value>ZATCA Services</value>
+    </data>
 </root>

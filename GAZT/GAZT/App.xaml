@@ -20,7 +20,7 @@
             <Style TargetType="Label">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
-            <Color x:Key="Primary">#042e66</Color>
+            <Color x:Key="Primary">#002447</Color>
             <Color x:Key="Secondary">#0996d4</Color>
             <Color x:Key="NeutralBlack">#042e66</Color>
             <Color x:Key="NeutralGreay">#999999</Color>
@@ -98,6 +98,7 @@
             <Color x:Key="NewRedColor">#e84941</Color>
             <Color x:Key="NewProgressLightGreenColor">#95d600</Color>
             <x:String x:Key="NewWhiteColor">#ffffff</x:String>
+            <Color x:Key="SelectedMenuColor">#19D8DC</Color>
 
             <DataTemplate x:Key="ItemTemplate">
                 <ContentPresenter Content="{Binding RotatorItem}" />

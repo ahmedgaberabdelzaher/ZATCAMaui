@@ -9461,4 +9461,10 @@ info@zatca.gov.sa</value>
         <data name="CustomsDeclarationforTravelers" xml:space="preserve">
         <value> الإقرار الجمركي للمسافرين</value>
     </data>
+       <data name="Home" xml:space="preserve">
+        <value>الرئيسية</value>
+    </data>
+    <data name="ZATCAServices" xml:space="preserve">
+        <value>خدمات هيئة الزكاة والضريبة والجمارك</value>
+    </data>
 </root>

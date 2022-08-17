@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations
 {
-    public partial class ReiewPreviousDeclerations : ContentPage
+    public partial class ReiewPreviousDeclerations : BaseContentPage
     {
         E_DeclerationViewModel viewModel;
         public ReiewPreviousDeclerations()

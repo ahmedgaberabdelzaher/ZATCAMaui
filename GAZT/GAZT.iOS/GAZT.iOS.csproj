@@ -381,6 +381,29 @@
     <BundleResource Include="Resources\EDeclerationicon.png" />
     <BundleResource Include="Resources\EDeclerationicon%402x.png" />
     <BundleResource Include="Resources\EDeclerationicon%403x.png" />
+    <BundleResource Include="Resources\Account.png" />
+    <BundleResource Include="Resources\Account%402x.png" />
+    <BundleResource Include="Resources\Account%403x.png" />
+    <BundleResource Include="Resources\AccountSelected.png" />
+    <BundleResource Include="Resources\AccountSelected%402x.png" />
+    <BundleResource Include="Resources\AccountSelected%403x.png" />
+    <BundleResource Include="Resources\Home.png" />
+    <BundleResource Include="Resources\Home%402x.png" />
+    <BundleResource Include="Resources\HomeSelected.png" />
+    <BundleResource Include="Resources\HomeSelected%402x.png" />
+    <BundleResource Include="Resources\HomeSelected%403x.png" />
+    <BundleResource Include="Resources\Menu.png" />
+    <BundleResource Include="Resources\Menu%402x.png" />
+    <BundleResource Include="Resources\Menu%403x.png" />
+    <BundleResource Include="Resources\MenuSelected.png" />
+    <BundleResource Include="Resources\MenuSelected%402x.png" />
+    <BundleResource Include="Resources\MenuSelected%403x.png" />
+    <BundleResource Include="Resources\Rectangle.png" />
+    <BundleResource Include="Resources\Rectangle%402x.png" />
+    <BundleResource Include="Resources\Rectangle%403x.png" />
+    <BundleResource Include="Resources\HomeNotSelected.png" />
+    <BundleResource Include="Resources\HomeNotSelected%402x.png" />
+    <BundleResource Include="Resources\HomeNotSelected%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

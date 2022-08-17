@@ -8,7 +8,7 @@
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     FlowDirection="RightToLeft"
-    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:custom2="clr-namespace:EGAZT" xmlns:controls="clr-namespace:EGAZT.Controls"
     NavigationPage.HasNavigationBar="False"
     Title="Login"
     BackgroundColor="White">
@@ -84,6 +84,7 @@
                                     Style="{StaticResource PrimaryButtonStyle}" HeightRequest="46" />
                 </StackLayout>
             </StackLayout>
+            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand"></controls:BottomMenu>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

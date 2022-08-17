@@ -176,6 +176,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ICommand NavigateToCustomsDeclarationforTravelers
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("CustomsDeclarationforTravelers", "OnCustomsDeclarationforTravelers", "CustomsDeclarationforTravelers");
+                    _navigationService.NavigateTo("EDeclerationView");
+                    AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                });
+            }
+        }
+
     }
 }
 

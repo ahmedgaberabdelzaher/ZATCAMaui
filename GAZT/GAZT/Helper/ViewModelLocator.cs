@@ -147,6 +147,7 @@ using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
 using EGAZT.Views.NewDesign.SubmitReport;
 using EGAZT.Controls;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
 
 namespace EGAZT
 {
@@ -385,6 +386,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
             SimpleIoc.Default.Register<SubmitReportViewModel>();
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
+            SimpleIoc.Default.Register<HomeViewModel>();
 
             #endregion
         }
@@ -2849,6 +2851,7 @@ namespace EGAZT
             navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
             navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
             navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
+            navigationService.Configure("Home", typeof(Home));
 
             #endregion
 
@@ -2997,6 +3000,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<E_DeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public HomeViewModel homeViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<HomeViewModel>();
                 }
                 catch (Exception ex)
                 {

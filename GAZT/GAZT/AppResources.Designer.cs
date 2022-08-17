@@ -16943,5 +16943,17 @@ namespace EGAZT {
                 return ResourceManager.GetString("CustomsDeclarationforTravelers", resourceCulture);
             }
         }
+        
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        public static string ZATCAServices {
+            get {
+                return ResourceManager.GetString("ZATCAServices", resourceCulture);
+            }
+        }
     }
 }

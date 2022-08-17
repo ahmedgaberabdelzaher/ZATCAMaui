@@ -6,9 +6,11 @@ namespace EGAZT.Controls
 {
     public partial class Header : ContentView
     {
+        public bool BackButtonVisible { get; set; } = true;
         public Header()
         {
             InitializeComponent();
+            backbutton.IsVisible = BackButtonVisible;
         }
         public static readonly BindableProperty TitleTextProperty = BindableProperty.Create(
                                                  propertyName: "TitleText",
