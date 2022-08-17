@@ -4,14 +4,15 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
     xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    FlowDirection="RightToLeft"
-    xmlns:custom2="clr-namespace:EGAZT" xmlns:controls="clr-namespace:EGAZT.Controls"
-    NavigationPage.HasNavigationBar="False"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+    xmlns:custom2="clr-namespace:EGAZT"
     Title="Login"
-    BackgroundColor="White">
+    BackgroundColor="White"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
@@ -26,65 +27,130 @@
         <Grid>
             <Grid x:Name="loginGrid">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"></RowDefinition>
+                    <RowDefinition Height="100*" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100*"></ColumnDefinition>
+                    <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
-           
-                <Image Source="Burger" x:Name="HamburgerMenu" Style="{StaticResource SmallIcon}" 
-                       VerticalOptions="Start"
-                HorizontalOptions="EndAndExpand"
-                        Margin="10,55,10,0">
+
+                <Image
+                    x:Name="HamburgerMenu"
+                    Margin="10,55,10,0"
+                    HorizontalOptions="EndAndExpand"
+                    Source="Burger"
+                    Style="{StaticResource SmallIcon}"
+                    VerticalOptions="Start">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Grid Grid.Row="0" Grid.Column="0" IsVisible="false">
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-
-                    </StackLayout>
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    IsVisible="false">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center" />
                 </Grid>
 
-                <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}" Margin="0,-20,0,-20">
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                       
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                       TextColor="{StaticResource Secondary}"/>
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="0,-20,0,-20"
+                    IsVisible="{Binding IsLoading}">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <busyindicator:SfBusyIndicator
+                                x:Name="busyindicatorForLanding"
+                                AnimationType="SingleCircle"
+                                EnableAnimation="True"
+                                HorizontalOptions="CenterAndExpand"
+                                IsBusy="True"
+                                TextColor="{StaticResource Secondary}"
+                                TitlePlacement="Bottom"
+                                VerticalOptions="CenterAndExpand"
+                                ViewBoxHeight="70"
+                                ViewBoxWidth="70" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>
             </Grid>
-            <StackLayout x:Name="sessionExpiredView" IsVisible="false" Margin="0" BackgroundColor="Transparent" >
-                <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
-                    <Image Source="errorNew.png"   Aspect="AspectFit"/>
-                    <Label Text="{x:Static custom2:AppResources.Information}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <Label Text= "{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}" FontFamily="{StaticResource SomarSemiBold}"
-                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+            <StackLayout
+                x:Name="sessionExpiredView"
+                Margin="0"
+                BackgroundColor="Transparent"
+                IsVisible="false">
+                <StackLayout
+                    Padding="40"
+                    BackgroundColor="Transparent"
+                    VerticalOptions="CenterAndExpand">
+                    <Image Aspect="AspectFit" Source="errorNew.png" />
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Large"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static custom2:AppResources.Information}"
+                        TextColor="White" />
+                    <Label
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static custom2:AppResources.ZYourSessionhasexpiredPleaseLoginagain}"
+                        TextColor="White" />
                 </StackLayout>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" HorizontalOptions="Center" VerticalOptions="End" Margin="30,60,30,80" >
-                    <buttons:SfButton Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,8,0,16"  
-                                      x:Name="btnLogin" Clicked="btnLoginClicked" 
-                                      Text="{x:Static ResourceManager:AppResources.LoginTitle}"
-                                    Style="{StaticResource PrimaryButtonStyle}" HeightRequest="46" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    Margin="30,60,30,80"
+                    HorizontalOptions="Center"
+                    VerticalOptions="End">
+                    <buttons:SfButton
+                        x:Name="btnLogin"
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,8,0,16"
+                        Clicked="btnLoginClicked"
+                        HeightRequest="46"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.LoginTitle}" />
                 </StackLayout>
             </StackLayout>
-            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand"></controls:BottomMenu>
+            <controls:BottomMenu
+                Grid.Row="0"
+                IsVisible="false"
+                VerticalOptions="EndAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
