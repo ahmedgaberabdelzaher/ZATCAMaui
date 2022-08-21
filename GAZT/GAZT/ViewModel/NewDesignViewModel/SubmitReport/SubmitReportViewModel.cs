@@ -18,6 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 {
     public class SubmitReportViewModel : BaseViewModel
     {
+        #region Properties
         private readonly ISubmitReportServices _submitReportServices;
         SubmitReportModel submitReport = new SubmitReportModel();
 
@@ -54,6 +55,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         private List<BaseRegionAndCity> RegionsList;
         private List<CategoryDataResponse> ReportCategory;
 
+        #endregion
+
+        #region Commands
         public ICommand SendReportCommand
         {
             get
@@ -135,12 +139,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command<ReportFileModel>((e) =>
+                return new Command<ReportFileModel>((file) =>
                 {
 
-                    if (e != null && ReportUloadedFiles != null && ReportUloadedFiles.Count > 0)
+                    if (file != null && ReportUloadedFiles != null && ReportUloadedFiles.Count > 0)
                     {
-                        ReportUloadedFiles.Remove(e);
+                        ReportUloadedFiles.Remove(file);
 
                         if (ReportUloadedFiles.Count == 0) IsTherePDFUploaded = false;
                     }
@@ -275,11 +279,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
+        #endregion
+
         public SubmitReportViewModel(ISubmitReportServices submitReportServices, INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             this._submitReportServices = submitReportServices;
         }
 
+
+        #region Methods
         private async Task PickAndShow(PickOptions options)
         {
             try
@@ -374,6 +382,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             return true;
 
         }
+        #endregion
 
     }
 }

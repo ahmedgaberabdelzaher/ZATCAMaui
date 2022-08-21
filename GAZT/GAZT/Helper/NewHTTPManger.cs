@@ -98,7 +98,7 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Url);
 
-                        httpRequestMessage.Content = new StringContent(CheckNullJsonObject(body), Encoding.UTF8);
+                        httpRequestMessage.Content = new StringContent(CheckNullJsonObject(body), Encoding.UTF8, "application/json");
 
                         using (var httpResponseMessage = await client.SendAsync(httpRequestMessage))
                         {
@@ -291,16 +291,17 @@ namespace EGAZT.Helper
             client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", null);
         }
+
         private static string CheckNullJsonObject(object obj)
         {
             try
             {
-                var serializerSettings = new JsonSerializerSettings();
-                serializerSettings.ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                };
-                return obj == null ? string.Empty : JsonConvert.SerializeObject(obj, serializerSettings);
+                //var serializerSettings = new JsonSerializerSettings();
+                //serializerSettings.ContractResolver = new DefaultContractResolver
+                //{
+                //    NamingStrategy = new SnakeCaseNamingStrategy()
+                //};
+                return obj == null ? string.Empty : JsonConvert.SerializeObject(obj);
             }
             catch (Exception)
             {
@@ -313,12 +314,12 @@ namespace EGAZT.Helper
         {
             try
             {
-                var serializerSettings = new JsonSerializerSettings();
-                serializerSettings.ContractResolver = new DefaultContractResolver
-                {
-                    NamingStrategy = new SnakeCaseNamingStrategy()
-                };
-                return JsonConvert.DeserializeObject<T>(content, serializerSettings);
+                //var serializerSettings = new JsonSerializerSettings();
+                //serializerSettings.ContractResolver = new DefaultContractResolver
+                //{
+                //    NamingStrategy = new SnakeCaseNamingStrategy()
+                //};
+                return JsonConvert.DeserializeObject<T>(content);
             }
             catch (Exception)
             {

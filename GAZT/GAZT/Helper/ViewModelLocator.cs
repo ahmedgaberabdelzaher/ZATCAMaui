@@ -150,7 +150,7 @@ using EGAZT.Controls;
 using EGAZT.ViewModel.NewDesignViewModel.MyReportsVM;
 using EGAZT.Views.NewDesign.MyReports;
 
-//using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 
 
 namespace EGAZT
@@ -2855,10 +2855,11 @@ namespace EGAZT
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
             navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
+            navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));
             navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
-            //navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
-            //navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
-            //navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
+            navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
+            navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
+            navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
 
             #endregion
 

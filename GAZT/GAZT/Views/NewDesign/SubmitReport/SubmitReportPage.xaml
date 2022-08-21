@@ -689,7 +689,7 @@
                             <custom:CustomLabel
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="12"
-                                Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
+                                Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}" />
 
                             <!--  Company Address Entry  -->
                             <inputLayout:SfTextInputLayout

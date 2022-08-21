@@ -5822,7 +5822,7 @@
     <value>المنشآت</value>
     </data>
   <data name="NDFacilityAddress" xml:space="preserve">
-    <value>Facility Address</value>
+    <value>عنوان المنشآة</value>
     </data>
   <data name="NDFacilityBranches" xml:space="preserve">
     <value>Facility Branches</value>
@@ -9452,13 +9452,34 @@ info@zatca.gov.sa</value>
   <data name="ReportSuccessMsg" xml:space="preserve">
      <value>نشكركم علي تعاونكم مع هيئة الزكاة و الضريبة و الجمارك سيتم الرد في أسرع وقت</value>
   </data>
-    <data name="eDeclaration" xml:space="preserve">
+   <data name="eDeclaration" xml:space="preserve">
         <value>الإقرار الإلكتروني</value>
-    </data>
-    <data name="Reviewapreviousrequest" xml:space="preserve">
-        <value>مراجعة طلب سابق</value>
-    </data>
-        <data name="CustomsDeclarationforTravelers" xml:space="preserve">
-        <value> الإقرار الجمركي للمسافرين</value>
-    </data> 
+   </data>
+   <data name="Reviewapreviousrequest" xml:space="preserve">
+       <value>مراجعة طلب سابق</value>
+   </data>
+   <data name="CustomsDeclarationforTravelers" xml:space="preserve">
+       <value> الإقرار الجمركي للمسافرين</value>
+   </data>
+   <data name="AllReports" xml:space="preserve">
+      <value>جميع البلاغات</value>
+   </data>
+   <data name="AddNewReport" xml:space="preserve">
+      <value>بلاغ جديد</value>
+   </data>
+   <data name="Reports" xml:space="preserve">
+      <value>بلاغات</value>
+   </data>
+    <data name="MyOpenedReports" xml:space="preserve">
+      <value>بلاغاتي المفتوحة</value>
+   </data>
+   <data name="MyClosedReports" xml:space="preserve">
+      <value>بلاغاتي المغلقة</value>
+   </data>
+   <data name="ClosedReports" xml:space="preserve">
+      <value>مغلقة</value>
+   </data>
+   <data name="OpenReports" xml:space="preserve">
+      <value>مفتوحة</value>
+   </data> 
 </root>

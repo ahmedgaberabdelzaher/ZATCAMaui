@@ -13,8 +13,10 @@
         </ResourceDictionary>
     </ContentView.Resources>
     <ContentView.Content>
+
         <Grid Margin="0">
 
+            <!--Act as dimmed background style-->
             <StackLayout
                 Opacity="0.4"
                 Orientation="Vertical"
@@ -23,6 +25,8 @@
                     <TapGestureRecognizer Command="{Binding ClosBottomSheetCommand}" />
                 </StackLayout.GestureRecognizers>
             </StackLayout>
+
+            <!--List of names inside frame-->
             <yummy:PancakeView
                 Padding="20,15"
                 BackgroundColor="White"
@@ -42,6 +46,8 @@
                                         FontSize="16"
                                         LineBreakMode="WordWrap"
                                         Text="{Binding Name}">
+
+                                        <!--Name -->
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
@@ -60,6 +66,8 @@
                     </StackLayout>
                 </ScrollView>
             </yummy:PancakeView>
+
         </Grid>
+
     </ContentView.Content>
 </ContentView>
