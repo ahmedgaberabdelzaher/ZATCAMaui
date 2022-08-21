@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="EGAZT.Views.NewDesign.Home"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    HasBackButton="False"
+    TitleText="{x:Static ResourceManager:AppResources.Home}">
+    <newdesign:BaseContentPage.PancakeView>
+        <Grid RowDefinitions="*,auto">
+            <WebView x:Name="youtubeView" IsVisible="false" />
+            <Label Text="{}" />
+            <StackLayout x:Name="HomeMenuLst" BindableLayout.ItemsSource="{Binding MenuLst}">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            x:Name="Item"
+                            Margin="0,15,0,0"
+                            Padding="22"
+                            BorderColor="#DDDDDD"
+                            CornerRadius="15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    BindingContext="{Binding Source={x:Reference HomeMenuLst}, Path=BindingContext}"
+                                    Command="{Binding NavigateCommand}"
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+
+                            </Frame.GestureRecognizers>
+                            <Grid ColumnDefinitions="30,*">
+                                <Image Grid.Column="0" Source="{Binding ImageSource}" />
+                                <Label
+                                    Grid.Column="1"
+                                    Margin="20,0,20,0"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+            <controls:BottomMenu Grid.Row="1" VerticalOptions="EndAndExpand" />
+
+        </Grid>
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>

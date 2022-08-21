@@ -91,6 +91,9 @@
 	  <None Remove="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 	  <None Remove="Models\MyReportsModel\" />
 	  <None Remove="Models\BaseModels\" />
+	  <None Remove="ViewModel\NewDesignViewModel\HomeViewModels\" />
+	  <None Remove="Views\NewDesign\HomePages\" />
+
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -193,6 +196,8 @@
 		<Folder Include="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 		<Folder Include="Models\MyReportsModel\" />
 		<Folder Include="Models\BaseModels\" />
+		<Folder Include="ViewModel\NewDesignViewModel\HomeViewModels\" />
+		<Folder Include="Views\NewDesign\HomePages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -269,6 +274,10 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\MyReports\MyReportsPage.xaml.cs">
 		  <DependentUpon>MyReportsPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewDesign\HomePages\Home.xaml.cs">
+		  <DependentUpon>Home.xaml</DependentUpon>
+		  <SubType>Code</SubType>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>

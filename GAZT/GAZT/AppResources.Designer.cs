@@ -25644,5 +25644,23 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
             }
         }
+        
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        public static string ZATCAServices {
+            get {
+                return ResourceManager.GetString("ZATCAServices", resourceCulture);
+            }
+        }
+        
+        public static string EXCISETAXServices {
+            get {
+                return ResourceManager.GetString("EXCISETAXServices", resourceCulture);
+            }
+        }
     }
 }

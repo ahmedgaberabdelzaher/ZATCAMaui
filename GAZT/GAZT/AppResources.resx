@@ -9552,4 +9552,13 @@ The violation must not have been previously reported or sufficient for it by the
    <data name="OpenReports" xml:space="preserve">
       <value>Open</value>
    </data> 
+    <data name="Home" xml:space="preserve">
+        <value>Home</value>
+    </data>
+    <data name="ZATCAServices" xml:space="preserve">
+        <value>ZATCA Services</value>
+    </data>
+      <data name="EXCISETAXServices" xml:space="preserve">
+        <value>Excise TAX Services</value>
+    </data>
 </root>

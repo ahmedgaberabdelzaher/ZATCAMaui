@@ -151,6 +151,8 @@ using EGAZT.ViewModel.NewDesignViewModel.MyReportsVM;
 using EGAZT.Views.NewDesign.MyReports;
 
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
+using EGAZT.Views.NewDesign.HomePages;
 
 
 namespace EGAZT
@@ -394,6 +396,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReportsViewModel>();
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
+            SimpleIoc.Default.Register<HomeViewModel>();
 
             #endregion
         }
@@ -2860,6 +2863,8 @@ namespace EGAZT
             navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
             navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
             navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
+            navigationService.Configure("Home", typeof(Home));
+            navigationService.Configure("CusromServiceMenu", typeof(CusromServiceMenu));
 
             #endregion
 
@@ -3008,6 +3013,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<E_DeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public HomeViewModel homeViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<HomeViewModel>();
                 }
                 catch (Exception ex)
                 {

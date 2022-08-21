@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:custom="clr-namespace:GAZT"
+    x:Name="CustomEntryWithSAR"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    x:Class="EGAZT.Controls.BottomMenu">
+           <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        
+        </ResourceDictionary>
+    </ContentView.Resources>
+                  <yummy:PancakeView Margin="-20,0,-20,0" VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="{StaticResource Primary}">
+                    <yummy:PancakeView.Resources>
+                        <ResourceDictionary>
+                            <Style TargetType="Label">
+                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+                                 <Setter Property="FontSize" Value="13"></Setter>
+                            </Style>
+                                <Style TargetType="Image">
+                                <Setter Property="HeightRequest" Value="23"></Setter>
+                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
+                                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
+                                </Style>
+                        </ResourceDictionary>
+                    </yummy:PancakeView.Resources>
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="65">
+                          <StackLayout Grid.Column="0">
+                              <StackLayout.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="0"></TapGestureRecognizer>
+                              </StackLayout.GestureRecognizers>
+<Image  VerticalOptions="StartAndExpand" HeightRequest="5">
+<Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="0">
+<Setter Property="Source" Value="Rectangle"></Setter>
+</DataTrigger>
+</Image.Triggers>
+</Image>
+                         <Image Source="HomeNotSelected" >
+                             <Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="0">
+<Setter Property="Source" Value="HomeSelected"></Setter>
+</DataTrigger>
+</Image.Triggers>
+                         </Image>
+                         <Label  Text="{x:Static ResourceManager:AppResources.Home}">
+                                             <Label.Triggers>
+<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="0">
+<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
+</DataTrigger>
+</Label.Triggers>
+                         </Label>
+</StackLayout>
+                        <StackLayout Grid.Column="1">
+                             <StackLayout.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="1"></TapGestureRecognizer>
+                              </StackLayout.GestureRecognizers>
+                          <Image HeightRequest="5">
+                              <Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="1">
+<Setter Property="Source" Value="Rectangle"></Setter>
+</DataTrigger>
+</Image.Triggers>
+                          </Image>
+                          <Image Source="Account">
+              <Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="1">
+<Setter Property="Source" Value="AccountSelected"></Setter>
+</DataTrigger>
+</Image.Triggers>
+                          </Image>
+                         <Label Text="{x:Static ResourceManager:AppResources.VATRAccount}">
+                                                              <Label.Triggers>
+<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="1">
+<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
+</DataTrigger>
+</Label.Triggers>
+                         </Label>
+</StackLayout>
+                                           <StackLayout Grid.Column="2">
+                                                <StackLayout.GestureRecognizers>
+                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="2"></TapGestureRecognizer>
+                              </StackLayout.GestureRecognizers>
+<Image HeightRequest="5" >
+<Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="2">
+<Setter Property="Source" Value="Rectangle"></Setter>
+</DataTrigger>
+</Image.Triggers>
+</Image>
+                         <Image WidthRequest="24" Source="Menu">
+                             <Image.Triggers>
+<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="2">
+<Setter Property="Source" Value="MenuSelected"></Setter>
+</DataTrigger>
+</Image.Triggers>
+                         </Image>
+                         <Label Text="{x:Static ResourceManager:AppResources.ZZZMenu}">
+    <Label.Triggers>
+<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="2">
+<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
+</DataTrigger>
+</Label.Triggers>
+                         </Label>
+</StackLayout>
+                    </Grid>
+                </yummy:PancakeView>
+
+</ContentView>
