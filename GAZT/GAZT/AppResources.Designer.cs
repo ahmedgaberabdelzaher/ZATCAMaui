@@ -16955,5 +16955,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZATCAServices", resourceCulture);
             }
         }
+        
+        public static string EXCISETAXServices {
+            get {
+                return ResourceManager.GetString("EXCISETAXServices", resourceCulture);
+            }
+        }
     }
 }

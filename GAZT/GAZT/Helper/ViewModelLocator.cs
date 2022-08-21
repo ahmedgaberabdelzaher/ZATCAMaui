@@ -148,6 +148,7 @@ using EGAZT.Views.NewDesign.SubmitReport;
 using EGAZT.Controls;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
+using EGAZT.Views.NewDesign.HomePages;
 
 namespace EGAZT
 {
@@ -2852,6 +2853,7 @@ namespace EGAZT
             navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
             navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
             navigationService.Configure("Home", typeof(Home));
+            navigationService.Configure("CusromServiceMenu", typeof(CusromServiceMenu));
 
             #endregion
 

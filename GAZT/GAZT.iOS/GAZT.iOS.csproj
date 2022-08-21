@@ -404,6 +404,30 @@
     <BundleResource Include="Resources\HomeNotSelected.png" />
     <BundleResource Include="Resources\HomeNotSelected%402x.png" />
     <BundleResource Include="Resources\HomeNotSelected%403x.png" />
+    <BundleResource Include="Resources\CustomDeclerationsforTravellers.png" />
+    <BundleResource Include="Resources\CustomDeclerationsforTravellers%402x.png" />
+    <BundleResource Include="Resources\CustomDeclerationsforTravellers%403x.png" />
+    <BundleResource Include="Resources\CustomServices.png" />
+    <BundleResource Include="Resources\CustomServices%402x.png" />
+    <BundleResource Include="Resources\CustomServices%403x.png" />
+    <BundleResource Include="Resources\ExciseTaxServices.png" />
+    <BundleResource Include="Resources\ExciseTaxServices%402x.png" />
+    <BundleResource Include="Resources\ExciseTaxServices%403x.png" />
+    <BundleResource Include="Resources\InquireCustomDeclerations.png" />
+    <BundleResource Include="Resources\InquireCustomDeclerations%402x.png" />
+    <BundleResource Include="Resources\InquireCustomDeclerations%403x.png" />
+    <BundleResource Include="Resources\LabFees.png" />
+    <BundleResource Include="Resources\LabFees%402x.png" />
+    <BundleResource Include="Resources\LabFees%403x.png" />
+    <BundleResource Include="Resources\TarrrifSectionIcon.png" />
+    <BundleResource Include="Resources\TarrrifSectionIcon%402x.png" />
+    <BundleResource Include="Resources\TarrrifSectionIcon%403x.png" />
+    <BundleResource Include="Resources\GridViewIcon.png" />
+    <BundleResource Include="Resources\GridViewIcon%402x.png" />
+    <BundleResource Include="Resources\GridViewIcon%403x.png" />
+    <BundleResource Include="Resources\LstViewIcon.png" />
+    <BundleResource Include="Resources\LstViewIcon%402x.png" />
+    <BundleResource Include="Resources\LstViewIcon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

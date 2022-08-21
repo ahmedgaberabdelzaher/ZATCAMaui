@@ -9467,4 +9467,7 @@ info@zatca.gov.sa</value>
     <data name="ZATCAServices" xml:space="preserve">
         <value>خدمات هيئة الزكاة والضريبة والجمارك</value>
     </data>
+    <data name="EXCISETAXServices" xml:space="preserve">
+        <value>خدمات ضريبة السلع الانتقائية</value>
+    </data>
 </root>
