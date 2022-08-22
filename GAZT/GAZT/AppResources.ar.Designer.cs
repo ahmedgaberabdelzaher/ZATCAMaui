@@ -4853,6 +4853,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to خدمات ضريبة السلع الانتقائية.
+        /// </summary>
+        public static string EXCISETAXServices {
+            get {
+                return ResourceManager.GetString("EXCISETAXServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to خروج.
         /// </summary>
         public static string Exit {
@@ -6356,6 +6365,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to الرئيسية.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to رمز النظام المنسق.
         /// </summary>
         public static string HS {
@@ -6763,6 +6781,15 @@ namespace EGAZT {
         public static string ItHasPaidNumberForCurrentFiscalYear {
             get {
                 return ResourceManager.GetString("ItHasPaidNumberForCurrentFiscalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to البث المباشر.
+        /// </summary>
+        public static string LiveVideoTitle {
+            get {
+                return ResourceManager.GetString("LiveVideoTitle", resourceCulture);
             }
         }
         
@@ -16404,6 +16431,15 @@ namespace EGAZT {
         public static string ZatcaInfoMenu {
             get {
                 return ResourceManager.GetString("ZatcaInfoMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خدمات هيئة الزكاة والضريبة والجمارك.
+        /// </summary>
+        public static string ZATCAServices {
+            get {
+                return ResourceManager.GetString("ZATCAServices", resourceCulture);
             }
         }
         

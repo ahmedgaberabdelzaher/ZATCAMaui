@@ -9491,4 +9491,7 @@ info@zatca.gov.sa</value>
     <data name="EXCISETAXServices" xml:space="preserve">
         <value>خدمات ضريبة السلع الانتقائية</value>
     </data>
+     <data name="LiveVideoTitle" xml:space="preserve">
+        <value>البث المباشر</value>
+    </data>
 </root>

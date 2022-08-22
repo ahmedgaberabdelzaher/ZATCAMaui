@@ -153,7 +153,8 @@ using EGAZT.Views.NewDesign.MyReports;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
 using EGAZT.Views.NewDesign.HomePages;
-
+using EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM;
+using EGAZT.Views.NewDesign.LiveVideo;
 
 namespace EGAZT
 {
@@ -392,6 +393,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
             SimpleIoc.Default.Register<SubmitReportViewModel>();
+            SimpleIoc.Default.Register<LiveVideoViewModel>();
 
             SimpleIoc.Default.Register<MyReportsViewModel>();
 
@@ -2858,6 +2860,7 @@ namespace EGAZT
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
             navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
+            navigationService.Configure("LiveVideoPage", typeof(LiveVideoPage));
             navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));
             navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
             navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
@@ -3903,6 +3906,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<MyReportsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public LiveVideoViewModel liveVideoViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LiveVideoViewModel>();
                 }
                 catch (Exception ex)
                 {

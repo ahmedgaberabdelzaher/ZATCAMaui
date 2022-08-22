@@ -9558,7 +9558,10 @@ The violation must not have been previously reported or sufficient for it by the
     <data name="ZATCAServices" xml:space="preserve">
         <value>ZATCA Services</value>
     </data>
-      <data name="EXCISETAXServices" xml:space="preserve">
+    <data name="EXCISETAXServices" xml:space="preserve">
         <value>Excise TAX Services</value>
+    </data>
+    <data name="LiveVideoTitle" xml:space="preserve">
+        <value>Live Video</value>
     </data>
 </root>

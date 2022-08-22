@@ -4890,6 +4890,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excise TAX Services.
+        /// </summary>
+        public static string EXCISETAXServices {
+            get {
+                return ResourceManager.GetString("EXCISETAXServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Exit.
         /// </summary>
         public static string Exit {
@@ -6402,6 +6411,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HS.
         /// </summary>
         public static string HS {
@@ -6809,6 +6827,15 @@ namespace EGAZT {
         public static string ItHasPaidNumberForCurrentFiscalYear {
             get {
                 return ResourceManager.GetString("ItHasPaidNumberForCurrentFiscalYear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live Video.
+        /// </summary>
+        public static string LiveVideoTitle {
+            get {
+                return ResourceManager.GetString("LiveVideoTitle", resourceCulture);
             }
         }
         
@@ -16557,6 +16584,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ZATCA Services.
+        /// </summary>
+        public static string ZATCAServices {
+            get {
+                return ResourceManager.GetString("ZATCAServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By paying the invoice, ZATCA Zakat certificate will be issued to you automatically in case there are no other outstanding obligations..
         /// </summary>
         public static string ZBillDeatilsInfo1 {
@@ -25642,24 +25678,6 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
-            }
-        }
-        
-        public static string Home {
-            get {
-                return ResourceManager.GetString("Home", resourceCulture);
-            }
-        }
-        
-        public static string ZATCAServices {
-            get {
-                return ResourceManager.GetString("ZATCAServices", resourceCulture);
-            }
-        }
-        
-        public static string EXCISETAXServices {
-            get {
-                return ResourceManager.GetString("EXCISETAXServices", resourceCulture);
             }
         }
     }

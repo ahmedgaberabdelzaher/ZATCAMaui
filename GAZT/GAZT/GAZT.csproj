@@ -94,6 +94,8 @@
 	  <None Remove="ViewModel\NewDesignViewModel\HomeViewModels\" />
 	  <None Remove="Views\NewDesign\HomePages\" />
 
+	  <None Remove="ViewModel\NewDesignViewModel\LiveVideoVM\" />
+	  <None Remove="Views\NewDesign\LiveVideo\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -198,6 +200,8 @@
 		<Folder Include="Models\BaseModels\" />
 		<Folder Include="ViewModel\NewDesignViewModel\HomeViewModels\" />
 		<Folder Include="Views\NewDesign\HomePages\" />
+		<Folder Include="ViewModel\NewDesignViewModel\LiveVideoVM\" />
+		<Folder Include="Views\NewDesign\LiveVideo\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
