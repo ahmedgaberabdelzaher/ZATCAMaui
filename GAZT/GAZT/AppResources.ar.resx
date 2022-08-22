@@ -9494,4 +9494,10 @@ info@zatca.gov.sa</value>
      <data name="LiveVideoTitle" xml:space="preserve">
         <value>البث المباشر</value>
     </data>
+    <data name="LiveVideoSubTitle" xml:space="preserve">
+        <value>البث المباشر للمنافذ</value>
+    </data>
+     <data name="PortName" xml:space="preserve">
+        <value>اسم المنفذ</value>
+    </data>
 </root>

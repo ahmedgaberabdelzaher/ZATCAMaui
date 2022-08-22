@@ -6785,6 +6785,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to البث المباشر للمنافذ.
+        /// </summary>
+        public static string LiveVideoSubTitle {
+            get {
+                return ResourceManager.GetString("LiveVideoSubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to البث المباشر.
         /// </summary>
         public static string LiveVideoTitle {
@@ -9328,6 +9337,15 @@ namespace EGAZT {
         public static string Port {
             get {
                 return ResourceManager.GetString("Port", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اسم المنفذ.
+        /// </summary>
+        public static string PortName {
+            get {
+                return ResourceManager.GetString("PortName", resourceCulture);
             }
         }
         

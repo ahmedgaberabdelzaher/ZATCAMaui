@@ -9564,4 +9564,10 @@ The violation must not have been previously reported or sufficient for it by the
     <data name="LiveVideoTitle" xml:space="preserve">
         <value>Live Video</value>
     </data>
+     <data name="LiveVideoSubTitle" xml:space="preserve">
+        <value>Live broadcast of the ports</value>
+    </data>
+     <data name="PortName" xml:space="preserve">
+        <value>Port name</value>
+    </data>
 </root>
