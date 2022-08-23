@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="EGAZT.Controls.ServiceMenuControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT">
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Frame">
+                    <Setter Property="CornerRadius" Value="15" />
+                    <Setter Property="BorderColor" Value="#DDDDDD" />
+                    <Setter Property="Padding" Value="15" />
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="HeightRequest" Value="41" />
+                    <Setter Property="WidthRequest" Value="32" />
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <Grid RowDefinitions="auto,*">
+            <Grid Grid.Row="0" ColumnDefinitions="*,*">
+                <Label
+                    Grid.Column="0"
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="20"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.EXCISETAXServices}"
+                    TextColor="{StaticResource Primary}" />
+                <StackLayout
+                    Grid.Column="1"
+                    HorizontalOptions="EndAndExpand"
+                    Orientation="Horizontal">
+                    <Image
+                        HeightRequest="20"
+                        Source="LstViewIcon"
+                        WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeViewCommand}" CommandParameter="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                    <Image
+                        HeightRequest="20"
+                        Source="GridViewIcon"
+                        WidthRequest="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ChangeViewCommand}" CommandParameter="2" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+            </Grid>
+            <CollectionView
+                x:Name="menu"
+                Grid.Row="1"
+                Margin="0,18,0,0"
+                ItemsSource="{Binding CustomeMenuLst}"
+                VerticalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="23"
+                        Orientation="Vertical"
+                        SnapPointsAlignment="Start"
+                        SnapPointsType="MandatorySingle"
+                        Span="{Binding ItemCountPerRow}"
+                        VerticalItemSpacing="23" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            x:Name="Item"
+                            Margin="0"
+                            Padding="10">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                    Command="{Binding NavigateToServiceCommand}"
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Margin="5" HeightRequest="155">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsVerticalView}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="Orientation" Value="Horizontal" />
+                                        <Setter Property="HeightRequest" Value="50" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Image
+                                    Margin="0,5,0,0"
+                                    HeightRequest="37"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding ImageSource}"
+                                    WidthRequest="29" />
+                                <Label
+                                    Margin="0,5,0,5"
+                                    FontFamily="{StaticResource SomarBold}"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentView>

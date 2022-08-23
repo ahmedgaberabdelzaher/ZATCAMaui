@@ -5,13 +5,13 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.HomePages
 {
-    public partial class CusromServiceMenu : BaseContentPage
+    public partial class ExciseServices : BaseContentPage
     {
         HomeViewModel viewModel;
-        public CusromServiceMenu()
+        public ExciseServices()
         {
             viewModel = App.Locator.homeViewModel;
-            viewModel.GetCustomServiceMenuLst();
+            viewModel.GetExciseServiceMenuLst();
             viewModel.ItemCountPerRow = 2;
             BindingContext = viewModel;
             InitializeComponent();

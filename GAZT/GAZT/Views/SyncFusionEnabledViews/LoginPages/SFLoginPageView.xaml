@@ -147,7 +147,10 @@
                         Text="{x:Static ResourceManager:AppResources.LoginTitle}" />
                 </StackLayout>
             </StackLayout>
-            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand" />
+            <controls:BottomMenu
+                Grid.Row="0"
+                IsVisible="false"
+                VerticalOptions="EndAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

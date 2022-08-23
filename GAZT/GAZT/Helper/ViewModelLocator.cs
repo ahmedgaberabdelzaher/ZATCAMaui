@@ -2865,6 +2865,8 @@ namespace EGAZT
             navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
             navigationService.Configure("Home", typeof(Home));
             navigationService.Configure("CusromServiceMenu", typeof(CusromServiceMenu));
+            navigationService.Configure("ExciseServices", typeof(ExciseServices));
+            navigationService.Configure("VatServicesMenu", typeof(VatServicesMenu));
 
             #endregion
 
