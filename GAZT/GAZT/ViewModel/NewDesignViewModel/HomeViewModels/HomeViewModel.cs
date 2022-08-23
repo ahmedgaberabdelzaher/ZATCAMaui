@@ -130,7 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         if (tab=="1")
                         {
                            
-                            _navigationService.NavigateTo($"../NavigationPage/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
                           
                         }
                         CurrentTab = int.Parse(tab);
@@ -176,7 +176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 return new Command<MenuModel>((menuItem) =>
                 {
-                                       _navigationService.NavigateTo(menuItem.ID);
+                  _navigationService.NavigateTo(menuItem.ID);
                 });
             }
         }
