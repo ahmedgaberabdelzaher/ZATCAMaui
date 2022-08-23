@@ -34,7 +34,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                     {
                        // _navigationService.GoBack();
 
-                        _navigationService.NavigateTo($"Home", tab);
+                        _navigationService.NavigateTo("/Home", tab);
                       
                     }
 

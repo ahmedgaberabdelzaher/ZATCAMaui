@@ -86,11 +86,7 @@
 	  <None Remove="ZXing.Net.Mobile.Forms" />
 	  <None Remove="Views\NewDesign\SubmitReport\" />
 	  <None Remove="ViewModel\NewDesignViewModel\SubmitReport\" />
-	  <None Remove="Views\NewDesign\MyReports\" />
-	  <None Remove="ViewModel\NewDesignViewModel\MyReportsVM\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\e-Declarations\" />
-	  <None Remove="Models\MyReportsModel\" />
-	  <None Remove="Models\BaseModels\" />
 	  <None Remove="ViewModel\NewDesignViewModel\HomeViewModels\" />
 	  <None Remove="Views\NewDesign\HomePages\" />
 
@@ -98,6 +94,7 @@
 	  <None Remove="Views\NewDesign\LiveVideo\" />
 	  <None Remove="YoutubeExplode" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
 		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.1.0.61" />
@@ -195,11 +192,7 @@
 		<Folder Include="Views\NewDesign\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\VAT\" />
 		<Folder Include="ViewModel\NewDesignViewModel\SubmitReport\" />
-		<Folder Include="Views\NewDesign\MyReports\" />
-		<Folder Include="ViewModel\NewDesignViewModel\MyReportsVM\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\e-Declarations\" />
-		<Folder Include="Models\MyReportsModel\" />
-		<Folder Include="Models\BaseModels\" />
 		<Folder Include="ViewModel\NewDesignViewModel\HomeViewModels\" />
 		<Folder Include="Views\NewDesign\HomePages\" />
 		<Folder Include="ViewModel\NewDesignViewModel\LiveVideoVM\" />
@@ -210,9 +203,6 @@
 		<EmbeddedResource Remove="ViewModel\NewDesignViewModel\DashBoardPageViewModel\DashBoardPageView.xaml" />
 	</ItemGroup>
 	<ItemGroup>
-		<Compile Update="AppResources.ar.Designer.cs">
-			<DependentUpon>AppResources.ar.resx</DependentUpon>
-		</Compile>
 		<Compile Update="SyncfusionControl.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -278,12 +268,18 @@
 		  <DesignTime>True</DesignTime>
 		  <AutoGen>True</AutoGen>
 		</Compile>
-		<Compile Update="Views\NewDesign\MyReports\MyReportsPage.xaml.cs">
-		  <DependentUpon>MyReportsPage.xaml</DependentUpon>
-		</Compile>
 		<Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\NewDesign\HomePages\Home.xaml.cs">
 		  <DependentUpon>Home.xaml</DependentUpon>
 		  <SubType>Code</SubType>
+		</Compile>
+		<Compile Update="Controls\ServiceMenu.xaml.cs">
+		  <DependentUpon>ServiceMenu.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\ServiceMenuControl.xaml.cs">
+		  <DependentUpon>ServiceMenuControl.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\HomePages\VatServicesMenu.xaml.cs">
+		  <DependentUpon>VatServicesMenu.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
@@ -552,10 +548,6 @@
 		</EmbeddedResource>
 		<EmbeddedResource Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">
 			<Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-		</EmbeddedResource>
-		<EmbeddedResource Update="AppResources.ar.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>AppResources.ar.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
