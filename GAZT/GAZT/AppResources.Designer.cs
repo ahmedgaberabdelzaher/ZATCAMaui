@@ -14262,6 +14262,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View services.
+        /// </summary>
+        public static string Viewservices {
+            get {
+                return ResourceManager.GetString("Viewservices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Violation Date.
         /// </summary>
         public static string ViolationDate {

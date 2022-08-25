@@ -59,9 +59,47 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
             };
 
+            GetCustomServiceMenuLst();
+        }
+
+        public void GetVatServiceMenuLst()
+        {
             CustomeMenuLst = new ObservableCollection<MenuModel>()
            {
-                
+
+                 new MenuModel()
+                {
+                   Name=AppResources.VATRegistrationCertificate, ID=App.VATRegistrationPageView,ImageSource="TarrrifSectionIcon"
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.MerchantCalculator, ID="TaxCalculator",ImageSource="InquireCustomDeclerations"
+                }
+           };
+        }
+
+        public void GetExciseServiceMenuLst()
+        {
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.searchingandviewingtheindicativepricesforexciseGoods, ID="SearchIndiactivePriceForExciseGoods",ImageSource="TarrrifSectionIcon"
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.TahqaqService, ID="TahqaqScanPage",ImageSource="InquireCustomDeclerations"
+                }
+           };
+        }
+
+
+        public void GetCustomServiceMenuLst()
+        {
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
                  new MenuModel()
                 {
                    Name=AppResources.CustomsZATCAIntegrat+"            ", ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon"
@@ -80,6 +118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
            };
         }
+
         public ICommand ChangeCurrentTabCommand
         {
             get
@@ -91,7 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         if (tab=="1")
                         {
                            
-                            _navigationService.NavigateTo($"../NavigationPage/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
                           
                         }
                         CurrentTab = int.Parse(tab);
@@ -115,10 +154,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("CusromServiceMenu");
                             break;
                         case "2":
-                            _navigationService.NavigateTo(App.ZatcaInfoMenuPageView);
+                            _navigationService.NavigateTo("VatServicesMenu");
                             break;
                         case "3":
-                            _navigationService.NavigateTo(App.ZatcaInfoMenuPageView);
+                            _navigationService.NavigateTo("ExciseServices");
                             break;
                         case "4":
                             _navigationService.NavigateTo(App.ZatcaInfoMenuPageView);
@@ -137,7 +176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 return new Command<MenuModel>((menuItem) =>
                 {
-                                       _navigationService.NavigateTo(menuItem.ID);
+                  _navigationService.NavigateTo(menuItem.ID);
                 });
             }
         }

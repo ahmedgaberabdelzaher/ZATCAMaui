@@ -30,11 +30,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         {
             if (App.IsArabic)
             {
-                taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
-            }
+               // taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+               taxEvasionWebView.Source = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
+     }
             else
             {
-                taxEvasionWebView.Source = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+                taxEvasionWebView.Source = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
             }
         }
 
@@ -70,16 +71,23 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         }
         private void TOnBackButtonClicked(object sender, EventArgs e)
         {
+            if (taxEvasionWebView.CanGoBack)
+            {
+                taxEvasionWebView.GoBack();
+                return;
+            }
             viewModel._navigationService.GoBack();
         }
 
         private void taxEvasionWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
+           
             loadingIndicator.IsVisible = false;
         }
 
         private void taxEvasionWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
+
             loadingIndicator.IsVisible = true;
         }
     }

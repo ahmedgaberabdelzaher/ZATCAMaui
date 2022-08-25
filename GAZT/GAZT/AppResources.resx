@@ -9575,9 +9575,6 @@ the Zakat, Tax and Customs
     <data name="PerviousButton" xml:space="preserve">
         <value>Pervious</value>
     </data>
-    <data name="PerviousButton" xml:space="preserve">
-        <value>Pervious</value>
-    </data>
     <data name="ReportReward" xml:space="preserve">
        <value>The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking.</value>
     </data>
@@ -9610,5 +9607,8 @@ the Zakat, Tax and Customs
     </data>
     <data name="EmptyReports" xml:space="preserve">
         <value>You do not have any reports</value>
+    </data>
+    <data name="Viewservices" xml:space="preserve">
+        <value>View services</value>
     </data>
 </root>

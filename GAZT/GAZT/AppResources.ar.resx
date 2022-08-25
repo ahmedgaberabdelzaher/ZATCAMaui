@@ -9529,4 +9529,7 @@ info@zatca.gov.sa</value>
      <data name="EmptyReports" xml:space="preserve">
         <value>لا توجد لديك أي بلاغات</value>
     </data>
+    <data name="Viewservices" xml:space="preserve">
+        <value>عرض الخدمات</value>
+    </data>
 </root>
