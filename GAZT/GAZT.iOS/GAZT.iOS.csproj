@@ -428,6 +428,36 @@
     <BundleResource Include="Resources\LstViewIcon.png" />
     <BundleResource Include="Resources\LstViewIcon%402x.png" />
     <BundleResource Include="Resources\LstViewIcon%403x.png" />
+    <BundleResource Include="Resources\reportCheckMark.png" />
+    <BundleResource Include="Resources\reportCheckMark%402x.png" />
+    <BundleResource Include="Resources\reportCheckMark%403x.png" />
+    <BundleResource Include="Resources\CheckMark.png" />
+    <BundleResource Include="Resources\CheckMark%402x.png" />
+    <BundleResource Include="Resources\CheckMark%403x.png" />
+    <BundleResource Include="Resources\emptyCheck.png" />
+    <BundleResource Include="Resources\emptyCheck%402x.png" />
+    <BundleResource Include="Resources\emptyCheck%403x.png" />
+    <BundleResource Include="Resources\reportSearch.png" />
+    <BundleResource Include="Resources\reportSearch%402x.png" />
+    <BundleResource Include="Resources\reportSearch%403x.png" />
+    <BundleResource Include="Resources\reportDetails.png" />
+    <BundleResource Include="Resources\reportDetails%402x.png" />
+    <BundleResource Include="Resources\reportDetails%403x.png" />
+    <BundleResource Include="Resources\reportlocation.png" />
+    <BundleResource Include="Resources\reportlocation%402x.png" />
+    <BundleResource Include="Resources\reportlocation%403x.png" />
+    <BundleResource Include="Resources\emptyReport.png" />
+    <BundleResource Include="Resources\emptyReport%402x.png" />
+    <BundleResource Include="Resources\emptyReport%403x.png" />
+    <BundleResource Include="Resources\whiteRightBack.png" />
+    <BundleResource Include="Resources\whiteRightBack%402x.png" />
+    <BundleResource Include="Resources\whiteRightBack%403x.png" />
+    <BundleResource Include="Resources\reportAdd%403x.png" />
+    <BundleResource Include="Resources\reportAdd%402x.png" />
+    <BundleResource Include="Resources\reportAdd.png" />
+    <BundleResource Include="Resources\reportClose%403x.png" />
+    <BundleResource Include="Resources\reportClose%402x.png" />
+    <BundleResource Include="Resources\reportClose.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

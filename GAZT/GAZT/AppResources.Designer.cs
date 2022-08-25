@@ -3036,6 +3036,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You do not have any reports.
+        /// </summary>
+        public static string EmptyReports {
+            get {
+                return ResourceManager.GetString("EmptyReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string EnglishCaptialAndSmallLetters {
@@ -8937,6 +8946,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The maximum nuber of attachments you can upload is 1.
+        /// </summary>
+        public static string NumberofAttachments {
+            get {
+                return ResourceManager.GetString("NumberofAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string NumbersAndSymbols {
@@ -9236,6 +9254,15 @@ namespace EGAZT {
         public static string PdfIsNoteAvailable {
             get {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pervious.
+        /// </summary>
+        public static string PerviousButton {
+            get {
+                return ResourceManager.GetString("PerviousButton", resourceCulture);
             }
         }
         
@@ -9789,6 +9816,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must fill in all of the following fields.
+        /// </summary>
+        public static string ReportDetailsSubTitle {
+            get {
+                return ResourceManager.GetString("ReportDetailsSubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please inform us of the name and location of the place where the product was purchased.
         /// </summary>
         public static string ReportDisclaimer {
@@ -9816,6 +9852,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the location on the map.
+        /// </summary>
+        public static string ReportLocationPlaceholder {
+            get {
+                return ResourceManager.GetString("ReportLocationPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merchant name.
         /// </summary>
         public static string ReportMerchantName {
@@ -9834,6 +9879,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
+        /// </summary>
+        public static string ReportReward {
+            get {
+                return ResourceManager.GetString("ReportReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string Reports {
@@ -9843,15 +9897,83 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The award is granted according to the discretionary authority of the authority, provided that the following conditions are met:
-        ///That the report led to the detection of any violations mentioned in this regulation
-        ///The amount shall not be a staff member of the Authority, a spouse, a son-in-law, or a first-degree relative
-        ///The disclosure of the case in question is not one of the duties of the reporter, if he is a public servant or in Heqma
-        ///The violation must not have been previously reported or sufficient for it [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to 1- The award is given according to the discretionary authority of the authority, provided that the Fulfillment of the following conditions:.
         /// </summary>
-        public static string ReportSecondNote {
+        public static string ReportSecondNote1 {
             get {
-                return ResourceManager.GetString("ReportSecondNote", resourceCulture);
+                return ResourceManager.GetString("ReportSecondNote1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That the communication led to the detection of any violations mentioned in this regulation..
+        /// </summary>
+        public static string ReportSecondNote2 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to That the reporter is a staff member of the Authority, a spouse, a brother-in-law, or a first-degree relative..
+        /// </summary>
+        public static string ReportSecondNote3 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The disclosure of the case in question should not be one of the reporting duties, if he is a public employee or the like..
+        /// </summary>
+        public static string ReportSecondNote4 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The violation should not have been previously reported or rewarded by the authority..
+        /// </summary>
+        public static string ReportSecondNote5 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2- The entitlement to the reward is based on a decision issued by the Remuneration Committee whistleblowers..
+        /// </summary>
+        public static string ReportSecondNote6 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3- He shall not be entitled to the award until after collecting the amounts due..
+        /// </summary>
+        public static string ReportSecondNote7 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To view the rest of the terms and conditions, click here.
+        /// </summary>
+        public static string ReportSecondNote8 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Authority is obligated to preserve all the data of the amount and to deal in strict confidence with all the data provided.
+        /// </summary>
+        public static string ReportSecondNote9 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote9", resourceCulture);
             }
         }
         

@@ -2859,6 +2859,7 @@ namespace EGAZT
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
+            navigationService.Configure("TermsPage", typeof(TermsPage));
             navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
             navigationService.Configure("LiveVideoPage", typeof(LiveVideoPage));
             navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));

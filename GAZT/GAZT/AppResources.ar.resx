@@ -9072,12 +9072,6 @@ info@zatca.gov.sa</value>
   <data name="HS" xml:space="preserve">
         <value>رمز النظام المنسق</value>
     </data>
-  <data name="TariffSections" xml:space="preserve">
-        <value>التعريفة الجمركية</value>
-    </data>
-  <data name="HS" xml:space="preserve">
-        <value>رمز النظام المنسق</value>
-    </data>
   <data name="Effectivedate" xml:space="preserve">
         <value>التحديث</value>
     </data>
@@ -9307,9 +9301,6 @@ info@zatca.gov.sa</value>
   <data name="Incorrecttaxstamp" xml:space="preserve">
         <value>ختم ضريبي غير صحيح</value>
     </data>
-  <data name="Incorrecttaxstamp" xml:space="preserve">
-        <value>ختم ضريبي غير صحيح، هل ترغب في كتابة اى تعليق يخص هذا المسح؟</value>
-    </data>
   <data name="Submitareport" xml:space="preserve">
         <value>تقديم بلاغ</value>
     </data>
@@ -9424,13 +9415,6 @@ info@zatca.gov.sa</value>
   <data name="AttachmentHelperText" xml:space="preserve">
      <value>الإمدادات المسموحة (PDF,png,JPG)</value>
   </data>
-  <data name="ReportSecondNote" xml:space="preserve">
-     <value>تمنح المكافأة وفقا لسلطة الهيئة التقدرية على ان يراعي تحقيق الشروط الأتية
-أن يكون البلاغ قد أدي إلى كشف أي المخالفات المذكورة في هذة اللائحة
-الا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى
-الا يكون الكشف عن الحالة محل محل البلاغ من واجبات المبلغ الوظيفة إذا كان موظفا عاما او في حكمه 
-الا تكون المخالفة قد سبق الابلاغ عنها او كؤفي عليها من قبل الهيئة. يكون استحقاق المكافأة بناء علي قرار يصدر من لجنة مكافآت المبلغين عن المخالفات</value>
-  </data>
   <data name="RewardCheckBox" xml:space="preserve">
      <value>لا أرغب بالحصول علي المكافآة المالية</value>
   </data>
@@ -9499,5 +9483,50 @@ info@zatca.gov.sa</value>
     </data>
      <data name="PortName" xml:space="preserve">
         <value>اسم المنفذ</value>
+    </data>
+    <data name="NumberofAttachments" xml:space="preserve">
+        <value>يجب أن لا يتعدى عدد المرفقات لعملية تقديم الإقرار / أو التعديل على الإقرار مرفق واحد.</value>
+    </data>
+    <data name="ReportLocationPlaceholder" xml:space="preserve">
+        <value>قم بتحديد الموقع علي الخريطة</value>
+    </data>
+    <data name="ReportDetailsSubTitle" xml:space="preserve">
+        <value>يتوجب عليك تعبئة جميع الحقول التالية</value>
+    </data>
+    <data name="PerviousButton" xml:space="preserve">
+        <value>السابق</value>
+    </data>
+    <data name="ReportReward" xml:space="preserve">
+        <value>البلاغ مؤهل للمكافأة تلقائياً إذا لم يتم الضغط على الخانة ، وذلك بعد التحقق والتدقيق.</value>
+    </data>
+    <data name="ReportSecondNote1" xml:space="preserve">
+        <value>1- تمنح المكافأة وفقا لسلطة الهيئة التقديرية على أن يراعى تحقيق الشروط الآتية :</value>
+    </data>
+    <data name="ReportSecondNote2" xml:space="preserve">
+        <value>أن يكون البلاغ قد أدى إلى كشف أي المخالفات المذكورة في هذه اللائحة.</value>
+    </data>
+     <data name="ReportSecondNote3" xml:space="preserve">
+        <value>أن يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
+    </data>
+    <data name="ReportSecondNote4" xml:space="preserve">
+        <value>ألا يكون الكشف عن الحالة محل البلاغ من واجبات المبلغ الوظيفية إذا كان موظفا عاما أو في حكمه.</value>
+    </data>
+    <data name="ReportSecondNote5" xml:space="preserve">
+        <value>ألا تكون المخالفة قد سبق الإبلاغ عنها أو كوفئ عليها من قبل الهيئة.</value>
+    </data>
+    <data name="ReportSecondNote6" xml:space="preserve">
+        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن مخالفات .</value>
+    </data>
+    <data name="ReportSecondNote7" xml:space="preserve">
+        <value>3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة.</value>
+    </data>
+     <data name="ReportSecondNote8" xml:space="preserve">
+        <value>لإطلاع على بقية الأحكام والشروط اضغط هنا</value>
+    </data>
+    <data name="ReportSecondNote9" xml:space="preserve">
+        <value>الهيئة تلتزم بالحفاظ  على جميع بيانات المبلغ وأن تتعامل بسرية تامة مع كافة البيانات المقدمة</value>
+    </data>
+     <data name="EmptyReports" xml:space="preserve">
+        <value>لا توجد لديك أي بلاغات</value>
     </data>
 </root>

@@ -40,11 +40,11 @@
             <!--#region Header-->
             <StackLayout>
 
-                <!--  Title and Back  -->
+                  <!--Title and Back  
                 <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
 
                     <StackLayout>
-                        <!--  Back Button  -->
+                          Back Button  
                         <Image
                             HorizontalOptions="Start"
                             Rotation="180"
@@ -56,7 +56,7 @@
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
-                    <!--  Header Label  -->
+                      Header Label  
                     <custom:CustomLabel
                         Grid.Column="1"
                         HorizontalOptions="Center"
@@ -64,7 +64,7 @@
                         Style="{StaticResource SectionTitleWhiteBold}"
                         Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
                         VerticalOptions="Center" />
-                </Grid>
+                </Grid>-->
 
                 <!--  Success Icon and Msg  -->
                 <StackLayout

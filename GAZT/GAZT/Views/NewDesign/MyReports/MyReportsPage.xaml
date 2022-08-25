@@ -10,7 +10,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports" 
+    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -20,6 +20,7 @@
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <xct:ListIsNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -47,15 +48,15 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="180"
-                        Source="arrowLeftwhite.png"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand" />
 
@@ -70,6 +71,7 @@
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    FontSize="20"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.NDMyReports}"
                     VerticalOptions="Center" />
@@ -79,7 +81,7 @@
                     <!--  Search Image  -->
                     <Image
                         HorizontalOptions="End"
-                        Source="search.png"
+                        Source="reportSearch.png"
                         WidthRequest="25"
                         HeightRequest="25"
                         VerticalOptions="CenterAndExpand" />
@@ -92,34 +94,33 @@
 
             </Grid>
             <!--#endregion Header-->
-
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout Spacing="30">
 
                         <!--All Reports Layout-->
                         <Grid RowDefinitions="Auto,Auto"
-                              ColumnDefinitions="*,*"
+                              ColumnDefinitions="Auto,Auto"
                               RowSpacing="0">
 
 
-                            <!--  All Reports Label  -->
+                            <!--  All Reports Label -->
                             <Label
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="28"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.NDMyReports}"
+                                Text="{Binding ReportsResultTitle}"
                                 TextColor="#58595B" />
 
                             <!--  Down arrow Button  -->
                             <Image
-                                HorizontalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
                                 Grid.Column="1"
                                 Source="arrowDropdown.png"
                                 VerticalOptions="CenterAndExpand">
@@ -142,7 +143,8 @@
 
                         <!--Add new report Frame-->
                         <Frame CornerRadius="12"
-                               Padding="8"
+                               Padding="15"
+                               IsVisible="{Binding MyReportsList, Converter={StaticResource ListIsNotNullOrEmptyConverter}}"
                                BorderColor="#EBEBEB">
 
                             <StackLayout Orientation="Horizontal">
@@ -150,7 +152,9 @@
                                 <!--  Add Report Image  -->
                                 <Image
                                     HorizontalOptions="Start"
-                                    Source="add.png"
+                                    Source="reportAdd.png"
+                                    WidthRequest="25"
+                                    HeightRequest="25"
                                     VerticalOptions="CenterAndExpand" />
 
                                 <!--  Add new report Label  -->
@@ -174,8 +178,48 @@
 
                         <StackLayout
                              x:Name="reportsList"
+                             VerticalOptions="FillAndExpand"
+                             Margin="0,0,0,25"
+                             HorizontalOptions="FillAndExpand"
                              BindableLayout.ItemsSource="{Binding MyReportsList}"
                              Spacing="20">
+
+                            <BindableLayout.EmptyView>
+
+                                <StackLayout Spacing="20"
+                                             VerticalOptions="CenterAndExpand"
+                                             HorizontalOptions="CenterAndExpand">
+
+                                    <!--  Document icon  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="emptyReport.png"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        WidthRequest="80" />
+
+                                    <!--  Empty Reports Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.EmptyReports}"
+                                        TextColor="#999999" />
+
+                                     <!--  Submita new report Button  -->
+                                    <buttons:SfButton
+                                        Margin="0,40"
+                                        BackgroundColor="#0996D4"
+                                        Command="{Binding AddNewReportCommand}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.Submitanewreport}" />
+
+                                </StackLayout>
+                            </BindableLayout.EmptyView>
 
                             <BindableLayout.ItemTemplate>
 
@@ -254,8 +298,8 @@
                                                         BackgroundColor="Transparent">
 
                                                         <Label
-                                                            FontFamily="{StaticResource SomarBold}"
-                                                            FontSize="16"
+                                                            FontFamily="{StaticResource SomarRegular}"
+                                                            FontSize="12"
                                                             VerticalOptions="CenterAndExpand"
                                                             HorizontalOptions="CenterAndExpand"
                                                             Text="{Binding reportStatus}"
@@ -303,7 +347,7 @@
                                                     Grid.Row="1"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding region}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                             </Grid>
 
@@ -324,9 +368,11 @@
                                                 <Label
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="20"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    LineBreakMode="WordWrap"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalOptions="FillAndExpand"
                                                     Text="{Binding reportType}"
-                                                    TextColor="#232323" />
+                                                    TextColor="#002447" />
 
                                                 <!--  Report number Label  -->
                                                 <Label
@@ -344,7 +390,7 @@
                                                     Grid.Row="2"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding reportNumber}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                                 <!--  Report date Label  -->
                                                 <Label
@@ -364,7 +410,7 @@
                                                     Grid.Column="1"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding addedDate}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                             </Grid>
 

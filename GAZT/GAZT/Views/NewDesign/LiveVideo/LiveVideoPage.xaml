@@ -63,7 +63,7 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout Spacing="20">
 

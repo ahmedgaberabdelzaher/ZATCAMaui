@@ -46,18 +46,6 @@ namespace EGAZT.Views.NewDesign.SubmitReport
         {
             viewModel.SubmitReport.HasViolationDateError = false;
         }
-
-        private void reportReportDetailsEntry_Focused(object sender, FocusEventArgs e)
-        {
-            //var element = (GAZTBorderlessEditor)sender;
-            //if (element != null && string.IsNullOrWhiteSpace(element.Text))
-            //{
-            //    Device.BeginInvokeOnMainThread(async () => {
-            //        await Task.Delay(1000);
-            //        element.Unfocus();
-            //    });
-            //}
-        }
     }
 }
 

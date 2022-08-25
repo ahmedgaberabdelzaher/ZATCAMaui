@@ -13,8 +13,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
         #region Properties
         private readonly IMyReportsServices _myReportsServices;
 
-        private string reportsCount;
+        private string reportsCount= $"0 {AppResources.Reports}";
         public string ReportsCount { get { return reportsCount; } set { reportsCount = value; RaisePropertyChanged(); } }
+
+        private string reportsResultTitle = AppResources.AllReports;
+        public string ReportsResultTitle { get { return reportsResultTitle; } set { reportsResultTitle = value; RaisePropertyChanged(); } }
 
         private MyReportsModel myReports = new MyReportsModel();
         public MyReportsModel MyReports { get { return myReports; } set { myReports = value; RaisePropertyChanged(); } }
@@ -43,7 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                 {
                     IsLoading = true;
                     var result = await _myReportsServices.GetMyReports("0563018294", 1, 25) ?? new List<MyReportsModel>();
-                    MyReportsList = new ObservableCollection<MyReportsModel>(result);
+                    MyReportsList =  new ObservableCollection<MyReportsModel>(result);
                     ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                     IsLoading = false;
 
@@ -112,15 +115,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                     {
                         case "0":
                             status = 0;
+                            ReportsResultTitle = AppResources.MyClosedReports;
                             break;
                         case "1":
                             status = 1;
+                            ReportsResultTitle = AppResources.MyOpenedReports;
                             break;
                         case "3":
                             status = 3;
+                            ReportsResultTitle = AppResources.AllReports;
                             break;
                         default:
                             status = -1;
+                            ReportsResultTitle = AppResources.AllReports;
                             break;
 
                     }

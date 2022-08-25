@@ -32,8 +32,7 @@
                 BackgroundColor="White"
                 CornerRadius="15,15,0,0"
                 HeightRequest="180"
-                Shadow="{yummy:ShadowMarkup Color=#FF0000,
-                                            Offset='0,0'}"
+                Border="{yummy:BorderMarkup Color=#EBEBEB, Thickness='2'}"
                 Style="{StaticResource CommonTopCurves}"
                 VerticalOptions="EndAndExpand">
                 <ScrollView>

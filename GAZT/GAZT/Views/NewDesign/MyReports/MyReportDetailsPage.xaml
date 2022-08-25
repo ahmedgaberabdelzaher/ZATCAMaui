@@ -23,10 +23,10 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
+                        <Setter Property="Rotation" Value="0" />
                     </Style>
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
+                        <Setter Property="Rotation" Value="180" />
                     </Style>
                     <Style x:Key="ArrowImage" TargetType="Image">
                         <Setter Property="HeightRequest" Value="30" />
@@ -42,15 +42,15 @@
          <Grid RowDefinitions="Auto,*">
 
               <!--#region Header-->
-            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 
                     <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="180"
-                        Source="arrowLeftwhite.png"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand" />
 
@@ -65,6 +65,7 @@
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    FontSize="20"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.ReportDetails}"
                     VerticalOptions="Center" />
@@ -92,7 +93,7 @@
                                  <!--  Report Details Image  -->
                                 <Image
                                     HorizontalOptions="Start"
-                                    Source="add.png"
+                                    Source="reportDetails.png"
                                     VerticalOptions="CenterAndExpand" />
 
                                 <!--  Report Details Label  -->

@@ -107,6 +107,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+        public ICommand GoToTermsPageCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    _navigationService.NavigateTo("TermsPage");
+                });
+            }
+        }
 
         public ICommand CloseMapCommand
         {
@@ -131,6 +141,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             get
             {
                 return new Command(() => { IsShowMapView = true; });
+
+            }
+        }
+
+        public ICommand CheckBoxCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
+                });
 
             }
         }
@@ -311,7 +333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             MessageTxt = AppResources.MaximumFileSizeMsg;
                             IsShowMsgView = true;
                         }
-                        else if (ReportUloadedFiles != null && ReportUloadedFiles.Count >= 0 && ReportUloadedFiles.Count <= 5)
+                        else if (ReportUloadedFiles != null && ReportUloadedFiles.Count == 0)
                         {
                             
                             var stream = await result.OpenReadAsync();
@@ -327,7 +349,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
                         else
                         {
-                            MessageTxt = AppResources.TINDeregAttachmentsTitleOne;
+                            MessageTxt = AppResources.NumberofAttachments;
                             IsShowMsgView = true;
                         }
                     }
@@ -351,7 +373,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             if (SubmitReport.IsNeedReward)
             {
                 if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
-                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber))
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterMobileNumber)
+                    || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
                 {
                     IsShowMsgView = true;
                     IsNeedRewardError = true;

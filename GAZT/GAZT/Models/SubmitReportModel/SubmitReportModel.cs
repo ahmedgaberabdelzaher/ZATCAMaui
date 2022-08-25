@@ -18,7 +18,7 @@ namespace EGAZT.Models.SubmitReportModel
         string _district;
         public string District { get { return _district; } set { _district = value; RaisePropertyChanged(); } }
 
-        bool _isNeedReward;
+        bool _isNeedReward = true;
         public bool IsNeedReward { get { return _isNeedReward; } set { _isNeedReward = value; RaisePropertyChanged(); } }
 
         bool _reporterWantToSharePersonalInfo = false;

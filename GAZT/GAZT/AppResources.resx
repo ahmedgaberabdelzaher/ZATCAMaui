@@ -9452,13 +9452,6 @@ the Zakat, Tax and Customs
   <data name="RewardCheckBox" xml:space="preserve">
      <value>I don't want to get the reward</value>
   </data>
-  <data name="ReportSecondNote" xml:space="preserve">
-     <value>The award is granted according to the discretionary authority of the authority, provided that the following conditions are met:
-That the report led to the detection of any violations mentioned in this regulation
-The amount shall not be a staff member of the Authority, a spouse, a son-in-law, or a first-degree relative
-The disclosure of the case in question is not one of the duties of the reporter, if he is a public servant or in Heqma
-The violation must not have been previously reported or sufficient for it by the Authority. The entitlement to the award is based on a decision issued by the Whistleblower Rewards Committee</value>
-  </data>
   <data name="Einvoice" xml:space="preserve">
      <value>E-invoice Certificate</value>
   </data>
@@ -9569,5 +9562,53 @@ The violation must not have been previously reported or sufficient for it by the
     </data>
      <data name="PortName" xml:space="preserve">
         <value>Port name</value>
+    </data>
+     <data name="NumberofAttachments" xml:space="preserve">
+        <value>The maximum nuber of attachments you can upload is 1</value>
+    </data>
+    <data name="ReportLocationPlaceholder" xml:space="preserve">
+        <value>Select the location on the map</value>
+    </data>
+    <data name="ReportDetailsSubTitle" xml:space="preserve">
+         <value>You must fill in all of the following fields</value>
+    </data>
+    <data name="PerviousButton" xml:space="preserve">
+        <value>Pervious</value>
+    </data>
+    <data name="PerviousButton" xml:space="preserve">
+        <value>Pervious</value>
+    </data>
+    <data name="ReportReward" xml:space="preserve">
+       <value>The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking.</value>
+    </data>
+    <data name="ReportSecondNote1" xml:space="preserve">
+        <value>1- The award is given according to the discretionary authority of the authority, provided that the Fulfillment of the following conditions:</value>
+    </data>
+    <data name="ReportSecondNote2" xml:space="preserve">
+        <value>That the communication led to the detection of any violations mentioned in this regulation.</value>
+    </data>
+     <data name="ReportSecondNote3" xml:space="preserve">
+        <value>That the reporter is a staff member of the Authority, a spouse, a brother-in-law, or a first-degree relative.</value>
+    </data>
+    <data name="ReportSecondNote4" xml:space="preserve">
+        <value>The disclosure of the case in question should not be one of the reporting duties, if he is a public employee or the like.</value>
+    </data>
+    <data name="ReportSecondNote5" xml:space="preserve">
+        <value>The violation should not have been previously reported or rewarded by the authority.</value>
+    </data>
+    <data name="ReportSecondNote6" xml:space="preserve">
+        <value>2- The entitlement to the reward is based on a decision issued by the Remuneration Committee whistleblowers.</value>
+    </data>
+    <data name="ReportSecondNote7" xml:space="preserve">
+        <value>3- He shall not be entitled to the award until after collecting the amounts due.</value>
+    </data>
+     <data name="ReportSecondNote8" xml:space="preserve">
+        <value>To view the rest of the terms and conditions, click here</value>
+    </data>
+    <data name="ReportSecondNote9" xml:space="preserve">
+        <value>The Authority is obligated to preserve all the data of the amount and to deal in strict confidence with all the data provided</value>
+    </data>
+    <data name="EmptyReports" xml:space="preserve">
+        <value>You do not have any reports</value>
     </data>
 </root>
