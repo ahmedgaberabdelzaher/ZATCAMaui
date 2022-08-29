@@ -428,6 +428,91 @@
     <BundleResource Include="Resources\LstViewIcon.png" />
     <BundleResource Include="Resources\LstViewIcon%402x.png" />
     <BundleResource Include="Resources\LstViewIcon%403x.png" />
+    <BundleResource Include="Resources\LiveVideonIcon.png" />
+    <BundleResource Include="Resources\LiveVideonIcon%402x.png" />
+    <BundleResource Include="Resources\LiveVideonIcon%403x.png" />
+    <BundleResource Include="Resources\SelectedLiveVideonIcon.png" />
+    <BundleResource Include="Resources\SelectedLiveVideonIcon%402x.png" />
+    <BundleResource Include="Resources\SelectedLiveVideonIcon%403x.png" />
+    <BundleResource Include="Resources\GridViewIconNotSelected.png" />
+    <BundleResource Include="Resources\GridViewIconNotSelected%402x.png" />
+    <BundleResource Include="Resources\GridViewIconNotSelected%403x.png" />
+    <BundleResource Include="Resources\LstViewIconSelected.png" />
+    <BundleResource Include="Resources\LstViewIconSelected%402x.png" />
+    <BundleResource Include="Resources\LstViewIconSelected%403x.png" />
+    <BundleResource Include="Resources\EinvoiceScanning.png" />
+    <BundleResource Include="Resources\EinvoiceScanning%402x.png" />
+    <BundleResource Include="Resources\EinvoiceScanning%403x.png" />
+    <BundleResource Include="Resources\GeneralServices.png" />
+    <BundleResource Include="Resources\GeneralServices%402x.png" />
+    <BundleResource Include="Resources\GeneralServices%403x.png" />
+    <BundleResource Include="Resources\LabfeesInquiry.png" />
+    <BundleResource Include="Resources\LabfeesInquiry%402x.png" />
+    <BundleResource Include="Resources\LabfeesInquiry%403x.png" />
+    <BundleResource Include="Resources\Reports.png" />
+    <BundleResource Include="Resources\Reports%402x.png" />
+    <BundleResource Include="Resources\Reports%403x.png" />
+    <BundleResource Include="Resources\SearchExciseTax.png" />
+    <BundleResource Include="Resources\SearchExciseTax%402x.png" />
+    <BundleResource Include="Resources\SearchExciseTax%403x.png" />
+    <BundleResource Include="Resources\TaxCalcultor.png" />
+    <BundleResource Include="Resources\TaxCalcultor%402x.png" />
+    <BundleResource Include="Resources\TaxCalcultor%403x.png" />
+    <BundleResource Include="Resources\TravellerDecleration.png" />
+    <BundleResource Include="Resources\TravellerDecleration%402x.png" />
+    <BundleResource Include="Resources\TravellerDecleration%403x.png" />
+    <BundleResource Include="Resources\VatRegCheck.png" />
+    <BundleResource Include="Resources\VatRegCheck%402x.png" />
+    <BundleResource Include="Resources\VatRegCheck%403x.png" />
+    <BundleResource Include="Resources\VatServices.png" />
+    <BundleResource Include="Resources\VatServices%402x.png" />
+    <BundleResource Include="Resources\VatServices%403x.png" />
+    <BundleResource Include="Resources\ZatcaLogoWithTitle.png" />
+    <BundleResource Include="Resources\ZatcaLogoWithTitle%402x.png" />
+    <BundleResource Include="Resources\ZatcaLogoWithTitle%403x.png" />
+    <BundleResource Include="Resources\AboutZatca.png" />
+    <BundleResource Include="Resources\AboutZatca%402x.png" />
+    <BundleResource Include="Resources\AboutZatca%403x.png" />
+    <BundleResource Include="Resources\CallUS.png" />
+    <BundleResource Include="Resources\CallUS%402x.png" />
+    <BundleResource Include="Resources\CallUS%403x.png" />
+    <BundleResource Include="Resources\CustomerService.png" />
+    <BundleResource Include="Resources\CustomerService%402x.png" />
+    <BundleResource Include="Resources\Education.png" />
+    <BundleResource Include="Resources\Education%402x.png" />
+    <BundleResource Include="Resources\FAQ.png" />
+    <BundleResource Include="Resources\FAQ%402x.png" />
+    <BundleResource Include="Resources\FAQ%403x.png" />
+    <BundleResource Include="Resources\LangaugeIcon.png" />
+    <BundleResource Include="Resources\LangaugeIcon%402x.png" />
+    <BundleResource Include="Resources\LangaugeIcon%403x.png" />
+    <BundleResource Include="Resources\PrivacyandPolicy.png" />
+    <BundleResource Include="Resources\PrivacyandPolicy%402x.png" />
+    <BundleResource Include="Resources\PrivacyandPolicy%403x.png" />
+    <BundleResource Include="Resources\RateUS.png" />
+    <BundleResource Include="Resources\RateUS%402x.png" />
+    <BundleResource Include="Resources\RateUS%403x.png" />
+    <BundleResource Include="Resources\Angry.png" />
+    <BundleResource Include="Resources\Angry%402x.png" />
+    <BundleResource Include="Resources\Angry%403x.png" />
+    <BundleResource Include="Resources\Dissatisfied.png" />
+    <BundleResource Include="Resources\Dissatisfied%402x.png" />
+    <BundleResource Include="Resources\Dissatisfied%403x.png" />
+    <BundleResource Include="Resources\NeitherDissatisfiednorSatisfied.png" />
+    <BundleResource Include="Resources\NeitherDissatisfiednorSatisfied%402x.png" />
+    <BundleResource Include="Resources\NeitherDissatisfiednorSatisfied%403x.png" />
+    <BundleResource Include="Resources\Satisfied.png" />
+    <BundleResource Include="Resources\Satisfied%402x.png" />
+    <BundleResource Include="Resources\Satisfied%403x.png" />
+    <BundleResource Include="Resources\StronglyDissatisfied.png" />
+    <BundleResource Include="Resources\StronglyDissatisfied%402x.png" />
+    <BundleResource Include="Resources\StronglyDissatisfied%403x.png" />
+    <BundleResource Include="Resources\SurveyEnd.png" />
+    <BundleResource Include="Resources\SurveyEnd%402x.png" />
+    <BundleResource Include="Resources\SurveyEnd%403x.png" />
+    <BundleResource Include="Resources\SurveyStart.png" />
+    <BundleResource Include="Resources\SurveyStart%402x.png" />
+    <BundleResource Include="Resources\SurveyStart%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -733,6 +818,9 @@
     </PackageReference>
     <PackageReference Include="YoutubeExplode">
       <Version>6.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.MediaManager">
+      <Version>1.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

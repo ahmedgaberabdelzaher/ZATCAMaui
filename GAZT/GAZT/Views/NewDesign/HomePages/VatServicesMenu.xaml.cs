@@ -13,6 +13,7 @@ namespace EGAZT.Views.NewDesign.HomePages
             viewModel = App.Locator.homeViewModel;
             viewModel.GetVatServiceMenuLst();
             viewModel.ItemCountPerRow = 2;
+            viewModel.CurrentService = ViewModel.NewDesignViewModel.HomeViewModels.Services.VATServices;
             BindingContext = viewModel;
             InitializeComponent();
         }

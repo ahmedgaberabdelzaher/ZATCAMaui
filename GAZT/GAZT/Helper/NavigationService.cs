@@ -69,13 +69,22 @@ namespace EGAZT
                             "No suitable constructor found for page " + pageKey);
                     }
                     var page = constructor.Invoke(parameters) as Page;
+                    _navigation.PushAsync(page);
+                  
+
                     if (isPageBack)
                     {
-                      
-                     Application.Current.MainPage = new NavigationPage(page);
+                        var existingPages = _navigation.Navigation.NavigationStack.ToList();
+                        foreach (var cupage in existingPages)
+                        {
+                            if (cupage != page)
+                            {
+                                _navigation.Navigation.RemovePage(cupage);
+                            }
+                        }
                     }
-                    else
-                    _navigation.PushAsync(page);
+                   // else
+                    
                 }
                 else
                 {

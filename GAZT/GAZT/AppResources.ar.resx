@@ -9500,4 +9500,83 @@ info@zatca.gov.sa</value>
      <data name="PortName" xml:space="preserve">
         <value>اسم المنفذ</value>
     </data>
+    <data name="Viewservices" xml:space="preserve">
+        <value>عرض الخدمات</value>
+    </data>
+         <data name="Port1Name" xml:space="preserve">
+        <value>دخول السعوديه جوازات</value>
+    </data>
+        <data name="Port2Name" xml:space="preserve">
+        <value>خروج السعوديه جوازات</value>
+    </data>
+        <data name="Port3Name" xml:space="preserve">
+        <value>دخول السعوديه جمارك</value>
+    </data>
+        <data name="Port4Name" xml:space="preserve">
+        <value>خروج السعوديه جمارك</value>
+    </data>
+ <data name="Reports" xml:space="preserve">
+        <value> البلاغات </value>
+    </data>
+    <data name="EinvoiceScanning" xml:space="preserve">
+        <value>التحقق من صحه الفاتورةالإلكترونية</value>
+    </data>
+    <data name="TaxCalculator" xml:space="preserve">
+        <value>حاسبة التاجر والمستهلك</value>
+    </data>
+    <data name="AboutZATCA" xml:space="preserve">
+        <value>عن الهيئة</value>
+    </data>
+        <data name="FAQ" xml:space="preserve">
+        <value>أسئلة شائعة</value>
+    </data>
+    <data name="RateUs" xml:space="preserve">
+        <value>قيمنا</value>
+    </data>
+    <data name="CustomerServices" xml:space="preserve">
+        <value>خدمة العملاء</value>
+    </data>
+    <data name="PrivacyandPolicy" xml:space="preserve">
+        <value>السياسيات والخصوصية</value>
+    </data>
+    <data name="ContactUs" xml:space="preserve">
+        <value>اتصل بنا</value>
+    </data>
+       <data name="EdcuationJourney" xml:space="preserve">
+        <value>Edcuation Journey</value>
+    </data>
+    <data name="SurveyQ1" xml:space="preserve">
+    <value>
+        ما مستوى الرضا عن تجربتك لتطبيق الهيئة
+على الاجهزة الذكية؟
+</value>
+    </data>
+       <data name="SurveyQ2" xml:space="preserve">
+        <value>لاحظنا عدم رضاك في السؤال السابق، يرجى توضح أسباب عدم الرضا لتحسين مستوى الخدمة المقدمة لك</value>
+    </data>
+         <data name="SurveyQ3" xml:space="preserve">
+        <value>هل لديك أي ملاحظات إضافية تود إيصالها
+إلى هيئة الزكاة والضريبة والجمارك</value>
+    </data>
+   <data name="ThankYou" xml:space="preserve">
+        <value>شكــــرا لـك</value>
+    </data>
+        <data name="DearCustomer" xml:space="preserve">
+        <value>عزيزي العميل</value>
+    </data>
+    <data name="SurveyThankMsg" xml:space="preserve">
+<value>
+    نقدر لك مشاركتك في هذا الاستبيان، ملاحظاتك محل اهتمامنا، حيث أننا نعمل جاهدين لتحسين تجربتك في المستقبل.
+هيئة الزكاة والضريبة والجمارك
+</value>
+    </data>
+      <data name="SurveyIntroMsg" xml:space="preserve">
+        <value>من خلال تجربتك لخدمتنا (E-services) في موقعنا الإلكتروني، يرجى تقييم رضاك عن الخدمة من "راضي تمامًا" حتى " غير راضي تمامًا" ما مستوى رضاك عن تجربتك مع خدمتنا الإلكترونية (E-services) عبر موقعنا الإلكتروني؟</value>
+    </data>
+    <data name="questionnaire" xml:space="preserve">
+        <value>الاستبيان</value>
+    </data>
+    <data name="End" xml:space="preserve">
+        <value>أنهاء</value>
+    </data>
 </root>

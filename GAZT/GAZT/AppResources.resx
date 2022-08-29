@@ -9573,4 +9573,85 @@ The violation must not have been previously reported or sufficient for it by the
     <data name="Viewservices" xml:space="preserve">
         <value>View services</value>
     </data>
+        <data name="Port1Name" xml:space="preserve">
+        <value>Entering Saudi passports</value>
+    </data>
+        <data name="Port2Name" xml:space="preserve">
+        <value>Saudi exit passports</value>
+    </data>
+        <data name="Port3Name" xml:space="preserve">
+        <value>Saudi Arabia customs entry</value>
+    </data>
+        <data name="Port4Name" xml:space="preserve">
+        <value>Saudi customs exit</value>
+    </data>
+     <data name="Reports" xml:space="preserve">
+        <value>Reports</value>
+    </data>
+      <data name="EinvoiceScanning" xml:space="preserve">
+        <value>E-invoice scanning</value>
+    </data>
+    <data name="TaxCalculator" xml:space="preserve">
+        <value>Mercahnt and consumer calculator</value>
+    </data>
+      <data name="AboutZATCA" xml:space="preserve">
+    <value>About ZATCA</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+      <data name="RateUs" xml:space="preserve">
+        <value>Rate us</value>
+    </data>
+      <data name="CustomerServices" xml:space="preserve">
+        <value>Customer Services</value>
+    </data>
+        <data name="PrivacyandPolicy" xml:space="preserve">
+        <value>Privacy and Policy</value>
+    </data>
+        <data name="ContactUs" xml:space="preserve">
+        <value>Contact Us</value>
+    </data>
+      <data name="EdcuationJourney" xml:space="preserve">
+        <value>Edcuation Journey</value>
+    </data>
+    <data name="SurveyQ1" xml:space="preserve">
+        <value>Overall, I am satisfied with my
+experience with theMobile App at
+the Zakat, Tax and Customs Authority</value>
+    </data>
+        <data name="SurveyQ2" xml:space="preserve">
+        <value>We noticed you dissatisfied with the
+question in the previous page. Kindly
+clarify the reason for dissatisfaction
+to help us improve your experience</value>
+    </data>
+       <data name="SurveyQ3" xml:space="preserve">
+        <value>Do you have any additional
+comments for the Zakat, Tax and
+Customs Authority?</value>
+    </data>
+       <data name="ThankYou" xml:space="preserve">
+        <value>Thank You</value>
+    </data>
+      <data name="DearCustomer" xml:space="preserve">
+        <value>Dear Customer</value>
+    </data>
+       <data name="SurveyThankMsg" xml:space="preserve">
+        <value>Thank you for taking the time to complete this survey.
+Your feedback is important to us and we strive to improve your experience in the future.
+Zakat, Tax and Customs Authority
+</value>
+</data>
+   <data name="SurveyIntroMsg" xml:space="preserve">
+<value>
+ Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?
+</value>
+    </data>
+       <data name="questionnaire" xml:space="preserve">
+        <value>questionnaire</value>
+    </data>
+     <data name="End" xml:space="preserve">
+        <value>End</value>
+    </data>
 </root>

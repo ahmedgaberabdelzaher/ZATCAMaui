@@ -89,12 +89,12 @@
 	  <None Remove="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 	  <None Remove="ViewModel\NewDesignViewModel\HomeViewModels\" />
 	  <None Remove="Views\NewDesign\HomePages\" />
-
-	  <None Remove="ViewModel\NewDesignViewModel\LiveVideoVM\" />
-	  <None Remove="Views\NewDesign\LiveVideo\" />
 	  <None Remove="YoutubeExplode" />
+	  <None Remove="Plugin.MediaManager" />
+	  <None Remove="Views\NewDesign\Survey\" />
+	  <None Remove="ViewModel\NewDesignViewModel\SurveyViewModels\" />
+	  <None Remove="Models\SurveyModels\" />
 	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
 		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.1.0.61" />
@@ -133,6 +133,7 @@
 	        <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
 	        <PackageReference Include="ZXing.Net.MobileX.Forms" Version="3.0.1" />
 	        <PackageReference Include="YoutubeExplode" Version="6.2.1" />
+	        <PackageReference Include="Plugin.MediaManager" Version="1.1.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -195,8 +196,9 @@
 		<Folder Include="Views\NewDesign\CustomServicesPages\e-Declarations\" />
 		<Folder Include="ViewModel\NewDesignViewModel\HomeViewModels\" />
 		<Folder Include="Views\NewDesign\HomePages\" />
-		<Folder Include="ViewModel\NewDesignViewModel\LiveVideoVM\" />
-		<Folder Include="Views\NewDesign\LiveVideo\" />
+		<Folder Include="Views\NewDesign\Survey\" />
+		<Folder Include="ViewModel\NewDesignViewModel\SurveyViewModels\" />
+		<Folder Include="Models\SurveyModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

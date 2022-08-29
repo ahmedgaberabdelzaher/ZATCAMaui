@@ -32,8 +32,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 {
                     if (tab != currentTab.ToString())
                     {
-                       // _navigationService.GoBack();
-
+                        // _navigationService.GoBack();
+                     if (tab == "3")
+                        {
+                            _navigationService.NavigateTo($"/LiveVideoPage");
+                            return;
+                        }
                         _navigationService.NavigateTo("/Home", tab);
                       
                     }

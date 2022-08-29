@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.LiveVideo.LiveVideoPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
@@ -7,15 +8,14 @@
     xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="EGAZT.Views.NewDesign.LiveVideo.LiveVideoPage"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
@@ -40,10 +40,10 @@
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*"> 
+            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
 
                 <!--  Live video Label  -->
                 <custom:CustomLabel
@@ -57,36 +57,36 @@
             </Grid>
             <!--#endregion Header-->
 
-             <!--#region Body-->
+            <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView>
-
-                    <StackLayout Spacing="20">
+                <Grid RowDefinitions="*,auto">
+                    <StackLayout Grid.Row="0" Spacing="20">
 
                         <!--  Live Video Sub Title Label  -->
                         <Label
+                            Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="28"
                             HorizontalOptions="StartAndExpand"
-                            Margin="0,10,0,0"
                             Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
                             TextColor="#58595B" />
 
-                        <Frame CornerRadius="20"
-                                IsClippedToBounds="True"
-                                Padding="0"
-                                WidthRequest="470"
-                                HeightRequest="250"
-                                BorderColor="#EBEBEB">
+                        <Frame
+                            Padding="0"
+                            BorderColor="#EBEBEB"
+                            CornerRadius="20"
+                            HeightRequest="250"
+                            IsClippedToBounds="True"
+                            WidthRequest="470">
 
-                            <xct:MediaElement 
-                                              AutoPlay="True"
-                                              ShowsPlaybackControls="True"
-                                              Source="{Binding VideoUrl}"/>
+                            <xct:MediaElement
+                                AutoPlay="True"
+                                ShowsPlaybackControls="True"
+                                Source="{Binding VideoUrl}" />
 
                         </Frame>
 
@@ -95,87 +95,90 @@
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="18"
                             HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="Center"
                             Text="{Binding SelectedVideo}"
-                            TextColor="#58595B" />
+                            TextColor="#58595B"
+                            VerticalOptions="Center" />
 
-                        <StackLayout VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
 
+                            <ScrollView VerticalScrollBarVisibility="Never">
+                                <Grid
+                                    x:Name="videosList"
+                                    BindableLayout.ItemsSource="{Binding LiveVideosList}"
+                                    ColumnDefinitions="*,*"
+                                    ColumnSpacing="30"
+                                    RowDefinitions="150,150"
+                                    RowSpacing="30">
 
-                            <Grid ColumnDefinitions="*,*"
-                                  ColumnSpacing="30"
-                                  RowSpacing="30"
-                                  x:Name="videosList"
-                                  BindableLayout.ItemsSource="{Binding LiveVideosList}"
-                                  RowDefinitions="150,150">
 
-                                
-                                <BindableLayout.ItemTemplate>
+                                    <BindableLayout.ItemTemplate>
 
-                                    <DataTemplate>
+                                        <DataTemplate>
 
-                                        <Frame  CornerRadius="20"
-                                                IsClippedToBounds="True"
-                                                Padding="0"
+                                            <Frame
                                                 x:Name="Item"
                                                 Grid.Row="{Binding Row}"
                                                 Grid.Column="{Binding Column}"
-                                                BorderColor="#EBEBEB">
+                                                Padding="0"
+                                                BorderColor="#EBEBEB"
+                                                CornerRadius="20"
+                                                IsClippedToBounds="True">
 
-                                                <Grid RowDefinitions="*,20"
-                                                      Padding="0">
+                                                <Grid Padding="0" RowDefinitions="*,20">
 
                                                     <!--  Live video Label  -->
                                                     <Label
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         FontSize="14"
                                                         HorizontalOptions="CenterAndExpand"
-                                                        VerticalOptions="CenterAndExpand"
                                                         Text="{Binding VideoNumber}"
-                                                        TextColor="#58595B" />
+                                                        TextColor="#58595B"
+                                                        VerticalOptions="CenterAndExpand" />
 
-                                                     <!--Bottom bold frame-->
-                                                     <yummy:PancakeView
+                                                    <!--  Bottom bold frame  -->
+                                                    <yummy:PancakeView
                                                         Grid.Row="1"
-                                                        CornerRadius="0,0,15,15"
-                                                        VerticalOptions="EndAndExpand"
-                                                        HorizontalOptions="FillAndExpand"  
                                                         BackgroundColor="#0996D4"
+                                                        CornerRadius="0,0,15,15"
+                                                        HorizontalOptions="FillAndExpand"
                                                         IsVisible="{Binding IsSelected}"
-                                                        Style="{StaticResource CommonTopCurves}"/>
+                                                        Style="{StaticResource CommonTopCurves}"
+                                                        VerticalOptions="EndAndExpand" />
 
                                                 </Grid>
 
                                                 <Frame.GestureRecognizers>
 
                                                     <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference videosList},Path=BindingContext}"
+                                                        BindingContext="{Binding Source={x:Reference videosList}, Path=BindingContext}"
                                                         Command="{Binding SelectedVideoItemCommand}"
                                                         CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
 
                                                 </Frame.GestureRecognizers>
 
-                                         </Frame>
-                                    </DataTemplate>
+                                            </Frame>
+                                        </DataTemplate>
 
-                                </BindableLayout.ItemTemplate>
+                                    </BindableLayout.ItemTemplate>
 
-                            </Grid>
+                                </Grid>
+                            </ScrollView>
 
                         </StackLayout>
-                       
+
 
 
 
                     </StackLayout>
+                    <controls:BottomMenu Grid.Row="1" VerticalOptions="EndAndExpand" />
+                </Grid>
 
-                </ScrollView>
+
 
             </yummy:PancakeView>
 
-              <!--Loader-->  
+            <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
         </Grid>

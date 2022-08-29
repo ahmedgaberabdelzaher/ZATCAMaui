@@ -18,6 +18,10 @@ using YoutubeExplode;
 using YoutubeExplode.Videos.Streams;
 using Xamarin.CommunityToolkit.Core;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Web;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 {
@@ -27,6 +31,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 
         string selectedVideo = AppResources.PortName + "1";
         public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
+
+        YoutubeClient youtube;
+
+        public async Task<string> GetYouTubeUrl(string videoId)
+        {
+            var videoInfoUrl = $"https://www.youtube.com/get_video_info?video_id={videoId}&html5=1&c=TVHTML5&cver=6.20180913";
+            using (var client = new HttpClient())
+            {
+                var videoPageContent =await client.GetAsync(videoInfoUrl);
+                var cont =await videoPageContent.Content.ReadAsStringAsync();
+                var videoParameters = HttpUtility.ParseQueryString(cont);
+                var encodedStreamsDelimited1 = WebUtility.HtmlDecode(videoParameters["player_response"]);
+                JObject jObject = JObject.Parse(encodedStreamsDelimited1);
+                string url = (string)jObject["streamingData"]["formats"][0]["url"];
+                return url;
+            }
+        }
+
 
         string videoUrl;
         public string VideoUrl { get { return videoUrl; } set { videoUrl = value; RaisePropertyChanged(); } }
@@ -38,28 +60,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Row =0,
                 Column =0,
                 IsSelected = true,
-                VideoNumber = AppResources.PortName + "1"
+                VideoNumber = AppResources.Port1Name ,
+                VideoURl="jqbBGECwiao"
             },
             new VideoModel
             {
                 Row =0,
                 Column =1,
                 IsSelected = false,
-                VideoNumber = AppResources.PortName + "2"
+                VideoNumber = AppResources.Port2Name,
+                  VideoURl="lpeOSC0bJt0"
             },
             new VideoModel
             {
                 Row =1,
                 Column =0,
                 IsSelected = false,
-                VideoNumber = AppResources.PortName + "3"
+                VideoNumber = AppResources.Port3Name,
+               VideoURl="q1824rnI1mM"
             },
             new VideoModel
             {
                 Row =1,
                 Column =1,
                 IsSelected = false,
-                VideoNumber = AppResources.PortName + "4"
+                VideoNumber = AppResources.Port4Name,
+                  VideoURl="iZ4N2lC4F58"
             }
         };
         public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
@@ -70,9 +96,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 
         public LiveVideoViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+           youtube = new YoutubeClient();
+            //GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+            Device.BeginInvokeOnMainThread(async() =>
+            {
+                VideoUrl =await GetYouTubeUrl(LiveVideosList[0].VideoURl);
+            });
+            
         }
 
         #region Commands
+
+        int currentTab = 3;
+        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
+
+        public ICommand ChangeCurrentTabCommand
+        {
+            get
+            {
+                return new Command<string>((tab) =>
+                {
+                    if (tab != currentTab.ToString())
+                    {
+                        if (tab == "1")
+                        {
+
+                            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                            return;
+                        }
+                        _navigationService.NavigateTo("/Home", tab);
+
+                    }
+
+                });
+            }
+        }
 
         public ICommand SelectedVideoItemCommand
         {
@@ -81,9 +139,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 return new Command(async(item) =>
                 {
                     IsLoading = true;
-                    VideoUrl = null;
+                  //  VideoUrl = null;
                     var videoItem = item as VideoModel;
-
+                   // VideoUrl = videoItem.VideoURl;
                     SelectedVideo = videoItem.VideoNumber;
 
                     foreach (var video in LiveVideosList)
@@ -91,26 +149,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                         video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
                     }
 
-                    YoutubeClient youtube = new YoutubeClient();
-                    if (videoItem.VideoNumber.Contains("2"))
+                    await GetYoutubeLiveVideoURl(videoItem.VideoURl);
+                    /*string videoId = "uXQ2-eUjRYs";
+                    if (videoItem.VideoNumber.Contains("2")|| videoItem.VideoNumber.Contains("4"))
                     {
-                        var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync("4Q5CBT_E_k4");
-                        VideoUrl = streamManifests;
+                        await GetYoutubeLiveVideoURl(videoId);
                     }
                     else
                     {
-                        
-                        StreamManifest streamManifest = await youtube.Videos.Streams.GetManifestAsync("https://www.youtube.com/watch?v=CvH5QXUWtiE");
+                        await GetYoutubeLiveVideoURl("S2USjH3wLyA");
+                        /*StreamManifest streamManifest = await youtube.Videos.Streams.GetManifestAsync("https://www.youtube.com/watch?v=CvH5QXUWtiE");
                         IVideoStreamInfo streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
                         if (streamInfo != null)
                         {
                             VideoUrl = streamInfo.Url;
                         }
-                    }
+                    }*/
                     IsLoading = false;
                    
                 });
             }
+        }
+
+        private async Task GetYoutubeLiveVideoURl(string videoId)
+        {
+            var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);
+            VideoUrl = streamManifests;
         }
         #endregion
     }
@@ -131,6 +195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
             }
         }
         public string VideoNumber { get; set; }
+        public string VideoURl { get; set; }
     }
 }
 

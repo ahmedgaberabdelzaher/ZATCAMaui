@@ -155,6 +155,8 @@ using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
 using EGAZT.Views.NewDesign.HomePages;
 using EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM;
 using EGAZT.Views.NewDesign.LiveVideo;
+using EGAZT.Views.NewDesign.Survey;
+using EGAZT.ViewModel.NewDesignViewModel.SurveyViewModels;
 
 namespace EGAZT
 {
@@ -177,6 +179,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
             SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
             SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
+            SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
+
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -399,6 +403,7 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
+            SimpleIoc.Default.Register<RateUsViewModel>();
 
             #endregion
         }
@@ -2870,6 +2875,9 @@ namespace EGAZT
             navigationService.Configure("CusromServiceMenu", typeof(CusromServiceMenu));
             navigationService.Configure("ExciseServices", typeof(ExciseServices));
             navigationService.Configure("VatServicesMenu", typeof(VatServicesMenu));
+            navigationService.Configure("GeneralServices", typeof(GeneralServices));
+            navigationService.Configure("SideMenuView", typeof(SideMenuView));
+            navigationService.Configure("RateUs", typeof(RateUs));
 
             #endregion
 
@@ -3033,6 +3041,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<HomeViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public RateUsViewModel rateUsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RateUsViewModel>();
                 }
                 catch (Exception ex)
                 {

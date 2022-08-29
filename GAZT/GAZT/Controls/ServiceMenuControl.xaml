@@ -20,14 +20,14 @@
             </ResourceDictionary>
         </Grid.Resources>
 
-        <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="auto,auto">
             <Grid Grid.Row="0" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
                     FontFamily="{StaticResource SomarBold}"
                     FontSize="20"
                     HorizontalOptions="StartAndExpand"
-                    Text="{x:Static ResourceManager:AppResources.EXCISETAXServices}"
+                    Text="{x:Static ResourceManager:AppResources.Viewservices}"
                     TextColor="{StaticResource Primary}" />
                 <StackLayout
                     Grid.Column="1"
@@ -37,6 +37,14 @@
                         HeightRequest="20"
                         Source="LstViewIcon"
                         WidthRequest="20">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding ItemCountPerRow}"
+                                TargetType="Image"
+                                Value="1">
+                                <Setter Property="Source" Value="LstViewIconSelected" />
+                            </DataTrigger>
+                        </Image.Triggers>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ChangeViewCommand}" CommandParameter="1" />
                         </Image.GestureRecognizers>
@@ -45,6 +53,14 @@
                         HeightRequest="20"
                         Source="GridViewIcon"
                         WidthRequest="20">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding ItemCountPerRow}"
+                                TargetType="Image"
+                                Value="1">
+                                <Setter Property="Source" Value="GridViewIconNotSelected" />
+                            </DataTrigger>
+                        </Image.Triggers>
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ChangeViewCommand}" CommandParameter="2" />
                         </Image.GestureRecognizers>
@@ -52,6 +68,7 @@
                 </StackLayout>
 
             </Grid>
+            <!--
             <CollectionView
                 x:Name="menu"
                 Grid.Row="1"
@@ -107,7 +124,71 @@
 
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
-            </CollectionView>
+            </CollectionView>-->
+            <Grid
+                x:Name="menu"
+                Grid.Row="1"
+                Margin="0,18,0,0"
+                BindableLayout.ItemsSource="{Binding CustomeMenuLst}"
+                ColumnDefinitions="*,*">
+                <Grid.Triggers>
+                    <DataTrigger
+                        Binding="{Binding ItemCountPerRow}"
+                        TargetType="Grid"
+                        Value="1">
+                        <Setter Property="ColumnDefinitions" Value="*" />
+                    </DataTrigger>
+                </Grid.Triggers>
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            x:Name="Item"
+                            Grid.Row="{Binding Row}"
+                            Grid.Column="{Binding ColumnNo}"
+                            Margin="0,0,10,10"
+                            Padding="10,0,10,0">
+                            <Frame.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsVerticalView}"
+                                    TargetType="Frame"
+                                    Value="False">
+                                    <Setter Property="Padding" Value="10" />
+                                </DataTrigger>
+                            </Frame.Triggers>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                    Command="{Binding NavigateToServiceCommand}"
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                            </Frame.GestureRecognizers>
+                            <StackLayout Margin="5">
+                                <StackLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IsVerticalView}"
+                                        TargetType="StackLayout"
+                                        Value="true">
+                                        <Setter Property="Orientation" Value="Horizontal" />
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                <Image
+                                    Margin="0,5,0,0"
+                                    HeightRequest="37"
+                                    HorizontalOptions="Center"
+                                    Source="{Binding ImageSource}"
+                                    WidthRequest="29" />
+                                <Label
+                                    Margin="0,5,0,5"
+                                    FontFamily="{StaticResource SomarBold}"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding Name}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </Frame>
+
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </Grid>
         </Grid>
     </Grid>
 </ContentView>

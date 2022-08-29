@@ -3,6 +3,8 @@ using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
+using EGAZT.Models.SurveyModels;
+using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.MyBillsPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -23,6 +25,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -32,6 +35,81 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
+        bool isSurveyVisible ;
+        public bool IsSurveyVisible
+        {
+            get
+            {
+                return isSurveyVisible;
+            }
+            set
+            {
+
+
+                isSurveyVisible = value;
+                RaisePropertyChanged();
+            }
+        }
+
+      
+        int fQanswer;
+        public int FQanswer
+        {
+            get
+            {
+                return fQanswer;
+            }
+            set
+            {
+                fQanswer = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        int surveyCurrentStep=0;
+        public int SurveyCurrentStep
+        {
+            get
+            {
+                return surveyCurrentStep;
+            }
+            set
+            {
+                surveyCurrentStep = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        string sQAnswer;
+        public string SQAnswer
+        {
+            get
+            {
+                return sQAnswer;
+            }
+            set
+            {
+                sQAnswer = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() {ImojieSource= "Angry", ID="1" }, new SurveyQuestions() { ImojieSource= "Dissatisfied",ID="2" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID="3" }, new SurveyQuestions() { ImojieSource = "Satisfied",ID="4" }, new SurveyQuestions() { ImojieSource = "StronglyDissatisfied", ID="5" } };
+        public ObservableCollection<SurveyQuestions> ImojiesLst
+        {
+            get
+            {
+                return imojiesLst;
+            }
+            set
+            {
+               imojiesLst = value;
+                RaisePropertyChanged();
+            }
+        }
+
 
         public string selectedFbNum = "";
         public string selectedSadadNo = "";
@@ -1695,9 +1773,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-
-        public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        ISurveyServices _surveyServices;
+        public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService, ISurveyServices surveyServices) : base(navigationService, dialogService)
         {
+            _surveyServices = surveyServices;
             MenuViewVisible = false;
             LiveChatVisible = false;
             AccountStatementVisible = false;
@@ -3502,6 +3581,129 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 _navigationService.GoBack();
             });
+        }
+
+        #endregion
+
+        #region Survey
+
+
+        public ICommand SurveyNextCommand
+        {
+            get
+            {
+                return new Command<string>((currentStep) =>
+                {
+                    SurveyCurrentStep = int.Parse(currentStep);
+                    if (SurveyCurrentStep==4)
+                    {
+                       
+                        IsShowMsgView = false;
+                    }
+                });
+            }
+        }
+
+        public ICommand SelectedImojieCommand
+        {
+            get
+            {
+                return new Command<SurveyQuestions>((selectedAnswer) =>
+                {
+                    FQanswer =int.Parse(selectedAnswer.ID);
+                });
+            }
+        }
+
+
+        public ICommand SurveyActionCommand
+        {
+            get
+            {
+                return new Command<string>((action) =>
+                {
+                   
+                    if (action =="0")
+                    {
+                        IsShowMsgView = false;
+                    }
+                    else
+                    {
+                        IsSurveyVisible = true;
+                        SurveyCurrentStep = 1;
+                    }
+                });
+            }
+        }
+        public int  SchedukeID { get; set; }
+
+        public ICommand CheckSurveyCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                  var date=  Preferences.Get("DateOfSurvey",DateTime.Now.AddDays(-1).Date);
+                 var isSurveyDone=Preferences.Get("IsSurveyTaken", false);
+
+                    if (date== DateTime.Now.Date&& isSurveyDone)
+                    {
+                        return;
+                    }
+                    IsShowMsgView = await HaveSurveyForToday();
+                 });
+            }
+        }
+
+        public ICommand AddSurveyCommand
+        {
+            get
+            {
+                return new Command<string>(async(isdismiss) =>
+                {
+                   await AddSurveyForToday(isdismiss == "0" ? false : true);
+                });
+            }
+        }
+
+
+        public async Task<bool> AddSurveyForToday(bool isDismiss=false)
+        {
+            CultureInfo enCul = new CultureInfo("en-US");
+            var date = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+            AddSurveyBody body = new AddSurveyBody()
+            {
+                dismiss = isDismiss,
+                scheduleid = SchedukeID,
+                tin = 1012
+            };
+
+            var res = await _surveyServices.AddSurveyData(body);
+            if (res.IsSuccessStatusCode)
+            {
+                Preferences.Set("DateOfSurvey", DateTime.Now.Date);
+                Preferences.Set("IsSurveyTaken", true);
+            }
+            IsShowMsgView = false;
+            return false;
+        }
+
+
+        public async Task<bool> HaveSurveyForToday()
+        {
+            CultureInfo enCul = new CultureInfo("en-US");
+            var date = DateTime.Now.Date.ToString("MM-dd-yyyy",enCul);
+           var res=await _surveyServices.GetSurveyByDate("1012", date);
+            if (res.Item2)
+            {
+                if (res.Item1.issuccess&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))
+                {
+                    
+                    SchedukeID = res.Item1.data.id;
+                    return true;
+                }
+            }
+            return false;
         }
 
         #endregion

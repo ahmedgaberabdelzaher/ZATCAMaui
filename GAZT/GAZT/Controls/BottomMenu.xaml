@@ -1,119 +1,188 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
+    x:Class="EGAZT.Controls.BottomMenu"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:custom="clr-namespace:GAZT"
-    x:Name="CustomEntryWithSAR"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
     xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
-    x:Class="EGAZT.Controls.BottomMenu">
-           <ContentView.Resources>
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="CustomEntryWithSAR">
+    <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-        
+
         </ResourceDictionary>
     </ContentView.Resources>
-                  <yummy:PancakeView Margin="-20,0,-20,0" VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="{StaticResource Primary}">
-                    <yummy:PancakeView.Resources>
-                        <ResourceDictionary>
-                            <Style TargetType="Label">
-                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
-                                <Setter Property="TextColor" Value="#FFFFFF"></Setter>
-                                 <Setter Property="FontSize" Value="13"></Setter>
-                            </Style>
-                                <Style TargetType="Image">
-                                <Setter Property="HeightRequest" Value="23"></Setter>
-                                <Setter Property="HorizontalOptions" Value="CenterAndExpand"></Setter>
-                                <Setter Property="VerticalOptions" Value="CenterAndExpand"></Setter>
-                                </Style>
-                        </ResourceDictionary>
-                    </yummy:PancakeView.Resources>
-                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="65">
-                          <StackLayout Grid.Column="0">
-                              <StackLayout.GestureRecognizers>
-                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="0"></TapGestureRecognizer>
-                              </StackLayout.GestureRecognizers>
-<Image  VerticalOptions="StartAndExpand" HeightRequest="5">
-<Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="0">
-<Setter Property="Source" Value="Rectangle"></Setter>
-</DataTrigger>
-</Image.Triggers>
-</Image>
-                         <Image Source="HomeNotSelected" >
-                             <Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="0">
-<Setter Property="Source" Value="HomeSelected"></Setter>
-</DataTrigger>
-</Image.Triggers>
-                         </Image>
-                         <Label  Text="{x:Static ResourceManager:AppResources.Home}">
-                                             <Label.Triggers>
-<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="0">
-<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
-</DataTrigger>
-</Label.Triggers>
-                         </Label>
-</StackLayout>
-                        <StackLayout Grid.Column="1">
-                             <StackLayout.GestureRecognizers>
-                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="1"></TapGestureRecognizer>
-                              </StackLayout.GestureRecognizers>
-                          <Image HeightRequest="5">
-                              <Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="1">
-<Setter Property="Source" Value="Rectangle"></Setter>
-</DataTrigger>
-</Image.Triggers>
-                          </Image>
-                          <Image Source="Account">
-              <Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="1">
-<Setter Property="Source" Value="AccountSelected"></Setter>
-</DataTrigger>
-</Image.Triggers>
-                          </Image>
-                         <Label Text="{x:Static ResourceManager:AppResources.VATRAccount}">
-                                                              <Label.Triggers>
-<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="1">
-<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
-</DataTrigger>
-</Label.Triggers>
-                         </Label>
-</StackLayout>
-                                           <StackLayout Grid.Column="2">
-                                                <StackLayout.GestureRecognizers>
-                                  <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="2"></TapGestureRecognizer>
-                              </StackLayout.GestureRecognizers>
-<Image HeightRequest="5" >
-<Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="2">
-<Setter Property="Source" Value="Rectangle"></Setter>
-</DataTrigger>
-</Image.Triggers>
-</Image>
-                         <Image WidthRequest="24" Source="Menu">
-                             <Image.Triggers>
-<DataTrigger TargetType="Image" Binding="{Binding CurrentTab}" Value="2">
-<Setter Property="Source" Value="MenuSelected"></Setter>
-</DataTrigger>
-</Image.Triggers>
-                         </Image>
-                         <Label Text="{x:Static ResourceManager:AppResources.ZZZMenu}">
-    <Label.Triggers>
-<DataTrigger TargetType="Label" Binding="{Binding CurrentTab}" Value="2">
-<Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}"></Setter>
-</DataTrigger>
-</Label.Triggers>
-                         </Label>
-</StackLayout>
-                    </Grid>
-                </yummy:PancakeView>
+    <yummy:PancakeView
+        Margin="-20,0,-20,0"
+        BackgroundColor="{StaticResource Primary}"
+        CornerRadius="15,15,0,0"
+        VerticalOptions="EndAndExpand">
+        <yummy:PancakeView.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                    <Setter Property="TextColor" Value="#FFFFFF" />
+                    <Setter Property="FontSize" Value="13" />
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="HeightRequest" Value="23" />
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                    <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                </Style>
+            </ResourceDictionary>
+        </yummy:PancakeView.Resources>
+        <Grid
+            Padding="10,0,10,0"
+            ColumnDefinitions="*,*,*,*"
+            RowDefinitions="65">
+            <StackLayout Grid.Column="0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="0" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="5" VerticalOptions="StartAndExpand">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="0">
+                            <Setter Property="Source" Value="Rectangle" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Source="HomeNotSelected">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="0">
+                            <Setter Property="Source" Value="HomeSelected" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Label Text="{x:Static ResourceManager:AppResources.Home}">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Label"
+                            Value="0">
+                            <Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Column="1">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="1" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="5">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="1">
+                            <Setter Property="Source" Value="Rectangle" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Source="Account">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="1">
+                            <Setter Property="Source" Value="AccountSelected" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Label Text="{x:Static ResourceManager:AppResources.VATRAccount}">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Label"
+                            Value="1">
+                            <Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Column="3">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="2" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="5">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="2">
+                            <Setter Property="Source" Value="Rectangle" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Source="Menu" WidthRequest="24">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="2">
+                            <Setter Property="Source" Value="MenuSelected" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Label Text="{x:Static ResourceManager:AppResources.ZZZMenu}">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Label"
+                            Value="2">
+                            <Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+            <StackLayout Grid.Column="2">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ChangeCurrentTabCommand}" CommandParameter="3" />
+                </StackLayout.GestureRecognizers>
+                <Image HeightRequest="5">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="3">
+                            <Setter Property="Source" Value="Rectangle" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image Source="LiveVideonIcon" WidthRequest="24">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Image"
+                            Value="3">
+                            <Setter Property="Source" Value="SelectedLiveVideonIcon" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Label Text="{x:Static ResourceManager:AppResources.LiveVideoTitle}">
+                    <Label.Triggers>
+                        <DataTrigger
+                            Binding="{Binding CurrentTab}"
+                            TargetType="Label"
+                            Value="3">
+                            <Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </StackLayout>
+        </Grid>
+    </yummy:PancakeView>
 
 </ContentView>

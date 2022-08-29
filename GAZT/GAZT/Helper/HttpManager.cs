@@ -55,7 +55,7 @@ namespace EGAZT.Helper
 
         }
 
-        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl,bool isBasicAuth=false,string routPortCode="99") where T : class
+        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl,bool isBasicAuth=true,string routPortCode="99") where T : class
         {
             try
             {
@@ -66,9 +66,7 @@ namespace EGAZT.Helper
                     client.Timeout = new TimeSpan(0,3,0);
                     if (isBasicAuth)
                     {
-                        var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
-                        var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
-                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+                        AddBasicAuthToHeader(client);
 
                     }
                     /*if (routPortCode!="99")
@@ -122,6 +120,14 @@ namespace EGAZT.Helper
             }
 
         }
+
+        private static void AddBasicAuthToHeader(HttpClient client)
+        {
+            var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
+            var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+        }
+
         static string jobject;
         public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false) where T :  class
         {
@@ -147,7 +153,9 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.XZATCAClientSecretProd);
                     }
-                     jobject = JsonConvert.SerializeObject(Data);
+                    AddBasicAuthToHeader(client);
+
+                    jobject = JsonConvert.SerializeObject(Data);
                     var JsonObject =jobject;
                     Debug.WriteLine(JsonObject);
 

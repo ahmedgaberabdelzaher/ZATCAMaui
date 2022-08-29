@@ -5,6 +5,7 @@ using EGAZT.Models;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.HomePages;
 using GalaSoft.MvvmLight.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
@@ -16,6 +17,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         Menu
     }
 
+    public enum Services
+    {
+        CustomServices,
+        VATServices,
+        ExciseTaxServices,
+        GeneralServices
+    }
+
 
     public class HomeViewModel:BaseViewModel
     {
@@ -25,11 +34,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         int itemCountPerRow=2;
         public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
 
-       ObservableCollection<MenuModel> menuLst;
+        public Services CurrentService { get; set; } = Services.CustomServices;
+
+        ObservableCollection<MenuModel> menuLst;
         public ObservableCollection<MenuModel> MenuLst { get { return menuLst; } set { menuLst = value; RaisePropertyChanged(); } }
 
         ObservableCollection<MenuModel> customeMenuLst;
         public ObservableCollection<MenuModel> CustomeMenuLst { get { return customeMenuLst; } set { customeMenuLst = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<MenuModel> sideMenuServiceLst;
+        public ObservableCollection<MenuModel> SideMenuServiceLst { get { return sideMenuServiceLst; } set { sideMenuServiceLst = value; RaisePropertyChanged(); } }
 
 
 
@@ -43,78 +57,181 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 new MenuModel()
                 {
-                   Name=AppResources.ZatcaInfoMenu, ID="1",ImageSource="CustomServices"
+                   Name=AppResources.ZatcaInfoMenu, ID="1",ImageSource="ExciseTaxServices"
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.NDVATServices, ID="2",ImageSource="EDeclerationicon"
+                   Name=AppResources.NDVATServices, ID="2",ImageSource="VatServices"
                 },
                      new MenuModel()
                 {
-                   Name=AppResources.EXCISETAXServices, ID="3",ImageSource="ExciseTaxServices"
+                   Name=AppResources.EXCISETAXServices, ID="3",ImageSource="CustomServices"
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.GeneralServices, ID="4",ImageSource="EDeclerationicon"
+                   Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
                 },
             };
 
             GetCustomServiceMenuLst();
         }
-
-        public void GetVatServiceMenuLst()
+        public async void OpenBrowser(Uri uri)
         {
-            CustomeMenuLst = new ObservableCollection<MenuModel>()
-           {
-
-                 new MenuModel()
-                {
-                   Name=AppResources.VATRegistrationCertificate, ID=App.VATRegistrationPageView,ImageSource="TarrrifSectionIcon"
-                },
-                 new MenuModel()
-                {
-                   Name=AppResources.MerchantCalculator, ID="TaxCalculator",ImageSource="InquireCustomDeclerations"
-                }
-           };
+            await Launcher.OpenAsync(uri);
         }
-
-        public void GetExciseServiceMenuLst()
+        public void GetSideMenuLst()
         {
-            CustomeMenuLst = new ObservableCollection<MenuModel>()
-           {
-
-                 new MenuModel()
+            SideMenuServiceLst = new ObservableCollection<MenuModel>()
+            {
+                new MenuModel()
                 {
-                   Name=AppResources.searchingandviewingtheindicativepricesforexciseGoods, ID="SearchIndiactivePriceForExciseGoods",ImageSource="TarrrifSectionIcon"
+                   Name=AppResources.AboutZATCA, ID=App.AboutUsPageView,ImageSource="AboutZatca"
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.TahqaqService, ID="TahqaqScanPage",ImageSource="InquireCustomDeclerations"
-                }
-           };
-        }
-
-
-        public void GetCustomServiceMenuLst()
-        {
-            CustomeMenuLst = new ObservableCollection<MenuModel>()
-           {
-
-                 new MenuModel()
-                {
-                   Name=AppResources.CustomsZATCAIntegrat+"            ", ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon"
-                },
-                 new MenuModel()
-                {
-                   Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations"
+                   Name=AppResources.FAQ, ID=App.FAQPageView,ImageSource="FAQ"
                 },
                      new MenuModel()
                 {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclerationView",ImageSource="CustomDeclerationsforTravellers"
+                   Name=AppResources.RateUs, ID="RateUs",ImageSource="RateUS"
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabFees"
+                   Name=AppResources.CustomerServices, ID=App.ContactUsPageView,ImageSource="CustomerService"
+                },
+                new MenuModel()
+                {
+                   Name=AppResources.PrivacyandPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.ContactUs, ID=App.ContactUsPageView,ImageSource="CallUS"
+                },
+                new MenuModel()
+                {
+                   Name=AppResources.EdcuationJourney, ID="https://edujourneys.zatca.gov.sa/home/tracks",ImageSource="Education"
+                },
+                new MenuModel()
+                {
+                   Name=App.IsArabic?AppResources.ZZZSetToArabic:AppResources.ZZZSetToEnglish, ID="ChangeLang",ImageSource="LangaugeIcon"
+                },
+            };
+
+        }
+
+        public ICommand SideMenuNavigationCommand
+        {
+            get
+            {
+                return new Command<MenuModel>((menuItem) =>
+                {
+                    if (menuItem.ID.ToLower().Contains("http"))
+                    {
+                        OpenBrowser(new Uri(menuItem.ID));
+                        return;
+                    }
+                    if (menuItem.ID.Contains("ChangeLang"))
+                    {
+                        ChangeLanguage();
+                        return;
+                    }
+                    _navigationService.NavigateTo(menuItem.ID);
+                });
+            }
+        }
+
+        private void ChangeLanguage()
+        {
+            if (App.IsArabic)
+            {
+                App.IsArabic = false;
+                App.changeFontFamily(App.appObj);
+                //SetLTRDirection();
+                AppDirection = FlowDirection.LeftToRight;
+                
+            }
+            else
+            {
+                App.IsArabic = true;
+                App.changeFontFamily(App.appObj);
+                AppDirection = FlowDirection.RightToLeft;
+            }
+            _navigationService.NavigateTo("/SideMenuView");
+        }
+
+
+        public void GetVatServiceMenuLst(bool isvertical = false)
+        {
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.VATRegistrationCertificate, ID=App.VATRegistrationPageView,ImageSource="VatRegCheck",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.TaxCalculator, ID="TaxCalculator",ImageSource="TaxCalcultor",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical
+                }
+                 ,
+                 new MenuModel()
+                {
+                   Name=AppResources.EinvoiceScanning, ID="E_InvoicesScan",ImageSource="EinvoiceScanning",ColumnNo=isvertical?0:1,Row=isvertical?2:1,IsVerticalView=isvertical
+                }
+               
+           };
+        }
+
+        public void GetExciseServiceMenuLst(bool isvertical = false)
+        {
+           
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.searchingandviewingtheindicativepricesforexciseGoods, ID="SearchIndiactivePriceForExciseGoods",ImageSource="SearchExciseTax",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.TahqaqService, ID="TahqaqScanPage",ImageSource="EinvoiceScanning",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical
+                }
+           };
+        }
+
+        public void GetGeneralServiceMenuLst(bool isvertical = false)
+        {
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.Reports, ID="SearchIndiactivePriceForExciseGoods",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                }
+           };
+        }
+
+
+        public void GetCustomServiceMenuLst(bool isvertical=false)
+        {
+            CustomeMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.CustomsZATCAIntegrat, ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical
+                },
+                     new MenuModel()
+                {
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclerationView",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical
                 },
            };
         }
@@ -127,12 +244,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                     if (tab!=currentTab.ToString())
                     {
-                        if (tab=="1")
+                        switch (tab)
+                        {
+                            case "1":
+                                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                                break;
+                            case "2":
+                                _navigationService.NavigateTo("/SideMenuView");
+                                break;
+                            case "3":
+                                _navigationService.NavigateTo($"/LiveVideoPage");
+                                break;
+                            default:
+                                break;
+                        }
+                        /*if (tab=="1")
                         {
                            
-                            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                          
+                            return;
                         }
+                        else if (tab =="3")
+                        {
+                            _navigationService.NavigateTo($"/LiveVideoPage");
+                            return;
+                        }*/
                         CurrentTab = int.Parse(tab);
                         Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
                     }
@@ -160,7 +295,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("ExciseServices");
                             break;
                         case "4":
-                            _navigationService.NavigateTo(App.ZatcaInfoMenuPageView);
+                            _navigationService.NavigateTo("GeneralServices");
                             break;
                         default:
                             break;
@@ -189,12 +324,52 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                     if (int.Parse(ItemCount)!= ItemCountPerRow)
                     {
-                        foreach (var item in CustomeMenuLst)
+                       // int cIndex = 1;
+                       // int RIndex = 1;
+                        bool isvertical = ItemCount == "1" ? true : false;
+                        switch (CurrentService)
+                        {
+                            case Services.CustomServices:
+                                 GetCustomServiceMenuLst(isvertical);
+                                break;
+                                 case Services.VATServices:
+                                GetVatServiceMenuLst(isvertical);
+                                break;
+                            case Services.ExciseTaxServices:
+                                GetExciseServiceMenuLst(isvertical);
+                                break;
+                            case Services.GeneralServices:
+                                GetGeneralServiceMenuLst(isvertical);
+                                break;
+                            
+                            default:
+                                break;
+                        }
+
+
+                        ItemCountPerRow = int.Parse(ItemCount);
+                        /*foreach (var item in CustomeMenuLst)
                         {
                             item.IsVerticalView = !item.IsVerticalView;
-                        }
+                           item.ColumnNo=item.IsVerticalView?0:cIndex%2==1?1:0;
+                            //item.Row = item.IsVerticalView ? RIndex-1 : RIndex % 2 == 1 ? RIndex - 2 : RIndex -1;
+                            item.Row =  RIndex - 1;
+
+                           
+                            if (cIndex==2&&!item.IsVerticalView)
+                            {
+                                RIndex++;
+                            }
+                            else if(item.IsVerticalView)
+                            {
+                                RIndex++;
+                            }
+                            cIndex++;
+                        }*/
                     }
-                    ItemCountPerRow = int.Parse(ItemCount);
+           
+                  
+
                 });
             }
         }
