@@ -11,7 +11,7 @@ namespace EGAZT.Views.NewDesign.SubmitReport
         public ReportSuccessPage()
         {
             InitializeComponent();
-            viewModel = App.Locator.submitReportViewModel;
+            viewModel = App.Locator.SubmitReportViewModel;
             BindingContext = viewModel;
         }
     }

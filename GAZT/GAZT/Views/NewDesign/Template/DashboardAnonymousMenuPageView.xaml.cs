@@ -111,7 +111,8 @@ namespace EGAZT.Views.NewDesign.Template
             //viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
             if (PageSettings.IsIncludeBalagh)
             {
-                viewModel._navigationService.NavigateTo("ReportsPage");
+                //viewModel._navigationService.NavigateTo("ReportsPage");
+                viewModel._navigationService.NavigateTo("InquiryAboutAddOrShowReportsPage");
             }
             else
             {

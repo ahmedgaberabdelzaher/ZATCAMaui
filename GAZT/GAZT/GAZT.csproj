@@ -98,6 +98,8 @@
 	  <None Remove="ViewModel\NewDesignViewModel\LoginViewModels\" />
 	  <None Remove="Models\LoginModels\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\CustomDashBoard\" />
+	  <None Remove="Views\NewDesign\ReportOTP\" />
+	  <None Remove="ViewModel\NewDesignViewModel\ReportOTPVM\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -207,6 +209,10 @@
 		<Folder Include="ViewModel\NewDesignViewModel\LoginViewModels\" />
 		<Folder Include="Models\LoginModels\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\CustomDashBoard\" />
+		<Folder Include="ViewModel\NewDesignViewModel\LiveVideoVM\" />
+		<Folder Include="Views\NewDesign\LiveVideo\" />
+		<Folder Include="Views\NewDesign\ReportOTP\" />
+		<Folder Include="ViewModel\NewDesignViewModel\ReportOTPVM\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

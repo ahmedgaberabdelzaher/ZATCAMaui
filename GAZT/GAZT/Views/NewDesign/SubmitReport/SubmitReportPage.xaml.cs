@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.SubmitReport
             try
             {
                 InitializeComponent();
-                viewModel = App.Locator.submitReportViewModel;
+                viewModel = App.Locator.SubmitReportViewModel;
                 BindingContext = viewModel;
             }
             catch(Exception ex)
@@ -42,22 +42,10 @@ namespace EGAZT.Views.NewDesign.SubmitReport
             }
         }
 
-        private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        {
-            viewModel.SubmitReport.HasViolationDateError = false;
-        }
-
-        private void reportReportDetailsEntry_Focused(object sender, FocusEventArgs e)
-        {
-            //var element = (GAZTBorderlessEditor)sender;
-            //if (element != null && string.IsNullOrWhiteSpace(element.Text))
-            //{
-            //    Device.BeginInvokeOnMainThread(async () => {
-            //        await Task.Delay(1000);
-            //        element.Unfocus();
-            //    });
-            //}
-        }
+        //private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
+        //{
+        //    viewModel.SubmitReport.HasViolationDateError = false;
+        //}
     }
 }
 

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.ReportOTP.ReportOTPPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+       <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImage" TargetType="Image">
+                        <Setter Property="HeightRequest" Value="30" />
+                        <Setter Property="WidthRequest" Value="30" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding StartTimerCommand}"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+         <Grid RowDefinitions="Auto,*"
+               VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"> 
+
+               <!--#region Body-->
+             <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Style="{StaticResource CommonTopCurves}">
+
+                    <ScrollView VerticalScrollBarVisibility="Never">
+
+                        <StackLayout Spacing="30">
+
+                            <Grid Padding="20,15"
+                                  ColumnDefinitions="*,2*,*">
+
+                               <!--  Logo Image  -->
+                                <Image
+                                    Grid.Column="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    WidthRequest="40"
+                                    HeightRequest="45"
+                                    Source="ic_logo_gazt.png"
+                                    Style="{DynamicResource BackButtonArrow}"
+                                    VerticalOptions="CenterAndExpand" />
+
+
+                                 <StackLayout Grid.Column="2">
+
+                                    <!--  Close Image  -->
+                                    <Image
+                                        HorizontalOptions="EndAndExpand"
+                                        Rotation="0"
+                                        Source="darkClose.png"
+                                        Style="{DynamicResource BackButtonArrow}"
+                                        VerticalOptions="CenterAndExpand" />
+
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                                    </StackLayout.GestureRecognizers>
+
+                                </StackLayout>
+
+                            </Grid>
+
+                             <!--  Header Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                HorizontalOptions="CenterAndExpand"
+                                FontSize="28"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#002447"
+                                Text="{x:Static ResourceManager:AppResources.ZZVerificationsCode}"
+                                VerticalOptions="Start" />
+
+                            <!--  OTP msg Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                HorizontalOptions="Center"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                TextColor="#999999"
+                                Text="{x:Static ResourceManager:AppResources.ReportOTPMSG}"
+                                VerticalOptions="Start" />
+
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                VerticalOptions="Start"
+                                BackgroundColor="#EBEBEB"
+                                HeightRequest="1" />
+
+
+                            <!--  OTP msg Label  -->
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarRegular}"
+                                HorizontalOptions="CenterAndExpand"
+                                FontSize="16"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                TextColor="#999999"
+                                Text="{Binding OTPSentOnThisMobileNumber}"
+                                VerticalOptions="Start" />
+
+
+                            <Grid
+                                ColumnDefinitions="50,50,50,50"
+                                RowDefinitions="50"
+                                Padding="10"
+                                FlowDirection="LeftToRight"
+                                ColumnSpacing="20"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="Start">
+
+                                <!--First OTP-->
+                                <Frame CornerRadius="15"
+                                       BorderColor="#B8BABA"
+                                       Padding="0"
+                                       Grid.Column="0"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+
+                                        <custom:BorderlessEntry
+                                                Keyboard="Numeric"
+                                                IsPassword="True"
+                                                x:Name="firstEntry"
+                                                ReturnType="Next"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                MaxLength="1"
+                                                ClassId="1"
+                                                FontSize="16"
+                                                Text="{Binding OTPFirstDigit}"
+                                                TextColor="#0996D4">
+                                                 <custom:BorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior
+                                                                EventName="TextChanged"
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding  Source={x:Reference secondEntry}}"/>
+                                                </custom:BorderlessEntry.Behaviors>
+
+                                        </custom:BorderlessEntry>
+                                        <Frame.GestureRecognizers>
+                                               <TapGestureRecognizer
+                                                        Command="{Binding FocusEntryCommand}"
+                                                        CommandParameter="{Binding  Source={x:Reference firstEntry}}"/>
+                                        </Frame.GestureRecognizers>
+                                </Frame>
+
+                                 <!--Second OTP-->
+                                 <Frame CornerRadius="15"
+                                       BorderColor="#B8BABA"
+                                       Padding="0"
+                                       Grid.Column="1"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+
+                                        <custom:BorderlessEntry
+                                                Keyboard="Numeric"
+                                                IsPassword="True"
+                                                ReturnType="Next"
+                                                x:Name="secondEntry"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                MaxLength="1"
+                                                ClassId="2"
+                                                FontSize="16"
+                                                Text="{Binding OTPSecondDigit}"
+                                                TextColor="#0996D4">
+
+                                                <custom:BorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior
+                                                                EventName="TextChanged"
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding  Source={x:Reference thirdEntry}}"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+
+                                        <Frame.GestureRecognizers>
+                                               <TapGestureRecognizer
+                                                        Command="{Binding FocusEntryCommand}"
+                                                        CommandParameter="{Binding  Source={x:Reference secondEntry}}"/>
+                                         </Frame.GestureRecognizers>
+
+                                 </Frame>
+
+                                 <!--Third OTP-->
+                                 <Frame CornerRadius="15"
+                                       BorderColor="#B8BABA"
+                                       Padding="0"
+                                       Grid.Column="2"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+
+                                        <custom:BorderlessEntry
+                                                Keyboard="Numeric"
+                                                IsPassword="True"
+                                                ReturnType="Next"
+                                                x:Name="thirdEntry"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                MaxLength="1"
+                                                ClassId="3"
+                                                FontSize="16"
+                                                Text="{Binding OTPThirdDigit}"
+                                                TextColor="#0996D4">
+                                               <custom:BorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior
+                                                                EventName="TextChanged"
+                                                                Command="{Binding GoToNextEntryCommand}"
+                                                                CommandParameter="{Binding  Source={x:Reference fourthEntry}}"/>
+                                                </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+                                        
+                                        <Frame.GestureRecognizers>
+                                               <TapGestureRecognizer
+                                                        Command="{Binding FocusEntryCommand}"
+                                                        CommandParameter="{Binding  Source={x:Reference thirdEntry}}"/>
+                                         </Frame.GestureRecognizers>
+                                 </Frame>
+
+                                 <!--Fourth OTP-->
+                                 <Frame CornerRadius="15"
+                                       BorderColor="#B8BABA"
+                                       Padding="0"
+                                       Grid.Column="3"
+                                       VerticalOptions="FillAndExpand"
+                                       HorizontalOptions="FillAndExpand">
+
+                                         <custom:BorderlessEntry
+                                                Keyboard="Numeric"
+                                                IsPassword="True"
+                                                x:Name="fourthEntry"
+                                                ReturnType="Go"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="Center"
+                                                HorizontalTextAlignment="Center"
+                                                FontFamily="{StaticResource SomarSemiBold}"
+                                                MaxLength="1"
+                                                ClassId="4"
+                                                FontSize="16"
+                                                Text="{Binding OTPFourthDigit}"
+                                                TextColor="#0996D4">
+                                              <custom:BorderlessEntry.Behaviors>
+                                                        <xct:EventToCommandBehavior
+                                                                EventName="Completed"
+                                                                Command="{Binding VerifyOTPCommand}"/>
+                                              </custom:BorderlessEntry.Behaviors>
+
+                                         </custom:BorderlessEntry>
+
+                                        <Frame.GestureRecognizers>
+                                               <TapGestureRecognizer
+                                                        Command="{Binding FocusEntryCommand}"
+                                                        CommandParameter="{Binding  Source={x:Reference fourthEntry}}"/>
+                                         </Frame.GestureRecognizers>
+
+
+                                 </Frame>
+
+
+                                
+                            </Grid>
+
+                             <StackLayout
+                                    Orientation="Horizontal"
+                                    Spacing="20"
+                                    HorizontalOptions="Center">
+
+                                    <custom:CustomLabel
+                                            Text="{Binding LblCountDownTimer}"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            HorizontalOptions="CenterAndExpand"
+                                            FontSize="16"
+                                            TextColor="#999999"
+                                            HorizontalTextAlignment="Center" />
+
+                                    <Image Source="clock"
+                                           WidthRequest="25"
+                                           HeightRequest="25"/>
+
+                             </StackLayout>
+
+                             <!--  Resend msg Label  -->
+                             <custom:CustomLabel
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    HorizontalOptions="CenterAndExpand"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    TextColor="#0996D4"
+                                    IsEnabled="{Binding IsResendCodeEnabled}"
+                                    TextDecorations="Underline"
+                                    Opacity="{Binding Opacity}"
+                                    Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                    VerticalOptions="Start" >
+
+                                    <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding ResendOtpCommand}"/>
+                                    </custom:CustomLabel.GestureRecognizers>
+                             </custom:CustomLabel>
+
+                    </StackLayout>
+
+                    </ScrollView>
+
+             </yummy:PancakeView>
+             <!--#endregion Body-->
+
+
+            <!--Loader-->  
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+              <!--Popup Msg--> 
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+         </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

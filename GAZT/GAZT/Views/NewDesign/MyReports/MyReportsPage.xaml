@@ -10,7 +10,9 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports" 
+    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -20,6 +22,7 @@
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <xct:ListIsNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
@@ -47,15 +50,15 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
 
-                <StackLayout>
+                <!--  Back Button  -->
+                <StackLayout IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
 
-                    <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
-                        Rotation="180"
-                        Source="arrowLeftwhite.png"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
                         VerticalOptions="CenterAndExpand" />
 
@@ -70,19 +73,63 @@
                     Grid.Column="1"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
+                    FontSize="20"
+                    IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.NDMyReports}"
                     VerticalOptions="Center" />
 
-                <StackLayout Grid.Column="2">
+                <!--  Report Type Entry  -->
+                <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="10,0,10,0"
+                    Grid.ColumnSpan="2"
+                    OutlineCornerRadius="15"
+                    IsVisible="{Binding IsSearching}"
+                    UnfocusedColor="{StaticResource NeutralGreay}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+                    <custom:BorderlessEntry
+                        Keyboard="Text"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding SearchValue}"
+                        TextColor="#58595B">
+                        <custom:BorderlessEntry.Behaviors>
+                           <xct:EventToCommandBehavior EventName="Completed" Command="{Binding SearchReportCommand}"/>
+                        </custom:BorderlessEntry.Behaviors>
+                    </custom:BorderlessEntry>
+                </inputLayout:SfTextInputLayout>
 
-                    <!--  Search Image  -->
+                <!--  Search Image  -->
+                <StackLayout Grid.Column="2"
+                             IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
+                    
                     <Image
                         HorizontalOptions="End"
-                        Source="search.png"
+                        Source="reportSearch.png"
                         WidthRequest="25"
                         HeightRequest="25"
                         VerticalOptions="CenterAndExpand" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Close Label  -->
+                <StackLayout Grid.Column="2"
+                             VerticalOptions="CenterAndExpand"
+                             IsVisible="{Binding IsSearching}">
+                    
+                     <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="16"
+                        Style="{StaticResource SectionTitleWhiteBold}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.ZClose}"/>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SearchCommand}" />
@@ -99,29 +146,31 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView>
+                <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout Spacing="30">
 
                         <!--All Reports Layout-->
                         <Grid RowDefinitions="Auto,Auto"
-                              ColumnDefinitions="*,*"
+                              ColumnDefinitions="Auto,Auto"
                               RowSpacing="0">
 
 
-                            <!--  All Reports Label  -->
+                            <!--  All Reports Label -->
                             <Label
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="28"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.NDMyReports}"
+                                Text="{Binding ReportsResultTitle}"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 TextColor="#58595B" />
 
                             <!--  Down arrow Button  -->
                             <Image
-                                HorizontalOptions="Start"
+                                HorizontalOptions="StartAndExpand"
                                 Grid.Column="1"
                                 Source="arrowDropdown.png"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 VerticalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FilterCommand}"/>
@@ -134,6 +183,7 @@
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="12"
                                 Grid.Row="1"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding ReportsCount}"
                                 TextColor="#999999" />
@@ -142,7 +192,8 @@
 
                         <!--Add new report Frame-->
                         <Frame CornerRadius="12"
-                               Padding="8"
+                               Padding="15"
+                               IsVisible="{Binding MyReportsList, Converter={StaticResource ListIsNotNullOrEmptyConverter}}"
                                BorderColor="#EBEBEB">
 
                             <StackLayout Orientation="Horizontal">
@@ -150,7 +201,9 @@
                                 <!--  Add Report Image  -->
                                 <Image
                                     HorizontalOptions="Start"
-                                    Source="add.png"
+                                    Source="reportAdd.png"
+                                    WidthRequest="25"
+                                    HeightRequest="25"
                                     VerticalOptions="CenterAndExpand" />
 
                                 <!--  Add new report Label  -->
@@ -171,11 +224,50 @@
                         </Frame>
 
                         <!--  MyReports List  -->
-
                         <StackLayout
                              x:Name="reportsList"
+                             VerticalOptions="FillAndExpand"
+                             Margin="0,0,0,25"
+                             HorizontalOptions="FillAndExpand"
                              BindableLayout.ItemsSource="{Binding MyReportsList}"
                              Spacing="20">
+
+                            <BindableLayout.EmptyView>
+
+                                <StackLayout Spacing="20"
+                                             VerticalOptions="CenterAndExpand"
+                                             HorizontalOptions="CenterAndExpand">
+
+                                    <!--  Document icon  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="80"
+                                        Source="emptyReport.png"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        WidthRequest="80" />
+
+                                    <!--  Empty Reports Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="18"
+                                        HorizontalTextAlignment="Center"
+                                        LineBreakMode="WordWrap"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.EmptyReports}"
+                                        TextColor="#999999" />
+
+                                     <!--  Submita new report Button  -->
+                                    <buttons:SfButton
+                                        Margin="0,40"
+                                        BackgroundColor="#0996D4"
+                                        Command="{Binding AddNewReportCommand}"
+                                        Style="{StaticResource PrimaryButtonStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.Submitanewreport}" />
+
+                                </StackLayout>
+                            </BindableLayout.EmptyView>
 
                             <BindableLayout.ItemTemplate>
 
@@ -229,6 +321,13 @@
                                                                 <Setter Property="BackgroundColor" Value="#62B34F" />
                                                              </DataTrigger>
 
+                                                             <!--Closed status-->
+                                                            <DataTrigger TargetType="Frame"
+                                                                    Binding="{Binding reportStatus}"
+                                                                    Value="3">
+                                                                <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                             </DataTrigger>
+
                                                             <!--Open status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
@@ -236,10 +335,10 @@
                                                                 <Setter Property="BackgroundColor" Value="#0996D4" />
                                                              </DataTrigger>
 
-                                                            <!--Open status with different value-->
+                                                             <!--In progress status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
-                                                                    Value="3">
+                                                                    Value="2">
                                                                 <Setter Property="BackgroundColor" Value="#0996D4" />
                                                              </DataTrigger>
 
@@ -254,8 +353,8 @@
                                                         BackgroundColor="Transparent">
 
                                                         <Label
-                                                            FontFamily="{StaticResource SomarBold}"
-                                                            FontSize="16"
+                                                            FontFamily="{StaticResource SomarRegular}"
+                                                            FontSize="12"
                                                             VerticalOptions="CenterAndExpand"
                                                             HorizontalOptions="CenterAndExpand"
                                                             Text="{Binding reportStatus}"
@@ -275,16 +374,24 @@
                                                                  <!--Closed status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
+                                                                            Value="3">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                    <Setter Property="TextColor" Value="#62B34F" />
+                                                                </DataTrigger>
+
+                                                                 <!--Closed status-->
+                                                                 <DataTrigger TargetType="Label"
+                                                                            Binding="{Binding reportStatus}"
                                                                             Value="0">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
                                                                     <Setter Property="TextColor" Value="#62B34F" />
                                                                 </DataTrigger>
 
-                                                                 <!--Open status with different value-->
+                                                                <!--In progress status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
-                                                                            Value="3">
-                                                                   <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OpenReports}" />
+                                                                            Value="2">
+                                                                   <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZReportStatusInprogress}" />
                                                                     <Setter Property="TextColor" Value="#0996D4" />
                                                                 </DataTrigger>
                                                             </Label.Triggers>
@@ -303,7 +410,7 @@
                                                     Grid.Row="1"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding region}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                             </Grid>
 
@@ -324,9 +431,11 @@
                                                 <Label
                                                     FontFamily="{StaticResource SomarRegular}"
                                                     FontSize="20"
-                                                    HorizontalOptions="StartAndExpand"
+                                                    LineBreakMode="WordWrap"
+                                                    Grid.ColumnSpan="2"
+                                                    HorizontalOptions="FillAndExpand"
                                                     Text="{Binding reportType}"
-                                                    TextColor="#232323" />
+                                                    TextColor="#002447" />
 
                                                 <!--  Report number Label  -->
                                                 <Label
@@ -344,7 +453,7 @@
                                                     Grid.Row="2"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding reportNumber}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                                 <!--  Report date Label  -->
                                                 <Label
@@ -364,7 +473,7 @@
                                                     Grid.Column="1"
                                                     HorizontalOptions="StartAndExpand"
                                                     Text="{Binding addedDate}"
-                                                    TextColor="#999999" />
+                                                    TextColor="#002447" />
 
                                             </Grid>
 
@@ -384,9 +493,6 @@
                             </BindableLayout.ItemTemplate>
 
                         </StackLayout>
-
-
-
 
                     </StackLayout>
 

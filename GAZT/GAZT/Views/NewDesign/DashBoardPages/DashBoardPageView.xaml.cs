@@ -1295,7 +1295,8 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
             viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+              //  viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                viewModel._navigationService.NavigateTo("InquiryAboutAddOrShowReportsPage");
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }

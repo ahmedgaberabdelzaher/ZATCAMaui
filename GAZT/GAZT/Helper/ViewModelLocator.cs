@@ -160,6 +160,8 @@ using EGAZT.ViewModel.NewDesignViewModel.SurveyViewModels;
 using EGAZT.ViewModel.NewDesignViewModel.LoginViewModels;
 using EGAZT.Views.NewDesign.LoginPages;
 using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
+using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
+using EGAZT.Views.NewDesign.ReportOTP;
 
 namespace EGAZT
 {
@@ -402,6 +404,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TaxCalculatorViewModel>();
             SimpleIoc.Default.Register<SubmitReportViewModel>();
             SimpleIoc.Default.Register<LiveVideoViewModel>();
+            SimpleIoc.Default.Register<ReportOTPViewModel>();
 
             SimpleIoc.Default.Register<MyReportsViewModel>();
 
@@ -2869,6 +2872,7 @@ namespace EGAZT
             navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
             navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
             navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
+            navigationService.Configure("TermsPage", typeof(TermsPage));
             navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
             navigationService.Configure("LiveVideoPage", typeof(LiveVideoPage));
             navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));
@@ -2886,6 +2890,9 @@ namespace EGAZT
             navigationService.Configure("CustomLogin", typeof(CustomLogin));
             navigationService.Configure("CustomDashBoardVi", typeof(CustomDashBoardVi));
             navigationService.Configure("LoginSelectionView", typeof(LoginSelectionView));
+            navigationService.Configure("ReportOTPPage", typeof(ReportOTPPage));
+            navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
+            navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
 
             #endregion
 
@@ -3933,7 +3940,7 @@ namespace EGAZT
             }
         }
 
-        public SubmitReportViewModel submitReportViewModel
+        public SubmitReportViewModel SubmitReportViewModel
         {
             get
             {
@@ -3947,7 +3954,7 @@ namespace EGAZT
                 }
             }
         }
-        public MyReportsViewModel myReportsViewModel
+        public MyReportsViewModel MyReportsViewModel
         {
             get
             {
@@ -3961,13 +3968,27 @@ namespace EGAZT
                 }
             }
         }
-        public LiveVideoViewModel liveVideoViewModel
+        public LiveVideoViewModel LiveVideoViewModel
         {
             get
             {
                 try
                 {
                     return ServiceLocator.Current.GetInstance<LiveVideoViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ReportOTPViewModel ReportOTPViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportOTPViewModel>();
                 }
                 catch (Exception ex)
                 {

@@ -6,11 +6,12 @@ namespace EGAZT.Views.NewDesign.MyReports
     public partial class MyReportsPage : ContentPage
     {
         MyReportsViewModel viewModel;
-        public MyReportsPage()
+        public MyReportsPage( string phone)
         {
             try
             {
-                viewModel = App.Locator.myReportsViewModel;
+                viewModel = App.Locator.MyReportsViewModel;
+                viewModel.PhoneNumber = phone;
                 BindingContext = viewModel;
                 InitializeComponent();
                

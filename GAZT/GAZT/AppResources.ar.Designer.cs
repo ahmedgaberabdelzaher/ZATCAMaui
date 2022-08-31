@@ -2997,6 +2997,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to لا توجد لديك أي بلاغات.
+        /// </summary>
+        public static string EmptyReports {
+            get {
+                return ResourceManager.GetString("EmptyReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English Captial and small letters.
         /// </summary>
         public static string EnglishCaptialAndSmallLetters {
@@ -8883,6 +8892,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to يجب أن لا يتعدى عدد المرفقات لعملية تقديم الإقرار / أو التعديل على الإقرار مرفق واحد..
+        /// </summary>
+        public static string NumberofAttachments {
+            get {
+                return ResourceManager.GetString("NumberofAttachments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Numbers and Symbols.
         /// </summary>
         public static string NumbersAndSymbols {
@@ -9184,6 +9202,15 @@ namespace EGAZT {
         public static string PdfIsNoteAvailable {
             get {
                 return ResourceManager.GetString("PdfIsNoteAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to السابق.
+        /// </summary>
+        public static string PerviousButton {
+            get {
+                return ResourceManager.GetString("PerviousButton", resourceCulture);
             }
         }
         
@@ -9740,6 +9767,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to يتوجب عليك تعبئة جميع الحقول التالية.
+        /// </summary>
+        public static string ReportDetailsSubTitle {
+            get {
+                return ResourceManager.GetString("ReportDetailsSubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الرجاء إبلاغنا عن اسم و موقع المكان الذى تم شراء المنتج من خلاله.
         /// </summary>
         public static string ReportDisclaimer {
@@ -9767,6 +9803,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to قم بتحديد الموقع علي الخريطة.
+        /// </summary>
+        public static string ReportLocationPlaceholder {
+            get {
+                return ResourceManager.GetString("ReportLocationPlaceholder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to اسم التاجر.
         /// </summary>
         public static string ReportMerchantName {
@@ -9785,6 +9830,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to البلاغ مؤهل للمكافأة تلقائياً إذا لم يتم الضغط على الخانة ، وذلك بعد التحقق والتدقيق..
+        /// </summary>
+        public static string ReportReward {
+            get {
+                return ResourceManager.GetString("ReportReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to بلاغات.
         /// </summary>
         public static string Reports {
@@ -9794,15 +9848,83 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تمنح المكافأة وفقا لسلطة الهيئة التقدرية على ان يراعي تحقيق الشروط الأتية
-        ///أن يكون البلاغ قد أدي إلى كشف أي المخالفات المذكورة في هذة اللائحة
-        ///الا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى
-        ///الا يكون الكشف عن الحالة محل محل البلاغ من واجبات المبلغ الوظيفة إذا كان موظفا عاما او في حكمه 
-        ///الا تكون المخالفة قد سبق الابلاغ عنها او كؤفي عليها من قبل الهيئة. يكون استحقاق المكافأة بناء علي قرار يصدر من لجنة مكافآت المبلغين عن المخالفات.
+        ///   Looks up a localized string similar to 1- تمنح المكافأة وفقا لسلطة الهيئة التقديرية على أن يراعى تحقيق الشروط الآتية :.
         /// </summary>
-        public static string ReportSecondNote {
+        public static string ReportSecondNote1 {
             get {
-                return ResourceManager.GetString("ReportSecondNote", resourceCulture);
+                return ResourceManager.GetString("ReportSecondNote1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to أن يكون البلاغ قد أدى إلى كشف أي المخالفات المذكورة في هذه اللائحة..
+        /// </summary>
+        public static string ReportSecondNote2 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to أن يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى..
+        /// </summary>
+        public static string ReportSecondNote3 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ألا يكون الكشف عن الحالة محل البلاغ من واجبات المبلغ الوظيفية إذا كان موظفا عاما أو في حكمه..
+        /// </summary>
+        public static string ReportSecondNote4 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ألا تكون المخالفة قد سبق الإبلاغ عنها أو كوفئ عليها من قبل الهيئة..
+        /// </summary>
+        public static string ReportSecondNote5 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن مخالفات ..
+        /// </summary>
+        public static string ReportSecondNote6 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة..
+        /// </summary>
+        public static string ReportSecondNote7 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لإطلاع على بقية الأحكام والشروط اضغط هنا.
+        /// </summary>
+        public static string ReportSecondNote8 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to الهيئة تلتزم بالحفاظ  على جميع بيانات المبلغ وأن تتعامل بسرية تامة مع كافة البيانات المقدمة.
+        /// </summary>
+        public static string ReportSecondNote9 {
+            get {
+                return ResourceManager.GetString("ReportSecondNote9", resourceCulture);
             }
         }
         
