@@ -458,6 +458,30 @@
     <BundleResource Include="Resources\reportClose%403x.png" />
     <BundleResource Include="Resources\reportClose%402x.png" />
     <BundleResource Include="Resources\reportClose.png" />
+    <BundleResource Include="Resources\darkClose.png" />
+    <BundleResource Include="Resources\darkClose%402x.png" />
+    <BundleResource Include="Resources\darkClose%403x.png" />
+    <BundleResource Include="Resources\unReportNumber.png" />
+    <BundleResource Include="Resources\showReports.png" />
+    <BundleResource Include="Resources\selectedPhone.png" />
+    <BundleResource Include="Resources\phoneIcon.png" />
+    <BundleResource Include="Resources\addReportIcon.png" />
+    <BundleResource Include="Resources\showReports%403x.png" />
+    <BundleResource Include="Resources\showReports%402x.png" />
+    <BundleResource Include="Resources\addReportIcon%403x.png" />
+    <BundleResource Include="Resources\addReportIcon%402x.png" />
+    <BundleResource Include="Resources\selectedPhone%403x.png" />
+    <BundleResource Include="Resources\selectedPhone%402x.png" />
+    <BundleResource Include="Resources\phoneIcon%403x.png" />
+    <BundleResource Include="Resources\phoneIcon%402x.png" />
+    <BundleResource Include="Resources\unReportNumber%403x.png" />
+    <BundleResource Include="Resources\unReportNumber%402x.png" />
+    <BundleResource Include="Resources\SelectedReport.png" />
+    <BundleResource Include="Resources\SelectedReport%402x.png" />
+    <BundleResource Include="Resources\SelectedReport%403x.png" />
+    <BundleResource Include="Resources\unSelectedPhone.png" />
+    <BundleResource Include="Resources\unSelectedPhone%402x.png" />
+    <BundleResource Include="Resources\unSelectedPhone%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

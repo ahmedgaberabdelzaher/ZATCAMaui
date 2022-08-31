@@ -1,9 +1,20 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using System.Linq;
+using GalaSoft.MvvmLight;
 
 namespace EGAZT.Models.SubmitReportModel
 {
     public class SubmitReportModel : ViewModelBase
     {
+        public SubmitReportModel()
+        {
+            //var dateNow = DateTime.Now;
+            //System.Globalization.DateTimeFormatInfo DTFormat;
+            //DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
+            //DTFormat.Calendar = new System.Globalization.GregorianCalendar();
+            //DTFormat.ShortDatePattern = "dd/MM/yyyy";
+            //ViolationDate = dateNow.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
+        }
         public string CityCode { get; set; }
 
         string _city;
@@ -49,12 +60,16 @@ namespace EGAZT.Models.SubmitReportModel
         string _reporterNameAr;
         public string ReporterNameAr { get { return _reporterNameAr; } set { _reporterNameAr = value; RaisePropertyChanged(); } }
 
+        string _reporterNameEn;
+        public string ReporterNameEn { get { return _reporterNameEn; } set { _reporterNameEn = value; RaisePropertyChanged(); } }
+
         string _reporterEmail;
         public string ReporterEmail { get { return _reporterEmail; } set { _reporterEmail = value; RaisePropertyChanged(); } }
 
         string _reporterMobileNumber;
         public string ReporterMobileNumber { get { return _reporterMobileNumber; } set { _reporterMobileNumber = value; RaisePropertyChanged(); } }
 
+       
         string _violationDate;
         public string ViolationDate { get { return _violationDate; } set { _violationDate = value; RaisePropertyChanged(); } }
 
@@ -63,6 +78,9 @@ namespace EGAZT.Models.SubmitReportModel
 
         string _street;
         public string Street { get { return _street; } set { _street = value; RaisePropertyChanged(); } }
+
+        string _location;
+        public string Location { get { return _location; } set { _location = value; RaisePropertyChanged(); } }
 
         string _reportDetails;
         public string ReportDetails { get { return _reportDetails; } set { _reportDetails = value; RaisePropertyChanged(); } }
@@ -75,56 +93,3 @@ namespace EGAZT.Models.SubmitReportModel
 
     }
 }
-
-
-
-#region Not Used
-/*Validations Properties */
-//bool _hasCity;
-//public bool HasCity { get { return _hasCity; } set { _hasCity = value; RaisePropertyChanged(); } }
-
-//bool _hasCompanyAddress;
-//public bool HasCompanyAddress { get { return _hasCompanyAddress; } set { _hasCompanyAddress = value; RaisePropertyChanged(); } }
-
-//bool _hasCompanyName;
-//public bool HasCompanyName { get { return _hasCompanyName; } set { _hasCompanyName = value; RaisePropertyChanged(); } }
-
-//bool _hasDistrict;
-//public bool HasDistrict { get { return _hasDistrict; } set { _hasDistrict = value; RaisePropertyChanged(); } }
-
-//bool _hasRegion;
-//public bool HasRegion { get { return _hasRegion; } set { _hasRegion = value; RaisePropertyChanged(); } }
-
-//bool _hasReportCategory;
-//public bool HasReportCategory { get { return _hasReportCategory; } set { _hasReportCategory = value; RaisePropertyChanged(); } }
-
-//bool _hasReportType;
-//public bool HasReportType { get { return _hasReportType; } set { _hasReportType = value; RaisePropertyChanged(); } }
-
-
-
-//bool _hasReportDetails;
-//public bool HasReportDetails { get { return _hasReportDetails; } set { _hasReportDetails = value; RaisePropertyChanged(); } }
-
-//bool _hasReporterMobileNumber;
-//public bool HasReporterMobileNumber { get { return _hasReporterMobileNumber; } set { _hasReporterMobileNumber = value; RaisePropertyChanged(); } }
-
-//bool _hasReporterNameAr;
-//public bool HasReporterNameAr { get { return _hasReporterNameAr; } set { _hasReporterNameAr = value; RaisePropertyChanged(); } }
-//public string FullName { get; set; }
-//public string Email { get; set; }
-//public string PhoneNumber { get; set; }
-//public string Location { get; set; }
-//public string Region { get; set; }
-//public string City { get; set; }
-//public string CityCode { get; set; }
-//public string District { get; set; }
-//public string Street { get; set; }
-//public string CommercialRegistration { get; set; }
-//public string Editor { get; set; }
-//string _reportType;
-//public string ReportType { get { return _reportType; } set { _reportType = value; RaisePropertyChanged(); } }
-//public string ReportCategory { get; set; }
-//public string FacilityName { get; set; }
-//public string TIN { get; set; } 
-#endregion

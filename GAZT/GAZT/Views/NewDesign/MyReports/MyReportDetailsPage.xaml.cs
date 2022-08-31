@@ -11,7 +11,7 @@ namespace EGAZT.Views.NewDesign.MyReports
         {
             try
             {
-                viewModel = App.Locator.myReportsViewModel;
+                viewModel = App.Locator.MyReportsViewModel;
                 viewModel.MyReports = report ?? new MyReportsModel();
                 BindingContext = viewModel;
                 InitializeComponent();

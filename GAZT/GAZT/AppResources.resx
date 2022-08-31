@@ -9450,7 +9450,7 @@ the Zakat, Tax and Customs
      <value>Allowed supplies (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>I don't want to get the reward</value>
+     <value>I want to get the reward</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>E-invoice Certificate</value>
@@ -9610,5 +9610,26 @@ the Zakat, Tax and Customs
     </data>
     <data name="Viewservices" xml:space="preserve">
         <value>View services</value>
+    </data>
+     <data name="ReportOTPMSG" xml:space="preserve">
+         <value>Please enter the verification code that was sent to your mobile</value>
+    </data>
+     <data name="PerviousReports" xml:space="preserve">
+         <value>Previous Reports</value>
+    </data>
+     <data name="InquriyMyReports" xml:space="preserve">
+         <value>Please choose a method to search for the report</value>
+    </data>
+     <data name="ReportNumberRequired" xml:space="preserve">
+         <value>Please enter the report number</value>
+    </data>
+        <data name="ShowPerviousReports" xml:space="preserve">
+         <value>View previous reports</value>
+    </data>
+    <data name="ReportsNote" xml:space="preserve">
+         <value>If the authority informs you of malicious or false information, it will expose you to legal accountability</value>
+    </data>
+      <data name="ChooseReports" xml:space="preserve">
+         <value>Reports</value>
     </data>
 </root>

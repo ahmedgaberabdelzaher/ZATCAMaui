@@ -24,10 +24,10 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
+                        <Setter Property="Rotation" Value="0" />
                     </Style>
                     <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
+                        <Setter Property="Rotation" Value="180" />
                     </Style>
                     <Style x:Key="ArrowImage" TargetType="Image">
                         <Setter Property="HeightRequest" Value="30" />

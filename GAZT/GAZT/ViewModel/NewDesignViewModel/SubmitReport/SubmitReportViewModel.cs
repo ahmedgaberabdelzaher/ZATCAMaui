@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Controls;
@@ -23,7 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         SubmitReportModel submitReport = new SubmitReportModel();
 
         public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; RaisePropertyChanged(); } }
-
+        public DateTime SelectedDate { get; set; } = DateTime.Now;
         bool isTherePDFUploaded;
         public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
 
@@ -32,6 +33,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
         bool isShowBottomSheet;
         public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+
+        bool isOpenDatePicker;
+        public bool IsOpenDatePicker { get { return isOpenDatePicker; } set { isOpenDatePicker = value; RaisePropertyChanged(); } }
 
         bool hasError;
         public bool HasError { get { return hasError; } set { hasError = value; RaisePropertyChanged(); } }
@@ -56,7 +60,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         private List<CategoryDataResponse> ReportCategory;
 
         #endregion
-
+        
         #region Commands
         public ICommand SendReportCommand
         {
@@ -66,29 +70,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
-                        if (IsValidateReport())
+                        if (IsValidateTermsReport())
                         {
                             IsLoading = true;
-                            //SubmitReport.ViolationDate = Convert.ToDateTime(SubmitReport.ViolationDate ?? "1994-01-01 00:00:00", new CultureInfo("en-US")).ToString("d'/'M'/'yyyy");
-                            var date = DateTime.Parse(SubmitReport.ViolationDate);
-                            string dt = date.Date.ToString("dd/MM/yyyy");
-                            submitReport.ViolationDate = dt;
+
+                            System.Globalization.DateTimeFormatInfo DTFormat;
+                            DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
+                            DTFormat.Calendar = new System.Globalization.GregorianCalendar();
+                            DTFormat.ShortDatePattern = "dd/MM/yyyy";
+                            SubmitReport.ViolationDate = SelectedDate.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
+                            
+                            SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
                             var json = JsonConvert.SerializeObject(SubmitReport);
                             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles);
-                            IsLoading = false;
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles); 
                             if (reportResult.Success)
                             {
                                 ReportNumberResult = reportResult.Result?.Data;
                                 _navigationService.NavigateTo("ReportSuccessPage");
                             }
+                            IsLoading = false;
 
                         }
 
                     }
                     catch (Exception ex)
                     {
-
+                        IsLoading = false;
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequestTimeoutDescription;
                     }
                  
                 });
@@ -107,13 +117,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
+        public ICommand OpenTermsLinkCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Browser.OpenAsync("https://stgextportal.gazt.gov.sa/ar/RulesRegulations/Taxes/Pages/IncentiveRewards3.aspx", BrowserLaunchMode.SystemPreferred);
+
+                });
+            }
+        }
+        public ICommand GoToMyReportsCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _navigationService.NavigateTo("InquiryAboutMyReportsPage");
+
+                });
+            }
+        }
+        public ICommand OpenDateCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsOpenDatePicker = true;
+
+                });
+            }
+        }
         public ICommand GoToTermsPageCommand
         {
             get
             {
                 return new Command( () =>
                 {
-                    _navigationService.NavigateTo("TermsPage");
+                    if (IsValidateReport())
+                        _navigationService.NavigateTo("TermsPage");
                 });
             }
         }
@@ -180,39 +225,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command<BottomSheetModel>(async (e) =>
                 {
-                    IsLoading = true;
+                    try
+                    {
+                        IsLoading = true;
 
-                    if (isReportTypeSelected)
-                    {
-                        SubmitReport.ReportTypeName = e.Name;
-                        SubmitReport.ReportTaxType = e.Id;
-                        ReportCategory = await this._submitReportServices.GetReportCategories(SubmitReport?.ReportTaxType);
-                        var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                        isReportTypeSelected = false;
-                    }
-                    else if (isReportCategorySelected)
-                    {
-                        SubmitReport.ReportCategoryName = e.Name;
-                        SubmitReport.ReportCategory = e.Id;
-                        isReportCategorySelected = false;
-                    }
-                    else if (isRegionSelected)
-                    {
-                        SubmitReport.Region = e.Name;
-                        SubmitReport.RegionCode = e.Id;
-                        CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
-                        isRegionSelected = false;
-                    }
-                    else
-                    {
-                        SubmitReport.City = e.Name;
-                        SubmitReport.CityCode = e.Id;
+                        if (isReportTypeSelected)
+                        {
+                            SubmitReport.ReportTypeName = e.Name;
+                            SubmitReport.ReportTaxType = e.Id;
+                            ReportCategory = await this._submitReportServices.GetReportCategories(SubmitReport?.ReportTaxType);
+                            var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            isReportTypeSelected = false;
+                            SubmitReport.ReportCategoryName = string.Empty;
+                            SubmitReport.ReportCategory = string.Empty;
+                        }
+                        else if (isReportCategorySelected)
+                        {
+                            SubmitReport.ReportCategoryName = e.Name;
+                            SubmitReport.ReportCategory = e.Id;
+                            isReportCategorySelected = false;
+                        }
+                        else if (isRegionSelected)
+                        {
+                            SubmitReport.Region = e.Name;
+                            SubmitReport.RegionCode = e.Id;
+                            CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
+                            isRegionSelected = false;
+                            SubmitReport.City = string.Empty;
+                            SubmitReport.CityCode = string.Empty;
+                        }
+                        else
+                        {
+                            SubmitReport.City = e.Name;
+                            SubmitReport.CityCode = e.Id;
 
-                    }
+                        }
 
-                    IsShowBottomSheet = false;
-                    IsLoading = false;
+                        IsShowBottomSheet = false;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                    }
+                   
 
                 });
             }
@@ -333,7 +392,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             MessageTxt = AppResources.MaximumFileSizeMsg;
                             IsShowMsgView = true;
                         }
-                        else if (ReportUloadedFiles != null && ReportUloadedFiles.Count == 0)
+                        else if (ReportUloadedFiles != null && ReportUloadedFiles.Count < 5)
                         {
                             
                             var stream = await result.OpenReadAsync();
@@ -349,20 +408,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
                         else
                         {
-                            MessageTxt = AppResources.NumberofAttachments;
                             IsShowMsgView = true;
+                            MessageTxt = AppResources.TINDeregAttachmentsTitleOne;
+                            
                         }
                     }
                     else
                     {
-                        MessageTxt = AppResources.BalaghSupportedFileMsg;
                         IsShowMsgView = true;
+                        MessageTxt = AppResources.BalaghSupportedFileMsg;
+                        
                     }
 
                 }
             }
             catch (Exception ex)
             {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.Somethingwentwrong;
+                
             }
 
 
@@ -370,6 +434,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
         private bool IsValidateReport()
         {
+
+            if (string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName)
+                || string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName)
+                || string.IsNullOrWhiteSpace(SubmitReport.CompanyName)
+                || string.IsNullOrWhiteSpace(SubmitReport.Region)
+                || string.IsNullOrWhiteSpace(SubmitReport.City)
+                || string.IsNullOrWhiteSpace(SubmitReport.District)
+                || string.IsNullOrWhiteSpace(SubmitReport.Street)
+                || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
+                || string.IsNullOrWhiteSpace(SubmitReport.CompanyAddress)
+                || string.IsNullOrWhiteSpace(SubmitReport.ReportDetails)
+                || string.IsNullOrWhiteSpace(SubmitReport.Location)
+                || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
+                || SelectedDate.Date > DateTime.Now.Date
+                || ReportUloadedFiles.Count == 0)
+            {
+                HasError = true;
+                IsShowMsgView = true;
+                MessageTxt = AppResources.InvalidValue;
+                return false;
+            }
+            HasError = false;
+            return true;
+
+        }
+        private bool IsValidateTermsReport()
+        {
+            Regex phoneRegex = new Regex(@"^05[0-9]{8}$");
+            Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
             if (SubmitReport.IsNeedReward)
             {
                 if (string.IsNullOrWhiteSpace(SubmitReport.ReporterNameAr)
@@ -382,24 +476,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
                 }
+                else if(!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
+                {
+                    IsShowMsgView = true;
+                    IsNeedRewardError = true;
+                    MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
+                    return false;
 
-            }
-            if (string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName)
-                || string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName)
-                || string.IsNullOrWhiteSpace(SubmitReport.CompanyName)
-                || string.IsNullOrWhiteSpace(SubmitReport.Region)
-                || string.IsNullOrWhiteSpace(SubmitReport.City)
-                || string.IsNullOrWhiteSpace(SubmitReport.District)
-                || string.IsNullOrWhiteSpace(SubmitReport.Street)
-                || string.IsNullOrWhiteSpace(SubmitReport.WorkType)
-                || string.IsNullOrWhiteSpace(SubmitReport.CompanyAddress)
-                || string.IsNullOrWhiteSpace(SubmitReport.ReportDetails)
-                || SubmitReport.HasViolationDateError)
-            {
-                HasError = true;
-                IsShowMsgView = true;
-                MessageTxt = AppResources.InvalidValue;
-                return false;
+
+                }
+                else if(Email.IsMatch(SubmitReport.ReporterEmail))
+                {
+                    IsShowMsgView = true;
+                    IsNeedRewardError = true;
+                    MessageTxt = AppResources.InvalidEmail;
+                    return false;
+                }
             }
             HasError = false;
             return true;

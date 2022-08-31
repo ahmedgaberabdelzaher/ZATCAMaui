@@ -9204,7 +9204,7 @@ info@zatca.gov.sa</value>
         <value>نتيجة الاستعلام</value>
     </data>
   <data name="Inquire" xml:space="preserve">
-        <value> استعلام</value>
+        <value>استعلام</value>
     </data>
   <data name="RequestNotFoundMsg" xml:space="preserve">
         <value>هذا الطلب غير متواجد بنظام هيئة الزكاة
@@ -9416,7 +9416,7 @@ info@zatca.gov.sa</value>
      <value>الإمدادات المسموحة (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>لا أرغب بالحصول علي المكافآة المالية</value>
+     <value>أرغب بالحصول علي المكافآة المالية</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>الفاتورة الإلكترونية</value>
@@ -9521,7 +9521,7 @@ info@zatca.gov.sa</value>
         <value>3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة.</value>
     </data>
      <data name="ReportSecondNote8" xml:space="preserve">
-        <value>لإطلاع على بقية الأحكام والشروط اضغط هنا</value>
+        <value>للإطلاع على بقية الأحكام والشروط اضغط هنا</value>
     </data>
     <data name="ReportSecondNote9" xml:space="preserve">
         <value>الهيئة تلتزم بالحفاظ  على جميع بيانات المبلغ وأن تتعامل بسرية تامة مع كافة البيانات المقدمة</value>
@@ -9531,5 +9531,26 @@ info@zatca.gov.sa</value>
     </data>
     <data name="Viewservices" xml:space="preserve">
         <value>عرض الخدمات</value>
+    </data>
+    <data name="ReportOTPMSG" xml:space="preserve">
+         <value>برجاء إدخال رمز التحقق الذي تم إرساله إلي جوالك</value>
+    </data>
+    <data name="PerviousReports" xml:space="preserve">
+         <value>البلاغات السابقة</value>
+    </data>
+    <data name="InquriyMyReports" xml:space="preserve">
+         <value>الرجاء اختيار طريقة البحث عن البلاغ</value>
+    </data>
+     <data name="ReportNumberRequired" xml:space="preserve">
+         <value>برجاء إدخال رقم البلاغ</value>
+    </data>
+    <data name="ShowPerviousReports" xml:space="preserve">
+         <value>عرض البلاغات السابقة</value>
+    </data>
+    <data name="ReportsNote" xml:space="preserve">
+         <value>في حال إبلاغك الهيئة عن معلومة كيدية أو كاذبة يعرضك للمساءلة القانونية</value>
+    </data>
+    <data name="ChooseReports" xml:space="preserve">
+         <value>البلاغات</value>
     </data>
 </root>

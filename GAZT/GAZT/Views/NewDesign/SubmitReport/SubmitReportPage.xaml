@@ -10,7 +10,8 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -361,8 +362,10 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    IsReadOnly="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
                                     Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.Location}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="reportlocation.png" />
@@ -393,7 +396,8 @@
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
 
-                            <!--  ViolationDate Entry  -->
+
+                            <!--  ViolationDate Label  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
@@ -403,15 +407,12 @@
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
-                                <DatePicker
-                                    Date="{Binding SubmitReport.ViolationDate}"
-                                    DateSelected="DatePicker_DateSelected"
-                                    Format="dd'/'MM'/'yyyy" />
+
+                                <DatePicker Date="{Binding SelectedDate}"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="menu_calendar" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -518,9 +519,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  WorkType Label  -->
-                            <custom:CustomLabel
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.WorkType}" />
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.WorkType}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
                             <!--  WorkType Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -756,7 +762,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportStreetName}"/>
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -791,49 +797,6 @@
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
-
-                       
-
-                       
-                        <!--  ReportDetails Field  -->
-
-                        <!--<StackLayout Spacing="0">
-
-                        -->
-                        <!--  ReportDetails Label  -->
-                        <!--
-
-                            <custom:CustomLabel
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="12"
-                                Text="{x:Static ResourceManager:AppResources.ZTERReportFormPageTittle}" />
-
-                        -->
-                        <!--  ReportDetails Frame  -->
-                        <!--
-                            <yummy:PancakeView
-                                Margin="5,10"
-                                Padding="5"
-                                CornerRadius="15"
-                                Shadow="{yummy:ShadowMarkup Color=#FF0000,
-                                                            Offset='0,0'}"
-                                Style="{StaticResource CommonTopCurves}">
-
-                                <custom:GAZTBorderlessEditor
-                                    AutoSize="TextChanges"
-                                    Focused="GAZTBorderlessEditor_Focused"
-                                    HeightRequest="100"
-                                    HorizontalOptions="FillAndExpand"
-                                    IsSpellCheckEnabled="True"
-                                    IsTextPredictionEnabled="False"
-                                    MaxLength="1000"
-                                    MinimumHeightRequest="100"
-                                    Style="{StaticResource BodyLabelBlack}"
-                                    Text="{Binding SubmitReport.ReportDetails}" />
-
-                            </yummy:PancakeView>
-
-                        </StackLayout>-->
 
                         <!--  Uploaded file Field  -->
                         <StackLayout Spacing="0">
@@ -966,7 +929,7 @@
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
             <!--  Popup Map  -->
-            <!--<controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />-->
+            <controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />
 
         </Grid>
     </ContentPage.Content>

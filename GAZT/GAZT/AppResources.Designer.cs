@@ -1231,6 +1231,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string ChooseReports {
+            get {
+                return ResourceManager.GetString("ChooseReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         public static string Clear {
@@ -6636,6 +6645,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please choose a method to search for the report.
+        /// </summary>
+        public static string InquriyMyReports {
+            get {
+                return ResourceManager.GetString("InquriyMyReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Installment Plans.
         /// </summary>
         public static string InstallmentPlans {
@@ -9267,6 +9285,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Previous Reports.
+        /// </summary>
+        public static string PerviousReports {
+            get {
+                return ResourceManager.GetString("PerviousReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile number is incorrect.
         /// </summary>
         public static string PhoneNotCorrect {
@@ -9879,6 +9906,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the report number.
+        /// </summary>
+        public static string ReportNumberRequired {
+            get {
+                return ResourceManager.GetString("ReportNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter the verification code that was sent to your mobile.
+        /// </summary>
+        public static string ReportOTPMSG {
+            get {
+                return ResourceManager.GetString("ReportOTPMSG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
         /// </summary>
         public static string ReportReward {
@@ -9992,6 +10037,15 @@ namespace EGAZT {
         public static string ReportSentSuccess {
             get {
                 return ResourceManager.GetString("ReportSentSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the authority informs you of malicious or false information, it will expose you to legal accountability.
+        /// </summary>
+        public static string ReportsNote {
+            get {
+                return ResourceManager.GetString("ReportsNote", resourceCulture);
             }
         }
         
@@ -10180,7 +10234,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I don&apos;t want to get the reward.
+        ///   Looks up a localized string similar to I want to get the reward.
         /// </summary>
         public static string RewardCheckBox {
             get {
@@ -10455,6 +10509,15 @@ namespace EGAZT {
         public static string Shippingcompany {
             get {
                 return ResourceManager.GetString("Shippingcompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View previous reports.
+        /// </summary>
+        public static string ShowPerviousReports {
+            get {
+                return ResourceManager.GetString("ShowPerviousReports", resourceCulture);
             }
         }
         

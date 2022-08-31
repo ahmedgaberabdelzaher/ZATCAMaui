@@ -10,7 +10,9 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -50,9 +52,9 @@
             <!--#region Header-->
             <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
 
-                <StackLayout>
+                <!--  Back Button  -->
+                <StackLayout IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
 
-                    <!--  Back Button  -->
                     <Image
                         HorizontalOptions="Start"
                         Rotation="0"
@@ -72,13 +74,38 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     FontSize="20"
+                    IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.NDMyReports}"
                     VerticalOptions="Center" />
 
-                <StackLayout Grid.Column="2">
+                <!--  Report Type Entry  -->
+                <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="10,0,10,0"
+                    Grid.ColumnSpan="2"
+                    OutlineCornerRadius="15"
+                    IsVisible="{Binding IsSearching}"
+                    UnfocusedColor="{StaticResource NeutralGreay}"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand">
+                    <custom:BorderlessEntry
+                        Keyboard="Text"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding SearchValue}"
+                        TextColor="#58595B">
+                        <custom:BorderlessEntry.Behaviors>
+                           <xct:EventToCommandBehavior EventName="Completed" Command="{Binding SearchReportCommand}"/>
+                        </custom:BorderlessEntry.Behaviors>
+                    </custom:BorderlessEntry>
+                </inputLayout:SfTextInputLayout>
 
-                    <!--  Search Image  -->
+                <!--  Search Image  -->
+                <StackLayout Grid.Column="2"
+                             IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
+                    
                     <Image
                         HorizontalOptions="End"
                         Source="reportSearch.png"
@@ -92,8 +119,27 @@
 
                 </StackLayout>
 
+                <!--  Close Label  -->
+                <StackLayout Grid.Column="2"
+                             VerticalOptions="CenterAndExpand"
+                             IsVisible="{Binding IsSearching}">
+                    
+                     <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="16"
+                        Style="{StaticResource SectionTitleWhiteBold}"
+                        HorizontalOptions="EndAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.ZClose}"/>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
             </Grid>
             <!--#endregion Header-->
+
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
@@ -116,6 +162,7 @@
                                 FontSize="28"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding ReportsResultTitle}"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 TextColor="#58595B" />
 
                             <!--  Down arrow Button  -->
@@ -123,6 +170,7 @@
                                 HorizontalOptions="StartAndExpand"
                                 Grid.Column="1"
                                 Source="arrowDropdown.png"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 VerticalOptions="CenterAndExpand">
                                 <Image.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding FilterCommand}"/>
@@ -135,6 +183,7 @@
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="12"
                                 Grid.Row="1"
+                                IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding ReportsCount}"
                                 TextColor="#999999" />
@@ -175,7 +224,6 @@
                         </Frame>
 
                         <!--  MyReports List  -->
-
                         <StackLayout
                              x:Name="reportsList"
                              VerticalOptions="FillAndExpand"
@@ -273,6 +321,13 @@
                                                                 <Setter Property="BackgroundColor" Value="#62B34F" />
                                                              </DataTrigger>
 
+                                                             <!--Closed status-->
+                                                            <DataTrigger TargetType="Frame"
+                                                                    Binding="{Binding reportStatus}"
+                                                                    Value="3">
+                                                                <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                             </DataTrigger>
+
                                                             <!--Open status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
@@ -280,10 +335,10 @@
                                                                 <Setter Property="BackgroundColor" Value="#0996D4" />
                                                              </DataTrigger>
 
-                                                            <!--Open status with different value-->
+                                                             <!--In progress status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
-                                                                    Value="3">
+                                                                    Value="2">
                                                                 <Setter Property="BackgroundColor" Value="#0996D4" />
                                                              </DataTrigger>
 
@@ -319,16 +374,24 @@
                                                                  <!--Closed status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
+                                                                            Value="3">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                    <Setter Property="TextColor" Value="#62B34F" />
+                                                                </DataTrigger>
+
+                                                                 <!--Closed status-->
+                                                                 <DataTrigger TargetType="Label"
+                                                                            Binding="{Binding reportStatus}"
                                                                             Value="0">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
                                                                     <Setter Property="TextColor" Value="#62B34F" />
                                                                 </DataTrigger>
 
-                                                                 <!--Open status with different value-->
+                                                                <!--In progress status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
-                                                                            Value="3">
-                                                                   <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OpenReports}" />
+                                                                            Value="2">
+                                                                   <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZReportStatusInprogress}" />
                                                                     <Setter Property="TextColor" Value="#0996D4" />
                                                                 </DataTrigger>
                                                             </Label.Triggers>
@@ -430,9 +493,6 @@
                             </BindableLayout.ItemTemplate>
 
                         </StackLayout>
-
-
-
 
                     </StackLayout>
 

@@ -7,15 +7,9 @@ namespace EGAZT.Views.NewDesign.MyReports
     {
         public FilterBottomSheetPage()
         {
-            try
-            {
 
-                InitializeComponent();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            InitializeComponent();
+            
         }
     }
 }

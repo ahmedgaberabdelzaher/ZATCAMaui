@@ -7,11 +7,11 @@ namespace EGAZT.Views.NewDesign.LiveVideo
 {
     public partial class LiveVideoPage : ContentPage
     {
-         LiveVideoViewModel viewModel;
+        LiveVideoViewModel viewModel;
         public LiveVideoPage()
         {
             InitializeComponent();
-            viewModel = App.Locator.liveVideoViewModel;
+            viewModel = App.Locator.LiveVideoViewModel;
             BindingContext = viewModel;
         }
     }

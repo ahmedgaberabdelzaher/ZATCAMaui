@@ -10,7 +10,8 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -221,17 +222,6 @@
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote7}"
                             TextColor="#002447" />
 
-                        <!--  Report Note8 Label -->
-                        <Label
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="14"
-                            Margin="0,0,0,25"
-                            TextDecorations="Underline"
-                            HorizontalOptions="CenterAndExpand"
-                            HorizontalTextAlignment="Center"
-                            LineBreakMode="WordWrap"
-                            Text="{x:Static ResourceManager:AppResources.ReportSecondNote8}"
-                            TextColor="#0996D4" />
 
                         <!--  Check Box  -->
                         <StackLayout Margin="0,0,0,25"
@@ -280,6 +270,26 @@
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+
+                         <!--  Report Note8 Label -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="14"
+                            Margin="0,0,0,25"
+                            TextDecorations="Underline"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{x:Static ResourceManager:AppResources.ReportSecondNote8}"
+                            TextColor="#0996D4">
+
+                            <Label.GestureRecognizers>
+
+                                <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}"/>
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
 
                         <!--  ReportReward note Label  -->
                         <Label
@@ -447,6 +457,7 @@
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
+                                HasError="{Binding IsNeedRewardError}"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
@@ -458,6 +469,15 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReporterEmail}"
                                     TextColor="#58595B" />
+
+                                <inputLayout:SfTextInputLayout.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Source={x:Reference nameEntry}, Path=Text.Length}"
+                                        TargetType="inputLayout:SfTextInputLayout"
+                                        Value="0">
+                                        <Setter Property="HasError" Value="True" />
+                                    </DataTrigger>
+                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
@@ -538,12 +558,12 @@
                                 <inputLayout:SfTextInputLayout.LeadingView>
                                     <Image Aspect="AspectFit" Source="ic_Version" />
                                 </inputLayout:SfTextInputLayout.LeadingView>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                                <!--<inputLayout:SfTextInputLayout.TrailingView>
                                     <Label
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="12"
                                         Text=" 966+" />
-                                </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout.TrailingView>-->
                                 <inputLayout:SfTextInputLayout.Triggers>
                                     <DataTrigger
                                         Binding="{Binding Source={x:Reference phoneEntry}, Path=Text.Length}"

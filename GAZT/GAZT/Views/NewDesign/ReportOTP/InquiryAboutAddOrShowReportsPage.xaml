@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.ReportOTP.InquiryAboutAddOrShowReportsPage"
+     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <xct:ListIsNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                    <Style x:Key="ArrowImage" TargetType="Image">
+                        <Setter Property="HeightRequest" Value="30" />
+                        <Setter Property="WidthRequest" Value="30" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+   <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!-- Reports Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    FontSize="20"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.ChooseReports}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+              <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout Spacing="30">
+
+                        <StackLayout VerticalOptions="Start"
+                                     HorizontalOptions="FillAndExpand"
+                                     Spacing="10"
+                                     Margin="0,30,0,0"
+                                     Orientation="Horizontal">
+
+                            <!--SubmitReport Card-->
+                            <Frame Padding="0"
+                                   WidthRequest="171"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="StartAndExpand"
+                                   HeightRequest="120"
+                                   BackgroundColor="White"
+                                   BorderColor="#E6E6E6"
+                                   CornerRadius="10"
+                                   IsClippedToBounds="True">
+
+                                <StackLayout
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Spacing="10">
+
+                                    <!--Add Report icon-->
+                                    <Image Aspect="AspectFit"
+                                            VerticalOptions="StartAndExpand"
+                                            WidthRequest="45"
+                                            HeightRequest="45"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="addReportIcon.png"/>
+
+                                    <!--  Add Report Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="CenterAndExpand"
+                                        FontSize="14"
+                                        TextColor="#002447"
+                                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"/>
+
+                                </StackLayout>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToSubmitReportCommand}"/>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+
+                            <!--Show Reports Card-->
+                            <Frame Padding="0"
+                                   WidthRequest="171"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="StartAndExpand"
+                                   HeightRequest="120"
+                                   BackgroundColor="White"
+                                   BorderColor="#E6E6E6"
+                                   CornerRadius="10"
+                                   IsClippedToBounds="True">
+
+                                <StackLayout
+                                            VerticalOptions="CenterAndExpand"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Spacing="10">
+
+                                    <!--Add Report icon-->
+                                    <Image Aspect="AspectFit"
+                                            VerticalOptions="StartAndExpand"
+                                            WidthRequest="45"
+                                            HeightRequest="45"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="showReports.png"/>
+
+                                    <!--  ShowPerviousReports Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="CenterAndExpand"
+                                        FontSize="14"
+                                        TextColor="#002447"
+                                        Text="{x:Static ResourceManager:AppResources.ShowPerviousReports}"/>
+
+                                </StackLayout>
+
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToPerviousReportsCommand}"/>
+                                </Frame.GestureRecognizers>
+
+                            </Frame>
+
+                            
+                        </StackLayout>
+
+                        <!--Report Note-->
+                        <Frame Padding="10"
+                               BackgroundColor="White"
+                               BorderColor="#E6E6E6"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="10">
+
+                            <StackLayout
+                                        Orientation="Horizontal"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Spacing="10">
+
+                                <!--info icon-->
+                                <Image Aspect="AspectFit"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="20"
+                                        HeightRequest="20"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="information.png"/>
+
+                                <!--  ReportsNote Label  -->
+                                <custom:CustomLabel
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="12"
+                                    LineHeight="1.3"
+                                    TextColor="#999999"
+                                    Text="{x:Static ResourceManager:AppResources.ReportsNote}"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

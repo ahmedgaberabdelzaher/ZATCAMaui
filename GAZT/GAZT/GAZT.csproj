@@ -93,6 +93,8 @@
 	  <None Remove="ViewModel\NewDesignViewModel\LiveVideoVM\" />
 	  <None Remove="Views\NewDesign\LiveVideo\" />
 	  <None Remove="YoutubeExplode" />
+	  <None Remove="Views\NewDesign\ReportOTP\" />
+	  <None Remove="ViewModel\NewDesignViewModel\ReportOTPVM\" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -197,6 +199,8 @@
 		<Folder Include="Views\NewDesign\HomePages\" />
 		<Folder Include="ViewModel\NewDesignViewModel\LiveVideoVM\" />
 		<Folder Include="Views\NewDesign\LiveVideo\" />
+		<Folder Include="Views\NewDesign\ReportOTP\" />
+		<Folder Include="ViewModel\NewDesignViewModel\ReportOTPVM\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

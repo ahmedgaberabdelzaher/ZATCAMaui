@@ -83,263 +83,408 @@
                     <Frame CornerRadius="12"
                            BorderColor="#EBEBEB">
 
-                        <ScrollView>
+                        <ScrollView VerticalScrollBarVisibility="Never">
 
                             <StackLayout>
 
-                            <!--Report Details Title-->
-                            <StackLayout Orientation="Horizontal">
+                                <!--Report Details Title-->
+                                <StackLayout Orientation="Horizontal">
 
-                                 <!--  Report Details Image  -->
-                                <Image
-                                    HorizontalOptions="Start"
-                                    Source="reportDetails.png"
-                                    VerticalOptions="CenterAndExpand" />
+                                     <!--  Report Details Image  -->
+                                    <Image
+                                        HorizontalOptions="Start"
+                                        Source="reportDetails.png"
+                                        VerticalOptions="CenterAndExpand" />
 
-                                <!--  Report Details Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="20"
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.ReportDetails}"
-                                    VerticalTextAlignment="Center"
-                                    TextColor="#58595B" />
+                                    <!--  Report Details Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ReportDetails}"
+                                        VerticalTextAlignment="Center"
+                                        TextColor="#58595B" />
 
-                            </StackLayout>
+                                </StackLayout>
 
-                             <!--  Horizontal Line  -->
-                            <BoxView
-                                Margin="0,10"
-                                BackgroundColor="{StaticResource NeutralLightGrey}"
-                                HeightRequest="2" />
+                                 <!--  Horizontal Line  -->
+                                <BoxView
+                                    Margin="0,10"
+                                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                                    HeightRequest="2" />
+
+                                <!--Report Details Body-->
+                                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                      ColumnDefinitions="*,*"
+                                      RowSpacing="25">
+
+                                    <!--  Report Type Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Text="{x:Static ResourceManager:AppResources.ReportType}"
+                                        TextColor="#58595B" />
+
+                                     <!--  Report Type Value  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Column="1"
+                                        HorizontalOptions="CenterAndExpand"
+                                        LineBreakMode="WordWrap"
+                                        MaxLines="2"
+                                        x:Name="reportType"
+                                        Text="{Binding MyReports.reportType}"
+                                        TextColor="#58595B" >
+
+                                        <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference reportType}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                     <!--  Facility Name Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="1"
+                                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
+                                        TextColor="#58595B" />
+
+                                     <!--  Facility Name Value  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        x:Name="facilityName"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding MyReports.facilityName}"
+                                        TextColor="#58595B" >
+
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference facilityName}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                      <!--  Commercial Registration Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="2"
+                                        Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
+                                        TextColor="#58595B" />
+
+                                     <!-- Commercial Registration Value  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="2"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="cr"
+                                        Text="{Binding MyReports.cr}"
+                                        TextColor="#58595B" >
+
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference cr}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                    <!--  Work type Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="3"
+                                        Text="{x:Static ResourceManager:AppResources.WorkType}"
+                                        TextColor="#58595B" />
+
+                                     <!--  Work type Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="3"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="workType"
+                                        Text="{Binding MyReports.workType}"
+                                        TextColor="#58595B" >
+
+                                        <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference workType}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                    <!--  Company address Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="4"
+                                        Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
+                                        TextColor="#58595B" />
+
+                                     <!--  Company address Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="4"
+                                        x:Name="companyAddress"
+                                        Grid.Column="1"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding MyReports.companyAddress}"
+                                        TextColor="#58595B" >
+
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference companyAddress}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                    <!--  Region Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="5"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
+                                        TextColor="#58595B" />
+
+                                    <!--  Region Value  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        x:Name="region"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding MyReports.region}"
+                                        TextColor="#58595B" >
+
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference region}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                     </Label>
 
 
-                            <!--Report Details Body-->
-                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                                  ColumnDefinitions="*,*"
-                                  RowSpacing="25">
+                                    <!--  City Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="6"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                        TextColor="#58595B" />
 
-                                <!--  Report Type Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Text="{x:Static ResourceManager:AppResources.ReportType}"
-                                    TextColor="#58595B" />
+                                     <!--  City Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="6"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="city"
+                                        Text="{Binding MyReports.city}"
+                                        TextColor="#58595B" >
 
-                                 <!--  Report Type Value  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
-                                    LineBreakMode="WordWrap"
-                                    MaxLines="2"
-                                    Text="{Binding MyReports.reportType}"
-                                    TextColor="#58595B" />
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference city}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
 
-                                 <!--  Facility Name Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="1"
-                                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}"
-                                    TextColor="#58595B" />
+                                    </Label>
 
-                                 <!--  Facility Name Value  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="1"
-                                    Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="{Binding MyReports.facilityName}"
-                                    TextColor="#58595B" />
+                                    <!--  District Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="7"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
+                                        TextColor="#58595B" />
 
-                                  <!--  Commercial Registration Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="2"
-                                    Text="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
-                                    TextColor="#58595B" />
+                                     <!--  District Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="7"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="district"
+                                        Text="{Binding MyReports.district}"
+                                        TextColor="#58595B" >
 
-                                 <!-- Commercial Registration Value  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="2"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.cr}"
-                                    TextColor="#58595B" />
+                                        <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference district}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
 
-                                <!--  Work type Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="3"
-                                    Text="{x:Static ResourceManager:AppResources.WorkType}"
-                                    TextColor="#58595B" />
+                                    </Label>
 
-                                 <!--  Work type Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="3"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.workType}"
-                                    TextColor="#58595B" />
-
-                                <!--  Company address Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="4"
-                                    Text="{x:Static ResourceManager:AppResources.NDFacilityAddress}"
-                                    TextColor="#58595B" />
-
-                                 <!--  Company address Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="4"
-                                    Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="{Binding MyReports.companyAddress}"
-                                    TextColor="#58595B" />
-
-                                <!--  Region Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="5"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
-                                    TextColor="#58595B" />
-
-                                 <!--  Region Value  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="5"
-                                    Grid.Column="1"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="{Binding MyReports.region}"
-                                    TextColor="#58595B" />
+                                    <!--  Street Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="8"
+                                        Text="{x:Static ResourceManager:AppResources.ReportStreetName}"
+                                        TextColor="#58595B" />
 
 
-                                <!--  City Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="6"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZCity}"
-                                    TextColor="#58595B" />
+                                     <!--  Street Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="8"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="street"
+                                        Text="{Binding MyReports.street}"
+                                        TextColor="#58595B" >
 
-                                 <!--  City Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="6"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.city}"
-                                    TextColor="#58595B" />
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference street}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
 
-                                <!--  District Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="7"
-                                    Text="{x:Static ResourceManager:AppResources.ZZZZNeighborhood}"
-                                    TextColor="#58595B" />
-
-                                 <!--  District Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="7"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.district}"
-                                    TextColor="#58595B" />
-
-                                <!--  Street Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="8"
-                                    Text="{x:Static ResourceManager:AppResources.ReportStreetName}"
-                                    TextColor="#58595B" />
-
-                                 <!--  Street Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="8"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.street}"
-                                    TextColor="#58595B" />
+                                    </Label>
 
 
-                                <!--  TIN number Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="9"
-                                    Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}"
-                                    TextColor="#58595B" />
+                                    <!--  TIN number Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="9"
+                                        Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}"
+                                        TextColor="#58595B" />
 
-                                 <!--  TIN number Value  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="9"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.tin}"
-                                    TextColor="#58595B" />
+                                     <!--  TIN number Value  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="9"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Grid.Column="1"
+                                        x:Name="tin"
+                                        Text="{Binding MyReports.tin}"
+                                        TextColor="#58595B" >
 
-                                 <!--  Report location Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="10"
-                                    Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}"
-                                    TextColor="#58595B" />
+                                          <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference tin}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
 
-                                 <!--  Report location Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="10"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Grid.Column="1"
-                                    Text="{Binding MyReports.ReportLocation}"
-                                    TextColor="#58595B" />
+                                    </Label>
 
-                                 <!--  Report details Label  -->
-                                <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="11"
-                                    Text="{x:Static ResourceManager:AppResources.ReportDetails}"
-                                    TextColor="#58595B" />
+                                     <!--  Report location Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="10"
+                                        Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}"
+                                        TextColor="#58595B" />
 
-                                 <!--  Report details Value  -->
-                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="16"
-                                    Grid.Row="12"
-                                    LineBreakMode="WordWrap"
-                                    Grid.ColumnSpan="2"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{Binding MyReports.details}"
-                                    TextColor="#58595B" />
+                                     <!--  Report location Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        HorizontalOptions="CenterAndExpand"
+                                        LineBreakMode="WordWrap"
+                                        Grid.Row="10"
+                                        Grid.Column="1"
+                                        x:Name="location"
+                                        Text="{Binding MyReports.ReportLocation}"
+                                        TextColor="#58595B" >
 
-                            </Grid>
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference location}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                     <!--  Report details Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="11"
+                                        Text="{x:Static ResourceManager:AppResources.ReportDetails}"
+                                        TextColor="#58595B" />
+
+                                     <!--  Report details Value  -->
+                                     <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        Grid.Row="12"
+                                        LineBreakMode="WordWrap"
+                                        Grid.ColumnSpan="2"
+                                        x:Name="reportDetails"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+                                        Text="{Binding MyReports.details}"
+                                        TextColor="#58595B" >
+
+                                         <!--<Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding Source={x:Reference reportDetails}, Path=Text.Length}"
+                                                TargetType="Label"
+                                                Value="0">
+                                                <Setter Property="Text" Value="-" />
+                                            </DataTrigger>
+                                        </Label.Triggers>-->
+
+                                    </Label>
+
+                                </Grid>
 
                         </StackLayout>
 

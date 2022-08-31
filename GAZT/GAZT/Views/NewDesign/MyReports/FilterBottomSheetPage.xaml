@@ -92,6 +92,29 @@
                                 </Label.GestureRecognizers>
                             </Label>
 
+                               <!--Horizontal Line  
+                            <BoxView
+                                Margin="0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2" />
+
+                             Inprogress Label
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.ZReportStatusInprogress}">
+
+                                Name 
+                                 <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding SelectedFilterItemCommand}"
+                                        CommandParameter="2" />
+                                </Label.GestureRecognizers>
+                            </Label>-->
+
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Margin="0,10"
@@ -111,7 +134,7 @@
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Command="{Binding SelectedFilterItemCommand}"
-                                        CommandParameter="0" />
+                                        CommandParameter="3" />
                                 </Label.GestureRecognizers>
 
                             </Label>

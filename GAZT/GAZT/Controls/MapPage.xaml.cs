@@ -17,7 +17,7 @@ namespace EGAZT.Controls
             try
             {
                 InitializeComponent();
-                viewModel = App.Locator.submitReportViewModel;
+                viewModel = App.Locator.SubmitReportViewModel;
             }
             catch (Exception ex)
             {
@@ -35,7 +35,8 @@ namespace EGAZT.Controls
                 if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
                 {
                     var location = await Geolocation.GetLastKnownLocationAsync();
-
+                    viewModel.SubmitReport.Latitude = location.Latitude;
+                    viewModel.SubmitReport.Longitude = location.Longitude;
                     Geocoder geoCoder = new Geocoder();
 
                     Position position = new Position(location.Latitude, location.Longitude);
@@ -43,6 +44,7 @@ namespace EGAZT.Controls
                     viewModel.SubmitReport.Latitude = location.Latitude;
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
                     viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
+                    viewModel.SubmitReport.Location = $"{viewModel.SubmitReport.Latitude},{viewModel.SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
                     var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
                     var placemark = placemarks?.FirstOrDefault();
                     string address = placemark?.SubThoroughfare ?? placemark?.Thoroughfare ?? placemark?.SubAdminArea ?? placemark?.AdminArea;

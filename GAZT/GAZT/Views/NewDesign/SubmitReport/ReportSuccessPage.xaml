@@ -6,6 +6,7 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
@@ -40,42 +41,17 @@
             <!--#region Header-->
             <StackLayout>
 
-                  <!--Title and Back  
-                <Grid Padding="20,5,20,5" ColumnDefinitions="*,2*,*">
-
-                    <StackLayout>
-                          Back Button  
-                        <Image
-                            HorizontalOptions="Start"
-                            Rotation="180"
-                            Source="arrowLeftwhite.png"
-                            Style="{DynamicResource BackButtonArrow}"
-                            VerticalOptions="CenterAndExpand" />
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding BackCommand}" />
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-
-                      Header Label  
-                    <custom:CustomLabel
-                        Grid.Column="1"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource SectionTitleWhiteBold}"
-                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
-                        VerticalOptions="Center" />
-                </Grid>-->
-
                 <!--  Success Icon and Msg  -->
                 <StackLayout
                     HorizontalOptions="Start"
-                    Spacing="30"
+                    Spacing="10"
                     VerticalOptions="CenterAndExpand">
 
                     <!--  Success icon  -->
                     <Image
                         Aspect="AspectFit"
                         HeightRequest="150"
+                        Margin="0,0,0,30"
                         Source="Forget_ic_success"
                         WidthRequest="150" />
 
@@ -92,6 +68,8 @@
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="18"
                         HorizontalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="40,0"
                         LineBreakMode="WordWrap"
                         Text="{x:Static ResourceManager:AppResources.ReportSuccessMsg}"
                         TextColor="White" />
@@ -102,43 +80,68 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+            <yummy:PancakeView Grid.Row="1"
+                               Style="{StaticResource CommonTopCurves}">
 
-                <!--  ReportNote Frame  -->
-                <yummy:PancakeView
-                    Margin="0,15"
-                    CornerRadius="15"
-                    Shadow="{yummy:ShadowMarkup Color=#FF0000,
-                                                Offset='0,0'}"
-                    Style="{StaticResource CommonTopCurves}"
-                    VerticalOptions="Start">
+                  <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <StackLayout>
 
-                        <!--  ReportNumber Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="16"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
-                            TextColor="{StaticResource NeutralGreay}" />
 
-                        <!--  Report Number Result Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="16"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{Binding ReportNumberResult}"
-                            TextColor="{StaticResource NeutralGreay}" />
+                            <!--  ReportNote Frame  -->
+                            <yummy:PancakeView
+                                Margin="0,15"
+                                CornerRadius="15"
+                                Shadow="{yummy:ShadowMarkup Color=#B8BABA,
+                                                            Offset='0,0'}"
+                                Style="{StaticResource CommonTopCurves}"
+                                VerticalOptions="Start">
 
-                        <!--  Report icon  -->
-                        <Image
-                            HorizontalOptions="End"
-                            Source="zakat_copy"
-                            Style="{StaticResource SmallIcon}" />
+                  
 
-                    </StackLayout>
-                </yummy:PancakeView>
+                                <StackLayout Orientation="Horizontal" Spacing="10">
+
+                                    <!--  ReportNumber Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
+                                        TextColor="{StaticResource NeutralGreay}" />
+
+                                    <!--  Report Number Result Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{Binding ReportNumberResult}"
+                                        TextColor="#58595B" />
+
+                                    <!--  Report icon  -->
+                                    <Image
+                                        HorizontalOptions="End"
+                                        Source="zakat_copy"
+                                        Style="{StaticResource SmallIcon}" />
+
+                                </StackLayout>
+
+                      
+                
+                            </yummy:PancakeView>
+
+                            <!--  Send Report Button  -->
+                            <buttons:SfButton
+                                Margin="0,40"
+                                BackgroundColor="#0996D4"
+                                Command="{Binding GoToMyReportsCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.NDMyReports}" />
+
+                        </StackLayout>
+
+                  </ScrollView>
+                 
+             
             </yummy:PancakeView>
             <!--#endregion Body-->
 

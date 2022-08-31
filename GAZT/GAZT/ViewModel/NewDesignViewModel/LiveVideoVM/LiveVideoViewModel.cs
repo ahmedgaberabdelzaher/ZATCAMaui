@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 {
-    public class LiveVideoViewModel:BaseViewModel
+    public class LiveVideoViewModel: BaseViewModel
     {
         #region Properties
 
