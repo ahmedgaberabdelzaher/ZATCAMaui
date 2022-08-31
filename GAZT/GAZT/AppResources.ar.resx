@@ -9659,4 +9659,7 @@ info@zatca.gov.sa</value>
     <data name="ChooseReports" xml:space="preserve">
          <value>البلاغات</value>
     </data>
+    <data name="CreateAccount" xml:space="preserve">
+    <value>انشئ حساب</value>
+  </data>
 </root>

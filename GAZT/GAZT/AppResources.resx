@@ -9737,4 +9737,7 @@ Zakat, Tax and Customs Authority
       <data name="ChooseReports" xml:space="preserve">
          <value>Reports</value>
     </data>
+  <data name="CreateAccount" xml:space="preserve">
+    <value>Create an account</value>
+  </data>
 </root>

@@ -41,7 +41,7 @@
                     </DataTrigger>
                 </Image.Triggers>
                 <Image.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" />
+                    <TapGestureRecognizer Command="{Binding BackCommand}" />
                 </Image.GestureRecognizers>
             </Image>
             <!--  Login Icon  -->
@@ -140,10 +140,13 @@
                     Text="{x:Static ResourceManager:AppResources.LogIn}" />
             </StackLayout>
         </ScrollView>
-    <controls:OTP IsVisible="{Binding IsOTPView}" BackgroundColor="White"  Grid.Row="0"
-            Grid.RowSpan="2"></controls:OTP>
+        <controls:OTP
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            BackgroundColor="White"
+            IsVisible="{Binding IsOTPView}" />
         <!--#endregion Body-->
-        <controls:Loader 
+        <controls:Loader
             Grid.Row="0"
             Grid.RowSpan="2"
             IsVisible="{Binding IsLoading}" />

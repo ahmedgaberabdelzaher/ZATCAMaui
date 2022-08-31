@@ -291,7 +291,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
 
         private void MoveToNextPage()
         {
-            _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+            // _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+            _navigationService.NavigateTo("/LoginSelectionView");
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }

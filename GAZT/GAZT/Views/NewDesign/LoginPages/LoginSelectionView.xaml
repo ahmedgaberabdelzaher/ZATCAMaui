@@ -9,13 +9,12 @@
         <StackLayout Margin="20">
             <Image
                 Margin="0,30,0,10"
-                BackgroundColor="White"
                 HeightRequest="100"
                 HorizontalOptions="CenterAndExpand"
                 Source="ZatcaLogoWithTitle"
-                VerticalOptions="StartAndExpand"
+                VerticalOptions="Start"
                 WidthRequest="190" />
-            <StackLayout BackgroundColor="White" VerticalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand">
                 <!--  Login title  -->
                 <Label
                     FontFamily="{StaticResource SomarRegular}"
@@ -62,6 +61,20 @@
                             VerticalOptions="EndAndExpand" />
                     </Grid>
                 </Grid>
+                <Label
+                    Margin="0,20,0,10"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.ZZZDontHaveAccount}"
+                    TextColor="White" />
+                <Frame
+                    Padding="10"
+                    BackgroundColor="#4FBBBD"
+                    CornerRadius="15">
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.CreateAccount}"
+                        TextColor="White" />
+                </Frame>
             </StackLayout>
         </StackLayout>
     </Grid>
