@@ -9623,9 +9623,6 @@ the Zakat, Tax and Customs
         <data name="Port4Name" xml:space="preserve">
         <value>Saudi customs exit</value>
     </data>
-     <data name="Reports" xml:space="preserve">
-        <value>Reports</value>
-    </data>
       <data name="EinvoiceScanning" xml:space="preserve">
         <value>E-invoice scanning</value>
     </data>
@@ -9700,9 +9697,6 @@ Zakat, Tax and Customs Authority
   </data>
   <data name="ForgotPasswordUsername" xml:space="preserve">
      <value>Forgot Password or Username?</value>
-  </data>
-  <data name="Attachments" xml:space="preserve">
-    <value>Attachments</value>
   </data>
   <data name="AccountRegister" xml:space="preserve">
     <value>Don't have an Account? Register</value>

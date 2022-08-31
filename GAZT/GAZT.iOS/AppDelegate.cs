@@ -20,7 +20,6 @@ using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading.Tasks;
-using MediaManager;
 
 namespace GAZT.iOS
 {
@@ -99,7 +98,6 @@ namespace GAZT.iOS
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
 
             App.InitializeAppDynamics();
-            CrossMediaManager.Current.Init();
             LoadApplication(iosapp);
 
             return base.FinishedLaunching(app, options);

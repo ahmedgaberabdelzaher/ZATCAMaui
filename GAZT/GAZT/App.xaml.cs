@@ -40,7 +40,7 @@ namespace EGAZT
     public partial class App : Application
     {
         // public static string CustomBaseUrl = "http://10.112.34.26:8024/";
-         public static string CustomBaseUrl = "http://10.112.34.38:8024/";
+         //public static string CustomBaseUrl = "http://10.112.34.38:8024/";
         public static string VatCustom = "http://172.50.15.39:8443/api/";
         //public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
