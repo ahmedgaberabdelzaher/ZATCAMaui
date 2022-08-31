@@ -94,6 +94,10 @@
 	  <None Remove="Views\NewDesign\Survey\" />
 	  <None Remove="ViewModel\NewDesignViewModel\SurveyViewModels\" />
 	  <None Remove="Models\SurveyModels\" />
+	  <None Remove="Views\NewDesign\LoginPages\" />
+	  <None Remove="ViewModel\NewDesignViewModel\LoginViewModels\" />
+	  <None Remove="Models\LoginModels\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\CustomDashBoard\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -199,6 +203,10 @@
 		<Folder Include="Views\NewDesign\Survey\" />
 		<Folder Include="ViewModel\NewDesignViewModel\SurveyViewModels\" />
 		<Folder Include="Models\SurveyModels\" />
+		<Folder Include="Views\NewDesign\LoginPages\" />
+		<Folder Include="ViewModel\NewDesignViewModel\LoginViewModels\" />
+		<Folder Include="Models\LoginModels\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\CustomDashBoard\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

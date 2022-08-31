@@ -9579,4 +9579,34 @@ info@zatca.gov.sa</value>
     <data name="End" xml:space="preserve">
         <value>أنهاء</value>
     </data>
+    <data name="LoginSubTitle" xml:space="preserve">
+     <value>مرحبًا بك في تجربة الضرائب الرقمية الجديدة</value>
+  </data>
+  <data name="TINEmailCustomUsername" xml:space="preserve">
+     <value>رقم الهوية/البريد الإلكتروني/اسم المستخدم </value>
+  </data>
+  <data name="ForgotPasswordUsername" xml:space="preserve">
+     <value>نسيت كلمة المرور أو اسم المستخدم؟</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>المرفقات</value>
+  </data>
+  <data name="AccountRegister" xml:space="preserve">
+    <value>ليس لديك حساب؟ يسجل</value>
+  </data>
+    <data name="LogintoCustoms" xml:space="preserve">
+    <value>تسجيل الدخول إلى الجمارك</value>
+  </data>
+   <data name="InvalidUserNameOrPassword" xml:space="preserve">
+    <value>خطا في اسم المستخدم أو كلمة المرور</value>
+  </data>
+       <data name="Selectaccounttype" xml:space="preserve">
+    <value>اختر نوع الحساب</value>
+  </data>
+     <data name="Customs" xml:space="preserve">
+    <value>الجمارك</value>
+  </data>
+     <data name="ZakatandTax" xml:space="preserve">
+    <value>الزكاه والضريبه</value>
+  </data>
 </root>

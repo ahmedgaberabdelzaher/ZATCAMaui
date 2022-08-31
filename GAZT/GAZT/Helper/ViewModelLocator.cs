@@ -157,6 +157,9 @@ using EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM;
 using EGAZT.Views.NewDesign.LiveVideo;
 using EGAZT.Views.NewDesign.Survey;
 using EGAZT.ViewModel.NewDesignViewModel.SurveyViewModels;
+using EGAZT.ViewModel.NewDesignViewModel.LoginViewModels;
+using EGAZT.Views.NewDesign.LoginPages;
+using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
 
 namespace EGAZT
 {
@@ -180,6 +183,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
             SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
             SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
+            SimpleIoc.Default.Register<IUserServices, UserServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -404,6 +408,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
+            SimpleIoc.Default.Register<CustomLoginViewModel>();
 
             #endregion
         }
@@ -2878,6 +2883,9 @@ namespace EGAZT
             navigationService.Configure("GeneralServices", typeof(GeneralServices));
             navigationService.Configure("SideMenuView", typeof(SideMenuView));
             navigationService.Configure("RateUs", typeof(RateUs));
+            navigationService.Configure("CustomLogin", typeof(CustomLogin));
+            navigationService.Configure("CustomDashBoardVi", typeof(CustomDashBoardVi));
+            navigationService.Configure("LoginSelectionView", typeof(LoginSelectionView));
 
             #endregion
 
@@ -3056,6 +3064,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<RateUsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public CustomLoginViewModel CustomLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomLoginViewModel>();
                 }
                 catch (Exception ex)
                 {

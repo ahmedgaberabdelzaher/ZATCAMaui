@@ -9654,4 +9654,34 @@ Zakat, Tax and Customs Authority
      <data name="End" xml:space="preserve">
         <value>End</value>
     </data>
+    <data name="LoginSubTitle" xml:space="preserve">
+     <value>Welcome to a New Digital Tax Experience</value>
+  </data>
+  <data name="TINEmailCustomUsername" xml:space="preserve">
+     <value>TIN or Email or Custom Username</value>
+  </data>
+  <data name="ForgotPasswordUsername" xml:space="preserve">
+     <value>Forgot Password or Username?</value>
+  </data>
+  <data name="Attachments" xml:space="preserve">
+    <value>Attachments</value>
+  </data>
+  <data name="AccountRegister" xml:space="preserve">
+    <value>Don't have an Account? Register</value>
+  </data>
+  <data name="LogintoCustoms" xml:space="preserve">
+    <value>Login to Customs</value>
+  </data>
+   <data name="InvalidUserNameOrPassword" xml:space="preserve">
+    <value>Invalid User Name Or Password</value>
+  </data>
+     <data name="Selectaccounttype" xml:space="preserve">
+    <value>Select account type</value>
+  </data>
+     <data name="Customs" xml:space="preserve">
+    <value>Customs</value>
+  </data>
+     <data name="ZakatandTax" xml:space="preserve">
+    <value>Zakat and Tax</value>
+  </data>
 </root>

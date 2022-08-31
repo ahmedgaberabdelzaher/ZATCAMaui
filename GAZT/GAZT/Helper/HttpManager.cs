@@ -157,16 +157,13 @@ namespace EGAZT.Helper
 
                     jobject = JsonConvert.SerializeObject(Data);
                     var JsonObject =jobject;
-                    Debug.WriteLine(JsonObject);
 
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");
                     var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
                    // var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
                     if (response != null)
                     {
-                        Debug.WriteLine(requestUrl);
-                        Debug.WriteLine(response);
-                        Debug.WriteLine(response.StatusCode);
+                        
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();

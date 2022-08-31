@@ -17159,5 +17159,59 @@ namespace EGAZT {
                 return ResourceManager.GetString("End", resourceCulture);
             }
         }
+        
+        public static string LoginSubTitle {
+            get {
+                return ResourceManager.GetString("LoginSubTitle", resourceCulture);
+            }
+        }
+        
+        public static string TINEmailCustomUsername {
+            get {
+                return ResourceManager.GetString("TINEmailCustomUsername", resourceCulture);
+            }
+        }
+        
+        public static string ForgotPasswordUsername {
+            get {
+                return ResourceManager.GetString("ForgotPasswordUsername", resourceCulture);
+            }
+        }
+        
+        public static string AccountRegister {
+            get {
+                return ResourceManager.GetString("AccountRegister", resourceCulture);
+            }
+        }
+        
+        public static string LogintoCustoms {
+            get {
+                return ResourceManager.GetString("LogintoCustoms", resourceCulture);
+            }
+        }
+        
+        public static string InvalidUserNameOrPassword {
+            get {
+                return ResourceManager.GetString("InvalidUserNameOrPassword", resourceCulture);
+            }
+        }
+        
+        public static string Selectaccounttype {
+            get {
+                return ResourceManager.GetString("Selectaccounttype", resourceCulture);
+            }
+        }
+        
+        public static string Customs {
+            get {
+                return ResourceManager.GetString("Customs", resourceCulture);
+            }
+        }
+        
+        public static string ZakatandTax {
+            get {
+                return ResourceManager.GetString("ZakatandTax", resourceCulture);
+            }
+        }
     }
 }
