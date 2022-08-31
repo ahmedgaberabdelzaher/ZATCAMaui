@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard.CustomDashBoardVi"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    HasBackButton="False">
+    <newdesign:BaseContentPage.PancakeView>
+        <Grid>
+            <Label FontSize="Body" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Welcome :" />
+                        <Span Text="{Binding Email}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>
