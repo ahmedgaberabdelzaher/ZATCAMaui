@@ -20,7 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             }
         }
 
-        string totaltaxablepurchases="3";
+        string totaltaxablepurchases;
 
         public string Totaltaxablepurchases
         {

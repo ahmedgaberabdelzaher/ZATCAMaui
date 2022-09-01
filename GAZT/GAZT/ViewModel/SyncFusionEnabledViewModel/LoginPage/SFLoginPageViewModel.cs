@@ -38,6 +38,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                             _navigationService.NavigateTo($"/LiveVideoPage");
                             return;
                         }
+                        else if (tab=="2")
+                        {
+                            _navigationService.NavigateTo("/SideMenuView");
+                            return;
+                        }
                         _navigationService.NavigateTo("/Home", tab);
                       
                     }

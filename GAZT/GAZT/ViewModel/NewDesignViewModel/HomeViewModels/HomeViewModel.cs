@@ -167,7 +167,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                   Name=AppResources.VATRegistrationCertificate, ID=App.VATRegistrationPageView,ImageSource="VatRegCheck",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                   Name=AppResources.VATRegistrationCertificate, ID=App.VATLookUpNewPageView,ImageSource="VatRegCheck",ColumnNo=0,Row=0,IsVerticalView=isvertical
                 },
                  new MenuModel()
                 {
@@ -206,9 +206,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                   Name=AppResources.Reports, ID="SearchIndiactivePriceForExciseGoods",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                   Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
                 }
+
            };
+           
         }
 
 
@@ -246,6 +248,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                     {
                         switch (tab)
                         {
+                            case "0":
+                                _navigationService.NavigateTo("/Home", tab);
+                                break;
                             case "1":
                                 _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
                                 break;
