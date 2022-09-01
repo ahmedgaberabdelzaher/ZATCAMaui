@@ -70,7 +70,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>ZATCA</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.enterprise.egazt</string>
+	<string>com.gazt.enterprise.egazt2</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -95,8 +95,8 @@
 	<key>NSAppleMusicUsageDescription </key>
 	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.63</string>
+	<string>5.0.76</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.32</string>
+	<string>5.0.71</string>
 </dict>
 </plist>
