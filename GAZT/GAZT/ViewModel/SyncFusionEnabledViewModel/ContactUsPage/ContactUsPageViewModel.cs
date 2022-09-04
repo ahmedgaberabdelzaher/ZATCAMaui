@@ -1,4 +1,5 @@
 ﻿using EGAZT.AppConfigurations;
+using EGAZT.ViewModel.NewDesignViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
@@ -10,7 +11,7 @@ using Xamarin.Forms.Internals;
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
 {
     [Preserve(AllMembers = true)]
-    public class ContactUsPageViewModel : ViewModelBase
+    public class ContactUsPageViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
@@ -61,7 +62,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
 
  
 
-        public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
 
             if (navigationService == null)
