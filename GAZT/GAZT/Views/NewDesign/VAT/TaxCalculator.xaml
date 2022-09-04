@@ -166,7 +166,7 @@
                         <controls:EntryWithSAR
                             x:Name="ConsumerTotaltaxablepurchases"
                             IsVisible="{Binding IsConsumerCalc}"
-                            Placeholder="{x:Static ResourceManager:AppResources.AcceptButton}"
+                            Placeholder="{x:Static ResourceManager:AppResources.Totaltaxablepurchases}"
                             Text="{Binding Totaltaxablepurchases}"
                             TitleText="{x:Static ResourceManager:AppResources.Totaltaxablepurchases}"
                             ValueText="{Binding Totaltaxablepurchases, Mode=TwoWay}" />
