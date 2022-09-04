@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.AppConfigurations;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,21 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
                 RaisePropertyChanged("WebUrl");
             }
         }
+
+        private string _Url;
+        public string Url
+        {
+            get
+            {
+                return _Url;
+            }
+            set
+            {
+                _Url = value;
+                RaisePropertyChanged();
+            }
+        }
+
         private bool _isLoading;
         public bool IsLoading
         {
@@ -47,6 +63,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
 
         public ContactUsPageViewModel(INavigationService navigationService, IDialogService dialogService)
         {
+
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -61,6 +78,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ContactUsPage
             {
                 _navigationService.GoBack();
             });
+
+            Url = PageSettings.GetContactUsUrl();
         }
     }
 }

@@ -110,7 +110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.ContactUs, ID=App.ContactUsPageView,ImageSource="CallUS"
+                   Name=AppResources.ContactUs, ID="ContactUs",ImageSource="CallUS"
                 },
                 new MenuModel()
                 {

@@ -48,6 +48,7 @@ namespace EGAZT.AppConfigurations
             return key;
         }
         const string EdclerationBaseURL = "http://10.112.42.23/";
+
         public static string GetNewEDeclarationLinks()
         {
             if (App.IsArabic)
@@ -59,6 +60,19 @@ namespace EGAZT.AppConfigurations
                 return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
             }
         }
+
+        public static string GetContactUsUrl()
+        {
+            if (App.IsArabic)
+            {
+                return "https://zatca.gov.sa/ar/contactus/Pages/default.aspx";
+            }
+            else
+            {
+                return "https://zatca.gov.sa/en/contactus/Pages/default.aspx";
+            }
+        }
+
 
         public static string GetPreviousEDeclarationLink()
         {
