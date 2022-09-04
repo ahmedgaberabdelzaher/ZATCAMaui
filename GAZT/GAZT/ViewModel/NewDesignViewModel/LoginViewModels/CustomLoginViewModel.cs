@@ -127,5 +127,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
             }
         }
 
+ public ICommand GoToZakatRegistrationCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _navigationService.NavigateTo(App.EstablishmentSignUPPageView);
+                });
+            }
+        }
     }
 }

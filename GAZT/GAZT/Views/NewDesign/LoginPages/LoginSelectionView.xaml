@@ -74,6 +74,9 @@
                         HorizontalOptions="CenterAndExpand"
                         Text="{x:Static ResourceManager:AppResources.CreateAccount}"
                         TextColor="White" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToZakatRegistrationCommand}" />
+                    </Frame.GestureRecognizers>
                 </Frame>
             </StackLayout>
         </StackLayout>
