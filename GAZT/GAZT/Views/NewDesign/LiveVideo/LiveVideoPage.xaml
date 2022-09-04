@@ -60,10 +60,13 @@
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="0,5,0,0"
                 Style="{StaticResource CommonTopCurves}">
                 <Grid RowDefinitions="*,auto">
-                    <StackLayout Grid.Row="0" Spacing="20">
+                    <StackLayout
+                        Grid.Row="0"
+                        Margin="20,0,20,0"
+                        Spacing="20">
 
                         <!--  Live Video Sub Title Label  -->
                         <Label
@@ -168,9 +171,10 @@
 
                     </StackLayout>
 
-                    <controls:BottomMenu 
-                            Grid.Row="1"
-                             VerticalOptions="EndAndExpand" />
+                    <controls:BottomMenu
+                        Grid.Row="1"
+                        Margin="20,0,20,0"
+                        VerticalOptions="EndAndExpand" />
 
                 </Grid>
 

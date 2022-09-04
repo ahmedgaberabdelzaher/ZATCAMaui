@@ -12,6 +12,7 @@ namespace EGAZT.Views.NewDesign.LiveVideo
         {
             InitializeComponent();
             viewModel = App.Locator.LiveVideoViewModel;
+            viewModel.CurrentTab = 3;
             BindingContext = viewModel;
         }
     }

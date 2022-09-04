@@ -14,10 +14,7 @@ namespace EGAZT.Views.NewDesign
             BindingContext = viewModel;
             viewModel.CurrentTab = int.Parse(tab);
             InitializeComponent();
-            var htmlSource = new HtmlWebViewSource();
-            htmlSource.Html= @"<iframe  src=https://www.youtube.com/embed/eJ6ZMd4sVrI frameborder=0 allow=accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen></iframe>";
-            //var html = @"<iframe src=https://www.youtube.com/embed/eJ6ZMd4sVrI  frameborder=0 allow=accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture allowfullscreen></iframe>";
-            youtubeView.Source = htmlSource;
+            
         }
     }
 }
