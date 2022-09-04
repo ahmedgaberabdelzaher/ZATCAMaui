@@ -67,7 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
                 {
                    
                  Email = result.data.firstName + " "+ result.data.thirdName;
-                 SendOtpSMS(result.data.mobileNumber);
+                 await SendOtpSMS(result.data.mobileNumber);
                     IsOTPView = true;
 
                     //_navigationService.NavigateTo("/CustomDashBoardVi");
