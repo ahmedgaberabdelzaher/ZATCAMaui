@@ -11,6 +11,7 @@
     TitleText="{x:Static ResourceManager:AppResources.NDVATServices}">
     <Grid>
         <Image
+            Aspect="Fill"
             HorizontalOptions="FillAndExpand"
             Source="partials_background"
             VerticalOptions="FillAndExpand" />

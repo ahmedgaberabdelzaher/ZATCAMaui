@@ -17345,5 +17345,11 @@ namespace EGAZT {
                 return ResourceManager.GetString("CreateAccount", resourceCulture);
             }
         }
+        
+        public static string Langauge {
+            get {
+                return ResourceManager.GetString("Langauge", resourceCulture);
+            }
+        }
     }
 }

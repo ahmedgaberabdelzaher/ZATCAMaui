@@ -13,6 +13,7 @@ namespace EGAZT.Views.NewDesign.HomePages
             viewModel = App.Locator.homeViewModel;
             BindingContext = viewModel;
             viewModel.GetSideMenuLst();
+            viewModel.CurrentTab = 2;
             InitializeComponent();
         }
     }

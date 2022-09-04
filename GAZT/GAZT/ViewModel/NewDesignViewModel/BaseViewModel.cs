@@ -128,6 +128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             case "0":
                                 _navigationService.NavigateTo("/Home", tab);
+                                
                                 break;
                             case "1":
                                 _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
@@ -151,8 +152,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             _navigationService.NavigateTo($"/LiveVideoPage");
                             return;
                         }*/
+                        var di = AppDirection;
                         CurrentTab = int.Parse(tab);
                         Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+
+
                     }
 
                 });
