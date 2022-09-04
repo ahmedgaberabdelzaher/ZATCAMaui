@@ -113,6 +113,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         }
 
+        int currentTab = 1;
+        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
+
+        public ICommand ChangeCurrentTabCommand
+        {
+            get
+            {
+                return new Command<string>((tab) =>
+                {
+                    if (tab != CurrentTab.ToString())
+                    {
+                        switch (tab)
+                        {
+                            case "0":
+                                _navigationService.NavigateTo("/Home", tab);
+                                break;
+                            case "1":
+                                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                                break;
+                            case "2":
+                                _navigationService.NavigateTo("/SideMenuView");
+                                break;
+                            case "3":
+                                _navigationService.NavigateTo($"/LiveVideoPage");
+                                break;
+                            default:
+                                break;
+                        }
+                        /*if (tab=="1")
+                        {
+                           
+                            return;
+                        }
+                        else if (tab =="3")
+                        {
+                            _navigationService.NavigateTo($"/LiveVideoPage");
+                            return;
+                        }*/
+                        CurrentTab = int.Parse(tab);
+                        Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                    }
+
+                });
+            }
+        }
+        string title;
+        public string Title { get { return title; } set { title = value; RaisePropertyChanged(); } }
+
         public void PopToRootPage()
         {
             App.IsSessionExpired = false;

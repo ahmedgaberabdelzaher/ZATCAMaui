@@ -21,7 +21,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
     [Preserve(AllMembers = true)]
     public class SFLoginPageViewModel : SFLoginViewModel
     {
-        int currentTab = 1;
+       /* int currentTab = 1;
         public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
         
         public ICommand ChangeCurrentTabCommand
@@ -49,7 +49,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                 });
             }
-        }
+        }*/
         #region Fields
         //public string password = "Test@123";
         //private string email = "3102285896";

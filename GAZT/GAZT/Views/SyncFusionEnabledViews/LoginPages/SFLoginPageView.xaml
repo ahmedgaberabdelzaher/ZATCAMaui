@@ -32,18 +32,42 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
+                <StackLayout Orientation="Horizontal">
 
-                <Image
-                    x:Name="HamburgerMenu"
-                    Margin="10,55,10,0"
-                    HorizontalOptions="EndAndExpand"
-                    Source="Burger"
-                    Style="{StaticResource SmallIcon}"
-                    VerticalOptions="Start">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
-                    </Image.GestureRecognizers>
-                </Image>
+                    <!--  Left/Right icon  -->
+                    <Image
+                        x:Name="backbutton"
+                        Margin="20,60,20,0"
+                        HorizontalOptions="Start"
+                        Rotation="180"
+                        Source="arrowLeftwhite.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="StartAndExpand">
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="0" />
+                            </DataTrigger>
+                        </Image.Triggers>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Image
+                        x:Name="HamburgerMenu"
+                        Margin="10,55,10,0"
+                        HorizontalOptions="EndAndExpand"
+                        Source="Burger"
+                        Style="{StaticResource SmallIcon}"
+                        VerticalOptions="Start">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding HamburgerMenuClickedCommand}" NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
 
                 <Grid
                     Grid.Row="0"
@@ -147,7 +171,10 @@
                         Text="{x:Static ResourceManager:AppResources.LoginTitle}" />
                 </StackLayout>
             </StackLayout>
-            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand" />
+            <controls:BottomMenu
+                Grid.Row="0"
+                Margin="20"
+                VerticalOptions="EndAndExpand" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

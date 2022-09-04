@@ -7,58 +7,66 @@
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    BackgroundImageSource="partials_background.png"
     TitleText="{x:Static ResourceManager:AppResources.NDVATServices}">
-    <StackLayout>
+    <Grid>
         <Image
-            Margin="0,60,0,30"
-            HeightRequest="110"
-            HorizontalOptions="CenterAndExpand"
-            Source="ZatcaLogoWithTitle"
-            VerticalOptions="StartAndExpand"
-            WidthRequest="190" />
-        <Grid RowDefinitions="*,auto">
-            <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
-                <StackLayout x:Name="menu" BindableLayout.ItemsSource="{Binding SideMenuServiceLst}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate>
-                            <StackLayout x:Name="Item" Spacing="10">
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer
-                                        BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                        Command="{Binding SideMenuNavigationCommand}"
-                                        CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                </StackLayout.GestureRecognizers>
-                                <StackLayout
-                                    Padding="20,15,20,15"
-                                    HorizontalOptions="StartAndExpand"
-                                    Orientation="Horizontal"
-                                    Spacing="15">
-                                    <Image
-                                        HeightRequest="30"
+            HorizontalOptions="FillAndExpand"
+            Source="partials_background"
+            VerticalOptions="FillAndExpand" />
+        <StackLayout>
+            <Image
+                Margin="0,60,0,30"
+                HeightRequest="110"
+                HorizontalOptions="CenterAndExpand"
+                Source="ZatcaLogoWithTitle"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="190" />
+            <Grid RowDefinitions="*,auto">
+                <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+                    <StackLayout x:Name="menu" BindableLayout.ItemsSource="{Binding SideMenuServiceLst}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout x:Name="Item" Spacing="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                            Command="{Binding SideMenuNavigationCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                    </StackLayout.GestureRecognizers>
+                                    <StackLayout
+                                        Padding="20,15,20,15"
                                         HorizontalOptions="StartAndExpand"
-                                        Source="{Binding ImageSource}"
-                                        Style="{StaticResource SmallIcon}"
-                                        WidthRequest="32" />
-                                    <custom:CustomLabel
-                                        HorizontalTextAlignment="Start"
-                                        Style="{StaticResource ValueLabelWhiteBold}"
-                                        Text="{Binding Name}"
-                                        VerticalOptions="Center" />
+                                        Orientation="Horizontal"
+                                        Spacing="15">
+                                        <Image
+                                            HeightRequest="30"
+                                            HorizontalOptions="StartAndExpand"
+                                            Source="{Binding ImageSource}"
+                                            Style="{StaticResource SmallIcon}"
+                                            WidthRequest="32" />
+                                        <custom:CustomLabel
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource ValueLabelWhiteBold}"
+                                            Text="{Binding Name}"
+                                            VerticalOptions="Center" />
+                                    </StackLayout>
+                                    <BoxView
+                                        Margin="15,0,15,0"
+                                        HeightRequest="1"
+                                        Style="{StaticResource WhiteLineSeperator}" />
                                 </StackLayout>
-                                <BoxView
-                                    Margin="15,0,15,0"
-                                    HeightRequest="1"
-                                    Style="{StaticResource WhiteLineSeperator}" />
-                            </StackLayout>
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
 
-                </StackLayout>
-            </ScrollView>
-            <controls:BottomMenu
-                Grid.Row="1"
-                Margin="20,0,20,0"
-                VerticalOptions="EndAndExpand" />
-        </Grid>
-    </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+                <controls:BottomMenu
+                    Grid.Row="1"
+                    Margin="20,0,20,0"
+                    VerticalOptions="EndAndExpand" />
+            </Grid>
+        </StackLayout>
+    </Grid>
+
 </newdesign:BaseContentPage>

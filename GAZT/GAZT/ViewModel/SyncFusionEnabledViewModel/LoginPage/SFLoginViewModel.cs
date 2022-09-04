@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.ViewModel.NewDesignViewModel;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.ComponentModel;
@@ -10,11 +11,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLogin_ViewModel
     /// ViewModel for login page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class SFLoginViewModel : ViewModelBase
+    public class SFLoginViewModel : BaseViewModel
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
-        public SFLoginViewModel(INavigationService navigationService, IDialogService dialogService)
+        public SFLoginViewModel(INavigationService navigationService, IDialogService dialogService):base(navigationService,dialogService)
         {
             if (navigationService == null)
             {

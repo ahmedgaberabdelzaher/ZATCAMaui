@@ -29,8 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
     public class HomeViewModel:BaseViewModel
     {
 
-        string title ;
-        public string Title { get { return title; } set { title = value; RaisePropertyChanged(); } }
+
         int itemCountPerRow=2;
         public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
 
@@ -47,9 +46,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
 
 
-        int currentTab =1;
+       /* int currentTab =1;
         public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); }  }
-
+       */
 
         public HomeViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
@@ -142,6 +141,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
         private void ChangeLanguage()
         {
+          
             if (App.IsArabic)
             {
                 App.IsArabic = false;
@@ -156,6 +156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 App.changeFontFamily(App.appObj);
                 AppDirection = FlowDirection.RightToLeft;
             }
+            GetSideMenuLst();
             _navigationService.NavigateTo("/SideMenuView");
         }
 
@@ -237,7 +238,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
            };
         }
-
+/*
         public ICommand ChangeCurrentTabCommand
         {
             get
@@ -272,7 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         {
                             _navigationService.NavigateTo($"/LiveVideoPage");
                             return;
-                        }*/
+                        }
                         CurrentTab = int.Parse(tab);
                         Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
                     }
@@ -280,7 +281,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 });
             }
         }
-
+*/
         public ICommand NavigateCommand
         {
             get
@@ -380,4 +381,5 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         }
 
     }
+
 }

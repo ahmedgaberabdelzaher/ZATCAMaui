@@ -30,7 +30,10 @@
 
                             </Frame.GestureRecognizers>
                             <Grid ColumnDefinitions="30,*">
-                                <Image Grid.Column="0" Source="{Binding ImageSource}" />
+                                <Image
+                                    Grid.Column="0"
+                                    HeightRequest="20"
+                                    Source="{Binding ImageSource}" />
                                 <Label
                                     Grid.Column="1"
                                     Margin="20,0,20,0"

@@ -106,7 +106,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         }
 
         #region Commands
-
+/*
         int currentTab = 3;
         public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
 
@@ -131,7 +131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 });
             }
         }
-
+*/
         public ICommand SelectedVideoItemCommand
         {
             get
