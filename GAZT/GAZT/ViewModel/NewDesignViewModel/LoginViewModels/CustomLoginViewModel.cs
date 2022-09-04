@@ -111,6 +111,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
             {
                 return new Command(async () =>
                 {
+                    UserNameTxt = PasswordTxt = "";
                         _navigationService.NavigateTo("CustomLogin");
                });
             }

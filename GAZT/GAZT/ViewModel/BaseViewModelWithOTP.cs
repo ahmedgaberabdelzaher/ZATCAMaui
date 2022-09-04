@@ -120,14 +120,19 @@ namespace EGAZT.ViewModel
             // Stop timer
             if (countDownSeconds == 0)
             {
-                otpTimer.Elapsed -= OnCountDownTimedOTPEvent;
-                otpTimer.Stop();
-                ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
-                IsOtpValid = false;
+                StopTimer();
                 IsResendCodeEnabled = true;
             }
         }
 
+        private void StopTimer()
+        {
+            otpTimer.Elapsed -= OnCountDownTimedOTPEvent;
+            otpTimer.Stop();
+
+            ResendOTPTextColor = (Color)Application.Current.Resources["Primary"];
+            IsOtpValid = false;
+        }
 
         public ICommand VerifyOTPCommand
         {
@@ -153,7 +158,7 @@ namespace EGAZT.ViewModel
                     EnteredOTP = OTPFirstDigit + OTPSecondDigit + OTPThirdDigit + OTPFourthDigit;
                     if (EnteredOTP == Preferences.Get("OTPValue", ""))
                     {
-                        otpTimer.Stop();
+                        StopTimer();
                         ClearOTPData();
                         return true;
                     }
@@ -272,13 +277,13 @@ namespace EGAZT.ViewModel
                 Preferences.Set("MobileNo", PhoneNo);
                 var data = await _commonServices.SendOtpSms(PhoneNo, $"{AppResources.OTPMsgBody}{otp}");
                 IsOtpValid = true;
-                OTPSentOnThisMobileNumber = AppResources.MobileNumber + " xxxxxxx" + Phone.Substring(7, 3);
+                OTPSentOnThisMobileNumber = AppResources.MobileNumber + " xxxxxxx" + Phone.Substring(Phone.Length-3);
                 ResendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
                 IsResendCodeEnabled = false;
                 StartOTPTimer();
                 if (data.Item2)
                 {
-
+                   
                 }
             }
             catch (Exception ex)
@@ -290,6 +295,7 @@ namespace EGAZT.ViewModel
 
         public void ClearOTPData()
         {
+            StopTimer();
             Preferences.Remove("OTPValue");
             Preferences.Remove("MobileNo");
             OTPSentOnThisMobileNumber = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = EnteredOTP = "";
