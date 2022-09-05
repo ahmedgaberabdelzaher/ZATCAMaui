@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Input;
@@ -276,6 +277,8 @@ namespace EGAZT.ViewModel
                 Preferences.Set("OTPValue", otp);
                 Preferences.Set("MobileNo", PhoneNo);
                 var data = await _commonServices.SendOtpSms(PhoneNo, $"{AppResources.OTPMsgBody}{otp}");
+                Debug.WriteLine(data.Item2);
+                Debug.WriteLine(data.Item1.code);
                 IsOtpValid = true;
                 OTPSentOnThisMobileNumber = AppResources.MobileNumber + " xxxxxxx" + Phone.Substring(Phone.Length-3);
                 ResendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
