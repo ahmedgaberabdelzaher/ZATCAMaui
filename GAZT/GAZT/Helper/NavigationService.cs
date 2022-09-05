@@ -79,6 +79,7 @@ namespace EGAZT
                         {
                             if (cupage != page)
                             {
+                                
                                 _navigation.Navigation.RemovePage(cupage);
                             }
                         }
