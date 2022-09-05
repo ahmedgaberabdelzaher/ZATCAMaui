@@ -3,6 +3,18 @@ namespace EGAZT.AppConfigurations
 {
     public static class PageSettings
     {
+        #region SurveyConfig
+        public static string VocBaseUrl = "https://vocstg.gazt.gov.sa/v1/api/";
+        public static string SurveyID = "6307638a380faf6b91c907f4";
+        public static string CollectorId = "630b389e380faf6b91c910a7";
+        public static string SurveyToken = "I/70744d53";
+        public static string Q1ID = "6307638b380faf6b91c907f8";
+        public static string Q2ID = "6307638b380faf6b91c90800";
+        public static string Q3ID = "6307638b380faf6b91c90814";
+        public static string Q1AnsID = "61c32bf2527cacedb5d31931";
+        public static string Q2AnsID = "61c32c8a527cacedb5d31970";
+        public static string Q3AnsID = "61c32e14aa59caed43d24e7e";
+        #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
         public static bool IsIncludeInquiryVisible= true;
         public static bool IsIncludeTarrif = true;
