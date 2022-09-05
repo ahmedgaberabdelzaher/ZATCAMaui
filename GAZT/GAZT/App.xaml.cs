@@ -44,8 +44,8 @@ namespace EGAZT
         public static string VatCustom = "http://172.50.15.39:8443/api/";
         //public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
        // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
-        //public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
-        public static string VatBaseUrl = "http://172.50.15.39:80/api";
+       public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+       // public static string VatBaseUrl = "http://172.50.15.39:80/api";
         #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
