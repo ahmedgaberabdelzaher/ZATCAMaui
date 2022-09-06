@@ -135,7 +135,7 @@ namespace EGAZT.Helper
         }
 
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false) where T :  class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false,string token="") where T :  class
         {
             try
             {
@@ -149,6 +149,10 @@ namespace EGAZT.Helper
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
                     */
+                    if (token!="")
+                    {
+                     client.DefaultRequestHeaders.Add("Authorization",token);
+                    }
                     if (isTahqaq)
                     {
                         client.DefaultRequestHeaders.Add("client_id", "3d37d7dd9089b57f32820869df3d160f");

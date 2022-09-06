@@ -10,7 +10,7 @@ namespace EGAZT.Services.Classes
 {
     public class SurveyServices: ISurveyServices
     {
-        public async Task<HttpResponseMessage> AddSurveyAnswerToVoc(VocAddSurveyAnswerModel model)
+        public async Task<HttpResponseMessage> AddSurveyAnswerToVoc(VocAddSurveyAnswerModel model,string token)
         {
             var response = await HttpManager.PostAsync($"{PageSettings.VocBaseUrl}insertResponses",model, true).ConfigureAwait(false);
             return response;
@@ -18,7 +18,7 @@ namespace EGAZT.Services.Classes
 
         public async Task<HttpResponseMessage> AddSurveyData(AddSurveyBody addSurveyBody)
         {
-            var response = await HttpManager.PostAsync(App.CustomBaseUrl + $"Survey/AddUserSurvey",addSurveyBody, true).ConfigureAwait(false);
+            var response = await HttpManager.PostAsync(App.CustomBaseUrl + $"Survey/AddUserSurvey",addSurveyBody, false).ConfigureAwait(false);
             return response;
         }
 
