@@ -2181,11 +2181,11 @@
                     </StackLayout>
                 </Grid>
             </Grid>
-            <!--#region SurveyView-->
+            <!--#region SurveyView{Binding IsShowMsgView}-->
             <Grid
                 Grid.Row="0"
                 Margin="0,0,0,0"
-                IsVisible="{Binding IsShowMsgView}"
+                IsVisible="true"
                 VerticalOptions="FillAndExpand">
 
                 <StackLayout
@@ -2288,12 +2288,12 @@
                                 Orientation="Horizontal">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout x:Name="item" Margin="10">
+                                        <StackLayout x:Name="Item" Margin="10">
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                                    Command="{Binding SurveyNextCommand}"
-                                                    CommandParameter="{Binding .}" />
+                                                    Command="{Binding SlectedImojieCommand}"
+                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                             </StackLayout.GestureRecognizers>
                                             <Image
                                                 HeightRequest="36"

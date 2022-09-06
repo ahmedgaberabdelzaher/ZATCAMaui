@@ -3741,11 +3741,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             CultureInfo enCul = new CultureInfo("en-US");
             var date = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+            var tin = App.TP.Tin;
             AddSurveyBody body = new AddSurveyBody()
             {
                 dismiss = isDismiss,
                 scheduleid = SchedukeID,
-                tin =int.Parse( App.TP.Tin)
+                tin =long.Parse( App.TP.Tin)
             };
             var VocBody = new VocAddSurveyAnswerModel()
             {
