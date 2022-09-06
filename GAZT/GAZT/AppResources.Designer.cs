@@ -6975,6 +6975,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to العربية.
+        /// </summary>
+        public static string Langauge {
+            get {
+                return ResourceManager.GetString("Langauge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Live broadcast of the ports.
         /// </summary>
         public static string LiveVideoSubTitle {

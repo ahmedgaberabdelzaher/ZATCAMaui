@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using ZXing;
+using ZXing.Mobile;
 using ZXing.Net.Mobile.Forms;
-
+using System.Linq;
 namespace EGAZT.Views.NewDesign.TahqaqViews
 {
     public partial class E_InvoicesScan : ContentPage
@@ -18,21 +20,83 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             zxing = new ZXingScannerView
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
-                    VerticalOptions = LayoutOptions.FillAndExpand,
-                AutomationId = "zxingScannerView",
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                AutomationId = "zxingScannerView"
+            };
+            //zxing.AutoFocus();
+            zxing.Options = new MobileBarcodeScanningOptions()
+            {
+                UseFrontCameraIfAvailable = false,
+                PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX, BarcodeFormat.EAN_13 },
+                TryHarder = true,
+                AutoRotate = false,
+                TryInverted = true,
+                UseCode39ExtendedMode = true,
+                DelayBetweenContinuousScans = 0,
+                CameraResolutionSelector = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+            };
+
+            var options = new MobileBarcodeScanningOptions
+            {
+                AutoRotate = true,
+                // UseNativeScanning = true,
+                TryHarder = true,
+
+                TryInverted = true,
+                CameraResolutionSelector = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+
             };
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                   // zxing.IsAnalyzing = false;
-                   // zxing.IsScanning = false;
+
+                    // Stop analysis until we navigate away so we don't keep reading barcodes
+                    // zxing.IsAnalyzing = false;
                     viewModel.scanCode = result.Text;
-                     viewModel.ScanEnvoiceQrCommand.Execute(null);
+                    viewModel.ScanEnvoiceQrCommand.Execute(null);
+                    // Show an alert
+                    //  await DisplayAlert("Scanned Barcode", result.Text, "OK");
+
+                    // Navigate away
+                    // await Navigation.PopAsync();
                 });
 
             InitializeComponent();
-            
             MainGrid.Children.Add(zxing);
+            zxing.AutoFocus();
+
         }
         protected override async void OnAppearing()
         {
@@ -41,25 +105,9 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
              {
                  _ = await Permissions.RequestAsync<Permissions.Camera>();
              }
-            zxing.IsAnalyzing = true;
             zxing.IsScanning = true;
-            /*  var  scanPage = new ZXingScannerPage();
-                 scanPage.OnScanResult += (result) =>
-                 {
-                     scanPage.IsScanning = false;
-
-                     Device.BeginInvokeOnMainThread(async () =>
-                     {
-                         await Navigation.PopAsync();
-                         await DisplayAlert("Scanned Barcode", result.Text, "OK");
-                     });
-                 };
-
-                 await Navigation.PushAsync(scanPage);
-             */
             base.OnAppearing();
-            // await viewModel.CheckQr()
-           // ;           // zxing.IsScanning = true;
+      
         }
     }
 }

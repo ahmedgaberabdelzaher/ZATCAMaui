@@ -2893,6 +2893,7 @@ namespace EGAZT
             navigationService.Configure("ReportOTPPage", typeof(ReportOTPPage));
             navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
+            navigationService.Configure("ContactUs", typeof(ContactUs));
 
             #endregion
 

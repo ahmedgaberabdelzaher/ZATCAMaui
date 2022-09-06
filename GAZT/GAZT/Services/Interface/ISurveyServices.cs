@@ -9,6 +9,7 @@ namespace EGAZT.Services.Interface
     {
         Task<Tuple<SurveyByDateResponse, bool, string>> GetSurveyByDate(string TIN, string Date);
         Task<HttpResponseMessage> AddSurveyData(AddSurveyBody addSurveyBody);
+       Task<HttpResponseMessage> AddSurveyAnswerToVoc(VocAddSurveyAnswerModel model);
 
     }
 }

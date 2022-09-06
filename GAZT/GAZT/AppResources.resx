@@ -9737,10 +9737,13 @@ Zakat, Tax and Customs Authority
       <data name="ChooseReports" xml:space="preserve">
          <value>Reports</value>
     </data>
-  <data name="CreateAccount" xml:space="preserve">
-    <value>Create an account</value>
-  </data>
+    <data name="CreateAccount" xml:space="preserve">
+        <value>Create an account</value>
+    </data>
    <data name="LocationAccess" xml:space="preserve">
-    <value>Please grant  Location access first.</value>
-  </data>
+        <value>Please grant  Location access first.</value>
+    </data> 
+    <data name="Langauge" xml:space="preserve">
+          <value>العربية</value>
+     </data>
 </root>

@@ -32,7 +32,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100*" />
                 </Grid.ColumnDefinitions>
-                <StackLayout Orientation="Horizontal">
+                <StackLayout IsVisible="false" Orientation="Horizontal">
 
                     <!--  Left/Right icon  -->
                     <Image
@@ -171,10 +171,14 @@
                         Text="{x:Static ResourceManager:AppResources.LoginTitle}" />
                 </StackLayout>
             </StackLayout>
-            <controls:BottomMenu
-                Grid.Row="0"
-                Margin="20"
-                VerticalOptions="EndAndExpand" />
+            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand">
+                <controls:BottomMenu.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="20" />
+                        <On Platform="Android," Value="20,20,20,0" />
+                    </OnPlatform>
+                </controls:BottomMenu.Margin>
+            </controls:BottomMenu>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

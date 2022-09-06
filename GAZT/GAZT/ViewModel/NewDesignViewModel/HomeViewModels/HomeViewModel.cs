@@ -52,6 +52,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
         public HomeViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
+            GetHomeMenuLst();
+
+            GetCustomServiceMenuLst();
+        }
+
+        private void GetHomeMenuLst()
+        {
             MenuLst = new ObservableCollection<MenuModel>()
             {
                 new MenuModel()
@@ -71,9 +78,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                    Name=AppResources.GeneralServices, ID="4",ImageSource="GeneralServices"
                 },
             };
-
-            GetCustomServiceMenuLst();
         }
+
         public async void OpenBrowser(Uri uri)
         {
             await Launcher.OpenAsync(uri);
@@ -104,7 +110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.ContactUs, ID=App.ContactUsPageView,ImageSource="CallUS"
+                   Name=AppResources.ContactUs, ID="ContactUs",ImageSource="CallUS"
                 },
                 new MenuModel()
                 {
@@ -112,7 +118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                 new MenuModel()
                 {
-                   Name=App.IsArabic?AppResources.ZZZSetToArabic:AppResources.ZZZSetToEnglish, ID="ChangeLang",ImageSource="LangaugeIcon"
+                   Name=AppResources.Langauge, ID="ChangeLang",ImageSource="LangaugeIcon"
                 },
             };
 
@@ -146,7 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 App.IsArabic = false;
                 App.changeFontFamily(App.appObj);
-                //SetLTRDirection();
+                
                 AppDirection = FlowDirection.LeftToRight;
                 
             }
@@ -156,7 +162,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 App.changeFontFamily(App.appObj);
                 AppDirection = FlowDirection.RightToLeft;
             }
+            SetFlowDirection(); GetHomeMenuLst();
             GetSideMenuLst();
+           
             _navigationService.NavigateTo("/SideMenuView");
         }
 

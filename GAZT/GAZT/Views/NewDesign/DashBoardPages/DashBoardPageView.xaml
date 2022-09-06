@@ -2288,12 +2288,12 @@
                                 Orientation="Horizontal">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <StackLayout Margin="10">
+                                        <StackLayout x:Name="item" Margin="10">
                                             <StackLayout.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
                                                     Command="{Binding SurveyNextCommand}"
-                                                    CommandParameter="2" />
+                                                    CommandParameter="{Binding .}" />
                                             </StackLayout.GestureRecognizers>
                                             <Image
                                                 HeightRequest="36"
@@ -2322,7 +2322,7 @@
                             <Label
                                 FontSize="18"
                                 HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.SurveyQ2}"
+                                Text="{Binding QuestionTxt}"
                                 TextColor="{StaticResource Primary}" />
                             <Frame
                                 Padding="9"
@@ -2330,7 +2330,7 @@
                                 BorderColor="#4FBBBD"
                                 CornerRadius="14"
                                 HeightRequest="100">
-                                <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " />
+                                <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
                             </Frame>
                             <Frame
                                 Grid.Column="0"

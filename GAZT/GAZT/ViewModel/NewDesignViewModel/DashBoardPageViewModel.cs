@@ -66,7 +66,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
-        int surveyCurrentStep=0;
+        int qNumber=2;
+        public int QNumber
+        {
+            get
+            {
+                return qNumber;
+            }
+            set
+            {
+                qNumber = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        int surveyCurrentStep =0;
         public int SurveyCurrentStep
         {
             get
@@ -96,7 +111,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() {ImojieSource= "Angry", ID="1" }, new SurveyQuestions() { ImojieSource= "Dissatisfied",ID="2" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID="3" }, new SurveyQuestions() { ImojieSource = "Satisfied",ID="4" }, new SurveyQuestions() { ImojieSource = "StronglyDissatisfied", ID="5" } };
+        string questionTxt;
+        public string QuestionTxt
+        {
+            get
+            {
+                return questionTxt;
+            }
+            set
+            {
+                questionTxt = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        SurveyQuestions selctedImojy;
+        public SurveyQuestions SelctedImojy
+        {
+            get
+            {
+                return selctedImojy;
+            }
+            set
+            {
+                selctedImojy = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() {ImojieSource= "Angry", ID= "61c32bf2527cacedb5d31930" }, new SurveyQuestions() { ImojieSource= "Dissatisfied",ID= "61c32bf2527cacedb5d3192f" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Satisfied",ID= "61c32bf2527cacedb5d3192d" }, new SurveyQuestions() { ImojieSource = "StronglyDissatisfied", ID= "61c32bf2527cacedb5d3192c" } };
         public ObservableCollection<SurveyQuestions> ImojiesLst
         {
             get
@@ -109,6 +153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged();
             }
         }
+
 
 
         public string selectedFbNum = "";
@@ -3615,6 +3660,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ICommand SlectedImojieCommand
+        {
+            get
+            {
+                return new Command<SurveyQuestions>((selected) =>
+                {
+
+                    SelctedImojy = selected;
+                    if (selected.ID== "61c32bf2527cacedb5d31930" || selected.ID== "61c32bf2527cacedb5d3192f")
+                    {
+                        QuestionTxt = AppResources.SurveyQ2;
+                    }
+                    else
+                    {
+                        QuestionTxt = AppResources.SurveyQ3;
+                    }
+                    SurveyCurrentStep = 2;
+                });
+            }
+        }
 
         public ICommand SurveyActionCommand
         {

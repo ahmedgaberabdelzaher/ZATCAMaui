@@ -40,12 +40,12 @@ namespace EGAZT
     public partial class App : Application
     {
         // public static string CustomBaseUrl = "http://10.112.34.26:8024/";
-         //public static string CustomBaseUrl = "http://10.112.34.38:8024/";
+         public static string CustomBaseUrl = "http://10.112.34.38:8024/";
         public static string VatCustom = "http://172.50.15.39:8443/api/";
         //public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
-        public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
-        //public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
-        public static string VatBaseUrl = "http://172.50.15.39:80/api";
+       // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
+       public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+       // public static string VatBaseUrl = "http://172.50.15.39:80/api";
         #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
@@ -498,7 +498,7 @@ namespace EGAZT
                 //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
-               // navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
+               //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                  //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new InquiryAboutAddOrShowReportsPage()) { BarTextColor = Color.White };
 

@@ -53,7 +53,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
-              
+                viewModel.CurrentTab = 1;
 
                 if (App.IsArabic)
                 {

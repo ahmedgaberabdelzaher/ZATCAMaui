@@ -115,6 +115,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                     CalcBy = 1;
                     IsConsumerCalc = false;
                     IsMerchantCalc = true;
+                    Totaltaxablepurchases = "";
                     ClearAllValues();
                 });
             }
@@ -152,7 +153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                     {
                         if (!String.IsNullOrEmpty(Totaltaxablepurchases))
                         {
-                         Tax = (double.Parse(Totaltaxablepurchases) * 2) * .15;
+                         Tax = (double.Parse(Totaltaxablepurchases) * .15)+ double.Parse(Totaltaxablepurchases);
 
                         }
                         else

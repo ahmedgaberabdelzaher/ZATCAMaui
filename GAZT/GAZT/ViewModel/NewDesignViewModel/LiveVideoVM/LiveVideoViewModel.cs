@@ -29,25 +29,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
     {
         #region Properties
 
-        string selectedVideo = AppResources.PortName + "1";
+        string selectedVideo = AppResources.Port1Name;
         public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
 
         YoutubeClient youtube;
 
-        public async Task<string> GetYouTubeUrl(string videoId)
-        {
-            var videoInfoUrl = $"https://www.youtube.com/get_video_info?video_id={videoId}&html5=1&c=TVHTML5&cver=6.20180913";
-            using (var client = new HttpClient())
-            {
-                var videoPageContent =await client.GetAsync(videoInfoUrl);
-                var cont =await videoPageContent.Content.ReadAsStringAsync();
-                var videoParameters = HttpUtility.ParseQueryString(cont);
-                var encodedStreamsDelimited1 = WebUtility.HtmlDecode(videoParameters["player_response"]);
-                JObject jObject = JObject.Parse(encodedStreamsDelimited1);
-                string url = (string)jObject["streamingData"]["formats"][0]["url"];
-                return url;
-            }
-        }
 
 
         string videoUrl;
@@ -61,7 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = true,
                 VideoNumber = AppResources.Port1Name ,
-                VideoURl="jqbBGECwiao"
+                VideoURl="s7ye-npc7Io"
             },
             new VideoModel
             {
@@ -69,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port2Name,
-                  VideoURl="lpeOSC0bJt0"
+                  VideoURl="edkTRhGMGbc"
             },
             new VideoModel
             {
@@ -77,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-               VideoURl="q1824rnI1mM"
+               VideoURl="s7ye-npc7Io"
             },
             new VideoModel
             {
@@ -85,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                  VideoURl="iZ4N2lC4F58"
+                  VideoURl="edkTRhGMGbc"
             }
         };
         public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
@@ -97,11 +83,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         public LiveVideoViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
            youtube = new YoutubeClient();
-            //GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
-            Device.BeginInvokeOnMainThread(async() =>
-            {
-                VideoUrl =await GetYouTubeUrl(LiveVideosList[0].VideoURl);
-            });
+            GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+           
             
         }
 
