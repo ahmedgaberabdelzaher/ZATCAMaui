@@ -11,12 +11,13 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
@@ -39,6 +40,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding GetCurrentLocationCommand}"/>
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
@@ -48,12 +54,23 @@
                 <StackLayout>
 
                     <!--  Back Button  -->
-                    <Image
+                   <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand" >
+
+                         <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
@@ -68,7 +85,7 @@
                     FontSize="20"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}" 
-                    Text="{x:Static ResourceManager:AppResources.Submitareport}"
+                    Text="{Binding HeaderTitle}"
                     VerticalOptions="Center" />
             </Grid>
             <!--#endregion Header-->
@@ -209,6 +226,7 @@
                                     x:Name="reportTypeEntry"
                                     IsReadOnly="True"
                                     Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReportTypeName}"
                                     TextColor="#58595B">
@@ -240,7 +258,8 @@
                         </StackLayout>
 
                         <!--  Report Category Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding IsReportCategoryShowen}" >
 
                             <!--  Report Category Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -268,6 +287,7 @@
                                     x:Name="reportCategoryEntry"
                                     IsReadOnly="True"
                                     Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.ReportCategoryName}"
                                     TextColor="#58595B">
@@ -654,7 +674,8 @@
                         </StackLayout>
 
                         <!--  City Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding IsCityShowen}">
 
                             <!--  City Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -920,7 +941,7 @@
             <!--#endregion Body-->
 
             <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.RowSpan="2" IsVisible="{Binding IsShowBottomSheet}" />
+            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

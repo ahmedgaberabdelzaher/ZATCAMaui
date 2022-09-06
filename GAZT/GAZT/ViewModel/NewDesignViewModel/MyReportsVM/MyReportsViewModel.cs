@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using EGAZT.Models;
 using EGAZT.Models.MyReportsModel;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Models;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -37,12 +41,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
         public ObservableCollection<MyReportsModel> MyReportsList { get { return myReportsList; } set { myReportsList = value; RaisePropertyChanged(); } }
 
         public string PhoneNumber;
+        GenericPickerModel genericPickerModel = new GenericPickerModel();
         #endregion
 
 
         public MyReportsViewModel(IMyReportsServices myReportsServices, INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
             this._myReportsServices = myReportsServices;
+
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                SelectedFilterItemCommand.Execute(arg.SelectedValue);
+
+            });
         }
 
 
@@ -58,6 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         IsLoading = true;
                         var result = await _myReportsServices.GetMyReports(PhoneNumber) ?? new List<MyReportsModel>();
                         MyReportsList = new ObservableCollection<MyReportsModel>(result);
+                        ReportsResultTitle = AppResources.AllReports;
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
@@ -78,9 +89,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
         {
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
-                    IsFilterReportView = true;
+                    //AppResources.ZReportStatusInprogress
+                    List<string> filterData = new List<string>() { AppResources.AllReports, AppResources.MyOpenedReports, AppResources.MyClosedReports };
+                   
+                    genericPickerModel.PickerData = filterData;
+                    genericPickerModel.PickerTitle = string.Empty;
+                    genericPickerModel.PickerId = "filterMyReportsDataPicker";
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 });
 
             }
@@ -167,14 +184,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
 
             }
         }
-        public ICommand ClosBottomSheetCommand
-        {
-            get
-            {
-                return new Command(() => { IsFilterReportView = false; });
-
-            }
-        }
 
         public ICommand SelectedFilterItemCommand
         {
@@ -185,32 +194,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                     try
                     {
                         int? status = null;
-                        switch (selectedFilter)
+                        var value = selectedFilter as string;
+                        if(value.Equals(AppResources.MyClosedReports))
                         {
-                            case "3":
-                                status = 3;
-                                ReportsResultTitle = AppResources.MyClosedReports;
-                                break;
-                            case "0":
-                                status = 0;
-                                ReportsResultTitle = AppResources.MyClosedReports;
-                                break;
-                            case "1":
-                                status = 1;
-                                ReportsResultTitle = AppResources.MyOpenedReports;
-                                break;
-                            case "2":
-                                status = 2;
-                                ReportsResultTitle = AppResources.ZReportStatusInprogress;
-                                break;
-                            default:
-                                status = null;
-                                ReportsResultTitle = AppResources.AllReports;
-                                break;
-
+                            status = 3;
+                            ReportsResultTitle = AppResources.MyClosedReports;
                         }
-
-                        IsFilterReportView = false;
+                        else if (value.Equals(AppResources.MyOpenedReports))
+                        {
+                            status = 1;
+                            ReportsResultTitle = AppResources.MyOpenedReports;
+                        }
+                        else if (value.Equals(AppResources.ZReportStatusInprogress))
+                        {
+                            status = 2;
+                            ReportsResultTitle = AppResources.ZReportStatusInprogress;
+                        }
+                        else
+                        {
+                            status = null;
+                            ReportsResultTitle = AppResources.AllReports;
+                        }
                         IsLoading = true;
                         var result = await _myReportsServices.GetMyReports(PhoneNumber, status) ?? new List<MyReportsModel>();
                         MyReportsList = new ObservableCollection<MyReportsModel>(result);

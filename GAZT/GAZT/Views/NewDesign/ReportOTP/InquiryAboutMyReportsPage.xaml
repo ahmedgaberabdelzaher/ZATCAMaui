@@ -50,12 +50,23 @@
                 <StackLayout>
 
                     <!--  Back Button  -->
-                    <Image
+                   <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand" >
+
+                         <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
@@ -100,211 +111,205 @@
                                      Orientation="Horizontal">
 
                             <!--Phone Card-->
-                            <Frame Padding="0"
-                                   WidthRequest="171"
-                                   VerticalOptions="StartAndExpand"
-                                   HorizontalOptions="StartAndExpand"
-                                   HeightRequest="136"
-                                   CornerRadius="10"
-                                   BorderColor="#E6E6E6"
-                                   IsClippedToBounds="True">
 
-                                <Grid>
+                            <Grid
+                                WidthRequest="171"
+                                Padding="0"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="136">
 
-                                    <!--Background image selected-->
-                                    <Image Aspect="AspectFill"
-                                           Source="Unselected.png">
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                        Source="Unselected.png">
 
-                                          <Image.Triggers>
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="Unselected.png"/>
+                                            </DataTrigger>
+
                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="True">
-                                                        <Setter Property="Source" Value="Unselected.png"/>
-                                                </DataTrigger>
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
+                                            </DataTrigger>
 
-                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                        <Setter Property="Source" Value="UnselectedCard.png"/>
-                                                </DataTrigger>
+                                        </Image.Triggers>
 
-                                          </Image.Triggers>
+                                </Image>
+
+                                <StackLayout VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="20,0"
+                                                Spacing="20">
+
+                                    <!--Phone icon-->
+                                    <Image Aspect="AspectFit"
+                                            VerticalOptions="StartAndExpand"
+                                            WidthRequest="45"
+                                            HeightRequest="45"
+                                            HorizontalOptions="StartAndExpand"
+                                            Source="selectedPhone.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="selectedPhone.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="unSelectedPhone.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
 
                                     </Image>
 
-                                    <StackLayout VerticalOptions="CenterAndExpand"
-                                                 HorizontalOptions="StartAndExpand"
-                                                 Margin="20,0"
-                                                 Spacing="20">
-
-                                        <!--Phone icon-->
-                                       <Image Aspect="AspectFit"
-                                              VerticalOptions="StartAndExpand"
-                                              WidthRequest="45"
-                                              HeightRequest="45"
-                                              HorizontalOptions="StartAndExpand"
-                                              Source="selectedPhone.png">
-
-                                            <Image.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="True">
-                                                        <Setter Property="Source" Value="selectedPhone.png"/>
-                                                </DataTrigger>
-
-                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                        <Setter Property="Source" Value="unSelectedPhone.png"/>
-                                                </DataTrigger>
-
-                                            </Image.Triggers>
-
-                                        </Image>
-
-                                       <!--  Phone number Label  -->
-                                       <custom:CustomLabel
-                                            HorizontalOptions="StartAndExpand"
-                                            FontSize="16"
-                                            TextColor="White"
-                                            Text="{x:Static ResourceManager:AppResources.MobileNumber}">
-
-                                             <custom:CustomLabel.Triggers>
-
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="custom:CustomLabel"
-                                                    Value="True">
-                                                        <Setter Property="TextColor" Value="White"/>
-                                                </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="custom:CustomLabel"
-                                                    Value="False">
-                                                        <Setter Property="TextColor" Value="#232323"/>
-                                                </DataTrigger>
-
-
-                                            </custom:CustomLabel.Triggers>
-
-                                        </custom:CustomLabel>
-
-                                    </StackLayout>
-
-                                </Grid>
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}"/>
-                                </Frame.GestureRecognizers>
-                            </Frame>
-
-                            <!--Report number card-->
-                            <Frame Padding="0"
-                                    WidthRequest="171"
-                                    IsVisible="False"
-                                    VerticalOptions="StartAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    HeightRequest="136"
-                                    BorderColor="#E6E6E6"
-                                    CornerRadius="10"
-                                    IsClippedToBounds="True">
-
-                                <Grid>
-
-                                    <!--Background image selected-->
-                                    <Image Aspect="AspectFill"
-                                           Source="UnselectedCard.png">
-
-                                         <Image.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                        <Setter Property="Source" Value="Unselected.png"/>
-                                                </DataTrigger>
-
-                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="True">
-                                                        <Setter Property="Source" Value="UnselectedCard.png"/>
-                                                </DataTrigger>
-
-                                            </Image.Triggers>
-
-                                    </Image>
-
-                                    <StackLayout VerticalOptions="CenterAndExpand"
-                                                 HorizontalOptions="StartAndExpand"
-                                                 Margin="20,0"
-                                                 Spacing="20">
-
-                                        <!--keyPad image-->
-                                       <Image Aspect="AspectFit"
-                                              VerticalOptions="StartAndExpand"
-                                              HorizontalOptions="StartAndExpand"
-                                              WidthRequest="45"
-                                              HeightRequest="45"
-                                              Source="unReportNumber.png">
-
-                                             <Image.Triggers>
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                        <Setter Property="Source" Value="SelectedReport.png"/>
-                                                </DataTrigger>
-
-                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="Image"
-                                                    Value="True">
-                                                        <Setter Property="Source" Value="unReportNumber.png"/>
-                                                </DataTrigger>
-
-                                            </Image.Triggers>
-
-                                        </Image>
-
-                                       <!--Report number label-->
-                                       <custom:CustomLabel
-                                            HorizontalOptions="StartAndExpand"
-                                            FontSize="16"
-                                            TextColor="#232323"
-                                            Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}">
+                                    <!--  Phone number Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="16"
+                                        TextColor="White"
+                                        Text="{x:Static ResourceManager:AppResources.MobileNumber}">
 
                                             <custom:CustomLabel.Triggers>
 
-                                                <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="custom:CustomLabel"
-                                                    Value="False">
-                                                        <Setter Property="TextColor" Value="White"/>
-                                                </DataTrigger>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="#232323"/>
+                                            </DataTrigger>
+
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                </StackLayout>
+
+                                <!--<Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CardSelectionCommand}"/>
+                                </Grid.GestureRecognizers>-->
+
+                            </Grid>
+
+
+                            <!--Report number card-->
+
+                            <Grid
+                                WidthRequest="171"
+                                Padding="0"
+                                IsVisible="False"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="136">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                        Source="UnselectedCard.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="Unselected.png"/>
+                                            </DataTrigger>
 
                                                 <DataTrigger
-                                                    Binding="{Binding IsPhoneSelected}"
-                                                    TargetType="custom:CustomLabel"
-                                                    Value="True">
-                                                        <Setter Property="TextColor" Value="#232323"/>
-                                                </DataTrigger>
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout VerticalOptions="CenterAndExpand"
+                                                HorizontalOptions="StartAndExpand"
+                                                Margin="20,0"
+                                                Spacing="20">
+
+                                    <!--keyPad image-->
+                                    <Image Aspect="AspectFit"
+                                            VerticalOptions="StartAndExpand"
+                                            HorizontalOptions="StartAndExpand"
+                                            WidthRequest="45"
+                                            HeightRequest="45"
+                                            Source="unReportNumber.png">
+
+                                            <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="SelectedReport.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="unReportNumber.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                    </Image>
+
+                                    <!--Report number label-->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="16"
+                                        TextColor="#232323"
+                                        Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}">
+
+                                        <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsPhoneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="#232323"/>
+                                            </DataTrigger>
 
 
-                                            </custom:CustomLabel.Triggers>
-                                        </custom:CustomLabel>
+                                        </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel>
 
-                                    </StackLayout>
+                                </StackLayout>
 
-                                </Grid>
-
-                                 <Frame.GestureRecognizers>
+                                <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding CardSelectionCommand}"/>
-                                 </Frame.GestureRecognizers>
-                            </Frame>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
 
                         </StackLayout>
                        
@@ -381,6 +386,7 @@
                                 </inputLayout:SfTextInputLayout.TrailingView>
 
                             </inputLayout:SfTextInputLayout>
+
                         </StackLayout>
 
 

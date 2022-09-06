@@ -100,6 +100,8 @@
 	  <None Remove="Views\NewDesign\CustomServicesPages\CustomDashBoard\" />
 	  <None Remove="Views\NewDesign\ReportOTP\" />
 	  <None Remove="ViewModel\NewDesignViewModel\ReportOTPVM\" />
+	  <Compile Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml.cs" />
+	  <EmbeddedResource Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
