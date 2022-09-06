@@ -10,6 +10,11 @@ namespace EGAZT.Services.Classes
 {
     public class SubmitReportServices : ISubmitReportServices
     {
+        public async Task<ReportTypeList> GetReportType()
+        {
+            var response = await NewHTTPManger.Get<BaseResponseModel<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
+            return response?.Result?.Data;
+        }
         public async Task<List<CategoryDataResponse>> GetReportCategories(string typeId)
         {
             var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;

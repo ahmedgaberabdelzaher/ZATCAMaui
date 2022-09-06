@@ -8,6 +8,7 @@ namespace EGAZT.Services.Interface
 {
     public interface ISubmitReportServices
     {
+        Task<ReportTypeList> GetReportType();
         Task<List<CategoryDataResponse>> GetReportCategories(string typeId);
         Task<List<BaseRegionAndCity>> GetCities(string regionId);
         Task<List<BaseRegionAndCity>> GetRegions();

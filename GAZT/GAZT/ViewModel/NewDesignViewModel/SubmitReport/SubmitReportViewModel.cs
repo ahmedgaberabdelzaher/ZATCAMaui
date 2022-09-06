@@ -373,18 +373,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             get
             {
 
-                return new Command(() =>
+                return new Command(async () =>
                 {
+                    IsLoading = true;
                     isReportTypeSelected = true;
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>()
-                    {
-                        new BottomSheetModel {Id= "V1", Name = AppResources.VATCertificates},
-                        new BottomSheetModel {Id= "V2", Name =AppResources.ExciseCertificates},
-                        new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
-                    };
+                    var reportType = await this._submitReportServices.GetReportType();
+                    var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName }).ToList() ?? new List<BottomSheetModel>();
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ReportType;
                     TempBottomSheetList = BottomSheetList;
+                    IsLoading = false;
                 });
 
             }
