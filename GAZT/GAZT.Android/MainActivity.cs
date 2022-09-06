@@ -18,6 +18,7 @@ using System.IO;
 using Newtonsoft.Json;
 using Android.Content;
 using Acr.UserDialogs;
+using MediaManager;
 
 namespace GAZT.Droid
 {
@@ -44,7 +45,7 @@ namespace GAZT.Droid
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this);
             UserDialogs.Init(this);
-
+            CrossMediaManager.Current.Init(this);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;

@@ -20,6 +20,7 @@ using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading.Tasks;
+using MediaManager;
 
 namespace GAZT.iOS
 {
@@ -62,7 +63,7 @@ namespace GAZT.iOS
             SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
             SfCardLayoutRenderer.Init();
-       
+            CrossMediaManager.Current.Init();
             new SfRotator();
             SfListViewRenderer.Init();
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.

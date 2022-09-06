@@ -22,6 +22,7 @@ using System.Net.Http;
 using System.Web;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using MediaManager;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 {
@@ -32,9 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         string selectedVideo = AppResources.Port1Name;
         public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
 
-        YoutubeClient youtube;
-
-
+        YoutubeClient youtube = new YoutubeClient();
 
         string videoUrl;
         public string VideoUrl { get { return videoUrl; } set { videoUrl = value; RaisePropertyChanged(); } }
@@ -63,7 +62,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-               VideoURl="s7ye-npc7Io"
+                VideoURl="s7ye-npc7Io"
             },
             new VideoModel
             {
@@ -71,7 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                  VideoURl="edkTRhGMGbc"
+                VideoURl="edkTRhGMGbc"
             }
         };
         public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
@@ -82,78 +81,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 
         public LiveVideoViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-           youtube = new YoutubeClient();
-            GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
            
-            
         }
 
         #region Commands
-/*
-        int currentTab = 3;
-        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
 
-        public ICommand ChangeCurrentTabCommand
-        {
-            get
-            {
-                return new Command<string>((tab) =>
+         public ICommand OnAppearingCommand
+         {
+                get
                 {
-                    if (tab != currentTab.ToString())
+                    return new Command<VideoModel>(async(videoItem) =>
                     {
-                        if (tab == "1")
-                        {
+                        IsLoading = true;
 
-                            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                            return;
-                        }
-                        _navigationService.NavigateTo("/Home", tab);
-
-                    }
-
-                });
-            }
-        }
-*/
-        public ICommand SelectedVideoItemCommand
-        {
+                        // await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+                        //await CrossMediaManager.Current.Play("https://www.youtube.com/watch?v=edkTRhGMGbc");
+                        IsLoading = false;
+                   
+                    });
+                }
+         }
+         public ICommand OnDisappearingCommand
+         {
             get
             {
-                return new Command(async(item) =>
+                return new Command<VideoModel>(async (videoItem) =>
                 {
                     IsLoading = true;
-                  //  VideoUrl = null;
-                    var videoItem = item as VideoModel;
-                   // VideoUrl = videoItem.VideoURl;
-                    SelectedVideo = videoItem.VideoNumber;
 
-                    foreach (var video in LiveVideosList)
-                    {
-                        video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
-                    }
+                    await CrossMediaManager.Current.Stop();
 
-                    await GetYoutubeLiveVideoURl(videoItem.VideoURl);
-                    /*string videoId = "uXQ2-eUjRYs";
-                    if (videoItem.VideoNumber.Contains("2")|| videoItem.VideoNumber.Contains("4"))
-                    {
-                        await GetYoutubeLiveVideoURl(videoId);
-                    }
-                    else
-                    {
-                        await GetYoutubeLiveVideoURl("S2USjH3wLyA");
-                        /*StreamManifest streamManifest = await youtube.Videos.Streams.GetManifestAsync("https://www.youtube.com/watch?v=CvH5QXUWtiE");
-                        IVideoStreamInfo streamInfo = streamManifest.GetMuxedStreams().GetWithHighestVideoQuality();
-                        if (streamInfo != null)
-                        {
-                            VideoUrl = streamInfo.Url;
-                        }
-                    }*/
                     IsLoading = false;
-                   
+
                 });
             }
+         }
+
+        public ICommand SelectedVideoItemCommand
+        {
+                get
+                {
+                    return new Command<VideoModel>(async(videoItem) =>
+                    {
+                        IsLoading = true;
+
+                        SelectedVideo = videoItem.VideoNumber;
+
+                        foreach (var video in LiveVideosList)
+                        {
+                            video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
+                        }
+
+                        await GetYoutubeLiveVideoURl(videoItem.VideoURl);
+
+                        IsLoading = false;
+                   
+                    });
+                }
         }
 
+
+        #endregion
+
+        #region Methods
         private async Task GetYoutubeLiveVideoURl(string videoId)
         {
             var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);

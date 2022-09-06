@@ -11,6 +11,7 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
+    xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
@@ -37,6 +38,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding OnAppearingCommand}"/>
+        <xct:EventToCommandBehavior EventName="Disappearing" Command="{Binding OnDisappearingCommand}"/>
+    </ContentPage.Behaviors>
 
     <ContentPage.Content>
 
@@ -77,6 +83,7 @@
                             Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
                             TextColor="#58595B" />
 
+                        <!-- Video URL-->
                         <Frame
                             Padding="0"
                             BorderColor="#EBEBEB"
@@ -85,10 +92,14 @@
                             IsClippedToBounds="True"
                             WidthRequest="470">
 
-                            <xct:MediaElement
+                           <mm:VideoView  AutoPlay="True"
+                                          ShowControls="True"
+                                          Source="https://www.youtube.com/watch?v=edkTRhGMGbc" />
+
+                            <!--<xct:MediaElement
                                 AutoPlay="True"
                                 ShowsPlaybackControls="True"
-                                Source="{Binding VideoUrl}" />
+                                Source="{Binding VideoUrl}" />-->
 
                         </Frame>
 
@@ -101,10 +112,12 @@
                             TextColor="#58595B"
                             VerticalOptions="Center" />
 
-                        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand">
 
 
                             <ScrollView VerticalScrollBarVisibility="Never">
+
                                 <Grid
                                     x:Name="videosList"
                                     BindableLayout.ItemsSource="{Binding LiveVideosList}"
@@ -165,6 +178,7 @@
                                     </BindableLayout.ItemTemplate>
 
                                 </Grid>
+
                             </ScrollView>
 
                         </StackLayout>
