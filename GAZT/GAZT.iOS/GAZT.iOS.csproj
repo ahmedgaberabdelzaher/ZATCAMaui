@@ -574,6 +574,9 @@
     <BundleResource Include="Resources\GreenRightArrow.png" />
     <BundleResource Include="Resources\GreenRightArrow%402x.png" />
     <BundleResource Include="Resources\GreenRightArrow%403x.png" />
+    <BundleResource Include="Resources\reportSearchBar.png" />
+    <BundleResource Include="Resources\reportSearchBar%403x.png" />
+    <BundleResource Include="Resources\reportSearchBar%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

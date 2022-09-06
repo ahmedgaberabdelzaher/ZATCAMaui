@@ -11,9 +11,18 @@ using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
+using GAZT;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.Forms.GoogleMaps;
+using Xamarin.Forms.Maps;
+using Distance = Xamarin.Forms.GoogleMaps.Distance;
+using Geocoder = Xamarin.Forms.GoogleMaps.Geocoder;
+using Map = Xamarin.Forms.GoogleMaps.Map;
+using MapSpan = Xamarin.Forms.GoogleMaps.MapSpan;
+using Pin = Xamarin.Forms.GoogleMaps.Pin;
+using Position = Xamarin.Forms.GoogleMaps.Position;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 {
@@ -40,17 +49,34 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         bool hasError;
         public bool HasError { get { return hasError; } set { hasError = value; RaisePropertyChanged(); } }
 
+        bool isReportCategoryShowen;
+        public bool IsReportCategoryShowen { get { return isReportCategoryShowen; } set { isReportCategoryShowen = value; RaisePropertyChanged(); } }
+
+        bool isCityShowen;
+        public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; RaisePropertyChanged(); } }
+
         bool isNeedRewardError;
         public bool IsNeedRewardError { get { return isNeedRewardError; } set { isNeedRewardError = value; RaisePropertyChanged(); } }
 
         string reportNumberResult;
         public string ReportNumberResult { get { return reportNumberResult; } set { reportNumberResult = value; RaisePropertyChanged(); } }
 
+        string headerTitle = AppResources.Submitareport;
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+
+        string searchText;
+        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+
+        public Map GoogleMap { get; set; }
+
         ObservableCollection<ReportFileModel> reportUloadedFiles = new ObservableCollection<ReportFileModel>();
         public ObservableCollection<ReportFileModel> ReportUloadedFiles { get { return reportUloadedFiles; } set { reportUloadedFiles = value; RaisePropertyChanged(); } }
 
         ObservableCollection<BottomSheetModel> bottomSheetList;
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> tempBottomSheetList;
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
 
         private bool isReportTypeSelected = false;
         private bool isReportCategorySelected = false;
@@ -118,6 +144,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
+        public ICommand ShowMapCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    await MoveMapToLocation();
+                });
+
+            }
+        }
+
+        public ICommand GetCurrentLocationCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        _ = await GetCurrentLocation();
+                    }
+                    catch (Exception ex)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.Somethingwentwrong;
+                    }
+                   
+
+                });
+            }
+        }
+
         public ICommand OpenTermsLinkCommand
         {
             get
@@ -129,6 +188,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+        public ICommand SearchEntryCommand
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+
+                        var entry = e as BorderlessEntry;
+                        var value = entry.Text.ToLower();
+                        if (string.IsNullOrWhiteSpace(value))
+                            BottomSheetList = TempBottomSheetList;
+                        else
+                        {
+                            var result = BottomSheetList.Where(s => s.Name.Contains(value)).ToList() ?? new List<BottomSheetModel>();
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        }
+
+
+                    }
+                });
+            }
+        }
+        
         public ICommand GoToMyReportsCommand
         {
             get
@@ -172,21 +257,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
-        public ICommand ClosBottomSheetCommand
+        public override ICommand BackCommand
         {
             get
             {
-                return new Command(() => { IsShowBottomSheet = false; });
-
-            }
-        }
-
-        public ICommand ShowMapCommand
-        {
-            get
-            {
-                return new Command(() => { IsShowMapView = true; });
-
+                return new Command(() =>
+                {
+                    if (IsShowBottomSheet)
+                    {
+                        IsShowBottomSheet = false;
+                        HeaderTitle = AppResources.Submitareport;
+                    }
+                    else
+                        _navigationService.GoBack();
+                });
             }
         }
 
@@ -231,6 +315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                         if (isReportTypeSelected)
                         {
+
                             SubmitReport.ReportTypeName = e.Name;
                             SubmitReport.ReportTaxType = e.Id;
                             ReportCategory = await this._submitReportServices.GetReportCategories(SubmitReport?.ReportTaxType);
@@ -239,6 +324,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             isReportTypeSelected = false;
                             SubmitReport.ReportCategoryName = string.Empty;
                             SubmitReport.ReportCategory = string.Empty;
+
+                            IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
                         }
                         else if (isReportCategorySelected)
                         {
@@ -254,6 +341,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             isRegionSelected = false;
                             SubmitReport.City = string.Empty;
                             SubmitReport.CityCode = string.Empty;
+                            IsCityShowen = string.IsNullOrWhiteSpace(SubmitReport.Region) ? false : true;
                         }
                         else
                         {
@@ -263,6 +351,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
 
                         IsShowBottomSheet = false;
+                        HeaderTitle = AppResources.Submitareport;
+                        SearchText = string.Empty;
+                        TempBottomSheetList = BottomSheetList;
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -292,6 +383,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         new BottomSheetModel {Id= "V8", Name = AppResources.Einvoice},
                     };
                     IsShowBottomSheet = true;
+                    HeaderTitle = AppResources.ReportType;
+                    TempBottomSheetList = BottomSheetList;
                 });
 
             }
@@ -305,14 +398,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     isReportCategorySelected = true;
                     IsShowBottomSheet = true;
-                    if (submitReport.ReportTypeName == null)
-                        OpenReportTypeCommand.Execute(null);
-                    else
-                    {
-                        var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    }
-                        
+                    HeaderTitle = AppResources.ReportCategory;
+                    var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                    TempBottomSheetList = BottomSheetList;
+
                 });
             }
         }
@@ -331,6 +421,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
+                    HeaderTitle = AppResources.ZZZZProvinceRegion;
+                    TempBottomSheetList = BottomSheetList;
                     IsLoading = false;
                 });
             }
@@ -342,19 +434,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    if (submitReport.Region != null)
-                    {
-                        IsLoading = true;
+                    IsLoading = true;
 
-                        if(CitysList == null)
-                            CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
+                    if (CitysList == null)
+                        CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
 
-                        var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
-                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                        IsShowBottomSheet = true;
-                        IsLoading = false;
-                    }
-                    else OpenRegionCommand.Execute(null);
+                    var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                    IsShowBottomSheet = true;
+                    HeaderTitle = AppResources.ReportCity;
+                    TempBottomSheetList = BottomSheetList;
+                    IsLoading = false;
 
                 });
             }
@@ -485,7 +575,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
                 }
-                else if(Email.IsMatch(SubmitReport.ReporterEmail))
+                else if(!Email.IsMatch(SubmitReport.ReporterEmail))
                 {
                     IsShowMsgView = true;
                     IsNeedRewardError = true;
@@ -496,6 +586,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             HasError = false;
             return true;
 
+        }
+
+        private async Task<bool> GetCurrentLocation()
+        {
+            var statusLocationWhenInUse = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
+            if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
+            {
+                var location = await Geolocation.GetLastKnownLocationAsync();
+
+                SubmitReport.Latitude = location.Latitude;
+                SubmitReport.Longitude = location.Longitude;
+
+                Geocoder geoCoder = new Geocoder();
+
+                Position position = new Position(location.Latitude, location.Longitude);
+
+                IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+
+                SubmitReport.Street = possibleAddresses.FirstOrDefault();
+
+                SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
+
+                return true;
+            }
+            else
+            {
+                await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+                return false;
+
+            }
+        }
+
+        private async Task MoveMapToLocation()
+        {
+            if (await GetCurrentLocation())
+            {
+                IsShowMapView = true;
+                
+                Device.BeginInvokeOnMainThread(async() =>
+                {
+                    await Task.Delay(1000);
+                    var zoomLevel = 10.71; // pick a value between 1 and 18
+                    var latlongdeg = 360 / (Math.Pow(2, zoomLevel));
+
+                    GoogleMap?.MoveToRegion(MapSpan.FromCenterAndRadius(
+                        new Position(SubmitReport.Latitude, SubmitReport.Longitude), Distance.FromMiles(latlongdeg)),true);
+                    GoogleMap?.Pins.Clear();
+                    GoogleMap?.Pins.Add(new Pin()
+                    {
+                        Address = SubmitReport.Street,
+                        Label = SubmitReport.Street,
+                        Position = new Position(SubmitReport.Latitude, SubmitReport.Longitude)
+                    });
+                });
+               
+
+            }
+            else
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.LocationAccess;
+            }
         }
         #endregion
 

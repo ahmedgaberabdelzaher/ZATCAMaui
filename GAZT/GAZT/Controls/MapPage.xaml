@@ -32,7 +32,7 @@
                 HasZoomEnabled="True"
                 IsIndoorEnabled="True"
                 IsShowingUser="True"
-                MapClicked="map_MapClicked"
+                MapLongClicked="map_MapLongClicked"
                 MapType="Street"
                 MyLocationEnabled="True" />
 

@@ -9662,4 +9662,7 @@ info@zatca.gov.sa</value>
     <data name="CreateAccount" xml:space="preserve">
     <value>انشئ حساب</value>
   </data>
+  <data name="LocationAccess" xml:space="preserve">
+    <value>يرجى منح حق الوصول إلى الموقع أولاً.</value>
+  </data>
 </root>

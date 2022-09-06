@@ -50,12 +50,23 @@
                 <StackLayout>
 
                     <!--  Back Button  -->
-                    <Image
+                   <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand" >
+
+                         <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />

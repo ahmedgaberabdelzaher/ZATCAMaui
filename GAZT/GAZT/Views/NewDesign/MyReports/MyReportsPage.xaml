@@ -55,12 +55,23 @@
                 <!--  Back Button  -->
                 <StackLayout IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
 
-                    <Image
+                   <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="CenterAndExpand" >
+
+                         <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
 
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding BackCommand}" />
@@ -506,9 +517,6 @@
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
-
-            <!--  Popup Filter report  -->
-            <filterView:FilterBottomSheetPage Grid.RowSpan="2" IsVisible="{Binding IsFilterReportView}" />
 
         </Grid>
     </ContentPage.Content>

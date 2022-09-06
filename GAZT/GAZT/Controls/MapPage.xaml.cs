@@ -18,14 +18,14 @@ namespace EGAZT.Controls
             {
                 InitializeComponent();
                 viewModel = App.Locator.SubmitReportViewModel;
+                viewModel.GoogleMap = map;
             }
             catch (Exception ex)
             {
 
             }
         }
-
-        async void map_MapClicked(System.Object sender, Xamarin.Forms.GoogleMaps.MapClickedEventArgs e)
+       async void map_MapLongClicked(System.Object sender, Xamarin.Forms.GoogleMaps.MapLongClickedEventArgs e)
         {
             try
             {
@@ -40,22 +40,29 @@ namespace EGAZT.Controls
                     Geocoder geoCoder = new Geocoder();
 
                     Position position = new Position(location.Latitude, location.Longitude);
-                    viewModel.SubmitReport.Longitude = location.Longitude;
-                    viewModel.SubmitReport.Latitude = location.Latitude;
+
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
+
                     viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
+
                     viewModel.SubmitReport.Location = $"{viewModel.SubmitReport.Latitude},{viewModel.SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
-                    var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
-                    var placemark = placemarks?.FirstOrDefault();
-                    string address = placemark?.SubThoroughfare ?? placemark?.Thoroughfare ?? placemark?.SubAdminArea ?? placemark?.AdminArea;
-       
+
+                    //var placemarks = await Geocoding.GetPlacemarksAsync(position.Latitude, position.Longitude);
+                    //var placemark = placemarks?.FirstOrDefault();
+                    //string address = placemark?.SubThoroughfare ?? placemark?.Thoroughfare ?? placemark?.SubAdminArea ?? placemark?.AdminArea;
+
+                    var zoomLevel = 10.71; // pick a value between 1 and 18
+                    var latlongdeg = 360 / (Math.Pow(2, zoomLevel));
+
                     map?.MoveToRegion(MapSpan.FromCenterAndRadius(
-                        new Position(position.Latitude, position.Longitude), Distance.FromMiles(2)));
+                        new Position(position.Latitude, position.Longitude), Distance.FromMiles(latlongdeg)));
+
                     map?.Pins.Clear();
+
                     map?.Pins.Add(new Pin()
                     {
-                        Address = address,
-                        Label = address,
+                        Address = possibleAddresses.FirstOrDefault(),
+                        Label = possibleAddresses.FirstOrDefault(),
                         Position = new Position(position.Latitude, position.Longitude)
                     });
 
@@ -63,11 +70,11 @@ namespace EGAZT.Controls
                 else
                 {
                     await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-                    
-                }
-               
 
-                
+                }
+
+
+
 
             }
             catch (System.Exception ex)
@@ -75,7 +82,6 @@ namespace EGAZT.Controls
 
             }
         }
-
     }
 }
 

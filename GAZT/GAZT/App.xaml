@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application
     x:Class="EGAZT.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -18,6 +18,9 @@
             </ResourceDictionary.MergedDictionaries>
             <!--  Vat New UI  -->
             <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
+            </Style>
+             <Style TargetType="custom:CustomLabel">
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
             </Style>
             <Color x:Key="Primary">#002447</Color>
