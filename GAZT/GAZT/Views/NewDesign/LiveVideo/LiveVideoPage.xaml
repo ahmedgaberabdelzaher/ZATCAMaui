@@ -41,7 +41,6 @@
 
      <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding OnAppearingCommand}"/>
-        <xct:EventToCommandBehavior EventName="Disappearing" Command="{Binding OnDisappearingCommand}"/>
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
@@ -83,25 +82,43 @@
                             Text="{x:Static ResourceManager:AppResources.LiveVideoSubTitle}"
                             TextColor="#58595B" />
 
-                        <!-- Video URL-->
-                        <Frame
-                            Padding="0"
-                            BorderColor="#EBEBEB"
-                            CornerRadius="20"
-                            HeightRequest="250"
-                            IsClippedToBounds="True"
-                            WidthRequest="470">
+                         <!-- Video URL-->
+                        <OnPlatform x:TypeArguments="View">
 
-                           <mm:VideoView  AutoPlay="True"
-                                          ShowControls="True"
-                                          Source="https://www.youtube.com/watch?v=edkTRhGMGbc" />
+                            <On Platform="iOS">
+                                <Frame
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="20"
+                                    HeightRequest="250"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="470">
 
-                            <!--<xct:MediaElement
-                                AutoPlay="True"
-                                ShowsPlaybackControls="True"
-                                Source="{Binding VideoUrl}" />-->
+                                    <xct:MediaElement
+                                        AutoPlay="True"
+                                        ShowsPlaybackControls="True"
+                                        Source="{Binding VideoUrl}" />
 
-                        </Frame>
+                                </Frame>
+                            </On>
+
+                            <On Platform="Android">
+
+                                <mm:VideoView
+                                    AutoPlay="True"
+                                    HeightRequest="250"
+                                    x:Name="liveVideo"
+                                    WidthRequest="470"
+                                    ShowControls="False"
+                                    Source="{Binding VideoUrl}" />
+                            </On>
+                        </OnPlatform>
+                         
+
+
+
+                       
+                       
 
                         <!--  Live Video Sub Title Label  -->
                         <Label

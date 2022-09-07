@@ -1,28 +1,14 @@
 ﻿using System;
-using EGAZT.Controls;
-using EGAZT.Models.SubmitReportModel;
-using EGAZT.Services.Interface;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Prism.Services.Dialogs;
 using GalaSoft.MvvmLight.Views;
 using IDialogService = GalaSoft.MvvmLight.Views.IDialogService;
 using System.Windows.Input;
 using Xamarin.Forms;
 using GalaSoft.MvvmLight;
-using System.Linq;
-using System.Collections;
-using Xamarin.Forms.Internals;
-using Xamarin.CommunityToolkit.UI.Views;
 using YoutubeExplode;
-using YoutubeExplode.Videos.Streams;
-using Xamarin.CommunityToolkit.Core;
 using System.Threading.Tasks;
-using System.Net.Http;
-using System.Web;
-using System.Net;
-using Newtonsoft.Json.Linq;
 using MediaManager;
+using MediaManager.Library;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 {
@@ -46,7 +32,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = true,
                 VideoNumber = AppResources.Port1Name ,
-                VideoURl="s7ye-npc7Io"
+                VideoURl="onc4gSz5XqY"
+
             },
             new VideoModel
             {
@@ -54,7 +41,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port2Name,
-                  VideoURl="edkTRhGMGbc"
+                VideoURl="ycF3wtfRpAM"
+
             },
             new VideoModel
             {
@@ -62,7 +50,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-                VideoURl="s7ye-npc7Io"
+                VideoURl="Y2q0ELpgPYs"
+
             },
             new VideoModel
             {
@@ -70,7 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                VideoURl="edkTRhGMGbc"
+                VideoURl="8eJJ6EAMoO8"
+
             }
         };
         public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
@@ -90,54 +80,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
          {
                 get
                 {
-                    return new Command<VideoModel>(async(videoItem) =>
+                    return new Command(() =>
                     {
-                        IsLoading = true;
+                        try
+                        {
+                            Device.BeginInvokeOnMainThread(async() =>
+                            {
+                                IsLoading = true;
+                                await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+                                IsLoading = false;
+                            });
+                           
+                        }
+                        catch (Exception ex)
+                        {
 
-                        // await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
-                        //await CrossMediaManager.Current.Play("https://www.youtube.com/watch?v=edkTRhGMGbc");
-                        IsLoading = false;
+                        }
+                        
                    
                     });
                 }
-         }
-         public ICommand OnDisappearingCommand
-         {
-            get
-            {
-                return new Command<VideoModel>(async (videoItem) =>
-                {
-                    IsLoading = true;
-
-                    await CrossMediaManager.Current.Stop();
-
-                    IsLoading = false;
-
-                });
-            }
          }
 
         public ICommand SelectedVideoItemCommand
         {
-                get
+            get
+            {
+                return new Command<VideoModel>((videoItem) =>
                 {
-                    return new Command<VideoModel>(async(videoItem) =>
+                    try
                     {
-                        IsLoading = true;
-
-                        SelectedVideo = videoItem.VideoNumber;
-
-                        foreach (var video in LiveVideosList)
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
-                        }
+                            IsLoading = true;
 
-                        await GetYoutubeLiveVideoURl(videoItem.VideoURl);
+                            SelectedVideo = videoItem.VideoNumber;
 
-                        IsLoading = false;
+                            foreach (var video in LiveVideosList)
+                            {
+                                video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
+                            }
+
+                            await GetYoutubeLiveVideoURl(videoItem.VideoURl);
+                            IsLoading = false;
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
                    
-                    });
-                }
+                   
+                });
+            }
         }
 
 
@@ -146,8 +141,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         #region Methods
         private async Task GetYoutubeLiveVideoURl(string videoId)
         {
-            var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);
-            VideoUrl = streamManifests;
+            
+            try
+            {
+                var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);
+                VideoUrl = streamManifests;
+
+                if(Device.RuntimePlatform == Device.Android)
+                {
+                    var item = await CrossMediaManager.Current.Extractor.CreateMediaItem(VideoUrl);
+
+                    item.MediaType = MediaType.Hls;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+         
+
         }
         #endregion
     }
