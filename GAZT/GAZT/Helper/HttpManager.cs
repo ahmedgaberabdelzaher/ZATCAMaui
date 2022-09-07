@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,7 +16,15 @@ namespace EGAZT.Helper
 {
     public static class HttpManager
     {
-        public static async Task<Tuple<T,bool ,string >> GetListAsync<T>(string requestUrl) where T : class
+        
+
+        private static bool ValidateCertificate(object sender,
+                                            X509Certificate certificate,
+                                            X509Chain chain,
+                                            SslPolicyErrors sslPolicyErrors)
+        => false;
+    
+    public static async Task<Tuple<T,bool ,string >> GetListAsync<T>(string requestUrl) where T : class
         {
             try
             {
@@ -135,13 +145,17 @@ namespace EGAZT.Helper
         }
 
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false) where T :  class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false,string token="") where T :  class
         {
             try
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
+                    var h = new HttpClientHandler();
+                    h.ServerCertificateCustomValidationCallback = ValidateCertificate;
+                   
+                    var client = new System.Net.Http.HttpClient(h);
+
                      client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
@@ -149,6 +163,10 @@ namespace EGAZT.Helper
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
                     */
+                    if (token!="")
+                    {
+                     client.DefaultRequestHeaders.Add("Authorization",token);
+                    }
                     if (isTahqaq)
                     {
                         client.DefaultRequestHeaders.Add("client_id", "3d37d7dd9089b57f32820869df3d160f");

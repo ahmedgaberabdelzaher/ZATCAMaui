@@ -1,4 +1,5 @@
-﻿using EGAZT.Helper;
+﻿using EGAZT.AppConfigurations;
+using EGAZT.Helper;
 using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
@@ -1821,6 +1822,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ISurveyServices _surveyServices;
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService, ISurveyServices surveyServices) : base(navigationService, dialogService)
         {
+            IsShowMsgView = true;
             _surveyServices = surveyServices;
             MenuViewVisible = false;
             LiveChatVisible = false;
@@ -3671,10 +3673,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (selected.ID== "61c32bf2527cacedb5d31930" || selected.ID== "61c32bf2527cacedb5d3192f")
                     {
                         QuestionTxt = AppResources.SurveyQ2;
+                        QNumber = 2;
                     }
                     else
                     {
                         QuestionTxt = AppResources.SurveyQ3;
+                        QNumber = 3;
+
                     }
                     SurveyCurrentStep = 2;
                 });
@@ -3715,7 +3720,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         return;
                     }
-                    IsShowMsgView = await HaveSurveyForToday();
+                  //  IsShowMsgView = await HaveSurveyForToday();
                  });
             }
         }
@@ -3736,19 +3741,74 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             CultureInfo enCul = new CultureInfo("en-US");
             var date = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+            var tin = App.TP.Tin;
             AddSurveyBody body = new AddSurveyBody()
             {
                 dismiss = isDismiss,
                 scheduleid = SchedukeID,
-                tin = 1012
+                tin =long.Parse( App.TP.Tin)
             };
-
-            var res = await _surveyServices.AddSurveyData(body);
-            if (res.IsSuccessStatusCode)
+            var VocBody = new VocAddSurveyAnswerModel()
             {
-                Preferences.Set("DateOfSurvey", DateTime.Now.Date);
-                Preferences.Set("IsSurveyTaken", true);
+                collectId = PageSettings.CollectorId,
+                surveyId = PageSettings.SurveyID,
+                responseArr = new List<ResponseArr>()
+                {
+                 new ResponseArr()
+                 {
+                     date=new Date()
+                     {
+                         start=date,
+                         end=date
+                     },
+                     customData=new CustomData()
+                     {
+                         CustomerSegment="TIN",
+                          mobile=App.TP.Mobile,
+                           Name=App.TP.Name,
+                           TIN=App.TP.Tin
+                     },
+                     answers=new List<Answer>()
+                     {
+                         new Answer()
+                         {
+                             qId=PageSettings.Q1ID,
+                             ans=new List<An>()
+                             {
+                                 new An()
+                                 {
+                                     rowId=PageSettings.Q1AnsID,
+                                     colId=SelctedImojy.ID
+                                 }
+                             }
+                         },
+                         new Answer()
+                         {
+                             qId=QNumber==2?PageSettings.Q2ID:PageSettings.Q3ID,
+                             ans=new List<An>()
+                             {
+                                 new An()
+                                 {
+                                     rowId=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
+                                     text=SQAnswer
+                                 }
+                             }
+                         }
+                     }
+                 }
+                }
+            };
+            var VocResp = await _surveyServices.AddSurveyAnswerToVoc(VocBody, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2MGJmNTVjZWI4ZDM5ZjAzZWQ4ZDY0NDIiLCJpYXQiOjE2NjE3NzE5Nzd9.Mkihfva6j2iGT6LV9aQzLFxxCvSMnpBnHhw1Ikz8-OI");
+            if (VocResp.IsSuccessStatusCode)
+            {
+                var res = await _surveyServices.AddSurveyData(body);
+                if (res.IsSuccessStatusCode)
+                {
+                    Preferences.Set("DateOfSurvey", DateTime.Now.Date);
+                    Preferences.Set("IsSurveyTaken", true);
+                }
             }
+      
             IsShowMsgView = false;
             return false;
         }

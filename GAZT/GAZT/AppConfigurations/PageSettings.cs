@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Net.Http;
+
 namespace EGAZT.AppConfigurations
 {
-    public static class PageSettings
+     static class PageSettings
     {
         #region SurveyConfig
         public static string VocBaseUrl = "https://vocstg.gazt.gov.sa/v1/api/";
