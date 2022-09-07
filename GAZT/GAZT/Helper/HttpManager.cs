@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Security;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -14,7 +16,15 @@ namespace EGAZT.Helper
 {
     public static class HttpManager
     {
-        public static async Task<Tuple<T,bool ,string >> GetListAsync<T>(string requestUrl) where T : class
+        
+
+        private static bool ValidateCertificate(object sender,
+                                            X509Certificate certificate,
+                                            X509Chain chain,
+                                            SslPolicyErrors sslPolicyErrors)
+        => false;
+    
+    public static async Task<Tuple<T,bool ,string >> GetListAsync<T>(string requestUrl) where T : class
         {
             try
             {
@@ -141,7 +151,11 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
+                    var h = new HttpClientHandler();
+                    h.ServerCertificateCustomValidationCallback = ValidateCertificate;
+                   
+                    var client = new System.Net.Http.HttpClient(h);
+
                      client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);

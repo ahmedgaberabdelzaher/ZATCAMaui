@@ -47,7 +47,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = true,
                 VideoNumber = AppResources.Port1Name ,
-                VideoURl="s7ye-npc7Io"
+                VideoURl="onc4gSz5XqY"
             },
             new VideoModel
             {
@@ -55,7 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port2Name,
-                  VideoURl="edkTRhGMGbc"
+                  VideoURl="ycF3wtfRpAM"
             },
             new VideoModel
             {
@@ -63,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-               VideoURl="s7ye-npc7Io"
+               VideoURl="Y2q0ELpgPYs"
             },
             new VideoModel
             {
@@ -71,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                  VideoURl="edkTRhGMGbc"
+                  VideoURl="8eJJ6EAMoO8"
             }
         };
         public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
