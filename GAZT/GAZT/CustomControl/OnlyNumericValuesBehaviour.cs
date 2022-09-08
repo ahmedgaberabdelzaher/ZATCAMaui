@@ -53,7 +53,8 @@ namespace GAZT.CustomControl
         }
         private static void OnEntryTextChanged(object sender, TextChangedEventArgs args)
         {
-            if (!string.IsNullOrEmpty(args.NewTextValue))
+            string newvalue = args.NewTextValue;
+            if (!string.IsNullOrEmpty(newvalue)&&args.NewTextValue!=args.OldTextValue)
             {
               
                 foreach (char letter in args.NewTextValue.ToCharArray())
@@ -61,7 +62,7 @@ namespace GAZT.CustomControl
                     if (((letter < 48 || letter > 57) && letter != 8 && letter != 46))
                     {
                         ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-
+                        return;
                     }
                     else
                     {
@@ -74,12 +75,15 @@ namespace GAZT.CustomControl
                         }
                         else {
                             ((Entry)sender).Text = args.NewTextValue.Remove(args.NewTextValue.Length - 1);
-
+                            return;
                         }
 
                     }
                 }
-              
+            }
+            else
+            {
+                return;
             }
         }
     }

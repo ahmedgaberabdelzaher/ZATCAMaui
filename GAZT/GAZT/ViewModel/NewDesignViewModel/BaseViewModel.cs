@@ -59,8 +59,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged();
             }
         }
+        bool isValidationError;
 
-       FlowDirection appDirection { get; set; }
+        public bool IsValidationError
+        {
+            get { return isValidationError; }
+
+            set
+            {
+                isValidationError = value;
+                RaisePropertyChanged();
+            }
+        }
+        FlowDirection appDirection { get; set; }
 
         public FlowDirection AppDirection
         {
@@ -276,6 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return new Command(() =>
                 {
                     IsShowMsgView = false;
+                    IsValidationError = false;
                 });
             }
         }

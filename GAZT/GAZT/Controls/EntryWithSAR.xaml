@@ -26,14 +26,12 @@
                                                         OutlineCornerRadius="14"
                                                         InputViewPadding="16,0,16,0"  Margin="0,-10,0,0" >
                                     <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
-                                                             x:Name="TextValue"
+                                                             x:Name="TextValue" Keyboard="Numeric"
                                                              Text="{Binding Source={x:Reference CustomEntryWithSAR},Path=ValueText}"
                                                              Placeholder="{Binding Source={x:Reference CustomEntryWithSAR},Path=Placeholder}"
                                                      VerticalTextAlignment="Center" 
                                                       >
-                                        <control:BorderlessEntry.Behaviors>
-                                            <customcontrol:OnlyNumericWithDecimalValuesBehaviour/>
-                                        </control:BorderlessEntry.Behaviors>
+                                       
                                     </control:BorderlessEntry>
 <inputLayout:SfTextInputLayout.TrailingView>
 <Label Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="#999999" FontSize="16"></Label>

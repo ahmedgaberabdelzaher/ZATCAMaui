@@ -12,5 +12,6 @@ namespace EGAZT.Models
         public bool IsVerticalView { get { return isVerticalView; } set { isVerticalView = value; RaisePropertyChanged(); } }
         public int ColumnNo { get; set; }
         public int Row { get; set; }
+        public string ServiceDesc { get; set; }
     }
 }

@@ -33,7 +33,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             }
         }
 
+   double taxValue;
 
+        public double TaxValue
+        {
+            get { return taxValue; }
+
+            set
+            {
+                taxValue = value;
+                RaisePropertyChanged();
+            }
+        }
         string totaltaxablesales;
 
         public string Totaltaxablesales
@@ -46,7 +57,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                 RaisePropertyChanged();
             }
         }
+        
 
+   
         string totalnontaxablesales;
 
         public string Totalnontaxablesales
@@ -123,7 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
 
         public void ClearAllValues()
         {
-            Totalnontaxablepurchases = Totalnontaxablesales = totaltaxablepurchases = totaltaxablesales = "";
+            Totalnontaxablepurchases = Totalnontaxablesales = Totaltaxablepurchases = Totaltaxablesales = "";
             MessageTxt = "";
         }
 
@@ -148,38 +161,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             {
                 return new Command(() =>
                 {
-                    double Tax=0;
-                    if (IsConsumerCalc)
+                    try
                     {
-                        if (!String.IsNullOrEmpty(Totaltaxablepurchases))
+                        double Tax = 0;
+                        if (IsConsumerCalc)
                         {
-                         Tax = (double.Parse(Totaltaxablepurchases) * .15)+ double.Parse(Totaltaxablepurchases);
+                            if (!String.IsNullOrEmpty(Totaltaxablepurchases))
+                            {
+                                Tax = (double.Parse(Totaltaxablepurchases) * .15) + double.Parse(Totaltaxablepurchases);
+                               MessageTxt = AppResources.TotalPriceValue;
+                                TaxValue = Tax;
+                            }
+                            else
+                            {
+                                IsValidationError = true;
+                                MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
+                                return;
+                            }
 
                         }
                         else
                         {
-                            IsShowMsgView = true;
-                            MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
-                        }
-                       
-                    }
-                    else
-                    {
-                        if (!string.IsNullOrEmpty(Totaltaxablesales)&& !string.IsNullOrEmpty(Totaltaxablepurchases))
-                        {
-                            Tax = (double.Parse(Totaltaxablesales) * .15) - (double.Parse(Totaltaxablepurchases) * .15);
+                            if (!string.IsNullOrEmpty(Totaltaxablesales) && !string.IsNullOrEmpty(Totaltaxablepurchases))
+                            {
+                                Tax = (double.Parse(Totaltaxablesales) * .15) - (double.Parse(Totaltaxablepurchases) * .15);
+                                if (Tax<0)
+                                {
+                                    
+                                    MessageTxt = AppResources.RefunableAmount;
+                                    TaxValue = Tax*-1;
+                                }
+                                else
+                                {
+                                
+                                    MessageTxt = AppResources.VATPayable;
+                                    TaxValue = Tax;
+                                }
+
+                            }
+
+                            else
+                            {
+                                IsValidationError = true;
+                                 MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
+                                return;
+                            }
 
                         }
-
-                        else
+                      IsShowMsgView = true;
+                       // MessageTxt = Tax.ToString();
+                    }
+                    catch (Exception ex)
                     {
-                        IsShowMsgView = true;
-                        MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
-                    }
 
                     }
-                    IsShowMsgView = true;
-                    MessageTxt = Tax.ToString();
+       
                 });
             }
         }

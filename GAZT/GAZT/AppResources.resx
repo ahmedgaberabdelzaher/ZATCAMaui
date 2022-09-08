@@ -9746,4 +9746,19 @@ Zakat, Tax and Customs Authority
     <data name="Langauge" xml:space="preserve">
           <value>العربية</value>
      </data>
+         <data name="RefunableAmount" xml:space="preserve">
+        <value>Refunable Amount</value>
+    </data>
+        <data name="VATPayable" xml:space="preserve">
+        <value>VAT Payable</value>
+    </data>
+     <data name="VatRegistretionServiceDesc" xml:space="preserve">
+        <value>This service allows beneficiaries to check the registration's validity by entering the TIN number, VAT certificate, CR, Serial Number, or by scanning a QR code.</value>
+    </data>
+         <data name="EinvoiceServiceDesc" xml:space="preserve">
+        <value>Scanning the QR code allows beneficiaries to validate the electronic bill.</value>
+    </data>
+       <data name="VatCalculationServiceDesc" xml:space="preserve">
+        <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales</value>
+    </data>
 </root>

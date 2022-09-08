@@ -9335,10 +9335,10 @@ info@zatca.gov.sa</value>
         <value>إجمالي المبيعات الخاضعة للضريبة</value>
     </data>
   <data name="Totalnontaxablesales" xml:space="preserve">
-        <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
+        <value>إجمالي المبيعات الغير خاضعة للضريبة</value>
     </data>
   <data name="Totalnontaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
+        <value>إجمالي المشتريات الغير خاضعة للضريبة</value>
   </data>
     <data name="InvalidQrMessage" xml:space="preserve">
         <value>شكرًا لمسح رمز الاستجابة السريعة, تم مشاركة معلومات رمز الاستجابة السريعة مع الهيئة</value>
@@ -9668,4 +9668,20 @@ info@zatca.gov.sa</value>
     <data name="Langauge" xml:space="preserve">
         <value>English</value>
     </data>
+    <data name="RefunableAmount" xml:space="preserve">
+        <value> ضريبة القيمة المضافة القابلة للاسترداد</value>
+    </data>
+        <data name="VATPayable" xml:space="preserve">
+        <value>ضريبة القيمة المضافة المستحقة</value>
+    </data>
+         <data name="VatRegistretionServiceDesc" xml:space="preserve">
+        <value>تتيح لك التحقق من صحة التسجيل من خلال إدخال الرقم الضريبي أو شهادة قيمة الضريبة المضافة أو السجل التجاري ثم الرقم التسلسي أو عبر مسح QR.</value>
+    </data>
+         <data name="EinvoiceServiceDesc" xml:space="preserve">
+        <value>يتيح لك مسح الـ QR code التحقق من صحة فاتورتك الإلكترونية</value>
+    </data>
+       <data name="VatCalculationServiceDesc" xml:space="preserve">
+        <value>تتيح لك احتساب المبلغ الإجمالي المسترد من ضريبة القيمة المضافة بإدخال القيمة الكلية لمشترياتك ومبيعاتك</value>
+    </data>
+
 </root>
