@@ -39,6 +39,7 @@
                         <Setter Property="HeightRequest" Value="30" />
                         <Setter Property="WidthRequest" Value="30" />
                     </Style>
+           
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -54,8 +55,8 @@
                     <StackLayout>
                         <StackLayout Margin="24,10,24,0">
                             <Label
-                                Margin="0,34,0,5"
-                                FontSize="26"
+                                Margin="0,23,0,5"
+                                FontSize="20" FontFamily="{StaticResource FontSomarBold}"
                                 Text="{x:Static ResourceManager:AppResources.VATCalculator}"
                                 TextColor="#58595B" />
                             <Label
@@ -93,7 +94,7 @@
                                         <DataTrigger
                                             Binding="{Binding CalcBy}"
                                             TargetType="Image"
-                                            Value="0">
+                                            Value="1">
                                             <Setter Property="Source" Value="SelectedConsumer" />
                                         </DataTrigger>
                                     </Image.Triggers>
@@ -140,7 +141,7 @@
                                         <DataTrigger
                                             Binding="{Binding CalcBy}"
                                             TargetType="Image"
-                                            Value="1">
+                                            Value="0">
                                             <Setter Property="Source" Value="SelectedMerchant" />
                                         </DataTrigger>
                                     </Image.Triggers>
@@ -169,7 +170,8 @@
                             Placeholder="{x:Static ResourceManager:AppResources.Totaltaxablepurchases}"
                             Text="{Binding Totaltaxablepurchases}"
                             TitleText="{x:Static ResourceManager:AppResources.Totaltaxablepurchases}"
-                            ValueText="{Binding Totaltaxablepurchases, Mode=TwoWay}" />
+                            ValueText="{Binding Totaltaxablepurchases, Mode=TwoWay}" >
+                        </controls:EntryWithSAR>
                         <!--  MerchantView  -->
                         <StackLayout IsVisible="{Binding IsMerchantCalc}">
                             <controls:EntryWithSAR
@@ -192,7 +194,7 @@
                         <Frame
                             Margin="0,27,0,40"
                             Padding="12"
-                            BackgroundColor="#00BBBD"
+                            BackgroundColor="#0996D4"
                             CornerRadius="14"
                             HasShadow="False">
                             <Frame.GestureRecognizers>
@@ -239,7 +241,7 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{x:Static ResourceManager:AppResources.VATCalculator}"
+                    Text="{x:Static ResourceManager:AppResources.TaxCalculator}"
                     VerticalOptions="Center" />
             </Grid>
             <Grid
@@ -266,12 +268,12 @@
                     VerticalOptions="EndAndExpand">
 
                     <StackLayout Margin="0,0,0,0" VerticalOptions="Center">
-
+                        <!--                            Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"-->
                         <Label
                             Margin="10,30,56,0"
-                            HorizontalTextAlignment="Start"
+                            HorizontalTextAlignment="Start" Text="{Binding MessageTxt}"
                             Style="{StaticResource BodyLabelBlack}"
-                            Text="{x:Static ResourceManager:AppResources.TotalPriceValue}">
+                            >
                             <Label.Triggers>
                                 <DataTrigger
                                     Binding="{Binding AppDirection}"
@@ -296,12 +298,12 @@
                             </Label.Triggers>
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span FontSize="31" Text="{Binding MessageTxt}" />
+                                    <Span FontSize="31" Text="{Binding TaxValue}" />
                                     <Span FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
-                        <Label
+                        <Label IsVisible="{Binding IsConsumerCalc}"
                             Margin="10,10,56,10"
                             FontSize="12"
                             HorizontalTextAlignment="Start"
@@ -326,6 +328,8 @@
                     </StackLayout>
                 </yummy:PancakeView>
             </Grid>
+            <controls:MsgView  Grid.Row="0"
+                Grid.RowSpan="2" IsVisible="{Binding IsValidationError}"></controls:MsgView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -21,7 +21,7 @@
     </ContentView.Resources>
     <yummy:PancakeView
         Margin="-20,0,-20,0"
-        BackgroundColor="{StaticResource Primary}"
+        BackgroundColor="#002447"
         CornerRadius="15,15,0,0"
         VerticalOptions="EndAndExpand">
         <yummy:PancakeView.Resources>

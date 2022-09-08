@@ -3099,6 +3099,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scanning the QR code allows beneficiaries to validate the electronic bill..
+        /// </summary>
+        public static string EinvoiceServiceDesc {
+            get {
+                return ResourceManager.GetString("EinvoiceServiceDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
         public static string Email {
@@ -9969,6 +9978,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Refunable Amount.
+        /// </summary>
+        public static string RefunableAmount {
+            get {
+                return ResourceManager.GetString("RefunableAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Registered.
         /// </summary>
         public static string Registered {
@@ -12527,6 +12545,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales.
+        /// </summary>
+        public static string VatCalculationServiceDesc {
+            get {
+                return ResourceManager.GetString("VatCalculationServiceDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Calculator.
         /// </summary>
         public static string VATCalculator {
@@ -13432,6 +13459,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Payable.
+        /// </summary>
+        public static string VATPayable {
+            get {
+                return ResourceManager.GetString("VATPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please check the declaration to proceed to submit the information.
         /// </summary>
         public static string VATRAcceptDeclarationToSubmit {
@@ -13948,6 +13984,15 @@ namespace EGAZT {
         public static string VATRegistrationNumber {
             get {
                 return ResourceManager.GetString("VATRegistrationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This service allows beneficiaries to check the registration&apos;s validity by entering the TIN number, VAT certificate, CR, Serial Number, or by scanning a QR code..
+        /// </summary>
+        public static string VatRegistretionServiceDesc {
+            get {
+                return ResourceManager.GetString("VatRegistretionServiceDesc", resourceCulture);
             }
         }
         

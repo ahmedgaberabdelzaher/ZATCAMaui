@@ -176,16 +176,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                   Name=AppResources.VATRegistrationCertificate, ID=App.VATLookUpNewPageView,ImageSource="VatRegCheck",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                   Name=AppResources.VATRegistrationCertificate, ID=App.VATLookUpNewPageView,ImageSource="VatRegCheck",ColumnNo=0,Row=0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.VatRegistretionServiceDesc:""
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.TaxCalculator, ID="TaxCalculator",ImageSource="TaxCalcultor",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical
+                   Name=AppResources.TaxCalculator, ID="TaxCalculator",ImageSource="TaxCalcultor",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.VatCalculationServiceDesc:""
                 }
                  ,
                  new MenuModel()
                 {
-                   Name=AppResources.EinvoiceScanning, ID="E_InvoicesScan",ImageSource="EinvoiceScanning",ColumnNo=isvertical?0:1,Row=isvertical?2:1,IsVerticalView=isvertical
+                   Name=AppResources.EinvoiceScanning, ID="E_InvoicesScan",ImageSource="EinvoiceScanning",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EinvoiceServiceDesc:""
                 }
                
            };

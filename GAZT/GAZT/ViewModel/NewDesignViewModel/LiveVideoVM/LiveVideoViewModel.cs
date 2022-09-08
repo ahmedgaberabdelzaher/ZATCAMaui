@@ -16,7 +16,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
     {
         #region Properties
 
-        string selectedVideo = AppResources.Port1Name;
+        string selectedVideo;
         public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
 
         YoutubeClient youtube = new YoutubeClient();
@@ -24,7 +24,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         string videoUrl;
         public string VideoUrl { get { return videoUrl; } set { videoUrl = value; RaisePropertyChanged(); } }
 
-        ObservableCollection<VideoModel> liveVideosList = new ObservableCollection<VideoModel>()
+        ObservableCollection<VideoModel> liveVideosList = new ObservableCollection<VideoModel>();
+        public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
+
+        public void GetLiveVideoLst()
+        {
+            LiveVideosList= new ObservableCollection<VideoModel>()
         {
             new VideoModel
             {
@@ -59,8 +64,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 VideoURl="8eJJ6EAMoO8"
             }
         };
-        public ObservableCollection<VideoModel> LiveVideosList { get { return liveVideosList; } set { liveVideosList = value; RaisePropertyChanged(); } }
-
+        }
 
 
         #endregion
@@ -83,6 +87,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                             Device.BeginInvokeOnMainThread(async() =>
                             {
                                 IsLoading = true;
+                                GetLiveVideoLst();
+                                SelectedVideo = AppResources.Port1Name;
                                 await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
                                 IsLoading = false;
                             });

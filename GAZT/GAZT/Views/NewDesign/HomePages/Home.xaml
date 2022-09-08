@@ -5,15 +5,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    ios:Page.UseSafeArea="False"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    HasBackButton="False"
+    HasBackButton="False" Padding="0,45,0,0"
     TitleText="{x:Static ResourceManager:AppResources.Home}">
 
     <newdesign:BaseContentPage.PancakeView>
-        <Grid Margin="-20,0,-20,0" RowDefinitions="*,auto">
-            <Label Text="{}" />
-            <StackLayout
+        <Grid Margin="-20,0,-20,0" RowDefinitions="auto,*,auto">
+            <Label Margin="24,10,24,10" FontFamily="{StaticResource SomarBold}" Grid.Row="0" Text="{x:Static ResourceManager:AppResources.ZATCAServices}" FontSize="18" TextColor="{StaticResource Primary}"  />
+            <StackLayout Grid.Row="1"
                 x:Name="HomeMenuLst"
                 Margin="20,0,20,0"
                 BindableLayout.ItemsSource="{Binding MenuLst}">
@@ -48,7 +50,7 @@
                 </BindableLayout.ItemTemplate>
             </StackLayout>
             <controls:BottomMenu
-                Grid.Row="1"
+                Grid.Row="2"
                 Margin="20,0,20,0"
                 HorizontalOptions="Fill"
                 VerticalOptions="EndAndExpand" />
