@@ -9767,4 +9767,7 @@ Zakat, Tax and Customs Authority
     <data name="VatCalculationServiceDesc" xml:space="preserve">
         <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales</value>
     </data>
+    <data name="BackToHome" xml:space="preserve">
+        <value>Back to Home</value>
+    </data>
 </root>

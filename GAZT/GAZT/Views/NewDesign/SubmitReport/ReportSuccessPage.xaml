@@ -36,7 +36,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowDefinitions="2*,*">
+        <Grid RowDefinitions="2.5*,*">
 
             <!--#region Header-->
             <StackLayout>
@@ -73,6 +73,14 @@
                         LineBreakMode="WordWrap"
                         Text="{x:Static ResourceManager:AppResources.ReportSuccessMsg}"
                         TextColor="White" />
+
+                     <!--  Back to Home Button  -->
+                        <buttons:SfButton
+                            Margin="20,50"
+                            BackgroundColor="#0996D4"
+                            Command="{Binding BackToHomeCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.BackToHome}" />
                 </StackLayout>
 
 
@@ -130,7 +138,10 @@
 
                             <!--  Send Report Button  -->
                             <buttons:SfButton
-                                BackgroundColor="#0996D4"
+                                BackgroundColor="White"
+                                TextColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
                                 Command="{Binding GoToMyReportsCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"
                                 Text="{x:Static ResourceManager:AppResources.NDMyReports}" />

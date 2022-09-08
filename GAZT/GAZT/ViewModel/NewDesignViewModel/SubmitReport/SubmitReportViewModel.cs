@@ -219,7 +219,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(() =>
                 {
-                    _navigationService.NavigateTo("InquiryAboutMyReportsPage");
+                    _navigationService.NavigateTo("/InquiryAboutMyReportsPage");
+
+                });
+            }
+        }
+        public ICommand BackToHomeCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _navigationService.NavigateTo("/Home", "0");
 
                 });
             }

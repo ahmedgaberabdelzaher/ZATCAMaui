@@ -9689,4 +9689,7 @@ info@zatca.gov.sa</value>
     <data name="VatCalculationServiceDesc" xml:space="preserve">
         <value>تتيح لك احتساب المبلغ الإجمالي المسترد من ضريبة القيمة المضافة بإدخال القيمة الكلية لمشترياتك ومبيعاتك</value>
     </data>
+    <data name="BackToHome" xml:space="preserve">
+        <value>الرجوع للرئيسية</value>
+    </data>
 </root>
