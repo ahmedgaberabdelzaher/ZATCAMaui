@@ -36,7 +36,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid RowDefinitions="2.5*,*">
+        <Grid RowDefinitions="2*,*">
 
             <!--#region Header-->
             <StackLayout>
@@ -85,15 +85,14 @@
 
                   <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout>
+                        <StackLayout Margin="0,0,0,20">
 
 
                             <!--  ReportNote Frame  -->
                             <yummy:PancakeView
                                 Margin="0,15"
                                 CornerRadius="15"
-                                Shadow="{yummy:ShadowMarkup Color=#B8BABA,
-                                                            Offset='0,0'}"
+                                Border="{yummy:BorderMarkup Color=#EBEBEB, Thickness='1'}"
                                 Style="{StaticResource CommonTopCurves}"
                                 VerticalOptions="Start">
 
@@ -131,7 +130,6 @@
 
                             <!--  Send Report Button  -->
                             <buttons:SfButton
-                                Margin="0,40"
                                 BackgroundColor="#0996D4"
                                 Command="{Binding GoToMyReportsCommand}"
                                 Style="{StaticResource PrimaryButtonStyle}"

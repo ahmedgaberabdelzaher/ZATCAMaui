@@ -41,11 +41,6 @@ namespace EGAZT.Views.NewDesign.SubmitReport
             {
             }
         }
-
-        //private void DatePicker_DateSelected(object sender, DateChangedEventArgs e)
-        //{
-        //    viewModel.SubmitReport.HasViolationDateError = false;
-        //}
     }
 }
 

@@ -46,17 +46,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         bool isOpenDatePicker;
         public bool IsOpenDatePicker { get { return isOpenDatePicker; } set { isOpenDatePicker = value; RaisePropertyChanged(); } }
 
-        bool hasError;
-        public bool HasError { get { return hasError; } set { hasError = value; RaisePropertyChanged(); } }
-
         bool isReportCategoryShowen;
         public bool IsReportCategoryShowen { get { return isReportCategoryShowen; } set { isReportCategoryShowen = value; RaisePropertyChanged(); } }
 
+        bool isMissingFieldShowen;
+        public bool IsMissingFieldShowen { get { return isMissingFieldShowen; } set { isMissingFieldShowen = value; RaisePropertyChanged(); } }
+
         bool isCityShowen;
         public bool IsCityShowen { get { return isCityShowen; } set { isCityShowen = value; RaisePropertyChanged(); } }
-
-        bool isNeedRewardError;
-        public bool IsNeedRewardError { get { return isNeedRewardError; } set { isNeedRewardError = value; RaisePropertyChanged(); } }
 
         string reportNumberResult;
         public string ReportNumberResult { get { return reportNumberResult; } set { reportNumberResult = value; RaisePropertyChanged(); } }
@@ -80,10 +77,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
         private bool isReportTypeSelected = false;
         private bool isReportCategorySelected = false;
+        private bool isMissingFieldSelected = false;
         private bool isRegionSelected = false;
         private List<BaseRegionAndCity> CitysList;
         private List<BaseRegionAndCity> RegionsList;
         private List<CategoryDataResponse> ReportCategory;
+        private List<LookUpsListModel> MissingFieldsList;
 
         #endregion
         
@@ -332,6 +331,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.ReportCategoryName = e.Name;
                             SubmitReport.ReportCategory = e.Id;
                             isReportCategorySelected = false;
+                            SubmitReport.MissedFieldName = string.Empty;
+                            SubmitReport.MissedField = string.Empty;
+                            IsMissingFieldShowen = !string.IsNullOrWhiteSpace(SubmitReport.ReportCategoryName) && SubmitReport.ReportCategory.ToLower().Equals("v36") ? true : false;
+                        }
+                        else if (isMissingFieldSelected)
+                        {
+                            SubmitReport.MissedFieldName = e.Name;
+                            SubmitReport.MissedField = e.Id;
+                            isMissingFieldSelected = false;
                         }
                         else if (isRegionSelected)
                         {
@@ -401,6 +409,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     TempBottomSheetList = BottomSheetList;
+
+                });
+            }
+        }
+        public ICommand OpenMissingFieldCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    IsLoading = true;
+                    isMissingFieldSelected = true;
+                    var reportType = await this._submitReportServices.GetLookUps();
+                    var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName }).ToList() ?? new List<BottomSheetModel>();
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                    IsShowBottomSheet = true;
+                    TempBottomSheetList = BottomSheetList;
+                    HeaderTitle = AppResources.ReportMissingField;
+                    IsLoading = false;
 
                 });
             }
@@ -539,12 +566,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 || SelectedDate.Date > DateTime.Now.Date
                 || ReportUloadedFiles.Count == 0)
             {
-                HasError = true;
                 IsShowMsgView = true;
-                MessageTxt = AppResources.InvalidValue;
+                MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            HasError = false;
+
+            if(string.IsNullOrWhiteSpace(SubmitReport.MissedFieldName)
+                && SubmitReport.ReportCategory.ToLower().Equals("v36"))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+            }
             return true;
 
         }
@@ -560,15 +593,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     || string.IsNullOrWhiteSpace(SubmitReport.ReporterEmail))
                 {
                     IsShowMsgView = true;
-                    IsNeedRewardError = true;
-                    MessageTxt = AppResources.InvalidValue;
+                    MessageTxt = AppResources.RequiredData;
                     return false;
 
                 }
                 else if(!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
                 {
                     IsShowMsgView = true;
-                    IsNeedRewardError = true;
                     MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
                     return false;
 
@@ -577,12 +608,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 else if(!Email.IsMatch(SubmitReport.ReporterEmail))
                 {
                     IsShowMsgView = true;
-                    IsNeedRewardError = true;
                     MessageTxt = AppResources.InvalidEmail;
                     return false;
                 }
             }
-            HasError = false;
             return true;
 
         }

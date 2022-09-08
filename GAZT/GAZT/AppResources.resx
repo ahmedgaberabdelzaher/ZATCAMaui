@@ -9746,4 +9746,10 @@ Zakat, Tax and Customs Authority
     <data name="Langauge" xml:space="preserve">
           <value>العربية</value>
      </data>
+     <data name="ReportMissingField" xml:space="preserve">
+          <value>Missing field</value>
+     </data>
+      <data name="RequiredData" xml:space="preserve">
+         <value>Please fill the required fields</value>
+      </data>
 </root>

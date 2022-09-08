@@ -6,15 +6,7 @@ namespace EGAZT.Models.SubmitReportModel
 {
     public class SubmitReportModel : ViewModelBase
     {
-        public SubmitReportModel()
-        {
-            //var dateNow = DateTime.Now;
-            //System.Globalization.DateTimeFormatInfo DTFormat;
-            //DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
-            //DTFormat.Calendar = new System.Globalization.GregorianCalendar();
-            //DTFormat.ShortDatePattern = "dd/MM/yyyy";
-            //ViolationDate = dateNow.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
-        }
+
         public string CityCode { get; set; }
 
         string _city;
@@ -88,8 +80,11 @@ namespace EGAZT.Models.SubmitReportModel
         string _tIN;
         public string TIN { get { return _tIN; } set { _tIN = value; RaisePropertyChanged(); } }
 
-        bool _hasViolationDateError = true;
-        public bool HasViolationDateError { get { return _hasViolationDateError; } set { _hasViolationDateError = value; RaisePropertyChanged(); } }
+        string _missingFieldName;
+        public string MissedFieldName { get { return _missingFieldName; } set { _missingFieldName = value; RaisePropertyChanged(); } }
+
+        string _missedField;
+        public string MissedField { get { return _missedField; } set { _missedField = value; RaisePropertyChanged(); } }
 
     }
 }

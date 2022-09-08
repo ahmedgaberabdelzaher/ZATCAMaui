@@ -15,6 +15,11 @@ namespace EGAZT.Services.Classes
             var response = await NewHTTPManger.Get<BaseResponseModel<ReportTypeList>>($"{App.VatBaseUrl}/Report/GetReportTaxType") as BaseResponseModel<ReportTypeList>;
             return response?.Result?.Data;
         }
+        public async Task<LookUpsListModel> GetLookUps()
+        {
+            var response = await NewHTTPManger.Get<BaseResponseModel<LookUpsListModel>>($"{App.VatBaseUrl}/Report/GetLookups") as BaseResponseModel<LookUpsListModel>;
+            return response?.Result?.Data;
+        }
         public async Task<List<CategoryDataResponse>> GetReportCategories(string typeId)
         {
             var response = await NewHTTPManger.Get<BaseResponseModel<List<CategoryDataResponse>>>($"{App.VatBaseUrl}/SMS/GetCategories?type={typeId}") as BaseResponseModel<List<CategoryDataResponse>>;

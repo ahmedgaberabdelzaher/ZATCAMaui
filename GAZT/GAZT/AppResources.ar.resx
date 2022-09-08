@@ -9668,4 +9668,10 @@ info@zatca.gov.sa</value>
     <data name="Langauge" xml:space="preserve">
         <value>English</value>
     </data>
+     <data name="ReportMissingField" xml:space="preserve">
+          <value>الحقل المفقود</value>
+     </data>
+       <data name="RequiredData" xml:space="preserve">
+         <value>الرجاء ملء الحقول المطلوبة</value>
+      </data>
 </root>

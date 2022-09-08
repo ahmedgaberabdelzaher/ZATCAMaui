@@ -103,22 +103,23 @@
                             </On>
 
                             <On Platform="Android">
-
-                                <mm:VideoView
-                                    AutoPlay="True"
+                                <Frame
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="20"
+                                    BackgroundColor="Black"
                                     HeightRequest="250"
-                                    x:Name="liveVideo"
-                                    WidthRequest="470"
-                                    ShowControls="False"
-                                    Source="{Binding VideoUrl}" />
+                                    IsClippedToBounds="True"
+                                    WidthRequest="470">
+
+                                        <mm:VideoView
+                                            AutoPlay="True"
+                                            x:Name="liveVideo"
+                                            ShowControls="False"
+                                            Source="{Binding VideoUrl}" />
+                                </Frame>
                             </On>
                         </OnPlatform>
-                         
-
-
-
-                       
-                       
 
                         <!--  Live Video Sub Title Label  -->
                         <Label
@@ -164,6 +165,9 @@
                                                         FontFamily="{StaticResource SomarRegular}"
                                                         FontSize="14"
                                                         HorizontalOptions="CenterAndExpand"
+                                                        HorizontalTextAlignment="Center"
+                                                        LineBreakMode="WordWrap"
+                                                        Margin="5,0"
                                                         Text="{Binding VideoNumber}"
                                                         TextColor="#58595B"
                                                         VerticalOptions="CenterAndExpand" />
