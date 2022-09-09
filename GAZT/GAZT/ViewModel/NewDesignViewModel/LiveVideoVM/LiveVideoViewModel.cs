@@ -159,7 +159,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
             }
             catch (Exception ex)
             {
-
+              await  _dialogService.ShowMessage("", ex.InnerException + ex.Message + ex.StackTrace);
             }
          
 
