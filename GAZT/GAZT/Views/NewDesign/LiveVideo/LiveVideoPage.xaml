@@ -83,6 +83,7 @@
                             TextColor="#58595B" />
 
                          <!-- Video URL-->
+                 <!--
                         <OnPlatform x:TypeArguments="View">
 
                             <On Platform="iOS">
@@ -113,10 +114,23 @@
                                     Source="{Binding VideoUrl}" />
                             </On>
                         </OnPlatform>
-                         
+                      -->
+                                <Frame
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="20"
+                                    HeightRequest="250"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="470">
+                              <mm:VideoView
+                                    AutoPlay="True"
+                                    HeightRequest="250"
+                                    x:Name="liveVideo"
+                                    WidthRequest="470"
+                                    ShowControls="False"
+                                    Source="{Binding VideoUrl}" />
 
-
-
+                            </Frame>
                        
                        
 
