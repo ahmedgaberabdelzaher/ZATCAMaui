@@ -216,7 +216,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -241,14 +240,6 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportTypeCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportTypeEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -277,7 +268,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -301,17 +291,58 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenReportCategoryCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportCategoryEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportCategoryeCommand}" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                         <!--  Missing Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding IsMissingFieldShowen}" >
+
+                            <!--  Missing Field Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportMissingField}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Missing Field Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    x:Name="missingFieldEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ReportMissingField}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitReport.MissedFieldName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenMissingFieldCommand}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
@@ -334,7 +365,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -350,14 +380,6 @@
                                     MinimumHeightRequest="100"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding SubmitReport.ReportDetails}" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportReportDetailsEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
@@ -365,10 +387,14 @@
                         <StackLayout Spacing="0">
 
                             <!--  Location Label  -->
-                            <custom:CustomLabel
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}" />
-
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZTERReportDetailReportDetailRLocation}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
                             <!--  Location Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -484,7 +510,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -496,14 +521,6 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.CompanyName}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportCompanyNameEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -554,7 +571,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -566,14 +582,6 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.WorkType}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportWorkTypeEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
@@ -596,7 +604,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -608,14 +615,6 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.CompanyAddress}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportCompanyAddressEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
@@ -639,7 +638,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -659,14 +657,6 @@
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="arrowDropdown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportRegionEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenRegionCommand}" />
@@ -693,7 +683,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -717,14 +706,6 @@
                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding OpenCityCommand}" />
                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportCityEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
@@ -753,7 +734,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -765,14 +745,6 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.District}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportDistrictEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
  
@@ -795,7 +767,6 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HasError="{Binding HasError}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -807,14 +778,6 @@
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitReport.Street}"
                                     TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding Source={x:Reference reportStreetEntry}, Path=Text.Length}"
-                                        TargetType="inputLayout:SfTextInputLayout"
-                                        Value="0">
-                                        <Setter Property="HasError" Value="True" />
-                                    </DataTrigger>
-                                </inputLayout:SfTextInputLayout.Triggers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>

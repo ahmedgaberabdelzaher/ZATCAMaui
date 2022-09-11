@@ -1,4 +1,4 @@
-﻿using CommonServiceLocator;
+using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;

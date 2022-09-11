@@ -9746,19 +9746,52 @@ Zakat, Tax and Customs Authority
     <data name="Langauge" xml:space="preserve">
           <value>العربية</value>
      </data>
-         <data name="RefunableAmount" xml:space="preserve">
+     <data name="ReportMissingField" xml:space="preserve">
+          <value>Missing field</value>
+     </data>
+      <data name="RequiredData" xml:space="preserve">
+         <value>Please fill the required fields</value>
+      </data>
+    <data name="RefunableAmount" xml:space="preserve">
         <value>Refunable Amount</value>
     </data>
-        <data name="VATPayable" xml:space="preserve">
+     <data name="VATPayable" xml:space="preserve">
         <value>VAT Payable</value>
     </data>
      <data name="VatRegistretionServiceDesc" xml:space="preserve">
         <value>This service allows beneficiaries to check the registration's validity by entering the TIN number, VAT certificate, CR, Serial Number, or by scanning a QR code.</value>
     </data>
-         <data name="EinvoiceServiceDesc" xml:space="preserve">
+     <data name="EinvoiceServiceDesc" xml:space="preserve">
         <value>Scanning the QR code allows beneficiaries to validate the electronic bill.</value>
     </data>
-       <data name="VatCalculationServiceDesc" xml:space="preserve">
+    <data name="VatCalculationServiceDesc" xml:space="preserve">
         <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales</value>
+    </data>
+    <data name="BackToHome" xml:space="preserve">
+        <value>Back to Home</value>
+    </data>
+     <data name="GeneralServicesTip" xml:space="preserve">
+        <value>I call you a duplicate about the origin of the remnants of the authority's competences</value>
+    </data>
+    <data name="CustomServicesTip1" xml:space="preserve">
+        <value>It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip2" xml:space="preserve">
+        <value>It allows you to inquire about commodity information, codes, customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip3" xml:space="preserve">
+        <value>It enables you to electronically declare the materials to be disclosed upon entering or before leaving Saudi Arabia.</value>
+    </data>
+    <data name="CustomServicesTip4" xml:space="preserve">
+        <value>Enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
+    </data>
+    <data name="CustomServicesTip5" xml:space="preserve">
+        <value>Allows customs customers to submit supply transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters.</value>
+    </data>
+    <data name="TaxServicesTip1" xml:space="preserve">
+        <value>Allows you to access and calculate the Excise Goods Tax price list electronically</value>
+    </data>
+    <data name="TaxServicesTip2" xml:space="preserve">
+        <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
 </root>

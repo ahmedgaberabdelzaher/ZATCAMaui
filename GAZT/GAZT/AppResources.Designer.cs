@@ -761,6 +761,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Back to Home.
+        /// </summary>
+        public static string BackToHome {
+            get {
+                return ResourceManager.GetString("BackToHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Back to main menu.
         /// </summary>
         public static string Backtomainmenu {
@@ -2492,6 +2501,51 @@ namespace EGAZT {
         public static string Customsdutyrate {
             get {
                 return ResourceManager.GetString("Customsdutyrate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees..
+        /// </summary>
+        public static string CustomServicesTip1 {
+            get {
+                return ResourceManager.GetString("CustomServicesTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It allows you to inquire about commodity information, codes, customs declaration and fees..
+        /// </summary>
+        public static string CustomServicesTip2 {
+            get {
+                return ResourceManager.GetString("CustomServicesTip2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It enables you to electronically declare the materials to be disclosed upon entering or before leaving Saudi Arabia..
+        /// </summary>
+        public static string CustomServicesTip3 {
+            get {
+                return ResourceManager.GetString("CustomServicesTip3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enables you to inquire about the fees for samples analysis requests sent to it by customs..
+        /// </summary>
+        public static string CustomServicesTip4 {
+            get {
+                return ResourceManager.GetString("CustomServicesTip4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows customs customers to submit supply transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters..
+        /// </summary>
+        public static string CustomServicesTip5 {
+            get {
+                return ResourceManager.GetString("CustomServicesTip5", resourceCulture);
             }
         }
         
@@ -6483,6 +6537,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I call you a duplicate about the origin of the remnants of the authority&apos;s competences.
+        /// </summary>
+        public static string GeneralServicesTip {
+            get {
+                return ResourceManager.GetString("GeneralServicesTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get Support.
         /// </summary>
         public static string GetSupport {
@@ -10131,6 +10194,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Missing field.
+        /// </summary>
+        public static string ReportMissingField {
+            get {
+                return ResourceManager.GetString("ReportMissingField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to If the authority informs you of malicious or false information, it will expose you to legal accountability.
         /// </summary>
         public static string ReportNote {
@@ -10383,6 +10455,15 @@ namespace EGAZT {
         public static string RequestTimeoutTitle {
             get {
                 return ResourceManager.GetString("RequestTimeoutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please fill the required fields.
+        /// </summary>
+        public static string RequiredData {
+            get {
+                return ResourceManager.GetString("RequiredData", resourceCulture);
             }
         }
         
@@ -11007,6 +11088,24 @@ namespace EGAZT {
         public static string TaxPayerSubsidyRequest {
             get {
                 return ResourceManager.GetString("TaxPayerSubsidyRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows you to access and calculate the Excise Goods Tax price list electronically.
+        /// </summary>
+        public static string TaxServicesTip1 {
+            get {
+                return ResourceManager.GetString("TaxServicesTip1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scanning the QR code allows you to validate your electronic bill.
+        /// </summary>
+        public static string TaxServicesTip2 {
+            get {
+                return ResourceManager.GetString("TaxServicesTip2", resourceCulture);
             }
         }
         
