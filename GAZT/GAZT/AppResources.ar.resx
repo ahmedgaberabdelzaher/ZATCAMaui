@@ -9692,4 +9692,28 @@ info@zatca.gov.sa</value>
     <data name="BackToHome" xml:space="preserve">
         <value>الرجوع للرئيسية</value>
     </data>
+     <data name="GeneralServicesTip" xml:space="preserve">
+        <value>تتيح لك التبليغ عن منشأه مخالفة لأحد اختصاصات الهيئة</value>
+    </data>
+    <data name="CustomServicesTip1" xml:space="preserve">
+        <value>تتيح لك دليل متكامل يوضح معلومات السلع ورموزها والقوائم الخاصة بها مع بيانها الجمركي ورسومها.</value>
+    </data>
+     <data name="CustomServicesTip2" xml:space="preserve">
+        <value>تتيح لك الإستعلام عن معلومات السلع ورموزها والبيان الجمركي الخاص بها ورسومها.</value>
+    </data>
+    <data name="CustomServicesTip3" xml:space="preserve">
+        <value>تمكنك من الإقرار الإلكتروني عن المواد الواجب الإفصاح عنها عند دخول السعودية أو قبل مغادرتها.</value>
+    </data>
+    <data name="CustomServicesTip4" xml:space="preserve">
+        <value>تمكنك من الاستعلام عن رسوم طلبات تحليل العينات المرسلة لها من قبل الجمارك.</value>
+    </data>
+    <data name="CustomServicesTip5" xml:space="preserve">
+        <value>تتيح لعملاء الجمارك إرسال معاملات التوريد إلكترونيًا والتعرف على حالة القبول والرفض دون الحاجة لزيارة مقر الجمارك.</value>
+    </data>
+    <data name="TaxServicesTip1" xml:space="preserve">
+        <value>تتيح لك الوصول لقائمة أسعار ضريبة السلع الانتقائية واحتسابها إلكترونيًا</value>
+    </data>
+    <data name="TaxServicesTip2" xml:space="preserve">
+        <value>يتيح لك مسح ال QR code التحقق من صحة فاتورتك الإلكترونية</value>
+    </data>
 </root>

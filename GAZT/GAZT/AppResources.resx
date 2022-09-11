@@ -9770,4 +9770,28 @@ Zakat, Tax and Customs Authority
     <data name="BackToHome" xml:space="preserve">
         <value>Back to Home</value>
     </data>
+     <data name="GeneralServicesTip" xml:space="preserve">
+        <value>I call you a duplicate about the origin of the remnants of the authority's competences</value>
+    </data>
+    <data name="CustomServicesTip1" xml:space="preserve">
+        <value>It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip2" xml:space="preserve">
+        <value>It allows you to inquire about commodity information, codes, customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip3" xml:space="preserve">
+        <value>It enables you to electronically declare the materials to be disclosed upon entering or before leaving Saudi Arabia.</value>
+    </data>
+    <data name="CustomServicesTip4" xml:space="preserve">
+        <value>Enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
+    </data>
+    <data name="CustomServicesTip5" xml:space="preserve">
+        <value>Allows customs customers to submit supply transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters.</value>
+    </data>
+    <data name="TaxServicesTip1" xml:space="preserve">
+        <value>Allows you to access and calculate the Excise Goods Tax price list electronically</value>
+    </data>
+    <data name="TaxServicesTip2" xml:space="preserve">
+        <value>Scanning the QR code allows you to validate your electronic bill</value>
+    </data>
 </root>
