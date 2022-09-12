@@ -61,5 +61,11 @@ namespace EGAZT.Views.NewDesign
             get => MainContainer;
             set => MainContainer.Content = value;
         }
+
+        public Thickness PancakMargin
+        {
+            get => MainContainer.Margin;
+            set => MainContainer.Margin = value;
+        }
     }
 }

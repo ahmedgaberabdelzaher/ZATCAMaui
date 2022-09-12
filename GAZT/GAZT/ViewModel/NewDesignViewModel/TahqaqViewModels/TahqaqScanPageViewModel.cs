@@ -50,6 +50,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         bool _IsShowRsltView;
         public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value;  RaisePropertyChanged(); } }
 
+        bool _IsShowSubmitReport;
+        public bool IsShowSubmitReport { get { return _IsShowSubmitReport; } set { _IsShowSubmitReport = value; RaisePropertyChanged(); } }
+
+
         bool _IsShowFailRsltView;
         public bool IsShowFailRsltView { get { return _IsShowFailRsltView; } set { _IsShowFailRsltView = value; RaisePropertyChanged(); } }
 
@@ -112,6 +116,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                     });
 
                    
+                });
+            }
+        }
+
+        public ICommand OpenReportsCommand
+        {
+            get
+            {
+                return new Command(() =>
+
+                {
+
+                    _navigationService.NavigateTo(App.TaxEvasionPageWebView);
+
                 });
             }
         }

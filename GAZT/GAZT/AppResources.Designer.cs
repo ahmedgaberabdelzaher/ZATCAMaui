@@ -3144,7 +3144,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-invoice scanning.
+        ///   Looks up a localized string similar to E-Invoice Validation.
         /// </summary>
         public static string EinvoiceScanning {
             get {
@@ -14033,7 +14033,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VAT registration certificate.
+        ///   Looks up a localized string similar to VAT Registration Validation.
         /// </summary>
         public static string VATRegistrationCertificate {
             get {

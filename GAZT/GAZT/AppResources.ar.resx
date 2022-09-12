@@ -352,7 +352,7 @@
     <value>تفاصيل تسجيل ضريبة القيمة المضافة </value>
     </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
-    <value>شهادة تسجيل في ضريبة القيمة المضافة</value>
+    <value>التحقق من التسجيل في ضريبه القيمة المضافة</value>
     </data>
   <data name="ZakatAmount" xml:space="preserve">
     <value>مبلغ الزكاة</value>

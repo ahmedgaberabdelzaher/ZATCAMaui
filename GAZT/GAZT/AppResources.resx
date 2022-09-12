@@ -340,7 +340,7 @@
     <value>25% from  objected amount</value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
-    <value>VAT registration certificate</value>
+    <value>VAT Registration Validation</value>
   </data>
   <data name="VersonCheckErrorTitle" xml:space="preserve">
     <value>New Version Available</value>
@@ -9624,7 +9624,7 @@ the Zakat, Tax and Customs
         <value>Saudi customs exit</value>
     </data>
       <data name="EinvoiceScanning" xml:space="preserve">
-        <value>E-invoice scanning</value>
+        <value>E-Invoice Validation</value>
     </data>
     <data name="TaxCalculator" xml:space="preserve">
         <value>Mercahnt and consumer calculator</value>

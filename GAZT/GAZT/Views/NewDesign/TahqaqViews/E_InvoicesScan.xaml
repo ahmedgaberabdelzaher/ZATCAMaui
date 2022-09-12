@@ -299,6 +299,13 @@
 
                             </StackLayout>
                         </Frame>
+                                                        <Frame IsVisible="{Binding IsShowSubmitReport}" BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,27,27,27" HasShadow="False">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenReportsCommand}"></TapGestureRecognizer>
+                            </Frame.GestureRecognizers>
+<Label Text="{x:Static ResourceManager:AppResources.Submitareport}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
+                            </Frame>
+
                     </StackLayout>
                 </ScrollView>
 
@@ -312,8 +319,8 @@
 
         <controls:Header
             Grid.Row="0"
-            Padding="20,30,20,20"
-            TitleText="{x:Static ResourceManager:AppResources.ScantheQRcode}" />
+            Padding="0,35,0,10"
+            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}" />
         <controls:MsgView
             Grid.Row="0"
             Grid.RowSpan="2"

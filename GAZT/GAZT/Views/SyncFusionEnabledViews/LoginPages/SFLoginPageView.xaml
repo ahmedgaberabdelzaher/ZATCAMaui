@@ -8,6 +8,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
+        xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:custom2="clr-namespace:EGAZT"
     Title="Login"
     BackgroundColor="White"
@@ -24,7 +25,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <Grid>
+        <Grid >
             <Grid x:Name="loginGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100*" />
@@ -171,14 +172,18 @@
                         Text="{x:Static ResourceManager:AppResources.LoginTitle}" />
                 </StackLayout>
             </StackLayout>
-            <controls:BottomMenu Grid.Row="0" VerticalOptions="EndAndExpand">
+                <yummy:PancakeView 
+        Margin="0" Padding="0"
+        BackgroundColor="#002447"
+        CornerRadius="15,15,0,0" Grid.Row="0" VerticalOptions="EndAndExpand">
+            <controls:BottomMenu >
                 <controls:BottomMenu.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="20,20,20,-1" />
-                        <On Platform="Android," Value="20,20,20,0" />
+                        <On Platform="iOS" Value="10,0,10,15" />
+                        <On Platform="Android" Value="10,0,10,0" />
                     </OnPlatform>
                 </controls:BottomMenu.Margin>
-            </controls:BottomMenu>
+            </controls:BottomMenu></yummy:PancakeView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

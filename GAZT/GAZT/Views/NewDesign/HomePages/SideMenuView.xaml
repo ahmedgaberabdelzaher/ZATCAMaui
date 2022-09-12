@@ -23,7 +23,13 @@
                 Source="ZatcaLogoWithTitle"
                 VerticalOptions="StartAndExpand"
                 WidthRequest="190" />
-            <Grid RowDefinitions="*,auto">
+            <Grid RowDefinitions="*,auto"> 
+                       <Grid.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0,0,-15" />
+                        <On Platform="Android" Value="0" />
+                    </OnPlatform>
+                </Grid.Margin>
                 <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
                     <StackLayout x:Name="menu" BindableLayout.ItemsSource="{Binding SideMenuServiceLst}">
                         <BindableLayout.ItemTemplate>

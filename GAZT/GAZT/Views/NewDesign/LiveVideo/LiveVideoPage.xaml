@@ -65,8 +65,14 @@
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
-                Padding="0,5,0,0"
+                Padding="0,5,0,0" 
                 Style="{StaticResource CommonTopCurves}">
+                   <yummy:PancakeView.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0,0,-15" />
+                        <On Platform="Android" Value="0" />
+                    </OnPlatform>
+                </yummy:PancakeView.Margin>
                 <Grid RowDefinitions="*,auto">
                     <StackLayout
                         Grid.Row="0"
@@ -94,11 +100,15 @@
                                     IsClippedToBounds="True"
                                     WidthRequest="470">
 
-                                    <xct:MediaElement
+                                  <!--  <xct:MediaElement
                                         AutoPlay="True"
                                         ShowsPlaybackControls="True"
                                         Source="{Binding VideoUrl}" />
-
+-->
+                                         <mm:VideoView
+                                            AutoPlay="True"
+                                            ShowControls="True"
+                                            Source="{Binding VideoUrl}" />
                                 </Frame>
                             </On>
 

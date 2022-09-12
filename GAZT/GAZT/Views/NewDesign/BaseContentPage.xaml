@@ -36,8 +36,7 @@
             Style="{StaticResource CommonTopCurves}" />
         <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
         <controls:Loader
-            Grid.Row="0"
-            Grid.RowSpan="2"
+            Grid.Row="1"
             IsVisible="{Binding IsLoading}" />
     </Grid>
 </ContentPage>
