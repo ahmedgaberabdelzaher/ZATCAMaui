@@ -69,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         EInvoiceQRModel _eInvoiceQRModel;
         public EInvoiceQRModel eInvoiceQRModel { get { return _eInvoiceQRModel; } set { _eInvoiceQRModel = value; RaisePropertyChanged(); } }
        
-
+        
 
         bool _IsAnalyzing = true;
         public bool IsAnalyzing
@@ -152,6 +152,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
             return false;
         }
+
+       
 
         public ICommand ScanEnvoiceQrCommand
         {
@@ -506,17 +508,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         public async Task GetQrData(string vatId)
         {
-            IsLoading = true;
-              var data = await _tahqaqServices.GetEInvoiceData(vatId);
-            if (data.IsSuccessStatusCode)
+            try
             {
-                RegisterStatus = AppResources.Registered;
+                IsLoading = true;
+                var data = await _tahqaqServices.GetEInvoiceData(vatId);
+                if (data.IsSuccessStatusCode)
+                {
+                    RegisterStatus = AppResources.Registered;
+                    IsShowSubmitReport = false;
+                }
+                else
+                {
+                    RegisterStatus = AppResources.NotRegistered;
+                    IsShowSubmitReport = true;
+                }
+                IsLoading = false;
             }
-            else
+            catch (Exception ex)
             {
-                RegisterStatus= AppResources.NotRegistered;
+
             }
-            IsLoading = false;
+            finally {
+                IsLoading = false;
+            }
+       
         }
 
         public async Task AddQRLog(EInvoiceQRModel eInvoiceQRModel)

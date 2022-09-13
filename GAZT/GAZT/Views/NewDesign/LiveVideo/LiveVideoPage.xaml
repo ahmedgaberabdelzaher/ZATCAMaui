@@ -108,6 +108,7 @@
                                          <mm:VideoView
                                             AutoPlay="True"
                                             ShowControls="True"
+                                            x:Name="liveVideo"
                                             Source="{Binding VideoUrl}" />
                                 </Frame>
                             </On>
@@ -124,7 +125,6 @@
 
                                         <mm:VideoView
                                             AutoPlay="True"
-                                            x:Name="liveVideo"
                                             ShowControls="False"
                                             Source="{Binding VideoUrl}" />
                                 </Frame>

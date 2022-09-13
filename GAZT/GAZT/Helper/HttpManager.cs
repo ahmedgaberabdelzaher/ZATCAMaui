@@ -151,10 +151,10 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var h = new HttpClientHandler();
-                    h.ServerCertificateCustomValidationCallback = ValidateCertificate;
+                    //var h = new HttpClientHandler();
+                 //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
                    
-                    var client = new System.Net.Http.HttpClient(h);
+                    var client = new System.Net.Http.HttpClient();
 
                      client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);

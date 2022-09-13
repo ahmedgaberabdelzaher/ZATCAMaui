@@ -18649,7 +18649,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search Parameter  .
+        ///   Looks up a localized string similar to Search Type .
         /// </summary>
         public static string ZSearchParameter {
             get {
@@ -20532,7 +20532,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Commercial Registration Number.
+        ///   Looks up a localized string similar to CR / License / Contract No. .
         /// </summary>
         public static string ZVATLookupCRNumberType3 {
             get {

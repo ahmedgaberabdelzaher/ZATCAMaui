@@ -803,7 +803,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>Search Parameter  </value>
+    <value>Search Type </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>VAT Account Number</value>
@@ -2178,7 +2178,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZVATLookupCRNumberType3" xml:space="preserve">
-    <value>Commercial Registration Number</value>
+    <value>CR / License / Contract No. </value>
   </data>
   <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
     <value>VAT Account Number</value>

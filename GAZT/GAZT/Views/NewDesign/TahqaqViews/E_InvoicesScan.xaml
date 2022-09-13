@@ -26,7 +26,7 @@
             Padding="0"
             IsVisible="{Binding IsShowScanView}"
             Style="{StaticResource CommonTopCurves}">
-            <Grid Padding="0,0,0,0" RowDefinitions="auto,auto,*,auto,auto">
+            <Grid Padding="0,0,0,0" RowDefinitions="1.2*,*,*,*,*">
                 <Grid
                     x:Name="MainGrid"
                     Grid.RowSpan="5"
@@ -34,14 +34,14 @@
                 <!-- <zxing:ZXingScannerView  x:Name="zxing"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True" IsScanning="True"
                      BackgroundColor="White">
                                 </zxing:ZXingScannerView>-->
-                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                <Grid Grid.Row="0"  HorizontalOptions="FillAndExpand">
                     <Frame BackgroundColor="Black" Opacity=".44" />
 
-                    <StackLayout Margin="0,60,0,50">
+                    <StackLayout Margin="0,30,0,30">
 
                         <Label
                             FontFamily="{StaticResource FontSomarBold}"
-                            FontSize="24"
+                            FontSize="22"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
                             TextColor="White" />
@@ -51,10 +51,11 @@
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"
                             TextColor="White" />
+                        <BoxView HeightRequest="30"></BoxView>
                     </StackLayout>
                 </Grid>
 
-                <Grid
+                <Grid 
                     Grid.Row="1"
                     Grid.RowSpan="3"
                     Margin="2,0,2,-7"
@@ -76,14 +77,14 @@
                         Source="Path"
                         VerticalOptions="Start" />
                     <Path
-                        Margin="-7,-6,-14,0"
+                        Margin="-7,-6,-15,0"
                         Data="M 0,0 L 30,0 30,30Z"
                         Fill="Black"
                         HorizontalOptions="Start"
                         Opacity=".45"
                         VerticalOptions="Start" />
                     <Image
-                        Margin="-3,-15,-3,0"
+                        Margin="-3,-15,-5,0"
                         HeightRequest="90"
                         HorizontalOptions="End"
                         Rotation="-180"
@@ -123,40 +124,6 @@
                         VerticalOptions="End" />
 
                 </Grid>
-                <!--
-                            <Grid Grid.Row="2" custom:RoundCornersEffect.CornerRadius="30" Margin="2,-20,2,-15">
-    <Line  Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" Y2="100" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
-
-                              <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" X2="100" HorizontalOptions="End"  VerticalOptions="Start"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand"  VerticalOptions="Start"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" Y2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" X2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
-</Grid>
-                -->
-                <!--
-                                <Path Fill="#00000000"
-       Data="M5,65C5,51.8 5,31.8 5,5L30.79,5L65,5"
-        Stroke="red" WidthRequest="10"/>
-    <Path Fill="#00000000"
-        Data="M165,225C178.2,225 198.2,225 225,225L225,199.21L225,165"
-        Stroke="Red" WidthRequest="10"/>
-    <Path Fill="#00000000"
-        Data="M5,165C5,178.2 5,198.2 5,225L30.79,225L65,225"
-        Stroke="Red" WidthRequest="10"/>-->
-
-                <!--<Grid>
-    <Line  Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
-    <Line Stroke="gray" StrokeThickness="10" Y2="90" HorizontalOptions="StartAndExpand" VerticalOptions="Start"/>
-    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="End"  VerticalOptions="Start"/>
-    <Line Stroke="gray" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand"  VerticalOptions="Start"/>
-    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" StrokeThickness="10" Y2="100" HorizontalOptions="StartAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" StrokeThickness="10" X2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
-    <Line Stroke="gray" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
-</Grid>-->
 
 
                 <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
@@ -299,7 +266,7 @@
 
                             </StackLayout>
                         </Frame>
-                                                        <Frame IsVisible="{Binding IsShowSubmitReport}" BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="21,27,27,27" HasShadow="False">
+                                                        <Frame IsVisible="{Binding IsShowSubmitReport}" BackgroundColor="#00BBBD" CornerRadius="14" Padding="12" Margin="5,5,5,5" HasShadow="False">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportsCommand}"></TapGestureRecognizer>
                             </Frame.GestureRecognizers>
@@ -320,7 +287,15 @@
         <controls:Header
             Grid.Row="0"
             Padding="0,35,0,10"
-            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}" />
+            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}" >
+               <controls:Header.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,35,0,10" />
+                        <On Platform="Android" Value="0,35,0,10" />
+                    </OnPlatform>
+                </controls:Header.Padding>
+
+        </controls:Header>
         <controls:MsgView
             Grid.Row="0"
             Grid.RowSpan="2"
