@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
 using Plugin.Media.Abstractions;
+using Rg.Plugins.Popup.Pages;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
 namespace EGAZT.Controls
 {
-    public partial class MapPage : ContentView
+    public partial class MapPage : PopupPage
     {
         SubmitReportViewModel viewModel;
         public MapPage()
@@ -18,6 +20,7 @@ namespace EGAZT.Controls
             {
                 InitializeComponent();
                 viewModel = App.Locator.SubmitReportViewModel;
+                BindingContext = viewModel;
                 viewModel.GoogleMap = map;
             }
             catch (Exception ex)
@@ -25,7 +28,25 @@ namespace EGAZT.Controls
 
             }
         }
-       async void map_MapLongClicked(System.Object sender, Xamarin.Forms.GoogleMaps.MapLongClickedEventArgs e)
+        // Invoked when a hardware back button is pressed
+        protected override bool OnBackButtonPressed()
+        {
+            // Return true if you don't want to close this popup page when a back button is pressed
+            return false;
+        }
+
+        // Invoked when background is clicked
+        protected override bool OnBackgroundClicked()
+        {
+            // Return false if you don't want to close this popup page when a background of the popup page is clicked
+            return true;
+        }
+        void TapGestureRecognizer_Tapped(System.Object sender, System.EventArgs e)
+        {
+            PopupNavigation.Instance.PopAsync(true);
+        }
+
+        async void map_MapLongClicked(System.Object sender, Xamarin.Forms.GoogleMaps.MapLongClickedEventArgs e)
         {
             try
             {
@@ -82,6 +103,8 @@ namespace EGAZT.Controls
 
             }
         }
+
+       
     }
 }
 

@@ -1,19 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentView
+<pages:PopupPage
     x:Class="EGAZT.Controls.MapPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
-    <ContentView.Resources>
+    <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </ContentView.Resources>
+    </pages:PopupPage.Resources>
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Bottom"
+            PositionOut="Bottom"
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
 
     <Grid VerticalOptions="EndAndExpand">
 
@@ -48,13 +59,13 @@
             WidthRequest="25">
 
             <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CloseMapCommand}" />
+                <TapGestureRecognizer Command="{Binding CloseMapCommand}"/>
             </Image.GestureRecognizers>
 
         </Image>
 
     </Grid>
-</ContentView>
+</pages:PopupPage>
 
 
 
