@@ -10059,6 +10059,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to VAT Registered.
+        /// </summary>
+        public static string RegisteredVAT {
+            get {
+                return ResourceManager.GetString("RegisteredVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration certificate.
         /// </summary>
         public static string RegistrationCertificate {
@@ -12649,6 +12658,15 @@ namespace EGAZT {
         public static string VATCalculatorDesc {
             get {
                 return ResourceManager.GetString("VATCalculatorDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT Certificate Number.
+        /// </summary>
+        public static string VATCertificateNumber {
+            get {
+                return ResourceManager.GetString("VATCertificateNumber", resourceCulture);
             }
         }
         

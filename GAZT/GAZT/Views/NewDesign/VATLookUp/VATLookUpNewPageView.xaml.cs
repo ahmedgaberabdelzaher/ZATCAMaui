@@ -12,6 +12,10 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Application = Xamarin.Forms.Application;
+using ZXing.Mobile;
+using ZXing;
+using System.Collections.Generic;
+using Xamarin.Essentials;
 
 namespace EGAZT.Views.NewDesign.VATLookUp
 {
@@ -21,6 +25,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
     {
  
         VATLookUpNewPageViewModel viewModel;
+        ZXingScannerView zxing;
         public VATLookUpNewPageView()
         {
             InitializeComponent();
@@ -44,7 +49,11 @@ namespace EGAZT.Views.NewDesign.VATLookUp
             ZXingScannerPage scanPage;
             btnScan.Clicked += async (a,e) =>
             {
-                scanPage = new ZXingScannerPage();
+                viewModel.IsShowScanView = true;
+                zxing.IsScanning = true;
+                MainGrid.Children.Add(zxing);
+                zxing.AutoFocus();
+                /*scanPage = new ZXingScannerPage();
                 scanPage.OnScanResult += (result) => {
                     scanPage.IsScanning = false;
                     Device.BeginInvokeOnMainThread(async () => {
@@ -58,8 +67,92 @@ namespace EGAZT.Views.NewDesign.VATLookUp
 
                     });
                 };
-                await Navigation.PushAsync(scanPage);
+                await Navigation.PushAsync(scanPage);*/
             };
+
+            #region QR
+            zxing = new ZXingScannerView
+            {
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                AutomationId = "zxingScannerView"
+            };
+            //zxing.AutoFocus();
+            zxing.Options = new MobileBarcodeScanningOptions()
+            {
+                UseFrontCameraIfAvailable = false,
+                PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX, BarcodeFormat.EAN_13 },
+                TryHarder = true,
+                AutoRotate = false,
+                TryInverted = true,
+                UseCode39ExtendedMode = true,
+                DelayBetweenContinuousScans = 0,
+                CameraResolutionSelector = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+            };
+
+            var options = new MobileBarcodeScanningOptions
+            {
+                AutoRotate = true,
+                // UseNativeScanning = true,
+                TryHarder = true,
+
+                TryInverted = true,
+                CameraResolutionSelector = availableResolutions =>
+                {
+                    var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
+                    var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
+
+                    var targetRatio = displayOrientationHeight / displayOrientationWidth;
+                    var targetHeight = displayOrientationHeight;
+
+                    var bestResolutions = from r in availableResolutions
+                                          let aspectRatio = (double)r.Width / r.Height
+                                          let aspectRatioDiff = Math.Abs(aspectRatio - targetRatio)
+                                          let heightDiff = Math.Abs(r.Height - targetHeight)
+                                          orderby aspectRatioDiff, heightDiff
+                                          select r;
+
+                    return bestResolutions.FirstOrDefault();
+                },
+
+            };
+            zxing.OnScanResult += (result) =>
+                Device.BeginInvokeOnMainThread(() =>
+                {;
+                    try
+                    {
+                   // zxing.IsScanning = false;
+                  //  MessagingCenter.Send(this, "ScanData", result.Text);
+                    viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
+                    viewModel.LookupNumber = result.Text;
+                    viewModel.getBarcodeData();
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                  
+
+                });
+            viewModel.IsShowScanView = false;
+            #endregion
+
         }
         public void SetPickerFont()
         {

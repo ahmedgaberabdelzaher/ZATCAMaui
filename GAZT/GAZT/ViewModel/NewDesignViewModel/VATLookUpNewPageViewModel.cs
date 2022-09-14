@@ -19,6 +19,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     [Preserve(AllMembers = true)]
     public class VATLookUpNewPageViewModel : BaseViewModel
     {
+
+        bool _IsShowRsltView ;
+        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; RaisePropertyChanged(); } }
+
+        bool _IsShowScanView;
+        public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; RaisePropertyChanged(); } }
+
+        string vatNumber;
+        public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
+        string tIN;
+        public string TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
+
+        string vATCertificateNumber;
+        public string VATCertificateNumber { get { return vATCertificateNumber; } set { vATCertificateNumber = value; RaisePropertyChanged(); } }
+
+        string region;
+        public string Region { get { return region; } set { region = value; RaisePropertyChanged(); } }
+
+
         bool isMandatoryDataEntered = true;
         public ICommand OnBackButtonClicked { get; set; }
         public ICommand OnSearchButtonClicked { get; set; }
@@ -203,6 +222,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             OnBackButtonClicked = new Xamarin.Forms.Command(() =>
             {
+                if (IsShowScanView||IsShowRsltView)
+                {
+                    IsShowScanView=IsShowRsltView = false;
+                    return;
+                }
                 ResetFormData();
                 _navigationService.GoBack();
             });
@@ -448,10 +472,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
                             {
                                 IsLoading = false;
-                                NameOrNoResultLabel = AppResources.Name;
-                                Name = vatLookUp.d.results[0].Name;
-                                IsNameVisible = true;
-                                LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+                            IsShowRsltView = true;
+                               // NameOrNoResultLabel = AppResources.Name;
+                            Name = vatLookUp.d.results[0].Name;
+                            TIN = vatLookUp.d.results[0].Tin;
+                            Region = vatLookUp.d.results[0].Region;
+                            VatNumber = vatLookUp.d.results[0].Idnumber;
+                            VATCertificateNumber = vatLookUp.d.results[0].VatCertNo;
+
+                            //IsNameVisible = true;
+                            LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
                             }
                             else
                             {
@@ -579,6 +609,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //  viewModel._navigationService.GoBack();
                     });
                 }
+            finally
+            {
+                IsShowScanView = false;
+            }
 
 
 

@@ -9794,4 +9794,10 @@ Zakat, Tax and Customs Authority
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
+              <data name="RegisteredVAT" xml:space="preserve">
+        <value>VAT Registered</value>
+    </data>
+        <data name="VATCertificateNumber" xml:space="preserve">
+        <value>VAT Certificate Number</value>
+    </data>
 </root>

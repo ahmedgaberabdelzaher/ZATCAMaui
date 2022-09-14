@@ -9716,4 +9716,10 @@ info@zatca.gov.sa</value>
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>يتيح لك مسح ال QR code التحقق من صحة فاتورتك الإلكترونية</value>
     </data>
+            <data name="RegisteredVAT" xml:space="preserve">
+        <value>منشأة مسجلة</value>
+    </data>
+          <data name="VATCertificateNumber" xml:space="preserve">
+        <value>رقم الشهادة الضريبية</value>
+    </data>
 </root>
