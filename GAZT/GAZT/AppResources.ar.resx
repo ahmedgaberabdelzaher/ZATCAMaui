@@ -9722,4 +9722,7 @@ info@zatca.gov.sa</value>
           <data name="VATCertificateNumber" xml:space="preserve">
         <value>رقم الشهادة الضريبية</value>
     </data>
+           <data name="unableToVerify" xml:space="preserve">
+        <value>تعذر التحقق</value>
+    </data>
 </root>

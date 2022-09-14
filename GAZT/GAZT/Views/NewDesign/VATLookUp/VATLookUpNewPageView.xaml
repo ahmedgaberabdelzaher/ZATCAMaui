@@ -13,7 +13,7 @@
              xmlns:FontImage="clr-namespace:MVP.FontIcons"
              xmlns:ResourceManager="clr-namespace:EGAZT"
              xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:controls="clr-namespace:EGAZT.Controls"
              x:Class="EGAZT.Views.NewDesign.VATLookUp.VATLookUpNewPageView">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -30,7 +30,8 @@
         </OnPlatform>
     </ContentPage.Padding>
 
-     <ContentPage.ControlTemplate>
+    <!--
+    <ContentPage.ControlTemplate>
         <ControlTemplate>
             <Grid>
 
@@ -45,23 +46,7 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <!--<Label Grid.Column="1"
-                               Grid.Row="0"
-                               Text="{x:Static ResourceManager:AppResources.ZZZVatLookUpTitleNew}"
-                               Style="{StaticResource SectionTitleWhiteBold}"
-                               HorizontalOptions="Center"/>
-                        <Label Grid.Row="0"
-                               Grid.Column="0"
-                               IsVisible="{Binding IsBackStepButtonVisible}"
-                               Style="{StaticResource IconLabelStyle}"
-                               Text="{DynamicResource StyleReverseBack}"
-                               TextColor="White"
-                               VerticalOptions="CenterAndExpand"
-                               HorizontalOptions="StartAndExpand">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" ></TapGestureRecognizer>
-                            </Label.GestureRecognizers>
-                        </Label>-->
+                 
                     </Grid>
 
                     <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
@@ -126,10 +111,15 @@
             </Grid>
         </ControlTemplate>
     </ContentPage.ControlTemplate>
-
+-->
     <ContentPage.Content>
+        <Grid RowDefinitions="auto,*">
+             <yummy:PancakeView IsVisible="{Binding IsMainView}"
+            Grid.Row="1" VerticalOptions="FillAndExpand"
+            Margin="0"
+            Padding="0" 
+            Style="{StaticResource CommonTopCurves}">
         <Grid>
-        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="auto"/>
@@ -139,7 +129,7 @@
             <StackLayout Grid.Row="0">
                 <ScrollView VerticalScrollBarVisibility="Never">
                     <StackLayout Padding="10">
-                        <control:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
+                        <control:CustomLabel LineSpacing=".8" Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
                                              Style="{StaticResource SectionTitleBlack}" />
                         <control:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVATLookUpTitleSub}"
                                              Style="{StaticResource BodyLabelGrey}"/>
@@ -228,11 +218,11 @@
                                                                     HasError="False">
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                     MaxLength="{Binding MaxDigids}"
-                                                                   TextChanged="BorderlessEntry_TextChanged"
                                                                      Style="{StaticResource DefaultEntry}"  
                                                                     Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
                                                                     TextColor="{StaticResource Primary}" >
-                                        <!--IsReadOnly="{Binding IsNameVisible}"-->
+                                        <!--IsReadOnly="{Binding IsNameVisible}"                                                                   TextChanged="BorderlessEntry_TextChanged"
+-->
                                         <Entry.Behaviors>
                                                 <custom1:OnlyNumericValuesBehaviour/>
                                             </Entry.Behaviors>
@@ -303,9 +293,17 @@
             </StackLayout>-->
 
             <!--Loading layout-->
-                   <!--#region Scan View-->
+         
+
+                   
+
+
+           
+        </Grid>
+                </yummy:PancakeView>
+                      <!--#region Scan View-->
         <yummy:PancakeView
-            Grid.Row="0" Grid.RowSpan="2"
+            Grid.Row="1" 
             Margin="0"
             Padding="0" 
             IsVisible="{Binding IsShowScanView}"
@@ -444,36 +442,10 @@
         </yummy:PancakeView>
 
         <!--#endregion-->
-
-                   
-
-
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                         TextColor="{StaticResource Secondary}"/>
-                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-           
-        </Grid>
              <!--#region Success Result View-->
 
               <yummy:PancakeView 
-            Margin="0" Grid.Row="0"
+            Margin="0" Grid.Row="1"
             Padding="20"
             IsVisible="{Binding IsShowRsltView}"
             Style="{StaticResource CommonTopCurves}">
@@ -514,16 +486,15 @@
                                         TextColor="{StaticResource PrimaryColor}" />
                                     <Grid Grid.Column="1" RowDefinitions="auto">
                                         <Frame
-                                            Padding="0"
-                                            BorderColor="#F5BF58"
-                                            CornerRadius="14"
+                                            Padding="0" BackgroundColor="#62B34F"
+                                            CornerRadius="14" Opacity=".1" 
                                             HasShadow="False"
                                             VerticalOptions="FillAndExpand" />
                                         <Label
                                             Margin="10,3,10,3"
                                             HorizontalOptions="CenterAndExpand"
                                             Text="{x:Static ResourceManager:AppResources.Correct}"
-                                            TextColor="#F5BF58"
+                                            TextColor="#62B34F"
                                             VerticalOptions="CenterAndExpand" />
 
                                     </Grid>
@@ -588,6 +559,39 @@
         </yummy:PancakeView>
                   
         <!--#endregion-->
-     </Grid>
+                        <Grid Grid.Row="1"  Grid.Column="0"  IsVisible="{Binding IsLoading}">
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
+                </StackLayout>
+                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
+                                           EnableAnimation="True"
+                                       AnimationType="SingleCircle"
+                                           HorizontalOptions="CenterAndExpand"
+                                           VerticalOptions="CenterAndExpand"
+                                           IsBusy="True"
+                                       ViewBoxWidth = "70" 
+                                         
+                                       TitlePlacement="Bottom"
+                                       ViewBoxHeight="70" 
+                                         TextColor="{StaticResource Secondary}"/>
+                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+
+                   <controls:Header
+            Grid.Row="0"
+            Padding="0,35,0,10"
+            TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" >
+               <controls:Header.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,35,0,10" />
+                        <On Platform="Android" Value="0,10,0,10" />
+                    </OnPlatform>
+                </controls:Header.Padding>
+
+        </controls:Header>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

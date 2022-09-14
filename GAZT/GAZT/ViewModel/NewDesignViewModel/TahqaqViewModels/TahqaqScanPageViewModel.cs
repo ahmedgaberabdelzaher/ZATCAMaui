@@ -164,6 +164,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 {
                     Device.BeginInvokeOnMainThread(async() =>
                     {
+                        try
+                        {
+
                        IsLoading = true;
 
                         // string code = Result.Text;
@@ -178,10 +181,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                       IsShowMsgView = true;
                             MessageTxt = AppResources.InValidCode;
                         }*/
-                       Debug.WriteLine(code);
                         if (!IsBase64(code))
                         {
-                            IsLoading = false;
+                            eInvoiceQRModel.InvalidData = code;
+                              await AddQRLog(eInvoiceQRModel);
+                                IsLoading = false;
                             IsShowMsgView = true;
                             MessageTxt = AppResources.InvalidQrMessage;
                             return;
@@ -226,6 +230,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                        IsLoading = false;
                        await AddQRLog(eInvoiceQRModel);
 
+                        }
+                        catch (Exception ex)
+                        {
+
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                            IsScanning = true;
+                        }
                     });
 
                    
@@ -511,17 +525,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             try
             {
                 IsLoading = true;
+                if (Helper.NetworkCheck.IsInternet())
+                {
+
                 var data = await _tahqaqServices.GetEInvoiceData(vatId);
                 if (data.IsSuccessStatusCode)
                 {
                     RegisterStatus = AppResources.Registered;
                     IsShowSubmitReport = false;
                 }
-                else
+                else if (data.StatusCode==System.Net.HttpStatusCode.BadRequest)
                 {
                     RegisterStatus = AppResources.NotRegistered;
                     IsShowSubmitReport = true;
                 }
+                else
+                {
+                        RegisterStatus = AppResources.unableToVerify;
+                }
+
+
+                }
+                else
+                {
+                    RegisterStatus= AppResources.unableToVerify;
+                }
+
                 IsLoading = false;
             }
             catch (Exception ex)

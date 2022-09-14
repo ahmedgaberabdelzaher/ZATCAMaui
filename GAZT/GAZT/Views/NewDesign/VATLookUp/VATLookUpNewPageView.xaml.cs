@@ -137,11 +137,11 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                 {;
                     try
                     {
-                   // zxing.IsScanning = false;
+                   zxing.IsScanning = false;
                   //  MessagingCenter.Send(this, "ScanData", result.Text);
                     viewModel.SelectedParameterType = viewModel.ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
-                    viewModel.LookupNumber = result.Text;
-                    viewModel.getBarcodeData();
+                   // viewModel.LookupNumber = result.Text;
+                    viewModel.getBarcodeData(result.Text);
                     }
                     catch (Exception ex)
                     {

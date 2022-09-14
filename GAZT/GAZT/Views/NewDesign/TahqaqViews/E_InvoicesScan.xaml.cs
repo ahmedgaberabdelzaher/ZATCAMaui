@@ -81,7 +81,8 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-
+                    viewModel.IsScanning = false;
+                    zxing.IsScanning = false;
                     // Stop analysis until we navigate away so we don't keep reading barcodes
                     // zxing.IsAnalyzing = false;
                     viewModel.scanCode = result.Text;
@@ -105,7 +106,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
              {
                  _ = await Permissions.RequestAsync<Permissions.Camera>();
              }
-            zxing.IsScanning = true;
+            zxing.IsScanning = viewModel.IsScanning;
             base.OnAppearing();
       
         }

@@ -204,16 +204,29 @@
                                     <Grid Grid.Column="1" RowDefinitions="auto">
                                         <Frame
                                             Padding="0"
-                                            BorderColor="#F5BF58"
-                                            CornerRadius="14"
+                                            CornerRadius="14" BackgroundColor="Orange" Opacity=".1"
                                             HasShadow="False"
-                                            VerticalOptions="FillAndExpand" />
+                                            VerticalOptions="FillAndExpand" >
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame" Binding="{Binding RegisterStatus}" Value="{x:Static ResourceManager:AppResources.Registered}">
+                                                    <Setter Property="BackgroundColor" Value="#62B34F"></Setter>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+
+                                        </Frame>
                                         <Label
                                             Margin="10,3,10,3"
                                             HorizontalOptions="CenterAndExpand"
                                             Text="{Binding RegisterStatus}"
-                                            TextColor="#F5BF58"
-                                            VerticalOptions="CenterAndExpand" />
+                                            TextColor="Orange"
+                                            VerticalOptions="CenterAndExpand" >
+                                              <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding RegisterStatus}" Value="{x:Static ResourceManager:AppResources.Registered}">
+                                                    <Setter Property="TextColor" Value="#62B34F"></Setter>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+
+                                        </Label>
 
                                     </Grid>
                                 </Grid>

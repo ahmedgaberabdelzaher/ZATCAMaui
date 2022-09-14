@@ -26,8 +26,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         bool _IsShowScanView;
         public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; RaisePropertyChanged(); } }
 
+        bool _IsMainView=true;
+        public bool IsMainView { get { return _IsMainView; } set { _IsMainView = value; RaisePropertyChanged(); } }
+
+
         string vatNumber;
         public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
+
         string tIN;
         public string TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
 
@@ -212,6 +217,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
         public VATLookUpNewPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+            IsMainView = true;
             if (navigationService == null)
             {
                 throw new ArgumentNullException("navigationService");
@@ -292,13 +298,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //};
             });
 
-            MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", (sender, arg) =>
+          /*  MessagingCenter.Subscribe<VATLookUpNewPageViewModel, string>(this, "ScanData", (sender, arg) =>
             {
                 SelectedParameterType = ParameterTypeList?.Where(x => x.id == "3")?.FirstOrDefault();
-                LookupNumber = arg;
+               // LookupNumber = arg;
                 getBarcodeData();
             });
-
+          */
 
         }
 
@@ -455,12 +461,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             LookupNumber = "";
             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
         }
-        public async void getBarcodeData()
+        public async void getBarcodeData(string LookUpNo="")
         {
            
                 try
                 {
                     IsLoading = true;
+                if (!string.IsNullOrEmpty(LookUpNo))
+                {
+                    if (LookUpNo.Length != 15)
+                    {
+                        IsLoading = false;
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.InValidCode));
+                        return;
+                    }
+                    LookupNumber = LookUpNo;
+                }
+                
                     //isMandatoryDataEntered = true;
                     string _language = "A"; //UtilityManager.GetLanguageParameter();
 
@@ -472,7 +489,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
                             {
                                 IsLoading = false;
+                            IsShowScanView = false;
+                            IsMainView = false;
                             IsShowRsltView = true;
+
                                // NameOrNoResultLabel = AppResources.Name;
                             Name = vatLookUp.d.results[0].Name;
                             TIN = vatLookUp.d.results[0].Tin;
@@ -482,6 +502,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                             //IsNameVisible = true;
                             LookUpButtonText = AppResources.ZVATLookUpSearchButtonText;
+                            return;
                             }
                             else
                             {
@@ -551,8 +572,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Name = vatLookUp.d.results[0].Name;
                             NameOrNoResultLabel = AppResources.Nodataavailable;
                         }
-                    }
+
                 }
+                IsMainView = true;
+            }
                 catch (GAZTException gex)
                 {
                     // Handle the GAZT custom exception.
@@ -619,9 +642,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         #endregion
 
+
         public void onDissapear()
         {
-            MessagingCenter.Unsubscribe<VATLookUpNewPageViewModel, string>(this, "ScanData");
+           // MessagingCenter.Unsubscribe<VATLookUpNewPageViewModel, string>(this, "ScanData");
         }
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+          
+                    if (IsShowRsltView|| IsShowScanView)
+                    {
+                        IsShowRsltView = IsShowScanView = false;
+                        IsMainView = true;
+                        return;
+                    }
+                    _navigationService.GoBack();
+
+                });
+            }
+        }
+
     }
 }

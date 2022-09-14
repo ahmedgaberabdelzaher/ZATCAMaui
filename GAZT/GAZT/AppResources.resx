@@ -9800,4 +9800,7 @@ Zakat, Tax and Customs Authority
         <data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
+        <data name="unableToVerify" xml:space="preserve">
+        <value>Unable To Verify</value>
+    </data>
 </root>

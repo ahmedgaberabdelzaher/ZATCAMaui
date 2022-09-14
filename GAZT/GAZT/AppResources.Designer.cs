@@ -12346,6 +12346,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable To Verify.
+        /// </summary>
+        public static string unableToVerify {
+            get {
+                return ResourceManager.GetString("unableToVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please create a new password.
         /// </summary>
         public static string UnlockAccountCreateNewPassword {
