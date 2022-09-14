@@ -91,27 +91,6 @@
                          <!-- Video URL-->
                         <OnPlatform x:TypeArguments="View">
 
-                            <On Platform="iOS">
-                                <Frame
-                                    Padding="0"
-                                    BorderColor="#EBEBEB"
-                                    CornerRadius="20"
-                                    HeightRequest="250"
-                                    IsClippedToBounds="True"
-                                    WidthRequest="470">
-
-                                  <!--  <xct:MediaElement
-                                        AutoPlay="True"
-                                        ShowsPlaybackControls="True"
-                                        Source="{Binding VideoUrl}" />
--->
-                                         <mm:VideoView
-                                            AutoPlay="True"
-                                            ShowControls="True"
-                                            Source="{Binding VideoUrl}" />
-                                </Frame>
-                            </On>
-
                             <On Platform="Android">
                                 <Frame
                                     Padding="0"
@@ -127,6 +106,21 @@
                                             x:Name="liveVideo"
                                             ShowControls="False"
                                             Source="{Binding VideoUrl}" />
+                                </Frame>
+                            </On>
+
+                             <On Platform="iOS">
+                                <Frame
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="20"
+                                    HeightRequest="250"
+                                    IsClippedToBounds="True"
+                                    WidthRequest="470">
+                                    <mm:VideoView
+                                        AutoPlay="True"
+                                        ShowControls="True"
+                                        Source="{Binding VideoUrl}" />
                                 </Frame>
                             </On>
                         </OnPlatform>

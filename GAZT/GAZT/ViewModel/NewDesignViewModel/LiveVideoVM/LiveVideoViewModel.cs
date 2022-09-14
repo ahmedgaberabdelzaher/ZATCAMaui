@@ -37,7 +37,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = true,
                 VideoNumber = AppResources.Port1Name ,
-                VideoURl="onc4gSz5XqY"
+                VideoURl="aoVFKwQDDII"
+
             },
             new VideoModel
             {
@@ -45,7 +46,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port2Name,
-                VideoURl="ycF3wtfRpAM"
+                VideoURl="Y2q0ELpgPYs"
+
             },
             new VideoModel
             {
@@ -53,7 +55,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-                VideoURl="Y2q0ELpgPYs"
+                VideoURl="8eJJ6EAMoO8"
+
             },
             new VideoModel
             {
@@ -61,7 +64,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                VideoURl="8eJJ6EAMoO8"
+                VideoURl="ycF3wtfRpAM"
+
             }
         };
         }
@@ -88,6 +92,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                             {
                                 IsLoading = true;
                                 GetLiveVideoLst();
+                                await Task.Delay(1000);
                                 SelectedVideo = AppResources.Port1Name;
                                 await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
                                 IsLoading = false;
