@@ -586,7 +586,7 @@
             TitleText="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" >
                <controls:Header.Padding>
                     <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="0,35,0,10" />
+                        <On Platform="iOS" Value="0,10,0,10" />
                         <On Platform="Android" Value="0,10,0,10" />
                     </OnPlatform>
                 </controls:Header.Padding>

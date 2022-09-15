@@ -20604,7 +20604,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search VAT.
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string ZVATLookUpSearchButtonText {
             get {

@@ -682,10 +682,10 @@
     <value>اتبع الخطوات التالية:</value>
     </data>
   <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
-    <value>تحقق</value>
+    <value>التحقق</value>
     </data>
   <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
-    <value>تحقق</value>
+       <value>التحقق</value>
     </data>
   <data name="TotalSubmittedReturns" xml:space="preserve">
     <value>إجمالي الإقرارات المقدمة</value>

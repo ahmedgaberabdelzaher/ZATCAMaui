@@ -260,10 +260,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 });
 
-                await Task.Run(() =>
-                {
-                    IsLoading = false;
-                });
+             
             });
             OnScanButtonClicked = new Xamarin.Forms.Command(() =>
             {

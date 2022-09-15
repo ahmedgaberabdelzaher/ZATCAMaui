@@ -3873,7 +3873,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Please follow the steps</value>
   </data>
   <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
-    <value>Search VAT</value>
+    <value>Search</value>
   </data>
   <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
     <value>New VAT Search</value>
