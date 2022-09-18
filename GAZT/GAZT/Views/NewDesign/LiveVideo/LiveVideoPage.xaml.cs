@@ -13,6 +13,7 @@ namespace EGAZT.Views.NewDesign.LiveVideo
         public LiveVideoPage()
         {
             InitializeComponent();
+            liveVideo.ShowControls = Device.RuntimePlatform == Device.Android ? false : true;
             viewModel = App.Locator.LiveVideoViewModel;
             viewModel.CurrentTab = 3;
             BindingContext = viewModel;
@@ -21,12 +22,9 @@ namespace EGAZT.Views.NewDesign.LiveVideo
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            
-            if (Device.RuntimePlatform == Device.Android)
-            {
-                var player = CrossMediaManager.Current.MediaPlayer;
-                player.Stop();
-            }
+
+            var player = CrossMediaManager.Current.MediaPlayer;
+            player.Stop();
         }
     }
 }

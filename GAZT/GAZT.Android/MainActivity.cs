@@ -19,6 +19,7 @@ using Newtonsoft.Json;
 using Android.Content;
 using Acr.UserDialogs;
 using MediaManager;
+using Rg.Plugins.Popup.Services;
 
 namespace GAZT.Droid
 {
@@ -224,9 +225,17 @@ namespace GAZT.Droid
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public override void OnBackPressed()
+        public override async void OnBackPressed()
         {
-            App.OnBackPressed();
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                await PopupNavigation.Instance.PopAsync(true);
+            }
+            else
+            {
+                App.OnBackPressed();
+            }
+            
         }
 
         private void PreventLinkerFromStrippingCommonLocalizationReferences()

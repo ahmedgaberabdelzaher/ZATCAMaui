@@ -9,10 +9,11 @@ using YoutubeExplode;
 using System.Threading.Tasks;
 using MediaManager;
 using MediaManager.Library;
+using System.Diagnostics;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 {
-    public class LiveVideoViewModel: BaseViewModel
+    public class LiveVideoViewModel : BaseViewModel
     {
         #region Properties
 
@@ -29,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 
         public void GetLiveVideoLst()
         {
-            LiveVideosList= new ObservableCollection<VideoModel>()
+            LiveVideosList = new ObservableCollection<VideoModel>()
         {
             new VideoModel
             {
@@ -37,7 +38,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = true,
                 VideoNumber = AppResources.Port1Name ,
-                VideoURl="aoVFKwQDDII"
+                VideoURl="eJ6ZMd4sVrI"
+
             },
             new VideoModel
             {
@@ -45,7 +47,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port2Name,
-                VideoURl="Y2q0ELpgPYs"
+                VideoURl="5VtrmK81NG4"
+
             },
             new VideoModel
             {
@@ -53,7 +56,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =0,
                 IsSelected = false,
                 VideoNumber = AppResources.Port3Name,
-                VideoURl="8eJJ6EAMoO8"
+                VideoURl="5VtrmK81NG4"
+
             },
             new VideoModel
             {
@@ -61,7 +65,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 Column =1,
                 IsSelected = false,
                 VideoNumber = AppResources.Port4Name,
-                VideoURl="ycF3wtfRpAM"
+                VideoURl="eJ6ZMd4sVrI"
+
             }
         };
         }
@@ -71,38 +76,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
 
         public LiveVideoViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-           
+
         }
 
         #region Commands
 
-         public ICommand OnAppearingCommand
-         {
-                get
+        public ICommand OnAppearingCommand
+        {
+            get
+            {
+                return new Command(() =>
                 {
-                    return new Command(() =>
+                    try
                     {
-                        try
+                        Device.BeginInvokeOnMainThread(async () =>
                         {
-                            Device.BeginInvokeOnMainThread(async() =>
-                            {
-                                IsLoading = true;
-                                GetLiveVideoLst();
-                                SelectedVideo = AppResources.Port1Name;
-                                await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
-                                IsLoading = false;
-                            });
-                           
-                        }
-                        catch (Exception ex)
-                        {
+                            IsLoading = true;
+                            GetLiveVideoLst();
+                            await Task.Delay(1000);
+                            SelectedVideo = AppResources.Port1Name;
+                            await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+                            IsLoading = false;
+                        });
 
-                        }
-                        
-                   
-                    });
-                }
-         }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+
+                });
+            }
+        }
 
         public ICommand SelectedVideoItemCommand
         {
@@ -131,8 +137,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                     {
 
                     }
-                   
-                   
+
+
                 });
             }
         }
@@ -143,25 +149,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         #region Methods
         private async Task GetYoutubeLiveVideoURl(string videoId)
         {
-            
+
             try
             {
+                CrossMediaManager.Current.Dispose();
+                await Task.Delay(1000);
+                CrossMediaManager.Current.Init();
+                await Task.Delay(1000);
                 var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);
-                VideoUrl = streamManifests;
+                var item = await CrossMediaManager.Current.Extractor.CreateMediaItem(streamManifests);
 
-                if(Device.RuntimePlatform == Device.Android)
-                {
-                    var item = await CrossMediaManager.Current.Extractor.CreateMediaItem(VideoUrl);
-
-                    item.MediaType = MediaType.Hls;
-                }
-
+                item.MediaType = MediaType.Hls;
+                await CrossMediaManager.Current.Play(item);
             }
             catch (Exception ex)
             {
-              await  _dialogService.ShowMessage("", ex.InnerException + ex.Message + ex.StackTrace);
+                await _dialogService.ShowMessage("", ex.InnerException + ex.Message + ex.StackTrace);
             }
-         
+
 
         }
         #endregion

@@ -913,7 +913,7 @@
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
             <!--  Popup Map  -->
-            <controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />
+            <!--<controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />-->
 
         </Grid>
     </ContentPage.Content>

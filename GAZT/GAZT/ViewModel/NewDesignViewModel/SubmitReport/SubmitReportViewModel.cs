@@ -10,9 +10,11 @@ using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign.Common;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
@@ -36,9 +38,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         public DateTime SelectedDate { get; set; } = DateTime.Now;
         bool isTherePDFUploaded;
         public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
-
-        bool isShowMapView;
-        public bool IsShowMapView { get { return isShowMapView; } set { isShowMapView = value; RaisePropertyChanged(); } }
 
         bool isShowBottomSheet;
         public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
@@ -85,7 +84,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         private List<LookUpsListModel> MissingFieldsList;
 
         #endregion
-        
+
         #region Commands
         public ICommand SendReportCommand
         {
@@ -104,11 +103,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             DTFormat.Calendar = new System.Globalization.GregorianCalendar();
                             DTFormat.ShortDatePattern = "dd/MM/yyyy";
                             SubmitReport.ViolationDate = SelectedDate.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
-                            
+
                             SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
                             var json = JsonConvert.SerializeObject(SubmitReport);
                             var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
-                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles); 
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles);
                             if (reportResult.Success)
                             {
                                 ReportNumberResult = reportResult.Result?.Data;
@@ -125,7 +124,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         IsShowMsgView = true;
                         MessageTxt = AppResources.RequestTimeoutDescription;
                     }
-                 
+
                 });
             }
         }
@@ -147,9 +146,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
-                    await MoveMapToLocation();
+                   await MoveMapToLocation();
                 });
 
             }
@@ -159,7 +158,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(async () =>
+                return new Command(async() =>
                 {
                     try
                     {
@@ -170,7 +169,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         IsShowMsgView = true;
                         MessageTxt = AppResources.Somethingwentwrong;
                     }
-                   
+
 
                 });
             }
@@ -212,7 +211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
-        
+
         public ICommand GoToMyReportsCommand
         {
             get
@@ -250,7 +249,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command( () =>
+                return new Command(() =>
                 {
                     if (IsValidateReport())
                         _navigationService.NavigateTo("TermsPage");
@@ -262,7 +261,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(() => { IsShowMapView = false; });
+                return new Command(async () =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                });
 
             }
         }
@@ -381,7 +383,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         IsShowMsgView = true;
                         MessageTxt = AppResources.RequestTimeoutDescription;
                     }
-                   
+
 
                 });
             }
@@ -428,7 +430,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     IsLoading = true;
                     isMissingFieldSelected = true;
@@ -521,9 +523,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
                         else if (ReportUloadedFiles != null && ReportUloadedFiles.Count < 5)
                         {
-                            
+
                             var stream = await result.OpenReadAsync();
-                           // string content = ConvertToBase64(stream);
+                            // string content = ConvertToBase64(stream);
                             ReportFileModel reportfile = new ReportFileModel();
                             reportfile.filecontentStream = stream;
                             reportfile.filename = result.FileName;
@@ -537,14 +539,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.TINDeregAttachmentsTitleOne;
-                            
+
                         }
                     }
                     else
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.BalaghSupportedFileMsg;
-                        
+
                     }
 
                 }
@@ -553,7 +555,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.Somethingwentwrong;
-                
+
             }
 
 
@@ -582,7 +584,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return false;
             }
 
-            if(string.IsNullOrWhiteSpace(SubmitReport.MissedFieldName)
+            if (string.IsNullOrWhiteSpace(SubmitReport.MissedFieldName)
                 && SubmitReport.ReportCategory.ToLower().Equals("v36"))
             {
                 IsShowMsgView = true;
@@ -608,7 +610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
                 }
-                else if(!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
+                else if (!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber05;
@@ -616,7 +618,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
                 }
-                else if(!Email.IsMatch(SubmitReport.ReporterEmail))
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.InvalidEmail;
@@ -653,34 +655,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             else
             {
                 await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-                return false;
+               return false;
 
             }
         }
 
         private async Task MoveMapToLocation()
         {
+
             if (await GetCurrentLocation())
             {
-                IsShowMapView = true;
-                
-                Device.BeginInvokeOnMainThread(async() =>
-                {
-                    await Task.Delay(1000);
-                    var zoomLevel = 10.71; // pick a value between 1 and 18
-                    var latlongdeg = 360 / (Math.Pow(2, zoomLevel));
+                MapPage poupMapWindow = new MapPage();
+                await PopupNavigation.Instance.PushAsync(poupMapWindow);
+                await Task.Delay(1000);
+                var zoomLevel = 10.71; // pick a value between 1 and 18
+                var latlongdeg = 360 / (Math.Pow(2, zoomLevel));
 
-                    GoogleMap?.MoveToRegion(MapSpan.FromCenterAndRadius(
-                        new Position(SubmitReport.Latitude, SubmitReport.Longitude), Distance.FromMiles(latlongdeg)),true);
-                    GoogleMap?.Pins.Clear();
-                    GoogleMap?.Pins.Add(new Pin()
-                    {
-                        Address = SubmitReport.Street,
-                        Label = SubmitReport.Street,
-                        Position = new Position(SubmitReport.Latitude, SubmitReport.Longitude)
-                    });
+                GoogleMap?.MoveToRegion(MapSpan.FromCenterAndRadius(
+                    new Position(SubmitReport.Latitude, SubmitReport.Longitude), Distance.FromMiles(latlongdeg)), true);
+                GoogleMap?.Pins.Clear();
+                GoogleMap?.Pins.Add(new Pin()
+                {
+                    Address = SubmitReport.Street,
+                    Label = SubmitReport.Street,
+                    Position = new Position(SubmitReport.Latitude, SubmitReport.Longitude)
                 });
-               
+
 
             }
             else
