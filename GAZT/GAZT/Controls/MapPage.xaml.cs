@@ -55,7 +55,7 @@ namespace EGAZT.Controls
 
                 if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
                 {
-                    var location = await Geolocation.GetLastKnownLocationAsync();
+                    var location = await Geolocation.GetLocationAsync();
                     viewModel.SubmitReport.Latitude = location.Latitude;
                     viewModel.SubmitReport.Longitude = location.Longitude;
                     Geocoder geoCoder = new Geocoder();

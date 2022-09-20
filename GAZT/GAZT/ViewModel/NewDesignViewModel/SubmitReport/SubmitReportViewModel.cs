@@ -148,7 +148,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                   await MoveMapToLocation();
+                    try
+                    {
+                        await MoveMapToLocation();
+                    }
+                    catch (Exception ex)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.Somethingwentwrong;
+                    }
+                   
                 });
 
             }
@@ -635,7 +644,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
             {
-                var location = await Geolocation.GetLastKnownLocationAsync();
+                var location = await Geolocation.GetLocationAsync();
 
                 SubmitReport.Latitude = location.Latitude;
                 SubmitReport.Longitude = location.Longitude;
