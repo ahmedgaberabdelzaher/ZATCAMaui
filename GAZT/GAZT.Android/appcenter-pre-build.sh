@@ -18,7 +18,7 @@
 # The same thing can be perform with any class of the app.
 #
 # AN IMPORTANT THING: FOR THIS SAMPLE YOU NEED DECLARE API_URL ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
-
+echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
 if [ -z "$Target_Environment" ]
 then
     echo "You need define the environment variable in App Center"
