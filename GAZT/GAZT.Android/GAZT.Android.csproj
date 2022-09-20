@@ -3912,6 +3912,7 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <None Include="appcenter-pre-build.sh" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BannerImage.png">
