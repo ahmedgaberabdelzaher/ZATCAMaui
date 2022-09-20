@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env bash
+﻿#!/usr/bin/bash
 #
 # For Xamarin, change some constants located in some class of the app.
 # In this sample, suppose we have an AppConstant.cs class in shared folder with follow content:
