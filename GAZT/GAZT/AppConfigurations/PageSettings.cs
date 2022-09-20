@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Net.Http;
 
 namespace EGAZT.AppConfigurations
@@ -29,8 +30,13 @@ namespace EGAZT.AppConfigurations
         public const string XZATCAClientSecretTest = "c9487460cd7dd8bc0f16ede707f4dad3";
         public static string Target_Environment = "";
         public  static string ExciseTaxUrl = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/Pages/Disclaimer.aspx";
+
+
         public static string GetClientID()
         {
+#if DEBUG
+            Target_Environment = "STG";
+#endif
             string key = "";
             switch (Target_Environment)
             {
@@ -41,12 +47,15 @@ namespace EGAZT.AppConfigurations
                     key= XZATCAClientIdProd;
                     break;
                 default:
-                    break;
+                    throw new InvalidEnumArgumentException("Invalid TARGET_ENV: " + Target_Environment);
             }
             return key;
         }
         public static string GetClientSecret()
         {
+#if DEBUG
+            Target_Environment = "STG";
+#endif
             string key = "";
             switch (Target_Environment)
             {
@@ -57,7 +66,7 @@ namespace EGAZT.AppConfigurations
                     key = XZATCAClientSecretProd;
                     break;
                 default:
-                    break;
+                    throw new InvalidEnumArgumentException("Invalid TARGET_ENV: " + Target_Environment);
             }
             return key;
         }
