@@ -47,7 +47,8 @@ namespace EGAZT.AppConfigurations
                     key= XZATCAClientIdProd;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("Invalid TARGET_ENV: " + Target_Environment);
+                    key = XZATCAClientIdTest;
+                    break;
             }
             return key;
         }
@@ -66,7 +67,8 @@ namespace EGAZT.AppConfigurations
                     key = XZATCAClientSecretProd;
                     break;
                 default:
-                    throw new InvalidEnumArgumentException("Invalid TARGET_ENV: " + Target_Environment);
+                    key = XZATCAClientSecretTest;
+                    break;
             }
             return key;
         }
