@@ -1,4 +1,4 @@
-﻿#!/usr/bin/bash
+#!/usr/bin/env bash
 #
 # For Xamarin, change some constants located in some class of the app.
 # In this sample, suppose we have an AppConstant.cs class in shared folder with follow content:
@@ -26,8 +26,11 @@ then
     echo "You need define the environment variable in App Center"
     exit
 fi
+echo "Getting file path"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/EGAZT/EGAZT.AppConfigurations/PageSettings.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/EGAZT/EGAZT/EGAZT.AppConfigurations/PageSettings.cs
+
+echo "Updating file path to $APP_CONSTANT_FILE"
 
 if [ -e "$APP_CONSTANT_FILE" ]
 then
