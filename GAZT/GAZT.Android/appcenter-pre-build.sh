@@ -28,7 +28,7 @@ then
 fi
 echo "Getting file path"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/EGAZT/EGAZT/EGAZT.AppConfigurations/PageSettings.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/EGAZT/EGAZT/EGAZT/EGAZT.AppConfigurations/PageSettings.cs
 
 echo "Updating file path to $APP_CONSTANT_FILE"
 
