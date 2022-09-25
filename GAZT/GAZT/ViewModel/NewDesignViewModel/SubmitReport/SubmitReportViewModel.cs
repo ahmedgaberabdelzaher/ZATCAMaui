@@ -10,7 +10,11 @@ using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.MyReports;
+using EGAZT.Views.NewDesign.ReportOTP;
+using EGAZT.Views.NewDesign.SubmitReport;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using Newtonsoft.Json;
@@ -106,12 +110,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                             SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
                             var json = JsonConvert.SerializeObject(SubmitReport);
-                            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json); 
                             var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles);
                             if (reportResult.Success)
                             {
                                 ReportNumberResult = reportResult.Result?.Data;
-                                _navigationService.NavigateTo("ReportSuccessPage");
+                                _navigationService.NavigateTo("/ReportSuccessPage");
+                                SubmitReport = new SubmitReportModel();
                             }
                             IsLoading = false;
 
@@ -228,6 +233,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("/InquiryAboutMyReportsPage");
+                    
 
                 });
             }
@@ -284,13 +290,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(() =>
                 {
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
                     if (IsShowBottomSheet)
                     {
                         IsShowBottomSheet = false;
                         HeaderTitle = AppResources.Submitareport;
+                        return;
                     }
-                    else
-                        _navigationService.GoBack();
+                    else if(currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
+                    {
+                        SubmitReport = new SubmitReportModel();
+                    }
+                    _navigationService.GoBack();
+
                 });
             }
         }
@@ -600,6 +613,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
+            if(!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            { 
+                if(!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly +"; "+ AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+                    return false;
+                    
+                }
+            
+            }
+            if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
+            {
+                if (!Regex.IsMatch(SubmitReport.CR, @"^\d{10}$"))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ZZCommercialReiterationNumberconsistsofnumbersonly + "; " + AppResources.ZZCommercialReiterationNumbershouddbe10digits;
+                    return false;
+
+                }
+
+            }
             return true;
 
         }
@@ -619,6 +654,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
                 }
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.InvalidEmailFormat;
+                    return false;
+                }
                 else if (!phoneRegex.IsMatch(SubmitReport.ReporterMobileNumber))
                 {
                     IsShowMsgView = true;
@@ -626,12 +667,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
 
-                }
-                else if (!Email.IsMatch(SubmitReport.ReporterEmail))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.InvalidEmail;
-                    return false;
                 }
             }
             return true;

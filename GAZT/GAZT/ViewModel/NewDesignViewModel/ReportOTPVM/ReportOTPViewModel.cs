@@ -3,8 +3,11 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Timers;
 using System.Windows.Input;
+using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.MyReports;
+using EGAZT.Views.NewDesign.ReportOTP;
+using EGAZT.Views.NewDesign.SubmitReport;
 using GalaSoft.MvvmLight.Views;
 using GAZT;
 using Xamarin.Essentials;
@@ -157,6 +160,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM
                                 var currentPage = navigation.NavigationStack.LastOrDefault();
                                 navigation.InsertPageBefore(new MyReportsPage(PhoneORRportNumber), currentPage);
                                 _navigationService.GoBack();
+                                PhoneORRportNumber = string.Empty;
                             }
                             else
                             {
@@ -212,6 +216,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM
             }
         }
 
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+                    if (navigation.NavigationStack.Count == 1)
+                    {
+                        _navigationService.NavigateTo("/Home", "0");
+                        PhoneORRportNumber = string.Empty;
+                        return;
+                    }
+                    else if (currentPage.GetType().Name == new InquiryAboutMyReportsPage().GetType().Name)
+                    {
+                        PhoneORRportNumber = string.Empty;
+                    }
+                    _navigationService.GoBack();
+                });
+            }
+        }
         public ICommand ResendOtpCommand
         {
             get

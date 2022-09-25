@@ -80,6 +80,9 @@ namespace EGAZT.Models.SubmitReportModel
         string _tIN;
         public string TIN { get { return _tIN; } set { _tIN = value; RaisePropertyChanged(); } }
 
+        string _CR;
+        public string CR { get { return _CR; } set { _CR = value; RaisePropertyChanged(); } }
+
         string _missingFieldName;
         public string MissedFieldName { get { return _missingFieldName; } set { _missingFieldName = value; RaisePropertyChanged(); } }
 

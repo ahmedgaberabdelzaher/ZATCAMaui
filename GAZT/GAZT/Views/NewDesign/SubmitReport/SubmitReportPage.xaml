@@ -547,7 +547,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTCommercialRegistration}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.VATNumber}"
+                                    Text="{Binding SubmitReport.CR}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>

@@ -128,8 +128,8 @@ namespace EGAZT.Helper
 
                             else
                             {
-                                await UserDialogs.Instance.AlertAsync(AppResources.ServerError);
-                                return null;
+                                //await UserDialogs.Instance.AlertAsync(AppResources.ServerError);
+                                return result;
                             }
 
                         }
