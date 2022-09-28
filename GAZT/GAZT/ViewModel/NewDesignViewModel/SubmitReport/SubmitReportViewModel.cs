@@ -545,7 +545,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
                         else if (ReportUloadedFiles != null && ReportUloadedFiles.Count < 5)
                         {
-
+                          
                             var stream = await result.OpenReadAsync();
                             // string content = ConvertToBase64(stream);
                             ReportFileModel reportfile = new ReportFileModel();
@@ -553,6 +553,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             reportfile.filename = result.FileName;
                             reportfile.FileSize = Math.Round(size, 2);
                             reportfile.Id = result.FileName + System.DateTime.Now.Ticks;
+                            reportfile.paramFileStream= File.ReadAllBytes(result.FullPath);
                             ReportUloadedFiles.Add(reportfile);
                             IsTherePDFUploaded = true;
 
@@ -613,7 +614,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            if(!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            if(string.IsNullOrWhiteSpace(SubmitReport.TIN))
             { 
                 if(!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
                 {

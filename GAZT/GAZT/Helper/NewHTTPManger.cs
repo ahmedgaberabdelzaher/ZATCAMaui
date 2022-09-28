@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -174,7 +175,9 @@ namespace EGAZT.Helper
                         {
                             foreach (var item in files)
                             {
-                                multipartForm.Add(new StreamContent(item.filecontentStream),"Files",item.filename);
+                                //   multipartForm.Add(new StreamContent(item.filecontentStream),"Files",item.filename);
+                                multipartForm.Add(new StreamContent(new MemoryStream(item.paramFileStream)), "Files", item.filename);
+
                             }
                         }
 
@@ -243,6 +246,10 @@ namespace EGAZT.Helper
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
+            }
+            finally
+            {
+
             }
         }
 

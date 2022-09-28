@@ -110,6 +110,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             _dialogService = dialogService;
         }
 
+
+
         public void SetFlowDirection()
         {
 
