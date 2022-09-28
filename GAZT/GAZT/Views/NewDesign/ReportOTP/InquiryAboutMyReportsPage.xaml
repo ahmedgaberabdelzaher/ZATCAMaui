@@ -103,6 +103,7 @@
                             FontSize="16"
                             Margin="0,20,0,0"
                             TextColor="#868894"
+                            IsVisible="False"
                             Text="{x:Static ResourceManager:AppResources.InquriyMyReports}"/>
 
                         <StackLayout VerticalOptions="Start"
@@ -115,6 +116,7 @@
                             <Grid
                                 WidthRequest="171"
                                 Padding="0"
+                                IsVisible="False"
                                 VerticalOptions="StartAndExpand"
                                 HorizontalOptions="StartAndExpand"
                                 HeightRequest="136">

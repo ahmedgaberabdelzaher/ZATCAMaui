@@ -116,9 +116,9 @@
                                     BorderWidth="1"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="EndAndExpand"
-                                    BorderColor="#4FBBBD"
+                                    BorderColor="#0996D4"
                                     BackgroundColor="Transparent"
-                                    TextColor="#4FBBBD"
+                                    TextColor="#0996D4"
                                     Text="1">
                                  <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
@@ -165,7 +165,7 @@
                                 HorizontalOptions="Center"
                                 Margin="-20,0,0,0"
                                 Text="{x:Static ResourceManager:AppResources.ZTERReportFormPageTittle}"
-                                TextColor="#4FBBBD" />
+                                TextColor="#0996D4" />
 
                              <!--  Terms Label  -->
                             <Label
