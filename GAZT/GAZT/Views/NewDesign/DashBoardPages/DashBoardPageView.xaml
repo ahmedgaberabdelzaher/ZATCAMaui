@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="EGAZT.Views.NewDesign.DashBoardPages.GAZTNewDesignDashBoardPageView"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -2183,7 +2183,7 @@
             </Grid>
             <!--#region SurveyView{Binding IsShowMsgView}-->
             <Grid
-                Grid.Row="0"
+                Grid.Row="0" 
                 Margin="0,0,0,0"
                 IsVisible="true"
                 VerticalOptions="FillAndExpand">
@@ -2286,6 +2286,7 @@
                                 BindableLayout.ItemsSource="{Binding ImojiesLst}"
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal">
+                              
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout x:Name="Item" Margin="10">
@@ -2363,10 +2364,10 @@
                             </StackLayout.Triggers>
                             <Image
                                 Margin="0,20,0,20"
-                                HeightRequest="100"
+                                HeightRequest="47"
                                 HorizontalOptions="CenterAndExpand"
                                 Source="SurveyEnd"
-                                WidthRequest="100" />
+                                WidthRequest="45" />
                             <Label
                                 FontSize="25"
                                 HorizontalOptions="CenterAndExpand"

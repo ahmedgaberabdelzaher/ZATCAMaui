@@ -9530,17 +9530,13 @@ info@zatca.gov.sa</value>
         <value>Edcuation Journey</value>
     </data>
     <data name="SurveyQ1" xml:space="preserve">
-    <value>
-        ما مستوى الرضا عن تجربتك لتطبيق الهيئة
-على الاجهزة الذكية؟
-</value>
+    <value>ما مستوى الرضا عن تجربتك لتطبيق الهيئةع لى الاجهزة الذكية؟</value>
     </data>
        <data name="SurveyQ2" xml:space="preserve">
         <value>لاحظنا عدم رضاك في السؤال السابق، يرجى توضح أسباب عدم الرضا لتحسين مستوى الخدمة المقدمة لك</value>
     </data>
          <data name="SurveyQ3" xml:space="preserve">
-        <value>هل لديك أي ملاحظات إضافية تود إيصالها
-إلى هيئة الزكاة والضريبة والجمارك</value>
+        <value>هل لديك أي ملاحظات إضافية تود إيصالها إلى هيئة الزكاة والضريبة والجمارك</value>
     </data>
    <data name="ThankYou" xml:space="preserve">
         <value>شكــــرا لـك</value>
@@ -9549,13 +9545,12 @@ info@zatca.gov.sa</value>
         <value>عزيزي العميل</value>
     </data>
     <data name="SurveyThankMsg" xml:space="preserve">
-<value>
-    نقدر لك مشاركتك في هذا الاستبيان، ملاحظاتك محل اهتمامنا، حيث أننا نعمل جاهدين لتحسين تجربتك في المستقبل.
+<value>نقدر لك مشاركتك في هذا الاستبيان، ملاحظاتك محل اهتمامنا، حيث أننا نعمل جاهدين لتحسين تجربتك في المستقبل.
 هيئة الزكاة والضريبة والجمارك
 </value>
     </data>
       <data name="SurveyIntroMsg" xml:space="preserve">
-        <value>من خلال تجربتك لخدمتنا (E-services) ٝفي موقعنا الإلكتروني، يرجى تقييم رضاك عن الخدمة من "راضي تمامًا" حتى " غير راضي تمامًا" ما مستوى رضاك عن تجربتك مع خدمتنا الإلكترونية (E-services) عبر موقعنا الإلكتروني؟</value>
+        <value>من خلال تجربتك لخدمات تطبيق هيئة لزكاة والضريبة والجمارك، يرجى تقييم تجربتك عبر الاستبيان التالي</value>
     </data>
     <data name="questionnaire" xml:space="preserve">
         <value>الاستبيان</value>

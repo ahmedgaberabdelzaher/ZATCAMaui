@@ -141,7 +141,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() {ImojieSource= "Angry", ID= "61c32bf2527cacedb5d31930" }, new SurveyQuestions() { ImojieSource= "Dissatisfied",ID= "61c32bf2527cacedb5d3192f" }, new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Satisfied",ID= "61c32bf2527cacedb5d3192d" }, new SurveyQuestions() { ImojieSource = "StronglyDissatisfied", ID= "61c32bf2527cacedb5d3192c" } };
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "61c32bf2527cacedb5d3192c" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "61c32bf2527cacedb5d3192d" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "61c32bf2527cacedb5d3192f" },new SurveyQuestions() { ImojieSource = "Angry", ID = "61c32bf2527cacedb5d31930" }};
         public ObservableCollection<SurveyQuestions> ImojiesLst
         {
             get
