@@ -31,9 +31,10 @@ namespace EGAZT.AppConfigurations
         public static string Target_Environment = "";
         public  static string ExciseTaxUrl = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/Pages/Disclaimer.aspx";
 
-
+       
         public static string GetClientID()
         {
+            Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
 #if DEBUG
             Target_Environment = "STG";
 #endif
@@ -54,6 +55,7 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetClientSecret()
         {
+            Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
 #if DEBUG
             Target_Environment = "STG";
 #endif

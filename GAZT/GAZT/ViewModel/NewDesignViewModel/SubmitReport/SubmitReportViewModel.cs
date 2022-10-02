@@ -117,6 +117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 ReportNumberResult = reportResult.Result?.Data;
                                 _navigationService.NavigateTo("/ReportSuccessPage");
                                 SubmitReport = new SubmitReportModel();
+                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                             }
                             IsLoading = false;
 
@@ -301,6 +302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     else if(currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
                     {
                         SubmitReport = new SubmitReportModel();
+                        ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                     }
                     _navigationService.GoBack();
 

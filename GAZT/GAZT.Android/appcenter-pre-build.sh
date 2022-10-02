@@ -28,11 +28,12 @@ then
 fi
 echo "Getting file path"
 
-APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/EGAZT/EGAZT/EGAZT.AppConfigurations/PageSettings.cs
+APP_CONSTANT_FILE=$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT/AppConfigurations/PageSettings.cs
 
 echo "Updating file path to $APP_CONSTANT_FILE"
 
 if [ -e "$APP_CONSTANT_FILE" ]
+echo "Enter PageSettings"
 then
     echo "Updating Target_Environment to $Target_Environment in PageSettings.cs"
     sed -i '' 's#Target_Environment = "[-A-Za-z0-9:_./]*"#Target_Environment = "'$Target_Environment'"#' $APP_CONSTANT_FILE
