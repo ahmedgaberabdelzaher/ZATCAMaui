@@ -30,8 +30,49 @@ namespace EGAZT.AppConfigurations
         public const string XZATCAClientSecretTest = "c9487460cd7dd8bc0f16ede707f4dad3";
         public static string Target_Environment = "";
         public  static string ExciseTaxUrl = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/Pages/Disclaimer.aspx";
+        public static string CustomDEVBaseUrl = "http://10.112.34.26:8024/";
+        public static string CustomSTGBaseUrl = "http://10.112.34.38:8024/";
+        public static string VatCustomSTGURL = "http://172.50.15.39:8443/api/";
+        public static string VatCustomProdURL = "http://172.50.15.39:8443/api/";
+        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
+        public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
-       
+        public static string CustomBaseUrl;
+       public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+        public static string VatSTGBaseUrl = "http://172.50.15.39:80/api";
+
+        public static string GetBaseURL(string environment="")
+        {
+            Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
+#if DEBUG
+            Target_Environment = "STG";
+#endif
+            if (string.IsNullOrEmpty(Target_Environment))
+            {
+                Target_Environment = environment;
+            }
+            string key = "";
+            switch (Target_Environment)
+            {
+                case "STG":
+                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.VatBaseUrl = VatSTGBaseUrl;
+                    App.VatCustom = VatCustomSTGURL;
+                    break;
+                case "Prod":
+                    App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
+                    App.VatBaseUrl = VatProdBaseUrl;
+                    App.VatCustom = VatCustomProdURL;
+                    break;
+                default:
+                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.VatBaseUrl = VatSTGBaseUrl;
+                    App.VatCustom = VatCustomSTGURL;
+                    break;
+            }
+            return key;
+        }
+
         public static string GetClientID()
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
@@ -42,10 +83,12 @@ namespace EGAZT.AppConfigurations
             switch (Target_Environment)
             {
                 case"STG":
+                    CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key= XZATCAClientIdTest;
                     break;
                 case "Prod":
                     key= XZATCAClientIdProd;
+                    CustomBaseUrl = DATAPowerProdCustomBaseUrl;
                     break;
                 default:
                     key = XZATCAClientIdTest;

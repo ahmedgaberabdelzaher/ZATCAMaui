@@ -162,6 +162,7 @@ using EGAZT.Views.NewDesign.LoginPages;
 using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
 using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
 using EGAZT.Views.NewDesign.ReportOTP;
+using System.Net.Http;
 
 namespace EGAZT
 {
@@ -2899,6 +2900,7 @@ namespace EGAZT
 
             return navigationService;
         }
+        
         #endregion
         public InquiryAboutCustomsDeclarationViewModel InquiryAboutCustomsDeclarationViewModel
         {
@@ -3998,7 +4000,7 @@ namespace EGAZT
             }
         }
 
-        //
+    //
     }
 
 

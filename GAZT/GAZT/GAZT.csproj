@@ -107,18 +107,19 @@
 	  <Compile Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml.cs" />
 	  <EmbeddedResource Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml" />
 	  <None Remove="Plugin.MediaManager.Forms" />
+	  <None Remove="Syncfusion.Licensing" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
-		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.1.0.61" />
+		<PackageReference Include="Syncfusion.Xamarin.Buttons" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.Cards" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfChart" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfListView" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="20.3.0.47" />
 		<PackageReference Include="System.Linq" Version="4.3.0" />
 		<PackageReference Include="System.ServiceModel.Duplex" Version="4.9.0" />
 		<PackageReference Include="System.ServiceModel.Http" Version="4.9.0" />
@@ -136,8 +137,8 @@
 		<PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2478" />
 		<PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
 		<PackageReference Include="Xamarin.Plugin.FilePicker" Version="2.1.41" />
-		<PackageReference Include="Syncfusion.Xamarin.Core" Version="20.1.0.61" />
-		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="20.1.0.61" />
+		<PackageReference Include="Syncfusion.Xamarin.Core" Version="20.3.0.47" />
+		<PackageReference Include="Syncfusion.Xamarin.SfPdfViewer" Version="20.3.0.47" />
 		<PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
 		<PackageReference Include="Xamarin.Build.Download" Version="0.11.2" />
 		<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />

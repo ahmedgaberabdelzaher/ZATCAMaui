@@ -16,7 +16,16 @@ namespace EGAZT.Helper
 {
     public static class HttpManager
     {
-        
+        private static readonly Lazy<HttpClient> _client = new Lazy<HttpClient>(() => new HttpClient());
+
+     /*   private static HttpClient getClient()
+        {
+            HttpClient _client = null;
+           _client = new HttpClient();
+            return _client
+        }*/
+        public static HttpClient client => _client.Value;
+
 
         private static bool ValidateCertificate(object sender,
                                             X509Certificate certificate,
@@ -30,8 +39,10 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
-                  //  client.DefaultRequestHeaders.Add("Authorization",app.CurrentToken);
+                    //   var client = new System.Net.Http.HttpClient();
+                   // var client = App.Locator.httpClient;
+
+                    //  client.DefaultRequestHeaders.Add("Authorization",app.CurrentToken);
                     var response =  client.GetAsync(requestUrl).GetAwaiter().GetResult();
                     if (response!=null)
                     {
@@ -72,7 +83,9 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
 
-                    var client = new System.Net.Http.HttpClient();
+                    // var client = new System.Net.Http.HttpClient();
+                  //  var client = App.Locator.httpClient;
+
                     client.Timeout = new TimeSpan(0,3,0);
                     if (isBasicAuth)
                     {
@@ -152,9 +165,10 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
                     //var h = new HttpClientHandler();
-                 //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
-                   
-                    var client = new System.Net.Http.HttpClient();
+                    //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
+
+                  //  var client = App.Locator.httpClient;
+
 
                      client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
@@ -223,8 +237,10 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
-                 //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);
+                    // var client = new System.Net.Http.HttpClient();
+                   // var client = App.Locator.httpClient;
+
+                    //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);
                     var JsonObject = JsonConvert.SerializeObject(Data);
                     var content = new StringContent(JsonObject, Encoding.UTF8, "application/json");
                     var response = await client.PutAsync(requestUrl, content);
