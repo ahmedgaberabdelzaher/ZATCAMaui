@@ -38,19 +38,15 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
         public static string CustomBaseUrl;
-       public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+        public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
         public static string VatSTGBaseUrl = "http://172.50.15.39:80/api";
 
-        public static string GetBaseURL(string environment="")
+        public static string GetBaseURL()
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
 #if DEBUG
             Target_Environment = "STG";
 #endif
-            if (string.IsNullOrWhiteSpace(Target_Environment))
-            {
-                Target_Environment = environment;
-            }
             string key = "";
             switch (Target_Environment)
             {
@@ -91,6 +87,7 @@ namespace EGAZT.AppConfigurations
                     CustomBaseUrl = DATAPowerProdCustomBaseUrl;
                     break;
                 default:
+                    CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key = XZATCAClientIdTest;
                     break;
             }
