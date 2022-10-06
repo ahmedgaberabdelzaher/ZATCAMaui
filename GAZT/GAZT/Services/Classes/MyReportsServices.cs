@@ -11,27 +11,15 @@ namespace EGAZT.Services.Classes
 {
     public class MyReportsServices : IMyReportsServices
     {
-        public async Task<List<MyReportsModel>> GetSearcedMyReports(string mobile,string search = "", int pageNumber = 1, int pageSize = 30)
-        {
-            int? reportType = null;
-            var body = new
-            {
-                reportType = reportType,
-                search = search
-            };
-            var response = await NewHTTPManger.Post<BaseResponseModel<List<MyReportsModel>>>($"{App.VatBaseUrl}/Report/GetReportTaxByMobile?PageNumber={pageNumber}&PageSize={pageSize}&mobile={mobile}", body) as BaseResponseModel<List<MyReportsModel>>;
-                return response?.Result?.Data;
-        }
-
-        public async Task<List<MyReportsModel>> GetMyReports(string mobile,int? reportStatus = null, int pageNumber = 1, int pageSize = 30)
+        public async Task<DataModel<List<MyReportsModel>>> GetMyReports(string mobile,int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10)
         {
             var body = new
             {
                 reportType = reportStatus,
-                search = ""
+                search = search
             };
             var response = await NewHTTPManger.Post<BaseResponseModel<List<MyReportsModel>>>($"{App.VatBaseUrl}/Report/GetReportTaxByMobile?PageNumber={pageNumber}&PageSize={pageSize}&mobile={mobile}", body) as BaseResponseModel<List<MyReportsModel>>;
-            return response?.Result?.Data;
+            return response.Result;
         }
 
         public async Task<BaseResponseModel<SendOTPModel>> SendOTP(string mobile)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Models.BaseModels;
 using EGAZT.Models.MyReportsModel;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.GenericPickers;
@@ -41,6 +42,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
         public ObservableCollection<MyReportsModel> MyReportsList { get { return myReportsList; } set { myReportsList = value; RaisePropertyChanged(); } }
 
         public string PhoneNumber;
+        private int? status = null;
+        private int pageNumber = 1;
+        private DataModel<List<MyReportsModel>> reportsAPIResult = new DataModel<List<MyReportsModel>> ();
         GenericPickerModel genericPickerModel = new GenericPickerModel();
         #endregion
 
@@ -66,9 +70,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                     try
                     {
                         IsLoading = true;
-                        var result = await _myReportsServices.GetMyReports(PhoneNumber) ?? new List<MyReportsModel>();
-                        MyReportsList = new ObservableCollection<MyReportsModel>(result);
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber) ?? new DataModel<List<MyReportsModel>>();
+                        pageNumber = 1;
+                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
                         ReportsResultTitle = AppResources.AllReports;
+                        ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
+                        IsLoading = false;
+                    }
+                    catch (System.Exception ex)
+                    {
+                        IsLoading = false;
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                    }
+                   
+
+                });
+
+            }
+        }
+        public ICommand LoadMoreMyReportsCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        if (pageNumber >= reportsAPIResult?.pagesCount) return;
+                        IsLoading = true;
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,pageNumber: ++pageNumber) ?? new DataModel<List<MyReportsModel>>();
+
+                        foreach (var item in reportsAPIResult?.Data)
+                        {
+                            MyReportsList.Add(item);
+                        }
+
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
@@ -91,9 +128,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
             {
                 return new Command(async() =>
                 {
-                    //AppResources.ZReportStatusInprogress
-                    List<string> filterData = new List<string>() { AppResources.AllReports, AppResources.MyOpenedReports, AppResources.MyClosedReports };
-                   
+                    
+                    List<string> filterData = new List<string>() {
+                        AppResources.AllReports, AppResources.MyOpenedReports,
+                        /*AppResources.ZReportStatusInprogress,*/ AppResources.MyClosedReports};
+
                     genericPickerModel.PickerData = filterData;
                     genericPickerModel.PickerTitle = string.Empty;
                     genericPickerModel.PickerId = "filterMyReportsDataPicker";
@@ -127,8 +166,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         {
                             IsSearching = false;
                             IsLoading = true;
-                            var result = await _myReportsServices.GetSearcedMyReports(PhoneNumber, SearchValue.ToLower()) ?? new List<MyReportsModel>();
-                            MyReportsList = new ObservableCollection<MyReportsModel>(result);
+                            reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber,status,SearchValue.ToLower()) ?? new DataModel<List<MyReportsModel>>();
+                            pageNumber = 1;
+                            MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
                             ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                             IsLoading = false;
                             SearchValue = string.Empty;
@@ -193,31 +233,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                 {
                     try
                     {
-                        int? status = null;
                         var value = selectedFilter as string;
-                        if(value.Equals(AppResources.MyClosedReports))
-                        {
-                            status = 3;
-                            ReportsResultTitle = AppResources.MyClosedReports;
-                        }
-                        else if (value.Equals(AppResources.MyOpenedReports))
-                        {
-                            status = 1;
-                            ReportsResultTitle = AppResources.MyOpenedReports;
-                        }
-                        else if (value.Equals(AppResources.ZReportStatusInprogress))
-                        {
-                            status = 2;
-                            ReportsResultTitle = AppResources.ZReportStatusInprogress;
-                        }
-                        else
-                        {
-                            status = null;
-                            ReportsResultTitle = AppResources.AllReports;
-                        }
+                        checkReportStatus(value);
                         IsLoading = true;
-                        var result = await _myReportsServices.GetMyReports(PhoneNumber, status) ?? new List<MyReportsModel>();
-                        MyReportsList = new ObservableCollection<MyReportsModel>(result);
+                        reportsAPIResult = await _myReportsServices.GetMyReports(PhoneNumber, status) ?? new DataModel<List<MyReportsModel>>();
+                        pageNumber = 1;
+                        MyReportsList = new ObservableCollection<MyReportsModel>(reportsAPIResult?.Data);
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
@@ -234,6 +255,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
             }
         }
         #endregion Commands
+
+        private void checkReportStatus(string selectedFilter)
+        {
+            if (selectedFilter.Equals(AppResources.MyClosedReports))
+            {
+                status = 3;
+                ReportsResultTitle = AppResources.MyClosedReports;
+            }
+            else if (selectedFilter.Equals(AppResources.MyOpenedReports))
+            {
+                status = 1;
+                ReportsResultTitle = AppResources.MyOpenedReports;
+            }
+            else if (selectedFilter.Equals(AppResources.ZReportStatusInprogress))
+            {
+                status = 2;
+                ReportsResultTitle = AppResources.ZReportStatusInprogress;
+            }
+            else
+            {
+                status = null;
+                ReportsResultTitle = AppResources.AllReports;
+            }
+        }
     }
 }
 
