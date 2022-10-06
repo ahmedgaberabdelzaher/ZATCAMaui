@@ -16,7 +16,7 @@ namespace EGAZT.Models.BaseModels
     public class DataModel<T>
     {
         public T Data { get; set; }
-        public int TotalCount { get; set; }
-        public int PagesCount { get; set; }
+        public int totalCount { get; set; }
+        public int pagesCount { get; set; }
     }
 }

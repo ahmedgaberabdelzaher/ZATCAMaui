@@ -10,7 +10,6 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:filterView="clr-namespace:EGAZT.Views.NewDesign.MyReports"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
     ios:Page.UseSafeArea="true"
@@ -157,9 +156,7 @@
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
-                <ScrollView VerticalScrollBarVisibility="Never">
-
-                    <StackLayout Spacing="30">
+                 <StackLayout Spacing="30">
 
                         <!--All Reports Layout-->
                         <Grid RowDefinitions="Auto,Auto"
@@ -235,15 +232,21 @@
                         </Frame>
 
                         <!--  MyReports List  -->
-                        <StackLayout
+                        <CollectionView
                              x:Name="reportsList"
                              VerticalOptions="FillAndExpand"
-                             Margin="0,0,0,25"
                              HorizontalOptions="FillAndExpand"
-                             BindableLayout.ItemsSource="{Binding MyReportsList}"
-                             Spacing="20">
+                             RemainingItemsThreshold="3"
+                             Margin="0,0,0,20"
+                             VerticalScrollBarVisibility="Never"
+                             RemainingItemsThresholdReachedCommand="{Binding LoadMoreMyReportsCommand}"
+                             ItemsSource="{Binding MyReportsList}">
 
-                            <BindableLayout.EmptyView>
+                             <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical"  VerticalItemSpacing="20"/>
+                             </CollectionView.ItemsLayout>
+
+                            <CollectionView.EmptyView>
 
                                 <StackLayout Spacing="20"
                                              VerticalOptions="CenterAndExpand"
@@ -278,9 +281,10 @@
                                         Text="{x:Static ResourceManager:AppResources.Submitanewreport}" />
 
                                 </StackLayout>
-                            </BindableLayout.EmptyView>
 
-                            <BindableLayout.ItemTemplate>
+                            </CollectionView.EmptyView>
+
+                            <CollectionView.ItemTemplate>
 
                                 <DataTemplate>
 
@@ -501,13 +505,11 @@
 
                                 </DataTemplate>
 
-                            </BindableLayout.ItemTemplate>
+                            </CollectionView.ItemTemplate>
 
-                        </StackLayout>
+                        </CollectionView>
 
                     </StackLayout>
-
-                </ScrollView>
 
             </yummy:PancakeView>
             <!--#endregion Body-->

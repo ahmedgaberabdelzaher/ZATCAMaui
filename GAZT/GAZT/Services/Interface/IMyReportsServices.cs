@@ -8,9 +8,8 @@ namespace EGAZT.Services.Interface
 {
     public interface IMyReportsServices
     {
-        Task<List<MyReportsModel>> GetSearcedMyReports(string mobile, string search = "", int pageNumber = 1, int pageSize = 30);
 
-        Task<List<MyReportsModel>> GetMyReports(string mobile, int? reportStatus = null, int pageNumber = 1, int pageSize = 30);
+        Task<DataModel<List<MyReportsModel>>> GetMyReports(string mobile, int? reportStatus = null, string search = "", int pageNumber = 1, int pageSize = 10);
 
         Task<BaseResponseModel<SendOTPModel>> SendOTP(string mobile);
 
