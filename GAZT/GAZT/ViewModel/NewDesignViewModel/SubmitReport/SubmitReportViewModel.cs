@@ -616,7 +616,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            if(!string.IsNullOrEmpty(SubmitReport.TIN))
+            if(!string.IsNullOrWhiteSpace(SubmitReport.TIN))
             { 
                 if(!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
                 {

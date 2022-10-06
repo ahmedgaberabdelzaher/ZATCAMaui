@@ -47,7 +47,7 @@ namespace EGAZT.AppConfigurations
 #if DEBUG
             Target_Environment = "STG";
 #endif
-            if (string.IsNullOrEmpty(Target_Environment))
+            if (string.IsNullOrWhiteSpace(Target_Environment))
             {
                 Target_Environment = environment;
             }
