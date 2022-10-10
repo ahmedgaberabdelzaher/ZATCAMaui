@@ -9382,4 +9382,37 @@ info@zatca.gov.sa</value>
   <data name="TotalPriceValue" xml:space="preserve">
      <value>قيمة المبلغ الإجمالي</value>
   </data>
+    <data name="InCorrecttaxinvoice" xml:space="preserve">
+     <value>فاتورة ضريبية غير صحيحة</value>
+  </data>
+      <data name="Correcttaxinvoice" xml:space="preserve">
+     <value>فاتورة ضريبية صحيحة</value>
+  </data>
+    <data name="VATRegistrationNumber" xml:space="preserve">
+     <value>الرقم الضريبي</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+     <value>تاريخ الفاتورة</value>
+  </data>
+    <data name="InvoiceAmount" xml:space="preserve">
+     <value>إجمالي الفاتورة(مع الضريبة)</value>
+  </data>
+      <data name="VATAmount" xml:space="preserve">
+     <value>قيمة الضريبة</value>
+  </data>
+        <data name="Correct" xml:space="preserve">
+     <value>صحيحة</value>
+  </data>
+          <data name="Incorrect" xml:space="preserve">
+     <value>غير صحيحة</value>
+  </data>
+            <data name="UnregisteredFacility" xml:space="preserve">
+     <value>منشأة غير مسجلة</value>
+  </data>
+    <data name="Registered" xml:space="preserve">
+     <value>مسجلة</value>
+  </data>
+    <data name="NotRegistered" xml:space="preserve">
+     <value>غير مسجلة</value>
+  </data>
 </root>

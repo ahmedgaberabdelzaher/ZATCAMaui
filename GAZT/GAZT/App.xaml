@@ -101,7 +101,7 @@
             </DataTemplate>
 
                 <OnPlatform x:TypeArguments="x:String" x:Key="FontSomarBold"><!-- SomarBold-->
-                <On Platform="Android" Value="Somar-Bold.otf" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
+                <On Platform="Android" Value="Somar-Bold.otf#SSTArabic" /> <!-- "Somar-SemiBold.otf#SSTArabic"-->
                 <On Platform="iOS" Value="Somar-Bold" />
             </OnPlatform>
 

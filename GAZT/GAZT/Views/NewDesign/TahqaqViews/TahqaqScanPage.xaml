@@ -11,11 +11,11 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
              ios:Page.UseSafeArea="true"
+          
              xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
              xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:helper="clr-namespace:EGAZT.Helper"
-    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
-    xmlns:controls="clr-namespace:EGAZT.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:controls="clr-namespace:EGAZT.Controls" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:control="clr-namespace:GAZTeServicesApp.Controls" xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              BackgroundImageSource="partials_background.png"
              NavigationPage.HasNavigationBar="False"
     x:Class="EGAZT.Views.NewDesign.TahqaqViews.TahqaqScanPage">
@@ -42,16 +42,13 @@
             </Grid.RowDefinitions>
             
             <yummy:PancakeView IsVisible="{Binding IsShowScanView}" Margin="0" Padding="0" Grid.Row="1" Style="{StaticResource CommonTopCurves}" >
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <ScrollView Grid.Row="0" Padding="0,0,0,0" IsVisible="{Binding currentTab, Converter={StaticResource enumToVisibilityConverter}, ConverterParameter={x:Static models:CustomsEnum.parentCstoms}}" VerticalScrollBarVisibility="Never">
-                        <Grid RowDefinitions="auto,auto,*,auto,auto" Padding="0,0,0,0">
-                            
-                                <zxing:ZXingScannerView ScaleX="1" ScaleY="1"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True"   IsScanning="True"
-                 Result="{Binding Result, Mode=TwoWay}" ScanResultCommand="{Binding ScanCommand}"   BackgroundColor="White">
-                                </zxing:ZXingScannerView>
+                        <Grid  RowDefinitions="auto,auto,*,auto,auto" Padding="0,0,0,0">
+                            <Grid x:Name="MainGrid"  Margin="0,0,0,0" Grid.RowSpan="5">
+
+                            </Grid>
+                               <!-- <zxing:ZXingScannerView  x:Name="zxing"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True" IsScanning="True"
+                     BackgroundColor="White">
+                                </zxing:ZXingScannerView>-->
                             <Grid Grid.Row="0"   HorizontalOptions="FillAndExpand">
                                                                 <Frame  BackgroundColor="Black" Opacity=".44"></Frame>
 
@@ -92,7 +89,7 @@
     Fill="Black" Opacity=".45"
     Stroke="transparent" />
                              <Image Source="Path" Margin="-3,0,-3,0" HeightRequest="90" Rotation="90" HorizontalOptions="End"  VerticalOptions="End"></Image>
-
+                         
                          </Grid>       
                         <!--
                             <Grid Grid.Row="2" custom:RoundCornersEffect.CornerRadius="30" Margin="2,-20,2,-15">
@@ -147,13 +144,6 @@
 <Label Text="{x:Static ResourceManager:AppResources.VerificationForm}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="16"></Label>
                             </Frame></StackLayout></Grid>
                       </Grid>
-                    </ScrollView>
-
-
-
-
-               
-                </Grid>
             </yummy:PancakeView>
                       
                      <yummy:PancakeView IsVisible="{Binding IsCheckWithCode}" Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >

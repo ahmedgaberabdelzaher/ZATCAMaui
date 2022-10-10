@@ -16,5 +16,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.PostAsync(PageSettings.TahqaqBaseURl + $"scancode/savedetails", model,true).ConfigureAwait(false);
             return response;
         }
+
+        public async Task<Tuple<EinvoiceQRCodeResponse,bool,string>> GetEInvoiceData(int id)
+        {
+            var response = await HttpManager.GetAsync<EinvoiceQRCodeResponse>(App.VatBaseUrl + $"api/Report/QRCodeRead?id={id}").ConfigureAwait(false);
+            return response;
+        }
     }
 }

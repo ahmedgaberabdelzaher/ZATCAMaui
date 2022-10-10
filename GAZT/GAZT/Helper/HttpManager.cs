@@ -90,6 +90,11 @@ namespace EGAZT.Helper
                             var JsonObject = JsonConvert.DeserializeObject<T>(responseJson);
                             return Tuple.Create(JsonObject, true, "");
                         }
+                        else if (response.StatusCode==System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Tuple.Create((T)Activator.CreateInstance(typeof(T)), true, "400");
+
+                        }
                         else
                         {
                             return Tuple.Create((T)Activator.CreateInstance(typeof(T)), false, AppResources.ServerError);

@@ -25223,5 +25223,84 @@ namespace EGAZT {
                 return ResourceManager.GetString("TotalPriceValue", resourceCulture);
             }
         }
+
+        public static string InCorrecttaxinvoice
+        {
+            get
+            {
+                return ResourceManager.GetString("InCorrecttaxinvoice", resourceCulture);
+            }
+        }
+
+        public static string Correcttaxinvoice
+        {
+            get
+            {
+                return ResourceManager.GetString("Correcttaxinvoice", resourceCulture);
+            }
+        }
+        public static string VATRegistrationNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("VATRegistrationNumber", resourceCulture);
+            }
+        }
+        public static string TimeStamp
+        {
+            get
+            {
+                return ResourceManager.GetString("TimeStamp", resourceCulture);
+            }
+        }
+        public static string InvoiceAmount
+        {
+            get
+            {
+                return ResourceManager.GetString("InvoiceAmount", resourceCulture);
+            }
+        }
+        public static string VATAmount
+        {
+            get
+            {
+                return ResourceManager.GetString("VATAmount", resourceCulture);
+            }
+        }
+        public static string Correct
+        {
+            get
+            {
+                return ResourceManager.GetString("Correct", resourceCulture);
+            }
+        }
+        public static string Incorrect
+        {
+            get
+            {
+                return ResourceManager.GetString("Incorrect", resourceCulture);
+            }
+        }
+        public static string UnregisteredFacility
+        {
+            get
+            {
+                return ResourceManager.GetString("UnregisteredFacility", resourceCulture);
+            }
+        }
+        public static string Registered
+        {
+            get
+            {
+                return ResourceManager.GetString("Registered", resourceCulture);
+            }
+        }
+        public static string NotRegistered
+        {
+            get
+            {
+                return ResourceManager.GetString("NotRegistered", resourceCulture);
+            }
+        }
     }
 }

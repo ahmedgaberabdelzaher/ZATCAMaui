@@ -9461,4 +9461,37 @@ the Zakat, Tax and Customs
   <data name="TotalPriceValue" xml:space="preserve">
      <value>Total Price Value</value>
   </data>
+  <data name="InCorrecttaxinvoice" xml:space="preserve">
+     <value>InCorrect tax invoice</value>
+  </data>
+      <data name="Correcttaxinvoice" xml:space="preserve">
+     <value>Correct tax invoice</value>
+  </data>
+    <data name="VATRegistrationNumber" xml:space="preserve">
+     <value>VAT Registration Number</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+     <value>Time Stamp</value>
+  </data>
+    <data name="InvoiceAmount" xml:space="preserve">
+     <value>Invoice Amount</value>
+  </data>
+      <data name="VATAmount" xml:space="preserve">
+     <value>VAT Amount</value>
+  </data>
+        <data name="Correct" xml:space="preserve">
+     <value>Correct</value>
+  </data>
+          <data name="Incorrect" xml:space="preserve">
+     <value>Incorrect</value>
+  </data>
+            <data name="UnregisteredFacility" xml:space="preserve">
+     <value>Unregistered Facility</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+     <value>VAT Registered</value>
+  </data>
+    <data name="NotRegistered" xml:space="preserve">
+     <value>Not a VAT Registered</value>
+  </data>
  </root>
