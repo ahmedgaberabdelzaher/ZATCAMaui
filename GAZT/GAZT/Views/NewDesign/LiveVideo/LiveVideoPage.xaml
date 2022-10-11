@@ -10,7 +10,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    ios:Page.UseSafeArea="true"
+    ios:Page.UseSafeArea="False"
     xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -42,9 +42,14 @@
      <ContentPage.Behaviors>
         <xct:EventToCommandBehavior EventName="Appearing" Command="{Binding OnAppearingCommand}"/>
     </ContentPage.Behaviors>
-
+     <ContentPage.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0,0,15" />
+                        <On Platform="Android" Value="0" />
+                    </OnPlatform>
+                </ContentPage.Padding>
     <ContentPage.Content>
-
+            
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->

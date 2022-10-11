@@ -4,8 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:controls="clr-namespace:EGAZT.Controls" 
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+   ios:Page.UseSafeArea="False"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     HasBackButton="False" Padding="0,45,0,0" 
@@ -13,7 +14,7 @@
 
                        <newdesign:BaseContentPage.PancakMargin>
                     <OnPlatform x:TypeArguments="Thickness">
-                        <On Platform="iOS" Value="0,0,0,-15" />
+                        <On Platform="iOS" Value="0,0,0,20" />
                         <On Platform="Android" Value="0" />
                     </OnPlatform>
                 </newdesign:BaseContentPage.PancakMargin>
