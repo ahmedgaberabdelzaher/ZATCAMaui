@@ -108,6 +108,8 @@
 	  <EmbeddedResource Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml" />
 	  <None Remove="Plugin.MediaManager.Forms" />
 	  <None Remove="Syncfusion.Licensing" />
+	  <None Remove="ViewModel\NewDesignViewModel\EDeclaration\" />
+	  <None Remove="Views\NewDesign\EDeclaration\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -221,6 +223,8 @@
 		<Folder Include="Views\NewDesign\LiveVideo\" />
 		<Folder Include="Views\NewDesign\ReportOTP\" />
 		<Folder Include="ViewModel\NewDesignViewModel\ReportOTPVM\" />
+		<Folder Include="ViewModel\NewDesignViewModel\EDeclaration\" />
+		<Folder Include="Views\NewDesign\EDeclaration\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

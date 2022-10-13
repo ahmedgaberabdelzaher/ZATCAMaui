@@ -581,6 +581,30 @@
     <BundleResource Include="Resources\Stronglysatisfied%402x.png" />
     <BundleResource Include="Resources\Stronglysatisfied%403x.png" />
     <None Include="appcenter-pre-build.sh" />
+    <BundleResource Include="Resources\productIcon.png" />
+    <BundleResource Include="Resources\productIcon%402x.png" />
+    <BundleResource Include="Resources\productIcon%403x.png" />
+    <BundleResource Include="Resources\arrivingPlane.png" />
+    <BundleResource Include="Resources\arrivingPlane%402x.png" />
+    <BundleResource Include="Resources\arrivingPlane%403x.png" />
+    <BundleResource Include="Resources\DepartingPlane.png" />
+    <BundleResource Include="Resources\DepartingPlane%402x.png" />
+    <BundleResource Include="Resources\DepartingPlane%403x.png" />
+    <BundleResource Include="Resources\deIIcon.png" />
+    <BundleResource Include="Resources\delIcon%402x.png" />
+    <BundleResource Include="Resources\delIcon%403x.png" />
+    <BundleResource Include="Resources\fillProductIcon.png" />
+    <BundleResource Include="Resources\fillProductIcon%402x.png" />
+    <BundleResource Include="Resources\fillProductIcon%403x.png" />
+    <BundleResource Include="Resources\fillArriving.png" />
+    <BundleResource Include="Resources\fillArriving%402x.png" />
+    <BundleResource Include="Resources\fillArriving%403x.png" />
+    <BundleResource Include="Resources\whiteSelected.png" />
+    <BundleResource Include="Resources\whiteSelected%402x.png" />
+    <BundleResource Include="Resources\whiteSelected%403x.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane%402x.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

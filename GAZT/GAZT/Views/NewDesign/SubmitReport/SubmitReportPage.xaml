@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -20,23 +19,9 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                <ResourceDictionary>
-                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImage" TargetType="Image">
-                        <Setter Property="HeightRequest" Value="30" />
-                        <Setter Property="WidthRequest" Value="30" />
-                    </Style>
-                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -911,9 +896,6 @@
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
-
-            <!--  Popup Map  -->
-            <!--<controls:MapPage Grid.RowSpan="2" IsVisible="{Binding IsShowMapView}" />-->
 
         </Grid>
     </ContentPage.Content>

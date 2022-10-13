@@ -163,6 +163,8 @@ using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
 using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
 using EGAZT.Views.NewDesign.ReportOTP;
 using System.Net.Http;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.Views.NewDesign.EDeclaration;
 
 namespace EGAZT
 {
@@ -413,6 +415,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
+            SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
 
             #endregion
         }
@@ -2895,6 +2898,7 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
+            navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
 
             #endregion
 
@@ -3992,6 +3996,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ReportOTPViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public BaseEDeclarationViewModel BaseEDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BaseEDeclarationViewModel>();
                 }
                 catch (Exception ex)
                 {
