@@ -9711,13 +9711,28 @@ info@zatca.gov.sa</value>
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>يتيح لك مسح ال QR code التحقق من صحة فاتورتك الإلكترونية</value>
     </data>
-            <data name="RegisteredVAT" xml:space="preserve">
+    <data name="RegisteredVAT" xml:space="preserve">
         <value>منشأة مسجلة</value>
     </data>
-          <data name="VATCertificateNumber" xml:space="preserve">
+    <data name="VATCertificateNumber" xml:space="preserve">
         <value>رقم الشهادة الضريبية</value>
     </data>
-           <data name="unableToVerify" xml:space="preserve">
+    <data name="unableToVerify" xml:space="preserve">
         <value>تعذر التحقق</value>
+    </data>
+     <data name="NewDeclaration" xml:space="preserve">
+        <value>إعلان جديد</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>حدد الخيار وأكمل التفاصيل</value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>القدوم إلى المملكة أم المغادرة؟</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>الوصول إلى المملكة العربية السعودية</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>المغادرة إلى المملكة العربية السعودية</value>
     </data>
 </root>

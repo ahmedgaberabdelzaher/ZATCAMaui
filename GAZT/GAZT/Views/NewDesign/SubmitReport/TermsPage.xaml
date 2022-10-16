@@ -551,7 +551,6 @@
                         <!--  Send Report Button  -->
                         <buttons:SfButton
                             Margin="0,40"
-                            BackgroundColor="#0996D4"
                             Command="{Binding SendReportCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.SendReportButton}" />

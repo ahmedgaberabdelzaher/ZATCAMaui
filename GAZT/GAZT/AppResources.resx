@@ -9794,13 +9794,28 @@ Zakat, Tax and Customs Authority
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
-              <data name="RegisteredVAT" xml:space="preserve">
+    <data name="RegisteredVAT" xml:space="preserve">
         <value>VAT Registered</value>
     </data>
-        <data name="VATCertificateNumber" xml:space="preserve">
+    <data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
-        <data name="unableToVerify" xml:space="preserve">
+    <data name="unableToVerify" xml:space="preserve">
         <value>Unable To Verify</value>
+    </data>
+    <data name="NewDeclaration" xml:space="preserve">
+        <value>New Declaration</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>Select the option and complete details</value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>Coming to the kingdom or leaving?</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>Arriving to KSA</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>Departing from KSA</value>
     </data>
 </root>

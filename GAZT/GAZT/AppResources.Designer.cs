@@ -374,6 +374,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arriving to KSA.
+        /// </summary>
+        public static string ArrivingToKSA {
+            get {
+                return ResourceManager.GetString("ArrivingToKSA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Credit.
         /// </summary>
         public static string ASAccountStatementCredit {
@@ -2951,6 +2960,15 @@ namespace EGAZT {
         public static string DeclareVATReturn {
             get {
                 return ResourceManager.GetString("DeclareVATReturn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Departing from KSA.
+        /// </summary>
+        public static string DepartingToKSA {
+            get {
+                return ResourceManager.GetString("DepartingToKSA", resourceCulture);
             }
         }
         
@@ -9014,6 +9032,33 @@ namespace EGAZT {
         public static string NetworkConnectivityIssue {
             get {
                 return ResourceManager.GetString("NetworkConnectivityIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Declaration.
+        /// </summary>
+        public static string NewDeclaration {
+            get {
+                return ResourceManager.GetString("NewDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the option and complete details.
+        /// </summary>
+        public static string NewDeclarationNote {
+            get {
+                return ResourceManager.GetString("NewDeclarationNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coming to the kingdom or leaving?.
+        /// </summary>
+        public static string NewDeclarationQuestion {
+            get {
+                return ResourceManager.GetString("NewDeclarationQuestion", resourceCulture);
             }
         }
         
