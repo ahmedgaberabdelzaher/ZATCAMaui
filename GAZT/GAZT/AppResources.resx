@@ -9794,6 +9794,18 @@ Zakat, Tax and Customs Authority
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
+     <data name="CustomNote1" xml:space="preserve">
+        <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>
+    </data>
+    <data name="CustomNote2" xml:space="preserve">
+        <value>Allows you to inquire about commodity information, codes, customs declaration and fees.</value>
+    </data>
+    <data name="CustomNote3" xml:space="preserve">
+        <value>It enables you to electronically declare the materials to be disclosed upon entering Saudi Arabia or before leaving it.</value>
+    </data>
+    <data name="CustomNote4" xml:space="preserve">
+        <value>It enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
+    </data>
               <data name="RegisteredVAT" xml:space="preserve">
         <value>VAT Registered</value>
     </data>

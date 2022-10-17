@@ -2478,6 +2478,42 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees..
+        /// </summary>
+        public static string CustomNote1 {
+            get {
+                return ResourceManager.GetString("CustomNote1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allows you to inquire about commodity information, codes, customs declaration and fees..
+        /// </summary>
+        public static string CustomNote2 {
+            get {
+                return ResourceManager.GetString("CustomNote2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It enables you to electronically declare the materials to be disclosed upon entering Saudi Arabia or before leaving it..
+        /// </summary>
+        public static string CustomNote3 {
+            get {
+                return ResourceManager.GetString("CustomNote3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It enables you to inquire about the fees for samples analysis requests sent to it by customs..
+        /// </summary>
+        public static string CustomNote4 {
+            get {
+                return ResourceManager.GetString("CustomNote4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs.
         /// </summary>
         public static string Customs {

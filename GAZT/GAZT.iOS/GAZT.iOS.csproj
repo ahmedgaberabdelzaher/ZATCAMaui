@@ -581,6 +581,12 @@
     <BundleResource Include="Resources\Stronglysatisfied%402x.png" />
     <BundleResource Include="Resources\Stronglysatisfied%403x.png" />
     <None Include="appcenter-pre-build.sh" />
+    <BundleResource Include="Resources\blueCard.png" />
+    <BundleResource Include="Resources\blueCard%402x.png" />
+    <BundleResource Include="Resources\blueCard%403x.png" />
+    <BundleResource Include="Resources\whiteCard.png" />
+    <BundleResource Include="Resources\whiteCard%402x.png" />
+    <BundleResource Include="Resources\whiteCard%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
