@@ -9714,6 +9714,21 @@ info@zatca.gov.sa</value>
     <data name="RegisteredVAT" xml:space="preserve">
         <value>منشأة مسجلة</value>
     </data>
+    <data name="CustomNote1" xml:space="preserve">
+        <value>تتيح لك دليل متكامل يوضح معلومات السلع ورموزها والقوائم الخاصة بها مع بيانها الجمركي ورسومها.</value>
+    </data>
+    <data name="CustomNote2" xml:space="preserve">
+        <value>تتيح لك الإستعلام عن معلومات السلع ورموزها والبيان الجمركي الخاص بها ورسومها.</value>
+    </data>
+    <data name="CustomNote3" xml:space="preserve">
+        <value>تمكنك من الإقرار الإلكتروني عن المواد الواجب الإفصاح عنها عند دخول السعودية أو قبل مغادرتها.</value>
+    </data>
+    <data name="CustomNote4" xml:space="preserve">
+        <value>تمكنك من الاستعلام عن رسوم طلبات تحليل العينات المرسلة لها من قبل الجمارك.</value>
+    </data>
+    <data name="RegisteredVAT" xml:space="preserve">
+        <value>منشأة مسجلة</value>
+    </data>
     <data name="VATCertificateNumber" xml:space="preserve">
         <value>رقم الشهادة الضريبية</value>
     </data>
@@ -9734,5 +9749,5 @@ info@zatca.gov.sa</value>
     </data>
     <data name="DepartingToKSA" xml:space="preserve">
         <value>المغادرة إلى المملكة العربية السعودية</value>
-    </data>
+    </data> 
 </root>

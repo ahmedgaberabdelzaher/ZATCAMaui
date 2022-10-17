@@ -73,13 +73,13 @@
                                 <Image
                                     HeightRequest="136"
                                     HorizontalOptions="FillAndExpand"
-                                    Source="Unselected.png">
+                                    Source="blueCard.png">
                                     <Image.Triggers>
                                         <DataTrigger
                                             Binding="{Binding CalcBy}"
                                             TargetType="Image"
                                             Value="1">
-                                            <Setter Property="Source" Value="UnselectedCard" />
+                                            <Setter Property="Source" Value="whiteCard.png" />
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
@@ -120,13 +120,13 @@
                                     <TapGestureRecognizer Command="{Binding MerchantCalcSelectedCommand}" />
 
                                 </Grid.GestureRecognizers>
-                                <Image Source="UnselectedCard.png">
+                                <Image Source="whiteCard.png">
                                     <Image.Triggers>
                                         <DataTrigger
                                             Binding="{Binding CalcBy}"
                                             TargetType="Image"
                                             Value="1">
-                                            <Setter Property="Source" Value="Unselected" />
+                                            <Setter Property="Source" Value="blueCard.png" />
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>

@@ -332,15 +332,15 @@
                                                             <!--Closed status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
-                                                                    Value="0">
+                                                                    Value="3">
                                                                 <Setter Property="BackgroundColor" Value="#62B34F" />
                                                              </DataTrigger>
 
-                                                             <!--Closed status-->
+                                                             <!--Open status-->
                                                             <DataTrigger TargetType="Frame"
                                                                     Binding="{Binding reportStatus}"
-                                                                    Value="3">
-                                                                <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                                    Value="0">
+                                                                <Setter Property="BackgroundColor" Value="#0996D4" />
                                                              </DataTrigger>
 
                                                             <!--Open status-->
@@ -386,18 +386,18 @@
                                                                     <Setter Property="TextColor" Value="#0996D4" />
                                                                 </DataTrigger>
 
-                                                                 <!--Closed status-->
+                                                                 <!--Open status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
-                                                                            Value="3">
-                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
-                                                                    <Setter Property="TextColor" Value="#62B34F" />
+                                                                            Value="0">
+                                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OpenReports}" />
+                                                                    <Setter Property="TextColor" Value="#0996D4" />
                                                                 </DataTrigger>
 
                                                                  <!--Closed status-->
                                                                  <DataTrigger TargetType="Label"
                                                                             Binding="{Binding reportStatus}"
-                                                                            Value="0">
+                                                                            Value="3">
                                                                     <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
                                                                     <Setter Property="TextColor" Value="#62B34F" />
                                                                 </DataTrigger>

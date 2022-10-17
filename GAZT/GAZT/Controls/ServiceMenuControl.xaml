@@ -193,7 +193,9 @@
                                             <FormattedString>
                                                 <Span Text="{Binding Name}" TextColor="{StaticResource Primary}" FontFamily="{StaticResource SomarBold}"></Span>
                                                 <Span Text="&#10;"></Span>
-                                                <Span Text="{Binding ServiceDesc}" TextColor="#232323" FontSize="10"></Span>
+                                                <Span Text="{Binding ServiceDesc}"
+                                                      FontFamily="{StaticResource SomarRegular}"
+                                                      TextColor="#232323" FontSize="10"></Span>
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
