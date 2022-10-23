@@ -5097,7 +5097,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excise TAX Services.
+        ///   Looks up a localized string similar to Excise TAX.
         /// </summary>
         public static string EXCISETAXServices {
             get {
@@ -6573,7 +6573,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I call you a duplicate about the origin of the remnants of the authority&apos;s competences.
+        ///   Looks up a localized string similar to I call you a duplicate about the origin of the remnants of the authority&apos;s competences..
         /// </summary>
         public static string GeneralServicesTip {
             get {
@@ -11110,7 +11110,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mercahnt and consumer calculator.
+        ///   Looks up a localized string similar to Merchant and Customer Calculator.
         /// </summary>
         public static string TaxCalculator {
             get {
@@ -12680,7 +12680,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales.
+        ///   Looks up a localized string similar to This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales..
         /// </summary>
         public static string VatCalculationServiceDesc {
             get {

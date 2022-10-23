@@ -9552,7 +9552,7 @@ the Zakat, Tax and Customs
         <value>ZATCA Services</value>
     </data>
     <data name="EXCISETAXServices" xml:space="preserve">
-        <value>Excise TAX Services</value>
+        <value>Excise TAX</value>
     </data>
     <data name="LiveVideoTitle" xml:space="preserve">
         <value>Live Video</value>
@@ -9627,7 +9627,7 @@ the Zakat, Tax and Customs
         <value>E-Invoice Validation</value>
     </data>
     <data name="TaxCalculator" xml:space="preserve">
-        <value>Mercahnt and consumer calculator</value>
+        <value>Merchant and Customer Calculator</value>
     </data>
       <data name="AboutZATCA" xml:space="preserve">
     <value>About ZATCA</value>
@@ -9765,13 +9765,13 @@ Zakat, Tax and Customs Authority
         <value>Scanning the QR code allows beneficiaries to validate the electronic bill.</value>
     </data>
     <data name="VatCalculationServiceDesc" xml:space="preserve">
-        <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales</value>
+        <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales.</value>
     </data>
     <data name="BackToHome" xml:space="preserve">
         <value>Back to Home</value>
     </data>
      <data name="GeneralServicesTip" xml:space="preserve">
-        <value>I call you a duplicate about the origin of the remnants of the authority's competences</value>
+        <value>I call you a duplicate about the origin of the remnants of the authority's competences.</value>
     </data>
     <data name="CustomServicesTip1" xml:space="preserve">
         <value>It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees.</value>

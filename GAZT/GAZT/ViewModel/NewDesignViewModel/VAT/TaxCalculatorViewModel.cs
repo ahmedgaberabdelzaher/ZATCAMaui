@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.VAT
 {
-    public class TaxCalculatorViewModel:BaseViewModel
+    public class TaxCalculatorViewModel : BaseViewModel
     {
         int calcBy = 0;
 
@@ -33,7 +33,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             }
         }
 
-   double taxValue;
+        double taxValue;
 
         public double TaxValue
         {
@@ -57,9 +57,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                 RaisePropertyChanged();
             }
         }
-        
 
-   
+
+
         string totalnontaxablesales;
 
         public string Totalnontaxablesales
@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
 
             set
             {
-                totalnontaxablesales=value ;
+                totalnontaxablesales = value;
                 RaisePropertyChanged();
             }
         }
@@ -87,7 +87,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
         }
 
 
-        bool isConsumerCalc =true;
+        bool isConsumerCalc = true;
 
         public bool IsConsumerCalc
         {
@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             }
         }
 
-        bool isMerchantCalc ;
+        bool isMerchantCalc;
 
         public bool IsMerchantCalc
         {
@@ -166,10 +166,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                         double Tax = 0;
                         if (IsConsumerCalc)
                         {
-                            if (!String.IsNullOrEmpty(Totaltaxablepurchases))
+                            if (!string.IsNullOrEmpty(Totaltaxablepurchases))
                             {
                                 Tax = (double.Parse(Totaltaxablepurchases) * .15) + double.Parse(Totaltaxablepurchases);
-                               MessageTxt = AppResources.TotalPriceValue;
+                                MessageTxt = AppResources.TotalPriceValue;
                                 TaxValue = Tax;
                             }
                             else
@@ -182,40 +182,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                         }
                         else
                         {
-                            if (!string.IsNullOrEmpty(Totaltaxablesales) && !string.IsNullOrEmpty(Totaltaxablepurchases))
+
+                            Totaltaxablesales = string.IsNullOrEmpty(Totaltaxablesales) ? "0.00" : Totaltaxablesales;
+                            Totaltaxablepurchases = string.IsNullOrEmpty(Totaltaxablepurchases) ? "0.00" : Totaltaxablepurchases;
+                            Tax = (double.Parse(Totaltaxablesales) * .15) - (double.Parse(Totaltaxablepurchases) * .15);
+                            if (Tax < 0)
                             {
-                                Tax = (double.Parse(Totaltaxablesales) * .15) - (double.Parse(Totaltaxablepurchases) * .15);
-                                if (Tax<0)
-                                {
-                                    
-                                    MessageTxt = AppResources.RefunableAmount;
-                                    TaxValue = Tax*-1;
-                                }
-                                else
-                                {
-                                
-                                    MessageTxt = AppResources.VATPayable;
-                                    TaxValue = Tax;
-                                }
 
+                                MessageTxt = AppResources.RefunableAmount;
+                                TaxValue = Tax * -1;
                             }
-
                             else
                             {
-                                IsValidationError = true;
-                                 MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
-                                return;
+
+                                MessageTxt = AppResources.VATPayable;
+                                TaxValue = Tax;
                             }
 
+
+
+                            //else
+                            //{
+                            //    IsValidationError = true;
+                            //     MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
+                            //    return;
+                            //}
+
                         }
-                      IsShowMsgView = true;
-                       // MessageTxt = Tax.ToString();
+                        IsShowMsgView = true;
+                        // MessageTxt = Tax.ToString();
                     }
                     catch (Exception ex)
                     {
 
                     }
-       
+
                 });
             }
         }
