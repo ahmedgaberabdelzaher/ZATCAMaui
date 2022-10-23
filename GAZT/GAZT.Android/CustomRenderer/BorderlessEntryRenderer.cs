@@ -31,8 +31,13 @@ namespace GAZT.Droid.CustomRenderer
 				Control.LayoutParameters = layoutParams;
 				Control.SetPadding(0, 0, 0, 0);
 				SetPadding(0, 0, 0, 0);
-                this.Control.KeyListener = Android.Text.Method.DigitsKeyListener.GetInstance(string.Format("1234567890{0}", System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
-                this.Control.InputType = Android.Text.InputTypes.ClassNumber | Android.Text.InputTypes.NumberFlagDecimal;
+
+				if(e?.NewElement.Keyboard == Keyboard.Numeric)
+                {
+					this.Control.KeyListener = Android.Text.Method.DigitsKeyListener.GetInstance(string.Format("1234567890{0}", System.Globalization.CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator));
+					this.Control.InputType = Android.Text.InputTypes.ClassNumber | Android.Text.InputTypes.NumberFlagDecimal;
+                }
+               
 
                 if (Control != null)
                 {
