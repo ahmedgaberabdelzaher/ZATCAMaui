@@ -45,12 +45,12 @@
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
                             TextColor="White" />
-                        <Label
+                        <!--<Label
                             Margin="0,0,0,30"
                             FontSize="14"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"
-                            TextColor="White" />
+                            TextColor="White" />-->
                         <BoxView HeightRequest="30"></BoxView>
                     </StackLayout>
                 </Grid>

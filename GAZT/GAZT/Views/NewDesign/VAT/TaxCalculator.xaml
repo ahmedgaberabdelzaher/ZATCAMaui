@@ -101,7 +101,8 @@
                                 </Image>
                                 <Label
                                     Margin="25,10,25,15"
-                                    FontSize="16"
+                                    FontSize="14"
+                                    FontFamily="{StaticResource SomarRegular}"
                                     Text="{x:Static ResourceManager:AppResources.ConsumerCalculator}"
                                     TextColor="#FFFFFF"
                                     VerticalOptions="EndAndExpand">
@@ -148,8 +149,10 @@
                                 </Image>
                                 <Label
                                     Margin="25,10,25,15"
-                                    FontSize="16"
-                                    Text="{x:Static ResourceManager:AppResources.MerchantCalculator}"
+                                    FontSize="14"
+                                    LineBreakMode="WordWrap"
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    Text="{x:Static ResourceManager:AppResources.TaxCalculator}"
                                     TextColor="{StaticResource Primary}"
                                     VerticalOptions="EndAndExpand">
                                     <Label.Triggers>
@@ -299,6 +302,7 @@
                             <Label.FormattedText>
                                 <FormattedString>
                                     <Span FontSize="31" Text="{Binding TaxValue}" />
+                                    <Span Text=" " />
                                     <Span FontSize="12" Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                 </FormattedString>
                             </Label.FormattedText>

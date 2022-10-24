@@ -9257,7 +9257,7 @@ info@zatca.gov.sa</value>
         <value>الأسعار للسلع الإنتقائية</value>
     </data>
   <data name="searchingandviewingtheindicativepricesforexciseGoods" xml:space="preserve">
-        <value>البحث والاطلاع على الأسعار الإسترشادية للسلع الانتقائية</value>
+        <value>البحث والاطلاع على الأسعار الاسترشادية للسلع الانتقائية</value>
     </data>
   <data name="Copied" xml:space="preserve">
         <value>تم نسخ</value>
@@ -9275,7 +9275,7 @@ info@zatca.gov.sa</value>
         <value>الرمز</value>
     </data>
   <data name="ScantheQRcode" xml:space="preserve">
-        <value>أمسح رمز الإستجابة السريع</value>
+        <value>امسح رمز الإستجابة السريعة</value>
     </data>
   <data name="PlacetheQRCodeinsidetheframe" xml:space="preserve">
         <value>ضع الرمز داخل الإطار</value>
@@ -9308,7 +9308,7 @@ info@zatca.gov.sa</value>
         <value>خروج</value>
     </data>
   <data name="EnterQrCodeHere" xml:space="preserve">
-        <value>ادخل الرمز هنا</value>
+        <value>أدخل الرمز هنا</value>
     </data>
   <data name="PleaseEnterQRCodeHer" xml:space="preserve">
         <value>الرجاء إدخال رمز</value>
@@ -9317,7 +9317,7 @@ info@zatca.gov.sa</value>
         <value>حاسبة ضريبة القيمة المضافة</value>
     </data>
   <data name="VATCalculatorDesc" xml:space="preserve">
-        <value>الرجاء إكمال البيانات ليتم احتساب الضريبة</value>
+        <value>يرجى إكمال البيانات ليتم احتساب الضريبة</value>
     </data>
   <data name="ConsumerCalculator" xml:space="preserve">
         <value>حاسبة المستهلك</value>
@@ -9326,13 +9326,13 @@ info@zatca.gov.sa</value>
         <value>حاسبة التاجر</value>
     </data>
   <data name="Totaltaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات الخاضعة للضريبة</value>
+        <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
     </data>
   <data name="CalculateTheAmount" xml:space="preserve">
         <value>احسب قيمة المبلغ</value>
     </data>
   <data name="Totaltaxablesales" xml:space="preserve">
-        <value>إجمالي المبيعات الخاضعة للضريبة</value>
+        <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
     </data>
   <data name="Totalnontaxablesales" xml:space="preserve">
         <value>إجمالي المبيعات الغير خاضعة للضريبة</value>

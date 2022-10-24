@@ -55,7 +55,7 @@
                                 <StackLayout Margin="0,60,0,50">
                           
                             <Label  Text="{x:Static ResourceManager:AppResources.ScantheQRcode}" HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="24" FontFamily="{StaticResource FontSomarBold}"></Label>
-                            <Label Margin="0,0,0,30" Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>
+                            <!--<Label Margin="0,0,0,30" Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"  HorizontalOptions="CenterAndExpand" TextColor="White" FontSize="14"></Label>-->
   </StackLayout>
                             </Grid>
                           

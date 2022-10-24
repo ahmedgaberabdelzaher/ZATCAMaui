@@ -205,7 +205,7 @@
                                         </syncfusion:SfPicker>
 
                              <StackLayout Grid.Row="2">
-                                <control:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDReferenceNumber}"
+                                <control:CustomLabel  Text="{Binding SelectedParameterType.ParameterType}"
                                                             Padding="0,0,0,0"
                                                             Style="{StaticResource CaptionLabelGrey}"/>
                                     <inputLayout:SfTextInputLayout x:Name="frmLookupNumner"
@@ -327,12 +327,12 @@
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
                             TextColor="White" />
-                        <Label
+                        <!--<Label
                             Margin="0,0,0,30"
                             FontSize="14"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"
-                            TextColor="White" />
+                            TextColor="White" />-->
                         <BoxView HeightRequest="30"></BoxView>
                     </StackLayout>
                 </Grid>
