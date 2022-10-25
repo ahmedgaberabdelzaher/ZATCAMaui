@@ -22,7 +22,7 @@
 echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
 # Updating Manifest
 
-MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/GAZT/Properties/AndroidManifest.xml"
+MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT.Android/Properties/AndroidManifest.xml"
 
 VERSIONNAME=`grep versionName ${MANIFEST_PATH} | sed 's/.*versionName\s*=\s*\"\([^\"]*\)\".*/\1/g'`
 
