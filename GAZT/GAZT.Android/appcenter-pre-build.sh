@@ -20,19 +20,25 @@
 # AN IMPORTANT THING: FOR THIS SAMPLE YOU NEED DECLARE API_URL ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
 
 echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
-# Updating Manifest
+
+# Updating Manifest ref URL : "https://montemagno.com/vs-app-center-custom-build-scripts-for-production-apps/"
 
 MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT.Android/Properties/AndroidManifest.xml"
 
+# Print out file before any change
+cat $MANIFEST_PATH
+
 VERSIONNAME=`grep versionName ${MANIFEST_PATH} | sed 's/.*versionName\s*=\s*\"\([^\"]*\)\".*/\1/g'`
 
-echo "Updating VERSIONNAME to $VERSIONNAME"
+echo "Old VERSIONNAME is $VERSIONNAME"
 
 echo "Updating APPCENTER_BUILD_ID to $APPCENTER_BUILD_ID"
 
 sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"1.0.${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
 
-sed -i.bak "" 's/android:versionCode="[^"]*"/android:versionCode="'APPCENTER_BUILD_ID'"/' ${MANIFEST_PATH}
+#sed -i.bak "" 's/android:versionCode="[^"]*"/android:versionCode="'APPCENTER_BUILD_ID'"/' ${MANIFEST_PATH}
+
+sed -i.bak "s/android:versionCode="\"${APPCENTER_BUILD_ID}\""/android:versionCode="\"${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
 
 rm -f ${MANIFEST}.bak
 
