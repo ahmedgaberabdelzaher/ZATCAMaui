@@ -33,9 +33,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
             }
         }
 
-        double taxValue;
+        decimal taxValue;
 
-        public double TaxValue
+        public decimal TaxValue
         {
             get { return taxValue; }
 
@@ -163,12 +163,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                 {
                     try
                     {
-                        double Tax = 0;
+                        decimal Tax = 0.00m;
+                        decimal sales = 0.00m;
+                        decimal purchases = 0.00m;
                         if (IsConsumerCalc)
                         {
                             if (!string.IsNullOrEmpty(Totaltaxablepurchases))
                             {
-                                Tax = (double.Parse(Totaltaxablepurchases) * .15) + double.Parse(Totaltaxablepurchases);
+                                Tax = (decimal.Parse(Totaltaxablepurchases) * .15m) + decimal.Parse(Totaltaxablepurchases);
                                 MessageTxt = AppResources.TotalPriceValue;
                                 TaxValue = Tax;
                             }
@@ -182,21 +184,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                         }
                         else
                         {
+                            if (!string.IsNullOrEmpty(Totaltaxablesales))
+                                sales = decimal.Parse(Totaltaxablesales);
+                            if(!string.IsNullOrEmpty(Totaltaxablepurchases))
+                                purchases = decimal.Parse(Totaltaxablepurchases);
 
-                            Totaltaxablesales = string.IsNullOrEmpty(Totaltaxablesales) ? "0.00" : Totaltaxablesales;
-                            Totaltaxablepurchases = string.IsNullOrEmpty(Totaltaxablepurchases) ? "0.00" : Totaltaxablepurchases;
-                            Tax = (double.Parse(Totaltaxablesales) * .15) - (double.Parse(Totaltaxablepurchases) * .15);
+                            Tax = (sales * .15m) - (purchases * .15m);
                             if (Tax < 0)
                             {
 
                                 MessageTxt = AppResources.RefunableAmount;
-                                TaxValue = Tax * -1;
+                                TaxValue = (Math.Round(Tax, 2, MidpointRounding.AwayFromZero)) * -1;
                             }
                             else
                             {
 
                                 MessageTxt = AppResources.VATPayable;
-                                TaxValue = Tax;
+                                TaxValue = Math.Round(Tax,2,MidpointRounding.AwayFromZero);
                             }
 
 
