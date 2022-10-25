@@ -20,6 +20,21 @@
 # AN IMPORTANT THING: FOR THIS SAMPLE YOU NEED DECLARE API_URL ENVIRONMENT VARIABLE IN APP CENTER BUILD CONFIGURATION.
 
 echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
+# Updating Manifest
+
+MANIFEST_PATH="$APPCENTER_SOURCE_DIRECTORY/GAZT//Properties/AndroidManifest.xml"
+
+VERSIONNAME=`grep versionName ${MANIFEST_PATH} | sed 's/.*versionName\s*=\s*\"\([^\"]*\)\".*/\1/g'`
+
+sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"1.0.${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
+sed -i.bak "" 's/android:versionCode="[^"]*"/android:versionCode="'APPCENTER_BUILD_ID'"/' ${MANIFEST_PATH}
+
+rm -f ${MANIFEST}.bak
+
+# Print out file for reference
+cat $MANIFEST
+
+echo
 
 if [ -z "$Target_Environment" ]
 then
