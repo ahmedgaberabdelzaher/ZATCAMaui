@@ -21,6 +21,20 @@
 
 echo "EXECUTING APPCENTER_PRE_BUILD SCRIPT"
 
+# Updating  Info.plist ref URL : "https://montemagno.com/vs-app-center-custom-build-scripts-for-production-apps/"
+
+PLIST_PATH=$APPCENTER_SOURCE_DIRECTORY/GAZT/GAZT.iOS/Info.plist
+
+# Print out file before any change
+cat $PLIST_PATH
+
+/usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 5.0.${APPCENTER_BUILD_ID}" $PLIST_PATH
+
+# Print out file for reference
+cat $PLIST_PATH
+
+echo "Updated info.plist!"
+
 if [ -z "$Target_Environment" ]
 then
     echo "You need define the environment variable in App Center"

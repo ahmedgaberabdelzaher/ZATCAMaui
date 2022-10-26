@@ -9326,19 +9326,19 @@ info@zatca.gov.sa</value>
         <value>حاسبة التاجر</value>
     </data>
   <data name="Totaltaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
+        <value>إجمالي المشتريات الخاضعة للضريبة</value>
     </data>
   <data name="CalculateTheAmount" xml:space="preserve">
         <value>احسب قيمة المبلغ</value>
     </data>
   <data name="Totaltaxablesales" xml:space="preserve">
-        <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
+        <value>إجمالي المبيعات الخاضعة للضريبة</value>
     </data>
   <data name="Totalnontaxablesales" xml:space="preserve">
-        <value>إجمالي المبيعات الغير خاضعة للضريبة</value>
+        <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
     </data>
   <data name="Totalnontaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات الغير خاضعة للضريبة</value>
+        <value>إجمالي المشتريات غير خاضعة للضريبة</value>
   </data>
     <data name="InvalidQrMessage" xml:space="preserve">
         <value>شكرًا لمسح رمز الاستجابة السريعة, تم مشاركة معلومات رمز الاستجابة السريعة مع الهيئة</value>
