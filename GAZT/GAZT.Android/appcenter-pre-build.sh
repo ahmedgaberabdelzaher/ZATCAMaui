@@ -34,18 +34,12 @@ echo "Old VERSIONNAME is $VERSIONNAME"
 
 echo "Updating APPCENTER_BUILD_ID to $APPCENTER_BUILD_ID"
 
-#sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"1.0.${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
-
-#sed -i.bak "" 's/android:versionCode="[^"]*"/android:versionCode="'APPCENTER_BUILD_ID'"/' ${MANIFEST_PATH}
-
-sed -i.bak "s/android:versionCode="\"${APPCENTER_BUILD_ID}\""/android:versionCode="\"${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
+sed -i.bak "s/android:versionName="\"${VERSIONNAME}\""/android:versionName="\"1.0.${APPCENTER_BUILD_ID}\""/" ${MANIFEST_PATH}
 
 rm -f ${MANIFEST}.bak
 
 # Print out file for reference
 cat $MANIFEST_PATH
-
-echo
 
 if [ -z "$Target_Environment" ]
 then
