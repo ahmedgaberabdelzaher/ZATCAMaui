@@ -31,7 +31,7 @@ cat $PLIST_PATH
 /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString 5.0.${APPCENTER_BUILD_ID}" $PLIST_PATH
 
 # Print out file for reference
-cat $PLIST
+cat $PLIST_PATH
 
 echo "Updated info.plist!"
 
