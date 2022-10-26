@@ -309,6 +309,9 @@
 		<Compile Update="Views\NewDesign\HomePages\VatServicesMenu.xaml.cs">
 		  <DependentUpon>VatServicesMenu.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\ProductDeclarationPage.xaml.cs">
+		  <DependentUpon>ProductDeclarationPage.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">

@@ -416,6 +416,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
+            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
 
             #endregion
         }
@@ -2899,6 +2900,7 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
 
             #endregion
 
@@ -4010,6 +4012,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<BaseEDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ProductDeclarationViewModel ProductDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
                 }
                 catch (Exception ex)
                 {
