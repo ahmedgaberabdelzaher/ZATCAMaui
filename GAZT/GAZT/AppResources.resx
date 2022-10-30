@@ -9806,13 +9806,19 @@ Zakat, Tax and Customs Authority
     <data name="CustomNote4" xml:space="preserve">
         <value>It enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
     </data>
-              <data name="RegisteredVAT" xml:space="preserve">
+     <data name="RegisteredVAT" xml:space="preserve">
         <value>VAT Registered</value>
     </data>
-        <data name="VATCertificateNumber" xml:space="preserve">
+    <data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
-        <data name="unableToVerify" xml:space="preserve">
+    <data name="unableToVerify" xml:space="preserve">
         <value>Unable To Verify</value>
+    </data>
+    <data name="PleaseEnter" xml:space="preserve">
+        <value>Please enter</value>
+    </data>
+    <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>The number of digits in the tax certificate number must be 15 digits</value>
     </data>
 </root>

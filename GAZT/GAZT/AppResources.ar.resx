@@ -9331,15 +9331,15 @@ info@zatca.gov.sa</value>
   <data name="CalculateTheAmount" xml:space="preserve">
         <value>احسب قيمة المبلغ</value>
     </data>
-  <data name="Totaltaxablesales" xml:space="preserve">
+    <data name="Totaltaxablesales" xml:space="preserve">
         <value>إجمالي المبيعات الخاضعة للضريبة</value>
     </data>
-  <data name="Totalnontaxablesales" xml:space="preserve">
+    <data name="Totalnontaxablesales" xml:space="preserve">
         <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
     </data>
-  <data name="Totalnontaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات غير خاضعة للضريبة</value>
-  </data>
+    <data name="Totalnontaxablepurchases" xml:space="preserve">
+        <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
+    </data>
     <data name="InvalidQrMessage" xml:space="preserve">
         <value>شكرًا لمسح رمز الاستجابة السريعة, تم مشاركة معلومات رمز الاستجابة السريعة مع الهيئة</value>
     </data>
@@ -9723,13 +9723,19 @@ info@zatca.gov.sa</value>
     <data name="CustomNote4" xml:space="preserve">
         <value>تمكنك من الاستعلام عن رسوم طلبات تحليل العينات المرسلة لها من قبل الجمارك.</value>
     </data>
-            <data name="RegisteredVAT" xml:space="preserve">
+    <data name="RegisteredVAT" xml:space="preserve">
         <value>منشأة مسجلة</value>
     </data>
-          <data name="VATCertificateNumber" xml:space="preserve">
+    <data name="VATCertificateNumber" xml:space="preserve">
         <value>رقم الشهادة الضريبية</value>
     </data>
-           <data name="unableToVerify" xml:space="preserve">
+    <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>عدد الأرقام في رقم الشهادة الضريبية يجب أن يكون 15 رقم</value>
+    </data>
+    <data name="unableToVerify" xml:space="preserve">
         <value>تعذر التحقق</value>
+    </data>
+    <data name="PleaseEnter" xml:space="preserve">
+        <value>يرجى إدخال</value>
     </data>
 </root>
