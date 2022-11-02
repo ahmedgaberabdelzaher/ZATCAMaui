@@ -1686,7 +1686,7 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView  VerticalScrollBarVisibility="Never">
                             <Grid>
                                 <Grid x:Name="ParentMenu">
                                     <Grid.RowDefinitions>
@@ -1730,7 +1730,7 @@
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                              <!--  <StackLayout Orientation="Horizontal" Spacing="20">
 
                                                     <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}" />
                                                     <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
@@ -1740,7 +1740,7 @@
                                                 </StackLayout>
 
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
-
+-->
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="ic_certificate.png" Style="{StaticResource SmallIcon}" />
                                                     <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDCertificates}" />
@@ -1967,6 +1967,7 @@
                             </Grid>
                         </ScrollView>
                     </yummy:PancakeView>
+
                 </Grid>
 
                 <!--  Menu Ends  -->
@@ -2180,13 +2181,11 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
-     
-            </Grid>
-              <!-- Nav Menu Starts  -->
-                   <yummy:PancakeView 
-        Margin="0" Padding="0,0,0,6"
+       <!-- Nav Menu Starts  -->
+                   <yummy:PancakeView Grid.Row="1"
+        Margin="0,-3,0,0" Padding="0,0,0,26"
         BackgroundColor="#002447"
-        CornerRadius="15,15,0,0" Grid.Row="0" VerticalOptions="EndAndExpand">
+        CornerRadius="15,15,0,0"  VerticalOptions="EndAndExpand">
             <controls:NavMenu >
                 <controls:NavMenu.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
@@ -2196,6 +2195,8 @@
                 </controls:NavMenu.Margin>
             </controls:NavMenu></yummy:PancakeView>
                           <!-- Nav Menu End  -->
+            </Grid>
+            
 
             <!--#region SurveyView-->
             <Grid

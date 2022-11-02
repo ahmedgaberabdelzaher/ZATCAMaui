@@ -3627,7 +3627,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                 }
-                _navigationService.GoBack();
+                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                //_navigationService.GoBack();
             });
         }
 
