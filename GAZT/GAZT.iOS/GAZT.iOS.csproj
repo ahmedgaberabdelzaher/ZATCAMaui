@@ -590,6 +590,20 @@
     <BundleResource Include="Resources\failQR.png" />
     <BundleResource Include="Resources\failQR%402x.png" />
     <BundleResource Include="Resources\failQR%403x.png" />
+    <BundleResource Include="Resources\NotSelectedAccountStatlement.png" />
+    <BundleResource Include="Resources\NotSelectedAccountStatlement%402x.png" />
+    <BundleResource Include="Resources\NotSelectedAccountStatlement%403x.png" />
+    <BundleResource Include="Resources\SelectedDashBoardicon.png" />
+    <BundleResource Include="Resources\SelectedDashBoardicon%402x.png" />
+    <BundleResource Include="Resources\SelectedDashBoardicon%403x.png" />
+    <BundleResource Include="Resources\finances.png" />
+    <BundleResource Include="Resources\finances%402x.png" />
+    <BundleResource Include="Resources\SelectedAccountStatlement.png" />
+    <BundleResource Include="Resources\SelectedAccountStatlement%402x.png" />
+    <BundleResource Include="Resources\SelectedAccountStatlement%403x.png" />
+    <BundleResource Include="Resources\NotSelectedDashBoardicon.png" />
+    <BundleResource Include="Resources\NotSelectedDashBoardicon%402x.png" />
+    <BundleResource Include="Resources\NotSelectedDashBoardicon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

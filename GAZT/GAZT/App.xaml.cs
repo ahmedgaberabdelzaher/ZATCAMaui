@@ -477,13 +477,13 @@ namespace EGAZT
 
                 //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
-                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
 
-                // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
-               // navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
+               //navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
                // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
@@ -503,7 +503,7 @@ namespace EGAZT
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
                 //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
+               // navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                  //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };

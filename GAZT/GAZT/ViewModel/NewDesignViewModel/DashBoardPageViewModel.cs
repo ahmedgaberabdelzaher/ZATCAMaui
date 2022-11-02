@@ -1822,7 +1822,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ISurveyServices _surveyServices;
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService, ISurveyServices surveyServices) : base(navigationService, dialogService)
         {
-            IsShowMsgView = true;
+          //  IsShowMsgView = true;
             _surveyServices = surveyServices;
             MenuViewVisible = false;
             LiveChatVisible = false;
@@ -1849,6 +1849,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MenuViewVisible = false;
             HomeViewVisible = true;
+            //GetDashBoardMenuLst(1);
 
         }
         #endregion

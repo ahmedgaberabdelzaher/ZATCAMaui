@@ -8261,7 +8261,7 @@ info@zatca.gov.sa</value>
     <value>المعلومات التي تفقدَّم، أو تم جمعها عنك، سيتم استخدامها من قبل هيئة الزكاة والضريبة والجمارك بغرض: </value>
     </data>
   <data name="AccountStatementsDashboardTitle" xml:space="preserve">
-    <value />
+    <value>كشف حساب</value>
     </data>
   <data name="AStatementDirectTaxes" xml:space="preserve">
     <value />

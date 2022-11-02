@@ -34,6 +34,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel = App.Locator.AccountStatementBillsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.GetDashBoardMenuLst(2);
             ChangeAeroIcon();
             SetLTR();
             ChangeArrowDirection();

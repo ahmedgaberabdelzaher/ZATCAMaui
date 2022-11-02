@@ -1450,6 +1450,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+         //   GetDashBoardMenuLst(2);
         }
 
         public void ApplyFilter()

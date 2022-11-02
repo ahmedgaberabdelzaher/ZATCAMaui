@@ -54,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         {
             GetHomeMenuLst();
 
-            GetCustomServiceMenuLst();
+            GetCustomServiceMenuLst(); GetDashBoardMenuLst(3);
         }
 
         private void GetHomeMenuLst()

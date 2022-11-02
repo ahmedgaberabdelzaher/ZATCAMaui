@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using EGAZT.Models;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.ObjectModel;
@@ -305,6 +306,69 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 messageTxt = value;
                 RaisePropertyChanged();
+            }
+        }
+
+
+        ObservableCollection<MenuModel> afterLoginMenuLst;
+        public ObservableCollection<MenuModel> AfterLoginMenuLst { get { return afterLoginMenuLst; } set { afterLoginMenuLst = value; RaisePropertyChanged(); } }
+
+
+        public void GetDashBoardMenuLst(int CurrentTab=0)
+        {
+            AfterLoginMenuLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.Home, ID="Home",ImageSource="HomeNotSelected",ColumnNo=0,IsSelected=CurrentTab==3?true:false,SelectedImageSource="HomeSelected"
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.Dashboard, ID="GAZTNewDesignDashBoardPageView",ImageSource="NotSelectedDashBoardicon",ColumnNo=1,IsSelected=CurrentTab==1?true:false,SelectedImageSource="SelectedDashBoardicon"
+                },
+                     new MenuModel()
+                {
+                   Name=AppResources.ASAccountStatementDashboardTileText, ID="AccountStatementBillsPageView",ImageSource="NotSelectedAccountStatlement",ColumnNo=2,IsSelected=CurrentTab==2?true:false,SelectedImageSource="SelectedAccountStatlement"
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.ZZZMenu, ID="menu",ImageSource="Menu",ColumnNo=3,IsSelected=CurrentTab==4?true:false,SelectedImageSource="MenuSelected"
+                },
+           };
+        }
+
+
+        public ICommand MenuNavigationCommand
+        {
+            get
+            {
+                return new Command<MenuModel>((Selecteditem) =>
+                {
+                   /* foreach (var item in AfterLoginMenuLst)
+                    {
+                        item.IsSelected = false;
+                    }
+                    Selecteditem.IsSelected = true;*/
+                    if (Selecteditem.ID=="Home")
+                    {
+
+                        _navigationService.NavigateTo($"/{Selecteditem.ID}", "3");
+                        return;
+                    }
+                  else if(Selecteditem.ID == "menu")
+                    {
+                        _navigationService.NavigateTo($"/GAZTNewDesignDashBoardPageView",true);
+                        return;
+                    }
+                    else if (Selecteditem.ID== "GAZTNewDesignDashBoardPageView")
+                    {
+                        _navigationService.NavigateTo($"/GAZTNewDesignDashBoardPageView", "1");
+                        return;
+                    }
+                    _navigationService.NavigateTo($"/{Selecteditem.ID}");
+
+                });
             }
         }
 

@@ -20,7 +20,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:EGAZT.Controls"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
@@ -1972,7 +1972,7 @@
                 <!--  Menu Ends  -->
 
                 <Grid
-                    x:Name="ButtomTab"
+                    x:Name="ButtomTab" IsVisible="false"
                     Grid.Row="1"
                     Margin="0,-3,0,0"
                     Padding="0,0,0,26"
@@ -2180,12 +2180,28 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
+     
             </Grid>
-            <!--#region SurveyView{Binding IsShowMsgView}-->
+              <!-- Nav Menu Starts  -->
+                   <yummy:PancakeView 
+        Margin="0" Padding="0,0,0,6"
+        BackgroundColor="#002447"
+        CornerRadius="15,15,0,0" Grid.Row="0" VerticalOptions="EndAndExpand">
+            <controls:NavMenu >
+                <controls:NavMenu.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="10,0,10,15" />
+                        <On Platform="Android" Value="10,0,10,0" />
+                    </OnPlatform>
+                </controls:NavMenu.Margin>
+            </controls:NavMenu></yummy:PancakeView>
+                          <!-- Nav Menu End  -->
+
+            <!--#region SurveyView-->
             <Grid
                 Grid.Row="0" 
                 Margin="0,0,0,0"
-                IsVisible="true"
+                IsVisible="{Binding IsShowMsgView}"
                 VerticalOptions="FillAndExpand">
 
                 <StackLayout

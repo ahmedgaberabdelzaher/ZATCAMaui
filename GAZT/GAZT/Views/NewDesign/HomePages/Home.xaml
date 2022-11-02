@@ -55,11 +55,15 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </StackLayout>
-            <controls:BottomMenu
+            <controls:BottomMenu x:Name="preLoginMenu"
                 Grid.Row="2"
                 Margin="20,0,20,0"
                 HorizontalOptions="Fill"
                 VerticalOptions="EndAndExpand" />
+            <controls:NavMenu x:Name="beforeLoginMenu"  Grid.Row="2"
+                Margin="0"
+                HorizontalOptions="Fill"
+                VerticalOptions="EndAndExpand" ></controls:NavMenu>
 
         </Grid>
     </newdesign:BaseContentPage.PancakeView>
