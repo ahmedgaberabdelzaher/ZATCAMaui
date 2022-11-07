@@ -9830,4 +9830,10 @@ Zakat, Tax and Customs Authority
     <data name="DepartingToKSA" xml:space="preserve">
         <value>Departing from KSA</value>
     </data> 
+    <data name="PleaseEnter" xml:space="preserve">
+        <value>Please enter</value>
+    </data> 
+    <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>The number of digits in the tax certificate number must be 15 digits</value>
+    </data>
 </root>

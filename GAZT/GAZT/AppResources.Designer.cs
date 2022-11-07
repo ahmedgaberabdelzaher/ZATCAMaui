@@ -9636,6 +9636,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter.
+        /// </summary>
+        public static string PleaseEnter {
+            get {
+                return ResourceManager.GetString("PleaseEnter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter verification code sent to your mobile number.
         /// </summary>
         public static string Pleaseenterconfirmationcodesenttoyourmobilenumber {
@@ -12757,6 +12766,15 @@ namespace EGAZT {
         public static string VATCertificateNumber {
             get {
                 return ResourceManager.GetString("VATCertificateNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The number of digits in the tax certificate number must be 15 digits.
+        /// </summary>
+        public static string VATCertificateNumberValidation {
+            get {
+                return ResourceManager.GetString("VATCertificateNumberValidation", resourceCulture);
             }
         }
         

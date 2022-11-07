@@ -219,7 +219,7 @@
                                         <control:BorderlessEntry Text="{Binding LookupNumber}"
                                                                     MaxLength="{Binding MaxDigids}"
                                                                      Style="{StaticResource DefaultEntry}"  
-                                                                    Placeholder="{x:Static ResourceManager:AppResources.NDTypeYourReferenceNumber}"
+                                                                    Placeholder="{Binding SelectedParameterType.ParameterType}"
                                                                     TextColor="{StaticResource Primary}" >
                                         <!--IsReadOnly="{Binding IsNameVisible}"                                                                   TextChanged="BorderlessEntry_TextChanged"
 -->
@@ -463,13 +463,42 @@
                             HeightRequest="70"
                             HorizontalOptions="CenterAndExpand"
                             Source="SuccessQr"
-                            WidthRequest="70" />
+                            WidthRequest="70" >
+                                <Image.Triggers>
+                                    <DataTrigger TargetType="Image"
+                                                 Binding="{Binding IsVatLookUp}"
+                                                 Value="false">
+                                        <Setter Property="Source" Value="failQR.png"/>
+                                    </DataTrigger>
+                                     <DataTrigger TargetType="Image"
+                                                 Binding="{Binding IsVatLookUp}"
+                                                 Value="true">
+                                        <Setter Property="Source" Value="SuccessQr.png"/>
+                                    </DataTrigger>
+                                </Image.Triggers>
+
+                            </Image>
                         <Label
                             FontFamily="{StaticResource FontSomarBold}"
                             FontSize="24"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.RegisteredVAT}"
-                            TextColor="{StaticResource PrimaryColor}" />
+                            TextColor="{StaticResource PrimaryColor}" >
+                                 <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsVatLookUp}"
+                                                 Value="false">
+                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.UnregisteredFacility}"/>
+                                    </DataTrigger>
+                                     <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsVatLookUp}"
+                                                 Value="true">
+                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.RegisteredVAT}"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+
+
+                            </Label>
                         <Frame
                             Margin="0"
                             Padding="0"
@@ -489,13 +518,43 @@
                                             Padding="0" BackgroundColor="#62B34F"
                                             CornerRadius="14" Opacity=".1" 
                                             HasShadow="False"
-                                            VerticalOptions="FillAndExpand" />
+                                            VerticalOptions="FillAndExpand" >
+                                            <Frame.Triggers>
+                                                <DataTrigger TargetType="Frame"
+                                                             Binding="{Binding IsVatLookUp}"
+                                                             Value="false">
+                                                    <Setter Property="BackgroundColor" Value="#E84A41"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Frame"
+                                                             Binding="{Binding IsVatLookUp}"
+                                                             Value="true">
+                                                    <Setter Property="BackgroundColor" Value="#62B34F"/>
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+
+                                            </Frame>
                                         <Label
                                             Margin="10,3,10,3"
                                             HorizontalOptions="CenterAndExpand"
                                             Text="{x:Static ResourceManager:AppResources.Correct}"
                                             TextColor="#62B34F"
-                                            VerticalOptions="CenterAndExpand" />
+                                            VerticalOptions="CenterAndExpand" >
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label"
+                                                             Binding="{Binding IsVatLookUp}"
+                                                             Value="false">
+                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Incorrect}"/>
+                                                    <Setter Property="TextColor" Value="#E84A41"/>
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label"
+                                                             Binding="{Binding IsVatLookUp}"
+                                                             Value="true">
+                                                    <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Correct}"/>
+                                                    <Setter Property="TextColor" Value="#62B34F"/>
+                                                </DataTrigger>
+                                            </Label.Triggers>
+
+                                            </Label>
 
                                     </Grid>
                                 </Grid>
@@ -521,10 +580,13 @@
                                         Text="{x:Static ResourceManager:AppResources.TIN}" />
                                     <Label  HorizontalOptions="EndAndExpand"
                                         Grid.Row="1" FontSize="14"
-                                        Grid.Column="1" 
+                                        Grid.Column="1"
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{Binding TIN}" />
-                                </Grid>
+                                       
+
+
+                                    </Grid>
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
@@ -535,7 +597,8 @@
                                     Grid.Column="0"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding VATCertificateNumber}" />
-                                <Label
+
+                                    <Label
                                     Grid.Row="0"
                                     Grid.Column="1"
                                     Style="{StaticResource BodyLabelGrey}"
@@ -545,8 +608,8 @@
                                     Grid.Column="1"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding Region}" />
-
-                            </StackLayout>
+                                   
+                                </StackLayout>
                         </Frame>
 
                     </StackLayout>

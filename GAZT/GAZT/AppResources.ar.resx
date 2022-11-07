@@ -9331,15 +9331,15 @@ info@zatca.gov.sa</value>
   <data name="CalculateTheAmount" xml:space="preserve">
         <value>احسب قيمة المبلغ</value>
     </data>
-  <data name="Totaltaxablesales" xml:space="preserve">
+    <data name="Totaltaxablesales" xml:space="preserve">
         <value>إجمالي المبيعات الخاضعة للضريبة</value>
     </data>
-  <data name="Totalnontaxablesales" xml:space="preserve">
+    <data name="Totalnontaxablesales" xml:space="preserve">
         <value>إجمالي المبيعات غير الخاضعة للضريبة</value>
     </data>
-  <data name="Totalnontaxablepurchases" xml:space="preserve">
-        <value>إجمالي المشتريات غير خاضعة للضريبة</value>
-  </data>
+    <data name="Totalnontaxablepurchases" xml:space="preserve">
+        <value>إجمالي المشتريات غير الخاضعة للضريبة</value>
+    </data>
     <data name="InvalidQrMessage" xml:space="preserve">
         <value>شكرًا لمسح رمز الاستجابة السريعة, تم مشاركة معلومات رمز الاستجابة السريعة مع الهيئة</value>
     </data>
@@ -9711,9 +9711,6 @@ info@zatca.gov.sa</value>
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>يتيح لك مسح ال QR code التحقق من صحة فاتورتك الإلكترونية</value>
     </data>
-    <data name="RegisteredVAT" xml:space="preserve">
-        <value>منشأة مسجلة</value>
-    </data>
     <data name="CustomNote1" xml:space="preserve">
         <value>تتيح لك دليل متكامل يوضح معلومات السلع ورموزها والقوائم الخاصة بها مع بيانها الجمركي ورسومها.</value>
     </data>
@@ -9750,4 +9747,10 @@ info@zatca.gov.sa</value>
     <data name="DepartingToKSA" xml:space="preserve">
         <value>المغادرة إلى المملكة العربية السعودية</value>
     </data> 
+    <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>عدد الأرقام في رقم الشهادة الضريبية يجب أن يكون 15 رقم</value>
+    </data>
+    <data name="PleaseEnter" xml:space="preserve">
+        <value>يرجى إدخال</value>
+    </data>
 </root>
