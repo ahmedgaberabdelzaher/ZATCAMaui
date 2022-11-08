@@ -46,13 +46,13 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ASAccountStatementDashboardTileText}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-                      <!-- <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" 
+                  <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" 
                                HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
                                HeightRequest="24" WidthRequest="24">
                             <Image.GestureRecognizers>
                                 <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
                             </Image.GestureRecognizers>
-                        </Image>--> 
+                        </Image>
                         <StackLayout Spacing="15" Orientation="Horizontal" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Grid.Row="0" Grid.Column="2">
                             <Image Source="search" IsVisible="{TemplateBinding BindingContext.IsSearchButtonVisible}" HeightRequest="20" WidthRequest="20">
                                 <Image.GestureRecognizers>
@@ -292,7 +292,7 @@
                 </StackLayout>
             </Grid>
                   <!-- Nav Menu Starts  -->
-                   <yummy:PancakeView  
+                   <yummy:PancakeView   IsVisible="false"
         Margin="0" Padding="0,0,0,6"
         BackgroundColor="#002447"
         CornerRadius="15,15,0,0" Grid.Row="0" VerticalOptions="EndAndExpand">

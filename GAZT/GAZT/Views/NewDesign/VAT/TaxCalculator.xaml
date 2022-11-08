@@ -71,7 +71,7 @@
 
                                 </Grid.GestureRecognizers>
                                 <Image
-                                    HeightRequest="136"
+                                    HeightRequest="140"
                                     HorizontalOptions="FillAndExpand"
                                     Source="blueCard.png">
                                     <Image.Triggers>
@@ -100,7 +100,8 @@
                                     </Image.Triggers>
                                 </Image>
                                 <Label
-                                    Margin="25,10,25,15"
+ Margin="17,10,17,15"
+                                    
                                     FontSize="14"
                                     FontFamily="{StaticResource SomarRegular}"
                                     Text="{x:Static ResourceManager:AppResources.ConsumerCalculator}"
@@ -148,13 +149,13 @@
                                     </Image.Triggers>
                                 </Image>
                                 <Label
-                                    Margin="25,10,25,15"
+                                 Margin="17,10,17,15"
                                     FontSize="14"
                                     LineBreakMode="WordWrap"
                                     FontFamily="{StaticResource SomarRegular}"
                                     Text="{x:Static ResourceManager:AppResources.TaxCalculator}"
                                     TextColor="{StaticResource Primary}"
-                                    VerticalOptions="EndAndExpand">
+                                    VerticalOptions="End">
                                     <Label.Triggers>
                                         <DataTrigger
                                             Binding="{Binding CalcBy}"
@@ -240,7 +241,7 @@
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
                 <custom:CustomLabel
-                    Grid.Column="1"
+                    Grid.Column="1" LineSpacing=".7"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"

@@ -16,7 +16,7 @@ namespace EGAZT.Helper
 {
     public static class HttpManager
     {
-        private static readonly Lazy<HttpClient> _client = new Lazy<HttpClient>(() => new HttpClient());
+     private static readonly Lazy<HttpClient> _client = new Lazy<HttpClient>(() => new HttpClient() { Timeout = new TimeSpan(0, 3, 0)});
 
      /*   private static HttpClient getClient()
         {
@@ -24,7 +24,7 @@ namespace EGAZT.Helper
            _client = new HttpClient();
             return _client
         }*/
-        public static HttpClient client => _client.Value;
+      public static HttpClient client => _client.Value;
 
 
         private static bool ValidateCertificate(object sender,
@@ -39,7 +39,7 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    //   var client = new System.Net.Http.HttpClient();
+                     var client = new System.Net.Http.HttpClient();
                    // var client = App.Locator.httpClient;
 
                     //  client.DefaultRequestHeaders.Add("Authorization",app.CurrentToken);
@@ -83,29 +83,39 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
 
-                    // var client = new System.Net.Http.HttpClient();
-                  //  var client = App.Locator.httpClient;
+                    //var client = new System.Net.Http.HttpClient();
+                    //  var client = App.Locator.httpClient;
 
-                    client.Timeout = new TimeSpan(0,3,0);
+                    //  client.Timeout = new TimeSpan(0,3,0);
+                    if (client.DefaultRequestHeaders.Contains("X-ZATCA-Client-Id"))
+                    {
+                        
+                        client.DefaultRequestHeaders.Remove("X-ZATCA-Client-Id");
+                        client.DefaultRequestHeaders.Remove("X-ZATCA-Client-Secret");
+                        client.DefaultRequestHeaders.Remove("LanguageCode");
+                        client.DefaultRequestHeaders.Remove("routePortCode");
+                      
+                    }
                     if (isBasicAuth)
                     {
                         AddBasicAuthToHeader(client);
 
                     }
-                    /*if (routPortCode!="99")
-                    {
-                        routPortCode = "1" + routPortCode;
-                    }*/
-                    client.DefaultRequestHeaders.Add("routePortCode",routPortCode);
-                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
-                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
-                    */
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     if (App.IsArabic)
                         client.DefaultRequestHeaders.Add("LanguageCode", "ar");
                     else
                         client.DefaultRequestHeaders.Add("LanguageCode", "en");
+                    client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
+                    /*if (routPortCode!="99")
+                    {
+                        routPortCode = "1" + routPortCode;
+                    }*/
+
+                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
+                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
+                    */
                     var response = await client.GetAsync(requestUrl);
                     if (response != null)
                     {
@@ -164,13 +174,14 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
+                    var client = new System.Net.Http.HttpClient();
                     //var h = new HttpClientHandler();
                     //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
 
-                  //  var client = App.Locator.httpClient;
+                    //  var client = App.Locator.httpClient;
 
 
-                     client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
+                    client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
                     /*
@@ -237,7 +248,7 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    // var client = new System.Net.Http.HttpClient();
+                   var client = new System.Net.Http.HttpClient();
                    // var client = App.Locator.httpClient;
 
                     //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);

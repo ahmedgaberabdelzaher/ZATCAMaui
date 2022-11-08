@@ -19,11 +19,13 @@ namespace EGAZT.Views.NewDesign
             {
                 tab = "0";
                 viewModel.GetDashBoardMenuLst(3);
-                beforeLoginMenu.IsVisible = true;
+               HasBackButton = true;
                 preLoginMenu.IsVisible = false;
+
             }
             else
             {
+                HasBackButton = false;
                 beforeLoginMenu.IsVisible = false;
                 preLoginMenu.IsVisible = true;
             }

@@ -11,7 +11,12 @@
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     HasBackButton="False" Padding="0,45,0,0" 
     TitleText="{x:Static ResourceManager:AppResources.Home}">
-
+        <newdesign:BaseContentPage.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,45,0,0" />
+                        <On Platform="Android" Value="0" />
+                    </OnPlatform>
+                </newdesign:BaseContentPage.Padding>
                        <newdesign:BaseContentPage.PancakMargin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="0,0,0,20" />
@@ -60,7 +65,7 @@
                 Margin="20,0,20,0"
                 HorizontalOptions="Fill"
                 VerticalOptions="EndAndExpand" />
-            <controls:NavMenu x:Name="beforeLoginMenu"  Grid.Row="2"
+            <controls:NavMenu IsVisible="false" x:Name="beforeLoginMenu"  Grid.Row="2"
                 Margin="0"
                 HorizontalOptions="Fill"
                 VerticalOptions="EndAndExpand" ></controls:NavMenu>

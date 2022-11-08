@@ -9552,7 +9552,7 @@ the Zakat, Tax and Customs
         <value>ZATCA Services</value>
     </data>
     <data name="EXCISETAXServices" xml:space="preserve">
-        <value>Excise TAX</value>
+        <value>Excise Services</value>
     </data>
     <data name="LiveVideoTitle" xml:space="preserve">
         <value>Live Video</value>
@@ -9821,4 +9821,13 @@ Zakat, Tax and Customs Authority
     <data name="VATCertificateNumberValidation" xml:space="preserve">
         <value>The number of digits in the tax certificate number must be 15 digits</value>
     </data>
+    <data name="AccountS" xml:space="preserve">
+        <value>Account S</value>
+    </data>
+       <data name="AccountS" xml:space="preserve">
+        <value>Account S</value>
+    </data>
+      <data name="MenuDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
 </root>

@@ -325,11 +325,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.Dashboard, ID="GAZTNewDesignDashBoardPageView",ImageSource="NotSelectedDashBoardicon",ColumnNo=1,IsSelected=CurrentTab==1?true:false,SelectedImageSource="SelectedDashBoardicon"
+                   Name=AppResources.MenuDashboard, ID="GAZTNewDesignDashBoardPageView",ImageSource="NotSelectedDashBoardicon",ColumnNo=1,IsSelected=CurrentTab==1?true:false,SelectedImageSource="SelectedDashBoardicon"
                 },
                      new MenuModel()
                 {
-                   Name=AppResources.ASAccountStatementDashboardTileText, ID="AccountStatementBillsPageView",ImageSource="NotSelectedAccountStatlement",ColumnNo=2,IsSelected=CurrentTab==2?true:false,SelectedImageSource="SelectedAccountStatlement"
+                   Name=AppResources.AccountS, ID="AccountStatementBillsPageView",ImageSource="NotSelectedAccountStatlement",ColumnNo=2,IsSelected=CurrentTab==2?true:false,SelectedImageSource="SelectedAccountStatlement"
                 },
                  new MenuModel()
                 {
@@ -339,7 +339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        public ICommand MenuNavigationCommand
+        public virtual ICommand MenuNavigationCommand
         {
             get
             {

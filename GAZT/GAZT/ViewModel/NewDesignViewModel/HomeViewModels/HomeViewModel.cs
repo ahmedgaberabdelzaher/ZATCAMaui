@@ -200,11 +200,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel()
                 {
                    Name=AppResources.searchingandviewingtheindicativepricesforexciseGoods, ID="SearchIndiactivePriceForExciseGoods",ImageSource="SearchExciseTax",ColumnNo=0,Row=0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TaxServicesTip1:""
-                },
+                }/*,
                  new MenuModel()
                 {
                    Name=AppResources.TahqaqService, ID="TahqaqScanPage",ImageSource="EinvoiceScanning",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TaxServicesTip2:""
-                }
+                }*/
            };
         }
 
@@ -215,8 +215,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                   Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
-                }
+                  // Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                 Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+
+                 }
 
            };
            

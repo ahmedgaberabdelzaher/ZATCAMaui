@@ -9275,7 +9275,7 @@ info@zatca.gov.sa</value>
         <value>الرمز</value>
     </data>
   <data name="ScantheQRcode" xml:space="preserve">
-        <value>امسح رمز الإستجابة السريعة</value>
+        <value>امسح رمز الاستجابة السريعة</value>
     </data>
   <data name="PlacetheQRCodeinsidetheframe" xml:space="preserve">
         <value>ضع الرمز داخل الإطار</value>
@@ -9738,4 +9738,10 @@ info@zatca.gov.sa</value>
     <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
     </data>
+        <data name="AccountS" xml:space="preserve">
+           <value>كشف الحساب</value>
+    </data>
+       <data name="MenuDashboard" xml:space="preserve">
+    <value>بياناتي</value>
+  </data>
 </root>

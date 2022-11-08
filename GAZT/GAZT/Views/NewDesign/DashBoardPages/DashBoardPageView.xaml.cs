@@ -66,20 +66,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     viewModel.AccountStatementsList.Clear();
                 }
+                viewModel.GetDashBoardMenuLst(1);
 
-                if (isMenu)
-                {
-                    viewModel.GetDashBoardMenuLst(4);
-                    viewModel.SubmittedCount = null;
-                    menuView();
-                }
-                else
-                {
-                    viewModel.GetDashBoardMenuLst(1);
-                    viewModel.SubmittedCount = null;
-                    HOmeView();
-             
-                }
+                /*    if (isMenu)
+                    {
+                        viewModel.GetDashBoardMenuLst(4);
+                        viewModel.SubmittedCount = null;
+                        menuView();
+                    }
+                    else
+                    {
+                        viewModel.GetDashBoardMenuLst(1);
+                        viewModel.SubmittedCount = null;
+                        HOmeView();
+
+                    }*/
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
@@ -122,75 +123,13 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     viewModel.AccountStatementsList.Clear();
                 }
-
+                viewModel.GetDashBoardMenuLst(1);
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
                 //};
 
 
-
-                try
-                {
-                    var safeInsets = On<iOS>().SafeAreaInsets();
-                    safeInsets.Bottom = -10;
-                    this.Padding = safeInsets;
-
-                    if (!App.IsArabic)
-                    {
-
-                        App.IsArabic = false;
-                        App.changeFontFamily(App.appObj);
-
-                        var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
-                        vUpdatedPage.Padding = safeInsets;
-
-                        viewModel.SelectedCommitmentFilterValue = null;
-                        Navigation.InsertPageBefore(vUpdatedPage, this);
-                        Navigation.PopAsync();
-                        viewModel.NDCommitments = AppResources.NDCommitments;
-                        viewModel.ZBills = AppResources.Bills;
-                        viewModel.Return = AppResources.Returns;
-
-                        viewModel.AboutUs = AppResources.ZZZAboutUs;
-                        viewModel.Contactus = AppResources.ZZZContactus;
-                        viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
-                        viewModel.Logout = AppResources.ZLogout;
-                        App.HasToRefreshLoaderOnDashboard = true;
-                        SetLTRDirection();
-                        AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                    }
-                    else
-                    {
-
-                        App.IsArabic = true;
-                        App.changeFontFamily(App.appObj);
-                        var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
-                        vUpdatedPage.Padding = safeInsets;
-
-                        viewModel.SelectedCommitmentFilterValue = null;
-                        Navigation.InsertPageBefore(vUpdatedPage, this);
-                        Navigation.PopAsync();
-                        viewModel.NDCommitments = AppResources.NDCommitments;
-                        viewModel.ZBills = AppResources.Bills;
-                        viewModel.Return = AppResources.Returns;
-
-                        viewModel.AboutUs = AppResources.ZZZAboutUs;
-                        viewModel.Contactus = AppResources.ZZZContactus;
-                        viewModel.PrivacyandPolicy = AppResources.ZZZPrivacyandPolicy;
-                        viewModel.Logout = AppResources.ZLogout;
-                        App.HasToRefreshLoaderOnDashboard = true;
-                        SetRTLDirection();
-                        AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-                    }
-
-                    OnAppearing();
-                }
-                catch (Exception ex)
-                {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-                }
                 SetLTR();
 
             }

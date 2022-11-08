@@ -3834,5 +3834,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         #endregion
+        public override ICommand MenuNavigationCommand
+        {
+            get
+            {
+                return new Command<MenuModel>((Selecteditem) =>
+                {
+                    if (Selecteditem.ID == "Home")
+                    {
+
+                        _navigationService.NavigateTo($"{Selecteditem.ID}", "3");
+
+                        return;
+                    }
+                    else if (Selecteditem.ID == "menu")
+                    {
+                        GetDashBoardMenuLst(4);
+                        MenuViewVisible = true;
+                        HomeViewVisible = false;
+                        return;
+                    }
+                    else if (Selecteditem.ID == "GAZTNewDesignDashBoardPageView")
+                    {
+                        GetDashBoardMenuLst(1);
+                        MenuViewVisible = false;
+                        HomeViewVisible = true;
+                        return;
+                    }
+                    _navigationService.NavigateTo($"{Selecteditem.ID}");
+
+                });
+            }
+        }
+
     }
 }
