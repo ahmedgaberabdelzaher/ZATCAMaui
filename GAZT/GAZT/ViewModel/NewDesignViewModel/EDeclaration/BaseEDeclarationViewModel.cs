@@ -11,6 +11,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         #region Properties
         bool isArrivingPlaneSelected = true;
         public bool IsArrivingPlaneSelected { get { return isArrivingPlaneSelected; } set { isArrivingPlaneSelected = value; RaisePropertyChanged(); } }
+
+        bool isYesSelected = true;
+        public bool IsYesSelected { get { return isYesSelected; } set { isYesSelected = value; RaisePropertyChanged(); } }
         #endregion
 
 
@@ -22,6 +25,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 return new Command( () =>
                 {
                     IsArrivingPlaneSelected = IsArrivingPlaneSelected == true ? false : true;
+                });
+            }
+        }
+        public ICommand QuestionSelectionCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    IsYesSelected = IsYesSelected == true ? false : true;
+                });
+            }
+        }
+        public ICommand GoToProductDeclarationCommand
+        {
+            get
+            {
+                return new Command( () =>
+                {
+                    _navigationService.NavigateTo("ProductDeclarationPage");
                 });
             }
         }

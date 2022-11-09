@@ -8,22 +8,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
     public class ProductDeclarationViewModel: BaseEDeclarationViewModel
     {
         #region Properties
-        bool isArrivingPlaneSelected = true;
-        public bool Te { get { return isArrivingPlaneSelected; } set { isArrivingPlaneSelected = value; RaisePropertyChanged(); } }
+        //bool isArrivingPlaneSelected = true;
+        //public bool Te { get { return isArrivingPlaneSelected; } set { isArrivingPlaneSelected = value; RaisePropertyChanged(); } }
         #endregion
 
 
         #region Commands
-        public ICommand Tes
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsArrivingPlaneSelected = IsArrivingPlaneSelected == true ? false : true;
-                });
-            }
-        }
+        //public ICommand Tes
+        //{
+        //    get
+        //    {
+        //        return new Command(() =>
+        //        {
+                    
+        //        });
+        //    }
+        //}
         #endregion
 
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)

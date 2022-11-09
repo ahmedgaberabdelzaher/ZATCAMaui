@@ -256,6 +256,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add item.
+        /// </summary>
+        public static string AddItem {
+            get {
+                return ResourceManager.GetString("AddItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Report.
         /// </summary>
         public static string AddNewReport {
@@ -9996,6 +10005,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product Declaration (1/2).
+        /// </summary>
+        public static string ProductDeclaration {
+            get {
+                return ResourceManager.GetString("ProductDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If the product not found in the list, please recognize the office of acting upon arrival..
+        /// </summary>
+        public static string ProductDeclarationDisclaimer {
+            get {
+                return ResourceManager.GetString("ProductDeclarationDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? .
+        /// </summary>
+        public static string ProductDeclarationSubTitle {
+            get {
+                return ResourceManager.GetString("ProductDeclarationSubTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Product Description.
         /// </summary>
         public static string ProductDescription {
@@ -10010,6 +10046,15 @@ namespace EGAZT {
         public static string ProductionDate {
             get {
                 return ResourceManager.GetString("ProductionDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product name.
+        /// </summary>
+        public static string ProductName {
+            get {
+                return ResourceManager.GetString("ProductName", resourceCulture);
             }
         }
         
@@ -10824,6 +10869,15 @@ namespace EGAZT {
         public static string SearchText {
             get {
                 return ResourceManager.GetString("SearchText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
             }
         }
         
@@ -12031,6 +12085,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total fees payable.
+        /// </summary>
+        public static string TotalFeesPayable {
+            get {
+                return ResourceManager.GetString("TotalFeesPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total non submitted returns.
         /// </summary>
         public static string TotalNonSubmittedReturns {
@@ -12423,6 +12486,15 @@ namespace EGAZT {
         public static string TwentyFivePercentageObjectedAmount {
             get {
                 return ResourceManager.GetString("TwentyFivePercentageObjectedAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of item.
+        /// </summary>
+        public static string TypeItem {
+            get {
+                return ResourceManager.GetString("TypeItem", resourceCulture);
             }
         }
         

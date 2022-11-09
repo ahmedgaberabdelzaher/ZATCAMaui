@@ -67,11 +67,615 @@
                     FontSize="20"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}" 
-                    Text="{Binding HeaderTitle}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
                     VerticalOptions="Center" />
 
             </Grid>
             <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--Circle view-->
+                        <Grid RowDefinitions="Auto"
+                              Margin="0,30"
+                              ColumnSpacing="0"
+                              VerticalOptions="Start"
+                              HorizontalOptions="CenterAndExpand"
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                            <!--Circle button 1-->
+                            <ImageButton 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    BorderWidth="1"
+                                    InputTransparent="True"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="EndAndExpand"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    Source="reportCheckMark.png">
+                                 <ImageButton.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </ImageButton.Padding>
+
+                            </ImageButton>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 2-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#0996D4"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0996D4"
+                                    Text="2">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 3-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="4"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="3">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 4-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="6"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="4">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="7"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 5-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="8"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="5">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="9"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 6-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="10"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="6">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                        </Grid>
+
+                        <!--  Product Declaration Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ProductDeclaration}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Declaration Note Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            Margin="0,0,0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+                        <!--  Question Field Label  -->
+                        <custom:CustomLabel
+                            FontSize="14"
+                            LineSpacing="1"
+                            Margin="0,0,0,10"
+                            Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ProductDeclarationSubTitle}"/>
+                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+                        <!--#region Cards-->
+                        <StackLayout VerticalOptions="FillAndExpand"
+                                     HorizontalOptions="FillAndExpand"
+                                     Spacing="10"
+                                     Padding="5"
+                                     Margin="0,0,0,5"
+                                     Orientation="Horizontal">
+
+                            <!--Yes Card-->
+                            <Grid
+                                WidthRequest="171"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="94">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                       Source="QSelected.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="QSelected.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding IsYesSelected}"
+                                                    TargetType="Image"
+                                                    Value="False">
+                                                    <Setter Property="Source" Value="QUnselected.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                </Image>
+
+                                <!--  Yes Label  -->
+                                <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="EndAndExpand"
+                                        FontSize="16"
+                                        Padding="15"
+                                        TextColor="White"
+                                        Text="{x:Static ResourceManager:AppResources.ZYes}">
+
+                                            <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding QuestionSelectionCommand}"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                            <!--No card-->
+                            <Grid
+                                WidthRequest="171"
+                                Padding="5"
+                                HeightRequest="94">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                        Source="QUnselected.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="QSelected.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="QUnselected.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                </Image>
+
+                               
+                                 <!--No label-->
+                                 <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="EndAndExpand"
+                                        FontSize="16"
+                                        Padding="15"
+                                        TextColor="{StaticResource Primary}"
+                                        Text="{x:Static ResourceManager:AppResources.ZNo}">
+
+                                        <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsYesSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel>
+
+                                <!--#endregion Departing Plane--> 
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding QuestionSelectionCommand}"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+                        <!--#endregion Cards-->
+
+                        <!--Product Declaration Note-->
+                        <Frame Padding="15"
+                               BackgroundColor="White"
+                               BorderColor="#E6E6E6"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               CornerRadius="10">
+
+                            <StackLayout
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Spacing="10">
+
+                                <!--info icon-->
+                                <Image  Aspect="AspectFit"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="20"
+                                        HeightRequest="20"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="information.png"/>
+
+                                <!--  ReportsNote Label  -->
+                                <custom:CustomLabel
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="12"
+                                    LineSpacing="1"
+                                    TextColor="#999999"
+                                    Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"/>
+
+                            </StackLayout>
+
+                        </Frame>
+
+                        <!--  TypeItem Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  TypeItem Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TypeItem}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  TypeItem Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="typeItemEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Product.TypeItem}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenTypeItemCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenTypeItemCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  ProductName Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  ProductName Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ProductName}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  ProductName Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="productNameEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Product.ProductName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenProductNameCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenProductNameCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                         <!--  Quantity Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Quantity Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Quantity}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Quantity Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="quantityEntry"
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Product.Quantity}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Add Item Button  -->
+                        <buttons:SfButton
+                            Command="{Binding AddItemCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.AddItem}" />
+
+                        <!--Card Frame -->
+                        <Frame Padding="10"
+                               BackgroundColor="{StaticResource Primary}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               CornerRadius="10">
+
+                            <StackLayout
+                                Orientation="Horizontal"
+                                Spacing="10">
+
+                               <Frame Padding="10"
+                                      BackgroundColor="White"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Start"
+                                      CornerRadius="10">
+
+                                    <!--  Total Number Label  -->
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        HorizontalOptions="CenterAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                                        TextColor="{StaticResource Primary}" />
+
+                               </Frame>
+
+                                <!--  Total Fees Payable Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    HorizontalOptions="End"
+                                    Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                    TextColor="{StaticResource Primary}" />
+
+                            </StackLayout>
+
+                        </Frame>
+
+                         <!-- GoTo Second Product Declaration Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding GoToSecondProductDeclarationCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
 
 
         </Grid>

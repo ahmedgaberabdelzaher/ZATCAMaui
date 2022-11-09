@@ -9836,4 +9836,28 @@ Zakat, Tax and Customs Authority
     <data name="VATCertificateNumberValidation" xml:space="preserve">
         <value>The number of digits in the tax certificate number must be 15 digits</value>
     </data>
+    <data name="ProductDeclaration" xml:space="preserve">
+        <value>Product Declaration (1/2)</value>
+    </data>
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>If the product not found in the list, please recognize the office of acting upon arrival.</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>Type of item</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>Product name</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>Add item</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>Total fees payable</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>Select</value>
+    </data>
 </root>

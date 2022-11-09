@@ -581,9 +581,6 @@
     <BundleResource Include="Resources\Stronglysatisfied%402x.png" />
     <BundleResource Include="Resources\Stronglysatisfied%403x.png" />
     <None Include="appcenter-pre-build.sh" />
-    <BundleResource Include="Resources\productIcon.png" />
-    <BundleResource Include="Resources\productIcon%402x.png" />
-    <BundleResource Include="Resources\productIcon%403x.png" />
     <BundleResource Include="Resources\arrivingPlane.png" />
     <BundleResource Include="Resources\arrivingPlane%402x.png" />
     <BundleResource Include="Resources\arrivingPlane%403x.png" />
@@ -593,9 +590,6 @@
     <BundleResource Include="Resources\deIIcon.png" />
     <BundleResource Include="Resources\delIcon%402x.png" />
     <BundleResource Include="Resources\delIcon%403x.png" />
-    <BundleResource Include="Resources\fillProductIcon.png" />
-    <BundleResource Include="Resources\fillProductIcon%402x.png" />
-    <BundleResource Include="Resources\fillProductIcon%403x.png" />
     <BundleResource Include="Resources\fillArriving.png" />
     <BundleResource Include="Resources\fillArriving%402x.png" />
     <BundleResource Include="Resources\fillArriving%403x.png" />
@@ -614,6 +608,12 @@
     <BundleResource Include="Resources\failQR.png" />
     <BundleResource Include="Resources\failQR%402x.png" />
     <BundleResource Include="Resources\failQR%403x.png" />
+    <BundleResource Include="Resources\QUnselected.png" />
+    <BundleResource Include="Resources\QUnselected%402x.png" />
+    <BundleResource Include="Resources\QUnselected%403x.png" />
+    <BundleResource Include="Resources\QSelected.png" />
+    <BundleResource Include="Resources\QSelected%402x.png" />
+    <BundleResource Include="Resources\QSelected%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

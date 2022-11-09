@@ -9753,4 +9753,28 @@ info@zatca.gov.sa</value>
     <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
     </data>
+    <data name="ProductDeclaration" xml:space="preserve">
+        <value>إعلان المنتج (1/2)</value>
+    </data>
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>إذا لم يتم العثور على المنتج في القائمة ، يرجى التعرف على مكتب التمثيل عند الوصول.</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>نوع العنصر</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>اسم المنتج</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>إضافة عنصر</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>إجمالي الرسوم المستحقة</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>اختار</value>
+    </data>
 </root>

@@ -368,7 +368,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                         <!--  Location Field  -->
+                        <!--  Location Field  -->
                         <StackLayout Spacing="0">
 
                             <!--  Location Label  -->
@@ -537,7 +537,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                         <!--  WorkType Field  -->
+                        <!--  WorkType Field  -->
                         <StackLayout Spacing="0">
 
                             <!--  WorkType Label  -->

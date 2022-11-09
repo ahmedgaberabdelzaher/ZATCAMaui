@@ -66,8 +66,8 @@
                     HorizontalOptions="Center"
                     FontSize="20"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}" 
-                    Text="{Binding HeaderTitle}"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -88,7 +88,8 @@
                               Margin="0,30"
                               ColumnSpacing="0"
                               VerticalOptions="Start"
-                              HorizontalOptions="CenterAndExpand" ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                              HorizontalOptions="CenterAndExpand"
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
 
                             <!--Circle button 1-->
                             <Button 
@@ -503,7 +504,7 @@
                         <!--#endregion Cards-->
 
 
-                        <!--  Next Report Button  -->
+                        <!-- GoTo Product Declaration Button  -->
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
@@ -529,12 +530,6 @@
             </yummy:PancakeView>
             <!--#endregion Body-->
 
-
-              <!--Loader  
-            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
-
-              Popup Msg  
-            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />-->
 
          </Grid>
     </ContentPage.Content>
