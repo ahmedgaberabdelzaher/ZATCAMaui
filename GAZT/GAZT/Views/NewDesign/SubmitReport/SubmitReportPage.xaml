@@ -861,7 +861,7 @@
                                                     IsReadOnly="True"
                                                     Keyboard="Text"
                                                     Style="{StaticResource DefaultEntry}"
-                                                    Text="{Binding filename}"
+                                                    Text="{Binding fileFullName}"
                                                     TextColor="#58595B" />
                                                 <inputLayout:SfTextInputLayout.LeadingView>
                                                     <Image Aspect="AspectFit" Source="Generic_attachment_icon" />
