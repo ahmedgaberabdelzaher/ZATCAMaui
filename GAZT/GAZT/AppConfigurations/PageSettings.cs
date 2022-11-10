@@ -44,9 +44,6 @@ namespace EGAZT.AppConfigurations
         public static string GetBaseURL(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
-#if DEBUG
-            Target_Environment = "STG";
-#endif
             if (string.IsNullOrWhiteSpace(Target_Environment))
             {
                 Target_Environment = environment;
@@ -80,6 +77,7 @@ namespace EGAZT.AppConfigurations
             Target_Environment = "STG";
 #endif
             string key = "";
+            Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case"STG":
@@ -103,6 +101,7 @@ namespace EGAZT.AppConfigurations
 #if DEBUG
             Target_Environment = "STG";
 #endif
+            Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {

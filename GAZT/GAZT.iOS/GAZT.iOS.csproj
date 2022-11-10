@@ -80,7 +80,7 @@
  --optimize=experimental-xforms-product-type
  --warn-on-type-ref=UIKit.UIWebView
  --optimize=force-rejected-types-removal</MtouchExtraArgs>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -161,8 +161,9 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--linkskip=Xamarin.CommunityToolkit -gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
-    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
