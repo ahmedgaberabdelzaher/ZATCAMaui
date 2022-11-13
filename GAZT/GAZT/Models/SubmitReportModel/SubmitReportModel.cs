@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using GalaSoft.MvvmLight;
 
@@ -88,6 +90,9 @@ namespace EGAZT.Models.SubmitReportModel
 
         string _missedField;
         public string MissedField { get { return _missedField; } set { _missedField = value; RaisePropertyChanged(); } }
+
+        List<ReportFileModel> _files = new List<ReportFileModel>();
+        public List<ReportFileModel> files { get { return _files; } set { _files = value;} }
 
     }
 }

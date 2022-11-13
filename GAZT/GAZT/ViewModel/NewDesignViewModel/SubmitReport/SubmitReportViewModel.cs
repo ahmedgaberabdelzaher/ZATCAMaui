@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -23,7 +24,9 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Maps;
+using static System.Net.WebRequestMethods;
 using Distance = Xamarin.Forms.GoogleMaps.Distance;
+using File = System.IO.File;
 using Geocoder = Xamarin.Forms.GoogleMaps.Geocoder;
 using Map = Xamarin.Forms.GoogleMaps.Map;
 using MapSpan = Xamarin.Forms.GoogleMaps.MapSpan;
@@ -36,9 +39,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
     {
         #region Properties
         private readonly ISubmitReportServices _submitReportServices;
-        SubmitReportModel submitReport = new SubmitReportModel();
 
+        SubmitReportModel submitReport = new SubmitReportModel();
         public SubmitReportModel SubmitReport { get { return submitReport; } set { submitReport = value; RaisePropertyChanged(); } }
+
         public DateTime SelectedDate { get; set; } = DateTime.Now;
         bool isTherePDFUploaded;
         public bool IsTherePDFUploaded { get { return isTherePDFUploaded; } set { isTherePDFUploaded = value; RaisePropertyChanged(); } }
@@ -109,9 +113,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReport.ViolationDate = SelectedDate.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
 
                             SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
-                            var json = JsonConvert.SerializeObject(SubmitReport);
-                            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(json); 
-                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(dictionary, ReportUloadedFiles);
+                            SubmitReport.files = ReportUloadedFiles.ToList();
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(SubmitReport);
                             if (reportResult.Success)
                             {
                                 ReportNumberResult = reportResult.Result?.Data;
@@ -547,15 +550,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         }
                         else if (ReportUloadedFiles != null && ReportUloadedFiles.Count < 5)
                         {
-                          
                             var stream = await result.OpenReadAsync();
-                            // string content = ConvertToBase64(stream);
+                            string content = await ConvertToBase64(stream);
                             ReportFileModel reportfile = new ReportFileModel();
-                            reportfile.filecontentStream = stream;
-                            reportfile.filename = result.FileName;
-                            reportfile.FileSize = Math.Round(size, 2);
-                            reportfile.Id = result.FileName + System.DateTime.Now.Ticks;
-                            reportfile.paramFileStream= File.ReadAllBytes(result.FullPath);
+                            reportfile.fileBase64 = content;
+                            reportfile.fileFullName = result.FileName;
+                            reportfile.fileExtinction = Path.GetExtension(result.FileName);
+                            //reportfile.filecontentStream = stream;
+                            //reportfile.filename = result.FileName;
+                            //reportfile.FileSize = Math.Round(size, 2);
+                            //reportfile.Id = result.FileName + System.DateTime.Now.Ticks;
+                            //reportfile.paramFileStream= File.ReadAllBytes(result.FullPath);
                             ReportUloadedFiles.Add(reportfile);
                             IsTherePDFUploaded = true;
 
@@ -585,7 +590,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
         }
+        private async Task<string> ConvertToBase64(Stream stream)
+        {
+            if (stream is MemoryStream memoryStream)
+            {
+                return Convert.ToBase64String(memoryStream.ToArray());
+            }
 
+            var bytes = new Byte[(int)stream.Length];
+
+            stream.Seek(0, SeekOrigin.Begin);
+            await stream.ReadAsync(bytes, 0, (int)stream.Length);
+
+            return Convert.ToBase64String(bytes);
+        }
         private bool IsValidateReport()
         {
 
