@@ -4,10 +4,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:custom="clr-namespace:GAZT"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,10 +18,8 @@
     </ContentView.Resources>
     <ContentView.Content>
 
-        <!--List of names inside frame-->
-        <yummy:PancakeView 
-                Padding="20"
-                Style="{StaticResource CommonTopCurves}">
+        <!--  List of names inside frame  -->
+        <yummy:PancakeView Padding="20" Style="{StaticResource CommonTopCurves}">
 
             <StackLayout Spacing="0">
 
@@ -29,13 +27,13 @@
                 <inputLayout:SfTextInputLayout
                     ContainerBackgroundColor="White"
                     ContainerType="Outlined"
-                    InputViewPadding="0"
-                    VerticalOptions="Start"
                     ErrorColor="#B00020"
                     FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="0"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="10"
-                    UnfocusedColor="#DCDCDC">
+                    UnfocusedColor="#DCDCDC"
+                    VerticalOptions="Start">
 
                     <custom:BorderlessEntry
                         x:Name="searchEntry"
@@ -43,13 +41,13 @@
                         Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
                         Style="{StaticResource DefaultEntry}"
                         Text="{Binding SearchText}"
-                        TextColor="#002447" >
+                        TextColor="#002447">
 
                         <custom:BorderlessEntry.Behaviors>
-                                <xct:EventToCommandBehavior
-                                        EventName="TextChanged"
-                                        Command="{Binding SearchEntryCommand}"
-                                        CommandParameter="{Binding  Source={x:Reference searchEntry}}"/>
+                            <xct:EventToCommandBehavior
+                                Command="{Binding SearchEntryCommand}"
+                                CommandParameter="{Binding Source={x:Reference searchEntry}}"
+                                EventName="TextChanged" />
                         </custom:BorderlessEntry.Behaviors>
 
                     </custom:BorderlessEntry>
@@ -60,22 +58,23 @@
 
                 </inputLayout:SfTextInputLayout>
 
-                 <ScrollView VerticalScrollBarVisibility="Never">
+                <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout x:Name="itemList"
-                                 BindableLayout.ItemsSource="{Binding BottomSheetList}"
-                                 Spacing="15">
+                    <StackLayout
+                        x:Name="itemList"
+                        BindableLayout.ItemsSource="{Binding BottomSheetList}"
+                        Spacing="15">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
                                 <StackLayout x:Name="selectedItem">
                                     <Label
-                                        FontSize="18"
                                         FontFamily="{StaticResource SomarRegular}"
-                                        TextColor="#002447"
+                                        FontSize="18"
                                         LineBreakMode="WordWrap"
-                                        Text="{Binding Name}">
+                                        Text="{Binding Name}"
+                                        TextColor="#002447">
 
-                                        <!--Name -->
+                                        <!--  Name  -->
                                         <Label.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
@@ -83,16 +82,16 @@
                                                 CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
                                         </Label.GestureRecognizers>
                                     </Label>
-                                   
+
                                 </StackLayout>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>
 
-                 </ScrollView>
+                </ScrollView>
 
             </StackLayout>
-           
+
 
         </yummy:PancakeView>
 

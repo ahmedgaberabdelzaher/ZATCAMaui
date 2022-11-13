@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             BackgroundImageSource="partials_background.png"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.TaxpayerProfilePageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.TaxpayerProfilePageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,171 +32,202 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
 
-            <Grid Padding="0,20,0,0" Grid.Row="0" >
+            <Grid Grid.Row="0" Padding="0,20,0,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Grid.Row="1" Padding="24" Spacing="0" Orientation="Vertical" Margin="0,-40,0,0">
-                    <custom:CustomLabel Text="{Binding TPProfileNameLbl}"
-                                    HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource LoginMenuTitleWhite}"
-                                   />
+                <StackLayout
+                    Grid.Row="1"
+                    Margin="0,-40,0,0"
+                    Padding="24"
+                    Orientation="Vertical"
+                    Spacing="0">
+                    <custom:CustomLabel
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource LoginMenuTitleWhite}"
+                        Text="{Binding TPProfileNameLbl}" />
 
-                    <custom:CustomLabel Margin="0,-8,0,0"
-                                    Text="{Binding ResidenceText}"
-                                    Style="{StaticResource BodyLabelBlack}"
-                                    HorizontalOptions="StartAndExpand"
-                                    TextColor="White"/>
+                    <custom:CustomLabel
+                        Margin="0,-8,0,0"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource BodyLabelBlack}"
+                        Text="{Binding ResidenceText}"
+                        TextColor="White" />
                 </StackLayout>
                 <ScrollView Grid.Row="2">
-                    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Padding="24,32,24,200" >
+                    <yummy:PancakeView Padding="24,32,24,200" Style="{StaticResource CommonTopCurves}">
                         <StackLayout>
-                            <Frame BorderColor="{StaticResource NeutralLightGrey}" HasShadow="False" CornerRadius="16" Padding="16">
+                            <Frame
+                                Padding="16"
+                                BorderColor="{StaticResource NeutralLightGrey}"
+                                CornerRadius="16"
+                                HasShadow="False">
                                 <StackLayout Orientation="Horizontal">
                                     <StackLayout>
-                                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTERReportDetailTIN}"
-                                                            Style="{StaticResource ValueLabelGrey}"
-                                                        HorizontalOptions="Start"/>
                                         <custom:CustomLabel
-                                        Text="{Binding TINLabel}"
-                                        Style="{StaticResource ValueLabelBlackMedium}"
-                                        Margin="0,-10,0,0"/>
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource ValueLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ZTERReportDetailTIN}" />
+                                        <custom:CustomLabel
+                                            Margin="0,-10,0,0"
+                                            Style="{StaticResource ValueLabelBlackMedium}"
+                                            Text="{Binding TINLabel}" />
                                     </StackLayout>
-                                    <yummy:PancakeView  Padding="10,0,10,0" CornerRadius="14"  HeightRequest="32" WidthRequest="59" 
-                                                        BackgroundColor="{StaticResource OpacityPrimary}"
-                                                        VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" >
+                                    <yummy:PancakeView
+                                        Padding="10,0,10,0"
+                                        BackgroundColor="{StaticResource OpacityPrimary}"
+                                        CornerRadius="14"
+                                        HeightRequest="32"
+                                        HorizontalOptions="EndAndExpand"
+                                        VerticalOptions="CenterAndExpand"
+                                        WidthRequest="59">
                                         <yummy:PancakeView.Border>
-                                            <yummy:Border Thickness="1"/>
+                                            <yummy:Border Thickness="1" />
                                         </yummy:PancakeView.Border>
-                                        <custom:CustomLabel Text="{Binding TinStatusLabelText}"
-                                                        Style="{StaticResource CaptionLabelGrey}"
-                                                        TextColor="{StaticResource Primary}"
-                                                        HorizontalOptions="Center"
-                                                        VerticalTextAlignment="Center"/>
+                                        <custom:CustomLabel
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{Binding TinStatusLabelText}"
+                                            TextColor="{StaticResource Primary}"
+                                            VerticalTextAlignment="Center" />
                                     </yummy:PancakeView>
                                 </StackLayout>
                             </Frame>
 
 
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}"
-                                            HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource TPProfileLabelBlackBold}"
-                                            Margin="0,16,0,0"/>
+                            <custom:CustomLabel
+                                Margin="0,16,0,0"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource TPProfileLabelBlackBold}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZContactInformation}" />
 
                             <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                                    Style="{StaticResource CaptionLabelGrey}"/>
-                                <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnMobileEditTapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </StackLayout>
-                            <inputLayout:SfTextInputLayout
-                            Margin="0,-10,0,0"
-                            HorizontalOptions="FillAndExpand"
-                            LeadingViewPosition="Inside"
-                            ContainerType="Outlined"
-                            UnfocusedColor="#B1B1B1"
-                            OutlineCornerRadius="8"
-                            FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"
-                            InputViewPadding="16,0,16,0" >
-                                <StackLayout Orientation="Horizontal"
-                                   >
-                                    <Entry x:Name="MobileNumberCodeEntry" FlowDirection="LeftToRight" VerticalTextAlignment="Center"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         IsReadOnly="True" TextColor="{StaticResource PrimaryColor}" HorizontalOptions="FillAndExpand"
-                                                         Text="{Binding MobileNumber}" 
-                                                         />
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                    <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnMobileEditTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
                                 </StackLayout>
-                            </inputLayout:SfTextInputLayout>
+                                <inputLayout:SfTextInputLayout
+                                    Margin="0,-10,0,0"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource Primary}"
+                                    HorizontalOptions="FillAndExpand"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="8"
+                                    UnfocusedColor="#B1B1B1">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Entry
+                                            x:Name="MobileNumberCodeEntry"
+                                            FlowDirection="LeftToRight"
+                                            HorizontalOptions="FillAndExpand"
+                                            IsReadOnly="True"
+                                            Style="{StaticResource DefaultEntry}"
+                                            Text="{Binding MobileNumber}"
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                 <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="Transparent"/>
+                            <BoxView BackgroundColor="Transparent" Style="{StaticResource lineSeperator}" />
 
 
-                       <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDEmail}"
-                                                Style="{StaticResource CaptionLabelGrey}"/>
-                                <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnEmailEditTapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
+                            <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDEmail}" />
+                                    <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnEmailEditTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <inputLayout:SfTextInputLayout
+                                    Margin="0,-10,0,0"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource Primary}"
+                                    HorizontalOptions="FillAndExpand"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="8"
+                                    UnfocusedColor="#B1B1B1">
+
+                                    <control:BorderlessEntry
+                                        IsReadOnly="True"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding EmailEntry}" />
+                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
-                            <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
-                                                        LeadingViewPosition="Inside" ContainerType="Outlined"
-                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
-                                                        FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"
-                                                        InputViewPadding="16,0,16,0">
+                            <BoxView BackgroundColor="Transparent" Style="{StaticResource lineSeperator}" />
 
-                                <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
-                                                     Text="{Binding EmailEntry}"
-                                                    IsReadOnly="True">
-                                </control:BorderlessEntry>
-                            </inputLayout:SfTextInputLayout>
-                           </StackLayout>
-                      <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="Transparent"/>
+                            <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
+                                <StackLayout Orientation="Horizontal">
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.Password}" />
+                                    <Image HorizontalOptions="EndAndExpand" Source="ic_Edit.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="OnPasswordEditTapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <inputLayout:SfTextInputLayout
+                                    Margin="0,-10,0,0"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource Primary}"
+                                    HorizontalOptions="FillAndExpand"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="8"
+                                    UnfocusedColor="#B1B1B1">
+                                    <control:BorderlessEntry
+                                        x:Name="Password"
+                                        IsPassword="True"
+                                        IsReadOnly="True"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding PasswordEntry}" />
 
-                             <StackLayout Orientation="Vertical" Style="{StaticResource SFTaxPayerProfile}">
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Password}"
-                                                Style="{StaticResource CaptionLabelGrey}"/>
-                                <Image Source="ic_Edit.png" HorizontalOptions="EndAndExpand">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnPasswordEditTapped"/>
-                                    </Image.GestureRecognizers>
-                                </Image>
+                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
-                            <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand"
-                                                        LeadingViewPosition="Inside" ContainerType="Outlined"
-                                                        UnfocusedColor="#B1B1B1" OutlineCornerRadius="8"
-                                                        FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,0,16,0">
-                                <control:BorderlessEntry x:Name="Password"
-                                                         Style="{StaticResource DefaultEntry}"
-                                                         Text="{Binding PasswordEntry}"
-                                                         IsReadOnly="True"
-                                                         IsPassword="True">
-                                </control:BorderlessEntry>
-
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
 
                         </StackLayout>
                     </yummy:PancakeView>
 
                 </ScrollView>
 
-                <Grid Padding="15,0,15,0"
-                  Grid.Row="0">
+                <Grid Grid.Row="0" Padding="15,0,15,0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <custom:CustomLabel Grid.Column="0" Grid.ColumnSpan="2"
-                                    Text="{x:Static ResourceManager:AppResources.NDProfile}"
-                                    Style="{StaticResource SectionTitleWhiteBold}"
-                                    HorizontalOptions="Center"
-                                    />
+                    <custom:CustomLabel
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource SectionTitleWhiteBold}"
+                        Text="{x:Static ResourceManager:AppResources.NDProfile}" />
 
-                    <StackLayout Grid.Column="0"
-                             Padding="0,8,0,0">
-                        <Image Source="arrowLeftwhite.png"
-                           HorizontalOptions="Start"
-                           VerticalOptions="Center" Style="{DynamicResource BackButtonArrow}">
+                    <StackLayout Grid.Column="0" Padding="0,8,0,0">
+                        <Image
+                            HorizontalOptions="Start"
+                            Source="arrowLeftwhite.png"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="Center">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnBackArrowBtnTapped"/>
+                                <TapGestureRecognizer Tapped="OnBackArrowBtnTapped" />
                             </Image.GestureRecognizers>
                         </Image>
                     </StackLayout>
@@ -204,25 +236,39 @@
             </Grid>
 
 
-            <Grid Grid.Row="0" Grid.RowSpan="1" Margin="-20"
-                      IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0"
-                             Orientation="Vertical" BackgroundColor="Black"
-                             Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0"
-                             Orientation="Vertical" BackgroundColor="Transparent"
-                             Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding"
-                                                       EnableAnimation="True"
-                                                       AnimationType="SingleCircle"
-                                                       HorizontalOptions="CenterAndExpand"
-                                                       VerticalOptions="CenterAndExpand"
-                                                       IsBusy="True"
-                                                       ViewBoxWidth = "70"
-                                                       TitlePlacement="Bottom"
-                                                       ViewBoxHeight="70" TextColor="{StaticResource Primary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="1"
+                Margin="-20"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Primary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

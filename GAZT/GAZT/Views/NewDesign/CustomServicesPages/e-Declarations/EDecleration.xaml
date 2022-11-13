@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations.EDeclerationView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations.EDeclerationView"
-   xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
-    ios:Page.UseSafeArea="true"
-    NavigationPage.HasNavigationBar="False"
-    BackgroundImageSource="partials_background.png"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" >
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
 
-             <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -28,46 +28,55 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid RowDefinitions="auto,*">
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
-                <StackLayout>
+        <yummy:PancakeView
+            Grid.Row="1"
+            Padding="20,20,20,0"
+            Style="{StaticResource CommonTopCurves}">
+            <StackLayout>
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="23">
                     <Grid.Resources>
-                         <ResourceDictionary>
-                             <Style TargetType="Frame">
-                                <Setter Property="CornerRadius" Value="15"></Setter>
-                                <Setter Property="BorderColor" Value="#DDDDDD"></Setter> 
-                                <Setter Property="Padding" Value="15"></Setter> 
-                             </Style>
-                              <Style TargetType="Image">
-                                <Setter Property="HeightRequest" Value="41"></Setter>
-                                <Setter Property="WidthRequest" Value="32"></Setter> 
-                          
-                             </Style>
-                         </ResourceDictionary>
+                        <ResourceDictionary>
+                            <Style TargetType="Frame">
+                                <Setter Property="CornerRadius" Value="15" />
+                                <Setter Property="BorderColor" Value="#DDDDDD" />
+                                <Setter Property="Padding" Value="15" />
+                            </Style>
+                            <Style TargetType="Image">
+                                <Setter Property="HeightRequest" Value="41" />
+                                <Setter Property="WidthRequest" Value="32" />
+
+                            </Style>
+                        </ResourceDictionary>
                     </Grid.Resources>
-                <Frame CornerRadius="20" Grid.Column="0">
-                    <Frame.GestureRecognizers >
-                        <TapGestureRecognizer Command="{Binding NavigateToNewEDeclerationCommand}"> </TapGestureRecognizer>
-                    </Frame.GestureRecognizers>
-                    <StackLayout>
-                        <Image Source="EDeclerationicon"></Image>
-                        <Label HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.eDeclaration}"></Label>
-                    </StackLayout>
-                </Frame>
-                    <Frame CornerRadius="20" Grid.Column="1">
-                           <Frame.GestureRecognizers >
-                        <TapGestureRecognizer Command="{Binding NavigateToPreviousEDeclerationCommand}"> </TapGestureRecognizer>
-                    </Frame.GestureRecognizers>
-                    <StackLayout>
-                        <Image Source="EDeclerationicon"></Image>
-                        <Label TextColor="#002447" HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"></Label>
-                    </StackLayout>
-                </Frame>
+                    <Frame Grid.Column="0" CornerRadius="20">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToNewEDeclerationCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Image Source="EDeclerationicon" />
+                            <Label HorizontalOptions="CenterAndExpand" Text="{x:Static ResourceManager:AppResources.eDeclaration}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" CornerRadius="20">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateToPreviousEDeclerationCommand}" />
+                        </Frame.GestureRecognizers>
+                        <StackLayout>
+                            <Image Source="EDeclerationicon" />
+                            <Label
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
+                                TextColor="#002447" />
+                        </StackLayout>
+                    </Frame>
                 </Grid>
-               </StackLayout>
-            </yummy:PancakeView>
-        <controls:Header TitleText="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}"></controls:Header>
-        <controls:Loader  Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}"></controls:Loader>
-        </Grid>
- 
+            </StackLayout>
+        </yummy:PancakeView>
+        <controls:Header TitleText="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}" />
+        <controls:Loader
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsLoading}" />
+    </Grid>
+
 </ContentPage>

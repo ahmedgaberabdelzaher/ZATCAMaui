@@ -2183,7 +2183,7 @@
             </Grid>
             <!--#region SurveyView{Binding IsShowMsgView}-->
             <Grid
-                Grid.Row="0" 
+                Grid.Row="0"
                 Margin="0,0,0,0"
                 IsVisible="true"
                 VerticalOptions="FillAndExpand">
@@ -2286,7 +2286,7 @@
                                 BindableLayout.ItemsSource="{Binding ImojiesLst}"
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal">
-                              
+
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout x:Name="Item" Margin="10">

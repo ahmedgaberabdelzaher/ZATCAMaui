@@ -9524,172 +9524,172 @@ the Zakat, Tax and Customs
   <data name="CustomsDeclarationforTravelers" xml:space="preserve">
        <value>Customs Declaration for Travelers</value>
    </data>
-    <data name="AllReports" xml:space="preserve">
+  <data name="AllReports" xml:space="preserve">
       <value>All reports</value>
    </data>
-   <data name="AddNewReport" xml:space="preserve">
+  <data name="AddNewReport" xml:space="preserve">
       <value>New Report</value>
    </data>
-   <data name="Reports" xml:space="preserve">
+  <data name="Reports" xml:space="preserve">
       <value>Reports</value>
    </data>
-    <data name="MyOpenedReports" xml:space="preserve">
+  <data name="MyOpenedReports" xml:space="preserve">
       <value>My open reports </value>
    </data>
-   <data name="MyClosedReports" xml:space="preserve">
+  <data name="MyClosedReports" xml:space="preserve">
       <value>My closed reports</value>
    </data>
-   <data name="ClosedReports" xml:space="preserve">
+  <data name="ClosedReports" xml:space="preserve">
       <value>Closed</value>
    </data>
-   <data name="OpenReports" xml:space="preserve">
+  <data name="OpenReports" xml:space="preserve">
       <value>Open</value>
-   </data> 
-    <data name="Home" xml:space="preserve">
+   </data>
+  <data name="Home" xml:space="preserve">
         <value>Home</value>
     </data>
-    <data name="ZATCAServices" xml:space="preserve">
+  <data name="ZATCAServices" xml:space="preserve">
         <value>ZATCA Services</value>
     </data>
-    <data name="EXCISETAXServices" xml:space="preserve">
+  <data name="EXCISETAXServices" xml:space="preserve">
         <value>Excise TAX</value>
     </data>
-    <data name="LiveVideoTitle" xml:space="preserve">
+  <data name="LiveVideoTitle" xml:space="preserve">
         <value>Live Video</value>
     </data>
-     <data name="LiveVideoSubTitle" xml:space="preserve">
+  <data name="LiveVideoSubTitle" xml:space="preserve">
         <value>Live broadcast of the ports</value>
     </data>
-     <data name="PortName" xml:space="preserve">
+  <data name="PortName" xml:space="preserve">
         <value>Port name</value>
     </data>
-     <data name="NumberofAttachments" xml:space="preserve">
+  <data name="NumberofAttachments" xml:space="preserve">
         <value>The maximum nuber of attachments you can upload is 1</value>
     </data>
-    <data name="ReportLocationPlaceholder" xml:space="preserve">
+  <data name="ReportLocationPlaceholder" xml:space="preserve">
         <value>Select the location on the map</value>
     </data>
-    <data name="ReportDetailsSubTitle" xml:space="preserve">
+  <data name="ReportDetailsSubTitle" xml:space="preserve">
          <value>You must fill in all of the following fields</value>
     </data>
-    <data name="PerviousButton" xml:space="preserve">
+  <data name="PerviousButton" xml:space="preserve">
         <value>Pervious</value>
     </data>
-    <data name="ReportReward" xml:space="preserve">
+  <data name="ReportReward" xml:space="preserve">
        <value>The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking.</value>
     </data>
-    <data name="ReportSecondNote1" xml:space="preserve">
+  <data name="ReportSecondNote1" xml:space="preserve">
         <value>1- The award is given according to the discretionary authority of the authority, provided that the Fulfillment of the following conditions:</value>
     </data>
-    <data name="ReportSecondNote2" xml:space="preserve">
+  <data name="ReportSecondNote2" xml:space="preserve">
         <value>That the communication led to the detection of any violations mentioned in this regulation.</value>
     </data>
-     <data name="ReportSecondNote3" xml:space="preserve">
+  <data name="ReportSecondNote3" xml:space="preserve">
         <value>That the reporter is a staff member of the Authority, a spouse, a brother-in-law, or a first-degree relative.</value>
     </data>
-    <data name="ReportSecondNote4" xml:space="preserve">
+  <data name="ReportSecondNote4" xml:space="preserve">
         <value>The disclosure of the case in question should not be one of the reporting duties, if he is a public employee or the like.</value>
     </data>
-    <data name="ReportSecondNote5" xml:space="preserve">
+  <data name="ReportSecondNote5" xml:space="preserve">
         <value>The violation should not have been previously reported or rewarded by the authority.</value>
     </data>
-    <data name="ReportSecondNote6" xml:space="preserve">
+  <data name="ReportSecondNote6" xml:space="preserve">
         <value>2- The entitlement to the reward is based on a decision issued by the Remuneration Committee whistleblowers.</value>
     </data>
-    <data name="ReportSecondNote7" xml:space="preserve">
+  <data name="ReportSecondNote7" xml:space="preserve">
         <value>3- He shall not be entitled to the award until after collecting the amounts due.</value>
     </data>
-     <data name="ReportSecondNote8" xml:space="preserve">
+  <data name="ReportSecondNote8" xml:space="preserve">
         <value>To view the rest of the terms and conditions, click here</value>
     </data>
-    <data name="ReportSecondNote9" xml:space="preserve">
+  <data name="ReportSecondNote9" xml:space="preserve">
         <value>The Authority is obligated to preserve all the data of the amount and to deal in strict confidence with all the data provided</value>
     </data>
-    <data name="EmptyReports" xml:space="preserve">
+  <data name="EmptyReports" xml:space="preserve">
         <value>You do not have any reports</value>
     </data>
-    <data name="Viewservices" xml:space="preserve">
+  <data name="Viewservices" xml:space="preserve">
         <value>View services</value>
     </data>
-        <data name="Port1Name" xml:space="preserve">
+  <data name="Port1Name" xml:space="preserve">
         <value>Entering Saudi passports</value>
     </data>
-        <data name="Port2Name" xml:space="preserve">
+  <data name="Port2Name" xml:space="preserve">
         <value>Saudi exit passports</value>
     </data>
-        <data name="Port3Name" xml:space="preserve">
+  <data name="Port3Name" xml:space="preserve">
         <value>Saudi Arabia customs entry</value>
     </data>
-        <data name="Port4Name" xml:space="preserve">
+  <data name="Port4Name" xml:space="preserve">
         <value>Saudi customs exit</value>
     </data>
-      <data name="EinvoiceScanning" xml:space="preserve">
+  <data name="EinvoiceScanning" xml:space="preserve">
         <value>E-Invoice Validation</value>
     </data>
-    <data name="TaxCalculator" xml:space="preserve">
+  <data name="TaxCalculator" xml:space="preserve">
         <value>Merchant and Customer Calculator</value>
     </data>
-      <data name="AboutZATCA" xml:space="preserve">
+  <data name="AboutZATCA" xml:space="preserve">
     <value>About ZATCA</value>
   </data>
   <data name="FAQ" xml:space="preserve">
     <value>FAQ</value>
   </data>
-      <data name="RateUs" xml:space="preserve">
+  <data name="RateUs" xml:space="preserve">
         <value>Rate us</value>
     </data>
-      <data name="CustomerServices" xml:space="preserve">
+  <data name="CustomerServices" xml:space="preserve">
         <value>Customer Services</value>
     </data>
-        <data name="PrivacyandPolicy" xml:space="preserve">
+  <data name="PrivacyandPolicy" xml:space="preserve">
         <value>Privacy and Policy</value>
     </data>
-        <data name="ContactUs" xml:space="preserve">
+  <data name="ContactUs" xml:space="preserve">
         <value>Contact Us</value>
     </data>
-      <data name="EdcuationJourney" xml:space="preserve">
+  <data name="EdcuationJourney" xml:space="preserve">
         <value>Edcuation Journey</value>
     </data>
-    <data name="SurveyQ1" xml:space="preserve">
+  <data name="SurveyQ1" xml:space="preserve">
         <value>Overall, I am satisfied with my
 experience with theMobile App at
 the Zakat, Tax and Customs Authority</value>
     </data>
-        <data name="SurveyQ2" xml:space="preserve">
+  <data name="SurveyQ2" xml:space="preserve">
         <value>We noticed you dissatisfied with the
 question in the previous page. Kindly
 clarify the reason for dissatisfaction
 to help us improve your experience</value>
     </data>
-       <data name="SurveyQ3" xml:space="preserve">
+  <data name="SurveyQ3" xml:space="preserve">
         <value>Do you have any additional
 comments for the Zakat, Tax and
 Customs Authority?</value>
     </data>
-       <data name="ThankYou" xml:space="preserve">
+  <data name="ThankYou" xml:space="preserve">
         <value>Thank You</value>
     </data>
-      <data name="DearCustomer" xml:space="preserve">
+  <data name="DearCustomer" xml:space="preserve">
         <value>Dear Customer</value>
     </data>
-       <data name="SurveyThankMsg" xml:space="preserve">
+  <data name="SurveyThankMsg" xml:space="preserve">
         <value>Thank you for taking the time to complete this survey.
 Your feedback is important to us and we strive to improve your experience in the future.
 Zakat, Tax and Customs Authority
 </value>
 </data>
-   <data name="SurveyIntroMsg" xml:space="preserve">
+  <data name="SurveyIntroMsg" xml:space="preserve">
 <value>
  Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?
 </value>
     </data>
-       <data name="questionnaire" xml:space="preserve">
+  <data name="questionnaire" xml:space="preserve">
         <value>questionnaire</value>
     </data>
-     <data name="End" xml:space="preserve">
+  <data name="End" xml:space="preserve">
         <value>End</value>
     </data>
-    <data name="LoginSubTitle" xml:space="preserve">
+  <data name="LoginSubTitle" xml:space="preserve">
      <value>Welcome to a New Digital Tax Experience</value>
   </data>
   <data name="TINEmailCustomUsername" xml:space="preserve">
@@ -9704,121 +9704,121 @@ Zakat, Tax and Customs Authority
   <data name="LogintoCustoms" xml:space="preserve">
     <value>Login to Customs</value>
   </data>
-   <data name="InvalidUserNameOrPassword" xml:space="preserve">
+  <data name="InvalidUserNameOrPassword" xml:space="preserve">
     <value>Invalid User Name Or Password</value>
   </data>
-     <data name="Selectaccounttype" xml:space="preserve">
+  <data name="Selectaccounttype" xml:space="preserve">
     <value>Select account type</value>
   </data>
-     <data name="Customs" xml:space="preserve">
+  <data name="Customs" xml:space="preserve">
     <value>Customs</value>
   </data>
-     <data name="ZakatandTax" xml:space="preserve">
+  <data name="ZakatandTax" xml:space="preserve">
     <value>Zakat and Tax</value>
   </data>
-     <data name="ReportOTPMSG" xml:space="preserve">
+  <data name="ReportOTPMSG" xml:space="preserve">
          <value>Please enter the verification code that was sent to your mobile</value>
     </data>
-     <data name="PerviousReports" xml:space="preserve">
+  <data name="PerviousReports" xml:space="preserve">
          <value>Previous Reports</value>
     </data>
-     <data name="InquriyMyReports" xml:space="preserve">
+  <data name="InquriyMyReports" xml:space="preserve">
          <value>Please choose a method to search for the report</value>
     </data>
-     <data name="ReportNumberRequired" xml:space="preserve">
+  <data name="ReportNumberRequired" xml:space="preserve">
          <value>Please enter the report number</value>
     </data>
-        <data name="ShowPerviousReports" xml:space="preserve">
+  <data name="ShowPerviousReports" xml:space="preserve">
          <value>View previous reports</value>
     </data>
-    <data name="ReportsNote" xml:space="preserve">
+  <data name="ReportsNote" xml:space="preserve">
          <value>If the authority informs you of malicious or false information, it will expose you to legal accountability</value>
     </data>
-      <data name="ChooseReports" xml:space="preserve">
+  <data name="ChooseReports" xml:space="preserve">
          <value>Reports</value>
     </data>
-    <data name="CreateAccount" xml:space="preserve">
+  <data name="CreateAccount" xml:space="preserve">
         <value>Create an account</value>
     </data>
-   <data name="LocationAccess" xml:space="preserve">
+  <data name="LocationAccess" xml:space="preserve">
         <value>Please grant  Location access first.</value>
-    </data> 
-    <data name="Langauge" xml:space="preserve">
+    </data>
+  <data name="Langauge" xml:space="preserve">
           <value>العربية</value>
      </data>
-     <data name="ReportMissingField" xml:space="preserve">
+  <data name="ReportMissingField" xml:space="preserve">
           <value>Missing field</value>
      </data>
-      <data name="RequiredData" xml:space="preserve">
+  <data name="RequiredData" xml:space="preserve">
          <value>Please fill the required fields</value>
       </data>
-    <data name="RefunableAmount" xml:space="preserve">
+  <data name="RefunableAmount" xml:space="preserve">
         <value>Refunable Amount</value>
     </data>
-     <data name="VATPayable" xml:space="preserve">
+  <data name="VATPayable" xml:space="preserve">
         <value>VAT Payable</value>
     </data>
-     <data name="VatRegistretionServiceDesc" xml:space="preserve">
+  <data name="VatRegistretionServiceDesc" xml:space="preserve">
         <value>This service allows beneficiaries to check the registration's validity by entering the TIN number, VAT certificate, CR, Serial Number, or by scanning a QR code.</value>
     </data>
-     <data name="EinvoiceServiceDesc" xml:space="preserve">
+  <data name="EinvoiceServiceDesc" xml:space="preserve">
         <value>Scanning the QR code allows beneficiaries to validate the electronic bill.</value>
     </data>
-    <data name="VatCalculationServiceDesc" xml:space="preserve">
+  <data name="VatCalculationServiceDesc" xml:space="preserve">
         <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales.</value>
     </data>
-    <data name="BackToHome" xml:space="preserve">
+  <data name="BackToHome" xml:space="preserve">
         <value>Back to Home</value>
     </data>
-     <data name="GeneralServicesTip" xml:space="preserve">
+  <data name="GeneralServicesTip" xml:space="preserve">
         <value>I call you a duplicate about the origin of the remnants of the authority's competences.</value>
     </data>
-    <data name="CustomServicesTip1" xml:space="preserve">
+  <data name="CustomServicesTip1" xml:space="preserve">
         <value>It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees.</value>
     </data>
-     <data name="CustomServicesTip2" xml:space="preserve">
+  <data name="CustomServicesTip2" xml:space="preserve">
         <value>It allows you to inquire about commodity information, codes, customs declaration and fees.</value>
     </data>
-     <data name="CustomServicesTip3" xml:space="preserve">
+  <data name="CustomServicesTip3" xml:space="preserve">
         <value>It enables you to electronically declare the materials to be disclosed upon entering or before leaving Saudi Arabia.</value>
     </data>
-    <data name="CustomServicesTip4" xml:space="preserve">
+  <data name="CustomServicesTip4" xml:space="preserve">
         <value>Enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
     </data>
-    <data name="CustomServicesTip5" xml:space="preserve">
+  <data name="CustomServicesTip5" xml:space="preserve">
         <value>Allows customs customers to submit supply transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters.</value>
     </data>
-    <data name="TaxServicesTip1" xml:space="preserve">
+  <data name="TaxServicesTip1" xml:space="preserve">
         <value>Allows you to access and calculate the Excise Goods Tax price list electronically</value>
     </data>
-    <data name="TaxServicesTip2" xml:space="preserve">
+  <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
-     <data name="CustomNote1" xml:space="preserve">
+  <data name="CustomNote1" xml:space="preserve">
         <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>
     </data>
-    <data name="CustomNote2" xml:space="preserve">
+  <data name="CustomNote2" xml:space="preserve">
         <value>Allows you to inquire about commodity information, codes, customs declaration and fees.</value>
     </data>
-    <data name="CustomNote3" xml:space="preserve">
+  <data name="CustomNote3" xml:space="preserve">
         <value>It enables you to electronically declare the materials to be disclosed upon entering Saudi Arabia or before leaving it.</value>
     </data>
-    <data name="CustomNote4" xml:space="preserve">
+  <data name="CustomNote4" xml:space="preserve">
         <value>It enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
     </data>
-     <data name="RegisteredVAT" xml:space="preserve">
+  <data name="RegisteredVAT" xml:space="preserve">
         <value>VAT Registered</value>
     </data>
-    <data name="VATCertificateNumber" xml:space="preserve">
+  <data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
-    <data name="unableToVerify" xml:space="preserve">
+  <data name="unableToVerify" xml:space="preserve">
         <value>Unable To Verify</value>
     </data>
-    <data name="PleaseEnter" xml:space="preserve">
+  <data name="PleaseEnter" xml:space="preserve">
         <value>Please enter</value>
     </data>
-    <data name="VATCertificateNumberValidation" xml:space="preserve">
+  <data name="VATCertificateNumberValidation" xml:space="preserve">
         <value>The number of digits in the tax certificate number must be 15 digits</value>
     </data>
 </root>
