@@ -52,7 +52,7 @@ namespace EGAZT.AppConfigurations
             switch (Target_Environment)
             {
                 case "STG":
-                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     break;
@@ -62,7 +62,7 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomProdURL;
                     break;
                 default:
-                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    App.CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     break;
@@ -77,19 +77,19 @@ namespace EGAZT.AppConfigurations
             Target_Environment = "STG";
 #endif
             string key = "";
-            Target_Environment = "Prod";
+           // Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case"STG":
-                    CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                  //  CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key= XZATCAClientIdTest;
                     break;
                 case "Prod":
                     key= XZATCAClientIdProd;
-                    CustomBaseUrl = DATAPowerProdCustomBaseUrl;
+                   // CustomBaseUrl = DATAPowerProdCustomBaseUrl;
                     break;
                 default:
-                    CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                  //  CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key = XZATCAClientIdTest;
                     break;
             }
@@ -101,7 +101,7 @@ namespace EGAZT.AppConfigurations
 #if DEBUG
             Target_Environment = "STG";
 #endif
-            Target_Environment = "Prod";
+            //Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {
