@@ -104,50 +104,8 @@
                             HeightRequest="250"
                             IsClippedToBounds="True"
                             WidthRequest="470">
-                            <mm:VideoView
-                                x:Name="liveVideo"
-                                AutoPlay="True"
-                                ShowControls="True"
-                                Source="{Binding VideoUrl}" />
+                            <WebView Source="{Binding VideoUrl}" />
                         </Frame>
-                        <!--<OnPlatform x:TypeArguments="View">
-
-                            <On Platform="iOS">
-                                <Frame
-                                    Padding="0"
-                                    BorderColor="#EBEBEB"
-                                    CornerRadius="20"
-                                    HeightRequest="250"
-                                    IsClippedToBounds="True"
-                                    WidthRequest="470">
-                                    <mm:VideoView
-                                        AutoPlay="True"
-                                        x:Name="iosLiveVideo"
-                                        ShowControls="True"
-                                        Source="{Binding VideoUrl}" />
-                                </Frame>
-                            </On>
-
-                            <On Platform="Android">
-                                <Frame
-                                    Padding="0"
-                                    BorderColor="#EBEBEB"
-                                    CornerRadius="20"
-                                    BackgroundColor="Black"
-                                    HeightRequest="250"
-                                    IsClippedToBounds="True"
-                                    WidthRequest="470">
-
-                                        <mm:VideoView
-                                            AutoPlay="True"
-                                            x:Name="androidLiveVideo"
-                                            ShowControls="False"
-                                            Source="{Binding VideoUrl}" />
-                                </Frame>
-                            </On>
-
-
-                        </OnPlatform>-->
 
                         <!--  Live Video Sub Title Label  -->
                         <Label
@@ -195,7 +153,7 @@
                                                         HorizontalOptions="CenterAndExpand"
                                                         HorizontalTextAlignment="Center"
                                                         LineBreakMode="WordWrap"
-                                                        Text="{Binding VideoNumber}"
+                                                        Text="{Binding VideoName}"
                                                         TextColor="#58595B"
                                                         VerticalOptions="CenterAndExpand" />
 
