@@ -3754,7 +3754,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 collectId = PageSettings.CollectorId,
                 surveyId = PageSettings.SurveyID,
-                responseArr = new List<ResponseArr>()
+                feedback = new List<ResponseArr>()
                 {
                  new ResponseArr()
                  {
@@ -3763,11 +3763,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          start=date,
                          end=date
                      },
-                     customData=new CustomData()
+                     user=new CustomData()
                      {
                          CustomerSegment="TIN",
                           mobile=App.TP.Mobile,
-                           Name=App.TP.Name,
+                           firstName=App.TP.Name,
                            TIN=App.TP.Tin
                      },
                      answers=new List<Answer>()

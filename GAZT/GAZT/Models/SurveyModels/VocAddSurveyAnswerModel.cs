@@ -21,7 +21,7 @@ namespace EGAZT.Models.SurveyModels
     {
         public string CustomerSegment { get; set; }
         public string mobile { get; set; }
-        public string Name { get; set; }
+        public string firstName { get; set; }
         public string TIN { get; set; }
     }
 
@@ -33,7 +33,7 @@ namespace EGAZT.Models.SurveyModels
 
     public class ResponseArr
     {
-        public CustomData customData { get; set; }
+        public CustomData user { get; set; }
         public List<Answer> answers { get; set; }
         public Date date { get; set; }
     }
@@ -42,6 +42,6 @@ namespace EGAZT.Models.SurveyModels
     {
         public string surveyId { get; set; }
         public string collectId { get; set; }
-        public List<ResponseArr> responseArr { get; set; }
+        public List<ResponseArr> feedback { get; set; }
     }
 }

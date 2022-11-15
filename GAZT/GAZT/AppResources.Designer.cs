@@ -3342,6 +3342,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter the subject of the transaction.
+        /// </summary>
+        public static string Enterthesubjectofthetransaction {
+            get {
+                return ResourceManager.GetString("Enterthesubjectofthetransaction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter username.
         /// </summary>
         public static string Enterusername {
@@ -3392,6 +3401,15 @@ namespace EGAZT {
         public static string EnterVerificationCodeTitle {
             get {
                 return ResourceManager.GetString("EnterVerificationCodeTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity.
+        /// </summary>
+        public static string Entity {
+            get {
+                return ResourceManager.GetString("Entity", resourceCulture);
             }
         }
         
@@ -9126,6 +9144,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New Transaction Reception.
+        /// </summary>
+        public static string NewTransactionReception {
+            get {
+                return ResourceManager.GetString("NewTransactionReception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Commitments Available.
         /// </summary>
         public static string NoAppointmentText {
@@ -9243,7 +9270,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The maximum nuber of attachments you can upload is 1.
+        ///   Looks up a localized string similar to The maximum number of attachments you can upload is 1.
         /// </summary>
         public static string NumberofAttachments {
             get {
@@ -9537,6 +9564,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PDF file format max size 2MB.
+        /// </summary>
+        public static string PDFFileHint {
+            get {
+                return ResourceManager.GetString("PDFFileHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  PDF Not Available.
         /// </summary>
         public static string PdfIsNotAvailableFor {
@@ -9605,6 +9641,15 @@ namespace EGAZT {
         public static string Pleasechangepassword {
             get {
                 return ResourceManager.GetString("Pleasechangepassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please complete the data.
+        /// </summary>
+        public static string Pleasecompletethedata {
+            get {
+                return ResourceManager.GetString("Pleasecompletethedata", resourceCulture);
             }
         }
         
@@ -10100,6 +10145,15 @@ namespace EGAZT {
         public static string RecoverUserName {
             get {
                 return ResourceManager.GetString("RecoverUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reference number.
+        /// </summary>
+        public static string Referencenumber {
+            get {
+                return ResourceManager.GetString("Referencenumber", resourceCulture);
             }
         }
         
@@ -10986,6 +11040,15 @@ namespace EGAZT {
         public static string String1 {
             get {
                 return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        public static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
             }
         }
         
@@ -12382,6 +12445,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transaction description.
+        /// </summary>
+        public static string Transactiondescription {
+            get {
+                return ResourceManager.GetString("Transactiondescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction Reception.
+        /// </summary>
+        public static string TransactionReception {
+            get {
+                return ResourceManager.GetString("TransactionReception", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Try Again.
         /// </summary>
         public static string tryAgain {
@@ -12595,6 +12676,15 @@ namespace EGAZT {
         public static string UsernameSentToTheRegisteredEmailEndMobileNumber {
             get {
                 return ResourceManager.GetString("UsernameSentToTheRegisteredEmailEndMobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Type.
+        /// </summary>
+        public static string UserType {
+            get {
+                return ResourceManager.GetString("UserType", resourceCulture);
             }
         }
         
@@ -15962,6 +16052,24 @@ namespace EGAZT {
         public static string YourPasswordhasbeenChangedsuccessfully {
             get {
                 return ResourceManager.GetString("YourPasswordhasbeenChangedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your request has been sent successfully.
+        /// </summary>
+        public static string Yourrequesthasbeensentsuccessfully {
+            get {
+                return ResourceManager.GetString("Yourrequesthasbeensentsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You will be notified of the status of the request via mobile phone.
+        /// </summary>
+        public static string Youwillbenotifiedofthestatusoftherequestviamobilephone {
+            get {
+                return ResourceManager.GetString("Youwillbenotifiedofthestatusoftherequestviamobilephone", resourceCulture);
             }
         }
         

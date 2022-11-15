@@ -9564,7 +9564,7 @@ the Zakat, Tax and Customs
         <value>Port name</value>
     </data>
      <data name="NumberofAttachments" xml:space="preserve">
-        <value>The maximum nuber of attachments you can upload is 1</value>
+        <value>The maximum number of attachments you can upload is 1</value>
     </data>
     <data name="ReportLocationPlaceholder" xml:space="preserve">
         <value>Select the location on the map</value>
@@ -9829,5 +9829,41 @@ Zakat, Tax and Customs Authority
     </data>
       <data name="MenuDashboard" xml:space="preserve">
     <value>Dashboard</value>
+  </data>
+  <data name="TransactionReception" xml:space="preserve">
+    <value>Transaction Reception</value>
+  </data>
+  <data name="NewTransactionReception" xml:space="preserve">
+    <value>New Transaction Reception</value>
+  </data>
+  <data name="Pleasecompletethedata" xml:space="preserve">
+    <value>Please complete the data</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entity</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Enterthesubjectofthetransaction" xml:space="preserve">
+    <value>Enter the subject of the transaction</value>
+  </data>
+    <data name="Transactiondescription" xml:space="preserve">
+    <value>Transaction description</value>
+  </data>
+  <data name="PDFFileHint" xml:space="preserve">
+    <value>PDF file format max size 2MB</value>
+  </data>
+    <data name="UserType" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+    <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
+    <value>Your request has been sent successfully</value>
+  </data>
+  <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+    <value>You will be notified of the status of the request via mobile phone</value>
+  </data>
+      <data name="Referencenumber" xml:space="preserve">
+    <value>Reference number</value>
   </data>
 </root>

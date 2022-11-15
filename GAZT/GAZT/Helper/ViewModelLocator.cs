@@ -163,6 +163,7 @@ using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
 using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
 using EGAZT.Views.NewDesign.ReportOTP;
 using System.Net.Http;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 
 namespace EGAZT
 {
@@ -413,6 +414,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
+            SimpleIoc.Default.Register<TransactionReceptionViewModel>();
 
             #endregion
         }
@@ -2895,6 +2897,8 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
+            navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
+            navigationService.Configure("SuccessView", typeof(SuccessView));
 
             #endregion
 
@@ -3097,6 +3101,20 @@ namespace EGAZT
             }
         }
 
+        public TransactionReceptionViewModel TransactionReceptionViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView

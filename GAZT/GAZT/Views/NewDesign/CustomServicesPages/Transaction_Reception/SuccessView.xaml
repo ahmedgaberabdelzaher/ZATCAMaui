@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+ xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+        xmlns:ResourceManager="clr-namespace:EGAZT"
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.SuccessView">
+    <newdesign:BaseContentPage.Content>
+               <Grid>
+            <!--#region Header-->
+            <StackLayout>
+
+                <!--  Success Icon and Msg  -->
+                <StackLayout
+                    HorizontalOptions="Start"
+                    Spacing="10"
+                    VerticalOptions="CenterAndExpand">
+
+                    <!--  Success icon  -->
+                    <Image
+                        Aspect="AspectFit"
+                        HeightRequest="150"
+                        Margin="0,0,0,30"
+                        Source="Forget_ic_success"
+                        WidthRequest="150" />
+
+                    <!--  Success Msg1 Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static ResourceManager:AppResources.Yourrequesthasbeensentsuccessfully}"
+                        TextColor="White" />
+
+                    <!--  Success Msg2 Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="40,0"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.Youwillbenotifiedofthestatusoftherequestviamobilephone}"
+                        TextColor="White" />
+
+                         <!--  Refrence No Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        Margin="40,30,40,0"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.Referencenumber}"
+                        TextColor="White" />
+                       <!--  Refrence No value Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18" Margin="0" 
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="CenterAndExpand"
+                        LineBreakMode="WordWrap"
+                        Text="1000520446784152"
+                        TextColor="White" />
+                     <!--  Back to Home Button  -->
+                        <buttons:SfButton
+                            Margin="20,50,20,0"
+                            BackgroundColor="#0996D4"
+                            Command="{Binding BackToHomeCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.BackToHome}" />
+                         <!--  Back to ZATCA Services Button  -->
+                        <buttons:SfButton
+                            Margin="20,20,20,20"
+                            BackgroundColor="#0996D4"
+                            Command="{Binding BackToHomeCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
+                </StackLayout>
+
+
+            </StackLayout>
+        </Grid>
+    </newdesign:BaseContentPage.Content>
+</newdesign:BaseContentPage>
+

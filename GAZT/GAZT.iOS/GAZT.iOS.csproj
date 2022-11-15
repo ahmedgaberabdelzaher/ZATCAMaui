@@ -605,6 +605,9 @@
     <BundleResource Include="Resources\NotSelectedDashBoardicon.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%402x.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%403x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%402x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
