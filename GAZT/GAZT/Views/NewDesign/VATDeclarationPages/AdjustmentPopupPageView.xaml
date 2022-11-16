@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                xmlns:custom="clr-namespace:GAZT"
-            xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.AdjustmentPopupPageView">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.AdjustmentPopupPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,31 +18,48 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView
+        Padding="15"
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        VerticalOptions="EndAndExpand">
         <StackLayout Spacing="15">
-            
-            <custom:CustomLabel Text="Adjustment Amount" Style="{StaticResource SectionTitleBlack}"/>
-            
+
+            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="Adjustment Amount" />
+
             <ScrollView Grid.Row="1">
                 <StackLayout Spacing="15">
-                    <Frame CornerRadius="12" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                    <Frame
+                        Padding="15"
+                        BorderColor="{StaticResource DarkGrayTextColor}"
+                        CornerRadius="12">
                         <StackLayout>
-                            
+
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="ic_vat_info">
-                                    
-                                </Image>
-                                <custom:CustomLabel Text="Verify Adjustment Amount" Style="{StaticResource BodyLabelBlack}" CharacterSpacing="0" VerticalOptions="CenterAndExpand"/>
+                                <Image Source="ic_vat_info" />
+                                <custom:CustomLabel
+                                    CharacterSpacing="0"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="Verify Adjustment Amount"
+                                    VerticalOptions="CenterAndExpand" />
                             </StackLayout>
 
-                            <custom:CustomLabel Text="The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct." Style="{StaticResource CaptionLabelGrey}" CharacterSpacing="0"/>
-                        
+                            <custom:CustomLabel
+                                CharacterSpacing="0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="The adjustment amount entered is more than 10% larger than the amount of domestic standard-rated sales. please verify the amount entered in the return or continue if the amount entered is correct." />
+
                         </StackLayout>
                     </Frame>
                 </StackLayout>
             </ScrollView>
 
-            <buttons:SfButton x:Name="btnprimary"  VerticalOptions="EndAndExpand" Margin="0,0,0,0"  Text="Done" Style="{StaticResource PrimaryButtonStyle}"/>
+            <buttons:SfButton
+                x:Name="btnprimary"
+                Margin="0,0,0,0"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="Done"
+                VerticalOptions="EndAndExpand" />
 
         </StackLayout>
     </yummy:PancakeView>

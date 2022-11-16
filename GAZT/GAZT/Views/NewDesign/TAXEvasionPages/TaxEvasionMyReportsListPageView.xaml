@@ -1,14 +1,17 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionMyReportsListPageView"  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-             NavigationPage.HasBackButton="False" 
-             NavigationPage.HasNavigationBar="False"
-             xmlns:custom="clr-namespace:GAZT" 
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             BackgroundImageSource="partials_background.png">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionMyReportsListPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasBackButton="False"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -32,29 +35,55 @@
                 <StackLayout>
                     <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="15*"/>
-                            <ColumnDefinition Width="70*"/>
-                            <ColumnDefinition Width="15*"/>
+                            <ColumnDefinition Width="15*" />
+                            <ColumnDefinition Width="70*" />
+                            <ColumnDefinition Width="15*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" />
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
 
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Padding="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,0,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
@@ -65,20 +94,23 @@
         <Grid>
             <Grid Margin="10,15,10,0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <StackLayout Margin="0,0,0,0" Grid.Row="1">
-                    <ListView  x:Name="ListView_TaxEvasionReportList"  
-           ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
-                                           IsVisible="{Binding IsReportListVisible}"
-                                  VerticalScrollBarVisibility="Never"    
-          HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                 BackgroundColor="White"     SelectedItem="{Binding SelectedTaxEvasionListItem}" ItemTapped="ListView_TaxEvasionReportList_ItemTapped"
-            SeparatorVisibility="None" >
+                <StackLayout Grid.Row="1" Margin="0,0,0,0">
+                    <ListView
+                        x:Name="ListView_TaxEvasionReportList"
+                        BackgroundColor="White"
+                        HasUnevenRows="True"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsReportListVisible}"
+                        ItemTapped="ListView_TaxEvasionReportList_ItemTapped"
+                        ItemsSource="{Binding ListToDisplay, Mode=TwoWay}"
+                        SelectedItem="{Binding SelectedTaxEvasionListItem}"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
                         <x:Arguments>
                             <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
                         </x:Arguments>
@@ -87,21 +119,38 @@
                                 <ViewCell>
                                     <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                                         <StackLayout Padding="0" Spacing="0">
-                                            <StackLayout Orientation="Horizontal" Padding="17,16,17,16">
+                                            <StackLayout Padding="17,16,17,16" Orientation="Horizontal">
                                                 <StackLayout Spacing="-10">
-                                                    <custom:CustomLabel Text="{Binding CompanyName}" Style="{StaticResource SectionTitleBlackBold}"/>
-                                                    <custom:CustomLabel Text="{Binding TicketId}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                                                    <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{Binding CompanyName}" />
+                                                    <custom:CustomLabel
+                                                        FontSize="Small"
+                                                        Style="{StaticResource CaptionLabelGrey}"
+                                                        Text="{Binding TicketId}"
+                                                        VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
                                                 <StackLayout HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
-                                                    <buttons:SfButton FontFamily="{StaticResource SomarRegular}" Text="{Binding Status}" HeightRequest="32"  Padding="12,0,12,0" CornerRadius="15">
-                                                        <!--BackgroundColor="{StaticResource LightGreenColor}"
-                                                        TextColor="{StaticResource Primary}"-->
+                                                    <buttons:SfButton
+                                                        Padding="12,0,12,0"
+                                                        CornerRadius="15"
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        HeightRequest="32"
+                                                        Text="{Binding Status}">
+                                                        <!--
+                                                            BackgroundColor="{StaticResource LightGreenColor}"
+                                                            TextColor="{StaticResource Primary}"
+                                                        -->
                                                         <buttons:SfButton.Triggers>
-                                                            <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
+                                                            <DataTrigger
+                                                                Binding="{Binding Status}"
+                                                                TargetType="buttons:SfButton"
+                                                                Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
                                                                 <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                 <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
                                                             </DataTrigger>
-                                                            <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
+                                                            <DataTrigger
+                                                                Binding="{Binding Status}"
+                                                                TargetType="buttons:SfButton"
+                                                                Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
                                                                 <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                                                 <Setter Property="BackgroundColor" Value="{StaticResource ChipPaidColor}" />
                                                             </DataTrigger>
@@ -110,14 +159,25 @@
                                                 </StackLayout>
                                             </StackLayout>
 
-                                            <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                                            <BoxView
+                                                BackgroundColor="LightGray"
+                                                HeightRequest="1"
+                                                HorizontalOptions="FillAndExpand" />
 
                                             <StackLayout Padding="17,16,17,16" Spacing="0">
-                                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}" Style="{StaticResource CaptionLabelGrey}"  VerticalOptions="CenterAndExpand"  FontSize="Small" />
+                                                <custom:CustomLabel
+                                                    FontSize="Small"
+                                                    Style="{StaticResource CaptionLabelGrey}"
+                                                    Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}"
+                                                    VerticalOptions="CenterAndExpand" />
                                                 <StackLayout HorizontalOptions="Start">
-                                                    <custom:CustomLabel  FlowDirection="LeftToRight" Text="{Binding CreatedAt}" Style="{StaticResource ValueLabelBlack}"  VerticalOptions="CenterAndExpand"  />
+                                                    <custom:CustomLabel
+                                                        FlowDirection="LeftToRight"
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{Binding CreatedAt}"
+                                                        VerticalOptions="CenterAndExpand" />
                                                 </StackLayout>
-                                                
+
                                             </StackLayout>
                                         </StackLayout>
                                     </border:SfBorder>
@@ -125,16 +185,45 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.NoReportsAvailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoReportLabelVisible}"/>
+                    <custom:CustomLabel
+                        Margin="0,20,0,0"
+                        HorizontalOptions="Center"
+                        IsVisible="{Binding IsNoReportLabelVisible}"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.NoReportsAvailable}"
+                        VerticalOptions="Center" />
                 </StackLayout>
-                <StackLayout Grid.Row="0" BackgroundColor="White" Padding="0,0,0,0">
-                    <custom:CustomLabel  Text="{x:Static ResourceManager:AppResources.NDMyReports}" Style="{StaticResource PageTitleBlack}"/>
-                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
-                        <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  Margin="0,10,0,0" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"                                         ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource NeutralLightGrey}"  SelectionChanging="ChipGroup_statusFilter_SelectionChanging" ChipBorderWidth="1" VerticalOptions="Center"  SelectedChipTextColor="{StaticResource Secondary}">
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="White">
+                    <custom:CustomLabel Style="{StaticResource PageTitleBlack}" Text="{x:Static ResourceManager:AppResources.NDMyReports}" />
+                    <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                        <buttons:SfChipGroup
+                            x:Name="ChipGroup_statusFilter"
+                            Margin="0,10,0,0"
+                            ChipBackgroundColor="Transparent"
+                            ChipBorderColor="{StaticResource NeutralLightGrey}"
+                            ChipBorderWidth="1"
+                            HorizontalOptions="Start"
+                            ItemsSource="{Binding ChipDataFilterlist}"
+                            SelectedChipBackgroundColor="{StaticResource PartialBg}"
+                            SelectedChipTextColor="{StaticResource Secondary}"
+                            SelectionChanging="ChipGroup_statusFilter_SelectionChanging"
+                            Type="Filter"
+                            VerticalOptions="Center">
                             <buttons:SfChipGroup.ItemTemplate>
-                                <DataTemplate >
-                                    <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="2" Padding="5,-2,5,-2"  >
-                                        <custom:CustomLabel Text="{Binding Text}" HorizontalOptions="Center" Style="{StaticResource CaptionLabelBlack}"/>
+                                <DataTemplate>
+                                    <StackLayout
+                                        Margin="0"
+                                        Padding="5,-2,5,-2"
+                                        HorizontalOptions="StartAndExpand"
+                                        Orientation="Horizontal"
+                                        Spacing="2">
+                                        <custom:CustomLabel
+                                            HorizontalOptions="Center"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{Binding Text}" />
                                     </StackLayout>
                                 </DataTemplate>
                             </buttons:SfChipGroup.ItemTemplate>
@@ -142,28 +231,60 @@
                     </ScrollView>
                     <StackLayout>
                         <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
-                            <StackLayout Orientation="Horizontal" Spacing="10" Padding="15,10,15,10">
-                                <Image Source="ic_add_plus.png"/>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
+                            <StackLayout
+                                Padding="15,10,15,10"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Image Source="ic_add_plus.png" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ValueLabelPrimary}"
+                                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" />
                             </StackLayout>
                         </border:SfBorder>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="AddReport_Tapped"/>
+                            <TapGestureRecognizer Tapped="AddReport_Tapped" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
                 </StackLayout>
             </Grid>
-            <Grid Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="{StaticResource Secondary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>
         </Grid>
-       
+
     </ContentPage.Content>
 </ContentPage>

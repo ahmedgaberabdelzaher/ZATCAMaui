@@ -1,14 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"             
-            xmlns:local="clr-namespace:EGAZT" 
-            x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView"
-             BackgroundImageSource="partials_background">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.NewTaxEvasionFormSuccessPaveView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:EGAZT"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundImageSource="partials_background"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,22 +21,55 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <!--<ScrollView>-->
-            <StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">
-                <StackLayout Padding="40" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
-                    <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
-                    <Label  Text="{x:Static local:AppResources.NDTaxEvasionReport}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                    <Label  Text="{Binding SuccessResponse}"  FontFamily="{StaticResource SomarSemiBold}"
-                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-                
-                <buttons:SfButton x:Name="btnDashboard" FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.NDTaxEvasion}"  CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      Clicked="btnDashboard_Clicked"  Margin="10,10,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}"  />
-            <buttons:SfButton x:Name="btnReportList"  Text="{x:Static local:AppResources.NDTaxEvasion}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="OnGotoReportPageClicked"  FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}"  BackgroundColor="Transparent" TextColor="White"  />
-                <!--TextColor="{StaticResource Green}"-->
+        <StackLayout Padding="0,0,0,10" VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="40"
+                BackgroundColor="Transparent"
+                VerticalOptions="CenterAndExpand">
+                <Image Aspect="AspectFit" Source="Forget_ic_success.png" />
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static local:AppResources.NDTaxEvasionReport}"
+                    TextColor="White" />
+                <Label
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding SuccessResponse}"
+                    TextColor="White" />
             </StackLayout>
+
+            <buttons:SfButton
+                x:Name="btnDashboard"
+                Grid.ColumnSpan="2"
+                Margin="10,10,10,0"
+                Clicked="btnDashboard_Clicked"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource SomarSemiBold}"
+                FontSize="15"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static local:AppResources.NDTaxEvasion}"
+                VerticalOptions="End" />
+            <buttons:SfButton
+                x:Name="btnReportList"
+                Grid.ColumnSpan="2"
+                Margin="10,0,10,0"
+                BackgroundColor="Transparent"
+                Clicked="OnGotoReportPageClicked"
+                CornerRadius="10"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource SomarSemiBold}"
+                FontSize="15"
+                HeightRequest="46"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static local:AppResources.NDTaxEvasion}"
+                TextColor="White"
+                VerticalOptions="End" />
+            <!--  TextColor="{StaticResource Green}"  -->
+        </StackLayout>
         <!--</ScrollView>-->
     </ContentPage.Content>
 </ContentPage>

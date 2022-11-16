@@ -5,7 +5,6 @@ using IDialogService = GalaSoft.MvvmLight.Views.IDialogService;
 using System.Windows.Input;
 using Xamarin.Forms;
 using GalaSoft.MvvmLight;
-using YoutubeExplode;
 using System.Threading.Tasks;
 using MediaManager;
 using MediaManager.Library;
@@ -20,8 +19,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         string selectedVideo;
         public string SelectedVideo { get { return selectedVideo; } set { selectedVideo = value; RaisePropertyChanged(); } }
 
-        YoutubeClient youtube = new YoutubeClient();
-
         string videoUrl;
         public string VideoUrl { get { return videoUrl; } set { videoUrl = value; RaisePropertyChanged(); } }
 
@@ -31,44 +28,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         public void GetLiveVideoLst()
         {
             LiveVideosList = new ObservableCollection<VideoModel>()
-        {
-            new VideoModel
             {
-                Row =0,
-                Column =0,
-                IsSelected = true,
-                VideoNumber = AppResources.Port1Name ,
-                VideoURl="eJ6ZMd4sVrI"
+                new VideoModel
+                {
+                    Row =0,
+                    Column =0,
+                    IsSelected = true,
+                    VideoName = AppResources.Port1Name ,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=6343ed0b7e602"
+                },
+                new VideoModel
+                {
+                    Row =0,
+                    Column =1,
+                    IsSelected = false,
+                    VideoName = AppResources.Port2Name,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=6343ec678a4de"
+                    
 
-            },
-            new VideoModel
-            {
-                Row =0,
-                Column =1,
-                IsSelected = false,
-                VideoNumber = AppResources.Port2Name,
-                VideoURl="5VtrmK81NG4"
+                },
+                new VideoModel
+                {
+                    Row =1,
+                    Column =0,
+                    IsSelected = false,
+                    VideoName = AppResources.Port3Name,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=6343eb6725928"
 
-            },
-            new VideoModel
-            {
-                Row =1,
-                Column =0,
-                IsSelected = false,
-                VideoNumber = AppResources.Port3Name,
-                VideoURl="5VtrmK81NG4"
+                },
+                new VideoModel
+                {
+                    Row =1,
+                    Column =1,
+                    IsSelected = false,
+                    VideoName = AppResources.Port4Name,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=634406740f89c"
 
-            },
-            new VideoModel
-            {
-                Row =1,
-                Column =1,
-                IsSelected = false,
-                VideoNumber = AppResources.Port4Name,
-                VideoURl="eJ6ZMd4sVrI"
-
-            }
-        };
+                }
+            };
         }
 
 
@@ -93,9 +90,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                         {
                             IsLoading = true;
                             GetLiveVideoLst();
-                            await Task.Delay(1000);
+                            await Task.Delay(2000);
                             SelectedVideo = AppResources.Port1Name;
-                            await GetYoutubeLiveVideoURl(LiveVideosList[0].VideoURl);
+                            VideoUrl = LiveVideosList[0].VideoURl;
                             IsLoading = false;
                         });
 
@@ -122,14 +119,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                         {
                             IsLoading = true;
 
-                            SelectedVideo = videoItem.VideoNumber;
-
+                            SelectedVideo = videoItem.VideoName;
+                            await Task.Delay(2000);
+                            VideoUrl = videoItem.VideoURl;
                             foreach (var video in LiveVideosList)
                             {
-                                video.IsSelected = video.VideoNumber != videoItem.VideoNumber ? false : true;
+                                video.IsSelected = video.VideoName != videoItem.VideoName ? false : true;
                             }
-
-                            await GetYoutubeLiveVideoURl(videoItem.VideoURl);
                             IsLoading = false;
                         });
                     }
@@ -147,28 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         #endregion
 
         #region Methods
-        private async Task GetYoutubeLiveVideoURl(string videoId)
-        {
-
-            try
-            {
-                CrossMediaManager.Current.Dispose();
-                await Task.Delay(1000);
-                CrossMediaManager.Current.Init();
-                await Task.Delay(1000);
-                var streamManifests = await youtube.Videos.Streams.GetHttpLiveStreamUrlAsync(videoId);
-                var item = await CrossMediaManager.Current.Extractor.CreateMediaItem(streamManifests);
-
-                item.MediaType = MediaType.Hls;
-                await CrossMediaManager.Current.Play(item);
-            }
-            catch (Exception ex)
-            {
-                await _dialogService.ShowMessage("", ex.InnerException + ex.Message + ex.StackTrace);
-            }
-
-
-        }
+        
         #endregion
     }
 
@@ -187,7 +162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                 RaisePropertyChanged();
             }
         }
-        public string VideoNumber { get; set; }
+        public string VideoName { get; set; }
         public string VideoURl { get; set; }
     }
 }

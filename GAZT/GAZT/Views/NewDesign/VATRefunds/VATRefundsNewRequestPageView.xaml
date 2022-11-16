@@ -1,19 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:custom="clr-namespace:GAZT"
-              xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsNewRequestPageView"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" 
-             xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" 
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" 
-             NavigationPage.HasNavigationBar="False"  BackgroundImageSource="partials_background.png" >
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.VATRefunds.VATRefundsNewRequestPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
@@ -37,29 +39,58 @@
                 <StackLayout>
                     <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.VATRefund}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.VATRefund}" />
 
-                        <Image Grid.Row="0" Grid.Column="0" Style="{DynamicResource BackButtonArrow}" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite">
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <StackLayout  Grid.Row="0" Grid.Column="2">
-                            <StackLayout Spacing="3" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" Orientation="Horizontal" Rotation="90">
-                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource SecondaryNew}"/>
-                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource SecondaryNew}"/>
-                                <BoxView HeightRequest="5" WidthRequest="5" CornerRadius="3" BackgroundColor="{StaticResource SecondaryNew}"/>
+                        <StackLayout Grid.Row="0" Grid.Column="2">
+                            <StackLayout
+                                HorizontalOptions="EndAndExpand"
+                                Orientation="Horizontal"
+                                Rotation="90"
+                                Spacing="3"
+                                VerticalOptions="CenterAndExpand">
+                                <BoxView
+                                    BackgroundColor="{StaticResource SecondaryNew}"
+                                    CornerRadius="3"
+                                    HeightRequest="5"
+                                    WidthRequest="5" />
+                                <BoxView
+                                    BackgroundColor="{StaticResource SecondaryNew}"
+                                    CornerRadius="3"
+                                    HeightRequest="5"
+                                    WidthRequest="5" />
+                                <BoxView
+                                    BackgroundColor="{StaticResource SecondaryNew}"
+                                    CornerRadius="3"
+                                    HeightRequest="5"
+                                    WidthRequest="5" />
                             </StackLayout>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnMoreClicked}" />
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <!--<Image Grid.Row="0" Grid.Column="2"  Source="close" IsVisible="{TemplateBinding BindingContext.IsVoidBtnVisible}" VerticalOptions="Center" HorizontalOptions="End">
@@ -69,12 +100,26 @@
                         </Image>-->
                     </Grid>
 
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0" BackgroundColor="White" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Padding="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
@@ -85,127 +130,248 @@
         <Grid>
             <ScrollView>
                 <Grid>
-                    <Grid IsVisible="true" BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid
+                        Margin="20,10,20,0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="true"
+                        VerticalOptions="FillAndExpand">
 
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="40*"/>
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="40*" />
                         </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                        <Grid
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="1"/>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="1" />
                             </Grid.RowDefinitions>
-                            <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.VATRefundDetails}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource SectionTitleBlack}" />
-                            <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource BodyLabelGrey}"/>
-                            <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                            <custom:CustomLabel
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource SectionTitleBlack}"
+                                Text="{x:Static ResourceManager:AppResources.VATRefundDetails}" />
+                            <custom:CustomLabel
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource BodyLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZCompletethebelowdetails}" />
+                            <BoxView
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource NeutralGrayOpacity90BoxView}" />
                         </Grid>
 
 
-                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZIDType}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="1"
+                            Margin="0,16,0,0">
+                            <custom:CustomLabel
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ZZIDType}" />
+                            <border:SfBorder
+                                Margin="0,0,0,10"
+                                BorderColor="#B1B1B1"
+                                BorderWidth="1"
+                                Style="{StaticResource GreyBorderFrame}">
 
-                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
 
-                                    <Label Text="{Binding SelectedIdtype}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily="{StaticResource SomarRegular}"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                        HorizontalOptions="Start" VerticalOptions="Center">
-                                        </Image>
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource GAZTSmallBlackLabel}"
+                                        Text="{Binding SelectedIdtype}" />
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="5,0"
+                                            HeightRequest="15"
+                                            HorizontalOptions="Start"
+                                            Source="arrowDropdown"
+                                            VerticalOptions="Center"
+                                            WidthRequest="15" />
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding IbanIdTypeTapped}" ></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding IbanIdTypeTapped}" />
                                     </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
-                            </border:SfBorder >
+                            </border:SfBorder>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  Margin="0,16,0,0" >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource CaptionLabelGrey}" />
-                            <border:SfBorder BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,0,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <StackLayout
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="1"
+                            Margin="0,16,0,0">
+                            <custom:CustomLabel
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                            <border:SfBorder
+                                Margin="0,0,0,10"
+                                BorderColor="#B1B1B1"
+                                BorderWidth="1"
+                                Style="{StaticResource GreyBorderFrame}">
 
-                                <StackLayout Orientation="Horizontal"  Padding="5,15,5,15">
+                                <StackLayout Padding="5,15,5,15" Orientation="Horizontal">
 
-                                    <Label Text="{Binding SelectedIdNumber}" Style="{StaticResource GAZTSmallBlackLabel}" HorizontalOptions="Start" FontFamily="{StaticResource SomarRegular}"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown" Margin="5,0" WidthRequest="15" HeightRequest="15"
-                                        HorizontalOptions="Start" VerticalOptions="Center">
-                                        </Image>
+                                    <Label
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource GAZTSmallBlackLabel}"
+                                        Text="{Binding SelectedIdNumber}" />
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="5,0"
+                                            HeightRequest="15"
+                                            HorizontalOptions="Start"
+                                            Source="arrowDropdown"
+                                            VerticalOptions="Center"
+                                            WidthRequest="15" />
                                     </StackLayout>
 
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding IbanIdNumberTapped}" ></TapGestureRecognizer>
+                                        <TapGestureRecognizer Command="{Binding IbanIdNumberTapped}" />
                                     </StackLayout.GestureRecognizers>
 
                                 </StackLayout>
-                            </border:SfBorder >
+                            </border:SfBorder>
                         </StackLayout>
 
-                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,16,0,8" >
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAccounts}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource CaptionLabelGrey}" />
-                            <border:SfBorder   Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding IsAddAccountVisisble}">
-                                <StackLayout Orientation="Horizontal"  Padding="15,10,15,10" IsVisible="{Binding IsAddAccountVisisble}">
-                                    <Image Source="add" HeightRequest="20" WidthRequest="20">
-                                    </Image>
-                                    <Label Margin="8,0,8,0" Text="{x:Static ResourceManager:AppResources.VATRefundsAddAccount}" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
+                        <StackLayout
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,16,0,8">
+                            <custom:CustomLabel
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.VATRefundAccounts}" />
+                            <border:SfBorder IsVisible="{Binding IsAddAccountVisisble}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="15,10,15,10"
+                                    IsVisible="{Binding IsAddAccountVisisble}"
+                                    Orientation="Horizontal">
+                                    <Image
+                                        HeightRequest="20"
+                                        Source="add"
+                                        WidthRequest="20" />
+                                    <Label
+                                        Margin="8,0,8,0"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelPrimary}"
+                                        Text="{x:Static ResourceManager:AppResources.VATRefundsAddAccount}" />
                                     <StackLayout.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="NewAccount_Clicked">
-
-                                        </TapGestureRecognizer>
+                                        <TapGestureRecognizer Tapped="NewAccount_Clicked" />
                                     </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                            </border:SfBorder >
+                            </border:SfBorder>
                         </StackLayout>
 
 
-                        <listView:SfListView x:Name="BankOptionsListView" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"  VerticalOptions="Center" AutoFitMode="Height" ItemSpacing="5"
-                                          ItemsSource="{Binding IbanData}" SelectedItem="{Binding SelectedIbanData, Mode=TwoWay}"  SelectionMode="Single"
-                                          SelectionBackgroundColor="Transparent" SelectionChanged="BankOptionsListView_SelectionChanged" >
+                        <listView:SfListView
+                            x:Name="BankOptionsListView"
+                            Grid.Row="3"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            AutoFitMode="Height"
+                            HorizontalOptions="Center"
+                            IsScrollBarVisible="False"
+                            IsScrollingEnabled="False"
+                            ItemSpacing="5"
+                            ItemsSource="{Binding IbanData}"
+                            SelectedItem="{Binding SelectedIbanData, Mode=TwoWay}"
+                            SelectionBackgroundColor="Transparent"
+                            SelectionChanged="BankOptionsListView_SelectionChanged"
+                            SelectionMode="Single"
+                            VerticalOptions="Center">
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="136" WidthRequest="171">
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
+                                    <cards:SfCardView
+                                        BackgroundColor="Transparent"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        HeightRequest="136"
+                                        WidthRequest="171">
+                                        <Grid
+                                            ColumnSpacing="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            RowSpacing="10"
+                                            VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="30*"/>
-                                                <RowDefinition Height="70*"/>
-                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="30*" />
+                                                <RowDefinition Height="70*" />
+                                                <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Row="0"
-                                                   Grid.Column="0"
-                                                   Grid.RowSpan="3"
-                                                   Source="vat_tile_listofsignup_W" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                            <StackLayout  Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Margin="5,0,5,30">
-                                                <Image Margin="15,0,15,15" IsVisible="false"  HeightRequest="32" WidthRequest="32"  Source="positive" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.RowSpan="3"
+                                                Grid.Column="0"
+                                                Aspect="Fill"
+                                                HorizontalOptions="FillAndExpand"
+                                                Source="vat_tile_listofsignup_W"
+                                                VerticalOptions="FillAndExpand" />
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"
+                                                Margin="5,0,5,30"
+                                                Spacing="0">
+                                                <Image
+                                                    Margin="15,0,15,15"
+                                                    Aspect="Fill"
+                                                    HeightRequest="32"
+                                                    HorizontalOptions="End"
+                                                    IsVisible="false"
+                                                    Source="positive"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="32" />
 
-                                                <Label  Text="" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                        Margin="20,0,20,0" TextColor="{StaticResource PrimaryColor}" HorizontalTextAlignment="Start"    >
-                                                </Label>
-                                                <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
-                                                                        Margin="20,0,20,0" TextColor="{StaticResource PrimaryColor}" HorizontalTextAlignment="Start"    >
-                                                </Label>
+                                                <Label
+                                                    Margin="20,0,20,0"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text=""
+                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    VerticalOptions="End" />
+                                                <Label
+                                                    Margin="20,0,20,0"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding Iban}"
+                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    VerticalOptions="EndAndExpand" />
                                             </StackLayout>
 
                                         </Grid>
@@ -214,29 +380,65 @@
                             </listView:SfListView.ItemTemplate>
                             <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="136" WidthRequest="171">
-                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="10">
+                                    <cards:SfCardView
+                                        BackgroundColor="Transparent"
+                                        CornerRadius="20"
+                                        HasShadow="False"
+                                        HeightRequest="136"
+                                        WidthRequest="171">
+                                        <Grid
+                                            ColumnSpacing="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            RowSpacing="10"
+                                            VerticalOptions="FillAndExpand">
                                             <Grid.RowDefinitions>
-                                                <RowDefinition Height="30*"/>
-                                                <RowDefinition Height="70*"/>
-                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="30*" />
+                                                <RowDefinition Height="70*" />
+                                                <RowDefinition Height="auto" />
                                             </Grid.RowDefinitions>
                                             <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*" />
                                             </Grid.ColumnDefinitions>
-                                            <Image Grid.Row="0"
-                                                   Grid.Column="0"
-                                                   Grid.RowSpan="3"
-                                                   Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                                            <StackLayout Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Spacing="0" Margin="5,0,5,30">
-                                                <Image Margin="15,0,15,15" IsVisible="false" HeightRequest="32" WidthRequest="32"  Source="negative" Aspect="Fill" HorizontalOptions="End" VerticalOptions="Center"/>
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.RowSpan="3"
+                                                Grid.Column="0"
+                                                Aspect="Fill"
+                                                HorizontalOptions="FillAndExpand"
+                                                Source="vat_tile_listofsignup"
+                                                VerticalOptions="FillAndExpand" />
+                                            <StackLayout
+                                                Grid.Row="1"
+                                                Grid.RowSpan="2"
+                                                Grid.Column="0"
+                                                Margin="5,0,5,30"
+                                                Spacing="0">
+                                                <Image
+                                                    Margin="15,0,15,15"
+                                                    Aspect="Fill"
+                                                    HeightRequest="32"
+                                                    HorizontalOptions="End"
+                                                    IsVisible="false"
+                                                    Source="negative"
+                                                    VerticalOptions="Center"
+                                                    WidthRequest="32" />
 
-                                                <Label  Text="{Binding BankDetails.IBAN}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="End"
-                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
-                                                </Label>
-                                                <Label Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand"
-                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
-                                                </Label>
+                                                <Label
+                                                    Margin="20,0,20,0"
+                                                    HorizontalOptions="Start"
+                                                    HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding BankDetails.IBAN}"
+                                                    TextColor="White"
+                                                    VerticalOptions="End" />
+                                                <Label
+                                                    Margin="20,0,20,0"
+                                                    HorizontalOptions="EndAndExpand"
+                                                    HorizontalTextAlignment="Start"
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding Iban}"
+                                                    TextColor="White"
+                                                    VerticalOptions="EndAndExpand" />
                                             </StackLayout>
 
                                         </Grid>
@@ -247,72 +449,157 @@
                                 <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=2, Tablet=4, Desktop=5}" />
                             </listView:SfListView.LayoutManager>
                         </listView:SfListView>
-                        <border:SfBorder Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <border:SfBorder
+                            Grid.Row="4"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,20,0,10"
+                            BorderColor="#B1B1B1"
+                            BorderWidth="1"
+                            Style="{StaticResource GreyBorderFrame}">
                             <StackLayout Margin="8">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
-                                    <Image HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image
+                                        HeightRequest="24"
+                                        HorizontalOptions="Start"
+                                        Source="ic_vat_info.png"
+                                        VerticalOptions="Center"
+                                        WidthRequest="24" />
+                                    <custom:CustomLabel
+                                        Margin="10,0,10,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.Information}" />
                                 </StackLayout>
-                                <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestUpdateIBANInfo}" HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource CaptionLabelGrey}" />
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestUpdateIBANInfo}" />
 
                             </StackLayout>
                         </border:SfBorder>
-                        <Frame HasShadow="False" Opacity="0.1"  Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="{StaticResource Primary}" Margin="0,16,0,8" CornerRadius="15" Padding="18" HeightRequest="24" HorizontalOptions="FillAndExpand">
-                        </Frame>
-                        <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2">
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center" Padding="16,8,16,0">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" LineSpacing="0.8" Style="{StaticResource BodyLabelBlack}" />
+                        <Frame
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,16,0,8"
+                            Padding="18"
+                            BackgroundColor="{StaticResource Primary}"
+                            CornerRadius="15"
+                            HasShadow="False"
+                            HeightRequest="24"
+                            HorizontalOptions="FillAndExpand"
+                            Opacity="0.1" />
+                        <StackLayout
+                            Grid.Row="5"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Orientation="Horizontal">
+                            <StackLayout
+                                Padding="16,8,16,0"
+                                HorizontalOptions="Start"
+                                Orientation="Horizontal"
+                                VerticalOptions="Center">
+                                <custom:CustomLabel
+                                    LineSpacing="0.8"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.VATRefundAmounts}" />
                             </StackLayout>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center" Padding="16,8,16,0">
-                                <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" HorizontalOptions="EndAndExpand">
+                            <StackLayout
+                                Padding="16,8,16,0"
+                                HorizontalOptions="End"
+                                Orientation="Horizontal"
+                                VerticalOptions="Center">
+                                <custom:CustomLabel HorizontalOptions="EndAndExpand" Style="{StaticResource SectionTitleBlackBold}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding VatRefundsDisplayDataModel.Rfamt,Converter={StaticResource commaSeparatorConverter}}" Style="{StaticResource SectionTitleBlackBold}" ></Span>
-                                            <Span Text=" "/>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
+                                            <Span Style="{StaticResource SectionTitleBlackBold}" Text="{Binding VatRefundsDisplayDataModel.Rfamt, Converter={StaticResource commaSeparatorConverter}}" />
+                                            <Span Text=" " />
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                             </StackLayout>
                         </StackLayout>
-                        <border:SfBorder Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" BorderColor="#B1B1B1" BorderWidth="1"  Margin="0,20,0,10"  Style="{StaticResource GreyBorderFrame}">
+                        <border:SfBorder
+                            Grid.Row="6"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,20,0,10"
+                            BorderColor="#B1B1B1"
+                            BorderWidth="1"
+                            Style="{StaticResource GreyBorderFrame}">
                             <StackLayout Margin="8">
                                 <StackLayout Orientation="Horizontal" Spacing="0">
-                                    <Image HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Information}" Margin="10,0,10,0"  HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource ValueLabelBlack}"/>
+                                    <Image
+                                        HeightRequest="24"
+                                        HorizontalOptions="Start"
+                                        Source="ic_vat_info.png"
+                                        VerticalOptions="Center"
+                                        WidthRequest="24" />
+                                    <custom:CustomLabel
+                                        Margin="10,0,10,0"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.Information}" />
                                 </StackLayout>
-                                <Label Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestConfirmationMessage}" HorizontalOptions="StartAndExpand"
-                                    Style="{StaticResource CaptionLabelGrey}" />
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatRefundRequestConfirmationMessage}" />
 
                             </StackLayout>
                         </border:SfBorder>
-                        <buttons:SfButton Grid.Row="8" Grid.Column="0" HeightRequest="48"
-                                       Grid.ColumnSpan="2" Margin="0,0,0,16"  x:Name="btnReasonContinue" Clicked="ContinueButton_Tapped" Text="{x:Static ResourceManager:AppResources.ZZZZContinue}"
-                                    Style="{StaticResource PrimaryButtonStyle}"/>
+                        <buttons:SfButton
+                            x:Name="btnReasonContinue"
+                            Grid.Row="8"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            Margin="0,0,0,16"
+                            Clicked="ContinueButton_Tapped"
+                            HeightRequest="48"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZContinue}" />
 
                     </Grid>
 
                 </Grid>
             </ScrollView>
-            <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                       TextColor="{StaticResource Secondary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,-20,0,0"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsLoading}"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

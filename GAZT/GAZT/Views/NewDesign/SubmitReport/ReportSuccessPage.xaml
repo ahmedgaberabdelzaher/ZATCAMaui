@@ -4,9 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
@@ -49,9 +49,9 @@
 
                     <!--  Success icon  -->
                     <Image
+                        Margin="0,0,0,30"
                         Aspect="AspectFit"
                         HeightRequest="150"
-                        Margin="0,0,0,30"
                         Source="Forget_ic_success"
                         WidthRequest="150" />
 
@@ -65,22 +65,22 @@
 
                     <!--  Success Msg2 Label  -->
                     <Label
+                        Margin="40,0"
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="18"
-                        HorizontalTextAlignment="Center"
                         HorizontalOptions="CenterAndExpand"
-                        Margin="40,0"
+                        HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         Text="{x:Static ResourceManager:AppResources.ReportSuccessMsg}"
                         TextColor="White" />
 
-                     <!--  Back to Home Button  -->
-                        <buttons:SfButton
-                            Margin="20,50"
-                            BackgroundColor="#0996D4"
-                            Command="{Binding BackToHomeCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.BackToHome}" />
+                    <!--  Back to Home Button  -->
+                    <buttons:SfButton
+                        Margin="20,50"
+                        BackgroundColor="#0996D4"
+                        Command="{Binding BackToHomeCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.BackToHome}" />
                 </StackLayout>
 
 
@@ -88,69 +88,69 @@
             <!--#endregion Header-->
 
             <!--#region Body-->
-            <yummy:PancakeView Grid.Row="1"
-                               Style="{StaticResource CommonTopCurves}">
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
 
-                  <ScrollView VerticalScrollBarVisibility="Never">
+                <ScrollView VerticalScrollBarVisibility="Never">
 
-                        <StackLayout Margin="0,0,0,20">
+                    <StackLayout Margin="0,0,0,20">
 
 
-                            <!--  ReportNote Frame  -->
-                            <yummy:PancakeView
-                                Margin="0,15"
-                                CornerRadius="15"
-                                Border="{yummy:BorderMarkup Color=#EBEBEB, Thickness='1'}"
-                                Style="{StaticResource CommonTopCurves}"
-                                VerticalOptions="Start">
+                        <!--  ReportNote Frame  -->
+                        <yummy:PancakeView
+                            Margin="0,15"
+                            Border="{yummy:BorderMarkup Color=#EBEBEB,
+                                                        Thickness='1'}"
+                            CornerRadius="15"
+                            Style="{StaticResource CommonTopCurves}"
+                            VerticalOptions="Start">
 
-                  
 
-                                <StackLayout Orientation="Horizontal" Spacing="10">
 
-                                    <!--  ReportNumber Label  -->
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="16"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
-                                        TextColor="{StaticResource NeutralGreay}" />
+                            <StackLayout Orientation="Horizontal" Spacing="10">
 
-                                    <!--  Report Number Result Label  -->
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="16"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="{Binding ReportNumberResult}"
-                                        TextColor="#58595B" />
+                                <!--  ReportNumber Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ZTEReportReportNumber}"
+                                    TextColor="{StaticResource NeutralGreay}" />
 
-                                    <!--  Report icon  -->
-                                    <Image
-                                        HorizontalOptions="End"
-                                        Source="zakat_copy"
-                                        Style="{StaticResource SmallIcon}" />
+                                <!--  Report Number Result Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ReportNumberResult}"
+                                    TextColor="#58595B" />
 
-                                </StackLayout>
+                                <!--  Report icon  -->
+                                <Image
+                                    HorizontalOptions="End"
+                                    Source="zakat_copy"
+                                    Style="{StaticResource SmallIcon}" />
 
-                      
-                
-                            </yummy:PancakeView>
+                            </StackLayout>
 
-                            <!--  Send Report Button  -->
-                            <buttons:SfButton
-                                BackgroundColor="White"
-                                TextColor="#0996D4"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
-                                Command="{Binding GoToMyReportsCommand}"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.NDMyReports}" />
 
-                        </StackLayout>
 
-                  </ScrollView>
-                 
-             
+                        </yummy:PancakeView>
+
+                        <!--  Send Report Button  -->
+                        <buttons:SfButton
+                            BackgroundColor="White"
+                            BorderColor="#0996D4"
+                            BorderWidth="1"
+                            Command="{Binding GoToMyReportsCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.NDMyReports}"
+                            TextColor="#0996D4" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+
             </yummy:PancakeView>
             <!--#endregion Body-->
 

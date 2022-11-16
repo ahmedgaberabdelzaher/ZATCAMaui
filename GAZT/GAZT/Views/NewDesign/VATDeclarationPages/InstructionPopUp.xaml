@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             mc:Ignorable="d"
-             xmlns:custom2="clr-namespace:EGAZT"
-             xmlns:custom="clr-namespace:GAZT"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.InstructionPopUp">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.InstructionPopUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,66 +18,82 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="End" Style="{StaticResource CommonTopCurves}">
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
         <StackLayout BackgroundColor="White">
-            <Label Text="{x:Static custom2:AppResources.ZVatReadInstructions}" BackgroundColor="White" Style="{StaticResource CaptionLabelGrey}"/>
-            
-            <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource CaptionLabelGrey}">
+            <Label
+                BackgroundColor="White"
+                Style="{StaticResource CaptionLabelGrey}"
+                Text="{x:Static custom2:AppResources.ZVatReadInstructions}" />
+
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource CaptionLabelGrey}"
+                VerticalOptions="EndAndExpand">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="1."/>
-                        <Span Text="{x:Static custom2:AppResources.ZZPleasefilltherequestedinformationforeachstep}"  />
+                        <Span Text="1." />
+                        <Span Text="{x:Static custom2:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>
 
-            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource CaptionLabelGrey}"
+                VerticalOptions="EndAndExpand">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="2."/>
+                        <Span Text="2." />
                         <Span Text="{x:Static custom2:AppResources.ZVatSubmittedInstructions}" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>
 
-            <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="EndAndExpand">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="3."/>
-                        <Span  Text="{x:Static custom2:AppResources.ZVatDateInstructions}" />
+                        <Span Text="3." />
+                        <Span Text="{x:Static custom2:AppResources.ZVatDateInstructions}" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>
 
-            <custom:CustomLabel  Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="4."/>
+                        <Span Text="4." />
                         <Span Text="{x:Static custom2:AppResources.ZVatFaqSectionInstructions}" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>
 
 
-            <custom:CustomLabel  Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}" TextColor="{StaticResource NewDullOrangeColor}">
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource CaptionLabelGrey}"
+                Text="{x:Static custom2:AppResources.ZVatClickFaqInstructions}"
+                TextColor="{StaticResource NewDullOrangeColor}"
+                VerticalOptions="EndAndExpand">
                 <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnClickedFAQ"/>
+                    <TapGestureRecognizer Tapped="OnClickedFAQ" />
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>
 
 
-            
-<!--                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
+
+            <!--                <CheckBox x:Name="chkDeclaration"  VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox"  Value="false">
                             <Setter Property="Color" Value="#e84941" />
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>-->
-            <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}">
+            <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="{x:Static custom2:AppResources.ZVatDeclarationInstructions}"  />
+                        <Span Text="{x:Static custom2:AppResources.ZVatDeclarationInstructions}" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>

@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             x:Class="EGAZT.Views.NewDesign.Common.YesNoAlertPopupView">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.Common.YesNoAlertPopupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,14 +15,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand" BackgroundColor="White">
+    <yummy:PancakeView
+        BackgroundColor="White"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
         <ScrollView>
             <StackLayout>
-                <custom:CustomLabel Margin="10" x:Name="MessageText" Style="{StaticResource BodyLabelBlack}"/>
-                <buttons:SfButton  x:Name="btnOK" HorizontalOptions="FillAndExpand" 
-                                  Style="{StaticResource PrimaryButtonStyle}" Clicked="OnOkButtonClicked" />
-                <buttons:SfButton  x:Name="btnNO" HorizontalOptions="FillAndExpand" 
-                                  Style="{StaticResource PrimaryButtonStyle}" Clicked="OnNoButtonClicked" />
+                <custom:CustomLabel
+                    x:Name="MessageText"
+                    Margin="10"
+                    Style="{StaticResource BodyLabelBlack}" />
+                <buttons:SfButton
+                    x:Name="btnOK"
+                    Clicked="OnOkButtonClicked"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource PrimaryButtonStyle}" />
+                <buttons:SfButton
+                    x:Name="btnNO"
+                    Clicked="OnNoButtonClicked"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource PrimaryButtonStyle}" />
             </StackLayout>
         </ScrollView>
     </yummy:PancakeView>

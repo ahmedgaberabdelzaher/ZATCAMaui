@@ -1,23 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-                 xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
-                 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-            xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-            xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-            xmlns:custom="clr-namespace:GAZT"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
-            xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-                 xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-                 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.RefundAccountPopupPageView">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.RefundAccountPopupPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,190 +27,394 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="EndAndExpand"  Style="{StaticResource CommonTopCurves}" BackgroundColor="White">
+    <yummy:PancakeView
+        BackgroundColor="White"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
         <StackLayout BackgroundColor="White">
             <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="100*"/>
-            </Grid.RowDefinitions>
-            <Grid  BackgroundColor="White" Grid.Row="0" RowSpacing="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="15"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                    <RowDefinition Height="100*" />
+                </Grid.RowDefinitions>
+                <Grid
+                    Grid.Row="0"
+                    BackgroundColor="White"
+                    RowSpacing="5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="15" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>  
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRefund}"
-                                            Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" BackgroundColor="White"
-                                            Style="{StaticResource PageTitleBlack}"/>
+                    <custom:CustomLabel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        Style="{StaticResource PageTitleBlack}"
+                        Text="{x:Static ResourceManager:AppResources.VATRefund}" />
 
-                <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
-                    
+                    <!--<StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
+
                 </StackLayout>-->
-                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="White" IsEnabled="{Binding IsIdTypeEnabled}">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
-                    <Grid>
-                    <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0" Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANType}"   Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="Center"  Margin="10,0,10,0" Keyboard="Numeric" >
+                    <StackLayout
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        IsEnabled="{Binding IsIdTypeEnabled}">
+                        <custom:CustomLabel
+                            BackgroundColor="White"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.VatDeregIDType}" />
+                        <Grid>
+                            <inputLayout:SfTextInputLayout
+                                Margin="0,-10,0,0"
+                                BackgroundColor="White"
+                                InputViewPadding="16,0,16,0"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <control:BorderlessEntry
+                                    Margin="10,0,10,0"
+                                    Keyboard="Numeric"
+                                    Placeholder="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TxtSelectedIBANType}"
+                                    VerticalTextAlignment="Center" />
 
-                        </control:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Source="arrowDropdown.png" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+                            <custom:CustomButton BackgroundColor="Transparent" Clicked="SfButton_Clicked" />
+                            <syncfusion:SfPicker
+                                x:Name="IDTypeDropdown"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="10,0,10,0"
+                                BackgroundColor="White"
+                                BorderColor="Black"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                CancelButtonClicked="IDTypeDropdown_CancelButtonClicked"
+                                CancelButtonTextColor="{StaticResource Primary}"
+                                ColumnHeaderHeight="46"
+                                DisplayMemberPath="Text"
+                                FlowDirection="RightToLeft"
+                                FooterHeight="46"
+                                HeaderBackgroundColor="{StaticResource Primary}"
+                                HeaderFontSize="13"
+                                HeaderHeight="55"
+                                HeaderText="Picker1"
+                                HeaderTextColor="{StaticResource PrimaryColor}"
+                                ItemHeight="40"
+                                ItemsSource="{Binding IBANTypesList}"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                OKButtonTextColor="{StaticResource Primary}"
+                                OkButtonClicked="IDTypeDropdown_OkButtonClicked"
+                                PickerHeight="250"
+                                PickerMode="Dialog"
+                                PickerWidth="300"
+                                SelectedItemFontAttribute="Bold"
+                                SelectedItemFontSize="15"
+                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                SelectionChanged="IDType_SelectionChanged"
+                                ShowColumnHeader="False"
+                                ShowFooter="False"
+                                ShowHeader="False"
+                                UnSelectedItemTextColor="{StaticResource NeutralBlack}">
+                                <syncfusion:SfPicker.Behaviors>
+                                    <customcontrol:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
+                            </syncfusion:SfPicker>
+                        </Grid>
 
-                        <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="arrowDropdown.png"/>
-                        </inputLayout:SfTextInputLayout.TrailingView>
-                    </inputLayout:SfTextInputLayout>
-                        <custom:CustomButton BackgroundColor="Transparent" Clicked="SfButton_Clicked"/>
-                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="IDTypeDropdown"  HeaderHeight="55" HeaderText="Picker1" HeaderTextColor="{StaticResource PrimaryColor}"
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="Text"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" ItemsSource="{Binding IBANTypesList}"  SelectionChanged="IDType_SelectionChanged"
-                                              OkButtonClicked="IDTypeDropdown_OkButtonClicked"
-                                                                     CancelButtonClicked="IDTypeDropdown_CancelButtonClicked"
-                                             SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        FooterHeight="46" >
-                            <syncfusion:SfPicker.Behaviors>
-                                <customcontrol:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>
-                    </Grid>
-                    
-                </StackLayout>
-
-
-                    <StackLayout Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" IsEnabled="{Binding IsIdNumberEnabled}" BackgroundColor="Red">
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.IDNumber}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
-                    <Grid>
-                    <inputLayout:SfTextInputLayout InputViewPadding="16,0,16,0"  Style="{StaticResource InputTableTextInputLayoutStyle}" Margin="0,-10,0,0" BackgroundColor="White">
-                                <control:BorderlessEntry   Text="{Binding TxtSelectedIBANIDNumber}"  BackgroundColor="White"  Style="{StaticResource DefaultEntry}" Placeholder="Text" VerticalTextAlignment="Center"  Margin="10,0,10,0" >
-
-                        </control:BorderlessEntry>
-
-                        <inputLayout:SfTextInputLayout.TrailingView>
-                            <Image Source="arrowDropdown.png"/>
-                        </inputLayout:SfTextInputLayout.TrailingView>
-                    </inputLayout:SfTextInputLayout>
-
-                        <buttons:SfButton BackgroundColor="Transparent" Clicked="SfButton_Clicked1"/>
-
-                        <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="IDNumberDropdown" HeaderHeight="55" HeaderText="Picker2" HeaderTextColor="White" 
-                        ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                        ShowFooter="False" ItemHeight="40" DisplayMemberPath="Idnumber"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                        PickerHeight="250" SelectionChanged="IDNumber_SelectionChanged"  OkButtonClicked="IDNumberDropdown_OkButtonClicked"
-                                                                     CancelButtonClicked="IDNumberDropdown_CancelButtonClicked"
-                                             ItemsSource="{Binding IBANIDNumberList}" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                        FooterHeight="46" >
-                            <syncfusion:SfPicker.Behaviors>
-                                <customcontrol:SfPickerBehavior />
-                            </syncfusion:SfPicker.Behaviors>
-                        </syncfusion:SfPicker>
-
-                    </Grid>
-                </StackLayout>
-
-                    <StackLayout Grid.Row="4" Grid.Column="0" IsVisible="{Binding IsNewAccountButtonVisible}" IsEnabled="{Binding IsNewAccountEnabled}"
-                                 Grid.ColumnSpan="2" BackgroundColor="White">
-                <border:SfBorder Margin="0,0,0,0"  Style="{StaticResource GreyBorderFrameWithShadow}" >
-                    <StackLayout Orientation="Horizontal" Spacing="10" Padding="15,10,15,10">
-                        <Image Source="ic_add_plus.png">
-
-                        </Image>
-                        <custom:CustomLabel Text="{Binding NewAccountText}" Style="{StaticResource ValueLabelPrimary}" HorizontalOptions="Start"/>
                     </StackLayout>
-                    <border:SfBorder.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                    </border:SfBorder.GestureRecognizers>
-                </border:SfBorder>
-                </StackLayout>
 
-                    <StackLayout Grid.Row="5" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NAIBAN}" Style="{StaticResource CaptionLabelGrey}" BackgroundColor="White"/>
-                        <listView:SfListView Orientation="Horizontal" x:Name="OtherIbanlist"   AutoFitMode="Height" 
-                                         HeightRequest="100"
-                                                 VerticalOptions="Fill" HorizontalOptions="FillAndExpand"
-                                                 ItemsSource="{Binding IBANList, Mode=TwoWay}"  SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
-                                                  Margin="0"  IsScrollBarVisible="False">
+                    <StackLayout
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="Red"
+                        IsEnabled="{Binding IsIdNumberEnabled}">
+                        <custom:CustomLabel
+                            BackgroundColor="White"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.IDNumber}" />
+                        <Grid>
+                            <inputLayout:SfTextInputLayout
+                                Margin="0,-10,0,0"
+                                BackgroundColor="White"
+                                InputViewPadding="16,0,16,0"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <control:BorderlessEntry
+                                    Margin="10,0,10,0"
+                                    BackgroundColor="White"
+                                    Placeholder="Text"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TxtSelectedIBANIDNumber}"
+                                    VerticalTextAlignment="Center" />
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Source="arrowDropdown.png" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <buttons:SfButton BackgroundColor="Transparent" Clicked="SfButton_Clicked1" />
+
+                            <syncfusion:SfPicker
+                                x:Name="IDNumberDropdown"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Margin="10,0,10,0"
+                                BackgroundColor="White"
+                                BorderColor="Black"
+                                CancelButtonBackgroundColor="#EAF7CC"
+                                CancelButtonClicked="IDNumberDropdown_CancelButtonClicked"
+                                CancelButtonTextColor="{StaticResource Primary}"
+                                ColumnHeaderHeight="46"
+                                DisplayMemberPath="Idnumber"
+                                FlowDirection="RightToLeft"
+                                FooterHeight="46"
+                                HeaderBackgroundColor="{StaticResource Primary}"
+                                HeaderFontSize="13"
+                                HeaderHeight="55"
+                                HeaderText="Picker2"
+                                HeaderTextColor="White"
+                                ItemHeight="40"
+                                ItemsSource="{Binding IBANIDNumberList}"
+                                OKButtonBackgroundColor="#EAF7CC"
+                                OKButtonTextColor="{StaticResource Primary}"
+                                OkButtonClicked="IDNumberDropdown_OkButtonClicked"
+                                PickerHeight="250"
+                                PickerMode="Dialog"
+                                PickerWidth="300"
+                                SelectedItemFontAttribute="Bold"
+                                SelectedItemFontSize="15"
+                                SelectedItemTextColor="{StaticResource NeutralBlack}"
+                                SelectionChanged="IDNumber_SelectionChanged"
+                                ShowColumnHeader="False"
+                                ShowFooter="False"
+                                ShowHeader="False"
+                                UnSelectedItemTextColor="{StaticResource NeutralBlack}">
+                                <syncfusion:SfPicker.Behaviors>
+                                    <customcontrol:SfPickerBehavior />
+                                </syncfusion:SfPicker.Behaviors>
+                            </syncfusion:SfPicker>
+
+                        </Grid>
+                    </StackLayout>
+
+                    <StackLayout
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        IsEnabled="{Binding IsNewAccountEnabled}"
+                        IsVisible="{Binding IsNewAccountButtonVisible}">
+                        <border:SfBorder Margin="0,0,0,0" Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout
+                                Padding="15,10,15,10"
+                                Orientation="Horizontal"
+                                Spacing="10">
+                                <Image Source="ic_add_plus.png" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="Start"
+                                    Style="{StaticResource ValueLabelPrimary}"
+                                    Text="{Binding NewAccountText}" />
+                            </StackLayout>
+                            <border:SfBorder.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </border:SfBorder.GestureRecognizers>
+                        </border:SfBorder>
+                    </StackLayout>
+
+                    <StackLayout
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        Spacing="0">
+
+                        <custom:CustomLabel
+                            BackgroundColor="White"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
+                        <listView:SfListView
+                            x:Name="OtherIbanlist"
+                            Margin="0"
+                            AutoFitMode="Height"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            IsScrollBarVisible="False"
+                            ItemsSource="{Binding IBANList, Mode=TwoWay}"
+                            Orientation="Horizontal"
+                            SelectedItem="{Binding SelectedIBAN, Mode=TwoWay}"
+                            VerticalOptions="Fill">
                             <listView:SfListView.LayoutManager>
-                                <listView:LinearLayout   />
+                                <listView:LinearLayout />
                             </listView:SfListView.LayoutManager>
                             <listView:SfListView.ItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0">
-                                      
-                                        <Image Source="vat_tile_listofsignup_W" x:Name="cardBackGroundImage" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
-                                        <custom:CustomLabel Text="{Binding Iban}" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
-                                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                                      HorizontalOptions="Start"  Padding="20" 
-                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
-                                                                />
+                                    <Grid
+                                        Margin="0"
+                                        Padding="0"
+                                        ColumnSpacing="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="150">
+
+                                        <Image
+                                            x:Name="cardBackGroundImage"
+                                            Aspect="Fill"
+                                            HeightRequest="100"
+                                            HorizontalOptions="FillAndExpand"
+                                            Source="vat_tile_listofsignup_W"
+                                            VerticalOptions="FillAndExpand" />
+                                        <custom:CustomLabel
+                                            x:Name="cardLabel"
+                                            Padding="20"
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{Binding Iban}"
+                                            VerticalOptions="End" />
                                     </Grid>
                                 </DataTemplate>
                             </listView:SfListView.ItemTemplate>
 
-                               <listView:SfListView.SelectedItemTemplate>
+                            <listView:SfListView.SelectedItemTemplate>
                                 <DataTemplate>
-                                    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" WidthRequest="150"  ColumnSpacing="0" RowSpacing="10" Padding="0" Margin="0"   BackgroundColor="Yellow">
-                                      
-                                        <Image x:Name="cardBackGroundImage" Source="vat_tile_listofsignup" Aspect="Fill" HorizontalOptions="FillAndExpand" HeightRequest="100" VerticalOptions="FillAndExpand"/>
-                                        <custom:CustomLabel Text="{Binding Iban}" TextColor="White" x:Name="cardLabel" Style="{StaticResource CaptionLabelBlack}"
-                                                                    FontFamily="{StaticResource SomarSemiBold}"
-                                                                      HorizontalOptions="Start"  Padding="20" 
-                                                                VerticalOptions="End" HorizontalTextAlignment="Start"
-                                                                />
+                                    <Grid
+                                        Margin="0"
+                                        Padding="0"
+                                        BackgroundColor="Yellow"
+                                        ColumnSpacing="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        RowSpacing="10"
+                                        VerticalOptions="FillAndExpand"
+                                        WidthRequest="150">
+
+                                        <Image
+                                            x:Name="cardBackGroundImage"
+                                            Aspect="Fill"
+                                            HeightRequest="100"
+                                            HorizontalOptions="FillAndExpand"
+                                            Source="vat_tile_listofsignup"
+                                            VerticalOptions="FillAndExpand" />
+                                        <custom:CustomLabel
+                                            x:Name="cardLabel"
+                                            Padding="20"
+                                            FontFamily="{StaticResource SomarSemiBold}"
+                                            HorizontalOptions="Start"
+                                            HorizontalTextAlignment="Start"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{Binding Iban}"
+                                            TextColor="White"
+                                            VerticalOptions="End" />
                                     </Grid>
                                 </DataTemplate>
                             </listView:SfListView.SelectedItemTemplate>
-                        
+
                         </listView:SfListView>
 
-                       
-                </StackLayout>
-                    <StackLayout Orientation="Horizontal" Grid.Row="6" IsEnabled="{Binding IsRefundCheckboxEnabled}" Spacing="0" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White">
-                        <CheckBox x:Name="chkForDeclarationRefund" VerticalOptions="CenterAndExpand"  IsChecked="{Binding IsDeclarationCheckedForRefund}">
+
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        IsEnabled="{Binding IsRefundCheckboxEnabled}"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <CheckBox
+                            x:Name="chkForDeclarationRefund"
+                            IsChecked="{Binding IsDeclarationCheckedForRefund}"
+                            VerticalOptions="CenterAndExpand">
                             <CheckBox.Triggers>
-                                <DataTrigger TargetType="CheckBox" Binding="{Binding Source={x:Reference chkForDeclarationRefund}, Path=IsChecked}" Value="false">
+                                <DataTrigger
+                                    Binding="{Binding Source={x:Reference chkForDeclarationRefund}, Path=IsChecked}"
+                                    TargetType="CheckBox"
+                                    Value="false">
                                     <Setter Property="Color" Value="#e84941" />
                                 </DataTrigger>
                             </CheckBox.Triggers>
                         </CheckBox>
-                        <custom:CustomLabel VerticalTextAlignment="Center" VerticalOptions="CenterAndExpand"  Style="{StaticResource CaptionLabelBlack}">
+                        <custom:CustomLabel
+                            Style="{StaticResource CaptionLabelBlack}"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}"  />
-                                    <Span Text="&#160;"/>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZZIAgreeWithThese}" />
+                                    <Span Text="&#160;" />
                                     <Span Text="{x:Static ResourceManager:AppResources.ZZZZVATREInstructionsandConditions}" TextColor="{StaticResource Primary}" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnRefundInCTapped"/>
+                                <TapGestureRecognizer Tapped="OnRefundInCTapped" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                     </StackLayout>
-                    <StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" IsEnabled="{Binding IsConfirmRefundButtonEnabled}" BackgroundColor="White">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" Clicked="Confirm_RefundClicked"  Margin="0,8,0,0" Style="{StaticResource PrimaryButtonStyle}"/>
-                </StackLayout>
-            </Grid>
-           
-
-            <Grid Grid.Row="0"  IsVisible="{Binding IsNewLoading}" >
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForReturn" EnableAnimation="True" AnimationType="SingleCircle" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsBusy="True" ViewBoxWidth = "70" TitlePlacement="Bottom" ViewBoxHeight="70" TextColor="{StaticResource Secondary}"/>
+                    <StackLayout
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        BackgroundColor="White"
+                        IsEnabled="{Binding IsConfirmRefundButtonEnabled}">
+                        <buttons:SfButton
+                            Margin="0,8,0,0"
+                            Clicked="Confirm_RefundClicked"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" />
                     </StackLayout>
-                </StackLayout>
-            </Grid>
+                </Grid>
+
+
+                <Grid Grid.Row="0" IsVisible="{Binding IsNewLoading}">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <busyindicator:SfBusyIndicator
+                                x:Name="busyindicatorForReturn"
+                                AnimationType="SingleCircle"
+                                EnableAnimation="True"
+                                HorizontalOptions="CenterAndExpand"
+                                IsBusy="True"
+                                TextColor="{StaticResource Secondary}"
+                                TitlePlacement="Bottom"
+                                VerticalOptions="CenterAndExpand"
+                                ViewBoxHeight="70"
+                                ViewBoxWidth="70" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
             </Grid>
         </StackLayout>
     </yummy:PancakeView>

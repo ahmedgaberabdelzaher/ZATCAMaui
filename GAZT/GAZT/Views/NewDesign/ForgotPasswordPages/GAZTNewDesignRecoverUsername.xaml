@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-            xmlns:custom="clr-namespace:GAZT"
-            xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             BackgroundImageSource="partials_background.png"
-             x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.ForgotPasswordPages.GAZTNewDesignRecoverUsernamePageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundImageSource="partials_background.png"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,13 +20,27 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Padding="20">
-            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
-                <Image Source="Forget_ic_success" Margin="0,0,0,20"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.RecoverUserName}" Style="{StaticResource SectionTitleBlack}" TextColor="White" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}" Style="{StaticResource BodyLabelBlack}" TextColor="White"  HorizontalOptions="FillAndExpand"  HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                <Image Margin="0,0,0,20" Source="Forget_ic_success" />
+                <custom:CustomLabel
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleBlack}"
+                    Text="{x:Static ResourceManager:AppResources.RecoverUserName}"
+                    TextColor="White" />
+                <custom:CustomLabel
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource BodyLabelBlack}"
+                    StyleId="OnBoardText"
+                    Text="{x:Static ResourceManager:AppResources.NDUsernameSenttoMobile}"
+                    TextColor="White" />
             </StackLayout>
-            <StackLayout VerticalOptions="EndAndExpand" Spacing="10">
-                <buttons:SfButton Text="{x:Static ResourceManager:AppResources.LogIn}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnLoginButtonClicked}"/>
+            <StackLayout Spacing="10" VerticalOptions="EndAndExpand">
+                <buttons:SfButton
+                    Command="{Binding OnLoginButtonClicked}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.LogIn}" />
                 <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.CheckEmail}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent"/>-->
             </StackLayout>
         </StackLayout>

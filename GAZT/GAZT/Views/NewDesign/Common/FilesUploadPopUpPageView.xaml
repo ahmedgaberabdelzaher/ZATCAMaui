@@ -1,17 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:custom2="clr-namespace:EGAZT"
-                 xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-                 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-                 FlowDirection="RightToLeft"
-                 x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.FilesUploadPopUpPageView">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.ZakatInstalmentPlan.FilesUploadPopUpPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:cards1="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    FlowDirection="RightToLeft">
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -21,30 +22,81 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    
-    <yummy:PancakeView CornerRadius="22,22,0,0"  VerticalOptions="End" BackgroundColor="White">
+
+    <yummy:PancakeView
+        BackgroundColor="White"
+        CornerRadius="22,22,0,0"
+        VerticalOptions="End">
         <Grid>
-             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0"> 
-                
+            <StackLayout Margin="10,0,10,0" Padding="0,0,0,0">
+
                 <!--<border:SfBorder Margin="0,10,0,10" HasShadow="False" Padding="0"
-                                 Style="{StaticResource GreyBorderFrameWithShadow}"> -->
-                    <StackLayout Orientation="Vertical">
-                        <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                        <Button TextColor="{StaticResource Primary}" Style="{StaticResource GAZTVerifyButton}"  Margin="10,10,10,10"  FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Command="{Binding GoButtonClick}" BackgroundColor="Transparent" HorizontalOptions="End">
-                        </Button>
-                    </StackLayout>
+                                 Style="{StaticResource GreyBorderFrameWithShadow}">-->
+                <StackLayout Orientation="Vertical">
+                    <BoxView
+                        HorizontalOptions="Center"
+                        Style="{StaticResource NeutralGrayBoxViewDrag}"
+                        VerticalOptions="Start" />
+                    <Button
+                        Margin="10,10,10,10"
+                        BackgroundColor="Transparent"
+                        Command="{Binding GoButtonClick}"
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="End"
+                        Style="{StaticResource GAZTVerifyButton}"
+                        Text="{x:Static ResourceManager:AppResources.CRDone}"
+                        TextColor="{StaticResource Primary}" />
+                </StackLayout>
                 <!--</border:SfBorder>-->
-                <Label HorizontalTextAlignment="Start" Text="{Binding TitleOne}" Margin="0,0,0,0"  Style="{StaticResource CaptionLabelGrey}"/>
-                <Label HorizontalTextAlignment="Start" Text="{Binding TitleTwo}" Margin="0,0,0,0"  Style="{StaticResource CaptionLabelGrey}"/>
-                <BoxView Style="{StaticResource lineSeperator}" Margin="0,0,0,10"/>
-                <ListView ItemsSource="{Binding AttachmentList}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HasUnevenRows="True" x:Name="List" HeightRequest="300"  ItemTapped="Attachmentlist_ItemTapped" SeparatorVisibility="None">
+                <Label
+                    Margin="0,0,0,0"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    Text="{Binding TitleOne}" />
+                <Label
+                    Margin="0,0,0,0"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    Text="{Binding TitleTwo}" />
+                <BoxView Margin="0,0,0,10" Style="{StaticResource lineSeperator}" />
+                <ListView
+                    x:Name="List"
+                    HasUnevenRows="True"
+                    HeightRequest="300"
+                    HorizontalOptions="FillAndExpand"
+                    ItemTapped="Attachmentlist_ItemTapped"
+                    ItemsSource="{Binding AttachmentList}"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
-                                    <cards1:SfCardView HasShadow="False" Margin="10" Opacity=".9" ShadowColor="{StaticResource EntryTextColor}" BackgroundColor="White" CornerRadius="8"  IndicatorColor="{StaticResource Primary}" IndicatorPosition="Left" IndicatorThickness="5" BorderColor="{StaticResource NeutralLightGrey}" BorderWidth="1">
-                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand"  Padding="10" >
-                                            <Grid Style="{DynamicResource GridStyle}" ColumnSpacing="0" RowSpacing="2"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="White" >
+                                    <cards1:SfCardView
+                                        Margin="10"
+                                        BackgroundColor="White"
+                                        BorderColor="{StaticResource NeutralLightGrey}"
+                                        BorderWidth="1"
+                                        CornerRadius="8"
+                                        HasShadow="False"
+                                        IndicatorColor="{StaticResource Primary}"
+                                        IndicatorPosition="Left"
+                                        IndicatorThickness="5"
+                                        Opacity=".9"
+                                        ShadowColor="{StaticResource EntryTextColor}">
+                                        <StackLayout
+                                            Padding="10"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Grid
+                                                BackgroundColor="White"
+                                                ColumnSpacing="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                RowSpacing="2"
+                                                Style="{DynamicResource GridStyle}"
+                                                VerticalOptions="Center">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="70*" />
                                                     <ColumnDefinition Width="15*" />
@@ -54,19 +106,42 @@
                                                     <RowDefinition Height="30" />
                                                     <RowDefinition Height="30" />
                                                 </Grid.RowDefinitions>
-                                                <Label Text="{Binding Filename}" LineBreakMode="TailTruncation" Style="{StaticResource MicroGrayLabelStyleNew}"
-                                                   HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontFamily="{StaticResource SomarBold}" Grid.Row="0" Grid.Column="0"/>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    LineBreakMode="TailTruncation"
+                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                    Text="{Binding Filename}"
+                                                    VerticalOptions="CenterAndExpand" />
                                                 <!--<Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
                                                 <Image.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
                                                 </Image.GestureRecognizers>
                                             </Image>-->
-                                                <Image Grid.Row="0"  Grid.Column="2" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_delete.png"  >
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="2"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Source="ic_delete.png"
+                                                    VerticalOptions="CenterAndExpand">
                                                     <Image.GestureRecognizers>
                                                         <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
                                                     </Image.GestureRecognizers>
                                                 </Image>
-                                                <Label Text="{Binding Erfdt}" Margin="3,0,3,-5" Style="{StaticResource MiniGrayLabelStyle}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FlowDirection="LeftToRight" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="{StaticResource SomarBold}"/>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Margin="3,0,3,-5"
+                                                    FlowDirection="LeftToRight"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                    Text="{Binding Erfdt}"
+                                                    VerticalOptions="CenterAndExpand" />
                                             </Grid>
                                         </StackLayout>
                                     </cards1:SfCardView>
@@ -75,32 +150,59 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <buttons:SfButton x:Name="btnAddAttachment" Text="{x:Static custom2:AppResources.FAPAddAttachment}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                HeightRequest="56" Margin="0,0,0,20" FontSize="15" TextColor="{DynamicResource Gray-White}" FontFamily="{StaticResource SomarSemiBold}" 
-                BackgroundColor="{StaticResource Secondary}" BorderWidth="0" Command="{Binding OnAttachmentClick}"/>
+                <buttons:SfButton
+                    x:Name="btnAddAttachment"
+                    Margin="0,0,0,20"
+                    BackgroundColor="{StaticResource Secondary}"
+                    BorderWidth="0"
+                    Command="{Binding OnAttachmentClick}"
+                    CornerRadius="10"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    FontSize="15"
+                    HeightRequest="56"
+                    Text="{x:Static custom2:AppResources.FAPAddAttachment}"
+                    TextColor="{DynamicResource Gray-White}"
+                    VerticalOptions="End" />
             </StackLayout>
 
-            <Grid Grid.Row="0"    Grid.Column="0"  IsVisible="{Binding IsLoading}" >
-                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0"   Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="Center"
-                                           IsBusy="{Binding IsLoading}"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                       TextColor="{StaticResource Primary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="{Binding IsLoading}"
+                            TextColor="{StaticResource Primary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="Center"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
-                    <!--Title="{x:Static local:AppResources.ActivityIndicatorTitle}"-->
+                    <!--  Title="{x:Static local:AppResources.ActivityIndicatorTitle}"  -->
                 </StackLayout>
             </Grid>
         </Grid>
-        
+
     </yummy:PancakeView>
 </pages:PopupPage>
