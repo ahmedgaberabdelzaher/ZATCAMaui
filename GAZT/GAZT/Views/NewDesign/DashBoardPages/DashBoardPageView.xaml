@@ -20,7 +20,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:EGAZT.Controls"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
@@ -1686,7 +1686,7 @@
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand">
 
-                        <ScrollView VerticalScrollBarVisibility="Never">
+                        <ScrollView  VerticalScrollBarVisibility="Never">
                             <Grid>
                                 <Grid x:Name="ParentMenu">
                                     <Grid.RowDefinitions>
@@ -1730,7 +1730,7 @@
                                                 </StackLayout>
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
-                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                              <!--  <StackLayout Orientation="Horizontal" Spacing="20">
 
                                                     <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}" />
                                                     <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
@@ -1740,7 +1740,7 @@
                                                 </StackLayout>
 
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
-
+-->
                                                 <StackLayout Orientation="Horizontal" Spacing="20">
                                                     <Image Source="ic_certificate.png" Style="{StaticResource SmallIcon}" />
                                                     <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.NDCertificates}" />
@@ -1846,14 +1846,14 @@
                                                     <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                            <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                           <!-- <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Image Source="menu_return.png" Style="{StaticResource SmallIcon}" />
                                                 <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.GeneralServices}" />
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="General_Services_Tapped" />
                                                 </StackLayout.GestureRecognizers>
-                                            </StackLayout>
+                                            </StackLayout>-->
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <!--  Subsidy Request Starts  -->
                                             <StackLayout
@@ -1902,6 +1902,7 @@
                                                     <TapGestureRecognizer Tapped="OnSupportTapped" />
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
+                                            <!--
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             <StackLayout Orientation="Horizontal" Spacing="20">
 
@@ -1910,7 +1911,7 @@
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToExisTax" />
                                                 </StackLayout.GestureRecognizers>
-                                            </StackLayout>
+                                            </StackLayout>-->
                                             <!--<BoxView Style="{StaticResource WhiteLineSeperator}" />
                                     <StackLayout Orientation="Horizontal" Spacing="20">
                                         <Image Source="log_out" Style="{StaticResource SmallIcon}"/>
@@ -1967,12 +1968,13 @@
                             </Grid>
                         </ScrollView>
                     </yummy:PancakeView>
+
                 </Grid>
 
                 <!--  Menu Ends  -->
 
                 <Grid
-                    x:Name="ButtomTab"
+                    x:Name="ButtomTab" IsVisible="false"
                     Grid.Row="1"
                     Margin="0,-3,0,0"
                     Padding="0,0,0,26"
@@ -2180,12 +2182,28 @@
                         </StackLayout>
                     </StackLayout>
                 </Grid>
+       <!-- Nav Menu Starts  -->
+                   <yummy:PancakeView Grid.Row="1"
+        Margin="0,-3,0,0" Padding="0,0,0,26"
+        BackgroundColor="#002447"
+        CornerRadius="15,15,0,0"  VerticalOptions="EndAndExpand">
+            <controls:NavMenu >
+                <controls:NavMenu.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="10,0,10,15" />
+                        <On Platform="Android" Value="10,0,10,0" />
+                    </OnPlatform>
+                </controls:NavMenu.Margin>
+            </controls:NavMenu></yummy:PancakeView>
+                          <!-- Nav Menu End  -->
             </Grid>
-            <!--#region SurveyView{Binding IsShowMsgView}-->
+            
+
+            <!--#region SurveyView-->
             <Grid
-                Grid.Row="0" 
+                Grid.Row="0"
                 Margin="0,0,0,0"
-                IsVisible="true"
+                IsVisible="{Binding IsShowMsgView}"
                 VerticalOptions="FillAndExpand">
 
                 <StackLayout
@@ -2286,7 +2304,7 @@
                                 BindableLayout.ItemsSource="{Binding ImojiesLst}"
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal">
-                              
+
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
                                         <StackLayout x:Name="Item" Margin="10">
@@ -2339,7 +2357,7 @@
                                 BackgroundColor="#0996D4"
                                 CornerRadius="14">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="3" />
+                                    <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="1"  />
                                 </Frame.GestureRecognizers>
                                 <Label
                                     FontSize="16"
@@ -2353,8 +2371,8 @@
                         <StackLayout
                             Margin="0"
                             IsVisible="false"
-                            VerticalOptions="Center">
-                            <StackLayout.Triggers>
+                            VerticalOptions="CenterAndExpand">
+                                 <StackLayout.Triggers>
                                 <DataTrigger
                                     Binding="{Binding SurveyCurrentStep}"
                                     TargetType="StackLayout"
@@ -2389,7 +2407,7 @@
                                 BackgroundColor="#0996D4"
                                 CornerRadius="14">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="1" />
+                                    <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="4" />
                                 </Frame.GestureRecognizers>
                                 <Label
                                     FontSize="16"

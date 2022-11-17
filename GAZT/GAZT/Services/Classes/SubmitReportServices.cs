@@ -35,9 +35,12 @@ namespace EGAZT.Services.Classes
             var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetRegions") as BaseResponseModel<List<BaseRegionAndCity>>;
             return response?.Result?.Data;
         }
-        public async Task<BaseResponseModel<string>> CreateZatcaNewReport(Dictionary<string, string> submitReport,ObservableCollection<ReportFileModel> reportFiles)
+        public async Task<BaseResponseModel<string>> CreateZatcaNewReport(SubmitReportModel submitReport)
         {
-            var response = await NewHTTPManger.PostFile<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport, reportFiles) as BaseResponseModel<string>;
+            // var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+            var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
+            var cont = await res.Content.ReadAsStringAsync();
+            var response = NewHTTPManger.DeserializeObject<BaseResponseModel<string>>(cont);
             return response;
         }
     }

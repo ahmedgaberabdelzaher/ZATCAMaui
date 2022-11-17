@@ -54,7 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         {
             GetHomeMenuLst();
 
-            GetCustomServiceMenuLst();
+            GetCustomServiceMenuLst(); GetDashBoardMenuLst(3);
         }
 
         private void GetHomeMenuLst()
@@ -96,7 +96,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.FAQ, ID=App.FAQPageView,ImageSource="FAQ"
                 },
-                     new MenuModel()
+                   new MenuModel()
                 {
                    Name=AppResources.RateUs, ID="RateUs",ImageSource="RateUS"
                 },
@@ -215,8 +215,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                   Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
-                }
+                  Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                 //Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+
+                 }
 
            };
            
@@ -243,7 +245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel()
                 {
                    Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
-                },
+                }
            };
         }
 /*

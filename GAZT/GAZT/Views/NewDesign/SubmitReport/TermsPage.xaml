@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.SubmitReport.TermsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.SubmitReport.TermsPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
@@ -16,7 +16,7 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -26,7 +26,7 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
@@ -34,14 +34,14 @@
                 <StackLayout>
 
                     <!--  Back Button  -->
-                   <Image
+                    <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
-                         <Image.Triggers>
+                        <Image.Triggers>
                             <DataTrigger
                                 Binding="{Binding AppDirection}"
                                 TargetType="Image"
@@ -61,17 +61,17 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    HorizontalOptions="Center"
                     FontSize="20"
+                    HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.Submitareport}"
                     VerticalOptions="Center" />
             </Grid>
             <!--#endregion Header-->
 
-             <!--#region Body-->
-             <yummy:PancakeView
+            <!--#region Body-->
+            <yummy:PancakeView
                 Grid.Row="1"
                 Padding="20,5,20,0"
                 Style="{StaticResource CommonTopCurves}">
@@ -79,49 +79,50 @@
                 <ScrollView VerticalScrollBarVisibility="Never">
 
                     <StackLayout Spacing="0">
-                      
-                        <!--Circle view-->
-                        <Grid RowDefinitions="Auto,Auto"
-                              Margin="0,25"
-                              ColumnSpacing="0"
-                              VerticalOptions="CenterAndExpand"
-                              HorizontalOptions="CenterAndExpand"
-                              ColumnDefinitions="Auto,Auto,Auto">
 
-                            <!--Circle button 1-->
-                            <ImageButton 
-                                WidthRequest="30"
-                                HeightRequest="30"
-                                CornerRadius="15"
-                                BorderWidth="1"
+                        <!--  Circle view  -->
+                        <Grid
+                            Margin="0,25"
+                            ColumnDefinitions="Auto,Auto,Auto"
+                            ColumnSpacing="0"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="Auto,Auto"
+                            VerticalOptions="CenterAndExpand">
+
+                            <!--  Circle button 1  -->
+                            <ImageButton
                                 Padding="6"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="EndAndExpand"
                                 BackgroundColor="#0996D4"
                                 BorderColor="#0996D4"
-                                Source="reportCheckMark.png"/>
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="1"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="120"
                                 BackgroundColor="#0996D4"
-                                HeightRequest="2" />
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="120" />
 
-                            <!--Circle button 2-->
-                             <Button 
-                                WidthRequest="30"
-                                HeightRequest="30"
-                                CornerRadius="15"
-                                BorderWidth="1"
+                            <!--  Circle button 2  -->
+                            <Button
                                 Grid.Column="2"
                                 BackgroundColor="Transparent"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="StartAndExpand"
                                 BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                Text="2"
                                 TextColor="#0996D4"
-                                Text="2">
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
@@ -132,21 +133,21 @@
 
                             <!--  ReportDetails Label  -->
                             <Label
+                                Grid.Row="1"
+                                Margin="-20,0,0,0"
                                 FontFamily="{StaticResource SomarSemiBold}"
                                 FontSize="12"
-                                Grid.Row="1"
                                 HorizontalOptions="Center"
-                                Margin="-20,0,0,0"
                                 Text="{x:Static ResourceManager:AppResources.ZTERReportFormPageTittle}"
                                 TextColor="#0996D4" />
 
-                             <!--  Terms Label  -->
+                            <!--  Terms Label  -->
                             <Label
-                                FontFamily="{StaticResource SomarSemiBold}"
-                                FontSize="12"
+                                Grid.Row="1"
                                 Grid.Column="2"
                                 Margin="0,0,-25,0"
-                                Grid.Row="1" 
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="12"
                                 HorizontalOptions="Center"
                                 Text="{x:Static ResourceManager:AppResources.ZVatRefundTermsAndConditions}"
                                 TextColor="#0996D4" />
@@ -155,82 +156,83 @@
 
                         <!--  Terms sub Title Label  -->
                         <Label
+                            Margin="0,0,0,25"
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="22"
-                            Margin="0,0,0,25"
                             HorizontalOptions="StartAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ZVatRefundTermsAndConditions}"
                             TextColor="#58595B" />
 
-                         <!--  Report Note1 Label -->
+                        <!--  Report Note1 Label  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            LineBreakMode="WordWrap"
                             HorizontalOptions="StartAndExpand"
+                            LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote1}"
                             TextColor="#002447" />
 
-                        <!--  Report Note Label from 2 to 5 -->
+                        <!--  Report Note Label from 2 to 5  -->
                         <Label
+                            Margin="20,0,20,25"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            Margin="20,0,20,25"
-                            LineHeight="1.1"
                             LineBreakMode="WordWrap"
-                            TextColor="#002447" >
-                             <Label.FormattedText>
+                            LineHeight="1.1"
+                            TextColor="#002447">
+                            <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="• "/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote2}"/>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="• "/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote3}"/>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="• "/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote4}"/>
-                                    <Span Text="&#10;"/>
-                                    <Span Text="• "/>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote5}"/>
+                                    <Span Text="• " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote2}" />
+                                    <Span Text="&#10;" />
+                                    <Span Text="• " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote3}" />
+                                    <Span Text="&#10;" />
+                                    <Span Text="• " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote4}" />
+                                    <Span Text="&#10;" />
+                                    <Span Text="• " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ReportSecondNote5}" />
                                 </FormattedString>
                             </Label.FormattedText>
 
                         </Label>
 
-                        <!--  Report Note6 Label -->
-                         <Label
+                        <!--  Report Note6 Label  -->
+                        <Label
+                            Margin="0,0,0,25"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            Margin="0,0,0,25"
-                            LineBreakMode="WordWrap"
                             HorizontalOptions="StartAndExpand"
+                            LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote6}"
                             TextColor="#002447" />
 
-                        <!--  Report Note7 Label -->
+                        <!--  Report Note7 Label  -->
                         <Label
+                            Margin="0,0,0,25"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            LineBreakMode="WordWrap"
-                            Margin="0,0,0,25"
                             HorizontalOptions="StartAndExpand"
+                            LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote7}"
                             TextColor="#002447" />
 
 
                         <!--  Check Box  -->
-                        <StackLayout Margin="0,0,0,25"
-                                     Spacing="15"
-                                     HorizontalOptions="FillAndExpand"
-                                     Orientation="Horizontal">
+                        <StackLayout
+                            Margin="0,0,0,25"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="15">
 
                             <Image
-                                HorizontalOptions="Start"
-                                WidthRequest="20"
                                 HeightRequest="20"
+                                HorizontalOptions="Start"
                                 Source="CheckMark.png"
                                 Style="{DynamicResource BackButtonArrow}"
-                                VerticalOptions="CenterAndExpand" >
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20">
 
                                 <Image.Triggers>
 
@@ -261,26 +263,26 @@
 
                             <StackLayout.GestureRecognizers>
 
-                                <TapGestureRecognizer Command="{Binding CheckBoxCommand}"/>
+                                <TapGestureRecognizer Command="{Binding CheckBoxCommand}" />
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
 
-                         <!--  Report Note8 Label -->
+                        <!--  Report Note8 Label  -->
                         <Label
+                            Margin="0,0,0,25"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            Margin="0,0,0,25"
-                            TextDecorations="Underline"
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote8}"
-                            TextColor="#0996D4">
+                            TextColor="#0996D4"
+                            TextDecorations="Underline">
 
                             <Label.GestureRecognizers>
 
-                                <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}"/>
+                                <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
 
                             </Label.GestureRecognizers>
 
@@ -288,9 +290,9 @@
 
                         <!--  ReportReward note Label  -->
                         <Label
+                            Margin="0,0,0,25"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            Margin="0,0,0,25"
                             HorizontalOptions="CenterAndExpand"
                             LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportReward}"
@@ -301,21 +303,20 @@
 
                             <!--  ReportDetailsNote Label  -->
                             <Label
+                                Margin="0,0,0,10"
                                 FontFamily="{StaticResource SomarRegular}"
                                 FontSize="12"
-                                Margin="0,0,0,10"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.ReportDetailsNote}"
                                 TextColor="#999999" />
 
                             <!--  Name Label  -->
-                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}">
+                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}"/>
-                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
 
@@ -325,41 +326,42 @@
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
 
-                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                                 Text="{x:Static ResourceManager:AppResources.ReportFullName}">
-                                 <custom:CustomLabel.Triggers>
+                            <custom:CustomLabel
+                                IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ReportFullName}">
+                                <custom:CustomLabel.Triggers>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
                             <!--  Name Entry  -->
                             <inputLayout:SfTextInputLayout
@@ -385,13 +387,12 @@
                         <StackLayout Spacing="0">
 
                             <!--  Email Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}">
+                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}"/>
-                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
 
@@ -401,41 +402,42 @@
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
 
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                                 Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
-                                 <custom:CustomLabel.Triggers>
+                            <custom:CustomLabel
+                                IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
+                                <custom:CustomLabel.Triggers>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
 
                             <!--  Email Entry  -->
@@ -461,13 +463,12 @@
                         <StackLayout Spacing="0">
 
                             <!--  Phone Label  -->
-                           <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}">
+                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}"/>
-                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
 
@@ -477,49 +478,50 @@
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
 
-                           <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                                 Text="{x:Static ResourceManager:AppResources.MobileNumber}">
-                                 <custom:CustomLabel.Triggers>
+                            <custom:CustomLabel
+                                IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="{x:Static ResourceManager:AppResources.MobileNumber}">
+                                <custom:CustomLabel.Triggers>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="True">
-                                          <Setter Property="IsVisible" Value="false"/>
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
                                         Value="false">
-                                          <Setter Property="IsVisible" Value="true"/>
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
-                             </custom:CustomLabel>
+                            </custom:CustomLabel>
 
                             <!--  Phone Entry  -->
                             <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
-                                InputViewPadding="0"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
@@ -537,17 +539,17 @@
                         </StackLayout>
 
                         <Label
+                            Margin="0,10,0,0"
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
-                            Margin="0,10,0,0"
-                            LineBreakMode="WordWrap"
                             HorizontalOptions="StartAndExpand"
-                            VerticalOptions="Start"
                             HorizontalTextAlignment="Start"
+                            LineBreakMode="WordWrap"
                             Text="{x:Static ResourceManager:AppResources.ReportSecondNote9}"
-                            TextColor="#002447" />
+                            TextColor="#002447"
+                            VerticalOptions="Start" />
 
-                       
+
                         <!--  Send Report Button  -->
                         <buttons:SfButton
                             Margin="0,40"
@@ -561,27 +563,27 @@
                             BackgroundColor="Transparent"
                             BorderColor="#0996D4"
                             BorderThickness="2"
-                            TextColor="#0996D4"
                             Command="{Binding BackCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                            TextColor="#0996D4" />
 
 
                     </StackLayout>
 
-                 </ScrollView>
+                </ScrollView>
 
-             </yummy:PancakeView>
-             <!--#endregion Body-->
+            </yummy:PancakeView>
+            <!--#endregion Body-->
 
 
-               <!--  Loader  -->
+            <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
-         </Grid>
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

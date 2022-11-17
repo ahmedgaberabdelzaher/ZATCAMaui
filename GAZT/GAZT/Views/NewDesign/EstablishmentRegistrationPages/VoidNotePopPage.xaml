@@ -1,14 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-                 NavigationPage.HasNavigationBar="False"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                 x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.VoidNotePopPage">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.EstablishmentRegistrationPages.VoidNotePopPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    NavigationPage.HasNavigationBar="False">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,25 +20,38 @@
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <pages:PopupPage.Animation>
-        <animations:ScaleAnimation 
-            PositionIn="Bottom"
-            PositionOut="Bottom"
+        <animations:ScaleAnimation
             DurationIn="400"
             DurationOut="300"
-            HasBackgroundAnimation="True"/>
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
     </pages:PopupPage.Animation>
     <pages:PopupPage.Content>
-        <yummy:PancakeView VerticalOptions="EndAndExpand"  BackgroundColor="White" Padding="10" >
+        <yummy:PancakeView
+            Padding="10"
+            BackgroundColor="White"
+            VerticalOptions="EndAndExpand">
             <yummy:PancakeView.Border>
-                <yummy:Border Color="Black" Thickness="1"/>
+                <yummy:Border Thickness="1" Color="Black" />
             </yummy:PancakeView.Border>
             <Grid RowSpacing="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <inputLayout:SfTextInputLayout Grid.Row="0" x:Name="notesInputLayout" ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}" Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}" ContainerType="Outlined" ShowHint="True">
-                    <Entry x:Name="notes" IsSpellCheckEnabled="false"  MaxLength="132" TextChanged="notes_TextChanged"/>
+                <inputLayout:SfTextInputLayout
+                    x:Name="notesInputLayout"
+                    Grid.Row="0"
+                    ContainerType="Outlined"
+                    ErrorText="{x:Static ResourceManager:AppResources.ZZZRequired}"
+                    Hint="{x:Static ResourceManager:AppResources.VoidReasonHint}"
+                    ShowHint="True">
+                    <Entry
+                        x:Name="notes"
+                        IsSpellCheckEnabled="false"
+                        MaxLength="132"
+                        TextChanged="notes_TextChanged" />
                 </inputLayout:SfTextInputLayout>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -46,20 +61,22 @@
                         <ColumnDefinition Width="50*" />
                         <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
-                    <buttons:SfButton Grid.Row="0"
-                                      Grid.Column="0"
-                                      Style="{StaticResource PrimaryButtonStyle}"
-                                      Padding="20,0"
-                                      Text="{x:Static ResourceManager:AppResources.ESTZZVoid}"
-                                      HorizontalOptions="FillAndExpand"
-                                      Clicked="Void_Button_Clicked" />
-                    <buttons:SfButton Grid.Row="0"
-                                      Grid.Column="1"
-                                      Style="{StaticResource PrimaryButtonStyle}"
-                                      Padding="20,0"
-                                      Text="{x:Static ResourceManager:AppResources.ZZCancel}"
-                                      HorizontalOptions="FillAndExpand"
-                                      Clicked="CancelButton_Clicked" />
+                    <buttons:SfButton
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="20,0"
+                        Clicked="Void_Button_Clicked"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ESTZZVoid}" />
+                    <buttons:SfButton
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Padding="20,0"
+                        Clicked="CancelButton_Clicked"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
                 </Grid>
             </Grid>
         </yummy:PancakeView>

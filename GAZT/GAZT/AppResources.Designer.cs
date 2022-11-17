@@ -85,6 +85,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Account S.
+        /// </summary>
+        public static string AccountS {
+            get {
+                return ResourceManager.GetString("AccountS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         public static string AccountStatementsDashboardTitle {
@@ -5124,7 +5133,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Excise TAX.
+        ///   Looks up a localized string similar to Excise Services.
         /// </summary>
         public static string EXCISETAXServices {
             get {
@@ -7259,6 +7268,15 @@ namespace EGAZT {
         public static string Measuringunit {
             get {
                 return ResourceManager.GetString("Measuringunit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dashboard.
+        /// </summary>
+        public static string MenuDashboard {
+            get {
+                return ResourceManager.GetString("MenuDashboard", resourceCulture);
             }
         }
         

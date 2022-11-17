@@ -620,7 +620,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                         App.HasToRefreshLoaderOnDashboard = true;
                     });
 
@@ -751,7 +751,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                         App.HasToRefreshLoaderOnDashboard = true;
                         //TODO for continue work on EST added by ashwini
                         //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);

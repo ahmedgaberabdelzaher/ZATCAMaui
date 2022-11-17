@@ -1,29 +1,37 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:custom="clr-namespace:GAZT"
-              xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-            xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-             xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local1="clr-namespace:EGAZT.CustomControl"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-             mc:Ignorable="d" FlowDirection="RightToLeft"    
-              xmlns:FontImage="clr-namespace:MVP.FontIcons" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms" xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.InstalmentPlan.InstalmentPlanPageView" 
-             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.InstalmentPlan.InstalmentPlanPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:local1="clr-namespace:EGAZT.CustomControl"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:templateSelector="clr-namespace:EGAZT.Views.NewDesign.TemplateSelector"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
 
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ValueTypeToVisibilityConverter x:Key="valueTypeToVisibilityConverter" />
-            
-            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector"/>
-            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector"/>
+
+            <templateSelector:LVUnselectedItemTemplateSelectorNoIcon x:Key="UnselectedItemTemplateSelector" />
+            <templateSelector:LVSelectedItemTemplateSelectorNoIcon x:Key="SelectedIttemTemplateSelector" />
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -37,7 +45,7 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-           
+
         </ResourceDictionary>
 
 
@@ -47,43 +55,71 @@
             <Grid BackgroundColor="Transparent">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
-                    <yummy:PancakeView Grid.Row="1" BackgroundColor="Black" CornerRadius="15,15,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
-                  Padding="0,0,0,0" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="Black"
+                        CornerRadius="15,15,0,0">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,0,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
-                    <Grid Padding="24,10,24,10" Grid.Row="0">
+                    <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Style="{StaticResource SectionTitleWhiteBold}" />
-                        <Image Grid.Row="0" Grid.Column="0" 
-                               VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
-                               Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}"
-                               HeightRequest="24"
-                               WidthRequest="24">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.VatInstalmentPlan}"
+                            VerticalOptions="Center" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HeightRequest="24"
+                            HorizontalOptions="StartAndExpand"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="24">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackClick}" />
                             </Image.GestureRecognizers>
                         </Image>
-                        <Label IsVisible="False" Grid.Row="0" Grid.Column="2"  Style="{StaticResource IconLabelStyle}" TextColor="White" Text="{StaticResource Close}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HorizontalOptions="EndAndExpand"
+                            IsVisible="False"
+                            Style="{StaticResource IconLabelStyle}"
+                            Text="{StaticResource Close}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>
@@ -95,45 +131,79 @@
     <ContentPage.Content>
         <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
             <Grid>
-                <!--Code for Zakat & VAT options-->
+                <!--  Code for Zakat & VAT options  -->
 
-                <Grid BackgroundColor="Transparent"  Margin="20,10,20,0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid
+                    Margin="20,10,20,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50*"/>
-                        <ColumnDefinition Width="50*"/>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
                     </Grid.ColumnDefinitions>
 
-                    <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="auto" />
+                            <RowDefinition Height="1" />
                         </Grid.RowDefinitions>
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPlan}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource SectionTitleBlackBold}" FontSize="28" />
-                        <custom:CustomLabel Grid.Row="1" Grid.Column="0" Text="{x:Static ResourceManager:AppResources.ZakatInstalmetChooseTaxTypeText}" HorizontalOptions="StartAndExpand"
-                                        Style="{StaticResource BodyLabelGrey}"/>
-                        <BoxView Grid.Row="2" Grid.Column="0" Style="{StaticResource NeutralGrayOpacity90BoxView}"/>
+                        <custom:CustomLabel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            FontSize="28"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource SectionTitleBlackBold}"
+                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmetPlan}" />
+                        <custom:CustomLabel
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource BodyLabelGrey}"
+                            Text="{x:Static ResourceManager:AppResources.ZakatInstalmetChooseTaxTypeText}" />
+                        <BoxView
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Style="{StaticResource NeutralGrayOpacity90BoxView}" />
 
                     </Grid>
 
-                    <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Grid
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
-                    
-                        <StackLayout >
-                            <listView:SfListView x:Name="outletDecisionOptionsListView" HorizontalOptions="Center" IsScrollBarVisible="False" IsScrollingEnabled="False"
-                                      VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" AutoFitMode="DynamicHeight" ItemSpacing="12"
-                                      ItemsSource="{Binding OutletDecisionOptions}" SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"  
-                                      ListViewCachingStrategy="RecycleTemplate"          
-                                      SelectionMode="Single" SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
-                                      ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
-                                      SelectionBackgroundColor="Transparent" SelectionChanged="outletDecisionOptionsListView_SelectionChanged">
+
+                        <StackLayout>
+                            <listView:SfListView
+                                x:Name="outletDecisionOptionsListView"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                AutoFitMode="DynamicHeight"
+                                HorizontalOptions="Center"
+                                IsScrollBarVisible="False"
+                                IsScrollingEnabled="False"
+                                ItemSpacing="12"
+                                ItemTemplate="{StaticResource UnselectedItemTemplateSelector}"
+                                ItemsSource="{Binding OutletDecisionOptions}"
+                                ListViewCachingStrategy="RecycleTemplate"
+                                SelectedItem="{Binding SelectedOutletOption, Mode=TwoWay}"
+                                SelectedItemTemplate="{StaticResource SelectedIttemTemplateSelector}"
+                                SelectionBackgroundColor="Transparent"
+                                SelectionChanged="outletDecisionOptionsListView_SelectionChanged"
+                                SelectionMode="Single"
+                                VerticalOptions="Center">
 
                                 <listView:SfListView.LayoutManager>
 
@@ -153,4 +223,3 @@
     </ContentPage.Content>
 </ContentPage>
 
-    

@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         #endregion
 
         private bool isFirstTime = true;
-        public GAZTNewDesignDashBoardPageView()
+        public GAZTNewDesignDashBoardPageView(bool isMenu=false)
         {
             try
             {
@@ -66,8 +66,21 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     viewModel.AccountStatementsList.Clear();
                 }
+                viewModel.GetDashBoardMenuLst(1);
 
-                
+                /*    if (isMenu)
+                    {
+                        viewModel.GetDashBoardMenuLst(4);
+                        viewModel.SubmittedCount = null;
+                        menuView();
+                    }
+                    else
+                    {
+                        viewModel.GetDashBoardMenuLst(1);
+                        viewModel.SubmittedCount = null;
+                        HOmeView();
+
+                    }*/
                 //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
                 //{
                 //    ItemSpacing = 10
@@ -84,6 +97,49 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
             }
         }
+
+        public GAZTNewDesignDashBoardPageView(string tab)
+        {
+            try
+            {
+                InitializeComponent();
+                Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "Constructor", AppResources.Dashboard);
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+                viewModel = App.Locator.GAZTNewDesignDashBoardPageView;
+                this.BindingContext = viewModel;
+                viewModel.MyObligationAmount = 0.0;
+
+                viewModel.MyObligationAmountCommas = "";
+                viewModel.IsPendingBillsVisible = false;
+                viewModel.IsInstalmentPlanVisible = false;
+                viewModel.IsMyObligationsClear = false;
+                viewModel.MenuViewVisible = false;
+                viewModel.IfnotRegInVATAndZakat = false;
+                viewModel.IsBodyMyTaxVisible = false;
+
+                if (viewModel.AccountStatementsList != null)
+                {
+
+                    viewModel.AccountStatementsList.Clear();
+                }
+                viewModel.GetDashBoardMenuLst(1);
+                //InstalmentsCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Horizontal)
+                //{
+                //    ItemSpacing = 10
+                //};
+
+
+                SetLTR();
+
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+        }
+
 
         private void Vat_Registration_Tapped(object sender, EventArgs e)
         {
@@ -446,7 +502,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         private void OnDataLoad()
         {
-            if (App.HasToRefreshLoaderOnDashboard == true)
+            //if (App.HasToRefreshLoaderOnDashboard == true)
             {
                 App.IsComingFromSleepMode = false;
 
@@ -570,10 +626,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 App.HasToRefreshLoaderOnDashboard = false;
 
             }
-            else
+          /*  else
             {
 
-            }
+            }*/
         }
 
         private void StartTimer()
@@ -725,6 +781,156 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.IsToolbarTaxVisible = true;
 
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+        void HOmeView()
+        {
+       
+            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnHomeTapped", "Home Page");
+            viewModel.MenuViewVisible = false;
+            viewModel.HomeViewVisible = true;
+            viewModel.AccountStatementVisible = false;
+            viewModel.LiveChatVisible = false;
+            viewModel.HomeIndicatorColor = (Color)Application.Current.Resources["Primary"];
+            viewModel.MenuIndicatorColor = Color.White;
+            viewModel.TabbarColor = Color.DarkGray;
+            viewModel.StackMenuColor = Color.White;
+
+            frameToolbar.IsVisible = true;
+
+            viewModel.IsToolbarTaxVisible = true;
+
+            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            isFirstTime = true;
+           // OnAppearing();
+        }
+        void menuView()
+        {
+            if (true)
+            {
+                if (App.LoginDataRetrieved != null)
+                {
+
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        viewModel.IsVatRegistrationTileVisible = true;
+                        viewModel.IsRegistrationDetailsTileVisible = true;
+                        viewModel.IfRegInZakat = true;
+                        refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = false;
+                        fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "U")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = true;
+                        viewModel.IsRegistrationDetailsTileVisible = false;
+
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "N")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        viewModel.IsRegistrationDetailsTileVisible = false;
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IsVatRegistrationTileVisible = false;
+                        viewModel.IfRegInZakat = false;
+                        viewModel.IsSubsidyTileVisible = true;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "R")
+                    {
+                        //viewModel.IsVatRegistrationTileVisible = false;
+                        //viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        //viewModel.IfSignUpnNotRegInVAT = false;
+                        //viewModel.IsRegistrationDetailsTileVisible = true;
+                        viewModel.IsVatRegistrationTileVisible = false;
+                        viewModel.IfRegInZakat = false;
+                        viewModel.IfnotRegInVATAndZakat = true;
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        viewModel.IsSubsidyTileVisible = false;
+                        //viewModel.IsRegistrationDetailsTileVisible = true;
+                        //refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                        //fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "")
+                    {
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                    }
+
+                    if (App.LoginDataRetrieved.ZkSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.ZkReg == string.Empty)
+                        {
+                            viewModel.IsVatRegistrationTileVisible = false;
+                            viewModel.IsEstablishmentRegistrationTileVisible = true;
+                        }
+
+                    }
+                    else if (App.LoginDataRetrieved.VtSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.VtReg == string.Empty)
+                        {
+                            viewModel.IsEstablishmentRegistrationTileVisible = false;
+                            viewModel.IsVatRegistrationTileVisible = true;
+                            viewModel.IfSignUpnNotRegInVAT = true;
+                            viewModel.IsSubsidyTileVisible = false;
+                        }
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IfRegInZakat = true;
+                        refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                        fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
+
+
+                    }
+
+                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+                    {
+                        viewModel.IfnotRegInVATAndZakat = false;
+                    }
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IfnotRegInVATAndZakat = true;
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        viewModel.IfSignUpnNotRegInVAT = false;
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == string.Empty)
+                    {
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                        viewModel.IfSignUpnNotRegInVAT = true;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IfSignUpnNotRegInVAT = true;
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IfnotRegInVATAndZakat = true;
+                    }
+                }
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnMenuTapped", AppResources.ZZZMenu + " Page");
+                viewModel.MenuViewVisible = true;
+                viewModel.HomeViewVisible = false;
+                viewModel.AccountStatementVisible = false;
+                viewModel.LiveChatVisible = false;
+                viewModel.HomeIndicatorColor = Color.White;
+                viewModel.MenuIndicatorColor = (Color)Application.Current.Resources["Primary"];
+                viewModel.StackMenuColor = Color.Transparent;
+                viewModel.TabbarColor = Color.Transparent;
+                viewModel.IsToolbarTaxVisible = false;
+
+                frameToolbar.IsVisible = false;
+                isFirstTime = true;
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+               // OnAppearing();
+            }
+            else
+            {
+                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
+            }
         }
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {

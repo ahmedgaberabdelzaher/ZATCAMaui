@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Class="EGAZT.Controls.NavMenu">
+        <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+           <yummy:PancakeView
+        
+        BackgroundColor="#002447"
+        CornerRadius="15,15,0,0"
+        VerticalOptions="EndAndExpand">
+        <yummy:PancakeView.Resources>
+            <ResourceDictionary>
+                <Style TargetType="Label">
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                    <Setter Property="TextColor" Value="#FFFFFF" />
+                    <Setter Property="FontSize" Value="13" />
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="HeightRequest" Value="23" />
+                    <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                    <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                </Style>
+            </ResourceDictionary>
+        </yummy:PancakeView.Resources>
+        <Grid   x:Name="menu" BindableLayout.ItemsSource="{Binding AfterLoginMenuLst}"
+            Padding="10,0,10,0" ColumnDefinitions="*"
+            RowDefinitions="65">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+
+                             <Grid RowDefinitions="auto,23,*" x:Name="Item" Grid.Column="{Binding ColumnNo}">
+                <Grid.GestureRecognizers>
+                                <TapGestureRecognizer
+                                       BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                    Command="{Binding MenuNavigationCommand}"
+                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}"/>
+               </Grid.GestureRecognizers>
+                            <Image HeightRequest="5" Grid.Row="0" VerticalOptions="StartAndExpand">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsSelected}"
+                            TargetType="Image"
+                            Value="true">
+                            <Setter Property="Source" Value="Rectangle" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Image WidthRequest="25" Grid.Row="1" Source="{Binding ImageSource}">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsSelected}"
+                            TargetType="Image"
+                            Value="true">
+                            <Setter Property="Source" Value="{Binding SelectedImageSource}" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+                <Label Grid.Row="2" Text="{Binding Name}" HorizontalOptions="CenterAndExpand">
+                    <Label.Triggers>
+                        <DataTrigger 
+                            Binding="{Binding IsSelected}"
+                            TargetType="Label"
+                            Value="true">
+                            <Setter Property="TextColor" Value="{StaticResource SelectedMenuColor}" />
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+            </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+        </Grid>
+    </yummy:PancakeView>
+    </ContentView.Content>
+</ContentView>
+

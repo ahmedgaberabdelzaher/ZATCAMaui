@@ -1,11 +1,12 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.AttachmentInformationPopUp"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                                    xmlns:ResourceManager="clr-namespace:EGAZT">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.AttachmentInformationPopUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -15,9 +16,14 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" BackgroundColor="White">
+    <yummy:PancakeView
+        Padding="20,20,20,10"
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
 
-        <StackLayout VerticalOptions="Center" Margin="0,0,0,0">
+        <StackLayout Margin="0,0,0,0" VerticalOptions="Center">
             <!--<Image HorizontalOptions="EndAndExpand">
                 <Image.Source>
                     <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
@@ -28,8 +34,17 @@
                 </Image.GestureRecognizers>
             </Image>-->
 
-            <Label x:Name="InfromatationText" HorizontalTextAlignment="Start" Style="{StaticResource BodyLabelBlack}"></Label>
-                            <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}" Margin="0,0,0,10" />
+            <Label
+                x:Name="InfromatationText"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource BodyLabelBlack}" />
+            <buttons:SfButton
+                x:Name="btnprimary"
+                Margin="0,0,0,10"
+                Clicked="DoneButtonClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                VerticalOptions="CenterAndExpand" />
 
         </StackLayout>
     </yummy:PancakeView>

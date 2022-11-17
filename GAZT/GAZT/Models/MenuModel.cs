@@ -13,5 +13,7 @@ namespace EGAZT.Models
         public int ColumnNo { get; set; }
         public int Row { get; set; }
         public string ServiceDesc { get; set; }
+        public bool IsSelected { get; set; }
+        public string SelectedImageSource { get; set; }
     }
 }

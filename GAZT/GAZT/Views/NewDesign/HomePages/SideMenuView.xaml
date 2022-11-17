@@ -23,8 +23,8 @@
                 Source="ZatcaLogoWithTitle"
                 VerticalOptions="StartAndExpand"
                 WidthRequest="190" />
-            <Grid RowDefinitions="*,auto"> 
-                       <Grid.Margin>
+            <Grid RowDefinitions="*,auto">
+                <Grid.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="0,0,0,-15" />
                         <On Platform="Android" Value="0" />
