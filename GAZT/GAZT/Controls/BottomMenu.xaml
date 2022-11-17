@@ -40,7 +40,7 @@
         </yummy:PancakeView.Resources>
         <Grid
             Padding="10,0,10,0"
-            ColumnDefinitions="*,*,0,*"
+            ColumnDefinitions="*,*,*,*"
             RowDefinitions="65">
             <StackLayout Grid.Column="0">
                 <StackLayout.GestureRecognizers>
