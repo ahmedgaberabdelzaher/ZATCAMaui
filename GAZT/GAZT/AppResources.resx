@@ -9794,9 +9794,6 @@ Zakat, Tax and Customs Authority
   <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate your electronic bill</value>
     </data>
- <data name="RegisteredVAT" xml:space="preserve">
-        <value>VAT Registered</value>
-  </data>
  <data name="CustomNote1" xml:space="preserve">
         <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>
     </data>
@@ -9809,11 +9806,29 @@ Zakat, Tax and Customs Authority
   <data name="CustomNote4" xml:space="preserve">
         <value>It enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
     </data>
+     <data name="RegisteredVAT" xml:space="preserve">
+        <value>VAT Registered</value>
+  </data>
 <data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
   <data name="unableToVerify" xml:space="preserve">
         <value>Unable To Verify</value>
+    </data>
+        <data name="PleaseEnter" xml:space="preserve">
+     <value>Please enter</value>
+    </data> 
+  <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>The number of digits in the tax certificate number must be 15 digits</value>
+    </data>
+    <data name="AccountS" xml:space="preserve">
+        <value>Account S</value>
+    </data>
+      <data name="MenuDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+    <data name="ProductDeclaration" xml:space="preserve">
+        <value>Product Declaration (1/2)</value>
     </data>
   <data name="NewDeclaration" xml:space="preserve">
         <value>New Declaration</value>
@@ -9830,24 +9845,6 @@ Zakat, Tax and Customs Authority
     <data name="DepartingToKSA" xml:space="preserve">
         <value>Departing from KSA</value>
     </data> 
-    <data name="PleaseEnter" xml:space="preserve">
-     <value>Please enter</value>
-    </data> 
-  <data name="VATCertificateNumberValidation" xml:space="preserve">
-        <value>The number of digits in the tax certificate number must be 15 digits</value>
-    </data>
-    <data name="AccountS" xml:space="preserve">
-        <value>Account S</value>
-    </data>
-       <data name="AccountS" xml:space="preserve">
-        <value>Account S</value>
-    </data>
-      <data name="MenuDashboard" xml:space="preserve">
-    <value>Dashboard</value>
-  </data>
-    <data name="ProductDeclaration" xml:space="preserve">
-        <value>Product Declaration (1/2)</value>
-    </data>
     <data name="ProductDeclarationSubTitle" xml:space="preserve">
         <value>Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? </value>
     </data>

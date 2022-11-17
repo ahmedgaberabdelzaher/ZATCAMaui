@@ -9735,13 +9735,52 @@ info@zatca.gov.sa</value>
   <data name="unableToVerify" xml:space="preserve">
         <value>تعذر التحقق</value>
     </data>
-  <data name="PleaseEnter" xml:space="preserve">
+    <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
     </data>
-        <data name="AccountS" xml:space="preserve">
-           <value>كشف الحساب</value>
+  <data name="AccountS" xml:space="preserve">
+        <value>كشف الحساب</value>
     </data>
-       <data name="MenuDashboard" xml:space="preserve">
+     <data name="MenuDashboard" xml:space="preserve">
     <value>بياناتي</value>
   </data>
+     <data name="NewDeclaration" xml:space="preserve">
+        <value>إعلان جديد</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>حدد الخيار وأكمل التفاصيل</value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>القدوم إلى المملكة أم المغادرة؟</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>الوصول إلى المملكة العربية السعودية</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>المغادرة من المملكة العربية السعودية</value>
+    </data> 
+      <data name="ProductDeclaration" xml:space="preserve">
+        <value>إعلان المنتج (1/2)</value>
+    </data>
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>إذا لم يتم العثور على المنتج في القائمة ، يرجى التعرف على مكتب التمثيل عند الوصول.</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>نوع العنصر</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>اسم المنتج</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>اضافة عنصر</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>إجمالي الرسوم المستحقة</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>اختار</value>
+    </data>
 </root>
