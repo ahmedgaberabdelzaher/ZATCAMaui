@@ -1822,7 +1822,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ISurveyServices _surveyServices;
         public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService, ISurveyServices surveyServices) : base(navigationService, dialogService)
         {
-          //  IsShowMsgView = true;
+           // ISEndSurvey = true;
+            // IsShowMsgView = true;
             _surveyServices = surveyServices;
             MenuViewVisible = false;
             LiveChatVisible = false;
@@ -3635,7 +3636,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Survey
-
+        bool iSEndSurvey;
+        public bool ISEndSurvey { get { return iSEndSurvey; } set { iSEndSurvey = value;RaisePropertyChanged(); } }
 
         public ICommand SurveyNextCommand
         {
@@ -3643,7 +3645,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return new Command<string>((currentStep) =>
                 {
+
+                   /* if (currentStep== "3")
+                    {
+                        ISEndSurvey = true;
+                    } */
                     SurveyCurrentStep = int.Parse(currentStep);
+                  
                     if (SurveyCurrentStep==4)
                     {
                        
@@ -3715,14 +3723,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return new Command(async() =>
                 {
-                  var date=  Preferences.Get("DateOfSurvey",DateTime.Now.AddDays(-1).Date);
+                    CultureInfo enCul = new CultureInfo("en-US");
+                    var Defdate = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    var date=  Preferences.Get("DateOfSurvey", Defdate);
                  var isSurveyDone=Preferences.Get("IsSurveyTaken", false);
 
-                    if (date== DateTime.Now.Date&& isSurveyDone)
+                    if (date== Defdate&& isSurveyDone)
                     {
                         return;
                     }
-                  //  IsShowMsgView = await HaveSurveyForToday();
+                 IsShowMsgView = await HaveSurveyForToday();
                  });
             }
         }
@@ -3733,7 +3743,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 return new Command<string>(async(isdismiss) =>
                 {
+                    SurveyCurrentStep = 3;
+                    IsLoading = true;
                    await AddSurveyForToday(isdismiss == "0" ? false : true);
+                    IsLoading = false;
                 });
             }
         }
@@ -3752,9 +3765,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             };
             var VocBody = new VocAddSurveyAnswerModel()
             {
-                collectId = PageSettings.CollectorId,
-                surveyId = PageSettings.SurveyID,
-                responseArr = new List<ResponseArr>()
+                collectID = PageSettings.CollectorId,
+                surveyID = PageSettings.SurveyID,
+                feedback = new List<ResponseArr>()
                 {
                  new ResponseArr()
                  {
@@ -3763,31 +3776,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          start=date,
                          end=date
                      },
-                     customData=new CustomData()
+                     user=new CustomData()
                      {
                          CustomerSegment="TIN",
                           mobile=App.TP.Mobile,
-                           Name=App.TP.Name,
+                           firstName=App.TP.Name,
                            TIN=App.TP.Tin
                      },
-                     answers=new List<Answer>()
+                     surveyAnswers=new List<Answer>()
                      {
                          new Answer()
                          {
-                             qId=PageSettings.Q1ID,
-                             ans=new List<An>()
+                             questionID=PageSettings.Q1ID,
+                             answer=new List<An>()
                              {
                                  new An()
                                  {
                                      rowId=PageSettings.Q1AnsID,
-                                     colId=SelctedImojy.ID
+                                     columnID=SelctedImojy.ID
                                  }
                              }
                          },
                          new Answer()
                          {
-                             qId=QNumber==2?PageSettings.Q2ID:PageSettings.Q3ID,
-                             ans=new List<An>()
+                             questionID=QNumber==2?PageSettings.Q2ID:PageSettings.Q3ID,
+                             answer=new List<An>()
                              {
                                  new An()
                                  {
@@ -3806,12 +3819,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 var res = await _surveyServices.AddSurveyData(body);
                 if (res.IsSuccessStatusCode)
                 {
-                    Preferences.Set("DateOfSurvey", DateTime.Now.Date);
+                    var DateOfSurvey = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    Preferences.Set("DateOfSurvey", DateOfSurvey);
                     Preferences.Set("IsSurveyTaken", true);
                 }
             }
-      
-            IsShowMsgView = false;
+            ISEndSurvey = true;
+                //  IsShowMsgView = false;
             return false;
         }
 
@@ -3823,7 +3837,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
            var res=await _surveyServices.GetSurveyByDate("1012", date);
             if (res.Item2)
             {
-                if (res.Item1.issuccess&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))
+                if (res.Item1.data!=null&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))
                 {
                     
                     SchedukeID = res.Item1.data.id;

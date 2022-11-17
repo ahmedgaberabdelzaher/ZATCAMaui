@@ -105,7 +105,7 @@
                                     
                                     FontSize="14"
                                     FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="14"
+                                  
                                     Text="{x:Static ResourceManager:AppResources.ConsumerCalculator}"
                                     TextColor="#FFFFFF"
                                     VerticalOptions="EndAndExpand">
