@@ -94,5 +94,8 @@ namespace EGAZT.Models.SubmitReportModel
         List<ReportFileModel> _files = new List<ReportFileModel>();
         public List<ReportFileModel> files { get { return _files; } set { _files = value;} }
 
+        public string fileBase64 { get; set; }
+        public string[] fAraay { get; set; }
+
     }
 }

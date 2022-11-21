@@ -209,12 +209,12 @@ namespace EGAZT.Helper
                     }
                     AddBasicAuthToHeader(client);
 
-                    jobject = JsonConvert.SerializeObject(Data);
-                    var JsonObject =jobject;
+                  var JsonObject = JsonConvert.SerializeObject(Data);
+                   // var JsonObject =jobject;
 
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
-                   // var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
+                   // var response = await client.PostAsync(requestUrl, content);
+                    var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
                     if (response != null)
                     {
                         

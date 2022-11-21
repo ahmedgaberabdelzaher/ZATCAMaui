@@ -28,16 +28,21 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         void SetLanguage()
         {
+            string Url = "";
             if (App.IsArabic)
             {
-               taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
-              // taxEvasionWebView.Source = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
-     }
+              // taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+               Url = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
+
+            }
             else
             {
-                taxEvasionWebView.Source = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
-               // taxEvasionWebView.Source = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
+               // taxEvasionWebView.Source = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+             Url  = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
             }
+            taxEvasionWebView.Source = Url;
+            taxEvasionHybridWebView.Source = Url;
+
         }
 
         protected override void OnAppearing()
@@ -91,6 +96,21 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             if (e.Url=="https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
             {
                 loadingIndicator.IsVisible = true;
+                return;
+            }
+            loadingIndicator.IsVisible = false;
+        }
+
+        void taxEvasionHybridWebView_Navigated(System.Object sender, Xamarin.Forms.WebNavigatedEventArgs e)
+        {
+            loadingIndicator.IsVisible = false;
+        }
+
+        void taxEvasionHybridWebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            if (e.Url == "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
+            {
+                loadingIndicator.IsVisible =false ;
                 return;
             }
             loadingIndicator.IsVisible = false;
