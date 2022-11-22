@@ -1,13 +1,14 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 x:Class="EGAZT.Views.NewDesign.DashBoardPages.QuickActionPopUpPageView"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-                 BackgroundColor="Transparent"
-                 xmlns:custom="clr-namespace:GAZT"
-                 xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.DashBoardPages.QuickActionPopUpPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="Transparent">
 
     <pages:PopupPage.Resources>
         <ResourceDictionary>
@@ -17,106 +18,162 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="20">
+    <yummy:PancakeView CornerRadius="20" VerticalOptions="FillAndExpand">
 
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60*"/>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
-                <ColumnDefinition Width="80*"></ColumnDefinition>
-                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="10*" />
 
             </Grid.ColumnDefinitions>
-            <Grid VerticalOptions="FillAndExpand" BackgroundColor="Black" Opacity="0.5" Grid.Row="0" Grid.Column="0" Grid.RowSpan="{x:OnPlatform iOS=2, Android=2, UWP=2}" Grid.ColumnSpan="3">
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="{x:OnPlatform iOS=2,
+                                            Android=2,
+                                            UWP=2}"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="Black"
+                Opacity="0.5"
+                VerticalOptions="FillAndExpand">
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100*"/>
+                    <RowDefinition Height="100*" />
                 </Grid.RowDefinitions>
 
             </Grid>
-            <StackLayout Padding="20" Spacing="24" Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalOptions="End">
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="1"
+                Padding="20"
+                Orientation="Vertical"
+                Spacing="24"
+                VerticalOptions="End">
 
-                <border:SfBorder x:Name="ZAKATReturn"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
+                <border:SfBorder
+                    x:Name="ZAKATReturn"
+                    BackgroundColor="White"
+                    HasShadow="False"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}" HorizontalOptions="Center" HorizontalTextAlignment="Center">
+                        <custom:CustomLabel
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}"
+                            VerticalOptions="Center">
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
+                                <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
+                            <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <border:SfBorder.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnOverdueReturnClicked"/>
+                        <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
                     </border:SfBorder.GestureRecognizers>
 
                 </border:SfBorder>
 
-                <border:SfBorder x:Name="ReadInbox"   Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
+                <border:SfBorder
+                    x:Name="ReadInbox"
+                    BackgroundColor="White"
+                    HasShadow="False"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
+                        <custom:CustomLabel
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}"
+                            VerticalOptions="Center">
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
+                                <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnCorrespondanceClicked"/>
+                            <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </border:SfBorder>
 
 
-                <border:SfBorder x:Name="GetSupport"  Style="{StaticResource GreyBorderFrameWithShadow}" BackgroundColor="White"  HasShadow="False" >
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center"  HeightRequest="50">
+                <border:SfBorder
+                    x:Name="GetSupport"
+                    BackgroundColor="White"
+                    HasShadow="False"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
 
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.GetSupport}" VerticalOptions="Center" Style="{StaticResource CustomButtonTextStyle}">
+                        <custom:CustomLabel
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.GetSupport}"
+                            VerticalOptions="Center">
                             <custom:CustomLabel.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
+                                <TapGestureRecognizer Tapped="OnGetSupportClicked" />
                             </custom:CustomLabel.GestureRecognizers>
                         </custom:CustomLabel>
 
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnGetSupportClicked"/>
+                            <TapGestureRecognizer Tapped="OnGetSupportClicked" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
                 </border:SfBorder>
 
 
             </StackLayout>
-            <Frame  Grid.Row="2"
-                    Grid.ColumnSpan="3"
-                    Opacity="0.5"
-                    CornerRadius="10"
-                    WidthRequest="24"
-                    HeightRequest="24">
+            <Frame
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                CornerRadius="10"
+                HeightRequest="24"
+                Opacity="0.5"
+                WidthRequest="24">
                 <Frame.Margin>
-                    <OnPlatform x:TypeArguments="Thickness" >
-                        <On Platform="iOS" Value="2,-6,2,0"/>
-                        <On Platform="Android" Value="2,-6,2,0"/>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="2,-6,2,0" />
+                        <On Platform="Android" Value="2,-6,2,0" />
                     </OnPlatform>
                 </Frame.Margin>
                 <Frame.HeightRequest>
-                    <OnPlatform x:TypeArguments="x:Double" >
-                        <On Platform="iOS" Value="4"/>
-                        <On Platform="Android" Value="4"/>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="4" />
+                        <On Platform="Android" Value="4" />
                     </OnPlatform>
                 </Frame.HeightRequest>
             </Frame>
 
-            <StackLayout Grid.Row="2" Grid.ColumnSpan="3" Padding="0,0,0,16" >
+            <StackLayout
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Padding="0,0,0,16">
 
-                <Image x:Name="CloseIcon"  Margin="0,8,0,0" HeightRequest="56" WidthRequest="56" Source="quick_Actions_Close.png">
+                <Image
+                    x:Name="CloseIcon"
+                    Margin="0,8,0,0"
+                    HeightRequest="56"
+                    Source="quick_Actions_Close.png"
+                    WidthRequest="56">
 
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                        <TapGestureRecognizer Tapped="OnCloseTapped" />
                     </Image.GestureRecognizers>
                 </Image>
             </StackLayout>

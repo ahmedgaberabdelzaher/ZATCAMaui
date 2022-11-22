@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-            xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" 
-             xmlns:custom2="clr-namespace:EGAZT"
-             xmlns:custom="clr-namespace:GAZT"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.SummaryInstruction">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.SummaryInstruction"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,48 +18,71 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView VerticalOptions="End" Margin="0,200,0,0" Style="{StaticResource CommonTopCurves}">
+    <yummy:PancakeView
+        Margin="0,200,0,0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="End">
         <ScrollView VerticalScrollBarVisibility="Never">
             <StackLayout>
-            <custom:CustomLabel Text="{x:Static custom2:AppResources.ZVatTermsAndConditions}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"  Style="{StaticResource BodyLabelBlack}" />
+                <custom:CustomLabel
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource BodyLabelBlack}"
+                    Text="{x:Static custom2:AppResources.ZVatTermsAndConditions}"
+                    VerticalOptions="StartAndExpand" />
 
-            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
-                    <FormattedString>
-                        <Span Text="1."/>
-                        <Span Text="{x:Static custom2:AppResources.ZVatTandCone}"/>
-                    </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                <custom:CustomLabel
+                    HorizontalOptions="StartAndExpand"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    VerticalOptions="EndAndExpand">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="1." />
+                            <Span Text="{x:Static custom2:AppResources.ZVatTandCone}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
 
-            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
-                    <FormattedString>
-                        <Span Text="2."/>
-                        <Span Text="{x:Static custom2:AppResources.ZVatTandCtwo}" />
-                    </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                <custom:CustomLabel
+                    HorizontalOptions="StartAndExpand"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    VerticalOptions="EndAndExpand">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="2." />
+                            <Span Text="{x:Static custom2:AppResources.ZVatTandCtwo}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
 
-            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
-                    <FormattedString>
-                        <Span Text="3."/>
-                        <Span Text="{x:Static custom2:AppResources.ZVatTandCthree}" />
-                    </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                <custom:CustomLabel
+                    HorizontalOptions="StartAndExpand"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    VerticalOptions="EndAndExpand">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="3." />
+                            <Span Text="{x:Static custom2:AppResources.ZVatTandCthree}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
 
-            <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource CaptionLabelGrey}">
-                <custom:CustomLabel.FormattedText>
-                    <FormattedString>
-                        <Span Text="4."/>
-                        <Span Text="{x:Static custom2:AppResources.ZVatTandCfour}" />
-                    </FormattedString>
-                </custom:CustomLabel.FormattedText>
-            </custom:CustomLabel>
+                <custom:CustomLabel
+                    HorizontalOptions="StartAndExpand"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    VerticalOptions="EndAndExpand">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="4." />
+                            <Span Text="{x:Static custom2:AppResources.ZVatTandCfour}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
 
-            
+
                 <!--<CheckBox VerticalOptions="CenterAndExpand" IsChecked="{Binding IsInstrunctionChecked}">
                     <CheckBox.Triggers>
                         <DataTrigger TargetType="CheckBox"  Value="false">
@@ -66,15 +90,15 @@
                         </DataTrigger>
                     </CheckBox.Triggers>
                 </CheckBox>-->
-                <custom:CustomLabel   Style="{StaticResource CaptionLabelBlack}">
+                <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static custom2:AppResources.ZVatCertifyInformation}"  />
+                            <Span Text="{x:Static custom2:AppResources.ZVatCertifyInformation}" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
-            
-        </StackLayout>
+
+            </StackLayout>
         </ScrollView>
     </yummy:PancakeView>
 </pages:PopupPage>

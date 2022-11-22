@@ -3,18 +3,17 @@ using System.Collections.Generic;
 
 namespace EGAZT.Models.SurveyModels
 {
-  
     public class An
     {
         public string rowId { get; set; }
-        public string colId { get; set; }
+        public string columnID { get; set; }
         public string text { get; set; }
     }
 
     public class Answer
     {
-        public string qId { get; set; }
-        public List<An> ans { get; set; }
+        public string questionID { get; set; }
+        public List<An> answer { get; set; }
     }
 
     public class CustomData
@@ -34,14 +33,15 @@ namespace EGAZT.Models.SurveyModels
     public class ResponseArr
     {
         public CustomData user { get; set; }
-        public List<Answer> answers { get; set; }
+
+        public List<Answer> surveyAnswers { get; set; }
         public Date date { get; set; }
     }
 
     public class VocAddSurveyAnswerModel
     {
-        public string surveyId { get; set; }
-        public string collectId { get; set; }
+        public string surveyID { get; set; }
+        public string collectID { get; set; }
         public List<ResponseArr> feedback { get; set; }
     }
 }

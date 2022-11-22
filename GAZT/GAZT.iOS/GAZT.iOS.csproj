@@ -50,7 +50,7 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -80,7 +80,7 @@
  --optimize=experimental-xforms-product-type
  --warn-on-type-ref=UIKit.UIWebView
  --optimize=force-rejected-types-removal</MtouchExtraArgs>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -114,7 +114,7 @@
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
     <IOSDebuggerPort>10001</IOSDebuggerPort>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
@@ -127,7 +127,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -138,7 +138,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
@@ -161,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--linkskip=Xamarin.CommunityToolkit -gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
+    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
@@ -910,9 +910,6 @@
     </PackageReference>
     <PackageReference Include="ZXing.Net.MobileX.Forms">
       <Version>3.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="YoutubeExplode">
-      <Version>6.2.1</Version>
     </PackageReference>
     <PackageReference Include="Plugin.MediaManager.Forms">
       <Version>1.1.1</Version>

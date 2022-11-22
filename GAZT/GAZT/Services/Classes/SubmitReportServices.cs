@@ -37,7 +37,10 @@ namespace EGAZT.Services.Classes
         }
         public async Task<BaseResponseModel<string>> CreateZatcaNewReport(SubmitReportModel submitReport)
         {
-            var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+           /* var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+          */  var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
+            var cont = await res.Content.ReadAsStringAsync();
+            var response = NewHTTPManger.DeserializeObject<BaseResponseModel<string>>(cont);
             return response;
         }
     }

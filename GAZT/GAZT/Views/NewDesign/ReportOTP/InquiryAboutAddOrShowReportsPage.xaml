@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.ReportOTP.InquiryAboutAddOrShowReportsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.ReportOTP.InquiryAboutAddOrShowReportsPage"
-     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
@@ -41,7 +41,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-   <ContentPage.Content>
+    <ContentPage.Content>
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
@@ -55,9 +55,9 @@
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
-                         <Image.Triggers>
+                        <Image.Triggers>
                             <DataTrigger
                                 Binding="{Binding AppDirection}"
                                 TargetType="Image"
@@ -74,12 +74,12 @@
 
                 </StackLayout>
 
-                <!-- Reports Label  -->
+                <!--  Reports Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
+                    FontSize="20"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    FontSize="20"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.ChooseReports}"
                     VerticalOptions="Center" />
@@ -87,7 +87,7 @@
             </Grid>
             <!--#endregion Header-->
 
-              <!--#region Body-->
+            <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
                 Padding="20,5,20,0"
@@ -97,122 +97,129 @@
 
                     <StackLayout Spacing="30">
 
-                        <StackLayout VerticalOptions="Start"
-                                     HorizontalOptions="FillAndExpand"
-                                     Spacing="10"
-                                     Margin="0,30,0,0"
-                                     Orientation="Horizontal">
+                        <StackLayout
+                            Margin="0,30,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="Start">
 
-                            <!--SubmitReport Card-->
-                            <Frame Padding="0"
-                                   WidthRequest="171"
-                                   VerticalOptions="StartAndExpand"
-                                   HorizontalOptions="StartAndExpand"
-                                   HeightRequest="120"
-                                   BackgroundColor="White"
-                                   BorderColor="#E6E6E6"
-                                   CornerRadius="10"
-                                   IsClippedToBounds="True">
+                            <!--  SubmitReport Card  -->
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="White"
+                                BorderColor="#E6E6E6"
+                                CornerRadius="10"
+                                HeightRequest="120"
+                                HorizontalOptions="StartAndExpand"
+                                IsClippedToBounds="True"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
 
                                 <StackLayout
-                                            VerticalOptions="CenterAndExpand"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Spacing="10">
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
 
-                                    <!--Add Report icon-->
-                                    <Image Aspect="AspectFit"
-                                            VerticalOptions="StartAndExpand"
-                                            WidthRequest="45"
-                                            HeightRequest="45"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Source="addReportIcon.png"/>
+                                    <!--  Add Report icon  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="45"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="addReportIcon.png"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="45" />
 
                                     <!--  Add Report Label  -->
                                     <custom:CustomLabel
-                                        HorizontalOptions="CenterAndExpand"
                                         FontSize="14"
-                                        TextColor="#002447"
-                                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"/>
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                                        TextColor="#002447" />
 
                                 </StackLayout>
 
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoToSubmitReportCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding GoToSubmitReportCommand}" />
                                 </Frame.GestureRecognizers>
 
                             </Frame>
 
-                            <!--Show Reports Card-->
-                            <Frame Padding="0"
-                                   WidthRequest="171"
-                                   VerticalOptions="StartAndExpand"
-                                   HorizontalOptions="StartAndExpand"
-                                   HeightRequest="120"
-                                   BackgroundColor="White"
-                                   BorderColor="#E6E6E6"
-                                   CornerRadius="10"
-                                   IsClippedToBounds="True">
+                            <!--  Show Reports Card  -->
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="White"
+                                BorderColor="#E6E6E6"
+                                CornerRadius="10"
+                                HeightRequest="120"
+                                HorizontalOptions="StartAndExpand"
+                                IsClippedToBounds="True"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
 
                                 <StackLayout
-                                            VerticalOptions="CenterAndExpand"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Spacing="10">
+                                    HorizontalOptions="CenterAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
 
-                                    <!--Add Report icon-->
-                                    <Image Aspect="AspectFit"
-                                            VerticalOptions="StartAndExpand"
-                                            WidthRequest="45"
-                                            HeightRequest="45"
-                                            HorizontalOptions="CenterAndExpand"
-                                            Source="showReports.png"/>
+                                    <!--  Add Report icon  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="45"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="showReports.png"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="45" />
 
                                     <!--  ShowPerviousReports Label  -->
                                     <custom:CustomLabel
-                                        HorizontalOptions="CenterAndExpand"
                                         FontSize="14"
-                                        TextColor="#002447"
-                                        Text="{x:Static ResourceManager:AppResources.ShowPerviousReports}"/>
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ShowPerviousReports}"
+                                        TextColor="#002447" />
 
                                 </StackLayout>
 
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GoToPerviousReportsCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding GoToPerviousReportsCommand}" />
                                 </Frame.GestureRecognizers>
 
                             </Frame>
 
-                            
+
                         </StackLayout>
 
-                        <!--Report Note-->
-                        <Frame Padding="10"
-                               BackgroundColor="White"
-                               BorderColor="#E6E6E6"
-                                VerticalOptions="StartAndExpand"
-                                HorizontalOptions="FillAndExpand"
-                                CornerRadius="10">
+                        <!--  Report Note  -->
+                        <Frame
+                            Padding="10"
+                            BackgroundColor="White"
+                            BorderColor="#E6E6E6"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
 
                             <StackLayout
-                                        Orientation="Horizontal"
-                                        VerticalOptions="CenterAndExpand"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Spacing="10">
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="10"
+                                VerticalOptions="CenterAndExpand">
 
-                                <!--info icon-->
-                                <Image Aspect="AspectFit"
-                                        VerticalOptions="CenterAndExpand"
-                                        WidthRequest="20"
-                                        HeightRequest="20"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Source="information.png"/>
+                                <!--  info icon  -->
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="20"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="information.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
 
                                 <!--  ReportsNote Label  -->
                                 <custom:CustomLabel
-                                    HorizontalOptions="StartAndExpand"
                                     FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
                                     LineSpacing="0.8"
-                                    TextColor="#999999"
-                                    Text="{x:Static ResourceManager:AppResources.ReportsNote}"/>
+                                    Text="{x:Static ResourceManager:AppResources.ReportsNote}"
+                                    TextColor="#999999" />
 
                             </StackLayout>
 

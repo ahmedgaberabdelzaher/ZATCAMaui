@@ -174,7 +174,12 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
+                    HttpClientHandler clientHandler = new HttpClientHandler();
+                    clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                    // Pass the handler to httpclient(from you are calling api)
+                    HttpClient client = new HttpClient(clientHandler);
+                   // var client = new System.Net.Http.HttpClient();
                     //var h = new HttpClientHandler();
                     //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
 
@@ -199,17 +204,17 @@ namespace EGAZT.Helper
                     }
                     else
                     {
-                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.XZATCAClientIdProd);
-                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.XZATCAClientSecretProd);
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     }
                     AddBasicAuthToHeader(client);
 
-                    jobject = JsonConvert.SerializeObject(Data);
-                    var JsonObject =jobject;
+                  var JsonObject = JsonConvert.SerializeObject(Data);
+                   // var JsonObject =jobject;
 
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");
-                    var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
-                   // var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
+                   // var response = await client.PostAsync(requestUrl, content);
+                    var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
                     if (response != null)
                     {
                         
