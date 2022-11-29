@@ -1,17 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             BackgroundImageSource="partials_background"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:custom="clr-namespace:GAZT"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.ZakatForm5.ZakatAcknowledgmentPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.ZakatForm5.ZakatAcknowledgmentPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,62 +24,103 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*" />
+                <RowDefinition Height="50*" />
             </Grid.RowDefinitions>
-            <StackLayout Grid.Row="0" Margin="0,50,0,0" Padding="20,0,20,0">
-            <Image Source="Forget_ic_success"/>
-                <custom:CustomLabel Margin="0,15,0,0" Text="{x:Static ResourceManager:AppResources.NDReturnOfZakat}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalTextAlignment="Center" StyleId="OnBoardText"/>
-                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5BillAmtAboveObtainCertificate}" Style="{StaticResource BodyLabelBlack}" TextColor="White" HorizontalTextAlignment="Center" LineSpacing="0.7" StyleId="OnBoardText"/>
+            <StackLayout
+                Grid.Row="0"
+                Margin="0,50,0,0"
+                Padding="20,0,20,0">
+                <Image Source="Forget_ic_success" />
+                <custom:CustomLabel
+                    Margin="0,15,0,0"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    StyleId="OnBoardText"
+                    Text="{x:Static ResourceManager:AppResources.NDReturnOfZakat}" />
+                <custom:CustomLabel
+                    HorizontalTextAlignment="Center"
+                    LineSpacing="0.7"
+                    Style="{StaticResource BodyLabelBlack}"
+                    StyleId="OnBoardText"
+                    Text="{x:Static ResourceManager:AppResources.FORM5BillAmtAboveObtainCertificate}"
+                    TextColor="White" />
             </StackLayout>
-            
-                <yummy:PancakeView Grid.Row="1" VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}">
+
+            <yummy:PancakeView
+                Grid.Row="1"
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="EndAndExpand">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <ScrollView Grid.Row="0">
-                    <StackLayout>
-                        <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
+                        <StackLayout>
+                            <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
 
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5SadadBillNo}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
-                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                        <custom:CustomLabel Text="{Binding SadadBillNumber}" Style="{StaticResource BodyLabelBlack}" HorizontalOptions="Start"/>
-                            </StackLayout>
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.FORM5SadadBillNo}" />
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <custom:CustomLabel
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource BodyLabelBlack}"
+                                            Text="{Binding SadadBillNumber}" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </border:SfBorder>
+
+
+                            <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
+
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.FORM5TotalZakatPayable}" />
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
+                                        <custom:CustomLabel HorizontalOptions="Start" Style="{StaticResource BodyLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding TotalZakatPayble}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </custom:CustomLabel>
+                                    </StackLayout>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                <StackLayout
+                                    Padding="15,10,15,10"
+                                    Orientation="Horizontal"
+                                    Spacing="10">
+                                    <Image Source="ic_vat_info.png" />
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        LineSpacing="0.6"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.NDPayBillAmtObtainCertificateAutomaticall}" />
+                                </StackLayout>
+                            </border:SfBorder>
                         </StackLayout>
-                    </border:SfBorder >
-
-
-                    <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout Orientation="Horizontal"  Padding="15,10,15,10">
-
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.FORM5TotalZakatPayable}" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="Start"/>
-                            <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" >
-                                <custom:CustomLabel Style="{StaticResource BodyLabelBlack}" HorizontalOptions="Start">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                                    <Span Text="{Binding TotalZakatPayble}"/>
-                                            <Span Text=" "/>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </custom:CustomLabel>
-                            </StackLayout>
-                        </StackLayout>
-                    </border:SfBorder>
-
-                    <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                        <StackLayout Orientation="Horizontal" Spacing="10"  Padding="15,10,15,10">
-                            <Image Source="ic_vat_info.png"/>
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDPayBillAmtObtainCertificateAutomaticall}" Style="{StaticResource CaptionLabelGrey}" LineSpacing="0.6" HorizontalOptions="Start"/>
-                        </StackLayout>
-                    </border:SfBorder >
-                    </StackLayout>
                     </ScrollView>
-                    <StackLayout Grid.Row="1" Spacing="0" Padding="0,8,0,0" BackgroundColor="White">
-                        <buttons:SfButton x:Name="btnprimary" Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnFinishedTapped"/>
+                    <StackLayout
+                        Grid.Row="1"
+                        Padding="0,8,0,0"
+                        BackgroundColor="White"
+                        Spacing="0">
+                        <buttons:SfButton
+                            x:Name="btnprimary"
+                            Clicked="OnFinishedTapped"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.Form5Finish}" />
                         <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.Form5Finish}" Style="{StaticResource ValueLabelBlackBold}" HorizontalTextAlignment="Center" TextColor="{StaticResource NewDullOrangeColor}">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnFinishedTapped" NumberOfTapsRequired="1"/>
@@ -87,7 +129,7 @@
                     </StackLayout>
                 </Grid>
             </yummy:PancakeView>
-            
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

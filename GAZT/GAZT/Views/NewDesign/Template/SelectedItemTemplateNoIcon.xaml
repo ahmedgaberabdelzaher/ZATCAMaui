@@ -1,22 +1,38 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
-          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-          xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
-          xmlns:custom="clr-namespace:GAZT"
-          x:Class="EGAZT.Views.NewDesign.Template.SelectedItemTemplateNoIcon">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    x:Class="EGAZT.Views.NewDesign.Template.SelectedItemTemplateNoIcon"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:custom="clr-namespace:GAZT">
     <ViewCell.View>
-        <Grid Padding="4" >
-            <cards:SfCardView HasShadow="False" BackgroundColor="Transparent" CornerRadius="20" HeightRequest="104" WidthRequest="171">
+        <Grid Padding="4">
+            <cards:SfCardView
+                BackgroundColor="Transparent"
+                CornerRadius="20"
+                HasShadow="False"
+                HeightRequest="104"
+                WidthRequest="171">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="104"/>
+                        <RowDefinition Height="104" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Image Source="re_Tile_Background_S" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                    <StackLayout Style="{DynamicResource CardParentStacklayout}"  HorizontalOptions="FillAndExpand" VerticalOptions="End">
-                        <custom:CustomLabel Text="{Binding CardLabel}" Style="{DynamicResource CardLabelWhite}" FontSize="Small"/>
+                    <Image
+                        Aspect="Fill"
+                        HorizontalOptions="FillAndExpand"
+                        Source="re_Tile_Background_S"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Style="{DynamicResource CardParentStacklayout}"
+                        VerticalOptions="End">
+                        <custom:CustomLabel
+                            FontSize="Small"
+                            Style="{DynamicResource CardLabelWhite}"
+                            Text="{Binding CardLabel}" />
                     </StackLayout>
                 </Grid>
             </cards:SfCardView>

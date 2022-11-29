@@ -1,11 +1,16 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                  xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                  xmlns:custom1="clr-namespace:GAZT.CustomControl"
-                  x:Class="EGAZT.Views.NewDesign.GenericPickers.CalendarPickerPageView"
-                  xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:custom11="clr-namespace:EGAZT.CustomControl" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" BackgroundClicked="PopupPage_BackgroundClicked">
-     <ContentPage.Resources>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.GenericPickers.CalendarPickerPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    xmlns:custom11="clr-namespace:EGAZT.CustomControl"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundClicked="PopupPage_BackgroundClicked">
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -14,47 +19,92 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-         <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0"  HorizontalOptions="End" VerticalOptions="End" IsVisible="true">
-             <StackLayout Orientation="Vertical">
+        <yummy:PancakeView
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            HorizontalOptions="End"
+            IsVisible="true"
+            VerticalOptions="End">
+            <StackLayout Orientation="Vertical">
 
-                <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
-                                         Style="{StaticResource GreyBorderFrameWithShadow}">
+                <border:SfBorder
+                    Margin="0,0,0,5"
+                    Padding="0"
+                    HasShadow="False"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout Orientation="Vertical">
-                        <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                        <Button x:Name="CalendarDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium" FontFamily="{StaticResource SomarBold}" Text="{x:Static ResourceManager:AppResources.CRDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand">
-                        </Button>
+                        <BoxView
+                            HorizontalOptions="Center"
+                            Style="{StaticResource NeutralGrayBoxViewDrag}"
+                            VerticalOptions="Start" />
+                        <Button
+                            x:Name="CalendarDoneButton"
+                            Margin="10,0,10,0"
+                            BackgroundColor="Transparent"
+                            Clicked="PopupClose_Clicked"
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="Medium"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.CRDone}"
+                            TextColor="{StaticResource Primary}" />
                     </StackLayout>
                 </border:SfBorder>
 
-                <StackLayout IsVisible="{Binding IsCurrentDatePickerVisible}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
-                    <Label x:Name="CalendarTitle" Text="{Binding DatePickerTitle}"
-                                        HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"
-                                    Margin="0,16,0,16"  />
+                <StackLayout
+                    Margin="24,8,24,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding IsCurrentDatePickerVisible}"
+                    VerticalOptions="End">
+                    <Label
+                        x:Name="CalendarTitle"
+                        Margin="0,16,0,16"
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource SectionTitleBlackBold}"
+                        Text="{Binding DatePickerTitle}" />
 
-                     <custom11:GenericCustomDatePicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
-								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"
-								    x:Name="calendarPicker" SelectedItem="{Binding SelectedDate}"
-								    ItemHeight="36" >
-                                <custom11:GenericCustomDatePicker.Behaviors>
-                                        <custom1:SfPickerBehavior />
-                                </custom11:GenericCustomDatePicker.Behaviors>
-                      </custom11:GenericCustomDatePicker>
-               </StackLayout>
-                 <StackLayout IsVisible="{Binding IsFutureDatePickerVisible}" BackgroundColor="Transparent" HorizontalOptions="End" VerticalOptions="End" Margin="24,8,24,0">
+                    <custom11:GenericCustomDatePicker
+                        x:Name="calendarPicker"
+                        Margin="2"
+                        FlowDirection="RightToLeft"
+                        IsOpen="True"
+                        ItemHeight="36"
+                        SelectedItem="{Binding SelectedDate}"
+                        SelectionChanged="genericPicker_SelectionChanged"
+                        Style="{StaticResource CalendarPickerStyle}">
+                        <custom11:GenericCustomDatePicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </custom11:GenericCustomDatePicker.Behaviors>
+                    </custom11:GenericCustomDatePicker>
+                </StackLayout>
+                <StackLayout
+                    Margin="24,8,24,0"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding IsFutureDatePickerVisible}"
+                    VerticalOptions="End">
 
-                    <Label x:Name="FutureCalendarTitle" Text="{Binding DatePickerTitle}"
-                                        HorizontalOptions="CenterAndExpand" Style="{StaticResource SectionTitleBlackBold}"
-                                    Margin="0,16,0,16"  />
-                     <custom11:GenericCustomDatePicker FlowDirection="RightToLeft"  IsOpen="True" Style="{StaticResource CalendarPickerStyle}"
-								    Margin="2" SelectionChanged="genericPicker_SelectionChanged"
-								    x:Name="futureCalendarPicker" SelectedItem="{Binding SelectedDate}"
-								    ItemHeight="36" >
-                                <custom11:GenericCustomDatePicker.Behaviors>
-                                        <custom1:SfPickerBehavior />
-                                </custom11:GenericCustomDatePicker.Behaviors>
-                      </custom11:GenericCustomDatePicker>
-               </StackLayout>
-             </StackLayout>
-          </yummy:PancakeView>
+                    <Label
+                        x:Name="FutureCalendarTitle"
+                        Margin="0,16,0,16"
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource SectionTitleBlackBold}"
+                        Text="{Binding DatePickerTitle}" />
+                    <custom11:GenericCustomDatePicker
+                        x:Name="futureCalendarPicker"
+                        Margin="2"
+                        FlowDirection="RightToLeft"
+                        IsOpen="True"
+                        ItemHeight="36"
+                        SelectedItem="{Binding SelectedDate}"
+                        SelectionChanged="genericPicker_SelectionChanged"
+                        Style="{StaticResource CalendarPickerStyle}">
+                        <custom11:GenericCustomDatePicker.Behaviors>
+                            <custom1:SfPickerBehavior />
+                        </custom11:GenericCustomDatePicker.Behaviors>
+                    </custom11:GenericCustomDatePicker>
+                </StackLayout>
+            </StackLayout>
+        </yummy:PancakeView>
     </ContentPage.Content>
 </pages:PopupPage>

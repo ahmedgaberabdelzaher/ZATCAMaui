@@ -176,7 +176,7 @@ namespace EGAZT.Helper
                             foreach (var item in files)
                             {
                                 //   multipartForm.Add(new StreamContent(item.filecontentStream),"Files",item.filename);
-                                multipartForm.Add(new StreamContent(new MemoryStream(item.paramFileStream)), "Files", item.filename);
+                                //multipartForm.Add(new StreamContent(new MemoryStream(item.paramFileStream)), "Files", item.filename);
 
                             }
                         }

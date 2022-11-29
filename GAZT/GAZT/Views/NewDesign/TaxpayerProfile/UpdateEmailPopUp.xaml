@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-                   xmlns:FontImage="clr-namespace:MVP.FontIcons"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-             xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
-                 xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:custom="clr-namespace:GAZT"
-                 x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp"
-                 xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.UpdateEmailPopUp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -22,82 +23,154 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView Padding="0" Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+    <yummy:PancakeView
+        Padding="0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0" x:Name="UpdateEmail" IsVisible="True">
+            <StackLayout
+                x:Name="UpdateEmail"
+                Grid.Row="0"
+                IsVisible="True">
                 <Image Margin="24,16,24,8" HorizontalOptions="Start">
                     <Image.Source>
-                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                        <FontImageSource
+                            FontFamily="UserIconFont"
+                            Glyph="{x:Static FontImage:IconFonts.Close}"
+                            Size="25"
+                            Color="{StaticResource SecondaryNew}" />
                     </Image.Source>
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBackArrowTapped"/>
+                        <TapGestureRecognizer Tapped="OnBackArrowTapped" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <BoxView Style="{StaticResource lineSeperator}" BackgroundColor="{StaticResource NeutralLightGrey}"/>
+                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" Style="{StaticResource lineSeperator}" />
                 <StackLayout Padding="24,16,24,0">
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZUpdateEmail}" Style="{StaticResource SectionTitleBlackBold}"/>
+                    <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.ZUpdateEmail}" />
 
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" Style="{StaticResource CaptionLabelGrey}"/>
+                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCurrentEmail}" />
 
-                    <inputLayout:SfTextInputLayout  Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
+                    <inputLayout:SfTextInputLayout
+                        Margin="0,-10,0,0"
+                        ContainerType="Outlined"
+                        ErrorColor="#B00020"
+                        FocusedColor="{StaticResource Primary}"
+                        HorizontalOptions="FillAndExpand"
+                        InputViewPadding="16,8,16,8"
+                        LeadingViewPosition="Inside"
+                        OutlineCornerRadius="8"
+                        UnfocusedColor="#B1B1B1">
 
-                        <control:BorderlessEntry Style="{StaticResource DefaultEntry}"
-                                                 Text="{Binding CurrentEmailText}"
-                                                 Keyboard="Email"
-                                                IsReadOnly="True" 
-                                                    TextColor="{StaticResource NeutralBlack}" >
+                        <control:BorderlessEntry
+                            IsReadOnly="True"
+                            Keyboard="Email"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding CurrentEmailText}"
+                            TextColor="{StaticResource NeutralBlack}">
                             <control:BorderlessEntry.Behaviors>
-                                                <custom:AlphaNumericValidatorBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
+                                <custom:AlphaNumericValidatorBehaviour />
+                            </control:BorderlessEntry.Behaviors>
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NewEmail}" Style="{StaticResource CaptionLabelGrey}"/>
-                    <inputLayout:SfTextInputLayout  x:Name="Frm_NewEmail" Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
-                        <control:BorderlessEntry x:Name="NewEmail_Entry" Style="{StaticResource DefaultEntry}"
-                                                 Text="{Binding NewEmailText}" Keyboard="Email"  Unfocused="NewEmail_Entry_Unfocused"  TextColor="{StaticResource NeutralBlack}">
+                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NewEmail}" />
+                    <inputLayout:SfTextInputLayout
+                        x:Name="Frm_NewEmail"
+                        Margin="0,-10,0,0"
+                        ContainerType="Outlined"
+                        ErrorColor="#B00020"
+                        FocusedColor="{StaticResource Primary}"
+                        HorizontalOptions="FillAndExpand"
+                        InputViewPadding="16,8,16,8"
+                        LeadingViewPosition="Inside"
+                        OutlineCornerRadius="8"
+                        UnfocusedColor="#B1B1B1">
+                        <control:BorderlessEntry
+                            x:Name="NewEmail_Entry"
+                            Keyboard="Email"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding NewEmailText}"
+                            TextColor="{StaticResource NeutralBlack}"
+                            Unfocused="NewEmail_Entry_Unfocused">
                             <control:BorderlessEntry.Behaviors>
-                                                <custom:AlphaNumericValidatorBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
+                                <custom:AlphaNumericValidatorBehaviour />
+                            </control:BorderlessEntry.Behaviors>
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
 
-                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" Style="{StaticResource CaptionLabelGrey}"/>
-                    <inputLayout:SfTextInputLayout x:Name="Frm_confirmEmail" Margin="0,-10,0,0" HorizontalOptions="FillAndExpand" LeadingViewPosition="Inside" ContainerType="Outlined"  UnfocusedColor="#B1B1B1" OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" InputViewPadding="16,8,16,8">
-                        <control:BorderlessEntry x:Name="ConfirmEmail_Entry" Style="{StaticResource DefaultEntry}"
-                                                 Text="{Binding ConfirmEmailText}" Unfocused="ConfirmEmail_Entry_Unfocused" Keyboard="Email"  TextColor="{StaticResource NeutralBlack}" >
+                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDConfirmNewEmail}" />
+                    <inputLayout:SfTextInputLayout
+                        x:Name="Frm_confirmEmail"
+                        Margin="0,-10,0,0"
+                        ContainerType="Outlined"
+                        ErrorColor="#B00020"
+                        FocusedColor="{StaticResource Primary}"
+                        HorizontalOptions="FillAndExpand"
+                        InputViewPadding="16,8,16,8"
+                        LeadingViewPosition="Inside"
+                        OutlineCornerRadius="8"
+                        UnfocusedColor="#B1B1B1">
+                        <control:BorderlessEntry
+                            x:Name="ConfirmEmail_Entry"
+                            Keyboard="Email"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding ConfirmEmailText}"
+                            TextColor="{StaticResource NeutralBlack}"
+                            Unfocused="ConfirmEmail_Entry_Unfocused">
                             <control:BorderlessEntry.Behaviors>
-                                                <custom:AlphaNumericValidatorBehaviour/>
-                                            </control:BorderlessEntry.Behaviors>
+                                <custom:AlphaNumericValidatorBehaviour />
+                            </control:BorderlessEntry.Behaviors>
                         </control:BorderlessEntry>
                     </inputLayout:SfTextInputLayout>
                 </StackLayout>
 
-                <buttons:SfButton Margin="24,0,24,24" x:Name="btn" Text="{x:Static ResourceManager:AppResources.TPUpdate}" Style="{StaticResource PrimaryButtonStyle}" Clicked="UpdatedClicked"/>
+                <buttons:SfButton
+                    x:Name="btn"
+                    Margin="24,0,24,24"
+                    Clicked="UpdatedClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.TPUpdate}" />
 
             </StackLayout>
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                           AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                           ViewBoxWidth = "70"                                          
-                                           TitlePlacement="Bottom"
-                                           ViewBoxHeight="70" 
-                                           TextColor="{StaticResource Secondary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

@@ -15,39 +15,37 @@
     <ContentView.Content>
         <Grid
             BackgroundColor="Transparent"
-            ColumnSpacing="0" RowSpacing="0"
+            ColumnSpacing="0"
+            RowSpacing="0"
             VerticalOptions="Center">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            
+
             <!--  Image for display svg image  -->
             <Image
                 Grid.Row="0"
                 Margin="0"
+                Aspect="AspectFit"
                 BackgroundColor="Transparent"
-                Style="{StaticResource SFOnboardingCenterImage}"
-
-             Aspect="AspectFit"
                 Source="{Binding ImagePath}"
-                VerticalOptions="Center"
-                 />
+                Style="{StaticResource SFOnboardingCenterImage}"
+                VerticalOptions="Center" />
 
             <!--  Label to display header  -->
-  
+
             <custom:CustomLabel
                 Grid.Row="1"
-               FontSize="18.6"
+                Margin="0,20,0,5"
+                FontSize="18.6"
+                HorizontalOptions="Center"
                 HorizontalTextAlignment="Start"
-                                 Style="{StaticResource PageTitleWhite}"
-                                 HorizontalOptions="Center"  Margin="0,20,0,5"
-                                 VerticalOptions="Center"
+                Style="{StaticResource PageTitleWhite}"
                 StyleId="OnBoardText"
                 Text="{Binding Header}"
-               
-                 />
+                VerticalOptions="Center" />
 
             <!--  Label to display content  -->
             <Label
@@ -55,15 +53,12 @@
                 Margin="10,0,0,10"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-               
-                Style="{StaticResource BodyLabelWhite}"
-                  StyleId="OnBoardText"
-
-                Text="{Binding Content}"
                 LineBreakMode="CharacterWrap"
                 LineHeight="1.3"
-                VerticalTextAlignment="Center" 
-                />
+                Style="{StaticResource BodyLabelWhite}"
+                StyleId="OnBoardText"
+                Text="{Binding Content}"
+                VerticalTextAlignment="Center" />
 
         </Grid>
     </ContentView.Content>

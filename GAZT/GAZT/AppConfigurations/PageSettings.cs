@@ -39,7 +39,7 @@ namespace EGAZT.AppConfigurations
 
         public static string CustomBaseUrl;
         public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
-        public static string VatSTGBaseUrl = "http://172.50.15.39:80/api";
+        public static string VatSTGBaseUrl = "http://172.25.39.60:80/api";
 
         public static string GetBaseURL(string environment = "STG")
         {

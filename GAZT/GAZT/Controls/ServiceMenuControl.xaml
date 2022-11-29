@@ -172,34 +172,40 @@
                                 </StackLayout.Triggers>
                                 <Image
                                     Margin="0,5,0,0"
-                                    HeightRequest="37" VerticalOptions="Start"
+                                    HeightRequest="37"
                                     HorizontalOptions="Center"
                                     Source="{Binding ImageSource}"
+                                    VerticalOptions="Start"
                                     WidthRequest="29" />
                                 <StackLayout>
-                                <Label
-                                    Margin="0,5,0,5"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Start" >
-                                         <Label.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding IsVerticalView}"
-                                        TargetType="Label"
-                                        Value="true">
-                                                 <Setter Property="HorizontalOptions" Value="StartAndExpand" />
-                                    </DataTrigger>
-                                </Label.Triggers>
+                                    <Label
+                                        Margin="0,5,0,5"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Start">
+                                        <Label.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsVerticalView}"
+                                                TargetType="Label"
+                                                Value="true">
+                                                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                                            </DataTrigger>
+                                        </Label.Triggers>
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding Name}" TextColor="{StaticResource Primary}" FontFamily="{StaticResource SomarBold}"></Span>
-                                                <Span Text="&#10;"></Span>
-                                                <Span Text="{Binding ServiceDesc}"
-                                                      FontFamily="{StaticResource SomarRegular}"
-                                                      TextColor="#232323" FontSize="10"></Span>
+                                                <Span
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    Text="{Binding Name}"
+                                                    TextColor="{StaticResource Primary}" />
+                                                <Span Text="&#10;" />
+                                                <Span
+                                                    FontFamily="{StaticResource SomarRegular}"
+                                                    FontSize="10"
+                                                    Text="{Binding ServiceDesc}"
+                                                    TextColor="#232323" />
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <Label ></Label>
+                                    <Label />
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

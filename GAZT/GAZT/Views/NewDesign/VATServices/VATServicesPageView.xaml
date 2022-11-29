@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:custom="clr-namespace:GAZT"
-             NavigationPage.HasNavigationBar="False"
-             NavigationPage.BackButtonTitle=""
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             BackgroundImageSource="partials_background.png"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             x:Class="EGAZT.Views.NewDesign.VATServices.VATServicesPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.VATServices.VATServicesPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.BackButtonTitle=""
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <!--<CustomControl:DataMarkerConverter x:Key="converter" />-->
@@ -34,95 +35,147 @@
     <ContentPage.Content>
         <Grid x:Name="VATServices" RowSpacing="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <yummy:PancakeView Style="{StaticResource CommonTopCurves}" Grid.Row="1">
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
                 <StackLayout Spacing="16">
                     <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="ic_RefundR.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                        <StackLayout
+                            Padding="16,8,16,8"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image Source="ic_RefundR.png" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
 
                         </StackLayout>
                         <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VATRefundRequest_Tapped"/>
+                            <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATRegisteredItems}">
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="ic_vat_return.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                    <border:SfBorder IsVisible="{Binding ShowVATRegisteredItems}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout
+                            Padding="16,8,16,8"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image Source="ic_vat_return.png" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
 
                         </StackLayout>
                         <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped"/>
+                            <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <StackLayout Spacing="16" IsVisible="{Binding ShowVATRegisteredItems}">
+                    <StackLayout IsVisible="{Binding ShowVATRegisteredItems}" Spacing="16">
                         <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="deregistration.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                            <StackLayout
+                                Padding="16,8,16,8"
+                                Orientation="Horizontal"
+                                Spacing="20">
+                                <Image Source="deregistration.png" />
+                                <custom:CustomLabel
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
 
-                        </StackLayout>
-                        <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped"/>
-                        </border:SfBorder.GestureRecognizers>
-                    </border:SfBorder>
-                    
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" >
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="registration.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <border:SfBorder.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
+                            </border:SfBorder.GestureRecognizers>
+                        </border:SfBorder>
 
-                        </StackLayout>
-                        <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VATAment_Tapped"/>
-                        </border:SfBorder.GestureRecognizers>
-                    </border:SfBorder>
+                        <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <StackLayout
+                                Padding="16,8,16,8"
+                                Orientation="Horizontal"
+                                Spacing="20">
+                                <Image Source="registration.png" />
+                                <custom:CustomLabel
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationAmendmentTile}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+
+                            </StackLayout>
+                            <border:SfBorder.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="VATAment_Tapped" />
+                            </border:SfBorder.GestureRecognizers>
+                        </border:SfBorder>
 
                     </StackLayout>
 
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATRegisteredItems}">
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="details.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                    <border:SfBorder IsVisible="{Binding ShowVATRegisteredItems}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout
+                            Padding="16,8,16,8"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image Source="details.png" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="{x:Static ResourceManager:AppResources.VATRegistrationDetails}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
                         </StackLayout>
                         <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VATRegistration_Details_Tapped"/>
+                            <TapGestureRecognizer Tapped="VATRegistration_Details_Tapped" />
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
 
-                    <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}" IsVisible="{Binding ShowVATReactivationItems}">
-                        <StackLayout Orientation="Horizontal" Spacing="20" Padding="16,8,16,8">
-                            <Image Source="sf_ic_Paid.png"/>
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}" Style="{StaticResource ValueLabelBlack}" VerticalTextAlignment="Center" VerticalOptions="Center"/>
+                    <border:SfBorder IsVisible="{Binding ShowVATReactivationItems}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout
+                            Padding="16,8,16,8"
+                            Orientation="Horizontal"
+                            Spacing="20">
+                            <Image Source="sf_ic_Paid.png" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZZVatRegistrationReactivationTile}"
+                                VerticalOptions="Center"
+                                VerticalTextAlignment="Center" />
 
                         </StackLayout>
                         <border:SfBorder.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="VATReactivation_Tapped"/>
+                            <TapGestureRecognizer Tapped="VATReactivation_Tapped" />
                         </border:SfBorder.GestureRecognizers>
                     </border:SfBorder>
-                    
+
                 </StackLayout>
             </yummy:PancakeView>
             <Grid Grid.Row="0" Padding="15,5,15,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel Grid.Column="1" x:Name="MenuTitleName" Text="{x:Static ResourceManager:AppResources.NDVATServices}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                <custom:CustomLabel
+                    x:Name="MenuTitleName"
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.NDVATServices}" />
 
 
-                <Image Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Source="arrowLeftwhite.png" Style="{DynamicResource BackButtonArrow}" >
+                <Image
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Source="arrowLeftwhite.png"
+                    Style="{DynamicResource BackButtonArrow}"
+                    VerticalOptions="CenterAndExpand">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnBackTapped" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnBackTapped" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>

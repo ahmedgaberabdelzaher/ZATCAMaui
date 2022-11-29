@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:custom="clr-namespace:GAZT" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-             x:Class="EGAZT.Views.NewDesign.TaxpayerCorrespondancePages.TaxpayerCorrespondancePageView"     NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TaxpayerCorrespondancePages.TaxpayerCorrespondancePageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,8 +31,8 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            
-            </ResourceDictionary>
+
+        </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -30,33 +41,56 @@
                 <StackLayout>
                     <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.ZZCorrespondence}" />
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"  Style="{DynamicResource BackButtonArrow}" >
+                        <Image
+                            x:Name="Image_BacKIcon"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,0,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Padding="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,0,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
@@ -65,131 +99,251 @@
         </ControlTemplate>
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
-        <Grid >
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <StackLayout Spacing="-5" Grid.Row="0" Padding="15,15,15,0">
+            <StackLayout
+                Grid.Row="0"
+                Padding="15,15,15,0"
+                Spacing="-5">
 
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                   <StackLayout Orientation="Horizontal" Spacing="0" Grid.Column="0" Grid.Row="0" HorizontalOptions="Start" >
-                        <Label HorizontalTextAlignment="Start" Text="{Binding FilterTaxTypeLabelText}" HorizontalOptions="StartAndExpand" TextColor="{StaticResource NeutralBlack}" FontFamily="{StaticResource SomarBold}"
-                               FontSize="28" FontAttributes="Bold">
-                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="btn_TaxTypeClicked">
-                                </TapGestureRecognizer>
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal"
+                        Spacing="0">
+                        <Label
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="28"
+                            HorizontalOptions="StartAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding FilterTaxTypeLabelText}"
+                            TextColor="{StaticResource NeutralBlack}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_TaxTypeClicked" />
                             </Label.GestureRecognizers>
                         </Label>
-                        <Image Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
-                          <Image.Margin>
-                            <OnPlatform x:TypeArguments="Thickness">
-                                <On Platform="iOS" Value="5,8,5,0"/>
-                                <On Platform="Android" Value="5,10,5,0"/>
-                            </OnPlatform>
-                        </Image.Margin>
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="btn_TaxTypeClicked">
-                            </TapGestureRecognizer>
-                        </Image.GestureRecognizers>
+                        <Image
+                            HorizontalOptions="Start"
+                            Source="arrowDropdown"
+                            VerticalOptions="Center">
+                            <Image.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,8,5,0" />
+                                    <On Platform="Android" Value="5,10,5,0" />
+                                </OnPlatform>
+                            </Image.Margin>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="btn_TaxTypeClicked" />
+                            </Image.GestureRecognizers>
                         </Image>
-                   </StackLayout>
-                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypeDownPicker" HeaderHeight="55" HeaderTextColor="White"
-                    ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15"
-                    ShowFooter="False" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeListForDropDown}" Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" 
-                    PickerHeight="250" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" PickerWidth="300" HeaderFontSize="13" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" ShowHeader="False" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC"
-                    FooterHeight="46" SelectionChanged="TaxTypeDownPicker_SelectionChanged">
+                    </StackLayout>
+                    <syncfusion:SfPicker
+                        x:Name="TaxTypeDownPicker"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="10,0,10,0"
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        CancelButtonBackgroundColor="#EAF7CC"
+                        CancelButtonTextColor="{StaticResource Primary}"
+                        ColumnHeaderHeight="46"
+                        DisplayMemberPath="TaxType"
+                        FlowDirection="RightToLeft"
+                        FooterHeight="46"
+                        HeaderBackgroundColor="{StaticResource Primary}"
+                        HeaderFontSize="13"
+                        HeaderHeight="55"
+                        HeaderTextColor="White"
+                        ItemHeight="40"
+                        ItemsSource="{Binding TaxTypeListForDropDown}"
+                        OKButtonBackgroundColor="#EAF7CC"
+                        OKButtonTextColor="{StaticResource Primary}"
+                        PickerHeight="250"
+                        PickerMode="Dialog"
+                        PickerWidth="300"
+                        SelectedItemFontAttribute="Bold"
+                        SelectedItemFontSize="15"
+                        SelectedItemTextColor="{StaticResource NeutralBlack}"
+                        SelectionChanged="TaxTypeDownPicker_SelectionChanged"
+                        ShowColumnHeader="False"
+                        ShowFooter="False"
+                        ShowHeader="False"
+                        UnSelectedItemTextColor="{StaticResource NeutralBlack}">
                         <syncfusion:SfPicker.Behaviors>
                             <custom1:SfPickerBehavior />
                         </syncfusion:SfPicker.Behaviors>
                     </syncfusion:SfPicker>
                 </Grid>
 
-                <custom:CustomLabel HorizontalOptions="StartAndExpand" Margin="5,0,5,0" Text="{Binding CountLabel}" Style="{StaticResource TPCorrCaptionLabelGrey}">
+                <custom:CustomLabel
+                    Margin="5,0,5,0"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource TPCorrCaptionLabelGrey}"
+                    Text="{Binding CountLabel}">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
-                            <Span Text="{x:Static ResourceManager:AppResources.NDCount}" Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
-                            <Span Text=" : " Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
-                            <Span Text="{Binding Count}" Style="{StaticResource TPCorrCaptionLabelGrey}"></Span>
+                            <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDCount}" />
+                            <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text=" : " />
+                            <Span Style="{StaticResource TPCorrCaptionLabelGrey}" Text="{Binding Count}" />
                         </FormattedString>
                     </custom:CustomLabel.FormattedText>
                 </custom:CustomLabel>
-                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" IsVisible="{Binding IsVisibleFavourite}">
-                    <buttons:SfChipGroup x:Name="ChipGroup_statusFilter" Type="Filter"  Margin="0,10,0,0" HorizontalOptions="Start"  ChipBackgroundColor="Transparent"   ItemsSource="{Binding ChipDataFilterlist}" SelectedChipBackgroundColor="{StaticResource PartialBg}"  ChipBorderColor="{StaticResource SecondaryNew}"  ChipBorderWidth="1" VerticalOptions="Center" SelectionChanging="ChipGroup_statusFilter_SelectionChanged" SelectedChipTextColor="{StaticResource Partial}">
+                <ScrollView
+                    HorizontalScrollBarVisibility="Never"
+                    IsVisible="{Binding IsVisibleFavourite}"
+                    Orientation="Horizontal">
+                    <buttons:SfChipGroup
+                        x:Name="ChipGroup_statusFilter"
+                        Margin="0,10,0,0"
+                        ChipBackgroundColor="Transparent"
+                        ChipBorderColor="{StaticResource SecondaryNew}"
+                        ChipBorderWidth="1"
+                        HorizontalOptions="Start"
+                        ItemsSource="{Binding ChipDataFilterlist}"
+                        SelectedChipBackgroundColor="{StaticResource PartialBg}"
+                        SelectedChipTextColor="{StaticResource Partial}"
+                        SelectionChanging="ChipGroup_statusFilter_SelectionChanged"
+                        Type="Filter"
+                        VerticalOptions="Center">
                         <buttons:SfChipGroup.ItemTemplate>
-                            <DataTemplate >
-                                <StackLayout Margin="0" Orientation="Horizontal" HorizontalOptions="StartAndExpand" Spacing="2" Padding="5,-2,5,-2"  >
-                                    <Image Source="{Binding ImageSource}" HorizontalOptions="Center" HeightRequest="25"  ></Image>
-                                    <custom:CustomLabel TextColor="{StaticResource SecondaryNew}" Text="{Binding Text}" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Style="{StaticResource CaptionLabelBlack}"/>
+                            <DataTemplate>
+                                <StackLayout
+                                    Margin="0"
+                                    Padding="5,-2,5,-2"
+                                    HorizontalOptions="StartAndExpand"
+                                    Orientation="Horizontal"
+                                    Spacing="2">
+                                    <Image
+                                        HeightRequest="25"
+                                        HorizontalOptions="Center"
+                                        Source="{Binding ImageSource}" />
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Center"
+                                        Style="{StaticResource CaptionLabelBlack}"
+                                        Text="{Binding Text}"
+                                        TextColor="{StaticResource SecondaryNew}"
+                                        VerticalOptions="CenterAndExpand" />
                                 </StackLayout>
                             </DataTemplate>
                         </buttons:SfChipGroup.ItemTemplate>
                     </buttons:SfChipGroup>
                 </ScrollView>
-               
+
             </StackLayout>
             <StackLayout Grid.Row="1" Padding="15,0,15,15">
 
 
-                                        <listView:SfListView HorizontalOptions="Center" IsScrollBarVisible="False" VerticalOptions="FillAndExpand" AutoFitMode="DynamicHeight"
-                                      ItemsSource="{Binding ListToDisplay}"  SelectionMode="SingleDeselect" SelectionBackgroundColor="Transparent" IsVisible="{Binding IsListVisible}" ItemTapped="ListView_Correspondance_ItemTapped">
-                            <listView:SfListView.ItemTemplate>
-                                <DataTemplate>
-                                    <border:SfBorder Padding="10"  Grid.Column="0" CornerRadius="15" Margin="0,15,0,0" HasShadow="False" Style="{StaticResource GreyBorderFrameWithShadow}" VerticalOptions="FillAndExpand">
+                <listView:SfListView
+                    AutoFitMode="DynamicHeight"
+                    HorizontalOptions="Center"
+                    IsScrollBarVisible="False"
+                    IsVisible="{Binding IsListVisible}"
+                    ItemTapped="ListView_Correspondance_ItemTapped"
+                    ItemsSource="{Binding ListToDisplay}"
+                    SelectionBackgroundColor="Transparent"
+                    SelectionMode="SingleDeselect"
+                    VerticalOptions="FillAndExpand">
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <border:SfBorder
+                                Grid.Column="0"
+                                Margin="0,15,0,0"
+                                Padding="10"
+                                CornerRadius="15"
+                                HasShadow="False"
+                                Style="{StaticResource GreyBorderFrameWithShadow}"
+                                VerticalOptions="FillAndExpand">
 
-                                        <Grid VerticalOptions="FillAndExpand">
+                                <Grid VerticalOptions="FillAndExpand">
 
-                                            <Grid.RowDefinitions >
-                                                <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="30"/>
-                                            </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="30" />
+                                    </Grid.ColumnDefinitions>
 
-                                            <Grid VerticalOptions="FillAndExpand">
-                                                <Grid.RowDefinitions >
-                                                <RowDefinition Height="auto"/>
-                                                  <RowDefinition Height="auto"/>
-                                            </Grid.RowDefinitions>
-                                            <StackLayout Grid.Row="0" Margin="0,0,5,5"  HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
-                                                <Label Text="{Binding Title}" Style="{StaticResource BodyLabelBlack}"  HorizontalOptions="StartAndExpand" Margin="0" Padding="0"  VerticalOptions="FillAndExpand"/>
-                                            </StackLayout>
-
-                                            
-                                            <StackLayout Grid.Row="1" Margin="0,0,5,5" Grid.Column="0" Orientation="Horizontal"  VerticalOptions="FillAndExpand">
-                                                  <Label Text="{Binding DateToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
-                                                <Label Text="{Binding TimeToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
-
-                                            </StackLayout>
-                                             </Grid>
-
-                                             <StackLayout Margin="0,0,5,5" Grid.Row="0" Grid.Column="1" HorizontalOptions="End" VerticalOptions="CenterAndExpand">
-                                                <Image  x:Name="ImageBackArrow" Style="{DynamicResource BackButtonArrow}"  Source="{Binding FavImg}" HeightRequest="30" WidthRequest="30" />
-
-                                            </StackLayout>
-                                        </Grid>
-                                    </border:SfBorder>
-
-                                </DataTemplate>
-                            </listView:SfListView.ItemTemplate>
-                        </listView:SfListView>
+                                    <Grid VerticalOptions="FillAndExpand">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                        </Grid.RowDefinitions>
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Margin="0,0,5,5"
+                                            HorizontalOptions="StartAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <Label
+                                                Margin="0"
+                                                Padding="0"
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource BodyLabelBlack}"
+                                                Text="{Binding Title}"
+                                                VerticalOptions="FillAndExpand" />
+                                        </StackLayout>
 
 
-                <!--<ListView  x:Name="ListView_Correspondance"  
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="0"
+                                            Margin="0,0,5,5"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="FillAndExpand">
+                                            <Label
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource CaptionLabelBlack}"
+                                                Text="{Binding DateToDisplay}" />
+                                            <Label
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource CaptionLabelBlack}"
+                                                Text="{Binding TimeToDisplay}" />
+
+                                        </StackLayout>
+                                    </Grid>
+
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Margin="0,0,5,5"
+                                        HorizontalOptions="End"
+                                        VerticalOptions="CenterAndExpand">
+                                        <Image
+                                            x:Name="ImageBackArrow"
+                                            HeightRequest="30"
+                                            Source="{Binding FavImg}"
+                                            Style="{DynamicResource BackButtonArrow}"
+                                            WidthRequest="30" />
+
+                                    </StackLayout>
+                                </Grid>
+                            </border:SfBorder>
+
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
+                </listView:SfListView>
+
+
+                <!--<ListView  x:Name="ListView_Correspondance"
            ItemsSource="{Binding ListToDisplay,Mode=TwoWay}"
                                            IsVisible="{Binding IsListVisible}"
-                                  VerticalScrollBarVisibility="Never"    
+                                  VerticalScrollBarVisibility="Never"
           HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand"
             HasUnevenRows="True"
-                 BackgroundColor="White"     
+                 BackgroundColor="White"
             SeparatorVisibility="None" ItemTapped="ListView_Correspondance_ItemTapped">
                     <x:Arguments>
                         <ListViewCachingStrategy>RecycleElement</ListViewCachingStrategy>
@@ -214,12 +368,12 @@
                                             <StackLayout Grid.Row="0">
                                                 <Label  Text="{Binding Title}" Style="{StaticResource BodyLabelBlack}"   />
                                             </StackLayout>
-                                            
+
                                             <StackLayout Grid.Row="1" Orientation="Horizontal" HorizontalOptions="StartAndExpand">
                                                 <Label Text="{Binding DateToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
                                                 <Label Text="{Binding TimeToDisplay}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start"/>
                                             </StackLayout>
-                                            
+
                                         </Grid>
                                         <Image  x:Name="ImageBackArrow" Style="{DynamicResource BackButtonArrow}" Grid.Row="0"  Grid.Column="1"   Source="{Binding FavImg}" HorizontalOptions="End" VerticalOptions="Center"/>
 
@@ -229,24 +383,47 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
-                <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.Nodataavailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoDataLableVisible}"/>
+                <custom:CustomLabel
+                    Margin="0,20,0,0"
+                    HorizontalOptions="Center"
+                    IsVisible="{Binding IsNoDataLableVisible}"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    Text="{x:Static ResourceManager:AppResources.Nodataavailable}"
+                    VerticalOptions="Center" />
             </StackLayout>
-            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}">
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                         TextColor="{StaticResource Secondary}"/>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
                     </StackLayout>
                 </StackLayout>
             </Grid>

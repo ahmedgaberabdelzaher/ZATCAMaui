@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             mc:Ignorable="d"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-             x:Class="EGAZT.Views.NewDesign.Template.DashboardAnonymousMenuPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.Template.DashboardAnonymousMenuPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -31,7 +32,7 @@
                 <Setter Property="BackgroundColor" Value="White" />
                 <Setter Property="CornerRadius" Value="14" />
                 <Setter Property="HasShadow" Value="True" />
-                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="BorderWidth" Value="1" />
                 <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
                 <Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />
             </Style>
@@ -40,7 +41,11 @@
     <ContentPage.Content>
         <Grid>
 
-            <Image Aspect="AspectFill" Margin="0,-50,0,0" x:Name="BGImageLogin" Source="partials_background.png" />
+            <Image
+                x:Name="BGImageLogin"
+                Margin="0,-50,0,0"
+                Aspect="AspectFill"
+                Source="partials_background.png" />
             <Grid x:Name="OldMenu">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -48,156 +53,261 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <StackLayout Grid.Row="0" Orientation="Horizontal" Padding="10,30,10,0" Spacing="10" VerticalOptions="Start">
-                    <Image Source="ic_Gazt.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Start" HorizontalOptions="StartAndExpand"/>
+                <StackLayout
+                    Grid.Row="0"
+                    Padding="10,30,10,0"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    VerticalOptions="Start">
+                    <Image
+                        HeightRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        Source="ic_Gazt.png"
+                        VerticalOptions="Start"
+                        WidthRequest="40" />
 
-                    <Image Source="close"  HorizontalOptions="End" VerticalOptions="Center">
+                    <Image
+                        HorizontalOptions="End"
+                        Source="close"
+                        VerticalOptions="Center">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="GoBackTapped" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoBackTapped" />
                         </Image.GestureRecognizers>
                     </Image>
                     <StackLayout.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="0,20,0,0"/>
-                            <On Platform="Android" Value="0,0,0,0"/>
+                            <On Platform="iOS" Value="0,20,0,0" />
+                            <On Platform="Android" Value="0,0,0,0" />
                         </OnPlatform>
                     </StackLayout.Margin>
                 </StackLayout>
-                    <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />-->
-                    <ScrollView Margin="0,20,10,0" Grid.Row="1" Padding="15,15,0,0" HorizontalOptions="FillAndExpand" >
-                        <StackLayout Spacing="20" Padding="0,0,0,10" HorizontalOptions="FillAndExpand">
-                            <StackLayout Spacing="5">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource PageTitleWhite}" VerticalOptions="Center" HorizontalTextAlignment="Start"/>
-                                <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.NDV}"/>
-                                            <Span Text="&#160;&#160;"/>
-                                            <Span  Text="{Binding AppVersion}"/>
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </custom:CustomLabel>
-                                <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="password_key.png" Style="{StaticResource SmallIcon}"/>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnVATRefundTapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-
-                             <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}"/>
-
-
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnZatcaInfoMenuTapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="taxEvasion.png" Style="{StaticResource SmallIcon}"/>
-
-
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"/>
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnTaxEvasionTapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="customerService" Style="{StaticResource SmallIcon}"/>
-
-
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZSupport}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnSupportTapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-
-                            <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="education" Style="{StaticResource SmallIcon}"/>
-
-
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnEduLinkTapped" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-                                  <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="education" Style="{StaticResource SmallIcon}"/>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ExciseTax}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="GoToExisTax" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
-                               <StackLayout Orientation="Horizontal" Spacing="20">
-                                <Image Source="ThaqaqIcon" Style="{StaticResource SmallIcon}"/>
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.TahqaqService}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center" />
-                                <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="GoToTahqaqService" NumberOfTapsRequired="1"/>
-                                </StackLayout.GestureRecognizers>
-                            </StackLayout>
-                            <BoxView Style="{StaticResource WhiteLineSeperator}"/>
+                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDServices}" Style="{StaticResource SectionTitleWhiteBold}" FontSize="24" VerticalOptions="Center" />-->
+                <ScrollView
+                    Grid.Row="1"
+                    Margin="0,20,10,0"
+                    Padding="15,15,0,0"
+                    HorizontalOptions="FillAndExpand">
+                    <StackLayout
+                        Padding="0,0,0,10"
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="20">
+                        <StackLayout Spacing="5">
+                            <custom:CustomLabel
+                                HorizontalTextAlignment="Start"
+                                Style="{StaticResource PageTitleWhite}"
+                                Text="{x:Static ResourceManager:AppResources.NDServices}"
+                                VerticalOptions="Center" />
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelWhite}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NDV}" />
+                                        <Span Text="&#160;&#160;" />
+                                        <Span Text="{Binding AppVersion}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </custom:CustomLabel>
+                            <BoxView Style="{StaticResource WhiteLineSeperator}" />
                         </StackLayout>
-                    </ScrollView>
-                <Grid VerticalOptions="EndAndExpand" Grid.Row="3" Margin="0,0,0,57" RowSpacing="0" HeightRequest="73">
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="password_key.png" Style="{StaticResource SmallIcon}" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnVATRefundTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="vat_new_Establishment_W.png" Style="{StaticResource SmallIcon}" />
+
+
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnZatcaInfoMenuTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="taxEvasion.png" Style="{StaticResource SmallIcon}" />
+
+
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTaxEvasionTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="customerService" Style="{StaticResource SmallIcon}" />
+
+
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZSupport}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnSupportTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="education" Style="{StaticResource SmallIcon}" />
+
+
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.ZZZEducationLink}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnEduLinkTapped" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="education" Style="{StaticResource SmallIcon}" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.ExciseTax}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToExisTax" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                        <StackLayout Orientation="Horizontal" Spacing="20">
+                            <Image Source="ThaqaqIcon" Style="{StaticResource SmallIcon}" />
+                            <custom:CustomLabel
+                                Style="{StaticResource ValueLabelWhiteBold}"
+                                Text="{x:Static ResourceManager:AppResources.TahqaqService}"
+                                VerticalOptions="Center" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="GoToTahqaqService" />
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                    </StackLayout>
+                </ScrollView>
+                <Grid
+                    Grid.Row="3"
+                    Margin="0,0,0,57"
+                    HeightRequest="73"
+                    RowSpacing="0"
+                    VerticalOptions="EndAndExpand">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="60*" />
                         <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
-                    <BoxView Style="{StaticResource WhiteLineSeperator}" HeightRequest="1" Grid.Row="0" Grid.ColumnSpan="3" Grid.Column="0"/>
-                    <StackLayout Orientation="Horizontal"  Grid.Row="1"  Grid.Column="0" Spacing="20" HorizontalOptions="Start" Padding="20,0,20,0">
-                        <Image Source="language" HorizontalOptions="Start" Style="{StaticResource SmallIcon}"/>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}" Style="{StaticResource ValueLabelWhiteBold}" 
-                                                    VerticalOptions="Center" HorizontalTextAlignment="Start"/>
+                    <BoxView
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HeightRequest="1"
+                        Style="{StaticResource WhiteLineSeperator}" />
+                    <StackLayout
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Padding="20,0,20,0"
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Image
+                            HorizontalOptions="Start"
+                            Source="language"
+                            Style="{StaticResource SmallIcon}" />
+                        <custom:CustomLabel
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource ValueLabelWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}"
+                            VerticalOptions="Center" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="ChangeLanguage_Tapped" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <BoxView Style="{StaticResource VerticalWhiteLineSeperator}" WidthRequest="1" Grid.Row="1" Grid.Column="1"/>
-                    <StackLayout Orientation="Horizontal" Spacing="20" Grid.Row="1" Grid.Column="2" HorizontalOptions="StartAndExpand" Padding="20,0,20,0">
-                        <Image Source="user_profile" HorizontalOptions="StartAndExpand" Style="{StaticResource SmallIcon}"/>
-                        <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSwitchUser}" Style="{StaticResource ValueLabelWhiteBold}" VerticalOptions="Center"
-                                                    HorizontalTextAlignment="Start"/>
+                    <BoxView
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Style="{StaticResource VerticalWhiteLineSeperator}"
+                        WidthRequest="1" />
+                    <StackLayout
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Padding="20,0,20,0"
+                        HorizontalOptions="StartAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Image
+                            HorizontalOptions="StartAndExpand"
+                            Source="user_profile"
+                            Style="{StaticResource SmallIcon}" />
+                        <custom:CustomLabel
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource ValueLabelWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.NDSwitchUser}"
+                            VerticalOptions="Center" />
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="SwitchUser_Tapped" NumberOfTapsRequired="1"/>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="SwitchUser_Tapped" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
-                    <BoxView Style="{StaticResource WhiteLineSeperator}" HeightRequest="1" Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0"/>
+                    <BoxView
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HeightRequest="1"
+                        Style="{StaticResource WhiteLineSeperator}" />
                 </Grid>
-                <Grid Grid.Row="0" Grid.RowSpan="3"  IsVisible="{Binding IsLoading}" Margin="0,-20,0,0">
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                        <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                            <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                       TextColor="{StaticResource Secondary}"/>
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="3"
+                    Margin="0,-20,0,0"
+                    IsVisible="{Binding IsLoading}">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <busyindicator:SfBusyIndicator
+                                x:Name="busyindicatorForLanding"
+                                AnimationType="SingleCircle"
+                                EnableAnimation="True"
+                                HorizontalOptions="CenterAndExpand"
+                                IsBusy="True"
+                                TextColor="{StaticResource Secondary}"
+                                TitlePlacement="Bottom"
+                                VerticalOptions="CenterAndExpand"
+                                ViewBoxHeight="70"
+                                ViewBoxWidth="70" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>
