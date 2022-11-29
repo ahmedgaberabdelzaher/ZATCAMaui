@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:EGAZT.Controls"
         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
      xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
-         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
       TitleText="{x:Static ResourceManager:AppResources.TransactionReception}"
     x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.TransactionReceptionView">
     <newdesign:BaseContentPage.PancakeView>
@@ -32,13 +32,29 @@
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                                        </Grid.GestureRecognizers>
-                                       <Image Source="Unselected.png" HeightRequest="136" WidthRequest="171">
+                                       <Image Source="blueCard.png" HeightRequest="136" WidthRequest="171">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
-                                                   <Setter Property="Source" Value="UnselectedCard"></Setter>
+                                                   <Setter Property="Source" Value="whiteCard"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
+                               <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="Taxpayer.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding UserType}"
+                                            TargetType="Image"
+                                            Value="1">
+                                            <Setter Property="Source" Value="SelectefTaxpayer" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
                                        <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
@@ -54,13 +70,29 @@
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
                              
                                        </Grid.GestureRecognizers>
-                                       <Image Source="Unselected.png">
+                                       <Image Source="whiteCard.png">
                                              <Image.Triggers>
-                                               <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="1">
-                                                   <Setter Property="Source" Value="UnselectedCard"></Setter>
+                                               <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
+                                                   <Setter Property="Source" Value="blueCard"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
+                             <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="Entity.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding UserType}"
+                                            TargetType="Image"
+                                            Value="2">
+                                            <Setter Property="Source" Value="SelectedEntity" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
                                        <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
@@ -102,6 +134,61 @@
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                     </StackLayout>
+                    <!--#endregion-->
+
+                     <!--#region CR-->
+                    <StackLayout IsVisible="{Binding IsEntity}">
+                        <StackLayout Spacing="0">
+                   
+                            <!--  CR Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
+                            <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZCRNumber}"/>
+                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  CR DropDown Entry  -->
+                 <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="reportRegionEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZCRNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CRNo}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenCRCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Margin="20,0,0,0" HeightRequest="20" WidthRequest="30" Source="GrayDDLArrow" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenCRCommand}" />
+                            </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <!--ADD Button-->
+                      <Frame BorderColor="#4FBBBD" BackgroundColor="White" Padding="12" CornerRadius="14">
+                        <Label Text="{x:Static ResourceManager:AppResources.AddNewCR}" HorizontalOptions="CenterAndExpand" FontSize="16" FontFamily="{StaticResource FontSomarBold}" TextColor="#4FBBBD"  VerticalOptions="CenterAndExpand"></Label>
+<Frame.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="true"></TapGestureRecognizer>
+
+                            </Frame.GestureRecognizers>
+                    </Frame>
+                  </StackLayout>
                     <!--#endregion-->
           <!--#region  Subject Field -->
                         <StackLayout Spacing="0">
@@ -168,7 +255,7 @@
                                     MaxLength="1000"
                                     MinimumHeightRequest="100"
                                     Style="{StaticResource BodyLabelBlack}"
-                                    Text="{Binding SubmitReport.ReportDetails}" />
+                                    Text="{Binding Description}" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
                 <!--#endregion-->
@@ -280,7 +367,60 @@
                             Text="{x:Static ResourceManager:AppResources.Send}" />
             </StackLayout>
     </ScrollView>
-        </Grid>
+            <!--Add Ne CR View-->
+                    <yummy:PancakeView Grid.Row="0" VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}" IsVisible="{Binding IsAddNewCR}">
+                <StackLayout>
+                    <Image Source="CloseIcon" HeightRequest="22" WidthRequest="22" HorizontalOptions="EndAndExpand">
+                        <Image.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="false"></TapGestureRecognizer>
+
+                            </Image.GestureRecognizers>
+
+                    </Image>
+                        <!--#region New CR Field -->
+                        <StackLayout Spacing="0">
+                            <!--  New CR Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
+                            <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AddNewCR}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  New CR  Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.AddNewCR}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CR}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                 
+                        </StackLayout>
+                    <!--#endregion-->
+                              <!--  Add Button  -->
+                        <buttons:SfButton
+                            Margin="0,40"
+                            BackgroundColor="#0996D4"
+                            Command="{Binding SendTransactionCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.AddNewCR}" />
+                </StackLayout>
+
+            </yummy:PancakeView>
+               <controls:MsgView Grid.Row="0" Margin="-20"
+            VerticalOptions="EndAndExpand"
+            IsVisible="{Binding IsShowMsgView}" />
+        </Grid> 
         </newdesign:BaseContentPage.PancakeView>
 
 </newdesign:BaseContentPage>

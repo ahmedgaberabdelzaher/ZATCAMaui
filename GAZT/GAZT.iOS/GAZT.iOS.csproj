@@ -608,6 +608,21 @@
     <BundleResource Include="Resources\TransactionReceptionIcon.png" />
     <BundleResource Include="Resources\TransactionReceptionIcon%402x.png" />
     <BundleResource Include="Resources\TransactionReceptionIcon%403x.png" />
+    <BundleResource Include="Resources\Entity.png" />
+    <BundleResource Include="Resources\Entity%402x.png" />
+    <BundleResource Include="Resources\Entity%403x.png" />
+    <BundleResource Include="Resources\SelectedEntity.png" />
+    <BundleResource Include="Resources\SelectedEntity%402x.png" />
+    <BundleResource Include="Resources\SelectedEntity%403x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%402x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%403x.png" />
+    <BundleResource Include="Resources\Taxpayer.png" />
+    <BundleResource Include="Resources\Taxpayer%402x.png" />
+    <BundleResource Include="Resources\Taxpayer%403x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%402x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -916,6 +931,9 @@
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
       <Version>20.3.0.47</Version>
+    </PackageReference>
+    <PackageReference Include="Portable.JWT">
+      <Version>1.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

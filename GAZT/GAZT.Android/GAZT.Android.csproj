@@ -209,6 +209,9 @@
     <PackageReference Include="Syncfusion.Licensing">
       <Version>20.3.0.47</Version>
     </PackageReference>
+    <PackageReference Include="Portable.JWT">
+      <Version>1.0.5</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_Android.cs" />

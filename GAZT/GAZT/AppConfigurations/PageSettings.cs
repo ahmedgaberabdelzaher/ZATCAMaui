@@ -39,8 +39,10 @@ namespace EGAZT.AppConfigurations
 
         public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
+        public static string IAMLoginSTGBaseUrl = "http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomBaseUrl;
+        public static string IAMLoginBaseUrl;
         public static string ZATCABaseURL;
         public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
        // public static string VatSTGBaseUrl = "http://172.25.39.60:80/api";
@@ -62,18 +64,21 @@ namespace EGAZT.AppConfigurations
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
+                    IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
                     App.VatBaseUrl = VatProdBaseUrl;
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
+                    IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
                     break;
                 default:
                     App.CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
+                    IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
                     break;
             }
             return key;

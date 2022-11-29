@@ -188,6 +188,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
             SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
             SimpleIoc.Default.Register<IUserServices, UserServices>();
+            SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -415,6 +416,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
+            SimpleIoc.Default.Register<IAMLoginViewModel>();
 
             #endregion
         }
@@ -2899,6 +2901,7 @@ namespace EGAZT
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
             navigationService.Configure("SuccessView", typeof(SuccessView));
+            navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
 
             #endregion
 
@@ -3108,6 +3111,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IAMLoginViewModel IAMLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<IAMLoginViewModel>();
                 }
                 catch (Exception ex)
                 {

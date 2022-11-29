@@ -5,18 +5,15 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception
 {
-    public partial class SuccessView : BaseContentPage
+    public partial class IAMLoginView : BaseContentPage
     {
-        TransactionReceptionViewModel viewModel;
-        public SuccessView(string refNo)
+        IAMLoginViewModel viewModel;
+        public IAMLoginView()
         {
-            viewModel = App.Locator.TransactionReceptionViewModel;
+             viewModel = App.Locator.IAMLoginViewModel;
             BindingContext = viewModel;
-            
             InitializeComponent();
-            RefNoValue.Text = refNo;
-        }
-
+        }     
     }
 }
 

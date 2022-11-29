@@ -61,7 +61,7 @@
                         HorizontalTextAlignment="Center"
                         HorizontalOptions="CenterAndExpand"
                         LineBreakMode="WordWrap"
-                        Text="1000520446784152"
+                        x:Name="RefNoValue"
                         TextColor="White" />
                      <!--  Back to Home Button  -->
                         <buttons:SfButton
@@ -74,7 +74,7 @@
                         <buttons:SfButton
                             Margin="20,20,20,20"
                             BackgroundColor="#0996D4"
-                            Command="{Binding BackToHomeCommand}"
+                            Command="{Binding BackToCustomServicesCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
                 </StackLayout>

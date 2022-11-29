@@ -110,6 +110,7 @@
 	  <None Remove="Syncfusion.Licensing" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
 	  <None Remove="Models\CustomServices\Tawreed\" />
+	  <None Remove="Portable.JWT" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -149,6 +150,7 @@
 	        <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
 	        <PackageReference Include="ZXing.Net.MobileX.Forms" Version="3.0.1" />
 	        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.1.1" />
+	        <PackageReference Include="Portable.JWT" Version="1.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />

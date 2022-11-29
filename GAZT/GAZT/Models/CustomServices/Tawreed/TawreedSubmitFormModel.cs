@@ -14,9 +14,9 @@ namespace EGAZT.Models.CustomServices.Tawreed
         public string description { get; set; }
         public int departmentTypeId { get; set; }
         public string email { get; set; }
-        public int CrNumber { get; set; }
-        public int referenceNumber { get; set; }
-        public string IamRegisteredUserID { get; set; }
+        public string CrNumber { get; set; }
+        public string referenceNumber { get; set; }
+        public long IamRegisteredUserID { get; set; }
         public string mobileNumber { get; set; }
         public Attachement attachement { get; set; }
     }

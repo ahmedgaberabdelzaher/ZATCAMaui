@@ -8,7 +8,7 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception
     public partial class TransactionReceptionView : BaseContentPage
     {
         TransactionReceptionViewModel viewModel;
-        public TransactionReceptionView()
+        public TransactionReceptionView(IDictionary<string, object> payload)
         {
             viewModel = App.Locator.TransactionReceptionViewModel;
             BindingContext = viewModel;

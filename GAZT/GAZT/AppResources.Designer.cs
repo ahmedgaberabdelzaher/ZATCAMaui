@@ -265,6 +265,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New CR +.
+        /// </summary>
+        public static string AddNewCR {
+            get {
+                return ResourceManager.GetString("AddNewCR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to New Report.
         /// </summary>
         public static string AddNewReport {
