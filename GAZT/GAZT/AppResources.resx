@@ -9612,16 +9612,16 @@ the Zakat, Tax and Customs
         <value>View services</value>
     </data>
         <data name="Port1Name" xml:space="preserve">
-        <value>Entering Saudi passports</value>
+        <value>Arrival Passports</value>
     </data>
         <data name="Port2Name" xml:space="preserve">
-        <value>Saudi exit passports</value>
+        <value>Departure Passports</value>
     </data>
         <data name="Port3Name" xml:space="preserve">
-        <value>Saudi Arabia customs entry</value>
+        <value>Arrival Customs</value>
     </data>
         <data name="Port4Name" xml:space="preserve">
-        <value>Saudi customs exit</value>
+        <value>Departure Customs</value>
     </data>
       <data name="EinvoiceScanning" xml:space="preserve">
         <value>E-Invoice Validation</value>

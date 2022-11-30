@@ -88,12 +88,13 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private void taxEvasionWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
-            if (e.Url=="https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
+            /*if (e.Url=="https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
             {
                 loadingIndicator.IsVisible = true;
                 return;
             }
-            loadingIndicator.IsVisible = false;
+            loadingIndicator.IsVisible = false;*/
+            loadingIndicator.IsVisible = true;
         }
     }
 }

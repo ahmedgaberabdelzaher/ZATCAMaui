@@ -108,6 +108,10 @@
 	  <EmbeddedResource Remove="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml" />
 	  <None Remove="Plugin.MediaManager.Forms" />
 	  <None Remove="Syncfusion.Licensing" />
+	  <EmbeddedResource Remove="AppResources_LOCAL_70818.resx" />
+	  <EmbeddedResource Remove="AppResources_BACKUP_70818.resx" />
+	  <EmbeddedResource Remove="AppResources_BASE_70818.resx" />
+	  <EmbeddedResource Remove="AppResources_REMOTE_70818.resx" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />

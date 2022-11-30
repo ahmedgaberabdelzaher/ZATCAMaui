@@ -191,17 +191,31 @@
 
                     </StackLayout>
 
-                    <controls:BottomMenu
+                   <!--<controls:BottomMenu 
                         Grid.Row="1"
                         Margin="20,0,20,0"
-                        VerticalOptions="EndAndExpand" />
+                        VerticalOptions="EndAndExpand" />-->
+                      <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+                                               <yummy:PancakeView Grid.Row="1"
+        Margin="0,-3,0,0" Padding="0"
+        BackgroundColor="#002447"
+        CornerRadius="15,15,0,0"  VerticalOptions="EndAndExpand">
+            <controls:BottomMenu  >
+                <controls:BottomMenu.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="10,0,10,15" />
+                        <On Platform="Android" Value="10,0,10,0" />
+                    </OnPlatform>
+                </controls:BottomMenu.Margin>
+            </controls:BottomMenu></yummy:PancakeView>
+
 
                 </Grid>
 
             </yummy:PancakeView>
 
             <!--  Loader  -->
-            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+          
 
         </Grid>
 

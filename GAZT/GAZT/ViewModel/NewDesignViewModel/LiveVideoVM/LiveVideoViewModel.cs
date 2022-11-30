@@ -29,13 +29,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
         {
             LiveVideosList = new ObservableCollection<VideoModel>()
             {
-                new VideoModel
+                 new VideoModel
                 {
                     Row =0,
                     Column =0,
                     IsSelected = true,
-                    VideoName = AppResources.Port1Name ,
-                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=6343ed0b7e602"
+                    VideoName = AppResources.Port1Name,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=634406740f89c"
+
                 },
                 new VideoModel
                 {
@@ -61,11 +62,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                     Row =1,
                     Column =1,
                     IsSelected = false,
-                    VideoName = AppResources.Port4Name,
-                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=634406740f89c"
-
+                    VideoName = AppResources.Port4Name ,
+                    VideoURl="https://g2.ipcamlive.com/player/player.php?alias=6343ed0b7e602"
                 }
+
             };
+           
         }
 
 
