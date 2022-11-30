@@ -3765,6 +3765,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             };
             var VocBody = new VocAddSurveyAnswerModel()
             {
+
                 collectID = PageSettings.CollectorId,
                 surveyID = PageSettings.SurveyID,
                 feedback = new List<ResponseArr>()

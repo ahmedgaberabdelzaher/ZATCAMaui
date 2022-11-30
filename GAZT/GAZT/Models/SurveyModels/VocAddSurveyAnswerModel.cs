@@ -33,6 +33,7 @@ namespace EGAZT.Models.SurveyModels
     public class ResponseArr
     {
         public CustomData user { get; set; }
+
         public List<Answer> surveyAnswers { get; set; }
         public Date date { get; set; }
     }

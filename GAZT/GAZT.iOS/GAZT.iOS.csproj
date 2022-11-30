@@ -50,7 +50,7 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -80,7 +80,7 @@
  --optimize=experimental-xforms-product-type
  --warn-on-type-ref=UIKit.UIWebView
  --optimize=force-rejected-types-removal</MtouchExtraArgs>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -114,7 +114,7 @@
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
     <IOSDebuggerPort>10001</IOSDebuggerPort>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
@@ -127,7 +127,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -138,7 +138,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
@@ -161,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--linkskip=Xamarin.CommunityToolkit -gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
+    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
@@ -629,6 +629,24 @@
     <BundleResource Include="Resources\NotSelectedDashBoardicon.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%402x.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%403x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%402x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%403x.png" />
+    <BundleResource Include="Resources\Entity.png" />
+    <BundleResource Include="Resources\Entity%402x.png" />
+    <BundleResource Include="Resources\Entity%403x.png" />
+    <BundleResource Include="Resources\SelectedEntity.png" />
+    <BundleResource Include="Resources\SelectedEntity%402x.png" />
+    <BundleResource Include="Resources\SelectedEntity%403x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%402x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%403x.png" />
+    <BundleResource Include="Resources\Taxpayer.png" />
+    <BundleResource Include="Resources\Taxpayer%402x.png" />
+    <BundleResource Include="Resources\Taxpayer%403x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%402x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -937,6 +955,9 @@
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
       <Version>20.3.0.47</Version>
+    </PackageReference>
+    <PackageReference Include="Portable.JWT">
+      <Version>1.0.5</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

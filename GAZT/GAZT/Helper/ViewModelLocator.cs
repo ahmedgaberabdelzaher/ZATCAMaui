@@ -165,6 +165,7 @@ using EGAZT.Views.NewDesign.ReportOTP;
 using System.Net.Http;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.Views.NewDesign.EDeclaration;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 
 namespace EGAZT
 {
@@ -189,6 +190,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
             SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
             SimpleIoc.Default.Register<IUserServices, UserServices>();
+            SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -417,6 +419,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
             SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<TransactionReceptionViewModel>();
+            SimpleIoc.Default.Register<IAMLoginViewModel>();
 
             #endregion
         }
@@ -2901,6 +2905,9 @@ namespace EGAZT
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
             navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
+            navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
+            navigationService.Configure("SuccessView", typeof(SuccessView));
+            navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
 
             #endregion
 
@@ -3103,6 +3110,35 @@ namespace EGAZT
             }
         }
 
+        public TransactionReceptionViewModel TransactionReceptionViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IAMLoginViewModel IAMLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<IAMLoginViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView

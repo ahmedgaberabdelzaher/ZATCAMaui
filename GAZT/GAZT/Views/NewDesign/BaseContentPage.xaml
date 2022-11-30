@@ -38,5 +38,8 @@
         <controls:Loader
             Grid.Row="1"
             IsVisible="{Binding IsLoading}" />
+             <controls:MsgView
+            Grid.Row="1" VerticalOptions="EndAndExpand"
+            IsVisible="{Binding IsShowMsgView}" />
     </Grid>
 </ContentPage>

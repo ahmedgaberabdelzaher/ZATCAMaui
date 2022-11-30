@@ -9488,16 +9488,16 @@ info@zatca.gov.sa</value>
         <value>عرض الخدمات</value>
     </data>
   <data name="Port1Name" xml:space="preserve">
-        <value>دخول السعوديه جوازات</value>
+        <value>القادمون - الجوازات</value>
     </data>
   <data name="Port2Name" xml:space="preserve">
-        <value>خروج السعوديه جوازات</value>
+        <value>المغادرون – الجوازات</value>
     </data>
   <data name="Port3Name" xml:space="preserve">
-        <value>دخول السعوديه جمارك</value>
+        <value>القادمون – الجمارك</value>
     </data>
   <data name="Port4Name" xml:space="preserve">
-        <value>خروج السعوديه جمارك</value>
+        <value>المغادرون – الجمارك</value>
     </data>
   <data name="Reports" xml:space="preserve">
         <value> البلاغات </value>
@@ -9783,4 +9783,44 @@ info@zatca.gov.sa</value>
     <data name="Select" xml:space="preserve">
         <value>اختار</value>
     </data>
+  <data name="TransactionReception" xml:space="preserve">
+    <value>توريد المعاملات</value>
+  </data>
+<data name="NewTransactionReception" xml:space="preserve">
+    <value>توريد معاملة جديدة</value>
+  </data>
+  <data name="Pleasecompletethedata" xml:space="preserve">
+    <value>برجاء إكمال البيانات </value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>كيان</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="Enterthesubjectofthetransaction" xml:space="preserve">
+    <value>أدخل موضوع المعاملة</value>
+  </data>
+    <data name="Transactiondescription" xml:space="preserve">
+    <value>وصف المعاملة</value>
+  </data>
+  <data name="PDFFileHint" xml:space="preserve">
+    <value>صيغة الملف PDF أقصى حجم 2MB</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>نوع المستخدم</value>
+  </data>
+  <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
+    <value>تم إرسال طلبك بنجاح</value>
+  </data>
+    <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+    <value>وسيتم إفادتكم بحالة الطلب عبر الجوال برسالة نصية</value>
+  </data>
+      <data name="Referencenumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+      <data name="AddNewCR" xml:space="preserve">
+    <value>+ اضافة سجل تجاري جديد</value>
+  </data>
+>>>>>>> feature/TransactionReception
 </root>

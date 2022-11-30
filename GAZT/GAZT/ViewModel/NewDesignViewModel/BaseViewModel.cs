@@ -1,11 +1,15 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.SubmitReportModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -372,6 +376,98 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        #region File Upload
+        ObservableCollection<ReportFileModel> uploadedFiles = new ObservableCollection<ReportFileModel>();
+        public ObservableCollection<ReportFileModel> UploadedFiles { get { return uploadedFiles; } set { uploadedFiles = value; RaisePropertyChanged(); } }
+
+        public async Task PickAndShow(PickOptions options,int maxCount=1)
+        {
+            try
+            {
+                var result = await FilePicker.PickAsync(options);
+                if (result != null)
+                {
+                    var Text = $"File Name: {result.FileName}";
+                    if (result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        var lenght = new FileInfo(result.FullPath).Length;
+                        double LenghtInKb = lenght / 1024;
+                        double LenInMb = LenghtInKb / 1024;
+                        double size = LenInMb;
+                        double filesize = size;
+
+                        if (filesize > 2)
+                        {
+                            MessageTxt = AppResources.MaximumFileSizeMsg;
+                            IsShowMsgView = true;
+                        }
+                        else if (UploadedFiles != null && UploadedFiles.Count < maxCount)
+                        {
+                            var stream = await result.OpenReadAsync();
+                            string content = await ConvertToBase64(stream);
+                            ReportFileModel reportfile = new ReportFileModel();
+                            reportfile.fileBase64 = content;
+                            reportfile.fileFullName = result.FileName;
+                            reportfile.fileExtinction = Path.GetExtension(result.FileName);
+                            UploadedFiles.Add(reportfile);
+                           }
+                        else
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.NumberofAttachments;
+
+                        }
+                    }
+                    else
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.PDFFileHint;
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.Somethingwentwrong;
+
+            }
+
+
+        }
+        private async Task<string> ConvertToBase64(Stream stream)
+        {
+            if (stream is MemoryStream memoryStream)
+            {
+                return Convert.ToBase64String(memoryStream.ToArray());
+            }
+
+            var bytes = new Byte[(int)stream.Length];
+
+            stream.Seek(0, SeekOrigin.Begin);
+            await stream.ReadAsync(bytes, 0, (int)stream.Length);
+
+            return Convert.ToBase64String(bytes);
+        }
+        public ICommand DeleteAttatchementCommand
+        {
+            get
+            {
+                return new Command<ReportFileModel>((file) =>
+                {
+
+                    if (file != null && UploadedFiles != null && UploadedFiles.Count > 0)
+                    {
+                        UploadedFiles.Remove(file);
+
+                    //    if (UploadedFiles.Count == 0) IsTherePDFUploaded = false;
+                    }
+                });
+            }
+        }
+        #endregion
 
     }
 }
