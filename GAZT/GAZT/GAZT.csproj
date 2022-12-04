@@ -113,6 +113,7 @@
 	  <None Remove="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
 	  <None Remove="Models\CustomServices\Tawreed\" />
 	  <None Remove="Portable.JWT" />
+	  <None Remove="Models\EDeclerationsModel\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -230,6 +231,7 @@
 		<Folder Include="Views\NewDesign\EDeclaration\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
 		<Folder Include="Models\CustomServices\Tawreed\" />
+		<Folder Include="Models\EDeclerationsModel\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
