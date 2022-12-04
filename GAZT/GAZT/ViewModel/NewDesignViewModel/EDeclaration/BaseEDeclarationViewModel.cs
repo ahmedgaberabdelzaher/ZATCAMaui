@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using EGAZT.Controls;
+using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 
@@ -14,6 +18,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         bool isYesSelected = true;
         public bool IsYesSelected { get { return isYesSelected; } set { isYesSelected = value; RaisePropertyChanged(); } }
+
+        public static Dictionary<string,object> QAnswereDictionary { get; set; }
+
+
+        ObservableCollection<BottomSheetModel> bottomSheetList;
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> tempBottomSheetList;
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
+
+        bool isShowBottomSheet;
+        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+
+        string headerTitle;
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+
+        BottomSheetModel selectedItem;
+        public BottomSheetModel SelectedItem { get { return selectedItem; } set { selectedItem = value; RaisePropertyChanged(); } }
+
+
         #endregion
 
 
@@ -49,9 +73,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
         #endregion
-
-        public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+      public  IE_DeclerationServices DeclerationServices;
+        public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
         {
+            DeclerationServices = declerationServices;
         }
     }
 }

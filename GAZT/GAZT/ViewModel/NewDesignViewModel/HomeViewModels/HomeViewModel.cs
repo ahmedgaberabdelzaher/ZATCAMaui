@@ -240,7 +240,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                      new MenuModel()
                 {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclerationView",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote3:""
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="CreateE_Declaration",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote3:""
                 },
                  new MenuModel()
                 {
@@ -248,50 +248,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 }
            };
         }
-/*
-        public ICommand ChangeCurrentTabCommand
-        {
-            get
-            {
-                return new Command<string>((tab) =>
+        /*
+                public ICommand ChangeCurrentTabCommand
                 {
-                    if (tab!=currentTab.ToString())
+                    get
                     {
-                        switch (tab)
+                        return new Command<string>((tab) =>
                         {
-                            case "0":
-                                _navigationService.NavigateTo("/Home", tab);
-                                break;
-                            case "1":
-                                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                                break;
-                            case "2":
-                                _navigationService.NavigateTo("/SideMenuView");
-                                break;
-                            case "3":
-                                _navigationService.NavigateTo($"/LiveVideoPage");
-                                break;
-                            default:
-                                break;
-                        }
-                        /*if (tab=="1")
-                        {
-                           
-                            return;
-                        }
-                        else if (tab =="3")
-                        {
-                            _navigationService.NavigateTo($"/LiveVideoPage");
-                            return;
-                        }
-                        CurrentTab = int.Parse(tab);
-                        Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                            if (tab!=currentTab.ToString())
+                            {
+                                switch (tab)
+                                {
+                                    case "0":
+                                        _navigationService.NavigateTo("/Home", tab);
+                                        break;
+                                    case "1":
+                                        _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                                        break;
+                                    case "2":
+                                        _navigationService.NavigateTo("/SideMenuView");
+                                        break;
+                                    case "3":
+                                        _navigationService.NavigateTo($"/LiveVideoPage");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                /*if (tab=="1")
+                                {
+
+                                    return;
+                                }
+                                else if (tab =="3")
+                                {
+                                    _navigationService.NavigateTo($"/LiveVideoPage");
+                                    return;
+                                }
+                                CurrentTab = int.Parse(tab);
+                                Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                            }
+
+                        });
                     }
-              
-                });
-            }
-        }
-*/
+                }
+        */
         public ICommand NavigateCommand
         {
             get
