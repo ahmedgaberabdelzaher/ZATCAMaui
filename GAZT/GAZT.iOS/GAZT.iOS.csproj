@@ -80,8 +80,8 @@
  --optimize=experimental-xforms-product-type
  --warn-on-type-ref=UIKit.UIWebView
  --optimize=force-rejected-types-removal</MtouchExtraArgs>
-    <CodesignProvision></CodesignProvision>
-    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
+    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -918,7 +918,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
+      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>
