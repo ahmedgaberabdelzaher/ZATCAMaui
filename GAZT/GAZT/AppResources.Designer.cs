@@ -7101,7 +7101,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Live broadcast of the ports.
+        ///   Looks up a localized string similar to Live Monitoring Salwa Land Port.
         /// </summary>
         public static string LiveVideoSubTitle {
             get {
