@@ -2911,6 +2911,7 @@ namespace EGAZT
             navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
 
             #endregion
 

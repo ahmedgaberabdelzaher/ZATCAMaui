@@ -326,6 +326,9 @@
 		<Compile Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\TransactionReceptionView.xaml.cs">
 		  <DependentUpon>TransactionReceptionView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\ContactInformationPage.xaml.cs">
+		  <DependentUpon>ContactInformationPage.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">
