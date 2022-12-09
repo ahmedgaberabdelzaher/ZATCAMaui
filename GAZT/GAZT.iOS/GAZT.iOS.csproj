@@ -647,6 +647,12 @@
     <BundleResource Include="Resources\GrayDDLArrow.png" />
     <BundleResource Include="Resources\GrayDDLArrow%402x.png" />
     <BundleResource Include="Resources\GrayDDLArrow%403x.png" />
+    <BundleResource Include="Resources\greyCalender.png" />
+    <BundleResource Include="Resources\greyCalender%403x.png" />
+    <BundleResource Include="Resources\greyCalender%404x.png" />
+    <BundleResource Include="Resources\greyDropDown.png" />
+    <BundleResource Include="Resources\greyDropDown%402x.png" />
+    <BundleResource Include="Resources\greyDropDown%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

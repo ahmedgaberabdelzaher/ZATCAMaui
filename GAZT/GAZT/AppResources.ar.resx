@@ -9820,7 +9820,69 @@ info@zatca.gov.sa</value>
     <value>الرقم المرجعي</value>
   </data>
       <data name="AddNewCR" xml:space="preserve">
-    <value>+ اضافة سجل تجاري جديد</value>
+    <value>+ اضافة سجل تجاري جديد</value> 
   </data>
->>>>>>> feature/TransactionReception
+  <data name="Enter" xml:space="preserve">
+    <value>أدخل</value>
+  </data>
+  <data name="PassengerInformation" xml:space="preserve">
+    <value>معلومات الركاب</value>
+  </data>
+   <data name="Passport" xml:space="preserve">
+    <value>جواز سفر</value>
+  </data>
+  <data name="GccNationalID" xml:space="preserve">
+    <value>الهوية الوطنية الخليجية</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>الاسم الوسطى</value>
+  </data>
+  <data name="ItsSource" xml:space="preserve">
+    <value>مصدره</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>تاريخ الاصدار</value>
+  </data>
+  <data name="TravelerCount" xml:space="preserve">
+    <value>تاريخ الانتهاء</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>معلومات الرحلة</value>
+  </data>
+  <data name="AirTrip" xml:space="preserve">
+    <value>رحلة جوية</value>
+  </data>
+  <data name="LandTrip" xml:space="preserve">
+    <value>رحلة برية</value>
+  </data>
+  <data name="SeaTrip" xml:space="preserve">
+    <value>رحلة البحر</value>
+  </data>
+  <data name="TypeOfTrip" xml:space="preserve">
+    <value>نوع الرحلة</value>
+  </data>
+  <data name="ComingFrom" xml:space="preserve">
+    <value>قادم من</value>
+  </data>
+  <data name="GoingTo" xml:space="preserve">
+    <value>الذهاب الى</value>
+  </data>
+   <data name="EntrancePort" xml:space="preserve">
+    <value>ميناء المدخل</value>
+  </data>
+  <data name="ExitPort" xml:space="preserve">
+    <value>ميناء الخروج</value>
+  </data>
+   <data name="ArrivalDate" xml:space="preserve">
+    <value>تاريخ الوصول</value>
+  </data>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>تاريخ المغادرة</value>
+  </data>
+   <data name="TripNumber" xml:space="preserve">
+    <value>رقم الرحلة</value>
+  </data>
+  <data name="TravelPurpose" xml:space="preserve">
+    <value>الغرض من السفر</value>
+  </data>
 </root>

@@ -9899,10 +9899,73 @@ Zakat, Tax and Customs Authority
   <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
     <value>You will be notified of the status of the request via mobile phone</value>
   </data>
-      <data name="Referencenumber" xml:space="preserve">
+  <data name="Referencenumber" xml:space="preserve">
     <value>Reference number</value>
   </data>
-       <data name="AddNewCR" xml:space="preserve">
+  <data name="AddNewCR" xml:space="preserve">
     <value>Add New CR +</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="PassengerInformation" xml:space="preserve">
+    <value>Passenger Information</value>
+  </data>
+   <data name="Passport" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="GccNationalID" xml:space="preserve">
+    <value>Gcc National ID</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="ItsSource" xml:space="preserve">
+    <value>Its Source</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="TravelerCount" xml:space="preserve">
+    <value>Traveler Count</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>Trip Information</value>
+  </data>
+  <data name="AirTrip" xml:space="preserve">
+    <value>Air Trip</value>
+  </data>
+  <data name="LandTrip" xml:space="preserve">
+    <value>Land Trip</value>
+  </data>
+  <data name="SeaTrip" xml:space="preserve">
+    <value>Sea Trip</value>
+  </data>
+  <data name="TypeOfTrip" xml:space="preserve">
+    <value>Type of Trip</value>
+  </data>
+  <data name="ComingFrom" xml:space="preserve">
+    <value>Coming From</value>
+  </data>
+  <data name="GoingTo" xml:space="preserve">
+    <value>Going To</value>
+  </data>
+   <data name="EntrancePort" xml:space="preserve">
+    <value>Entrance Port</value>
+  </data>
+  <data name="ExitPort" xml:space="preserve">
+    <value>Exit Port</value>
+  </data>
+   <data name="ArrivalDate" xml:space="preserve">
+    <value>Arrival Date</value>
+  </data>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>Departure Date</value>
+  </data>
+   <data name="TripNumber" xml:space="preserve">
+    <value>Trip Number</value>
+  </data>
+  <data name="TravelPurpose" xml:space="preserve">
+    <value>Travel Purpose</value>
   </data>
 </root>

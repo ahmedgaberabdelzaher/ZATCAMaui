@@ -264,7 +264,7 @@ namespace EGAZT {
             }
         }
         
-
+        /// <summary>
         ///   Looks up a localized string similar to Add item.
         /// </summary>
         public static string AddItem {
@@ -272,6 +272,8 @@ namespace EGAZT {
                 return ResourceManager.GetString("AddItem", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New CR +.
         /// </summary>
         public static string AddNewCR {
@@ -286,6 +288,15 @@ namespace EGAZT {
         public static string AddNewReport {
             get {
                 return ResourceManager.GetString("AddNewReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Air Trip.
+        /// </summary>
+        public static string AirTrip {
+            get {
+                return ResourceManager.GetString("AirTrip", resourceCulture);
             }
         }
         
@@ -395,6 +406,15 @@ namespace EGAZT {
         public static string AppVersion {
             get {
                 return ResourceManager.GetString("AppVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrival Date.
+        /// </summary>
+        public static string ArrivalDate {
+            get {
+                return ResourceManager.GetString("ArrivalDate", resourceCulture);
             }
         }
         
@@ -1324,6 +1344,15 @@ namespace EGAZT {
         public static string ClosedReports {
             get {
                 return ResourceManager.GetString("ClosedReports", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coming From.
+        /// </summary>
+        public static string ComingFrom {
+            get {
+                return ResourceManager.GetString("ComingFrom", resourceCulture);
             }
         }
         
@@ -3034,6 +3063,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Departure Date.
+        /// </summary>
+        public static string DepartureDate {
+            get {
+                return ResourceManager.GetString("DepartureDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string Details {
@@ -3295,6 +3333,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter.
+        /// </summary>
+        public static string Enter {
+            get {
+                return ResourceManager.GetString("Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter captcha.
         /// </summary>
         public static string Entercaptcha {
@@ -3453,6 +3500,15 @@ namespace EGAZT {
         public static string EntityType {
             get {
                 return ResourceManager.GetString("EntityType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entrance Port.
+        /// </summary>
+        public static string EntrancePort {
+            get {
+                return ResourceManager.GetString("EntrancePort", resourceCulture);
             }
         }
         
@@ -5176,6 +5232,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exit Port.
+        /// </summary>
+        public static string ExitPort {
+            get {
+                return ResourceManager.GetString("ExitPort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export value.
         /// </summary>
         public static string ExportValue {
@@ -6625,6 +6690,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gcc National ID.
+        /// </summary>
+        public static string GccNationalID {
+            get {
+                return ResourceManager.GetString("GccNationalID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to General Services.
         /// </summary>
         public static string GeneralServices {
@@ -6648,6 +6722,15 @@ namespace EGAZT {
         public static string GetSupport {
             get {
                 return ResourceManager.GetString("GetSupport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Going To.
+        /// </summary>
+        public static string GoingTo {
+            get {
+                return ResourceManager.GetString("GoingTo", resourceCulture);
             }
         }
         
@@ -7144,6 +7227,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Its Source.
+        /// </summary>
+        public static string ItsSource {
+            get {
+                return ResourceManager.GetString("ItsSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land Trip.
+        /// </summary>
+        public static string LandTrip {
+            get {
+                return ResourceManager.GetString("LandTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to العربية.
         /// </summary>
         public static string Langauge {
@@ -7311,6 +7412,15 @@ namespace EGAZT {
         public static string MerchantCalculator {
             get {
                 return ResourceManager.GetString("MerchantCalculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Middle Name.
+        /// </summary>
+        public static string MiddleName {
+            get {
+                return ResourceManager.GetString("MiddleName", resourceCulture);
             }
         }
         
@@ -9535,6 +9645,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Passenger Information.
+        /// </summary>
+        public static string PassengerInformation {
+            get {
+                return ResourceManager.GetString("PassengerInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passport.
+        /// </summary>
+        public static string Passport {
+            get {
+                return ResourceManager.GetString("Passport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password .
         /// </summary>
         public static string Password {
@@ -10309,6 +10437,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Release Date.
+        /// </summary>
+        public static string ReleaseDate {
+            get {
+                return ResourceManager.GetString("ReleaseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remember me.
         /// </summary>
         public static string RememberMe {
@@ -10948,6 +11085,15 @@ namespace EGAZT {
         public static string SearchText {
             get {
                 return ResourceManager.GetString("SearchText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sea Trip.
+        /// </summary>
+        public static string SeaTrip {
+            get {
+                return ResourceManager.GetString("SeaTrip", resourceCulture);
             }
         }
         
@@ -12578,6 +12724,42 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Traveler Count.
+        /// </summary>
+        public static string TravelerCount {
+            get {
+                return ResourceManager.GetString("TravelerCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Travel Purpose.
+        /// </summary>
+        public static string TravelPurpose {
+            get {
+                return ResourceManager.GetString("TravelPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Information.
+        /// </summary>
+        public static string TripInformation {
+            get {
+                return ResourceManager.GetString("TripInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Number.
+        /// </summary>
+        public static string TripNumber {
+            get {
+                return ResourceManager.GetString("TripNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Try Again.
         /// </summary>
         public static string tryAgain {
@@ -12601,6 +12783,15 @@ namespace EGAZT {
         public static string TypeItem {
             get {
                 return ResourceManager.GetString("TypeItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type of Trip.
+        /// </summary>
+        public static string TypeOfTrip {
+            get {
+                return ResourceManager.GetString("TypeOfTrip", resourceCulture);
             }
         }
         

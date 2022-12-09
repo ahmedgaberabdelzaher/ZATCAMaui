@@ -419,6 +419,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
             SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
             SimpleIoc.Default.Register<IAMLoginViewModel>();
 
@@ -2908,6 +2909,8 @@ namespace EGAZT
             navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
             navigationService.Configure("SuccessView", typeof(SuccessView));
             navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
+            navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
+            navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
 
             #endregion
 
@@ -4062,6 +4065,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclarationInformationsViewModel EDeclarationInformationsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclarationInformationsViewModel>();
                 }
                 catch (Exception ex)
                 {

@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using Xamarin.Forms;
+
+namespace EGAZT.Views.NewDesign.EDeclaration
+{
+    public partial class TripInformationPage : ContentPage
+    {
+        EDeclarationInformationsViewModel viewModel;
+        public TripInformationPage()
+        {
+            InitializeComponent();
+            viewModel = App.Locator.EDeclarationInformationsViewModel;
+            BindingContext = viewModel;
+        }
+    }
+}
+
