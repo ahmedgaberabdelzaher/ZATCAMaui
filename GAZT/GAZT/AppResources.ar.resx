@@ -9766,7 +9766,7 @@ info@zatca.gov.sa</value>
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
     </data>
     <data name="ProductDeclarationDisclaimer" xml:space="preserve">
-        <value>إذا لم يتم العثور على المنتج في القائمة ، يرجى التعرف على مكتب التمثيل عند الوصول.</value>
+        <value>في حال عدم العثور على المنتج في القائمة، يرجى الإقرار في مكتب الإقرار عند الوصول</value>
     </data>
     <data name="TypeItem" xml:space="preserve">
         <value>نوع العنصر</value>
@@ -9813,13 +9813,13 @@ info@zatca.gov.sa</value>
   <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
     <value>تم إرسال طلبك بنجاح</value>
   </data>
-    <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+  <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
     <value>وسيتم إفادتكم بحالة الطلب عبر الجوال برسالة نصية</value>
   </data>
-      <data name="Referencenumber" xml:space="preserve">
+  <data name="Referencenumber" xml:space="preserve">
     <value>الرقم المرجعي</value>
   </data>
-      <data name="AddNewCR" xml:space="preserve">
+  <data name="AddNewCR" xml:space="preserve">
     <value>+ اضافة سجل تجاري جديد</value> 
   </data>
   <data name="Enter" xml:space="preserve">
@@ -9884,5 +9884,47 @@ info@zatca.gov.sa</value>
   </data>
   <data name="TravelPurpose" xml:space="preserve">
     <value>الغرض من السفر</value>
+  </data>
+  <data name="CustomFeesCalculator" xml:space="preserve">
+    <value>حاسبة الرسوم والضرائب الجمركية</value>
+  </data>
+  <data name="EDeclerationDesc" xml:space="preserve">
+    <value>تمكنك من الإقرار الإلكتروني من المواد الإفصاح عنها عند دخول السعودية أو قبل مغادرتها.</value>
+  </data>
+  <data name="TawreedServiceDesc" xml:space="preserve">
+    <value>تتيح لعملاء الجمارك إرسال معاملات التوريد إلكترونيًا والتعرف على حالة القبول والرفض دون الحاجة لزيارة مقر الجمارك</value>
+  </data>
+  <data name="TobacoTypeNotehint" xml:space="preserve">
+    <value>توضيح: 1/20 تعني علبة تحتوي على 20 سيجارة</value>
+  </data>
+  <data name="EdeclerationSecQ" xml:space="preserve">
+    <value>هل تحمل أي مقتنيات جديدة يتجاوز إجمالي قيمتها 3000 ريال سعودي (800 دولار أمريكي)؟</value>
+  </data>
+  <data name="Q2Hint" xml:space="preserve">
+    <value>يحسب سعر جرام - الذهب والفضة – بناءاً على سعر الجرام في السعودية</value>
+  </data>
+  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+    <value>هل تحمل عملات أو (أدوات مالية قابلة للتداول) أو معادن ثمينة تصل قيمتها 60000 ريال سعودي أو ما يعادلها (16000 دولار أمريكي)؟</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+    <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
+    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ اطلع على القائمة</value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>نوع المادة</value>
+  </data>
+  <data name="Purpose" xml:space="preserve">
+    <value>الغرض</value>
+  </data>
+  <data name="OtherPurpose" xml:space="preserve">
+    <value>الغرض الآخر</value>
+  </data>
+    <data name="TotalValue" xml:space="preserve">
+    <value>القيمة الإجمالية</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>العملة</value>
   </data>
 </root>

@@ -96,18 +96,14 @@
                                     WidthRequest="30"
                                     HeightRequest="30"
                                     CornerRadius="15"
-                                    BorderWidth="1"
+                                    BorderWidth="1" Padding="5"
                                     InputTransparent="True"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="EndAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
                                     Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
+
 
                             </ImageButton>
 
@@ -296,7 +292,7 @@
                             Style="{StaticResource CaptionLabelGrey}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ProductDeclarationSubTitle}"/>
+                                    <Span Text="{Binding Question}"/>
                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
@@ -444,8 +440,8 @@
 
                         </StackLayout>
                         <!--#endregion Cards-->
-
-                        <!--Product Declaration Note-->
+                        <StackLayout IsVisible="{Binding IsYesSelected}">
+                       <!--#region Hint view-->
                         <Frame Padding="15"
                                BackgroundColor="White"
                                BorderColor="#E6E6E6"
@@ -467,17 +463,34 @@
                                         HorizontalOptions="CenterAndExpand"
                                         Source="information.png"/>
 
-                                <!--  ReportsNote Label  -->
+                                <!--  Question Hint Label  -->
                                 <custom:CustomLabel
                                     HorizontalOptions="StartAndExpand"
                                     FontSize="12"
                                     LineSpacing="1"
                                     TextColor="#999999"
-                                    Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"/>
+                                    Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}">
+                                            <custom:CustomLabel.Triggers>
+                                               <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding QFlow}" Value="2">
+                                        <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}"></Setter>
+                                    </DataTrigger>
+                                </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
 
                             </StackLayout>
 
                         </Frame>
+                        <!--#endregion-->
+                        <!--#region TobacoProduct-->
+                        <StackLayout IsVisible="false">
+                                <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding QFlow}" Value="1">
+                                        <Setter Property="IsVisible" Value="true"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                        <!--Product Declaration Note-->
+                     
 
                         <!--  TypeItem Field  -->
                         <StackLayout Spacing="0">
@@ -508,10 +521,10 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Product.TypeItem}"
+                                    Text="{Binding SelectedTobacoType.Name}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenTypeItemCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
                                     </custom:BorderlessEntry.GestureRecognizers>
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -520,7 +533,7 @@
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenTypeItemCommand}" />
+                                <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
                             </StackLayout.GestureRecognizers>
 
                         </StackLayout>
@@ -554,10 +567,10 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Product.ProductName}"
+                                    Text="{Binding SelectedTobacoItem.productName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenProductNameCommand}" />
+                                        <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
                                     </custom:BorderlessEntry.GestureRecognizers>
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -566,7 +579,7 @@
                             </inputLayout:SfTextInputLayout>
 
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenProductNameCommand}" />
+                                <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
                             </StackLayout.GestureRecognizers>
 
                         </StackLayout>
@@ -599,15 +612,188 @@
                                     Keyboard="Numeric"
                                     Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Product.Quantity}"
+                                    Text="{Binding Quantity}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+             </StackLayout>
+                        <!--#endregion-->
+
+                                                <!--#region TProductView-->
+                        <StackLayout IsVisible="false">
+                                      <StackLayout.Triggers>
+                                    <DataTrigger TargetType="StackLayout" Binding="{Binding QFlow}" Value="2">
+                                        <Setter Property="IsVisible" Value="true"></Setter>
+                                    </DataTrigger>
+                                </StackLayout.Triggers>
+                                  <!--  TypeItem Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  TypeItem Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TypeItem}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  TypeItem Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                  
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedProductTypes.Name}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  ProductName Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  ProductName Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ProductName}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  ProductName Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedProductSubTypes.Name}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenProductSubTypesCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                         <!--  Quantity Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Quantity Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Quantity}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Quantity Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                 
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Quantity}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
 
+                                    <!--  Quantity Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Quantity Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Total Value Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TotalValue}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+                        </StackLayout>
+                        <!--#endregion-->
+
+</StackLayout>
+                        <!--#region Submit and Card-->
+                        <StackLayout IsVisible="{Binding IsYesSelected}">
                         <!--  Add Item Button  -->
                         <buttons:SfButton
-                            Command="{Binding AddItemCommand}"
+                            Command="{Binding AddCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.AddItem}" />
 
@@ -629,13 +815,15 @@
                                       CornerRadius="10">
 
                                     <!--  Total Number Label  -->
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="14"
-                                        HorizontalOptions="CenterAndExpand"
-                                        VerticalOptions="CenterAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.ZSAR}"
-                                        TextColor="{StaticResource Primary}" />
+                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" FontFamily="{StaticResource SomarRegular}"  FontSize="14">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment}"/>
+                                          <Span  Text="  " />
+                                        <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
 
                                </Frame>
 
@@ -643,19 +831,19 @@
                                 <Label
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="14"
-                                    HorizontalOptions="End"
+                                    HorizontalOptions="End" VerticalOptions="CenterAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
-                                    TextColor="{StaticResource Primary}" />
+                                    TextColor="White" />
 
                             </StackLayout>
 
-                        </Frame>
-
+                        </Frame></StackLayout>
+                        <!--#endregion-->
                          <!-- GoTo Second Product Declaration Button  -->
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding GoToSecondProductDeclarationCommand}"
+                            Command="{Binding NextCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
@@ -676,7 +864,14 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
+                        <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
+            <!--  Loader  -->
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
 
         </Grid>
     </ContentPage.Content>

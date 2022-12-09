@@ -21,6 +21,11 @@ namespace EGAZT.Models.BaseModels
         public string code { get; set; }
         public string description { get; set; }
     }
+    public class DATAPowerBaseResponseResult<T>
+    {
+        public Header header { get; set; }
+        public T result { get; set; }
+    }
 
 }
 

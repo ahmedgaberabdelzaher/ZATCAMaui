@@ -6710,9 +6710,6 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>Carried Previous Credit Details</value>
   </data>
-  <!--  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>Carried Credit Details</value>
-  </data>-->
   <data name="ESTAddOutlet" xml:space="preserve">
     <value>Add Outlet</value>
   </data>
@@ -9967,5 +9964,47 @@ Zakat, Tax and Customs Authority
   </data>
   <data name="TravelPurpose" xml:space="preserve">
     <value>Travel Purpose</value>
+  </data>
+ <data name="CustomFeesCalculator" xml:space="preserve">
+    <value>Custom and TAX Fees Calculator</value>
+  </data>
+  <data name="EDeclerationDesc" xml:space="preserve">
+    <value>It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it.</value>
+  </data>
+    <data name="TawreedServiceDesc" xml:space="preserve">
+    <value>It allows customs clients to send import transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters</value>
+  </data>
+      <data name="TobacoTypeNotehint" xml:space="preserve">
+    <value>Clarification: 1/20 means a tray containing 20 cigarettes</value>
+  </data>
+       <data name="EdeclerationSecQ" xml:space="preserve">
+    <value>Do you have any new possessions of total value exceeding SAR 3,000(800$)?</value>
+  </data>
+      <data name="Q2Hint" xml:space="preserve">
+    <value>Calculates the price of Gram – Gold and Silver – Based on the price of grams in Saudi Arabia</value>
+  </data>
+  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+    <value>Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+    <value>Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
+    <value>Examples – Aircraft, medicines, pets, etc. View List</value>
+  </data>
+    <data name="MaterialType" xml:space="preserve">
+    <value>Material Type</value>
+  </data>
+  <data name="Purpose" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="OtherPurpose" xml:space="preserve">
+    <value>Other Purpose</value>
+  </data>
+    <data name="TotalValue" xml:space="preserve">
+    <value>Total Value</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
   </data>
 </root>

@@ -234,64 +234,68 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.CustomsZATCAIntegrat, ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon",ColumnNo=0,Row=0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote1:""
                 },
-                 new MenuModel()
+                  new MenuModel()
                 {
-                   Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote2:""
-                },
-                     new MenuModel()
-                {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclerationView",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote3:""
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="CreateE_Declaration",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
                 },
                  new MenuModel()
                 {
                    Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.TransactionReception, ID="TransactionReception",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+                } ,
+                 new MenuModel()
+                {
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
                 }
            };
         }
-/*
-        public ICommand ChangeCurrentTabCommand
-        {
-            get
-            {
-                return new Command<string>((tab) =>
+        /*
+                public ICommand ChangeCurrentTabCommand
                 {
-                    if (tab!=currentTab.ToString())
+                    get
                     {
-                        switch (tab)
+                        return new Command<string>((tab) =>
                         {
-                            case "0":
-                                _navigationService.NavigateTo("/Home", tab);
-                                break;
-                            case "1":
-                                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                                break;
-                            case "2":
-                                _navigationService.NavigateTo("/SideMenuView");
-                                break;
-                            case "3":
-                                _navigationService.NavigateTo($"/LiveVideoPage");
-                                break;
-                            default:
-                                break;
-                        }
-                        /*if (tab=="1")
-                        {
-                           
-                            return;
-                        }
-                        else if (tab =="3")
-                        {
-                            _navigationService.NavigateTo($"/LiveVideoPage");
-                            return;
-                        }
-                        CurrentTab = int.Parse(tab);
-                        Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                            if (tab!=currentTab.ToString())
+                            {
+                                switch (tab)
+                                {
+                                    case "0":
+                                        _navigationService.NavigateTo("/Home", tab);
+                                        break;
+                                    case "1":
+                                        _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                                        break;
+                                    case "2":
+                                        _navigationService.NavigateTo("/SideMenuView");
+                                        break;
+                                    case "3":
+                                        _navigationService.NavigateTo($"/LiveVideoPage");
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                /*if (tab=="1")
+                                {
+
+                                    return;
+                                }
+                                else if (tab =="3")
+                                {
+                                    _navigationService.NavigateTo($"/LiveVideoPage");
+                                    return;
+                                }
+                                CurrentTab = int.Parse(tab);
+                                Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                            }
+
+                        });
                     }
-              
-                });
-            }
-        }
-*/
+                }
+        */
         public ICommand NavigateCommand
         {
             get
@@ -327,7 +331,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 return new Command<MenuModel>((menuItem) =>
                 {
+                    switch(menuItem.ID)
+                    {
+                        case "CreateE_Declaration":
+                            _navigationService.NavigateTo("CreateE_Declaration", AppResources.eDeclaration);
+                            break;
+                        case "TransactionReception":
+                            _navigationService.NavigateTo("CreateE_Declaration", AppResources.Transactiondescription);
+                            break;
+                        case "CustomFeesCalculator":
+                            _navigationService.NavigateTo("CreateE_Declaration", AppResources.CustomFeesCalculator);
+                            break;
+                        default:
                   _navigationService.NavigateTo(menuItem.ID);
+                            break;
+
+                    }
                 });
             }
         }

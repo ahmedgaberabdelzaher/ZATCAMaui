@@ -191,7 +191,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
             SimpleIoc.Default.Register<IUserServices, UserServices>();
             SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
-
+            SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();

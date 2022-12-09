@@ -7,6 +7,7 @@ using EGAZT.Controls;
 using GAZT;
 using System.Linq;
 using System.Collections.Generic;
+using EGAZT.Services.Interface;
 using EGAZT.Models.EDeclerationsModel;
 using System.Linq.Expressions;
 
@@ -22,13 +23,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         private bool isPortSelected;
         private bool isTravelPurposeSelected;
 
-
-        bool isShowBottomSheet;
-        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
-
-        string headerTitle = AppResources.eDeclaration;
-        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
-
         PassengerModel passenger = new PassengerModel();
         public PassengerModel Passenger { get { return passenger; } set { passenger = value; } }
 
@@ -37,12 +31,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         TripInfoModel tripInfo = new TripInfoModel();
         public TripInfoModel TripInfo { get { return tripInfo; } set { tripInfo = value; } }
-
-        ObservableCollection<BottomSheetModel> bottomSheetList;
-        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
-
-        ObservableCollection<BottomSheetModel> tempBottomSheetList;
-        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
         #endregion
 
 
@@ -285,7 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         }
 
         #endregion
-        public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
         {
         }
     }
