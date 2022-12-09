@@ -134,6 +134,8 @@ namespace EGAZT.AppConfigurations
         }
       //  const string EdclerationBaseURL = "http://10.112.42.23/";
        const string EdclerationBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/EDeclarationStartPage.aspx";
+        const string TawreedBaseURL = "http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
+        const string FeesCalculatorBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/calculatorPage.aspx";
 
         public static string GetNewEDeclarationLinks()
         {
@@ -150,6 +152,20 @@ namespace EGAZT.AppConfigurations
             }
         }
 
+        public static string GetTawreedLinks()
+        {
+            if (App.IsArabic)
+            {
+                // return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
+                return $"{TawreedBaseURL}";
+
+            }
+            else
+            {
+                // return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
+                return $"{TawreedBaseURL}";
+            }
+        }
         public static string GetContactUsUrl()
         {
             if (App.IsArabic)
@@ -172,6 +188,18 @@ namespace EGAZT.AppConfigurations
             else
             {
                 return $"{EdclerationBaseURL}en/edeclaration?AppViewEDeccheck";
+            }
+        }
+
+        public static string GetCustomFeesCalcLink()
+        {
+            if (App.IsArabic)
+            {
+                return $"{FeesCalculatorBaseURL}";
+            }
+            else
+            {
+                return $"{FeesCalculatorBaseURL}";
             }
         }
 

@@ -114,6 +114,8 @@
 	  <None Remove="Models\CustomServices\Tawreed\" />
 	  <None Remove="Portable.JWT" />
 	  <None Remove="Models\EDeclerationsModel\" />
+	  <None Remove="Models\EDeclerationsModel\SubmitModels\" />
+	  <None Remove="Models\EDeclerationsModel\FeesCalculators\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -232,6 +234,8 @@
 		<Folder Include="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
 		<Folder Include="Models\CustomServices\Tawreed\" />
 		<Folder Include="Models\EDeclerationsModel\" />
+		<Folder Include="Models\EDeclerationsModel\SubmitModels\" />
+		<Folder Include="Models\EDeclerationsModel\FeesCalculators\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

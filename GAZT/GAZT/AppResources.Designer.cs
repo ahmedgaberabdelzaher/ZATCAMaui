@@ -264,7 +264,7 @@ namespace EGAZT {
             }
         }
         
-
+        /// <summary>
         ///   Looks up a localized string similar to Add item.
         /// </summary>
         public static string AddItem {
@@ -272,6 +272,8 @@ namespace EGAZT {
                 return ResourceManager.GetString("AddItem", resourceCulture);
             }
         }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New CR +.
         /// </summary>
         public static string AddNewCR {
@@ -2494,6 +2496,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Currency.
+        /// </summary>
+        public static string Currency {
+            get {
+                return ResourceManager.GetString("Currency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Password.
         /// </summary>
         public static string CurrentPassword {
@@ -2508,6 +2519,15 @@ namespace EGAZT {
         public static string CustomerServices {
             get {
                 return ResourceManager.GetString("CustomerServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Custom and TAX Fees Calculator.
+        /// </summary>
+        public static string CustomFeesCalculator {
+            get {
+                return ResourceManager.GetString("CustomFeesCalculator", resourceCulture);
             }
         }
         
@@ -3025,6 +3045,33 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?.
+        /// </summary>
+        public static string DeclerationFirstSecurityQuestion {
+            get {
+                return ResourceManager.GetString("DeclerationFirstSecurityQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?.
+        /// </summary>
+        public static string DeclerationSecondSecurityQuestion {
+            get {
+                return ResourceManager.GetString("DeclerationSecondSecurityQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Examples – Aircraft, medicines, pets, etc. View List.
+        /// </summary>
+        public static string DeclerationSecondSecurityQuestionYesHint {
+            get {
+                return ResourceManager.GetString("DeclerationSecondSecurityQuestionYesHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Departing from KSA.
         /// </summary>
         public static string DepartingToKSA {
@@ -3201,6 +3248,24 @@ namespace EGAZT {
         public static string eDeclaration {
             get {
                 return ResourceManager.GetString("eDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it..
+        /// </summary>
+        public static string EDeclerationDesc {
+            get {
+                return ResourceManager.GetString("EDeclerationDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have any new possessions of total value exceeding SAR 3,000(800$)?.
+        /// </summary>
+        public static string EdeclerationSecQ {
+            get {
+                return ResourceManager.GetString("EdeclerationSecQ", resourceCulture);
             }
         }
         
@@ -7270,6 +7335,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Material Type.
+        /// </summary>
+        public static string MaterialType {
+            get {
+                return ResourceManager.GetString("MaterialType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File size should not be more than 2MB.
         /// </summary>
         public static string MaximumFileSizeMsg {
@@ -9454,6 +9528,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other Purpose.
+        /// </summary>
+        public static string OtherPurpose {
+            get {
+                return ResourceManager.GetString("OtherPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Activation code: .
         /// </summary>
         public static string OTPMsgBody {
@@ -10134,6 +10217,24 @@ namespace EGAZT {
         public static string PurchaseValue {
             get {
                 return ResourceManager.GetString("PurchaseValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Purpose.
+        /// </summary>
+        public static string Purpose {
+            get {
+                return ResourceManager.GetString("Purpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calculates the price of Gram – Gold and Silver – Based on the price of grams in Saudi Arabia.
+        /// </summary>
+        public static string Q2Hint {
+            get {
+                return ResourceManager.GetString("Q2Hint", resourceCulture);
             }
         }
         
@@ -11306,6 +11407,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to It allows customs clients to send import transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters.
+        /// </summary>
+        public static string TawreedServiceDesc {
+            get {
+                return ResourceManager.GetString("TawreedServiceDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merchant and Customer Calculator.
         /// </summary>
         public static string TaxCalculator {
@@ -12146,6 +12256,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clarification: 1/20 means a tray containing 20 cigarettes.
+        /// </summary>
+        public static string TobacoTypeNotehint {
+            get {
+                return ResourceManager.GetString("TobacoTypeNotehint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To Be Approved.
         /// </summary>
         public static string ToBeApproved {
@@ -12367,6 +12486,15 @@ namespace EGAZT {
         public static string TotalUnpaidReturns {
             get {
                 return ResourceManager.GetString("TotalUnpaidReturns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Value.
+        /// </summary>
+        public static string TotalValue {
+            get {
+                return ResourceManager.GetString("TotalValue", resourceCulture);
             }
         }
         

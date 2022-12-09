@@ -37,6 +37,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         BottomSheetModel selectedItem;
         public BottomSheetModel SelectedItem { get { return selectedItem; } set { selectedItem = value; RaisePropertyChanged(); } }
 
+        string searchText;
+        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 
         #endregion
 
@@ -72,8 +74,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
+
         #endregion
-      public  IE_DeclerationServices DeclerationServices;
+        public  IE_DeclerationServices DeclerationServices;
         public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
         {
             DeclerationServices = declerationServices;
