@@ -9825,7 +9825,7 @@ Zakat, Tax and Customs Authority
     <value>Dashboard</value>
   </data>
     <data name="ProductDeclaration" xml:space="preserve">
-        <value>Product Declaration (1/2)</value>
+        <value>Declaration Data</value>
     </data>
   <data name="NewDeclaration" xml:space="preserve">
         <value>New Declaration</value>
@@ -10048,5 +10048,17 @@ Zakat, Tax and Customs Authority
   </data>
   <data name="Checkout" xml:space="preserve">
     <value>Checkout</value>
+   </data>
+  <data name="units" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
+    <value>You answered yes, you have to add at least one item in the cart</value>
+  </data>
+   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
+    <value>Sorry, the entered total value does not require the declaration</value>
+  </data>
+  <data name="ALLanswersisNoMsg" xml:space="preserve">
+    <value>Sorry ... it seems that you did not choose from the questions or fill in their data</value>
   </data>
 </root>

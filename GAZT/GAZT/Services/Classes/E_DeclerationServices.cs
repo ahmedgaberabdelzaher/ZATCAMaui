@@ -14,30 +14,48 @@ namespace EGAZT.Services.Classes
 {
     public class E_DeclerationServices: IE_DeclerationServices
     {
+        static string version = "v1";
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TobacoTypesModel>>, bool, string>> GetTobacoTypes()
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobacoTypesModel>>>($"{PageSettings.ZATCABaseURL}v1/references/customs/nibras/tobacco-category").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobacoTypesModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/tobacco-category").ConfigureAwait(false);
             return response;
         }
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>, bool, string>> GetTobacoItem(int TobacoTypeID)
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>>($"{PageSettings.ZATCABaseURL}v1/references/customs/nibras/tobacco-items?tobaccoTypeID={TobacoTypeID}").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/tobacco-items?tobaccoTypeID={TobacoTypeID}").ConfigureAwait(false);
             return response;
         }
 
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>, bool, string>> GetProductTypes()
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>>($"{PageSettings.ZATCABaseURL}v1/references/customs/nibras/good-types").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/good-types").ConfigureAwait(false);
             return response;
         }
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>, bool, string>> GetProductSubTypes(string productTypeId)
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>>($"{PageSettings.ZATCABaseURL}v1/references/customs/nibras/good-sub-types?goodTypeID={productTypeId}").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/good-sub-types?goodTypeID={productTypeId}").ConfigureAwait(false);
             return response;
         }
         public async Task<HttpResponseMessage> FeesCalculator(FeesCalculatorBody body)
         {
-            var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}v1/customs/calculate-fees",body).ConfigureAwait(false);
+            var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}{version}/customs/calculate-fees",body).ConfigureAwait(false);
+            return response;
+        }
+
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PurposeModel>>, bool, string>> GetPurposes()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<PurposeModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/purposes").ConfigureAwait(false);
+            return response;
+        }
+
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CurrencyModel>>, bool, string>> GetCurrencies()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CurrencyModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/currencies").ConfigureAwait(false);
+            return response;
+        }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<UnitsModel>>, bool, string>> GetUnits()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<UnitsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/units").ConfigureAwait(false);
             return response;
         }
     }

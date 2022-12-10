@@ -107,8 +107,9 @@ namespace GAZT.Droid
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
+       
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
-             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
+             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
         //private void RequestStorageAccess()

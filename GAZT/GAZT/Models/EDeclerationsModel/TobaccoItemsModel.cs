@@ -1,4 +1,6 @@
 ﻿using System;
+using EGAZT.Helper;
+
 namespace EGAZT.Models.EDeclerationsModel
 {
     public class TobaccoItemsModel
@@ -8,6 +10,13 @@ namespace EGAZT.Models.EDeclerationsModel
         public string productName { get; set; }
         public string itemDescription { get; set; }
         public string itemCode { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(itemDescription, productName);
+            }
+        }
     }
 }
 

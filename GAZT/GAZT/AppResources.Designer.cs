@@ -373,6 +373,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sorry ... it seems that you did not choose from the questions or fill in their data.
+        /// </summary>
+        public static string ALLanswersisNoMsg {
+            get {
+                return ResourceManager.GetString("ALLanswersisNoMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All Bills.
         /// </summary>
         public static string AllBills {
@@ -3401,6 +3410,24 @@ namespace EGAZT {
         public static string EDeclerationDesc {
             get {
                 return ResourceManager.GetString("EDeclerationDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, the entered total value does not require the declaration.
+        /// </summary>
+        public static string EDeclerationenteredValuedoesnotrequirethedeclaration {
+            get {
+                return ResourceManager.GetString("EDeclerationenteredValuedoesnotrequirethedeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You answered yes, you have to add at least one item in the cart.
+        /// </summary>
+        public static string EDeclerationNoItemAddedToCartMsg {
+            get {
+                return ResourceManager.GetString("EDeclerationNoItemAddedToCartMsg", resourceCulture);
             }
         }
         
@@ -10392,7 +10419,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Product Declaration (1/2).
+        ///   Looks up a localized string similar to Declaration Data.
         /// </summary>
         public static string ProductDeclaration {
             get {
@@ -13062,6 +13089,15 @@ namespace EGAZT {
         public static string unableToVerify {
             get {
                 return ResourceManager.GetString("unableToVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit.
+        /// </summary>
+        public static string units {
+            get {
+                return ResourceManager.GetString("units", resourceCulture);
             }
         }
         

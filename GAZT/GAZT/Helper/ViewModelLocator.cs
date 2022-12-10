@@ -166,6 +166,7 @@ using System.Net.Http;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 
 namespace EGAZT
 {
@@ -192,6 +193,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<IUserServices, UserServices>();
             SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
             SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
+            SimpleIoc.Default.Register<EDeclerationSubmitModel>();
+
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
             SimpleIoc.Default.Register<GAZTNewDesignRecoverPasswordPageViewModel>();
@@ -4088,7 +4091,20 @@ namespace EGAZT
                 }
             }
         }
-
+        public EDeclerationSubmitModel EDeclerationSubmitModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
     //
     }
 
