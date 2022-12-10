@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Controls;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
@@ -39,6 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+     public EDeclerationSubmitModel SubmitModel;
 
         #endregion
 
@@ -48,9 +50,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command( () =>
+                return new Command<string>( (e) =>
                 {
-                    IsArrivingPlaneSelected = IsArrivingPlaneSelected == true ? false : true;
+                    IsArrivingPlaneSelected =e  == "1" ? true : false;
+                    SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                 });
             }
         }
@@ -80,6 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public  IE_DeclerationServices DeclerationServices;
         public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
         {
+            SubmitModel = App.Locator.EDeclerationSubmitModel;
             DeclerationServices = declerationServices;
         }
     }

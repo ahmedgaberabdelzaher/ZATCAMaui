@@ -20,7 +20,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string typeName { get; set; }
         public long? itemCode { get; set; }
         public int count { get; set; }
-        public int value { get; set; }
+        public int? value { get; set; }
     }
 
     public class Restricted
@@ -30,7 +30,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string otherpurpose { get; set; }
         public int count { get; set; }
         public int unit { get; set; }
-        public int value { get; set; }
+        public int? value { get; set; }
         public int currency { get; set; }
         public string currencyName { get; set; }
         public bool permit { get; set; }
@@ -80,8 +80,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public DateTime passExpiryDate { get; set; }
         public List<Tobacco> tobacco { get; set; } = new List<Tobacco>();
         public List<Product> product { get; set; } = new List<Product>();
-        public List<Currency> currency { get; set; }
-        public List<Restricted> restricted { get; set; }
+        public List<Currency> currency { get; set; } = new List<Currency>();
+        public List<Restricted> restricted { get; set; } = new List<Restricted>();
     }
 }
 

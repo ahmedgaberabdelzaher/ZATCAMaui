@@ -7,7 +7,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
     public class Product
     {
         public long harmonizedCode { get; set; }
-        public int value { get; set; }
+        public int? value { get; set; }
     }
 
     public class FeesCalculatorBody

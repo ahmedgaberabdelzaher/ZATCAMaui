@@ -398,7 +398,7 @@
                                 </StackLayout>
 
                                 <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CardSelectionCommand}"/>
+                                <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="1"/>
                                 </Grid.GestureRecognizers>
 
                             </Grid>
@@ -495,7 +495,7 @@
                                 </StackLayout>
 
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="2"/>
                                 </Grid.GestureRecognizers>
 
                             </Grid>

@@ -9745,7 +9745,7 @@ info@zatca.gov.sa</value>
     <value>بياناتي</value>
   </data>
      <data name="NewDeclaration" xml:space="preserve">
-        <value>إعلان جديد</value>
+        <value>إقرار جديد</value>
     </data>
     <data name="NewDeclarationNote" xml:space="preserve">
         <value>حدد الخيار وأكمل التفاصيل</value>
@@ -9760,7 +9760,8 @@ info@zatca.gov.sa</value>
         <value>المغادرة من المملكة العربية السعودية</value>
     </data> 
       <data name="ProductDeclaration" xml:space="preserve">
-        <value>إعلان المنتج (1/2)</value>
+        <value>بيانات الإقرار
+</value>
     </data>
     <data name="ProductDeclarationSubTitle" xml:space="preserve">
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
@@ -9926,5 +9927,17 @@ info@zatca.gov.sa</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>العملة</value>
+  </data>
+    <data name="units" xml:space="preserve">
+    <value>الوحدة</value>
+  </data>
+    <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
+    <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
+  </data>
+  <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
+    <value>عفوا ....القيمه المدخلة ال تستلزم اإلقرار</value>
+  </data>
+   <data name="ALLanswersisNoMsg" xml:space="preserve">
+    <value> عفوا .. يبدو أنك لم تقم باالاختيار من أسئلة اإلقرار أو تعبئة البيانات الخاصة بها</value>
   </data>
 </root>

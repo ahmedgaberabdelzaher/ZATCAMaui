@@ -12,6 +12,7 @@ using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
@@ -28,29 +29,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ProductTypesModel selectedProductTypes;
         public ProductTypesModel SelectedProductTypes { get { return selectedProductTypes; } set { selectedProductTypes = value; RaisePropertyChanged(); } }
 
+        bool isMaterialTypeSelected = false;
+        static ObservableCollection<ProductTypesModel> MaterialTypes;
+        ProductTypesModel selectedMaterialTypes;
+        public ProductTypesModel SelectedMaterialTypes { get { return selectedMaterialTypes; } set { selectedMaterialTypes = value; RaisePropertyChanged(); } }
+
+        bool isPurposeSelected = false;
+        static ObservableCollection<PurposeModel> Purposes;
+        PurposeModel selectedPurposes;
+        public PurposeModel SelectedPurposes { get { return selectedPurposes; } set { selectedPurposes = value; RaisePropertyChanged(); } }
+
+
         bool isProductSubTypeSelected = false;
         static ObservableCollection<ProductTypesModel> ProductSubTypes;
         ProductTypesModel selectedProductSubTypes;
         public ProductTypesModel SelectedProductSubTypes { get { return selectedProductSubTypes; } set { selectedProductSubTypes = value; RaisePropertyChanged(); } }
 
+        bool isCurrencySelected = false;
+        static ObservableCollection<CurrencyModel> Currencies;
+        CurrencyModel selectedCurrencie;
+        public CurrencyModel SelectedCurrencie { get { return selectedCurrencie; } set { selectedCurrencie = value; RaisePropertyChanged(); } }
+
+        bool isUnitsSelected = false;
+        static ObservableCollection<UnitsModel> Units;
+        UnitsModel selectedUnit;
+        public UnitsModel SelectedUnit { get { return selectedUnit; } set { selectedUnit = value; RaisePropertyChanged(); } }
+
+
         TobaccoItemsModel selectedTobacoItem;
         public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
-        EDeclerationSubmitModel SubmitModel = new EDeclerationSubmitModel();
+  
         string quantity;
         public string Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
 
-        int totalValue;
-        public int TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
+        int? totalValue;
+        public int? TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
 
 
         string question;
         public string Question { get { return question; } set { question = value; RaisePropertyChanged(); } }
 
+        string otherPurpose;
+        public string OtherPurpose { get { return otherPurpose; } set { otherPurpose = value; RaisePropertyChanged(); } }
+
         TobacoTypesModel selectedTobacoType;
         public TobacoTypesModel SelectedTobacoType { get { return selectedTobacoType; } set { selectedTobacoType = value; RaisePropertyChanged(); } }
 
+
         int qFlow = 1;
         public int QFlow { get { return qFlow; } set { qFlow = value; RaisePropertyChanged(); } }
+
+        bool isPermit ;
+        public bool IsPermit { get { return isPermit; } set { isPermit = value; RaisePropertyChanged(); } }
+
 
         FeesCalculatorResponse feesCalculatorResponse;
         public FeesCalculatorResponse FeesCalculatorResponse { get { return feesCalculatorResponse; } set { feesCalculatorResponse = value; RaisePropertyChanged(); } }
@@ -109,8 +140,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
-                        QFlow++;
-                        SetQuestion();
+                        if (CheckNoItemAddedToCart())
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
+                            return;
+                        }
+                        if (IsArrivingPlaneSelected&&FeesCalculatorResponse.totalPayment<3000)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
+                            return;
+                        }
+                        if (QFlow < 4)
+                        {
+                            IsYesSelected = true;
+                            QFlow++;
+                            SetQuestion();
+                        }
+                        else
+                        {
+                            if (SubmitModel.travelerDeclaration.tobacco.Count < 1&& SubmitModel.travelerDeclaration.product.Count < 1&& SubmitModel.travelerDeclaration.restricted.Count < 1&& SubmitModel.travelerDeclaration.currency.Count < 1)
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.ALLanswersisNoMsg;
+                                return;
+                            }
+                            _navigationService.NavigateTo("PassengerInformationPage");
+                        }
+
 
                     }
                     catch (Exception ex)
@@ -127,7 +185,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
-        private void SetQuestion()
+        private bool CheckNoItemAddedToCart()
+        {
+            switch (QFlow)
+            {
+                case 1:
+                    if (IsYesSelected && SubmitModel.travelerDeclaration.tobacco.Count < 1)
+                    {
+                        return true;
+                    }
+                    break;
+                  case 2:
+                    if (IsYesSelected && SubmitModel.travelerDeclaration.product.Count < 1)
+                    {
+                        return true;
+                    }
+                    break;
+                case 3:
+                    if (IsYesSelected && SubmitModel.travelerDeclaration.currency.Count < 1)
+                    {
+                        return true;
+                    }
+                    break;
+                case 4:
+                    if (IsYesSelected && SubmitModel.travelerDeclaration.restricted.Count < 1)
+                    {
+                        return true;
+                    }
+                    break;
+                default:
+                    return false;
+                    
+            }
+            return false;
+        }
+
+        public void SetQuestion()
         {
             switch (QFlow)
             {
@@ -137,12 +230,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 case 2:
                     Question = AppResources.EdeclerationSecQ;
                     break;
+                case 3:
+                    Question = AppResources.DeclerationFirstSecurityQuestion;
+                    break;
+                case 4:
+                    Question = AppResources.DeclerationSecondSecurityQuestion;
+                    break;
                 default:
                     break;
             }
         }
 
-        public ICommand BackCommandCommand
+        private void ClearData()
+        {
+            switch (QFlow)
+            {
+                case 1:
+                    ClearTobacoData();
+                    break;
+                case 2:
+                    ClearProductData();
+                    break;
+                case 3:
+                    ClearCurrencyData();
+                    break;
+                case 4:
+                 
+                    break;
+                default:
+                    break;
+            }
+            TotalValue = null;
+        }
+        public ICommand PrevoiusCommand
         {
             get
             {
@@ -151,8 +271,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
-                        QFlow--;
-                        SetQuestion();
+                        ClearData();
+                        if (QFlow > 1)
+                        {
+                            if (!IsArrivingPlaneSelected && QFlow == 3)
+                            {
+                                _navigationService.GoBack();
+                                return;
+                            }
+                            QFlow--;
+                            SetQuestion();
+                        }
+                        else
+                        {
+                            _navigationService.GoBack();
+                        }
+                    
                     }
                     catch (Exception ex)
                     {
@@ -165,6 +299,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
                 });
 
+            }
+        }
+        public ICommand UploadFileCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, 1);
+                });
             }
         }
 
@@ -248,11 +392,202 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
+        public ICommand OpenMaterialTypesCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        isMaterialTypeSelected = true;
+                        if (MaterialTypes == null || MaterialTypes.Count > 0)
+                        {
+                            var materialTypes = await DeclerationServices.GetProductTypes();
+                            MaterialTypes = materialTypes?.Item1.data;
+                        }
+
+                        var result = MaterialTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.MaterialType;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+        public ICommand OpenPurposesCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        isPurposeSelected = true;
+                        if (Purposes == null || Purposes.Count > 0)
+                        {
+                            var purposes = await DeclerationServices.GetPurposes();
+                            Purposes = purposes?.Item1.data;
+                        }
+
+                        var result = Purposes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.Purpose;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+        public ICommand OpenCurrenciesCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        isCurrencySelected = true;
+                        if (Currencies == null || Currencies.Count > 0)
+                        {
+                            var currencies = await DeclerationServices.GetCurrencies();
+                            Currencies = currencies?.Item1.data;
+                        }
+
+                        var result = Currencies.Select(c => new BottomSheetModel() { Id = c.currencyCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.Purpose;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+        public ICommand OpenUnitsCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        isUnitsSelected = true;
+                        if (Units == null || Units.Count > 0)
+                        {
+                            var units = await DeclerationServices.GetUnits();
+                            Units = units?.Item1.data;
+                        }
+
+                        var result = Units.Select(c => new BottomSheetModel() { Id = c.id.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.units;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
         void ClearTobacoData()
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
             Quantity = "";
+        }
+        bool CheckTobacoDataNotNull()
+        {
+            if (SelectedTobacoItem!=null&& SelectedTobacoType!=null&&!String.IsNullOrWhiteSpace(Quantity))
+            {
+                return true;
+            }
+            return false;
+        }
+        bool CheckCurrencyDataNotNull()
+        {
+            if (SelectedCurrencie != null && SelectedMaterialTypes != null&& SelectedPurposes!=null&&TotalValue!=null )
+            {
+                return true;
+            }
+            return false;
+        }
+        bool CheckrestrictedDataNotNull()
+        {
+            if (CheckCurrencyDataNotNull()&& SelectedUnit!=null && !String.IsNullOrWhiteSpace(Quantity))
+            {
+                return true;
+            }
+            return false;
+        }
+        bool CheckProductDataNotNull()
+        {
+            if (SelectedProductTypes != null && !String.IsNullOrWhiteSpace(Quantity)&&TotalValue!=null)
+            {
+                return true;
+            }
+            return false;
+        }
+        void ClearCurrencyData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity=OtherPurpose = "";
+            SelectedPurposes = null;
+            TotalValue = null;
         }
         public ICommand OpenTobacoItemssCommand
         {
@@ -326,6 +661,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             SelectedProductSubTypes = ProductSubTypes.First(c => c.ID == int.Parse(e.Id));
                             isProductSubTypeSelected = false;
                         }
+                        else if (isMaterialTypeSelected)
+                        {
+                            SelectedMaterialTypes = MaterialTypes.First(c => c.ID == int.Parse(e.Id));
+                            isMaterialTypeSelected = false;
+                        }
+                        else if (isPurposeSelected)
+                        {
+                            SelectedPurposes = Purposes.First(c => c.ID == int.Parse(e.Id));
+                            isPurposeSelected = false;
+                        }
+                        else if (isCurrencySelected)
+                        {
+                            SelectedCurrencie = Currencies.First(c => c.currencyCode == int.Parse(e.Id));
+                            isCurrencySelected = false;
+                        }
+                        else if (isUnitsSelected)
+                        {
+                            SelectedUnit = Units.First(c => c.id == int.Parse(e.Id));
+                            isUnitsSelected = false;
+                        }
                         IsShowBottomSheet = false;
                         HeaderTitle = AppResources.eDeclaration;
                         SearchText = string.Empty;
@@ -349,7 +704,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             get
             {
 
-                return new Command(() =>
+                return new Command(async() =>
                 {
                     try
                     {
@@ -357,15 +712,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         switch (qFlow)
                         {
                             case 1:
-                                AddTobacoItem();
+                               await AddTobacoItem();
                                 break;
                             case 2:
-                                AddProductItem();
+                               await AddProductItem();
+                                break;
+                            case 3:
+                                AddCurrency();
+                                break;
+                            case 4:
+                                AddRestricted();
                                 break;
                             default:
                                 break;
                         }
-                        AddTobacoItem();
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -382,8 +742,100 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
-        private void AddTobacoItem()
+ 
+
+        public ICommand SelectIsPermitCommand
         {
+            get
+            {
+
+                return new Command<string>((e) =>
+                {
+                    try
+                    {
+                        IsPermit =e=="0"?false:true;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+        private  void AddCurrency()
+        {
+            if (CheckCurrencyDataNotNull())
+            {
+
+
+                var item = new Models.EDeclerationsModel.SubmitModels.Currency()
+                {
+                    otherpurpose = OtherPurpose,
+                    typeName = SelectedMaterialTypes.Name,
+                    typeID = SelectedMaterialTypes.ID,
+                    purpose = SelectedPurposes.ID,
+                    currencyName = SelectedCurrencie.Name,
+                    currency = SelectedCurrencie.currencyCode
+                };
+                 SubmitModel.travelerDeclaration.currency.Add(item);
+                ClearCurrencyData();
+            }
+            else
+            {
+                DisplayRequiredDataMsg();
+            }
+        }
+
+        private void AddRestricted()
+        {
+            if (CheckrestrictedDataNotNull())
+            {
+
+         
+            var item = new Models.EDeclerationsModel.SubmitModels.Restricted()
+            {
+                otherpurpose = OtherPurpose,
+                typeName = SelectedMaterialTypes.Name,
+                unit = SelectedUnit.id,
+                count = int.Parse(Quantity),
+                value = TotalValue,
+                purpose = SelectedPurposes.ID,
+                currencyName = SelectedCurrencie.Name,
+                currency = SelectedCurrencie.currencyCode,
+                permit = IsPermit,
+                attachment =UploadedFiles!=null&&UploadedFiles.Count>0? UploadedFiles[0].fileBase64:""
+            };
+             SubmitModel.travelerDeclaration.restricted.Add(item);
+            ClearRestrictedData();
+         }
+            else
+            {
+                DisplayRequiredDataMsg();
+            }
+        }
+        void ClearRestrictedData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity = OtherPurpose = "";
+            IsPermit = false;
+            selectedUnit = null;
+            UploadedFiles = null;
+            SelectedPurposes = null;
+            TotalValue = null;
+        }
+        private async Task AddTobacoItem()
+        {
+            if (CheckTobacoDataNotNull())
+            {
+
+
             var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
             {
                 count = int.Parse(Quantity),
@@ -408,18 +860,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 count = int.Parse(Quantity),
                 sequence = item.taxSequence
             };
-            CalculateFees(tobao, null);
+           await CalculateFees(tobao, null);
             ClearTobacoData();
+            }
+            else
+            {
+                DisplayRequiredDataMsg();
+            }
         }
 
-        private void AddProductItem()
+        private void DisplayRequiredDataMsg()
         {
+            IsShowMsgView = true;
+            MessageTxt = AppResources.RequiredData;
+        }
+
+        private async Task AddProductItem()
+        {
+            if (CheckProductDataNotNull())
+            {
+
             var item = new Models.EDeclerationsModel.SubmitModels.Product()
             {
                 count = int.Parse(Quantity),
                 typeName = SelectedProductTypes.Name,
                 itemCode = SelectedProductTypes.code == null ? 0 : long.Parse(SelectedProductTypes.code),
-                value = totalValue
+                value = TotalValue
 
             };
             /* if (SubmitModel.travelerDeclaration == null|| SubmitModel.travelerDeclaration.product==null)
@@ -437,15 +903,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 harmonizedCode = item.itemCode == null ? 0 : item.itemCode.Value,
                 value = TotalValue
             };
-            CalculateFees(null, product);
-            // ClearProductData();
+           await CalculateFees(null, product);
+               ClearProductData();
+
+            }
+            else
+            {
+                DisplayRequiredDataMsg();
+            }
         }
         void ClearProductData()
         {
             SelectedProductTypes = null;
             SelectedProductSubTypes = null;
             Quantity = "";
-            TotalValue = 0;
+            TotalValue = null;
         }
         private async Task CalculateFees(Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
@@ -477,7 +949,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         #endregion
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
         {
-            Question = AppResources.ProductDeclarationSubTitle;
+            
+            
         }
     }
 }

@@ -116,6 +116,7 @@
 	  <None Remove="Models\EDeclerationsModel\" />
 	  <None Remove="Models\EDeclerationsModel\SubmitModels\" />
 	  <None Remove="Models\EDeclerationsModel\FeesCalculators\" />
+	  <None Remove="Controls\EDeclerationControls\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -236,6 +237,7 @@
 		<Folder Include="Models\EDeclerationsModel\" />
 		<Folder Include="Models\EDeclerationsModel\SubmitModels\" />
 		<Folder Include="Models\EDeclerationsModel\FeesCalculators\" />
+		<Folder Include="Controls\EDeclerationControls\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -328,6 +330,9 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\EDeclaration\ContactInformationPage.xaml.cs">
 		  <DependentUpon>ContactInformationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\EDeclerationControls\SecurityDestrictedQuestionView.xaml.cs">
+		  <DependentUpon>SecurityDestrictedQuestionView.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
