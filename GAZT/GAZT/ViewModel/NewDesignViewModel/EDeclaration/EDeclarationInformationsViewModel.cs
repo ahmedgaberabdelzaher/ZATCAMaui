@@ -10,6 +10,8 @@ using System.Collections.Generic;
 using EGAZT.Services.Interface;
 using EGAZT.Models.EDeclerationsModel;
 using System.Linq.Expressions;
+using Rg.Plugins.Popup.Services;
+using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -31,6 +33,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         TripInfoModel tripInfo = new TripInfoModel();
         public TripInfoModel TripInfo { get { return tripInfo; } set { tripInfo = value; } }
+
+        ContactInfoModel contactInfo = new ContactInfoModel();
+        public ContactInfoModel Contact { get { return contactInfo; } set { contactInfo = value; } }
+
         #endregion
 
 
@@ -39,29 +45,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command(() =>
+                return new Command<string>((e) =>
                 {
-                    if (IsYesSelected)
+                    try
                     {
-                        IsYesSelected = false;
-
-                        if (passenger.travelID.ToLower().StartsWith("1"))
+                        if (IsYesSelected)
                         {
-                            // passenger.travelDocumentType =; 
-                        }
-                        else if (passenger.travelID.ToLower().StartsWith("2"))
-                        {
+                            IsYesSelected = false;
 
+                            if (passenger.travelID.ToLower().StartsWith("1"))
+                            {
+                                // passenger.travelDocumentType =; 
+                            }
+                            else if (passenger.travelID.ToLower().StartsWith("2"))
+                            {
+
+                            }
+                            else
+                            {
+                                // Passport
+                            }
                         }
                         else
                         {
-                            // Passport
+                            IsYesSelected = true;
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        IsYesSelected = true;
+
                     }
+
                 });
             }
         }
@@ -95,7 +109,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     if (e != null)
                     {
-
                         var entry = e as BorderlessEntry;
                         var value = entry.Text.ToLower();
                         if (string.IsNullOrWhiteSpace(value))
@@ -105,8 +118,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             var result = BottomSheetList.Where(s => s.Name.Contains(value)).ToList() ?? new List<BottomSheetModel>();
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         }
-
-
                     }
                 });
             }
@@ -212,6 +223,99 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
+        public ICommand GoToContactCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    _navigationService.NavigateTo("ContactInformationPage");
+                });
+            }
+        }
+
+        public ICommand GoToSuccessCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
+                    await PopupNavigation.Instance.PushAsync(poupWindow);
+                });
+            }
+        }
+        public ICommand OpenCartCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
+                    await PopupNavigation.Instance.PushAsync(poupWindow);
+                    
+                });
+            }
+        }
+        public ICommand ApproveDeclarationCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    if(Contact.IsTermsChecked)
+                    {
+                        await PopupNavigation.Instance.PopAsync(true);
+                        _navigationService.NavigateTo("EDeclarationSuccessPage");
+                    }
+                        
+                });
+            }
+        }
+        public ICommand CloseCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                });
+            }
+        }
+        public ICommand CheckBoxCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    Contact.IsTermsChecked = Contact.IsTermsChecked == true ? false : true;
+                });
+            }
+        }
+        public ICommand OpenTermsLinkCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    
+                });
+            }
+        }
+
+        public ICommand BackToHomeCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    _navigationService.NavigateTo("/Home", "0");
+
+                });
+            }
+        }
+
         public ICommand OpenComingGoingCommand
         {
             get
@@ -222,6 +326,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
         public ICommand TripCardCommand
         {
             get

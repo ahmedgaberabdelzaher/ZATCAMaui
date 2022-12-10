@@ -9927,4 +9927,46 @@ info@zatca.gov.sa</value>
   <data name="Currency" xml:space="preserve">
     <value>العملة</value>
   </data>
+    <data name="ContactInformation" xml:space="preserve">
+    <value>معلومات التواصل</value>
+  </data>
+  <data name="AddressKSA" xml:space="preserve">
+    <value>العنوان في المملكة العربية السعودية</value>
+  </data>
+  <data name="CreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاؤه بنجاح</value>
+  </data>
+  <data name="CreatedSuccessfullyMsg" xml:space="preserve">
+    <value>تم إنشاء البيان الإلكتروني بنجاح. يرجى إكمال عملية الدفع قبل الوصول إلى نقطة الجمارك</value>
+  </data>
+   <data name="DeclarationAcknowledge" xml:space="preserve">
+    <value>إقرار</value>
+  </data>
+   <data name="AcknowledgeNote1" xml:space="preserve">
+    <value>أقر بموجب هذا بأن هذا الإعلان الإلكتروني مملوك لمصلحة الجمارك العامة التي لها الحق في استخدام المعلومات المدخلة للأغراض الإحصائية المتعلقة بعملها.</value>
+  </data>
+  <data name="AcknowledgeNote2" xml:space="preserve">
+    <value>أتحمل المسؤولية الكاملة عن صحة ودقة المعلومات التي قدمتها</value>
+  </data>
+  <data name="AcknowledgeNote3" xml:space="preserve">
+    <value>أنا مسؤول عن عواقب استخدامي للإقرار الإلكتروني للأغراض المقصودة ، مثل الرسوم الجمركية أو الضرائب أو الالتزامات المالية الأخرى التي تطبقها الهيئة العامة للجمارك</value>
+  </data>
+  <data name="AcknowledgeNote4" xml:space="preserve">
+    <value>كما أتحمل المسؤولية الكاملة في حال تأكدت مصلحة الجمارك العامة من أن المعلومات التي قدمتها غير صحيحة وتنتهك اللوائح والتشريعات المعمول بها ؛ وبعد ذلك ، سأخضع للمساءلة القانونية</value>
+  </data>
+  <data name="AcknowledgeNote5" xml:space="preserve">
+    <value>لا يسمح برد المبالغ المحصلة (الرسوم والضرائب) إلا في حالة الإحالة إلى مكتب التصريح بميناء الدخول عند الوصول إلى المملكة وقبل مغادرة الميناء بحيث يمكن إجراء مراسلات الحيازة من قبل الجمارك. ضابط</value>
+  </data>
+   <data name="TermsConditions" xml:space="preserve">
+    <value>لقد قرأت الشروط والأحكام</value>
+  </data>
+  <data name="ProhibitedItems" xml:space="preserve">
+    <value>عرض قائمة المواد المحظورة</value>
+  </data>
+  <data name="ApproveDeclaration" xml:space="preserve">
+    <value>الموافقة على إقرار</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>الدفع</value>
+  </data>
 </root>

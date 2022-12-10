@@ -116,6 +116,7 @@
 	  <None Remove="Models\EDeclerationsModel\" />
 	  <None Remove="Models\EDeclerationsModel\SubmitModels\" />
 	  <None Remove="Models\EDeclerationsModel\FeesCalculators\" />
+	  <None Remove="Views\NewDesign\EDeclaration\PopUpPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -236,6 +237,7 @@
 		<Folder Include="Models\EDeclerationsModel\" />
 		<Folder Include="Models\EDeclerationsModel\SubmitModels\" />
 		<Folder Include="Models\EDeclerationsModel\FeesCalculators\" />
+		<Folder Include="Views\NewDesign\EDeclaration\PopUpPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

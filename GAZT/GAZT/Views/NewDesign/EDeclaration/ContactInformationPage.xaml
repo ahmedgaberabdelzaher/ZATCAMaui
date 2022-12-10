@@ -6,12 +6,10 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -100,14 +98,8 @@
                                     HorizontalOptions="EndAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                            </ImageButton>
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -129,14 +121,9 @@
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
 
-                             </ImageButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -158,14 +145,8 @@
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                             </ImageButton>
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -187,14 +168,8 @@
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                            </ImageButton>
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -205,50 +180,43 @@
                                 HeightRequest="2" />
 
                             <!--Circle button 5-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="8"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#0996D4"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#0996D4"
-                                    Text="5">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                             </Button>
+                            <ImageButton 
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                CornerRadius="15"
+                                InputTransparent="True"
+                                BorderWidth="1"
+                                Grid.Column="8"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                Padding="5"
+                                Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="9"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20"
-                                BackgroundColor="#B8BABA"
+                                BackgroundColor="#0996D4"
                                 HeightRequest="2" />
 
                             <!--Circle button 6-->
                             <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="10"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="6">
-                                 <Button.Padding>
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                CornerRadius="15"
+                                InputTransparent="True"
+                                BorderWidth="1"
+                                Grid.Column="10"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                BorderColor="#0996D4"
+                                BackgroundColor="Transparent"
+                                TextColor="#0996D4"
+                                Text="6">
+                                <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
@@ -258,23 +226,22 @@
 
                         </Grid>
 
-                        <!--  Trip Information Label  -->
+                        <!--  Contact Information Label  -->
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.TripInformation}"
+                            Text="{x:Static ResourceManager:AppResources.ContactInformation}"
                             TextColor="{StaticResource Primary}" />
 
-                        <!--  Trip Note Label  -->
+                        <!--  Contact Note Label  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="16"
                             Margin="0,0,0,5"
                             HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
+                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
                             TextColor="{StaticResource NeutralGreay}" />
-
 
                         <!--  Horizontal Line  -->
                         <BoxView
@@ -283,22 +250,117 @@
                             BackgroundColor="{StaticResource NeutralLightGrey}"
                             HeightRequest="2" />
 
-                        <!--  Type Of Trip Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.TypeOfTrip}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
 
+                        <!--  Phone Field  -->
+                        <StackLayout Spacing="0">
 
-                        <!-- GoTo Trip Information Button  -->
+                            <!--  Phone Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Phone Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Telephone"
+                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Contact.phoneNumber}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Label Text="+966" />
+                                </inputLayout:SfTextInputLayout.LeadingView>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Email Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Email Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Email Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Contact.email}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                         <!--  Address Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Address Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Address Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Contact.address}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!-- GoTo Success Button  -->
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding GoToSecondProductDeclarationCommand}"
+                            Command="{Binding GoToSuccessCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
@@ -319,10 +381,6 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
-
-
-            <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

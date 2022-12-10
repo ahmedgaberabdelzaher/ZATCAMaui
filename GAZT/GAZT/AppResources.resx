@@ -10007,4 +10007,46 @@ Zakat, Tax and Customs Authority
   <data name="Currency" xml:space="preserve">
     <value>Currency</value>
   </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="AddressKSA" xml:space="preserve">
+    <value>Address in KSA</value>
+  </data>
+  <data name="CreatedSuccessfully" xml:space="preserve">
+    <value>Created Successfully</value>
+  </data>
+  <data name="CreatedSuccessfullyMsg" xml:space="preserve">
+    <value>The e-declration has been created successfully Please complete the payment process before arriving at the customs point</value>
+  </data>
+  <data name="DeclarationAcknowledge" xml:space="preserve">
+    <value>Acknowledge</value>
+  </data>
+   <data name="AcknowledgeNote1" xml:space="preserve">
+    <value>I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work</value>
+  </data>
+  <data name="AcknowledgeNote2" xml:space="preserve">
+    <value>I take full responsibility for the correctness and accuracy of the information provided by me</value>
+  </data>
+  <data name="AcknowledgeNote3" xml:space="preserve">
+    <value>I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Customs Authority</value>
+  </data>
+  <data name="AcknowledgeNote4" xml:space="preserve">
+    <value>I further assume full responsibility in case the General Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability</value>
+  </data>
+  <data name="AcknowledgeNote5" xml:space="preserve">
+    <value>Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the customs officer</value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>I have Read the terms and conditions</value>
+  </data>
+    <data name="ProhibitedItems" xml:space="preserve">
+    <value>View the list of prohibited items</value>
+  </data>
+   <data name="ApproveDeclaration" xml:space="preserve">
+    <value>Approve Declaration</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Checkout</value>
+  </data>
 </root>

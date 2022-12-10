@@ -2912,6 +2912,7 @@ namespace EGAZT
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
             navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
+            navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
 
             #endregion
 

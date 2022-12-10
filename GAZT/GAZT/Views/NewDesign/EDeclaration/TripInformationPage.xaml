@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
@@ -99,19 +98,13 @@
                                     HeightRequest="30"
                                     CornerRadius="15"
                                     BorderWidth="1"
+                                    Padding="5"
                                     InputTransparent="True"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="EndAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                            </ImageButton>
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -129,18 +122,12 @@
                                     InputTransparent="True"
                                     BorderWidth="1"
                                     Grid.Column="2"
+                                    Padding="5"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                             </ImageButton>
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -158,18 +145,12 @@
                                     InputTransparent="True"
                                     BorderWidth="1"
                                     Grid.Column="4"
+                                    Padding="5"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
-
-                             </ImageButton>
+                                    Source="reportCheckMark.png"/>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -185,20 +166,15 @@
                                     HeightRequest="30"
                                     CornerRadius="15"
                                     InputTransparent="True"
+                                    Padding="5"
                                     BorderWidth="1"
                                     Grid.Column="6"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="StartAndExpand"
                                     BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Source="reportCheckMark.png">
-                                 <ImageButton.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </ImageButton.Padding>
+                                    Source="reportCheckMark.png"/>
 
-                            </ImageButton>
 
                             <!--  Horizontal Line  -->
                             <BoxView
@@ -628,11 +604,11 @@
 
                         </StackLayout>
 
-                        <!-- GoTo Trip Information Button  -->
+                        <!-- GoTo Contact Information Button  -->
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding GoToSecondProductDeclarationCommand}"
+                            Command="{Binding GoToContactCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 

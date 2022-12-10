@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.PopUpPages.AcknowledgePopUpPage"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    FlowDirection="{Binding AppDirection}">
+
+     <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+
+     <Grid VerticalOptions="EndAndExpand">
+
+        <yummy:PancakeView
+            Padding="20"
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            HeightRequest="490"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
+            <ScrollView>
+
+                <StackLayout>
+
+                    <!--  Acknowledge Header Label  -->
+                    <custom:CustomLabel
+                        HorizontalOptions="StartAndExpand"
+                        FontSize="28"
+                        Margin="0,0,0,20"
+                        TextColor="#232323" 
+                        Text="{x:Static ResourceManager:AppResources.DeclarationAcknowledge}"
+                        VerticalOptions="Start" />
+
+                    <!--#region Frame Contains Image and Text-->
+                    <Frame HasShadow="False"
+                           Padding="25"
+                           CornerRadius="15"
+                           BorderColor="#EBEBEB">
+
+                        <!--Frame Content-->
+                        <StackLayout Spacing="25">
+
+                            <!--#region Icon and Label-->
+                            <StackLayout Orientation="Horizontal"
+                                         VerticalOptions="Start"
+                                         HorizontalOptions="Start">
+
+                                <!--Infromation Image-->
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="25"
+                                    HorizontalOptions="StartAndExpand"
+                                    Source="information"
+                                    VerticalOptions="StartAndExpand"
+                                    WidthRequest="25"/>
+
+                                <!--  Sub Header Label  -->
+                                <custom:CustomLabel
+                                    HorizontalOptions="Start"
+                                    FontSize="18"
+                                    Text="{x:Static ResourceManager:AppResources.DeclarationAcknowledge}"
+                                    VerticalOptions="Center" />
+
+                            </StackLayout>
+                            <!--#endregion Icon and Label-->
+
+                            <!--  Notes Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="14"
+                                LineHeight="1"
+                                LineBreakMode="WordWrap"
+                                TextColor="#002447">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="• " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote1}" />
+                                        <Span Text="&#10;" />
+                                        <Span Text="• " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote2}" />
+                                        <Span Text="&#10;" />
+                                        <Span Text="• " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote3}" />
+                                        <Span Text="&#10;" />
+                                        <Span Text="• " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote4}" />
+                                        <Span Text="&#10;" />
+                                        <Span Text="• " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.AcknowledgeNote5}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+                            </Label>
+
+                        </StackLayout>
+                    
+                    </Frame>
+                    <!--#endregion Frame Contains Image and Text-->
+
+                    <!--  HyberLink Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="14"
+                        Margin="0,20"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.ProhibitedItems}"
+                        TextColor="#0996D4"
+                        TextDecorations="Underline">
+
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
+                        </Label.GestureRecognizers>
+
+                    </Label>
+
+                    <!--  Check Box  -->
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        Spacing="15">
+
+                        <!--Check box Image-->
+                        <Image
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Source="CheckMark.png"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="20">
+
+                            <Image.Triggers>
+
+                                <DataTrigger
+                                    Binding="{Binding Contact.IsTermsChecked}"
+                                    TargetType="Image"
+                                    Value="True">
+                                    <Setter Property="Source" Value="CheckMark.png" />
+                                </DataTrigger>
+
+                                <DataTrigger
+                                    Binding="{Binding Contact.IsTermsChecked}"
+                                    TargetType="Image"
+                                    Value="False">
+                                    <Setter Property="Source" Value="emptyCheck.png" />
+                                </DataTrigger>
+
+                            </Image.Triggers>
+
+                        </Image>
+
+                        <!--Terms & Conditions-->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.TermsConditions}"
+                            TextColor="#232323" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CheckBoxCommand}" />
+                        </StackLayout.GestureRecognizers>
+
+                    </StackLayout>
+
+                    <!--  Approve Declaration Button  -->
+                    <buttons:SfButton
+                        Margin="0,20"
+                        Command="{Binding ApproveDeclarationCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        FontFamily="{StaticResource SomarBold}"
+                        Text="{x:Static ResourceManager:AppResources.ApproveDeclaration}" />
+          
+
+                </StackLayout>
+
+            </ScrollView>
+
+        </yummy:PancakeView>
+
+     </Grid>
+</pages:PopupPage>
+

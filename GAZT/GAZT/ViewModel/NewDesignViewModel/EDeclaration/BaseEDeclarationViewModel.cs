@@ -34,9 +34,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         string headerTitle;
         public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
 
-        BottomSheetModel selectedItem;
-        public BottomSheetModel SelectedItem { get { return selectedItem; } set { selectedItem = value; RaisePropertyChanged(); } }
-
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 

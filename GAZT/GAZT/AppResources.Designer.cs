@@ -220,6 +220,51 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work.
+        /// </summary>
+        public static string AcknowledgeNote1 {
+            get {
+                return ResourceManager.GetString("AcknowledgeNote1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I take full responsibility for the correctness and accuracy of the information provided by me.
+        /// </summary>
+        public static string AcknowledgeNote2 {
+            get {
+                return ResourceManager.GetString("AcknowledgeNote2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Customs Authority.
+        /// </summary>
+        public static string AcknowledgeNote3 {
+            get {
+                return ResourceManager.GetString("AcknowledgeNote3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I further assume full responsibility in case the General Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability.
+        /// </summary>
+        public static string AcknowledgeNote4 {
+            get {
+                return ResourceManager.GetString("AcknowledgeNote4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the customs officer.
+        /// </summary>
+        public static string AcknowledgeNote5 {
+            get {
+                return ResourceManager.GetString("AcknowledgeNote5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Acknowledgement.
         /// </summary>
         public static string Acknowlwdgement {
@@ -288,6 +333,15 @@ namespace EGAZT {
         public static string AddNewReport {
             get {
                 return ResourceManager.GetString("AddNewReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address in KSA.
+        /// </summary>
+        public static string AddressKSA {
+            get {
+                return ResourceManager.GetString("AddressKSA", resourceCulture);
             }
         }
         
@@ -397,6 +451,15 @@ namespace EGAZT {
         public static string ApplePayText {
             get {
                 return ResourceManager.GetString("ApplePayText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approve Declaration.
+        /// </summary>
+        public static string ApproveDeclaration {
+            get {
+                return ResourceManager.GetString("ApproveDeclaration", resourceCulture);
             }
         }
         
@@ -1312,6 +1375,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Checkout.
+        /// </summary>
+        public static string Checkout {
+            get {
+                return ResourceManager.GetString("Checkout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string ChooseReports {
@@ -1407,6 +1479,15 @@ namespace EGAZT {
         public static string ConsumerCalculator {
             get {
                 return ResourceManager.GetString("ConsumerCalculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Information.
+        /// </summary>
+        public static string ContactInformation {
+            get {
+                return ResourceManager.GetString("ContactInformation", resourceCulture);
             }
         }
         
@@ -1965,6 +2046,24 @@ namespace EGAZT {
         public static string CreateASecurePassword {
             get {
                 return ResourceManager.GetString("CreateASecurePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created Successfully.
+        /// </summary>
+        public static string CreatedSuccessfully {
+            get {
+                return ResourceManager.GetString("CreatedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The e-declration has been created successfully Please complete the payment process before arriving at the customs point.
+        /// </summary>
+        public static string CreatedSuccessfullyMsg {
+            get {
+                return ResourceManager.GetString("CreatedSuccessfullyMsg", resourceCulture);
             }
         }
         
@@ -3023,6 +3122,15 @@ namespace EGAZT {
         public static string DearCustomer {
             get {
                 return ResourceManager.GetString("DearCustomer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Acknowledge.
+        /// </summary>
+        public static string DeclarationAcknowledge {
+            get {
+                return ResourceManager.GetString("DeclarationAcknowledge", resourceCulture);
             }
         }
         
@@ -10338,6 +10446,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to View the list of prohibited items.
+        /// </summary>
+        public static string ProhibitedItems {
+            get {
+                return ResourceManager.GetString("ProhibitedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Purchase value.
         /// </summary>
         public static string PurchaseValue {
@@ -11610,6 +11727,15 @@ namespace EGAZT {
         public static string TaxType {
             get {
                 return ResourceManager.GetString("TaxType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I have Read the terms and conditions.
+        /// </summary>
+        public static string TermsConditions {
+            get {
+                return ResourceManager.GetString("TermsConditions", resourceCulture);
             }
         }
         
