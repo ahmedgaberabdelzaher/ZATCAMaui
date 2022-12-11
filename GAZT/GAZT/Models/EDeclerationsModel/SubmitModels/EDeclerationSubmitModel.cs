@@ -105,17 +105,17 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _travelIssuerName;
         public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
 
-        public DateTime SelectedPassIssuingDate { get; set; } = DateTime.Now;
+        public DateTime passIssuingDate { get; set; } = DateTime.Now;
 
-        public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
+       // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
 
-        public DateTime SelectedPassExpiryDate { get; set; } = DateTime.Now;
+        public DateTime passExpiryDate { get; set; } = DateTime.Now;
 
-        public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
+        //public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
 
-        public DateTime SelectedBirthDate { get; set; } = DateTime.Now;
+        public DateTime birthDate { get; set; } = DateTime.Now;
 
-        public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
+        //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
         int _travelersCount;
         public int travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
@@ -146,9 +146,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _travelPurposeName;
         public string travelPurposeName { get { return _travelPurposeName; } set { _travelPurposeName = value; RaisePropertyChanged(); } }
 
-        public DateTime SelectedArrivalDepartureDate { get; set; } = DateTime.Now;
+        public DateTime travelDate { get; set; } = DateTime.Now;
 
-        public string travelDate { set { value = DateTimeHelper.DatetimeFormater(SelectedArrivalDepartureDate); } }
+        //public string travelDate { set { value = DateTimeHelper.DatetimeFormater(SelectedArrivalDepartureDate); } }
         #endregion
 
         #region Contact Model

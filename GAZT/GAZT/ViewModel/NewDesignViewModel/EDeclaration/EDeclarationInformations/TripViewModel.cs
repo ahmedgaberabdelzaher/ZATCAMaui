@@ -25,7 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                     SubmitModel.travelerDeclaration.arrivingFromDepartingToName = string.Empty;
                     SubmitModel.travelerDeclaration.portName = string.Empty;
-                    SubmitModel.travelerDeclaration.SelectedArrivalDepartureDate = DateTime.Now;
+                    SubmitModel.travelerDeclaration.travelDate = DateTime.Now;
                     if (selectedTrip == (int)TripName.AirTrip)
                     {
                         TripCard.AirImage = "QSelected.png";
@@ -149,7 +149,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.arrivingFromDepartingToName)
             || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.portName)
-            || SubmitModel.travelerDeclaration.SelectedArrivalDepartureDate.Date < DateTime.Now.Date
+            || SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date
             || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelPurposeName))
             {
                 IsShowMsgView = true;

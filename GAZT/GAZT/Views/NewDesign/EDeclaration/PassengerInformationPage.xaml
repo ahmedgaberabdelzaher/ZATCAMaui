@@ -870,7 +870,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedPassIssuingDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -903,7 +903,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedPassExpiryDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -936,7 +936,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedBirthDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
