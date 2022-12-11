@@ -38,9 +38,10 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string attachment { get; set; }
     }
 
-    public class EDeclerationSubmitModel
+    public class EDeclerationSubmitModel:BindableBase
     {
-        public TravelerDeclaration travelerDeclaration { get; set; } = new TravelerDeclaration();
+        TravelerDeclaration _travelerDeclaration = new TravelerDeclaration();
+        public TravelerDeclaration travelerDeclaration { get { return _travelerDeclaration; } set { _travelerDeclaration = value; RaisePropertyChanged(); } }
     }
 
     public class Tobacco
@@ -58,6 +59,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
 
         #region Passenger Model
+        bool _isvisitor = true;
+        public bool Isvisitor { get { return _isvisitor; } set { _isvisitor = value; RaisePropertyChanged(); } }
+
         int _travelDocumentType;
         public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; RaisePropertyChanged(); } }
 
@@ -94,8 +98,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         int _passIssuingCountry; 
         public int passIssuingCountry { get { return _passIssuingCountry; } set { _passIssuingCountry = value; } }
 
-        int _travelIssuerName;
-        public int travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
+        string _travelIssuerName;
+        public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
 
         public DateTime SelectedPassIssuingDate { get; set; } = DateTime.Now;
 

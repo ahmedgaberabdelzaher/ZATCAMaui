@@ -58,6 +58,21 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<UnitsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/units").ConfigureAwait(false);
             return response;
         }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryModel>>, bool, string>> GetCountries()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CountryModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/countries").ConfigureAwait(false);
+            return response;
+        }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetTravelPurpose()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<PortsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/travel-purposes").ConfigureAwait(false);
+            return response;
+        }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetPorts(int tripType)
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<PortsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/ports?tripTypeID={tripType}").ConfigureAwait(false);
+            return response;
+        }
     }
 }
 

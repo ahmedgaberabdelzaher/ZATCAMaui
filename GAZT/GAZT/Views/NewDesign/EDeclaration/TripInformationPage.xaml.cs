@@ -14,6 +14,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
         }
+
+        protected override void OnDisappearing()
+        {
+            viewModel.isTripPage = false;
+            base.OnDisappearing();
+        }
     }
 }
 

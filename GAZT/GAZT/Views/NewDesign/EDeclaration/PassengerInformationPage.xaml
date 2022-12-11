@@ -10,6 +10,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -21,9 +22,17 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
 
         <Grid RowDefinitions="Auto,*">
@@ -273,6 +282,7 @@
                                      VerticalOptions="FillAndExpand"
                                      Spacing="10"
                                      Padding="5"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                      HeightRequest="100"
                                      Margin="0,0,0,5"
                                      Orientation="Horizontal">
@@ -288,22 +298,22 @@
                                 <Image Aspect="AspectFill"
                                        Source="QSelected.png">
 
-                                        <Image.Triggers>
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="QSelected.png"/>
+                                        </DataTrigger>
+
                                             <DataTrigger
                                                 Binding="{Binding IsYesSelected}"
                                                 TargetType="Image"
-                                                Value="True">
-                                                <Setter Property="Source" Value="QSelected.png"/>
-                                            </DataTrigger>
+                                                Value="False">
+                                                <Setter Property="Source" Value="QUnselected.png"/>
+                                        </DataTrigger>
 
-                                                <DataTrigger
-                                                    Binding="{Binding IsYesSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                    <Setter Property="Source" Value="QUnselected.png"/>
-                                            </DataTrigger>
-
-                                        </Image.Triggers>
+                                    </Image.Triggers>
 
                                 </Image>
 
@@ -316,34 +326,33 @@
                                         TextColor="White"
                                         Text="{x:Static ResourceManager:AppResources.Passport}">
 
-                                            <custom:CustomLabel.Triggers>
+                                    <custom:CustomLabel.Triggers>
 
-                                            <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="True">
-                                                <Setter Property="TextColor" Value="White"/>
-                                            </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
 
-                                            <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="False">
-                                                <Setter Property="TextColor" Value="{StaticResource Primary}"/>
-                                            </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                        </DataTrigger>
 
 
-                                        </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel.Triggers>
 
                                     </custom:CustomLabel>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IDSelectionCommand}"
-                                                          CommandParameter="1"/>
+                                                          CommandParameter="4"/>
                                 </Grid.GestureRecognizers>
 
                             </Grid>
-
 
                             <!--National ID card-->
                             <Grid Padding="5"
@@ -354,22 +363,22 @@
                                 <Image Aspect="AspectFill"
                                         Source="QUnselected.png">
 
-                                        <Image.Triggers>
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                                <Setter Property="Source" Value="QSelected.png"/>
+                                        </DataTrigger>
+
                                             <DataTrigger
                                                 Binding="{Binding IsYesSelected}"
                                                 TargetType="Image"
-                                                Value="False">
-                                                    <Setter Property="Source" Value="QSelected.png"/>
-                                            </DataTrigger>
+                                                Value="True">
+                                                <Setter Property="Source" Value="QUnselected.png"/>
+                                        </DataTrigger>
 
-                                                <DataTrigger
-                                                    Binding="{Binding IsYesSelected}"
-                                                    TargetType="Image"
-                                                    Value="True">
-                                                    <Setter Property="Source" Value="QUnselected.png"/>
-                                            </DataTrigger>
-
-                                        </Image.Triggers>
+                                    </Image.Triggers>
 
                                 </Image>
 
@@ -403,7 +412,7 @@
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding IDSelectionCommand}"
-                                                          CommandParameter="2"/>
+                                                          CommandParameter="16"/>
                                 </Grid.GestureRecognizers>
 
                             </Grid>
@@ -436,6 +445,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.firstName}"
@@ -469,6 +479,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.middleName}"
@@ -502,6 +513,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.lastName}"
@@ -536,6 +548,7 @@
                                 <custom:BorderlessEntry
                                     IsReadOnly="True"
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
@@ -580,6 +593,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelID}"
@@ -599,20 +613,20 @@
                         </custom:CustomLabel>
 
                         <!--#region Gender Cards-->
+                        <!--In case visitor-->
                         <StackLayout VerticalOptions="FillAndExpand"
                                      HorizontalOptions="FillAndExpand"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                      Spacing="10"
                                      Padding="5"
                                      HeightRequest="100"
                                      Margin="0,0,0,5"
                                      Orientation="Horizontal">
 
-                            <!--Female Card-->
-                            <Grid
-                                 HeightRequest="94"
-                                  WidthRequest="171"
-                                VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand">
+                            <!--Male card-->
+                            <Grid Padding="5"
+                                  HeightRequest="94"
+                                  WidthRequest="171">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -620,17 +634,84 @@
 
                                     <Image.Triggers>
                                         <DataTrigger
-                                            Binding="{Binding IsYesSelected}"
+                                            Binding="{Binding IsMaleSelected}"
                                             TargetType="Image"
                                             Value="True">
+                                            <Setter Property="Source" Value="QSelected.png"/>
+                                        </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsMaleSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                <Setter Property="Source" Value="QUnselected.png"/>
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <!--Male label-->
+
+                                <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="EndAndExpand"
+                                        FontSize="16"
+                                        Padding="15"
+                                        TextColor="White"
+                                        Text="{x:Static ResourceManager:AppResources.ESTMaleLabel}">
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="White"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                        </DataTrigger>
+
+
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GenderSelectionCommand}"
+                                                          CommandParameter="1"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                            <!--Female Card-->
+                            <Grid
+                                 HeightRequest="94"
+                                 WidthRequest="171"
+                                 VerticalOptions="StartAndExpand"
+                                 HorizontalOptions="StartAndExpand">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                       Source="QUnselected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="Image"
+                                            Value="False">
                                                 <Setter Property="Source" Value="QSelected.png"/>
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding IsYesSelected}"
-                                            TargetType="Image"
-                                            Value="False">
-                                            <Setter Property="Source" Value="QUnselected.png"/>
+                                                Binding="{Binding IsMaleSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="QUnselected.png"/>
                                         </DataTrigger>
 
                                     </Image.Triggers>
@@ -643,21 +724,22 @@
                                         VerticalOptions="EndAndExpand"
                                         FontSize="16"
                                         Padding="15"
-                                        TextColor="White"
+                                        TextColor="{StaticResource Primary}"
                                         Text="{x:Static ResourceManager:AppResources.ESTFemaleLabel}">
 
-                                        <custom:CustomLabel.Triggers>
+                                       <custom:CustomLabel.Triggers>
+
                                             <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
+                                                Binding="{Binding IsMaleSelected}"
                                                 TargetType="custom:CustomLabel"
-                                                Value="True">
+                                                Value="False">
                                                     <Setter Property="TextColor" Value="White"/>
                                             </DataTrigger>
 
                                             <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
+                                                Binding="{Binding IsMaleSelected}"
                                                 TargetType="custom:CustomLabel"
-                                                Value="False">
+                                                Value="True">
                                                     <Setter Property="TextColor" Value="{StaticResource Primary}"/>
                                             </DataTrigger>
                                         </custom:CustomLabel.Triggers>
@@ -672,68 +754,48 @@
                             </Grid>
 
 
-                            <!--Male card-->
-                            <Grid Padding="5"
-                                  HeightRequest="94"
-                                  WidthRequest="171">
+                        </StackLayout>
 
-                                <!--Background image selected-->
-                                <Image Aspect="AspectFill"
-                                       Source="QUnselected.png">
+                        <!--In case not visitor-->
+                        <StackLayout Spacing="0"
+                                    IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}">
 
-                                    <Image.Triggers>
+                            <!--  Gender Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B" >
+                                    <custom:BorderlessEntry.Triggers>
+
                                         <DataTrigger
-                                            Binding="{Binding IsYesSelected}"
-                                            TargetType="Image"
-                                            Value="False">
-                                                <Setter Property="Source" Value="QSelected.png"/>
+                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                            TargetType="custom:BorderlessEntry"
+                                            Value="1">
+                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTMaleLabel}" />
                                         </DataTrigger>
 
                                         <DataTrigger
-                                            Binding="{Binding IsYesSelected}"
-                                            TargetType="Image"
-                                            Value="True">
-                                                <Setter Property="Source" Value="QUnselected.png"/>
+                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                            TargetType="custom:BorderlessEntry"
+                                            Value="2">
+                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTFemaleLabel}" />
                                         </DataTrigger>
 
-                                    </Image.Triggers>
+                                    </custom:BorderlessEntry.Triggers>
 
-                                </Image>
-
-                               
-                                 <!--Male label-->
-                                <custom:CustomLabel
-                                        HorizontalOptions="StartAndExpand"
-                                        VerticalOptions="EndAndExpand"
-                                        FontSize="16"
-                                        Padding="15"
-                                        TextColor="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.ESTMaleLabel}">
-
-                                        <custom:CustomLabel.Triggers>
-
-                                            <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="False">
-                                                    <Setter Property="TextColor" Value="White"/>
-                                            </DataTrigger>
-
-                                            <DataTrigger
-                                                Binding="{Binding IsYesSelected}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="True">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
-                                            </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
-                                </custom:CustomLabel>
-
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding GenderSelectionCommand}"
-                                                          CommandParameter="1"/>
-                                </Grid.GestureRecognizers>
-
-                            </Grid>
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
                         <!--#endregion Gender Cards-->
@@ -764,6 +826,7 @@
                                 <custom:BorderlessEntry
                                     IsReadOnly="True"
                                     Keyboard="Text"
+                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"

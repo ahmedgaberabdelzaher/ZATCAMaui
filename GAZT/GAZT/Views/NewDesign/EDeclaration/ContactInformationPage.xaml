@@ -10,6 +10,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -23,6 +24,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
          <Grid RowDefinitions="Auto,*">
 
@@ -348,7 +354,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Email"
+                                    Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.address}"
