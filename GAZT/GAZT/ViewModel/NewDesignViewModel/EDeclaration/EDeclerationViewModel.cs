@@ -43,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     IdentityType = int.Parse(e);
                     if (IdentityType==1)
                     {
-                        _navigationService.NavigateTo("NewDeclarationPage", 1);
+                        _navigationService.NavigateTo("NewDeclarationPage");
                     }
                     else
                     {

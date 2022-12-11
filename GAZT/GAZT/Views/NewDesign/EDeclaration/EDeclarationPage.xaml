@@ -82,10 +82,10 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.NewDeclaration}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.NewDeclaration}" FontSize="16" TextColor="{StaticResource Primary}" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding ServiceType}" Value="2">
-                                                   <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                                                   <Setter Property="TextColor" Value="White"></Setter>
                                                </DataTrigger>
                                            </Label.Triggers>
                                        </Label>
@@ -177,10 +177,10 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.Visitor}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.Visitor}" FontSize="16" TextColor="{StaticResource Primary}" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding IdentityType}" Value="2">
-                                                   <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                                                   <Setter Property="TextColor" Value="#FFFFFF"></Setter>
                                                </DataTrigger>
                                            </Label.Triggers>
                                        </Label>
