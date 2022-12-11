@@ -46,12 +46,12 @@ namespace EGAZT
     {
 
         // public static string CustomBaseUrl = "http://10.112.34.26:8024/";
-       // public static string CustomBaseUrl = "http://10.112.34.38:8024/";
+        // public static string CustomBaseUrl = "http://10.112.34.38:8024/";
         //public static string VatCustom = "http://172.50.15.39:8443/api/";
         //public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
-       // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
-      // public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
-       //public static string VatBaseUrl = "http://172.50.15.39:80/api";
+        // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
+        // public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+        //public static string VatBaseUrl = "http://172.50.15.39:80/api";
         public static string CustomBaseUrl;
         public static string VatCustom;
         public static string VatBaseUrl;
@@ -396,7 +396,7 @@ namespace EGAZT
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");18v
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");19v
 
-           // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjA0NjIyQDMyMzAyZTMxMmUzMElHeGNPa25sMVBueHdHZW9ZWXRyQ05nQlg3czJwWENqYXdpS2tVWXE3NEE9");//20v
+            // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjA0NjIyQDMyMzAyZTMxMmUzMElHeGNPa25sMVBueHdHZW9ZWXRyQ05nQlg3czJwWENqYXdpS2tVWXE3NEE9");//20v
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
@@ -480,7 +480,7 @@ namespace EGAZT
 
                 //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
-                 //  navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
 
                 //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
@@ -490,8 +490,8 @@ namespace EGAZT
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-             //   navigationPage = new CustomNavigation(new CreateE_Declaration(AppResources.CustomFeesCalculator)) { BarTextColor = Color.White };
-          navigationPage = new CustomNavigation(new NewDeclarationPage()) { BarTextColor = Color.White };
+                //   navigationPage = new CustomNavigation(new CreateE_Declaration(AppResources.CustomFeesCalculator)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new PassengerInformationPage()) { BarTextColor = Color.White };
 
             }
             else
@@ -501,7 +501,7 @@ namespace EGAZT
 
                 //navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-          //  navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
 
                 // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
@@ -511,8 +511,8 @@ namespace EGAZT
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-            //  navigationPage = new CustomNavigation(new CreateE_Declaration(AppResources.CustomFeesCalculator)) { BarTextColor = Color.White };
-             navigationPage = new CustomNavigation(new NewDeclarationPage()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new CreateE_Declaration(AppResources.CustomFeesCalculator)) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new PassengerInformationPage()) { BarTextColor = Color.White };
 
             }
 

@@ -20,7 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         bool isYesSelected = true;
         public bool IsYesSelected { get { return isYesSelected; } set { isYesSelected = value; RaisePropertyChanged(); } }
 
-        public static Dictionary<string,object> QAnswereDictionary { get; set; }
+        public static Dictionary<string, object> QAnswereDictionary { get; set; }
 
 
         ObservableCollection<BottomSheetModel> bottomSheetList;
@@ -37,7 +37,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
-     public EDeclerationSubmitModel SubmitModel;
+        public EDeclerationSubmitModel SubmitModel;
 
         #endregion
 
@@ -47,9 +47,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command<string>( (e) =>
+                return new Command<string>((e) =>
                 {
-                    IsArrivingPlaneSelected =e  == "1" ? true : false;
+                    IsArrivingPlaneSelected = e == "1" ? true : false;
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                 });
             }
@@ -58,7 +58,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command( () =>
+                return new Command(() =>
                 {
                     IsYesSelected = IsYesSelected == true ? false : true;
                 });
@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command( () =>
+                return new Command(() =>
                 {
                     _navigationService.NavigateTo("ProductDeclarationPage");
                 });
@@ -77,7 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
 
         #endregion
-        public  IE_DeclerationServices DeclerationServices;
+        public IE_DeclerationServices DeclerationServices;
         public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
         {
             SubmitModel = App.Locator.EDeclerationSubmitModel;

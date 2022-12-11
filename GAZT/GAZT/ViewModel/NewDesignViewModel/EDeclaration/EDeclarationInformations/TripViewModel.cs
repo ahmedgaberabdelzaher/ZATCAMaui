@@ -9,9 +9,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         TripCardModel tripCard = new TripCardModel();
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
 
-        TripInfoModel tripInfo = new TripInfoModel();
-        public TripInfoModel TripInfo { get { return tripInfo; } set { tripInfo = value; } }
-
 
         public ICommand TripCardCommand
         {

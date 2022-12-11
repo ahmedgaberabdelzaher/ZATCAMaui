@@ -279,14 +279,15 @@
                                      Spacing="10"
                                      Padding="5"
                                      Margin="0,0,0,5"
+                                     HeightRequest="100"
                                      Orientation="Horizontal">
 
                             <!--Air Card-->
                             <Grid
                                 WidthRequest="171"
+                                HeightRequest="94"
                                 VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                HeightRequest="94">
+                                HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -310,9 +311,8 @@
 
 
                             <!--Land card-->
-                            <Grid
-                                WidthRequest="171"
-                                Padding="5"
+                            <Grid Padding="5"
+                                  WidthRequest="171"
                                 HeightRequest="94">
 
                                 <!--Background image selected-->
@@ -408,7 +408,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TripInfo.arrivingFromDepartingToName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.arrivingFromDepartingToName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
@@ -464,7 +464,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TripInfo.portName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.portName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
@@ -516,7 +516,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding TripInfo.SelectedArrivalDepartureDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedArrivalDepartureDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -527,7 +527,7 @@
 
                         <!--  Trip Number Field  -->
                         <StackLayout Spacing="0"
-                                     IsVisible="{Binding TripCard.IsAirTripSelected}">
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsAirTripSelected}">
 
                             <!--  Trip Number Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -553,7 +553,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TripNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TripInfo.flightNumber}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -587,7 +587,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TripInfo.travelPurposeName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />

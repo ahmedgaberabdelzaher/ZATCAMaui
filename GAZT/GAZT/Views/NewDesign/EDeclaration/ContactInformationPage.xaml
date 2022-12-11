@@ -280,7 +280,7 @@
                                     Keyboard="Telephone"
                                     Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Contact.phoneNumber}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
                                     <Label Text="+966" />
@@ -317,7 +317,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Contact.email}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.email}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -351,7 +351,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Contact.address}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.address}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>

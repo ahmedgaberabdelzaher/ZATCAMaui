@@ -38,7 +38,7 @@
             HeightRequest="490"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
-            <ScrollView>
+            <ScrollView VerticalScrollBarVisibility="Never" >
 
                 <StackLayout>
 
@@ -153,14 +153,14 @@
                             <Image.Triggers>
 
                                 <DataTrigger
-                                    Binding="{Binding Contact.IsTermsChecked}"
+                                    Binding="{Binding SubmitModel.travelerDeclaration.IsTermsChecked}"
                                     TargetType="Image"
                                     Value="True">
                                     <Setter Property="Source" Value="CheckMark.png" />
                                 </DataTrigger>
 
                                 <DataTrigger
-                                    Binding="{Binding Contact.IsTermsChecked}"
+                                    Binding="{Binding SubmitModel.travelerDeclaration.IsTermsChecked}"
                                     TargetType="Image"
                                     Value="False">
                                     <Setter Property="Source" Value="emptyCheck.png" />

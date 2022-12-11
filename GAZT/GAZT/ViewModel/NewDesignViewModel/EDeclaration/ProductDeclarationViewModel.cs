@@ -12,7 +12,9 @@ using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
+using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
@@ -91,6 +93,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
 
         #region Commands
+        public ICommand OpenCartCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
+                    await PopupNavigation.Instance.PushAsync(poupWindow);
+
+                });
+            }
+        }
+
+        public ICommand CloseCartCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                });
+            }
+        }
+        public ICommand SelectedProductCommand
+        {
+            get
+            {
+                return new Command<object>((e) =>
+                {
+
+                });
+            }
+        }
         public ICommand OpenTobacoTypesCommand
         {
             get

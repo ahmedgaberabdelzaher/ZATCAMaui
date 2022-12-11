@@ -7,10 +7,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 {
 	public partial class EDeclarationInformationsViewModel 
     {
-        PassengerModel passenger = new PassengerModel();
-        public PassengerModel Passenger { get { return passenger; } set { passenger = value; } }
-
-
         public ICommand IDSelectionCommand
         {
             get
@@ -24,11 +20,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             
                             IsYesSelected = false;
 
-                            if (passenger.travelID.ToLower().StartsWith("1"))
+                            if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
                             {
                                 // passenger.travelDocumentType =; 
                             }
-                            else if (passenger.travelID.ToLower().StartsWith("2"))
+                            else if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("2"))
                             {
 
                             }
@@ -81,12 +77,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     if (IsYesSelected)
                     {
                         IsYesSelected = false;
-                        Passenger.gender = int.Parse(g); // Male
+                        SubmitModel.travelerDeclaration.gender = int.Parse(g); // Male
                     }
                     else
                     {
                         IsYesSelected = true;
-                        Passenger.gender = int.Parse(g); // Female
+                        SubmitModel.travelerDeclaration.gender = int.Parse(g); // Female
                     }
                 });
             }

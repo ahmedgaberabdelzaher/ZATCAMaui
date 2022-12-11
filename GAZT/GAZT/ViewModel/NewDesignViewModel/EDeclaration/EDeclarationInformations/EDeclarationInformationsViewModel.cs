@@ -100,29 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        public ICommand OpenCartCommand
-        {
-            get
-            {
-                return new Command(async _ =>
-                {
-                    EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
-                    await PopupNavigation.Instance.PushAsync(poupWindow);
-                    
-                });
-            }
-        }
-
-        public ICommand CloseCartCommand
-        {
-            get
-            {
-                return new Command(async () =>
-                {
-                    await PopupNavigation.Instance.PopAsync(true);
-                });
-            }
-        }
+        
 
         public ICommand BackToHomeCommand
         {

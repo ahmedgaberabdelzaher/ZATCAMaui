@@ -269,19 +269,20 @@
                             HeightRequest="2" />
 
                         <!--#region Cards-->
-                        <StackLayout VerticalOptions="FillAndExpand"
-                                     HorizontalOptions="FillAndExpand"
+                        <StackLayout HorizontalOptions="FillAndExpand"
+                                     VerticalOptions="FillAndExpand"
                                      Spacing="10"
                                      Padding="5"
+                                     HeightRequest="100"
                                      Margin="0,0,0,5"
                                      Orientation="Horizontal">
 
                             <!--Passport Card-->
                             <Grid
                                 WidthRequest="171"
+                                HeightRequest="94"
                                 VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                HeightRequest="94">
+                                HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -345,10 +346,9 @@
 
 
                             <!--National ID card-->
-                            <Grid
-                                WidthRequest="171"
-                                Padding="5"
-                                HeightRequest="94">
+                            <Grid Padding="5"
+                                  WidthRequest="171"
+                                  HeightRequest="94">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -438,7 +438,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.firstName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.firstName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -471,7 +471,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.middleName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.middleName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -504,7 +504,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.lastName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.lastName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -538,7 +538,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.NationalityName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
@@ -582,7 +582,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.travelID}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelID}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -603,15 +603,16 @@
                                      HorizontalOptions="FillAndExpand"
                                      Spacing="10"
                                      Padding="5"
+                                     HeightRequest="100"
                                      Margin="0,0,0,5"
                                      Orientation="Horizontal">
 
                             <!--Female Card-->
                             <Grid
-                                WidthRequest="171"
+                                 HeightRequest="94"
+                                  WidthRequest="171"
                                 VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                HeightRequest="94">
+                                HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -672,10 +673,9 @@
 
 
                             <!--Male card-->
-                            <Grid
-                                WidthRequest="171"
-                                Padding="5"
-                                HeightRequest="94">
+                            <Grid Padding="5"
+                                  HeightRequest="94"
+                                  WidthRequest="171">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -766,7 +766,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.travelIssuerName}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
@@ -807,7 +807,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding Passenger.SelectedPassIssuingDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedPassIssuingDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -840,7 +840,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding Passenger.SelectedPassExpiryDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedPassExpiryDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -873,7 +873,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding Passenger.SelectedBirthDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.SelectedBirthDate}" />
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -909,7 +909,7 @@
                                     Keyboard="Numeric"
                                     Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Passenger.travelersCount}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 

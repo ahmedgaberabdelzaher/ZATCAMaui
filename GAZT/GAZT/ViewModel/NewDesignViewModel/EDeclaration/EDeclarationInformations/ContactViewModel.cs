@@ -9,9 +9,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 	public partial class EDeclarationInformationsViewModel
     {
 
-        ContactInfoModel contactInfo = new ContactInfoModel();
-        public ContactInfoModel Contact { get { return contactInfo; } set { contactInfo = value; } }
-
         public ICommand GoToSuccessCommand
         {
             get
@@ -30,7 +27,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async () =>
                 {
-                    if (Contact.IsTermsChecked)
+                    if (SubmitModel.travelerDeclaration.IsTermsChecked)
                     {
                         await PopupNavigation.Instance.PopAsync(true);
                         _navigationService.NavigateTo("EDeclarationSuccessPage");
@@ -46,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(() =>
                 {
-                    Contact.IsTermsChecked = Contact.IsTermsChecked == true ? false : true;
+                    SubmitModel.travelerDeclaration.IsTermsChecked = SubmitModel.travelerDeclaration.IsTermsChecked == true ? false : true;
                 });
             }
         }

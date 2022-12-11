@@ -302,7 +302,8 @@
                         <StackLayout 
                                      HorizontalOptions="FillAndExpand"
                                      Spacing="10"
-                                     Padding="5" HeightRequest="94"
+                                     Padding="5"
+                                     HeightRequest="94"
                                      Margin="0,0,0,5"
                                      Orientation="Horizontal">
 
@@ -310,8 +311,7 @@
                             <Grid
                                 WidthRequest="171"
                                 VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                >
+                                HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"
@@ -374,10 +374,7 @@
 
 
                             <!--No card-->
-                            <Grid
-                                WidthRequest="171"
-                                Padding="5"
-                                HeightRequest="94">
+                            <Grid Padding="5">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"

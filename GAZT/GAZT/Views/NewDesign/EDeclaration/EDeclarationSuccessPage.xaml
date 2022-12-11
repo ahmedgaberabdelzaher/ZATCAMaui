@@ -94,7 +94,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
-                                    Text="{Binding RefernceNumberResult}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.ReferenceID}"
                                     TextColor="#58595B" />
 
                                 <!--  Report icon  -->
