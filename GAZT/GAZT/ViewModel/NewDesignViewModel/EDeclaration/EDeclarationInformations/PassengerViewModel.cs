@@ -146,9 +146,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)
                 || SubmitModel.travelerDeclaration.travelersCount <= 0
-                || SubmitModel.travelerDeclaration.SelectedPassIssuingDate.Date > DateTime.Now.Date
-                || SubmitModel.travelerDeclaration.SelectedPassExpiryDate.Date < DateTime.Now.Date
-                || SubmitModel.travelerDeclaration.SelectedBirthDate.Date > DateTime.Now.Date)
+                || SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date
+                || SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date
+                || SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;

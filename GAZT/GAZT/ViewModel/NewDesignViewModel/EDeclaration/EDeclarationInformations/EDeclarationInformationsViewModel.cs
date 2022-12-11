@@ -147,7 +147,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else if (isPortSelected)
                         {
-                            SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
+                            //SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.port = 23;
                             SubmitModel.travelerDeclaration.portName = e.Name;
                             isPortSelected = false;
                             HeaderTitle = AppResources.TripInformation;
