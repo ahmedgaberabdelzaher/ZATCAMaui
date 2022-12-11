@@ -105,7 +105,7 @@
 
                             <StackLayout Padding="15"
                                         x:Name="productList"
-                                        BindableLayout.ItemsSource="{Binding TestData}">
+                                        BindableLayout.ItemsSource="{Binding CardData}">
 
                                 <BindableLayout.ItemTemplate>
 
@@ -129,7 +129,7 @@
                                                 <Image.GestureRecognizers>
                                                       <TapGestureRecognizer
                                                             BindingContext="{Binding Source={x:Reference productList}, Path=BindingContext}"
-                                                            Command="{Binding SelectedProductCommand}"
+                                                            Command="{Binding RemoveItemFromCardCommand}"
                                                             CommandParameter="{Binding Source={x:Reference selectedProduct}, Path=BindingContext}" />
                                                 </Image.GestureRecognizers>
 
@@ -142,7 +142,7 @@
                                                 Grid.Column="1"
                                                 TextColor="#565655"
                                                 LineBreakMode="WordWrap"
-                                                Text="Batteries for electronic smoking devices and tools"
+                                                Text="{Binding Name}"
                                                 VerticalOptions="Start" />
 
                                             <!--Product Desc.-->
@@ -153,7 +153,7 @@
                                                 Grid.Row="1"
                                                 TextColor="#999999"
                                                 LineBreakMode="WordWrap"
-                                                Text="TMBAK PSOIQATH AND HIS VEINS RAW OR NON-FACTORY (1KG)"
+                                                Text="{Binding desc}"
                                                 VerticalOptions="Start" />
 
                                             <!--Price-->
@@ -163,7 +163,7 @@
                                                 Grid.Column="2"
                                                 Grid.RowSpan="2"
                                                 TextColor="#232323"
-                                                Text="800"
+                                                Text="{Binding Price}"
                                                 VerticalOptions="Start" />
 
                                             <!--Horizontal Line-->  
@@ -222,8 +222,16 @@
                             HorizontalOptions="EndAndExpand"
                             FontSize="18"
                             TextColor="Black"
-                            Text="800 SAR"
-                            VerticalOptions="Start" />
+                            
+                            VerticalOptions="Start" >
+                            <custom:CustomLabel.FormattedText>
+                             <FormattedString>
+                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment}"/>
+                                                    <Span  Text="  " />
+                                                    <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+</custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
 
                     </StackLayout>
 

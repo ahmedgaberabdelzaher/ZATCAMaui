@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using System.Net.Http;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 
 namespace EGAZT.Services.Interface
 {
@@ -18,6 +19,8 @@ namespace EGAZT.Services.Interface
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PurposeModel>>, bool, string>> GetPurposes();
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CurrencyModel>>, bool, string>> GetCurrencies();
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<UnitsModel>>, bool, string>> GetUnits();
-    }
+        Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body);
+        Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CoinTypesModel>>, bool, string>> GetCoinTypes();
+ }
 }
 

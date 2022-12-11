@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
@@ -8,13 +9,13 @@ namespace EGAZT.Views.NewDesign.EDeclaration.PopUpPages
 {
     public partial class EDeclarationCartPopUpPage : PopupPage
     {
-        EDeclarationInformationsViewModel viewModel;
+        ProductDeclarationViewModel viewModel;
         public EDeclarationCartPopUpPage()
         {
             try
             {
                 InitializeComponent();
-                viewModel = App.Locator.EDeclarationInformationsViewModel;
+                viewModel = App.Locator.ProductDeclarationViewModel;
                 BindingContext = viewModel;
             }
             catch (Exception ex)

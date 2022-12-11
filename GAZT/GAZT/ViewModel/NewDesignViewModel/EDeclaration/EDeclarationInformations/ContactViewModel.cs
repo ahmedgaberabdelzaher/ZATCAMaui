@@ -4,10 +4,19 @@ using EGAZT.Models.EDeclerationsModel;
 using Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
+using EGAZT.Models.BaseModels;
+using EGAZT.Models.EDeclerationsModel.FeesCalculators;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
 	public partial class EDeclarationInformationsViewModel
     {
+
+        TravelerDeclarationResponse travelerDeclarationResponse;
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; RaisePropertyChanged(); } }
 
         public ICommand GoToSuccessCommand
         {
@@ -20,6 +29,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        private async Task SubmitDecleration()
+        {
+            try
+            {
+                IsLoading = true;
+                var submitRes = await DeclerationServices.SubmitDecleration(SubmitModel);
+                if (submitRes.IsSuccessStatusCode)
+                {
+                    var conent = await submitRes.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<EDeclerationSubmitResponseModel>(conent);
+                    if (data.result != null)
+                    {
+                        TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+          
+
+        }
+
 
         public ICommand ApproveDeclarationCommand
         {
@@ -29,6 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     if (SubmitModel.travelerDeclaration.IsTermsChecked)
                     {
+
                         await PopupNavigation.Instance.PopAsync(true);
                         _navigationService.NavigateTo("EDeclarationSuccessPage");
                     }

@@ -12,6 +12,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:popuppages="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.PopUpPages"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -55,7 +56,7 @@
                     </Image>
 
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                        <TapGestureRecognizer Command="{Binding PrevoiusCommand}" />
                     </StackLayout.GestureRecognizers>
 
                 </StackLayout>
@@ -446,7 +447,13 @@
                                VerticalOptions="StartAndExpand"
                                HorizontalOptions="FillAndExpand"
                                CornerRadius="10">
+                                <Frame.Triggers>
+                                    <DataTrigger TargetType="Frame" Binding="{Binding QFlow}" Value="2">
+                                        <Setter Property="IsVisible" Value="false"> </Setter>
 
+                                    </DataTrigger>
+
+                                </Frame.Triggers>
                                 <StackLayout
                                 Orientation="Horizontal"
                                 VerticalOptions="CenterAndExpand"
@@ -681,7 +688,7 @@
                                     </StackLayout>
 
                                     <!--  ProductName Field  -->
-                                    <StackLayout Spacing="0">
+                                    <StackLayout Spacing="0" IsVisible="{Binding IsProductItemHaveSubType}">
 
                                         <!--  ProductName Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -1020,21 +1027,38 @@
                                             <Setter Property="IsVisible" Value="true"></Setter>
                                         </DataTrigger>
                                     </StackLayout.Triggers>
-                                    <!--#region MaterialType Entry-->
+                                    <!--#region ITEM Entry-->
                                     <StackLayout Spacing="0">
 
-                                        <!--  MaterialType Label  -->
+                                        <!--  Item Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.MaterialType}"/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.TypeItem}"/>
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
                                         </custom:CustomLabel>
+                                     <!--  Item Entry  -->
+                                    <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                        <custom:BorderlessEntry
+                                    Placeholder="{x:Static ResourceManager:AppResources.TypeItem}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Item}"
+                                    TextColor="#58595B" />
+                                    </inputLayout:SfTextInputLayout>
 
                                         <!--  MaterialType Entry  -->
-                                        <inputLayout:SfTextInputLayout
+                                    <!--
+                                       <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
@@ -1063,7 +1087,7 @@
                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding OpenMaterialTypesCommand}" />
                                         </StackLayout.GestureRecognizers>
-
+-->
                                     </StackLayout>
                                     <!--#endregion-->
 
@@ -1507,7 +1531,9 @@
                                     TextColor="White" />
 
                                 </StackLayout>
-
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}"></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
                             </Frame>
                         </StackLayout>
                         <!--#endregion-->
@@ -1544,7 +1570,7 @@
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
-
+        
         </Grid>
     </ContentPage.Content>
 </ContentPage>
