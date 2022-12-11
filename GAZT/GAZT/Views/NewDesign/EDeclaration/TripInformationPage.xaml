@@ -27,6 +27,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
     <ContentPage.Content>
 
          <Grid RowDefinitions="Auto,*">
@@ -527,7 +532,7 @@
 
                         <!--  Trip Number Field  -->
                         <StackLayout Spacing="0"
-                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsAirTripSelected}">
+                                     IsVisible="{Binding TripCard.IsAirTripSelected}">
 
                             <!--  Trip Number Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">

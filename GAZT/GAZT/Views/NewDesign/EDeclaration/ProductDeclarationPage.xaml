@@ -1052,7 +1052,7 @@
                                         <custom:BorderlessEntry
                                     Placeholder="{x:Static ResourceManager:AppResources.TypeItem}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Item}"
+                                    Text="{Binding RestrictedItem}"
                                     TextColor="#58595B" />
                                     </inputLayout:SfTextInputLayout>
 

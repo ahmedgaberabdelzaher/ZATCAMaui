@@ -9845,7 +9845,7 @@ info@zatca.gov.sa</value>
     <value>تاريخ الاصدار</value>
   </data>
   <data name="TravelerCount" xml:space="preserve">
-    <value>تاريخ الانتهاء</value>
+    <value>عدد المسافرين</value>
   </data>
   <data name="TripInformation" xml:space="preserve">
     <value>معلومات الرحلة</value>

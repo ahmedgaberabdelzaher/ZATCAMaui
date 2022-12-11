@@ -10,9 +10,17 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         EDeclarationInformationsViewModel viewModel;
         public ContactInformationPage()
         {
+
             InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            viewModel.isContactPage = false;
+            base.OnDisappearing();
         }
     }
 }

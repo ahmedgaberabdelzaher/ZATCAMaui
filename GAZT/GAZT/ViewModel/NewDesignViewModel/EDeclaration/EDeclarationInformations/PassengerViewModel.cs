@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Windows.Input;
 using Xamarin.Forms;
+using EGAZT.Controls;
+using System.Collections.Generic;
+using System.Linq;
 using EGAZT.Models.EDeclerationsModel;
+using System.Collections.ObjectModel;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
-	public partial class EDeclarationInformationsViewModel 
+    public partial class EDeclarationInformationsViewModel
     {
+        
+        bool isMaleSelected = true;
+        public bool IsMaleSelected { get { return isMaleSelected; } set { isMaleSelected = value; RaisePropertyChanged(); } }
+
         public ICommand IDSelectionCommand
         {
             get
@@ -15,28 +23,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     try
                     {
-                        if (IsYesSelected)
+                        if (SubmitModel.travelerDeclaration.Isvisitor)
                         {
-                            
-                            IsYesSelected = false;
-
-                            if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
+                            if (IsYesSelected)
                             {
-                                // passenger.travelDocumentType =; 
-                            }
-                            else if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("2"))
-                            {
-
+                                IsYesSelected = false;
+                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor Passport => 4
+                                
                             }
                             else
                             {
-                                // Passport
+                                IsYesSelected = true;
+                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor GCC => 16
                             }
                         }
-                        else
-                        {
-                            IsYesSelected = true;
-                        }
+                       
                     }
                     catch (Exception ex)
                     {
@@ -52,17 +53,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             get
             {
 
-                return new Command(async () =>
+                return new Command(() =>
                 {
-                    IsLoading = true;
-                    isNationalitySelected = true;
-                    //var reportType = await this._submitReportServices.GetReportType();
-                    //var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName }).ToList() ?? new List<BottomSheetModel>();
-                    //BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ESTNationalityLabel;
-                    TempBottomSheetList = BottomSheetList;
-                    IsLoading = false;
+                    if (SubmitModel.travelerDeclaration.Isvisitor)
+                    {
+                        IsLoading = true;
+                        isNationalitySelected = true;
+                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ESTNationalityLabel;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+
+                    }
+
                 });
 
             }
@@ -74,16 +79,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command<string>((g) =>
                 {
-                    if (IsYesSelected)
+                    if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        IsYesSelected = false;
-                        SubmitModel.travelerDeclaration.gender = int.Parse(g); // Male
+                        if (IsMaleSelected)
+                        {
+                            IsMaleSelected = false;
+                            SubmitModel.travelerDeclaration.gender = int.Parse(g); // Male => 1
+                        }
+                        else
+                        {
+                            IsMaleSelected = true;
+                            SubmitModel.travelerDeclaration.gender = int.Parse(g); // Female =>2
+                        }
                     }
-                    else
-                    {
-                        IsYesSelected = true;
-                        SubmitModel.travelerDeclaration.gender = int.Parse(g); // Female
-                    }
+                   
                 });
             }
         }
@@ -92,18 +101,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-
-                return new Command(async () =>
+                return new Command(() =>
                 {
-                    IsLoading = true;
-                    isItsSourceSelected = true;
-                    //var reportType = await this._submitReportServices.GetReportType();
-                    //var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName }).ToList() ?? new List<BottomSheetModel>();
-                    //BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ItsSource;
-                    TempBottomSheetList = BottomSheetList;
-                    IsLoading = false;
+                    if (SubmitModel.travelerDeclaration.Isvisitor)
+                    {
+                        IsLoading = true;
+                        isItsSourceSelected = true;
+                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ItsSource;
+                        TempBottomSheetList = BottomSheetList;
+                        IsLoading = false;
+
+                    }
                 });
 
             }
@@ -115,9 +126,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    _navigationService.NavigateTo("TripInformationPage");
+                    if(IsValidatePassenger())
+                    {
+                        isTripPage = true;
+                        _navigationService.NavigateTo("TripInformationPage");
+                    }
+                    
                 });
             }
+        }
+
+        private bool IsValidatePassenger()
+        {
+
+            if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
+                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
+                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
+                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
+                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
+                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)
+                || SubmitModel.travelerDeclaration.travelersCount <= 0
+                || SubmitModel.travelerDeclaration.SelectedPassIssuingDate.Date > DateTime.Now.Date
+                || SubmitModel.travelerDeclaration.SelectedPassExpiryDate.Date < DateTime.Now.Date
+                || SubmitModel.travelerDeclaration.SelectedBirthDate.Date > DateTime.Now.Date)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+            }
+            return true;
+
         }
     }
 }
