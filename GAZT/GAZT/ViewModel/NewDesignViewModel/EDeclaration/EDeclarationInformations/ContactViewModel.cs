@@ -5,10 +5,18 @@ using Xamarin.Forms;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using System.Text.RegularExpressions;
+using EGAZT.Models.BaseModels;
+using EGAZT.Models.EDeclerationsModel.FeesCalculators;
+using Newtonsoft.Json;
+using System.Threading.Tasks;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
 	public partial class EDeclarationInformationsViewModel
     {
+
+        TravelerDeclarationResponse travelerDeclarationResponse;
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; RaisePropertyChanged(); } }
 
         public ICommand GoToSuccessCommand
         {
@@ -16,11 +24,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
-                    await PopupNavigation.Instance.PushAsync(poupWindow);
+                    if(IsValidateContactInfo())
+                    {
+                        AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
+                        await PopupNavigation.Instance.PushAsync(poupWindow);
+                    }
+                   
                 });
             }
         }
+        private async Task SubmitDecleration()
+        {
+            try
+            {
+                IsLoading = true;
+                var submitRes = await DeclerationServices.SubmitDecleration(SubmitModel);
+                if (submitRes.IsSuccessStatusCode)
+                {
+                    var conent = await submitRes.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<EDeclerationSubmitResponseModel>(conent);
+                    if (data.result != null)
+                    {
+                        TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+          
+
+        }
+
 
         public ICommand ApproveDeclarationCommand
         {
@@ -28,8 +69,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async () =>
                 {
-                    if (IsValidateContactInfo() && SubmitModel.travelerDeclaration.IsTermsChecked )
+                    if (SubmitModel.travelerDeclaration.IsTermsChecked )
                     {
+                        await SubmitDecleration();
                         isSuccessPage = true;
                         await PopupNavigation.Instance.PopAsync(true);
                         _navigationService.NavigateTo("EDeclarationSuccessPage");
@@ -63,7 +105,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool IsValidateContactInfo()
         {
 
-            Regex phoneRegex = new Regex(@"^5[0-9]{9}$");
+            Regex phoneRegex = new Regex(@"^5[0-9]{8}$");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.phoneNumber)
@@ -89,6 +131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
             }
+            SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;
             return true;
 
         }

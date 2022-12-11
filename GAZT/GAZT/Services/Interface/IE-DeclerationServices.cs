@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using System.Net.Http;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 
 namespace EGAZT.Services.Interface
 {
@@ -21,6 +22,9 @@ namespace EGAZT.Services.Interface
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryModel>>, bool, string>> GetCountries();
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetPorts(int tripType);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetTravelPurpose();
+        Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body);
+        Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CoinTypesModel>>, bool, string>> GetCoinTypes();
     }
-}
+       
+ }
 
