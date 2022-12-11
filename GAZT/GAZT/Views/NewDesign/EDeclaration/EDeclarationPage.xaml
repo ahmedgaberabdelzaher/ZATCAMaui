@@ -179,7 +179,7 @@
                                 </Image>
                                        <Label Text="{x:Static ResourceManager:AppResources.Visitor}" FontSize="16" TextColor="{StaticResource Primary}" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
-                                               <DataTrigger TargetType="Label" Binding="{Binding IdentityType}" Value="2">
+                                               <DataTrigger TargetType="Label" Binding="{Binding IdentityType}" Value="1">
                                                    <Setter Property="TextColor" Value="#FFFFFF"></Setter>
                                                </DataTrigger>
                                            </Label.Triggers>
