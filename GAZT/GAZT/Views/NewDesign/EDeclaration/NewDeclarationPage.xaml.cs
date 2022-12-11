@@ -14,6 +14,13 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.BaseEDeclarationViewModel;
             BindingContext = viewModel;
         }
+        public NewDeclarationPage(IDictionary<string, object> payload)
+        {
+            InitializeComponent();
+            viewModel = App.Locator.BaseEDeclarationViewModel;
+            BindingContext = viewModel;
+            viewModel.IamLoginPayloadData = payload;
+        }
     }
 }
 

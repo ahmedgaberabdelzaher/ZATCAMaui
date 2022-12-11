@@ -1402,6 +1402,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Citizen / Resident.
+        /// </summary>
+        public static string Citizen {
+            get {
+                return ResourceManager.GetString("Citizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         public static string Clear {
@@ -7014,6 +7023,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to IAM Login.
+        /// </summary>
+        public static string IAMLogin {
+            get {
+                return ResourceManager.GetString("IAMLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identity type.
+        /// </summary>
+        public static string Identitytype {
+            get {
+                return ResourceManager.GetString("Identitytype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ID Number.
         /// </summary>
         public static string IDNumber {
@@ -11449,6 +11476,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Service type.
+        /// </summary>
+        public static string Servicetype {
+            get {
+                return ResourceManager.GetString("Servicetype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shipping company.
         /// </summary>
         public static string Shippingcompany {
@@ -15584,6 +15620,15 @@ namespace EGAZT {
         public static string ViolationDate {
             get {
                 return ResourceManager.GetString("ViolationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visitor.
+        /// </summary>
+        public static string Visitor {
+            get {
+                return ResourceManager.GetString("Visitor", resourceCulture);
             }
         }
         

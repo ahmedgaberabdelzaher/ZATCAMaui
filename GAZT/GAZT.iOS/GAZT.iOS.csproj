@@ -653,6 +653,30 @@
     <BundleResource Include="Resources\greyDropDown.png" />
     <BundleResource Include="Resources\greyDropDown%402x.png" />
     <BundleResource Include="Resources\greyDropDown%403x.png" />
+    <BundleResource Include="Resources\citizien.png" />
+    <BundleResource Include="Resources\citizien%402x.png" />
+    <BundleResource Include="Resources\citizien%403x.png" />
+    <BundleResource Include="Resources\newdeclaration.png" />
+    <BundleResource Include="Resources\newdeclaration%402x.png" />
+    <BundleResource Include="Resources\newdeclaration%403x.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest%402x.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest%403x.png" />
+    <BundleResource Include="Resources\visitor.png" />
+    <BundleResource Include="Resources\visitor%402x.png" />
+    <BundleResource Include="Resources\visitor%403x.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration%402x.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration%403x.png" />
+    <BundleResource Include="Resources\unselectedcitizien.png" />
+    <BundleResource Include="Resources\unselectedcitizien%402x.png" />
+    <BundleResource Include="Resources\unselectedcitizien%403x.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest%402x.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest%403x.png" />
+    <BundleResource Include="Resources\unselectedvisitor.png" />
+    <BundleResource Include="Resources\unselectedvisitor%402x.png" />
+    <BundleResource Include="Resources\unselectedvisitor%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -969,7 +993,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
+      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

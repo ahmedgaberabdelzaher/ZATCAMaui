@@ -9982,4 +9982,19 @@ info@zatca.gov.sa</value>
    <data name="ALLanswersisNoMsg" xml:space="preserve">
     <value> عفوا .. يبدو أنك لم تقم باالاختيار من أسئلة اإلقرار أو تعبئة البيانات الخاصة بها</value>
   </data>
+    <data name="Servicetype" xml:space="preserve">
+    <value>نوع الخدمة</value>
+  </data>
+  <data name="Identitytype" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+    <data name="Visitor" xml:space="preserve">
+    <value>زائر</value>
+  </data>
+    <data name="Citizen" xml:space="preserve">
+    <value>مواطن / مقيم</value>
+  </data>
+      <data name="IAMLogin" xml:space="preserve">
+    <value>نفاذ</value>
+  </data>
 </root>

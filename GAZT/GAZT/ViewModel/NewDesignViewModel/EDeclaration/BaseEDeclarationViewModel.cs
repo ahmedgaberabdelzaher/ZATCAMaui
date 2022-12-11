@@ -39,6 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
         public EDeclerationSubmitModel SubmitModel;
 
+       public IDictionary<string, object> IamLoginPayloadData;
         #endregion
 
 
