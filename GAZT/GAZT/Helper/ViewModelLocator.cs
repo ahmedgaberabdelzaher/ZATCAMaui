@@ -167,6 +167,7 @@ using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 
 namespace EGAZT
 {

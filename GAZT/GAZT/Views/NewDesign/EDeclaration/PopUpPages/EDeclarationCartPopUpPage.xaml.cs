@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 

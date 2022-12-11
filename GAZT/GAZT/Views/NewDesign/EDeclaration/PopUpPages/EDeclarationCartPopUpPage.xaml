@@ -64,7 +64,7 @@
                         WidthRequest="25">
 
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding CloseCommand}" />
+                            <TapGestureRecognizer Command="{Binding CloseCartCommand}" />
                         </Image.GestureRecognizers>
 
                     </Image>
@@ -222,7 +222,7 @@
                 <!--  Next Button  -->
                 <buttons:SfButton
                     Margin="0,20"
-                    Command="{Binding CloseCommand}"
+                    Command="{Binding CloseCartCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     FontFamily="{StaticResource SomarBold}"
                     Text="{x:Static ResourceManager:AppResources.ZZNext}" />

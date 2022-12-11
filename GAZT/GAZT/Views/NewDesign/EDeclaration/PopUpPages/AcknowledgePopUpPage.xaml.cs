@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
-using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 
 namespace EGAZT.Views.NewDesign.EDeclaration.PopUpPages
 {
