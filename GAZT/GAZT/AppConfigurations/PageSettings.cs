@@ -39,7 +39,7 @@ namespace EGAZT.AppConfigurations
 
         public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
-        public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
+        public static string IAMLoginSTGBaseUrl = "http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomBaseUrl;
