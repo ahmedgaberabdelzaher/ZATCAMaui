@@ -579,7 +579,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SelectedTobacoItem.productName}"
+                                    Text="{Binding SelectedTobacoItem.Name}"
                                     TextColor="#58595B">
                                                 <custom:BorderlessEntry.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />

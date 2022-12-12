@@ -8,6 +8,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
     {
         public string harmonizedCode { get; set; }
         public int? value { get; set; }
+        public Guid ID { get; set; }
     }
 
     public class FeesCalculatorBody
@@ -22,6 +23,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
         public int? sequence { get; set; }
         public int count { get; set; }
         public int value { get; set; }
+        public Guid ID { get; set; }
     }
 }
 

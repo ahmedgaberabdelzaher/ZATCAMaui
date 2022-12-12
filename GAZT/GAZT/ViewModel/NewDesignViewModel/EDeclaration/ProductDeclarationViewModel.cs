@@ -16,6 +16,7 @@ using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using Xamarin.Forms;
+using GAZT;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -330,7 +331,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             {
                                 FeesCalculatorResponse = new FeesCalculatorResponse();
                                 CardData = new ObservableCollection<EDeclerationCardModel>();
+                                SubmitModel.travelerDeclaration = new TravelerDeclaration();
                                 _navigationService.GoBack();
+
                                 return;
                             }
                             QFlow--;
@@ -341,8 +344,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             _navigationService.GoBack();
                             FeesCalculatorResponse = new FeesCalculatorResponse();
                             CardData = new ObservableCollection<EDeclerationCardModel>();
+                            SubmitModel.travelerDeclaration = new TravelerDeclaration();
+
                         }
-                    
+
                     }
                     catch (Exception ex)
                     {
@@ -669,7 +674,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                                 TobacoItems = topacoTypes?.Item1.data;
                             }
 
-                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.itemCode, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
                             HeaderTitle = AppResources.ProductName;
@@ -708,7 +713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         }
                         else if (isTobacotemSelected)
                         {
-                            SelectedTobacoItem = TobacoItems.First(c => c.itemCode == e.Id);
+                            SelectedTobacoItem = TobacoItems.First(c => c.ID.ToString() == e.Id);
                             isTobacotemSelected = false;
                         }
                         else if (isProductTypeSelected)
@@ -824,10 +829,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         {
                             case 1:
                               var tobaco= SubmitModel.travelerDeclaration.tobacco.First(c=>c.ID==e.ID);
+                                var tobacofess = FeesCalculatorBody.tobacco?.First(c => c.ID == e.ID);
+                               await CalculateFees(2, tobacofess);
                                 SubmitModel.travelerDeclaration.tobacco.Remove(tobaco);
                                    break;
                             case 2:
                                 var product = SubmitModel.travelerDeclaration.product.First(c => c.ID == e.ID);
+                                var productfess = FeesCalculatorBody.product?.First(c => c.ID == e.ID);
+                                await CalculateFees(2,null ,productfess);
                                 SubmitModel.travelerDeclaration.product.Remove(product);
                                 break;
                             case 3:
@@ -1002,9 +1011,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 harmonizedCode = item.itemCode.ToString(),
                 count = int.Parse(Quantity),
-                sequence = item.taxSequence
+                sequence = item.taxSequence,
+                ID=item.ID
             };
-           await CalculateFees(tobao, null);
+           await CalculateFees(1,tobao, null);
             ClearTobacoData();
             }
             else
@@ -1029,7 +1039,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             var item = new Models.EDeclerationsModel.SubmitModels.Product()
             {
                 count = int.Parse(Quantity),
-                typeName = SelectedProductTypes.Name,
+                typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                 itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
                 value = TotalValue
 
@@ -1055,10 +1065,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
             {
                 harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
-                value = TotalValue
-            };
+                value = TotalValue,
+                 ID = item.ID
+                };
                 CardData.Add(cardItem);
-           await CalculateFees(null, product);
+           await CalculateFees(1,null, product);
                ClearProductData();
 
             }
@@ -1074,7 +1085,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             Quantity = "";
             TotalValue = null;
         }
-        private async Task CalculateFees(Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
+        private async Task CalculateFees(int operation=1,Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
             try
             {
@@ -1082,14 +1093,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
            
             if (tobacco != null)
             {
-                FeesCalculatorBody.tobacco.Add(tobacco);
+                    if (operation==1)
+                    {
+  FeesCalculatorBody.tobacco.Add(tobacco);
                 ClearTobacoData();
+                    }
+                    else
+                    {
+                        FeesCalculatorBody.tobacco.Remove(tobacco);
+                    }
+              
             }
             if (product != null)
             {
-                FeesCalculatorBody.product.Add(product);
+                    if (operation==1)
+                    {
+ FeesCalculatorBody.product.Add(product);
                 ClearProductData();
-            }
+                    }
+                    else
+                    {
+                        FeesCalculatorBody.product.Remove(product);
+
+                    }
+
+                }
             var calres = await DeclerationServices.FeesCalculator(FeesCalculatorBody);
             if (calres.IsSuccessStatusCode)
             {
@@ -1107,6 +1135,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
 
+        }
+        public ICommand SearchEntryCommand
+        {
+
+            get
+            {
+                return new Command<object>((e) =>
+                {
+                    if (e != null)
+                    {
+                        var entry = e as BorderlessEntry;
+                        var value = entry.Text.ToLower();
+                        if (string.IsNullOrWhiteSpace(value))
+                            BottomSheetList = TempBottomSheetList;
+                        else
+                        {
+                            var result = BottomSheetList.Where(s => s.Name.Contains(value)).ToList() ?? new List<BottomSheetModel>();
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        }
+                    }
+                });
+            }
         }
 
         private async Task AddItemToCart(EDeclerationCardModel eDeclerationCardModel)

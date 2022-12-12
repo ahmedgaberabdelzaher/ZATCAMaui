@@ -17,6 +17,7 @@ namespace EGAZT.Models.EDeclerationsModel
                 return NameLocalization.GetLocalizedName(itemDescription, productName);
             }
         }
+        public Guid ID { get; set; } = Guid.NewGuid();
     }
 }
 
