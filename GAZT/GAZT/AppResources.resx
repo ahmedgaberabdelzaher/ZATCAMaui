@@ -10073,7 +10073,28 @@ Zakat, Tax and Customs Authority
     <data name="Citizen" xml:space="preserve">
     <value>Citizen / Resident</value>
   </data>
-      <data name="IAMLogin" xml:space="preserve">
+   <data name="IAMLogin" xml:space="preserve">
     <value>IAM Login</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment Details</value>
+  </data>
+  <data name="TotalAmountNumeric" xml:space="preserve">
+    <value>Total amount in numeric</value>
+  </data>
+  <data name="TotalAmountWriting" xml:space="preserve">
+    <value>Total amount in writing</value>
+  </data>
+  <data name="DateBirthValidation" xml:space="preserve">
+    <value>Date of birth can't be in the future</value>
+  </data>
+  <data name="ReleaseDateValidation" xml:space="preserve">
+    <value>Release Date can't be in the future</value>
+  </data>
+  <data name="EndDateValidation" xml:space="preserve">
+    <value>End Date can't be in the past</value>
+  </data>
+  <data name="ComingGoingDateValidation" xml:space="preserve">
+    <value>Date can't be in the past</value>
   </data>
 </root>

@@ -317,8 +317,10 @@
 
                             <!--Land card-->
                             <Grid Padding="5"
+                                  VerticalOptions="StartAndExpand"
+                                  HorizontalOptions="StartAndExpand"
                                   WidthRequest="171"
-                                HeightRequest="94">
+                                  HeightRequest="94">
 
                                 <!--Background image selected-->
                                 <Image Aspect="AspectFill"

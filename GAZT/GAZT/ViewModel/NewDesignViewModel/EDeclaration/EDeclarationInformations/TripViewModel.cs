@@ -149,11 +149,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.arrivingFromDepartingToName)
             || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.portName)
-            || SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date
             || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelPurposeName))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;
+                return false;
+            }
+            if (SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.ComingGoingDateValidation;
                 return false;
             }
             if (SubmitModel.travelerDeclaration.tripeType == 1)

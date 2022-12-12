@@ -1447,6 +1447,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date can&apos;t be in the past.
+        /// </summary>
+        public static string ComingGoingDateValidation {
+            get {
+                return ResourceManager.GetString("ComingGoingDateValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ,.
         /// </summary>
         public static string Comma {
@@ -2946,6 +2955,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of birth can&apos;t be in the future.
+        /// </summary>
+        public static string DateBirthValidation {
+            get {
+                return ResourceManager.GetString("DateBirthValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date ( Hijri).
         /// </summary>
         public static string DateHijri {
@@ -3527,6 +3545,15 @@ namespace EGAZT {
         public static string End {
             get {
                 return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Date can&apos;t be in the past.
+        /// </summary>
+        public static string EndDateValidation {
+            get {
+                return ResourceManager.GetString("EndDateValidation", resourceCulture);
             }
         }
         
@@ -9951,6 +9978,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Details.
+        /// </summary>
+        public static string PaymentDetails {
+            get {
+                return ResourceManager.GetString("PaymentDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Payment Method.
         /// </summary>
         public static string PaymentMethod {
@@ -10712,6 +10748,15 @@ namespace EGAZT {
         public static string ReleaseDate {
             get {
                 return ResourceManager.GetString("ReleaseDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Release Date can&apos;t be in the future.
+        /// </summary>
+        public static string ReleaseDateValidation {
+            get {
+                return ResourceManager.GetString("ReleaseDateValidation", resourceCulture);
             }
         }
         
@@ -12621,6 +12666,24 @@ namespace EGAZT {
         public static string TotalAmount {
             get {
                 return ResourceManager.GetString("TotalAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount in numeric.
+        /// </summary>
+        public static string TotalAmountNumeric {
+            get {
+                return ResourceManager.GetString("TotalAmountNumeric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total amount in writing.
+        /// </summary>
+        public static string TotalAmountWriting {
+            get {
+                return ResourceManager.GetString("TotalAmountWriting", resourceCulture);
             }
         }
         
