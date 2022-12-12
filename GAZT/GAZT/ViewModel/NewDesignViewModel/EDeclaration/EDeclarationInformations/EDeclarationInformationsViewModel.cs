@@ -55,14 +55,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             //SubmitModel.travelerDeclaration.NationalityName = ;
                             //SubmitModel.travelerDeclaration.travelIssuerName = ;
 
-                            if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
+                            if(SubmitModel.travelerDeclaration.travelID !=null)
                             {
-                                SubmitModel.travelerDeclaration.travelDocumentType = 5; // Citizen
+                                if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
+                                {
+                                    SubmitModel.travelerDeclaration.travelDocumentType = 5; // Citizen
+                                }
+                                else
+                                {
+                                    SubmitModel.travelerDeclaration.travelDocumentType = 3; // Resident
+                                }
                             }
-                            else
-                            {
-                                SubmitModel.travelerDeclaration.travelDocumentType = 3; // Resident
-                            }
+                           
                         }
                         else // Visitor
                         {
@@ -151,8 +155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else if (isPortSelected)
                         {
-                            //SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
-                            SubmitModel.travelerDeclaration.port = 23;
+                            SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.portName = e.Name;
                             isPortSelected = false;
                             HeaderTitle = AppResources.TripInformation;

@@ -142,7 +142,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
             }
             SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;
-            SubmitModel.travelerDeclaration.tripeType = 1;
             return true;
 
         }
