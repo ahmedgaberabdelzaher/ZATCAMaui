@@ -10061,4 +10061,19 @@ Zakat, Tax and Customs Authority
   <data name="ALLanswersisNoMsg" xml:space="preserve">
     <value>Sorry ... it seems that you did not choose from the questions or fill in their data</value>
   </data>
+  <data name="Servicetype" xml:space="preserve">
+    <value>Service type</value>
+  </data>
+  <data name="Identitytype" xml:space="preserve">
+    <value>Identity type</value>
+  </data>
+  <data name="Visitor" xml:space="preserve">
+    <value>Visitor</value>
+  </data>
+    <data name="Citizen" xml:space="preserve">
+    <value>Citizen / Resident</value>
+  </data>
+      <data name="IAMLogin" xml:space="preserve">
+    <value>IAM Login</value>
+  </data>
 </root>

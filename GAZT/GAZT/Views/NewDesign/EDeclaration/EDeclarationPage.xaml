@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+ xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+ xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        xmlns:custom="clr-namespace:GAZT"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+     HasBackButton="True"
+         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+         xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+      TitleText="{x:Static ResourceManager:AppResources.eDeclaration}"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.EDeclarationPage">
+    <newdesign:BaseContentPage.PancakeView>
+        <StackLayout>
+           
+<!--#region Header-->
+
+                        <!--  Product Declaration Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Declaration Note Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            Margin="0,0,0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+  <!--#endregion-->
+
+   <custom:CustomLabel  Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.Servicetype}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+     <!--#region Selection Options-->
+                 <Grid ColumnDefinitions="*,15,*" HeightRequest="130">
+                    <!--#region Individula Option-->
+                                   <Grid Grid.Column="0">
+                                       <Grid.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelcectServiceTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
+
+                                       </Grid.GestureRecognizers>
+                                       <Image Source="QUnselected" Aspect="Fill"  WidthRequest="171">
+                                           <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding ServiceType}" Value="1">
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                               <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="Selctednewdeclaration"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding ServiceType}"
+                                            TargetType="Image"
+                                            Value="1">
+                                            <Setter Property="Source" Value="newdeclaration.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                       <Label Text="{x:Static ResourceManager:AppResources.NewDeclaration}" FontSize="16" TextColor="{StaticResource Primary}" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding ServiceType}" Value="2">
+                                                   <Setter Property="TextColor" Value="White"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                   </Grid>
+                    <!--#endregion-->
+                       <!--#region Entity Option-->
+                                    <Grid Grid.Column="2">
+                                                                       <Grid.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelcectServiceTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
+                             
+                                       </Grid.GestureRecognizers>
+                                       <Image Source="QUnselected.png" Aspect="Fill">
+                                             <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding ServiceType}" Value="2">
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                             <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="reviewapreviousrequest"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding ServiceType}"
+                                            TargetType="Image"
+                                            Value="2">
+                                            <Setter Property="Source" Value="unselectedreviewapreviousrequest.png" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                       <Label Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding ServiceType}" Value="2">
+                                                   <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                   </Grid>
+                    <!--#endregion-->
+                               </Grid>
+                <!--#endregion-->
+<!--#region Identity Type View-->
+<StackLayout IsVisible="false" >
+<StackLayout.Triggers>
+                    <DataTrigger TargetType="StackLayout" Binding="{Binding ServiceType}" Value="1">
+                        <Setter Property="IsVisible" Value="true"></Setter>
+                    </DataTrigger>
+                </StackLayout.Triggers>
+   <custom:CustomLabel  Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.Identitytype}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+     <!--#region Selection Options-->
+                 <Grid ColumnDefinitions="*,15,*">
+                    <!--#region Individula Option-->
+                                   <Grid Grid.Column="0">
+                                       <Grid.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
+
+                                       </Grid.GestureRecognizers>
+                                       <Image Source="QUnselected" Aspect="Fill" WidthRequest="171">
+                                           <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding IdentityType}" Value="1">
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                               <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="unselectedvisitor.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IdentityType}"
+                                            TargetType="Image"
+                                            Value="1">
+                                            <Setter Property="Source" Value="visitor" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                       <Label Text="{x:Static ResourceManager:AppResources.Visitor}" FontSize="16" TextColor="{StaticResource Primary}" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding IdentityType}" Value="1">
+                                                   <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                   </Grid>
+                    <!--#endregion-->
+                       <!--#region Entity Option-->
+                                    <Grid Grid.Column="2">
+                                                                       <Grid.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
+                             
+                                       </Grid.GestureRecognizers>
+                                       <Image Source="QUnselected.png" Aspect="Fill">
+                                             <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding IdentityType}" Value="2">
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                             <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="33"
+                                    HorizontalOptions="Start"
+                                    Source="unselectedcitizien.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IdentityType}"
+                                            TargetType="Image"
+                                            Value="2">
+                                            <Setter Property="Source" Value="citizien" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                       <Label Text="{x:Static ResourceManager:AppResources.Citizen}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding IdentityType}" Value="2">
+                                                   <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                   </Grid>
+                    <!--#endregion-->
+                               </Grid>
+                <!--#endregion-->
+            </StackLayout>
+            <!--#endregion-->
+
+        </StackLayout>
+
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>
+

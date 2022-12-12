@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.HomePages;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Essentials;
@@ -227,6 +228,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
         public void GetCustomServiceMenuLst(bool isvertical=false)
         {
+          
             CustomeMenuLst = new ObservableCollection<MenuModel>()
            {
 
@@ -234,9 +236,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.CustomsZATCAIntegrat, ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon",ColumnNo=0,Row=0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote1:""
                 },
-                  new MenuModel()
+                 new MenuModel() {
+                   Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote2:""
+                }
+                 ,
+                 new MenuModel()
                 {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="CreateE_Declaration",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
                 },
                  new MenuModel()
                 {

@@ -13,7 +13,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
     {
         string iAMWbViewSrc;
         public string IAMWbViewSrc { get { return iAMWbViewSrc; } set { iAMWbViewSrc = value; RaisePropertyChanged(); } }
-
+        public int CommingFrom { get; set; }
 
 
         public IAMLoginViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
@@ -27,13 +27,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(() =>
                 {
-                    IAMWbViewSrc = "http://172.25.39.60:8443/Home/Result?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
+                   // IAMWbViewSrc = "http://172.25.39.60:8443/Home/Result?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
                     if (IAMWbViewSrc.Contains("token"))
                     {
                         string token = HttpUtility.ParseQueryString(new Uri(IAMWbViewSrc).Query).Get("token");
                        
                          var payload=GetTokenData(token);
-                        _navigationService.NavigateTo("TransactionReceptionView", payload);
+                        if (CommingFrom==1)
+                        {
+                            _navigationService.NavigateTo("NewDeclarationPage", payload);
+                        }
+                        else
+                        {
+                            _navigationService.NavigateTo("TransactionReceptionView", payload);
+                        }
+                       
                         IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
 
                     }

@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
- xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"    xmlns="http://xamarin.com/schemas/2014/forms"
+ xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+ xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.IAMLoginView">
+     xmlns:ResourceManager="clr-namespace:EGAZT"
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.IAMLoginView"
+    TitleText="{x:Static ResourceManager:AppResources.IAMLogin}"
+    >
     <newdesign:BaseContentPage.PancakeView>
    <WebView Source="{Binding IAMWbViewSrc}">
                 <WebView.Behaviors>
