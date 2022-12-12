@@ -69,7 +69,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         int _travelDocumentType;
         public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; RaisePropertyChanged(); } }
 
-        int _travelingType;
+        int _travelingType=1;
         public int travelingType { get { return _travelingType; } set { _travelingType = value; RaisePropertyChanged(); } }
 
         string _firstName;

@@ -18,6 +18,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         TravelerDeclarationResponse travelerDeclarationResponse;
         public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; RaisePropertyChanged(); } }
 
+        bool isPaymentRequired;
+        public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
+
+
         public ICommand GoToSuccessCommand
         {
             get
@@ -26,6 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     if(IsValidateContactInfo())
                     {
+                     
                         AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
                         await PopupNavigation.Instance.PushAsync(poupWindow);
                     }
@@ -46,6 +51,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     if (data.result != null)
                     {
                         TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
+                        if (TravelerDeclarationResponse!=null)
+                        {
+                            IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired&&!TravelerDeclarationResponse.paymentIsCompleted?true:
+                                false;
+                        }
                     }
 
                 }

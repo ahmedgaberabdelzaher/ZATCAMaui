@@ -12,8 +12,8 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         {
             InitializeComponent();
             viewModel = App.Locator.BaseEDeclarationViewModel;
-            viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
-            viewModel.SubmitModel.travelerDeclaration.travelingType = 1;
+           // viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
+            //viewModel.SubmitModel.travelerDeclaration.travelingType = 1;
             BindingContext = viewModel;
         }
         public NewDeclarationPage(IDictionary<string, object> payload)

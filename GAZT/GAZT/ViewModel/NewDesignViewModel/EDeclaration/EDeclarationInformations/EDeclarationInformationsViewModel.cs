@@ -30,6 +30,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         List<CountryModel> countries = new List<CountryModel>();
 
+        string refNo ;
+        public string RefNo  { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
+
+
         #endregion
 
 
