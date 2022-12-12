@@ -669,7 +669,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                                 TobacoItems = topacoTypes?.Item1.data;
                             }
 
-                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.itemCode, Name = c.productName }).ToList() ?? new List<BottomSheetModel>();
+                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.itemCode, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
                             HeaderTitle = AppResources.ProductName;
