@@ -338,6 +338,9 @@
 		<Compile Update="Controls\EDeclerationControls\SecurityDestrictedQuestionView.xaml.cs">
 		  <DependentUpon>SecurityDestrictedQuestionView.xaml</DependentUpon>
 		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\EDeclarationPaymentPage.xaml.cs">
+		  <DependentUpon>EDeclarationPaymentPage.xaml</DependentUpon>
+		</Compile>
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Update="AppResources.resx">

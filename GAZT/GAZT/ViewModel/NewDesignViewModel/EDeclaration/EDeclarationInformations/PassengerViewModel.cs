@@ -145,14 +145,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)
-                || SubmitModel.travelerDeclaration.travelersCount <= 0
-                || SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date
-                || SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date
-                || SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
+                || SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;
                 return false;
+            }
+
+            if(SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.DateBirthValidation;
+                return false; 
+            }
+            if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.ReleaseDate;
+                return false;
+            }
+            if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.EndDateValidation;
+                return false; 
             }
             return true;
 

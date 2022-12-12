@@ -677,6 +677,9 @@
     <BundleResource Include="Resources\unselectedvisitor.png" />
     <BundleResource Include="Resources\unselectedvisitor%402x.png" />
     <BundleResource Include="Resources\unselectedvisitor%403x.png" />
+    <BundleResource Include="Resources\DocBlue.png" />
+    <BundleResource Include="Resources\DocBlue%402x.png" />
+    <BundleResource Include="Resources\DocBlue%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -993,7 +996,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
+      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

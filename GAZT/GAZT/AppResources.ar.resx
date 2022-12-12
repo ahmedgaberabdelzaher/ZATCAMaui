@@ -9997,4 +9997,25 @@ info@zatca.gov.sa</value>
       <data name="IAMLogin" xml:space="preserve">
     <value>نفاذ</value>
   </data>
+    <data name="PaymentDetails" xml:space="preserve">
+    <value>بيانات الدفع</value>
+  </data>
+  <data name="TotalAmountNumeric" xml:space="preserve">
+    <value>المبلغ الإجمالي بالأرقام</value>
+  </data>
+  <data name="TotalAmountWriting" xml:space="preserve">
+    <value>المبلغ الإجمالي كتابة</value>
+  </data>
+    <data name="DateBirthValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون تاريخ الميلاد في المستقبل</value>
+  </data>
+  <data name="ReleaseDateValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون تاريخ الإصدار في المستقبل</value>
+  </data>
+  <data name="EndDateValidation" xml:space="preserve">
+    <value>لا يجوز أن يكون تاريخ الانتهاء في الماضي</value>
+  </data>
+  <data name="ComingGoingDateValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون التاريخ في الماضي</value>
+  </data>
 </root>
