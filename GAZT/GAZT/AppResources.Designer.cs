@@ -6744,7 +6744,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid tax stamp. Would you like to write a comment regarding this survey?.
+        ///   Looks up a localized string similar to Invalid tax stamp.
         /// </summary>
         public static string Incorrecttaxstamp {
             get {
@@ -7101,7 +7101,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Live Monitoring Salwa Land Port.
+        ///   Looks up a localized string similar to Salwa Port Live Stream.
         /// </summary>
         public static string LiveVideoSubTitle {
             get {
@@ -9735,7 +9735,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arrival Passports.
+        ///   Looks up a localized string similar to Arrivals to Saudi Arabia - Passports.
         /// </summary>
         public static string Port1Name {
             get {
@@ -9744,7 +9744,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Departure Passports.
+        ///   Looks up a localized string similar to Departures from Saudi Arabia - Passports.
         /// </summary>
         public static string Port2Name {
             get {
@@ -9753,7 +9753,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arrival Customs.
+        ///   Looks up a localized string similar to Arrivals to Saudi Arabia - Customs.
         /// </summary>
         public static string Port3Name {
             get {
@@ -9762,7 +9762,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Departure Customs.
+        ///   Looks up a localized string similar to Departures to Saudi Arabia - Customs.
         /// </summary>
         public static string Port4Name {
             get {

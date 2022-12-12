@@ -9479,7 +9479,7 @@ info@zatca.gov.sa</value>
         <value>البث المباشر</value>
     </data>
   <data name="LiveVideoSubTitle" xml:space="preserve">
-        <value>البث المباشر لمنفذ سلوى البري</value>
+        <value>البث المباشر لمنفذ سلوى</value>
     </data>
   <data name="PortName" xml:space="preserve">
         <value>اسم المنفذ</value>
@@ -9488,16 +9488,16 @@ info@zatca.gov.sa</value>
         <value>عرض الخدمات</value>
     </data>
   <data name="Port1Name" xml:space="preserve">
-        <value>القادمون - الجوازات</value>
+        <value>القادمون إلى المملكة – الجوازات</value>
     </data>
   <data name="Port2Name" xml:space="preserve">
-        <value>المغادرون – الجوازات</value>
+        <value>المغادرون من المملكة – الجوازات</value>
     </data>
   <data name="Port3Name" xml:space="preserve">
-        <value>القادمون – الجمارك</value>
+        <value>القادمون إلى المملكة – الجمارك</value>
     </data>
   <data name="Port4Name" xml:space="preserve">
-        <value>المغادرون – الجمارك</value>
+        <value>المغادرون من المملكة – الجمارك</value>
     </data>
   <data name="Reports" xml:space="preserve">
         <value> البلاغات </value>
