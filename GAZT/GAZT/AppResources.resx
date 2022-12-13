@@ -10097,4 +10097,13 @@ Zakat, Tax and Customs Authority
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>Date can't be in the past</value>
   </data>
+  <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>The electronic declaration has been completed successfully.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>Traveller Passport</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>Trip Date</value>
+  </data>
 </root>

@@ -4253,7 +4253,7 @@
     <value>عزيزي</value>
     </data>
   <data name="FORM5Declaration" xml:space="preserve">
-    <value>إقـــرار المـكـلفففف</value>
+    <value>إقـــرار المـكـلف</value>
     </data>
   <data name="FORM5ElectronicMail" xml:space="preserve">
     <value>البريد الإلكتروني</value>
@@ -10017,5 +10017,17 @@ info@zatca.gov.sa</value>
   </data>
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>لا يمكن أن يكون التاريخ في الماضي</value>
+  </data>
+    <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>تم استكمال الإعلان الإلكتروني بنجاح.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>جواز سفر المسافر</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>تاريخ الرحلة</value>
+  </data>
+ <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
+    <value>حالة السداد</value>
   </data>
 </root>

@@ -50,7 +50,7 @@
                     <!--  Success Msg2 Label  -->
                     <Label
                         Margin="40,0"
-                        FontFamily="{StaticResource SomarRegular}"
+                        FontFamily="{StaticResource SomarSemiBold}"
                         FontSize="18"
                         HorizontalOptions="CenterAndExpand"
                         HorizontalTextAlignment="Center"
@@ -83,7 +83,7 @@
 
                                 <!--  Refernce Number Label  -->
                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontFamily="{StaticResource SomarSemiBold}"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.Referencenumber}"
@@ -91,7 +91,7 @@
 
                                 <!--  Refernce Number Result Label  -->
                                 <Label
-                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontFamily="{StaticResource SomarSemiBold}"
                                     FontSize="16"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{Binding TravelerDeclarationResponse.ReferenceID}"

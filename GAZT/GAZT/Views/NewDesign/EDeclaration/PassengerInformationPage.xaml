@@ -262,7 +262,7 @@
 
                         <!--  Passenger Note Label  -->
                         <Label
-                            FontFamily="{StaticResource SomarRegular}"
+                            FontFamily="{StaticResource SomarSemiBold}"
                             FontSize="16"
                             Margin="0,0,0,5"
                             HorizontalOptions="StartAndExpand"

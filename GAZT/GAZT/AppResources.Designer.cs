@@ -3504,6 +3504,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The electronic declaration has been completed successfully..
+        /// </summary>
+        public static string ElectronicDeclaration {
+            get {
+                return ResourceManager.GetString("ElectronicDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
         public static string Email {
@@ -13111,11 +13120,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Traveller Passport.
+        /// </summary>
+        public static string TravellerPassport {
+            get {
+                return ResourceManager.GetString("TravellerPassport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Travel Purpose.
         /// </summary>
         public static string TravelPurpose {
             get {
                 return ResourceManager.GetString("TravelPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Date.
+        /// </summary>
+        public static string TripDate {
+            get {
+                return ResourceManager.GetString("TripDate", resourceCulture);
             }
         }
         
