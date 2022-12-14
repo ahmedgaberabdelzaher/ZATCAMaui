@@ -3423,6 +3423,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SADAD Number: .
+        /// </summary>
+        public static string EDEcelarationSADADFrstMsg {
+            get {
+                return ResourceManager.GetString("EDEcelarationSADADFrstMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (The service provider code for Saudi Customs is 030).
+        /// </summary>
+        public static string EDEcelarationSADADSecondMsg {
+            get {
+                return ResourceManager.GetString("EDEcelarationSADADSecondMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-Declaration.
         /// </summary>
         public static string eDeclaration {

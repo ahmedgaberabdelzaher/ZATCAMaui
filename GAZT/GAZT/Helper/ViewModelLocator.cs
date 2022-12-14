@@ -428,6 +428,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
             SimpleIoc.Default.Register<IAMLoginViewModel>();
             SimpleIoc.Default.Register<EDeclerationViewModel>();
+            SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             #endregion
         }
 
@@ -2920,6 +2921,7 @@ namespace EGAZT
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
+            navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
 
             #endregion
 
@@ -3159,6 +3161,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EDeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public CustomsPaymentViewModel CustomsPaymentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomsPaymentViewModel>();
                 }
                 catch (Exception ex)
                 {

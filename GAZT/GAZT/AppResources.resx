@@ -10097,4 +10097,10 @@ Zakat, Tax and Customs Authority
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>Date can't be in the past</value>
   </data>
+    <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+    <value>SADAD Number: </value>
+  </data>
+     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+    <value>(The service provider code for Saudi Customs is 030)</value>
+  </data>
 </root>

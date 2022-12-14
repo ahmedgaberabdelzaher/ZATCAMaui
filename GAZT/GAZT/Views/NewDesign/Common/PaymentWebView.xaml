@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+ xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+ xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.Common.PaymentWebView"
+        xmlns:ResourceManager="clr-namespace:EGAZT"
+    TitleText="{x:Static ResourceManager:AppResources.PaymentDetails}"
+    >
+       <newdesign:BaseContentPage.PancakeView>
+   <WebView x:Name="PaymentView" >
+            </WebView>
+        <!--  <StackLayout>
+            <Label Text="djahsdfhadjffh"></Label>
+
+                    <WebView BackgroundColor="Red" Source="http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile"/>
+
+        <WebView Source="https://www.appsloveworld.com/csharp/100/450/decode-json-web-token-xamarin-android">
+                <WebView.Behaviors>
+                          <xct:EventToCommandBehavior Command="{Binding IAMWbViewNavigatingCommand}" EventName="Navigating" />
+                </WebView.Behaviors>
+            </WebView>
+
+     </StackLayout>-->
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>
+

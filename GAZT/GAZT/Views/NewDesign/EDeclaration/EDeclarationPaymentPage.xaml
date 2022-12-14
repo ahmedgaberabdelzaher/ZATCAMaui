@@ -12,6 +12,7 @@
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
+    Title="{x:Static ResourceManager:AppResources.PaymentDetails}"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -173,11 +174,20 @@
                                             LineBreakMode="WordWrap"
                                             TextColor="#002447"
                                             Grid.Column="1"
-                                            Text="50 رس"
-                                            VerticalOptions="Start" />
+                                          
+                                            VerticalOptions="Start" >
+                                            <custom:CustomLabel.FormattedText>
+                             <FormattedString>
+                                                    <Span Text="{Binding TravelerDeclarationResponse.totalFees}"/>
+                                                    <Span  Text="  " />
+                                                    <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+</custom:CustomLabel.FormattedText>
+
+                                    </custom:CustomLabel>
 
                                         <!--  Total amount in words Label  -->
-                                        <custom:CustomLabel
+                                        <custom:CustomLabel IsVisible="false" 
                                             HorizontalOptions="Start"
                                             FontSize="14"
                                             LineBreakMode="WordWrap"
@@ -187,7 +197,7 @@
                                             VerticalOptions="Start" />
 
                                         <!--  Total amount value in words Label  -->
-                                        <custom:CustomLabel
+                                        <custom:CustomLabel IsVisible="false" 
                                             HorizontalOptions="Start"
                                             FontSize="14"
                                             LineBreakMode="WordWrap"
@@ -232,7 +242,7 @@
                                         FontSize="16"
                                         Padding="15"
                                         TextColor="{Binding PaymentCard.AirTextColor}"
-                                        Text="{x:Static ResourceManager:AppResources.AirTrip}"/>
+                                        Text="{x:Static ResourceManager:AppResources.ZakatCashBank}"/>
 
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding PaymentCardCommand}"
@@ -272,7 +282,7 @@
                         </StackLayout>
 
                          <!--Apple card-->
-                         <Grid
+                         <Grid IsVisible="false"
                             WidthRequest="171"
                             Padding="5"
                             HorizontalOptions="StartAndExpand"

@@ -10018,4 +10018,10 @@ info@zatca.gov.sa</value>
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>لا يمكن أن يكون التاريخ في الماضي</value>
   </data>
+    <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+    <value>رقم فاتورة سداد:</value>
+  </data>
+     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+    <value>(رقم مفوتر هيئة الزكاة والضريبة والجمارك 030)</value>
+  </data>
 </root>

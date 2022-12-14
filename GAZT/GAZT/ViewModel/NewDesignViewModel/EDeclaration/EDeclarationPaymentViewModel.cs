@@ -28,6 +28,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command<string>((e) =>
                 {
+
+                    SelctedPaymentType =(PaymentTypes)Enum.Parse(typeof(PaymentTypes),e) ;
                     var selectedTrip = int.Parse(e);
 
                     if (selectedTrip == (int)TripName.AirTrip)
@@ -73,7 +75,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(() =>
                 {
-                    
+                    if (SelctedPaymentType==PaymentTypes.SADAD)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.EDEcelarationSADADFrstMsg+TravelerDeclarationResponse.sadadNumber+ $"\n{AppResources.EDEcelarationSADADSecondMsg}";
+                    }
+                    //if (SelctedPaymentType == PaymentTypes.Visa)
+                    else
+                    {
+                        _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                    }
 
                 });
             }
