@@ -209,7 +209,8 @@
 
                                     </Grid>
                                      <!--#endregion Payment Values-->
-
+                                </StackLayout>
+                            </Frame>
                             <!--Frame Content-->
                             <StackLayout>
 
@@ -300,7 +301,6 @@
 
                             </StackLayout>
                     
-                         </Frame>
                          <!--#endregion Frame Contains Fees-->
 
                          <!--#region Payment Cards-->
