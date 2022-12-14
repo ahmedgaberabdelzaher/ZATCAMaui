@@ -10,6 +10,8 @@ using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using Xamarin.Essentials;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
 	public partial class EDeclarationInformationsViewModel
@@ -110,6 +112,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(() =>
                 {
                     SubmitModel.travelerDeclaration.IsTermsChecked = SubmitModel.travelerDeclaration.IsTermsChecked == true ? false : true;
+                });
+            }
+        }
+
+        public ICommand CopyCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    await Clipboard.SetTextAsync(travelerDeclarationResponse.ReferenceID);
+
                 });
             }
         }

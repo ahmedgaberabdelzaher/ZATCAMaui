@@ -13,6 +13,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
+            viewModel.isPassengerPage = true;
         }
         protected override void OnDisappearing()
         {
