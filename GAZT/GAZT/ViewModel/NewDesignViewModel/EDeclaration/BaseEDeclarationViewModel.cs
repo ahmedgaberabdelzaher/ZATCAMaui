@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Controls;
+using EGAZT.Helper;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
@@ -100,10 +101,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
            SubmitModel.travelerDeclaration.travelID= iamLoginPayloadData["NationlId"].ToString();
             DateTime passIssuingDate = DateTime.Now;
             DateTime passExpiryDate = DateTime.Now;
-            DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(),out passIssuingDate);
+          //  var date=DateTimeHelper.DatetimeFormater()
+           /* DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(),out passIssuingDate);
             SubmitModel.travelerDeclaration.passIssuingDate = passIssuingDate;
             DateTime.TryParse(iamLoginPayloadData["EndDate"].ToString(), out passExpiryDate);
-            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;
+            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;*/
             SubmitModel.travelerDeclaration.travelIssuerID = 0;
         }
         public object GetTokenData(string token = "")
