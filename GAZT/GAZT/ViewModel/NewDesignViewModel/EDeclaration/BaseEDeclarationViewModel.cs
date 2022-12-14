@@ -98,6 +98,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
             SubmitModel.travelerDeclaration.gender= iamLoginPayloadData["Gender"].ToString()== "Male"?1:2;
            SubmitModel.travelerDeclaration.travelID= iamLoginPayloadData["NationlId"].ToString();
+            DateTime passIssuingDate = DateTime.Now;
+            DateTime passExpiryDate = DateTime.Now;
+            DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(),out passIssuingDate);
+            SubmitModel.travelerDeclaration.passIssuingDate = passIssuingDate;
+            DateTime.TryParse(iamLoginPayloadData["EndDate"].ToString(), out passExpiryDate);
+            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;
             SubmitModel.travelerDeclaration.travelIssuerID = 0;
         }
         public object GetTokenData(string token = "")
