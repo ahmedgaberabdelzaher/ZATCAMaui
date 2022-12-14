@@ -8,6 +8,7 @@ using EGAZT.Controls;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Views;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -15,6 +16,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
     {
         TripCardModel paymentCard = new TripCardModel();
         public TripCardModel PaymentCard { get { return paymentCard; } set { paymentCard = value; } }
+
+        TravelerDeclarationResponse _TravelerDeclarationResponse = new TravelerDeclarationResponse();
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; RaisePropertyChanged(); } }
+
+        public PaymentTypes SelctedPaymentType { get; set; }
 
         public ICommand PaymentCardCommand
         {
@@ -60,6 +66,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
         public ICommand PaymentCommand
         {
             get
@@ -76,5 +83,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
 		}
 	}
+public enum PaymentTypes
+    {
+        Visa=1,
+        SADAD=2
+    }
 }
 

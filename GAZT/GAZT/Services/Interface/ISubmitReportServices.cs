@@ -13,7 +13,10 @@ namespace EGAZT.Services.Interface
         Task<List<CategoryDataResponse>> GetReportCategories(string typeId);
         Task<List<BaseRegionAndCity>> GetCities(string regionId);
         Task<List<BaseRegionAndCity>> GetRegions();
-        Task<BaseResponseModel<string>> CreateZatcaNewReport(SubmitReportModel submitReport);
+        // Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportModel submitReport);
+        ///Data Power
+         Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportDataPowerModel submitReport);
+
     }
 }
 

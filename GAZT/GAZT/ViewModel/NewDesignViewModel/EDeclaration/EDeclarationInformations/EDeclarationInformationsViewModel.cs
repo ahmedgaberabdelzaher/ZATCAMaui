@@ -32,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         string refNo ;
         public string RefNo  { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
-
+    
 
         #endregion
 
@@ -224,6 +224,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+
+        public ICommand GoToPaymentCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    _navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                    
+                });
+            }
+        }
+
 
         #endregion
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)

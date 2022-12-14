@@ -114,8 +114,49 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                             SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
                             SubmitReport.files = ReportUloadedFiles.ToList();
-                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(SubmitReport);
-                            if (reportResult.Success)
+                            List<SubmitReportDataPowerModelAttachement> DATAPowerAttachements = new List<SubmitReportDataPowerModelAttachement>();
+                            foreach (var item in SubmitReport.files)
+                            {
+                                DATAPowerAttachements.Add(new SubmitReportDataPowerModelAttachement() { fileContent = item.fileBase64, fileExtinction = item.fileExtinction, fileName = item.fileFullName });
+                            }
+                            SubmitReportDataPowerModel model = new SubmitReportDataPowerModel()
+                            {
+                                city = SubmitReport.City,
+                                cityCode = submitReport.CityCode,
+                                companyAddress = submitReport.CompanyAddress,
+                                companyName = submitReport.CompanyName,
+                                CR = submitReport.CR,
+                                district = submitReport.District,
+                                isNeedReward = submitReport.IsNeedReward,
+                                LanguageCode = "ar",
+                                latitude = submitReport.Latitude,
+                                longitude = submitReport.Longitude,
+                                missedField = submitReport.MissedField,
+                                regionCode = submitReport.RegionCode,
+                                regionName = submitReport.Region,
+                                reportCategory = submitReport.ReportCategory,
+                                reportCategoryName = submitReport.ReportCategoryName,
+                                reportDetails = submitReport.ReportDetails,
+                                reporterEmail = submitReport.ReporterEmail,
+                                reporterMobileNumber = submitReport.ReporterMobileNumber,
+                                reporterName_Arabic = submitReport.ReporterNameAr,
+                                reporterName_English = submitReport.ReporterNameEn,
+                                reporterWantToSharePersonalInfo = submitReport.ReporterWantToSharePersonalInfo,
+                                reportTaxType = SubmitReport.ReportTaxType,
+                                reportTypeName = SubmitReport.ReportTypeName,
+                                street = SubmitReport.Street,
+                                TIN = SubmitReport.TIN,
+                                violationDate = SubmitReport.ViolationDate,
+                                workType = SubmitReport.ReportTaxType,
+                                attachements = DATAPowerAttachements
+
+                            };
+                           ///
+
+                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
+                            #region VatResponse
+                            /*if (reportResult.Success)
+                             * 
                             {
                                 ReportNumberResult = reportResult.Result?.Data;
                                 SubmitReport = new SubmitReportModel();
@@ -123,11 +164,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 _navigationService.NavigateTo("/ReportSuccessPage");
                         
                             }
+                            */
+                            #endregion
+                            #region DATA Power Response
+                            if (reportResult.header.status.code== "I000000")
+                            {
+                                ReportNumberResult = reportResult.result?.referenceNumber;
+                                SubmitReport = new SubmitReportModel();
+                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
+                                _navigationService.NavigateTo("/ReportSuccessPage");
+                        
+                            }
+                           
+                            #endregion
                             IsLoading = false;
 
                         }
-
-                    }
+                        }
                     catch (Exception ex)
                     {
                         IsLoading = false;
