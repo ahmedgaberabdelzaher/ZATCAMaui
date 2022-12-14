@@ -10,9 +10,11 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         EDeclarationInformationsViewModel viewModel;
         public PassengerInformationPage()
         {
-            InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
+            viewModel.isPassengerPage = true;
+                    InitializeComponent();
+         
         }
         protected override void OnDisappearing()
         {

@@ -192,7 +192,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("/Home", "0");
-
+                 
                 });
             }
         }
