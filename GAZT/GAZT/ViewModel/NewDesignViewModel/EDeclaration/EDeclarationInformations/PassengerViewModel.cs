@@ -144,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
                 || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
-                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)
+                || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)&&SubmitModel.travelerDeclaration.Isvisitor)
                 || SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;

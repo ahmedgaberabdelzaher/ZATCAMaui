@@ -39,9 +39,9 @@ namespace EGAZT.AppConfigurations
 
         public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
-        public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
+        public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
-        public static string CustomPaymentSTGURl = "https://peservices.zatca.gov.sa:9009/payment/initiate/";
+        public static string CustomPaymentSTGURl = "https://peservices.zatca.gov.sa:443/payment/initiate/";
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -137,7 +137,7 @@ namespace EGAZT.AppConfigurations
       //  const string EdclerationBaseURL = "http://10.112.42.23/";
        const string EdclerationBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/EDeclarationStartPage.aspx";
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
-        const string FeesCalculatorBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/calculatorPage.aspx";
+        const string FeesCalculatorBaseURL = "https://peservices.zatca.gov.sa/sites/sc/ar/calculator/Pages/CalculatorPages/calculatorPage.aspx";
 
         public static string GetNewEDeclarationLinks()
         {
