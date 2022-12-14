@@ -108,7 +108,7 @@
                         </yummy:PancakeView>
 
                         <!--  Pay Now Button  -->
-                        <buttons:SfButton
+                        <buttons:SfButton IsVisible="{Binding IsPaymentRequired}" 
                             BackgroundColor="#0996D4"
                             BorderColor="#0996D4"
                             BorderWidth="1"
