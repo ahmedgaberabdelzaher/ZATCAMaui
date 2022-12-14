@@ -22,7 +22,6 @@ namespace EGAZT.Views.NewDesign.EDeclaration
                 viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
 
             }
-            viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             BindingContext = viewModel;
             
             
