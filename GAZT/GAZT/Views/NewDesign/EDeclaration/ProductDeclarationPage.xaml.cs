@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using Xamarin.Forms;
 
@@ -14,6 +15,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.ProductDeclarationViewModel;
             BindingContext = viewModel;
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
+            viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             if (!viewModel.IsArrivingPlaneSelected)
             {
                 viewModel.QFlow = 3;

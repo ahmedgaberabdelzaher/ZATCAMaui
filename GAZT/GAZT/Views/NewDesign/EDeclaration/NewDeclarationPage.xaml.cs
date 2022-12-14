@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using Xamarin.Forms;
 
@@ -21,6 +22,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
                 viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
 
             }
+            viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             BindingContext = viewModel;
             
             
