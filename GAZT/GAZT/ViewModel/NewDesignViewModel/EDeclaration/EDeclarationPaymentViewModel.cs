@@ -12,10 +12,10 @@ using EGAZT.Models.EDeclerationsModel.SubmitModels;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
-	public class EDeclarationPaymentViewModel : BaseViewModel
+    public class EDeclarationPaymentViewModel : BaseViewModel
     {
-        TripCardModel paymentCard = new TripCardModel();
-        public TripCardModel PaymentCard { get { return paymentCard; } set { paymentCard = value; } }
+        PaymentCardModel paymentCard = new PaymentCardModel();
+        public PaymentCardModel PaymentCard { get { return paymentCard; } set { paymentCard = value; } }
 
         TravelerDeclarationResponse _TravelerDeclarationResponse = new TravelerDeclarationResponse();
         public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; RaisePropertyChanged(); } }
@@ -29,40 +29,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 return new Command<string>((e) =>
                 {
 
-                    SelctedPaymentType =(PaymentTypes)Enum.Parse(typeof(PaymentTypes),e) ;
-                    var selectedTrip = int.Parse(e);
+                    SelctedPaymentType = (PaymentTypes)Enum.Parse(typeof(PaymentTypes), e);
+                    var selectedPaymentType = int.Parse(e);
 
-                    if (selectedTrip == (int)TripName.AirTrip)
+                    if (selectedPaymentType == (int)PaymentTypes.Visa)
                     {
-                        PaymentCard.AirImage = "QSelected.png";
-                        PaymentCard.SeaImage = "QUnselected.png";
-                        PaymentCard.LandImage = "QUnselected.png";
+                        PaymentCard.BackgroundVisaCardImage = "QSelected.png";
+                        PaymentCard.BackgroundSADADImage = "QUnselected.png";
 
-                        PaymentCard.AirTextColor = Color.White;
-                        PaymentCard.SeaTextColor = Color.FromHex("#002447");
-                        PaymentCard.LandTextColor = Color.FromHex("#002447");
+                        PaymentCard.VisaCardImage = "paywhiteCard.png";
+                        PaymentCard.SADADImage = "ColorSadad.png";
+
+                        PaymentCard.VisaCardTextColor = Color.White;
+                        PaymentCard.SADADTextColor = Color.FromHex("#002447");
                     }
 
-                    else if (selectedTrip == (int)TripName.LandTrip)
+                    else if (selectedPaymentType == (int)PaymentTypes.SADAD)
                     {
-                        PaymentCard.AirImage = "QUnselected.png";
-                        PaymentCard.SeaImage = "QUnselected.png";
-                        PaymentCard.LandImage = "QSelected.png";
+                        PaymentCard.BackgroundVisaCardImage = "QUnselected.png";
+                        PaymentCard.BackgroundSADADImage = "QSelected.png";
 
-                        PaymentCard.AirTextColor = Color.FromHex("#002447");
-                        PaymentCard.SeaTextColor = Color.FromHex("#002447");
-                        PaymentCard.LandTextColor = Color.White;
-                    }
-                    else
-                    {
-                        PaymentCard.AirImage = "QUnselected.png";
-                        PaymentCard.SeaImage = "QSelected.png";
-                        PaymentCard.LandImage = "QUnselected.png";
+                        PaymentCard.VisaCardImage = "ic_iconpay.png";
+                        PaymentCard.SADADImage = "WhiteSadad.png";
 
-                        PaymentCard.AirTextColor = Color.FromHex("#002447");
-                        PaymentCard.SeaTextColor = Color.White;
-                        PaymentCard.LandTextColor = Color.FromHex("#002447");
-
+                        PaymentCard.VisaCardTextColor = Color.FromHex("#002447");
+                        PaymentCard.SADADTextColor = Color.White;
                     }
 
                 });
@@ -75,10 +66,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(() =>
                 {
-                    if (SelctedPaymentType==PaymentTypes.SADAD)
+                    if (SelctedPaymentType == PaymentTypes.SADAD)
                     {
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.EDEcelarationSADADFrstMsg+TravelerDeclarationResponse.sadadNumber+ $"\n{AppResources.EDEcelarationSADADSecondMsg}";
+                        MessageTxt = AppResources.EDEcelarationSADADFrstMsg + TravelerDeclarationResponse.sadadNumber + $"\n{AppResources.EDEcelarationSADADSecondMsg}";
                     }
                     //if (SelctedPaymentType == PaymentTypes.Visa)
                     else
@@ -92,12 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         public EDeclarationPaymentViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
-		}
-	}
-public enum PaymentTypes
-    {
-        Visa=1,
-        SADAD=2
+        }
     }
 }
 
