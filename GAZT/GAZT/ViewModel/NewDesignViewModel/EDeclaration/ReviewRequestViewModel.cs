@@ -23,8 +23,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command( _ =>
                 {
-                    if(!Inquire.IsPaid)
-                        _navigationService.NavigateTo("EDeclarationPaymentPage");
+                    if(Inquire.IsPaid)
+                        _navigationService.NavigateTo("EDeclarationPaymentPage",Inquire);
                 });
             }
         }

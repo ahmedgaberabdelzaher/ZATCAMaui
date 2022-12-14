@@ -16,6 +16,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             BindingContext = viewModel;
 
         }
+        protected override void OnAppearing()
+        {
+            viewModel.isContactPage = true;
+
+            base.OnAppearing();
+        }
 
         protected override void OnDisappearing()
         {

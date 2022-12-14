@@ -538,7 +538,7 @@
                             VerticalOptions="EndAndExpand"
                             Command="{Binding GoToPaymentCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            IsVisible="{Binding Inquire.IsPaid,Converter={StaticResource InvertedBoolConverter}}"
+                            IsVisible="{Binding Inquire.IsPaid}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" />
 
                         <!--  Pervious Button  -->

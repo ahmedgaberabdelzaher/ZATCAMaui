@@ -20,6 +20,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel.isTripPage = false;
             base.OnDisappearing();
         }
+        protected override void OnAppearing()
+        {
+            viewModel.isTripPage = true;
+
+            base.OnAppearing();
+        }
     }
 }
 

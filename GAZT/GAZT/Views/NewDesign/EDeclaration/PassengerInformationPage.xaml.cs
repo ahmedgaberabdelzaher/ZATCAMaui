@@ -12,7 +12,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         {
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
-            viewModel.isPassengerPage = true;
+           
                     InitializeComponent();
          
         }
@@ -20,6 +20,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         {
             viewModel.isPassengerPage = false;
             base.OnDisappearing();
+        }
+        protected override void OnAppearing()
+        {
+            viewModel.isPassengerPage = true;
+
+            base.OnAppearing();
         }
     }
 }
