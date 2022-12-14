@@ -98,7 +98,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsLoading = true;
                     isPortSelected = true;
                     var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
-                    var ports = result.Item1.data.ToList();
+                    var ports = result?.Item1?.data?.ToList();
                     var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
                     IsShowBottomSheet = true;
@@ -118,7 +118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsLoading = true;
                     isTravelPurposeSelected = true;
                     var result = await DeclerationServices.GetTravelPurpose();
-                    var travelPurposes = result.Item1.data.ToList();
+                    var travelPurposes = result?.Item1?.data?.ToList();
                     var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
                     IsShowBottomSheet = true;

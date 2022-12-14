@@ -628,7 +628,7 @@
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
 
                     </StackLayout>
 

@@ -10030,4 +10030,16 @@ info@zatca.gov.sa</value>
  <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
     <value>حالة السداد</value>
   </data>
+  <data name="PaidPaymentStatus" xml:space="preserve">
+    <value>دفع</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>غير مدفوع</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>الهوية / الإقامة / رقم جواز السفر</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>راجع الطلب</value>
+  </data>
 </root>

@@ -8,6 +8,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
     public class EDeclerationViewModel:BaseViewModel
     {
+        public IE_DeclerationServices DeclerationServices;
         /// <summary>
         /// 1 for New Decleration
         /// 2 for Prevous Requests
@@ -21,6 +22,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         /// </summary>
         int identityType;
         public int IdentityType { get { return identityType; } set { identityType = value; RaisePropertyChanged(); } }
+
+        string _ReferenceNumber;
+        public string ReferenceNumber { get { return _ReferenceNumber; } set { _ReferenceNumber = value; RaisePropertyChanged(); } }
+
+        string _IDResidencePassportNumber;
+        public string IDResidencePassportNumber { get { return _IDResidencePassportNumber; } set { _IDResidencePassportNumber = value; RaisePropertyChanged(); } }
 
 
         public ICommand SelcectServiceTypeCommand
@@ -52,11 +59,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+        public ICommand GoToReviewPageCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        var result = await DeclerationServices?.GetInquireDecleration(ReferenceNumber, IDResidencePassportNumber);
+                    
+                        if (result?.Item1?.header?.status.code == "I000000")
+                        {
+                            var inquireDecleration = result?.Item1?.data?.travelerDeclaration;
+                            if(inquireDecleration != null)
+                            {
+                                App.Locator.StateManager.SetItem("inquireDecleration", inquireDecleration);
+                                _navigationService.NavigateTo("ReviewRequestPage");
+
+                            }
+                            IsLoading = false;
+                        }
+                        else
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.Somethingwentwrong;
+                            IsLoading = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+                });
+            }
+        }
 
 
         public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)
         {
-
+            DeclerationServices = declerationServices;
         }
     }
 

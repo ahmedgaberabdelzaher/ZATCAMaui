@@ -10106,4 +10106,16 @@ Zakat, Tax and Customs Authority
   <data name="TripDate" xml:space="preserve">
     <value>Trip Date</value>
   </data>
+   <data name="PaidPaymentStatus" xml:space="preserve">
+   <value>Paid</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>ID / Residence / Passport Number</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>Review the request</value>
+  </data>
 </root>

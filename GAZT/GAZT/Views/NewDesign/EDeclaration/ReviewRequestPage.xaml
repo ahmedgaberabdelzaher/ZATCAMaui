@@ -9,6 +9,7 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -20,9 +21,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 
     <ContentPage.Content>
          <Grid RowDefinitions="Auto,*">
@@ -124,7 +132,7 @@
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="14"
                                     HorizontalOptions="StartAndExpand"
-                                    Text="Kindly complete the payment process before arriving at Customs premises"
+                                    Text="{Binding Inquire.FeedbackName}"
                                     TextColor="#F5BF58" />
 
                             </StackLayout>
@@ -198,7 +206,7 @@
                                         TextColor="#002447"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Column="1"
-                                        Text="14440415-23-1381"
+                                        Text="{Binding Inquire.ReferenceID}"
                                         VerticalOptions="Start" />
 
                                     <!--  Payment Status Label  -->
@@ -221,8 +229,28 @@
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="1"
-                                        Text="Not Paid"
-                                        VerticalOptions="Start" />
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger Binding="{Binding Inquire.IsPaid}"
+                                                         TargetType="custom:CustomLabel"
+                                                         Value="True">
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.PaidPaymentStatus}"/>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding Inquire.IsPaid}"
+                                                         TargetType="custom:CustomLabel"
+                                                         Value="false">
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.NotPaidPaymentStatus}"/>
+
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
 
 
                                     <!--  Name Label  -->
@@ -245,7 +273,7 @@
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Text="Mohamed Abdullah Ahmed"
+                                        Text="{Binding Inquire.fullName}"
                                         VerticalOptions="Start" />
 
                                     <!--  Traveller passport Label  -->
@@ -268,7 +296,7 @@
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="3"
-                                        Text="A1210500"
+                                        Text="{Binding Inquire.travelID}"
                                         VerticalOptions="Start" />
 
 
@@ -293,7 +321,7 @@
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Column="1"
                                         Grid.Row="4"
-                                        Text="CROATIA"
+                                        Text="{Binding Inquire.ArrivingName}"
                                         VerticalOptions="Start" />
 
                                     <!--  Port Label  -->
@@ -316,7 +344,7 @@
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="5"
-                                        Text="King Khalid International Airport"
+                                        Text="{Binding Inquire.PortName}"
                                         VerticalOptions="Start" />
 
 
@@ -340,7 +368,7 @@
                                         TextColor="#002447"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Column="1"
-                                        Text="SA2205"
+                                        Text="{Binding Inquire.flightNumber}"
                                         Grid.Row="6"
                                         VerticalOptions="Start" />
 
@@ -364,7 +392,7 @@
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="7"
-                                        Text="15/08/2023"
+                                        Text="{Binding Inquire.TravelDateString}"
                                         VerticalOptions="Start" />
 
                                 </Grid>
@@ -422,8 +450,8 @@
                                 <ScrollView HeightRequest="120"
                                             VerticalScrollBarVisibility="Never">
 
-                                    <StackLayout x:Name="productList"
-                                                 BindableLayout.ItemsSource="{Binding TestData}">
+                                    <StackLayout x:Name="inquireList"
+                                                 BindableLayout.ItemsSource="{Binding InquireList}">
 
                                         <BindableLayout.ItemTemplate>
 
@@ -440,7 +468,7 @@
                                                         LineBreakMode="WordWrap"
                                                         TextColor="#999999"
                                                         FontFamily="{StaticResource SomarSemiBold}"
-                                                        Text="Cigarettes containing tobacco"
+                                                        Text="{Binding Name}"
                                                         VerticalOptions="Start" />
 
                                                     <!--  Count value Label  -->
@@ -450,15 +478,12 @@
                                                         LineBreakMode="WordWrap"
                                                         TextColor="#002447"
                                                         Grid.Column="1"
-                                                        Text="(x20)"
+                                                        Text="{Binding Id}"
                                                         FontFamily="{StaticResource SomarSemiBold}"
                                                         VerticalOptions="Start" />
 
-                                                    
-
                                                 </Grid>
                                                
-
                                             </DataTemplate>
 
                                         </BindableLayout.ItemTemplate>
@@ -488,8 +513,16 @@
                                         TextColor="#002447"
                                         Grid.Column="1"
                                         FontFamily="{StaticResource SomarSemiBold}"
-                                        Text="311.69 SAR"
-                                        VerticalOptions="Start" />
+                                        VerticalOptions="Start" >
+                                         <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Inquire.totalFees}"/>
+                                                <Span  Text="  " />
+                                                <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+
+                                    </custom:CustomLabel>
 
                                  </Grid>
                               
@@ -505,9 +538,10 @@
                             VerticalOptions="EndAndExpand"
                             Command="{Binding GoToPaymentCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
+                            IsVisible="{Binding Inquire.IsPaid,Converter={StaticResource InvertedBoolConverter}}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" />
 
-                        <!--  Cancel Button  -->
+                        <!--  Pervious Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
@@ -516,7 +550,7 @@
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
 
                     </StackLayout>
 

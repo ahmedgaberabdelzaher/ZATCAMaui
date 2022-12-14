@@ -7086,6 +7086,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID / Residence / Passport Number.
+        /// </summary>
+        public static string IDResidencePassportNumber {
+            get {
+                return ResourceManager.GetString("IDResidencePassportNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taxpayer Type.
         /// </summary>
         public static string IDType {
@@ -9693,6 +9702,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Paid.
+        /// </summary>
+        public static string NotPaidPaymentStatus {
+            get {
+                return ResourceManager.GetString("NotPaidPaymentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a VAT Registered.
         /// </summary>
         public static string NotRegistered {
@@ -9893,6 +9911,15 @@ namespace EGAZT {
         public static string Paid {
             get {
                 return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        public static string PaidPaymentStatus {
+            get {
+                return ResourceManager.GetString("PaidPaymentStatus", resourceCulture);
             }
         }
         
@@ -11220,6 +11247,15 @@ namespace EGAZT {
         public static string Reviewapreviousrequest {
             get {
                 return ResourceManager.GetString("Reviewapreviousrequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review the request.
+        /// </summary>
+        public static string ReviewRequest {
+            get {
+                return ResourceManager.GetString("ReviewRequest", resourceCulture);
             }
         }
         

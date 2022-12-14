@@ -168,6 +168,7 @@ using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
+using EGAZT.Helper;
 
 namespace EGAZT
 {
@@ -429,6 +430,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IAMLoginViewModel>();
             SimpleIoc.Default.Register<ReviewRequestViewModel>();
             SimpleIoc.Default.Register<EDeclerationViewModel>();
+            SimpleIoc.Default.Register<StateManager>();
             #endregion
         }
 
@@ -4147,6 +4149,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public StateManager StateManager
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StateManager>();
                 }
                 catch (Exception ex)
                 {

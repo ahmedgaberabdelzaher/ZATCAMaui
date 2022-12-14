@@ -89,7 +89,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
                     var result = await DeclerationServices.GetCountries();
-                    countries = result?.Item1?.data.ToList();
+                    countries = result?.Item1?.data?.ToList();
 
                     
                     IsLoading = false;

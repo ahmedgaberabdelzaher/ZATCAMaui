@@ -986,7 +986,7 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
-                        <!--  Cancel Button  -->
+                        <!--  Pervious Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
@@ -995,7 +995,7 @@
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
 
                     </StackLayout>
 

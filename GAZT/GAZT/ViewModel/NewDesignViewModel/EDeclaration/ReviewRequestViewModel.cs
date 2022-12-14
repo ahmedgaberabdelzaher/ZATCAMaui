@@ -4,14 +4,18 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
+using EGAZT.Controls;
+using System.Linq;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
 	public class ReviewRequestViewModel:BaseViewModel
 	{
+        ObservableCollection<BottomSheetModel> _InquireList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> InquireList { get { return _InquireList; } set { _InquireList = value; RaisePropertyChanged(); } }
 
-
-        List<string> _test = new List<string> { "Ahmed", "Hesham","Taha","asdasd", "asdasd", "asdasd", "ase1w13"};
-        public List<string> TestData { get { return _test; } set { _test = value; RaisePropertyChanged(); } }
+        TravelerDeclarationResponse _Inquire = new TravelerDeclarationResponse();
+        public TravelerDeclarationResponse Inquire { get { return _Inquire; } set { _Inquire = value; RaisePropertyChanged(); } }
 
         public ICommand GoToPaymentCommand
         {
@@ -19,7 +23,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command( _ =>
                 {
-                    _navigationService.NavigateTo("EDeclarationPaymentPage");
+                    if(!Inquire.IsPaid)
+                        _navigationService.NavigateTo("EDeclarationPaymentPage");
+                });
+            }
+        }
+        public ICommand OnAppearingCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    try
+                    {
+                        Inquire = App.Locator.StateManager.GetItem("inquireDecleration") as TravelerDeclarationResponse;
+                        Inquire.totalFees = Math.Round(Inquire.totalFees, 2);
+                        if (Inquire != null)
+                        {
+                            Inquire.tobacco?.ForEach(t => { InquireList.Add(new BottomSheetModel { Name = t.Name, Id = $"(x {t.count.ToString()})" }); });
+                            Inquire.product?.ForEach(p => { InquireList.Add(new BottomSheetModel { Name = p.Name, Id = $"(x {p.count.ToString()})" }); });
+                            Inquire.currency?.ForEach(c => { InquireList.Add(new BottomSheetModel { Name = c.Name }); });
+                            Inquire.restricted?.ForEach(r => { InquireList.Add(new BottomSheetModel { Name = r.Name,Id = $"(x {r.count.ToString()})" }); });
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
+                   
                 });
             }
         }
