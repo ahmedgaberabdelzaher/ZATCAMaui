@@ -102,7 +102,10 @@
                                     HorizontalOptions="End"
                                     Source="zakat_copy"
                                     Style="{StaticResource SmallIcon}" />
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CopyCommand}"></TapGestureRecognizer>
 
+                                </StackLayout.GestureRecognizers>
                             </StackLayout>
 
                         </yummy:PancakeView>

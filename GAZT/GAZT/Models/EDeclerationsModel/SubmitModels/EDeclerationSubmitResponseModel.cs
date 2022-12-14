@@ -128,7 +128,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         {
             get
             {
-                return paymentIsRequired && paymentIsCompleted;
+                return paymentIsRequired && !paymentIsCompleted ? true :false;
             }
         }
         public double totalFees { get; set; }
