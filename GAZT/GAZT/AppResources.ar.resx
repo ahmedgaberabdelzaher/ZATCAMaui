@@ -4253,7 +4253,7 @@
     <value>عزيزي</value>
     </data>
   <data name="FORM5Declaration" xml:space="preserve">
-    <value>إقـــرار المـكـلفففف</value>
+    <value>إقـــرار المـكـلف</value>
     </data>
   <data name="FORM5ElectronicMail" xml:space="preserve">
     <value>البريد الإلكتروني</value>
@@ -10018,10 +10018,34 @@ info@zatca.gov.sa</value>
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>لا يمكن أن يكون التاريخ في الماضي</value>
   </data>
-    <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+   <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
     <value>رقم فاتورة سداد:</value>
   </data>
      <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
     <value>(رقم مفوتر هيئة الزكاة والضريبة والجمارك 030)</value>
+</data>
+    <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>تم استكمال الإعلان الإلكتروني بنجاح.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>جواز سفر المسافر</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>تاريخ الرحلة</value>
+  </data>
+ <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
+    <value>حالة السداد</value>
+  </data>
+  <data name="PaidPaymentStatus" xml:space="preserve">
+    <value>دفع</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>غير مدفوع</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>الهوية / الإقامة / رقم جواز السفر</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>راجع الطلب</value>
   </data>
 </root>

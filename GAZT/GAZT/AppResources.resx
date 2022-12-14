@@ -10102,5 +10102,26 @@ Zakat, Tax and Customs Authority
   </data>
      <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
     <value>(The service provider code for Saudi Customs is 030)</value>
+</data>
+  <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>The electronic declaration has been completed successfully.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>Traveller Passport</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>Trip Date</value>
+  </data>
+   <data name="PaidPaymentStatus" xml:space="preserve">
+   <value>Paid</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>ID / Residence / Passport Number</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>Review the request</value>
   </data>
 </root>

@@ -680,6 +680,18 @@
     <BundleResource Include="Resources\DocBlue.png" />
     <BundleResource Include="Resources\DocBlue%402x.png" />
     <BundleResource Include="Resources\DocBlue%403x.png" />
+    <BundleResource Include="Resources\paywhiteCard.png" />
+    <BundleResource Include="Resources\paywhiteCard%402x.png" />
+    <BundleResource Include="Resources\paywhiteCard%403x.png" />
+    <BundleResource Include="Resources\ColorSadad.png" />
+    <BundleResource Include="Resources\ColorSadad%402x.png" />
+    <BundleResource Include="Resources\ColorSadad%403x.png" />
+    <BundleResource Include="Resources\WhiteSadad.png" />
+    <BundleResource Include="Resources\WhiteSadad%402x.png" />
+    <BundleResource Include="Resources\WhiteSadad%403x.png" />
+    <BundleResource Include="Resources\OrangeCircle%401.5x.png" />
+    <BundleResource Include="Resources\OrangeCircle%402x.png" />
+    <BundleResource Include="Resources\OrangeCircle%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

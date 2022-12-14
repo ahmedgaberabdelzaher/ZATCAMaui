@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using EGAZT.Helper;
 namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -8,6 +8,13 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public string typeName_Arabic { get; set; }
         public string typeName_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(typeName_Arabic, typeName_English);
+            }
+        }
         public int value { get; set; }
         public int currency { get; set; }
         public string currencyName_Arabic { get; set; }
@@ -27,6 +34,13 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public string typeName_Arabic { get; set; }
         public string typeName_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(typeName_Arabic, typeName_English);
+            }
+        }
         public string itemCode { get; set; }
         public int count { get; set; }
         public int value { get; set; }
@@ -38,6 +52,13 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public string typeName_Arabic { get; set; }
         public string typeName_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(typeName_Arabic, typeName_English);
+            }
+        }
         public int count { get; set; }
         public int value { get; set; }
         public int currency { get; set; }
@@ -72,6 +93,13 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public string typeName_Arabic { get; set; }
         public string typeName_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(typeName_Arabic, typeName_English);
+            }
+        }
         public string subTypeName_Arabic { get; set; }
         public string subTypeName_English { get; set; }
         public string itemCode { get; set; }
@@ -84,11 +112,25 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public string feedback_Arabic { get; set; }
         public string feedback_Enlgish { get; set; }
+        public string FeedbackName
+        {
+            get
+            {
+                return Helper.NameLocalization.GetLocalizedName(feedback_Arabic, feedback_Enlgish);
+            }
+        }
         public string NID { get; set; }
         public DateTime creationDate { get; set; }
         public string ReferenceID { get; set; }
         public bool paymentIsRequired { get; set; }
         public bool paymentIsCompleted { get; set; }
+        public bool IsPaid
+        {
+            get
+            {
+                return paymentIsRequired && paymentIsCompleted;
+            }
+        }
         public double totalFees { get; set; }
         public string paymentOrder { get; set; }
         public long sadadNumber { get; set; }
@@ -100,13 +142,41 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public int travelDocumentType { get; set; }
         public string travelDocumentType_Arabic { get; set; }
         public string travelDocumentType_English { get; set; }
+        public string DocumentTypeName
+        {
+            get
+            {
+                return Helper.NameLocalization.GetLocalizedName(travelDocumentType_Arabic, travelDocumentType_English);
+            }
+        }
         public string arrivingFromDepartingTo_Arabic { get; set; }
         public string arrivingFromDepartingTo_English { get; set; }
+        public string ArrivingName
+        {
+            get
+            {
+                return Helper.NameLocalization.GetLocalizedName(arrivingFromDepartingTo_Arabic, arrivingFromDepartingTo_English);
+            }
+        }
         public int portCode { get; set; }
         public string portName_Arabic { get; set; }
         public string portName_English { get; set; }
+        public string PortName
+        {
+            get
+            {
+                return Helper.NameLocalization.GetLocalizedName(portName_Arabic, portName_English);
+            }
+        }
         public string flightNumber { get; set; }
         public DateTime travelDate { get; set; }
+        public string TravelDateString
+        {
+            get
+            {
+                return Helper.DateTimeHelper.DatetimeFormater(travelDate);
+            }
+        }
         public int travelingType { get; set; }
         public string screenName { get; set; }
         public List<SubmitResponseTobacco> tobacco { get; set; }
@@ -115,6 +185,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public List<SubmitResponseRestricted> restricted { get; set; }
     }
 
-
+    public class InquireResponse
+    {
+        public TravelerDeclarationResponse travelerDeclaration { get; set; }
+    }
 }
 

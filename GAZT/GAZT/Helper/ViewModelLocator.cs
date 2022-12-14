@@ -168,6 +168,7 @@ using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
+using EGAZT.Helper;
 
 namespace EGAZT
 {
@@ -427,8 +428,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
             SimpleIoc.Default.Register<IAMLoginViewModel>();
+            SimpleIoc.Default.Register<ReviewRequestViewModel>();
             SimpleIoc.Default.Register<EDeclerationViewModel>();
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
+            SimpleIoc.Default.Register<StateManager>();
             #endregion
         }
 
@@ -2916,6 +2919,7 @@ namespace EGAZT
             navigationService.Configure("SuccessView", typeof(SuccessView));
             navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
+            navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
             navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
@@ -4126,6 +4130,20 @@ namespace EGAZT
                 }
             }
         }
+        public ReviewRequestViewModel ReviewRequestViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReviewRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public EDeclarationPaymentViewModel EDeclarationPaymentViewModel
         {
             get
@@ -4147,6 +4165,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public StateManager StateManager
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StateManager>();
                 }
                 catch (Exception ex)
                 {

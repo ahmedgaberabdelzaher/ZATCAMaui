@@ -3522,6 +3522,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The electronic declaration has been completed successfully..
+        /// </summary>
+        public static string ElectronicDeclaration {
+            get {
+                return ResourceManager.GetString("ElectronicDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
         public static string Email {
@@ -7095,6 +7104,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ID / Residence / Passport Number.
+        /// </summary>
+        public static string IDResidencePassportNumber {
+            get {
+                return ResourceManager.GetString("IDResidencePassportNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Taxpayer Type.
         /// </summary>
         public static string IDType {
@@ -9702,6 +9720,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not Paid.
+        /// </summary>
+        public static string NotPaidPaymentStatus {
+            get {
+                return ResourceManager.GetString("NotPaidPaymentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not a VAT Registered.
         /// </summary>
         public static string NotRegistered {
@@ -9902,6 +9929,15 @@ namespace EGAZT {
         public static string Paid {
             get {
                 return ResourceManager.GetString("Paid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paid.
+        /// </summary>
+        public static string PaidPaymentStatus {
+            get {
+                return ResourceManager.GetString("PaidPaymentStatus", resourceCulture);
             }
         }
         
@@ -11229,6 +11265,15 @@ namespace EGAZT {
         public static string Reviewapreviousrequest {
             get {
                 return ResourceManager.GetString("Reviewapreviousrequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Review the request.
+        /// </summary>
+        public static string ReviewRequest {
+            get {
+                return ResourceManager.GetString("ReviewRequest", resourceCulture);
             }
         }
         
@@ -13129,11 +13174,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Traveller Passport.
+        /// </summary>
+        public static string TravellerPassport {
+            get {
+                return ResourceManager.GetString("TravellerPassport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Travel Purpose.
         /// </summary>
         public static string TravelPurpose {
             get {
                 return ResourceManager.GetString("TravelPurpose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trip Date.
+        /// </summary>
+        public static string TripDate {
+            get {
+                return ResourceManager.GetString("TripDate", resourceCulture);
             }
         }
         

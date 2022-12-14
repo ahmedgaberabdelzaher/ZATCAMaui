@@ -50,16 +50,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     var data = JsonConvert.DeserializeObject<EDeclerationSubmitResponseModel>(conent);
                     if (data.header.status.code == "I000000")
                     {
-                    if (data.result != null)
-                    {
-                        
-                        TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
-                        if (TravelerDeclarationResponse!=null)
+                        if (data.result != null)
                         {
-                            IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired&&!TravelerDeclarationResponse.paymentIsCompleted?true:
-                                false;
+                            TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
+                            if (TravelerDeclarationResponse != null)
+                            {
+                                IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
+                                    false;
+                            }
                         }
-                    }
                         return true;
                     }
                 }
@@ -83,21 +82,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async () =>
                 {
-                    if (SubmitModel.travelerDeclaration.IsTermsChecked )
+                    if (SubmitModel.travelerDeclaration.IsTermsChecked)
                     {
                         await PopupNavigation.Instance.PopAsync(true);
-                      var res=  await SubmitDecleration();
+                        var res = await SubmitDecleration();
                         if (res)
                         {
-                       isSuccessPage = true;
-                        _navigationService.NavigateTo("EDeclarationSuccessPage");
+                            isSuccessPage = true;
+                            _navigationService.NavigateTo("EDeclarationSuccessPage");
                         }
                         else
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.RequestTimeoutDescription;
                         }
-            
+
                     }
 
                 });

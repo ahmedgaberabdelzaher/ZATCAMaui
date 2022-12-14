@@ -24,6 +24,7 @@ namespace EGAZT.Services.Interface
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetTravelPurpose();
         Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CoinTypesModel>>, bool, string>> GetCoinTypes();
+        Task<Tuple<DATAPowerBaseResponse<InquireResponse>, bool, string>> GetInquireDecleration(string referenceNumber, string travelID);
     }
        
  }

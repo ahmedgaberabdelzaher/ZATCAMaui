@@ -222,15 +222,14 @@
                             HorizontalOptions="EndAndExpand"
                             FontSize="18"
                             TextColor="Black"
-                            
                             VerticalOptions="Start" >
                             <custom:CustomLabel.FormattedText>
-                             <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment}"/>
-                                                    <Span  Text="  " />
-                                                    <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                </FormattedString>
-</custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment}"/>
+                                    <Span  Text="  " />
+                                    <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
 
                     </StackLayout>
