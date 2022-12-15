@@ -9792,7 +9792,7 @@ Zakat, Tax and Customs Authority
         <value>Allows you to access and calculate the Excise Goods Tax price list electronically</value>
     </data>
     <data name="TaxServicesTip2" xml:space="preserve">
-        <value>Scanning the QR code allows you to validate your electronic bill</value>
+        <value>Scanning the QR code allows you to validate excise Goods</value>
     </data>
      <data name="CustomNote1" xml:space="preserve">
         <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>

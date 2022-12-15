@@ -11173,7 +11173,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scanning the QR code allows you to validate your electronic bill.
+        ///   Looks up a localized string similar to Scanning the QR code allows you to validate excise Goods.
         /// </summary>
         public static string TaxServicesTip2 {
             get {

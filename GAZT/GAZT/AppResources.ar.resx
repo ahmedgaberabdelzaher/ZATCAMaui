@@ -9709,7 +9709,7 @@ info@zatca.gov.sa</value>
         <value>تتيح لك الوصول لقائمة أسعار ضريبة السلع الانتقائية واحتسابها إلكترونيًا</value>
     </data>
   <data name="TaxServicesTip2" xml:space="preserve">
-        <value>يتيح لك مسح ال QR code التحقق من صحة فاتورتك الإلكترونية</value>
+        <value>يتيح لك مسح ال QR code التحقق من صحة السلع الانتقائية</value>
     </data>
   <data name="CustomNote1" xml:space="preserve">
         <value>تتيح لك دليل متكامل يوضح معلومات السلع ورموزها والقوائم الخاصة بها مع بيانها الجمركي ورسومها.</value>

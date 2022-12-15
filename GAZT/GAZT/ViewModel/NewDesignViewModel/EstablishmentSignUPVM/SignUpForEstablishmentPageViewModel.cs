@@ -2632,6 +2632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {"90721", "Municipality" },
             {"90724", "Ministry of Petroleum and Mineral Resources" },
             {"90740", "General Sports Authority" },
+            {"90742","General Commission For Audiovisual Media" },
             {"90718", "Other" }
         };
 
@@ -2665,7 +2666,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {"90729", "وزارة العدل" },
             {"90721", "الهيئة السعودية للمهندسين" },
             {"90724", "وزارة البترول والثروة المعدنية" },
+              {"90742", "هيئة الإعلام المرئي والمسموع"},
             {"90718", "غير معرف" }
+
         };
         public void SetIssueIdList()
         {
