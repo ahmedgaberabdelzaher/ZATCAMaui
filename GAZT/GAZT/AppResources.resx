@@ -10124,4 +10124,10 @@ Zakat, Tax and Customs Authority
   <data name="ReviewRequest" xml:space="preserve">
     <value>Review the request</value>
   </data>
+     <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+     <data name="AddNewCRTitle" xml:space="preserve">
+    <value>Add New CR</value> 
+  </data>
 </root>

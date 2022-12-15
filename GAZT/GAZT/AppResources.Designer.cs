@@ -301,6 +301,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add attachments.
         /// </summary>
         public static string Addattachments {
@@ -324,6 +333,15 @@ namespace EGAZT {
         public static string AddNewCR {
             get {
                 return ResourceManager.GetString("AddNewCR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New CR.
+        /// </summary>
+        public static string AddNewCRTitle {
+            get {
+                return ResourceManager.GetString("AddNewCRTitle", resourceCulture);
             }
         }
         

@@ -25,23 +25,23 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                 <!--#region Selection Options-->
-                 <Grid ColumnDefinitions="*,15,*">
+                 <Grid ColumnDefinitions="*,15,*"  HeightRequest="100"  >
                     <!--#region Individula Option-->
-                                   <Grid Grid.Column="0">
+                                   <Grid Grid.Column="0" VerticalOptions="FillAndExpand">
                                        <Grid.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                                        </Grid.GestureRecognizers>
-                                       <Image Source="blueCard.png" HeightRequest="136" WidthRequest="171">
+                                       <Image Source="QSelected.png" HeightRequest="140" VerticalOptions="FillAndExpand"  WidthRequest="171">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
-                                                   <Setter Property="Source" Value="whiteCard"></Setter>
+                                                   <Setter Property="Source" Value="QUnselected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
                                <Image
                                     Margin="17,25,17,10"
-                                    HeightRequest="33"
+                                    HeightRequest="50"
                                     HorizontalOptions="Start"
                                     Source="Taxpayer.png"
                                     VerticalOptions="Start"
@@ -70,16 +70,16 @@
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
                              
                                        </Grid.GestureRecognizers>
-                                       <Image Source="whiteCard.png">
+                                       <Image Source="QUnselected.png" Grid.Row="0" VerticalOptions="Fill" HeightRequest="200">
                                              <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
-                                                   <Setter Property="Source" Value="blueCard"></Setter>
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
                              <Image
                                     Margin="17,25,17,10"
-                                    HeightRequest="33"
+                                    HeightRequest="50"
                                     HorizontalOptions="Start"
                                     Source="Entity.png"
                                     VerticalOptions="Start"
@@ -166,25 +166,25 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZCRNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRNo}"
+                                    Text="{Binding SelectedCRNo}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding OpenCRCommand}" />
+                                        <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
                                     </custom:BorderlessEntry.GestureRecognizers>
                                 </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <Image Margin="20,0,0,0" HeightRequest="20" WidthRequest="30" Source="GrayDDLArrow" />
+                             <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenCRCommand}" />
+                                <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
                             </StackLayout.GestureRecognizers>
                     </StackLayout>
                     <!--ADD Button-->
                       <Frame BorderColor="#4FBBBD" BackgroundColor="White" Padding="12" CornerRadius="14">
                         <Label Text="{x:Static ResourceManager:AppResources.AddNewCR}" HorizontalOptions="CenterAndExpand" FontSize="16" FontFamily="{StaticResource FontSomarBold}" TextColor="#4FBBBD"  VerticalOptions="CenterAndExpand"></Label>
 <Frame.GestureRecognizers>
-                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="true"></TapGestureRecognizer>
+                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                             </Frame.GestureRecognizers>
                     </Frame>
@@ -401,7 +401,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddNewCR}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CR}"
+                                    Text="{Binding CRNo}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                  
@@ -411,17 +411,19 @@
                         <buttons:SfButton
                             Margin="0,40"
                             BackgroundColor="#0996D4"
-                            Command="{Binding SendTransactionCommand}"
+                            Command="{Binding AddNewCRCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.AddNewCR}" />
+                            Text="{x:Static ResourceManager:AppResources.AddItem}" />
                 </StackLayout>
 
             </yummy:PancakeView>
-               <controls:MsgView Grid.Row="0" Margin="-20"
-            VerticalOptions="EndAndExpand"
-            IsVisible="{Binding IsShowMsgView}" />
+              <!--#region Display All Crc-->
+                   <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
+
         </Grid> 
-        </newdesign:BaseContentPage.PancakeView>
+    
+    </newdesign:BaseContentPage.PancakeView>
 
 </newdesign:BaseContentPage>
 

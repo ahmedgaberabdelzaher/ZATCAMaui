@@ -10048,4 +10048,10 @@ info@zatca.gov.sa</value>
   <data name="ReviewRequest" xml:space="preserve">
     <value>راجع الطلب</value>
   </data>
+   <data name="Add" xml:space="preserve">
+    <value>اضافه</value>
+  </data>
+   <data name="AddNewCRTitle" xml:space="preserve">
+    <value>اضافة سجل تجاري جديد</value> 
+  </data>
 </root>

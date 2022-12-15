@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
@@ -35,12 +38,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string description;
         public string Description { get { return description; } set { description = value; RaisePropertyChanged(); } }
 
-        string crNo="null";
+        string crNo="";
         public string CRNo { get { return crNo; } set { crNo = value; RaisePropertyChanged(); } }
 
+        string selectedCRNo = "";
+        public string SelectedCRNo { get { return selectedCRNo; } set { selectedCRNo = value; RaisePropertyChanged(); } }
 
-        public int IamRegisteredUserID { get; set; } = 123;
+        bool isOpenAddNewCr;
+        public bool IsOpenAddNewCr { get { return isOpenAddNewCr; } set { isOpenAddNewCr = value; RaisePropertyChanged(); } }
+
+
+        ObservableCollection<UserCRResponseModel> cRLst;
+        public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; RaisePropertyChanged(); } }
+
+
+        public static ObservableCollection<UserCRResponseModel> CRCashedList;
+        public static bool isCRDataFetched = false;
+
+        public int IamRegisteredUserID { get; set; } = 1837784;
         public string MobileNo { get; set; } ="0551844232";
+
+        public string NationalId { get; set; } = "1068253721";
 
         public ICommand SelectUserTypeCommand
         {
@@ -59,9 +77,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<bool>((flag) =>
+                return new Command<string>((e) =>
                 {
-                    IsAddNewCR = flag;
+                    IsAddNewCR = e=="1"?true:false;
                 });
             }
         }
@@ -77,12 +95,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         IsLoading = true;
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email)&&UploadedFiles!=null&&UploadedFiles.Count>0)
                     {
-                        var model = new TawreedSubmitFormModel()
+                                                 var model = new TawreedSubmitFormModel()
                         {
                             departmentTypeId = int.Parse(UserType),
                             description = Description,
                             email = Email,
-                            CrNumber=CRNo,
+                            CrNumber=SelectedCRNo,
                             referenceNumber="e",
                             mobileNumber=MobileNo,
                             subject = Subject,
@@ -133,6 +151,151 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
+
+        public ICommand AddNewCRCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        if (!string.IsNullOrWhiteSpace(CRNo))
+                        {
+                            var model = new AddNewCrBody()
+                            {
+                                 crNumber=CRNo,
+                                  idNumber=NationalId,
+                                   registeredUserID=IamRegisteredUserID
+                            };
+                            var response = await _twareedServices.TawreedAddNewCr(model);
+                            if (response.IsSuccessStatusCode)
+                            {
+                                var content = await response.Content.ReadAsStringAsync();
+                                var result = JsonConvert.DeserializeObject<SubmitFormResponse>(content);
+                                if (result.header.status.code == "I000000")
+                                {
+                                    isCRDataFetched = false;
+                                }
+                                else
+                                {
+                                    MessageTxt = AppResources.RequestTimeoutDescription;
+                                    IsShowMsgView = true;
+                                }
+
+                            }
+                            else
+                            {
+                                MessageTxt = AppResources.RequestTimeoutDescription;
+                                IsShowMsgView = true;
+                            }
+                        }
+                        else
+                        {
+                            MessageTxt = AppResources.RequiredData;
+                            IsShowMsgView = true;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                    finally { IsLoading = false; }
+                });
+            }
+        }
+
+        public ICommand GetCurrentUserCRCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    if (!isCRDataFetched)
+                    {
+                     await GetCurrentUserCR();
+                    }
+                    else
+                    {
+                       
+                        CRLst = CRCashedList;
+                        IsShowBottomSheet = true;
+                    }
+             
+                });
+            }
+        }
+
+        private async Task GetCurrentUserCR()
+        {
+            try
+            {
+                IsLoading = true;
+                var response = await _twareedServices.GetUserCRs(IamRegisteredUserID);
+                if (response.Item2)
+                {
+                    if (response.Item1.header.status.code == "I000000")
+                    {
+                        var data = response.Item1.data;
+
+                       CRCashedList = data;
+                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.crType }).ToList() ?? new List<BottomSheetModel>();
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.TypeItem;
+                        TempBottomSheetList = BottomSheetList;
+                        isCRDataFetched = true;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                    }
+
+                }
+                else
+                {
+                    MessageTxt = AppResources.RequestTimeoutDescription;
+                    IsShowMsgView = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { IsLoading = false; }
+        }
+
+        public ICommand SelectedBottomItemCommand
+        {
+            get
+            {
+                return new Command<BottomSheetModel>((e) =>
+                {
+                    try
+                    {
+                      //  IsLoading = true;
+                        SelectedCRNo = e.Name;
+                        IsShowBottomSheet = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                    }
+
+
+                });
+            }
+        }
+
+
+
+
         public ICommand BackToHomeCommand
         {
             get
@@ -171,6 +334,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             _twareedServices = twareedServices;
         }
+
+        ObservableCollection<BottomSheetModel> bottomSheetList;
+        public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> tempBottomSheetList;
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
+
+        bool isShowBottomSheet;
+        public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }
+
+        string headerTitle;
+        public string HeaderTitle { get { return headerTitle; } set { headerTitle = value; RaisePropertyChanged(); } }
+
+        string searchText;
+        public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
+
 
 
     }
