@@ -442,10 +442,10 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.firstName}"
@@ -475,11 +475,11 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.middleName}"
@@ -509,11 +509,11 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.lastName}"
@@ -544,11 +544,11 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
@@ -589,11 +589,11 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelID}"
@@ -768,11 +768,11 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
                                     Style="{StaticResource DefaultEntry}"
                                     TextColor="#58595B" >
@@ -821,12 +821,12 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                     Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"
@@ -868,6 +868,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                 <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}" />
@@ -898,6 +899,7 @@
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
@@ -933,6 +935,7 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 

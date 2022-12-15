@@ -58,37 +58,38 @@
 
                 </inputLayout:SfTextInputLayout>
 
-                <ScrollView VerticalScrollBarVisibility="Never">
+              
+                <CollectionView
+                    x:Name="itemList"
+                    CollectionView.ItemsSource="{Binding BottomSheetList}"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                            VerticalItemSpacing="5" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:Name="selectedItem">
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="18"
+                                    LineBreakMode="WordWrap"
+                                    Text="{Binding Name}"
+                                    TextColor="#002447">
 
-                    <StackLayout
-                        x:Name="itemList"
-                        BindableLayout.ItemsSource="{Binding BottomSheetList}"
-                        Spacing="15">
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <StackLayout x:Name="selectedItem">
-                                    <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="18"
-                                        LineBreakMode="WordWrap"
-                                        Text="{Binding Name}"
-                                        TextColor="#002447">
+                                    <!--  Name  -->
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                            Command="{Binding SelectedBottomItemCommand}"
+                                            CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
 
-                                        <!--  Name  -->
-                                        <Label.GestureRecognizers>
-                                            <TapGestureRecognizer
-                                                BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
-                                                Command="{Binding SelectedBottomItemCommand}"
-                                                CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
-                                        </Label.GestureRecognizers>
-                                    </Label>
-
-                                </StackLayout>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                    </StackLayout>
-
-                </ScrollView>
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
             </StackLayout>
 

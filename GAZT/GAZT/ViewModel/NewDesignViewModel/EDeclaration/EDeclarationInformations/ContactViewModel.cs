@@ -95,6 +95,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else
                         {
+                            SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, 4);
                             IsShowMsgView = true;
                             MessageTxt = AppResources.RequestTimeoutDescription;
                         }
@@ -167,7 +168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
             }
-            SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;
+            SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;    
             return true;
 
         }

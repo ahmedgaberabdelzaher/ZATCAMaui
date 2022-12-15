@@ -113,7 +113,7 @@
                                 Grid.Column="1"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20"
-                                BackgroundColor="#B8BABA"
+                                BackgroundColor="#0996D4"
                                 HeightRequest="2" />
 
                             <!--Circle button 2-->

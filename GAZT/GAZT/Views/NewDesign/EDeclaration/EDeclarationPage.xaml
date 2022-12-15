@@ -105,7 +105,7 @@
                                             Binding="{Binding ServiceType}"
                                             Value="2">
                                     <Setter Property="TextColor"
-                                            Value="White"/>
+                                            Value="{StaticResource Primary}"/>
                             </DataTrigger>
                         </Label.Triggers>
                     </Label>
@@ -193,7 +193,8 @@
                  </custom:CustomLabel>
 
                  <!--#region Selection Options-->
-                 <Grid ColumnDefinitions="*,15,*">
+                 <Grid ColumnDefinitions="*,15,*"
+                       HeightRequest="130">
 
                         <!--#region Individula Option-->
                         <Grid Grid.Column="0">
@@ -282,7 +283,7 @@
                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
                                         TargetType="Image"
-                                        Value="2">
+                                        Value="1">
                                         <Setter Property="Source"
                                                 Value="citizien" />
                                     </DataTrigger>
