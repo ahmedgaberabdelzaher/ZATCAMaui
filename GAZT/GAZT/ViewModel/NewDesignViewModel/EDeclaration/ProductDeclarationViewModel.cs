@@ -61,9 +61,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         TobaccoItemsModel selectedTobacoItem;
         public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
-  
-        string quantity;
-        public string Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
+
+        int? quantity;
+        public int? Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
 
         string restrictedItem;
         public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; RaisePropertyChanged(); } }
@@ -608,11 +608,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
-            Quantity = "";
+            Quantity = null;
         }
         bool CheckTobacoDataNotNull()
         {
-            if (SelectedTobacoItem!=null&& SelectedTobacoType!=null&&!String.IsNullOrWhiteSpace(Quantity))
+            if (SelectedTobacoItem!=null&& SelectedTobacoType!=null&& Quantity != null)
             {
                 return true;
             }
@@ -628,7 +628,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         }
         bool CheckrestrictedDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit!=null && !String.IsNullOrWhiteSpace(Quantity)&&int.Parse(Quantity)>0 && !String.IsNullOrWhiteSpace(RestrictedItem))
+            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit!=null && Quantity != null && Quantity > 0 && !String.IsNullOrWhiteSpace(RestrictedItem))
             {
                 return true;
             }
@@ -636,7 +636,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         }
         bool CheckProductDataNotNull()
         {
-            if (SelectedProductTypes != null && !String.IsNullOrWhiteSpace(Quantity)&&TotalValue!=null)
+            if (SelectedProductTypes != null && Quantity != null && TotalValue!=null)
             {
                 if (IsProductItemHaveSubType&&SelectedProductSubTypes==null)
                 {
@@ -650,7 +650,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             SelectedCurrencie = null;
             SelectedMaterialTypes = null;
-            Quantity=OtherPurpose = "";
+            Quantity = null;
+            OtherPurpose = "";
             SelectedPurposes = null;
             TotalValue = null;
         }
@@ -937,7 +938,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 otherpurpose = OtherPurpose,
                 typeName = RestrictedItem,
                 unit = SelectedUnit.id,
-                count = int.Parse(Quantity),
+                count = Quantity.Value,
                 value = TotalValue,
                 purpose = SelectedPurposes.ID,
                 currencyName = SelectedCurrencie.Name,
@@ -966,7 +967,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             SelectedCurrencie = null;
             SelectedMaterialTypes = null;
-            Quantity = OtherPurpose = "";
+            Quantity = null;
+            OtherPurpose = "";
             IsPermit = false;
             selectedUnit = null;
             UploadedFiles = null;
@@ -981,7 +983,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
             {
-                count = int.Parse(Quantity),
+                count = Quantity.Value,
                 typeName = SelectedTobacoType.Name,
                 itemCode = long.Parse(selectedTobacoItem.itemCode),
                 measurementUnit = selectedTobacoItem.measurementUnit,
@@ -1010,7 +1012,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
             {
                 harmonizedCode = item.itemCode.ToString(),
-                count = int.Parse(Quantity),
+                count = Quantity.Value,
                 sequence = item.taxSequence,
                 ID=item.ID
             };
@@ -1038,7 +1040,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             var item = new Models.EDeclerationsModel.SubmitModels.Product()
             {
-                count = int.Parse(Quantity),
+                count = Quantity.Value,
                 typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                 itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
                 value = TotalValue
@@ -1082,7 +1084,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             SelectedProductTypes = null;
             SelectedProductSubTypes = null;
-            Quantity = "";
+            Quantity = null;
             TotalValue = null;
         }
         private async Task CalculateFees(int operation=1,Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
@@ -1157,11 +1159,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     }
                 });
             }
-        }
-
-        private async Task AddItemToCart(EDeclerationCardModel eDeclerationCardModel)
-        {
-            CardData.Add(eDeclerationCardModel);
         }
 
         #endregion
