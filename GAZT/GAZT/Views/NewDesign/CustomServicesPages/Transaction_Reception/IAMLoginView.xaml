@@ -9,11 +9,11 @@
     TitleText="{x:Static ResourceManager:AppResources.IAMLogin}"
     >
     <newdesign:BaseContentPage.PancakeView>
-   <ResourceManager:HybridWebView Source="https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile">
-                <ResourceManager:HybridWebView.Behaviors>
+   <WebView Source="{Binding IAMWbViewSrc}">
+                <WebView.Behaviors>
                           <xct:EventToCommandBehavior Command="{Binding IAMWbViewNavigatingCommand}" EventName="Navigating" />
-                </ResourceManager:HybridWebView.Behaviors>
-            </ResourceManager:HybridWebView>
+                </WebView.Behaviors>
+            </WebView>
         <!--  <StackLayout>
             <Label Text="djahsdfhadjffh"></Label>
 

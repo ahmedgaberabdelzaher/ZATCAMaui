@@ -25,14 +25,14 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                 <!--#region Selection Options-->
-                 <Grid ColumnDefinitions="*,15,*"  HeightRequest="100"  >
+                 <Grid ColumnDefinitions="*,15,*"  HeightRequest="140"  >
                     <!--#region Individula Option-->
-                                   <Grid Grid.Column="0" VerticalOptions="FillAndExpand">
+                                   <Grid Grid.Column="0" VerticalOptions="Fill">
                                        <Grid.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                                        </Grid.GestureRecognizers>
-                                       <Image Source="QSelected.png" HeightRequest="140" VerticalOptions="FillAndExpand"  WidthRequest="171">
+                                       <Image Source="QSelected.png" HeightRequest="140" VerticalOptions="Fill"  WidthRequest="171">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="Source" Value="QUnselected"></Setter>
@@ -55,7 +55,7 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,25" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
@@ -93,7 +93,7 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,15" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,25" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="TextColor" Value="#FFFFFF"></Setter>
@@ -384,7 +384,7 @@
                                                  >
                             <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.AddNewCR}"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AddNewCRTitle}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                              </custom:CustomLabel>
@@ -399,7 +399,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.AddNewCR}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.AddNewCRTitle}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRNo}"
                                     TextColor="#58595B" />
@@ -413,7 +413,7 @@
                             BackgroundColor="#0996D4"
                             Command="{Binding AddNewCRCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.AddItem}" />
+                            Text="{x:Static ResourceManager:AppResources.Add}" />
                 </StackLayout>
 
             </yummy:PancakeView>

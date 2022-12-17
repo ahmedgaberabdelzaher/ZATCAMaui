@@ -95,12 +95,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         IsLoading = true;
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email)&&UploadedFiles!=null&&UploadedFiles.Count>0)
                     {
+                            if (String.IsNullOrWhiteSpace(SelectedCRNo)&&IsEntity)
+                            {
+                                MessageTxt = AppResources.RequiredData;
+                                IsShowMsgView = true;
+                                return;
+
+                            }
                                                  var model = new TawreedSubmitFormModel()
                         {
                             departmentTypeId = int.Parse(UserType),
                             description = Description,
                             email = Email,
-                            CrNumber=SelectedCRNo,
+                            CrNumber=String.IsNullOrWhiteSpace(SelectedCRNo)?"null": SelectedCRNo,
                             referenceNumber="e",
                             mobileNumber=MobileNo,
                             subject = Subject,
