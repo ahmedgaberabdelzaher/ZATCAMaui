@@ -250,7 +250,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.TransactionReception, ID="TransactionReception",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+                   Name=AppResources.TransactionReception, ID="TransactionReceptionView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
                 } ,
                  new MenuModel()
                 {
