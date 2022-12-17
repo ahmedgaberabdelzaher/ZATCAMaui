@@ -4368,6 +4368,10 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <None Include="Entity.png" />
+    <None Include="SelectedEntity.png" />
+    <None Include="SelectefTaxpayer.png" />
+    <None Include="Taxpayer.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BannerImage.png">
