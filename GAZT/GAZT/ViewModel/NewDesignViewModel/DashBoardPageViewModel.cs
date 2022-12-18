@@ -3727,8 +3727,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var Defdate = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
                     var date=  Preferences.Get("DateOfSurvey", Defdate);
                  var isSurveyDone=Preferences.Get("IsSurveyTaken", false);
-
-                    if (date== Defdate&& isSurveyDone)
+                    var UsedTin= Preferences.Get("TIN", "");
+                    if (date== Defdate&& isSurveyDone&&UsedTin== App.TP.Tin)
                     {
                         return;
                     }
@@ -3823,6 +3823,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     var DateOfSurvey = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
                     Preferences.Set("DateOfSurvey", DateOfSurvey);
                     Preferences.Set("IsSurveyTaken", true);
+                    Preferences.Set("TIN", App.TP.Tin);
                 }
             }
             ISEndSurvey = true;
