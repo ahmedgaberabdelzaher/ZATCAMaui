@@ -102,8 +102,9 @@
                                     HorizontalOptions="End"
                                     Source="zakat_copy"
                                     Style="{StaticResource SmallIcon}" />
+
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CopyCommand}"></TapGestureRecognizer>
+                                    <TapGestureRecognizer Command="{Binding CopyCommand}"/>
 
                                 </StackLayout.GestureRecognizers>
                             </StackLayout>

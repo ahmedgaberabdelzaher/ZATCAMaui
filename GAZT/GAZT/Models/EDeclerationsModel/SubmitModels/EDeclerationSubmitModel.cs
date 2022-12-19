@@ -134,7 +134,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _portName;
         public string portName { get { return _portName; } set { _portName = value; RaisePropertyChanged(); } }
 
-        int _tripeType;
+        int _tripeType =1;
         public int tripeType { get { return _tripeType; } set { _tripeType = value; RaisePropertyChanged(); } }
 
         string _flightNumber;

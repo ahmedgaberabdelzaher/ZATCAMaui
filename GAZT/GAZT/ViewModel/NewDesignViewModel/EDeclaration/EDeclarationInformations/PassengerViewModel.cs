@@ -23,18 +23,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     try
                     {
+                      
                         if (SubmitModel.travelerDeclaration.Isvisitor)
                         {
                             if (IsYesSelected)
                             {
                                 IsYesSelected = false;
-                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor Passport => 4
-                                
+                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor GCC=> 16
+
                             }
                             else
                             {
                                 IsYesSelected = true;
-                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor GCC => 16
+                                SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor Passport => 4
                             }
                         }
                        
@@ -55,11 +56,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                 return new Command(() =>
                 {
+                    
                     if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
                         IsLoading = true;
                         isNationalitySelected = true;
-                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        isItsSourceSelected = false;
+                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }) ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ESTNationalityLabel;
@@ -107,6 +110,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
                         IsLoading = true;
                         isItsSourceSelected = true;
+                        isNationalitySelected = false;
                         var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
@@ -152,7 +156,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return false;
             }
 
-            if(SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
+            if(SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.DateBirthValidation;

@@ -2973,7 +2973,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date of birth can&apos;t be in the future.
+        ///   Looks up a localized string similar to The date of birth cannot be in the present or the future.
         /// </summary>
         public static string DateBirthValidation {
             get {

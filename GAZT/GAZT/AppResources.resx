@@ -10086,7 +10086,7 @@ Zakat, Tax and Customs Authority
     <value>Total amount in writing</value>
   </data>
   <data name="DateBirthValidation" xml:space="preserve">
-    <value>Date of birth can't be in the future</value>
+    <value>The date of birth cannot be in the present or the future</value>
   </data>
   <data name="ReleaseDateValidation" xml:space="preserve">
     <value>Release Date can't be in the future</value>

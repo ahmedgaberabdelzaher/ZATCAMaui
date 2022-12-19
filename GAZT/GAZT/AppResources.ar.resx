@@ -10007,7 +10007,7 @@ info@zatca.gov.sa</value>
     <value>المبلغ الإجمالي كتابة</value>
   </data>
     <data name="DateBirthValidation" xml:space="preserve">
-    <value>لا يمكن أن يكون تاريخ الميلاد في المستقبل</value>
+    <value>لا يمكن أن يكون تاريخ الميلاد في الحاضر او المستقبل</value>
   </data>
   <data name="ReleaseDateValidation" xml:space="preserve">
     <value>لا يمكن أن يكون تاريخ الإصدار في المستقبل</value>

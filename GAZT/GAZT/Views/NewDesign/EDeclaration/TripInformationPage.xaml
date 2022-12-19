@@ -411,6 +411,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
@@ -467,8 +468,9 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    IsReadOnly="True"
                                     Keyboard="Text"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.portName}"
@@ -590,8 +592,9 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    IsReadOnly="True"
                                     Keyboard="Text"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"

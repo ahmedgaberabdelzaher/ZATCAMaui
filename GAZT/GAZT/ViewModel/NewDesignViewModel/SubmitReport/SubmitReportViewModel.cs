@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Acr.UserDialogs;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
@@ -226,6 +227,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
         }
 
+       public ICommand CopyCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Clipboard.SetTextAsync(ReportNumberResult);
+                    UserDialogs.Instance.Toast(AppResources.Copied, TimeSpan.FromSeconds(1));
+                });
+            }
+        }
+
         public ICommand GetCurrentLocationCommand
         {
             get
@@ -274,7 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             BottomSheetList = TempBottomSheetList;
                         else
                         {
-                            var result = BottomSheetList.Where(s => s.Name.Contains(value)).ToList() ?? new List<BottomSheetModel>();
+                            var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         }
 
@@ -479,6 +492,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     IsLoading = true;
                     isReportTypeSelected = true;
+                    isReportCategorySelected = false;
+                    isMissingFieldSelected = false;
+                    isRegionSelected = false;
                     var reportType = await this._submitReportServices.GetReportType();
                     var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
@@ -498,6 +514,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     isReportCategorySelected = true;
+                    isReportTypeSelected = false;
+                    isMissingFieldSelected = false;
+                    isRegionSelected = false;
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ReportCategory;
                     var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
@@ -515,6 +534,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     IsLoading = true;
                     isMissingFieldSelected = true;
+                    isReportCategorySelected = false;
+                    isReportTypeSelected = false;
+                    isRegionSelected = false;
                     var reportType = await this._submitReportServices.GetLookUps();
                     var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
@@ -535,6 +557,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     IsLoading = true;
                     isRegionSelected = true;
+                    isReportCategorySelected = false;
+                    isReportTypeSelected = false;
+                    isMissingFieldSelected = false;
                     if (RegionsList == null)
                         RegionsList = await this._submitReportServices.GetRegions();
 
@@ -555,7 +580,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(async () =>
                 {
                     IsLoading = true;
-
+                    isRegionSelected = false;
+                    isReportCategorySelected = false;
+                    isReportTypeSelected = false;
+                    isMissingFieldSelected = false;
                     if (CitysList == null)
                         CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
 

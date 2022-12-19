@@ -26,6 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     SubmitModel.travelerDeclaration.arrivingFromDepartingToName = string.Empty;
                     SubmitModel.travelerDeclaration.portName = string.Empty;
                     SubmitModel.travelerDeclaration.travelDate = DateTime.Now;
+                    SubmitModel.travelerDeclaration.flightNumber = string.Empty;
                     if (selectedTrip == (int)TripName.AirTrip)
                     {
                         TripCard.AirImage = "QSelected.png";
@@ -79,6 +80,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsLoading = true;
                     await Task.Delay(1000);
                     isComingGoingSelected = true;
+                    isPortSelected = false;
+                    isTravelPurposeSelected = false;
                     var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
@@ -97,6 +100,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     IsLoading = true;
                     isPortSelected = true;
+                    isComingGoingSelected = false;
+                    isTravelPurposeSelected = false;
                     var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
                     var ports = result?.Item1?.data?.ToList();
                     var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
@@ -117,6 +122,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     IsLoading = true;
                     isTravelPurposeSelected = true;
+                    isPortSelected = false;
+                    isComingGoingSelected = false;
                     var result = await DeclerationServices.GetTravelPurpose();
                     var travelPurposes = result?.Item1?.data?.ToList();
                     var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
