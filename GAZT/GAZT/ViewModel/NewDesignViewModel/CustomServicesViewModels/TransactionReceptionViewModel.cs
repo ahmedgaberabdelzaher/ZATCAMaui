@@ -128,6 +128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
                                 var refNo =result.result.referenceNumber;
                                 _navigationService.NavigateTo("/SuccessView",refNo.ToString());
+                                    clearData();
                             }
                      else
                             {
@@ -300,8 +301,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
+        public void clearData()
+        {
+            Email = Subject = Description = SelectedCRNo = "";
+            UploadedFiles = new ObservableCollection<ReportFileModel>();
+            UserType = "1";
+            IsShowBottomSheet = false;
+            IsAddNewCR = false;
+        }
 
+        public override ICommand BackCommand {
 
+            get
+            {
+                return new Command(() => {
+
+                    if (IsShowBottomSheet)
+                    {
+                        IsShowBottomSheet = false;
+                        return;
+                    }
+                    _navigationService.GoBack();
+                    clearData();
+                });
+            }
+        }
 
         public ICommand BackToHomeCommand
         {
@@ -309,6 +333,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(() =>
                 {
+                   
                     _navigationService.NavigateTo("/Home","0");
                 });
             }
