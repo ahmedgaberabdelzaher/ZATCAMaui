@@ -17,6 +17,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
             viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             viewModel.FeesCalculatorBody = new FeesCalculatorBody();
+
             if (!viewModel.IsArrivingPlaneSelected)
             {
                 viewModel.QFlow = 3;

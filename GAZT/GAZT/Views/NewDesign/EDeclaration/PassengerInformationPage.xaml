@@ -547,6 +547,7 @@
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
@@ -825,8 +826,9 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    IsReadOnly="True"
                                     Keyboard="Text"
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
                                     Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"

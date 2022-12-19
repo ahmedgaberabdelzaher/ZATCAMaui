@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using System.Threading.Tasks;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using Xamarin.Essentials;
+using Acr.UserDialogs;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -124,7 +125,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(async() =>
                 {
                     await Clipboard.SetTextAsync(travelerDeclarationResponse.ReferenceID);
-
+                    UserDialogs.Instance.Toast(AppResources.Copied, TimeSpan.FromSeconds(1));
                 });
             }
         }

@@ -209,6 +209,7 @@
                                 VerticalOptions="StartAndExpand">
                                 <custom:BorderlessEntry
                                     x:Name="reportTypeEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportType}"
@@ -260,6 +261,7 @@
                                 VerticalOptions="StartAndExpand">
                                 <custom:BorderlessEntry
                                     x:Name="reportCategoryEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportCategory}"
@@ -308,6 +310,7 @@
                                 VerticalOptions="StartAndExpand">
                                 <custom:BorderlessEntry
                                     x:Name="missingFieldEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportMissingField}"
@@ -391,6 +394,7 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportLocationPlaceholder}"
@@ -624,6 +628,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     x:Name="reportRegionEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZZZProvinceRegion}"
@@ -668,6 +673,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     x:Name="reportCityEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.ReportCity}"
@@ -787,6 +793,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <custom:BorderlessEntry
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.FDANewAttachment}"
@@ -837,6 +844,7 @@
                                                 OutlineCornerRadius="15"
                                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                                 <custom:BorderlessEntry
+                                                    InputTransparent="True"
                                                     IsReadOnly="True"
                                                     Keyboard="Text"
                                                     Style="{StaticResource DefaultEntry}"

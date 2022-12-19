@@ -276,16 +276,16 @@
                                 Margin="17,25,17,10"
                                 HeightRequest="33"
                                 HorizontalOptions="Start"
-                                Source="unselectedcitizien.png"
+                                Source="citizien.png" 
                                 VerticalOptions="Start"
                                 WidthRequest="30">
                                 <Image.Triggers>
-                                    <DataTrigger
+                                     <DataTrigger
                                         Binding="{Binding IdentityType}"
                                         TargetType="Image"
-                                        Value="1">
+                                        Value="2">
                                         <Setter Property="Source"
-                                                Value="citizien" />
+                                                Value="unselectedcitizien" />
                                     </DataTrigger>
                                 </Image.Triggers>
                             </Image>

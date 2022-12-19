@@ -6,7 +6,6 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:converter="clr-namespace:EGAZT.Converters"
-    xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
@@ -129,6 +128,10 @@
                                     HorizontalOptions="End"
                                     Source="zakat_copy"
                                     Style="{StaticResource SmallIcon}" />
+
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CopyCommand}"/>
+                                </StackLayout.GestureRecognizers>
 
                             </StackLayout>
 

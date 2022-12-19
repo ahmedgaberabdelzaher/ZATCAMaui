@@ -6,13 +6,10 @@
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:popuppages="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.PopUpPages"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -528,6 +525,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
                                     x:Name="typeItemEntry"
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
@@ -539,7 +537,7 @@
                                             </custom:BorderlessEntry.GestureRecognizers>
                                         </custom:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
 
@@ -575,7 +573,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
                                     x:Name="productNameEntry"
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                                IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -586,7 +585,7 @@
                                                 </custom:BorderlessEntry.GestureRecognizers>
                                             </custom:BorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
@@ -666,7 +665,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                                IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -677,7 +677,7 @@
                                                 </custom:BorderlessEntry.GestureRecognizers>
                                             </custom:BorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
@@ -711,7 +711,8 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                                IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -722,7 +723,7 @@
                                                 </custom:BorderlessEntry.GestureRecognizers>
                                             </custom:BorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
@@ -834,7 +835,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                                IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -845,7 +847,7 @@
                                                 </custom:BorderlessEntry.GestureRecognizers>
                                             </custom:BorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
@@ -878,7 +880,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                            IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -889,7 +892,7 @@
                                             </custom:BorderlessEntry.GestureRecognizers>
                                         </custom:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                 <StackLayout.GestureRecognizers>
@@ -996,7 +999,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                     <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                        IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1007,7 +1011,7 @@
                                         </custom:BorderlessEntry.GestureRecognizers>
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
                              <StackLayout.GestureRecognizers>
@@ -1069,7 +1073,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                        IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1080,7 +1085,7 @@
                                                 </custom:BorderlessEntry.GestureRecognizers>
                                             </custom:BorderlessEntry>
                                             <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                                <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
                                         </inputLayout:SfTextInputLayout>
 
@@ -1113,7 +1118,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                            IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1124,7 +1130,7 @@
                                             </custom:BorderlessEntry.GestureRecognizers>
                                         </custom:BorderlessEntry>
                                         <inputLayout:SfTextInputLayout.TrailingView>
-                                            <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                            <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
                                        <StackLayout.GestureRecognizers>
@@ -1229,7 +1235,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                     <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                        IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1240,7 +1247,7 @@
                                         </custom:BorderlessEntry.GestureRecognizers>
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
                                <StackLayout.GestureRecognizers>
@@ -1272,7 +1279,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                     <custom:BorderlessEntry
 
-                                    IsReadOnly="True"
+                                    InputTransparent="True"
+                                        IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
@@ -1283,7 +1291,7 @@
                                         </custom:BorderlessEntry.GestureRecognizers>
                                     </custom:BorderlessEntry>
                                     <inputLayout:SfTextInputLayout.TrailingView>
-                                        <Image Aspect="AspectFit" Source="arrowDropdown" />
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
                                     </inputLayout:SfTextInputLayout.TrailingView>
                                 </inputLayout:SfTextInputLayout>
                                        <StackLayout.GestureRecognizers>
@@ -1404,6 +1412,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}"
                                 VerticalOptions="StartAndExpand">
                                 <custom:BorderlessEntry
+                                    InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
@@ -1447,7 +1456,7 @@
                                                 OutlineCornerRadius="15"
                                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                                 <custom:BorderlessEntry
-                                                    IsReadOnly="True"
+                                                    InputTransparent="True"
                                                     Keyboard="Text"
                                                     Style="{StaticResource DefaultEntry}"
                                                     Text="{Binding fileFullName}"
