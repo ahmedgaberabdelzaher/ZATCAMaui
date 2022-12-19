@@ -24,11 +24,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public static Dictionary<string, object> QAnswereDictionary { get; set; }
 
 
-        ObservableCollection<BottomSheetModel> bottomSheetList;
+        ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
 
-        ObservableCollection<BottomSheetModel> tempBottomSheetList;
-        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
 
         bool isShowBottomSheet;
         public bool IsShowBottomSheet { get { return isShowBottomSheet; } set { isShowBottomSheet = value; RaisePropertyChanged(); } }

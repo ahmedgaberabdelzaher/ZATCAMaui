@@ -15,7 +15,7 @@ using Acr.UserDialogs;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
-	public partial class EDeclarationInformationsViewModel
+    public partial class EDeclarationInformationsViewModel
     {
 
         TravelerDeclarationResponse travelerDeclarationResponse;
@@ -31,13 +31,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    if(IsValidateContactInfo())
+                    if (IsValidateContactInfo())
                     {
-                     
+
                         AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
                         await PopupNavigation.Instance.PushAsync(poupWindow);
                     }
-                   
+
                 });
             }
         }
@@ -122,7 +122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     await Clipboard.SetTextAsync(travelerDeclarationResponse.ReferenceID);
                     UserDialogs.Instance.Toast(AppResources.Copied, TimeSpan.FromSeconds(1));
@@ -169,7 +169,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
             }
-            SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;    
+            SubmitModel.travelerDeclaration.phoneNumber = "+966" + SubmitModel.travelerDeclaration.phoneNumber;
             return true;
 
         }

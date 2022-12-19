@@ -164,11 +164,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             TobacoItems = null;
                         }
 
-                        var result = TobacoTypes.Select(c => new BottomSheetModel() { Id = c.typeID, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = TobacoTypes.Select(c => new BottomSheetModel() { Id = c.typeID, Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -405,11 +405,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             ProductSubTypes = null;
                         }
 
-                        var result = ProductTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = ProductTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -451,11 +451,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                                 ProductSubTypes = productSubTypes?.Item1.data;
                             }
 
-                            var result = ProductSubTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                            var result = ProductSubTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
                             HeaderTitle = AppResources.ProductName;
-                            TempBottomSheetList = BottomSheetList;
+                            TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                             IsLoading = false;
                         }
                     }
@@ -497,11 +497,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             MaterialTypes = materialTypes?.Item1.data;
                         }
 
-                        var result = MaterialTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = MaterialTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.MaterialType;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -542,11 +542,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             Purposes = purposes?.Item1.data;
                         }
 
-                        var result = Purposes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = Purposes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.Purpose;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -587,11 +587,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             Currencies = currencies?.Item1.data;
                         }
 
-                        var result = Currencies.Select(c => new BottomSheetModel() { Id = c.currencyCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = Currencies.Select(c => new BottomSheetModel() { Id = c.currencyCode.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.Purpose;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -632,11 +632,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             Units = units?.Item1.data;
                         }
 
-                        var result = Units.Select(c => new BottomSheetModel() { Id = c.id.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = Units.Select(c => new BottomSheetModel() { Id = c.id.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.units;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -729,11 +729,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                                 TobacoItems = topacoTypes?.Item1.data;
                             }
 
-                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
                             HeaderTitle = AppResources.ProductName;
-                            TempBottomSheetList = BottomSheetList;
+                            TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                             IsLoading = false;
                         }
                     }
@@ -812,7 +812,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         IsShowBottomSheet = false;
                         HeaderTitle = AppResources.eDeclaration;
                         SearchText = string.Empty;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -1200,18 +1200,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command<object>((e) =>
                 {
-                    if (e != null)
+                    try
                     {
-                        var entry = e as BorderlessEntry;
-                        var value = entry.Text.ToLower();
-                        if (string.IsNullOrWhiteSpace(value))
-                            BottomSheetList = TempBottomSheetList;
-                        else
+                        if (e != null)
                         {
-                            var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
-                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            var entry = e as BorderlessEntry;
+                            var value = entry.Text.ToLower();
+                            if (string.IsNullOrWhiteSpace(value))
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(TempBottomSheetList);
+                            else
+                            {
+                                var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+
+                    }
+
                 });
             }
         }
