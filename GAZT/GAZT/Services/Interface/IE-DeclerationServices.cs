@@ -25,6 +25,7 @@ namespace EGAZT.Services.Interface
         Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CoinTypesModel>>, bool, string>> GetCoinTypes();
         Task<Tuple<DATAPowerBaseResponse<InquireResponse>, bool, string>> GetInquireDecleration(string referenceNumber, string travelID);
+        Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>, bool, string>> GetCountriesCode();
     }
        
  }

@@ -27,6 +27,11 @@ namespace EGAZT.Views.NewDesign.EDeclaration
 
             base.OnAppearing();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.BackMethod();
+            return true;
+        }
     }
 }
 

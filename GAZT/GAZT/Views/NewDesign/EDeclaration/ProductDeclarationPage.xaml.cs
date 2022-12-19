@@ -28,6 +28,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             }
             viewModel.SetQuestion();
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.BackMethod();
+            return true;
+        }
     }
 }
 

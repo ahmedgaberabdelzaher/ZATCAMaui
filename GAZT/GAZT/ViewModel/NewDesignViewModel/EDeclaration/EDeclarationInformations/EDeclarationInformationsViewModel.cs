@@ -11,6 +11,7 @@ using EGAZT.Services.Interface;
 using System.Linq.Expressions;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
+using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -177,6 +178,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isTravelPurposeSelected = false;
                             HeaderTitle = AppResources.TripInformation;
                         }
+                        else
+                        {
+                            SubmitModel.travelerDeclaration.CountryCode =$"+{Regex.Replace(e.Name, @"[^\d]", "")}";
+                            HeaderTitle = AppResources.ContactInformation;
+                        }
 
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
@@ -212,7 +218,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command( async() =>
                 {
-                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, 4);
+                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, SubmitModel.travelerDeclaration.CountryCode.Length);
                     await PopupNavigation.Instance.PopAsync(true);
 
                 });
@@ -225,23 +231,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(() =>
                 {
-                    if (IsShowBottomSheet)
-                    {
-                        IsShowBottomSheet = false;
-                        if (isPassengerPage)
-                            HeaderTitle = AppResources.PassengerInformation;
-
-                        else if (isTripPage)
-                            HeaderTitle = AppResources.PassengerInformation;
-
-                        else 
-                            HeaderTitle = AppResources.ContactInformation;
-
-
-                        return;
-                    }
-                  
-                    _navigationService.GoBack();
+                    BackMethod();
 
                 });
             }
@@ -258,7 +248,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        public void BackMethod()
+        {
+            if (IsShowBottomSheet)
+            {
+                IsShowBottomSheet = false;
+                if (isPassengerPage)
+                    HeaderTitle = AppResources.PassengerInformation;
 
+                else if (isTripPage)
+                    HeaderTitle = AppResources.PassengerInformation;
+
+                else
+                    HeaderTitle = AppResources.ContactInformation;
+
+
+                return;
+            }
+
+            _navigationService.GoBack();
+        }
 
         #endregion
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)

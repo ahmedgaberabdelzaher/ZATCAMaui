@@ -289,7 +289,19 @@
                                     Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Label Text="+966" />
+                                    <!--<Label Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />-->
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                        FontSize="Small">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />
+                                                <Span Text=" | " />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}"/>
+                                        </custom:CustomLabel.GestureRecognizers>
+                                    </custom:CustomLabel>
                                 </inputLayout:SfTextInputLayout.LeadingView>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -387,6 +399,9 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

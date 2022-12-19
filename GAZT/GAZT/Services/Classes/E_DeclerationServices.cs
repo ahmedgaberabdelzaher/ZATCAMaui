@@ -66,6 +66,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CountryModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/countries").ConfigureAwait(false);
             return response;
         }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>, bool, string>> GetCountriesCode()
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/phone-country-codes").ConfigureAwait(false);
+            return response;
+        }
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetTravelPurpose()
         {
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<PortsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/travel-purposes").ConfigureAwait(false);
