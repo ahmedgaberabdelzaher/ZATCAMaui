@@ -99,11 +99,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                     /* new MenuModel()
                 {
                    Name=AppResources.RateUs, ID="RateUs",ImageSource="RateUS"
-                },*/
+                },
                  new MenuModel()
                 {
                    Name=AppResources.CustomerServices, ID=App.ContactUsPageView,ImageSource="CustomerService"
-                },
+                },*/
                 new MenuModel()
                 {
                    Name=AppResources.PrivacyandPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"

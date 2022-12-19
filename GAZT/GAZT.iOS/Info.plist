@@ -95,8 +95,8 @@
 	<key>NSAppleMusicUsageDescription </key>
 	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.39</string>
+	<string>1.0.40</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.70</string>
+	<string>1.0.71</string>
 </dict>
 </plist>

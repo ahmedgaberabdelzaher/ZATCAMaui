@@ -58,11 +58,12 @@
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
-    <AndroidSigningKeyStore>/Users/ravikiran.pantangi/Desktop/ZATCA/GAZT Android KeystoreFile/E-GAZT.keystore</AndroidSigningKeyStore>
+    <AndroidSigningKeyStore>/Users/youxl/Zatca/E-GAZT.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>Pm@dmin**</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>e-gazt</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
     <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidKeyStore>True</AndroidKeyStore>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
