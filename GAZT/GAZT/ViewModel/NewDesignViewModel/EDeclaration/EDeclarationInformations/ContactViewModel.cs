@@ -129,17 +129,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
-
-        public ICommand OpenTermsLinkCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-
-                });
-            }
-        }
         private bool IsValidateContactInfo()
         {
 

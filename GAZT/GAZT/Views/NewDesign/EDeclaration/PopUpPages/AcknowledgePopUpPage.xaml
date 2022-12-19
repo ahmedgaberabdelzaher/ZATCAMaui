@@ -135,7 +135,7 @@
                     </Frame>
                     <!--#endregion Frame Contains Image and Text-->
 
-                    <!--  HyberLink Label  -->
+                      <!--HyberLink Label  
                     <Label
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="14"
@@ -151,7 +151,7 @@
                             <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
                         </Label.GestureRecognizers>
 
-                    </Label>
+                    </Label>-->
 
                     <!--  Check Box  -->
                     <StackLayout
