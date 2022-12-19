@@ -77,11 +77,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         ObservableCollection<ReportFileModel> reportUloadedFiles = new ObservableCollection<ReportFileModel>();
         public ObservableCollection<ReportFileModel> ReportUloadedFiles { get { return reportUloadedFiles; } set { reportUloadedFiles = value; RaisePropertyChanged(); } }
 
-        ObservableCollection<BottomSheetModel> bottomSheetList;
+        ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
 
-        ObservableCollection<BottomSheetModel> tempBottomSheetList;
-        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get { return tempBottomSheetList; } set { tempBottomSheetList = value; RaisePropertyChanged(); } }
+        public ObservableCollection<BottomSheetModel> TempBottomSheetList { get; set; } = new ObservableCollection<BottomSheetModel>();
 
         private bool isReportTypeSelected = false;
         private bool isReportCategorySelected = false;
@@ -278,19 +277,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command<object>((e) =>
                 {
-                    if (e != null)
+                    try
                     {
-
-                        var entry = e as BorderlessEntry;
-                        var value = entry.Text.ToLower();
-                        if (string.IsNullOrWhiteSpace(value))
-                            BottomSheetList = TempBottomSheetList;
-                        else
+                        if (e != null)
                         {
-                            var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
-                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            var entry = e as BorderlessEntry;
+                            var value = entry.Text.ToLower();
+                            if (string.IsNullOrWhiteSpace(value))
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(TempBottomSheetList);
+                            else
+                            {
+                                var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            }
                         }
-
+                    }
+                    catch (Exception ex)
+                    {
 
                     }
                 });
@@ -468,7 +471,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         IsShowBottomSheet = false;
                         HeaderTitle = AppResources.Submitareport;
                         SearchText = string.Empty;
-                        TempBottomSheetList = BottomSheetList;
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -496,11 +498,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     isMissingFieldSelected = false;
                     isRegionSelected = false;
                     var reportType = await this._submitReportServices.GetReportType();
-                    var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName }).ToList() ?? new List<BottomSheetModel>();
+                    var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ReportType;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
                 });
 
@@ -519,9 +521,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     isRegionSelected = false;
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ReportCategory;
-                    var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title }).ToList() ?? new List<BottomSheetModel>();
+                    var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
 
                 });
             }
@@ -538,10 +540,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     isReportTypeSelected = false;
                     isRegionSelected = false;
                     var reportType = await this._submitReportServices.GetLookUps();
-                    var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName }).ToList() ?? new List<BottomSheetModel>();
+                    var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     HeaderTitle = AppResources.ReportMissingField;
                     IsLoading = false;
 
@@ -563,11 +565,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     if (RegionsList == null)
                         RegionsList = await this._submitReportServices.GetRegions();
 
-                    var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZProvinceRegion;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
                 });
             }
@@ -587,11 +589,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     if (CitysList == null)
                         CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
 
-                    var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ReportCity;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
 
                 });

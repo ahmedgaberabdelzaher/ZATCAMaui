@@ -52,9 +52,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
-                            //SubmitModel.travelerDeclaration.NationalityName = ;
-                            //SubmitModel.travelerDeclaration.travelIssuerName = ;
-
+                 
                             if(SubmitModel.travelerDeclaration.travelID !=null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
@@ -70,8 +68,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else // Visitor
                         {
-                            SubmitModel.travelerDeclaration.gender = 1; // Male
-                            SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
+                            //Set Default value for first time only
+                            if(SubmitModel.travelerDeclaration.gender == 0)
+                                SubmitModel.travelerDeclaration.gender = 1; // Male
+
+                            //Set Default value for first time only
+                            if (SubmitModel.travelerDeclaration.travelDocumentType == 0)
+                                SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
                         }
                        
                         HeaderTitle = AppResources.PassengerInformation;
@@ -80,7 +83,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
                         HeaderTitle = AppResources.TripInformation;
                         IsArrivingPlaneSelected = SubmitModel.travelerDeclaration.travelingType == 1 ? true : false;
-                        SubmitModel.travelerDeclaration.tripeType = 1; // Air Trip
                     }
                     else if(isContactPage)
                     {
@@ -104,18 +106,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command<object>((e) =>
                 {
-                    if (e != null)
+                    try
                     {
-                        var entry = e as BorderlessEntry;
-                        var value = entry.Text.ToLower();
-                        if (string.IsNullOrWhiteSpace(value))
-                            BottomSheetList = TempBottomSheetList;
-                        else
+                        if (e != null)
                         {
-                            var result = BottomSheetList.Where(s => s.Name.Contains(value)).ToList() ?? new List<BottomSheetModel>();
-                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            var entry = e as BorderlessEntry;
+                            var value = entry.Text.ToLower();
+                            if (string.IsNullOrWhiteSpace(value))
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(TempBottomSheetList);
+                            else
+                            {
+                                var result = TempBottomSheetList.Where(s => s.Name.ToLower().Contains(value));
+                                BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            }
                         }
                     }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 });
             }
         }
@@ -170,7 +180,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
-                        TempBottomSheetList = BottomSheetList;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
                     catch (Exception ex)
@@ -193,6 +203,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     _navigationService.NavigateTo("/Home", "0");
                  
+                });
+            }
+        }
+        public ICommand CloseAcknowledgePopUpPageCommand
+        {
+            get
+            {
+                return new Command( async() =>
+                {
+                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, 4);
+                    await PopupNavigation.Instance.PopAsync(true);
+
                 });
             }
         }

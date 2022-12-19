@@ -82,11 +82,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     isComingGoingSelected = true;
                     isPortSelected = false;
                     isTravelPurposeSelected = false;
-                    var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
                 });
             }
@@ -104,11 +104,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     isTravelPurposeSelected = false;
                     var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
                     var ports = result?.Item1?.data?.ToList();
-                    var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.Port;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
                 });
             }
@@ -126,11 +126,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     isComingGoingSelected = false;
                     var result = await DeclerationServices.GetTravelPurpose();
                     var travelPurposes = result?.Item1?.data?.ToList();
-                    var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList() ?? new List<BottomSheetModel>();
+                    var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.TravelPurpose;
-                    TempBottomSheetList = BottomSheetList;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     IsLoading = false;
                 });
             }

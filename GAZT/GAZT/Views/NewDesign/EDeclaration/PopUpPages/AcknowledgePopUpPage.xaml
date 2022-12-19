@@ -42,15 +42,33 @@
 
                 <StackLayout>
 
-                    <!--  Acknowledge Header Label  -->
-                    <custom:CustomLabel
-                        HorizontalOptions="StartAndExpand"
-                        FontSize="28"
-                        Margin="0,0,0,20"
-                        TextColor="#232323" 
-                        Text="{x:Static ResourceManager:AppResources.DeclarationAcknowledge}"
-                        VerticalOptions="Start" />
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="0,0,0,20"
+                                 HorizontalOptions="FillAndExpand"
+                                 VerticalOptions="StartAndExpand">
 
+                        <!--  Acknowledge Header Label  -->
+                        <custom:CustomLabel
+                            HorizontalOptions="Start"
+                            FontSize="28"
+                            TextColor="#232323"
+                            Text="{x:Static ResourceManager:AppResources.DeclarationAcknowledge}"
+                            VerticalOptions="StartAndExpand" />
+
+                         <!--  Close Image  -->
+                        <Image
+                            HorizontalOptions="EndAndExpand"
+                            Source="darkClose.png"
+                            WidthRequest="20"
+                            HeightRequest="20"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="Center" />
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CloseAcknowledgePopUpPageCommand}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    
                     <!--#region Frame Contains Image and Text-->
                     <Frame HasShadow="False"
                            Padding="25"
@@ -117,7 +135,7 @@
                     </Frame>
                     <!--#endregion Frame Contains Image and Text-->
 
-                    <!--  HyberLink Label  -->
+                      <!--HyberLink Label  
                     <Label
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="14"
@@ -133,7 +151,7 @@
                             <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
                         </Label.GestureRecognizers>
 
-                    </Label>
+                    </Label>-->
 
                     <!--  Check Box  -->
                     <StackLayout
