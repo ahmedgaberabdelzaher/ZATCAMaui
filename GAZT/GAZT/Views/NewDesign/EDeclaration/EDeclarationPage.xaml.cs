@@ -17,6 +17,12 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel.ServiceType = 0;
             viewModel.IdentityType = 0;
         }
+        protected override void OnDisappearing()
+        {
+            viewModel.ReferenceNumber = string.Empty;
+            viewModel.IDResidencePassportNumber = string.Empty;
+            base.OnDisappearing();
+        }
     }
 }
 

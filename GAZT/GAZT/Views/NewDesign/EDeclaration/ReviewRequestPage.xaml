@@ -198,7 +198,7 @@
                                         Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}"
                                         VerticalOptions="Start" />
 
-                                    <!--  Reference number vallue Label  -->
+                                    <!--  Reference number value Label  -->
                                     <custom:CustomLabel
                                         HorizontalOptions="Start"
                                         FontSize="14"
