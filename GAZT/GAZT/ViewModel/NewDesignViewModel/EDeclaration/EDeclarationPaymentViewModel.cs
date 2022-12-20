@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Views;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using EGAZT.Converters;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -21,6 +22,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; RaisePropertyChanged(); } }
 
         public PaymentTypes SelctedPaymentType { get; set; }
+
+        string priceText;
+        public string PriceText { get { return priceText; } set { priceText = value; RaisePropertyChanged(); } }
 
         public ICommand PaymentCardCommand
         {
@@ -83,6 +87,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         public EDeclarationPaymentViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
+
         }
     }
 }

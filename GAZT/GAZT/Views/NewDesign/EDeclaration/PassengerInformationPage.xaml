@@ -937,7 +937,6 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
-                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 

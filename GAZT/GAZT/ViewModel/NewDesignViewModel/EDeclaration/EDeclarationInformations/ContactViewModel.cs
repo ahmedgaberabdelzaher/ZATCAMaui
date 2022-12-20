@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using Xamarin.Essentials;
 using Acr.UserDialogs;
+using EGAZT.Converters;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -24,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
+       
 
         public ICommand GoToSuccessCommand
         {
@@ -60,6 +62,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             {
                                 IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
                                     false;
+
                             }
                         }
                         return true;

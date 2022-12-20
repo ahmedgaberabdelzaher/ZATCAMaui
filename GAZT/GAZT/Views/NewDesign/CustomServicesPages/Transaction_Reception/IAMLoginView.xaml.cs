@@ -20,13 +20,9 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception
 
         void WebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
-            if (e.Url.Contains("Home"))
+            if (e.Url.ToLower().Contains("result?"))
             {
-              //  GetCookies(e.Url);
-              var coo=  IAMWebView.Cookies;
-              var coocies=  coo.GetCookies(new Uri(e.Url));
-                var token = coocies["Token"];
-               // string token = coo[0];
+                viewModel.GetIAMToken(e.Url);
             }
         }
         private async void GetCookies(string url)

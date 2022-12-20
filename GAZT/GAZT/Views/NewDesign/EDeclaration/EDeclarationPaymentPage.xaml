@@ -186,7 +186,7 @@
 
                                         <!--  Total amount in words Label  -->
                                         <custom:CustomLabel
-                                            IsVisible="false" 
+                                           
                                             HorizontalOptions="Start"
                                             FontSize="14"
                                             LineBreakMode="WordWrap"
@@ -197,14 +197,14 @@
 
                                         <!--  Total amount value in words Label  -->
                                         <custom:CustomLabel
-                                            IsVisible="false" 
+                                            
                                             HorizontalOptions="Start"
                                             FontSize="14"
                                             LineBreakMode="WordWrap"
                                             TextColor="#002447"
                                             Grid.Column="1"
                                             Grid.Row="1"
-                                            Text="خمسون ريالآ سعوديا فقط لاغير"
+                                            Text="{Binding PriceText}"
                                             VerticalOptions="Start" />
 
                                     </Grid>

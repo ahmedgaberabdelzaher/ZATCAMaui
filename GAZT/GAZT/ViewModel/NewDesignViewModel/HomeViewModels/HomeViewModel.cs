@@ -254,7 +254,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.TransactionReception, ID="TransactionReceptionView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+                   Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
                 } ,
                  new MenuModel()
                 {
@@ -351,6 +351,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             break;
                         case "CustomFeesCalculator":
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.CustomFeesCalculator);
+                            break;
+                        case "IAMLoginView":
+                            _navigationService.NavigateTo("IAMLoginView", 2);
                             break;
                         default:
                   _navigationService.NavigateTo(menuItem.ID);
