@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Converters;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using Xamarin.Forms;
@@ -14,6 +15,8 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             InitializeComponent();
             viewModel = App.Locator.EDeclarationPaymentViewModel;
             viewModel.TravelerDeclarationResponse = travelerDeclarationResponse;
+            var moneyToWordConverter = new NumberToWord((decimal)travelerDeclarationResponse.totalFees, new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia));
+            viewModel.PriceText = App.IsArabic ? moneyToWordConverter.ConvertToArabic() : moneyToWordConverter.ConvertToEnglish();
             BindingContext = viewModel;
         }
     }

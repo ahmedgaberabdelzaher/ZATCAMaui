@@ -9809,7 +9809,7 @@ info@zatca.gov.sa</value>
     <value>صيغة الملف PDF أقصى حجم 2MB</value>
   </data>
   <data name="UserType" xml:space="preserve">
-    <value>نوع المستخدم</value>
+    <value>نوع الجهة </value>
   </data>
   <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
     <value>تم إرسال طلبك بنجاح</value>
@@ -9911,7 +9911,7 @@ info@zatca.gov.sa</value>
     <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
-    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ اطلع على القائمة</value>
+    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ </value>
   </data>
   <data name="MaterialType" xml:space="preserve">
     <value>نوع المادة</value>
@@ -10053,5 +10053,23 @@ info@zatca.gov.sa</value>
   </data>
    <data name="AddNewCRTitle" xml:space="preserve">
     <value>اضافة سجل تجاري جديد</value> 
+  </data>
+  <data name="Viewlist" xml:space="preserve">
+    <value>اطلع على القائمة</value> 
+  </data>
+    <data name="ZAKATYDesc" xml:space="preserve">
+    <value>(منصة زكاتي عبارة عن بيئة زكوية متوازنة و متكاملة تتيح للأفراد إمكانية حساب الزكاة المستحقة  من خلال عدة بنود والقدرة على  أداء زكاتهم بشكل سلس وميسر من خلال خدمة قنوات الدفع الإلكترونية لتصل لمستحقيها بشكل مباشر في الضمان الاجتماعي)</value> 
+  </data>
+  <data name="GoToZakatyPortal" xml:space="preserve">
+    <value>الانتقال إلى بوابة زكاتي</value> 
+  </data>
+  <data name="DownloadApp" xml:space="preserve">
+    <value>لتحميل التطبيق</value> 
+  </data>
+  <data name="About Zakaty" xml:space="preserve">
+    <value>عن زكاتي</value> 
+  </data>
+  <data name="Zakaty" xml:space="preserve">
+    <value> زكاتي</value> 
   </data>
 </root>

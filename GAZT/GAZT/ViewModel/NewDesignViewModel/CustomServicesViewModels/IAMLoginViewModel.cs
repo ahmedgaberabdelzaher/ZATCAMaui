@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web;
 using System.Windows.Input;
 using EGAZT.AppConfigurations;
+using EGAZT.Converters;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration;
+using EGAZT.Views.NewDesign.MyReports;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using ZXing.Aztec.Internal;
@@ -14,6 +19,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string iAMWbViewSrc;
         public string IAMWbViewSrc { get { return iAMWbViewSrc; } set { iAMWbViewSrc = value; RaisePropertyChanged(); } }
         public int CommingFrom { get; set; }
+
+        string priceText;
+        public string PriceText { get { return priceText; } set { priceText = value; RaisePropertyChanged(); } }
 
 
         public IAMLoginViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
@@ -27,26 +35,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(() =>
                 {
-                   // IAMWbViewSrc = "http://172.25.39.60:8443/Home/Result?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
+
+                    double no = 22.5;
+
+                    var moneyToWordConverter = new NumberToWord((decimal)no, new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia));
+                    PriceText = App.IsArabic ? moneyToWordConverter.ConvertToArabic() : moneyToWordConverter.ConvertToEnglish();
+                    // IAMWbViewSrc = "http://172.25.39.60:8443/Home/Result?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
                     if (IAMWbViewSrc.Contains("token"))
                     {
-                        string token = HttpUtility.ParseQueryString(new Uri(IAMWbViewSrc).Query).Get("token");
-                       
-                         var payload=GetTokenData(token);
-                        if (CommingFrom==1)
-                        {
-                            _navigationService.NavigateTo("NewDeclarationPage", payload);
-                        }
-                        else
-                        {
-                            _navigationService.NavigateTo("TransactionReceptionView", payload);
-                        }
-                       
-                        IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
+                        GetIAMToken(IAMWbViewSrc);
 
                     }
                 });
             }
+        }
+
+        public void GetIAMToken(string url)
+        {
+            string token = HttpUtility.ParseQueryString(new Uri(url).Query).Get("token");
+
+            // var payload = GetTokenData(token);
+            var navigation = Application.Current.MainPage.Navigation;
+            var currentPage = navigation.NavigationStack.LastOrDefault();
+           
+            if (CommingFrom == 1)
+            {
+                navigation.InsertPageBefore(new NewDeclarationPage(token), currentPage);
+                _navigationService.GoBack();
+               // _navigationService.NavigateTo("NewDeclarationPage", token);
+            }
+            else
+            {
+                navigation.InsertPageBefore(new TransactionReceptionView(token), currentPage);
+                _navigationService.GoBack();
+             //   _navigationService.NavigateTo("TransactionReceptionView", token);
+            }
+
+          //  IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
         }
 
         private static IDictionary<string, object> GetTokenData(string token)

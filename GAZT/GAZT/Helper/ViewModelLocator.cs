@@ -169,6 +169,8 @@ using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using EGAZT.Helper;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
+using EGAZT.Views.NewDesign.Zakaty;
 
 namespace EGAZT
 {
@@ -432,6 +434,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<EDeclerationViewModel>();
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             SimpleIoc.Default.Register<StateManager>();
+            SimpleIoc.Default.Register<AboutZakatyViewModel>();
             #endregion
         }
 
@@ -2926,7 +2929,7 @@ namespace EGAZT
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
-
+            navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
             #endregion
 
             return navigationService;
@@ -3179,6 +3182,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<CustomsPaymentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public AboutZakatyViewModel AboutZakatyViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AboutZakatyViewModel>();
                 }
                 catch (Exception ex)
                 {

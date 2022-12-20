@@ -16,6 +16,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using EGAZT.Helper;
 using EGAZT.Controls;
+using EGAZT.Converters;
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
     public partial class EDeclarationInformationsViewModel
@@ -27,6 +28,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
+       
 
         public ICommand GoToSuccessCommand
         {
@@ -51,7 +53,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    //IsLoading = true;
+                    IsLoading = true;
                     isNationalitySelected = false;
                     isItsSourceSelected = false;
                     isPortSelected = false;
@@ -68,7 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    //IsLoading = false;
+                    IsLoading = false;
                 });
             }
         }
@@ -92,6 +94,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             {
                                 IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
                                     false;
+
                             }
                         }
                         return true;

@@ -480,12 +480,42 @@
                                                 <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}"></Setter>
                                             </DataTrigger>
                                             <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding QFlow}" Value="4">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"></Setter>
+                                            <!--  <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"></Setter> -->
+         <Setter Property="IsVisible" Value="false"></Setter> 
                                             </DataTrigger>
                                         </custom:CustomLabel.Triggers>
 
                                     </custom:CustomLabel>
+                                    <!-- Hint With Two Line -->
+                                    <StackLayout IsVisible="false">
+                                         <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding QFlow}" Value="4">
+                                            <!--  <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"></Setter> -->
+         <Setter Property="IsVisible" Value="true"></Setter> 
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
+                                        <!--Hint Label-->
+                                         <custom:CustomLabel  
+                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="12"
+                                    LineSpacing="1"  Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
+                                    TextColor="#999999"
+                                    >
+                                   </custom:CustomLabel>
+                                        <!-- View List Label -->
+                                                                                 <custom:CustomLabel 
+                                    HorizontalOptions="StartAndExpand" TextDecorations="Underline" Text="{x:Static ResourceManager:AppResources.Viewlist}"
+                                    FontSize="12"
+                                    LineSpacing="1"
+                                    TextColor="#999999"
+                                    >
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}"></TapGestureRecognizer>
 
+                                            </custom:CustomLabel.GestureRecognizers>
+                                   </custom:CustomLabel>
+
+                                    </StackLayout>
                                 </StackLayout>
 
                             </Frame>

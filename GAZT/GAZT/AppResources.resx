@@ -9888,7 +9888,7 @@ Zakat, Tax and Customs Authority
     <value>PDF file format max size 2MB</value>
   </data>
     <data name="UserType" xml:space="preserve">
-    <value>User Type</value>
+    <value>Department Type</value>
   </data>
     <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
     <value>Your request has been sent successfully</value>
@@ -9990,7 +9990,7 @@ Zakat, Tax and Customs Authority
     <value>Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?</value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
-    <value>Examples – Aircraft, medicines, pets, etc. View List</value>
+    <value>Examples – Aircraft, medicines, pets, etc.</value>
   </data>
     <data name="MaterialType" xml:space="preserve">
     <value>Material Type</value>
@@ -10129,5 +10129,23 @@ Zakat, Tax and Customs Authority
   </data>
      <data name="AddNewCRTitle" xml:space="preserve">
     <value>Add New CR</value> 
+  </data>
+  <data name="Viewlist" xml:space="preserve">
+    <value>View list</value> 
+  </data>
+  <data name="ZAKATYDesc" xml:space="preserve">
+    <value>Zakaty Platform is a well-balanced and integrated zakat environment that enables individuals to calculate the amount of zakat due on a variety of items as well as to pay zakat efficiently and conveniently through electronic payment channels to those who are specifically entitled to social security.</value> 
+  </data>
+    <data name="GoToZakatyPortal" xml:space="preserve">
+    <value>Go To Zakaty Portal</value> 
+  </data>
+  <data name="DownloadApp" xml:space="preserve">
+    <value>To download the app</value> 
+  </data>
+  <data name="About Zakaty" xml:space="preserve">
+    <value>About Zakaty</value> 
+  </data>
+  <data name="Zakaty" xml:space="preserve">
+    <value>Zakaty</value> 
   </data>
 </root>

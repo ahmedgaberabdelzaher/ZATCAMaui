@@ -17,6 +17,7 @@ using Xamarin.Essentials;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using Xamarin.Forms;
 using GAZT;
+using EGAZT.AppConfigurations;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -200,8 +201,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
                             return;
                         }
-                        if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
-                        {
+                     //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
+                            if (IsArrivingPlaneSelected && TotalValue < 3000 && QFlow == 2&&IsYesSelected)
+                            {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
                             return;
@@ -1096,7 +1098,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             if (CheckProductDataNotNull())
             {
-
+                if (TotalValue < 3000 )
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
+                    return;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Product()
                 {
                     count = Quantity.Value,
@@ -1228,6 +1235,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
+        public ICommand GoToProhibitedGoodsLstURlCommand
+        {
+
+            get
+            {
+                return new Command(() =>
+                {
+                    try
+                    {
+                        Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetProhibitedGoodsLstURl());
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                });
+            }
+        }
+
 
         #endregion
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
