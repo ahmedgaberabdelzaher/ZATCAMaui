@@ -75,10 +75,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(async _ =>
+                return new Command( _ =>
                 {
-                    IsLoading = true;
-                    await Task.Delay(1000);
                     isNationalitySelected = false;
                     isItsSourceSelected = false;
                     isPortSelected = false;
@@ -89,7 +87,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
                 });
             }
         }

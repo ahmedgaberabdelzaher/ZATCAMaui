@@ -111,7 +111,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        IsLoading = true;
                         isNationalitySelected = false;
                         isItsSourceSelected = true;
                         isPortSelected = false;
@@ -122,7 +121,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ItsSource;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                        IsLoading = false;
 
                     }
                 });

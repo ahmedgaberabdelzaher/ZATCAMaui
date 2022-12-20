@@ -32,6 +32,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.PopUpPages
         // Invoked when background is clicked
         protected override bool OnBackgroundClicked()
         {
+            viewModel.SubmitModel.travelerDeclaration.phoneNumber = viewModel.SubmitModel.travelerDeclaration.phoneNumber.Remove(0, viewModel.SubmitModel.travelerDeclaration.CountryCode.Length);
             // Return false if you don't want to close this popup page when a background of the popup page is clicked
             return true;
         }

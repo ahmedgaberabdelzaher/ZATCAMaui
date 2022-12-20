@@ -290,18 +290,27 @@
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
                                     <!--<Label Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />-->
-                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                        FontSize="Small">
-                                        <custom:CustomLabel.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />
-                                                <Span Text=" | " />
-                                            </FormattedString>
-                                        </custom:CustomLabel.FormattedText>
-                                        <custom:CustomLabel.GestureRecognizers>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Padding="2"
+                                                 Spacing="0">
+
+                                        <custom:CustomLabel
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                FontSize="14"
+                                                TextColor="#002447"
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"/>
+                                        <BoxView 
+                                            VerticalOptions="Fill"
+                                            WidthRequest="2"
+                                            HorizontalOptions="Center"
+                                            BackgroundColor="#EBEBEB"/>
+
+                                         <StackLayout.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}"/>
-                                        </custom:CustomLabel.GestureRecognizers>
-                                    </custom:CustomLabel>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
                                 </inputLayout:SfTextInputLayout.LeadingView>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>

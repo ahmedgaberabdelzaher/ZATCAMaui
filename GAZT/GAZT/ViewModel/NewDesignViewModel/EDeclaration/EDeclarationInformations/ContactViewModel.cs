@@ -14,6 +14,7 @@ using Xamarin.Essentials;
 using Acr.UserDialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
+using EGAZT.Helper;
 using EGAZT.Controls;
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -43,26 +44,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        
         public ICommand GetCountryCodeCommand
         {
             get
             {
-                return new Command(async _ =>
+                return new Command(_ =>
                 {
-                    IsLoading = true;
+                    //IsLoading = true;
                     isNationalitySelected = false;
                     isItsSourceSelected = false;
                     isPortSelected = false;
                     isComingGoingSelected = false;
                     isTravelPurposeSelected = false;
-                    var result = await DeclerationServices.GetCountriesCode();
-                    var countryCode = result?.Item1?.data?.ToList();
-                    var bottom = countryCode?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.pohneCountryCode });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>();
+                    foreach (var item in CountryCodeHelper.Countries)
+                    {
+                        BottomSheetList.Add(new BottomSheetModel()
+                        {
+                           Name = $"({item[1]}) {item[0]} {CountryCodeHelper.IsoCountryCodeToFlagEmoji(item[2])}"
+                        });
+                    }
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                    //IsLoading = false;
                 });
             }
         }
