@@ -43,6 +43,10 @@ namespace EGAZT.AppConfigurations
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate";
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
+        public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
+        public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
+        public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
+
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;

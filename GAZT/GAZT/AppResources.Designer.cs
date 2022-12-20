@@ -58,6 +58,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About Zakaty.
+        /// </summary>
+        public static string About_Zakaty {
+            get {
+                return ResourceManager.GetString("About Zakaty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About ZATCA.
         /// </summary>
         public static string AboutZATCA {
@@ -3311,6 +3320,15 @@ namespace EGAZT {
         public static string DownloadAcknowlwdgement {
             get {
                 return ResourceManager.GetString("DownloadAcknowlwdgement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To download the app.
+        /// </summary>
+        public static string DownloadApp {
+            get {
+                return ResourceManager.GetString("DownloadApp", resourceCulture);
             }
         }
         
@@ -7010,6 +7028,15 @@ namespace EGAZT {
         public static string GoingTo {
             get {
                 return ResourceManager.GetString("GoingTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go To Zakaty Portal.
+        /// </summary>
+        public static string GoToZakatyPortal {
+            get {
+                return ResourceManager.GetString("GoToZakatyPortal", resourceCulture);
             }
         }
         
@@ -18208,6 +18235,24 @@ namespace EGAZT {
         public static string ZAKATUpdate {
             get {
                 return ResourceManager.GetString("ZAKATUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakaty.
+        /// </summary>
+        public static string Zakaty {
+            get {
+                return ResourceManager.GetString("Zakaty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zakaty Platform is a well-balanced and integrated zakat environment that enables individuals to calculate the amount of zakat due on a variety of items as well as to pay zakat efficiently and conveniently through electronic payment channels to those who are specifically entitled to social security..
+        /// </summary>
+        public static string ZAKATYDesc {
+            get {
+                return ResourceManager.GetString("ZAKATYDesc", resourceCulture);
             }
         }
         

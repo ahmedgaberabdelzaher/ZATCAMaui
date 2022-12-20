@@ -692,6 +692,18 @@
     <BundleResource Include="Resources\OrangeCircle%401.5x.png" />
     <BundleResource Include="Resources\OrangeCircle%402x.png" />
     <BundleResource Include="Resources\OrangeCircle%403x.png" />
+    <BundleResource Include="Resources\AppleStore.png" />
+    <BundleResource Include="Resources\AppleStore%402x.png" />
+    <BundleResource Include="Resources\AppleStore%403x.png" />
+    <BundleResource Include="Resources\GooglePlay.png" />
+    <BundleResource Include="Resources\GooglePlay%402x.png" />
+    <BundleResource Include="Resources\GooglePlay%403x.png" />
+    <BundleResource Include="Resources\ZAKATyLogo.png" />
+    <BundleResource Include="Resources\ZAKATyLogo%402x.png" />
+    <BundleResource Include="Resources\ZAKATyLogo%403x.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu%402x.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
