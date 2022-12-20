@@ -42,6 +42,7 @@ namespace EGAZT.AppConfigurations
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate";
+        public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -213,6 +214,17 @@ namespace EGAZT.AppConfigurations
             else
             {
                 return $"{FeesCalculatorBaseURL}en/calculator/Pages/CalculatorPages/calculatorPage.aspx";
+            }
+        }
+        public static string GetProhibitedGoodsLstURl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{ProhibitedGoodsLstURl}ar/general/Prohibited-goods";
+            }
+            else
+            {
+                return $"{FeesCalculatorBaseURL}en/general/Prohibited-goods";
             }
         }
 

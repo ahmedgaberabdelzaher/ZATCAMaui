@@ -3252,7 +3252,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Examples – Aircraft, medicines, pets, etc. View List.
+        ///   Looks up a localized string similar to Examples – Aircraft, medicines, pets, etc..
         /// </summary>
         public static string DeclerationSecondSecurityQuestionYesHint {
             get {
@@ -13481,7 +13481,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to User Type.
+        ///   Looks up a localized string similar to Department Type.
         /// </summary>
         public static string UserType {
             get {
@@ -15764,6 +15764,15 @@ namespace EGAZT {
         public static string VFCSuccessDesc {
             get {
                 return ResourceManager.GetString("VFCSuccessDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View list.
+        /// </summary>
+        public static string Viewlist {
+            get {
+                return ResourceManager.GetString("Viewlist", resourceCulture);
             }
         }
         

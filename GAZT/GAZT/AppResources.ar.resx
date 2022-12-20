@@ -9809,7 +9809,7 @@ info@zatca.gov.sa</value>
     <value>صيغة الملف PDF أقصى حجم 2MB</value>
   </data>
   <data name="UserType" xml:space="preserve">
-    <value>نوع المستخدم</value>
+    <value>نوع الجهة </value>
   </data>
   <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
     <value>تم إرسال طلبك بنجاح</value>
@@ -9911,7 +9911,7 @@ info@zatca.gov.sa</value>
     <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
-    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ اطلع على القائمة</value>
+    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ </value>
   </data>
   <data name="MaterialType" xml:space="preserve">
     <value>نوع المادة</value>
@@ -10053,5 +10053,8 @@ info@zatca.gov.sa</value>
   </data>
    <data name="AddNewCRTitle" xml:space="preserve">
     <value>اضافة سجل تجاري جديد</value> 
+  </data>
+  <data name="Viewlist" xml:space="preserve">
+    <value>اطلع على القائمة</value> 
   </data>
 </root>

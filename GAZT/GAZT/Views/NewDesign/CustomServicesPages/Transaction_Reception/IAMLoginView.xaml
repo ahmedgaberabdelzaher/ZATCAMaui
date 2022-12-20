@@ -9,10 +9,10 @@
     TitleText="{x:Static ResourceManager:AppResources.IAMLogin}"
     >
     <newdesign:BaseContentPage.PancakeView>
-   <WebView Source="{Binding IAMWbViewSrc}">
-                <WebView.Behaviors>
+   <WebView x:Name="IAMWebView" Source="{Binding IAMWbViewSrc}" Navigating="WebView_Navigating">
+              <!--  <WebView.Behaviors>
                           <xct:EventToCommandBehavior Command="{Binding IAMWbViewNavigatingCommand}" EventName="Navigating" />
-                </WebView.Behaviors>
+                </WebView.Behaviors>-->
             </WebView>
         <!--  <StackLayout>
             <Label Text="djahsdfhadjffh"></Label>

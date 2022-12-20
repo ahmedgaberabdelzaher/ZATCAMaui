@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using EGAZT.Helper;
+using System.Net.Http;
 using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
 using Xamarin.Forms;
 
@@ -14,7 +16,27 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception
             viewModel.CommingFrom = commingFrom;
             BindingContext = viewModel;
             InitializeComponent();
-        }     
+        }
+
+        void WebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            if (e.Url.Contains("Home"))
+            {
+              //  GetCookies(e.Url);
+              var coo=  IAMWebView.Cookies;
+              var coocies=  coo.GetCookies(new Uri(e.Url));
+                var token = coocies["Token"];
+               // string token = coo[0];
+            }
+        }
+        private async void GetCookies(string url)
+        {
+            var uri = new Uri(url);
+            var handler = new HttpClientHandler();
+            IAMWebView.Cookies = handler.CookieContainer;
+            HttpClient client = new HttpClient(handler);
+          var data=  await client.GetAsync(uri);
+        }
     }
 }
 
