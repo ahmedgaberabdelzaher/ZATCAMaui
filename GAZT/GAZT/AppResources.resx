@@ -9648,20 +9648,13 @@ the Zakat, Tax and Customs
         <value>Edcuation Journey</value>
     </data>
   <data name="SurveyQ1" xml:space="preserve">
-        <value>Overall, I am satisfied with my
-experience with theMobile App at
-the Zakat, Tax and Customs Authority</value>
+        <value>Overall, I am satisfied with my experience with the Mobile App at the Zakat, Tax and Customs Authority ?</value>
     </data>
   <data name="SurveyQ2" xml:space="preserve">
-        <value>We noticed you dissatisfied with the
-question in the previous page. Kindly
-clarify the reason for dissatisfaction
-to help us improve your experience</value>
+        <value>We noticed you dissatisfied with the question in the previous page. Kindly clarify the reason for dissatisfaction to help us improve your experience</value>
     </data>
   <data name="SurveyQ3" xml:space="preserve">
-        <value>Do you have any additional
-comments for the Zakat, Tax and
-Customs Authority?</value>
+        <value>Do you have any additional comments for the Zakat, Tax and Customs Authority?</value>
     </data>
   <data name="ThankYou" xml:space="preserve">
         <value>Thank You</value>

@@ -11829,9 +11829,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overall, I am satisfied with my
-        ///experience with theMobile App at
-        ///the Zakat, Tax and Customs Authority.
+        ///   Looks up a localized string similar to Overall, I am satisfied with my experience with the Mobile App at the Zakat, Tax and Customs Authority ?.
         /// </summary>
         public static string SurveyQ1 {
             get {
@@ -11840,10 +11838,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We noticed you dissatisfied with the
-        ///question in the previous page. Kindly
-        ///clarify the reason for dissatisfaction
-        ///to help us improve your experience.
+        ///   Looks up a localized string similar to We noticed you dissatisfied with the question in the previous page. Kindly clarify the reason for dissatisfaction to help us improve your experience.
         /// </summary>
         public static string SurveyQ2 {
             get {
@@ -11852,9 +11847,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have any additional
-        ///comments for the Zakat, Tax and
-        ///Customs Authority?.
+        ///   Looks up a localized string similar to Do you have any additional comments for the Zakat, Tax and Customs Authority?.
         /// </summary>
         public static string SurveyQ3 {
             get {

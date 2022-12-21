@@ -116,8 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             email = Email,
                             CrNumber=String.IsNullOrWhiteSpace(SelectedCRNo)?"null": SelectedCRNo,
                             referenceNumber="e",
-                            //mobileNumber=MobileNo,
-                            mobileNumber="+96659076841",
+                            mobileNumber=MobileNo,
+                          //  mobileNumber="+966590768641",
                             subject = Subject,
                             attachement = new Attachement()
                             {

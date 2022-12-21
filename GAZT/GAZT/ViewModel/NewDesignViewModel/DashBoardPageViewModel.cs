@@ -146,7 +146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
-                return imojiesLst;
+                return new ObservableCollection<SurveyQuestions>(imojiesLst?.Reverse());
             }
             set
             {

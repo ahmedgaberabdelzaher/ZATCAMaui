@@ -2203,7 +2203,7 @@
             <Grid
                 Grid.Row="0"
                 Margin="0,0,0,0"
-                IsVisible="true"
+                IsVisible="{Binding IsShowMsgView}"
                 VerticalOptions="FillAndExpand">
 
                 <StackLayout
@@ -2294,7 +2294,7 @@
                                 BorderColor="#4FBBBD"
                                 CornerRadius="14">
                                 <Label
-                                    FontSize="16" Margin="0"
+                                    FontSize="16" 
                                     HorizontalOptions="FillAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
                                     TextColor="#0996D4" />
