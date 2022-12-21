@@ -327,35 +327,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
-                        if (IsShowBottomSheet)
-                        {
-                            IsShowBottomSheet = false;
-                            HeaderTitle = AppResources.eDeclaration;
-                            return;
-                        }
-                        ClearData();
-                        if (QFlow > 1)
-                        {
-                            if (!IsArrivingPlaneSelected && QFlow == 3)
-                            {
-                                FeesCalculatorResponse = new FeesCalculatorResponse();
-                                CardData = new ObservableCollection<EDeclerationCardModel>();
-                                SubmitModel.travelerDeclaration = new TravelerDeclaration();
-                                _navigationService.GoBack();
-
-                                return;
-                            }
-                            QFlow--;
-                            SetQuestion();
-                        }
-                        else
-                        {
-                            _navigationService.GoBack();
-                            FeesCalculatorResponse = new FeesCalculatorResponse();
-                            CardData = new ObservableCollection<EDeclerationCardModel>();
-                            SubmitModel.travelerDeclaration = new TravelerDeclaration();
-
-                        }
+                        BackMethod();
 
                     }
                     catch (Exception ex)
@@ -371,6 +343,39 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+        public void BackMethod()
+        {
+            if (IsShowBottomSheet)
+            {
+                IsShowBottomSheet = false;
+                HeaderTitle = AppResources.eDeclaration;
+                return;
+            }
+            ClearData();
+            if (QFlow > 1)
+            {
+                if (!IsArrivingPlaneSelected && QFlow == 3)
+                {
+                    FeesCalculatorResponse = new FeesCalculatorResponse();
+                    CardData = new ObservableCollection<EDeclerationCardModel>();
+                    SubmitModel.travelerDeclaration = new TravelerDeclaration();
+                    _navigationService.GoBack();
+
+                    return;
+                }
+                QFlow--;
+                SetQuestion();
+            }
+            else
+            {
+                _navigationService.GoBack();
+                FeesCalculatorResponse = new FeesCalculatorResponse();
+                CardData = new ObservableCollection<EDeclerationCardModel>();
+                SubmitModel.travelerDeclaration = new TravelerDeclaration();
+
+            }
+        }
+
         public ICommand UploadFileCommand
         {
             get
@@ -1255,7 +1260,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         #endregion
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
         {
-
+            
 
         }
     }

@@ -289,7 +289,28 @@
                                     Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Label Text="+966" />
+                                    <!--<Label Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />-->
+                                    <StackLayout Orientation="Horizontal"
+                                                 Padding="2"
+                                                 Spacing="0">
+
+                                        <custom:CustomLabel
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                FontSize="14"
+                                                TextColor="#002447"
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"/>
+                                        <BoxView 
+                                            VerticalOptions="Fill"
+                                            WidthRequest="2"
+                                            HorizontalOptions="Center"
+                                            BackgroundColor="#EBEBEB"/>
+
+                                         <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}"/>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
                                 </inputLayout:SfTextInputLayout.LeadingView>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -387,6 +408,9 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

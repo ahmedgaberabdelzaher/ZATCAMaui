@@ -364,20 +364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(() =>
                 {
-                    var navigation = Application.Current.MainPage.Navigation;
-                    var currentPage = navigation.NavigationStack.LastOrDefault();
-                    if (IsShowBottomSheet)
-                    {
-                        IsShowBottomSheet = false;
-                        HeaderTitle = AppResources.Submitareport;
-                        return;
-                    }
-                    else if(currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
-                    {
-                        SubmitReport = new SubmitReportModel();
-                        ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                    }
-                    _navigationService.GoBack();
+                    BackMethod();
 
                 });
             }
@@ -837,6 +824,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 IsShowMsgView = true;
                 MessageTxt = AppResources.LocationAccess;
             }
+        }
+
+        public void BackMethod()
+        {
+            var navigation = Application.Current.MainPage.Navigation;
+            var currentPage = navigation.NavigationStack.LastOrDefault();
+            if (IsShowBottomSheet)
+            {
+                IsShowBottomSheet = false;
+                HeaderTitle = AppResources.Submitareport;
+                return;
+            }
+            else if (currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
+            {
+                SubmitReport = new SubmitReportModel();
+                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
+            }
+            _navigationService.GoBack();
         }
         #endregion
 

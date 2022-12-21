@@ -28,6 +28,11 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel.isContactPage = false;
             base.OnDisappearing();
         }
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.BackMethod();
+            return true;
+        }
     }
 }
 

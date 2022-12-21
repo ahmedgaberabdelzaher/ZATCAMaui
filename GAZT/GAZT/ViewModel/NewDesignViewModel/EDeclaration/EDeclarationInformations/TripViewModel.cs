@@ -75,19 +75,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(async _ =>
+                return new Command( _ =>
                 {
-                    IsLoading = true;
-                    await Task.Delay(1000);
-                    isComingGoingSelected = true;
+                    isNationalitySelected = false;
+                    isItsSourceSelected = false;
                     isPortSelected = false;
+                    isComingGoingSelected = true;
                     isTravelPurposeSelected = false;
                     var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                     BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
                 });
             }
         }
@@ -99,6 +98,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(async _ =>
                 {
                     IsLoading = true;
+                    isNationalitySelected = false;
+                    isItsSourceSelected = false;
                     isPortSelected = true;
                     isComingGoingSelected = false;
                     isTravelPurposeSelected = false;
@@ -121,9 +122,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(async _ =>
                 {
                     IsLoading = true;
-                    isTravelPurposeSelected = true;
+                    isNationalitySelected = false;
+                    isItsSourceSelected = false;
                     isPortSelected = false;
                     isComingGoingSelected = false;
+                    isTravelPurposeSelected = true;
                     var result = await DeclerationServices.GetTravelPurpose();
                     var travelPurposes = result?.Item1?.data?.ToList();
                     var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });

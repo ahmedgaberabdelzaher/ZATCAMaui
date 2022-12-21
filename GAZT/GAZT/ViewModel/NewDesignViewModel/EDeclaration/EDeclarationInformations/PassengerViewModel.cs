@@ -62,6 +62,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         IsLoading = true;
                         isNationalitySelected = true;
                         isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
                         var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
@@ -108,15 +111,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        IsLoading = true;
-                        isItsSourceSelected = true;
                         isNationalitySelected = false;
+                        isItsSourceSelected = true;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
                         var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ItsSource;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                        IsLoading = false;
 
                     }
                 });

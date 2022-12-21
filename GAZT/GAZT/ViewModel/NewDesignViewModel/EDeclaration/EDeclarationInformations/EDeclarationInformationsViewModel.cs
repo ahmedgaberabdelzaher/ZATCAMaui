@@ -11,7 +11,10 @@ using EGAZT.Services.Interface;
 using System.Linq.Expressions;
 using Rg.Plugins.Popup.Services;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
+using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
+using EGAZT.Helper;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
     public partial class EDeclarationInformationsViewModel : BaseEDeclarationViewModel
@@ -23,6 +26,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool isComingGoingSelected;
         private bool isPortSelected;
         private bool isTravelPurposeSelected;
+        private bool isFirstTime = true;
         public bool isPassengerPage  = true;
         public bool isTripPage;
         public bool isContactPage;
@@ -46,10 +50,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async() =>
                 {
-                    IsLoading = true;
+                    // this condition to load countries only once for
+                    // 3 paages
+                    if (isFirstTime)
+                    {
+                        IsLoading = true;
+                        var result = await DeclerationServices.GetCountries();
+                        countries = result?.Item1?.data?.ToList();
+                        isFirstTime = false;
+                        IsLoading = false;
+                    }
                     if(isPassengerPage)
                     {
-                        
+                         
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
                  
@@ -76,7 +89,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             if (SubmitModel.travelerDeclaration.travelDocumentType == 0)
                                 SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
                         }
-                       
+                        
                         HeaderTitle = AppResources.PassengerInformation;
                     }
                     else if(isTripPage)
@@ -90,11 +103,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     }
 
 
-                    var result = await DeclerationServices.GetCountries();
-                    countries = result?.Item1?.data?.ToList();
-
                     
-                    IsLoading = false;
                 });
             }
         }
@@ -138,8 +147,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     try
                     {
-                        IsLoading = true;
-
                         if (isNationalitySelected)
                         {
 
@@ -177,11 +184,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isTravelPurposeSelected = false;
                             HeaderTitle = AppResources.TripInformation;
                         }
+                        else
+                        {
+                            SubmitModel.travelerDeclaration.CountryCode =$"+{Regex.Replace(e.Name, @"[^\d]", "")}";
+                            HeaderTitle = AppResources.ContactInformation;
+                        }
 
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                        IsLoading = false;
                     }
                     catch (Exception ex)
                     {
@@ -206,13 +217,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+
         public ICommand CloseAcknowledgePopUpPageCommand
         {
             get
             {
                 return new Command( async() =>
                 {
-                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, 4);
+                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, SubmitModel.travelerDeclaration.CountryCode.Length);
                     await PopupNavigation.Instance.PopAsync(true);
 
                 });
@@ -225,23 +237,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(() =>
                 {
-                    if (IsShowBottomSheet)
-                    {
-                        IsShowBottomSheet = false;
-                        if (isPassengerPage)
-                            HeaderTitle = AppResources.PassengerInformation;
-
-                        else if (isTripPage)
-                            HeaderTitle = AppResources.PassengerInformation;
-
-                        else 
-                            HeaderTitle = AppResources.ContactInformation;
-
-
-                        return;
-                    }
-                  
-                    _navigationService.GoBack();
+                    BackMethod();
 
                 });
             }
@@ -258,7 +254,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        public void BackMethod()
+        {
+            if (IsShowBottomSheet)
+            {
+                IsShowBottomSheet = false;
+                if (isPassengerPage)
+                    HeaderTitle = AppResources.PassengerInformation;
 
+                else if (isTripPage)
+                    HeaderTitle = AppResources.PassengerInformation;
+
+                else
+                    HeaderTitle = AppResources.ContactInformation;
+
+
+                return;
+            }
+
+            _navigationService.GoBack();
+        }
+        
 
         #endregion
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)

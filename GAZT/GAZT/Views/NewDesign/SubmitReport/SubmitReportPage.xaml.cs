@@ -15,6 +15,12 @@ namespace EGAZT.Views.NewDesign.SubmitReport
             viewModel = App.Locator.SubmitReportViewModel;
             BindingContext = viewModel;
         }
+
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.BackMethod();
+            return true;
+        }
     }
 }
 

@@ -152,6 +152,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         #endregion
 
         #region Contact Model
+        string _CountryCode= "+966";
+        public string CountryCode { get { return _CountryCode; } set { _CountryCode = value; RaisePropertyChanged(); } }
+
         string _phoneNumber;
         public string phoneNumber { get { return _phoneNumber; } set { _phoneNumber = value; RaisePropertyChanged(); } }
 
