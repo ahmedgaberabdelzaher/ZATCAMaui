@@ -232,19 +232,19 @@
                                         VerticalOptions="Start" >
 
                                         <custom:CustomLabel.Triggers>
-                                            <DataTrigger Binding="{Binding Inquire.IsPaid}"
+                                            <DataTrigger Binding="{Binding Inquire.IsNotPaid}"
                                                          TargetType="custom:CustomLabel"
                                                          Value="True">
                                                 <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.PaidPaymentStatus}"/>
+                                                        Value="{x:Static ResourceManager:AppResources.NotPaidPaymentStatus}"/>
 
                                             </DataTrigger>
 
-                                            <DataTrigger Binding="{Binding Inquire.IsPaid}"
+                                            <DataTrigger Binding="{Binding Inquire.IsNotPaid}"
                                                          TargetType="custom:CustomLabel"
                                                          Value="false">
                                                 <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.NotPaidPaymentStatus}"/>
+                                                        Value="{x:Static ResourceManager:AppResources.PaidPaymentStatus}"/>
 
                                             </DataTrigger>
 
@@ -538,7 +538,7 @@
                             VerticalOptions="EndAndExpand"
                             Command="{Binding GoToPaymentCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            IsVisible="{Binding Inquire.IsPaid}"
+                            IsVisible="{Binding Inquire.IsNotPaid}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" />
 
                         <!--  Pervious Button  -->

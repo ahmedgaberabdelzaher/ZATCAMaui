@@ -228,7 +228,7 @@ namespace EGAZT.AppConfigurations
             }
             else
             {
-                return $"{FeesCalculatorBaseURL}en/general/Prohibited-goods";
+                return $"{ProhibitedGoodsLstURl}en/general/Prohibited-goods";
             }
         }
 

@@ -23,7 +23,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command( _ =>
                 {
-                    if(Inquire.IsPaid)
+                    if(Inquire.IsNotPaid)
                         _navigationService.NavigateTo("EDeclarationPaymentPage",Inquire);
                 });
             }
@@ -36,7 +36,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
+                        var date = DateTime.Now;
                         Inquire = App.Locator.StateManager.GetItem("inquireDecleration") as TravelerDeclarationResponse;
+                        DateTime.TryParse(Inquire.travelDate.ToString(), out date);
+                        Inquire.TravelDateString = date.ToString("dd/MM/yyyy");
                         Inquire.totalFees = Math.Round(Inquire.totalFees, 2);
                         if (Inquire != null)
                         {

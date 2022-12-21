@@ -873,7 +873,8 @@
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
+                                            Format="dd/MM/yyyy"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -907,7 +908,8 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                            Format="dd/MM/yyyy"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -938,9 +940,11 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                            Format="dd/MM/yyyy"/> 
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />

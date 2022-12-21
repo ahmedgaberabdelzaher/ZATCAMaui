@@ -438,7 +438,7 @@
                         <!--#region Questions View-->
                         <StackLayout IsVisible="{Binding IsYesSelected}">
                             <!--#region Hint view-->
-                            <Frame Padding="15"
+                            <Frame Padding="10"
                                BackgroundColor="White"
                                BorderColor="#E6E6E6"
                                VerticalOptions="StartAndExpand"
@@ -453,8 +453,8 @@
                                 </Frame.Triggers>
                                 <StackLayout
                                 Orientation="Horizontal"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
                                 Spacing="10">
 
                                     <!--info icon-->
@@ -469,7 +469,6 @@
                                     <custom:CustomLabel
                                     HorizontalOptions="StartAndExpand"
                                     FontSize="12"
-                                    LineSpacing="1"
                                     TextColor="#999999"
                                     Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}">
                                         <custom:CustomLabel.Triggers>

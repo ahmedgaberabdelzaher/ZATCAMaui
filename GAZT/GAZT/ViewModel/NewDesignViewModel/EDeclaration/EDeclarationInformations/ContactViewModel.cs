@@ -28,7 +28,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
-       
+        private ObservableCollection<BottomSheetModel> countryWithFlags { get; set; } = new ObservableCollection<BottomSheetModel>();
+
 
         public ICommand GoToSuccessCommand
         {
@@ -51,26 +52,38 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(_ =>
+                return new Command( async _ =>
                 {
-                    IsLoading = true;
+                    
                     isNationalitySelected = false;
                     isItsSourceSelected = false;
                     isPortSelected = false;
                     isComingGoingSelected = false;
                     isTravelPurposeSelected = false;
                     BottomSheetList = new ObservableCollection<BottomSheetModel>();
-                    foreach (var item in CountryCodeHelper.Countries)
+
+                    if (countryWithFlags.Count == 0)
                     {
-                        BottomSheetList.Add(new BottomSheetModel()
+                        IsLoading = true;
+                        await Task.Delay(1000);
+                        foreach (var item in CountryCodeHelper.CountriesWithFlags)
                         {
-                           Name = $"({item[1]}) {item[0]} {CountryCodeHelper.IsoCountryCodeToFlagEmoji(item[2])}"
-                        });
+                            BottomSheetList.Add(new BottomSheetModel()
+                            {
+                                Name = $"({item[0]}) {item[1]} {item[2]}"
+                            });
+                        }
+                        countryWithFlags = BottomSheetList;
+                        IsLoading = false;
                     }
+
+                    else
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(countryWithFlags);
+
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                  
                 });
             }
         }
@@ -164,10 +177,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+
         private bool IsValidateContactInfo()
         {
 
-            Regex phoneRegex = new Regex(@"^5[0-9]{8}$");
+           // Regex phoneRegex = new Regex(@"^5[0-9]{8}$");
+            Regex phoneRegex = new Regex(@"[^\d]");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.phoneNumber)
@@ -185,14 +200,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.InvalidEmailFormat;
                 return false;
             }
-            //else if (!phoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
-            //{
-            //    IsShowMsgView = true;
-            //    MessageTxt = AppResources.ZZMobilenumberhastostartwithnumber5;
-            //    return false;
-
-
-            //}
+            else if (phoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
             SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + SubmitModel.travelerDeclaration.phoneNumber;
             return true;
 

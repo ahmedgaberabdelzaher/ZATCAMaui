@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using EGAZT.Helper;
+using Prism.Mvvm;
+
 namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
@@ -108,7 +110,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public int measurementUnit { get; set; }
     }
 
-    public class TravelerDeclarationResponse
+    public class TravelerDeclarationResponse : BindableBase
     {
         public string feedback_Arabic { get; set; }
         public string feedback_Enlgish { get; set; }
@@ -124,7 +126,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string ReferenceID { get; set; }
         public bool paymentIsRequired { get; set; }
         public bool paymentIsCompleted { get; set; }
-        public bool IsPaid
+        public bool IsNotPaid
         {
             get
             {
@@ -170,13 +172,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         }
         public string flightNumber { get; set; }
         public DateTime travelDate { get; set; }
-        public string TravelDateString
-        {
-            get
-            {
-                return Helper.DateTimeHelper.DatetimeFormater(travelDate);
-            }
-        }
+        string _TravelDateString;
+        public string TravelDateString { get { return _TravelDateString; } set { _TravelDateString = value; RaisePropertyChanged(); } }
         public int travelingType { get; set; }
         public string screenName { get; set; }
         public List<SubmitResponseTobacco> tobacco { get; set; }

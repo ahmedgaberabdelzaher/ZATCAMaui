@@ -146,40 +146,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         private bool IsValidatePassenger()
         {
+            if (SubmitModel.travelerDeclaration.Isvisitor)
+            {
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
+                    || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor)
+                    || SubmitModel.travelerDeclaration.travelersCount <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+                }
 
-            if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
-                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
-                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
-                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
-                || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
-                || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName)&&SubmitModel.travelerDeclaration.Isvisitor)
-                || SubmitModel.travelerDeclaration.travelersCount <= 0)
+                if (SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.DateBirthValidation;
+                    return false;
+                }
+                if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ReleaseDate;
+                    return false;
+                }
+                if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.EndDateValidation;
+                    return false;
+                }
+                
+            }
+            else if(SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-
-            if(SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.DateBirthValidation;
-                return false; 
-            }
-            if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.ReleaseDate;
-                return false;
-            }
-            if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.EndDateValidation;
-                return false; 
-            }
             return true;
-
         }
     }
 }

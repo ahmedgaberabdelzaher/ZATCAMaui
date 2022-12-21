@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Helper;
@@ -41,7 +42,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         EDeclerationSubmitModel _submitModel;
         public EDeclerationSubmitModel SubmitModel { get { return _submitModel; } set { _submitModel = value; RaisePropertyChanged(); } }
 
-       public IDictionary<string, object> IamLoginPayloadData;
+        public IDictionary<string, object> IamLoginPayloadData;
         #endregion
 
 
@@ -73,11 +74,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(() =>
                 {
+                    SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                     _navigationService.NavigateTo("ProductDeclarationPage");
                 });
             }
         }
-        
+
 
         #endregion
         public IE_DeclerationServices DeclerationServices;
@@ -96,22 +98,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
             SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData["Nationality"].ToString();
             SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
-            SubmitModel.travelerDeclaration.gender= iamLoginPayloadData["Gender"].ToString()== "Male"?1:2;
-           SubmitModel.travelerDeclaration.travelID= iamLoginPayloadData["NationlId"].ToString();
+            // Its source is empty so field with nationality
+            SubmitModel.travelerDeclaration.travelIssuerName = iamLoginPayloadData["Nationality"].ToString(); 
+            SubmitModel.travelerDeclaration.travelIssuerID = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
+
+            SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
+            SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
             DateTime passIssuingDate = DateTime.Now;
             DateTime passExpiryDate = DateTime.Now;
-          //  var date=DateTimeHelper.DatetimeFormater()
-           /* DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(),out passIssuingDate);
+            DateTime birthDate = DateTime.Now;
+
+            // Used when date retrun M/D/Y
+            DateTime.TryParse(iamLoginPayloadData["BirthDate"].ToString(), out birthDate);
+            SubmitModel.travelerDeclaration.birthDate = birthDate;
+
+            // Used when date retrun D/M/Y
+            DateTime.TryParseExact(iamLoginPayloadData["ReleaseDate"].ToString(),
+                       "dd/MM/yyyy",
+                       CultureInfo.InvariantCulture,
+                       DateTimeStyles.None,
+                       out passIssuingDate);
             SubmitModel.travelerDeclaration.passIssuingDate = passIssuingDate;
-            DateTime.TryParse(iamLoginPayloadData["EndDate"].ToString(), out passExpiryDate);
-            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;*/
+            DateTime.TryParseExact(iamLoginPayloadData["EndDate"].ToString(),
+                       "dd/MM/yyyy",
+                       CultureInfo.InvariantCulture,
+                       DateTimeStyles.None,
+                       out passExpiryDate);
+            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;
             SubmitModel.travelerDeclaration.travelIssuerID = 0;
         }
         public object GetTokenData(string token = "")
         {
             try
             {
-               // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJGaXJzdE5hbWUiOiLYrdiz2KfZhSIsIk1pZGRsZU5hbWUiOiLYudmE2YoiLCJMYXN0TmFtZSI6Itin2YTYsdmB2KfYudmKIiwiTmF0aW9uYWxpdHlJZCI6IjEwMCIsIk5hdGlvbmFsaXR5Ijoi2KfZhNmF2YXZhNmD2Kkg2KfZhNi52LHYqNmK2Kkg2KfZhNiz2LnZiNiv2YrYqSIsIkdlbmRlciI6Ik1hbGUiLCJSZWxlYXNlRGF0ZSI6IjE0MzkvMDIvMjciLCJFbmREYXRlIjoiIiwiSXRzU291cmNlIjoiIiwiZXhwIjoxNjc5NjY1MDI4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo2MDYwNCJ9.QtFwlVBPRXnladbZ2OJeoz7Aewdl7-ZGmZ53dSHzRcg";
+                // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJGaXJzdE5hbWUiOiLYrdiz2KfZhSIsIk1pZGRsZU5hbWUiOiLYudmE2YoiLCJMYXN0TmFtZSI6Itin2YTYsdmB2KfYudmKIiwiTmF0aW9uYWxpdHlJZCI6IjEwMCIsIk5hdGlvbmFsaXR5Ijoi2KfZhNmF2YXZhNmD2Kkg2KfZhNi52LHYqNmK2Kkg2KfZhNiz2LnZiNiv2YrYqSIsIkdlbmRlciI6Ik1hbGUiLCJSZWxlYXNlRGF0ZSI6IjE0MzkvMDIvMjciLCJFbmREYXRlIjoiIiwiSXRzU291cmNlIjoiIiwiZXhwIjoxNjc5NjY1MDI4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo2MDYwNCJ9.QtFwlVBPRXnladbZ2OJeoz7Aewdl7-ZGmZ53dSHzRcg";
                 // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
                 string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
                 var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);

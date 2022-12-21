@@ -289,7 +289,6 @@
                                     Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                    <!--<Label Text="{Binding SubmitModel.travelerDeclaration.CountryCode}" />-->
                                     <StackLayout Orientation="Horizontal"
                                                  Padding="2"
                                                  Spacing="0">
