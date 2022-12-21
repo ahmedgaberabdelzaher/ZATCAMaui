@@ -9,7 +9,8 @@
     TitleText="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}">
     <newdesign:BaseContentPage.PancakeView>
         <Grid>
-            <controls:ServiceMenuControl />
+            <ScrollView VerticalScrollBarVisibility="Never">
+            <controls:ServiceMenuControl /></ScrollView>
         </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

@@ -455,7 +455,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Forgot Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
-    <value>Individual/Personal business</value>
+    <value>Individual</value>
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
@@ -9882,7 +9882,7 @@ Zakat, Tax and Customs Authority
     <value>Enter the subject of the transaction</value>
   </data>
     <data name="Transactiondescription" xml:space="preserve">
-    <value>Transaction description</value>
+    <value>Ward content</value>
   </data>
   <data name="PDFFileHint" xml:space="preserve">
     <value>PDF file format max size 2MB</value>
@@ -9894,7 +9894,7 @@ Zakat, Tax and Customs Authority
     <value>Your request has been sent successfully</value>
   </data>
   <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
-    <value>You will be notified of the status of the request via mobile phone</value>
+    <value>Your request has been sent successfully، You will be notified of the status of the request via mobile phone</value>
   </data>
   <data name="Referencenumber" xml:space="preserve">
     <value>Reference number</value>
@@ -10147,5 +10147,11 @@ Zakat, Tax and Customs Authority
   </data>
   <data name="Zakaty" xml:space="preserve">
     <value>Zakaty</value> 
+  </data>
+    <data name="ThankYou!" xml:space="preserve">
+    <value>Thank You!</value> 
+  </data>
+   <data name="NoFileChoosen" xml:space="preserve">
+    <value>No file was selected</value> 
   </data>
 </root>

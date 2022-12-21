@@ -9815,7 +9815,7 @@ info@zatca.gov.sa</value>
     <value>تم إرسال طلبك بنجاح</value>
   </data>
   <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
-    <value>وسيتم إفادتكم بحالة الطلب عبر الجوال برسالة نصية</value>
+    <value>لقد تم ارسال طلبك بنجاح وسيتم إفادتكم بحالة الطلب عبر الجوال برسالة نصية</value>
   </data>
   <data name="Referencenumber" xml:space="preserve">
     <value>الرقم المرجعي</value>
@@ -9893,7 +9893,7 @@ info@zatca.gov.sa</value>
     <value>تمكنك من الإقرار الإلكتروني من المواد الإفصاح عنها عند دخول السعودية أو قبل مغادرتها.</value>
   </data>
   <data name="TawreedServiceDesc" xml:space="preserve">
-    <value>تتيح لعملاء الجمارك إرسال معاملات التوريد إلكترونيًا والتعرف على حالة القبول والرفض دون الحاجة لزيارة مقر الجمارك</value>
+    <value>هذه الخدمة تتيح لعملاء الجمارك إرسال وتوريد معاملاتهم إلكترونيا والتعرف على حالتها بدون الحاجة لزيارة مقر الجمارك</value>
   </data>
   <data name="TobacoTypeNotehint" xml:space="preserve">
     <value>توضيح: 1/20 تعني علبة تحتوي على 20 سيجارة</value>
@@ -10071,5 +10071,11 @@ info@zatca.gov.sa</value>
   </data>
   <data name="Zakaty" xml:space="preserve">
     <value> زكاتي</value> 
+  </data>
+  <data name="ThankYou!" xml:space="preserve">
+    <value>شكرا لكم !</value> 
+  </data>
+  <data name="NoFileChoosen" xml:space="preserve">
+    <value>لم يتم اختيار أي ملف</value> 
   </data>
 </root>

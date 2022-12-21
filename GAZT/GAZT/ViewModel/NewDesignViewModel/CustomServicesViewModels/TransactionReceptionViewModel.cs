@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Controls;
@@ -93,8 +94,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
-                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email)&&UploadedFiles!=null&&UploadedFiles.Count>0)
+                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
                     {
+                            if (UploadedFiles == null || UploadedFiles.Count <=0)
+                            {
+                                MessageTxt = AppResources.NoFileChoosen;
+                                IsShowMsgView = true;
+                                return;
+                            }
                             if (String.IsNullOrWhiteSpace(SelectedCRNo)&&IsEntity)
                             {
                                 MessageTxt = AppResources.RequiredData;
@@ -109,7 +116,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             email = Email,
                             CrNumber=String.IsNullOrWhiteSpace(SelectedCRNo)?"null": SelectedCRNo,
                             referenceNumber="e",
-                            mobileNumber=MobileNo,
+                            //mobileNumber=MobileNo,
+                            mobileNumber="+96659076841",
                             subject = Subject,
                             attachement = new Attachement()
                             {
@@ -306,7 +314,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             Email = Subject = Description = SelectedCRNo = "";
             UploadedFiles = new ObservableCollection<ReportFileModel>();
             UserType = "1";
-            IsShowBottomSheet = false;
+            IsEntity = false;
+            IsShowBottomSheet=IsShowMsgView = false;
             IsAddNewCR = false;
         }
 
