@@ -30,7 +30,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         public bool isPassengerPage  = true;
         public bool isTripPage;
         public bool isContactPage;
-        public bool isSuccessPage;
 
         List<CountryModel> countries = new List<CountryModel>();
 

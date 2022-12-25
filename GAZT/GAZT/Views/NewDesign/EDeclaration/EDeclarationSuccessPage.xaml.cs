@@ -14,11 +14,6 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
         }
-        protected override void OnDisappearing()
-        {
-            viewModel.isSuccessPage = false;
-            base.OnDisappearing();
-        }
     }
 }
 

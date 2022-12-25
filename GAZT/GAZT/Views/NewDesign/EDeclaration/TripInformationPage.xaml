@@ -525,7 +525,8 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}" />
+                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                            Format="dd/MM/yyyy"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />

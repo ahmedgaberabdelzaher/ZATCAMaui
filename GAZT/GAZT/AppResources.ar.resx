@@ -9938,7 +9938,7 @@ info@zatca.gov.sa</value>
     <value>تم إنشاؤه بنجاح</value>
   </data>
   <data name="CreatedSuccessfullyMsg" xml:space="preserve">
-    <value>تم إنشاء البيان الإلكتروني بنجاح. يرجى إكمال عملية الدفع قبل الوصول إلى نقطة الجمارك</value>
+    <value>تم إنشاء البيان الإلكتروني بنجاح.</value>
   </data>
    <data name="DeclarationAcknowledge" xml:space="preserve">
     <value>إقرار</value>

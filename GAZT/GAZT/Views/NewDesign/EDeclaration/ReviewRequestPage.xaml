@@ -21,9 +21,6 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-                <ResourceDictionary>
-                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
-                </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -128,6 +125,7 @@
                                  <Image Aspect="AspectFit"
                                        Source="OrangeCircle"/>
 
+                                <!--Feedback Name Label-->
                                  <Label
                                     FontFamily="{StaticResource SomarRegular}"
                                     FontSize="14"
@@ -215,6 +213,7 @@
                                         FontSize="14"
                                         LineBreakMode="WordWrap"
                                         TextColor="#999999"
+                                        IsVisible="{Binding Inquire.paymentIsRequired}"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="1"
                                         Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentPaymentStatus}"
@@ -227,6 +226,7 @@
                                         LineBreakMode="WordWrap"
                                         TextColor="#002447"
                                         Grid.Column="1"
+                                        IsVisible="{Binding Inquire.paymentIsRequired}"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         Grid.Row="1"
                                         VerticalOptions="Start" >
@@ -299,9 +299,7 @@
                                         Text="{Binding Inquire.travelID}"
                                         VerticalOptions="Start" />
 
-
-
-                                    <!--  Coming from Label  -->
+                                    <!--  Coming/Going from/to Label  -->
                                     <custom:CustomLabel
                                         HorizontalOptions="Start"
                                         FontSize="14"
@@ -310,9 +308,29 @@
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         TextColor="#999999" 
                                         Text="{x:Static ResourceManager:AppResources.ComingFrom}"
-                                        VerticalOptions="Start" />
+                                        VerticalOptions="Start" >
 
-                                    <!--  Coming from Value Label  -->
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger Binding="{Binding Inquire.travelingType}"
+                                                         TargetType="custom:CustomLabel"
+                                                         Value="1">
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.ComingFrom}"/>
+
+                                            </DataTrigger>
+
+                                            <DataTrigger Binding="{Binding Inquire.travelingType}"
+                                                         TargetType="custom:CustomLabel"
+                                                         Value="2">
+                                                <Setter Property="Text"
+                                                        Value="{x:Static ResourceManager:AppResources.GoingTo}"/>
+
+                                            </DataTrigger>
+                                         </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Coming/Going from/to Value Label  -->
                                     <custom:CustomLabel
                                         HorizontalOptions="Start"
                                         FontSize="14"

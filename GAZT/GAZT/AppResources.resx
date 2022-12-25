@@ -10017,7 +10017,7 @@ Zakat, Tax and Customs Authority
     <value>Created Successfully</value>
   </data>
   <data name="CreatedSuccessfullyMsg" xml:space="preserve">
-    <value>The e-declration has been created successfully Please complete the payment process before arriving at the customs point</value>
+    <value>The e-declration has been created successfully</value>
   </data>
   <data name="DeclarationAcknowledge" xml:space="preserve">
     <value>Acknowledge</value>

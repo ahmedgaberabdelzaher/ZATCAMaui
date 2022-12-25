@@ -2113,7 +2113,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The e-declration has been created successfully Please complete the payment process before arriving at the customs point.
+        ///   Looks up a localized string similar to The e-declration has been created successfully.
         /// </summary>
         public static string CreatedSuccessfullyMsg {
             get {

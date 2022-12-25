@@ -112,20 +112,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             DateTime.TryParse(iamLoginPayloadData["BirthDate"].ToString(), out birthDate);
             SubmitModel.travelerDeclaration.birthDate = birthDate;
 
-            // Used when date retrun D/M/Y
-            DateTime.TryParseExact(iamLoginPayloadData["ReleaseDate"].ToString(),
-                       "dd/MM/yyyy",
-                       CultureInfo.InvariantCulture,
-                       DateTimeStyles.None,
-                       out passIssuingDate);
+            // Used when date retrun M/D/Y
+            DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(), out passIssuingDate);
             SubmitModel.travelerDeclaration.passIssuingDate = passIssuingDate;
-            DateTime.TryParseExact(iamLoginPayloadData["EndDate"].ToString(),
-                       "dd/MM/yyyy",
-                       CultureInfo.InvariantCulture,
-                       DateTimeStyles.None,
-                       out passExpiryDate);
+
+            DateTime.TryParse(iamLoginPayloadData["EndDate"].ToString(), out passExpiryDate);
             SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;
-            SubmitModel.travelerDeclaration.travelIssuerID = 0;
         }
         public object GetTokenData(string token = "")
         {
