@@ -4253,7 +4253,7 @@
     <value>عزيزي</value>
     </data>
   <data name="FORM5Declaration" xml:space="preserve">
-    <value>إقـــرار المـكـلفففف</value>
+    <value>إقـــرار المـكـلف</value>
     </data>
   <data name="FORM5ElectronicMail" xml:space="preserve">
     <value>البريد الإلكتروني</value>
@@ -9530,7 +9530,7 @@ info@zatca.gov.sa</value>
         <value>Edcuation Journey</value>
     </data>
   <data name="SurveyQ1" xml:space="preserve">
-    <value>ما مستوى الرضا عن تجربتك لتطبيق الهيئةع لى الاجهزة الذكية؟</value>
+    <value>مامستوى الرضا عن تجربتك لتطبيق الهيئة على الأجهزة الذكية ؟</value>
     </data>
   <data name="SurveyQ2" xml:space="preserve">
         <value>لاحظنا عدم رضاك في السؤال السابق، يرجى توضح أسباب عدم الرضا لتحسين مستوى الخدمة المقدمة لك</value>
@@ -9735,13 +9735,347 @@ info@zatca.gov.sa</value>
   <data name="unableToVerify" xml:space="preserve">
         <value>تعذر التحقق</value>
     </data>
-  <data name="PleaseEnter" xml:space="preserve">
+    <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
     </data>
      <data name="AccountS" xml:space="preserve">
      <value>ك.الحساب</value>
-    </data>
-       <data name="MenuDashboard" xml:space="preserve">
+     </data>
+     <data name="MenuDashboard" xml:space="preserve">
     <value>بياناتي</value>
+  </data>
+     <data name="NewDeclaration" xml:space="preserve">
+        <value>إقرار جديد</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>حدد الخيار وأكمل التفاصيل</value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>القدوم إلى المملكة أم المغادرة؟</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>الوصول إلى المملكة العربية السعودية</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>المغادرة من المملكة العربية السعودية</value>
+    </data> 
+      <data name="ProductDeclaration" xml:space="preserve">
+        <value>بيانات الإقرار
+</value>
+    </data>
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>في حال عدم العثور على المنتج في القائمة، يرجى الإقرار في مكتب الإقرار عند الوصول</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>نوع العنصر</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>اسم المنتج</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>اضافة عنصر</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>إجمالي الرسوم المستحقة</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>اختار</value>
+    </data>
+  <data name="TransactionReception" xml:space="preserve">
+    <value>توريد المعاملات</value>
+  </data>
+<data name="NewTransactionReception" xml:space="preserve">
+    <value>توريد معاملة جديدة</value>
+  </data>
+  <data name="Pleasecompletethedata" xml:space="preserve">
+    <value>برجاء إكمال البيانات </value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>كيان</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>الموضوع</value>
+  </data>
+  <data name="Enterthesubjectofthetransaction" xml:space="preserve">
+    <value>أدخل موضوع المعاملة</value>
+  </data>
+    <data name="Transactiondescription" xml:space="preserve">
+    <value>وصف المعاملة</value>
+  </data>
+  <data name="PDFFileHint" xml:space="preserve">
+    <value>صيغة الملف PDF أقصى حجم 2MB</value>
+  </data>
+  <data name="UserType" xml:space="preserve">
+    <value>نوع الجهة </value>
+  </data>
+  <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
+    <value>تم إرسال طلبك بنجاح</value>
+  </data>
+  <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+    <value>لقد تم ارسال طلبك بنجاح وسيتم إفادتكم بحالة الطلب عبر الجوال برسالة نصية</value>
+  </data>
+  <data name="Referencenumber" xml:space="preserve">
+    <value>الرقم المرجعي</value>
+  </data>
+  <data name="AddNewCR" xml:space="preserve">
+    <value>+ اضافة سجل تجاري جديد</value> 
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>أدخل</value>
+  </data>
+  <data name="PassengerInformation" xml:space="preserve">
+    <value>معلومات الركاب</value>
+  </data>
+   <data name="Passport" xml:space="preserve">
+    <value>جواز سفر</value>
+  </data>
+  <data name="GccNationalID" xml:space="preserve">
+    <value>الهوية الوطنية الخليجية</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>الاسم الوسطى</value>
+  </data>
+  <data name="ItsSource" xml:space="preserve">
+    <value>مصدره</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>تاريخ الاصدار</value>
+  </data>
+  <data name="TravelerCount" xml:space="preserve">
+    <value>عدد المسافرين</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>معلومات الرحلة</value>
+  </data>
+  <data name="AirTrip" xml:space="preserve">
+    <value>رحلة جوية</value>
+  </data>
+  <data name="LandTrip" xml:space="preserve">
+    <value>رحلة برية</value>
+  </data>
+  <data name="SeaTrip" xml:space="preserve">
+    <value>رحلة البحر</value>
+  </data>
+  <data name="TypeOfTrip" xml:space="preserve">
+    <value>نوع الرحلة</value>
+  </data>
+  <data name="ComingFrom" xml:space="preserve">
+    <value>قادم من</value>
+  </data>
+  <data name="GoingTo" xml:space="preserve">
+    <value>الذهاب الى</value>
+  </data>
+   <data name="EntrancePort" xml:space="preserve">
+    <value>ميناء المدخل</value>
+  </data>
+  <data name="ExitPort" xml:space="preserve">
+    <value>ميناء الخروج</value>
+  </data>
+   <data name="ArrivalDate" xml:space="preserve">
+    <value>تاريخ الوصول</value>
+  </data>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>تاريخ المغادرة</value>
+  </data>
+   <data name="TripNumber" xml:space="preserve">
+    <value>رقم الرحلة</value>
+  </data>
+  <data name="TravelPurpose" xml:space="preserve">
+    <value>الغرض من السفر</value>
+  </data>
+  <data name="CustomFeesCalculator" xml:space="preserve">
+    <value>حاسبة الرسوم والضرائب الجمركية</value>
+  </data>
+  <data name="EDeclerationDesc" xml:space="preserve">
+    <value>تمكنك من الإقرار الإلكتروني من المواد الإفصاح عنها عند دخول السعودية أو قبل مغادرتها.</value>
+  </data>
+  <data name="TawreedServiceDesc" xml:space="preserve">
+    <value>هذه الخدمة تتيح لعملاء الجمارك إرسال وتوريد معاملاتهم إلكترونيا والتعرف على حالتها بدون الحاجة لزيارة مقر الجمارك</value>
+  </data>
+  <data name="TobacoTypeNotehint" xml:space="preserve">
+    <value>توضيح: 1/20 تعني علبة تحتوي على 20 سيجارة</value>
+  </data>
+  <data name="EdeclerationSecQ" xml:space="preserve">
+    <value>هل تحمل أي مقتنيات جديدة يتجاوز إجمالي قيمتها 3000 ريال سعودي (800 دولار أمريكي)؟</value>
+  </data>
+  <data name="Q2Hint" xml:space="preserve">
+    <value>يحسب سعر جرام - الذهب والفضة – بناءاً على سعر الجرام في السعودية</value>
+  </data>
+  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+    <value>هل تحمل عملات أو (أدوات مالية قابلة للتداول) أو معادن ثمينة تصل قيمتها 60000 ريال سعودي أو ما يعادلها (16000 دولار أمريكي)؟</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+    <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
+    <value>أمثلة – طائرات درون، أدوية، حيوانات اليفة...الخ </value>
+  </data>
+  <data name="MaterialType" xml:space="preserve">
+    <value>نوع المادة</value>
+  </data>
+  <data name="Purpose" xml:space="preserve">
+    <value>الغرض</value>
+  </data>
+  <data name="OtherPurpose" xml:space="preserve">
+    <value>الغرض الآخر</value>
+  </data>
+    <data name="TotalValue" xml:space="preserve">
+    <value>القيمة الإجمالية</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>العملة</value>
+  </data>
+    <data name="ContactInformation" xml:space="preserve">
+    <value>معلومات التواصل</value>
+  </data>
+  <data name="AddressKSA" xml:space="preserve">
+    <value>العنوان في المملكة العربية السعودية</value>
+  </data>
+  <data name="CreatedSuccessfully" xml:space="preserve">
+    <value>تم إنشاؤه بنجاح</value>
+  </data>
+  <data name="CreatedSuccessfullyMsg" xml:space="preserve">
+    <value>تم إنشاء البيان الإلكتروني بنجاح.</value>
+  </data>
+   <data name="DeclarationAcknowledge" xml:space="preserve">
+    <value>إقرار</value>
+  </data>
+   <data name="AcknowledgeNote1" xml:space="preserve">
+    <value>أقر بموجب هذا بأن هذا الإعلان الإلكتروني مملوك لمصلحة الجمارك العامة التي لها الحق في استخدام المعلومات المدخلة للأغراض الإحصائية المتعلقة بعملها.</value>
+  </data>
+  <data name="AcknowledgeNote2" xml:space="preserve">
+    <value>أتحمل المسؤولية الكاملة عن صحة ودقة المعلومات التي قدمتها</value>
+  </data>
+  <data name="AcknowledgeNote3" xml:space="preserve">
+    <value>أنا مسؤول عن عواقب استخدامي للإقرار الإلكتروني للأغراض المقصودة ، مثل الرسوم الجمركية أو الضرائب أو الالتزامات المالية الأخرى التي تطبقها الهيئة العامة للجمارك</value>
+  </data>
+  <data name="AcknowledgeNote4" xml:space="preserve">
+    <value>كما أتحمل المسؤولية الكاملة في حال تأكدت مصلحة الجمارك العامة من أن المعلومات التي قدمتها غير صحيحة وتنتهك اللوائح والتشريعات المعمول بها ؛ وبعد ذلك ، سأخضع للمساءلة القانونية</value>
+  </data>
+  <data name="AcknowledgeNote5" xml:space="preserve">
+    <value>لا يسمح برد المبالغ المحصلة (الرسوم والضرائب) إلا في حالة الإحالة إلى مكتب التصريح بميناء الدخول عند الوصول إلى المملكة وقبل مغادرة الميناء بحيث يمكن إجراء مراسلات الحيازة من قبل الجمارك. ضابط</value>
+  </data>
+   <data name="TermsConditions" xml:space="preserve">
+    <value>لقد قرأت الشروط والأحكام</value>
+  </data>
+  <data name="ProhibitedItems" xml:space="preserve">
+    <value>عرض قائمة المواد المحظورة</value>
+  </data>
+  <data name="ApproveDeclaration" xml:space="preserve">
+    <value>الموافقة على إقرار</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>الدفع</value>
+  </data>
+  <data name="units" xml:space="preserve">
+    <value>الوحدة</value>
+  </data>
+  <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
+    <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
+  </data>
+  <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
+    <value>عفوا ....القيمه المدخلة ال تستلزم اإلقرار</value>
+  </data>
+   <data name="ALLanswersisNoMsg" xml:space="preserve">
+    <value> عفوا .. يبدو أنك لم تقم باالاختيار من أسئلة اإلقرار أو تعبئة البيانات الخاصة بها</value>
+  </data>
+    <data name="Servicetype" xml:space="preserve">
+    <value>نوع الخدمة</value>
+  </data>
+  <data name="Identitytype" xml:space="preserve">
+    <value>نوع الهوية</value>
+  </data>
+    <data name="Visitor" xml:space="preserve">
+    <value>زائر</value>
+  </data>
+    <data name="Citizen" xml:space="preserve">
+    <value>مواطن / مقيم</value>
+  </data>
+      <data name="IAMLogin" xml:space="preserve">
+    <value>نفاذ</value>
+  </data>
+    <data name="PaymentDetails" xml:space="preserve">
+    <value>بيانات الدفع</value>
+  </data>
+  <data name="TotalAmountNumeric" xml:space="preserve">
+    <value>المبلغ الإجمالي بالأرقام</value>
+  </data>
+  <data name="TotalAmountWriting" xml:space="preserve">
+    <value>المبلغ الإجمالي كتابة</value>
+  </data>
+    <data name="DateBirthValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون تاريخ الميلاد في الحاضر او المستقبل</value>
+  </data>
+  <data name="ReleaseDateValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون تاريخ الإصدار في المستقبل</value>
+  </data>
+  <data name="EndDateValidation" xml:space="preserve">
+    <value>لا يجوز أن يكون تاريخ الانتهاء في الماضي</value>
+  </data>
+  <data name="ComingGoingDateValidation" xml:space="preserve">
+    <value>لا يمكن أن يكون التاريخ في الماضي</value>
+  </data>
+   <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+    <value>رقم فاتورة سداد:</value>
+  </data>
+     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+    <value>(رقم مفوتر هيئة الزكاة والضريبة والجمارك 030)</value>
+</data>
+    <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>تم استكمال الإعلان الإلكتروني بنجاح.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>جواز سفر المسافر</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>تاريخ الرحلة</value>
+  </data>
+ <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
+    <value>حالة السداد</value>
+  </data>
+  <data name="PaidPaymentStatus" xml:space="preserve">
+    <value>دفع</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>غير مدفوع</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>الهوية / الإقامة / رقم جواز السفر</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>راجع الطلب</value>
+  </data>
+   <data name="Add" xml:space="preserve">
+    <value>اضافه</value>
+  </data>
+   <data name="AddNewCRTitle" xml:space="preserve">
+    <value>اضافة سجل تجاري جديد</value> 
+  </data>
+  <data name="Viewlist" xml:space="preserve">
+    <value>اطلع على القائمة</value> 
+  </data>
+    <data name="ZAKATYDesc" xml:space="preserve">
+    <value>(منصة زكاتي عبارة عن بيئة زكوية متوازنة و متكاملة تتيح للأفراد إمكانية حساب الزكاة المستحقة  من خلال عدة بنود والقدرة على  أداء زكاتهم بشكل سلس وميسر من خلال خدمة قنوات الدفع الإلكترونية لتصل لمستحقيها بشكل مباشر في الضمان الاجتماعي)</value> 
+  </data>
+  <data name="GoToZakatyPortal" xml:space="preserve">
+    <value>الانتقال إلى بوابة زكاتي</value> 
+  </data>
+  <data name="DownloadApp" xml:space="preserve">
+    <value>لتحميل التطبيق</value> 
+  </data>
+  <data name="About Zakaty" xml:space="preserve">
+    <value>عن زكاتي</value> 
+  </data>
+  <data name="Zakaty" xml:space="preserve">
+    <value> زكاتي</value> 
+  </data>
+  <data name="ThankYou!" xml:space="preserve">
+    <value>شكرا لكم !</value> 
+  </data>
+  <data name="NoFileChoosen" xml:space="preserve">
+    <value>لم يتم اختيار أي ملف</value> 
   </data>
 </root>

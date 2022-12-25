@@ -112,6 +112,19 @@
 	  <EmbeddedResource Remove="AppResources_BACKUP_70818.resx" />
 	  <EmbeddedResource Remove="AppResources_BASE_70818.resx" />
 	  <EmbeddedResource Remove="AppResources_REMOTE_70818.resx" />
+	  <None Remove="ViewModel\NewDesignViewModel\EDeclaration\" />
+	  <None Remove="Views\NewDesign\EDeclaration\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
+	  <None Remove="Models\CustomServices\Tawreed\" />
+	  <None Remove="Portable.JWT" />
+	  <None Remove="Models\EDeclerationsModel\" />
+	  <None Remove="Models\EDeclerationsModel\SubmitModels\" />
+	  <None Remove="Models\EDeclerationsModel\FeesCalculators\" />
+	  <None Remove="Views\NewDesign\EDeclaration\PopUpPages\" />
+	  <None Remove="Controls\EDeclerationControls\" />
+	  <None Remove="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationInformations\" />
+	  <None Remove="Views\NewDesign\Zakaty\" />
+	  <None Remove="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -151,6 +164,7 @@
 	        <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
 	        <PackageReference Include="ZXing.Net.MobileX.Forms" Version="3.0.1" />
 	        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.1.1" />
+	        <PackageReference Include="Portable.JWT" Version="1.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -224,6 +238,18 @@
 		<Folder Include="Views\NewDesign\LiveVideo\" />
 		<Folder Include="Views\NewDesign\ReportOTP\" />
 		<Folder Include="ViewModel\NewDesignViewModel\ReportOTPVM\" />
+		<Folder Include="ViewModel\NewDesignViewModel\EDeclaration\" />
+		<Folder Include="Views\NewDesign\EDeclaration\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\Transaction_Reception\" />
+		<Folder Include="Models\CustomServices\Tawreed\" />
+		<Folder Include="Models\EDeclerationsModel\" />
+		<Folder Include="Models\EDeclerationsModel\SubmitModels\" />
+		<Folder Include="Models\EDeclerationsModel\FeesCalculators\" />
+		<Folder Include="Views\NewDesign\EDeclaration\PopUpPages\" />
+		<Folder Include="Controls\EDeclerationControls\" />
+		<Folder Include="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationInformations\" />
+		<Folder Include="Views\NewDesign\Zakaty\" />
+		<Folder Include="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -307,6 +333,21 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\HomePages\VatServicesMenu.xaml.cs">
 		  <DependentUpon>VatServicesMenu.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\ProductDeclarationPage.xaml.cs">
+		  <DependentUpon>ProductDeclarationPage.xaml</DependentUpon>
+		  </Compile>
+		<Compile Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\TransactionReceptionView.xaml.cs">
+		  <DependentUpon>TransactionReceptionView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\ContactInformationPage.xaml.cs">
+		  <DependentUpon>ContactInformationPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Controls\EDeclerationControls\SecurityDestrictedQuestionView.xaml.cs">
+		  <DependentUpon>SecurityDestrictedQuestionView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\EDeclaration\EDeclarationPaymentPage.xaml.cs">
+		  <DependentUpon>EDeclarationPaymentPage.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>

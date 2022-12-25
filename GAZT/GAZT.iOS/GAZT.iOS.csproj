@@ -50,7 +50,7 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -114,7 +114,7 @@
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
     <IOSDebuggerPort>10001</IOSDebuggerPort>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
@@ -127,7 +127,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -138,7 +138,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.gazt.enterprise.egazt Development</CodesignProvision>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
@@ -161,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--linkskip=Xamarin.CommunityToolkit -gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
+    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
@@ -582,6 +582,24 @@
     <BundleResource Include="Resources\Stronglysatisfied%402x.png" />
     <BundleResource Include="Resources\Stronglysatisfied%403x.png" />
     <None Include="appcenter-pre-build.sh" />
+    <BundleResource Include="Resources\arrivingPlane.png" />
+    <BundleResource Include="Resources\arrivingPlane%402x.png" />
+    <BundleResource Include="Resources\arrivingPlane%403x.png" />
+    <BundleResource Include="Resources\DepartingPlane.png" />
+    <BundleResource Include="Resources\DepartingPlane%402x.png" />
+    <BundleResource Include="Resources\DepartingPlane%403x.png" />
+    <BundleResource Include="Resources\deIIcon.png" />
+    <BundleResource Include="Resources\delIcon%402x.png" />
+    <BundleResource Include="Resources\delIcon%403x.png" />
+    <BundleResource Include="Resources\fillArriving.png" />
+    <BundleResource Include="Resources\fillArriving%402x.png" />
+    <BundleResource Include="Resources\fillArriving%403x.png" />
+    <BundleResource Include="Resources\whiteSelected.png" />
+    <BundleResource Include="Resources\whiteSelected%402x.png" />
+    <BundleResource Include="Resources\whiteSelected%403x.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane%402x.png" />
+    <BundleResource Include="Resources\unFillDepartingPlane%403x.png" />
     <BundleResource Include="Resources\blueCard.png" />
     <BundleResource Include="Resources\blueCard%402x.png" />
     <BundleResource Include="Resources\blueCard%403x.png" />
@@ -591,6 +609,12 @@
     <BundleResource Include="Resources\failQR.png" />
     <BundleResource Include="Resources\failQR%402x.png" />
     <BundleResource Include="Resources\failQR%403x.png" />
+    <BundleResource Include="Resources\QUnselected.png" />
+    <BundleResource Include="Resources\QUnselected%402x.png" />
+    <BundleResource Include="Resources\QUnselected%403x.png" />
+    <BundleResource Include="Resources\QSelected.png" />
+    <BundleResource Include="Resources\QSelected%402x.png" />
+    <BundleResource Include="Resources\QSelected%403x.png" />
     <BundleResource Include="Resources\NotSelectedAccountStatlement.png" />
     <BundleResource Include="Resources\NotSelectedAccountStatlement%402x.png" />
     <BundleResource Include="Resources\NotSelectedAccountStatlement%403x.png" />
@@ -605,6 +629,84 @@
     <BundleResource Include="Resources\NotSelectedDashBoardicon.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%402x.png" />
     <BundleResource Include="Resources\NotSelectedDashBoardicon%403x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%402x.png" />
+    <BundleResource Include="Resources\TransactionReceptionIcon%403x.png" />
+    <BundleResource Include="Resources\Entity.png" />
+    <BundleResource Include="Resources\Entity%402x.png" />
+    <BundleResource Include="Resources\Entity%403x.png" />
+    <BundleResource Include="Resources\SelectedEntity.png" />
+    <BundleResource Include="Resources\SelectedEntity%402x.png" />
+    <BundleResource Include="Resources\SelectedEntity%403x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%402x.png" />
+    <BundleResource Include="Resources\SelectefTaxpayer%403x.png" />
+    <BundleResource Include="Resources\Taxpayer.png" />
+    <BundleResource Include="Resources\Taxpayer%402x.png" />
+    <BundleResource Include="Resources\Taxpayer%403x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%402x.png" />
+    <BundleResource Include="Resources\GrayDDLArrow%403x.png" />
+    <BundleResource Include="Resources\greyCalender.png" />
+    <BundleResource Include="Resources\greyCalender%403x.png" />
+    <BundleResource Include="Resources\greyCalender%404x.png" />
+    <BundleResource Include="Resources\greyDropDown.png" />
+    <BundleResource Include="Resources\greyDropDown%402x.png" />
+    <BundleResource Include="Resources\greyDropDown%403x.png" />
+    <BundleResource Include="Resources\citizien.png" />
+    <BundleResource Include="Resources\citizien%402x.png" />
+    <BundleResource Include="Resources\citizien%403x.png" />
+    <BundleResource Include="Resources\newdeclaration.png" />
+    <BundleResource Include="Resources\newdeclaration%402x.png" />
+    <BundleResource Include="Resources\newdeclaration%403x.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest%402x.png" />
+    <BundleResource Include="Resources\reviewapreviousrequest%403x.png" />
+    <BundleResource Include="Resources\visitor.png" />
+    <BundleResource Include="Resources\visitor%402x.png" />
+    <BundleResource Include="Resources\visitor%403x.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration%402x.png" />
+    <BundleResource Include="Resources\Selctednewdeclaration%403x.png" />
+    <BundleResource Include="Resources\unselectedcitizien.png" />
+    <BundleResource Include="Resources\unselectedcitizien%402x.png" />
+    <BundleResource Include="Resources\unselectedcitizien%403x.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest%402x.png" />
+    <BundleResource Include="Resources\unselectedreviewapreviousrequest%403x.png" />
+    <BundleResource Include="Resources\unselectedvisitor.png" />
+    <BundleResource Include="Resources\unselectedvisitor%402x.png" />
+    <BundleResource Include="Resources\unselectedvisitor%403x.png" />
+    <BundleResource Include="Resources\DocBlue.png" />
+    <BundleResource Include="Resources\DocBlue%402x.png" />
+    <BundleResource Include="Resources\DocBlue%403x.png" />
+    <BundleResource Include="Resources\paywhiteCard.png" />
+    <BundleResource Include="Resources\paywhiteCard%402x.png" />
+    <BundleResource Include="Resources\paywhiteCard%403x.png" />
+    <BundleResource Include="Resources\ColorSadad.png" />
+    <BundleResource Include="Resources\ColorSadad%402x.png" />
+    <BundleResource Include="Resources\ColorSadad%403x.png" />
+    <BundleResource Include="Resources\WhiteSadad.png" />
+    <BundleResource Include="Resources\WhiteSadad%402x.png" />
+    <BundleResource Include="Resources\WhiteSadad%403x.png" />
+    <BundleResource Include="Resources\OrangeCircle%401.5x.png" />
+    <BundleResource Include="Resources\OrangeCircle%402x.png" />
+    <BundleResource Include="Resources\OrangeCircle%403x.png" />
+    <BundleResource Include="Resources\AppleStore.png" />
+    <BundleResource Include="Resources\AppleStore%402x.png" />
+    <BundleResource Include="Resources\AppleStore%403x.png" />
+    <BundleResource Include="Resources\GooglePlay.png" />
+    <BundleResource Include="Resources\GooglePlay%402x.png" />
+    <BundleResource Include="Resources\GooglePlay%403x.png" />
+    <BundleResource Include="Resources\ZAKATyLogo.png" />
+    <BundleResource Include="Resources\ZAKATyLogo%402x.png" />
+    <BundleResource Include="Resources\ZAKATyLogo%403x.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu%402x.png" />
+    <BundleResource Include="Resources\ZAKATYlogoInMenu%403x.png" />
+    <BundleResource Include="Resources\darkSucces.png" />
+    <BundleResource Include="Resources\darkSucces%402x.png" />
+    <BundleResource Include="Resources\darkSucces%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -913,6 +1015,12 @@
     </PackageReference>
     <PackageReference Include="Syncfusion.Licensing">
       <Version>20.3.0.47</Version>
+    </PackageReference>
+    <PackageReference Include="Portable.JWT">
+      <Version>1.0.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugins.Forms.KeyboardOverlap">
+      <Version>1.0.0.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -1,11 +1,15 @@
 ﻿using EGAZT.Models;
+using EGAZT.Models.SubmitReportModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -372,6 +376,116 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        #region File Upload
+        ObservableCollection<ReportFileModel> uploadedFiles = new ObservableCollection<ReportFileModel>();
+        public ObservableCollection<ReportFileModel> UploadedFiles { get { return uploadedFiles; } set { uploadedFiles = value; RaisePropertyChanged(); } }
+
+        public async Task PickAndShow(PickOptions options,int maxCount=1)
+        {
+            try
+            {
+                var result = await FilePicker.PickAsync(options);
+                if (result != null)
+                {
+                    var Text = $"File Name: {result.FileName}";
+                    if (result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
+                    {
+
+                        var lenght = new FileInfo(result.FullPath).Length;
+                        double LenghtInKb = lenght / 1024;
+                        double LenInMb = LenghtInKb / 1024;
+                        double size = LenInMb;
+                        double filesize = size;
+
+                        if (filesize > 2)
+                        {
+                            MessageTxt = AppResources.MaximumFileSizeMsg;
+                            IsShowMsgView = true;
+                        }
+                        else if (UploadedFiles != null && UploadedFiles.Count < maxCount)
+                        {
+                            var stream = await result.OpenReadAsync();
+                            string content = await ConvertToBase64(stream);
+                            ReportFileModel reportfile = new ReportFileModel();
+                            reportfile.fileBase64 = content;
+                            reportfile.fileFullName = result.FileName;
+                            reportfile.fileExtinction = Path.GetExtension(result.FileName);
+                            UploadedFiles.Add(reportfile);
+                           }
+                        else
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.NumberofAttachments;
+
+                        }
+                    }
+                    else
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.PDFFileHint;
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.Somethingwentwrong;
+
+            }
+
+
+        }
+        private async Task<string> ConvertToBase64(Stream stream)
+        {
+            if (stream is MemoryStream memoryStream)
+            {
+                return Convert.ToBase64String(memoryStream.ToArray());
+            }
+
+            var bytes = new Byte[(int)stream.Length];
+
+            stream.Seek(0, SeekOrigin.Begin);
+            await stream.ReadAsync(bytes, 0, (int)stream.Length);
+
+            return Convert.ToBase64String(bytes);
+        }
+        public ICommand DeleteAttatchementCommand
+        {
+            get
+            {
+                return new Command<ReportFileModel>((file) =>
+                {
+
+                    if (file != null && UploadedFiles != null && UploadedFiles.Count > 0)
+                    {
+                        UploadedFiles.Remove(file);
+
+                    //    if (UploadedFiles.Count == 0) IsTherePDFUploaded = false;
+                    }
+                });
+            }
+        }
+        #endregion
+        public object GetTokenData(string token = "")
+        {
+            try
+            {
+                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJGaXJzdE5hbWUiOiLYrdiz2KfZhSIsIk1pZGRsZU5hbWUiOiLYudmE2YoiLCJMYXN0TmFtZSI6Itin2YTYsdmB2KfYudmKIiwiTmF0aW9uYWxpdHlJZCI6IjEwMCIsIk5hdGlvbmFsaXR5Ijoi2KfZhNmF2YXZhNmD2Kkg2KfZhNi52LHYqNmK2Kkg2KfZhNiz2LnZiNiv2YrYqSIsIkdlbmRlciI6Ik1hbGUiLCJSZWxlYXNlRGF0ZSI6IjE0MzkvMDIvMjciLCJFbmREYXRlIjoiIiwiSXRzU291cmNlIjoiIiwiZXhwIjoxNjc5NjY1MDI4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0IiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdDo2MDYwNCJ9.QtFwlVBPRXnladbZ2OJeoz7Aewdl7-ZGmZ53dSHzRcg";
+                // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
+                string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
+                var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
+                return payload;
+                //  var mobile = payload["Mobile"];
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+
+        }
 
     }
 }

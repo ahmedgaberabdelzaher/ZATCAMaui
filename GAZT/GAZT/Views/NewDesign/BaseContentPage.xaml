@@ -27,6 +27,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <Grid>
     <Grid RowDefinitions="auto,*">
         <yummy:PancakeView
             x:Name="MainContainer"
@@ -35,8 +36,11 @@
             x:FieldModifier="public"
             Style="{StaticResource CommonTopCurves}" />
         <controls:Header x:Name="titel" TitleText="{x:Static ResourceManager:AppResources.Home}" />
-        <controls:Loader
-            Grid.Row="1"
+        <controls:Loader Grid.Row="1"
             IsVisible="{Binding IsLoading}" />
+    </Grid>
+             <controls:MsgView
+            Grid.Row="0"  VerticalOptions="EndAndExpand"
+            IsVisible="{Binding IsShowMsgView}" />
     </Grid>
 </ContentPage>

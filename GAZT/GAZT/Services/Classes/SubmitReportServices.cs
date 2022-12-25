@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using EGAZT.AppConfigurations;
 using EGAZT.Helper;
 using EGAZT.Models.BaseModels;
 using EGAZT.Models.SubmitReportModel;
@@ -35,9 +36,16 @@ namespace EGAZT.Services.Classes
             var response = await NewHTTPManger.Get<BaseResponseModel<List<BaseRegionAndCity>>>($"{App.VatBaseUrl}/SMS/GetRegions") as BaseResponseModel<List<BaseRegionAndCity>>;
             return response?.Result?.Data;
         }
-        public async Task<BaseResponseModel<string>> CreateZatcaNewReport(SubmitReportModel submitReport)
+        public async Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportDataPowerModel submitReport)
         {
-            var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+            /* var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
+           */
+            //   var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
+//DataPower
+            var res = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}v4/zatca/new-report/submit-form", submitReport);
+
+            var cont = await res.Content.ReadAsStringAsync();
+            var response = NewHTTPManger.DeserializeObject<DATAPowerBaseResponseResult<SubmitDataPowerResult>>(cont);
             return response;
         }
     }

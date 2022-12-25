@@ -21,6 +21,7 @@ using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading.Tasks;
 using MediaManager;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 namespace GAZT.iOS
 {
@@ -50,6 +51,7 @@ namespace GAZT.iOS
             (sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
             Xamarin.Forms.Forms.Init();
+            KeyboardOverlapRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();

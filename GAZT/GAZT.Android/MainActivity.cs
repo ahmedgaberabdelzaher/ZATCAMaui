@@ -20,6 +20,7 @@ using Android.Content;
 using Acr.UserDialogs;
 using MediaManager;
 using Rg.Plugins.Popup.Services;
+using System.Net;
 
 namespace GAZT.Droid
 {
@@ -53,7 +54,8 @@ namespace GAZT.Droid
             }
 
             // Xamarin.Essentials.Platform.Init(this, bundle);
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+            ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+          //  System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
             {
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.WriteExternalStorage }, 0);
@@ -105,8 +107,9 @@ namespace GAZT.Droid
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
+       
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
-             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
+             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
         //private void RequestStorageAccess()

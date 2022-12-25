@@ -163,6 +163,14 @@ using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
 using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
 using EGAZT.Views.NewDesign.ReportOTP;
 using System.Net.Http;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.Views.NewDesign.EDeclaration;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
+using EGAZT.Helper;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
+using EGAZT.Views.NewDesign.Zakaty;
 
 namespace EGAZT
 {
@@ -187,6 +195,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
             SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
             SimpleIoc.Default.Register<IUserServices, UserServices>();
+            SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
+            SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
+            SimpleIoc.Default.Register<EDeclerationSubmitModel>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -413,7 +424,17 @@ namespace EGAZT
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
-
+            SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
+            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
+            SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
+            SimpleIoc.Default.Register<TransactionReceptionViewModel>();
+            SimpleIoc.Default.Register<IAMLoginViewModel>();
+            SimpleIoc.Default.Register<ReviewRequestViewModel>();
+            SimpleIoc.Default.Register<EDeclerationViewModel>();
+            SimpleIoc.Default.Register<CustomsPaymentViewModel>();
+            SimpleIoc.Default.Register<StateManager>();
+            SimpleIoc.Default.Register<AboutZakatyViewModel>();
             #endregion
         }
 
@@ -2895,7 +2916,20 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
-
+            navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
+            navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
+            navigationService.Configure("SuccessView", typeof(SuccessView));
+            navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
+            navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
+            navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
+            navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
+            navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
+            navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
+            navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
+            navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
+            navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
             #endregion
 
             return navigationService;
@@ -3097,6 +3131,78 @@ namespace EGAZT
             }
         }
 
+        public TransactionReceptionViewModel TransactionReceptionViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IAMLoginViewModel IAMLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<IAMLoginViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public EDeclerationViewModel EDeclerationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public CustomsPaymentViewModel CustomsPaymentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomsPaymentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public AboutZakatyViewModel AboutZakatyViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AboutZakatyViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView
@@ -3999,7 +4105,104 @@ namespace EGAZT
                 }
             }
         }
-
+        public BaseEDeclarationViewModel BaseEDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BaseEDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ProductDeclarationViewModel ProductDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclarationInformationsViewModel EDeclarationInformationsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclarationInformationsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ReviewRequestViewModel ReviewRequestViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReviewRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclarationPaymentViewModel EDeclarationPaymentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclarationPaymentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclerationSubmitModel EDeclerationSubmitModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public StateManager StateManager
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StateManager>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
     //
     }
 

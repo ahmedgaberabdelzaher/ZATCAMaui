@@ -25,9 +25,14 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-
-                    using (var client = new HttpClient())
+                  
+                  //  using (var client = new HttpClient(new System.Net.Http.HttpClientHandler()))
                     {
+                        HttpClientHandler clientHandler = new HttpClientHandler();
+                        clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                        // Pass the handler to httpclient(from you are calling api)
+                        HttpClient client = new HttpClient(clientHandler);
                         AdjustHeaders(client);
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, Url);
@@ -92,18 +97,22 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
 
-                    using (var client = new HttpClient())
+                   // using (var client = new HttpClient())
                     {
+                        HttpClientHandler clientHandler = new HttpClientHandler();
+                        clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
 
+                        // Pass the handler to httpclient(from you are calling api)
+                        HttpClient client = new HttpClient(clientHandler);
                         AdjustHeaders(client);
                         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, Url);
 
                         httpRequestMessage.Content = new StringContent(CheckNullJsonObject(body), Encoding.UTF8, "application/json");
 
-                        using (var httpResponseMessage = await client.SendAsync(httpRequestMessage))
+                       // using (var httpResponseMessage = await client.SendAsync(httpRequestMessage))
                         {
-
+                            var httpResponseMessage = await client.SendAsync(httpRequestMessage);
                             var response = await httpResponseMessage.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                             if (httpResponseMessage.StatusCode == HttpStatusCode.Unauthorized ||
@@ -317,7 +326,7 @@ namespace EGAZT.Helper
             }
         }
 
-        private static T DeserializeObject<T>(string content)
+        public static T DeserializeObject<T>(string content)
         {
             try
             {

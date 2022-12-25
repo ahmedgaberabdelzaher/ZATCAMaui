@@ -455,7 +455,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Forgot Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
-    <value>Individual/Personal business</value>
+    <value>Individual</value>
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
@@ -6710,9 +6710,6 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
     <value>Carried Previous Credit Details</value>
   </data>
-  <!--  <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>Carried Credit Details</value>
-  </data>-->
   <data name="ESTAddOutlet" xml:space="preserve">
     <value>Add Outlet</value>
   </data>
@@ -9650,21 +9647,14 @@ the Zakat, Tax and Customs
       <data name="EdcuationJourney" xml:space="preserve">
         <value>Edcuation Journey</value>
     </data>
-    <data name="SurveyQ1" xml:space="preserve">
-        <value>Overall, I am satisfied with my
-experience with theMobile App at
-the Zakat, Tax and Customs Authority</value>
+  <data name="SurveyQ1" xml:space="preserve">
+        <value>Overall, I am satisfied with my experience with the Mobile App at the Zakat, Tax and Customs Authority ?</value>
     </data>
-        <data name="SurveyQ2" xml:space="preserve">
-        <value>We noticed you dissatisfied with the
-question in the previous page. Kindly
-clarify the reason for dissatisfaction
-to help us improve your experience</value>
+  <data name="SurveyQ2" xml:space="preserve">
+        <value>We noticed you dissatisfied with the question in the previous page. Kindly clarify the reason for dissatisfaction to help us improve your experience</value>
     </data>
-       <data name="SurveyQ3" xml:space="preserve">
-        <value>Do you have any additional
-comments for the Zakat, Tax and
-Customs Authority?</value>
+  <data name="SurveyQ3" xml:space="preserve">
+        <value>Do you have any additional comments for the Zakat, Tax and Customs Authority?</value>
     </data>
        <data name="ThankYou" xml:space="preserve">
         <value>Thank You</value>
@@ -9794,7 +9784,7 @@ Zakat, Tax and Customs Authority
     <data name="TaxServicesTip2" xml:space="preserve">
         <value>Scanning the QR code allows you to validate excise Goods</value>
     </data>
-     <data name="CustomNote1" xml:space="preserve">
+ <data name="CustomNote1" xml:space="preserve">
         <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>
     </data>
     <data name="CustomNote2" xml:space="preserve">
@@ -9809,25 +9799,352 @@ Zakat, Tax and Customs Authority
      <data name="RegisteredVAT" xml:space="preserve">
         <value>VAT Registered</value>
     </data>
-    <data name="VATCertificateNumber" xml:space="preserve">
+<data name="VATCertificateNumber" xml:space="preserve">
         <value>VAT Certificate Number</value>
     </data>
     <data name="unableToVerify" xml:space="preserve">
         <value>Unable To Verify</value>
+    </data> 
+ <data name="PleaseEnter" xml:space="preserve">
+     <value>Please enter</value>
     </data>
-    <data name="PleaseEnter" xml:space="preserve">
-        <value>Please enter</value>
-    </data>
-    <data name="VATCertificateNumberValidation" xml:space="preserve">
+  <data name="VATCertificateNumberValidation" xml:space="preserve">
         <value>The number of digits in the tax certificate number must be 15 digits</value>
     </data>
     <data name="AccountS" xml:space="preserve">
         <value>Account S</value>
     </data>
-       <data name="AccountS" xml:space="preserve">
-        <value>Account S</value>
-    </data>
       <data name="MenuDashboard" xml:space="preserve">
     <value>Dashboard</value>
+  </data>
+    <data name="ProductDeclaration" xml:space="preserve">
+        <value>Declaration Data</value>
+    </data>
+  <data name="NewDeclaration" xml:space="preserve">
+        <value>New Declaration</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>Select the option and complete details</value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>Coming to the kingdom or leaving?</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>Arriving to KSA</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>Departing from KSA</value>
+    </data> 
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>If the product not found in the list, please recognize the office of acting upon arrival.</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>Type of item</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>Product name</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>Add item</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>Total fees payable</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>Select</value>
+    </data>
+  <data name="TransactionReception" xml:space="preserve">
+    <value>Transaction Reception</value>
+  </data>
+  <data name="NewTransactionReception" xml:space="preserve">
+    <value>New Transaction Reception</value>
+  </data>
+  <data name="Pleasecompletethedata" xml:space="preserve">
+    <value>Please complete the data</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entity</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Enterthesubjectofthetransaction" xml:space="preserve">
+    <value>Enter the subject of the transaction</value>
+  </data>
+    <data name="Transactiondescription" xml:space="preserve">
+    <value>Ward content</value>
+  </data>
+  <data name="PDFFileHint" xml:space="preserve">
+    <value>PDF file format max size 2MB</value>
+  </data>
+    <data name="UserType" xml:space="preserve">
+    <value>Department Type</value>
+  </data>
+    <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
+    <value>Your request has been sent successfully</value>
+  </data>
+  <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+    <value>Your request has been sent successfully، You will be notified of the status of the request via mobile phone</value>
+  </data>
+  <data name="Referencenumber" xml:space="preserve">
+    <value>Reference number</value>
+  </data>
+  <data name="AddNewCR" xml:space="preserve">
+    <value>Add New CR +</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="PassengerInformation" xml:space="preserve">
+    <value>Passenger Information</value>
+  </data>
+   <data name="Passport" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="GccNationalID" xml:space="preserve">
+    <value>Gcc National ID</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="ItsSource" xml:space="preserve">
+    <value>Its Source</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="TravelerCount" xml:space="preserve">
+    <value>Traveler Count</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>Trip Information</value>
+  </data>
+  <data name="AirTrip" xml:space="preserve">
+    <value>Air Trip</value>
+  </data>
+  <data name="LandTrip" xml:space="preserve">
+    <value>Land Trip</value>
+  </data>
+  <data name="SeaTrip" xml:space="preserve">
+    <value>Sea Trip</value>
+  </data>
+  <data name="TypeOfTrip" xml:space="preserve">
+    <value>Type of Trip</value>
+  </data>
+  <data name="ComingFrom" xml:space="preserve">
+    <value>Coming From</value>
+  </data>
+  <data name="GoingTo" xml:space="preserve">
+    <value>Going To</value>
+  </data>
+   <data name="EntrancePort" xml:space="preserve">
+    <value>Entrance Port</value>
+  </data>
+  <data name="ExitPort" xml:space="preserve">
+    <value>Exit Port</value>
+  </data>
+   <data name="ArrivalDate" xml:space="preserve">
+    <value>Arrival Date</value>
+  </data>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>Departure Date</value>
+  </data>
+   <data name="TripNumber" xml:space="preserve">
+    <value>Trip Number</value>
+  </data>
+  <data name="TravelPurpose" xml:space="preserve">
+    <value>Travel Purpose</value>
+  </data>
+ <data name="CustomFeesCalculator" xml:space="preserve">
+    <value>Custom and TAX Fees Calculator</value>
+  </data>
+  <data name="EDeclerationDesc" xml:space="preserve">
+    <value>It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it.</value>
+  </data>
+    <data name="TawreedServiceDesc" xml:space="preserve">
+    <value>It allows customs clients to send import transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters</value>
+  </data>
+      <data name="TobacoTypeNotehint" xml:space="preserve">
+    <value>Clarification: 1/20 means a tray containing 20 cigarettes</value>
+  </data>
+       <data name="EdeclerationSecQ" xml:space="preserve">
+    <value>Do you have any new possessions of total value exceeding SAR 3,000(800$)?</value>
+  </data>
+      <data name="Q2Hint" xml:space="preserve">
+    <value>Calculates the price of Gram – Gold and Silver – Based on the price of grams in Saudi Arabia</value>
+  </data>
+  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+    <value>Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+    <value>Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
+    <value>Examples – Aircraft, medicines, pets, etc.</value>
+  </data>
+    <data name="MaterialType" xml:space="preserve">
+    <value>Material Type</value>
+  </data>
+  <data name="Purpose" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="OtherPurpose" xml:space="preserve">
+    <value>Other Purpose</value>
+  </data>
+    <data name="TotalValue" xml:space="preserve">
+    <value>Total Value</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="AddressKSA" xml:space="preserve">
+    <value>Address in KSA</value>
+  </data>
+  <data name="CreatedSuccessfully" xml:space="preserve">
+    <value>Created Successfully</value>
+  </data>
+  <data name="CreatedSuccessfullyMsg" xml:space="preserve">
+    <value>The e-declration has been created successfully</value>
+  </data>
+  <data name="DeclarationAcknowledge" xml:space="preserve">
+    <value>Acknowledge</value>
+  </data>
+   <data name="AcknowledgeNote1" xml:space="preserve">
+    <value>I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work</value>
+  </data>
+  <data name="AcknowledgeNote2" xml:space="preserve">
+    <value>I take full responsibility for the correctness and accuracy of the information provided by me</value>
+  </data>
+  <data name="AcknowledgeNote3" xml:space="preserve">
+    <value>I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Customs Authority</value>
+  </data>
+  <data name="AcknowledgeNote4" xml:space="preserve">
+    <value>I further assume full responsibility in case the General Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability</value>
+  </data>
+  <data name="AcknowledgeNote5" xml:space="preserve">
+    <value>Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the customs officer</value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>I have Read the terms and conditions</value>
+  </data>
+    <data name="ProhibitedItems" xml:space="preserve">
+    <value>View the list of prohibited items</value>
+  </data>
+   <data name="ApproveDeclaration" xml:space="preserve">
+    <value>Approve Declaration</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Checkout</value>
+   </data>
+  <data name="units" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
+    <value>You answered yes, you have to add at least one item in the cart</value>
+  </data>
+   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
+    <value>Sorry, the entered total value does not require the declaration</value>
+  </data>
+  <data name="ALLanswersisNoMsg" xml:space="preserve">
+    <value>Sorry ... it seems that you did not choose from the questions or fill in their data</value>
+  </data>
+  <data name="Servicetype" xml:space="preserve">
+    <value>Service type</value>
+  </data>
+  <data name="Identitytype" xml:space="preserve">
+    <value>Identity type</value>
+  </data>
+  <data name="Visitor" xml:space="preserve">
+    <value>Visitor</value>
+  </data>
+    <data name="Citizen" xml:space="preserve">
+    <value>Citizen / Resident</value>
+  </data>
+   <data name="IAMLogin" xml:space="preserve">
+    <value>IAM Login</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment Details</value>
+  </data>
+  <data name="TotalAmountNumeric" xml:space="preserve">
+    <value>Total amount in numeric</value>
+  </data>
+  <data name="TotalAmountWriting" xml:space="preserve">
+    <value>Total amount in writing</value>
+  </data>
+  <data name="DateBirthValidation" xml:space="preserve">
+    <value>The date of birth cannot be in the present or the future</value>
+  </data>
+  <data name="ReleaseDateValidation" xml:space="preserve">
+    <value>Release Date can't be in the future</value>
+  </data>
+  <data name="EndDateValidation" xml:space="preserve">
+    <value>End Date can't be in the past</value>
+  </data>
+  <data name="ComingGoingDateValidation" xml:space="preserve">
+    <value>Date can't be in the past</value>
+  </data>
+    <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+    <value>SADAD Number: </value>
+  </data>
+     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+    <value>(The service provider code for Saudi Customs is 030)</value>
+</data>
+  <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>The electronic declaration has been completed successfully.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>Traveller Passport</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>Trip Date</value>
+  </data>
+   <data name="PaidPaymentStatus" xml:space="preserve">
+   <value>Paid</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>ID / Residence / Passport Number</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>Review the request</value>
+  </data>
+     <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+     <data name="AddNewCRTitle" xml:space="preserve">
+    <value>Add New CR</value> 
+  </data> 
+  <data name="Viewlist" xml:space="preserve">
+    <value>View list</value> 
+  </data>
+  <data name="ZAKATYDesc" xml:space="preserve">
+    <value>Zakaty Platform is a well-balanced and integrated zakat environment that enables individuals to calculate the amount of zakat due on a variety of items as well as to pay zakat efficiently and conveniently through electronic payment channels to those who are specifically entitled to social security.</value> 
+  </data>
+    <data name="GoToZakatyPortal" xml:space="preserve">
+    <value>Go To Zakaty Portal</value> 
+  </data>
+  <data name="DownloadApp" xml:space="preserve">
+    <value>To download the app</value> 
+  </data>
+  <data name="About Zakaty" xml:space="preserve">
+    <value>About Zakaty</value> 
+  </data>
+  <data name="Zakaty" xml:space="preserve">
+    <value>Zakaty</value> 
+  </data>
+    <data name="ThankYou!" xml:space="preserve">
+    <value>Thank You!</value> 
+  </data>
+   <data name="NoFileChoosen" xml:space="preserve">
+    <value>No file was selected</value> 
   </data>
 </root>

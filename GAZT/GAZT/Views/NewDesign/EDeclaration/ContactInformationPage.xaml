@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.ContactInformationPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+     <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+         <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" >
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Text="{Binding HeaderTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--Circle view-->
+                        <Grid RowDefinitions="Auto"
+                              Margin="0,30"
+                              ColumnSpacing="0"
+                              VerticalOptions="Start"
+                              HorizontalOptions="CenterAndExpand"
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                            <!--Circle button 1-->
+                            <ImageButton 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    BorderWidth="1"
+                                    InputTransparent="True"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="EndAndExpand"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2" />
+
+                            <!--Circle button 2-->
+                             <ImageButton 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
+
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2" />
+
+                            <!--Circle button 3-->
+                            <ImageButton 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="4"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2" />
+
+                            <!--Circle button 4-->
+                             <ImageButton 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="6"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BackgroundColor="#0996D4"
+                                    BorderColor="#0996D4"
+                                    Padding="5"
+                                    Source="reportCheckMark.png"/>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="7"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2" />
+
+                            <!--Circle button 5-->
+                            <ImageButton 
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                CornerRadius="15"
+                                InputTransparent="True"
+                                BorderWidth="1"
+                                Grid.Column="8"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                Padding="5"
+                                Source="reportCheckMark.png"/>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="9"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2" />
+
+                            <!--Circle button 6-->
+                            <Button 
+                                WidthRequest="30"
+                                HeightRequest="30"
+                                CornerRadius="15"
+                                InputTransparent="True"
+                                BorderWidth="1"
+                                Grid.Column="10"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                BorderColor="#0996D4"
+                                BackgroundColor="Transparent"
+                                TextColor="#0996D4"
+                                Text="6">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                        </Grid>
+
+                        <!--  Contact Information Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ContactInformation}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Contact Note Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="16"
+                            Margin="0,0,0,5"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+
+                        <!--  Phone Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Phone Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Phone Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Telephone"
+                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <StackLayout Orientation="Horizontal"
+                                                 Padding="2"
+                                                 Spacing="0">
+
+                                        <custom:CustomLabel
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                FontSize="14"
+                                                TextColor="#002447"
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"/>
+                                        <BoxView 
+                                            VerticalOptions="Fill"
+                                            WidthRequest="2"
+                                            HorizontalOptions="Center"
+                                            BackgroundColor="#EBEBEB"/>
+
+                                         <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}"/>
+                                         </StackLayout.GestureRecognizers>
+
+                                    </StackLayout>
+                                </inputLayout:SfTextInputLayout.LeadingView>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Email Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Email Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Email Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.email}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                         <!--  Address Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Address Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Address Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.address}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!-- GoTo Success Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding GoToSuccessCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+
+                        <!--  Pervious Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+
+            <!--  Loader  -->
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

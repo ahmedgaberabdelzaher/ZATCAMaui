@@ -11,19 +11,15 @@ namespace EGAZT.Views.NewDesign.SubmitReport
         SubmitReportViewModel viewModel;
         public SubmitReportPage()
         {
-            try
-            {
-               
-                InitializeComponent();
-                viewModel = App.Locator.SubmitReportViewModel;
-                BindingContext = viewModel;
-            }
-            catch(Exception ex)
-            {
+            InitializeComponent();
+            viewModel = App.Locator.SubmitReportViewModel;
+            BindingContext = viewModel;
+        }
 
-            }
-            
-
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.BackMethod();
+            return true;
         }
     }
 }

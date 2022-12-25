@@ -4,13 +4,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:controls="clr-namespace:EGAZT.Controls"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
-    xmlns:custom="clr-namespace:GAZT"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"  
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -19,9 +14,6 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
-            <xct:ListIsNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />

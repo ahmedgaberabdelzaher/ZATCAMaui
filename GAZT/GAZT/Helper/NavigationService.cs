@@ -84,6 +84,7 @@ namespace EGAZT
                             }
                         }
                     }
+
                    // else
                     
                 }
@@ -140,6 +141,7 @@ namespace EGAZT
                     }
                     var page = constructor.Invoke(parameters) as Page;
                     Application.Current.MainPage = new NavigationPage(page);
+                  
 
                 }
                 else

@@ -23,6 +23,10 @@ using System.Net.Http;
 using GAZT.Manager;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using System.ComponentModel;
+using Android.App;
+using System.IO;
+using Xamarin.Essentials;
+using Android.Widget;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace EGAZT.Droid.CustomRenderer
@@ -52,6 +56,8 @@ namespace EGAZT.Droid.CustomRenderer
                 //Control.Settings.MixedContentMode = MixedContentHandling.NeverAllow;
 
                 Control.SetWebViewClient(new HybridWebViewClient((HybridWebView)Element));
+                Control.SetDownloadListener(new CustomDownloadListener());
+
                 Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
 
                 //((HybridWebView)Element).Cleanup();
@@ -66,7 +72,7 @@ namespace EGAZT.Droid.CustomRenderer
 
                 Control.Settings.MixedContentMode = MixedContentHandling.AlwaysAllow;
                 Control.SetWebViewClient(new HybridWebViewClient((HybridWebView)Element));
-
+                Control.SetDownloadListener(new CustomDownloadListener());
                 var tempElement = (HybridWebView)e.NewElement;
                 tempElement.RefreshCommand = () =>
                 {
@@ -490,4 +496,29 @@ namespace EGAZT.Droid.CustomRenderer
         //    }
         //}
     }
-}
+    public class CustomDownloadListener : Java.Lang.Object, IDownloadListener
+    {
+        public void OnDownloadStart(string url, string userAgent, string contentDisposition, string mimetype, long contentLength)
+        {
+            try
+            {
+                DownloadManager.Request request = new DownloadManager.Request(Android.Net.Uri.Parse(url));
+                request.AllowScanningByMediaScanner();
+                request.SetNotificationVisibility(DownloadVisibility.VisibleNotifyCompleted);
+                // if this path is not create, we can create it.
+                string thmblibrary = FileSystem.AppDataDirectory + "/download";
+                if (!Directory.Exists(thmblibrary))
+                    Directory.CreateDirectory(thmblibrary);
+                request.SetDestinationInExternalFilesDir(Android.App.Application.Context, FileSystem.AppDataDirectory, "download");
+                DownloadManager dm = (DownloadManager)Android.App.Application.Context.GetSystemService(Android.App.Application.DownloadService);
+                dm.Enqueue(request);
+               // Toast.MakeText(Android.App.Application.Context, "Downloading File", ToastLength.Long).Show();
+
+            }
+            catch (Exception)
+            {
+            }
+
+        }
+    }
+    }
