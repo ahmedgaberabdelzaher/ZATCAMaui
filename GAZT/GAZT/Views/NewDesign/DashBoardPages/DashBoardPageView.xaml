@@ -2289,18 +2289,18 @@
                                 </DataTrigger>
                             </StackLayout.Triggers>
                             <Frame
-                                Padding="9"
+                                Padding="9" Margin="0"
                                 BackgroundColor="White"
                                 BorderColor="#4FBBBD"
                                 CornerRadius="14">
                                 <Label
-                                    FontSize="16"
-                                    HorizontalOptions="StartAndExpand"
+                                    FontSize="16" 
+                                    HorizontalOptions="FillAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
                                     TextColor="#0996D4" />
                             </Frame>
                             <StackLayout
-                                x:Name="menu"
+                                x:Name="menu" 
                                 BindableLayout.ItemsSource="{Binding ImojiesLst}"
                                 HorizontalOptions="CenterAndExpand"
                                 Orientation="Horizontal">
@@ -2357,7 +2357,7 @@
                                 BackgroundColor="#0996D4"
                                 CornerRadius="14">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="1"  />
+                                    <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="0"  />
                                 </Frame.GestureRecognizers>
                                 <Label
                                     FontSize="16"

@@ -20,7 +20,7 @@
                <Label  Text="{x:Static ResourceManager:AppResources.ZAKATYDesc}" TextColor="#002447" FontSize="16" FontFamily="{StaticResource SomarRegular}"></Label>
                 <!--#endregion-->
                      <!--#region Move To Zakaty Portal View-->
-                <Frame Padding="12" Margin="0,24,0,24" BackgroundColor="#0996D4" CornerRadius="14">
+                <Frame Padding="12" Margin="0,34,0,24" BackgroundColor="#0996D4" CornerRadius="14">
                     <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToZakatyPortalCommand}"></TapGestureRecognizer>
                     </Frame.GestureRecognizers>

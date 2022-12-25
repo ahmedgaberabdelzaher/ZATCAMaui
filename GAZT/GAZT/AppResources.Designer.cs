@@ -7230,7 +7230,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Individual/Personal business.
+        ///   Looks up a localized string similar to Individual.
         /// </summary>
         public static string Individual {
             get {
@@ -9720,6 +9720,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No file was selected.
+        /// </summary>
+        public static string NoFileChoosen {
+            get {
+                return ResourceManager.GetString("NoFileChoosen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Internet Connection.
         /// </summary>
         public static string NoInternet {
@@ -11820,9 +11829,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Overall, I am satisfied with my
-        ///experience with theMobile App at
-        ///the Zakat, Tax and Customs Authority.
+        ///   Looks up a localized string similar to Overall, I am satisfied with my experience with the Mobile App at the Zakat, Tax and Customs Authority ?.
         /// </summary>
         public static string SurveyQ1 {
             get {
@@ -11831,10 +11838,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We noticed you dissatisfied with the
-        ///question in the previous page. Kindly
-        ///clarify the reason for dissatisfaction
-        ///to help us improve your experience.
+        ///   Looks up a localized string similar to We noticed you dissatisfied with the question in the previous page. Kindly clarify the reason for dissatisfaction to help us improve your experience.
         /// </summary>
         public static string SurveyQ2 {
             get {
@@ -11843,9 +11847,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have any additional
-        ///comments for the Zakat, Tax and
-        ///Customs Authority?.
+        ///   Looks up a localized string similar to Do you have any additional comments for the Zakat, Tax and Customs Authority?.
         /// </summary>
         public static string SurveyQ3 {
             get {
@@ -11961,6 +11963,15 @@ namespace EGAZT {
         public static string ThankYou {
             get {
                 return ResourceManager.GetString("ThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank You!.
+        /// </summary>
+        public static string ThankYou_ {
+            get {
+                return ResourceManager.GetString("ThankYou!", resourceCulture);
             }
         }
         
@@ -13192,7 +13203,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Transaction description.
+        ///   Looks up a localized string similar to Ward content.
         /// </summary>
         public static string Transactiondescription {
             get {
@@ -16911,7 +16922,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You will be notified of the status of the request via mobile phone.
+        ///   Looks up a localized string similar to Your request has been sent successfully، You will be notified of the status of the request via mobile phone.
         /// </summary>
         public static string Youwillbenotifiedofthestatusoftherequestviamobilephone {
             get {

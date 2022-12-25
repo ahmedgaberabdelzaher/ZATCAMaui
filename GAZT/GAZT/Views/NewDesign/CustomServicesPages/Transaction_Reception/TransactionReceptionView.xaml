@@ -25,21 +25,23 @@
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
                 <!--#region Selection Options-->
-                 <Grid ColumnDefinitions="*,15,*"  HeightRequest="140"  >
+                 <Grid ColumnDefinitions="*,15,*"   RowDefinitions="auto">
                     <!--#region Individula Option-->
-                                   <Grid Grid.Column="0" VerticalOptions="Fill">
+                                   <Grid Grid.Column="0">
                                        <Grid.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                                        </Grid.GestureRecognizers>
-                                       <Image Source="QSelected.png" HeightRequest="140" VerticalOptions="Fill"  WidthRequest="171">
+                            <Frame Padding="0" Margin="0" Grid.Row="0" CornerRadius="14">
+                                       <Image Source="Qselected.png"  Aspect="AspectFill">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="Source" Value="QUnselected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
-                                       </Image>
-                               <Image
+                                       </Image></Frame>
+                            <StackLayout>
+                            <Image
                                     Margin="17,25,17,10"
                                     HeightRequest="50"
                                     HorizontalOptions="Start"
@@ -55,14 +57,14 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="25,10,25,25" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="10,10,10,10" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
                                                </DataTrigger>
                                            </Label.Triggers>
                                        </Label>
-                                   </Grid>
+                                  </StackLayout> </Grid>
                     <!--#endregion-->
                        <!--#region Entity Option-->
                                     <Grid Grid.Column="2">
@@ -70,13 +72,16 @@
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
                              
                                        </Grid.GestureRecognizers>
-                                       <Image Source="QUnselected.png" Grid.Row="0" VerticalOptions="Fill" HeightRequest="200">
+                            <Frame Padding="0" HasShadow="True" Margin="0" Grid.Row="0" CornerRadius="14">
+                                       <Image Source="QUnselected.png" Grid.Row="0" Aspect="AspectFill">
                                              <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="Source" Value="QSelected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
+                                </Frame>
+                            <StackLayout>
                              <Image
                                     Margin="17,25,17,10"
                                     HeightRequest="50"
@@ -93,18 +98,20 @@
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                       <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="25,10,25,25" VerticalOptions="EndAndExpand">
+                                       <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="10" VerticalOptions="EndAndExpand">
                                              <Label.Triggers>
                                                <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="TextColor" Value="#FFFFFF"></Setter>
                                                </DataTrigger>
                                            </Label.Triggers>
                                        </Label>
-                                   </Grid>
+                                </StackLayout>   </Grid>
                     <!--#endregion-->
                                </Grid>
                 <!--#endregion-->
-                <!--#region  Email Field -->
+
+
+                    <!--#region  Email Field -->
                         <StackLayout Spacing="0">
                    
                             <!--  Email Label  -->

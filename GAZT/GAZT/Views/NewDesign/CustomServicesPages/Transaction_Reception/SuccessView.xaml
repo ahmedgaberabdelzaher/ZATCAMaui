@@ -30,7 +30,7 @@
                         FontFamily="{StaticResource SomarBold}"
                         FontSize="28"
                         HorizontalTextAlignment="Center"
-                        Text="{x:Static ResourceManager:AppResources.Yourrequesthasbeensentsuccessfully}"
+                        Text="{x:Static ResourceManager:AppResources.ThankYou_}"
                         TextColor="White" />
 
                     <!--  Success Msg2 Label  -->

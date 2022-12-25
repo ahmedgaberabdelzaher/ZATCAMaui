@@ -146,7 +146,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
-                return imojiesLst;
+                return new ObservableCollection<SurveyQuestions>(imojiesLst?.Reverse());
             }
             set
             {
@@ -3700,12 +3700,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
-                return new Command<string>((action) =>
+                return new Command<string>(async (action) =>
                 {
                    
                     if (action =="0")
                     {
                         IsShowMsgView = false;
+                        IsLoading = true;
+                       await AddSurveyForToday(true);
+                        IsLoading = false;
                     }
                     else
                     {
@@ -3732,7 +3735,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     {
                         return;
                     }
+                    if (!IsShowMsgView)
+                    {
                  IsShowMsgView = await HaveSurveyForToday();
+                    }
                  });
             }
         }
@@ -3763,6 +3769,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 scheduleid = SchedukeID,
                 tin =long.Parse( App.TP.Tin)
             };
+            if (isDismiss)
+            {
+                var res = await _surveyServices.AddSurveyData(body);
+                if (res.IsSuccessStatusCode)
+                {
+                    var DateOfSurvey = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    Preferences.Set("DateOfSurvey", DateOfSurvey);
+                    Preferences.Set("IsSurveyTaken", true);
+                    Preferences.Set("TIN", App.TP.Tin);
+                    SurveyCurrentStep = 0;
+                    ISEndSurvey = true;
+                    return false;
+                }
+            }
             var VocBody = new VocAddSurveyAnswerModel()
             {
 
@@ -3824,9 +3844,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Preferences.Set("DateOfSurvey", DateOfSurvey);
                     Preferences.Set("IsSurveyTaken", true);
                     Preferences.Set("TIN", App.TP.Tin);
+                    SurveyCurrentStep = 0;
+
                 }
             }
             ISEndSurvey = true;
+            SQAnswer = "";
                 //  IsShowMsgView = false;
             return false;
         }
