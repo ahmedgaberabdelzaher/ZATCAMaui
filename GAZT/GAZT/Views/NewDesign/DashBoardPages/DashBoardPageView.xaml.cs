@@ -1753,5 +1753,10 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
 
         }
+
+        void OnChatTapped(System.Object sender, System.EventArgs e)
+        {
+           
+        }
     }
 }

@@ -1893,6 +1893,28 @@
                                             </StackLayout>
 
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                                        <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="10">
+                                    <Image Source="thumbnail_chat.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.DBSMChat}"
+                                        VerticalTextAlignment="Center" />
+                                    <Image
+                                        HorizontalOptions="EndAndExpand"
+                                        Source="arrowRight.png"
+                                        Style="{DynamicResource BackButtonArrow}"
+                                        VerticalOptions="CenterAndExpand" />
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnChatTapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+                                                                                        <BoxView Style="{StaticResource WhiteLineSeperator}" />
+
 
                                             <StackLayout Orientation="Horizontal" Spacing="20">
 

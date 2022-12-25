@@ -435,6 +435,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             SimpleIoc.Default.Register<StateManager>();
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
+              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
             #endregion
         }
 
@@ -3203,6 +3204,22 @@ namespace EGAZT
                 }
             }
         }
+
+        public CustomServiceMenuViewModel CustomServiceMenuViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomServiceMenuViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView

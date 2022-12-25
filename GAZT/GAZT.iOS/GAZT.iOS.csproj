@@ -964,7 +964,7 @@
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.7.3</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
     <PackageReference Include="Newtonsoft.Json">
       <Version>13.0.1</Version>
     </PackageReference>
@@ -1026,7 +1026,7 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{C74ACA03-245B-4FE1-880F-BBEB80A6B9CD}</Project>
+      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>

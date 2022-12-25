@@ -29,22 +29,27 @@
                 <!--#endregion-->
                      <!--#region Store Links View -->
                <Label  Text="{x:Static ResourceManager:AppResources.DownloadApp}" TextColor="#002447" FontSize="16" FontFamily="{StaticResource SomarRegular}"></Label>
-                <StackLayout Orientation="Horizontal">
-                    <Image Source="AppleStore" HeightRequest="36">
+              <!--  <StackLayout Orientation="Horizontal">-->
+                                          <OnPlatform x:TypeArguments="View">
+                            <On Platform="iOS">
+                    <Image Source="AppleStore" HorizontalOptions="Start" HeightRequest="36">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToZakatyAppstoreCommand}"></TapGestureRecognizer>
 
                         </Image.GestureRecognizers>
 
                     </Image>
-                    <Image Source="GooglePlay" HeightRequest="36">
+                            </On>
+                            <On Platform="Android">
+                    <Image Source="GooglePlay" HorizontalOptions="Start" HeightRequest="36">
                            <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToZakatyPlayStoreCommand}"></TapGestureRecognizer>
 
                         </Image.GestureRecognizers>
 
                     </Image>
-                </StackLayout>
+                            </On></OnPlatform>
+               <!-- </StackLayout>-->
                 <!--#endregion-->
             </StackLayout>
 

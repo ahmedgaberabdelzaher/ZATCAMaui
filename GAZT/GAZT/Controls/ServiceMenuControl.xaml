@@ -20,7 +20,7 @@
             </ResourceDictionary>
         </Grid.Resources>
 
-        <Grid RowDefinitions="auto,auto">
+        <Grid RowDefinitions="auto,*">
             <Grid Grid.Row="0" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
@@ -141,7 +141,7 @@
                 </Grid.Triggers>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Frame
+                        <Frame 
                             x:Name="Item"
                             Grid.Row="{Binding Row}"
                             Grid.Column="{Binding ColumnNo}"
