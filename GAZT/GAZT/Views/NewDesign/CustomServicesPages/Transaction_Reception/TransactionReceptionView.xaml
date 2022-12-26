@@ -27,19 +27,21 @@
                 <!--#region Selection Options-->
                  <Grid ColumnDefinitions="*,15,*"   RowDefinitions="auto">
                     <!--#region Individula Option-->
-                                   <Grid Grid.Column="0">
-                                       <Grid.GestureRecognizers>
+                        <Frame Padding="0"  Grid.Column="0" Margin="0" CornerRadius="14" >
+                             <Frame.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
-                                       </Grid.GestureRecognizers>
-                            <Frame Padding="0" Margin="0" Grid.Row="0" CornerRadius="14">
-                                       <Image Source="Qselected.png"  Aspect="AspectFill">
+                                       </Frame.GestureRecognizers>
+                                   <Grid Grid.Column="0">
+                                      
+                           
+                                       <Image Source="QSelected" Aspect="Fill">
                                            <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="Source" Value="QUnselected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
-                                       </Image></Frame>
+                                       </Image>
                             <StackLayout>
                             <Image
                                     Margin="17,25,17,10"
@@ -65,22 +67,23 @@
                                            </Label.Triggers>
                                        </Label>
                                   </StackLayout> </Grid>
-                    <!--#endregion-->
+                  </Frame>  <!--#endregion-->
                        <!--#region Entity Option-->
+                           <Frame Padding="0" Grid.Column="2" Margin="0" CornerRadius="14" >
                                     <Grid Grid.Column="2">
                                                                        <Grid.GestureRecognizers>
                                            <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
                              
                                        </Grid.GestureRecognizers>
-                            <Frame Padding="0" HasShadow="True" Margin="0" Grid.Row="0" CornerRadius="14">
-                                       <Image Source="QUnselected.png" Grid.Row="0" Aspect="AspectFill">
+                         
+                                       <Image Source="QUnselected.png" Grid.Row="0" Aspect="Fill">
                                              <Image.Triggers>
                                                <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
                                                    <Setter Property="Source" Value="QSelected"></Setter>
                                                </DataTrigger>
                                            </Image.Triggers>
                                        </Image>
-                                </Frame>
+                          
                             <StackLayout>
                              <Image
                                     Margin="17,25,17,10"
@@ -106,6 +109,7 @@
                                            </Label.Triggers>
                                        </Label>
                                 </StackLayout>   </Grid>
+                            </Frame>
                     <!--#endregion-->
                                </Grid>
                 <!--#endregion-->

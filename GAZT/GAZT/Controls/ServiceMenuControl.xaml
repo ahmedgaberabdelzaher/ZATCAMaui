@@ -20,7 +20,7 @@
             </ResourceDictionary>
         </Grid.Resources>
 
-        <Grid RowDefinitions="auto,*">
+        <Grid RowDefinitions="auto,auto">
             <Grid Grid.Row="0" ColumnDefinitions="*,*">
                 <Label
                     Grid.Column="0"
