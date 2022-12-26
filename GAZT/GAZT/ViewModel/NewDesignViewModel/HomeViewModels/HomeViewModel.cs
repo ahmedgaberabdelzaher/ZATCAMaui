@@ -44,6 +44,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         ObservableCollection<MenuModel> sideMenuServiceLst;
         public ObservableCollection<MenuModel> SideMenuServiceLst { get { return sideMenuServiceLst; } set { sideMenuServiceLst = value; RaisePropertyChanged(); } }
 
+    ObservableCollection<MenuModel> customeMenuVerticalLst;
+        public ObservableCollection<MenuModel> CustomeMenuVerticalLst { get { return customeMenuVerticalLst; } set { customeMenuVerticalLst = value; RaisePropertyChanged(); } }
 
 
        /* int currentTab =1;
@@ -261,7 +263,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 }
            };
         }
-        /*
+
+          public void GetCustomeMenuVerticalLst(bool isvertical=true)
+        {
+
+            CustomeMenuVerticalLst = new ObservableCollection<MenuModel>()
+           {
+
+                 new MenuModel()
+                {
+                   Name=AppResources.CustomsZATCAIntegrat, ID=App.TraifSectionsView,ImageSource="TarrrifSectionIcon",ColumnNo=0,Row=0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote1:""
+                },
+                 new MenuModel() {
+                   Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote2:""
+                }
+                 ,
+                 new MenuModel()
+                {
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+                },
+                 new MenuModel()
+                {
+                   Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+                } ,
+                 new MenuModel()
+                {
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                }
+           };
+        }
+  /*
                 public ICommand ChangeCurrentTabCommand
                 {
                     get
@@ -371,13 +406,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                     if (int.Parse(ItemCount)!= ItemCountPerRow)
                     {
-                       // int cIndex = 1;
-                       // int RIndex = 1;
+                        // int cIndex = 1;
+                        // int RIndex = 1;
+                        ItemCountPerRow = int.Parse(ItemCount);
                         bool isvertical = ItemCount == "1" ? true : false;
                         switch (CurrentService)
                         {
                             case Services.CustomServices:
-                                 GetCustomServiceMenuLst(isvertical);
+                               /* if (isvertical)
+                                {
+                                     GetCustomeMenuVerticalLst();
+                                }
+                               else
+                                {
+                                    GetCustomServiceMenuLst(false);
+                                }*/
+                               GetCustomServiceMenuLst(isvertical);
+                      
                                 break;
                                  case Services.VATServices:
                                 GetVatServiceMenuLst(isvertical);
@@ -394,7 +439,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         }
 
 
-                        ItemCountPerRow = int.Parse(ItemCount);
                         /*foreach (var item in CustomeMenuLst)
                         {
                             item.IsVerticalView = !item.IsVerticalView;
