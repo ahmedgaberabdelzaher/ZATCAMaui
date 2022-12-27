@@ -413,15 +413,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         switch (CurrentService)
                         {
                             case Services.CustomServices:
-                               /* if (isvertical)
+                               if (isvertical)
                                 {
                                      GetCustomeMenuVerticalLst();
                                 }
                                else
                                 {
                                     GetCustomServiceMenuLst(false);
-                                }*/
-                               GetCustomServiceMenuLst(isvertical);
+                                }
+                              // GetCustomServiceMenuLst(isvertical);
                       
                                 break;
                                  case Services.VATServices:

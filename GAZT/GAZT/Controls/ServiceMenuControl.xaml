@@ -136,7 +136,7 @@
                         Binding="{Binding ItemCountPerRow}"
                         TargetType="Grid"
                         Value="1">
-                        <Setter Property="ColumnDefinitions" Value="*" />
+                        <Setter Property="IsVisible" Value="false" />
                     </DataTrigger>
                 </Grid.Triggers>
                 <BindableLayout.ItemTemplate>
@@ -213,7 +213,7 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </Grid>
-            <!--
+    
             <Grid
                 x:Name="Verticalmenu"
                 Grid.Row="1" IsVisible="false"
@@ -302,6 +302,6 @@
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
             </Grid>
-       --> </Grid>
+        </Grid>
     </Grid>
 </ContentView>
