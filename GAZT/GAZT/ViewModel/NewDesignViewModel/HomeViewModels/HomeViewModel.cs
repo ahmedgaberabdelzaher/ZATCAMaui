@@ -247,7 +247,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  ,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
+                   Name=AppResources.CustomsDeclarationforTravelers+"Test Version", ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
                 },
                  new MenuModel()
                 {
