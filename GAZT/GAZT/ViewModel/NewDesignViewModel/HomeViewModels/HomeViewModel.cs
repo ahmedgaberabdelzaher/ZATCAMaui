@@ -33,6 +33,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         int itemCountPerRow=2;
         public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
 
+        bool isHorizontalLstVisible=true;
+        public bool IsHorizontalLstVisible { get { return isHorizontalLstVisible; } set { isHorizontalLstVisible = value; RaisePropertyChanged(); } }
+
+        bool isVerticalLstVisible;
+        public bool IsVerticalLstVisible { get { return isVerticalLstVisible; } set { isVerticalLstVisible = value; RaisePropertyChanged(); } }
+
+
         public Services CurrentService { get; set; } = Services.CustomServices;
 
         ObservableCollection<MenuModel> menuLst;
@@ -413,16 +420,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                         switch (CurrentService)
                         {
                             case Services.CustomServices:
-                               /* if (isvertical)
-                                {
-                                     GetCustomeMenuVerticalLst();
-                                }
-                               else
-                                {
-                                    GetCustomServiceMenuLst(false);
-                                }*/
+                                /* if (isvertical)
+                                  {
+                                       GetCustomeMenuVerticalLst();
+                                  }
+                                 else
+                                  {
+                                      GetCustomServiceMenuLst(false);
+                                  }*/
                                GetCustomServiceMenuLst(isvertical);
-                      
+                               // IsVerticalLstVisible = isvertical;
+                               // IsHorizontalLstVisible = !isvertical;
                                 break;
                                  case Services.VATServices:
                                 GetVatServiceMenuLst(isvertical);
