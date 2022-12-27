@@ -125,9 +125,11 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>-->
-            <Grid
+
+            <!---->
+ <Grid
                 x:Name="menu"
-                Grid.Row="1" WidthRequest="500"
+                Grid.Row="1"
                 Margin="0,18,0,0"
                 BindableLayout.ItemsSource="{Binding CustomeMenuLst}"
                 ColumnDefinitions="*,*">
@@ -136,12 +138,12 @@
                         Binding="{Binding ItemCountPerRow}"
                         TargetType="Grid"
                         Value="1">
-                        <Setter Property="IsVisible" Value="false" />
+                        <Setter Property="ColumnDefinitions" Value="*" />
                     </DataTrigger>
                 </Grid.Triggers>
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <Frame 
+                        <Frame
                             x:Name="Item"
                             Grid.Row="{Binding Row}"
                             Grid.Column="{Binding ColumnNo}"
@@ -179,7 +181,7 @@
                                     WidthRequest="29" />
                                 <StackLayout>
                                     <Label
-                                        Margin="0,5,0,5"
+                                        Margin="0,5,0,5" Text="{Binding Name}"
                                         HorizontalOptions="Center"
                                         VerticalOptions="Start">
                                         <Label.Triggers>
@@ -190,111 +192,8 @@
                                                 <Setter Property="HorizontalOptions" Value="StartAndExpand" />
                                             </DataTrigger>
                                         </Label.Triggers>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    Text="{Binding Name}"
-                                                    TextColor="{StaticResource Primary}" />
-                                                <Span Text="&#10;" />
-                                                <Span
-                                                    FontFamily="{StaticResource SomarRegular}"
-                                                    FontSize="10"
-                                                    Text="{Binding ServiceDesc}"
-                                                    TextColor="#232323" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
                                     </Label>
-                                    <Label />
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
-
-                    </DataTemplate>
-                </BindableLayout.ItemTemplate>
-            </Grid>
-    
-            <Grid
-                x:Name="Verticalmenu"
-                Grid.Row="1" IsVisible="false"
-                Margin="0,18,0,0"
-                BindableLayout.ItemsSource="{Binding CustomeMenuVerticalLst}"
-                ColumnDefinitions="*">
-                <Grid.Triggers>
-                    <DataTrigger
-                        Binding="{Binding ItemCountPerRow}"
-                        TargetType="Grid"
-                        Value="1">
-                        <Setter Property="IsVisible" Value="true" />
-                    </DataTrigger>
-                </Grid.Triggers>
-                <BindableLayout.ItemTemplate>
-                    <DataTemplate>
-                        <Frame 
-                            x:Name="Item"
-                            Grid.Row="{Binding Row}"
-                            Grid.Column="{Binding ColumnNo}"
-                            Margin="0,0,10,10"
-                            Padding="10,0,10,0">
-                            <Frame.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding IsVerticalView}"
-                                    TargetType="Frame"
-                                    Value="False">
-                                    <Setter Property="Padding" Value="10,20,10,10" />
-                                </DataTrigger>
-                            </Frame.Triggers>
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    BindingContext="{Binding Source={x:Reference Verticalmenu}, Path=BindingContext}"
-                                    Command="{Binding NavigateToServiceCommand}"
-                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                            </Frame.GestureRecognizers>
-                            <StackLayout Margin="5">
-                                <StackLayout.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding IsVerticalView}"
-                                        TargetType="StackLayout"
-                                        Value="true">
-                                        <Setter Property="Orientation" Value="Horizontal" />
-                                    </DataTrigger>
-                                </StackLayout.Triggers>
-                                <Image
-                                    Margin="0,5,0,0"
-                                    HeightRequest="37"
-                                    HorizontalOptions="Center"
-                                    Source="{Binding ImageSource}"
-                                    VerticalOptions="Start"
-                                    WidthRequest="29" />
-                                <StackLayout>
-                                    <Label
-                                        Margin="0,5,0,5"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Start">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsVerticalView}"
-                                                TargetType="Label"
-                                                Value="true">
-                                                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span
-                                                    FontFamily="{StaticResource SomarBold}"
-                                                    Text="{Binding Name}"
-                                                    TextColor="{StaticResource Primary}" />
-                                                <Span Text="&#10;" />
-                                                <Span
-                                                    FontFamily="{StaticResource SomarRegular}"
-                                                    FontSize="10"
-                                                    Text="{Binding ServiceDesc}"
-                                                    TextColor="#232323" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                    <Label />
+                                   <Label Text="{Binding ServiceDesc}" FontSize="10" FontFamily="{StaticResource SomarRegular}"></Label>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
