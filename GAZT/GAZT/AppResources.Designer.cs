@@ -7776,6 +7776,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Master/Visa.
+        /// </summary>
+        public static string MasterVisa {
+            get {
+                return ResourceManager.GetString("MasterVisa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material Type.
         /// </summary>
         public static string MaterialType {

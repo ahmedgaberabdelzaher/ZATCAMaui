@@ -10180,4 +10180,7 @@ Zakat, Tax and Customs Authority
   <data name="EDeclarationTermsFive" xml:space="preserve">
      <value>Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials.</value>
   </data>
+  <data name="MasterVisa" xml:space="preserve">
+     <value>Master/Visa</value>
+  </data>
 </root>

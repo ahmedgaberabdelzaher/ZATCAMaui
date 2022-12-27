@@ -69,7 +69,7 @@
                             HorizontalOptions="CenterAndExpand"
                             HorizontalTextAlignment="Center"
                             LineBreakMode="WordWrap"
-                            Text="The e-declaration has been created successfully"
+                            Text="{x:Static ResourceManager:AppResources.CreatedSuccessfullyMsg}"
                             TextColor="#002447" />
 
                         <!--#region Disclaimer-->
