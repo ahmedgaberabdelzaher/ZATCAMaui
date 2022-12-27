@@ -10078,4 +10078,37 @@ info@zatca.gov.sa</value>
   <data name="NoFileChoosen" xml:space="preserve">
     <value>لم يتم اختيار أي ملف</value> 
   </data>
+   <data name="TravelerCountValidation" xml:space="preserve">
+    <value>يجب أن يكون عدد المسافرين أكثر من 0</value> 
+  </data>
+   <data name="QuantityValidation" xml:space="preserve">
+    <value>يجب أن يكون الكمية أكثر من 0</value> 
+  </data>
+   <data name="AddressKSAValidation" xml:space="preserve">
+    <value>لا يمكن أن يحتوي العنوان على أي رموز خاصة</value> 
+  </data>
+  <data name="PermitLabel" xml:space="preserve">
+    <value>هل لديك تصريح؟</value> 
+  </data>
+  <data name="EDeclarationTermsHeaderOne" xml:space="preserve">
+    <value>تتيح هذه الخدمة إمكانية تعبئة نموذج الإقرار عن المواد الواجب الإقرار عنها وتقديمه لموظفي الجمارك عند دخول أو مغادرة الأراضي السعودية للمسافرين الدوليين، وتشمل هذه المواد:</value> 
+  </data>
+   <data name="EDeclarationTermsOne" xml:space="preserve">
+    <value>العملات أو الأدوات القابلة للتداول لحاملها والسبائك الذهبية والمعادن الثمينة والأحجار الكريمة والمجوهرات بما يصل قيمتها إلى 60,000 ريال أو أكثر أو ما يعادلها من العملات الأجنبية.</value> 
+  </data>
+  <data name="EDeclarationTermsTwo" xml:space="preserve">
+    <value>البضائع بكميات تجارية أو بقيمة أعلى من 3000 ريال.</value> 
+  </data>
+  <data name="EDeclarationTermsThree" xml:space="preserve">
+     <value>السلع الخاضعة للضريبة الانتقائية.</value>
+  </data>
+  <data name="EDeclarationTermsFour" xml:space="preserve">
+     <value>السلع والمواد المحظورة والمقيدة.</value>
+  </data>
+   <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
+    <value>وتقتصر قائمة المواد اللازم الإقرار عنها للمسافرين الدوليين المغادرين للأراضي السعودية على المواد التالية:</value> 
+  </data>
+    <data name="EDeclarationTermsFive" xml:space="preserve">
+     <value>المواد المحظور تصديرها )كالآثار ونحوها( والمواد المدعومة.</value>
+  </data>
 </root>

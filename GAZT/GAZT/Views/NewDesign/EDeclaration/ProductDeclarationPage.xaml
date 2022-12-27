@@ -550,6 +550,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                        
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
@@ -569,6 +570,11 @@
                                             <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
                                     </inputLayout:SfTextInputLayout>
+
+                                     <!--  TypeItem Label Hint  -->
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                        Margin="3,-10,0,0"
+                                                        Text="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"/>
 
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
@@ -962,8 +968,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
 
-                                    Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.OtherPurpose}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding OtherPurpose}"
                                     TextColor="#58595B" />
@@ -1201,6 +1207,7 @@
                                     Placeholder="{x:Static ResourceManager:AppResources.OtherPurpose}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding OtherPurpose}"
+                                            Keyboard="Text"
                                     TextColor="#58595B" />
                                     </inputLayout:SfTextInputLayout>
 
@@ -1366,6 +1373,15 @@
                                 <!--#endregion-->
 
                                              <!--#region Selection Options-->
+                                     <!--  Quantity Label  -->
+                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.PermitLabel}"/>
+                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
                  <Grid HeightRequest="100" ColumnDefinitions="*,15,*">
                     <!--#region Yes Option-->
                                    <Grid Grid.Column="0">

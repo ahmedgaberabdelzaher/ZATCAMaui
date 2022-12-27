@@ -7,7 +7,9 @@ using EGAZT.Controls;
 using EGAZT.Helper;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
@@ -72,14 +74,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command(() =>
+                return new Command(async() =>
                 {
+                    await PopupNavigation.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
                     _navigationService.NavigateTo("ProductDeclarationPage");
                 });
             }
         }
 
+        public ICommand GoToEDeclarationTermsPopupPageCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    EDeclarationTermsPopupPage poupWindow = new EDeclarationTermsPopupPage();
+                    await PopupNavigation.Instance.PushAsync(poupWindow);
+
+                });
+            }
+        }
 
         #endregion
         public IE_DeclerationServices DeclerationServices;
