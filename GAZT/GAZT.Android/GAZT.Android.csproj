@@ -63,6 +63,7 @@
     <AndroidSigningKeyAlias>e-gazt</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
     <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidKeyStore>True</AndroidKeyStore>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />

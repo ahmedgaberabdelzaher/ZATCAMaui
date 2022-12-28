@@ -25,10 +25,10 @@
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <ContentPage.Behaviors>
+    <!--<ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding CheckSurveyCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
-
+-->
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
@@ -1892,27 +1892,22 @@
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
 
+                                        <!--
                                             <BoxView Style="{StaticResource WhiteLineSeperator}" />
-                                                        <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadowSupportPage}">
                                 <StackLayout
-                                    Padding="16,8,16,8"
+                                    Spacing="20"
                                     Orientation="Horizontal"
-                                    Spacing="10">
+                                    >
                                     <Image Source="thumbnail_chat.png" />
                                     <custom:CustomLabel
-                                        Style="{StaticResource ValueLabelBlack}"
+                                        Style="{StaticResource ButtonLabelWhiteBold}"
                                         Text="{x:Static ResourceManager:AppResources.DBSMChat}"
                                         VerticalTextAlignment="Center" />
-                                    <Image
-                                        HorizontalOptions="EndAndExpand"
-                                        Source="arrowRight.png"
-                                        Style="{DynamicResource BackButtonArrow}"
-                                        VerticalOptions="CenterAndExpand" />
+                                       <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding GoToChatCommand}" />
+                                                </StackLayout.GestureRecognizers>
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnChatTapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                               -->
                                                                                         <BoxView Style="{StaticResource WhiteLineSeperator}" />
 
 

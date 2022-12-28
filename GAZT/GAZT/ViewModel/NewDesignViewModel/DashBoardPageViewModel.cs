@@ -3906,5 +3906,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ICommand GoToChatCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                 _navigationService.NavigateTo("ChatPotView");
+                });
+            }
+        }
+
     }
 }

@@ -171,6 +171,7 @@ using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
+using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 
 namespace EGAZT
 {
@@ -436,7 +437,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<StateManager>();
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
               SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-            #endregion
+                 SimpleIoc.Default.Register<ChatViewModel>();
+#endregion
         }
 
         #region NewDesignViewModel
@@ -2931,6 +2933,7 @@ namespace EGAZT
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
+             navigationService.Configure("ChatPotView", typeof(ChatPotView));
             #endregion
 
             return navigationService;
@@ -3219,7 +3222,20 @@ namespace EGAZT
                 }
             }
         }
-        
+      public ChatViewModel ChatViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView

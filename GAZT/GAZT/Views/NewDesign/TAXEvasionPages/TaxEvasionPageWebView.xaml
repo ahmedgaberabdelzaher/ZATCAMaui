@@ -43,7 +43,7 @@
 
                     <!--  FAQ View Starts  -->
                     <StackLayout>
-                                                <OnPlatform x:TypeArguments="View">
+                                             <!--   <OnPlatform x:TypeArguments="View">
 
                             <On Platform="Android">
                                   <ResourceManager:HybridWebView
@@ -55,7 +55,7 @@
                             VerticalOptions="FillAndExpand" />
                             </On>
 
-                             <On Platform="iOS">
+                             <On Platform="iOS">-->
                                 <WebView
                             x:Name="taxEvasionWebView"
                             Margin="-20,-40,-20,0"
@@ -63,8 +63,8 @@
                             Navigated="taxEvasionWebView_Navigated"
                             Navigating="taxEvasionWebView_Navigating"
                             VerticalOptions="FillAndExpand" /> 
-                            </On>
-                        </OnPlatform>
+                          <!-- </On>
+                        </OnPlatform>--> 
                       
                     </StackLayout>
 
