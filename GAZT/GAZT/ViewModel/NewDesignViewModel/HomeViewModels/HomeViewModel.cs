@@ -125,10 +125,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.EdcuationJourney, ID="https://edujourneys.zatca.gov.sa/home/tracks",ImageSource="Education"
                 },
-                 /* new MenuModel()
+                  new MenuModel()
                 {
                    Name=AppResources.Zakaty, ID="AboutZakatyView",ImageSource="ZAKATYlogoInMenu"
-                },*/
+                },
                 new MenuModel()
                 {
                    Name=AppResources.Langauge, ID="ChangeLang",ImageSource="LangaugeIcon"
