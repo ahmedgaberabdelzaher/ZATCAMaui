@@ -81,6 +81,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 return new Command<string>((e) =>
                 {
                     IsAddNewCR = e=="1"?true:false;
+                    if (!IsAddNewCR)
+                    {
+                        CRNo = "";
+                    }
                 });
             }
         }
@@ -193,9 +197,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 if (result.header.status.code == "I000000")
                                 {
                                     isCRDataFetched = false;
+                                    IsOpenAddNewCr = false;
+                                    CRNo = "";
+                                    MessageTxt = AppResources.CRNoAddedSuccess;
+                                    IsShowMsgView = true;
+                                    return;
                                 }
                                 else
                                 {
+                                    if (result.header.moreInformation!=null&& result.header.moreInformation.Errordetails!= null && result.header.moreInformation.Errordetails.Count > 0)
+                                    {
+                                        MessageTxt = result.header.moreInformation.Errordetails[0];
+                                        IsShowMsgView = true;
+                                        
+                                        return;
+                                    }
                                     MessageTxt = AppResources.RequestTimeoutDescription;
                                     IsShowMsgView = true;
                                 }
@@ -311,10 +327,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void clearData()
         {
-            Email = Subject = Description = SelectedCRNo = "";
+            Email = Subject = Description =CRNo= SelectedCRNo = "";
             UploadedFiles = new ObservableCollection<ReportFileModel>();
-            UserType = "1";
-            IsEntity = false;
+            UserType = "1"; 
+            IsEntity = false; isCRDataFetched = false;
             IsShowBottomSheet=IsShowMsgView = false;
             IsAddNewCR = false;
         }

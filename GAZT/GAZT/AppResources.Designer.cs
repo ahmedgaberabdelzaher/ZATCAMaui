@@ -2316,6 +2316,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CR Number added successfully.
+        /// </summary>
+        public static string CRNoAddedSuccess {
+            get {
+                return ResourceManager.GetString("CRNoAddedSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to operate.
         /// </summary>
         public static string CRoperate {

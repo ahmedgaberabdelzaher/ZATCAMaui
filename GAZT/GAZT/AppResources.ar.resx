@@ -10114,4 +10114,7 @@ info@zatca.gov.sa</value>
   <data name="MasterVisa" xml:space="preserve">
      <value>فيزا/ماستر كارد</value>
   </data>
+   <data name="CRNoAddedSuccess" xml:space="preserve">
+     <value>تمت اضافه رقم السجل التجاري بنجاح</value>
+  </data>
 </root>

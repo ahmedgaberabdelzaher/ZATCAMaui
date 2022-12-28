@@ -41,6 +41,6 @@
     </Grid>
              <controls:MsgView
             Grid.Row="0"  VerticalOptions="EndAndExpand"
-            IsVisible="false" />
+            IsVisible="{Binding IsShowMsgView}" />
     </Grid>
 </ContentPage>
