@@ -15,6 +15,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         TripCardModel tripCard = new TripCardModel();
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
 
+
+        DateTime _ArrivalDepartureMinimumDate = DateTime.Now.Date;
+        public DateTime ArrivalDepartureMinimumDate { get { return _ArrivalDepartureMinimumDate; } set { _ArrivalDepartureMinimumDate = value; RaisePropertyChanged(); } }
+
         public ICommand TripCardCommand
         {
             get
@@ -165,13 +169,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            if (SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date)
+            else if (SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.ComingGoingDateValidation;
                 return false;
             }
-            if (SubmitModel.travelerDeclaration.tripeType == 1)
+            else if (SubmitModel.travelerDeclaration.tripeType == 1)
             {
                 if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.flightNumber))
                 {

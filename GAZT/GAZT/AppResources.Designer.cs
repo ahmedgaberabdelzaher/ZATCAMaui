@@ -373,6 +373,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The address can&apos;t contains any special characters.
+        /// </summary>
+        public static string AddressKSAValidation {
+            get {
+                return ResourceManager.GetString("AddressKSAValidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Air Trip.
         /// </summary>
         public static string AirTrip {
@@ -3482,6 +3491,69 @@ namespace EGAZT {
         public static string eDeclaration {
             get {
                 return ResourceManager.GetString("eDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials..
+        /// </summary>
+        public static string EDeclarationTermsFive {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsFive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prohibited and restricted goods and materials..
+        /// </summary>
+        public static string EDeclarationTermsFour {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsFour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This service allows filling out the declaration form for the materials that must be declared and submitting it to customs officials upon entering or leaving Saudi territory for international travelers. These materials include:.
+        /// </summary>
+        public static string EDeclarationTermsHeaderOne {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsHeaderOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The list of materials that must be declared for international travelers leaving Saudi Arabia is limited to the following:.
+        /// </summary>
+        public static string EDeclarationTermsHeaderTwo {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsHeaderTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coins or bearer negotiable instruments, gold bullion, precious metals and stones and jewelry with a value of up to 60,000 riyals or more, or the equivalent in foreign currencies..
+        /// </summary>
+        public static string EDeclarationTermsOne {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods subject to Excise Tax..
+        /// </summary>
+        public static string EDeclarationTermsThree {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsThree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goods in commercial quantities or with a value higher than 3000 riyals..
+        /// </summary>
+        public static string EDeclarationTermsTwo {
+            get {
+                return ResourceManager.GetString("EDeclarationTermsTwo", resourceCulture);
             }
         }
         
@@ -7704,6 +7776,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Master/Visa.
+        /// </summary>
+        public static string MasterVisa {
+            get {
+                return ResourceManager.GetString("MasterVisa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Material Type.
         /// </summary>
         public static string MaterialType {
@@ -10167,6 +10248,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have a permit?.
+        /// </summary>
+        public static string PermitLabel {
+            get {
+                return ResourceManager.GetString("PermitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pervious.
         /// </summary>
         public static string PerviousButton {
@@ -10694,6 +10784,15 @@ namespace EGAZT {
         public static string Quantity {
             get {
                 return ResourceManager.GetString("Quantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quantity must be more than 0.
+        /// </summary>
+        public static string QuantityValidation {
+            get {
+                return ResourceManager.GetString("QuantityValidation", resourceCulture);
             }
         }
         
@@ -13226,6 +13325,15 @@ namespace EGAZT {
         public static string TravelerCount {
             get {
                 return ResourceManager.GetString("TravelerCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Traveler count must be more than 0.
+        /// </summary>
+        public static string TravelerCountValidation {
+            get {
+                return ResourceManager.GetString("TravelerCountValidation", resourceCulture);
             }
         }
         

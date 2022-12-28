@@ -526,7 +526,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                 <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
-                                            Format="dd/MM/yyyy"/>
+                                            Format="dd/MM/yyyy"
+                                            MinimumDate="{Binding ArrivalDepartureMinimumDate}"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -561,7 +562,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TripNumber}"
+                                    Placeholder="SV0000"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
                                     TextColor="#58595B" />

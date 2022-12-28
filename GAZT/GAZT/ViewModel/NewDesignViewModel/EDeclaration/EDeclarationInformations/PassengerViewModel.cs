@@ -153,38 +153,43 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
-                    || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor)
-                    || SubmitModel.travelerDeclaration.travelersCount <= 0)
+                    || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
                     return false;
                 }
 
-                if (SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
+                else if (SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.DateBirthValidation;
                     return false;
                 }
-                if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
+                else if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.ReleaseDate;
                     return false;
                 }
-                if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
+                else if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.EndDateValidation;
                     return false;
                 }
-                
+               else if (SubmitModel.travelerDeclaration.travelersCount <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.TravelerCountValidation;
+                    return false;
+                }
+
             }
             else if(SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;
-                MessageTxt = AppResources.RequiredData;
+                MessageTxt = AppResources.TravelerCountValidation;
                 return false;
             }
             return true;

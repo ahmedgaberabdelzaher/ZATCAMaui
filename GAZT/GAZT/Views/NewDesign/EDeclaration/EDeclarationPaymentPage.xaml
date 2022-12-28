@@ -249,7 +249,7 @@
                                             VerticalOptions="EndAndExpand"
                                             FontSize="16"
                                             TextColor="{Binding PaymentCard.VisaCardTextColor}"
-                                            Text="Master/Visa"/>
+                                            Text="{x:Static ResourceManager:AppResources.MasterVisa}"/>
                                  </StackLayout>
 
                                 <Grid.GestureRecognizers>

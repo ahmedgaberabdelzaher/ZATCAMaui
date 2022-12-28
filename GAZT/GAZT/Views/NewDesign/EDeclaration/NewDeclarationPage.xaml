@@ -504,7 +504,7 @@
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding GoToProductDeclarationCommand}"
+                            Command="{Binding GoToEDeclarationTermsPopupPageCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 

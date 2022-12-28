@@ -10147,4 +10147,40 @@ Zakat, Tax and Customs Authority
    <data name="NoFileChoosen" xml:space="preserve">
     <value>No file was selected</value> 
   </data>
+  <data name="TravelerCountValidation" xml:space="preserve">
+    <value>Traveler count must be more than 0</value> 
+  </data>
+   <data name="QuantityValidation" xml:space="preserve">
+    <value>Quantity must be more than 0</value> 
+  </data>
+  <data name="AddressKSAValidation" xml:space="preserve">
+    <value>The address can't contains any special characters</value> 
+  </data>
+  <data name="PermitLabel" xml:space="preserve">
+    <value>Do you have a permit?</value> 
+  </data>
+  <data name="EDeclarationTermsHeaderOne" xml:space="preserve">
+    <value>This service allows filling out the declaration form for the materials that must be declared and submitting it to customs officials upon entering or leaving Saudi territory for international travelers. These materials include:</value> 
+  </data>
+  <data name="EDeclarationTermsOne" xml:space="preserve">
+     <value>Coins or bearer negotiable instruments, gold bullion, precious metals and stones and jewelry with a value of up to 60,000 riyals or more, or the equivalent in foreign currencies.</value>
+  </data>
+  <data name="EDeclarationTermsTwo" xml:space="preserve">
+     <value>Goods in commercial quantities or with a value higher than 3000 riyals.</value>
+  </data>
+  <data name="EDeclarationTermsThree" xml:space="preserve">
+     <value>Goods subject to Excise Tax.</value>
+  </data>
+  <data name="EDeclarationTermsFour" xml:space="preserve">
+     <value>Prohibited and restricted goods and materials.</value>
+  </data>
+   <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
+    <value>The list of materials that must be declared for international travelers leaving Saudi Arabia is limited to the following:</value> 
+  </data>
+  <data name="EDeclarationTermsFive" xml:space="preserve">
+     <value>Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials.</value>
+  </data>
+  <data name="MasterVisa" xml:space="preserve">
+     <value>Master/Visa</value>
+  </data>
 </root>

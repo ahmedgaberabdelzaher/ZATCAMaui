@@ -199,7 +199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
            // Regex phoneRegex = new Regex(@"^5[0-9]{8}$");
             Regex phoneRegex = new Regex(@"[^\d]");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
-
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]"); 
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.phoneNumber)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.address)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.email))
@@ -219,6 +219,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
+            else if (address.IsMatch(SubmitModel.travelerDeclaration.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.AddressKSAValidation;
                 return false;
             }
             SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + SubmitModel.travelerDeclaration.phoneNumber;

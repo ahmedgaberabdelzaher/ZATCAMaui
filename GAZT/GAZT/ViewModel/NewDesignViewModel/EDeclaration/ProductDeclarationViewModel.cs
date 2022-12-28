@@ -677,14 +677,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && TotalValue != null)
             {
+                if (SelectedPurposes.ID == 8)
+                {
+                    if (string.IsNullOrWhiteSpace(OtherPurpose))
+                        return false;
+                }
                 return true;
             }
             return false;
         }
         bool CheckrestrictedDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit != null && Quantity != null && Quantity > 0 && !String.IsNullOrWhiteSpace(RestrictedItem))
+            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit != null && Quantity != null && !string.IsNullOrWhiteSpace(RestrictedItem))
             {
+                if (SelectedPurposes.ID == 8)
+                {
+                    if (string.IsNullOrWhiteSpace(OtherPurpose))
+                        return false;
+                }
                 return true;
             }
             return false;
@@ -701,15 +711,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
-        void ClearCurrencyData()
-        {
-            SelectedCurrencie = null;
-            SelectedMaterialTypes = null;
-            Quantity = null;
-            OtherPurpose = "";
-            SelectedPurposes = null;
-            TotalValue = null;
-        }
+     
         public ICommand OpenTobacoItemssCommand
         {
             get
@@ -929,7 +931,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
-
         public ICommand SelectIsPermitCommand
         {
             get
@@ -954,6 +955,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         private void AddCurrency()
         {
             if (CheckCurrencyDataNotNull())
@@ -993,7 +995,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckrestrictedDataNotNull())
             {
 
-
+                if (Quantity <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Restricted()
                 {
                     otherpurpose = OtherPurpose,
@@ -1024,24 +1031,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 DisplayRequiredDataMsg();
             }
         }
-        void ClearRestrictedData()
-        {
-            SelectedCurrencie = null;
-            SelectedMaterialTypes = null;
-            Quantity = null;
-            OtherPurpose = "";
-            IsPermit = false;
-            selectedUnit = null;
-            UploadedFiles = null;
-            SelectedPurposes = null;
-            TotalValue = null;
-        }
+
         private async Task AddTobacoItem()
         {
             if (CheckTobacoDataNotNull())
             {
 
-
+                if (Quantity <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
                 {
                     count = Quantity.Value,
@@ -1082,23 +1083,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             else
             {
+
                 DisplayRequiredDataMsg();
             }
         }
-
-        private void DisplayRequiredDataMsg()
-        {
-            IsShowMsgView = true;
-            MessageTxt = AppResources.RequiredData;
-        }
-
-
 
         private async Task AddProductItem()
         {
             if (CheckProductDataNotNull())
             {
-                if (TotalValue < 3000 )
+                if (Quantity <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
+                if (TotalValue < 3000)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -1146,6 +1146,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 DisplayRequiredDataMsg();
             }
         }
+
+        void ClearRestrictedData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity = null;
+            OtherPurpose = "";
+            IsPermit = false;
+            selectedUnit = null;
+            UploadedFiles = null;
+            SelectedPurposes = null;
+            TotalValue = null;
+        }
+
+        void ClearCurrencyData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity = null;
+            OtherPurpose = "";
+            SelectedPurposes = null;
+            TotalValue = null;
+        }
+
+        private void DisplayRequiredDataMsg()
+        {
+            IsShowMsgView = true;
+            MessageTxt = AppResources.RequiredData;
+        }
+
         void ClearProductData()
         {
             SelectedProductTypes = null;
@@ -1154,6 +1184,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             IsProductItemHaveSubType = false;
             TotalValue = null;
         }
+
         private async Task CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
             try
@@ -1205,6 +1236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
 
         }
+
         public ICommand SearchEntryCommand
         {
 
