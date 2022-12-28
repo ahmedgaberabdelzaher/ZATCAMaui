@@ -365,7 +365,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" },1);
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHint, AppResources.NumberofAttachments);
                 });
             }
         }

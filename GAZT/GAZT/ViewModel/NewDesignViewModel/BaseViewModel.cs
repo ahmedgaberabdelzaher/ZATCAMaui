@@ -380,7 +380,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ObservableCollection<ReportFileModel> uploadedFiles = new ObservableCollection<ReportFileModel>();
         public ObservableCollection<ReportFileModel> UploadedFiles { get { return uploadedFiles; } set { uploadedFiles = value; RaisePropertyChanged(); } }
 
-        public async Task PickAndShow(PickOptions options,int maxCount=1)
+        public async Task PickAndShow(PickOptions options,string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount=1, int maxFileSize = 2)
         {
             try
             {
@@ -397,9 +397,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         double size = LenInMb;
                         double filesize = size;
 
-                        if (filesize > 2)
+                        if (filesize > maxFileSize)
                         {
-                            MessageTxt = AppResources.MaximumFileSizeMsg;
+                            MessageTxt = maximumFileSizeMsg;
                             IsShowMsgView = true;
                         }
                         else if (UploadedFiles != null && UploadedFiles.Count < maxCount)
@@ -415,14 +415,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             IsShowMsgView = true;
-                            MessageTxt = AppResources.NumberofAttachments;
+                            MessageTxt = numberOfAttachmentMsg;
 
                         }
                     }
                     else
                     {
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.PDFFileHint;
+                        MessageTxt = maximumFileSizeMsg;
 
                     }
 

@@ -10230,6 +10230,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PDF file format max size 1MB.
+        /// </summary>
+        public static string PDFFileHintTwo {
+            get {
+                return ResourceManager.GetString("PDFFileHintTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  PDF Not Available.
         /// </summary>
         public static string PdfIsNotAvailableFor {

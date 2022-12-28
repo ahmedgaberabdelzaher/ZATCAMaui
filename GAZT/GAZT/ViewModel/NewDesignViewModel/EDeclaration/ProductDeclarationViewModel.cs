@@ -382,7 +382,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, 1);
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments,maxFileSize:1);
                 });
             }
         }

@@ -298,12 +298,12 @@
 
                         <!--#region Cards-->
                         <StackLayout 
-                                     HorizontalOptions="FillAndExpand"
-                                     Spacing="10"
-                                     Padding="5"
-                                     HeightRequest="94"
-                                     Margin="0,0,0,5"
-                                     Orientation="Horizontal">
+                            HorizontalOptions="FillAndExpand"
+                            Spacing="10"
+                            Padding="5"
+                            HeightRequest="94"
+                            Margin="0,0,0,5"
+                            Orientation="Horizontal">
 
                             <!--Yes Card-->
                             <Grid
@@ -435,8 +435,10 @@
 
                         </StackLayout>
                         <!--#endregion Cards-->
+
                         <!--#region Questions View-->
                         <StackLayout IsVisible="{Binding IsYesSelected}">
+
                             <!--#region Hint view-->
                             <Frame Padding="10"
                                BackgroundColor="White"
@@ -444,18 +446,23 @@
                                VerticalOptions="StartAndExpand"
                                HorizontalOptions="FillAndExpand"
                                CornerRadius="10">
+
                                 <Frame.Triggers>
-                                    <DataTrigger TargetType="Frame" Binding="{Binding QFlow}" Value="2">
-                                        <Setter Property="IsVisible" Value="false"> </Setter>
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding QFlow}"
+                                                 Value="2">
+                                        <Setter Property="IsVisible"
+                                                Value="false"/>
 
                                     </DataTrigger>
 
                                 </Frame.Triggers>
+
                                 <StackLayout
-                                Orientation="Horizontal"
-                                VerticalOptions="StartAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                Spacing="10">
+                                    Orientation="Horizontal"
+                                    VerticalOptions="StartAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="10">
 
                                     <!--info icon-->
                                     <Image  Aspect="AspectFit"
@@ -467,63 +474,86 @@
 
                                     <!--  Question Hint Label  -->
                                     <custom:CustomLabel
-                                    HorizontalOptions="StartAndExpand"
-                                    FontSize="12"
-                                    TextColor="#999999"
-                                    Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}">
-                                        <custom:CustomLabel.Triggers>
-                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding QFlow}" Value="2">
-                                                <Setter Property="Text" Value=""></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding QFlow}" Value="3">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}"></Setter>
-                                            </DataTrigger>
-                                            <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding QFlow}" Value="4">
-                                            <!--  <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"></Setter> -->
-         <Setter Property="IsVisible" Value="false"></Setter> 
-                                            </DataTrigger>
-                                        </custom:CustomLabel.Triggers>
+                                            HorizontalOptions="StartAndExpand"
+                                            FontSize="12"
+                                            TextColor="#999999"
+                                            Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}">
+                                            <custom:CustomLabel.Triggers>
+
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="2">
+                                                    <Setter Property="Text" Value=""/>
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="3">
+                                                    <Setter Property="Text"
+                                                            Value="{x:Static ResourceManager:AppResources.Q2Hint}"/>
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="4">
+
+                                                     <Setter Property="IsVisible"
+                                                             Value="false"/>
+                                                </DataTrigger>
+
+                                            </custom:CustomLabel.Triggers>
 
                                     </custom:CustomLabel>
+
                                     <!-- Hint With Two Line -->
                                     <StackLayout IsVisible="false">
+
                                          <StackLayout.Triggers>
-                                            <DataTrigger TargetType="StackLayout" Binding="{Binding QFlow}" Value="4">
-                                            <!--  <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"></Setter> -->
-         <Setter Property="IsVisible" Value="true"></Setter> 
+
+                                            <DataTrigger TargetType="StackLayout"
+                                                         Binding="{Binding QFlow}" Value="4">
+                                                        <Setter Property="IsVisible" Value="true"/>
                                             </DataTrigger>
-                                        </StackLayout.Triggers>
+
+                                         </StackLayout.Triggers>
+
                                         <!--Hint Label-->
                                          <custom:CustomLabel  
-                                    HorizontalOptions="StartAndExpand"
-                                    FontSize="12"
-                                    LineSpacing="1"  Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
-                                    TextColor="#999999"
-                                    >
-                                   </custom:CustomLabel>
-                                        <!-- View List Label -->
-                                                                                 <custom:CustomLabel 
-                                    HorizontalOptions="StartAndExpand" TextDecorations="Underline" Text="{x:Static ResourceManager:AppResources.Viewlist}"
-                                    FontSize="12"
-                                    LineSpacing="1"
-                                    TextColor="#999999"
-                                    >
-                                            <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}"></TapGestureRecognizer>
+                                                HorizontalOptions="StartAndExpand"
+                                                FontSize="12"
+                                                LineSpacing="1"
+                                                Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
+                                                TextColor="#999999"/>
 
+                                        <!-- View List Label -->
+                                        <custom:CustomLabel 
+                                            HorizontalOptions="StartAndExpand"
+                                            TextDecorations="Underline"
+                                            Text="{x:Static ResourceManager:AppResources.Viewlist}"
+                                            FontSize="12"
+                                            LineSpacing="1"
+                                            TextColor="#999999">
+
+                                            <custom:CustomLabel.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}"/>
                                             </custom:CustomLabel.GestureRecognizers>
-                                   </custom:CustomLabel>
+
+                                        </custom:CustomLabel>
 
                                     </StackLayout>
+
                                 </StackLayout>
 
                             </Frame>
                             <!--#endregion-->
+
                             <!--#region TobacoProduct-->
                             <StackLayout IsVisible="false">
                                 <StackLayout.Triggers>
-                                    <DataTrigger TargetType="StackLayout" Binding="{Binding QFlow}" Value="1">
-                                        <Setter Property="IsVisible" Value="true"></Setter>
+                                    <DataTrigger TargetType="StackLayout"
+                                                 Binding="{Binding QFlow}"
+                                                 Value="1">
+                                        <Setter Property="IsVisible" Value="true"/>
                                     </DataTrigger>
                                 </StackLayout.Triggers>
                                 <!--Product Declaration Note-->
@@ -544,37 +574,37 @@
 
                                     <!--  TypeItem Entry  -->
                                     <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                        
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                        <custom:BorderlessEntry
-                                    x:Name="typeItemEntry"
-                                    InputTransparent="True"
-                                    IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SelectedTobacoType.Name}"
-                                    TextColor="#58595B">
+                                            ContainerBackgroundColor="White"
+                                            ContainerType="Outlined"
+                                            ErrorColor="#B00020"
+                                            FocusedColor="{StaticResource NeutralGreay}"
+                                            InputViewPadding="16,0,16,0"
+                                            LeadingViewPosition="Inside"
+                                            HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+                                            OutlineCornerRadius="15"
+                                            UnfocusedColor="{StaticResource NeutralGreay}">
+
+                                         <custom:BorderlessEntry
+                                                x:Name="typeItemEntry"
+                                                InputTransparent="True"
+                                                IsReadOnly="True"
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedTobacoType.Name}"
+                                                TextColor="#58595B">
+
                                             <custom:BorderlessEntry.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
                                             </custom:BorderlessEntry.GestureRecognizers>
+
                                         </custom:BorderlessEntry>
+
                                         <inputLayout:SfTextInputLayout.TrailingView>
                                             <Image Aspect="AspectFit" Source="greyDropDown" />
                                         </inputLayout:SfTextInputLayout.TrailingView>
-                                    </inputLayout:SfTextInputLayout>
 
-                                     <!--  TypeItem Label Hint  -->
-                                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                        Margin="3,-10,0,0"
-                                                        Text="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"/>
+                                    </inputLayout:SfTextInputLayout>
 
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
@@ -598,30 +628,35 @@
                                     <!--  ProductName Entry  -->
                                     <StackLayout>
                                         <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                            <custom:BorderlessEntry
-                                    x:Name="productNameEntry"
-                                    InputTransparent="True"
+                                                ContainerBackgroundColor="White"
+                                                ContainerType="Outlined"
+                                                ErrorColor="#B00020"
+                                                FocusedColor="{StaticResource NeutralGreay}"
+                                                InputViewPadding="16,0,16,0"
+                                                LeadingViewPosition="Inside"
+                                                OutlineCornerRadius="15"
+                                                UnfocusedColor="{StaticResource NeutralGreay}">
+
+                                           <custom:BorderlessEntry
+                                                x:Name="productNameEntry"
+                                                InputTransparent="True"
                                                 IsReadOnly="True"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SelectedTobacoItem.Name}"
-                                    TextColor="#58595B">
+                                                Keyboard="Text"
+                                                Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                                Style="{StaticResource DefaultEntry}"
+                                                Text="{Binding SelectedTobacoItem.Name}"
+                                                TextColor="#58595B">
+
                                                 <custom:BorderlessEntry.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
                                                 </custom:BorderlessEntry.GestureRecognizers>
+
                                             </custom:BorderlessEntry>
+
                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                 <Image Aspect="AspectFit" Source="greyDropDown" />
                                             </inputLayout:SfTextInputLayout.TrailingView>
+
                                         </inputLayout:SfTextInputLayout>
 
                                         <StackLayout.GestureRecognizers>
@@ -1450,7 +1485,7 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
+                                HelperText="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"

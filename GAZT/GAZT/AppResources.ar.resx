@@ -10114,4 +10114,7 @@ info@zatca.gov.sa</value>
   <data name="MasterVisa" xml:space="preserve">
      <value>فيزا/ماستر كارد</value>
   </data>
+  <data name="PDFFileHintTwo" xml:space="preserve">
+    <value>صيغة الملف PDF أقصى حجم 1MB</value>
+  </data>
 </root>
