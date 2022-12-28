@@ -105,14 +105,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.FAQ, ID=App.FAQPageView,ImageSource="FAQ"
                 },
-                   new MenuModel()
+                 /*  new MenuModel()
                 {
                    Name=AppResources.RateUs, ID="RateUs",ImageSource="RateUS"
-                },
-                 new MenuModel()
-                {
-                   Name=AppResources.CustomerServices, ID=App.ContactUsPageView,ImageSource="CustomerService"
-                },
+                }*/
                 new MenuModel()
                 {
                    Name=AppResources.PrivacyandPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"
@@ -121,14 +117,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.ContactUs, ID="ContactUs",ImageSource="CallUS"
                 },
+                 new MenuModel()
+                {
+                   Name=AppResources.NDChat, ID="ChatPotView",ImageSource="thumbnail_chat"
+                },
                 new MenuModel()
                 {
                    Name=AppResources.EdcuationJourney, ID="https://edujourneys.zatca.gov.sa/home/tracks",ImageSource="Education"
                 },
-                  new MenuModel()
+                 /* new MenuModel()
                 {
                    Name=AppResources.Zakaty, ID="AboutZakatyView",ImageSource="ZAKATYlogoInMenu"
-                },
+                },*/
                 new MenuModel()
                 {
                    Name=AppResources.Langauge, ID="ChangeLang",ImageSource="LangaugeIcon"
@@ -136,6 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             };
 
         }
+
 
         public ICommand SideMenuNavigationCommand
         {
@@ -228,8 +229,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                  Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
-                // Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                 // Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                 Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
 
                  }
 
