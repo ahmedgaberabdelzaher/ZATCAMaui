@@ -169,7 +169,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 else if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.ReleaseDate;
+                    MessageTxt = AppResources.ReleaseDateValidation;
                     return false;
                 }
                 else if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)

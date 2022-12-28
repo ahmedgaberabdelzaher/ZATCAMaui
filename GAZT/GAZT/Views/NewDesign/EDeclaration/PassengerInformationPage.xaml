@@ -261,13 +261,24 @@
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Passenger Note Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarSemiBold}"
-                            FontSize="16"
-                            Margin="0,0,0,5"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
-                            TextColor="{StaticResource NeutralGreay}" />
+                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             Margin="0,0,0,5"
+                                             LineBreakMode="WordWrap">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
 
 
                         <!--  Horizontal Line  -->
@@ -529,7 +540,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PassengerNationality}"/>
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -550,7 +561,7 @@
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
                                     TextColor="#58595B">
@@ -890,7 +901,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.VREndDate}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -974,6 +985,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry

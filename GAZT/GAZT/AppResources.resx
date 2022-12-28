@@ -9824,7 +9824,7 @@ Zakat, Tax and Customs Authority
         <value>New Declaration</value>
     </data>
     <data name="NewDeclarationNote" xml:space="preserve">
-        <value>Select the option and complete details</value>
+        <value>The e-Declaration facilitates the procedures for your arrival and departure without the need to wait and also protects you from legal liability, to know the details of the declaration, you can see </value>
     </data>
     <data name="NewDeclarationQuestion" xml:space="preserve">
         <value>Coming to the kingdom or leaving?</value>
@@ -10185,5 +10185,14 @@ Zakat, Tax and Customs Authority
   </data>
     <data name="PDFFileHintTwo" xml:space="preserve">
      <value>PDF file format max size 1MB</value>
+  </data>
+   <data name="NumberHint" xml:space="preserve">
+    <value>Numbers must be entered in English</value>
+  </data>
+   <data name="CustomDeclarationInformation" xml:space="preserve">
+    <value>Customs declaration information.</value>
+  </data>
+   <data name="PassengerNationality" xml:space="preserve">
+    <value>Nationality</value>
   </data>
 </root>
