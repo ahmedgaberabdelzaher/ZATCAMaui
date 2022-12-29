@@ -409,7 +409,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry ... it seems that you did not choose from the questions or fill in their data.
+        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions or fill in their data.
         /// </summary>
         public static string ALLanswersisNoMsg {
             get {

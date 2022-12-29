@@ -11,7 +11,7 @@
  TitleText="{x:Static ResourceManager:AppResources.eDeclaration}"
  x:Class="EGAZT.Views.NewDesign.EDeclaration.EDeclarationPage">
     <newdesign:BaseContentPage.PancakeView>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Never">
         <StackLayout>
            
             <!--#region Header-->

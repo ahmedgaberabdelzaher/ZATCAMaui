@@ -9977,10 +9977,10 @@ info@zatca.gov.sa</value>
     <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
   </data>
   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
-    <value>عفوا ....القيمه المدخلة ال تستلزم اإلقرار</value>
+    <value>عذرًا ، القيمة الإجمالية المدخلة لا تتطلب التصريح</value>
   </data>
    <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value> عفوا .. يبدو أنك لم تقم باالاختيار من أسئلة اإلقرار أو تعبئة البيانات الخاصة بها</value>
+    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة أو تملأ بياناتها</value>
   </data>
     <data name="Servicetype" xml:space="preserve">
     <value>نوع الخدمة</value>

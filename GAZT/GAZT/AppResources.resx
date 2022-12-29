@@ -10052,7 +10052,7 @@ Zakat, Tax and Customs Authority
     <value>Sorry, the entered total value does not require the declaration</value>
   </data>
   <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value>Sorry ... it seems that you did not choose from the questions or fill in their data</value>
+    <value>Sorry, it seems that you did not choose from the questions or fill in their data</value>
   </data>
   <data name="Servicetype" xml:space="preserve">
     <value>Service type</value>
