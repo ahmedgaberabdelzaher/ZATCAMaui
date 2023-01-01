@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Controls;
@@ -69,6 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     IsEntity = selectedType == "2" ? true : false;
                     UserType = selectedType;
+                    IsAddNewCR = false;
                 });
             }
         }
@@ -81,6 +83,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 return new Command<string>((e) =>
                 {
                     IsAddNewCR = e=="1"?true:false;
+                    if (!IsAddNewCR)
+                    {
+                        CRNo = "";
+                    }
                 });
             }
         }
@@ -94,8 +100,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+                        Regex EmailRgx = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
                     {
+                     if (!EmailRgx.IsMatch(Email))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidEmailFormat;
+                                return;
+                            }
                             if (UploadedFiles == null || UploadedFiles.Count <=0)
                             {
                                 MessageTxt = AppResources.NoFileChoosen;
@@ -193,9 +207,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 if (result.header.status.code == "I000000")
                                 {
                                     isCRDataFetched = false;
+                                    IsOpenAddNewCr = false;
+                                    CRNo = "";
+                                    MessageTxt = AppResources.CRNoAddedSuccess;
+                                    IsShowMsgView = true;
+                                    return;
                                 }
                                 else
                                 {
+                                    if (result.header.moreInformation!=null&& result.header.moreInformation.Errordetails!= null && result.header.moreInformation.Errordetails.Count > 0)
+                                    {
+                                        MessageTxt = result.header.moreInformation.Errordetails[0];
+                                        IsShowMsgView = true;
+                                        
+                                        return;
+                                    }
                                     MessageTxt = AppResources.RequestTimeoutDescription;
                                     IsShowMsgView = true;
                                 }
@@ -311,10 +337,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void clearData()
         {
-            Email = Subject = Description = SelectedCRNo = "";
+            Email = Subject = Description =CRNo= SelectedCRNo = "";
             UploadedFiles = new ObservableCollection<ReportFileModel>();
-            UserType = "1";
-            IsEntity = false;
+            UserType = "1"; 
+            IsEntity = false; isCRDataFetched = false;
             IsShowBottomSheet=IsShowMsgView = false;
             IsAddNewCR = false;
         }

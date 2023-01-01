@@ -10116,5 +10116,8 @@ info@zatca.gov.sa</value>
   </data>
   <data name="PDFFileHintTwo" xml:space="preserve">
     <value>صيغة الملف PDF أقصى حجم 1MB</value>
+</data>
+   <data name="CRNoAddedSuccess" xml:space="preserve">
+     <value>تمت اضافه رقم السجل التجاري بنجاح</value>
   </data>
 </root>

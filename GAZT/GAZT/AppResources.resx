@@ -10185,5 +10185,8 @@ Zakat, Tax and Customs Authority
   </data>
     <data name="PDFFileHintTwo" xml:space="preserve">
      <value>PDF file format max size 1MB</value>
+</data>
+    <data name="CRNoAddedSuccess" xml:space="preserve">
+     <value>CR Number added successfully</value>
   </data>
 </root>
