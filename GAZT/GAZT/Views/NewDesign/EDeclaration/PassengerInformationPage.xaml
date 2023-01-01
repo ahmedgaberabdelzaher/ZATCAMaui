@@ -263,14 +263,16 @@
                         <!--  Passenger Note Label  -->
                          <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
                                              FontSize="16"
-                                             Margin="0,0,0,5"
-                                             LineBreakMode="WordWrap">
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap"
+                                             Margin="0,0,0,5">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
                                               TextColor="{StaticResource NeutralGreay}"/>
+
                                         <Span TextColor="{StaticResource Primary}"
-                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"/>
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
 
@@ -587,7 +589,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
+                                        <Span Text="{Binding IDName}"/>
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -605,8 +607,8 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                    Keyboard="{Binding IDNumberKeyboard}"
+                                    Placeholder="{Binding IDNumberPlaceHolder}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelID}"
                                     TextColor="#58595B" />
@@ -885,7 +887,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                 <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
-                                            Format="dd/MM/yyyy"/>
+                                            Format="dd/MM/yyyy"
+                                            MaximumDate="{Binding MaximumDate}"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -920,7 +923,8 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                 <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
-                                            Format="dd/MM/yyyy"/>
+                                            Format="dd/MM/yyyy"
+                                            MinimumDate="{Binding MinimumDate}"/>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
@@ -955,6 +959,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                 <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                            MaximumDate="{Binding MaximumDate}"
                                             Format="dd/MM/yyyy"/> 
 
                                 <inputLayout:SfTextInputLayout.TrailingView>

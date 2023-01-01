@@ -28,6 +28,7 @@
                 <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
                                     FontSize="16"
                                     Margin="0,0,0,10"
+                                    LineSpacing="1"
                                     LineBreakMode="WordWrap">
                     <custom:CustomLabel.FormattedText>
                         <FormattedString>
