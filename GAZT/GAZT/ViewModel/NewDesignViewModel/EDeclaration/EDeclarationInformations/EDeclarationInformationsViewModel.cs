@@ -64,8 +64,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                          
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
-                 
-                            if(SubmitModel.travelerDeclaration.travelID !=null)
+                            IDName = AppResources.ZZNationalID;
+                            IDNumberPlaceHolder = "0000000000";
+                            IDNumberKeyboard = Keyboard.Numeric;
+                            if (SubmitModel.travelerDeclaration.travelID !=null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
                                 {
@@ -86,7 +88,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                             //Set Default value for first time only
                             if (SubmitModel.travelerDeclaration.travelDocumentType == 0)
+                            {
+                                IDName = AppResources.Passport;
+                                IDNumberPlaceHolder = "XX000000";
+                                IDNumberKeyboard = Keyboard.Text;
                                 SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
+                            }
+                                
                         }
                         
                         HeaderTitle = AppResources.PassengerInformation;

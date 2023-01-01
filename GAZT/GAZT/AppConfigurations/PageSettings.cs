@@ -231,6 +231,17 @@ namespace EGAZT.AppConfigurations
                 return $"{ProhibitedGoodsLstURl}en/general/Prohibited-goods";
             }
         }
+        public static string GetCustomDeclarationInformationURl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{ProhibitedGoodsLstURl}ar/declare";
+            }
+            else
+            {
+                return $"{ProhibitedGoodsLstURl}en/declare";
+            }
+        }
 
     }
 }

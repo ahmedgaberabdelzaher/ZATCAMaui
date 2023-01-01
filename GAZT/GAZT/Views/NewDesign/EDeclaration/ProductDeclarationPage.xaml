@@ -262,17 +262,30 @@
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
                             Text="{x:Static ResourceManager:AppResources.ProductDeclaration}"
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Declaration Note Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="16"
-                            Margin="0,0,0,5"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
-                            TextColor="{StaticResource NeutralGreay}" />
+                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             Margin="0,0,0,5"
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
 
 
                         <!--  Horizontal Line  -->
@@ -532,7 +545,7 @@
                                             Text="{x:Static ResourceManager:AppResources.Viewlist}"
                                             FontSize="12"
                                             LineSpacing="1"
-                                            TextColor="#999999">
+                                            TextColor="#002447">
 
                                             <custom:CustomLabel.GestureRecognizers>
                                                 <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}"/>
@@ -687,6 +700,7 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
                                     x:Name="quantityEntry"
@@ -824,6 +838,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
@@ -858,6 +873,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
@@ -1033,6 +1049,7 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
+                                        HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
@@ -1270,6 +1287,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                        HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                         <custom:BorderlessEntry
@@ -1392,6 +1410,7 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
+                                        HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">

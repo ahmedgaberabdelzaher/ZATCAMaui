@@ -10,6 +10,7 @@ using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
+using EGAZT.AppConfigurations;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
@@ -95,7 +96,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+        public ICommand OpenCustomInformationLinkCommand
+        {
 
+            get
+            {
+                return new Command(() =>
+                {
+                    try
+                    {
+                        Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+
+                });
+            }
+        }
         #endregion
         public IE_DeclerationServices DeclerationServices;
         public BaseEDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService)

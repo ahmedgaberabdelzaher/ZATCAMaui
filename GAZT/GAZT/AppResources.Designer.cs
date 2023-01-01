@@ -409,7 +409,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry ... it seems that you did not choose from the questions or fill in their data.
+        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions or fill in their data.
         /// </summary>
         public static string ALLanswersisNoMsg {
             get {
@@ -2708,6 +2708,15 @@ namespace EGAZT {
         public static string CurrentPassword {
             get {
                 return ResourceManager.GetString("CurrentPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customs declaration information..
+        /// </summary>
+        public static string CustomDeclarationInformation {
+            get {
+                return ResourceManager.GetString("CustomDeclarationInformation", resourceCulture);
             }
         }
         
@@ -9675,7 +9684,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the option and complete details.
+        ///   Looks up a localized string similar to The e-Declaration facilitates the procedures for your arrival and departure without the need to wait and also protects you from legal liability, to know the details of the declaration, you can see .
         /// </summary>
         public static string NewDeclarationNote {
             get {
@@ -9887,6 +9896,15 @@ namespace EGAZT {
         public static string Number {
             get {
                 return ResourceManager.GetString("Number", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numbers must be entered in English.
+        /// </summary>
+        public static string NumberHint {
+            get {
+                return ResourceManager.GetString("NumberHint", resourceCulture);
             }
         }
         
@@ -10118,6 +10136,15 @@ namespace EGAZT {
         public static string PassengerInformation {
             get {
                 return ResourceManager.GetString("PassengerInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nationality.
+        /// </summary>
+        public static string PassengerNationality {
+            get {
+                return ResourceManager.GetString("PassengerNationality", resourceCulture);
             }
         }
         

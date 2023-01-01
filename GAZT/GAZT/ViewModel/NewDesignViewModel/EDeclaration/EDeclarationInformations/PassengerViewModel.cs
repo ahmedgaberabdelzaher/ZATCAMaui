@@ -15,6 +15,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool isMaleSelected = true;
         public bool IsMaleSelected { get { return isMaleSelected; } set { isMaleSelected = value; RaisePropertyChanged(); } }
 
+        DateTime _MinimumDate = DateTime.Now.Date;
+        public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
+
+        DateTime _MaximumDate = DateTime.Today.AddHours(-24);
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
+
+        string iDName = AppResources.Passport;
+        public string IDName { get { return iDName; } set { iDName = value; RaisePropertyChanged(); } }
+
+        string iDNumberPlaceHolder = "XX000000";
+        public string IDNumberPlaceHolder { get { return iDNumberPlaceHolder; } set { iDNumberPlaceHolder = value; RaisePropertyChanged(); } }
+
+        Keyboard iDNumberKeyboard = Keyboard.Text;
+        public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; RaisePropertyChanged(); } }
+
         public ICommand IDSelectionCommand
         {
             get
@@ -29,12 +44,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             if (IsYesSelected)
                             {
                                 IsYesSelected = false;
+                                IDName = AppResources.GccNationalID;
+                                IDNumberKeyboard = Keyboard.Numeric;
+                                IDNumberPlaceHolder = "0000000000";
                                 SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor GCC=> 16
 
                             }
                             else
                             {
                                 IsYesSelected = true;
+                                IDName = AppResources.Passport;
+                                IDNumberKeyboard = Keyboard.Text;
+                                IDNumberPlaceHolder = "XX000000";
                                 SubmitModel.travelerDeclaration.travelDocumentType = int.Parse(e); // Visitor Passport => 4
                             }
                         }
@@ -160,7 +181,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     return false;
                 }
 
-                else if (SubmitModel.travelerDeclaration.birthDate.Date >= DateTime.Now.Date)
+                else if (SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.DateBirthValidation;
@@ -169,7 +190,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 else if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.ReleaseDate;
+                    MessageTxt = AppResources.ReleaseDateValidation;
                     return false;
                 }
                 else if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
@@ -178,7 +199,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     MessageTxt = AppResources.EndDateValidation;
                     return false;
                 }
-               else if (SubmitModel.travelerDeclaration.travelersCount <= 0)
+                else if (SubmitModel.travelerDeclaration.travelersCount == null || SubmitModel.travelerDeclaration.travelersCount <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.TravelerCountValidation;
@@ -186,7 +207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 }
 
             }
-            else if(SubmitModel.travelerDeclaration.travelersCount <= 0)
+            else if(SubmitModel.travelerDeclaration.travelersCount == null || SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.TravelerCountValidation;

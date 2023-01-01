@@ -117,8 +117,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
-        int _travelersCount;
-        public int travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
+        int? _travelersCount;
+        public int? travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
         #endregion
 
         #region Trip Model

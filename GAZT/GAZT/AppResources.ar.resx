@@ -9383,7 +9383,7 @@ info@zatca.gov.sa</value>
      <value>المبلغ الإجمالي مضافا إليه ضريبة القيمة المضافة</value>
     </data>
   <data name="TotalPriceValue" xml:space="preserve">
-         <value>قيمة المبلغ الإجمالي</value>
+         <value>القيمة الإجمالية</value>
     </data>
   <data name="ReportDetails" xml:space="preserve">
      <value>تفاصيل البلاغ</value>
@@ -9748,7 +9748,7 @@ info@zatca.gov.sa</value>
         <value>إقرار جديد</value>
     </data>
     <data name="NewDeclarationNote" xml:space="preserve">
-        <value>حدد الخيار وأكمل التفاصيل</value>
+        <value>يسهل الإقرار الإلكتروني إجراءات وصولك ومغادرتك دون الحاجة إلى الانتظار كما يحميك من المسؤولية القانونية ، لمعرفة تفاصيل الإعلان يمكنك الإطلاع على </value>
     </data>
     <data name="NewDeclarationQuestion" xml:space="preserve">
         <value>القدوم إلى المملكة أم المغادرة؟</value>
@@ -9770,13 +9770,13 @@ info@zatca.gov.sa</value>
         <value>في حال عدم العثور على المنتج في القائمة، يرجى الإقرار في مكتب الإقرار عند الوصول</value>
     </data>
     <data name="TypeItem" xml:space="preserve">
-        <value>نوع العنصر</value>
+        <value>نوع المادة</value>
     </data>
     <data name="ProductName" xml:space="preserve">
         <value>اسم المنتج</value>
     </data>
     <data name="AddItem" xml:space="preserve">
-        <value>اضافة عنصر</value>
+        <value>إضافة الى السلة</value>
     </data>
     <data name="TotalFeesPayable" xml:space="preserve">
         <value>إجمالي الرسوم المستحقة</value>
@@ -9836,7 +9836,7 @@ info@zatca.gov.sa</value>
     <value>الهوية الخليجية</value>
   </data>
   <data name="MiddleName" xml:space="preserve">
-    <value>الاسم الوسطى</value>
+    <value>الاسم الأب</value>
   </data>
   <data name="ItsSource" xml:space="preserve">
     <value>مصدره</value>
@@ -9857,7 +9857,7 @@ info@zatca.gov.sa</value>
     <value>رحلة برية</value>
   </data>
   <data name="SeaTrip" xml:space="preserve">
-    <value>رحلة البحر</value>
+    <value>رحلة بحرية</value>
   </data>
   <data name="TypeOfTrip" xml:space="preserve">
     <value>نوع الرحلة</value>
@@ -9866,7 +9866,7 @@ info@zatca.gov.sa</value>
     <value>قادم من</value>
   </data>
   <data name="GoingTo" xml:space="preserve">
-    <value>الذهاب الى</value>
+    <value>مغادرة الى</value>
   </data>
    <data name="EntrancePort" xml:space="preserve">
     <value>ميناء المدخل</value>
@@ -9977,10 +9977,10 @@ info@zatca.gov.sa</value>
     <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
   </data>
   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
-    <value>عفوا ....القيمه المدخلة ال تستلزم اإلقرار</value>
+    <value>عذرًا ، القيمة الإجمالية المدخلة لا تتطلب التصريح</value>
   </data>
    <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value> عفوا .. يبدو أنك لم تقم باالاختيار من أسئلة اإلقرار أو تعبئة البيانات الخاصة بها</value>
+    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة أو تملأ بياناتها</value>
   </data>
     <data name="Servicetype" xml:space="preserve">
     <value>نوع الخدمة</value>
@@ -10119,5 +10119,14 @@ info@zatca.gov.sa</value>
 </data>
    <data name="CRNoAddedSuccess" xml:space="preserve">
      <value>تمت اضافه رقم السجل التجاري بنجاح</value>
+  </data>
+  <data name="NumberHint" xml:space="preserve">
+    <value>يجب إدخال الأرقام باللغة الإنجليزية</value>
+  </data>
+  <data name="CustomDeclarationInformation" xml:space="preserve">
+    <value>معلومات البيان الجمركي.</value>
+  </data>
+  <data name="PassengerNationality" xml:space="preserve">
+    <value>جنسية المسافر</value>
   </data>
 </root>
