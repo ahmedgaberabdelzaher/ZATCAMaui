@@ -3859,7 +3859,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             CultureInfo enCul = new CultureInfo("en-US");
             var date = DateTime.Now.Date.ToString("MM-dd-yyyy",enCul);
-           var res=await _surveyServices.GetSurveyByDate("1012", date);
+           var res=await _surveyServices.GetSurveyByDate(App.TP.Tin, date);
             if (res.Item2)
             {
                 if (res.Item1.data!=null&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))
