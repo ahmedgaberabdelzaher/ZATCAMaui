@@ -7,6 +7,8 @@ using System.Linq;
 using EGAZT.Models.EDeclerationsModel;
 using System.Collections.ObjectModel;
 using EGAZT.Helper;
+using System.Text.RegularExpressions;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
     public partial class EDeclarationInformationsViewModel
@@ -232,8 +234,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         private bool IsValidatePassenger()
         {
+            Regex numberRegex = new Regex(@"^[0-9]+$");
+            var count = Convert.ToString(SubmitModel.travelerDeclaration.travelersCount);
             if (SubmitModel.travelerDeclaration.Isvisitor)
             {
+                
                 if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
@@ -264,7 +269,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     MessageTxt = AppResources.EndDateValidation;
                     return false;
                 }
-                else if (SubmitModel.travelerDeclaration.travelersCount == null || SubmitModel.travelerDeclaration.travelersCount <= 0)
+                else if (SubmitModel.travelerDeclaration.travelersCount == null
+                        || SubmitModel.travelerDeclaration.travelersCount <= 0
+                        || !numberRegex.IsMatch(count))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.TravelerCountValidation;
@@ -272,7 +279,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 }
 
             }
-            else if (SubmitModel.travelerDeclaration.travelersCount == null || SubmitModel.travelerDeclaration.travelersCount <= 0)
+            else if (SubmitModel.travelerDeclaration.travelersCount == null
+                    || SubmitModel.travelerDeclaration.travelersCount <= 0
+                   || !numberRegex.IsMatch(count))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.TravelerCountValidation;

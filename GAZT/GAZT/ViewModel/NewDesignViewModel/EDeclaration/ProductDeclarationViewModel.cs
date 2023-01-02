@@ -18,6 +18,7 @@ using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using Xamarin.Forms;
 using GAZT;
 using EGAZT.AppConfigurations;
+using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -70,8 +71,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; RaisePropertyChanged(); } }
 
 
-        int? totalValue;
-        public int? TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
+        double? totalValue;
+        public double? TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
 
 
         string question;
@@ -101,7 +102,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
         public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
 
-
+        Regex quantityRegex = new Regex(@"^[0-9]+$");
         #endregion
 
 
@@ -318,6 +319,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             TotalValue = null;
         }
+
         public ICommand PrevoiusCommand
         {
             get
@@ -343,6 +345,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         public void BackMethod()
         {
             if (IsShowBottomSheet)
@@ -432,6 +435,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         public ICommand OpenProductSubTypesCommand
         {
             get
@@ -659,12 +663,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         void ClearTobacoData()
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
             Quantity = null;
         }
+
         bool CheckTobacoDataNotNull()
         {
             if (SelectedTobacoItem != null && SelectedTobacoType != null && Quantity != null)
@@ -673,6 +679,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
+
         bool CheckCurrencyDataNotNull()
         {
             if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && TotalValue != null)
@@ -686,6 +693,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
+
         bool CheckrestrictedDataNotNull()
         {
             if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit != null && Quantity != null && !string.IsNullOrWhiteSpace(RestrictedItem))
@@ -699,6 +707,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
+
         bool CheckProductDataNotNull()
         {
             if (SelectedProductTypes != null && Quantity != null && TotalValue != null)
@@ -1001,6 +1010,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     MessageTxt = AppResources.QuantityValidation;
                     return;
                 }
+                var q = Convert.ToString(Quantity);
+                if (!quantityRegex.IsMatch(q))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return ;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Restricted()
                 {
                     otherpurpose = OtherPurpose,
@@ -1038,6 +1054,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
 
                 if (Quantity <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
+                var q = Convert.ToString(Quantity);
+                if (!quantityRegex.IsMatch(q))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
@@ -1093,6 +1116,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckProductDataNotNull())
             {
                 if (Quantity <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
+                var q = Convert.ToString(Quantity);
+                if (!quantityRegex.IsMatch(q))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
