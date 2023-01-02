@@ -102,7 +102,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
         public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
 
-        Regex quantityRegex = new Regex(@"^[0-9]+$");
         #endregion
 
 
@@ -1010,13 +1009,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     MessageTxt = AppResources.QuantityValidation;
                     return;
                 }
-                var q = Convert.ToString(Quantity);
-                if (!quantityRegex.IsMatch(q))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.QuantityValidation;
-                    return ;
-                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Restricted()
                 {
                     otherpurpose = OtherPurpose,
@@ -1054,13 +1046,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
 
                 if (Quantity <= 0)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.QuantityValidation;
-                    return;
-                }
-                var q = Convert.ToString(Quantity);
-                if (!quantityRegex.IsMatch(q))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
@@ -1116,13 +1101,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckProductDataNotNull())
             {
                 if (Quantity <= 0)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.QuantityValidation;
-                    return;
-                }
-                var q = Convert.ToString(Quantity);
-                if (!quantityRegex.IsMatch(q))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;

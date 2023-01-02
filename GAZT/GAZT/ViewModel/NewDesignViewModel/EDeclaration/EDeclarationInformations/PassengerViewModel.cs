@@ -234,8 +234,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         private bool IsValidatePassenger()
         {
-            Regex numberRegex = new Regex(@"^[0-9]+$");
-            var count = Convert.ToString(SubmitModel.travelerDeclaration.travelersCount);
             if (SubmitModel.travelerDeclaration.Isvisitor)
             {
                 
@@ -270,8 +268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     return false;
                 }
                 else if (SubmitModel.travelerDeclaration.travelersCount == null
-                        || SubmitModel.travelerDeclaration.travelersCount <= 0
-                        || !numberRegex.IsMatch(count))
+                        || SubmitModel.travelerDeclaration.travelersCount <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.TravelerCountValidation;
@@ -280,8 +277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
             }
             else if (SubmitModel.travelerDeclaration.travelersCount == null
-                    || SubmitModel.travelerDeclaration.travelersCount <= 0
-                   || !numberRegex.IsMatch(count))
+                    || SubmitModel.travelerDeclaration.travelersCount <= 0)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.TravelerCountValidation;
