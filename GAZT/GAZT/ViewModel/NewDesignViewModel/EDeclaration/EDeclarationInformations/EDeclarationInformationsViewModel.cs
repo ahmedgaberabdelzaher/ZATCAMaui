@@ -35,8 +35,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         string refNo ;
         public string RefNo  { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
-    
 
+        DateTime _MinimumDate = DateTime.Now.Date;
+        public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
+
+        DateTime _MaximumDate = DateTime.Today.AddHours(-24);
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
         #endregion
 
 
@@ -67,6 +71,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             IDName = AppResources.ZZNationalID;
                             IDNumberPlaceHolder = "0000000000";
                             IDNumberKeyboard = Keyboard.Numeric;
+                            ReleaseDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+                            EndDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            BirthDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.birthDate);
                             if (SubmitModel.travelerDeclaration.travelID !=null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))

@@ -41,7 +41,7 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
-        public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate";
+        public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";

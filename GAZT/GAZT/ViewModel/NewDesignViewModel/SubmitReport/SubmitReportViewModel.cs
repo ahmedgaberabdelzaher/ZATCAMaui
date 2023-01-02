@@ -479,18 +479,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isReportTypeSelected = true;
-                    isReportCategorySelected = false;
-                    isMissingFieldSelected = false;
-                    isRegionSelected = false;
-                    var reportType = await this._submitReportServices.GetReportType();
-                    var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportType;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isReportTypeSelected = true;
+                        isReportCategorySelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        var reportType = await this._submitReportServices.GetReportType();
+                        var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportType;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
                 });
 
             }
@@ -502,15 +510,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(() =>
                 {
-                    isReportCategorySelected = true;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    isRegionSelected = false;
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportCategory;
-                    var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    try
+                    {
+                        isReportCategorySelected = true;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCategory;
+                        var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
 
                 });
             }
@@ -521,18 +536,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isMissingFieldSelected = true;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isRegionSelected = false;
-                    var reportType = await this._submitReportServices.GetLookUps();
-                    var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    HeaderTitle = AppResources.ReportMissingField;
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isMissingFieldSelected = true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isRegionSelected = false;
+                        var reportType = await this._submitReportServices.GetLookUps();
+                        var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        HeaderTitle = AppResources.ReportMissingField;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
 
                 });
             }
@@ -544,20 +567,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isRegionSelected = true;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    if (RegionsList == null)
-                        RegionsList = await this._submitReportServices.GetRegions();
+                    try
+                    {
+                        IsLoading = true;
+                        isRegionSelected = true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        if (RegionsList == null)
+                            RegionsList = await this._submitReportServices.GetRegions();
 
-                    var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ZZZZProvinceRegion;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                        var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZProvinceRegion;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
                 });
             }
         }
@@ -568,20 +599,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isRegionSelected = false;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    if (CitysList == null)
-                        CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
+                    try
+                    {
+                        IsLoading = true;
+                        isRegionSelected = false;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        if (CitysList == null)
+                            CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
 
-                    var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportCity;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                        var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCity;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
 
                 });
             }

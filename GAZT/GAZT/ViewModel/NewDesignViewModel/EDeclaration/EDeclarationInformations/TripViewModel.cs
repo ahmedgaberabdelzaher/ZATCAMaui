@@ -7,6 +7,7 @@ using System.Linq;
 using EGAZT.Controls;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using EGAZT.Helper;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -14,10 +15,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
     {
         TripCardModel tripCard = new TripCardModel();
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
-
-
-        DateTime _ArrivalDepartureMinimumDate = DateTime.Now.Date;
-        public DateTime ArrivalDepartureMinimumDate { get { return _ArrivalDepartureMinimumDate; } set { _ArrivalDepartureMinimumDate = value; RaisePropertyChanged(); } }
 
         public ICommand TripCardCommand
         {
@@ -81,16 +78,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command( _ =>
                 {
-                    isNationalitySelected = false;
-                    isItsSourceSelected = false;
-                    isPortSelected = false;
-                    isComingGoingSelected = true;
-                    isTravelPurposeSelected = false;
-                    var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ZZZZCountry;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    try
+                    {
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = true;
+                        isTravelPurposeSelected = false;
+                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZCountry;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
+                });
+            }
+        }
+
+        public ICommand ArrivalSelectedDateCommand
+        {
+            get
+            {
+                return new Command<Entry>((control) =>
+                {
+                    try
+                    {
+
+                        control.Text = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.travelDate);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
+        public ICommand ArrivalDateClickedCommand
+        {
+            get
+            {
+                return new Command<DatePicker>((control) =>
+                {
+                    control?.Focus();
+
                 });
             }
         }
@@ -101,20 +139,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    IsLoading = true;
-                    isNationalitySelected = false;
-                    isItsSourceSelected = false;
-                    isPortSelected = true;
-                    isComingGoingSelected = false;
-                    isTravelPurposeSelected = false;
-                    var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
-                    var ports = result?.Item1?.data?.ToList();
-                    var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.Port;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = true;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
+                        var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
+                        var ports = result?.Item1?.data?.ToList();
+                        var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.Port;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
                 });
             }
         }
@@ -125,20 +171,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    IsLoading = true;
-                    isNationalitySelected = false;
-                    isItsSourceSelected = false;
-                    isPortSelected = false;
-                    isComingGoingSelected = false;
-                    isTravelPurposeSelected = true;
-                    var result = await DeclerationServices.GetTravelPurpose();
-                    var travelPurposes = result?.Item1?.data?.ToList();
-                    var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.TravelPurpose;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = true;
+                        var result = await DeclerationServices.GetTravelPurpose();
+                        var travelPurposes = result?.Item1?.data?.ToList();
+                        var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.TravelPurpose;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    
                 });
             }
         }
