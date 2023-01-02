@@ -883,16 +883,58 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
-                                            Format="dd/MM/yyyy"
-                                            MaximumDate="{Binding MaximumDate}"/>
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="ReleaseDate"
+                                                IsVisible="false"
+                                                MaximumDate="{Binding MaximumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference releaseDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            x:Name="releaseDateEntry"
+                                            ClassId="releasedateentry"
+                                            Style="{StaticResource DefaultEntry}"
+                                            TextColor="#58595B" >
+
+                                        <custom:BorderlessEntry.Triggers>
+                                            <DataTrigger TargetType="custom:BorderlessEntry"
+                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                                         Value="false">
+                                                <Setter Property="Text"
+                                                        Value="{Binding ReleaseDateString}"/>
+
+                                            </DataTrigger>
+                                        </custom:BorderlessEntry.Triggers>
+
+                                    </custom:BorderlessEntry>
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference ReleaseDate}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -920,15 +962,57 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
-                                            Format="dd/MM/yyyy"
-                                            MinimumDate="{Binding MinimumDate}"/>
+                                 <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="EndDate"
+                                                IsVisible="false"
+                                                MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference endDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            x:Name="endDateEntry"
+                                            ClassId="enddateentry"
+                                            TextColor="#58595B" >
+                                        <custom:BorderlessEntry.Triggers>
+                                            <DataTrigger TargetType="custom:BorderlessEntry"
+                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                                         Value="false">
+                                                <Setter Property="Text"
+                                                        Value="{Binding EndDateString}"/>
+
+                                            </DataTrigger>
+                                        </custom:BorderlessEntry.Triggers>
+
+                                    </custom:BorderlessEntry>
+
+                                   
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference EndDate}"/>
+                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -954,17 +1038,59 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
+                                InputViewPadding="16,0,16,0"
                                 OutlineCornerRadius="15"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
-                                            MaximumDate="{Binding MaximumDate}"
-                                            Format="dd/MM/yyyy"/> 
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                                MaximumDate="{Binding MaximumDate}"
+                                                x:Name="DateBirth"
+                                                IsVisible="false"
+                                                Format="dd/MM/yyyy">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference birthDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            x:Name="birthDateEntry"
+                                            ClassId="birthdateentry"
+                                            TextColor="#58595B" >
+                                        <custom:BorderlessEntry.Triggers>
+                                            <DataTrigger TargetType="custom:BorderlessEntry"
+                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                                         Value="false">
+                                                <Setter Property="Text"
+                                                        Value="{Binding BirthDateString}"/>
+
+                                            </DataTrigger>
+                                        </custom:BorderlessEntry.Triggers>
+
+                                    </custom:BorderlessEntry>
+
+                                   
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference DateBirth}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>

@@ -15,7 +15,7 @@ namespace EGAZT.Helper
             DTFormat = new System.Globalization.CultureInfo("en-US", false).DateTimeFormat;
             DTFormat.Calendar = new System.Globalization.GregorianCalendar();
             DTFormat.ShortDatePattern = format;
-            return dateTime.Date.ToString(DTFormat);
+            return dateTime.Date.ToString(DTFormat.ShortDatePattern);
 
         }
 

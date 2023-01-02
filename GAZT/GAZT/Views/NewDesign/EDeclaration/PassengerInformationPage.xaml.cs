@@ -12,9 +12,9 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         {
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
-           
-                    InitializeComponent();
-         
+
+            InitializeComponent();
+
         }
         protected override void OnDisappearing()
         {

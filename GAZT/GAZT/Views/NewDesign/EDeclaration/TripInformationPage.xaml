@@ -535,15 +535,43 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
-                                            Format="dd/MM/yyyy"
-                                            MinimumDate="{Binding ArrivalDepartureMinimumDate}"/>
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="ArivalDate"
+                                                IsVisible="false"
+                                                MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding ArrivalSelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference ArivalDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            x:Name="ArivalDateEntry"
+                                            Style="{StaticResource DefaultEntry}"
+                                            TextColor="#58595B" />
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ArrivalDateClickedCommand}"
+                                                              CommandParameter="{x:Reference ArivalDate}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
