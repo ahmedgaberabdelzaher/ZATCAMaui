@@ -9483,7 +9483,7 @@ the Zakat, Tax and Customs
       <value>VAT Registration Number</value>
   </data>
   <data name="TimeStamp" xml:space="preserve">
-      <value>Time Stamp</value>
+      <value>Invoice date</value>
   </data>
   <data name="InvoiceAmount" xml:space="preserve">
       <value>Invoice Amount</value>

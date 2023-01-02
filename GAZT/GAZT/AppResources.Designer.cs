@@ -12174,7 +12174,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time Stamp.
+        ///   Looks up a localized string similar to Invoice date.
         /// </summary>
         public static string TimeStamp {
             get {

@@ -262,7 +262,7 @@
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Style="{StaticResource BodyLabelBlack}"
-                                        Text="{Binding TimeStamp}" />
+                                        Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" />
                                 </Grid>
                                 <Label
                                     Grid.Row="0"

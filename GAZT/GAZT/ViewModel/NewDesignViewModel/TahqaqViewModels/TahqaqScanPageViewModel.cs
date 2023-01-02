@@ -246,9 +246,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 });
             }
         }
-       
+        int tag = 0;
         private void SetDataToModel(int tagNumber, string messageAsText)
         {
+            tag = tagNumber;
             switch (tagNumber)
             {
                 case 1:
@@ -272,7 +273,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 case 3:
                     {
                         eInvoiceQRModel.timeStamp = messageAsText.Trim();
-                        TimeStamp = messageAsText.Trim();
+                       // TimeStamp = messageAsText.Trim();
 
                     }
                     break;
@@ -363,6 +364,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
             else if (checkValidDate(qRcodeModelDetails.timeStamp) == false)
             {
+
                 result = "Date is not Valid";
             }
             return result;
@@ -399,6 +401,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 if (DateTime.TryParse(dateValue, culture, styles, out myDate))
                 {
+                    TimeStamp = myDate.ToString("dd/MM/yyyy hh:mm");
                     return true;
 
                 }
