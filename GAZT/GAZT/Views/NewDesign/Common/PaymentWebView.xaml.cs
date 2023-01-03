@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.Common
         {
             viewModel = App.Locator.CustomsPaymentViewModel;
             BindingContext = viewModel;
-            InitializeComponent();
+
             PaymentView.Source = PageSettings.GetCustomsPaymentUrl() + paymentCode;
 
         }
