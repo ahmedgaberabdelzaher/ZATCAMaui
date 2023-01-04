@@ -25,10 +25,10 @@
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
-    <!--<ContentPage.Behaviors>
+  <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding CheckSurveyCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
--->
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
@@ -2220,7 +2220,7 @@
             <Grid
                 Grid.Row="0"
                 Margin="0,0,0,0"
-                IsVisible="true"
+                IsVisible="false"
                 VerticalOptions="FillAndExpand">
 
                 <StackLayout

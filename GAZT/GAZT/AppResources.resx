@@ -9669,12 +9669,10 @@ Zakat, Tax and Customs Authority
 </value>
 </data>
    <data name="SurveyIntroMsg" xml:space="preserve">
-<value>
- Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?
-</value>
+<value>Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?</value>
     </data>
        <data name="questionnaire" xml:space="preserve">
-        <value>questionnaire</value>
+        <value>Questionnaire</value>
     </data>
      <data name="End" xml:space="preserve">
         <value>End</value>

@@ -10851,7 +10851,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to questionnaire.
+        ///   Looks up a localized string similar to Questionnaire.
         /// </summary>
         public static string questionnaire {
             get {
@@ -11962,9 +11962,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 
-        /// Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?
-        ///.
+        ///   Looks up a localized string similar to Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?.
         /// </summary>
         public static string SurveyIntroMsg {
             get {
