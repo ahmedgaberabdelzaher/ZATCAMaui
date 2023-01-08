@@ -1,17 +1,10 @@
 ﻿using System;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using EGAZT.Models.BaseModels;
 
 namespace EGAZT.Models.CustomServices.Tawreed
 {
-
-    public class Header
-    {
-        public string requestID { get; set; }
-        public Status status { get; set; }
-        public MoreInformation moreInformation { get; set; }
-
-    }
 
     public class Result
     {
@@ -23,15 +16,6 @@ namespace EGAZT.Models.CustomServices.Tawreed
         public Result result { get; set; }
 
     }
-    public class MoreInformation
-    {
-        [JsonProperty("Error details:")]
-        public List<string> Errordetails { get; set; }
-    }
-    public class Status
-    {
-        public string code { get; set; }
-        public string description { get; set; }
-    }
+  
 }
 

@@ -231,12 +231,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                                 IsShowMsgView = true;
+                                IsLoading = false;
                             }
                         }
                         else
                         {
                             MessageTxt = AppResources.RequiredData;
                             IsShowMsgView = true;
+                            IsLoading = false;
                         }
 
                     }

@@ -115,6 +115,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         return true;
                     }
+                    else if( !string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    {
+                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+
+                    }
+                }
+                else
+                {
+                    MessageTxt = AppResources.RequestTimeoutDescription;
+                    IsShowMsgView = true;
+                    IsLoading = false;
+
                 }
             }
             catch (Exception ex)
@@ -124,9 +144,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             finally
             {
                 IsLoading = false;
+               
             }
             return false;
-
         }
 
 
