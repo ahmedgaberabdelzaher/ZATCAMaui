@@ -64,15 +64,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         TobaccoItemsModel selectedTobacoItem;
         public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
 
-        int? quantity;
-        public int? Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
+        string quantity;
+        public string Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
 
         string restrictedItem;
         public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; RaisePropertyChanged(); } }
 
 
-        double? totalValue;
-        public double? TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
+        string totalValue;
+        public string TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
 
 
         string question;
@@ -201,9 +201,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
                             return;
                         }
-                     //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
-                            if (IsArrivingPlaneSelected && TotalValue < 3000 && QFlow == 2&&IsYesSelected)
-                            {
+                        //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
+                        if (IsArrivingPlaneSelected && Double.Parse(TotalValue ?? "0") < 3000 && QFlow == 2 && IsYesSelected)
+                        {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
                             return;
@@ -358,11 +358,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 if (!IsArrivingPlaneSelected && QFlow == 3)
                 {
-                    FeesCalculatorResponse = new FeesCalculatorResponse();
-                    CardData = new ObservableCollection<EDeclerationCardModel>();
-                    SubmitModel.travelerDeclaration = new TravelerDeclaration();
-                    _navigationService.GoBack();
 
+                    ClearObjectData();
                     return;
                 }
                 QFlow--;
@@ -370,21 +367,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             else
             {
-                _navigationService.GoBack();
-                FeesCalculatorResponse = new FeesCalculatorResponse();
-                CardData = new ObservableCollection<EDeclerationCardModel>();
-                SubmitModel.travelerDeclaration = new TravelerDeclaration();
+                ClearObjectData();
 
             }
         }
-
+        private void ClearObjectData()
+        {
+            FeesCalculatorResponse = new FeesCalculatorResponse();
+            CardData = new ObservableCollection<EDeclerationCardModel>();
+            SubmitModel.travelerDeclaration = new TravelerDeclaration();
+            _navigationService.GoBack();
+        }
         public ICommand UploadFileCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments,maxFileSize:1);
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
                 });
             }
         }
@@ -672,7 +672,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         bool CheckTobacoDataNotNull()
         {
-            if (SelectedTobacoItem != null && SelectedTobacoType != null && Quantity != null)
+            if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity))
             {
                 return true;
             }
@@ -681,7 +681,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         bool CheckCurrencyDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && TotalValue != null)
+            if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (SelectedPurposes.ID == 8)
                 {
@@ -695,7 +695,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         bool CheckrestrictedDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit != null && Quantity != null && !string.IsNullOrWhiteSpace(RestrictedItem))
+            if (SelectedCurrencie != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue) && SelectedUnit != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(RestrictedItem))
             {
                 if (SelectedPurposes.ID == 8)
                 {
@@ -709,7 +709,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         bool CheckProductDataNotNull()
         {
-            if (SelectedProductTypes != null && Quantity != null && TotalValue != null)
+            if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (IsProductItemHaveSubType && SelectedProductSubTypes == null)
                 {
@@ -719,7 +719,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
-     
+
         public ICommand OpenTobacoItemssCommand
         {
             get
@@ -1003,7 +1003,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckrestrictedDataNotNull())
             {
 
-                if (Quantity <= 0)
+                if (int.Parse(Quantity ?? "0") <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
@@ -1014,8 +1014,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     otherpurpose = OtherPurpose,
                     typeName = RestrictedItem,
                     unit = SelectedUnit.id,
-                    count = Quantity.Value,
-                    value = TotalValue,
+                    count = int.Parse(Quantity ?? "0"),
+                    value = Double.Parse(TotalValue),
                     purpose = SelectedPurposes.ID,
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
@@ -1045,7 +1045,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckTobacoDataNotNull())
             {
 
-                if (Quantity <= 0)
+                if (int.Parse(Quantity?? "0") <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
@@ -1053,7 +1053,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 }
                 var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
                 {
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity ?? "0"),
                     typeName = SelectedTobacoType.Name,
                     itemCode = long.Parse(selectedTobacoItem.itemCode),
                     measurementUnit = selectedTobacoItem.measurementUnit,
@@ -1082,7 +1082,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
                 {
                     harmonizedCode = item.itemCode.ToString(),
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity?? "0"),
                     sequence = item.taxSequence,
                     ID = item.ID
                 };
@@ -1100,13 +1100,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             if (CheckProductDataNotNull())
             {
-                if (Quantity <= 0)
+                if (int.Parse(Quantity??"0") <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.QuantityValidation;
                     return;
                 }
-                if (TotalValue < 3000)
+                if (Double.Parse(TotalValue) < 3000)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -1114,10 +1114,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 }
                 var item = new Models.EDeclerationsModel.SubmitModels.Product()
                 {
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity??"0"),
                     typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                     itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
-                    value = TotalValue
+                    value = Double.Parse(TotalValue)
 
                 };
                 /* if (SubmitModel.travelerDeclaration == null|| SubmitModel.travelerDeclaration.product==null)
@@ -1141,7 +1141,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
                 {
                     harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
-                    value = TotalValue,
+                    value = Double.Parse(TotalValue),
                     ID = item.ID
                 };
                 CardData.Add(cardItem);
@@ -1300,7 +1300,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         #endregion
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
         {
-            
+
 
         }
     }

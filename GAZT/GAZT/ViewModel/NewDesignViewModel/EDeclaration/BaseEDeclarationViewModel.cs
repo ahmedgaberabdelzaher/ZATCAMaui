@@ -12,6 +12,7 @@ using GalaSoft.MvvmLight.Views;
 using Rg.Plugins.Popup.Services;
 using EGAZT.AppConfigurations;
 using Xamarin.Forms;
+using static Org.BouncyCastle.Bcpg.Attr.ImageAttrib;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -123,10 +124,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             DeclerationServices = declerationServices;
         }
 
-        public void SatPassangerData(object data)
+        public void SetPassangerData(object data)
         {
+            App.Locator.StateManager.SetItem("IAMLoginPassengerData", data);
             IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-            // IamLoginPayloadData.TryGetValue("FirstName",out SubmitModel.travelerDeclaration.firstName);
+
             SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
             SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
             SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
@@ -138,20 +140,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
             SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
-            DateTime passIssuingDate = DateTime.Now;
-            DateTime passExpiryDate = DateTime.Now;
-            DateTime birthDate = DateTime.Now;
 
-            // Used when date retrun M/D/Y
-            DateTime.TryParse(iamLoginPayloadData["BirthDate"].ToString(), out birthDate);
-            SubmitModel.travelerDeclaration.birthDate = birthDate;
+            SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["BirthDate"].ToString());
 
-            // Used when date retrun M/D/Y
-            DateTime.TryParse(iamLoginPayloadData["ReleaseDate"].ToString(), out passIssuingDate);
-            SubmitModel.travelerDeclaration.passIssuingDate = passIssuingDate;
+            SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["ReleaseDate"].ToString());
 
-            DateTime.TryParse(iamLoginPayloadData["EndDate"].ToString(), out passExpiryDate);
-            SubmitModel.travelerDeclaration.passExpiryDate = passExpiryDate;
+            SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["EndDate"].ToString());
         }
         public object GetTokenData(string token = "")
         {
@@ -161,7 +155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
                 string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
                 var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
-                SatPassangerData(payload);
+                SetPassangerData(payload);
                 return payload;
                 //  var mobile = payload["Mobile"];
             }

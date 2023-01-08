@@ -328,7 +328,7 @@
     <value>TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
-    <value>Total amount</value>
+    <value>Total value</value>
   </data>
   <data name="TotalOfBillsUnpaid" xml:space="preserve">
     <value>Total unpaid-bill amount SAR:</value>
@@ -10098,10 +10098,10 @@ Zakat, Tax and Customs Authority
     <value>The electronic declaration has been completed successfully.</value>
   </data>
   <data name="TravellerPassport" xml:space="preserve">
-    <value>Traveller Passport</value>
+    <value>ID (Passport or GCC)</value>
   </data>
   <data name="TripDate" xml:space="preserve">
-    <value>Trip Date</value>
+    <value>Travel Date</value>
   </data>
    <data name="PaidPaymentStatus" xml:space="preserve">
    <value>Paid</value>
@@ -10195,5 +10195,8 @@ Zakat, Tax and Customs Authority
   </data>
    <data name="PassengerNationality" xml:space="preserve">
     <value>Nationality</value>
+  </data>
+  <data name="ArrivingFromORDepartingTo" xml:space="preserve">
+    <value>Arriving From or Departing To</value>
   </data>
 </root>

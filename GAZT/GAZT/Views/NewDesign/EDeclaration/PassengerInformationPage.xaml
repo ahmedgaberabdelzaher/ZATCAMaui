@@ -11,6 +11,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -910,20 +911,9 @@
                                             Placeholder="dd/MM/yyyy"
                                             x:Name="releaseDateEntry"
                                             ClassId="releasedateentry"
+                                            Text="{Binding ReleaseDateString}"
                                             Style="{StaticResource DefaultEntry}"
-                                            TextColor="#58595B" >
-
-                                        <custom:BorderlessEntry.Triggers>
-                                            <DataTrigger TargetType="custom:BorderlessEntry"
-                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                                         Value="false">
-                                                <Setter Property="Text"
-                                                        Value="{Binding ReleaseDateString}"/>
-
-                                            </DataTrigger>
-                                        </custom:BorderlessEntry.Triggers>
-
-                                    </custom:BorderlessEntry>
+                                            TextColor="#58595B" />
                                 </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -989,20 +979,9 @@
                                             Style="{StaticResource DefaultEntry}"
                                             x:Name="endDateEntry"
                                             ClassId="enddateentry"
-                                            TextColor="#58595B" >
-                                        <custom:BorderlessEntry.Triggers>
-                                            <DataTrigger TargetType="custom:BorderlessEntry"
-                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                                         Value="false">
-                                                <Setter Property="Text"
-                                                        Value="{Binding EndDateString}"/>
+                                            Text="{Binding EndDateString}"
+                                            TextColor="#58595B" />
 
-                                            </DataTrigger>
-                                        </custom:BorderlessEntry.Triggers>
-
-                                    </custom:BorderlessEntry>
-
-                                   
                                 </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -1067,20 +1046,9 @@
                                             Style="{StaticResource DefaultEntry}"
                                             x:Name="birthDateEntry"
                                             ClassId="birthdateentry"
-                                            TextColor="#58595B" >
-                                        <custom:BorderlessEntry.Triggers>
-                                            <DataTrigger TargetType="custom:BorderlessEntry"
-                                                         Binding="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
-                                                         Value="false">
-                                                <Setter Property="Text"
-                                                        Value="{Binding BirthDateString}"/>
+                                            Text="{Binding BirthDateString}"
+                                            TextColor="#58595B" />
 
-                                            </DataTrigger>
-                                        </custom:BorderlessEntry.Triggers>
-
-                                    </custom:BorderlessEntry>
-
-                                   
                                 </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -1124,7 +1092,12 @@
                                     Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+                                    <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>

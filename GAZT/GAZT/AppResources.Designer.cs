@@ -527,6 +527,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arriving From or Departing To.
+        /// </summary>
+        public static string ArrivingFromORDepartingTo {
+            get {
+                return ResourceManager.GetString("ArrivingFromORDepartingTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arriving to KSA.
         /// </summary>
         public static string ArrivingToKSA {
@@ -12922,7 +12931,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total amount.
+        ///   Looks up a localized string similar to Total value.
         /// </summary>
         public static string TotalAmount {
             get {
@@ -13381,7 +13390,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Traveller Passport.
+        ///   Looks up a localized string similar to ID (Passport or GCC).
         /// </summary>
         public static string TravellerPassport {
             get {
@@ -13399,7 +13408,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Trip Date.
+        ///   Looks up a localized string similar to Travel Date.
         /// </summary>
         public static string TripDate {
             get {

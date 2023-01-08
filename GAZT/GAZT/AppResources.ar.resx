@@ -10129,4 +10129,7 @@ info@zatca.gov.sa</value>
   <data name="PassengerNationality" xml:space="preserve">
     <value>جنسية المسافر</value>
   </data>
+    <data name="ArrivingFromORDepartingTo" xml:space="preserve">
+    <value>الوصول من أو المغادرة إلى</value>
+  </data>
 </root>

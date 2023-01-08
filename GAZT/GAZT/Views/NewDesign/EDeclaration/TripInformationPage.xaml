@@ -560,6 +560,7 @@
                                             InputTransparent="True"
                                             Placeholder="dd/MM/yyyy"
                                             x:Name="ArivalDateEntry"
+                                            Text="{Binding  ArrivalDepartureDateString}"
                                             Style="{StaticResource DefaultEntry}"
                                             TextColor="#58595B" />
                                 </Grid>
