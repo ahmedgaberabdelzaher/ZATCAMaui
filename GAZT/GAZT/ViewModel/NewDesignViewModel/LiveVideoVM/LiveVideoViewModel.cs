@@ -93,7 +93,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                             IsLoading = true;
                             GetLiveVideoLst();
                             await Task.Delay(2000);
-                            SelectedVideo = AppResources.Port1Name;
+                            SelectedVideo = AppResources.Port4Name;
                             VideoUrl = LiveVideosList[0].VideoURl;
                             IsLoading = false;
                         });

@@ -68,7 +68,7 @@ namespace EGAZT.AppConfigurations
             switch (Target_Environment)
             {
                 case "STG":
-                    App.CustomBaseUrl = CustomSTGBaseUrl;
+                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
@@ -82,7 +82,7 @@ namespace EGAZT.AppConfigurations
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
                     break;
                 default:
-                    App.CustomBaseUrl = CustomSTGBaseUrl;
+                    App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;

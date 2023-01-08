@@ -119,16 +119,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel()
                 {
-                   Name=AppResources.NDChat, ID="ChatPotView",ImageSource="thumbnail_chat"
+                   Name=AppResources.DBSMChat, ID="ChatPotView",ImageSource="thumbnail_chat"
                 },
                 new MenuModel()
                 {
                    Name=AppResources.EdcuationJourney, ID="https://edujourneys.zatca.gov.sa/home/tracks",ImageSource="Education"
                 },
-                 /* new MenuModel()
+                new MenuModel()
                 {
                    Name=AppResources.Zakaty, ID="AboutZakatyView",ImageSource="ZAKATYlogoInMenu"
-                },*/
+                },
                 new MenuModel()
                 {
                    Name=AppResources.Langauge, ID="ChangeLang",ImageSource="LangaugeIcon"
@@ -252,14 +252,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel() {
                    Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote2:""
                 }
-                 ,
+                 /*,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
-                },
+                   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+                }*/
+                 /*,
                  new MenuModel()
                 {
-                   Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
                 },
                  new MenuModel()
                 {
@@ -268,7 +269,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel()
                 {
                    Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
-                }
+                }*/
            };
         }
 

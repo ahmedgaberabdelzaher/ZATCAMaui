@@ -28,11 +28,11 @@
                 </Frame>
                 <!--#endregion-->
                      <!--#region Store Links View -->
-               <Label  Text="{x:Static ResourceManager:AppResources.DownloadApp}" TextColor="#002447" FontSize="16" FontFamily="{StaticResource SomarRegular}"></Label>
+               <Label  Text="{x:Static ResourceManager:AppResources.DownloadApp}"  TextColor="#002447" FontSize="16" FontFamily="{StaticResource SomarRegular}"></Label>
               <!--  <StackLayout Orientation="Horizontal">-->
                                           <OnPlatform x:TypeArguments="View">
                             <On Platform="iOS">
-                    <Image Source="AppleStore" HorizontalOptions="Start" HeightRequest="36">
+                    <Image Source="AppleStore" Margin="0,30,10,10" HorizontalOptions="CenterAndExpand" Aspect="AspectFit" HeightRequest="36">
                         <Image.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GoToZakatyAppstoreCommand}"></TapGestureRecognizer>
 
