@@ -172,7 +172,8 @@ using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
-
+using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
+using EGAZT.Views.NewDesign.TrackShipment;
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
@@ -422,6 +423,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<MyReportsViewModel>();
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
+            SimpleIoc.Default.Register<TrackShipmentViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
@@ -2931,6 +2933,7 @@ namespace EGAZT
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
+            navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
              navigationService.Configure("ChatPotView", typeof(ChatPotView));
@@ -4215,6 +4218,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TrackShipmentViewModel TrackShipmentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TrackShipmentViewModel>();
                 }
                 catch (Exception ex)
                 {
