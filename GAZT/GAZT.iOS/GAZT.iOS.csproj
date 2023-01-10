@@ -746,6 +746,9 @@
     <BundleResource Include="Resources\declarationWhite.png" />
     <BundleResource Include="Resources\declarationWhite%402x.png" />
     <BundleResource Include="Resources\declarationWhite%403x.png" />
+    <BundleResource Include="Resources\trainDark.png" />
+    <BundleResource Include="Resources\trainDark%402x.png" />
+    <BundleResource Include="Resources\trainDark%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

@@ -10132,4 +10132,64 @@ info@zatca.gov.sa</value>
     <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
+   <data name="ShipmentTracking" xml:space="preserve">
+    <value>تتبع الشحنة</value>
+  </data>
+  <data name="SelectShipmentType" xml:space="preserve">
+    <value>حدد نوع الشحنة</value>
+  </data>
+  <data name="Track" xml:space="preserve">
+    <value>تتبع</value>
+  </data>
+  <data name="ExpressShipping" xml:space="preserve">
+    <value>الشحن السريع</value>
+  </data>
+  <data name="AirFreight" xml:space="preserve">
+    <value>الشحن الجوي</value>
+  </data>
+  <data name="SeaFreight" xml:space="preserve">
+    <value>الشحن البحري</value>
+  </data>
+  <data name="LandFreight" xml:space="preserve">
+    <value>الشحن البري</value>
+  </data>
+  <data name="TrainFreight" xml:space="preserve">
+    <value>الشحن بالقطار</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>البحث عن طريق</value>
+  </data>
+    <data name="DeclarationBillNumber" xml:space="preserve">
+    <value>رقم البيان/رقم الفاتورة</value>
+  </data>
+  <data name="TotalFees" xml:space="preserve">
+    <value>الرسوم الإجمالية</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>الرسوم الجمركية</value>
+  </data>
+  <data name="OtherFees" xml:space="preserve">
+    <value>الرسوم الأخرى</value>
+  </data>
+  <data name="CIFValue" xml:space="preserve">
+    <value>قيمة CIF</value>
+  </data>
+   <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+    <value>للحصول على نتائج أكثر دقة ، يرجى إدخال تفاصيل البيان.</value>
+  </data>
+  <data name="DeclarationDisclaimer" xml:space="preserve">
+    <value>لم يتم إنشاء البيان المخصص حتى الآن.</value>
+  </data>
+  <data name="VATDisclaimer" xml:space="preserve">
+    <value>تبلغ ضريبة القيمة المضافة 15٪ من إجمالي قيمة الشحنة.</value>
+  </data>
+    <data name="BillNumber" xml:space="preserve">
+    <value>رقم البوليصة</value>
+  </data>
+    <data name="ShipmentDeclarationNumber" xml:space="preserve">
+    <value>رقم البيان الجمركي</value>
+  </data>
+    <data name="ShipmentStatus" xml:space="preserve">
+    <value>حالة الشحن</value>
+  </data>
 </root>

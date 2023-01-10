@@ -10199,4 +10199,64 @@ Zakat, Tax and Customs Authority
   <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>Arriving From or Departing To</value>
   </data>
+  <data name="ShipmentTracking" xml:space="preserve">
+    <value>Shipment Tracking</value>
+  </data>
+  <data name="SelectShipmentType" xml:space="preserve">
+    <value>Select Shipment Type</value>
+  </data>
+  <data name="Track" xml:space="preserve">
+    <value>Track</value>
+  </data>
+  <data name="ExpressShipping" xml:space="preserve">
+    <value>Express Shipping</value>
+  </data>
+  <data name="AirFreight" xml:space="preserve">
+    <value>Air Freight</value>
+  </data>
+  <data name="SeaFreight" xml:space="preserve">
+    <value>Sea Freight</value>
+  </data>
+  <data name="LandFreight" xml:space="preserve">
+    <value>Land Freight</value>
+  </data>
+  <data name="TrainFreight" xml:space="preserve">
+    <value>Train Freight</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+    <data name="DeclarationBillNumber" xml:space="preserve">
+    <value>Declaration Number\Bill Number</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Bill Number</value>
+  </data>
+  <data name="ShipmentDeclarationNumber" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="TotalFees" xml:space="preserve">
+    <value>Total Fees</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>Customs Fees</value>
+  </data>
+  <data name="OtherFees" xml:space="preserve">
+    <value>Other Fees</value>
+  </data>
+  <data name="CIFValue" xml:space="preserve">
+    <value>CIF Value</value>
+  </data>
+  <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+    <value>For more accurate results, please enter Declaration Details.</value>
+  </data>
+  <data name="DeclarationDisclaimer" xml:space="preserve">
+    <value>The Custom Declaration doesn't Create yet.</value>
+  </data>
+  <data name="VATDisclaimer" xml:space="preserve">
+    <value>The VAT is 15% of the total shipment value.</value>
+  </data>
+  <data name="ShipmentStatus" xml:space="preserve">
+    <value>Shipment Status</value>
+  </data>
 </root>
