@@ -379,7 +379,7 @@
             </StackLayout>
     </ScrollView>
             <!--Add Ne CR View-->
-                    <yummy:PancakeView Grid.Row="0" VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}" IsVisible="{Binding IsAddNewCR}">
+                    <yummy:PancakeView Grid.Row="0" VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}" IsVisible="false">
                 <StackLayout>
                     <Image Source="CloseIcon" HeightRequest="22" WidthRequest="22" HorizontalOptions="EndAndExpand">
                         <Image.GestureRecognizers>
