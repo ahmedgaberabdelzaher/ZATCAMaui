@@ -68,12 +68,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                          
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
+                            // Set passenger data in case the user go to the passenger
+                            // and decide to go back until reaching "New Declaration page".
+                            // At this moment the passenger data will be removed so need to set
+                            // it again.
+
+                            if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName))
+                            {
+                                var passengerData = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
+                                SetPassangerData(passengerData);
+                            }
+                                
                             IDName = AppResources.ZZNationalID;
                             IDNumberPlaceHolder = "0000000000";
                             IDNumberKeyboard = Keyboard.Numeric;
-                            ReleaseDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
-                            EndDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
-                            BirthDateString = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.birthDate);
+                            ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
                             if (SubmitModel.travelerDeclaration.travelID !=null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))

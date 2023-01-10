@@ -15,7 +15,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
     {
         TripCardModel tripCard = new TripCardModel();
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
-
+        
+        string _ArrivalDepartureDateString;
+        public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; RaisePropertyChanged(); } }
         public ICommand TripCardCommand
         {
             get
@@ -109,7 +111,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     try
                     {
 
-                        control.Text = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.travelDate);
+                        ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
 
                     }
                     catch (Exception ex)

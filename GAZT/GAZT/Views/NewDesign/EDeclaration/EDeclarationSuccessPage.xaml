@@ -283,28 +283,8 @@
                                         LineBreakMode="WordWrap"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         TextColor="#999999"
-                                        Text="{x:Static ResourceManager:AppResources.ComingFrom}"
-                                        VerticalOptions="Start" >
-
-                                         <custom:CustomLabel.Triggers>
-                                            <DataTrigger Binding="{Binding TravelerDeclarationResponse.travelingType}"
-                                                         TargetType="custom:CustomLabel"
-                                                         Value="1">
-                                                <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.ComingFrom}"/>
-
-                                            </DataTrigger>
-
-                                            <DataTrigger Binding="{Binding TravelerDeclarationResponse.travelingType}"
-                                                         TargetType="custom:CustomLabel"
-                                                         Value="2">
-                                                <Setter Property="Text"
-                                                        Value="{x:Static ResourceManager:AppResources.GoingTo}"/>
-
-                                            </DataTrigger>
-                                         </custom:CustomLabel.Triggers>
-
-                                    </custom:CustomLabel>
+                                        Text="{x:Static ResourceManager:AppResources.ArrivingFromORDepartingTo}"
+                                        VerticalOptions="Start" />
 
                                     <!--  Coming/Going from/to Value Label  -->
                                     <custom:CustomLabel
@@ -489,7 +469,7 @@
 
                                  <Grid ColumnDefinitions="2*,*">
 
-                                    <!--  Total amoun Label  -->
+                                    <!--  Total amount Label  -->
                                     <custom:CustomLabel
                                         HorizontalOptions="Start"
                                         FontSize="14"

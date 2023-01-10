@@ -88,15 +88,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         if (control.ClassId.ToLower().Equals("releasedateentry"))
                         {
-                            control.Text = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+                            ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
                         }
                         else if (control.ClassId.ToLower().Equals("enddateentry"))
                         {
-                            control.Text = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
                         }
                         else
                         {
-                            control.Text = DateTimeHelper.DatetimeFormater(SubmitModel.travelerDeclaration.birthDate);
+                            BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
                         }
 
                     }
@@ -234,56 +234,64 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         private bool IsValidatePassenger()
         {
-            if (SubmitModel.travelerDeclaration.Isvisitor)
+            try
             {
-                
-                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
-                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
-                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
-                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
-                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
-                    || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor))
+                if (SubmitModel.travelerDeclaration.Isvisitor)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
-                }
 
-                else if (SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.DateBirthValidation;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName)
+                        || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.middleName)
+                        || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
+                        || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
+                        || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
+                        || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
+
+                    else if (SubmitModel.travelerDeclaration.birthDate.Date > DateTime.Now.Date)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.DateBirthValidation;
+                        return false;
+                    }
+                    else if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.ReleaseDateValidation;
+                        return false;
+                    }
+                    else if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.EndDateValidation;
+                        return false;
+                    }
+                    else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
+                            || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.TravelerCountValidation;
+                        return false;
+                    }
+
                 }
-                else if (SubmitModel.travelerDeclaration.passIssuingDate.Date > DateTime.Now.Date)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.ReleaseDateValidation;
-                    return false;
-                }
-                else if (SubmitModel.travelerDeclaration.passExpiryDate.Date < DateTime.Now.Date)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.EndDateValidation;
-                    return false;
-                }
-                else if (SubmitModel.travelerDeclaration.travelersCount == null
-                        || SubmitModel.travelerDeclaration.travelersCount <= 0)
+                else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
+                        || int.Parse(SubmitModel.travelerDeclaration.travelersCount ?? "0") <= 0)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.TravelerCountValidation;
                     return false;
                 }
-
+                return true;
             }
-            else if (SubmitModel.travelerDeclaration.travelersCount == null
-                    || SubmitModel.travelerDeclaration.travelersCount <= 0)
+            catch (Exception ex)
             {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.TravelerCountValidation;
                 return false;
             }
-            return true;
+           
         }
     }
 }

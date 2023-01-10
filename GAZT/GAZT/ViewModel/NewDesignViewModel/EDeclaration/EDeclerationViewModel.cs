@@ -92,8 +92,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         else
                         {
                             IsShowMsgView = true;
-                            MessageTxt = AppResources.Somethingwentwrong;
+                            MessageTxt = AppResources.RequestTimeoutDescription;
                             IsLoading = false;
+                             
                         }
                     }
                     catch (Exception ex)

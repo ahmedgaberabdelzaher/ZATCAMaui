@@ -105,20 +105,20 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _travelIssuerName;
         public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
 
-        public DateTime passIssuingDate { get; set; } = DateTime.Now;
+        public DateTime passIssuingDate { get; set; }
 
        // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
 
-        public DateTime passExpiryDate { get; set; } = DateTime.Now;
+        public DateTime passExpiryDate { get; set; }
 
         //public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
 
-        public DateTime birthDate { get; set; } = DateTime.Now;
+        public DateTime birthDate { get; set; } 
 
         //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
-        int? _travelersCount;
-        public int? travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
+        string _travelersCount;
+        public string travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
         #endregion
 
         #region Trip Model
