@@ -1600,6 +1600,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Container Number.
+        /// </summary>
+        public static string ContainerNumber {
+            get {
+                return ResourceManager.GetString("ContainerNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contract Object No..
         /// </summary>
         public static string ContractObjectNo {
@@ -11904,6 +11913,15 @@ namespace EGAZT {
         public static string Servicetype {
             get {
                 return ResourceManager.GetString("Servicetype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declaration Details.
+        /// </summary>
+        public static string ShipmentDeclarationDetails {
+            get {
+                return ResourceManager.GetString("ShipmentDeclarationDetails", resourceCulture);
             }
         }
         

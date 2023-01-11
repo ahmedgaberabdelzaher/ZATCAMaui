@@ -2936,7 +2936,9 @@ namespace EGAZT
             navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
-             navigationService.Configure("ChatPotView", typeof(ChatPotView));
+            navigationService.Configure("ChatPotView", typeof(ChatPotView));
+            navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
+            navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             #endregion
 
             return navigationService;

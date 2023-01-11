@@ -5,27 +5,16 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.TrackShipment
 {
-    public partial class TrackShipmentPage : ContentPage
+    public partial class ShipmentStatusPage : ContentPage
     {
         TrackShipmentViewModel viewModel;
-        public TrackShipmentPage()
+        public ShipmentStatusPage()
         {
             viewModel = App.Locator.TrackShipmentViewModel;
             BindingContext = viewModel;
 
             InitializeComponent();
 
-        }
-
-        protected override void OnDisappearing()
-        {
-            viewModel.ResetData();
-            base.OnDisappearing();
-        }
-        protected override bool OnBackButtonPressed()
-        {
-            viewModel.BackMethod();
-            return true;
         }
     }
 }

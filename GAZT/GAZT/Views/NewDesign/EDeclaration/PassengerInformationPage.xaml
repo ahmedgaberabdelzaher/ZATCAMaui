@@ -309,7 +309,7 @@
                                 HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QSelected.png">
 
                                     <Image.Triggers>
@@ -374,7 +374,7 @@
                                   HeightRequest="94">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                         Source="QUnselected.png">
 
                                     <Image.Triggers>
@@ -644,7 +644,7 @@
                                   WidthRequest="171">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QSelected.png">
 
                                     <Image.Triggers>
@@ -711,7 +711,7 @@
                                  HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QUnselected.png">
 
                                     <Image.Triggers>

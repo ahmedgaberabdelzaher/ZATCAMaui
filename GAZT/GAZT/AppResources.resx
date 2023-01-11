@@ -10235,6 +10235,9 @@ Zakat, Tax and Customs Authority
   <data name="ShipmentDeclarationNumber" xml:space="preserve">
     <value>Declaration Number</value>
   </data>
+  <data name="ShipmentDeclarationDetails" xml:space="preserve">
+    <value>Declaration Details</value>
+  </data>
   <data name="TotalFees" xml:space="preserve">
     <value>Total Fees</value>
   </data>
@@ -10258,5 +10261,8 @@ Zakat, Tax and Customs Authority
   </data>
   <data name="ShipmentStatus" xml:space="preserve">
     <value>Shipment Status</value>
+  </data>
+    <data name="ContainerNumber" xml:space="preserve">
+    <value>Container Number</value>
   </data>
 </root>

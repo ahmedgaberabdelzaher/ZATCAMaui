@@ -10192,4 +10192,10 @@ info@zatca.gov.sa</value>
     <data name="ShipmentStatus" xml:space="preserve">
     <value>حالة الشحن</value>
   </data>
+  <data name="ShipmentDeclarationDetails" xml:space="preserve">
+    <value>تفاصيل البيان</value>
+  </data>
+  <data name="ContainerNumber" xml:space="preserve">
+    <value> رقم الحاوية</value>
+  </data>
 </root>
