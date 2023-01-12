@@ -10,8 +10,11 @@ using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
@@ -80,12 +83,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<string>((e) =>
+                return new Command<string>(async(e) =>
                 {
                     IsAddNewCR = e=="1"?true:false;
                     if (!IsAddNewCR)
                     {
+                        await PopupNavigation.Instance.PopAsync(true);
                         CRNo = "";
+                    }
+                    else
+                    {
+                        NewCrPopupView poupWindow = new NewCrPopupView();
+                        await PopupNavigation.Instance.PushAsync(poupWindow);
                     }
                 });
             }
@@ -191,8 +200,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+
                         if (!string.IsNullOrWhiteSpace(CRNo))
                         {
+                            await PopupNavigation.Instance.PopAsync(true);
                             var model = new AddNewCrBody()
                             {
                                  crNumber=CRNo,
@@ -206,6 +217,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 var result = JsonConvert.DeserializeObject<SubmitFormResponse>(content);
                                 if (result.header.status.code == "I000000")
                                 {
+                                   // await PopupNavigation.Instance.PopAsync(true);
                                     isCRDataFetched = false;
                                     IsOpenAddNewCr = false;
                                     CRNo = "";
@@ -246,7 +258,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
 
                     }
-                    finally { IsLoading = false; }
+                    finally {
+                        IsLoading = false;
+                        CRNo = "";
+                    }
                 });
             }
         }
