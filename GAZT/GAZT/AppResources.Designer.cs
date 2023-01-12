@@ -3351,6 +3351,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disclaimer: .
+        /// </summary>
+        public static string Disclaimer {
+            get {
+                return ResourceManager.GetString("Disclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Acknowledgement.
         /// </summary>
         public static string DownloadAcknowlwdgement {
@@ -5750,6 +5759,15 @@ namespace EGAZT {
         public static string Feedetails {
             get {
                 return ResourceManager.GetString("Feedetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please note that the customs duties and taxes calculator only helps you to calculate the approximate total of the value of duties and taxes, and it is not legally binding. To know the actual value accurately, the customs declaration must be submitted..
+        /// </summary>
+        public static string FeesCalcDisclaimerTXt {
+            get {
+                return ResourceManager.GetString("FeesCalcDisclaimerTXt", resourceCulture);
             }
         }
         

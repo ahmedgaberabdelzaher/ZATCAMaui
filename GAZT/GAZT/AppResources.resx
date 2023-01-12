@@ -10199,4 +10199,10 @@ Zakat, Tax and Customs Authority
   <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>Arriving From or Departing To</value>
   </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Disclaimer: </value>
+  </data>
+  <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
+    <value>Please note that the customs duties and taxes calculator only helps you to calculate the approximate total of the value of duties and taxes, and it is not legally binding. To know the actual value accurately, the customs declaration must be submitted.</value>
+  </data>
 </root>

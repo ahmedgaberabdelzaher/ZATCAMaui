@@ -126,6 +126,8 @@
 	  <None Remove="Views\NewDesign\Zakaty\" />
 	  <None Remove="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 	  <None Remove="Views\NewDesign\DashBoardPages\PopUpPages\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\CustomFees\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\Controls\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -252,6 +254,8 @@
 		<Folder Include="Views\NewDesign\Zakaty\" />
 		<Folder Include="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 		<Folder Include="Views\NewDesign\DashBoardPages\PopUpPages\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\CustomFees\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\Controls\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -350,6 +354,12 @@
 		</Compile>
 		<Compile Update="Views\NewDesign\EDeclaration\EDeclarationPaymentPage.xaml.cs">
 		  <DependentUpon>EDeclarationPaymentPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\CustomServicesPages\CustomFees\CustomFeesFormView.xaml.cs">
+		  <DependentUpon>CustomFeesFormView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs">
+		  <DependentUpon>TobacoView.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>

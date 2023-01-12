@@ -172,6 +172,7 @@ using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
+using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
 
 namespace EGAZT
 {
@@ -436,9 +437,11 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             SimpleIoc.Default.Register<StateManager>();
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
-              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-                 SimpleIoc.Default.Register<ChatViewModel>();
-#endregion
+            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+            SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<CustomFeesFormViewModel>();
+
+            #endregion
         }
 
         #region NewDesignViewModel
@@ -2934,6 +2937,8 @@ namespace EGAZT
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
              navigationService.Configure("ChatPotView", typeof(ChatPotView));
+            navigationService.Configure("CustomFeesFormView", typeof(CustomFeesFormView));
+
             #endregion
 
             return navigationService;
@@ -3229,6 +3234,21 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public CustomFeesFormViewModel CustomFeesFormViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomFeesFormViewModel>();
                 }
                 catch (Exception ex)
                 {

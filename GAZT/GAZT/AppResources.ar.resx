@@ -10132,4 +10132,10 @@ info@zatca.gov.sa</value>
     <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
+    <data name="Disclaimer" xml:space="preserve">
+    <value>إخلاء المسؤولية:</value>
+  </data>
+    <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
+    <value>يرجى مالحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم ، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي والضرائب وال يعتد بها قانونيا .</value>
+  </data>
 </root>
