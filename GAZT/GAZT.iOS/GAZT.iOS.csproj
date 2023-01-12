@@ -749,6 +749,12 @@
     <BundleResource Include="Resources\trainDark.png" />
     <BundleResource Include="Resources\trainDark%402x.png" />
     <BundleResource Include="Resources\trainDark%403x.png" />
+    <BundleResource Include="Resources\fillCircle.png" />
+    <BundleResource Include="Resources\fillCircle%402x.png" />
+    <BundleResource Include="Resources\fillCircle%403x.png" />
+    <BundleResource Include="Resources\startCircle.png" />
+    <BundleResource Include="Resources\startCircle%402x.png" />
+    <BundleResource Include="Resources\startCircle%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

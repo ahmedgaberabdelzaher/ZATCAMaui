@@ -9,12 +9,20 @@ namespace EGAZT.Views.NewDesign.TrackShipment
     {
         TrackShipmentViewModel viewModel;
         public ShipmentStatusPage()
-        {
+        {   
             viewModel = App.Locator.TrackShipmentViewModel;
             BindingContext = viewModel;
-
             InitializeComponent();
-
+        }
+        protected override void OnAppearing()
+        {
+            viewModel.DrawShipmentTrack.ShipmentCardImage = App.Locator.StateManager.GetItem("CardImage") as string;
+            base.OnAppearing();
+        }
+        protected override void OnDisappearing()
+        {
+            App.Locator.StateManager.DeleteItem("CardImage");
+            base.OnDisappearing();
         }
     }
 }

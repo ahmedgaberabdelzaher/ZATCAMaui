@@ -38,7 +38,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     try
                     {
                         var date = DateTime.Now;
-                        Inquire = App.Locator.StateManager.GetItem("inquireDecleration") as TravelerDeclarationResponse;
+                        Inquire = App.Locator.StateManager.GetItem("inquireDeclaration") as TravelerDeclarationResponse;
                         if (Inquire != null)
                         {
                             Inquire.TravelDateString = DateTimeHelper.DateTimeFormater(Inquire.travelDate);

@@ -9,6 +9,7 @@ using GalaSoft.MvvmLight.Views;
 using EGAZT.Controls;
 using Prism.Mvvm;
 using Xamarin.Forms;
+using EGAZT.Helper;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 {
@@ -24,6 +25,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         public bool isLandCardSelected;
 
         public bool isTrainCardSelected;
+
+        public static DateTime Test { get; set; } = new DateTime(2023, 1, 23, 23, 12, 0);
+        ObservableCollection<ShipmentStatus> shipmentStatusList = new ObservableCollection<ShipmentStatus>
+
+        {
+            new ShipmentStatus
+            {
+                HasVerticalLine = true,
+                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
+                ShipmentStatusValue = "Shipment under Customs review",
+                StatusImage = "fillCircle.png"
+            },
+             new ShipmentStatus
+            {
+                HasVerticalLine = true,
+                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
+                ShipmentStatusValue = "Shipment under Customs review",
+                StatusImage = "fillCircle.png"
+            },
+              new ShipmentStatus
+            {
+                HasVerticalLine = true,
+                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
+                ShipmentStatusValue = "Shipment under Customs review",
+                StatusImage = "fillCircle.png"
+            },
+            new ShipmentStatus
+            {
+                HasVerticalLine = false,
+                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
+                ShipmentStatusValue = "The Declaration has been referred to the specialist dndepartment",
+                StatusImage = "startCircle.png"
+            }
+
+
+        };
+        public ObservableCollection<ShipmentStatus> ShipmentStatusList { get { return shipmentStatusList; } set { shipmentStatusList = value; RaisePropertyChanged(); } }
+
 
         ObservableCollection<BottomSheetModel> bottomSheetList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> BottomSheetList { get { return bottomSheetList; } set { bottomSheetList = value; RaisePropertyChanged(); } }
@@ -131,7 +170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                             isValid = IsValid(ShipmentCards.Train);
 
                         if(isValid)
-                            //_navigationService.NavigateTo("TrackShipmentPage");
+                            _navigationService.NavigateTo("/ShipmentStatusPage");
 
                         IsLoading = false;
                     }
@@ -524,7 +563,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
             else if (trackType == ShipmentCards.Air)
             {
-                if (DrawShipmentTrack.IsDeclarationSelected
+                if (string.IsNullOrWhiteSpace(SelectedPort))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+                }
+                else if(DrawShipmentTrack.IsDeclarationSelected
                     && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
                     && string.IsNullOrWhiteSpace(DeclarationDateString))
                 {
@@ -553,7 +598,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             else if (trackType == ShipmentCards.Sea
                     || trackType == ShipmentCards.Train)
             {
-                if (DrawShipmentTrack.IsDeclarationSelected
+                if (string.IsNullOrWhiteSpace(SelectedPort))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+                }
+
+                else if (DrawShipmentTrack.IsDeclarationSelected
                    && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
                    && string.IsNullOrWhiteSpace(DeclarationDateString))
                 {
@@ -580,7 +632,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
             else
             {
-                if (DrawShipmentTrack.IsDeclarationSelected
+                if (string.IsNullOrWhiteSpace(SelectedPort))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.RequiredData;
+                    return false;
+                }
+
+                else if (DrawShipmentTrack.IsDeclarationSelected
                     && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
                     && string.IsNullOrWhiteSpace(DeclarationDateString))
                 {
@@ -602,6 +661,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
         public void ResetData()
         {
+            App.Locator.StateManager.SetItem("CardImage", DrawShipmentTrack.ShipmentCardImage);
             DrawShipmentTrack = new DrawShipmentTrack();
             isExpressCardSelected = false;
             isAirCardSelected = false;
@@ -658,7 +718,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         Express = 5
 
     }
+    public class ShipmentStatus:BindableBase
+    {
+        bool hasVerticalLine;
+        public bool HasVerticalLine { get { return hasVerticalLine; } set { hasVerticalLine = value; RaisePropertyChanged(); } }
 
+        string statusImage;
+        public string StatusImage { get { return statusImage; } set { statusImage = value; RaisePropertyChanged(); } }
+
+        string shipmentStatusValue;
+        public string ShipmentStatusValue { get { return shipmentStatusValue; } set { shipmentStatusValue = value; RaisePropertyChanged(); } }
+
+        string shipmentStatusDateString;
+        public string ShipmentStatusDateString { get { return shipmentStatusDateString; } set { shipmentStatusDateString = value; RaisePropertyChanged(); } }
+    }
     public class DrawShipmentTrack : BindableBase
     {
         bool hasSubTitle;

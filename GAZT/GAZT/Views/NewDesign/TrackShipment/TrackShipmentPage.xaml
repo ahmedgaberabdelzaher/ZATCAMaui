@@ -111,7 +111,7 @@
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="14"
                             HorizontalOptions="StartAndExpand"
-                            IsVisible="{Binding HasSubTitle}"
+                            IsVisible="{Binding DrawShipmentTrack.HasSubTitle}"
                             Text="{x:Static ResourceManager:AppResources.ShipmentTrackingSubTitle}"
                             TextColor="#999999" />
 

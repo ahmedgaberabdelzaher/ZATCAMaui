@@ -83,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             var inquireDecleration = result?.Item1?.data?.travelerDeclaration;
                             if(inquireDecleration != null)
                             {
-                                App.Locator.StateManager.SetItem("inquireDecleration", inquireDecleration);
+                                App.Locator.StateManager.SetItem("inquireDeclaration", inquireDecleration);
                                 _navigationService.NavigateTo("ReviewRequestPage");
 
                             }
