@@ -3809,7 +3809,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          CustomerSegment="TIN",
                           mobile=App.TP.Mobile,
                            firstName=App.TP.Name,
-                           TIN=App.TP.Tin
+                           TIN=App.TP.Tin,
+                           email=App.TP.Email
                      },
                      surveyAnswers=new List<Answer>()
                      {

@@ -22,6 +22,7 @@ namespace EGAZT.Models.SurveyModels
         public string mobile { get; set; }
         public string firstName { get; set; }
         public string TIN { get; set; }
+        public string email { get; set; }
     }
 
     public class Date
