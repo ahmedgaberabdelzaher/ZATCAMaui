@@ -69,6 +69,11 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string unit_English { get; set; }
         public bool permit { get; set; }
     }
+    public class SubmitResponseFees
+    {
+        public string Name { get; set; }
+        public int value { get; set; }
+    }
 
     public class Result
     {
@@ -171,6 +176,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public List<SubmitResponseProduct> product { get; set; }
         public List<ResponseCurrency> currency { get; set; }
         public List<SubmitResponseRestricted> restricted { get; set; }
+        public List<SubmitResponseFees> fees { get; set; }
     }
 
     public class InquireResponse

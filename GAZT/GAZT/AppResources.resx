@@ -9851,6 +9851,9 @@ Zakat, Tax and Customs Authority
     <data name="TotalFeesPayable" xml:space="preserve">
         <value>Total fees payable</value>
     </data>
+    <data name="DetailsTotalFeesPayable" xml:space="preserve">
+        <value>Details of the fees payable</value>
+    </data>
     <data name="Select" xml:space="preserve">
         <value>Select</value>
     </data>

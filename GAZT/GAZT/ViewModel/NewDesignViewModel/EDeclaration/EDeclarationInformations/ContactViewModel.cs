@@ -28,6 +28,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         ObservableCollection<BottomSheetModel> _TotalFeesList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> TotalFeesList { get { return _TotalFeesList; } set { _TotalFeesList = value; RaisePropertyChanged(); } }
 
+        ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
@@ -167,11 +170,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             if (TravelerDeclarationResponse != null)
                             {
                                 TravelerDeclarationResponse.TravelDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
+
                                 TravelerDeclarationResponse.totalFees = Math.Round(TravelerDeclarationResponse.totalFees, 2);
+
                                 TravelerDeclarationResponse.tobacco?.ForEach(t => { TotalFeesList.Add(new BottomSheetModel { Name = t.Name, Id = $"(x {t.count.ToString()})" }); });
+
                                 TravelerDeclarationResponse.product?.ForEach(p => { TotalFeesList.Add(new BottomSheetModel { Name = p.Name, Id = $"(x {p.count.ToString()})" }); });
+
                                 TravelerDeclarationResponse.currency?.ForEach(c => { TotalFeesList.Add(new BottomSheetModel { Name = c.Name }); });
+
                                 TravelerDeclarationResponse.restricted?.ForEach(r => { TotalFeesList.Add(new BottomSheetModel { Name = r.Name, Id = $"(x {r.count.ToString()})" }); });
+
+                                TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = f.value.ToString() }); });
+
                                 _navigationService.NavigateTo("/EDeclarationSuccessPage");
                             }
                             
