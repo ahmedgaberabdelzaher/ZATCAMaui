@@ -71,8 +71,16 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     }
     public class SubmitResponseFees
     {
-        public string Name { get; set; }
-        public int value { get; set; }
+        public string name_Arabic { get; set; }
+        public string name_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(name_Arabic, name_English);
+            }
+        }
+        public double value { get; set; }
     }
 
     public class Result
