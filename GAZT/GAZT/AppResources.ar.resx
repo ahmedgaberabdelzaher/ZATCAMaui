@@ -9781,6 +9781,9 @@ info@zatca.gov.sa</value>
     <data name="TotalFeesPayable" xml:space="preserve">
         <value>إجمالي الرسوم المستحقة</value>
     </data>
+    <data name="DetailsTotalFeesPayable" xml:space="preserve">
+        <value>تفاصيل الرسوم المستحقة</value>
+    </data>
     <data name="Select" xml:space="preserve">
         <value>اختار</value>
     </data>

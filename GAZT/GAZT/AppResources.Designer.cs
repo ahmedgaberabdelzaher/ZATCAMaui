@@ -3414,6 +3414,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details of the fees payable.
+        /// </summary>
+        public static string DetailsTotalFeesPayable {
+            get {
+                return ResourceManager.GetString("DetailsTotalFeesPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Download Acknowledgement.
         /// </summary>
         public static string DownloadAcknowlwdgement {
