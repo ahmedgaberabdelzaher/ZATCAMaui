@@ -22,6 +22,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
         {
             viewModel.Inquire = new TravelerDeclarationResponse();
             viewModel.InquireList = new ObservableCollection<BottomSheetModel>();
+            viewModel.DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
             base.OnDisappearing();
         }
     }
