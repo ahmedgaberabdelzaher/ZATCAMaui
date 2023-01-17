@@ -103,7 +103,7 @@
                         <!--#region Frame Declaration Values-->
                         <Frame 
                             Padding="15"
-                            Margin="0,0,0,8"
+                            Margin="0,0,0,10"
                             CornerRadius="15"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
@@ -381,7 +381,7 @@
                         <Frame 
                             Padding="15"
                             CornerRadius="15"
-                            Margin="0,0,0,8"
+                            Margin="0,0,0,10"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 

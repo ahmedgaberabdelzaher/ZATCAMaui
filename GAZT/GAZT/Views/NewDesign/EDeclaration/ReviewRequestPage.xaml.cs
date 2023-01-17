@@ -23,6 +23,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             App.Locator.StateManager.DeleteItem("inquireDeclaration");
             viewModel.Inquire = new TravelerDeclarationResponse();
             viewModel.InquireList = new ObservableCollection<BottomSheetModel>();
+            viewModel.DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
             base.OnDisappearing();
         }
     }
