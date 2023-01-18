@@ -141,7 +141,7 @@
                         <!--#region Frame Declaration Values-->
                         <Frame 
                             Padding="15"
-                            Margin="0,0,0,8"
+                            Margin="0,0,0,10"
                             CornerRadius="15"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
@@ -405,7 +405,7 @@
                         <Frame 
                             Padding="15"
                             CornerRadius="15"
-                            Margin="0,0,0,15"
+                            Margin="0,0,0,10"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 
@@ -445,11 +445,8 @@
                                     HeightRequest="2" />
 
                                 <!--#region Payment Values -->
-                                <ScrollView HeightRequest="120"
-                                            VerticalScrollBarVisibility="Never">
-
-                                    <StackLayout x:Name="inquireList"
-                                                 BindableLayout.ItemsSource="{Binding InquireList}">
+                                <StackLayout x:Name="inquireList"
+                                             BindableLayout.ItemsSource="{Binding InquireList}">
 
                                         <BindableLayout.ItemTemplate>
 
@@ -487,9 +484,7 @@
                                         </BindableLayout.ItemTemplate>
 
                                     </StackLayout>
-
-                                </ScrollView>
-                                 <!--#endregion Payment Values-->
+                                <!--#endregion Payment Values-->
 
                                  <Grid ColumnDefinitions="2*,*">
 
@@ -524,6 +519,102 @@
 
                                  </Grid>
                               
+                            </StackLayout>
+                    
+                        </Frame>
+                        <!--#endregion Frame Contains Fees-->
+
+                        <!--#region Frame Contains Details Fees-->
+                        <Frame 
+                            Padding="15"
+                            CornerRadius="15"
+                            Margin="0,0,0,15"
+                            BorderColor="#EBEBEB"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--Frame Content-->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal"
+                                                Spacing="0">
+
+                                    <!--Doc Image-->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Source="DocBlue"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25"/>
+
+                                    <!--  Details Total fees Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="20"
+                                        Padding="10"
+                                        TextColor="#002447" 
+                                        Text="{x:Static ResourceManager:AppResources.DetailsTotalFeesPayable}"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    WidthRequest="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="2" />
+
+                                <!--#region Details Fees Values -->
+                                <StackLayout BindableLayout.ItemsSource="{Binding DetailsTotalFeesList}">
+
+                                      <BindableLayout.ItemTemplate>
+
+                                            <DataTemplate>
+
+                                               <!-- Items List-->
+                                                <Grid RowDefinitions="Auto,Auto"
+                                                        ColumnDefinitions="*,*">
+
+                                                    <!--  Item Name Label  -->
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="Start"
+                                                        FontSize="14"
+                                                        LineBreakMode="WordWrap"
+                                                        TextColor="#999999"
+                                                        FontFamily="{StaticResource SomarSemiBold}"
+                                                        Text="{Binding Name}"
+                                                        VerticalOptions="Start" />
+
+                                                    <!--   Value Label  -->
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="End"
+                                                        FontSize="14"
+                                                        LineBreakMode="WordWrap"
+                                                        TextColor="#002447"
+                                                        Grid.Column="1"
+                                                        FontFamily="{StaticResource SomarSemiBold}"
+                                                        VerticalOptions="Start" >
+                                                       <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span Text="{Binding Id}"/>
+                                                                <Span  Text="  " />
+                                                                <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+
+                                                </custom:CustomLabel>
+
+                                                </Grid>
+                                               
+                                            </DataTemplate>
+
+                                      </BindableLayout.ItemTemplate>
+
+                                </StackLayout>
+                                <!--#endregion Payment Values-->
                             </StackLayout>
                     
                         </Frame>

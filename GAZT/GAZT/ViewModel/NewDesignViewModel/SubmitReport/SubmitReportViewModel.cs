@@ -175,6 +175,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 _navigationService.NavigateTo("/ReportSuccessPage");
                         
                             }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.RequestTimeoutDescription;
+                            }
                            
                             #endregion
                             IsLoading = false;

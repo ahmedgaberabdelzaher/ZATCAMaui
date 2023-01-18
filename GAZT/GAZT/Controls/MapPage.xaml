@@ -38,12 +38,9 @@
 
             <gmaps:Map
                 x:Name="map"
-                HasRotationEnabled="True"
-                HasScrollEnabled="True"
-                HasZoomEnabled="True"
                 IsIndoorEnabled="True"
-                IsShowingUser="True"
                 MapLongClicked="map_MapLongClicked"
+                MapClicked="map_MapClicked"
                 MapType="Street"
                 MyLocationEnabled="True" />
 
