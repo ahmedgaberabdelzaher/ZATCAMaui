@@ -7,17 +7,29 @@
     xmlns:controls="clr-namespace:EGAZT.Controls"
         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
      xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
-         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:behaviour="clr-namespace:GAZT.CustomControl" xmlns:controls1="clr-namespace:EGAZT.Views.NewDesign.CustomServicesPages.Controls"
       TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}"
     x:Class="EGAZT.Views.NewDesign.CustomServicesPages.CustomFees.CustomFeesFormView">
+   
     <newdesign:BaseContentPage.PancakeView>
-        <Grid VerticalOptions="Fill" >
-       <StackLayout Grid.Row="0" IsVisible="false">
+      
+        <Grid>
+            <ScrollView  Grid.Row="0">
+                <ScrollView.Triggers>
+                    <DataTrigger TargetType="ScrollView" Binding="{Binding IsshowFeesView}" Value="true">
+                        <Setter Property="IsVisible" Value="false"></Setter>
+
+                    </DataTrigger>
+                                    </ScrollView.Triggers>
+
+       <StackLayout VerticalOptions="Start" >
+                
+
                 <Label  TextColor="#14395B" FontFamily="{StaticResource SomarBold}"  FontSize="16" Text="{x:Static ResourceManager:AppResources.CustomFeesCalculator}"></Label>
                <!--#region Hint view-->
                             <Frame Padding="10" 
                                BorderColor="#E6E6E6"
-                               VerticalOptions="FillAndExpand"
+                               VerticalOptions="StartAndExpand"
                                HorizontalOptions="FillAndExpand"
                                CornerRadius="10">
                                 <StackLayout 
@@ -50,17 +62,15 @@
                             </Frame>
                             <!--#endregion-->
 
-                                            <!--#region TProductView-->
-                                <StackLayout>
-                                   
-                                    <!--  TypeItem Field  -->
+                <!--#region Material Selection-->
+                       <!--  TypeItem Field  -->
                                     <StackLayout Spacing="0">
 
                                         <!--  TypeItem Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.TypeItem}"/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.Thetypeofmerchandise}"/>
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
@@ -83,7 +93,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Select}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SelectedProductTypes.Name}"
+                                    Text="{Binding SelectedCalcTypeName}"
                                     TextColor="#58595B">
                                                 <custom:BorderlessEntry.GestureRecognizers>
                                                     <TapGestureRecognizer Command="{Binding OpenPoductTypesCommand}" />
@@ -100,6 +110,16 @@
 
                                     </StackLayout>
 
+                <!--#endregion-->
+                                            <!--#region TProductView-->
+                                <StackLayout IsVisible="false" VerticalOptions="StartAndExpand">
+                                   <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedCalcType}" Value="2">
+                            <Setter Property="IsVisible" Value="true"></Setter>
+                        </DataTrigger>
+
+                    </StackLayout.Triggers>
+                             
                                     <!--  ProductName Field  -->
                                     <StackLayout Spacing="0" IsVisible="{Binding IsProductItemHaveSubType}">
 
@@ -107,7 +127,7 @@
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ProductName}"/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.Selecttheitem}"/>
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
@@ -185,15 +205,56 @@
                                         </inputLayout:SfTextInputLayout>
 
                                     </StackLayout>
+                           <!--#region units View-->
+                                <!--  unit Label  -->
+                                <StackLayout>
+                                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.units}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                                <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                    <custom:BorderlessEntry
 
-                                    <!--  Quantity Field  -->
+                                    InputTransparent="True"
+                                        IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedUnit.Name}"
+                                    TextColor="#58595B">
+                                        <custom:BorderlessEntry.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
+                                        </custom:BorderlessEntry.GestureRecognizers>
+                                    </custom:BorderlessEntry>
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image Aspect="AspectFit" Source="greyDropDown" />
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+                               <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding OpenUnitsCommand}" />
+                                        </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                                <!--#endregion-->
+                                    <!--  Value Field  -->
                                     <StackLayout Spacing="0">
 
                                         <!--  Quantity Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"/>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.Productvalue}"/>
                                                     <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
@@ -206,14 +267,14 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                LeadingViewPosition="Inside" 
+                                            HelperText="{x:Static ResourceManager:AppResources.ProductValueHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                             <custom:BorderlessEntry
 
                                     Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Productvalue}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding TotalValue}"
                                     TextColor="#58595B" >
@@ -222,16 +283,38 @@
                                             </custom:BorderlessEntry.Behaviors>
                                         </custom:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-
+                            <Label IsVisible="false" Text="{x:Static ResourceManager:AppResources.NumberHint}" FontSize="12" Margin="16,0,16,0" TextColor="#58595B" ></Label>
                                     </StackLayout>
+
                                 </StackLayout>
                                 <!--#endregion-->
-                <Frame CornerRadius="14" Margin="0,40,0,0" Padding="10" BackgroundColor="#0996D4">
-                    <Label FontSize="16" HorizontalOptions="CenterAndExpand" TextColor="White" Text="{x:Static ResourceManager:AppResources.CalculateTheAmount}"></Label>
+
+                <!--#region TobacoView-->
+                <controls1:TobacoView IsVisible="false">
+                             <controls1:TobacoView.Triggers>
+                        <DataTrigger TargetType="controls1:TobacoView" Binding="{Binding SelectedCalcType}" Value="1">
+                            <Setter Property="IsVisible" Value="true"></Setter>
+                        </DataTrigger>
+
+                    </controls1:TobacoView.Triggers>
+
+                    </controls1:TobacoView>
+                <!--#region-->
+                <Frame CornerRadius="14"  Margin="0,40,0,0" Padding="10" BackgroundColor="#0996D4">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CalculateCommand}"></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <Label FontSize="16" HorizontalOptions="CenterAndExpand" TextColor="White" Text="{x:Static ResourceManager:AppResources.Calculate}">
+                          <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CalculateCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+
+                    </Label>
                 </Frame>
-        </StackLayout>
-            <StackLayout>
-                                <Label  TextColor="#14395B" FontFamily="{StaticResource SomarBold}"  FontSize="16" Text="{x:Static ResourceManager:AppResources.FeeCost}"></Label>
+            </StackLayout>
+          </ScrollView>  <Grid Grid.Row="0" IsVisible="{Binding IsshowFeesView}">
+      <StackLayout VerticalOptions="Start" >
+                                <Label  TextColor="#14395B"  FontFamily="{StaticResource SomarBold}"  FontSize="16" Text="{x:Static ResourceManager:AppResources.CustomsFeesValue}"></Label>
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="7"
@@ -247,31 +330,87 @@
                                CornerRadius="10">
 
                     <StackLayout>
+                          <Label Margin="20" TextColor="#14395B" FontFamily="{StaticResource SomarBold}"  FontSize="16" Text="{Binding SelectedCalcTypeName}"></Label>
+                             <BoxView
+                                Grid.Column="7"
+                                WidthRequest="20"
+                                BackgroundColor="#EBEBEB"
+                                HeightRequest="1" />
                             <Grid
                                                         Margin="16"
                                                         ColumnDefinitions="*,*"
-                                                        RowDefinitions="auto,auto">
-                                                        <StackLayout Grid.Row="0" Grid.Column="0">
-                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.FeeType}" />
-                                                            <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding aid_type}" />
+                                                        RowDefinitions="auto,auto,auto,auto,auto">
+                                  <StackLayout Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0">
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Productvalue}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}">
+                                              <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.productFinalPrice}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+
+                                </Label>
 
                                                         </StackLayout>
-                                                        <StackLayout Grid.Row="0" Grid.Column="1">
-                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.FeeDescription}" />
-                                                            <Label Style="{StaticResource BodyLabelBlack}" Text="{Binding acct_desc}" />
+                                                        <StackLayout Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0">
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}">
+                                              <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+
+                                </Label>
 
                                                         </StackLayout>
-                                                        <StackLayout
-                                                            Grid.Row="1"
+                                                        <StackLayout Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0">
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}" >
+                                    <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.extraFees}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                    </Label>
+
+                                                        </StackLayout>
+                                                                                        <StackLayout IsVisible="false" Grid.Row="3" Grid.ColumnSpan="2" Grid.Column="0">
+                                                                 <StackLayout.Triggers>
+                        <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedCalcType}" Value="1">
+                            <Setter Property="IsVisible" Value="true"></Setter>
+                        </DataTrigger>
+
+                    </StackLayout.Triggers>
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}" >
+                                    <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.excise}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                    </Label>
+
+                                                        </StackLayout>
+                                <StackLayout
+                                                            Grid.Row="4"
                                                             Grid.Column="0"
                                                             Grid.ColumnSpan="2">
-                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.FeeCost}" />
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
                                                             <Label Style="{StaticResource BodyLabelBlack}">
                                                                 <Label.FormattedText>
                                                                     <FormattedString>
-                                                                        <Span Text="{Binding amt}" />
+                                                                        <Span Text="{Binding FeesCalculatorResponse.vat}" />
                                                                         <Span Text=" " />
-                                                                        <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                                     </FormattedString>
                                                                 </Label.FormattedText>
                                                             </Label>
@@ -289,14 +428,14 @@
                                         <StackLayout Orientation="Horizontal" VerticalOptions="CenterAndExpand">
                                             <Label
                                                 FontSize="20"
-                                                Text="{x:Static ResourceManager:AppResources.Total}"
+                                                Text="{x:Static ResourceManager:AppResources.Total2}"
                                                 TextColor="#002447" />
                                             <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
                                                 <Label.FormattedText>
                                                     <FormattedString>
-                                                        <Span Text="{Binding TotalFees}" />
+                                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment}" />
                                                         <Span Text=" " />
-                                                        <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                     </FormattedString>
                                                 </Label.FormattedText>
                                             </Label>
@@ -307,15 +446,9 @@
                 </Frame>
                 <!--#endregion-->
 
-            </StackLayout>
+            </StackLayout></Grid>
                         <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.RowSpan="2"  Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
-
-            <!--  Loader  -->
-            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
-
-            <!--  Popup Msg  -->
-            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+            <controls:ListBottomSheet  Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
         </Grid>
 </newdesign:BaseContentPage.PancakeView>
     </newdesign:BaseContentPage>

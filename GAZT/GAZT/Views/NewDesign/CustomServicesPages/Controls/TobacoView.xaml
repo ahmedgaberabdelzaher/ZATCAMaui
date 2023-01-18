@@ -7,6 +7,14 @@
     xmlns:custom="clr-namespace:GAZT"
         xmlns:ResourceManager="clr-namespace:EGAZT"
     x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Controls.TobacoView">
+        <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
     <ContentView.Content>
                                     <!--#region TobacoProduct-->
                             <StackLayout>
@@ -154,7 +162,47 @@
                                         </inputLayout:SfTextInputLayout>
 
                                     </StackLayout>
-                                </StackLayout>
+                      <!--  Value Field  -->
+                                    <StackLayout Spacing="0">
+
+                                        <!--  Quantity Label  -->
+                                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.Productvalue}"/>
+                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <!--  Total Value Entry  -->
+                                        <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                            <custom:BorderlessEntry
+
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TotalValue}"
+                                    TextColor="#58595B" >
+                                            <custom:BorderlessEntry.Behaviors>
+                                                <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
+                                            </custom:BorderlessEntry.Behaviors>
+                                        </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+
+                                    </StackLayout>
+
+
+            </StackLayout>
                                                                 </StackLayout>
 
                                 <!--#endregion-->

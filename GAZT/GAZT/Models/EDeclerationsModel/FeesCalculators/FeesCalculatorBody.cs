@@ -22,7 +22,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
         public string harmonizedCode { get; set; }
         public int? sequence { get; set; }
         public int count { get; set; }
-        public int value { get; set; }
+        public double value { get; set; }
         public Guid ID { get; set; }
     }
 }

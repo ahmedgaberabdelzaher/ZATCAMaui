@@ -10205,4 +10205,37 @@ Zakat, Tax and Customs Authority
   <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
     <value>Please note that the customs duties and taxes calculator only helps you to calculate the approximate total of the value of duties and taxes, and it is not legally binding. To know the actual value accurately, the customs declaration must be submitted.</value>
   </data>
+    <data name="CustomsFeesValue" xml:space="preserve">
+    <value>Customs Fees Value</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>Customs Fees</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>Excise Tax</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>Customs declaration issuance fees</value>
+  </data>
+  <data name="Total2" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="Productvalue" xml:space="preserve">
+    <value>Product value</value>
+  </data>
+    <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="Tobaco" xml:space="preserve">
+    <value>Tobaco</value>
+  </data>
+  <data name="Thetypeofmerchandise" xml:space="preserve">
+    <value>The type of merchandise</value>
+  </data>
+  <data name="Selecttheitem" xml:space="preserve">
+    <value>Select the item</value>
+  </data>
+  <data name="ProductValueHint" xml:space="preserve">
+    <value>Enter here the total value of the items</value>
+  </data>
 </root>

@@ -10,7 +10,7 @@
     various data types are done through the TypeConverter classes 
     associated with the data types.
     
-    Example:
+    Example:Select t he item
     
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
@@ -10137,5 +10137,38 @@ info@zatca.gov.sa</value>
   </data>
     <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
     <value>يرجى مالحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم ، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي والضرائب وال يعتد بها قانونيا .</value>
+  </data>
+  <data name="CustomsFeesValue" xml:space="preserve">
+    <value>قيمة الرسوم الجمركية والضرائب</value>
+  </data>
+    <data name="CustomsFees" xml:space="preserve">
+    <value>الرسوم الجمركية</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>الضريبة الانتقائية</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>رسوم إصدار البيان الجمركي</value>
+  </data>
+  <data name="Total2" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="Productvalue" xml:space="preserve">
+    <value>قيمة المنتج </value>
+  </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>احتساب</value>
+  </data> 
+  <data name="Tobaco" xml:space="preserve">
+    <value>تبغ</value>
+  </data>
+    <data name="Thetypeofmerchandise" xml:space="preserve">
+    <value>اختر نوع البضاعة</value>
+  </data>
+    <data name="Selecttheitem" xml:space="preserve">
+    <value>أختر الصنف</value>
+  </data>
+    <data name="ProductValueHint" xml:space="preserve">
+    <value>أدخل هنا القيمة الإجمالية للسلع</value>
   </data>
 </root>

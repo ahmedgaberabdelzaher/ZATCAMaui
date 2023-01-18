@@ -229,8 +229,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
-                // Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+              //  Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                 Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
 
                  }
 
@@ -267,7 +267,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 } ,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesFormView",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
                 }
            };
         }
