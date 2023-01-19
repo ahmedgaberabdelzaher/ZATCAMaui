@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.AppConfigurations;
 using EGAZT.Helper;
+using EGAZT.Models.EinvoiceModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 
@@ -23,7 +24,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.PostAsync(App.VatBaseUrl + $"/Report/QRCodeRead?id={id}",new QrScanModel() {  ScanCode=""}).ConfigureAwait(false);
             return response;
         }
-
+        public async Task<HttpResponseMessage> GetEInvoiceDataEradAPI(EradQrBody body)
+        {
+            var response = await HttpManager.PostAsync(PageSettings.EinvoiceBaseURl + $"/RESTAdapter/T2/TAXPAYER", body).ConfigureAwait(false);
+            return response;
+        }
         public async Task<HttpResponseMessage> AddQrData(List<EInvoiceQRModel> qrScanModel)
         {
             var response = await HttpManager.PostAsync(App.VatBaseUrl+"/QRLog/AddQRLogs", qrScanModel).ConfigureAwait(false);

@@ -19,6 +19,8 @@ namespace EGAZT.AppConfigurations
         public static string Q3AnsID = "61c32e14aa59caed43d24e7e";
         #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
+        public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
+
         public static bool IsIncludeInquiryVisible= true;
         public static bool IsIncludeTarrif = true;
         public static bool IsIncludeBalagh = false;

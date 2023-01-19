@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models.EinvoiceModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
@@ -153,7 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             return false;
         }
 
-       
+        int NoofTags;
 
         public ICommand ScanEnvoiceQrCommand
         {
@@ -192,6 +193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         byte[] byteList = Convert.FromBase64String(code);
                         int currentPosition = 0;
+                         NoofTags = byteList.Length;
                         while (currentPosition<byteList.Length)
                         {
                             int tagNumber = byteList[currentPosition];
@@ -216,9 +218,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                        var res= qrValidation(eInvoiceQRModel);
                         if (res=="")
                         {
-                            IsShowRsltView = true;
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false; 
+                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);
+
+                                ///Old Scenario
+                            /*    IsShowRsltView = true;
                             IsShowScanView = false;
-                            await GetQrData(eInvoiceQRModel.vatNumber);
+                            await GetQrData(eInvoiceQRModel.vatNumber);*/
                         }
                         else
                         {
@@ -565,6 +571,77 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
        
         }
+
+        public async Task GetQrDataEradApi(string TinNo)
+        {
+            try
+            {
+                IsLoading = true;
+                if (Helper.NetworkCheck.IsInternet())
+                {
+
+                    var body = new EradQrBody() { IDTYPE="1", IDNUMBER=TinNo};
+                    var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    if (data.IsSuccessStatusCode)
+                    {
+                        var content =await data.Content.ReadAsStringAsync();
+                        var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
+
+                        if (qrResponseData.ERROR==null)
+                        {
+                            if (NoofTags==5)
+                            {
+                         RegisterStatus = AppResources.Registered;
+                        IsShowSubmitReport = false;
+                                IsShowRsltView = true;
+                                IsShowScanView = false;
+                            }
+                            if (NoofTags==8)
+                            {
+                       RegisterStatus = AppResources.Registered;
+                        IsShowSubmitReport = false;
+                            }
+                        }
+                        else
+                        {
+                            if (NoofTags == 5)
+                            {
+                                RegisterStatus = AppResources.NotRegistered;
+                                IsShowSubmitReport = true;
+                            }
+                        }
+                  
+                    }
+                    else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }
+                    else
+                    {
+                        RegisterStatus = AppResources.unableToVerify;
+                    }
+
+
+                }
+                else
+                {
+                    RegisterStatus = AppResources.unableToVerify;
+                }
+
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+
+        }
+
 
         public async Task AddQRLog(EInvoiceQRModel eInvoiceQRModel)
         {
