@@ -144,7 +144,7 @@ namespace EGAZT.AppConfigurations
       //  const string EdclerationBaseURL = "http://10.112.42.23/";
        const string EdclerationBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/EDeclarationStartPage.aspx";
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
-        const string FeesCalculatorBaseURL = "https://peservices.zatca.gov.sa/sites/sc/";
+        const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
 
         public static string GetNewEDeclarationLinks()
         {
@@ -215,11 +215,11 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                return $"{FeesCalculatorBaseURL}ar/calculator/Pages/CalculatorPages/calculatorPage.aspx";
+                return $"{FeesCalculatorBaseURL}ar/app-view/Pages/calculatorPage.aspx";
             }
             else
             {
-                return $"{FeesCalculatorBaseURL}en/calculator/Pages/CalculatorPages/calculatorPage.aspx";
+                return $"{FeesCalculatorBaseURL}en/app-view/Pages/calculatorPage.aspx";
             }
         }
         public static string GetProhibitedGoodsLstURl()
