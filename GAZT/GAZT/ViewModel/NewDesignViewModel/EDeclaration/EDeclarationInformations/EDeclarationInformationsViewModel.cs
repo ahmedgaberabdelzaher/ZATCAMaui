@@ -40,7 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         DateTime _MinimumDate = DateTime.Now.Date;
         public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
 
-        DateTime _MaximumDate = DateTime.Today.AddHours(-24);
+        DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
         public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
         #endregion
 

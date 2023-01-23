@@ -105,15 +105,15 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _travelIssuerName;
         public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
 
-        public DateTime passIssuingDate { get; set; }
+        public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
-       // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
+        // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
 
         public DateTime passExpiryDate { get; set; }
 
         //public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
 
-        public DateTime birthDate { get; set; } 
+        public DateTime birthDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
         //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
