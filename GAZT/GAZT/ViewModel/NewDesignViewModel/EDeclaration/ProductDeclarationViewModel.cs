@@ -799,6 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             {
                                 IsProductItemHaveSubType = false;
                             }
+                            SelectedProductSubTypes = null;
                             isProductTypeSelected = false;
                         }
                         else if (isProductSubTypeSelected)
