@@ -10202,4 +10202,7 @@ Zakat, Tax and Customs Authority
   <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>Arriving From or Departing To</value>
   </data>
+    <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>Download decleration</value>
+  </data>
 </root>

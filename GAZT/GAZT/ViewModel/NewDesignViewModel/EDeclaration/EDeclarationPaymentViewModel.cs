@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Views;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Converters;
+using Xamarin.Essentials;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -68,7 +69,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command(() =>
+                return new Command(async () =>
                 {
                     if (SelctedPaymentType == PaymentTypes.SADAD)
                     {
@@ -78,7 +79,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     //if (SelctedPaymentType == PaymentTypes.Visa)
                     else
                     {
-                        _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                       await Launcher.OpenAsync($"{AppConfigurations.PageSettings.GetCustomsPaymentUrl()}{TravelerDeclarationResponse.paymentOrder}");
+                       // _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                     }
 
                 });
