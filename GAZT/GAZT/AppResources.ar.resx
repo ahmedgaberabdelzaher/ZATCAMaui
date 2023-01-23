@@ -10138,4 +10138,7 @@ info@zatca.gov.sa</value>
       <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
   </data>
+    <data name="cleared" xml:space="preserve">
+    <value>تم المسح</value>
+  </data>
 </root>

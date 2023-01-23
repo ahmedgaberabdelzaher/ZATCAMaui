@@ -26,7 +26,7 @@ namespace EGAZT.Services.Classes
         }
         public async Task<HttpResponseMessage> GetEInvoiceDataEradAPI(EradQrBody body)
         {
-            var response = await HttpManager.PostAsync(PageSettings.EinvoiceBaseURl + $"/RESTAdapter/T2/TAXPAYER", body).ConfigureAwait(false);
+            var response = await HttpManager.PostAsync(PageSettings.EinvoiceBaseURl + $"/RESTAdapter/T2/TAXPAYER", body,false,"",true).ConfigureAwait(false);
             return response;
         }
         public async Task<HttpResponseMessage> AddQrData(List<EInvoiceQRModel> qrScanModel)

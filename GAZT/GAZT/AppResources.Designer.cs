@@ -1465,6 +1465,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cleared.
+        /// </summary>
+        public static string cleared {
+            get {
+                return ResourceManager.GetString("cleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
         public static string Clickhereforlogin {

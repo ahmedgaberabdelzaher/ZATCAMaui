@@ -10205,4 +10205,7 @@ Zakat, Tax and Customs Authority
     <data name="DownloadEdecleraton" xml:space="preserve">
     <value>Download decleration</value>
   </data>
+  <data name="cleared" xml:space="preserve">
+    <value>cleared</value>
+  </data>
 </root>
