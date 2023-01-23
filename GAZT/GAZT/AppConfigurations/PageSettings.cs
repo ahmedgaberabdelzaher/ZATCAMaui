@@ -32,8 +32,8 @@ namespace EGAZT.AppConfigurations
         public  static string ExciseTaxUrl = "https://eservices.zatca.gov.sa/sites/sc/ar/app-view/Pages/Disclaimer.aspx";
         public static string CustomDEVBaseUrl = "http://10.112.34.26:8024/";
         public static string CustomSTGBaseUrl = "http://10.112.34.38:8024/";
-        public static string VatCustomSTGURL = "http://172.50.15.39:8443/api/";
-        public static string VatCustomProdURL = "http://172.50.15.39:8443/api/";
+        public static string VatCustomSTGURL = "http://172.25.39.60:8443/api/";
+        public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
@@ -41,7 +41,9 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
-        public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
+        //public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
+        public static string CustomPaymentSTGURl = "https://peservices.zatca.gov.sa:4433/payment/initiate/";
+
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";

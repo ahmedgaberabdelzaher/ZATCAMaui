@@ -10135,4 +10135,7 @@ info@zatca.gov.sa</value>
     <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
+      <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>تحميل الاقرار</value>
+  </data>
 </root>
