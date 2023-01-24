@@ -584,8 +584,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (Helper.NetworkCheck.IsInternet())
                 {
                     IsClearedStatusVisible = false;
-                   // var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
-                            var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+                    var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
+                           // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
         var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
                     if (data.IsSuccessStatusCode)
                     {
@@ -610,7 +610,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            if (NoofTags==8)
+                            if (NoofTags==8||NoofTags==5)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                                // IsShowSubmitReport = false;
@@ -621,9 +621,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             if (NoofTags == 5)
                             {
                                 RegisterStatus = AppResources.NotRegistered;
+                                IsShowSubmitReport = true;
                                 IsShowRsltView = true;
                                 IsShowScanView = false;
-                                IsShowSubmitReport = true;
                             }
                            else
                             {

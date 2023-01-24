@@ -9733,7 +9733,7 @@ info@zatca.gov.sa</value>
         <value>عدد الأرقام في رقم الشهادة الضريبية يجب أن يكون 15 رقم</value>
     </data>
   <data name="unableToVerify" xml:space="preserve">
-        <value>تعذر التحقق</value>
+        <value>تعذر التحقق, نرجو المحاولة مرة أخرى لاحقا</value>
     </data>
     <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
@@ -10139,6 +10139,6 @@ info@zatca.gov.sa</value>
     <value>تحميل الاقرار</value>
   </data>
     <data name="cleared" xml:space="preserve">
-    <value>تم المسح</value>
+    <value>معتمده</value>
   </data>
 </root>
