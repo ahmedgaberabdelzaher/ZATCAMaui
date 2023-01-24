@@ -259,15 +259,25 @@ namespace EGAZT.Helper
         }
 
 
-        private static void AddBasicAuthToHeader(HttpClient client)
+        private static void AddBasicAuthToHeader(HttpClient client, bool isEradQr = false)
         {
-            var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
-            var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+            if (isEradQr)
+            {
+
+                var authData = string.Format("{0}:{1}", "T2_USER", "T2user@123");
+                var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+            }
+            else
+            {
+                var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
+                var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+            }
         }
 
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false,string token="") where T :  class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false) where T : class
         {
             try
             {
@@ -306,7 +316,7 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     }
-                    AddBasicAuthToHeader(client);
+                    AddBasicAuthToHeader(client,isEradQr);
 
                   var JsonObject = JsonConvert.SerializeObject(Data);
                    // var JsonObject =jobject;
