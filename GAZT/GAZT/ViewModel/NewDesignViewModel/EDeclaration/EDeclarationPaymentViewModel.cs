@@ -79,8 +79,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     //if (SelctedPaymentType == PaymentTypes.Visa)
                     else
                     {
-                       await Launcher.OpenAsync($"{AppConfigurations.PageSettings.GetCustomsPaymentUrl()}{TravelerDeclarationResponse.paymentOrder}");
-                       // _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                      // await Launcher.OpenAsync($"{AppConfigurations.PageSettings.GetCustomsPaymentUrl()}{TravelerDeclarationResponse.paymentOrder}");
+                       _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                     }
 
                 });
