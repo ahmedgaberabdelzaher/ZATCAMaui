@@ -19,8 +19,6 @@ namespace EGAZT.AppConfigurations
         public static string Q3AnsID = "61c32e14aa59caed43d24e7e";
         #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
-        public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
-
         public static bool IsIncludeInquiryVisible= true;
         public static bool IsIncludeTarrif = true;
         public static bool IsIncludeBalagh = false;
@@ -43,8 +41,8 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
-        //public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
-        public static string CustomPaymentSTGURl = "https://pre-eservices.zatca.gov.sa:4433/payment/initiate/";
+       public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
+       // public static string CustomPaymentSTGURl = "https://peservices.zatca.gov.sa:4433/payment/initiate/";
 
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";

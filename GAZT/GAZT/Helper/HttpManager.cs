@@ -124,6 +124,14 @@ namespace EGAZT.Helper
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();
+                           /* if (requestUrl== "https://payments-eservices.zatca.gov.sa/payment/dummy")
+                            {
+                                string data =(T)responseJson ;
+                                var dataobject= (T)Activator.CreateInstance(typeof(T));
+                                dataobject = data;
+                                return Tuple.Create((T)data.ToString(), true, "");
+                            }
+                           */
                             var JsonObject = JsonConvert.DeserializeObject<T>(responseJson);
                             return Tuple.Create(JsonObject, true, "");
                         }
@@ -160,25 +168,106 @@ namespace EGAZT.Helper
 
         }
 
-        private static void AddBasicAuthToHeader(HttpClient client,bool isEradQr=false)
+        public static async Task<Tuple<string, bool, string>> GetStringAsync(string requestUrl, bool isBasicAuth = true, string routPortCode = "99")
         {
-            if (isEradQr)
+            try
             {
-                
-                var authData = string.Format("{0}:{1}", "T2_USER", "T2user@123");
-                var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+                if (NetworkCheck.IsInternet())
+                {
+
+                    //var client = new System.Net.Http.HttpClient();
+                    //  var client = App.Locator.httpClient;
+
+                    //  client.Timeout = new TimeSpan(0,3,0);
+                    if (client.DefaultRequestHeaders.Contains("X-ZATCA-Client-Id"))
+                    {
+
+                        client.DefaultRequestHeaders.Remove("X-ZATCA-Client-Id");
+                        client.DefaultRequestHeaders.Remove("X-ZATCA-Client-Secret");
+                        client.DefaultRequestHeaders.Remove("LanguageCode");
+                        client.DefaultRequestHeaders.Remove("routePortCode");
+
+                    }
+                    if (isBasicAuth)
+                    {
+                        AddBasicAuthToHeader(client);
+
+                    }
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    if (App.IsArabic)
+                        client.DefaultRequestHeaders.Add("LanguageCode", "ar");
+                    else
+                        client.DefaultRequestHeaders.Add("LanguageCode", "en");
+                    client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
+                    /*if (routPortCode!="99")
+                    {
+                        routPortCode = "1" + routPortCode;
+                    }*/
+
+                    /*  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
+                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
+                    */
+                    var response = await client.GetAsync(requestUrl);
+                    if (response != null)
+                    {
+                        Debug.WriteLine(requestUrl);
+                        Debug.WriteLine(response.StatusCode);
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseJson = await response.Content.ReadAsStringAsync();
+                           // if (requestUrl== "https://payments-eservices.zatca.gov.sa/payment/dummy")
+                             {
+                                
+                                 return Tuple.Create(responseJson, true, "");
+                             }
+                           
+                           // var JsonObject = JsonConvert.DeserializeObject<string>(responseJson);
+                           // return Tuple.Create(JsonObject, true, "");
+                        }
+                        else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                        {
+                            return Tuple.Create("", true, "400");
+
+                        }
+                        else
+                        {
+                            return Tuple.Create("", false, AppResources.ServerError);
+                        }
+                    }
+                    else
+                    {
+                        return Tuple.Create("", false, AppResources.ServerErrorOrNoInternetConnection);
+                    }
+
+                }
+                else
+                {
+                    return Tuple.Create("", false, AppResources.ZZInternetConnectionMessage);
+                }
+
             }
-            else
+            catch (System.Exception exp)
             {
-                var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
-                var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
+                Debug.WriteLine(requestUrl);
+                Debug.WriteLine(exp.StackTrace);
+
+
+                return Tuple.Create("", false, AppResources.ServerErrorOrNoInternetConnection);
             }
+
+        }
+
+
+        private static void AddBasicAuthToHeader(HttpClient client)
+        {
+            var authData = string.Format("{0}:{1}", Constants.CustomUserNameAuthorization, Constants.CustomPasswordAuthorization);
+            var authHeaderValue = Convert.ToBase64String(Encoding.UTF8.GetBytes(authData));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", authHeaderValue);
         }
 
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false,string token="",bool isEradQr = false) where T :  class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl,T Data,bool isTahqaq=false,string token="") where T :  class
         {
             try
             {
@@ -217,7 +306,7 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
                         client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     }
-                    AddBasicAuthToHeader(client,isEradQr);
+                    AddBasicAuthToHeader(client);
 
                   var JsonObject = JsonConvert.SerializeObject(Data);
                    // var JsonObject =jobject;
