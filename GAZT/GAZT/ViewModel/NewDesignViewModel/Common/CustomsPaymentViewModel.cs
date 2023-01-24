@@ -36,7 +36,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                             var id = result.Item1;
                             var lang = App.IsArabic ? "ar" : "en";
 
-                            PageURL = PageSettings.GetCustomsPaymentUrl() + id+"?local="+lang;
+                            PageURL = PageSettings.GetCustomsPaymentUrl() + id+"?local="+lang+"&mobile=1";
                             IsLoading = false;
                         }
                         else

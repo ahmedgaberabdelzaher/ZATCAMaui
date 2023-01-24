@@ -12,7 +12,7 @@
         <xct:EventToCommandBehavior Command="{Binding GoTransactionPageCommand}" EventName="Appearing"/>
     </newdesign:BaseContentPage.Behaviors>
        <newdesign:BaseContentPage.PancakeView>
-   <WebView x:Name="PaymentView" Source="{Binding PageURL}" >
+   <WebView x:Name="PaymentView" Navigating="PaymentView_Navigating" Source="{Binding PageURL}"  >
             </WebView>
         <!--  <StackLayout>
             <Label Text="djahsdfhadjffh"></Label>

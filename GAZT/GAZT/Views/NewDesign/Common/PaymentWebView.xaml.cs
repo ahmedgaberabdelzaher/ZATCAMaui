@@ -19,6 +19,15 @@ namespace EGAZT.Views.NewDesign.Common
          // PaymentView.Source = PageSettings.GetCustomsPaymentUrl() + "9cf1e0f2-e49f-4447-8a65-267797ce1720"+ "?local="+lang;
 
         }
+
+        void PaymentView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            if (e.Url.Contains("EDeclarationPages/EDeclarationStartPage.aspx"))
+            {
+               viewModel._navigationService.NavigateTo("/Home", "0");
+
+            }
+        }
     }
 }
 
