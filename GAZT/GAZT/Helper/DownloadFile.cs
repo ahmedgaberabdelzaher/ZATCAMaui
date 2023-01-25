@@ -16,6 +16,8 @@ namespace EGAZT.Helper
     {
         public async System.Threading.Tasks.Task<bool> DownloadAcknowledgementAsync(string url, IDialogService _dialogService)
         {
+            try
+            {
 
             var dependency = DependencyService.Get<IPrintService>();
 
@@ -35,6 +37,11 @@ namespace EGAZT.Helper
 
                 await httpClient.GetStreamAsync(uri).Result.CopyToAsync(pdfStream);
                 await dependency.Save(pdfStream, $"{fileName}.pdf");
+            }
+            }
+            catch (Exception ex)
+            {
+
             }
             return true;
         }
