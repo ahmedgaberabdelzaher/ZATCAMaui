@@ -60,6 +60,7 @@ namespace EGAZT.AppConfigurations
         public static string VatSTGBaseUrl = "https://vatapis.zatca.gov.sa/api";
         public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
 
+
         public static string GetBaseURL(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");

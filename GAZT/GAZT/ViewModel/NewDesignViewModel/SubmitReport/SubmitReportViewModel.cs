@@ -151,7 +151,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 attachements = DATAPowerAttachements
 
                             };
-                           ///
+                            ///
 
                             var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
                             #region VatResponse
@@ -167,25 +167,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             */
                             #endregion
                             #region DATA Power Response
-                            if (reportResult.header.status.code== "I000000")
+                            if (reportResult.header.status.code == "I000000")
                             {
                                 ReportNumberResult = reportResult.result?.referenceNumber;
                                 SubmitReport = new SubmitReportModel();
                                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                                 _navigationService.NavigateTo("/ReportSuccessPage");
-                        
+
                             }
                             else
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                             }
-                           
+
                             #endregion
                             IsLoading = false;
 
                         }
-                        }
+                    }
                     catch (Exception ex)
                     {
                         IsLoading = false;
@@ -218,20 +218,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
+                        IsLoading = true;
                         await MoveMapToLocation();
+                        IsLoading = false;
                     }
                     catch (Exception ex)
                     {
+                        IsLoading = false;
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.Somethingwentwrong;
+                        MessageTxt = AppResources.LocationAccess;
                     }
-                   
+
                 });
 
             }
         }
 
-       public ICommand CopyCommand
+        public ICommand CopyCommand
         {
             get
             {
@@ -247,16 +250,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     try
                     {
-                        _ = await GetCurrentLocation();
+                        IsLoading = true;
+                        var x = await GetCurrentLocation();
+                        IsLoading = false;
                     }
                     catch (Exception ex)
                     {
+                        IsLoading = false;
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.Somethingwentwrong;
+                        MessageTxt = AppResources.LocationAccess;
                     }
 
 
@@ -312,7 +318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("/InquiryAboutMyReportsPage");
-                    
+
 
                 });
             }
@@ -503,7 +509,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         IsLoading = false;
                     }
-                    
+
                 });
 
             }
@@ -560,7 +566,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         IsLoading = false;
                     }
-                    
+
 
                 });
             }
@@ -593,7 +599,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         IsLoading = false;
                     }
-                    
+
                 });
             }
         }
@@ -625,7 +631,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     {
                         IsLoading = false;
                     }
-                    
+
 
                 });
             }
@@ -749,16 +755,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            if(!string.IsNullOrWhiteSpace(SubmitReport.TIN))
-            { 
-                if(!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
+            if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            {
+                if (!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly +"; "+ AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly + "; " + AppResources.ZZTINnumberlengthcannotbelessthan10digits;
                     return false;
-                    
+
                 }
-            
+
             }
             if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
             {
@@ -815,7 +821,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
             {
-                var location = await Geolocation.GetLocationAsync();
+                GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2));
+                var location = await Geolocation.GetLocationAsync(request);
 
                 SubmitReport.Latitude = location.Latitude;
                 SubmitReport.Longitude = location.Longitude;
@@ -834,8 +841,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
             else
             {
+                IsLoading = false;
                 await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-               return false;
+                return false;
 
             }
         }
@@ -865,6 +873,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
             else
             {
+                IsLoading = false;
                 IsShowMsgView = true;
                 MessageTxt = AppResources.LocationAccess;
             }
