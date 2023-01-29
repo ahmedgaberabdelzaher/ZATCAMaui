@@ -599,6 +599,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             {
                                 RegistredStatusWithDisplaQRRslt();
                             }
+                            if (NoofTags == 5 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                            }
                             else if (NoofTags == 9 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
                             {
                                 RegistredStatusWithDisplaQRRslt();
@@ -610,7 +615,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            if (NoofTags==8||NoofTags==5)
+                            if (NoofTags==8)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                                // IsShowSubmitReport = false;
