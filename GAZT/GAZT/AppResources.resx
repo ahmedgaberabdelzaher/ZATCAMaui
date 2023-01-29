@@ -10268,4 +10268,7 @@ Zakat, Tax and Customs Authority
     <data name="ContainerNumber" xml:space="preserve">
     <value>Container Number</value>
   </data>
+    <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>Download decleration</value>
+  </data>
 </root>

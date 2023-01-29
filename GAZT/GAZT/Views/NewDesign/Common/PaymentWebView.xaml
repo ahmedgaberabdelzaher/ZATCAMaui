@@ -5,10 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="EGAZT.Views.NewDesign.Common.PaymentWebView"
         xmlns:ResourceManager="clr-namespace:EGAZT"
+            xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     TitleText="{x:Static ResourceManager:AppResources.PaymentDetails}"
-    >
+    > 
+      <newdesign:BaseContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding GoTransactionPageCommand}" EventName="Appearing"/>
+    </newdesign:BaseContentPage.Behaviors>
        <newdesign:BaseContentPage.PancakeView>
-   <WebView x:Name="PaymentView" >
+   <WebView x:Name="PaymentView" Navigating="PaymentView_Navigating" Source="{Binding PageURL}"  >
             </WebView>
         <!--  <StackLayout>
             <Label Text="djahsdfhadjffh"></Label>

@@ -7,7 +7,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:controls="clr-namespace:EGAZT.Controls"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -606,6 +606,14 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
                             TextColor="White" />
+                            <!--  DownLoad Pdf Button  -->
+                        <buttons:SfButton
+                              BackgroundColor="#0996D4"
+                            BorderColor="#0996D4"
+                            TextColor="White"
+                            Command="{Binding DownlOadFileCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.DownloadEdecleraton}" />
 
                         <!--  Back to Home Button  -->
                         <buttons:SfButton
@@ -622,7 +630,7 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
-
+            <controls:Loader Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}"></controls:Loader>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -10200,5 +10200,8 @@ info@zatca.gov.sa</value>
   </data>
   <data name="ContainerNumber" xml:space="preserve">
     <value> رقم الحاوية</value>
+ </data>
+      <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>تحميل الاقرار</value>
   </data>
 </root>

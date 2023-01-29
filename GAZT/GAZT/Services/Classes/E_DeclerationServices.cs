@@ -98,6 +98,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CoinTypesModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/coin-types").ConfigureAwait(false);
             return response;
         }
+        public async Task<Tuple<string, bool, string>> GetTransactionId()
+        {
+            var response = await HttpManager.GetStringAsync("https://payments-peservices.zatca.gov.sa/payment/dummy").ConfigureAwait(false);
+            return response;
+        }
     }
 }
 

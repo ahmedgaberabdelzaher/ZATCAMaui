@@ -244,7 +244,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.lastName)
                         || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.NationalityName)
                         || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelID)
-                        || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor))
+                        || (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelIssuerName) && SubmitModel.travelerDeclaration.Isvisitor)
+                        || string.IsNullOrWhiteSpace(ReleaseDateString)
+                        || string.IsNullOrWhiteSpace(EndDateString)
+                        || string.IsNullOrWhiteSpace(BirthDateString))
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.RequiredData;

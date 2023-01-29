@@ -202,7 +202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             return;
                         }
                         //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
-                        if (IsArrivingPlaneSelected && Double.Parse(TotalValue ?? "0") < 3000 && QFlow == 2 && IsYesSelected)
+                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 2 && IsYesSelected)
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -799,6 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             {
                                 IsProductItemHaveSubType = false;
                             }
+                            SelectedProductSubTypes = null;
                             isProductTypeSelected = false;
                         }
                         else if (isProductSubTypeSelected)

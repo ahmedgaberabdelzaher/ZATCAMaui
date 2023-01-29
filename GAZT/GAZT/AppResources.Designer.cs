@@ -3441,6 +3441,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download decleration.
+        /// </summary>
+        public static string DownloadEdecleraton {
+            get {
+                return ResourceManager.GetString("DownloadEdecleraton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to VAT Return Form Saved successfully{0}.
         /// </summary>
         public static string DraftSaved {
