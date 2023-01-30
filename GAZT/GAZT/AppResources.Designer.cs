@@ -11548,6 +11548,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select Answer.
+        /// </summary>
+        public static string SelectAnswerMessage {
+            get {
+                return ResourceManager.GetString("SelectAnswerMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a range and download the statement.
         /// </summary>
         public static string Selectarangeanddownloadthestatement {
@@ -14244,6 +14253,15 @@ namespace EGAZT {
         public static string VatDueAmountInstruction {
             get {
                 return ResourceManager.GetString("VatDueAmountInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, The VAT effective date should be from 1-1-2018 and no greater than the start of next month when submitting the application.
+        /// </summary>
+        public static string VATEligibleDateError1 {
+            get {
+                return ResourceManager.GetString("VATEligibleDateError1", resourceCulture);
             }
         }
         

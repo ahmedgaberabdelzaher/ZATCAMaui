@@ -10147,4 +10147,10 @@ Zakat, Tax and Customs Authority
    <data name="NoFileChoosen" xml:space="preserve">
     <value>No file was selected</value> 
   </data>
+   <data name="VATEligibleDateError1" xml:space="preserve">
+     <value>Dear Taxpayer, The VAT effective date should be from 1-1-2018 and no greater than the start of next month when submitting the application</value>
+   </data>
+  <data name="SelectAnswerMessage" xml:space="preserve">
+    <value>Please Select Answer</value>
+</data>
 </root>

@@ -10078,4 +10078,10 @@ info@zatca.gov.sa</value>
   <data name="NoFileChoosen" xml:space="preserve">
     <value>لم يتم اختيار أي ملف</value> 
   </data>
+   <data name="VATEligibleDateError1" xml:space="preserve">
+    <value>عزيزي المكلف، تاريخ نفاذ التسجيل في ضريبة القيمة المضافة يجب أن يكون من 1-1-2018 و بحد اقصى بداية الشهر القادم من تاريخ تقديم الطلب</value>
+  </data>
+ <data name="SelectAnswerMessage" xml:space="preserve">
+   <value>الرجاء تحديد إجابة</value>
+ </data>
 </root>

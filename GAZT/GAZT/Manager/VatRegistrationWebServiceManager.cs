@@ -22,6 +22,89 @@ namespace EGAZT.Manager
     {
         #region VatRegistration
 
+        public async static Task<VatCommencementDateFormat> GAZTGetVATEligibilityDate(string vatEligibleStartDate, string txntpz)
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                VatCommencementDateFormat vATcommencementDateResponse = new VatCommencementDateFormat();
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    Char lang = WebServiceManager.GetLangZParameter();
+                    string langz = UtilityManager.GetLanguageParameter();
+                    String url = Constants.GetVatEligilibilityDate;
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    var uri = new Uri(url + "/taxDateSet(VatTaxDt=datetime%27" + vatEligibleStartDate + "%27,TxnTpz=%27" + txntpz + "%27,Gpartz=%27" + App.LoginDataRetrieved.TIN + "%27)?saml2=enabled&sap-langauge=" + langz + "&$format=json");
+                    HttpResponseMessage GAZTVATRegistrationDataOtherResponse = await client.GetAsync(uri);
+                    if (GAZTVATRegistrationDataOtherResponse != null)
+                    {
+                        if (GAZTVATRegistrationDataOtherResponse.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = GAZTVATRegistrationDataOtherResponse.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                            App.IsSessionExpired = false;
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        String VatRegistrationOtherData = GAZTVATRegistrationDataOtherResponse.Content.ReadAsStringAsync().Result;
+                        vATcommencementDateResponse = JsonConvert.DeserializeObject<VatCommencementDateFormat>(VatRegistrationOtherData);
+
+
+                        if (!string.IsNullOrEmpty(VatRegistrationOtherData))
+                        {
+                            ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(VatRegistrationOtherData);
+                            if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                            {
+                                string errorMessage = string.Empty;
+                                WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                                WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                                String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                                errorMessage = WithReplacedString;
+                                //throw new Exception(errorMessage);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                            }
+                        }
+
+                        if (vATcommencementDateResponse.d.ErrorFg == "X")
+                        {
+                            Console.WriteLine(AppResources.VATEligibleDateError1);
+                        }
+
+                    }
+                    return vATcommencementDateResponse;
+                }
+                catch (GAZTVATRegistrationInProcessException ex)
+                {
+                    throw new GAZTVATRegistrationInProcessException(ex.Message);
+                }
+                catch (Exception)
+                {
+                    App.IsSessionExpired = true;
+                    return null;
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
+
         public async static Task<VATRegistrationDetails> GAZTGetVATRegistrationData()
         {
             if (CrossConnectivity.Current.IsConnected)
