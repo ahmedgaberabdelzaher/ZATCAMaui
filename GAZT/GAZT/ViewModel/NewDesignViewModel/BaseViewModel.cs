@@ -287,7 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged();
             }
         }
-        public ICommand CloseMsgViewCommand
+        public virtual ICommand CloseMsgViewCommand
         {
             get
             {

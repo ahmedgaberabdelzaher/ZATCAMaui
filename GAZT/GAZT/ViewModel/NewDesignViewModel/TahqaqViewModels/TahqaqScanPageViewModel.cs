@@ -248,7 +248,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         finally
                         {
                             IsLoading = false;
-                            IsScanning = true;
+                            IsScanning = false;
                         }
                     });
 
@@ -669,6 +669,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             finally
             {
                 IsLoading = false;
+                IsScanning = false;
             }
 
         }
@@ -746,9 +747,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 }
             }
             IsLoading = false;
+            IsScanning = false;
         }
 
-
-
+        public override ICommand CloseMsgViewCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsShowMsgView = false;
+                    IsValidationError = false;
+                    IsScanning = true;
+                });
+            }
+        }
     }
 }
