@@ -300,7 +300,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         var data = response.Item1.data;
 
                        CRCashedList = data;
-                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.crType }).ToList() ?? new List<BottomSheetModel>();
+                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.Name==""?c.crType:c.Name }).ToList() ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
