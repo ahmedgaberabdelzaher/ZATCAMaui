@@ -821,8 +821,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
             {
-                GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2));
-                var location = await Geolocation.GetLocationAsync(request);
+                //GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2));
+                var location = await Geolocation.GetLocationAsync();
+                if (location==null)
+                {
+                    location = await Geolocation.GetLastKnownLocationAsync();
+                }
 
                 SubmitReport.Latitude = location.Latitude;
                 SubmitReport.Longitude = location.Longitude;

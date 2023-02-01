@@ -10,57 +10,16 @@ using EGAZT.Controls;
 using Prism.Mvvm;
 using Xamarin.Forms;
 using EGAZT.Helper;
+using EGAZT.Models.TrackShipment;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 {
-    public class TrackShipmentViewModel : BaseViewModel
+    public partial class TrackShipmentViewModel : BaseViewModel
     {
         #region Properties
-        public bool isExpressCardSelected;
+        
+        ObservableCollection<ShipmentStatus> shipmentStatusList = new ObservableCollection<ShipmentStatus>();
 
-        public bool isAirCardSelected;
-
-        public bool isSeaCardSelected;
-
-        public bool isLandCardSelected;
-
-        public bool isTrainCardSelected;
-
-        public static DateTime Test { get; set; } = new DateTime(2023, 1, 23, 23, 12, 0);
-        ObservableCollection<ShipmentStatus> shipmentStatusList = new ObservableCollection<ShipmentStatus>
-
-        {
-            new ShipmentStatus
-            {
-                HasVerticalLine = true,
-                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
-                ShipmentStatusValue = "Shipment under Customs review",
-                StatusImage = "fillCircle.png"
-            },
-             new ShipmentStatus
-            {
-                HasVerticalLine = true,
-                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
-                ShipmentStatusValue = "Shipment under Customs review",
-                StatusImage = "fillCircle.png"
-            },
-              new ShipmentStatus
-            {
-                HasVerticalLine = true,
-                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
-                ShipmentStatusValue = "Shipment under Customs review",
-                StatusImage = "fillCircle.png"
-            },
-            new ShipmentStatus
-            {
-                HasVerticalLine = false,
-                ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(Test,"dd/MM/yyyy - hh:mm tt"),
-                ShipmentStatusValue = "The Declaration has been referred to the specialist dndepartment",
-                StatusImage = "startCircle.png"
-            }
-
-
-        };
         public ObservableCollection<ShipmentStatus> ShipmentStatusList { get { return shipmentStatusList; } set { shipmentStatusList = value; RaisePropertyChanged(); } }
 
 
@@ -78,9 +37,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 
-        DateTime _MaximumDate = DateTime.Today.AddHours(-24);
-        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
-
         DrawShipmentTrack drawShipmentTrack = new DrawShipmentTrack();
         public DrawShipmentTrack DrawShipmentTrack { get { return drawShipmentTrack; } set { drawShipmentTrack = value; RaisePropertyChanged(); } }
 
@@ -96,10 +52,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         string shipmentContainerNumber;
         public string ShipmentContainerNumber { get { return shipmentContainerNumber; } set { shipmentContainerNumber = value; RaisePropertyChanged(); } }
 
-        string selectedPort;
-        public string SelectedPort { get { return selectedPort; } set { selectedPort = value; RaisePropertyChanged(); } }
+        string selectedPortName;
+        public string SelectedPortName { get { return selectedPortName; } set { selectedPortName = value; RaisePropertyChanged(); } }
 
-        public DateTime DeclarationDate { get; set; }
+        int selectedPortId;
+        public int SelectedPortId { get { return selectedPortId; } set { selectedPortId = value; RaisePropertyChanged(); } }
+
+        TrackShipmentModel trackShipmentResponse;
+        public TrackShipmentModel TrackShipmentResponse { get { return trackShipmentResponse; } set { trackShipmentResponse = value; RaisePropertyChanged(); } }
+
         #endregion Properties
 
         #region Commands
@@ -152,25 +113,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     {
                         IsLoading = true;
 
-                        bool isValid = false;
-
                         if (isExpressCardSelected)
-                            isValid = IsValid(ShipmentCards.Express);
+                            await GetExpressShipping(DrawShipmentTrack.IsDeclarationSelected);
+
 
                         else if (isAirCardSelected)
-                            isValid = IsValid(ShipmentCards.Air);
+                            await GetAirShipping(DrawShipmentTrack.IsDeclarationSelected);
 
                         else if (isSeaCardSelected)
-                            isValid = IsValid(ShipmentCards.Sea);
+                            await GetSeaShipping(DrawShipmentTrack.IsDeclarationSelected);
 
                         else if (isLandCardSelected)
-                            isValid = IsValid(ShipmentCards.Land);
+                            await GetLandShipping();
 
                         else
-                            isValid = IsValid(ShipmentCards.Train);
+                            await GetTrainShipping(DrawShipmentTrack.IsDeclarationSelected);
 
-                        if(isValid)
-                            _navigationService.NavigateTo("/ShipmentStatusPage");
+                        
 
                         IsLoading = false;
                     }
@@ -207,38 +166,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             }
         }
 
-        public ICommand SelectedDateCommand
+        public ICommand DateClickedCommand
         {
             get
             {
-                return new Command(() =>
+                return new Command<GAZT.CustomControl.CustomHijriDatePicker>((control) =>
                 {
                     try
                     {
-
-                        DeclarationDateString = Helper.DateTimeHelper.DateTimeFormater(DeclarationDate);
-
+                        SetDefaultDate();
+                        DeclarationDateString = HijriDateToBeDisplayed;
+                        control.IsOpen = true;
                     }
                     catch (Exception ex)
                     {
                         DeclarationDateString = "dd/MM/yyyy";
                     }
+                    
 
                 });
             }
         }
 
-        public ICommand DateClickedCommand
-        {
-            get
-            {
-                return new Command<DatePicker>((control) =>
-                {
-                    control?.Focus();
-
-                });
-            }
-        }
         public ICommand OpenPortCommand
         {
             get
@@ -318,26 +267,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         if (isAirCardSelected)
                         {
 
-                            SelectedPort = e.Name;
-                            var portID = int.Parse(e.Id);
+                            SelectedPortName = e.Name;
+                            SelectedPortId = int.Parse(e.Id);
                             HeaderTitle = AppResources.AirFreight;
                         }
                         else if (isSeaCardSelected)
                         {
-                            SelectedPort = e.Name;
-                            var portID = int.Parse(e.Id);
+                            SelectedPortName = e.Name;
+                            SelectedPortId = int.Parse(e.Id);
                             HeaderTitle = AppResources.SeaFreight;
                         }
                         else if (isLandCardSelected)
                         {
-                            SelectedPort = e.Name;
-                            var portID = int.Parse(e.Id);
+                            SelectedPortName = e.Name;
+                            SelectedPortId = int.Parse(e.Id);
                             HeaderTitle = AppResources.LandFreight;
                         }
                         else if (isTrainCardSelected)
                         {
-                            SelectedPort = e.Name;
-                            var portID = int.Parse(e.Id);
+                            SelectedPortName = e.Name;
+                            SelectedPortId = int.Parse(e.Id);
                             HeaderTitle = AppResources.TrainFreight;
                         }
 
@@ -374,6 +323,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                 {
                     _navigationService.NavigateTo("/Home", "0");
 
+                });
+            }
+        }
+
+        public ICommand SelectedDateCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    if (TodayDateinHijri != null && TodayDateinHijri.Count > 0)
+                    {
+                        string month = TodayDateinHijri[1].ToString();
+                        string day; string year;
+                        if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                        {
+                            day = TodayDateinHijri[0].ToString();
+                            year = TodayDateinHijri[2].ToString();
+                        }
+                        else
+                        {
+                            day = TodayDateinHijri[2].ToString();
+                            year = TodayDateinHijri[0].ToString();
+                        }
+                        HijriDateToBeDisplayed = day + "/" + month + "/" + year;
+                       // DeclarationDateString = HijriDateToBeDisplayed;
+                    }
                 });
             }
         }
@@ -414,65 +390,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
         }
 
-        private void DrawExpressShipping()
+        private void FillDataFromAPI(Tuple<Models.BaseModels.DATAPowerBaseResponse<TrackShipmentModel>, bool, string> result)
         {
-            isExpressCardSelected = true;
-            HeaderTitle = AppResources.ExpressShipping;
-            DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.ExpressShipping}";
-            DrawShipmentTrack.ShipmentCardImage = "expressDark.png";
-            DrawShipmentTrack.HasSearchBy = true;
-            DrawShipmentTrack.HasDeclarationCards = true;
-            DrawInputsDependingOnCardsOnly(ShipmentCards.Express);
-        }
+            if (result?.Item1?.header?.status.code == "I000000")
+            {
+                TrackShipmentResponse = result?.Item1?.data;
+                if (TrackShipmentResponse != null)
+                {
+                    TrackShipmentResponse.VAT = Math.Round(TrackShipmentResponse.VAT, 2);
+                    TrackShipmentResponse.customs = Math.Round(TrackShipmentResponse.customs, 2);
+                    TrackShipmentResponse.others = Math.Round(TrackShipmentResponse.others, 2);
+                    TrackShipmentResponse.CIF = Math.Round(TrackShipmentResponse.CIF, 2);
+                    TrackShipmentResponse.totalFees = Math.Round(TrackShipmentResponse.totalFees, 2);
 
-        private void DrawAirShipping()
-        {
-            isAirCardSelected = true;
-            HeaderTitle = AppResources.AirFreight;
-            DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.AirFreight}";
-            DrawShipmentTrack.ShipmentCardImage = "airDark.png";
-            DrawShipmentTrack.HasSubTitle = true;
-            DrawShipmentTrack.HasPortName = true;
-            DrawShipmentTrack.HasSearchBy = true;
-            DrawShipmentTrack.HasDeclarationCards = true;
-            DrawInputsDependingOnCardsOnly(ShipmentCards.Air);
-        }
+                    foreach (var item in TrackShipmentResponse?.activities)
+                    {
+                        var status = new ShipmentStatus();
 
-        private void DrawSeaShipping()
-        {
-            isSeaCardSelected = true;
-            HeaderTitle = AppResources.SeaFreight;
-            DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.SeaFreight}";
-            DrawShipmentTrack.ShipmentCardImage = "seaDark.png";
-            DrawShipmentTrack.HasSubTitle = true;
-            DrawShipmentTrack.HasPortName = true;
-            DrawShipmentTrack.HasSearchBy = true;
-            DrawShipmentTrack.HasDeclarationCards = true;
-            DrawInputsDependingOnCardsOnly(ShipmentCards.Sea);
-        }
+                        status.ShipmentStatusDateString = string.Format("{0:dd/MM/yyyy  hh:mm tt}", item.activityDate);
+                        status.ShipmentStatusValue = item.Name;
+                        if (trackShipmentResponse?.activities.Count > 1)
+                        {
+                            // Draw start circle for first item only
+                            if (trackShipmentResponse.activities.First() == item)
+                            {
+                                status.StatusImage = "startCircle.png";
+                                status.HasVerticalLine = false;
+                                continue;
+                            }
+                            status.StatusImage = "fillCircle.png";
+                            status.HasVerticalLine = true;
+                        }
 
-        private void DrawLandShipping()
-        {
-            isLandCardSelected = true;
-            HeaderTitle = AppResources.LandFreight;
-            DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.LandFreight}";
-            DrawShipmentTrack.ShipmentCardImage = "landDark.png";
-            DrawShipmentTrack.HasPortName = true;
-            DrawShipmentTrack.HasDeclarationNumber = true;
-            DrawShipmentTrack.HasDeclarationDate = true;
-        }
+                        // Draw start circle if items is one item only
+                        else
+                        {
+                            status.StatusImage = "startCircle.png";
+                            status.HasVerticalLine = false;
+                        }
 
-        private void DrawTrainShipping()
-        {
-            isTrainCardSelected = true;
-            HeaderTitle = AppResources.TrainFreight;
-            DrawShipmentTrack.ShipmentTrackName = $"{AppResources.Track} {AppResources.TrainFreight}";
-            DrawShipmentTrack.ShipmentCardImage = "trainDark.png";
-            DrawShipmentTrack.HasSubTitle = true;
-            DrawShipmentTrack.HasPortName = true;
-            DrawShipmentTrack.HasSearchBy = true;
-            DrawShipmentTrack.HasDeclarationCards = true;
-            DrawInputsDependingOnCardsOnly(ShipmentCards.Train);
+                        ShipmentStatusList?.Add(status);
+                    }
+                }
+
+            }
+            else
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequestTimeoutDescription;
+
+            }
+            
         }
 
         private void DrawInputsDependingOnCardsOnly(ShipmentCards trackType)
@@ -510,7 +478,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     DrawShipmentTrack.HasDeclarationDate = false;
                     ShipmentDeclarationNumber = string.Empty;
                     DeclarationDateString = string.Empty;
-                    DeclarationDate = DateTime.Now;
                 }
             }
 
@@ -535,7 +502,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     DrawShipmentTrack.HasDeclarationDate = false;
                     ShipmentDeclarationNumber = string.Empty;
                     DeclarationDateString = string.Empty;
-                    DeclarationDate = DateTime.Now;
                 }
             }
         }
@@ -544,53 +510,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         {
             if (trackType == ShipmentCards.Express)
             {
-                if (DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber))
+                if(DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
+                    if(string.IsNullOrWhiteSpace(ShipmentDeclarationNumber))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
-                else if (!DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentBillNumber))
+                else
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
+                    if(string.IsNullOrWhiteSpace(ShipmentBillNumber))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
             }
 
 
             else if (trackType == ShipmentCards.Air)
             {
-                if (string.IsNullOrWhiteSpace(SelectedPort))
+                if (string.IsNullOrWhiteSpace(SelectedPortName))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
                     return false;
                 }
-                else if(DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
-                    && string.IsNullOrWhiteSpace(DeclarationDateString))
+                else if (DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
-                }
-                else if (DrawShipmentTrack.IsDeclarationSelected
-                        && DeclarationDate > DateTime.Now.Date)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.DateBirthValidation;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
+                         || string.IsNullOrWhiteSpace(DeclarationDateString))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
 
-                else if (!DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentBillNumber))
+                else if (!DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(ShipmentBillNumber))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
             }
 
@@ -598,68 +565,60 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             else if (trackType == ShipmentCards.Sea
                     || trackType == ShipmentCards.Train)
             {
-                if (string.IsNullOrWhiteSpace(SelectedPort))
+                if (string.IsNullOrWhiteSpace(SelectedPortName))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
                     return false;
                 }
 
-                else if (DrawShipmentTrack.IsDeclarationSelected
-                   && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
-                   && string.IsNullOrWhiteSpace(DeclarationDateString))
+                else if (DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
+                         || string.IsNullOrWhiteSpace(DeclarationDateString))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
-                else if (DrawShipmentTrack.IsDeclarationSelected
-                        && DeclarationDate > DateTime.Now.Date)
+                else if (!DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.DateBirthValidation;
-                    return false;
-                }
-                else if (!DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentBillNumber)
-                    && string.IsNullOrWhiteSpace(ShipmentContainerNumber))
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(ShipmentBillNumber)
+                        ||string.IsNullOrWhiteSpace(ShipmentContainerNumber))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
             }
 
             else
             {
-                if (string.IsNullOrWhiteSpace(SelectedPort))
+                if (string.IsNullOrWhiteSpace(SelectedPortName))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
                     return false;
                 }
 
-                else if (DrawShipmentTrack.IsDeclarationSelected
-                    && string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
-                    && string.IsNullOrWhiteSpace(DeclarationDateString))
+                else if (DrawShipmentTrack.IsDeclarationSelected)
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
-                    return false;
-                }
-                else if (DrawShipmentTrack.IsDeclarationSelected
-                       && DeclarationDate > DateTime.Now.Date)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.DateBirthValidation;
-                    return false;
+                    if (string.IsNullOrWhiteSpace(ShipmentDeclarationNumber)
+                         || string.IsNullOrWhiteSpace(DeclarationDateString))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
                 }
             }
 
             return true;
         }
 
-        public void ResetData()
+        public void ResetTrackShipmentData()
         {
             App.Locator.StateManager.SetItem("CardImage", DrawShipmentTrack.ShipmentCardImage);
             DrawShipmentTrack = new DrawShipmentTrack();
@@ -672,8 +631,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             DeclarationDateString = string.Empty;
             ShipmentBillNumber = string.Empty;
             ShipmentContainerNumber = string.Empty;
-            SelectedPort = string.Empty;
-            DeclarationDate = DateTime.Now.Date;
+            SelectedPortName = string.Empty;
+            SelectedPortId = 0;
         }
 
         public void BackMethod()
@@ -702,70 +661,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
 
         ICommonServices _commonServices;
-        public TrackShipmentViewModel(INavigationService navigationService, IDialogService dialogService, ICommonServices commonServices) : base(navigationService, dialogService)
+        ITrackShipment _trackShipment;
+        public TrackShipmentViewModel(INavigationService navigationService, IDialogService dialogService, ICommonServices commonServices, ITrackShipment trackShipment) : base(navigationService, dialogService)
         {
             _commonServices = commonServices;
+            _trackShipment = trackShipment;
         }
     }
 
-    public enum ShipmentCards
-    {
-        // This value is related to port type
-        Sea = 1,
-        Train = 2,
-        Land = 3,
-        Air = 4,
-        Express = 5
-
-    }
-    public class ShipmentStatus:BindableBase
-    {
-        bool hasVerticalLine;
-        public bool HasVerticalLine { get { return hasVerticalLine; } set { hasVerticalLine = value; RaisePropertyChanged(); } }
-
-        string statusImage;
-        public string StatusImage { get { return statusImage; } set { statusImage = value; RaisePropertyChanged(); } }
-
-        string shipmentStatusValue;
-        public string ShipmentStatusValue { get { return shipmentStatusValue; } set { shipmentStatusValue = value; RaisePropertyChanged(); } }
-
-        string shipmentStatusDateString;
-        public string ShipmentStatusDateString { get { return shipmentStatusDateString; } set { shipmentStatusDateString = value; RaisePropertyChanged(); } }
-    }
-    public class DrawShipmentTrack : BindableBase
-    {
-        bool hasSubTitle;
-        public bool HasSubTitle { get { return hasSubTitle; } set { hasSubTitle = value; RaisePropertyChanged(); } }
-
-        bool hasPortName;
-        public bool HasPortName { get { return hasPortName; } set { hasPortName = value; RaisePropertyChanged(); } }
-
-        bool hasSearchBy;
-        public bool HasSearchBy { get { return hasSearchBy; } set { hasSearchBy = value; RaisePropertyChanged(); } }
-
-        bool hasDeclarationNumber;
-        public bool HasDeclarationNumber { get { return hasDeclarationNumber; } set { hasDeclarationNumber = value; RaisePropertyChanged(); } }
-
-        bool hasDeclarationDate;
-        public bool HasDeclarationDate { get { return hasDeclarationDate; } set { hasDeclarationDate = value; RaisePropertyChanged(); } }
-
-        bool hasBillNumber;
-        public bool HasBillNumber { get { return hasBillNumber; } set { hasBillNumber = value; RaisePropertyChanged(); } }
-
-        bool hasContainerNumber;
-        public bool HasContainerNumber { get { return hasContainerNumber; } set { hasContainerNumber = value; RaisePropertyChanged(); } }
-
-        bool hasDeclarationCards;
-        public bool HasDeclarationCards { get { return hasDeclarationCards; } set { hasDeclarationCards = value; RaisePropertyChanged(); } }
-
-        bool isDeclarationSelected = true;
-        public bool IsDeclarationSelected { get { return isDeclarationSelected; } set { isDeclarationSelected = value; RaisePropertyChanged(); } }
-
-        string shipmentTrackName;
-        public string ShipmentTrackName { get { return shipmentTrackName; } set { shipmentTrackName = value; RaisePropertyChanged(); } }
-
-        string shipmentCardImage;
-        public string ShipmentCardImage { get { return shipmentCardImage; } set { shipmentCardImage = value; RaisePropertyChanged(); } }
-    }
+    
 }
 

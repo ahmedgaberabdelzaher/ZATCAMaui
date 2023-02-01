@@ -268,6 +268,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel()
                 {
                    Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                },
+                  new MenuModel()
+                {
+                   Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
                 }
            };
         }

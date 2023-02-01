@@ -19,7 +19,9 @@ namespace EGAZT.Views.NewDesign.TrackShipment
 
         protected override void OnDisappearing()
         {
-            viewModel.ResetData();
+            viewModel.ResetDate();
+            viewModel.ResetTrackShipmentData();
+            
             base.OnDisappearing();
         }
         protected override bool OnBackButtonPressed()
