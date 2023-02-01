@@ -9503,7 +9503,7 @@ info@zatca.gov.sa</value>
         <value> البلاغات </value>
     </data>
   <data name="EinvoiceScanning" xml:space="preserve">
-        <value>التحقق من صحه الفاتورة الإلكترونية</value>
+        <value>التحقق من صحة الفاتورة الإلكترونية</value>
     </data>
   <data name="TaxCalculator" xml:space="preserve">
         <value>حاسبة التاجر والمستهلك</value>
