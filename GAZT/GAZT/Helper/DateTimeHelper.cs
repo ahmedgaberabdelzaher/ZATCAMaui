@@ -25,6 +25,7 @@ namespace EGAZT.Helper
             
 
         }
+
         public static DateTime DateTimeFormater(string dateTimeString)
         {
             try
@@ -34,7 +35,7 @@ namespace EGAZT.Helper
                 var formates = new string[] { "yyyy/MM/dd", "yyyy-MM-dd", "dd-MM-yyyy",
                                         "dd/MM/yyyy", "MM/dd/yyyy", "M/dd/yyyy", "d/MM/yyyy","M/d/yyyy","d/M/yyyy",
                                         "dd/M/yyyy","MM/d/yyyy","d-MM-yyyy","dd-M-yyyy","MM-d-yyyy",
-                                        "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy","M-dd-yyyy",""};
+                                        "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy","M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
             catch (Exception ex)

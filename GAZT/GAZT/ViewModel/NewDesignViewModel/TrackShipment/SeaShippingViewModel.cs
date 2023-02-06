@@ -26,8 +26,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     FillDataFromAPI(result);
 
                     IsLoading = false;
-
-                    _navigationService.NavigateTo("/ShipmentStatusPage");
                 }
 
 

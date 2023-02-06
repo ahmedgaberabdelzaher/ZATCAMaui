@@ -43,7 +43,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         string shipmentDeclarationNumber;
         public string ShipmentDeclarationNumber { get { return shipmentDeclarationNumber; } set { shipmentDeclarationNumber = value; RaisePropertyChanged(); } }
 
-        string declarationDateString;
+        string declarationDateString= "dd-MM-yyyy";
         public string DeclarationDateString { get { return declarationDateString; } set { declarationDateString = value; RaisePropertyChanged(); } }
 
         string shipmentBillNumber;
@@ -175,12 +175,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     try
                     {
                         SetDefaultDate();
-                        DeclarationDateString = HijriDateToBeDisplayed;
                         control.IsOpen = true;
                     }
                     catch (Exception ex)
                     {
-                        DeclarationDateString = "dd/MM/yyyy";
+                        DeclarationDateString = "dd-MM-yyyy";
                     }
                     
 
@@ -347,8 +346,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                             day = TodayDateinHijri[2].ToString();
                             year = TodayDateinHijri[0].ToString();
                         }
-                        HijriDateToBeDisplayed = day + "/" + month + "/" + year;
-                       // DeclarationDateString = HijriDateToBeDisplayed;
+                        HijriDateToBeDisplayed = $"{day}-{month}-{year}";
+
+                        if(!HijriDateToBeDisplayed.Equals("01-01-1000"))
+                            DeclarationDateString = HijriDateToBeDisplayed;
                     }
                 });
             }
@@ -407,15 +408,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                     {
                         var status = new ShipmentStatus();
 
-                        status.ShipmentStatusDateString = string.Format("{0:dd/MM/yyyy  hh:mm tt}", item.activityDate);
+                        status.ShipmentStatusDateString = DateTimeHelper.DateTimeFormater(item.activityDate).ToString("dd/MM/yyyy  hh:mm tt");
                         status.ShipmentStatusValue = item.Name;
                         if (trackShipmentResponse?.activities.Count > 1)
                         {
                             // Draw start circle for first item only
-                            if (trackShipmentResponse.activities.First() == item)
+                            if (trackShipmentResponse.activities.Last() == item)
                             {
                                 status.StatusImage = "startCircle.png";
                                 status.HasVerticalLine = false;
+                                ShipmentStatusList?.Add(status);
                                 continue;
                             }
                             status.StatusImage = "fillCircle.png";
@@ -431,7 +433,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
                         ShipmentStatusList?.Add(status);
                     }
+
+                    _navigationService.NavigateTo("/ShipmentStatusPage");
                 }
+
+            }
+            else if(result?.Item1?.header?.status.code == "E260401")
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.DeclarationDisclaimer;
 
             }
             else

@@ -22,6 +22,8 @@ namespace EGAZT.Views.NewDesign.TrackShipment
         protected override void OnDisappearing()
         {
             App.Locator.StateManager.DeleteItem("CardImage");
+            viewModel.ShipmentStatusList = new System.Collections.ObjectModel.ObservableCollection<Models.TrackShipment.ShipmentStatus>();
+            viewModel.TrackShipmentResponse = new Models.TrackShipment.TrackShipmentModel();
             base.OnDisappearing();
         }
     }

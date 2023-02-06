@@ -6,8 +6,8 @@ namespace EGAZT.Models.TrackShipment
 {
 	public class TrackShipmentModel:BindableBase
 	{
-        long _ISN;
-        public long ISN { get { return _ISN; } set { _ISN = value; RaisePropertyChanged(); } }
+        //long _ISN;
+        //public long ISN { get { return _ISN; } set { _ISN = value; RaisePropertyChanged(); } }
 
         double _totalFees;
         public double totalFees { get { return _totalFees; } set { _totalFees = value; RaisePropertyChanged(); } }
