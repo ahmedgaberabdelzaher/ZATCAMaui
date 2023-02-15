@@ -113,7 +113,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
                     {
-                     if (!EmailRgx.IsMatch(Email))
+                     if (!EmailRgx.IsMatch(Email.ToLower()))
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidEmailFormat;

@@ -9444,7 +9444,7 @@ the Zakat, Tax and Customs
      <value>Send Report</value>
   </data>
   <data name="AttachmentHelperText" xml:space="preserve">
-     <value>Allowed supplies (PDF,png,JPG)</value>
+     <value>Allowed extensions (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
      <value>I want to get the reward</value>

@@ -171,6 +171,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             {
                                 ReportNumberResult = reportResult.result?.referenceNumber;
                                 SubmitReport = new SubmitReportModel();
+                                IsCityShowen = false;
+                                IsReportCategoryShowen = false;
+                                IsMissingFieldShowen = false;
                                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                                 _navigationService.NavigateTo("/ReportSuccessPage");
 
@@ -203,6 +206,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
+                    //var customFileType =
+                    //   new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
+                    //   {
+                    //        {DevicePlatform.iOS, new[] { "com.adobe.pdf" , "public.image" } },
+                    //   });
                     await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" });
 
 
@@ -431,7 +439,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             isReportTypeSelected = false;
                             SubmitReport.ReportCategoryName = string.Empty;
                             SubmitReport.ReportCategory = string.Empty;
-
+                            SubmitReport.MissedFieldName = string.Empty;
+                            SubmitReport.MissedField = string.Empty;
+                            IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
                         }
                         else if (isReportCategorySelected)
@@ -585,9 +595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         isReportCategorySelected = false;
                         isReportTypeSelected = false;
                         isMissingFieldSelected = false;
-                        if (RegionsList == null)
-                            RegionsList = await this._submitReportServices.GetRegions();
-
+                        RegionsList = await this._submitReportServices.GetRegions();
                         var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
@@ -617,9 +625,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         isReportCategorySelected = false;
                         isReportTypeSelected = false;
                         isMissingFieldSelected = false;
-                        if (CitysList == null)
-                            CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
-
+                        CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
                         var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
@@ -654,8 +660,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 if (result != null)
                 {
                     var Text = $"File Name: {result.FileName}";
-                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
+                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase)
+                        || result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
                     {
 
                         var lenght = new FileInfo(result.FullPath).Length;
@@ -796,7 +802,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
                 }
-                else if (!Email.IsMatch(SubmitReport.ReporterEmail))
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail.ToLower()))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.InvalidEmailFormat;
@@ -837,7 +843,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
 
-                SubmitReport.Street = possibleAddresses.FirstOrDefault();
+                SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
 
                 SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
 
@@ -868,8 +874,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 GoogleMap?.Pins.Clear();
                 GoogleMap?.Pins.Add(new Pin()
                 {
-                    Address = SubmitReport.Street,
-                    Label = SubmitReport.Street,
+                    Address = SubmitReport.CompanyAddress,
+                    Label = SubmitReport.CompanyAddress,
                     Position = new Position(SubmitReport.Latitude, SubmitReport.Longitude)
                 });
 
@@ -896,6 +902,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             else if (currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
             {
                 SubmitReport = new SubmitReportModel();
+                IsCityShowen = false;
+                IsReportCategoryShowen = false;
+                IsMissingFieldShowen = false;
                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
             }
             _navigationService.GoBack();

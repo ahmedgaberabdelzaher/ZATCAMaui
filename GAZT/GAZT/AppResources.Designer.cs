@@ -869,7 +869,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allowed supplies (PDF,png,JPG).
+        ///   Looks up a localized string similar to Allowed extensions (PDF,png,JPG).
         /// </summary>
         public static string AttachmentHelperText {
             get {
