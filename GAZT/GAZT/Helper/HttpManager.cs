@@ -103,12 +103,14 @@ namespace EGAZT.Helper
                     }
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
                     client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    client.DefaultRequestHeaders.Remove("zatca-apikey");
+                    client.DefaultRequestHeaders.Add("zatca-apikey","z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     if (App.IsArabic)
                         client.DefaultRequestHeaders.Add("LanguageCode", "ar");
                     else
                         client.DefaultRequestHeaders.Add("LanguageCode", "en");
                     client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
-                    /*if (routPortCode!="99")
+                     /*if (routPortCode!="99")
                     {
                         routPortCode = "1" + routPortCode;
                     }*/
@@ -278,13 +280,13 @@ namespace EGAZT.Helper
 
                     // Pass the handler to httpclient(from you are calling api)
                     HttpClient client = new HttpClient(clientHandler);
-                   // var client = new System.Net.Http.HttpClient();
+                    // var client = new System.Net.Http.HttpClient();
                     //var h = new HttpClientHandler();
                     //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
 
                     //  var client = App.Locator.httpClient;
 
-
+                    client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);

@@ -823,8 +823,51 @@
 
                                     </StackLayout>
 
-                                    <!--  Quantity Field  -->
-                                    <StackLayout Spacing="0">
+                                       <!--  Weight Field  -->
+                                    <StackLayout Spacing="0" IsVisible="{Binding SelectedTobacoItem.HasWeight}">
+
+                                        <!--  Weight Label  -->
+                                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                            <custom:CustomLabel.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.TotalAmount}"/>
+                                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                                </FormattedString>
+                                            </custom:CustomLabel.FormattedText>
+                                        </custom:CustomLabel>
+
+                                        <!--  Weight Entry  -->
+                                        <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                            HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                            <custom:BorderlessEntry
+
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Quantity}"
+                                    TextColor="#58595B" >
+                                            <custom:BorderlessEntry.Behaviors>
+                                                <behaviour:OnlyNumericValuesBehaviour/>
+                                            </custom:BorderlessEntry.Behaviors>
+
+                                        </custom:BorderlessEntry>
+                                        </inputLayout:SfTextInputLayout>
+                                            <!--  MeasureUnit label   -->
+
+                                <Label Text="{Binding SelectedTobacoItem.MeasureUnitAR}"></Label>
+                                    </StackLayout>
+                                                                        
+
+                                <!--  Quantity Field  -->
+                                    <StackLayout Spacing="0" >
 
                                         <!--  Quantity Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -860,7 +903,7 @@
 
                                         </custom:BorderlessEntry>
                                         </inputLayout:SfTextInputLayout>
-
+                            
                                     </StackLayout>
 
                                     <!--  Quantity Field  -->

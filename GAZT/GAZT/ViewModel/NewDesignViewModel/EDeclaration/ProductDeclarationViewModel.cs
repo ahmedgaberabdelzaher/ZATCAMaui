@@ -1231,11 +1231,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 if (calres.IsSuccessStatusCode)
                 {
                     var conent = await calres.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<CustomApiFeesCalculatorResponse>(conent);
+                    if (data.data != null)
+                    {
+                        var Result = data.data;
+                        if (Result!=null)
+                        {
+                            FeesCalculatorResponse.customsPercentage = Result.CustomesPercentage;
+                            FeesCalculatorResponse.excise = Result.Excise;
+                            FeesCalculatorResponse.totalDuty = Result.TotalDuty;
+                            FeesCalculatorResponse.totalPayment = Result.TotalPayment;
+
+                            FeesCalculatorResponse.extraFees = Result.ExtraFees;
+
+                            return;
+                        }
+                        FeesCalculatorResponse = new FeesCalculatorResponse();
+                        return;
+                    }
+                    /*
                     var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<FeesCalculatorResponse>>(conent);
                     if (data.result != null)
                     {
                         FeesCalculatorResponse = data.result;
-                    }
+                    }*/
 
                 }
             }

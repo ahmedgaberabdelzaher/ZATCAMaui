@@ -48,7 +48,9 @@ namespace EGAZT.AppConfigurations
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
         public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
-
+        public static string CustomPeservicesStgBaseURl = "https://peservices.zatca.gov.sa";
+        public static string CustomPeserviceProdBaseURl = "https://peservices.zatca.gov.sa";
+        public static string CustomPeserviceBaseURl;
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -77,6 +79,8 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    CustomPeserviceBaseURl = CustomPeservicesStgBaseURl;
+
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -84,6 +88,7 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    CustomPeserviceBaseURl = CustomPeserviceProdBaseURl;
                     break;
                 default:
                     App.CustomBaseUrl = CustomSTGBaseUrl;
@@ -91,6 +96,7 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    CustomPeserviceBaseURl = CustomPeservicesStgBaseURl;
                     break;
             }
             return key;
