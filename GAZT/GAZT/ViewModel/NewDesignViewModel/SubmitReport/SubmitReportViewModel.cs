@@ -12,6 +12,7 @@ using Acr.UserDialogs;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.ViewModel.NewDesignViewModel.Common;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.MyReports;
@@ -122,26 +123,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReportDataPowerModel model = new SubmitReportDataPowerModel()
                             {
                                 city = SubmitReport.City,
-                                cityCode = submitReport.CityCode,
-                                companyAddress = submitReport.CompanyAddress,
-                                companyName = submitReport.CompanyName,
-                                CR = submitReport.CR,
-                                district = submitReport.District,
-                                isNeedReward = submitReport.IsNeedReward,
+                                cityCode = SubmitReport.CityCode,
+                                companyAddress = SubmitReport.CompanyAddress,
+                                companyName = SubmitReport.CompanyName,
+                                CR = SubmitReport.CR,
+                                district = SubmitReport.District,
+                                isNeedReward = SubmitReport.IsNeedReward,
                                 LanguageCode = "ar",
-                                latitude = submitReport.Latitude,
-                                longitude = submitReport.Longitude,
-                                missedField = submitReport.MissedField,
-                                regionCode = submitReport.RegionCode,
-                                regionName = submitReport.Region,
-                                reportCategory = submitReport.ReportCategory,
-                                reportCategoryName = submitReport.ReportCategoryName,
-                                reportDetails = submitReport.ReportDetails,
-                                reporterEmail = submitReport.ReporterEmail,
-                                reporterMobileNumber = submitReport.ReporterMobileNumber,
-                                reporterName_Arabic = submitReport.ReporterNameAr,
-                                reporterName_English = submitReport.ReporterNameEn,
-                                reporterWantToSharePersonalInfo = submitReport.ReporterWantToSharePersonalInfo,
+                                latitude = SubmitReport.Latitude,
+                                longitude = SubmitReport.Longitude,
+                                missedField = SubmitReport.MissedField,
+                                regionCode = SubmitReport.RegionCode,
+                                regionName = SubmitReport.Region,
+                                reportCategory = SubmitReport.ReportCategory,
+                                reportCategoryName = SubmitReport.ReportCategoryName,
+                                reportDetails = SubmitReport.ReportDetails,
+                                reporterEmail = SubmitReport.ReporterEmail,
+                                reporterMobileNumber = SubmitReport.ReporterMobileNumber,
+                                reporterName_Arabic = SubmitReport.ReporterNameAr,
+                                reporterName_English = SubmitReport.ReporterNameEn,
+                                reporterWantToSharePersonalInfo = SubmitReport.ReporterWantToSharePersonalInfo,
                                 reportTaxType = SubmitReport.ReportTaxType,
                                 reportTypeName = SubmitReport.ReportTypeName,
                                 street = SubmitReport.Street,
@@ -151,21 +152,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 attachements = DATAPowerAttachements
 
                             };
-                            ///
-
                             var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
-                            #region VatResponse
-                            /*if (reportResult.Success)
-                             * 
-                            {
-                                ReportNumberResult = reportResult.Result?.Data;
-                                SubmitReport = new SubmitReportModel();
-                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                                _navigationService.NavigateTo("/ReportSuccessPage");
-                        
-                            }
-                            */
-                            #endregion
                             #region DATA Power Response
                             if (reportResult.header.status.code == "I000000")
                             {
@@ -206,13 +193,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    //var customFileType =
-                    //   new FilePickerFileType(new Dictionary<DevicePlatform, IEnumerable<string>>
-                    //   {
-                    //        {DevicePlatform.iOS, new[] { "com.adobe.pdf" , "public.image" } },
-                    //   });
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" });
+                    UploadingPopup poupUploadingWindow = new UploadingPopup();
+                    await PopupNavigation.Instance.PushAsync(poupUploadingWindow);
 
+                });
+            }
+        }
+
+        public override ICommand SelectedUploadLabelCommand
+        {
+            get
+            {
+                return new Command<string>(async (selectedLabel) =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                    await PickAndShow(selectedLabel, new PickOptions() { PickerTitle = "Pick Files" });
 
                 });
             }
@@ -289,6 +284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand SearchEntryCommand
         {
 
@@ -331,6 +327,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand BackToHomeCommand
         {
             get
@@ -342,6 +339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand OpenDateCommand
         {
             get
@@ -353,6 +351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand GoToTermsPageCommand
         {
             get
@@ -551,6 +550,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand OpenMissingFieldCommand
         {
             get
@@ -652,15 +652,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
         #region Methods
-        private async Task PickAndShow(PickOptions options)
+        private async Task PickAndShow(string selectedLabel ,PickOptions options)
         {
             try
             {
-                var result = await FilePicker.PickAsync(options);
+                FileResult result;
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    if(selectedLabel.Equals("image"))
+                        result = await MediaPicker.PickPhotoAsync();
+                    else
+                        result = await FilePicker.PickAsync(options);
+                }
+                else
+                {
+                     result = await FilePicker.PickAsync(options);
+                }
+
                 if (result != null)
                 {
                     var Text = $"File Name: {result.FileName}";
-                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase)
+                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||result.FileName.EndsWith("jpeg", StringComparison.OrdinalIgnoreCase)
+                        || result.FileName.EndsWith("doc", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("docx", StringComparison.OrdinalIgnoreCase)
                         || result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
                     {
 
@@ -683,11 +697,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             reportfile.fileBase64 = content;
                             reportfile.fileFullName = result.FileName;
                             reportfile.fileExtinction = Path.GetExtension(result.FileName);
-                            //reportfile.filecontentStream = stream;
-                            //reportfile.filename = result.FileName;
-                            //reportfile.FileSize = Math.Round(size, 2);
-                            //reportfile.Id = result.FileName + System.DateTime.Now.Ticks;
-                            //reportfile.paramFileStream= File.ReadAllBytes(result.FullPath);
                             ReportUloadedFiles.Add(reportfile);
                             IsTherePDFUploaded = true;
 
@@ -717,6 +726,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
         }
+
         private async Task<string> ConvertToBase64(Stream stream)
         {
             if (stream is MemoryStream memoryStream)
@@ -731,6 +741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
             return Convert.ToBase64String(bytes);
         }
+
         private bool IsValidateReport()
         {
 
@@ -786,6 +797,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             return true;
 
         }
+
         private bool IsValidateTermsReport()
         {
             Regex phoneRegex = new Regex(@"^05[0-9]{8}$");
@@ -827,7 +839,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             var statusLocationAlways = await Permissions.CheckStatusAsync<Permissions.LocationAlways>();
             if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
             {
-                //GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.High, TimeSpan.FromSeconds(2));
                 var location = await Geolocation.GetLocationAsync();
                 if (location==null)
                 {

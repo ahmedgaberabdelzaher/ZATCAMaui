@@ -229,7 +229,7 @@
                             <Image
                                 HeightRequest="20"
                                 HorizontalOptions="Start"
-                                Source="CheckMark.png"
+                                Source="emptyCheck.png"
                                 Style="{DynamicResource BackButtonArrow}"
                                 VerticalOptions="CenterAndExpand"
                                 WidthRequest="20">
@@ -239,14 +239,14 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="Image"
-                                        Value="True">
+                                        Value="false">
                                         <Setter Property="Source" Value="CheckMark.png" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="Image"
-                                        Value="False">
+                                        Value="true">
                                         <Setter Property="Source" Value="emptyCheck.png" />
                                     </DataTrigger>
 
@@ -325,15 +325,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
@@ -349,15 +349,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
@@ -401,15 +401,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
@@ -425,15 +425,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
@@ -477,15 +477,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>
@@ -501,15 +501,15 @@
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="True">
-                                        <Setter Property="IsVisible" Value="false" />
+                                        Value="false">
+                                        <Setter Property="IsVisible" Value="true" />
                                     </DataTrigger>
 
                                     <DataTrigger
                                         Binding="{Binding SubmitReport.IsNeedReward}"
                                         TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
+                                        Value="true">
+                                        <Setter Property="IsVisible" Value="false" />
                                     </DataTrigger>
 
                                 </custom:CustomLabel.Triggers>

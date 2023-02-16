@@ -9416,7 +9416,7 @@ info@zatca.gov.sa</value>
      <value>الإمدادات المسموحة (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>أرغب بالحصول علىالمكافآة المالية</value>
+     <value>لا أرغب بالحصول على المكافآة المالية</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>الفاتورة الإلكترونية</value>
@@ -10201,7 +10201,16 @@ info@zatca.gov.sa</value>
   <data name="ContainerNumber" xml:space="preserve">
     <value> رقم الحاوية</value>
  </data>
-      <data name="DownloadEdecleraton" xml:space="preserve">
+  <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
+  </data>
+   <data name="UploadImage" xml:space="preserve">
+    <value>إرفاق صورة</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>إرفاق ملف</value>
+  </data>
+    <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>الإمدادات المسموحة (pdf,jpeg,jpg,doc,docx)</value>
   </data>
 </root>

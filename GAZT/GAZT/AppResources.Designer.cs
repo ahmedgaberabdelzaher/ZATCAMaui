@@ -11148,6 +11148,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed extensions (pdf,jpeg,jpg,doc,docx).
+        /// </summary>
+        public static string ReportAttachmentHelperText {
+            get {
+                return ResourceManager.GetString("ReportAttachmentHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Category.
         /// </summary>
         public static string ReportCategory {
@@ -13801,6 +13810,24 @@ namespace EGAZT {
         public static string UnSubmitted {
             get {
                 return ResourceManager.GetString("UnSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload File.
+        /// </summary>
+        public static string UploadFile {
+            get {
+                return ResourceManager.GetString("UploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Image.
+        /// </summary>
+        public static string UploadImage {
+            get {
+                return ResourceManager.GetString("UploadImage", resourceCulture);
             }
         }
         

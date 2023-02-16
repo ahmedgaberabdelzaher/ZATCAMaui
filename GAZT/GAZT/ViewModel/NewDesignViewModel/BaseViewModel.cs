@@ -2,6 +2,7 @@
 using EGAZT.Models.SubmitReportModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -464,6 +465,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     //    if (UploadedFiles.Count == 0) IsTherePDFUploaded = false;
                     }
+                });
+            }
+        }
+        public virtual ICommand SelectedUploadLabelCommand
+        {
+            get
+            {
+                return new Xamarin.Forms.Command<string>(async (selectedLabel) =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+
                 });
             }
         }

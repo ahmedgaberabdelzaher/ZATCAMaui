@@ -10271,4 +10271,13 @@ Zakat, Tax and Customs Authority
     <data name="DownloadEdecleraton" xml:space="preserve">
     <value>Download decleration</value>
   </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>Upload Image</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+    <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>Allowed extensions (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
 </root>
