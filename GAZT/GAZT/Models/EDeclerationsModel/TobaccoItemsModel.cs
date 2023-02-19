@@ -23,6 +23,13 @@ namespace EGAZT.Models.EDeclerationsModel
         public string MeasureUnitEN { get; set; }
         public bool HasMeasureUnit { get; set; }
         public bool HasWeight { get; set; }
+        public string MeasureUnitName
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(MeasureUnitAR, MeasureUnitEN);
+            }
+        }
     }
 
     //new TobacioItems

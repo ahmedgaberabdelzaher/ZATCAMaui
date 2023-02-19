@@ -35,7 +35,7 @@
             Padding="20"
             BackgroundColor="White"
             CornerRadius="15,15,0,0"
-            HeightRequest="490"
+
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
@@ -193,8 +193,13 @@
                 </yummy:PancakeView>
                 <!--#endregion Frame Contains Product list-->
 
+                <StackLayout>
                 <!--#region Total Price-->
-                <Grid>
+            
+                <!--#endregion Total Price-->
+                <!--#region Fees Details-->
+                    <StackLayout>
+                            <Grid>
 
                      <yummy:PancakeView 
                        CornerRadius="0,0,15,15"
@@ -235,8 +240,69 @@
                     </StackLayout>
 
                 </Grid>
-                <!--#endregion Total Price-->
 
+                                                        <StackLayout Orientation="Horizontal">
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}" HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.extraFees}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                    </Label>
+
+                                                        </StackLayout>
+                                                                                        <StackLayout Orientation="Horizontal">
+                      
+
+
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}" HorizontalOptions="EndAndExpand" >
+                                    <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.excise}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                    </Label>
+
+                                                        </StackLayout>
+                                                                                                        <StackLayout Orientation="Horizontal">
+                      
+
+
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                                            <Label Style="{StaticResource BodyLabelBlack}" HorizontalOptions="EndAndExpand">
+                                    <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                    </Label>
+
+                                                        </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                                                            <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                                            <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding FeesCalculatorResponse.vat}" />
+                                                                        <Span Text=" " />
+                                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+
+                                                        </StackLayout>
+             </StackLayout>
+                    <!--#endregion-->                                 
+           </StackLayout>
                 <!--  Close Button  -->
                 <buttons:SfButton
                     Margin="0,20"

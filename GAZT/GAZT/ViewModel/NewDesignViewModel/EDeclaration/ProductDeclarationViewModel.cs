@@ -102,6 +102,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
         public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
 
+
+        string weight;
+        public string Weight { get { return weight; } set { weight = value; RaisePropertyChanged(); } }
+
+        bool isWeighVisible=false;
+        public bool IsWeighVisible { get { return isWeighVisible; } set { isWeighVisible = value; RaisePropertyChanged(); } }
+
+
         #endregion
 
 
@@ -667,13 +675,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
-            Quantity = null;
+            Quantity=weight=TotalValue = null;
+            IsWeighVisible = false;
         }
 
         bool CheckTobacoDataNotNull()
         {
-            if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity))
+            if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity)&& !string.IsNullOrWhiteSpace(totalValue))
             {
+                if (IsWeighVisible&&string.IsNullOrWhiteSpace(Weight))
+                {
+                    return false;
+                }
                 return true;
             }
             return false;
@@ -786,6 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         else if (isTobacotemSelected)
                         {
                             SelectedTobacoItem = TobacoItems.First(c => c.ID.ToString() == e.Id);
+                            IsWeighVisible = selectedTobacoItem.HasWeight;
                             isTobacotemSelected = false;
                         }
                         else if (isProductTypeSelected)
@@ -903,7 +917,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             case 1:
                                 var tobaco = SubmitModel.travelerDeclaration.tobacco.First(c => c.ID == e.ID);
                                 var tobacofess = FeesCalculatorBody.tobacco?.First(c => c.ID == e.ID);
-                                await CalculateFees(2, tobacofess);
+                                                                await CalculateFees(2, tobacofess);
                                 SubmitModel.travelerDeclaration.tobacco.Remove(tobaco);
                                 break;
                             case 2:
@@ -1058,8 +1072,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     typeName = SelectedTobacoType.Name,
                     itemCode = long.Parse(selectedTobacoItem.itemCode),
                     measurementUnit = selectedTobacoItem.measurementUnit,
-                    subTypeName = selectedTobacoItem.productName,
-                    taxSequence = selectedTobacoItem.taxSequence
+                    subTypeName = SelectedTobacoItem.Name,
+                    taxSequence = SelectedTobacoItem.taxSequence
                 };
                 /* if (SubmitModel.travelerDeclaration == null)
                  {
@@ -1083,10 +1097,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
                 {
                     harmonizedCode = item.itemCode.ToString(),
-                    count = int.Parse(Quantity?? "0"),
+                    count = int.Parse(Quantity ?? "0"),
                     sequence = item.taxSequence,
-                    ID = item.ID
-                };
+                    ID = item.ID,
+                    Wight = string.IsNullOrWhiteSpace(Weight) ? 0:int.Parse(Weight),
+                    value = double.Parse(TotalValue)
+            };
                 await CalculateFees(1, tobao, null);
                 ClearTobacoData();
             }
@@ -1199,12 +1215,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             try
             {
 
+                if (FeesCalculatorBody.tobacco == null)
+                {
+                    FeesCalculatorBody.tobacco = new List<Models.EDeclerationsModel.FeesCalculators.Tobacco>();
 
+                }
+                if (FeesCalculatorBody.product == null)
+                {
+                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>();
+
+                }
                 if (tobacco != null)
                 {
                     if (operation == 1)
                     {
-                        FeesCalculatorBody.tobacco.Add(tobacco);
+                       
+                   FeesCalculatorBody.tobacco.Add(tobacco);
+
                         ClearTobacoData();
                     }
                     else
@@ -1227,6 +1254,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     }
 
                 }
+                if ((FeesCalculatorBody.product==null|| FeesCalculatorBody.product.Count<=0) && (FeesCalculatorBody.tobacco==null || FeesCalculatorBody.tobacco.Count <= 0))
+                {
+                    FeesCalculatorResponse = new FeesCalculatorResponse();
+                    await PopupNavigation.Instance.PopAsync(true);
+                    return;
+                }
                 var calres = await DeclerationServices.FeesCalculator(FeesCalculatorBody);
                 if (calres.IsSuccessStatusCode)
                 {
@@ -1241,6 +1274,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             FeesCalculatorResponse.excise = Result.Excise;
                             FeesCalculatorResponse.totalDuty = Result.TotalDuty;
                             FeesCalculatorResponse.totalPayment = Result.TotalPayment;
+                            FeesCalculatorResponse.vat = Result.VAT;
 
                             FeesCalculatorResponse.extraFees = Result.ExtraFees;
 

@@ -86,6 +86,8 @@ namespace EGAZT.Services.Classes
             {
                 tobacoItems.Add(new TobaccoItemCustomApi() { ID=item.ID, Count=item.count, Value=item.value, HarmonizedCode=item.harmonizedCode, MeasuringUnit=item.MeasuringUnit, Sequence=item.sequence,Wight=item.Wight});
             }
+            custombody.TobaccoItems= tobacoItems;
+            custombody.ProductItems = productItems;
             var response = await HttpManager.PostAsync<FeesCalculatorBodyCustomApi>($"{PageSettings.CustomPeserviceBaseURl}/Portal/api/Passengers/calculate", custombody).ConfigureAwait(false);
             return response;
         }

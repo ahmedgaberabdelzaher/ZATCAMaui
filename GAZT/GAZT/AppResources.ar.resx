@@ -10204,4 +10204,16 @@ info@zatca.gov.sa</value>
       <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
   </data>
+        <data name="Weight" xml:space="preserve">
+    <value>الوزن</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>الرسوم الجمركية</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>الضريبة الانتقائية</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>رسوم إصدار البيان الجمركي</value>
+  </data>
 </root>

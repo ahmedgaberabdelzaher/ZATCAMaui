@@ -2838,6 +2838,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs declaration issuance fees.
+        /// </summary>
+        public static string Customsdeclarationissuancefees {
+            get {
+                return ResourceManager.GetString("Customsdeclarationissuancefees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs duty rate.
         /// </summary>
         public static string Customsdutyrate {
@@ -5678,6 +5687,15 @@ namespace EGAZT {
         public static string ExciseTax {
             get {
                 return ResourceManager.GetString("ExciseTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excise Tax.
+        /// </summary>
+        public static string ExciseTax2 {
+            get {
+                return ResourceManager.GetString("ExciseTax2", resourceCulture);
             }
         }
         
@@ -17231,6 +17249,15 @@ namespace EGAZT {
         public static string VRYourVATReviewissubmittedsuccessfully {
             get {
                 return ResourceManager.GetString("VRYourVATReviewissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
         

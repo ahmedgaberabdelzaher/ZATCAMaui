@@ -10271,4 +10271,16 @@ Zakat, Tax and Customs Authority
     <data name="DownloadEdecleraton" xml:space="preserve">
     <value>Download decleration</value>
   </data>
+      <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>Customs Fees</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>Excise Tax</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>Customs declaration issuance fees</value>
+  </data>
 </root>

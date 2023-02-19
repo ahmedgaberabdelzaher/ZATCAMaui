@@ -27,7 +27,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
         public string harmonizedCode { get; set; }
         public int? sequence { get; set; }
         public int count { get; set; }
-        public int value { get; set; }
+        public double? value { get; set; }
         public int MeasuringUnit { get; set; }
         public int Wight { get; set; }
         public Guid ID { get; set; }
@@ -56,7 +56,7 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
         public int MeasuringUnit { get; set; }
         public int? Sequence { get; set; }
         public int Count { get; set; }
-        public int Value { get; set; }
+        public double? Value { get; set; }
         public int Wight { get; set; }
         public Guid ID { get; set; }
     }
