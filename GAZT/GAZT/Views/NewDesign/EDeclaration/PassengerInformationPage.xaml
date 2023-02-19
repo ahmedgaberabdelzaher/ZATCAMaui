@@ -11,6 +11,7 @@
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -261,13 +262,26 @@
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Passenger Note Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarSemiBold}"
-                            FontSize="16"
-                            Margin="0,0,0,5"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
-                            TextColor="{StaticResource NeutralGreay}" />
+                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap"
+                                             Margin="0,0,0,5">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
 
 
                         <!--  Horizontal Line  -->
@@ -295,7 +309,7 @@
                                 HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QSelected.png">
 
                                     <Image.Triggers>
@@ -360,7 +374,7 @@
                                   HeightRequest="94">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                         Source="QUnselected.png">
 
                                     <Image.Triggers>
@@ -529,7 +543,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PassengerNationality}"/>
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -550,7 +564,7 @@
                                     InputTransparent="True"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
                                     TextColor="#58595B">
@@ -576,7 +590,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.IDNumber}"/>
+                                        <Span Text="{Binding IDName}"/>
                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -594,8 +608,8 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.IDNumber}"
+                                    Keyboard="{Binding IDNumberKeyboard}"
+                                    Placeholder="{Binding IDNumberPlaceHolder}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelID}"
                                     TextColor="#58595B" />
@@ -630,7 +644,7 @@
                                   WidthRequest="171">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QSelected.png">
 
                                     <Image.Triggers>
@@ -697,7 +711,7 @@
                                  HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="QUnselected.png">
 
                                     <Image.Triggers>
@@ -870,15 +884,47 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
-                                            Format="dd/MM/yyyy"/>
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="ReleaseDate"
+                                                IsVisible="false"
+                                                MaximumDate="{Binding MaximumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference releaseDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            x:Name="releaseDateEntry"
+                                            ClassId="releasedateentry"
+                                            Text="{Binding ReleaseDateString}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            TextColor="#58595B" />
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference ReleaseDate}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -890,7 +936,7 @@
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.VREndDate}" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
                                         <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -906,14 +952,46 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
-                                            Format="dd/MM/yyyy"/>
+                                 <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="EndDate"
+                                                IsVisible="false"
+                                                MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference endDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            x:Name="endDateEntry"
+                                            ClassId="enddateentry"
+                                            Text="{Binding EndDateString}"
+                                            TextColor="#58595B" />
+
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference EndDate}"/>
+                                 </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -939,16 +1017,48 @@
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
+                                InputViewPadding="16,0,16,0"
                                 OutlineCornerRadius="15"
                                 IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
-                                            Format="dd/MM/yyyy"/> 
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                                MaximumDate="{Binding MaximumDate}"
+                                                x:Name="DateBirth"
+                                                IsVisible="false"
+                                                Format="dd/MM/yyyy">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference birthDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            Style="{StaticResource DefaultEntry}"
+                                            x:Name="birthDateEntry"
+                                            ClassId="birthdateentry"
+                                            Text="{Binding BirthDateString}"
+                                            TextColor="#58595B" />
+
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                 <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DateClickedCommand}"
+                                                              CommandParameter="{x:Reference DateBirth}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -974,6 +1084,7 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
@@ -981,7 +1092,12 @@
                                     Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+                                    <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>

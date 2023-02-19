@@ -328,7 +328,7 @@
     <value>TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
-    <value>Total amount</value>
+    <value>Total value</value>
   </data>
   <data name="TotalOfBillsUnpaid" xml:space="preserve">
     <value>Total unpaid-bill amount SAR:</value>
@@ -9444,7 +9444,7 @@ the Zakat, Tax and Customs
      <value>Send Report</value>
   </data>
   <data name="AttachmentHelperText" xml:space="preserve">
-     <value>Allowed supplies (PDF,png,JPG)</value>
+     <value>Allowed extensions (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
      <value>I want to get the reward</value>
@@ -9669,12 +9669,10 @@ Zakat, Tax and Customs Authority
 </value>
 </data>
    <data name="SurveyIntroMsg" xml:space="preserve">
-<value>
- Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?
-</value>
+<value>Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?</value>
     </data>
        <data name="questionnaire" xml:space="preserve">
-        <value>questionnaire</value>
+        <value>Questionnaire</value>
     </data>
      <data name="End" xml:space="preserve">
         <value>End</value>
@@ -9824,7 +9822,7 @@ Zakat, Tax and Customs Authority
         <value>New Declaration</value>
     </data>
     <data name="NewDeclarationNote" xml:space="preserve">
-        <value>Select the option and complete details</value>
+        <value>The e-Declaration facilitates the procedures for your arrival and departure without the need to wait and also protects you from legal liability, to know the details of the declaration, you can see </value>
     </data>
     <data name="NewDeclarationQuestion" xml:space="preserve">
         <value>Coming to the kingdom or leaving?</value>
@@ -9852,6 +9850,9 @@ Zakat, Tax and Customs Authority
     </data>
     <data name="TotalFeesPayable" xml:space="preserve">
         <value>Total fees payable</value>
+    </data>
+    <data name="DetailsTotalFeesPayable" xml:space="preserve">
+        <value>Details of the fees payable</value>
     </data>
     <data name="Select" xml:space="preserve">
         <value>Select</value>
@@ -10052,7 +10053,7 @@ Zakat, Tax and Customs Authority
     <value>Sorry, the entered total value does not require the declaration</value>
   </data>
   <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value>Sorry ... it seems that you did not choose from the questions or fill in their data</value>
+    <value>Sorry, it seems that you did not choose from the questions or fill in their data</value>
   </data>
   <data name="Servicetype" xml:space="preserve">
     <value>Service type</value>
@@ -10100,10 +10101,10 @@ Zakat, Tax and Customs Authority
     <value>The electronic declaration has been completed successfully.</value>
   </data>
   <data name="TravellerPassport" xml:space="preserve">
-    <value>Traveller Passport</value>
+    <value>ID (Passport or GCC)</value>
   </data>
   <data name="TripDate" xml:space="preserve">
-    <value>Trip Date</value>
+    <value>Travel Date</value>
   </data>
    <data name="PaidPaymentStatus" xml:space="preserve">
    <value>Paid</value>
@@ -10153,4 +10154,136 @@ Zakat, Tax and Customs Authority
   <data name="SelectAnswerMessage" xml:space="preserve">
     <value>Please Select Answer</value>
 </data>
+  <data name="TravelerCountValidation" xml:space="preserve">
+    <value>Traveler count must be more than 0</value> 
+  </data>
+   <data name="QuantityValidation" xml:space="preserve">
+    <value>Quantity must be more than 0</value> 
+  </data>
+  <data name="AddressKSAValidation" xml:space="preserve">
+    <value>The address can't contains any special characters</value> 
+  </data>
+  <data name="PermitLabel" xml:space="preserve">
+    <value>Do you have a permit?</value> 
+  </data>
+  <data name="EDeclarationTermsHeaderOne" xml:space="preserve">
+    <value>This service allows filling out the declaration form for the materials that must be declared and submitting it to customs officials upon entering or leaving Saudi territory for international travelers. These materials include:</value> 
+  </data>
+  <data name="EDeclarationTermsOne" xml:space="preserve">
+     <value>Coins or bearer negotiable instruments, gold bullion, precious metals and stones and jewelry with a value of up to 60,000 riyals or more, or the equivalent in foreign currencies.</value>
+  </data>
+  <data name="EDeclarationTermsTwo" xml:space="preserve">
+     <value>Goods in commercial quantities or with a value higher than 3000 riyals.</value>
+  </data>
+  <data name="EDeclarationTermsThree" xml:space="preserve">
+     <value>Goods subject to Excise Tax.</value>
+  </data>
+  <data name="EDeclarationTermsFour" xml:space="preserve">
+     <value>Prohibited and restricted goods and materials.</value>
+  </data>
+   <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
+    <value>The list of materials that must be declared for international travelers leaving Saudi Arabia is limited to the following:</value> 
+  </data>
+  <data name="EDeclarationTermsFive" xml:space="preserve">
+     <value>Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials.</value>
+  </data>
+  <data name="MasterVisa" xml:space="preserve">
+     <value>Master/Visa</value>
+  </data>
+    <data name="PDFFileHintTwo" xml:space="preserve">
+     <value>PDF file format max size 1MB</value>
+</data>
+    <data name="CRNoAddedSuccess" xml:space="preserve">
+     <value>CR Number added successfully</value>
+  </data>
+   <data name="NumberHint" xml:space="preserve">
+    <value>Numbers must be entered in English</value>
+  </data>
+   <data name="CustomDeclarationInformation" xml:space="preserve">
+    <value>Customs declaration information.</value>
+  </data>
+   <data name="PassengerNationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="ArrivingFromORDepartingTo" xml:space="preserve">
+    <value>Arriving From or Departing To</value>
+  </data>
+  <data name="ShipmentTracking" xml:space="preserve">
+    <value>Shipment Tracking</value>
+  </data>
+  <data name="SelectShipmentType" xml:space="preserve">
+    <value>Select Shipment Type</value>
+  </data>
+  <data name="Track" xml:space="preserve">
+    <value>Track</value>
+  </data>
+  <data name="ExpressShipping" xml:space="preserve">
+    <value>Express Shipping</value>
+  </data>
+  <data name="AirFreight" xml:space="preserve">
+    <value>Air Freight</value>
+  </data>
+  <data name="SeaFreight" xml:space="preserve">
+    <value>Sea Freight</value>
+  </data>
+  <data name="LandFreight" xml:space="preserve">
+    <value>Land Freight</value>
+  </data>
+  <data name="TrainFreight" xml:space="preserve">
+    <value>Train Freight</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+    <data name="DeclarationBillNumber" xml:space="preserve">
+    <value>Declaration Number\Bill Number</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Bill Number</value>
+  </data>
+  <data name="ShipmentDeclarationNumber" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="ShipmentDeclarationDetails" xml:space="preserve">
+    <value>Declaration Details</value>
+  </data>
+  <data name="TotalFees" xml:space="preserve">
+    <value>Total Fees</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>Customs Fees</value>
+  </data>
+  <data name="OtherFees" xml:space="preserve">
+    <value>Other Fees</value>
+  </data>
+  <data name="CIFValue" xml:space="preserve">
+    <value>CIF Value</value>
+  </data>
+  <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+    <value>For more accurate results, please enter Declaration Details.</value>
+  </data>
+  <data name="DeclarationDisclaimer" xml:space="preserve">
+    <value>The Custom Declaration doesn't Create yet.</value>
+  </data>
+  <data name="VATDisclaimer" xml:space="preserve">
+    <value>The VAT is 15% of the total shipment value.</value>
+  </data>
+  <data name="ShipmentStatus" xml:space="preserve">
+    <value>Shipment Status</value>
+  </data>
+    <data name="ContainerNumber" xml:space="preserve">
+    <value>Container Number</value>
+  </data>
+    <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>Download decleration</value>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>Upload Image</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+    <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>Allowed extensions (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
 </root>

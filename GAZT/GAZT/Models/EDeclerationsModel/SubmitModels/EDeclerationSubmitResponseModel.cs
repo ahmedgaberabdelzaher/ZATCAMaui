@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using EGAZT.Helper;
 using Prism.Mvvm;
+using EGAZT.Models.BaseModels;
+using EGAZT.Models.CustomServices.Tawreed;
 
 namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 {
@@ -24,12 +26,6 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string purpose_Arabic { get; set; }
         public string purpose_English { get; set; }
         public string otherpurpose { get; set; }
-    }
-
-    public class Header
-    {
-        public string requestID { get; set; }
-        public Status status { get; set; }
     }
 
     public class SubmitResponseProduct
@@ -73,6 +69,19 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string unit_English { get; set; }
         public bool permit { get; set; }
     }
+    public class SubmitResponseFees
+    {
+        public string name_Arabic { get; set; }
+        public string name_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(name_Arabic, name_English);
+            }
+        }
+        public double value { get; set; }
+    }
 
     public class Result
     {
@@ -83,12 +92,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
     {
         public Header header { get; set; }
         public Result result { get; set; }
-    }
-
-    public class Status
-    {
-        public string code { get; set; }
-        public string description { get; set; }
+        public MoreInformation moreInformation { get; set; }
     }
 
     public class SubmitResponseTobacco
@@ -180,6 +184,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public List<SubmitResponseProduct> product { get; set; }
         public List<ResponseCurrency> currency { get; set; }
         public List<SubmitResponseRestricted> restricted { get; set; }
+        public List<SubmitResponseFees> fees { get; set; }
     }
 
     public class InquireResponse

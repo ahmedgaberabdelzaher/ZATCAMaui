@@ -22,7 +22,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string typeName { get; set; }
         public string itemCode { get; set; }
         public int count { get; set; }
-        public int? value { get; set; }
+        public double? value { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
@@ -33,7 +33,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string otherpurpose { get; set; }
         public int count { get; set; }
         public int unit { get; set; }
-        public int? value { get; set; }
+        public double? value { get; set; }
         public int currency { get; set; }
         public string currencyName { get; set; }
         public bool permit { get; set; }
@@ -105,20 +105,20 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _travelIssuerName;
         public string travelIssuerName { get { return _travelIssuerName; } set { _travelIssuerName = value; RaisePropertyChanged(); } }
 
-        public DateTime passIssuingDate { get; set; } = DateTime.Now;
+        public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
-       // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
+        // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
 
-        public DateTime passExpiryDate { get; set; } = DateTime.Now;
+        public DateTime passExpiryDate { get; set; }
 
         //public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
 
-        public DateTime birthDate { get; set; } = DateTime.Now;
+        public DateTime birthDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
         //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
-        int _travelersCount;
-        public int travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
+        string _travelersCount;
+        public string travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
         #endregion
 
         #region Trip Model

@@ -12,6 +12,7 @@ using Acr.UserDialogs;
 using EGAZT.Controls;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.ViewModel.NewDesignViewModel.Common;
 using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.MyReports;
@@ -122,26 +123,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             SubmitReportDataPowerModel model = new SubmitReportDataPowerModel()
                             {
                                 city = SubmitReport.City,
-                                cityCode = submitReport.CityCode,
-                                companyAddress = submitReport.CompanyAddress,
-                                companyName = submitReport.CompanyName,
-                                CR = submitReport.CR,
-                                district = submitReport.District,
-                                isNeedReward = submitReport.IsNeedReward,
+                                cityCode = SubmitReport.CityCode,
+                                companyAddress = SubmitReport.CompanyAddress,
+                                companyName = SubmitReport.CompanyName,
+                                CR = SubmitReport.CR,
+                                district = SubmitReport.District,
+                                isNeedReward = SubmitReport.IsNeedReward,
                                 LanguageCode = "ar",
-                                latitude = submitReport.Latitude,
-                                longitude = submitReport.Longitude,
-                                missedField = submitReport.MissedField,
-                                regionCode = submitReport.RegionCode,
-                                regionName = submitReport.Region,
-                                reportCategory = submitReport.ReportCategory,
-                                reportCategoryName = submitReport.ReportCategoryName,
-                                reportDetails = submitReport.ReportDetails,
-                                reporterEmail = submitReport.ReporterEmail,
-                                reporterMobileNumber = submitReport.ReporterMobileNumber,
-                                reporterName_Arabic = submitReport.ReporterNameAr,
-                                reporterName_English = submitReport.ReporterNameEn,
-                                reporterWantToSharePersonalInfo = submitReport.ReporterWantToSharePersonalInfo,
+                                latitude = SubmitReport.Latitude,
+                                longitude = SubmitReport.Longitude,
+                                missedField = SubmitReport.MissedField,
+                                regionCode = SubmitReport.RegionCode,
+                                regionName = SubmitReport.Region,
+                                reportCategory = SubmitReport.ReportCategory,
+                                reportCategoryName = SubmitReport.ReportCategoryName,
+                                reportDetails = SubmitReport.ReportDetails,
+                                reporterEmail = SubmitReport.ReporterEmail,
+                                reporterMobileNumber = SubmitReport.ReporterMobileNumber,
+                                reporterName_Arabic = SubmitReport.ReporterNameAr,
+                                reporterName_English = SubmitReport.ReporterNameEn,
+                                reporterWantToSharePersonalInfo = SubmitReport.ReporterWantToSharePersonalInfo,
                                 reportTaxType = SubmitReport.ReportTaxType,
                                 reportTypeName = SubmitReport.ReportTypeName,
                                 street = SubmitReport.Street,
@@ -151,36 +152,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 attachements = DATAPowerAttachements
 
                             };
-                           ///
-
                             var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
-                            #region VatResponse
-                            /*if (reportResult.Success)
-                             * 
-                            {
-                                ReportNumberResult = reportResult.Result?.Data;
-                                SubmitReport = new SubmitReportModel();
-                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
-                                _navigationService.NavigateTo("/ReportSuccessPage");
-                        
-                            }
-                            */
-                            #endregion
                             #region DATA Power Response
-                            if (reportResult.header.status.code== "I000000")
+                            if (reportResult.header.status.code == "I000000")
                             {
                                 ReportNumberResult = reportResult.result?.referenceNumber;
                                 SubmitReport = new SubmitReportModel();
+                                IsCityShowen = false;
+                                IsReportCategoryShowen = false;
+                                IsMissingFieldShowen = false;
                                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
                                 _navigationService.NavigateTo("/ReportSuccessPage");
-                        
+
                             }
-                           
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.RequestTimeoutDescription;
+                            }
+
                             #endregion
                             IsLoading = false;
 
                         }
-                        }
+                    }
                     catch (Exception ex)
                     {
                         IsLoading = false;
@@ -198,8 +193,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" });
+                    UploadingPopup poupUploadingWindow = new UploadingPopup();
+                    await PopupNavigation.Instance.PushAsync(poupUploadingWindow);
 
+                });
+            }
+        }
+
+        public override ICommand SelectedUploadLabelCommand
+        {
+            get
+            {
+                return new Command<string>(async (selectedLabel) =>
+                {
+                    await PopupNavigation.Instance.PopAsync(true);
+                    await PickAndShow(selectedLabel, new PickOptions() { PickerTitle = "Pick Files" });
 
                 });
             }
@@ -213,20 +221,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 {
                     try
                     {
+                        IsLoading = true;
                         await MoveMapToLocation();
+                        IsLoading = false;
                     }
                     catch (Exception ex)
                     {
+                        IsLoading = false;
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.Somethingwentwrong;
+                        MessageTxt = AppResources.LocationAccess;
                     }
-                   
+
                 });
 
             }
         }
 
-       public ICommand CopyCommand
+        public ICommand CopyCommand
         {
             get
             {
@@ -242,16 +253,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     try
                     {
-                        _ = await GetCurrentLocation();
+                        IsLoading = true;
+                        var x = await GetCurrentLocation();
+                        IsLoading = false;
                     }
                     catch (Exception ex)
                     {
+                        IsLoading = false;
                         IsShowMsgView = true;
-                        MessageTxt = AppResources.Somethingwentwrong;
+                        MessageTxt = AppResources.LocationAccess;
                     }
 
 
@@ -270,6 +284,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand SearchEntryCommand
         {
 
@@ -307,11 +322,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("/InquiryAboutMyReportsPage");
-                    
+
 
                 });
             }
         }
+
         public ICommand BackToHomeCommand
         {
             get
@@ -323,6 +339,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand OpenDateCommand
         {
             get
@@ -334,6 +351,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 });
             }
         }
+
         public ICommand GoToTermsPageCommand
         {
             get
@@ -420,7 +438,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             isReportTypeSelected = false;
                             SubmitReport.ReportCategoryName = string.Empty;
                             SubmitReport.ReportCategory = string.Empty;
-
+                            SubmitReport.MissedFieldName = string.Empty;
+                            SubmitReport.MissedField = string.Empty;
+                            IsMissingFieldShowen = false;
                             IsReportCategoryShowen = string.IsNullOrWhiteSpace(SubmitReport.ReportTypeName) ? false : true;
                         }
                         else if (isReportCategorySelected)
@@ -479,18 +499,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isReportTypeSelected = true;
-                    isReportCategorySelected = false;
-                    isMissingFieldSelected = false;
-                    isRegionSelected = false;
-                    var reportType = await this._submitReportServices.GetReportType();
-                    var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportType;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isReportTypeSelected = true;
+                        isReportCategorySelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        var reportType = await this._submitReportServices.GetReportType();
+                        var result = reportType?.reportTaxTypeList?.Select(c => new BottomSheetModel() { Id = c.reportTaxTypeCode, Name = c.reportTaxTypeName });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportType;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+
                 });
 
             }
@@ -502,37 +530,53 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(() =>
                 {
-                    isReportCategorySelected = true;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    isRegionSelected = false;
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportCategory;
-                    var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    try
+                    {
+                        isReportCategorySelected = true;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
+                        isRegionSelected = false;
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCategory;
+                        var result = ReportCategory?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Title });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
 
                 });
             }
         }
+
         public ICommand OpenMissingFieldCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isMissingFieldSelected = true;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isRegionSelected = false;
-                    var reportType = await this._submitReportServices.GetLookUps();
-                    var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    HeaderTitle = AppResources.ReportMissingField;
-                    IsLoading = false;
+                    try
+                    {
+                        IsLoading = true;
+                        isMissingFieldSelected = true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isRegionSelected = false;
+                        var reportType = await this._submitReportServices.GetLookUps();
+                        var result = reportType?.lookUpList?.Select(c => new BottomSheetModel() { Id = c.lookupId, Name = c.lookupName });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        HeaderTitle = AppResources.ReportMissingField;
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+
 
                 });
             }
@@ -544,20 +588,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isRegionSelected = true;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    if (RegionsList == null)
+                    try
+                    {
+                        IsLoading = true;
+                        isRegionSelected = true;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
                         RegionsList = await this._submitReportServices.GetRegions();
+                        var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZProvinceRegion;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
 
-                    var result = RegionsList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ZZZZProvinceRegion;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
                 });
             }
         }
@@ -568,20 +618,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             {
                 return new Command(async () =>
                 {
-                    IsLoading = true;
-                    isRegionSelected = false;
-                    isReportCategorySelected = false;
-                    isReportTypeSelected = false;
-                    isMissingFieldSelected = false;
-                    if (CitysList == null)
+                    try
+                    {
+                        IsLoading = true;
+                        isRegionSelected = false;
+                        isReportCategorySelected = false;
+                        isReportTypeSelected = false;
+                        isMissingFieldSelected = false;
                         CitysList = await this._submitReportServices.GetCities(SubmitReport?.RegionCode);
+                        var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ReportCity;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
 
-                    var result = CitysList?.Select(c => new BottomSheetModel() { Id = c.Id, Name = c.Name });
-                    BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
-                    IsShowBottomSheet = true;
-                    HeaderTitle = AppResources.ReportCity;
-                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                    IsLoading = false;
 
                 });
             }
@@ -596,16 +652,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
         #region Methods
-        private async Task PickAndShow(PickOptions options)
+        private async Task PickAndShow(string selectedLabel ,PickOptions options)
         {
             try
             {
-                var result = await FilePicker.PickAsync(options);
+                FileResult result;
+
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    if(selectedLabel.Equals("image"))
+                        result = await MediaPicker.PickPhotoAsync();
+                    else
+                        result = await FilePicker.PickAsync(options);
+                }
+                else
+                {
+                     result = await FilePicker.PickAsync(options);
+                }
+
                 if (result != null)
                 {
                     var Text = $"File Name: {result.FileName}";
-                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
+                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||result.FileName.EndsWith("jpeg", StringComparison.OrdinalIgnoreCase)
+                        || result.FileName.EndsWith("doc", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("docx", StringComparison.OrdinalIgnoreCase)
+                        || result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase) || result.FileName.EndsWith("pdf", StringComparison.OrdinalIgnoreCase))
                     {
 
                         var lenght = new FileInfo(result.FullPath).Length;
@@ -627,11 +697,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             reportfile.fileBase64 = content;
                             reportfile.fileFullName = result.FileName;
                             reportfile.fileExtinction = Path.GetExtension(result.FileName);
-                            //reportfile.filecontentStream = stream;
-                            //reportfile.filename = result.FileName;
-                            //reportfile.FileSize = Math.Round(size, 2);
-                            //reportfile.Id = result.FileName + System.DateTime.Now.Ticks;
-                            //reportfile.paramFileStream= File.ReadAllBytes(result.FullPath);
                             ReportUloadedFiles.Add(reportfile);
                             IsTherePDFUploaded = true;
 
@@ -661,6 +726,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
 
         }
+
         private async Task<string> ConvertToBase64(Stream stream)
         {
             if (stream is MemoryStream memoryStream)
@@ -675,6 +741,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
             return Convert.ToBase64String(bytes);
         }
+
         private bool IsValidateReport()
         {
 
@@ -705,16 +772,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            if(!string.IsNullOrWhiteSpace(SubmitReport.TIN))
-            { 
-                if(!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
+            if (!string.IsNullOrWhiteSpace(SubmitReport.TIN))
+            {
+                if (!Regex.IsMatch(SubmitReport.TIN, @"^\d{10}$"))
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly +"; "+ AppResources.ZZTINnumberlengthcannotbelessthan10digits;
+                    MessageTxt = AppResources.ZZTINnumberconsistsofnumbersonly + "; " + AppResources.ZZTINnumberlengthcannotbelessthan10digits;
                     return false;
-                    
+
                 }
-            
+
             }
             if (!string.IsNullOrWhiteSpace(SubmitReport.CR))
             {
@@ -730,6 +797,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             return true;
 
         }
+
         private bool IsValidateTermsReport()
         {
             Regex phoneRegex = new Regex(@"^05[0-9]{8}$");
@@ -746,7 +814,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                     return false;
 
                 }
-                else if (!Email.IsMatch(SubmitReport.ReporterEmail))
+                else if (!Email.IsMatch(SubmitReport.ReporterEmail.ToLower()))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.InvalidEmailFormat;
@@ -772,6 +840,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             if (statusLocationAlways == PermissionStatus.Granted || statusLocationWhenInUse == PermissionStatus.Granted)
             {
                 var location = await Geolocation.GetLocationAsync();
+                if (location==null)
+                {
+                    location = await Geolocation.GetLastKnownLocationAsync();
+                }
 
                 SubmitReport.Latitude = location.Latitude;
                 SubmitReport.Longitude = location.Longitude;
@@ -782,7 +854,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
 
-                SubmitReport.Street = possibleAddresses.FirstOrDefault();
+                SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
 
                 SubmitReport.Location = $"{SubmitReport.Latitude},{SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
 
@@ -790,8 +862,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
             else
             {
+                IsLoading = false;
                 await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-               return false;
+                return false;
 
             }
         }
@@ -812,8 +885,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 GoogleMap?.Pins.Clear();
                 GoogleMap?.Pins.Add(new Pin()
                 {
-                    Address = SubmitReport.Street,
-                    Label = SubmitReport.Street,
+                    Address = SubmitReport.CompanyAddress,
+                    Label = SubmitReport.CompanyAddress,
                     Position = new Position(SubmitReport.Latitude, SubmitReport.Longitude)
                 });
 
@@ -821,6 +894,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             }
             else
             {
+                IsLoading = false;
                 IsShowMsgView = true;
                 MessageTxt = AppResources.LocationAccess;
             }
@@ -839,6 +913,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
             else if (currentPage.GetType().Name == new SubmitReportPage().GetType().Name)
             {
                 SubmitReport = new SubmitReportModel();
+                IsCityShowen = false;
+                IsReportCategoryShowen = false;
+                IsMissingFieldShowen = false;
                 ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
             }
             _navigationService.GoBack();

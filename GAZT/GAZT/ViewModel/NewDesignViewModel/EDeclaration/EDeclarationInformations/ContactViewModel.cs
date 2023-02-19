@@ -28,6 +28,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         ObservableCollection<BottomSheetModel> _TotalFeesList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> TotalFeesList { get { return _TotalFeesList; } set { _TotalFeesList = value; RaisePropertyChanged(); } }
 
+        ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
@@ -115,6 +118,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         return true;
                     }
+                    else if( !string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    {
+                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+
+                    }
+                }
+                else
+                {
+                    MessageTxt = AppResources.RequestTimeoutDescription;
+                    IsShowMsgView = true;
+                    IsLoading = false;
+
                 }
             }
             catch (Exception ex)
@@ -124,9 +147,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             finally
             {
                 IsLoading = false;
+               
             }
             return false;
-
         }
 
 
@@ -146,13 +169,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                           
                             if (TravelerDeclarationResponse != null)
                             {
-                                DateTime.TryParse(TravelerDeclarationResponse.travelDate.ToString(), out date);
-                                TravelerDeclarationResponse.TravelDateString = date.ToString("dd/MM/yyyy");
+                                TravelerDeclarationResponse.TravelDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
+
                                 TravelerDeclarationResponse.totalFees = Math.Round(TravelerDeclarationResponse.totalFees, 2);
+
                                 TravelerDeclarationResponse.tobacco?.ForEach(t => { TotalFeesList.Add(new BottomSheetModel { Name = t.Name, Id = $"(x {t.count.ToString()})" }); });
+
                                 TravelerDeclarationResponse.product?.ForEach(p => { TotalFeesList.Add(new BottomSheetModel { Name = p.Name, Id = $"(x {p.count.ToString()})" }); });
+
                                 TravelerDeclarationResponse.currency?.ForEach(c => { TotalFeesList.Add(new BottomSheetModel { Name = c.Name }); });
+
                                 TravelerDeclarationResponse.restricted?.ForEach(r => { TotalFeesList.Add(new BottomSheetModel { Name = r.Name, Id = $"(x {r.count.ToString()})" }); });
+
+                                TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
+
                                 _navigationService.NavigateTo("/EDeclarationSuccessPage");
                             }
                             
@@ -196,10 +226,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool IsValidateContactInfo()
         {
 
-           // Regex phoneRegex = new Regex(@"^5[0-9]{8}$");
-            Regex phoneRegex = new Regex(@"[^\d]");
+            Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");
+            Regex phoneRegex = new Regex(@"^[0-9]+$");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
-
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]"); 
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.phoneNumber)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.address)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.email))
@@ -209,16 +239,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return false;
 
             }
-            else if (!Email.IsMatch(SubmitModel.travelerDeclaration.email))
+            else if (!Email.IsMatch(SubmitModel.travelerDeclaration.email.ToLower()))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.InvalidEmailFormat;
                 return false;
             }
-            else if (phoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
+            else if (!phoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
+            else if (SubmitModel.travelerDeclaration.CountryCode.Equals("+966"))
+            {
+                if (!KSAphoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.EnterValidMobileNumber;
+                    return false;
+                }
+               
+            }
+            else if (address.IsMatch(SubmitModel.travelerDeclaration.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.AddressKSAValidation;
                 return false;
             }
             SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + SubmitModel.travelerDeclaration.phoneNumber;

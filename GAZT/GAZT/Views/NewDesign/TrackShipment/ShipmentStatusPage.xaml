@@ -1,0 +1,435 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.TrackShipment.ShipmentStatusPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+         <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Text="{x:Static ResourceManager:AppResources.ShipmentStatus}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout Spacing="20">
+
+                        <!--Title -->
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="0,30,0,0">
+
+                            <!--  Select Shipment Type Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.ShipmentStatus}"
+                                TextColor="{StaticResource Primary}" />
+
+                            <!--Shipment icon-->
+                            <Image Aspect="AspectFit"
+                                    WidthRequest="40"
+                                    HeightRequest="30"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="{Binding DrawShipmentTrack.ShipmentCardImage}"/>
+
+                        </StackLayout>
+
+                        <StackLayout BindableLayout.ItemsSource="{Binding ShipmentStatusList}"
+                                     BindableLayout.EmptyView="{x:Static ResourceManager:AppResources.DeclarationDisclaimer}"
+                                     Spacing="0">
+                            <BindableLayout.ItemTemplate>
+                                 <DataTemplate>
+
+                                      <Grid RowDefinitions="Auto,Auto"
+                                            ColumnDefinitions="Auto,Auto"
+                                            ColumnSpacing="15"
+                                            RowSpacing="0">
+
+                                            <!--Circle button 1-->
+                                            <Image
+                                                Aspect="AspectFit"
+                                                InputTransparent="True"
+                                                VerticalOptions="Start"
+                                                HorizontalOptions="Start"
+                                                Source="{Binding StatusImage}"/>
+
+                                            <!--  Vertical Line  -->
+                                            <BoxView
+                                                Grid.Row="1"
+                                                WidthRequest="1"
+                                                IsVisible="{Binding HasVerticalLine}"
+                                                VerticalOptions="Fill"
+                                                HorizontalOptions="Center"
+                                                BackgroundColor="#0996D4" />
+
+                                            <!--  Date Label  -->
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                Grid.Column="1"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                Text="{Binding ShipmentStatusDateString}"
+                                                TextColor="#565655" />
+
+                                            <!--  Status Label  -->
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="16"
+                                                Grid.Column="1"
+                                                Grid.Row="1"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Start"
+                                                Text="{Binding ShipmentStatusValue}"
+                                                TextColor="#002447" />
+
+                                      </Grid>
+
+                                 </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+
+                        <!--#region Frame Declaration Values-->
+                        <Frame 
+                            Padding="15"
+                            CornerRadius="15"
+                            BorderColor="#EBEBEB"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--Frame Content-->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal"
+                                                Spacing="0">
+
+                                    <!--  Declaration Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="20"
+                                        Padding="10"
+                                        TextColor="#002447" 
+                                        Text="{x:Static ResourceManager:AppResources.DeclarationBillNumber}"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    WidthRequest="20"
+                                    HorizontalOptions="FillAndExpand"
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="1" />
+
+                                <!--#region Declaration/Bill Number Values -->
+                                <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                        RowSpacing="15"
+                                        ColumnDefinitions="2*,*">
+
+                                    <!-- TotalFees Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        TextColor="#999999" 
+                                        Text="{x:Static ResourceManager:AppResources.TotalFees}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  TotalFees value Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Column="1"
+                                        Text="{Binding TrackShipmentResponse.totalFees}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Custom Fees Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#999999"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Row="1"
+                                        Text="{x:Static ResourceManager:AppResources.CustomsFees}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  CustomsFees value Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        Text="{Binding TrackShipmentResponse.customs}"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Row="1"
+                                        VerticalOptions="Start">
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  VAT Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        Grid.Row="2"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        TextColor="#999999" 
+                                        Text="{x:Static ResourceManager:AppResources.VATCertificates}"
+                                        VerticalOptions="Start" />
+
+                                     <!--  VATDisclaimer Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        Grid.Row="3"
+                                        IsVisible="false"
+                                        LineSpacing="1"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        TextColor="#999999" 
+                                        Text="{x:Static ResourceManager:AppResources.VATDisclaimer}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="true"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  VAT value Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding TrackShipmentResponse.VAT}"
+                                        VerticalOptions="Start" />
+
+                                    <!--  CIF Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#999999"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Row="3"
+                                        Text="{x:Static ResourceManager:AppResources.CIFValue}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  CIF value Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Row="3"
+                                        Text="{Binding TrackShipmentResponse.CIF}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Other Fees Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        Grid.Row="4"
+                                        LineBreakMode="WordWrap"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        TextColor="#999999"
+                                        Text="{x:Static ResourceManager:AppResources.OtherFees}"
+                                        VerticalOptions="Start" >
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Other Fees Value Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="Start"
+                                        FontSize="14"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        Grid.Column="1"
+                                        Grid.Row="4"
+                                        Text="{Binding TrackShipmentResponse.others}"
+                                        VerticalOptions="Start" >
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger TargetType="custom:CustomLabel"
+                                                         Value="True"
+                                                         Binding="{Binding TrackShipmentResponse.isCombined}">
+
+                                                <Setter Property="IsVisible" Value="false"/>
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                </Grid>
+                                <!--#endregion Declaration/Bill Number Values-->
+
+                            </StackLayout>
+                    
+                         </Frame>
+                         <!--#endregion Frame Declaration Values-->
+
+                         <!-- Back To home Button  -->
+                        <buttons:SfButton
+                            Margin="0,15"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding BackToHomeCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.BackToHome}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
+

@@ -26,14 +26,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
     }
 
 
-    public class HomeViewModel:BaseViewModel
+    public class HomeViewModel : BaseViewModel
     {
 
 
-        int itemCountPerRow=2;
+        int itemCountPerRow = 2;
         public int ItemCountPerRow { get { return itemCountPerRow; } set { itemCountPerRow = value; RaisePropertyChanged(); } }
 
-        bool isHorizontalLstVisible=true;
+        bool isHorizontalLstVisible = true;
         public bool IsHorizontalLstVisible { get { return isHorizontalLstVisible; } set { isHorizontalLstVisible = value; RaisePropertyChanged(); } }
 
         bool isVerticalLstVisible;
@@ -51,13 +51,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
         ObservableCollection<MenuModel> sideMenuServiceLst;
         public ObservableCollection<MenuModel> SideMenuServiceLst { get { return sideMenuServiceLst; } set { sideMenuServiceLst = value; RaisePropertyChanged(); } }
 
-    ObservableCollection<MenuModel> customeMenuVerticalLst;
+        ObservableCollection<MenuModel> customeMenuVerticalLst;
         public ObservableCollection<MenuModel> CustomeMenuVerticalLst { get { return customeMenuVerticalLst; } set { customeMenuVerticalLst = value; RaisePropertyChanged(); } }
 
 
-       /* int currentTab =1;
-        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); }  }
-       */
+        /* int currentTab =1;
+         public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); }  }
+        */
 
         public HomeViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
@@ -161,14 +161,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
         private void ChangeLanguage()
         {
-          
+
             if (App.IsArabic)
             {
                 App.IsArabic = false;
                 App.changeFontFamily(App.appObj);
-                
+
                 AppDirection = FlowDirection.LeftToRight;
-                
+
             }
             else
             {
@@ -178,7 +178,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             }
             SetFlowDirection(); GetHomeMenuLst();
             GetSideMenuLst();
-           
+
             _navigationService.NavigateTo("/SideMenuView");
         }
 
@@ -201,13 +201,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.EinvoiceScanning, ID="E_InvoicesScan",ImageSource="EinvoiceScanning",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EinvoiceServiceDesc:""
                 }
-               
+
            };
         }
 
         public void GetExciseServiceMenuLst(bool isvertical = false)
         {
-           
+
             CustomeMenuLst = new ObservableCollection<MenuModel>()
            {
 
@@ -229,19 +229,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                  new MenuModel()
                 {
-                 // Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+               // Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
                  Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
 
                  }
 
            };
-           
+
         }
 
 
-        public void GetCustomServiceMenuLst(bool isvertical=false)
+        public void GetCustomServiceMenuLst(bool isvertical = false)
         {
-          
+
             CustomeMenuLst = new ObservableCollection<MenuModel>()
            {
 
@@ -251,7 +251,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                  new MenuModel() {
                    Name=AppResources.Inquiryaboutacustomsdeclaration, ID=App.InquiryAboutCustomsDeclarationView,ImageSource="InquireCustomDeclerations",ColumnNo=isvertical?0:1,Row=isvertical?1:0,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote2:""
-                }
+                },
                  /*,
                  new MenuModel()
                 {
@@ -270,10 +270,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
                 }*/
+                  new MenuModel()
+                {
+                   Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
+                }
            };
         }
 
-          public void GetCustomeMenuVerticalLst(bool isvertical=true)
+        public void GetCustomeMenuVerticalLst(bool isvertical = true)
         {
 
             CustomeMenuVerticalLst = new ObservableCollection<MenuModel>()
@@ -305,57 +309,57 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 }
            };
         }
-  /*
-                public ICommand ChangeCurrentTabCommand
-                {
-                    get
-                    {
-                        return new Command<string>((tab) =>
-                        {
-                            if (tab!=currentTab.ToString())
-                            {
-                                switch (tab)
-                                {
-                                    case "0":
-                                        _navigationService.NavigateTo("/Home", tab);
-                                        break;
-                                    case "1":
-                                        _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
-                                        break;
-                                    case "2":
-                                        _navigationService.NavigateTo("/SideMenuView");
-                                        break;
-                                    case "3":
-                                        _navigationService.NavigateTo($"/LiveVideoPage");
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                /*if (tab=="1")
-                                {
+        /*
+                      public ICommand ChangeCurrentTabCommand
+                      {
+                          get
+                          {
+                              return new Command<string>((tab) =>
+                              {
+                                  if (tab!=currentTab.ToString())
+                                  {
+                                      switch (tab)
+                                      {
+                                          case "0":
+                                              _navigationService.NavigateTo("/Home", tab);
+                                              break;
+                                          case "1":
+                                              _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                                              break;
+                                          case "2":
+                                              _navigationService.NavigateTo("/SideMenuView");
+                                              break;
+                                          case "3":
+                                              _navigationService.NavigateTo($"/LiveVideoPage");
+                                              break;
+                                          default:
+                                              break;
+                                      }
+                                      /*if (tab=="1")
+                                      {
 
-                                    return;
-                                }
-                                else if (tab =="3")
-                                {
-                                    _navigationService.NavigateTo($"/LiveVideoPage");
-                                    return;
-                                }
-                                CurrentTab = int.Parse(tab);
-                                Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
-                            }
+                                          return;
+                                      }
+                                      else if (tab =="3")
+                                      {
+                                          _navigationService.NavigateTo($"/LiveVideoPage");
+                                          return;
+                                      }
+                                      CurrentTab = int.Parse(tab);
+                                      Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
+                                  }
 
-                        });
-                    }
-                }
-        */
+                              });
+                          }
+                      }
+              */
         public ICommand NavigateCommand
         {
             get
             {
                 return new Command<MenuModel>((MenuItem) =>
                 {
-                   
+
                     switch (MenuItem.ID)
                     {
                         case "1":
@@ -378,13 +382,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             }
         }
 
-      public ICommand NavigateToServiceCommand
+        public ICommand NavigateToServiceCommand
         {
             get
             {
                 return new Command<MenuModel>((menuItem) =>
                 {
-                    switch(menuItem.ID)
+                    switch (menuItem.ID)
                     {
                         case "CreateE_Declaration":
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.eDeclaration);
@@ -399,7 +403,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("IAMLoginView", 2);
                             break;
                         default:
-                  _navigationService.NavigateTo(menuItem.ID);
+                            _navigationService.NavigateTo(menuItem.ID);
                             break;
 
                     }
@@ -413,7 +417,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
             {
                 return new Command<string>((ItemCount) =>
                 {
-                    if (int.Parse(ItemCount)!= ItemCountPerRow)
+                    if (int.Parse(ItemCount) != ItemCountPerRow)
                     {
                         // int cIndex = 1;
                         // int RIndex = 1;
@@ -430,11 +434,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                                   {
                                       GetCustomServiceMenuLst(false);
                                   }*/
-                               GetCustomServiceMenuLst(isvertical);
-                               // IsVerticalLstVisible = isvertical;
-                               // IsHorizontalLstVisible = !isvertical;
+                                GetCustomServiceMenuLst(isvertical);
+                                // IsVerticalLstVisible = isvertical;
+                                // IsHorizontalLstVisible = !isvertical;
                                 break;
-                                 case Services.VATServices:
+                            case Services.VATServices:
                                 GetVatServiceMenuLst(isvertical);
                                 break;
                             case Services.ExciseTaxServices:
@@ -443,7 +447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             case Services.GeneralServices:
                                 GetGeneralServiceMenuLst(isvertical);
                                 break;
-                            
+
                             default:
                                 break;
                         }
@@ -468,8 +472,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             cIndex++;
                         }*/
                     }
-           
-                  
+
+
 
                 });
             }

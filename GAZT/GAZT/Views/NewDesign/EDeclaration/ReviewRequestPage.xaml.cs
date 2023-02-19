@@ -20,8 +20,10 @@ namespace EGAZT.Views.NewDesign.EDeclaration
 
         protected override void OnDisappearing()
         {
+            App.Locator.StateManager.DeleteItem("inquireDeclaration");
             viewModel.Inquire = new TravelerDeclarationResponse();
             viewModel.InquireList = new ObservableCollection<BottomSheetModel>();
+            viewModel.DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
             base.OnDisappearing();
         }
     }

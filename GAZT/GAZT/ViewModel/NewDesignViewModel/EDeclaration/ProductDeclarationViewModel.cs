@@ -18,6 +18,7 @@ using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using Xamarin.Forms;
 using GAZT;
 using EGAZT.AppConfigurations;
+using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -63,15 +64,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         TobaccoItemsModel selectedTobacoItem;
         public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
 
-        int? quantity;
-        public int? Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
+        string quantity;
+        public string Quantity { get { return quantity; } set { quantity = value; RaisePropertyChanged(); } }
 
         string restrictedItem;
         public string RestrictedItem { get { return restrictedItem; } set { restrictedItem = value; RaisePropertyChanged(); } }
 
 
-        int? totalValue;
-        public int? TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
+        string totalValue;
+        public string TotalValue { get { return totalValue; } set { totalValue = value; RaisePropertyChanged(); } }
 
 
         string question;
@@ -100,7 +101,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
         public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
-
 
         #endregion
 
@@ -201,9 +201,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
                             return;
                         }
-                     //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
-                            if (IsArrivingPlaneSelected && TotalValue < 3000 && QFlow == 2&&IsYesSelected)
-                            {
+                        //   if (IsArrivingPlaneSelected && FeesCalculatorResponse?.totalPayment < 3000 && QFlow == 2)
+                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 2 && IsYesSelected)
+                        {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
                             return;
@@ -318,6 +318,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             TotalValue = null;
         }
+
         public ICommand PrevoiusCommand
         {
             get
@@ -343,6 +344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         public void BackMethod()
         {
             if (IsShowBottomSheet)
@@ -356,11 +358,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 if (!IsArrivingPlaneSelected && QFlow == 3)
                 {
-                    FeesCalculatorResponse = new FeesCalculatorResponse();
-                    CardData = new ObservableCollection<EDeclerationCardModel>();
-                    SubmitModel.travelerDeclaration = new TravelerDeclaration();
-                    _navigationService.GoBack();
 
+                    ClearObjectData();
                     return;
                 }
                 QFlow--;
@@ -368,21 +367,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             else
             {
-                _navigationService.GoBack();
-                FeesCalculatorResponse = new FeesCalculatorResponse();
-                CardData = new ObservableCollection<EDeclerationCardModel>();
-                SubmitModel.travelerDeclaration = new TravelerDeclaration();
+                ClearObjectData();
 
             }
         }
-
+        private void ClearObjectData()
+        {
+            FeesCalculatorResponse = new FeesCalculatorResponse();
+            CardData = new ObservableCollection<EDeclerationCardModel>();
+            SubmitModel.travelerDeclaration = new TravelerDeclaration();
+            _navigationService.GoBack();
+        }
         public ICommand UploadFileCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, 1);
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
                 });
             }
         }
@@ -432,6 +434,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         public ICommand OpenProductSubTypesCommand
         {
             get
@@ -659,39 +662,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         void ClearTobacoData()
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
             Quantity = null;
         }
+
         bool CheckTobacoDataNotNull()
         {
-            if (SelectedTobacoItem != null && SelectedTobacoType != null && Quantity != null)
+            if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity))
             {
                 return true;
             }
             return false;
         }
+
         bool CheckCurrencyDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && TotalValue != null)
+            if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue))
             {
+                if (SelectedPurposes.ID == 8)
+                {
+                    if (string.IsNullOrWhiteSpace(OtherPurpose))
+                        return false;
+                }
                 return true;
             }
             return false;
         }
+
         bool CheckrestrictedDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedPurposes != null && TotalValue != null && SelectedUnit != null && Quantity != null && Quantity > 0 && !String.IsNullOrWhiteSpace(RestrictedItem))
+            if (SelectedCurrencie != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue) && SelectedUnit != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(RestrictedItem))
             {
+                if (SelectedPurposes.ID == 8)
+                {
+                    if (string.IsNullOrWhiteSpace(OtherPurpose))
+                        return false;
+                }
                 return true;
             }
             return false;
         }
+
         bool CheckProductDataNotNull()
         {
-            if (SelectedProductTypes != null && Quantity != null && TotalValue != null)
+            if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (IsProductItemHaveSubType && SelectedProductSubTypes == null)
                 {
@@ -701,15 +719,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             return false;
         }
-        void ClearCurrencyData()
-        {
-            SelectedCurrencie = null;
-            SelectedMaterialTypes = null;
-            Quantity = null;
-            OtherPurpose = "";
-            SelectedPurposes = null;
-            TotalValue = null;
-        }
+
         public ICommand OpenTobacoItemssCommand
         {
             get
@@ -789,6 +799,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             {
                                 IsProductItemHaveSubType = false;
                             }
+                            SelectedProductSubTypes = null;
                             isProductTypeSelected = false;
                         }
                         else if (isProductSubTypeSelected)
@@ -929,7 +940,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
-
         public ICommand SelectIsPermitCommand
         {
             get
@@ -954,6 +964,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             }
         }
+
         private void AddCurrency()
         {
             if (CheckCurrencyDataNotNull())
@@ -993,14 +1004,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             if (CheckrestrictedDataNotNull())
             {
 
-
+                if (int.Parse(Quantity ?? "0") <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Restricted()
                 {
                     otherpurpose = OtherPurpose,
                     typeName = RestrictedItem,
                     unit = SelectedUnit.id,
-                    count = Quantity.Value,
-                    value = TotalValue,
+                    count = int.Parse(Quantity ?? "0"),
+                    value = Double.Parse(TotalValue),
                     purpose = SelectedPurposes.ID,
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
@@ -1024,27 +1040,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 DisplayRequiredDataMsg();
             }
         }
-        void ClearRestrictedData()
-        {
-            SelectedCurrencie = null;
-            SelectedMaterialTypes = null;
-            Quantity = null;
-            OtherPurpose = "";
-            IsPermit = false;
-            selectedUnit = null;
-            UploadedFiles = null;
-            SelectedPurposes = null;
-            TotalValue = null;
-        }
+
         private async Task AddTobacoItem()
         {
             if (CheckTobacoDataNotNull())
             {
 
-
+                if (int.Parse(Quantity?? "0") <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
                 var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
                 {
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity ?? "0"),
                     typeName = SelectedTobacoType.Name,
                     itemCode = long.Parse(selectedTobacoItem.itemCode),
                     measurementUnit = selectedTobacoItem.measurementUnit,
@@ -1073,7 +1083,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
                 {
                     harmonizedCode = item.itemCode.ToString(),
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity?? "0"),
                     sequence = item.taxSequence,
                     ID = item.ID
                 };
@@ -1082,23 +1092,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
             else
             {
+
                 DisplayRequiredDataMsg();
             }
         }
-
-        private void DisplayRequiredDataMsg()
-        {
-            IsShowMsgView = true;
-            MessageTxt = AppResources.RequiredData;
-        }
-
-
 
         private async Task AddProductItem()
         {
             if (CheckProductDataNotNull())
             {
-                if (TotalValue < 3000 )
+                if (int.Parse(Quantity??"0") <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
+                if (Double.Parse(TotalValue) < 3000)
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -1106,10 +1115,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 }
                 var item = new Models.EDeclerationsModel.SubmitModels.Product()
                 {
-                    count = Quantity.Value,
+                    count = int.Parse(Quantity??"0"),
                     typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                     itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
-                    value = TotalValue
+                    value = Double.Parse(TotalValue)
 
                 };
                 /* if (SubmitModel.travelerDeclaration == null|| SubmitModel.travelerDeclaration.product==null)
@@ -1133,7 +1142,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
                 {
                     harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
-                    value = TotalValue,
+                    value = Double.Parse(TotalValue),
                     ID = item.ID
                 };
                 CardData.Add(cardItem);
@@ -1146,6 +1155,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 DisplayRequiredDataMsg();
             }
         }
+
+        void ClearRestrictedData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity = null;
+            OtherPurpose = "";
+            IsPermit = false;
+            selectedUnit = null;
+            UploadedFiles = null;
+            SelectedPurposes = null;
+            TotalValue = null;
+        }
+
+        void ClearCurrencyData()
+        {
+            SelectedCurrencie = null;
+            SelectedMaterialTypes = null;
+            Quantity = null;
+            OtherPurpose = "";
+            SelectedPurposes = null;
+            TotalValue = null;
+        }
+
+        private void DisplayRequiredDataMsg()
+        {
+            IsShowMsgView = true;
+            MessageTxt = AppResources.RequiredData;
+        }
+
         void ClearProductData()
         {
             SelectedProductTypes = null;
@@ -1154,6 +1193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             IsProductItemHaveSubType = false;
             TotalValue = null;
         }
+
         private async Task CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
             try
@@ -1205,6 +1245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
 
         }
+
         public ICommand SearchEntryCommand
         {
 
@@ -1260,7 +1301,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         #endregion
         public ProductDeclarationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices DeclerationServices) : base(navigationService, dialogService, DeclerationServices)
         {
-            
+
 
         }
     }

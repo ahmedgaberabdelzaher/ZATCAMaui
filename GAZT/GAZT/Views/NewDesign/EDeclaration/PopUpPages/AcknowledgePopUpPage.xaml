@@ -11,7 +11,7 @@
     xmlns:custom="clr-namespace:GAZT"
     FlowDirection="{Binding AppDirection}">
 
-     <pages:PopupPage.Resources>
+    <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -42,6 +42,7 @@
 
                 <StackLayout>
 
+                    <!--Header-->
                     <StackLayout Orientation="Horizontal"
                                  Margin="0,0,0,20"
                                  HorizontalOptions="FillAndExpand"

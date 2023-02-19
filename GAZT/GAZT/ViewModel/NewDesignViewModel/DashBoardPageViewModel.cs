@@ -3643,7 +3643,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             get
             {
-                return new Command<string>((currentStep) =>
+                return new Command<string>(async(currentStep) =>
                 {
 
                    /* if (currentStep== "3")
@@ -3654,7 +3654,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                   
                     if (SurveyCurrentStep==4)
                     {
-                       
+                        await PopupNavigation.Instance.PopAsync(true);
+                        SurveyCurrentStep = 0;
                         IsShowMsgView = false;
                     }
                 });
@@ -3738,6 +3739,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (!IsShowMsgView)
                     {
                  IsShowMsgView = await HaveSurveyForToday();
+                        if (IsShowMsgView)
+                        {
+                            Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp poupWindow = new Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp();
+                            await PopupNavigation.Instance.PushAsync(poupWindow);
+                        }
                     }
                  });
             }
@@ -3780,6 +3786,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Preferences.Set("TIN", App.TP.Tin);
                     SurveyCurrentStep = 0;
                     ISEndSurvey = true;
+                    await PopupNavigation.Instance.PopAsync(true);
                     return false;
                 }
             }
@@ -3802,7 +3809,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                          CustomerSegment="TIN",
                           mobile=App.TP.Mobile,
                            firstName=App.TP.Name,
-                           TIN=App.TP.Tin
+                           TIN=App.TP.Tin,
+                           email=App.TP.Email
                      },
                      surveyAnswers=new List<Answer>()
                      {
@@ -3844,11 +3852,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Preferences.Set("DateOfSurvey", DateOfSurvey);
                     Preferences.Set("IsSurveyTaken", true);
                     Preferences.Set("TIN", App.TP.Tin);
-                    SurveyCurrentStep = 0;
+                   // SurveyCurrentStep = 0;
 
                 }
             }
             ISEndSurvey = true;
+      
             SQAnswer = "";
                 //  IsShowMsgView = false;
             return false;
@@ -3859,7 +3868,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         {
             CultureInfo enCul = new CultureInfo("en-US");
             var date = DateTime.Now.Date.ToString("MM-dd-yyyy",enCul);
-           var res=await _surveyServices.GetSurveyByDate("1012", date);
+           var res=await _surveyServices.GetSurveyByDate(App.TP.Tin, date);
             if (res.Item2)
             {
                 if (res.Item1.data!=null&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))

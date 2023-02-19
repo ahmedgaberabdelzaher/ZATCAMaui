@@ -14,6 +14,7 @@ using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 using EGAZT.Helper;
+using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -35,8 +36,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         string refNo ;
         public string RefNo  { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
-    
 
+        DateTime _MinimumDate = DateTime.Now.Date;
+        public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
+
+        DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
+        public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
         #endregion
 
 
@@ -64,8 +69,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                          
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
-                 
-                            if(SubmitModel.travelerDeclaration.travelID !=null)
+                            // Set passenger data in case the user go to the passenger
+                            // and decide to go back until reaching "New Declaration page".
+                            // At this moment the passenger data will be removed so need to set
+                            // it again.
+
+                            if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.firstName))
+                            {
+                                var passengerData = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
+                                SetPassangerData(passengerData);
+                            }
+                                
+                            IDName = AppResources.ZZNationalID;
+                            IDNumberPlaceHolder = "0000000000";
+                            IDNumberKeyboard = Keyboard.Numeric;
+                            ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+                            BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
+                            if (SubmitModel.travelerDeclaration.travelID !=null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
                                 {
@@ -86,7 +107,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                             //Set Default value for first time only
                             if (SubmitModel.travelerDeclaration.travelDocumentType == 0)
+                            {
+                                IDName = AppResources.Passport;
+                                IDNumberPlaceHolder = "XX000000";
+                                IDNumberKeyboard = Keyboard.Text;
                                 SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
+                            }
+                                
                         }
                         
                         HeaderTitle = AppResources.PassengerInformation;
@@ -216,6 +243,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+
+        public ICommand DownlOadFileCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                  await  DownLoadEdeclerationPdf();
+
+                });
+            }
+        }
+
+        private async Task DownLoadEdeclerationPdf()
+        {
+            IsLoading = true;
+            DownloadFile downloadFile = new DownloadFile();
+            string Lang = "ar";
+            if (!App.IsArabic)
+            {
+                Lang = "en";
+
+            }
+            else
+            {
+                Lang = "ar";
+            }
+            await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
+            IsLoading = false;
+        }
+
 
         public ICommand CloseAcknowledgePopUpPageCommand
         {

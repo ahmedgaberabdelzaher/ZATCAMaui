@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Principal;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
@@ -69,6 +73,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     IsEntity = selectedType == "2" ? true : false;
                     UserType = selectedType;
+                    IsAddNewCR = false;
                 });
             }
         }
@@ -78,9 +83,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command<string>((e) =>
+                return new Command<string>(async(e) =>
                 {
                     IsAddNewCR = e=="1"?true:false;
+                    if (!IsAddNewCR)
+                    {
+                        await PopupNavigation.Instance.PopAsync(true);
+                        CRNo = "";
+                    }
+                    else
+                    {
+                        NewCrPopupView poupWindow = new NewCrPopupView();
+                        await PopupNavigation.Instance.PushAsync(poupWindow);
+                    }
                 });
             }
         }
@@ -94,8 +109,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+                        Regex EmailRgx = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
                     {
+                     if (!EmailRgx.IsMatch(Email.ToLower()))
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidEmailFormat;
+                                return;
+                            }
                             if (UploadedFiles == null || UploadedFiles.Count <=0)
                             {
                                 MessageTxt = AppResources.NoFileChoosen;
@@ -177,8 +200,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+
                         if (!string.IsNullOrWhiteSpace(CRNo))
                         {
+                            await PopupNavigation.Instance.PopAsync(true);
                             var model = new AddNewCrBody()
                             {
                                  crNumber=CRNo,
@@ -192,10 +217,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 var result = JsonConvert.DeserializeObject<SubmitFormResponse>(content);
                                 if (result.header.status.code == "I000000")
                                 {
+                                   // await PopupNavigation.Instance.PopAsync(true);
                                     isCRDataFetched = false;
+                                    IsOpenAddNewCr = false;
+                                    CRNo = "";
+                                    MessageTxt = AppResources.CRNoAddedSuccess;
+                                    IsShowMsgView = true;
+                                    return;
                                 }
                                 else
                                 {
+                                    if (result.header.moreInformation!=null&& result.header.moreInformation.Errordetails!= null && result.header.moreInformation.Errordetails.Count > 0)
+                                    {
+                                        MessageTxt = result.header.moreInformation.Errordetails[0];
+                                        IsShowMsgView = true;
+                                        
+                                        return;
+                                    }
                                     MessageTxt = AppResources.RequestTimeoutDescription;
                                     IsShowMsgView = true;
                                 }
@@ -205,12 +243,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             {
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                                 IsShowMsgView = true;
+                                IsLoading = false;
                             }
                         }
                         else
                         {
                             MessageTxt = AppResources.RequiredData;
                             IsShowMsgView = true;
+                            IsLoading = false;
                         }
 
                     }
@@ -218,7 +258,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
 
                     }
-                    finally { IsLoading = false; }
+                    finally {
+                        IsLoading = false;
+                        CRNo = "";
+                    }
                 });
             }
         }
@@ -257,7 +300,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         var data = response.Item1.data;
 
                        CRCashedList = data;
-                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.crType }).ToList() ?? new List<BottomSheetModel>();
+                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.Name==""?c.crType:c.Name }).ToList() ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
@@ -311,10 +354,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void clearData()
         {
-            Email = Subject = Description = SelectedCRNo = "";
+            Email = Subject = Description =CRNo= SelectedCRNo = "";
             UploadedFiles = new ObservableCollection<ReportFileModel>();
-            UserType = "1";
-            IsEntity = false;
+            UserType = "1"; 
+            IsEntity = false; isCRDataFetched = false;
             IsShowBottomSheet=IsShowMsgView = false;
             IsAddNewCR = false;
         }
@@ -365,7 +408,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" },1);
+                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHint, AppResources.NumberofAttachments);
                 });
             }
         }

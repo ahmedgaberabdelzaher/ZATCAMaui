@@ -252,13 +252,25 @@
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Trip Note Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarSemiBold}"
-                            FontSize="16"
-                            Margin="0,0,0,5"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.SelectTheOptionAndCompleteDetails}"
-                            TextColor="{StaticResource NeutralGreay}" />
+                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             Margin="0,0,0,5"
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
 
 
                         <!--  Horizontal Line  -->
@@ -295,7 +307,7 @@
                                 HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="{Binding TripCard.AirImage}"/>
 
                                 <!--  Air Label  -->
@@ -323,7 +335,7 @@
                                   HeightRequest="94">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="{Binding TripCard.LandImage}"/>
 
                                  <!--Land label-->
@@ -352,7 +364,7 @@
                             HeightRequest="94">
 
                             <!--Background image selected-->
-                            <Image Aspect="AspectFill"
+                            <Image Aspect="Fill"
                                    Source="{Binding TripCard.SeaImage}"/>
 
                             <!--Sea label-->
@@ -523,14 +535,44 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                InputViewPadding="16,0,16,0"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
-                                            Format="dd/MM/yyyy"/>
+                                <Grid>
+
+                                    <DatePicker Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                                Format="dd/MM/yyyy"
+                                                x:Name="ArivalDate"
+                                                IsVisible="false"
+                                                MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding ArrivalSelectedDateCommand}"
+                                                                        CommandParameter="{x:Reference ArivalDateEntry}"
+                                                                        EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:BorderlessEntry
+                                            Keyboard="Text"
+                                            IsReadOnly="True"
+                                            InputTransparent="True"
+                                            Placeholder="dd/MM/yyyy"
+                                            x:Name="ArivalDateEntry"
+                                            Text="{Binding  ArrivalDepartureDateString}"
+                                            Style="{StaticResource DefaultEntry}"
+                                            TextColor="#58595B" />
+                                </Grid>
 
                                 <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyCalender" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ArrivalDateClickedCommand}"
+                                                              CommandParameter="{x:Reference ArivalDate}"/>
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -561,7 +603,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.TripNumber}"
+                                    Placeholder="SV0000"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
                                     TextColor="#58595B" />
