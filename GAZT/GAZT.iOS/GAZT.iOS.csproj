@@ -758,6 +758,12 @@
     <BundleResource Include="Resources\shipmentIcon.png" />
     <BundleResource Include="Resources\shipmentIcon%402x.png" />
     <BundleResource Include="Resources\shipmentIcon%403x.png" />
+    <BundleResource Include="Resources\fileUpload.png" />
+    <BundleResource Include="Resources\fileUpload%402x.png" />
+    <BundleResource Include="Resources\fileUpload%403x.png" />
+    <BundleResource Include="Resources\imageFile.png" />
+    <BundleResource Include="Resources\imageFile%402x.png" />
+    <BundleResource Include="Resources\imageFile%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

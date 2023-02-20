@@ -18,29 +18,20 @@ namespace EGAZT.Converters
                 {
                     var collectionView = ((CollectionView)parameter);
                     var bottomSheetList = collectionView?.ItemsSource as ObservableCollection<BottomSheetModel>;
-                    var test = collectionView?.ItemsSource as List<BottomSheetModel>;
 
-                    if (bottomSheetList != null)
+                    if (bottomSheetList != null && bottomSheetList.Count >= 1)
                     {
-                        foreach (var item in bottomSheetList)
-                        {
-                            if (bottomSheetList.Last() == item)
-                                item.HasLine = false;
-                        }
+                        var lastItem = bottomSheetList[bottomSheetList.Count - 1];
+                        lastItem.HasLine = !(bool)value;
                     }
                 }
+                
+                return (bool)value;
             }
             catch (Exception ex)
             {
-
+                return (bool)value;
             }
-
-           
-              
-                   
-            var eventArgs = value as SelectedItemChangedEventArgs;
-
-            return eventArgs.SelectedItem;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
