@@ -9447,7 +9447,7 @@ the Zakat, Tax and Customs
      <value>Allowed extensions (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>I want to get the reward</value>
+     <value>I don’t want to receive a reward</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>E-invoice Certificate</value>

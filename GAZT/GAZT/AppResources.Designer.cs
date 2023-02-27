@@ -11611,7 +11611,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want to get the reward.
+        ///   Looks up a localized string similar to I don’t want to receive a reward.
         /// </summary>
         public static string RewardCheckBox {
             get {
