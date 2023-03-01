@@ -144,7 +144,7 @@ namespace EGAZT.AppConfigurations
             return key;
         }
       //  const string EdclerationBaseURL = "http://10.112.42.23/";
-       const string EdclerationBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/EDeclarationStartPage.aspx";
+       const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
 
@@ -152,14 +152,14 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                // return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
-                return $"{EdclerationBaseURL}";
+                 return $"{EdclerationBaseURL}ar/app-view/Pages/EDeclarationStartPage.aspx";
+              //  return $"{EdclerationBaseURL}";
 
             }
             else
             {
-                // return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
-                return $"{EdclerationBaseURL}";
+                 return $"{EdclerationBaseURL}en/app-view/Pages/EDeclarationStartPage.aspx";
+                //return $"{EdclerationBaseURL}";
             }
         }
 
