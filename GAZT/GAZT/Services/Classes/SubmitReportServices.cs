@@ -40,9 +40,9 @@ namespace EGAZT.Services.Classes
         {
             /* var response = await NewHTTPManger.Post<BaseResponseModel<string>>($"{App.VatBaseUrl}/Report/CreateZatcaNewReport",submitReport) as BaseResponseModel<string>;
            */
-             var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
+            // var res = await HttpManager.PostAsync($"{App.VatBaseUrl}/Report/CreateZatcaNewReport", submitReport);
 //DataPower
-            //var res = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}v4/zatca/new-report/submit-form", submitReport);
+            var res = await HttpManager.PostAsync($"{PageSettings.ZATCABaseURL}v4/zatca/new-report/submit-form", submitReport);
 
             var cont = await res.Content.ReadAsStringAsync();
             var response = NewHTTPManger.DeserializeObject<DATAPowerBaseResponseResult<SubmitDataPowerResult>>(cont);
