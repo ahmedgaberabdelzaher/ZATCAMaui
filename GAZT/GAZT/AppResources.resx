@@ -9573,7 +9573,7 @@ the Zakat, Tax and Customs
         <value>Pervious</value>
     </data>
     <data name="ReportReward" xml:space="preserve">
-       <value>The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking.</value>
+       <value>The report is eligible for the reward automatically after validation and verification, unless the check box above was selected</value>
     </data>
     <data name="ReportSecondNote1" xml:space="preserve">
         <value>1- The award is given according to the discretionary authority of the authority, provided that the Fulfillment of the following conditions:</value>
@@ -10279,5 +10279,8 @@ Zakat, Tax and Customs Authority
   </data>
     <data name="ReportAttachmentHelperText" xml:space="preserve">
      <value>Allowed extensions (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
+    <data name="NotNeedRewardHint" xml:space="preserve">
+     <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
 </root>

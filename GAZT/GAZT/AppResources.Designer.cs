@@ -9981,6 +9981,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received.
+        /// </summary>
+        public static string NotNeedRewardHint {
+            get {
+                return ResourceManager.GetString("NotNeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Paid.
         /// </summary>
         public static string NotPaidPaymentStatus {
@@ -11283,7 +11292,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
+        ///   Looks up a localized string similar to The report is eligible for the reward automatically after validation and verification, unless the check box above was selected.
         /// </summary>
         public static string ReportReward {
             get {

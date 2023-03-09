@@ -9607,7 +9607,7 @@ info@zatca.gov.sa</value>
         <value>أن يكون البلاغ قد أدى إلى كشف أي المخالفات المذكورة في هذه اللائحة.</value>
     </data>
   <data name="ReportSecondNote3" xml:space="preserve">
-        <value>أن يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
+        <value> ألا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
     </data>
   <data name="ReportSecondNote4" xml:space="preserve">
         <value>ألا يكون الكشف عن الحالة محل البلاغ من واجبات المبلغ الوظيفية إذا كان موظفا عاما أو في حكمه.</value>
@@ -9616,7 +9616,7 @@ info@zatca.gov.sa</value>
         <value>ألا تكون المخالفة قد سبق الإبلاغ عنها أو كوفئ عليها من قبل الهيئة.</value>
     </data>
   <data name="ReportSecondNote6" xml:space="preserve">
-        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن مخالفات .</value>
+        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن المخالفات .</value>
     </data>
   <data name="ReportSecondNote7" xml:space="preserve">
         <value>3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة.</value>
@@ -10213,4 +10213,8 @@ info@zatca.gov.sa</value>
     <data name="ReportAttachmentHelperText" xml:space="preserve">
      <value>الإمدادات المسموحة (pdf,jpeg,jpg,doc,docx)</value>
   </data>
+  <data name="NotNeedRewardHint" xml:space="preserve">
+     <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
+  </data>
+
 </root>
