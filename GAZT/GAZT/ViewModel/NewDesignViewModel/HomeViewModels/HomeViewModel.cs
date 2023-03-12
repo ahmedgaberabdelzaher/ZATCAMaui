@@ -254,7 +254,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                     new MenuModel()
                 {
-                   Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+                Name=AppResources.CustomsDeclarationforTravelers, ID="CreateE_Declaration",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
+
+                  // Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
                 } ,
                  new MenuModel()
                 {
