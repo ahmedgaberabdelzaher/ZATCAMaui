@@ -8,15 +8,36 @@ namespace EGAZT.AppConfigurations
     {
         #region SurveyConfig
         public static string VocBaseUrl = "https://vocstg.gazt.gov.sa/v1/api/";
-        public static string SurveyID = "6307638a380faf6b91c907f4";
-        public static string CollectorId = "630b389e380faf6b91c910a7";
-        public static string SurveyToken = "I/70744d53";
-        public static string Q1ID = "6307638b380faf6b91c907f8";
-        public static string Q2ID = "6307638b380faf6b91c90800";
-        public static string Q3ID = "6307638b380faf6b91c90814";
-        public static string Q1AnsID = "61c32bf2527cacedb5d31931";
-        public static string Q2AnsID = "61c32c8a527cacedb5d31970";
-        public static string Q3AnsID = "61c32e14aa59caed43d24e7e";
+        public static string SurveyID;
+        public static string CollectorId;
+        public static string SurveyToken;
+        public static string Q1ID;
+        public static string Q2ID;
+        public static string Q3ID;
+        public static string Q1AnsID;
+        public static string Q2AnsID;
+        public static string Q3AnsID;
+        public static string SurveyIDStg = "6307638a380faf6b91c907f4";
+        public static string CollectorIdStg = "630b389e380faf6b91c910a7";
+        public static string SurveyTokenStg = "I/70744d53";
+        public static string Q1IDStg = "6307638b380faf6b91c907f8";
+        public static string Q2IDStg = "6307638b380faf6b91c90800";
+        public static string Q3IDStg = "6307638b380faf6b91c90814";
+        public static string Q1AnsIDStg = "61c32bf2527cacedb5d31931";
+        public static string Q2AnsIDStg = "61c32c8a527cacedb5d31970";
+        public static string Q3AnsIDStg = "61c32e14aa59caed43d24e7e";
+
+        /// Prod MApping <summary>
+        public static string SurveyIDProd = "6307638a380faf6b91c907f4";
+        public static string CollectorIdProd = "630b389e380faf6b91c910a7";
+        public static string SurveyTokenProd = "I/70744d53";
+        public static string Q1IDProd = "6307638b380faf6b91c907f8";
+        public static string Q2IDProd = "6307638b380faf6b91c90800";
+        public static string Q3IDProd = "6307638b380faf6b91c90814";
+        public static string Q1AnsIDProd = "61c32bf2527cacedb5d31931";
+        public static string Q2AnsIDProd = "61c32c8a527cacedb5d31970";
+        public static string Q3AnsIDProd = "61c32e14aa59caed43d24e7e";
+        /// </summary>
         #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
         public static bool IsIncludeInquiryVisible= true;
@@ -77,6 +98,16 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    SurveyID=SurveyIDStg;
+                    CollectorId=CollectorIdStg;
+                    SurveyToken=SurveyTokenStg;
+                    Q1ID=Q1IDStg;
+                    Q2ID=Q2IDStg;
+                    Q3ID=Q3IDStg;
+                    Q1AnsID=Q1AnsIDStg;
+                    Q2AnsID=Q2AnsIDStg;
+                    Q3AnsID=Q3AnsIDStg;
+
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -84,6 +115,15 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    SurveyID=SurveyIDProd;
+                    CollectorId=CollectorIdProd;
+                    SurveyToken=SurveyTokenProd;
+                    Q1ID=Q1IDProd;
+                    Q2ID=Q2IDProd;
+                    Q3ID=Q3IDProd;
+                    Q1AnsID=Q1AnsIDProd;
+                    Q2AnsID=Q2AnsIDProd;
+                    Q3AnsID=Q3AnsIDProd;
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -91,6 +131,15 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    SurveyID = SurveyIDStg;
+                    CollectorId = CollectorIdStg;
+                    SurveyToken = SurveyTokenStg;
+                    Q1ID = Q1IDStg;
+                    Q2ID = Q2IDStg;
+                    Q3ID = Q3IDStg;
+                    Q1AnsID = Q1AnsIDStg;
+                    Q2AnsID = Q2AnsIDStg;
+                    Q3AnsID = Q3AnsIDStg;
                     break;
             }
             return key;
@@ -144,7 +193,8 @@ namespace EGAZT.AppConfigurations
             return key;
         }
       //  const string EdclerationBaseURL = "http://10.112.42.23/";
-       const string EdclerationBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/EDeclarationStartPage.aspx";
+
+        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
 
@@ -152,14 +202,14 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                // return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
-                return $"{EdclerationBaseURL}";
+                return $"{EdclerationBaseURL}ar/app-view/Pages/EDeclarationStartPage.aspx";
+                //  return $"{EdclerationBaseURL}";
 
             }
             else
             {
-                // return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
-                return $"{EdclerationBaseURL}";
+                return $"{EdclerationBaseURL}en/app-view/Pages/EDeclarationStartPage.aspx";
+                //return $"{EdclerationBaseURL}";
             }
         }
 
