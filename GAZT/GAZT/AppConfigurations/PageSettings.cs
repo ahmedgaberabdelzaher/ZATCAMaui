@@ -59,9 +59,9 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
         public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
-        public static string DATAPowerProdCZATCABaseUrl ="https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
+        public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
-        //public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
+        public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
        public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
        // public static string CustomPaymentSTGURl = "https://peservices.zatca.gov.sa:4433/payment/initiate/";
 
@@ -114,7 +114,7 @@ namespace EGAZT.AppConfigurations
                     App.VatBaseUrl = VatProdBaseUrl;
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
-                    IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
+                    IAMLoginBaseUrl = IAMLoginProdBaseUrl;
                     SurveyID=SurveyIDProd;
                     CollectorId=CollectorIdProd;
                     SurveyToken=SurveyTokenProd;
