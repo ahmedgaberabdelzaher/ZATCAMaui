@@ -56,7 +56,7 @@ namespace EGAZT.AppConfigurations
         public static string VatProdBaseUrl = "https://vatmobile.zatca.gov.sa/api";
        // public static string VatSTGBaseUrl = "http://172.25.39.60:80/api";
 
-        public static string VatSTGBaseUrl = "https://vatapislb.zatca.gov.sa/api";
+        public static string VatSTGBaseUrl = "https://vatapis.zatca.gov.sa/api";
         public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
 
 
