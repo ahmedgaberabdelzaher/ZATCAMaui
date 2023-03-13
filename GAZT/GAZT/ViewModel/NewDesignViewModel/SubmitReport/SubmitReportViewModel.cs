@@ -129,7 +129,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 CR = SubmitReport.CR,
                                 district = SubmitReport.District,
                                 isNeedReward = SubmitReport.IsNeedReward,
-                                LanguageCode = "ar",
+                                LanguageCode = App.IsArabic ? "ar" : "en",
                                 latitude = SubmitReport.Latitude,
                                 longitude = SubmitReport.Longitude,
                                 missedField = SubmitReport.MissedField,
