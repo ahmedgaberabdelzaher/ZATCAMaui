@@ -239,7 +239,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return false;
 
             }
-            else if (!Email.IsMatch(SubmitModel.travelerDeclaration.email))
+            else if (!Email.IsMatch(SubmitModel.travelerDeclaration.email.ToLower()))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.InvalidEmailFormat;

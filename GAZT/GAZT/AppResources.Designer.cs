@@ -382,6 +382,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Air Freight.
+        /// </summary>
+        public static string AirFreight {
+            get {
+                return ResourceManager.GetString("AirFreight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Air Trip.
         /// </summary>
         public static string AirTrip {
@@ -860,7 +869,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Allowed supplies (PDF,png,JPG).
+        ///   Looks up a localized string similar to Allowed extensions (PDF,png,JPG).
         /// </summary>
         public static string AttachmentHelperText {
             get {
@@ -1047,6 +1056,15 @@ namespace EGAZT {
         public static string BillInfoInquiryHint {
             get {
                 return ResourceManager.GetString("BillInfoInquiryHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bill Number.
+        /// </summary>
+        public static string BillNumber {
+            get {
+                return ResourceManager.GetString("BillNumber", resourceCulture);
             }
         }
         
@@ -1447,6 +1465,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CIF Value.
+        /// </summary>
+        public static string CIFValue {
+            get {
+                return ResourceManager.GetString("CIFValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Citizen / Resident.
         /// </summary>
         public static string Citizen {
@@ -1578,6 +1605,15 @@ namespace EGAZT {
         public static string ContactUs {
             get {
                 return ResourceManager.GetString("ContactUs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Container Number.
+        /// </summary>
+        public static string ContainerNumber {
+            get {
+                return ResourceManager.GetString("ContainerNumber", resourceCulture);
             }
         }
         
@@ -2865,6 +2901,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs Fees.
+        /// </summary>
+        public static string CustomsFees {
+            get {
+                return ResourceManager.GetString("CustomsFees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs fees (SAR).
         /// </summary>
         public static string CustomsfeesSAR {
@@ -3243,11 +3288,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Declaration Number\Bill Number.
+        /// </summary>
+        public static string DeclarationBillNumber {
+            get {
+                return ResourceManager.GetString("DeclarationBillNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Declaration Date.
         /// </summary>
         public static string DeclarationDate {
             get {
                 return ResourceManager.GetString("DeclarationDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Custom Declaration doesn&apos;t Create yet..
+        /// </summary>
+        public static string DeclarationDisclaimer {
+            get {
+                return ResourceManager.GetString("DeclarationDisclaimer", resourceCulture);
             }
         }
         
@@ -5673,6 +5736,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Express Shipping.
+        /// </summary>
+        public static string ExpressShipping {
+            get {
+                return ResourceManager.GetString("ExpressShipping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Attachment.
         /// </summary>
         public static string FAPAddAttachment {
@@ -7691,6 +7763,15 @@ namespace EGAZT {
         public static string ItsSource {
             get {
                 return ResourceManager.GetString("ItsSource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Land Freight.
+        /// </summary>
+        public static string LandFreight {
+            get {
+                return ResourceManager.GetString("LandFreight", resourceCulture);
             }
         }
         
@@ -9909,6 +9990,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received.
+        /// </summary>
+        public static string NotNeedRewardHint {
+            get {
+                return ResourceManager.GetString("NotNeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Paid.
         /// </summary>
         public static string NotPaidPaymentStatus {
@@ -10064,6 +10154,15 @@ namespace EGAZT {
         public static string OrganisationName {
             get {
                 return ResourceManager.GetString("OrganisationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Fees.
+        /// </summary>
+        public static string OtherFees {
+            get {
+                return ResourceManager.GetString("OtherFees", resourceCulture);
             }
         }
         
@@ -11067,6 +11166,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed extensions (pdf,jpeg,jpg,doc,docx).
+        /// </summary>
+        public static string ReportAttachmentHelperText {
+            get {
+                return ResourceManager.GetString("ReportAttachmentHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Category.
         /// </summary>
         public static string ReportCategory {
@@ -11193,7 +11301,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
+        ///   Looks up a localized string similar to The report is eligible for the reward automatically after validation and verification, unless the check box above was selected.
         /// </summary>
         public static string ReportReward {
             get {
@@ -11521,7 +11629,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want to get the reward.
+        ///   Looks up a localized string similar to I don’t want to receive a reward.
         /// </summary>
         public static string RewardCheckBox {
             get {
@@ -11643,6 +11751,24 @@ namespace EGAZT {
         public static string ScantheQRcode {
             get {
                 return ResourceManager.GetString("ScantheQRcode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sea Freight.
+        /// </summary>
+        public static string SeaFreight {
+            get {
+                return ResourceManager.GetString("SeaFreight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search By.
+        /// </summary>
+        public static string SearchBy {
+            get {
+                return ResourceManager.GetString("SearchBy", resourceCulture);
             }
         }
         
@@ -11773,6 +11899,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Shipment Type.
+        /// </summary>
+        public static string SelectShipmentType {
+            get {
+                return ResourceManager.GetString("SelectShipmentType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the option and complete the details.
         /// </summary>
         public static string SelectTheOptionAndCompleteDetails {
@@ -11823,6 +11958,51 @@ namespace EGAZT {
         public static string Servicetype {
             get {
                 return ResourceManager.GetString("Servicetype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declaration Details.
+        /// </summary>
+        public static string ShipmentDeclarationDetails {
+            get {
+                return ResourceManager.GetString("ShipmentDeclarationDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Declaration Number.
+        /// </summary>
+        public static string ShipmentDeclarationNumber {
+            get {
+                return ResourceManager.GetString("ShipmentDeclarationNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipment Status.
+        /// </summary>
+        public static string ShipmentStatus {
+            get {
+                return ResourceManager.GetString("ShipmentStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shipment Tracking.
+        /// </summary>
+        public static string ShipmentTracking {
+            get {
+                return ResourceManager.GetString("ShipmentTracking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For more accurate results, please enter Declaration Details..
+        /// </summary>
+        public static string ShipmentTrackingSubTitle {
+            get {
+                return ResourceManager.GetString("ShipmentTrackingSubTitle", resourceCulture);
             }
         }
         
@@ -12985,6 +13165,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total Fees.
+        /// </summary>
+        public static string TotalFees {
+            get {
+                return ResourceManager.GetString("TotalFees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total fees payable.
         /// </summary>
         public static string TotalFeesPayable {
@@ -13372,6 +13561,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Track.
+        /// </summary>
+        public static string Track {
+            get {
+                return ResourceManager.GetString("Track", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Train Freight.
+        /// </summary>
+        public static string TrainFreight {
+            get {
+                return ResourceManager.GetString("TrainFreight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Transaction Amount.
         /// </summary>
         public static string TransactionAmount {
@@ -13621,6 +13828,24 @@ namespace EGAZT {
         public static string UnSubmitted {
             get {
                 return ResourceManager.GetString("UnSubmitted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload File.
+        /// </summary>
+        public static string UploadFile {
+            get {
+                return ResourceManager.GetString("UploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Image.
+        /// </summary>
+        public static string UploadImage {
+            get {
+                return ResourceManager.GetString("UploadImage", resourceCulture);
             }
         }
         
@@ -14413,6 +14638,15 @@ namespace EGAZT {
         public static string VatDeregSuspendedStartDate {
             get {
                 return ResourceManager.GetString("VatDeregSuspendedStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VAT is 15% of the total shipment value..
+        /// </summary>
+        public static string VATDisclaimer {
+            get {
+                return ResourceManager.GetString("VATDisclaimer", resourceCulture);
             }
         }
         

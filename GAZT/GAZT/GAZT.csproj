@@ -126,6 +126,9 @@
 	  <None Remove="Views\NewDesign\Zakaty\" />
 	  <None Remove="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 	  <None Remove="Views\NewDesign\DashBoardPages\PopUpPages\" />
+	  <None Remove="ViewModel\NewDesignViewModel\TrackShipment\" />
+	  <None Remove="Views\NewDesign\TrackShipment\" />
+	  <None Remove="Models\TrackShipment\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -252,6 +255,9 @@
 		<Folder Include="Views\NewDesign\Zakaty\" />
 		<Folder Include="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 		<Folder Include="Views\NewDesign\DashBoardPages\PopUpPages\" />
+		<Folder Include="ViewModel\NewDesignViewModel\TrackShipment\" />
+		<Folder Include="Views\NewDesign\TrackShipment\" />
+		<Folder Include="Models\TrackShipment\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

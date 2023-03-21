@@ -8,6 +8,7 @@ namespace EGAZT.Services.Interface
     {
         Task<Tuple<SMSResponse, bool, string>> SendOtpSms(string mobileNo,string Msg);
         Task<Tuple<CustomPortsModel, bool, string>> GetCustomPorts(bool isContainOther = false);
+        Task<Tuple<CustomPortsModel, bool, string>> GetCustomPorts(int portType);
 
     }
 }

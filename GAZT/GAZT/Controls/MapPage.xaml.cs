@@ -65,7 +65,7 @@ namespace EGAZT.Controls
 
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
 
-                    viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
+                    viewModel.SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
 
                     viewModel.SubmitReport.Location = $"{viewModel.SubmitReport.Latitude},{viewModel.SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
 
@@ -123,7 +123,7 @@ namespace EGAZT.Controls
 
                     IEnumerable<string> possibleAddresses = await geoCoder.GetAddressesForPositionAsync(position);
 
-                    viewModel.SubmitReport.Street = possibleAddresses.FirstOrDefault();
+                    viewModel.SubmitReport.CompanyAddress = possibleAddresses.FirstOrDefault();
 
                     viewModel.SubmitReport.Location = $"{viewModel.SubmitReport.Latitude},{viewModel.SubmitReport.Longitude},{possibleAddresses.FirstOrDefault()}";
 

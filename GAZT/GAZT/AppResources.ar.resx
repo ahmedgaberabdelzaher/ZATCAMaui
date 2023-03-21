@@ -9416,7 +9416,7 @@ info@zatca.gov.sa</value>
      <value>الإمدادات المسموحة (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>أرغب بالحصول علىالمكافآة المالية</value>
+     <value>لا أرغب بالحصول على المكافآة المالية</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>الفاتورة الإلكترونية</value>
@@ -9607,7 +9607,7 @@ info@zatca.gov.sa</value>
         <value>أن يكون البلاغ قد أدى إلى كشف أي المخالفات المذكورة في هذه اللائحة.</value>
     </data>
   <data name="ReportSecondNote3" xml:space="preserve">
-        <value>أن يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
+        <value> ألا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
     </data>
   <data name="ReportSecondNote4" xml:space="preserve">
         <value>ألا يكون الكشف عن الحالة محل البلاغ من واجبات المبلغ الوظيفية إذا كان موظفا عاما أو في حكمه.</value>
@@ -9616,7 +9616,7 @@ info@zatca.gov.sa</value>
         <value>ألا تكون المخالفة قد سبق الإبلاغ عنها أو كوفئ عليها من قبل الهيئة.</value>
     </data>
   <data name="ReportSecondNote6" xml:space="preserve">
-        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن مخالفات .</value>
+        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن المخالفات .</value>
     </data>
   <data name="ReportSecondNote7" xml:space="preserve">
         <value>3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة.</value>
@@ -10135,10 +10135,88 @@ info@zatca.gov.sa</value>
     <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
-      <data name="DownloadEdecleraton" xml:space="preserve">
+   <data name="ShipmentTracking" xml:space="preserve">
+    <value>تتبع الشحنة</value>
+  </data>
+  <data name="SelectShipmentType" xml:space="preserve">
+    <value>حدد نوع الشحنة</value>
+  </data>
+  <data name="Track" xml:space="preserve">
+    <value>تتبع</value>
+  </data>
+  <data name="ExpressShipping" xml:space="preserve">
+    <value>الشحن السريع</value>
+  </data>
+  <data name="AirFreight" xml:space="preserve">
+    <value>الشحن الجوي</value>
+  </data>
+  <data name="SeaFreight" xml:space="preserve">
+    <value>الشحن البحري</value>
+  </data>
+  <data name="LandFreight" xml:space="preserve">
+    <value>الشحن البري</value>
+  </data>
+  <data name="TrainFreight" xml:space="preserve">
+    <value>الشحن بالقطار</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>البحث عن طريق</value>
+  </data>
+    <data name="DeclarationBillNumber" xml:space="preserve">
+    <value>رقم البيان/رقم الفاتورة</value>
+  </data>
+  <data name="TotalFees" xml:space="preserve">
+    <value>الرسوم الإجمالية</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>الرسوم الجمركية</value>
+  </data>
+  <data name="OtherFees" xml:space="preserve">
+    <value>الرسوم الأخرى</value>
+  </data>
+  <data name="CIFValue" xml:space="preserve">
+    <value>قيمة CIF</value>
+  </data>
+   <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+    <value>للحصول على نتائج أكثر دقة ، يرجى إدخال تفاصيل البيان.</value>
+  </data>
+  <data name="DeclarationDisclaimer" xml:space="preserve">
+    <value>لم يتم إنشاء البيان المخصص حتى الآن.</value>
+  </data>
+  <data name="VATDisclaimer" xml:space="preserve">
+    <value>تبلغ ضريبة القيمة المضافة 15٪ من إجمالي قيمة الشحنة.</value>
+  </data>
+    <data name="BillNumber" xml:space="preserve">
+    <value>رقم البوليصة</value>
+  </data>
+    <data name="ShipmentDeclarationNumber" xml:space="preserve">
+    <value>رقم البيان الجمركي</value>
+  </data>
+    <data name="ShipmentStatus" xml:space="preserve">
+    <value>حالة الشحن</value>
+  </data>
+  <data name="ShipmentDeclarationDetails" xml:space="preserve">
+    <value>تفاصيل البيان</value>
+  </data>
+  <data name="ContainerNumber" xml:space="preserve">
+    <value> رقم الحاوية</value>
+ </data>
+  <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
   </data>
     <data name="cleared" xml:space="preserve">
     <value>معتمده</value>
+  </data>
+   <data name="UploadImage" xml:space="preserve">
+    <value>إرفاق صورة</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>إرفاق ملف</value>
+  </data>
+    <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>الإمدادات المسموحة (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
+  <data name="NotNeedRewardHint" xml:space="preserve">
+     <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
 </root>

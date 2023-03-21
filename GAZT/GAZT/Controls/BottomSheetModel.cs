@@ -8,5 +8,6 @@ namespace EGAZT.Controls
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public bool HasLine { get; set; } = true;
     }
 }
