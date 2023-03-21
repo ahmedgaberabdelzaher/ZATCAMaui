@@ -482,7 +482,7 @@ namespace EGAZT
 
                 //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
-            navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
 
                 //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
@@ -492,10 +492,9 @@ namespace EGAZT
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-                //   navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
-              //  navigationPage = new CustomNavigation(new PaymentWebView("")) { BarTextColor = Color.White };
+               //   navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
+              //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
 
             }
             else
@@ -505,19 +504,20 @@ namespace EGAZT
 
                 //navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-             navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+               navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
 
                 // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
                 //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
-               //  navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-               // navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
                 //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
-              // navigationPage = new CustomNavigation(new PaymentWebView("")) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
 
             }
 

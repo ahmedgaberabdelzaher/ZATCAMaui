@@ -1492,6 +1492,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cleared.
+        /// </summary>
+        public static string cleared {
+            get {
+                return ResourceManager.GetString("cleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
         public static string Clickhereforlogin {
@@ -9981,6 +9990,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received.
+        /// </summary>
+        public static string NotNeedRewardHint {
+            get {
+                return ResourceManager.GetString("NotNeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Paid.
         /// </summary>
         public static string NotPaidPaymentStatus {
@@ -11283,7 +11301,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
+        ///   Looks up a localized string similar to The report is eligible for the reward automatically after validation and verification, unless the check box above was selected.
         /// </summary>
         public static string ReportReward {
             get {
@@ -11611,7 +11629,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want to get the reward.
+        ///   Looks up a localized string similar to I don’t want to receive a reward.
         /// </summary>
         public static string RewardCheckBox {
             get {
@@ -12379,7 +12397,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time Stamp.
+        ///   Looks up a localized string similar to Invoice date.
         /// </summary>
         public static string TimeStamp {
             get {

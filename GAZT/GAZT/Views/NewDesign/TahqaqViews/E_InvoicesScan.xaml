@@ -262,7 +262,7 @@
                                         Grid.Row="1"
                                         Grid.Column="1"
                                         Style="{StaticResource BodyLabelBlack}"
-                                        Text="{Binding TimeStamp}" />
+                                        Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" />
                                 </Grid>
                                 <Label
                                     Grid.Row="0"
@@ -274,19 +274,42 @@
                                     Grid.Column="0"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding InvoiceAmount}" />
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
                                 <Label
                                     Grid.Row="0"
-                                    Grid.Column="1"
+                                    Grid.Column="0"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.VATAmount}" />
                                 <Label
                                     Grid.Row="1"
-                                    Grid.Column="1"
+                                    Grid.Column="0"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding VatAmount}" />
+                                          <!--#region Cleared Status-->
+                           <Grid IsVisible="{Binding IsClearedStatusVisible}" HorizontalOptions="End"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" RowDefinitions="auto">
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="#62B34F"
+                                            CornerRadius="14"
+                                            HasShadow="False"
+                                            Opacity=".1"
+                                            VerticalOptions="FillAndExpand">
+                                         
+                                        </Frame>
+                                        <Label
+                                            Margin="10,3,10,3"
+                                            HorizontalOptions="CenterAndExpand"
+                                               Text="{x:Static ResourceManager:AppResources.cleared}"
+                                            TextColor="#62B34F"
+                                            VerticalOptions="CenterAndExpand">
+                                        </Label>
 
+                                    </Grid>
+                        <!--#endregion-->
+                                </Grid>
                             </StackLayout>
                         </Frame>
+                  
                         <Frame
                             Margin="5,5,5,5"
                             Padding="12"

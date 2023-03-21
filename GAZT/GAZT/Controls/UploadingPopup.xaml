@@ -33,54 +33,87 @@
             Padding="0"
             BackgroundColor="White"
             CornerRadius="15,15,0,0"
-            HeightRequest="150"
+            HeightRequest="200"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
-            <StackLayout Spacing="10"
-                         Padding="15">
+            <Grid ColumnDefinitions="*,*"
+                  ColumnSpacing="20"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
 
-                 <!--  UploadImage Label  -->
-                <custom:CustomLabel
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="{x:Static ResourceManager:AppResources.UploadImage}"
-                    VerticalOptions="Center" >
+                <!--Image Frame-->
+                <Frame Style="{StaticResource CommonTopCurves}"
+                       CornerRadius="25"
+                       BorderColor="#BCBCBB">
 
-                    <custom:CustomLabel.GestureRecognizers>
+                    <StackLayout Spacing="10">
+
+                        <!--Image Icon-->
+                         <Image
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="imageFile.png"
+                            Aspect="AspectFit"
+                            VerticalOptions="Start"
+                            WidthRequest="30"/>
+
+                         <!--  UploadImage Label  -->
+                        <custom:CustomLabel
+                            FontSize="25"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.UploadImage}"
+                            VerticalOptions="Center" />
+
+
+
+
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectedUploadLabelCommand}"
                                               CommandParameter="image"/>
 
-                    </custom:CustomLabel.GestureRecognizers>
+                    </Frame.GestureRecognizers>
+                </Frame>
 
-                </custom:CustomLabel>
 
-                 <!--  Horizontal Line  -->
-                <BoxView
-                    WidthRequest="20"
-                    Margin="0,0,0,10"
-                    VerticalOptions="Center"
-                    BackgroundColor="{StaticResource NeutralLightGrey}"
-                    HeightRequest="2" />
+                <!--File Frame-->
+                <Frame Style="{StaticResource CommonTopCurves}"
+                       CornerRadius="25"
+                       Grid.Column="1"
+                       BorderColor="#BCBCBB">
 
-                 <!--  UploadFile Label  -->
-                 <custom:CustomLabel
-                    FontSize="25"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="{x:Static ResourceManager:AppResources.UploadFile}"
-                    VerticalOptions="Start" >
+                    <StackLayout Spacing="10" >
 
-                     <custom:CustomLabel.GestureRecognizers>
+                        <!--File Icon-->
+                         <Image
+                            HeightRequest="30"
+                            HorizontalOptions="Center"
+                            Source="fileUpload.png"
+                            Aspect="AspectFit"
+                            VerticalOptions="Start"
+                            WidthRequest="30"/>
+
+                         <!--  UploadFile Label  -->
+                         <custom:CustomLabel
+                            FontSize="25"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.UploadFile}"
+                            VerticalOptions="Start" />
+
+                    </StackLayout>
+
+                    <Frame.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding SelectedUploadLabelCommand}"
                                               CommandParameter="file"/>
 
-                    </custom:CustomLabel.GestureRecognizers>
+                    </Frame.GestureRecognizers>
+                </Frame>
 
-                </custom:CustomLabel>
-
-            </StackLayout>
+            </Grid>
 
         </yummy:PancakeView>
 

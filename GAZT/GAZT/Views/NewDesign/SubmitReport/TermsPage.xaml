@@ -267,7 +267,39 @@
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+                          <!--  Not need Reward Hinf Note  -->
+                        <Frame IsVisible="false"
+                            Padding="10"
+                            BackgroundColor="White"
+                            BorderColor="#E6E6E6"
+                            CornerRadius="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+                            <Frame.Triggers>
+                                <DataTrigger TargetType="Frame" Binding="{Binding SubmitReport.IsNeedReward}" Value="false">
+                                    <Setter Property="IsVisible" Value="true"></Setter>
 
+                                </DataTrigger>
+                            </Frame.Triggers>
+                            <StackLayout
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="10"
+                                VerticalOptions="CenterAndExpand">
+
+                            
+
+                                <!--  No need reward hint text Label  -->
+                                <custom:CustomLabel
+                                    FontSize="12"
+                                    HorizontalOptions="StartAndExpand"
+                                    LineSpacing="0.8"
+                                    Text="{x:Static ResourceManager:AppResources.NotNeedRewardHint}"
+                                     />
+
+                            </StackLayout>
+
+                        </Frame>
                         <!--  Report Note8 Label  -->
                         <Label
                             Margin="0,0,0,25"

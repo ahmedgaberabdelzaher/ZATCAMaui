@@ -118,7 +118,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             List<SubmitReportDataPowerModelAttachement> DATAPowerAttachements = new List<SubmitReportDataPowerModelAttachement>();
                             foreach (var item in SubmitReport.files)
                             {
-                                DATAPowerAttachements.Add(new SubmitReportDataPowerModelAttachement() { fileContent = item.fileBase64, fileExtinction = item.fileExtinction, fileName = item.fileFullName });
+                                DATAPowerAttachements.Add(new SubmitReportDataPowerModelAttachement() { fileContent = item.fileBase64, fileExtinction = item.fileExtinction, fileName = item.fileFullName+item.fileExtinction });
                             }
                             SubmitReportDataPowerModel model = new SubmitReportDataPowerModel()
                             {
@@ -129,7 +129,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 CR = SubmitReport.CR,
                                 district = SubmitReport.District,
                                 isNeedReward = SubmitReport.IsNeedReward,
-                                LanguageCode = "ar",
+                                LanguageCode = App.IsArabic ? "ar" : "en",
                                 latitude = SubmitReport.Latitude,
                                 longitude = SubmitReport.Longitude,
                                 missedField = SubmitReport.MissedField,

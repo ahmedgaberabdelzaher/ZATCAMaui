@@ -21,8 +21,11 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             {
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 VerticalOptions = LayoutOptions.FillAndExpand,
-                AutomationId = "zxingScannerView"
+                AutomationId = "zxingScannerView",
+              
             };
+            zxing.SetBinding(ZXingScannerView.IsScanningProperty, new Binding("IsScanning"));
+            zxing.SetBinding(ZXingScannerView.IsAnalyzingProperty, new Binding("IsScanning"));
             //zxing.AutoFocus();
             zxing.Options = new MobileBarcodeScanningOptions()
             {
@@ -82,7 +85,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     viewModel.IsScanning = false;
-                    zxing.IsScanning = false;
+                 //   zxing.IsScanning = false;
                     // Stop analysis until we navigate away so we don't keep reading barcodes
                     // zxing.IsAnalyzing = false;
                     viewModel.scanCode = result.Text;
@@ -106,7 +109,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
              {
                  _ = await Permissions.RequestAsync<Permissions.Camera>();
              }
-            zxing.IsScanning = viewModel.IsScanning;
+           // zxing.IsScanning = viewModel.IsScanning;
             base.OnAppearing();
       
         }
