@@ -1871,6 +1871,22 @@
                                             </StackLayout>
                                             <!--  Subsidy Request Ends  -->
 
+                                               <!--  RateUS  Starts  -->
+                                            <StackLayout
+                                           
+                                                Orientation="Vertical"
+                                                Spacing="20">
+                                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                                    <Image Source="RateUS.png" Style="{StaticResource SmallIcon}" />
+                                                    <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.RateUs}" />
+                                                    <StackLayout.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding GoToRateUsCommand}"/>
+                                                    </StackLayout.GestureRecognizers>
+                                                </StackLayout>
+                                                <BoxView Style="{StaticResource WhiteLineSeperator}" />
+                                            </StackLayout>
+                                            <!-- RateUS Ends  -->
+
                                             <StackLayout Orientation="Horizontal" Spacing="20">
                                                 <Image Source="language.png" Style="{StaticResource SmallIcon}" />
 
