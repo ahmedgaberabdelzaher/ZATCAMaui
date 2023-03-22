@@ -18,7 +18,7 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations
             header.TitleText = title;
             if (title == AppResources.eDeclaration)
             {
-                wbview.Source = "https://pre-eservices.zatca.gov.sa/sites/sc/ar/pages/Home.aspx";
+                wbview.Source = PageSettings.GetNewEDeclarationLinks();
             }
             else if (title == AppResources.Transactiondescription)
             {
