@@ -6259,7 +6259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 //TaxPeriodFrom;
                 //TaxPeriodTo;
                 //PickedDate;
-
+              
                 modelVATReview.d.AgreeFg = true;
                 modelVATReview.d.Appfg = "N";
                 modelVATReview.d.CalTyp = "1";
@@ -6296,6 +6296,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
                             DateTime dt = Convert.ToDateTime(RequestDate.ToString());
+                            dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
                             JsonSerializerSettings microsoftDateFormatSettings = new JsonSerializerSettings
                             {
                                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
@@ -6304,9 +6305,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             var jsonDateTime = JsonConvert.SerializeObject(dt.Date, microsoftDateFormatSettings);
                             string[] dateList = jsonDateTime.Split('+');
                             jsonDateTime = dateList[0].Replace("\"\\", "");
-                            jsonDateTime = jsonDateTime + ")/";
-                            modelVATReview.d.DecDt = jsonDateTime;
-                            strDecDate = jsonDateTime;
+                            var t = jsonDateTime.Replace("\\/\"", "");
+                            t = t + "/";
+                            modelVATReview.d.DecDt = t;
+                            strDecDate = t;
 
 
                         }

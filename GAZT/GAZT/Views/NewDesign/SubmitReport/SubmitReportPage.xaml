@@ -786,7 +786,7 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HelperText="{x:Static ResourceManager:AppResources.AttachmentHelperText}"
+                                HelperText="{x:Static ResourceManager:AppResources.ReportAttachmentHelperText}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"

@@ -77,12 +77,12 @@ namespace EGAZT.Models
         public List<ResultsItemForElgblDocSet> results { get; set; }
     }
 
-   // [Serializable]
+    // [Serializable]
     [Preserve(AllMembers = true)]
     //[DataContract]
     public class ELGBL_DOCSetforsubmit
     {
-       // [DataMember]
+        // [DataMember]
         public List<ResultsItemForDOCSetforsubmit> results { get; set; }
     }
 
@@ -151,4 +151,33 @@ namespace EGAZT.Models
         public VATRegistrationDetails VATRegistrationDetailsDatatoPopup { get; set; }
     }
 
+    public class VatCommencementDateFormatModel
+    {
+        [DataMember]
+        public string id { get; set; }
+        [DataMember]
+        public string uri { get; set; }
+        [DataMember]
+        public string type { get; set; }
+    }
+
+    public class CommencementModel
+    {
+        [DataMember]
+        public VatCommencementDateFormatModel __metadata { get; set; }
+        [DataMember]
+        public DateTime? VatTaxDt { get; set; }
+        [DataMember]
+        public string ErrorFg { get; set; }
+        [DataMember]
+        public string Gpartz { get; set; }
+        [DataMember]
+        public string TxnTpz { get; set; }
+    }
+
+    public class VatCommencementDateFormat
+    {
+        [DataMember]
+        public CommencementModel d { get; set; }
+    }
 }

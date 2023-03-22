@@ -1492,6 +1492,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to cleared.
+        /// </summary>
+        public static string cleared {
+            get {
+                return ResourceManager.GetString("cleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
         public static string Clickhereforlogin {
@@ -9999,6 +10008,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received.
+        /// </summary>
+        public static string NotNeedRewardHint {
+            get {
+                return ResourceManager.GetString("NotNeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not Paid.
         /// </summary>
         public static string NotPaidPaymentStatus {
@@ -11166,6 +11184,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Allowed extensions (pdf,jpeg,jpg,doc,docx).
+        /// </summary>
+        public static string ReportAttachmentHelperText {
+            get {
+                return ResourceManager.GetString("ReportAttachmentHelperText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Category.
         /// </summary>
         public static string ReportCategory {
@@ -11292,7 +11319,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The report is automatically eligible for the reward if the box is not clicked, for that After checking and checking..
+        ///   Looks up a localized string similar to The report is eligible for the reward automatically after validation and verification, unless the check box above was selected.
         /// </summary>
         public static string ReportReward {
             get {
@@ -11620,7 +11647,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want to get the reward.
+        ///   Looks up a localized string similar to I don’t want to receive a reward.
         /// </summary>
         public static string RewardCheckBox {
             get {
@@ -11841,6 +11868,15 @@ namespace EGAZT {
         public static string Selectaccounttype {
             get {
                 return ResourceManager.GetString("Selectaccounttype", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select Answer.
+        /// </summary>
+        public static string SelectAnswerMessage {
+            get {
+                return ResourceManager.GetString("SelectAnswerMessage", resourceCulture);
             }
         }
         
@@ -12379,7 +12415,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Time Stamp.
+        ///   Looks up a localized string similar to Invoice date.
         /// </summary>
         public static string TimeStamp {
             get {
@@ -13823,6 +13859,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Upload File.
+        /// </summary>
+        public static string UploadFile {
+            get {
+                return ResourceManager.GetString("UploadFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upload Image.
+        /// </summary>
+        public static string UploadImage {
+            get {
+                return ResourceManager.GetString("UploadImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use.
         /// </summary>
         public static string Use {
@@ -14638,6 +14692,15 @@ namespace EGAZT {
         public static string VatDueAmountInstruction {
             get {
                 return ResourceManager.GetString("VatDueAmountInstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear Taxpayer, The VAT effective date should be from 1-1-2018 and no greater than the start of next month when submitting the application.
+        /// </summary>
+        public static string VATEligibleDateError1 {
+            get {
+                return ResourceManager.GetString("VATEligibleDateError1", resourceCulture);
             }
         }
         

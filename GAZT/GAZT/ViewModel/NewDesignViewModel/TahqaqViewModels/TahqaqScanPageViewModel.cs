@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models.EinvoiceModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
@@ -68,8 +69,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         EInvoiceQRModel _eInvoiceQRModel;
         public EInvoiceQRModel eInvoiceQRModel { get { return _eInvoiceQRModel; } set { _eInvoiceQRModel = value; RaisePropertyChanged(); } }
-       
-        
+
+        bool _IsClearedStatusVisible;
+        public bool IsClearedStatusVisible { get { return _IsClearedStatusVisible; } set { _IsClearedStatusVisible = value; RaisePropertyChanged(); } }
+
+
 
         bool _IsAnalyzing = true;
         public bool IsAnalyzing
@@ -153,7 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             return false;
         }
 
-       
+        int NoofTags;
 
         public ICommand ScanEnvoiceQrCommand
         {
@@ -192,6 +196,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         byte[] byteList = Convert.FromBase64String(code);
                         int currentPosition = 0;
+                        // NoofTags = byteList.Length;
                         while (currentPosition<byteList.Length)
                         {
                             int tagNumber = byteList[currentPosition];
@@ -210,15 +215,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             // Utf8Decoder().convert(message.toList());
                             currentPosition += valueLength;
                             SetDataToModel(tagNumber, messageAsText);
-                        
-                            
+                                NoofTags = tagNumber;
+
+
                         }
                        var res= qrValidation(eInvoiceQRModel);
                         if (res=="")
                         {
-                            IsShowRsltView = true;
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false; 
+                             await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
+
+                                ///Old Scenario
+                            /*    IsShowRsltView = true;
                             IsShowScanView = false;
-                            await GetQrData(eInvoiceQRModel.vatNumber);
+                            await GetQrData(eInvoiceQRModel.vatNumber);*/
                         }
                         else
                         {
@@ -238,7 +248,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         finally
                         {
                             IsLoading = false;
-                            IsScanning = true;
+                            IsScanning = false;
                         }
                     });
 
@@ -246,9 +256,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 });
             }
         }
-       
+        int tag = 0;
         private void SetDataToModel(int tagNumber, string messageAsText)
         {
+            tag = tagNumber;
             switch (tagNumber)
             {
                 case 1:
@@ -272,7 +283,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 case 3:
                     {
                         eInvoiceQRModel.timeStamp = messageAsText.Trim();
-                        TimeStamp = messageAsText.Trim();
+                       // TimeStamp = messageAsText.Trim();
 
                     }
                     break;
@@ -363,6 +374,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
             else if (checkValidDate(qRcodeModelDetails.timeStamp) == false)
             {
+
                 result = "Date is not Valid";
             }
             return result;
@@ -399,6 +411,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 if (DateTime.TryParse(dateValue, culture, styles, out myDate))
                 {
+                    TimeStamp = myDate.ToString("dd/MM/yyyy hh:mm");
                     return true;
 
                 }
@@ -563,6 +576,112 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
        
         }
 
+        public async Task GetQrDataEradApi(string TinNo)
+        {
+            try
+            {
+                IsLoading = true;
+                if (Helper.NetworkCheck.IsInternet())
+                {
+                    IsClearedStatusVisible = false;
+                    var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
+                           // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+        var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    if (data.IsSuccessStatusCode)
+                    {
+                        var content =await data.Content.ReadAsStringAsync();
+                        var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
+
+                        if (qrResponseData.ERROR==null)
+                        {
+                           
+                            if (NoofTags==5&& qrResponseData.Taxpayer_RESP.EInvEnfStatus==0)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                            }
+                            if (NoofTags == 5 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                            }
+                            else if (NoofTags == 9 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+
+                            }
+                            else if (NoofTags == 8 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                                IsClearedStatusVisible = true;
+
+                            }
+                            if (NoofTags==8)
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                               // IsShowSubmitReport = false;
+                            }
+                        }
+                        else
+                        {
+                            if (NoofTags == 5)
+                            {
+                                RegisterStatus = AppResources.NotRegistered;
+                                IsShowSubmitReport = true;
+                                IsShowRsltView = true;
+                                IsShowScanView = false;
+                            }
+                           else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                            }
+                        }
+                  
+                    }
+                    /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }*/
+                    else
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.unableToVerify;
+                        // RegisterStatus = AppResources.unableToVerify;
+                    }
+
+
+                }
+                else
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.unableToVerify;
+                   // RegisterStatus = AppResources.unableToVerify;
+                }
+
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.unableToVerify;
+            }
+            finally
+            {
+                IsLoading = false;
+                IsScanning = false;
+            }
+
+        }
+
+        private void RegistredStatusWithDisplaQRRslt()
+        {
+            RegisterStatus = AppResources.Registered;
+            IsShowSubmitReport = false;
+            IsShowRsltView = true;
+            IsShowScanView = false;
+        }
+
         public async Task AddQRLog(EInvoiceQRModel eInvoiceQRModel)
         {
             IsLoading = true;
@@ -628,9 +747,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 }
             }
             IsLoading = false;
+            IsScanning = false;
         }
 
-
-
+        public override ICommand CloseMsgViewCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsShowMsgView = false;
+                    IsValidationError = false;
+                    IsScanning = true;
+                });
+            }
+        }
     }
 }

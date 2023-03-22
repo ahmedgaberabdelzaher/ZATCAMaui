@@ -9416,7 +9416,7 @@ info@zatca.gov.sa</value>
      <value>الإمدادات المسموحة (PDF,png,JPG)</value>
   </data>
   <data name="RewardCheckBox" xml:space="preserve">
-     <value>أرغب بالحصول علىالمكافآة المالية</value>
+     <value>لا أرغب بالحصول على المكافآة المالية</value>
   </data>
   <data name="Einvoice" xml:space="preserve">
      <value>الفاتورة الإلكترونية</value>
@@ -9503,7 +9503,7 @@ info@zatca.gov.sa</value>
         <value> البلاغات </value>
     </data>
   <data name="EinvoiceScanning" xml:space="preserve">
-        <value>التحقق من صحه الفاتورة الإلكترونية</value>
+        <value>التحقق من صحة الفاتورة الإلكترونية</value>
     </data>
   <data name="TaxCalculator" xml:space="preserve">
         <value>حاسبة التاجر والمستهلك</value>
@@ -9533,7 +9533,7 @@ info@zatca.gov.sa</value>
     <value>مامستوى الرضا عن تجربتك لتطبيق الهيئة على الأجهزة الذكية ؟</value>
     </data>
   <data name="SurveyQ2" xml:space="preserve">
-        <value>لاحظنا عدم رضاك في السؤال السابق، يرجى توضح أسباب عدم الرضا لتحسين مستوى الخدمة المقدمة لك</value>
+        <value>لاحظنا عدم رضاك في السؤال السابق، يرجى توضيح أسباب عدم الرضا لتحسين مستوى الخدمة المقدمة لك</value>
     </data>
   <data name="SurveyQ3" xml:space="preserve">
         <value>هل لديك أي ملاحظات إضافية تود إيصالها إلى هيئة الزكاة والضريبة والجمارك</value>
@@ -9607,7 +9607,7 @@ info@zatca.gov.sa</value>
         <value>أن يكون البلاغ قد أدى إلى كشف أي المخالفات المذكورة في هذه اللائحة.</value>
     </data>
   <data name="ReportSecondNote3" xml:space="preserve">
-        <value>أن يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
+        <value> ألا يكون المبلغ من موظفين الهيئة أو زوجا أو صهرا أو قريبا له من الدرجة الأولى.</value>
     </data>
   <data name="ReportSecondNote4" xml:space="preserve">
         <value>ألا يكون الكشف عن الحالة محل البلاغ من واجبات المبلغ الوظيفية إذا كان موظفا عاما أو في حكمه.</value>
@@ -9616,7 +9616,7 @@ info@zatca.gov.sa</value>
         <value>ألا تكون المخالفة قد سبق الإبلاغ عنها أو كوفئ عليها من قبل الهيئة.</value>
     </data>
   <data name="ReportSecondNote6" xml:space="preserve">
-        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن مخالفات .</value>
+        <value>2- يكون استحقاق المكافأة بناءاً على قرار يصدر من لجنة مكافآت المبلغين عن المخالفات .</value>
     </data>
   <data name="ReportSecondNote7" xml:space="preserve">
         <value>3- لا يستحق المكافأة إلى بعد تحصيل المبالغ المستحقة.</value>
@@ -9733,7 +9733,7 @@ info@zatca.gov.sa</value>
         <value>عدد الأرقام في رقم الشهادة الضريبية يجب أن يكون 15 رقم</value>
     </data>
   <data name="unableToVerify" xml:space="preserve">
-        <value>تعذر التحقق</value>
+        <value>تعذر التحقق, نرجو المحاولة مرة أخرى لاحقا</value>
     </data>
     <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
@@ -10081,6 +10081,12 @@ info@zatca.gov.sa</value>
   <data name="NoFileChoosen" xml:space="preserve">
     <value>لم يتم اختيار أي ملف</value> 
   </data>
+   <data name="VATEligibleDateError1" xml:space="preserve">
+    <value>عزيزي المكلف، تاريخ نفاذ التسجيل في ضريبة القيمة المضافة يجب أن يكون من 1-1-2018 و بحد اقصى بداية الشهر القادم من تاريخ تقديم الطلب</value>
+  </data>
+ <data name="SelectAnswerMessage" xml:space="preserve">
+   <value>الرجاء تحديد إجابة</value>
+ </data>
    <data name="TravelerCountValidation" xml:space="preserve">
     <value>يجب أن يكون عدد المسافرين أكثر من 0</value> 
   </data>
@@ -10192,7 +10198,7 @@ info@zatca.gov.sa</value>
     <data name="ShipmentDeclarationNumber" xml:space="preserve">
     <value>رقم البيان الجمركي</value>
   </data>
-    <data name="ShipmentStatus" xml:space="preserve">
+  <data name="ShipmentStatus" xml:space="preserve">
     <value>حالة الشحن</value>
   </data>
   <data name="ShipmentDeclarationDetails" xml:space="preserve">
@@ -10201,10 +10207,10 @@ info@zatca.gov.sa</value>
   <data name="ContainerNumber" xml:space="preserve">
     <value> رقم الحاوية</value>
  </data>
-      <data name="DownloadEdecleraton" xml:space="preserve">
+  <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
   </data>
-        <data name="Weight" xml:space="preserve">
+  <data name="Weight" xml:space="preserve">
     <value>الوزن</value>
   </data>
   <data name="CustomsFees" xml:space="preserve">
@@ -10213,7 +10219,22 @@ info@zatca.gov.sa</value>
       <data name="ExciseTax2" xml:space="preserve">
     <value>الضريبة الانتقائية</value>
   </data>
-        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+   <data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم إصدار البيان الجمركي</value>
+   </data>
+  <data name="cleared" xml:space="preserve">
+    <value>معتمده</value>
+  </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>إرفاق صورة</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>إرفاق ملف</value>
+  </data>
+  <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>الإمدادات المسموحة (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
+  <data name="NotNeedRewardHint" xml:space="preserve">
+     <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
 </root>

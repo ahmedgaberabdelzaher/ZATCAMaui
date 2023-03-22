@@ -309,6 +309,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }
                     else
                     {
+                        if (response.Item1?.header.moreInformation != null && response.Item1?.header.moreInformation.Errordetails != null && response.Item1?.header.moreInformation.Errordetails.Count > 0)
+                        {
+                            MessageTxt = response.Item1.header.moreInformation.Errordetails[0];
+                            IsShowMsgView = true;
+
+                            return;
+                        }
                         MessageTxt = AppResources.RequestTimeoutDescription;
                         IsShowMsgView = true;
                     }

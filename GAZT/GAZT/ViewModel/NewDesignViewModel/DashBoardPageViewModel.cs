@@ -3926,5 +3926,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
         }
 
+        public ICommand GoToRateUsCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                 _navigationService.NavigateTo("RateUs");
+                });
+            }
+        }
+
     }
 }

@@ -422,6 +422,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ReportOTPViewModel>();
 
             SimpleIoc.Default.Register<MyReportsViewModel>();
+            SimpleIoc.Default.Register<UploadingPopupViewModel>();
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
             SimpleIoc.Default.Register<TrackShipmentViewModel>();
@@ -2940,6 +2941,7 @@ namespace EGAZT
             navigationService.Configure("ChatPotView", typeof(ChatPotView));
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
+            navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
             #endregion
 
             return navigationService;
@@ -4249,6 +4251,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<StateManager>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public UploadingPopupViewModel UploadingPopupViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UploadingPopupViewModel>();
                 }
                 catch (Exception ex)
                 {

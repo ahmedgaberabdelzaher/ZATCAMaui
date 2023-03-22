@@ -11,6 +11,7 @@ using Prism.Mvvm;
 using Xamarin.Forms;
 using EGAZT.Helper;
 using EGAZT.Models.TrackShipment;
+using EGAZT.Views.NewDesign.TrackShipment;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 {
@@ -433,8 +434,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
                         ShipmentStatusList?.Add(status);
                     }
-
-                    _navigationService.NavigateTo("/ShipmentStatusPage");
+                    var navigation = Application.Current.MainPage.Navigation;
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+                    navigation.InsertPageBefore(new ShipmentStatusPage(), currentPage);
+                    _navigationService.GoBack();
                 }
 
             }

@@ -183,7 +183,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void DpEStartDate_Closed(object sender, EventArgs e)
+        private async void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -191,9 +191,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
                 //          string DOB = year + month + day;
 
+                await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception ex)
             {
