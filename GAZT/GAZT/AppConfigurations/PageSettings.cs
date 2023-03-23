@@ -81,15 +81,18 @@ namespace EGAZT.AppConfigurations
         public static string VatSTGBaseUrl = "https://vatapis.zatca.gov.sa/api";
         public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
 
-
-        public static string GetBaseURL(string environment = "STG")
+        private static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
             if (string.IsNullOrWhiteSpace(Target_Environment))
             {
                 Target_Environment = environment;
             }
-            string key = "";
+            return Target_Environment;
+        }
+        public static void GetBaseURL(string environment = "STG")
+        {
+            Target_Environment = CheckTarget_Environment(environment);
             switch (Target_Environment)
             {
                 case "STG":
@@ -142,29 +145,25 @@ namespace EGAZT.AppConfigurations
                     Q3AnsID = Q3AnsIDStg;
                     break;
             }
-            return key;
         }
 
         public static string GetClientID()
         {
-            Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
-#if DEBUG
-            Target_Environment = "STG";
-#endif
-            string key = "";
+            Target_Environment = CheckTarget_Environment();
+#if (!DEBUG)
             Target_Environment = "Prod";
+#endif
+
+            string key = "";
             switch (Target_Environment)
             {
                 case "STG":
-                    //  CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key = XZATCAClientIdTest;
                     break;
                 case "Prod":
                     key = XZATCAClientIdProd;
-                    // CustomBaseUrl = DATAPowerProdCustomBaseUrl;
                     break;
                 default:
-                    //  CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
                     key = XZATCAClientIdTest;
                     break;
             }
@@ -172,11 +171,10 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetClientSecret()
         {
-            Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
-#if DEBUG
-            Target_Environment = "STG";
-#endif
+            Target_Environment = CheckTarget_Environment();
+#if (!DEBUG)
             Target_Environment = "Prod";
+#endif
             string key = "";
             switch (Target_Environment)
             {
