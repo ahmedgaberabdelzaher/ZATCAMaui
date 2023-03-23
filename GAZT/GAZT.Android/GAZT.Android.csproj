@@ -64,7 +64,6 @@
     <AndroidSigningKeyAlias>e-gazt</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
     <AndroidPackageFormat>aab</AndroidPackageFormat>
-    <AndroidKeyStore>True</AndroidKeyStore>
 <AndroidLinkTool>r8</AndroidLinkTool>
   </PropertyGroup>
   <ItemGroup>
