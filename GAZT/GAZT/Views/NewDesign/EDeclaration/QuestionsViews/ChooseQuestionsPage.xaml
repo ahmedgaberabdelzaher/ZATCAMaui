@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.ChooseQuestionsPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+         <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" >
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PrevoiusCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout>
+
+                        <!--  Product Declaration Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{x:Static ResourceManager:AppResources.ProductDeclaration}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Declaration Note Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             Margin="0,0,0,5"
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+                        <!--  Welcome Label for logged in only -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{x:Static ResourceManager:AppResources.Hi}"
+                            TextColor="#0996D4" />
+
+                        <!--  User Label for logged in only  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="20"
+                             Margin="0,0,0,10"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="Ahmed Hesham Taha"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--#region Question view-->
+                        <StackLayout BindableLayout.ItemsSource="{Binding QuestionList}"
+                                     x:Name="itemList"
+                                     Spacing="25">
+
+                            <BindableLayout.ItemTemplate>
+
+                                <DataTemplate>
+
+                                    <Frame
+                                        Padding="10"
+                                        BorderColor="#E6E6E6"
+                                        x:Name="selectedItem"
+                                        BackgroundColor="{Binding QuestionBackgroundColor}"
+                                        VerticalOptions="StartAndExpand"
+                                        HorizontalOptions="FillAndExpand"
+                                        CornerRadius="10">
+
+                                        <StackLayout
+                                            Margin="0,0,0,25"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            Spacing="15">
+
+                                            <!--Check Box-->
+                                            <Image
+                                                HeightRequest="20"
+                                                HorizontalOptions="Start"
+                                                Source="emptyCheck.png"
+                                                Style="{DynamicResource BackButtonArrow}"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="20">
+
+                                                <Image.Triggers>
+
+                                                    <DataTrigger
+                                                        Binding="{Binding IsChecked}"
+                                                        TargetType="Image"
+                                                        Value="false">
+                                                        <Setter Property="Source" Value="emptyCheck.png" />
+                                                    </DataTrigger>
+
+                                                    <DataTrigger
+                                                        Binding="{Binding IsChecked}"
+                                                        TargetType="Image"
+                                                        Value="true">
+                                                        <Setter Property="Source" Value="CheckMark.png" />
+                                                    </DataTrigger>
+
+                                                </Image.Triggers>
+
+                                            </Image>
+
+                                            <!-- Question Text Label-->
+                                            <Label
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="14"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding QuestionName}"
+                                                TextColor="#002447" />
+
+                                        </StackLayout>
+
+                                         <Frame.GestureRecognizers>
+                                                 <TapGestureRecognizer
+                                                        BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                                        Command="{Binding SelectedCheckBoxQuestionsCommand}"
+                                                        CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                         </Frame.GestureRecognizers>
+
+                                    </Frame>
+
+                                </DataTemplate>
+
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+                       
+                        <!--#endregion Question view-->
+
+                        <!-- GoTo Question View Button  -->
+                        <buttons:SfButton
+                            Margin="0,8"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding GoToSelectedQuestionsViewCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+
+                        <!--  Pervious Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Popup Msg  -->
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+        
+         </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,174 @@
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using EGAZT.Controls;
+using EGAZT.Models.EDeclerationsModel;
+using EGAZT.Services.Classes;
+using Xamarin.Forms;
+
+namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
+{
+	public partial class BaseProductDeclarationViewModel
+    {
+
+        #region Properties
+        bool isTobacoTypeSelected = false;
+        bool isTobacotemSelected = false;
+        static ObservableCollection<TobaccoItemsModel> TobacoItems;
+        static ObservableCollection<TobacoTypesModel> TobacoTypes;
+
+        TobaccoItemsModel selectedTobacoItem;
+        public TobaccoItemsModel SelectedTobacoItem { get { return selectedTobacoItem; } set { selectedTobacoItem = value; RaisePropertyChanged(); } }
+
+
+        TobacoTypesModel selectedTobacoType;
+        public TobacoTypesModel SelectedTobacoType { get { return selectedTobacoType; } set { selectedTobacoType = value; RaisePropertyChanged(); } }
+
+        string weight;
+        public string Weight { get { return weight; } set { weight = value; RaisePropertyChanged(); } }
+
+        bool isWeighVisible = false;
+        public bool IsWeighVisible { get { return isWeighVisible; } set { isWeighVisible = value; RaisePropertyChanged(); } }
+
+
+        #endregion
+
+        #region Commands
+
+        public ICommand OpenTobacoItemssCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+                    try
+                    {
+                        if (SelectedTobacoType != null)
+                        {
+                            isTobacotemSelected = true;
+                            isUnitsSelected = false;
+                            isCurrencySelected = false;
+                            isPurposeSelected = false;
+                            isMaterialTypeSelected = false;
+                            isProductSubTypeSelected = false;
+                            isProductTypeSelected = false;
+                            isTobacoTypeSelected = false;
+                            IsLoading = true;
+                            if (TobacoItems == null || TobacoItems.Count > 0)
+                            {
+                                var topacoTypes = await DeclerationServices.GetTobacoItem(int.Parse(SelectedTobacoType.typeID));
+                                TobacoItems = topacoTypes?.Item1.data;
+                            }
+
+                            var result = TobacoItems.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
+                            BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                            IsShowBottomSheet = true;
+                            HeaderTitle = AppResources.ProductName;
+                            TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                            IsLoading = false;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+        #endregion
+
+        #region Methods
+        private void ClearTobacoData()
+        {
+            SelectedTobacoItem = null;
+            SelectedTobacoType = null;
+            Quantity = weight = TotalValue = null;
+            IsWeighVisible = false;
+        }
+
+        private bool CheckTobacoDataNotNull()
+        {
+            if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(totalValue))
+            {
+                if (IsWeighVisible && string.IsNullOrWhiteSpace(Weight))
+                {
+                    return false;
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private async Task AddTobacoItem()
+        {
+            if (CheckTobacoDataNotNull())
+            {
+
+                if (int.Parse(Quantity ?? "0") <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.QuantityValidation;
+                    return;
+                }
+                var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
+                {
+                    count = int.Parse(Quantity ?? "0"),
+                    typeName = SelectedTobacoType.Name,
+                    itemCode = long.Parse(selectedTobacoItem.itemCode),
+                    measurementUnit = selectedTobacoItem.measurementUnit,
+                    subTypeName = SelectedTobacoItem.Name,
+                    taxSequence = SelectedTobacoItem.taxSequence
+                };
+                /* if (SubmitModel.travelerDeclaration == null)
+                 {
+                     SubmitModel.travelerDeclaration = new TravelerDeclaration()
+                     {
+                         tobacco = new List<Models.EDeclerationsModel.SubmitModels.Tobacco>
+                         ()
+                     };
+                 }*/
+                var cardItem = new EDeclerationCardModel()
+                {
+                    Name = item.typeName,
+                    desc = item.subTypeName,
+                    //  Price = TotalValue.ToString(),
+                    ID = item.ID,
+                    Type = 1
+                };
+
+                SubmitModel.travelerDeclaration.tobacco.Add(item);
+                CardData.Add(cardItem);
+                Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
+                {
+                    harmonizedCode = item.itemCode.ToString(),
+                    count = int.Parse(Quantity ?? "0"),
+                    sequence = item.taxSequence,
+                    ID = item.ID,
+                    Wight = string.IsNullOrWhiteSpace(Weight) ? 0 : int.Parse(Weight),
+                    value = double.Parse(TotalValue)
+                };
+                await CalculateFees(1, tobao, null);
+                ClearTobacoData();
+            }
+            else
+            {
+
+                DisplayRequiredDataMsg();
+            }
+        }
+        #endregion
+
+
+    }
+}
+

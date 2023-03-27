@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.TobacoView"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    IsVisible="false">
+
+    <StackLayout.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </StackLayout.Resources>
+
+    <StackLayout.Triggers>
+        <DataTrigger TargetType="StackLayout"
+                        Binding="{Binding QFlow}"
+                        Value="1">
+            <Setter Property="IsVisible" Value="true"/>
+        </DataTrigger>
+    </StackLayout.Triggers>
+
+    <!--  TypeItem Field  -->
+    <StackLayout Spacing="0">
+
+        <!--  TypeItem Label  -->
+        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel.FormattedText>
+                <FormattedString>
+                    <Span Text="{x:Static ResourceManager:AppResources.TypeItem}"/>
+                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                </FormattedString>
+            </custom:CustomLabel.FormattedText>
+        </custom:CustomLabel>
+
+        <!--  TypeItem Entry  -->
+        <inputLayout:SfTextInputLayout
+                ContainerBackgroundColor="White"
+                ContainerType="Outlined"
+                ErrorColor="#B00020"
+                FocusedColor="{StaticResource NeutralGreay}"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+                OutlineCornerRadius="15"
+                UnfocusedColor="{StaticResource NeutralGreay}">
+
+                <custom:BorderlessEntry
+                    x:Name="typeItemEntry"
+                    InputTransparent="True"
+                    IsReadOnly="True"
+                    Keyboard="Text"
+                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding SelectedTobacoType.Name}"
+                    TextColor="#58595B">
+
+                <custom:BorderlessEntry.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+                </custom:BorderlessEntry.GestureRecognizers>
+
+            </custom:BorderlessEntry>
+
+            <inputLayout:SfTextInputLayout.TrailingView>
+                <Image Aspect="AspectFit" Source="greyDropDown" />
+            </inputLayout:SfTextInputLayout.TrailingView>
+
+        </inputLayout:SfTextInputLayout>
+
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+        </StackLayout.GestureRecognizers>
+
+    </StackLayout>
+
+    <!--  ProductName Field  -->
+    <StackLayout Spacing="0">
+
+        <!--  ProductName Label  -->
+        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel.FormattedText>
+                <FormattedString>
+                    <Span Text="{x:Static ResourceManager:AppResources.ProductName}"/>
+                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                </FormattedString>
+            </custom:CustomLabel.FormattedText>
+        </custom:CustomLabel>
+
+        <!--  ProductName Entry  -->
+        <StackLayout>
+
+            <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    ErrorColor="#B00020"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="16,0,16,0"
+                    LeadingViewPosition="Inside"
+                    OutlineCornerRadius="15"
+                    UnfocusedColor="{StaticResource NeutralGreay}">
+
+                <custom:BorderlessEntry
+                    x:Name="productNameEntry"
+                    InputTransparent="True"
+                    IsReadOnly="True"
+                    Keyboard="Text"
+                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding SelectedTobacoItem.Name}"
+                    TextColor="#58595B">
+
+                    <custom:BorderlessEntry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
+                    </custom:BorderlessEntry.GestureRecognizers>
+
+                </custom:BorderlessEntry>
+
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                </inputLayout:SfTextInputLayout.TrailingView>
+
+            </inputLayout:SfTextInputLayout>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
+            </StackLayout.GestureRecognizers>
+
+        </StackLayout>
+
+        <!--  Total Price Field  -->
+        <StackLayout Spacing="0">
+
+            <!--  Total Price Label  -->
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"/>
+                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <!--  Total Price Entry  -->
+            <inputLayout:SfTextInputLayout
+    ContainerBackgroundColor="White"
+    ContainerType="Outlined"
+    ErrorColor="#B00020"
+    FocusedColor="{StaticResource NeutralGreay}"
+    InputViewPadding="16,0,16,0"
+    LeadingViewPosition="Inside"
+                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+    OutlineCornerRadius="15"
+    UnfocusedColor="{StaticResource NeutralGreay}">
+                <custom:BorderlessEntry
+
+        Keyboard="Numeric"
+        Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+        Style="{StaticResource DefaultEntry}"
+        Text="{Binding TotalValue}"
+        TextColor="#58595B" >
+                <custom:BorderlessEntry.Behaviors>
+                    <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
+                </custom:BorderlessEntry.Behaviors>
+            </custom:BorderlessEntry>
+            </inputLayout:SfTextInputLayout>
+
+        </StackLayout>
+
+        <!--  Weight Field  -->
+        <StackLayout Spacing="0"
+                        IsVisible="{Binding IsWeighVisible}">
+
+            <!--  Weight Label  -->
+            <StackLayout Orientation="Horizontal">
+
+                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static ResourceManager:AppResources.Weight}"/>
+                            <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+
+                <!--  MeasureUnit label   -->
+                <Label Text="{Binding SelectedTobacoItem.MeasureUnitAR}"
+                        FontSize="14"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        HorizontalOptions="EndAndExpand"/>
+
+            </StackLayout>
+
+            <!--  Weight Entry  -->
+            <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    ErrorColor="#B00020"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="16,0,16,0"
+                    LeadingViewPosition="Inside"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                    OutlineCornerRadius="15"
+                    UnfocusedColor="{StaticResource NeutralGreay}">
+
+                <custom:BorderlessEntry
+                    Keyboard="Numeric"
+                    Placeholder="{x:Static ResourceManager:AppResources.Weight}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding Weight}"
+                    TextColor="#58595B" >
+
+                    <custom:BorderlessEntry.Behaviors>
+                        <behaviour:OnlyNumericValuesBehaviour/>
+                    </custom:BorderlessEntry.Behaviors>
+
+                </custom:BorderlessEntry>
+
+            </inputLayout:SfTextInputLayout>
+                                       
+        </StackLayout>
+                                       
+        <!--  Quantity Field  -->
+        <StackLayout Spacing="0">
+
+            <!--  Quantity Label  -->
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.Quantity}"/>
+                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <!--  Quantity Entry  -->
+            <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    ErrorColor="#B00020"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="16,0,16,0"
+                    LeadingViewPosition="Inside"
+                    OutlineCornerRadius="15"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                    UnfocusedColor="{StaticResource NeutralGreay}">
+
+                <custom:BorderlessEntry
+                        x:Name="quantityEntry"
+                        Keyboard="Numeric"
+                        Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding Quantity}"
+                        TextColor="#58595B" >
+
+                    <custom:BorderlessEntry.Behaviors>
+                        <behaviour:OnlyNumericValuesBehaviour/>
+                    </custom:BorderlessEntry.Behaviors>
+
+                </custom:BorderlessEntry>
+
+            </inputLayout:SfTextInputLayout>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</StackLayout>
+
