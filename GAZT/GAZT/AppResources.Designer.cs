@@ -1510,6 +1510,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here for registration.
+        /// </summary>
+        public static string ClickhereforRegistration {
+            get {
+                return ResourceManager.GetString("ClickhereforRegistration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Closed.
         /// </summary>
         public static string ClosedReports {
@@ -7325,6 +7334,15 @@ namespace EGAZT {
         public static string IAMLogin {
             get {
                 return ResourceManager.GetString("IAMLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تم التحقق ولا يوجد لكم سجلات في الهيئة الرجاء الدخول للخدمة من خلال صفحة الويب والتسجيل وبعد ذلك يمكنك الدخول للخدمة من خلال التطبيق.
+        /// </summary>
+        public static string IAMUsernNotFoundMSg {
+            get {
+                return ResourceManager.GetString("IAMUsernNotFoundMSg", resourceCulture);
             }
         }
         
