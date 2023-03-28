@@ -22,11 +22,11 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations
         async void WebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
          // await  DownlOadFile("https://soga.fasah.sa/api/attachment/v1/download?fileUri=ru4ldgUPCt6Oc3M9RO3ejmOdI4BeDCKiFLVSxny%2FtuXK%2BsZ5XM6aOC%2BobOKC%2FtCPWz%2B5ERM%2BsmPh0pHCSMM060MeTmQnrh1aL%2FyUnT%2BIj4XV9%2FzYbCNMsu4JK9wLJuth");
-           /* if (e.Url.Contains("file"))
+            if (e.Url.Contains("file"))
             {
                 viewModel.IsLoading = true;
               await viewModel.DownlOadFile(e.Url);
-            }*/
+            }
             
         }
         private async Task DownlOadFile(string url)
