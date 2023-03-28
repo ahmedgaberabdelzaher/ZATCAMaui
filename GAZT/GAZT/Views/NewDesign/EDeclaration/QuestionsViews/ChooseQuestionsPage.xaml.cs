@@ -16,6 +16,11 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
             BindingContext = viewModel;
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
 
+            
+        }
+
+        protected override void OnAppearing()
+        {
             if (!viewModel.IsArrivingPlaneSelected)
             {
                 viewModel.QuestionList = new ObservableCollection<QuestionModel>
@@ -35,6 +40,6 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
                  };
             }
         }
-	}
+    }
 }
 

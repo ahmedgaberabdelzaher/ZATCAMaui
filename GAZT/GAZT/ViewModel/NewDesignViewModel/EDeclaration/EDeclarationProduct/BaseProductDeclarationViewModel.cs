@@ -67,13 +67,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         ObservableCollection<EDeclerationCardModel> cardData = new ObservableCollection<EDeclerationCardModel>();
         public ObservableCollection<EDeclerationCardModel> CardData { get { return cardData; } set { cardData = value; RaisePropertyChanged(); } }
 
-        ObservableCollection<QuestionModel> questionList = new ObservableCollection<QuestionModel>
-         {
-             new QuestionModel{QuestionName = AppResources.EdeclerationTobbacoQuestion ,QuestionId =1},
-             new QuestionModel{QuestionName = AppResources.EdeclerationProductQuestion ,QuestionId =2},
-             new QuestionModel{QuestionName = AppResources.EDeclerationCurrencyQuestion ,QuestionId =3},
-             new QuestionModel{QuestionName = AppResources.EDeclerationRestrictedQuestion ,QuestionId =4}
-         };
+        ObservableCollection<QuestionModel> questionList = new ObservableCollection<QuestionModel>();
         public ObservableCollection<QuestionModel> QuestionList { get { return questionList; } set { questionList = value; RaisePropertyChanged(); } }
 
 
@@ -88,6 +82,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async _ =>
                 {
+                    if (CheckNoItemAddedToCart())
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
+                        return;
+                    }
                     EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
                     await PopupNavigation.Instance.PushAsync(poupWindow);
 
@@ -108,6 +108,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     }
                     selectedQuestionList.Sort();
                     QFlow = selectedQuestionList[questionIndex]; // Set First Item
+                    SetQuestion();
                     _navigationService.NavigateTo("ProductDeclarationPage");
                    
                 });
@@ -127,10 +128,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             var question = e as QuestionModel;
                             question.IsChecked = !question.IsChecked;
 
-                            if(question.IsChecked)
+                            if (question.IsChecked)
                                 selectedQuestionList.Add(question.QuestionId);
                             else
-                                selectedQuestionList.RemoveAt(question.QuestionId - 1);
+                                selectedQuestionList.Remove(question.QuestionId);
 
                         }
                     }
@@ -169,7 +170,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
                             return;
                         }
-                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 2 && IsYesSelected)
+                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 2)
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -177,7 +178,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         }
                         if (questionIndex < selectedQuestionList.Count)
                         {
-                            IsYesSelected = true;
                             questionIndex++;
                             QFlow = selectedQuestionList[questionIndex];
                             SetQuestion();
@@ -583,25 +583,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             switch (QFlow)
             {
                 case 1:
-                    if (IsYesSelected && SubmitModel.travelerDeclaration.tobacco.Count < 1)
+                    if ( SubmitModel.travelerDeclaration.tobacco.Count < 1)
                     {
                         return true;
                     }
                     break;
                 case 2:
-                    if (IsYesSelected && SubmitModel.travelerDeclaration.product.Count < 1)
+                    if (SubmitModel.travelerDeclaration.product.Count < 1)
                     {
                         return true;
                     }
                     break;
                 case 3:
-                    if (IsYesSelected && SubmitModel.travelerDeclaration.currency.Count < 1)
+                    if (SubmitModel.travelerDeclaration.currency.Count < 1)
                     {
                         return true;
                     }
                     break;
                 case 4:
-                    if (IsYesSelected && SubmitModel.travelerDeclaration.restricted.Count < 1)
+                    if (SubmitModel.travelerDeclaration.restricted.Count < 1)
                     {
                         return true;
                     }
@@ -681,6 +681,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     return;
                 }
                 questionIndex--;
+                QFlow = selectedQuestionList[questionIndex];
                 SetQuestion();
             }
             else

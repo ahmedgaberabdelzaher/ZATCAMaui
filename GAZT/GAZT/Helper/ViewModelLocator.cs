@@ -174,6 +174,9 @@ using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
+using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
+
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
@@ -430,7 +433,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
-            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<BaseProductDeclarationViewModel>();
             SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
             SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
@@ -2924,6 +2927,7 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ChooseQuestionsPage", typeof(ChooseQuestionsPage));
             navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
             navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
             navigationService.Configure("SuccessView", typeof(SuccessView));
@@ -4160,13 +4164,13 @@ namespace EGAZT
                 }
             }
         }
-        public ProductDeclarationViewModel ProductDeclarationViewModel
+        public BaseProductDeclarationViewModel ProductDeclarationViewModel
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                    return ServiceLocator.Current.GetInstance<BaseProductDeclarationViewModel>();
                 }
                 catch (Exception ex)
                 {

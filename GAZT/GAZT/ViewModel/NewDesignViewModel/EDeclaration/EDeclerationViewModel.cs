@@ -62,6 +62,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
         public ICommand GoToReviewPageCommand
         {
             get

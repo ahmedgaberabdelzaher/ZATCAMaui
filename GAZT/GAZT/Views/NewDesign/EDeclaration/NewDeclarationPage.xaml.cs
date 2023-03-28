@@ -37,14 +37,6 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             }
             base.OnAppearing();
         }
-        /* public NewDeclarationPage(object payload)
-         {
-             InitializeComponent();
-             viewModel = App.Locator.BaseEDeclarationViewModel;
-             viewModel.SubmitModel.travelerDeclaration = new Models.EDeclerationsModel.SubmitModels.TravelerDeclaration();
-             // viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
-             BindingContext = viewModel;
-         }*/
     }
 }
 

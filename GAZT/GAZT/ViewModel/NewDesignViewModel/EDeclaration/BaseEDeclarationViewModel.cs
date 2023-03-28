@@ -62,16 +62,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
-        public ICommand QuestionSelectionCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsYesSelected = IsYesSelected == true ? false : true;
-                });
-            }
-        }
+
         public ICommand GoToProductDeclarationCommand
         {
             get
@@ -80,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     await PopupNavigation.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
-                    _navigationService.NavigateTo("ProductDeclarationPage");
+                    _navigationService.NavigateTo("ChooseQuestionsPage");
                 });
             }
         }

@@ -148,22 +148,22 @@
 
             <!--  Total Price Entry  -->
             <inputLayout:SfTextInputLayout
-    ContainerBackgroundColor="White"
-    ContainerType="Outlined"
-    ErrorColor="#B00020"
-    FocusedColor="{StaticResource NeutralGreay}"
-    InputViewPadding="16,0,16,0"
-    LeadingViewPosition="Inside"
-                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-    OutlineCornerRadius="15"
-    UnfocusedColor="{StaticResource NeutralGreay}">
+                        ContainerBackgroundColor="White"
+                        ContainerType="Outlined"
+                        ErrorColor="#B00020"
+                        FocusedColor="{StaticResource NeutralGreay}"
+                        InputViewPadding="16,0,16,0"
+                        LeadingViewPosition="Inside"
+                        HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                        OutlineCornerRadius="15"
+                        UnfocusedColor="{StaticResource NeutralGreay}">
                 <custom:BorderlessEntry
 
-        Keyboard="Numeric"
-        Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
-        Style="{StaticResource DefaultEntry}"
-        Text="{Binding TotalValue}"
-        TextColor="#58595B" >
+                        Keyboard="Numeric"
+                        Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding TotalValue}"
+                        TextColor="#58595B" >
                 <custom:BorderlessEntry.Behaviors>
                     <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
                 </custom:BorderlessEntry.Behaviors>
@@ -204,7 +204,7 @@
                     FocusedColor="{StaticResource NeutralGreay}"
                     InputViewPadding="16,0,16,0"
                     LeadingViewPosition="Inside"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                    HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     OutlineCornerRadius="15"
                     UnfocusedColor="{StaticResource NeutralGreay}">
 
@@ -247,7 +247,7 @@
                     InputViewPadding="16,0,16,0"
                     LeadingViewPosition="Inside"
                     OutlineCornerRadius="15"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                    HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     UnfocusedColor="{StaticResource NeutralGreay}">
 
                 <custom:BorderlessEntry
