@@ -10304,4 +10304,10 @@ Zakat, Tax and Customs Authority
     <data name="NotNeedRewardHint" xml:space="preserve">
      <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
+    <data name="ClickhereforRegistration" xml:space="preserve">
+    <value>Click here for registration</value>
+  </data>
+    <data name="IAMUsernNotFoundMSg" xml:space="preserve">
+    <value>تم التحقق ولا يوجد لكم سجلات في الهيئة الرجاء الدخول للخدمة من خلال صفحة الويب والتسجيل وبعد ذلك يمكنك الدخول للخدمة من خلال التطبيق</value>
+  </data>
 </root>

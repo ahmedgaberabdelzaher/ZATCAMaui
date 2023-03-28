@@ -10237,4 +10237,11 @@ info@zatca.gov.sa</value>
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
+     <data name="ClickhereforRegistration" xml:space="preserve">
+    <value>اضغط هنا للتسجيل</value>
+  </data>
+  <data name="IAMUsernNotFoundMSg" xml:space="preserve">
+    <value>" عزيزي المستخدم
+نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: (رابط الخدمة)؛ ثم الدخول على التطبيق مجددًا."</value>
+  </data>
 </root>
