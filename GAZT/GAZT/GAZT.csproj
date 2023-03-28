@@ -129,6 +129,7 @@
 	  <None Remove="ViewModel\NewDesignViewModel\TrackShipment\" />
 	  <None Remove="Views\NewDesign\TrackShipment\" />
 	  <None Remove="Models\TrackShipment\" />
+	  <None Remove="Views\NewDesign\LoginPages\FasahLogin\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -258,6 +259,7 @@
 		<Folder Include="ViewModel\NewDesignViewModel\TrackShipment\" />
 		<Folder Include="Views\NewDesign\TrackShipment\" />
 		<Folder Include="Models\TrackShipment\" />
+		<Folder Include="Views\NewDesign\LoginPages\FasahLogin\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

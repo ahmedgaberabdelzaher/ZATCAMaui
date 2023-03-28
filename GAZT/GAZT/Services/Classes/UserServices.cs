@@ -14,5 +14,10 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.PostAsync(App.VatCustom + $"User", body, true).ConfigureAwait(false);
             return response;
         }
+        public async Task<HttpResponseMessage> FasahLogin(CustomLoginModel body,string endpoint)
+        {
+            var response = await HttpManager.PostAsync(endpoint, body, true).ConfigureAwait(false);
+            return response;
+        }
     }
 }
