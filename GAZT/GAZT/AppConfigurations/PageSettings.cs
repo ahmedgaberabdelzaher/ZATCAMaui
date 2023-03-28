@@ -150,9 +150,6 @@ namespace EGAZT.AppConfigurations
         public static string GetClientID()
         {
             Target_Environment = CheckTarget_Environment();
-#if (!DEBUG)
-            Target_Environment = "Prod";
-#endif
 
             string key = "";
             switch (Target_Environment)
@@ -172,9 +169,6 @@ namespace EGAZT.AppConfigurations
         public static string GetClientSecret()
         {
             Target_Environment = CheckTarget_Environment();
-#if (!DEBUG)
-            Target_Environment = "Prod";
-#endif
             string key = "";
             switch (Target_Environment)
             {
@@ -190,9 +184,9 @@ namespace EGAZT.AppConfigurations
             }
             return key;
         }
-        //  const string EdclerationBaseURL = "http://10.112.42.23/";
+        //  const string EdclerationBaseURL = "http://10.112.42.23/"; 
 
-        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
+        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/"; // production link
 
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
@@ -202,13 +196,11 @@ namespace EGAZT.AppConfigurations
             if (App.IsArabic)
             {
                 return $"{EdclerationBaseURL}ar/app-view/Pages/EDeclarationStartPage.aspx";
-                //  return $"{EdclerationBaseURL}";
 
             }
             else
             {
                 return $"{EdclerationBaseURL}en/app-view/Pages/EDeclarationStartPage.aspx";
-                //return $"{EdclerationBaseURL}";
             }
         }
 
@@ -216,13 +208,11 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                // return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
                 return $"{TawreedBaseURL}";
 
             }
             else
             {
-                // return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
                 return $"{TawreedBaseURL}";
             }
         }
