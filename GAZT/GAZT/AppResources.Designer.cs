@@ -7338,7 +7338,8 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to تم التحقق ولا يوجد لكم سجلات في الهيئة الرجاء الدخول للخدمة من خلال صفحة الويب والتسجيل وبعد ذلك يمكنك الدخول للخدمة من خلال التطبيق.
+        ///   Looks up a localized string similar to Dear User,
+        ///We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app..
         /// </summary>
         public static string IAMUsernNotFoundMSg {
             get {

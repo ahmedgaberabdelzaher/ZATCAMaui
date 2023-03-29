@@ -159,7 +159,7 @@ namespace EGAZT.AppConfigurations
             Target_Environment = "STG";
 #endif
             string key = "";
-       //  Target_Environment = "Prod";
+        Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case"STG":
@@ -183,7 +183,7 @@ namespace EGAZT.AppConfigurations
 #if DEBUG
             Target_Environment = "STG";
 #endif
-          // Target_Environment = "Prod";
+           Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {

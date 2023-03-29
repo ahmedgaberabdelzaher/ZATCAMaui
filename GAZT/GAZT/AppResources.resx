@@ -10296,6 +10296,7 @@ Zakat, Tax and Customs Authority
     <value>Click here for registration</value>
   </data>
     <data name="IAMUsernNotFoundMSg" xml:space="preserve">
-    <value>تم التحقق ولا يوجد لكم سجلات في الهيئة الرجاء الدخول للخدمة من خلال صفحة الويب والتسجيل وبعد ذلك يمكنك الدخول للخدمة من خلال التطبيق</value>
+    <value>Dear User,
+We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app.</value>
   </data>
 </root>

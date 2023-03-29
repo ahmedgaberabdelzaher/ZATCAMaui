@@ -27,19 +27,17 @@
             </WebView>
 
      </StackLayout>-->
-                <Grid IsVisible="{Binding IsNoUserShowMsg}"
+            <Grid VerticalOptions="Fill" Margin="-20" IsVisible="{Binding IsNoUserShowMsg}" BackgroundColor="Gray" Opacity=".5"></Grid>
+                <Grid Margin="-20,0,-20,0" IsVisible="{Binding IsNoUserShowMsg}"
         Grid.Row="0"
-        Margin="0,0,0,0"
+      
         VerticalOptions="EndAndExpand">
 
         <Grid.GestureRecognizers>
             <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
         </Grid.GestureRecognizers>
 
-        <StackLayout
-            BackgroundColor="Black"
-            Opacity="0.4"
-            VerticalOptions="FillAndExpand" />
+   
 
         <yummy:PancakeView
             Padding="20,20,20,10"
@@ -55,12 +53,7 @@
                     Style="{StaticResource BodyLabelBlack}"
                     Text="{Binding MessageTxt}" />
 
-                <buttons:SfButton
-                    Margin="0,0,0,10"
-                    Command="{Binding CloseMsgViewCommand}"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
-                    VerticalOptions="CenterAndExpand" />
+              
  <buttons:SfButton 
                     Margin="0,0,0,10"
                     Command="{Binding OpenIAMRegistrationUrlCommand}"
