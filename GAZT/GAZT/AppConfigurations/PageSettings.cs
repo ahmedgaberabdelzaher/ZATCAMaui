@@ -55,10 +55,10 @@ namespace EGAZT.AppConfigurations
         public static string CustomSTGBaseUrl = "http://10.112.34.38:8024/";
         public static string VatCustomSTGURL = "https://vatapislb.zatca.gov.sa/api/";
         public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
-        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
+        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
-        public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
+        public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/";
         public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
@@ -150,9 +150,6 @@ namespace EGAZT.AppConfigurations
         public static string GetClientID()
         {
             Target_Environment = CheckTarget_Environment();
-#if (!DEBUG)
-            Target_Environment = "Prod";
-#endif
 
             string key = "";
             switch (Target_Environment)
@@ -172,9 +169,6 @@ namespace EGAZT.AppConfigurations
         public static string GetClientSecret()
         {
             Target_Environment = CheckTarget_Environment();
-#if (!DEBUG)
-            Target_Environment = "Prod";
-#endif
             string key = "";
             switch (Target_Environment)
             {
@@ -190,9 +184,9 @@ namespace EGAZT.AppConfigurations
             }
             return key;
         }
-        //  const string EdclerationBaseURL = "http://10.112.42.23/";
+        //  const string EdclerationBaseURL = "http://10.112.42.23/"; 
 
-        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
+        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/"; // production link
 
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
@@ -202,13 +196,11 @@ namespace EGAZT.AppConfigurations
             if (App.IsArabic)
             {
                 return $"{EdclerationBaseURL}ar/app-view/Pages/EDeclarationStartPage.aspx";
-                //  return $"{EdclerationBaseURL}";
 
             }
             else
             {
                 return $"{EdclerationBaseURL}en/app-view/Pages/EDeclarationStartPage.aspx";
-                //return $"{EdclerationBaseURL}";
             }
         }
 
@@ -216,13 +208,11 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                // return $"{EdclerationBaseURL}ar/edeclaration?AppViewEDecForm";
                 return $"{TawreedBaseURL}";
 
             }
             else
             {
-                // return $"{EdclerationBaseURL}en/edeclaration?AppViewEDecForm";
                 return $"{TawreedBaseURL}";
             }
         }
