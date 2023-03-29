@@ -81,6 +81,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _lastName;
         public string lastName { get { return _lastName; } set { _lastName = value; RaisePropertyChanged(); } }
 
+        string _fullName;
+        public string FullName { get { return _fullName; } set { _fullName = value; RaisePropertyChanged(); } }
+
         string _nationalityName;
         public string NationalityName { get { return _nationalityName; } set { _nationalityName = value; RaisePropertyChanged(); } }
 

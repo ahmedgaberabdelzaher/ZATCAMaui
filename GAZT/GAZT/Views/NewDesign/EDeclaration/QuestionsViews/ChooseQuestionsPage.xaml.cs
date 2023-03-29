@@ -15,12 +15,21 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
             viewModel = App.Locator.ProductDeclarationViewModel;
             BindingContext = viewModel;
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
-
-            
         }
 
         protected override void OnAppearing()
         {
+            var userType = App.Locator.StateManager.GetItem("IsLoggedIn") ;
+            var fullName = (string)App.Locator.StateManager.GetItem("FullName");
+            
+            if (userType != null )
+            {
+                viewModel.SubmitModel.travelerDeclaration.Isvisitor = (bool)userType;
+                viewModel.SubmitModel.travelerDeclaration.FullName = viewModel.SubmitModel.travelerDeclaration.Isvisitor ? null : fullName;
+
+            }
+                
+
             if (!viewModel.IsArrivingPlaneSelected)
             {
                 viewModel.QuestionList = new ObservableCollection<QuestionModel>

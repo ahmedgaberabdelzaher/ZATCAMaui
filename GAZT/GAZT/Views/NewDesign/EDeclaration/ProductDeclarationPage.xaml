@@ -7,10 +7,9 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:questionsviews="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.QuestionsViews"
     x:Name="page"
     ios:Page.UseSafeArea="true"
@@ -24,6 +23,9 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+             <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -299,7 +301,7 @@
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="20"
-                            IsVisible="false"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             HorizontalOptions="StartAndExpand"
                             MaxLines="1"
                             Text="{x:Static ResourceManager:AppResources.Hi}"
@@ -309,10 +311,10 @@
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="20"
-                            IsVisible="false"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             HorizontalOptions="StartAndExpand"
                             MaxLines="1"
-                            Text="Ahmed Hesham Taha"
+                            Text="{Binding SubmitModel.travelerDeclaration.FullName}"
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Question Title Field Label  -->
@@ -333,7 +335,7 @@
                         <BoxView
                             WidthRequest="20"
                             Margin="0,0,0,10"
-                            IsVisible="false"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
                             HeightRequest="2" />
 

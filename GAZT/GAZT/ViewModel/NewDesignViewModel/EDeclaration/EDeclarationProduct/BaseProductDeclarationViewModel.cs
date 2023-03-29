@@ -176,7 +176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
                             return;
                         }
-                        if (questionIndex < selectedQuestionList.Count)
+                        if (questionIndex < selectedQuestionList.Count - 1)
                         {
                             questionIndex++;
                             QFlow = selectedQuestionList[questionIndex];
@@ -190,7 +190,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                                 MessageTxt = AppResources.ALLanswersisNoMsg;
                                 return;
                             }
-                            _navigationService.NavigateTo("PassengerInformationPage");
+                            if (SubmitModel.travelerDeclaration.Isvisitor)
+                                _navigationService.NavigateTo("PassengerInformationPage");
+                            else
+                                _navigationService.NavigateTo("TripInformationPage");
                         }
 
 

@@ -123,6 +123,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
             SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
             SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
+            SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
+            App.Locator.StateManager.SetItem("FullName", SubmitModel.travelerDeclaration.FullName);
             SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData["Nationality"].ToString();
             SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
             // Its source is empty so field with nationality

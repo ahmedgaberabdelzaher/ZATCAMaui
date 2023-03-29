@@ -18,6 +18,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         
         string _ArrivalDepartureDateString;
         public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; RaisePropertyChanged(); } }
+
         public ICommand TripCardCommand
         {
             get
@@ -96,6 +97,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     catch (Exception ex)
                     {
                         IsLoading = false;
+                    }
+                    
+                });
+            }
+        }
+
+        public ICommand GoToPersonalInfoCommand
+        {
+            get
+            {
+                return new Command( _ =>
+                {
+                    try
+                    {
+                        if (IsValidateTripInfo() && !SubmitModel.travelerDeclaration.Isvisitor) // Is loggedIn
+                        {
+                            isPassengerPage = true;
+                            _navigationService.NavigateTo("PassengerInformationPage");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
                     }
                     
                 });
@@ -240,6 +263,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     return false;
                 }
 
+            }
+            else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
+                           || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.TravelerCountValidation;
+                return false;
             }
             return true;
 
