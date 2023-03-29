@@ -55,10 +55,10 @@ namespace EGAZT.AppConfigurations
         public static string CustomSTGBaseUrl = "http://10.112.34.38:8024/";
         public static string VatCustomSTGURL = "https://vatapislb.zatca.gov.sa/api/";
         public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
-        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
+        public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
-        public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/";
+        public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/";
         public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
