@@ -24,7 +24,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
         public string Email { get { return email; } set { email = value; RaisePropertyChanged(); } }
 
 
-        IUserServices _userServices;
+       public IUserServices _userServices;
 
         public BaseLoginViewModel(INavigationService navigationServices, IDialogService dialogService, IUserServices userServices, ICommonServices commonServices) : base(navigationServices, dialogService, commonServices)
         {

@@ -1195,6 +1195,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Car Import.
+        /// </summary>
+        public static string CarImport {
+            get {
+                return ResourceManager.GetString("CarImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category series.
         /// </summary>
         public static string Categoryseries {
@@ -7898,6 +7907,15 @@ namespace EGAZT {
         public static string LoginTitle {
             get {
                 return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login to Car import service.
+        /// </summary>
+        public static string LogintoCarimportservice {
+            get {
+                return ResourceManager.GetString("LogintoCarimportservice", resourceCulture);
             }
         }
         

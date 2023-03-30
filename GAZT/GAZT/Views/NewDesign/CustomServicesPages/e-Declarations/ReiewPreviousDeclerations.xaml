@@ -13,13 +13,13 @@
             Padding="20,20,20,0"
             Style="{StaticResource CommonTopCurves}">
             <WebView
-                Margin="-20,-40,-20,0" Navigating="WebView_Navigating"
+                Margin="-20,0,-20,0" Navigating="WebView_Navigating"
                 HorizontalOptions="FillAndExpand"
                 IsTabStop="True"
-                Source="https://soga.fasah.sa/ar/login/1.0/"
+                x:Name="webc"
                 VerticalOptions="FillAndExpand" />
         </yummy:PancakeView>
-        <controls:Header TitleText="فسح" />
+        <controls:Header TitleText="{x:Static ResourceManager:AppResources.CarImport}" />
         <controls:Loader
             Grid.Row="0"
             Grid.RowSpan="2"

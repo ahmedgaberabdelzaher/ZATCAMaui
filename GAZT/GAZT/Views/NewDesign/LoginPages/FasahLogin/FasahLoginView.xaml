@@ -70,7 +70,7 @@
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="28"
                     HorizontalOptions="StartAndExpand"
-                    Text="{x:Static ResourceManager:AppResources.LogintoCustoms}"
+                    Text="{x:Static ResourceManager:AppResources.LogintoCarimportservice}"
                     TextColor="{StaticResource Secondary}" />
 
                 <!--  Login sub title  -->

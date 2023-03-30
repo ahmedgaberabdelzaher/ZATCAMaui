@@ -85,6 +85,13 @@ namespace EGAZT.AppConfigurations
         public static string VatSTGBaseUrl = "https://vatapis.zatca.gov.sa/api";
         public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
         public static string IAMRegistration;
+        public static string FasahBaseUrlProd = "https://soga.fasah.sa/";
+        public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
+        public static string FasahRedirectUrl = "https://soga.fasah.sa/";
+
+
+        public static string FasahBaseUrl;
+        public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
 
         private static string CheckTarget_Environment(string environment = "STG")
         {
@@ -116,6 +123,7 @@ namespace EGAZT.AppConfigurations
                     Q2AnsID=Q2AnsIDStg;
                     Q3AnsID=Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
+                    FasahBaseUrl = FasahBaseUrlStG;
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -133,6 +141,7 @@ namespace EGAZT.AppConfigurations
                     Q2AnsID=Q2AnsIDProd;
                     Q3AnsID=Q3AnsIDProd;
                     IAMRegistration = IAMRegistraionProd;
+                    FasahBaseUrl = FasahBaseUrlProd;
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -150,6 +159,7 @@ namespace EGAZT.AppConfigurations
                     Q2AnsID = Q2AnsIDStg;
                     Q3AnsID = Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
+                    FasahBaseUrl = FasahBaseUrlStG;
                     break;
             }
         }
@@ -305,6 +315,29 @@ namespace EGAZT.AppConfigurations
             }
         }
 
+        public static string GetFasahRefere()
+        {
+            if (App.IsArabic)
+            {
+                return $"https://toga.fasah.sa/ar/login/1.0/";
+            }
+            else
+            {
+                return $"https://toga.fasah.sa/en/login/1.0/";
+            }
+        }
+
+        public static string GetFasahRedirectUrl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{FasahRedirectUrl}ar/redirection/1.0/?s=Brokers_optionality&t=";
+            }
+            else
+            {
+                return $"{FasahRedirectUrl}en/redirection/1.0/?s=Brokers_optionality&t=";
+            }
+        }
 
     }
 }

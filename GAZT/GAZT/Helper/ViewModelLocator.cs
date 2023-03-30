@@ -174,6 +174,8 @@ using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
+using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
+
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
@@ -442,7 +444,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
               SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
                  SimpleIoc.Default.Register<ChatViewModel>();
-#endregion
+            SimpleIoc.Default.Register<FasahLoginViewModel>();
+            SimpleIoc.Default.Register<BaseLoginViewModel>();
+
+            #endregion
         }
 
         #region NewDesignViewModel
@@ -2942,6 +2947,8 @@ namespace EGAZT
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
+
             #endregion
 
             return navigationService;
@@ -3237,6 +3244,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public FasahLoginViewModel FasahLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FasahLoginViewModel>();
                 }
                 catch (Exception ex)
                 {

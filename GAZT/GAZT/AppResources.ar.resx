@@ -10244,4 +10244,10 @@ info@zatca.gov.sa</value>
     <value>" عزيزي المستخدم
 نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: (رابط الخدمة)؛ ثم الدخول على التطبيق مجددًا."</value>
   </data>
+      <data name="CarImport" xml:space="preserve">
+     <value>استيرا د السيارات </value>
+  </data>
+    <data name="LogintoCarimportservice" xml:space="preserve">
+     <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
+  </data>
 </root>

@@ -68,6 +68,9 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+
                             </Grid.ColumnDefinitions>
                             <Grid.Resources>
                                 <ResourceDictionary>
@@ -151,13 +154,51 @@
                             </inputLayout:SfTextInputLayout>
                             <!--  Third OTP Digit End  -->
 
-                            <!--  Fourth OTP Digit Start  -->
+
+                                    <!--  Fourth OTP Digit Start  -->
                             <inputLayout:SfTextInputLayout Grid.Column="3">
                                 <custom:BorderlessEntry
                                     x:Name="OTPFourthEntry"
-                                    Margin="0"
                                     ClassId="4"
                                     Text="{Binding OTPFourthDigit}">
+                                    <custom:BorderlessEntry.Behaviors>
+                                        <customcontrol:OnlyNumericValuesBehaviour />
+                                        <local:EntryFocusBehaviour NextFocusElementName="OTPFifthEntry" />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference OTPFifthEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:BorderlessEntry.Behaviors>
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                            <!--  Fourth OTP Digit End  -->
+                         
+
+                            <!--  Fifth OTP Digit End  -->
+                            <inputLayout:SfTextInputLayout Grid.Column="4">
+                                <custom:BorderlessEntry
+                                    x:Name="OTPFifthEntry"
+                                    ClassId="5"
+                                    Text="{Binding OTPFithDigit}">
+                                    <custom:BorderlessEntry.Behaviors>
+                                        <customcontrol:OnlyNumericValuesBehaviour />
+                                        <local:EntryFocusBehaviour NextFocusElementName="OTPSixEntry" />
+                                        <xct:EventToCommandBehavior
+                                            Command="{Binding GoToNextEntryCommand}"
+                                            CommandParameter="{Binding Source={x:Reference OTPSixEntry}}"
+                                            EventName="TextChanged" />
+                                    </custom:BorderlessEntry.Behaviors>
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+                            <!--  Third OTP Digit End  -->
+
+                            <!--   OTP Digit Start  -->
+                            <inputLayout:SfTextInputLayout Grid.Column="5">
+                                <custom:BorderlessEntry
+                                    x:Name="OTPSixEntry"
+                                    Margin="0"
+                                    ClassId="6"
+                                    Text="{Binding OTPSixDigit}">
                                     <custom:BorderlessEntry.Behaviors>
                                         <customcontrol:OnlyNumericValuesBehaviour />
                                         <xct:EventToCommandBehavior Command="{Binding VerifyOTPCommand}" EventName="Completed" />

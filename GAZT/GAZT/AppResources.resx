@@ -10310,4 +10310,10 @@ Zakat, Tax and Customs Authority
     <data name="IAMUsernNotFoundMSg" xml:space="preserve">
     <value>تم التحقق ولا يوجد لكم سجلات في الهيئة الرجاء الدخول للخدمة من خلال صفحة الويب والتسجيل وبعد ذلك يمكنك الدخول للخدمة من خلال التطبيق</value>
   </data>
+      <data name="CarImport" xml:space="preserve">
+    <value>Car Import</value>
+  </data>
+    <data name="LogintoCarimportservice" xml:space="preserve">
+    <value>Login to Car import service</value>
+  </data>
 </root>

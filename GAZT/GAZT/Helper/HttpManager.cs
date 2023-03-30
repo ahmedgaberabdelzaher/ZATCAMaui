@@ -278,8 +278,17 @@ namespace EGAZT.Helper
             }
         }
 
+        private static void SetFasahHeaders(HttpClient client,string token)
+        {
+            client.DefaultRequestHeaders.Add("Referer", PageSettings.GetFasahRefere());
+            client.DefaultRequestHeaders.Add("X-Service-Type", "CAR_IMP_SERVICE");
+            client.DefaultRequestHeaders.Add("api-key", PageSettings.FasahApiKey);
+            client.DefaultRequestHeaders.Add("token", token);
+            client.DefaultRequestHeaders.Add("Accept", "application/json");
+}
+
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false) where T : class
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false,bool isFasahHeaders=false) where T : class
         {
             try
             {
@@ -296,9 +305,10 @@ namespace EGAZT.Helper
 
                     //  var client = App.Locator.httpClient;
 
-                    client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
-                    client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
-                    //var JsonObject = JsonConvert.SerializeObject(Data);
+                   // client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
+                  //  client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
+                                        client.DefaultRequestHeaders.Add("Accept-Language", App.IsArabic?"ar":"en");
+//var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
                     /*
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
@@ -306,7 +316,7 @@ namespace EGAZT.Helper
                     */
                     if (token!="")
                     {
-                     client.DefaultRequestHeaders.Add("Authorization",token);
+                    // client.DefaultRequestHeaders.Add("Authorization",token);
                     }
                     if (isTahqaq)
                     {
@@ -315,11 +325,14 @@ namespace EGAZT.Helper
                     }
                     else
                     {
-                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
-                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                     //   client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                      //  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     }
-                    AddBasicAuthToHeader(client,isEradQr);
-
+                   // AddBasicAuthToHeader(client,isEradQr);
+                    if (isFasahHeaders)
+                    {
+                        SetFasahHeaders(client,token);
+                    }
                   var JsonObject = JsonConvert.SerializeObject(Data);
                    // var JsonObject =jobject;
 
@@ -336,7 +349,8 @@ namespace EGAZT.Helper
                         }
                         else
                         {
-                            return new HttpResponseMessage() { StatusCode = response.StatusCode, ReasonPhrase = AppResources.ServerError };
+                            return response;
+                           // return new HttpResponseMessage() { StatusCode = response.StatusCode, ReasonPhrase = AppResources.ServerError };
                         }
                     }
                     else
