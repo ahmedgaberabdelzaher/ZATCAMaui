@@ -20,7 +20,7 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations
             string source = "Bearer%20eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5YXNzODk1NyIsIkdST1VQUyAiOiIiLCJHUk9VUFMiOiIiLCJJU19TU08gIjpmYWxzZSwiU1NPX1RPS0VOICI6IiIsIklTX1NTTyI6ZmFsc2UsIlNTT19UT0tFTiI6IiIsIkNMSUVOVF9OQU1FIjoiVEVNUF9UT0tFTiIsImlzcyI6IkZBU0FIIiwiYXVkIjoiRkFTQUggQXBwbGljYXRpb24iLCJleHAiOjE2ODAxMDE5OTZ9.fCyBlJ07q9U7MSg2m7mTojIydJgDCJ50pWtioAzL0SgmgcROsnDuW03YrgoBg_MU7FfOU1MXkox4xqE9WiLm2w";
             // webc.Source = source;
             InitializeComponent();
-            var url = PageSettings.FasahRedirectUrl+token;
+            var url = PageSettings.GetFasahRedirectUrl() + token;
 
             //   webc.Source = "https://soga.fasah.sa/ar/redirection/1.0/?s=Brokers_optionality&t=Bearer%20eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ5YXNzODk1NyIsIkdST1VQUyAiOiJJTVBSVCxUcmFkZXIiLCJHUk9VUFMiOiJJTVBSVCxUcmFkZXIiLCJJU19TU08gIjpmYWxzZSwiU1NPX1RPS0VOICI6IiIsIklTX1NTTyI6ZmFsc2UsIlNTT19UT0tFTiI6IiIsIkNMSUVOVF9OQU1FIjoiRkFTQUgiLCJpc3MiOiJGQVNBSCIsImF1ZCI6IkZBU0FIIEFwcGxpY2F0aW9uIiwiZXhwIjoxNjgxOTk5NjU2fQ.j2rv8UWVUK2x5luvTCmrbDc7t8aTPsnP4HN33rXKANWDTDOyyJfQJQw328tXEs_TcmbZ3SlAydeM9FeV6jZhyA";
             webc.Source = url;
