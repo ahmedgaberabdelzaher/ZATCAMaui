@@ -131,7 +131,6 @@ using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
-using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -176,6 +175,8 @@ using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
+using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
+using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 
 namespace EGAZT
 {

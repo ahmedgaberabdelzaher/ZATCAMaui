@@ -6,7 +6,7 @@ using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Controls;
 using System.Collections.ObjectModel;
 
-namespace EGAZT.Views.NewDesign.EDeclaration
+namespace EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages
 {
     public partial class ReviewRequestPage : ContentPage
     {

@@ -131,6 +131,8 @@
 	  <None Remove="Models\TrackShipment\" />
 	  <None Remove="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationProduct\" />
 	  <None Remove="Views\NewDesign\EDeclaration\QuestionsViews\" />
+	  <None Remove="Views\NewDesign\EDeclaration\InfoPages\" />
+	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -262,6 +264,8 @@
 		<Folder Include="Models\TrackShipment\" />
 		<Folder Include="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationProduct\" />
 		<Folder Include="Views\NewDesign\EDeclaration\QuestionsViews\" />
+		<Folder Include="Views\NewDesign\EDeclaration\InfoPages\" />
+		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -346,14 +350,8 @@
 		<Compile Update="Views\NewDesign\HomePages\VatServicesMenu.xaml.cs">
 		  <DependentUpon>VatServicesMenu.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\NewDesign\EDeclaration\ProductDeclarationPage.xaml.cs">
-		  <DependentUpon>ProductDeclarationPage.xaml</DependentUpon>
-		  </Compile>
 		<Compile Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\TransactionReceptionView.xaml.cs">
 		  <DependentUpon>TransactionReceptionView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\NewDesign\EDeclaration\ContactInformationPage.xaml.cs">
-		  <DependentUpon>ContactInformationPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Controls\EDeclerationControls\SecurityDestrictedQuestionView.xaml.cs">
 		  <DependentUpon>SecurityDestrictedQuestionView.xaml</DependentUpon>

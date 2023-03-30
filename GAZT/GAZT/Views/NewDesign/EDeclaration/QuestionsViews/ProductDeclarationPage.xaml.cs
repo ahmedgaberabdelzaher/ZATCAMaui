@@ -5,7 +5,7 @@ using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.EDeclaration
+namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
 {
     public partial class ProductDeclarationPage : ContentPage
     {

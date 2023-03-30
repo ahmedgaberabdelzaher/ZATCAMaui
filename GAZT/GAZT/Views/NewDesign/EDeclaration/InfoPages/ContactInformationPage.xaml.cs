@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.EDeclaration
+namespace EGAZT.Views.NewDesign.EDeclaration.InfoPages
 {
-    public partial class PassengerInformationPage : ContentPage
+    public partial class ContactInformationPage : ContentPage
     {
         EDeclarationInformationsViewModel viewModel;
-        public PassengerInformationPage()
+        public ContactInformationPage()
         {
+
+            InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
 
-            InitializeComponent();
-
-        }
-        protected override void OnDisappearing()
-        {
-            viewModel.isPassengerPage = false;
-            base.OnDisappearing();
         }
         protected override void OnAppearing()
         {
-            viewModel.isPassengerPage = true;
+            viewModel.isContactPage = true;
 
             base.OnAppearing();
+        }
+
+        protected override void OnDisappearing()
+        {
+            viewModel.isContactPage = false;
+            base.OnDisappearing();
         }
         protected override bool OnBackButtonPressed()
         {
