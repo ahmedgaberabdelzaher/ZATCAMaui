@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
+using EGAZT.Controls;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
@@ -104,6 +107,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    BackMethod();
+
+                });
+            }
+        }
+        private void ResetData()
+        {
+            ReferenceNumber = string.Empty;
+            IDResidencePassportNumber = string.Empty;
+        }
+        public void BackMethod()
+        {
+            ResetData();
+            _navigationService.GoBack();
+        }
 
         public EDeclerationViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService,declerationServices)
         {
