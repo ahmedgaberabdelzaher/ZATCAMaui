@@ -58,7 +58,7 @@
                     Margin="0,0,0,10"
                     Command="{Binding OpenIAMRegistrationUrlCommand}"
                     Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.Clickhereforlogin}"
+                    Text="{x:Static ResourceManager:AppResources.ClickhereforRegistration}"
                     VerticalOptions="CenterAndExpand" />
            </StackLayout>
 
