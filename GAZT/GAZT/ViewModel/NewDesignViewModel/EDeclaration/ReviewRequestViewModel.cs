@@ -63,6 +63,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
+        private void ResetData()
+        {
+            App.Locator.StateManager.DeleteItem("inquireDeclaration");
+            Inquire = new TravelerDeclarationResponse();
+            InquireList = new ObservableCollection<BottomSheetModel>();
+            DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        }
+        public void BackMethod()
+        {
+            ResetData();
+            _navigationService.GoBack();
+        }
+
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    BackMethod();
+
+                });
+            }
+        }
 
         public ReviewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {
