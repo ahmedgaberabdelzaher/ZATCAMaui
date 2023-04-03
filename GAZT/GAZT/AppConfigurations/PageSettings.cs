@@ -187,13 +187,10 @@ namespace EGAZT.AppConfigurations
         public static string GetClientSecret()
         {
             Target_Environment = CheckTarget_Environment();
-<<<<<<< HEAD
 #if (!DEBUG)
             Target_Environment = "Prod";
 #endif
           // Target_Environment = "Prod";
-=======
->>>>>>> new_develop
             string key = "";
             switch (Target_Environment)
             {

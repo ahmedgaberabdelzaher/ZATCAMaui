@@ -142,7 +142,7 @@
                     Text="{x:Static ResourceManager:AppResources.LogIn}" />
             </StackLayout>
         </ScrollView>
-        <controls:OTP
+        <controls:OTP6Digit
             Grid.Row="0"
             Grid.RowSpan="2"
             BackgroundColor="White"
