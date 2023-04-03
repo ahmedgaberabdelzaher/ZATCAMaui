@@ -165,7 +165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
                             return;
                         }
-                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 2)
+                        if (IsArrivingPlaneSelected && (Double.Parse(TotalValue ?? "0") < 3000 && (SubmitModel.travelerDeclaration.product == null || SubmitModel.travelerDeclaration.product.Count <= 0)) && QFlow == 4)
                         {
                             IsShowMsgView = true;
                             MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -462,13 +462,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                                 await AddTobacoItem();
                                 break;
                             case 2:
-                                await AddProductItem();
+                                AddRestricted();
                                 break;
                             case 3:
                                 AddCurrency();
                                 break;
                             case 4:
-                                AddRestricted();
+                                await AddProductItem();
                                 break;
                             default:
                                 break;
@@ -587,7 +587,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     }
                     break;
                 case 2:
-                    if (SubmitModel.travelerDeclaration.product.Count < 1)
+                    if (SubmitModel.travelerDeclaration.restricted.Count < 1)
                     {
                         return true;
                     }
@@ -599,7 +599,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     }
                     break;
                 case 4:
-                    if (SubmitModel.travelerDeclaration.restricted.Count < 1)
+                    if (SubmitModel.travelerDeclaration.product.Count < 1)
                     {
                         return true;
                     }
@@ -618,14 +618,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 case 1: // Tobbaco
                     Question = AppResources.EdeclerationTobbacoQuestion;
                     break;
-                case 2: // product
-                    Question = AppResources.EdeclerationProductQuestion;
+                case 2: // Restricted
+                    Question = AppResources.EDeclerationRestrictedQuestion;
                     break;
                 case 3: // Currency
                     Question = AppResources.EDeclerationCurrencyQuestion;
                     break;
-                case 4: // Restricted 
-                    Question = AppResources.EDeclerationRestrictedQuestion;
+                case 4: // Product
+                    Question = AppResources.EdeclerationProductQuestion;
                     break;
                 default:
                     break;
@@ -640,13 +640,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     ClearTobacoData();
                     break;
                 case 2:
-                    ClearProductData();
+                    ClearRestrictedData();
                     break;
                 case 3:
                     ClearCurrencyData();
                     break;
                 case 4:
-
+                    ClearProductData();
                     break;
                 default:
                     break;

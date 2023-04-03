@@ -21,7 +21,7 @@
     <StackLayout.Triggers>
         <DataTrigger TargetType="StackLayout"
                      Binding="{Binding QFlow}"
-                     Value="4">
+                     Value="2">
 
             <Setter Property="IsVisible" Value="true"/>
 

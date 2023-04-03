@@ -35,7 +35,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
                 viewModel.QuestionList = new ObservableCollection<QuestionModel>
                 {
                     new QuestionModel{QuestionName = AppResources.EDeclerationCurrencyQuestion ,QuestionId =3},
-                    new QuestionModel{QuestionName = AppResources.EDeclerationRestrictedQuestion ,QuestionId =4}
+                    new QuestionModel{QuestionName = AppResources.EdeclerationProductQuestion ,QuestionId =4}
                 };
             }
             else
@@ -43,9 +43,9 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
                 viewModel.QuestionList = new ObservableCollection<QuestionModel>
                  {
                      new QuestionModel{QuestionName = AppResources.EdeclerationTobbacoQuestion ,QuestionId =1},
-                     new QuestionModel{QuestionName = AppResources.EdeclerationProductQuestion ,QuestionId =2},
+                     new QuestionModel{QuestionName = AppResources.EDeclerationRestrictedQuestion ,QuestionId =2},
                      new QuestionModel{QuestionName = AppResources.EDeclerationCurrencyQuestion ,QuestionId =3},
-                     new QuestionModel{QuestionName = AppResources.EDeclerationRestrictedQuestion ,QuestionId =4}
+                     new QuestionModel{QuestionName = AppResources.EdeclerationProductQuestion ,QuestionId =4}
                  };
             }
         }
