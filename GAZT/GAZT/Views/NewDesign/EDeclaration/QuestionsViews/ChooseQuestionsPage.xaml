@@ -201,7 +201,26 @@
                                                 FontSize="14"
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{Binding QuestionName}"
-                                                TextColor="#002447" />
+                                                TextColor="#002447" >
+
+                                                <Label.Triggers>
+
+                                                    <DataTrigger
+                                                    Binding="{Binding IsChecked}"
+                                                    TargetType="Label"
+                                                    Value="true">
+                                                        <Setter Property="TextColor" Value="White" />
+                                                    </DataTrigger>
+                                                    <DataTrigger
+                                                            Binding="{Binding IsChecked}"
+                                                            TargetType="Label"
+                                                            Value="false">
+                                                            <Setter Property="TextColor" Value="#002447" />
+                                                    </DataTrigger>
+
+                                                </Label.Triggers>
+
+                                            </Label>
 
                                         </StackLayout>
 
@@ -211,6 +230,22 @@
                                                         Command="{Binding SelectedCheckBoxQuestionsCommand}"
                                                         CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
                                          </Frame.GestureRecognizers>
+
+                                        <Frame.Triggers>
+                                             <DataTrigger
+                                                    Binding="{Binding IsChecked}"
+                                                    TargetType="Frame"
+                                                    Value="true">
+                                                    <Setter Property="BackgroundColor" Value="#0996D4" />
+                                            </DataTrigger>
+                                            <DataTrigger
+                                                    Binding="{Binding IsChecked}"
+                                                    TargetType="Frame"
+                                                    Value="false">
+                                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                            </DataTrigger>
+
+                                        </Frame.Triggers>
 
                                     </Frame>
 

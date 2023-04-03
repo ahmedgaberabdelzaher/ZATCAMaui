@@ -82,18 +82,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async _ =>
                 {
-                    if (CheckNoItemAddedToCart())
-                    {
-                        IsShowMsgView = true;
-                        MessageTxt = AppResources.EDeclerationNoItemAddedToCartMsg;
-                        return;
-                    }
                     EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
                     await PopupNavigation.Instance.PushAsync(poupWindow);
 
                 });
             }
         }
+
         public ICommand GoToSelectedQuestionsViewCommand
         {
             get

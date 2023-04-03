@@ -37,6 +37,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
         #region Commands
 
+        public ICommand OpenTobacoTypesCommand
+        {
+            get
+            {
+
+                return new Command(async () =>
+                {
+
+                    try
+                    {
+                        IsLoading = true;
+                        isTobacoTypeSelected = true;
+                        isTobacotemSelected = false;
+                        isProductTypeSelected = false;
+                        isProductSubTypeSelected = false;
+                        isMaterialTypeSelected = false;
+                        isPurposeSelected = false;
+                        isCurrencySelected = false;
+                        isUnitsSelected = false;
+                        if (TobacoTypes == null || TobacoTypes.Count > 0)
+                        {
+                            var topacoTypes = await DeclerationServices.GetTobacoTypes();
+                            TobacoTypes = topacoTypes?.Item1.data;
+                            TobacoItems = null;
+                        }
+
+                        var result = TobacoTypes.Select(c => new BottomSheetModel() { Id = c.typeID, Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.TypeItem;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+
         public ICommand OpenTobacoItemssCommand
         {
             get
