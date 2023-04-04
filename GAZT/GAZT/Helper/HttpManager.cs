@@ -288,7 +288,8 @@ namespace EGAZT.Helper
 }
 
         static string jobject;
-        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false,bool isFasahHeaders=false) where T : class
+
+        public static async Task<HttpResponseMessage> PostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false) where T : class
         {
             try
             {
@@ -305,18 +306,17 @@ namespace EGAZT.Helper
 
                     //  var client = App.Locator.httpClient;
 
-                   // client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
-                  //  client.DefaultRequestHeaders.Add("LanguageCode",App.IsArabic?"ar":"en");
-                                        client.DefaultRequestHeaders.Add("Accept-Language", App.IsArabic?"ar":"en");
-//var JsonObject = JsonConvert.SerializeObject(Data);
+                    client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
+                    client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
+                    //var JsonObject = JsonConvert.SerializeObject(Data);
                     // client.DefaultRequestHeaders.Add("routePortCode", routPortCode);
                     /*
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", "a867a41eeccbd956b7f279b50d8535a5");
                      client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", "c9487460cd7dd8bc0f16ede707f4dad3");
                     */
-                    if (token!="")
+                    if (token != "")
                     {
-                    // client.DefaultRequestHeaders.Add("Authorization",token);
+                        client.DefaultRequestHeaders.Add("Authorization", token);
                     }
                     if (isTahqaq)
                     {
@@ -325,19 +325,68 @@ namespace EGAZT.Helper
                     }
                     else
                     {
-                     //   client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
-                      //  client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
                     }
-                   // AddBasicAuthToHeader(client,isEradQr);
+                    AddBasicAuthToHeader(client, isEradQr);
+
+                    var JsonObject = JsonConvert.SerializeObject(Data);
+                    // var JsonObject =jobject;
+
+                    var content = new StringContent(JsonObject, Encoding.UTF8, "application/json");
+                    // var response = await client.PostAsync(requestUrl, content);
+                    var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
+                    if (response != null)
+                    {
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            var responseJson = await response.Content.ReadAsStringAsync();
+                            return response;
+                        }
+                        else
+                        {
+                            return response;
+                            // return new HttpResponseMessage() { StatusCode = response.StatusCode, ReasonPhrase = AppResources.ServerError };
+                        }
+                    }
+                    else
+                    {
+                        return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
+                    }
+
+                }
+                else
+                {
+                    return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ZZInternetConnectionMessage };
+                }
+
+            }
+            catch (System.Exception exp)
+            {
+                return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
+            }
+
+        }
+
+        public static async Task<HttpResponseMessage> FasahPostAsync<T>(string requestUrl, T Data, bool isTahqaq = false, string token = "", bool isEradQr = false,bool isFasahHeaders=false) where T : class
+        {
+            try
+            {
+                if (NetworkCheck.IsInternet())
+                {
+                    HttpClientHandler clientHandler = new HttpClientHandler();
+                    clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                    // Pass the handler to httpclient(from you are calling api)
+                    HttpClient client = new HttpClient(clientHandler);
+                    client.DefaultRequestHeaders.Add("Accept-Language", App.IsArabic?"ar":"en");
                     if (isFasahHeaders)
                     {
                         SetFasahHeaders(client,token);
                     }
                   var JsonObject = JsonConvert.SerializeObject(Data);
-                   // var JsonObject =jobject;
-
                     var content = new StringContent(JsonObject,Encoding.UTF8, "application/json");
-                   // var response = await client.PostAsync(requestUrl, content);
                     var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false) ;
                     if (response != null)
                     {
@@ -350,7 +399,6 @@ namespace EGAZT.Helper
                         else
                         {
                             return response;
-                           // return new HttpResponseMessage() { StatusCode = response.StatusCode, ReasonPhrase = AppResources.ServerError };
                         }
                     }
                     else
