@@ -10250,4 +10250,19 @@ info@zatca.gov.sa</value>
     <data name="LogintoCarimportservice" xml:space="preserve">
      <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
   </data>
+  <data name="NeedRewardHint" xml:space="preserve">
+     <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
+  </data>
+    <data name="NeedReward" xml:space="preserve">
+     <value> أرغب بالحصول على مكافأة</value>
+  </data>
+    <data name="ReportText" xml:space="preserve">
+     <value>نص البلاغ (إن تقديم معلومات تفصيلية حول البلاغ يساعدنا في ضبط البلاغ بشكل أسرع)</value>
+  </data>
+        <data name="ViewRestofTermsConditions" xml:space="preserve">
+     <value>للإطلاع على بقية الشروط والأحكام </value>
+  </data>
+    <data name="Clickhere" xml:space="preserve">
+     <value>اضغط هنا</value>
+  </data>
 </root>

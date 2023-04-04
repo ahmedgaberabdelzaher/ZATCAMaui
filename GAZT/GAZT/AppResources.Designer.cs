@@ -1510,6 +1510,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here.
+        /// </summary>
+        public static string Clickhere {
+            get {
+                return ResourceManager.GetString("Clickhere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
         public static string Clickhereforlogin {
@@ -9837,6 +9846,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I Want to Receive Reward.
+        /// </summary>
+        public static string NeedReward {
+            get {
+                return ResourceManager.GetString("NeedReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering your contact information: Name , Contact Number and providing such information makes you updated on the status of your report. However, all provided information would be treated with strict confidentiality. Reports with no contact information will be looked at closely to take appropriate action..
+        /// </summary>
+        public static string NeedRewardHint {
+            get {
+                return ResourceManager.GetString("NeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
@@ -16304,6 +16331,15 @@ namespace EGAZT {
         public static string Viewlist {
             get {
                 return ResourceManager.GetString("Viewlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To view the rest of the terms and conditions  .
+        /// </summary>
+        public static string ViewRestofTermsConditions {
+            get {
+                return ResourceManager.GetString("ViewRestofTermsConditions", resourceCulture);
             }
         }
         

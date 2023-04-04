@@ -10316,4 +10316,19 @@ Zakat, Tax and Customs Authority
     <data name="LogintoCarimportservice" xml:space="preserve">
     <value>Login to Car import service</value>
   </data>
+    <data name="NeedRewardHint" xml:space="preserve">
+     <value>Registering your contact information: Name , Contact Number and providing such information makes you updated on the status of your report. However, all provided information would be treated with strict confidentiality. Reports with no contact information will be looked at closely to take appropriate action.</value>
+  </data>
+    <data name="NeedReward" xml:space="preserve">
+     <value>I Want to Receive Reward</value>
+  </data>
+    <data name="ReportText" xml:space="preserve">
+<value>Report Text(Providing detailed information about the communication helps us to adjust the communication faster)</value>
+  </data>
+      <data name="ViewRestofTermsConditions" xml:space="preserve">
+     <value>To view the rest of the terms and conditions  </value>
+  </data>
+  <data name="Clickhere" xml:space="preserve">
+     <value>Click here</value>
+  </data>
 </root>

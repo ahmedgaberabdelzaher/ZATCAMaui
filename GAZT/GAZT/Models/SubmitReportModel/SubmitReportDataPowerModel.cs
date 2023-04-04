@@ -37,7 +37,7 @@ namespace EGAZT.Models.SubmitReportModel
         public string reporterName_Arabic { get; set; }
         public string reporterName_English { get; set; }
         public int reporterResidentID { get; set; }
-        public int reporterNationalID { get; set; }
+        public string reporterNationalID { get; set; }
         public long reporterGccID { get; set; }
         public string reporterPassportNumber { get; set; }
         public string TIN { get; set; }

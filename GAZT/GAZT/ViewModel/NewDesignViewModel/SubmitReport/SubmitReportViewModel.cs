@@ -40,6 +40,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
     public class SubmitReportViewModel : BaseViewModel
     {
         #region Properties
+
+        bool _IsReadTermsandCondition = false;
+        public bool IsReadTermsandCondition { get { return _IsReadTermsandCondition; } set { _IsReadTermsandCondition = value; RaisePropertyChanged(); } }
+
+
         private readonly ISubmitReportServices _submitReportServices;
 
         SubmitReportModel submitReport = new SubmitReportModel();
@@ -112,7 +117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             DTFormat.Calendar = new System.Globalization.GregorianCalendar();
                             DTFormat.ShortDatePattern = "dd/MM/yyyy";
                             SubmitReport.ViolationDate = SelectedDate.Date.ToString(DTFormat).Split(' ').FirstOrDefault();
-
+                            
                             SubmitReport.ReporterNameEn = SubmitReport.ReporterNameAr;
                             SubmitReport.files = ReportUloadedFiles.ToList();
                             List<SubmitReportDataPowerModelAttachement> DATAPowerAttachements = new List<SubmitReportDataPowerModelAttachement>();
@@ -149,11 +154,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 TIN = SubmitReport.TIN,
                                 violationDate = SubmitReport.ViolationDate,
                                 workType = SubmitReport.ReportTaxType,
-                                attachements = DATAPowerAttachements
+                                attachements = DATAPowerAttachements,
+                                reporterNationalID= SubmitReport.ReporterNationalId
 
                             };
-                            var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
                             #region DATA Power Response
+                          /*  var reportResult = await this._submitReportServices.CreateZatcaNewReport(model);
+                         
                             if (reportResult.header.status.code == "I000000")
                             {
                                 ReportNumberResult = reportResult.result?.referenceNumber;
@@ -170,8 +177,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.RequestTimeoutDescription;
                             }
-
+                            */
                             #endregion
+
+                            var res = await _submitReportServices.CreateZatcaReport(SubmitReport);
+                            if (res.Success)
+                            {
+                                ReportNumberResult = res.Result.Data;
+                                SubmitReport = new SubmitReportModel();
+                                IsCityShowen = false;
+                                IsReportCategoryShowen = false;
+                                IsMissingFieldShowen = false;
+                                ReportUloadedFiles = new ObservableCollection<ReportFileModel>();
+                                _navigationService.NavigateTo("/ReportSuccessPage");
+                            }
                             IsLoading = false;
 
                         }
@@ -395,6 +414,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                 return new Command(() =>
                 {
                     SubmitReport.IsNeedReward = SubmitReport.IsNeedReward == true ? false : true;
+                });
+
+            }
+        }
+        public ICommand TermsAndConditionsCheckBoxCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsReadTermsandCondition = IsReadTermsandCondition == true ? false : true;
                 });
 
             }
