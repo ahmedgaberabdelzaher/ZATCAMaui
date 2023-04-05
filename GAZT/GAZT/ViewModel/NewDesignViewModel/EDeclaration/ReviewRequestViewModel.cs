@@ -15,6 +15,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<BottomSheetModel> _InquireList = new ObservableCollection<BottomSheetModel>();
         public ObservableCollection<BottomSheetModel> InquireList { get { return _InquireList; } set { _InquireList = value; RaisePropertyChanged(); } }
 
+         ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+
         TravelerDeclarationResponse _Inquire = new TravelerDeclarationResponse();
         public TravelerDeclarationResponse Inquire { get { return _Inquire; } set { _Inquire = value; RaisePropertyChanged(); } }
 
@@ -38,7 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     try
                     {
                         var date = DateTime.Now;
-                        Inquire = App.Locator.StateManager.GetItem("inquireDecleration") as TravelerDeclarationResponse;
+                        Inquire = App.Locator.StateManager.GetItem("inquireDeclaration") as TravelerDeclarationResponse;
                         if (Inquire != null)
                         {
                             Inquire.TravelDateString = DateTimeHelper.DateTimeFormater(Inquire.travelDate);
@@ -47,6 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             Inquire.product?.ForEach(p => { InquireList.Add(new BottomSheetModel { Name = p.Name, Id = $"(x {p.count.ToString()})" }); });
                             Inquire.currency?.ForEach(c => { InquireList.Add(new BottomSheetModel { Name = c.Name }); });
                             Inquire.restricted?.ForEach(r => { InquireList.Add(new BottomSheetModel { Name = r.Name,Id = $"(x {r.count.ToString()})" }); });
+                            Inquire.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
                         }
                     }
                     catch (Exception ex)
@@ -59,6 +63,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
+        private void ResetData()
+        {
+            App.Locator.StateManager.DeleteItem("inquireDeclaration");
+            Inquire = new TravelerDeclarationResponse();
+            InquireList = new ObservableCollection<BottomSheetModel>();
+            DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        }
+        public void BackMethod()
+        {
+            ResetData();
+            _navigationService.GoBack();
+        }
+
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    BackMethod();
+
+                });
+            }
+        }
 
         public ReviewRequestViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
         {

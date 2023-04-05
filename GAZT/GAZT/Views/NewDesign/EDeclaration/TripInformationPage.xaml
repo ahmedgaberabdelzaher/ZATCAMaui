@@ -307,7 +307,7 @@
                                 HorizontalOptions="StartAndExpand">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="{Binding TripCard.AirImage}"/>
 
                                 <!--  Air Label  -->
@@ -335,7 +335,7 @@
                                   HeightRequest="94">
 
                                 <!--Background image selected-->
-                                <Image Aspect="AspectFill"
+                                <Image Aspect="Fill"
                                        Source="{Binding TripCard.LandImage}"/>
 
                                  <!--Land label-->
@@ -364,7 +364,7 @@
                             HeightRequest="94">
 
                             <!--Background image selected-->
-                            <Image Aspect="AspectFill"
+                            <Image Aspect="Fill"
                                    Source="{Binding TripCard.SeaImage}"/>
 
                             <!--Sea label-->

@@ -23,6 +23,12 @@ namespace EGAZT.Services.Classes
 
             return response;
         }
+        public async Task<Tuple<CustomPortsModel, bool, string>> GetCustomPorts(int portType )
+        {
+            var response = await HttpManager.GetAsync<CustomPortsModel>(App.CustomBaseUrl + $"Common/GetCustomPort?porttype={portType}", true).ConfigureAwait(false);
+
+            return response;
+        }
 
     }
 }

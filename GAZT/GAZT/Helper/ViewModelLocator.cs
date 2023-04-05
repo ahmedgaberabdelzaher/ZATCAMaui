@@ -173,6 +173,9 @@ using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
 using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
+using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
+using EGAZT.Views.NewDesign.TrackShipment;
+using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
 
 namespace EGAZT
 {
@@ -199,6 +202,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<IUserServices, UserServices>();
             SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
             SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
+            SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
             SimpleIoc.Default.Register<EDeclerationSubmitModel>();
 
             #region NewDesignIOC
@@ -421,8 +425,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<ReportOTPViewModel>();
 
             SimpleIoc.Default.Register<MyReportsViewModel>();
+            SimpleIoc.Default.Register<UploadingPopupViewModel>();
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
+            SimpleIoc.Default.Register<TrackShipmentViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
@@ -440,7 +446,10 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
             SimpleIoc.Default.Register<ChatViewModel>();
             SimpleIoc.Default.Register<CustomFeesFormViewModel>();
-
+              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+                 SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<FasahLoginViewModel>();
+            SimpleIoc.Default.Register<BaseLoginViewModel>();
             #endregion
         }
 
@@ -2934,10 +2943,16 @@ namespace EGAZT
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
+            navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
-             navigationService.Configure("ChatPotView", typeof(ChatPotView));
+
             navigationService.Configure("CustomFeesFormView", typeof(CustomFeesFormView));
+            navigationService.Configure("ChatPotView", typeof(ChatPotView));
+            navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
+            navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
+            navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
 
             #endregion
 
@@ -3241,14 +3256,27 @@ namespace EGAZT
                 }
             }
         }
-
         public CustomFeesFormViewModel CustomFeesFormViewModel
-        {
+ {
             get
             {
                 try
                 {
                     return ServiceLocator.Current.GetInstance<CustomFeesFormViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public FasahLoginViewModel FasahLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FasahLoginViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -4242,6 +4270,20 @@ namespace EGAZT
                 }
             }
         }
+        public TrackShipmentViewModel TrackShipmentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TrackShipmentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         public StateManager StateManager
         {
             get
@@ -4249,6 +4291,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<StateManager>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public UploadingPopupViewModel UploadingPopupViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UploadingPopupViewModel>();
                 }
                 catch (Exception ex)
                 {

@@ -72,8 +72,22 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
         #region Properties
+        private DateTime? _vatRegDate;
+        public DateTime? VatRegDate
+        {
+            get
+            {
+                return _vatRegDate;
+            }
+            set
+            {
+                if (_vatRegDate == value) return;
+                _vatRegDate = value;
+                RaisePropertyChanged("VatRegDate");
+            }
+        }
 
-       
+
         private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
@@ -2431,6 +2445,61 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             todaycollection.Add(DateTime.Now.Date.Year.ToString());
             TodayDate = todaycollection;
             DefaultMonth = DateTime.Now.Date.Month;
+        }
+        public async Task getVatEligibleDate(string vatEligibleStartDate)
+        {
+            await Task.Run(async () =>
+            {
+                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
+                {
+                    try
+                    {
+                        String dateSource = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
+                        DateTime ChangedDate = new DateTime(2018, 1, 1, 0, 0, 0);
+
+                        int Result = DateTime.Compare((DateTime)vATcommencementData.d.VatTaxDt, (DateTime)VatRegDate);
+                        if (Result < 0)
+                        {
+                            await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                            VatEligibleStartDate = "";
+                        }
+                        else
+                        {
+                            int CompareDate = DateTime.Compare((DateTime)vATcommencementData.d.VatTaxDt, ChangedDate);
+
+                            if (CompareDate < 0)
+                            {
+                                await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                                VatEligibleStartDate = dateSource;
+                            }
+                            else
+                            {
+                                if (vATcommencementData.d.ErrorFg == "X")
+                                {
+                                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                                }
+                                VatEligibleStartDate = dateSource;
+                            }
+                        }
+                        IsLoading = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                        IsLoading = false;
+                    }
+                }
+                else
+                {
+
+                }
+                IsLoading = false;
+
+            });
         }
         #endregion
 

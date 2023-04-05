@@ -113,7 +113,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                         if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
                     {
-                     if (!EmailRgx.IsMatch(Email))
+                     if (!EmailRgx.IsMatch(Email.ToLower()))
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidEmailFormat;
@@ -300,7 +300,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         var data = response.Item1.data;
 
                        CRCashedList = data;
-                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.crType }).ToList() ?? new List<BottomSheetModel>();
+                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.Name==""?c.crType:c.Name }).ToList() ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
@@ -309,6 +309,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }
                     else
                     {
+                        if (response.Item1?.header.moreInformation != null && response.Item1?.header.moreInformation.Errordetails != null && response.Item1?.header.moreInformation.Errordetails.Count > 0)
+                        {
+                            MessageTxt = response.Item1.header.moreInformation.Errordetails[0];
+                            IsShowMsgView = true;
+
+                            return;
+                        }
                         MessageTxt = AppResources.RequestTimeoutDescription;
                         IsShowMsgView = true;
                     }
@@ -436,6 +443,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void SetUserData(string token)
         {
+         
             var data = GetTokenData(token);
             if (data!=null)
             {

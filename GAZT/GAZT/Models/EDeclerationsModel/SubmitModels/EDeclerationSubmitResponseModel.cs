@@ -69,6 +69,19 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string unit_English { get; set; }
         public bool permit { get; set; }
     }
+    public class SubmitResponseFees
+    {
+        public string name_Arabic { get; set; }
+        public string name_English { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(name_Arabic, name_English);
+            }
+        }
+        public double value { get; set; }
+    }
 
     public class Result
     {
@@ -171,6 +184,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public List<SubmitResponseProduct> product { get; set; }
         public List<ResponseCurrency> currency { get; set; }
         public List<SubmitResponseRestricted> restricted { get; set; }
+        public List<SubmitResponseFees> fees { get; set; }
     }
 
     public class InquireResponse

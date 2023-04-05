@@ -3,6 +3,8 @@ using EGAZT.AppConfigurations;
 using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms;
 using System.Windows.Input;
+using EGAZT.Helper;
+using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
@@ -16,6 +18,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             EFormWebViewUrl = PageSettings.GetNewEDeclarationLinks();
             ECheckWebViewUrl = PageSettings.GetPreviousEDeclarationLink();
+        }
+
+        public async Task DownlOadFile(string url)
+        {
+            IsLoading = true;
+           await Task.Delay(1000);
+            DownloadFile downloadFile = new DownloadFile();
+            var file = url.Split('.');
+            var extntion = file[file.Length - 1];
+            await downloadFile.DownloadFileAsync($"{url}", extntion,_dialogService);
+            IsLoading = false;
         }
 
         public ICommand NavigateToNewEDeclerationCommand

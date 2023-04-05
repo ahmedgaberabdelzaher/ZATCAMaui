@@ -443,7 +443,7 @@
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue
                                                                 Max="18"
-                                                                isNegativeEnable="False"
+                                                                isNegativeEnable="True"
                                                                 numberOfDigitAfterDecimal="2"
                                                                 numberOfDigitBeforDecimal="11" />
                                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -570,7 +570,7 @@
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue
                                                                 Max="18"
-                                                                isNegativeEnable="False"
+                                                                isNegativeEnable="True"
                                                                 numberOfDigitAfterDecimal="2"
                                                                 numberOfDigitBeforDecimal="11" />
                                                         </custom:GAZTBorderlessEntry.Behaviors>
@@ -609,7 +609,7 @@
                                                         <custom:GAZTBorderlessEntry.Behaviors>
                                                             <GAZTBehaviors:ElevenDotTwoDecimalPlacesAndNoNegativeValue
                                                                 Max="18"
-                                                                isNegativeEnable="False"
+                                                                isNegativeEnable="True"
                                                                 numberOfDigitAfterDecimal="2"
                                                                 numberOfDigitBeforDecimal="11" />
                                                         </custom:GAZTBorderlessEntry.Behaviors>

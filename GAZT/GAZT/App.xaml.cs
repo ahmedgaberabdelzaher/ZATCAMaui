@@ -39,7 +39,8 @@ using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.Zakaty;
-using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
+using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
 
 namespace EGAZT
 {
@@ -394,8 +395,7 @@ namespace EGAZT
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
-             PageSettings.GetBaseURL("STG");
-            //PageSettings.GetBaseURL("Prod");
+            PageSettings.GetBaseURL("STG");
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");18v
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");19v
 
@@ -483,7 +483,7 @@ namespace EGAZT
 
                 //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
 
-               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+              navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
 
                 //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
@@ -492,11 +492,12 @@ namespace EGAZT
                 //navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
                 //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
-              // navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
                //   navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
               //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
-              // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
-            //  navigationPage = new CustomNavigation(new CustomFeesFormView()) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
+              //   navigationPage = new CustomNavigation(new FasahLoginView()) { BarTextColor = Color.White };
+               //  navigationPage = new CustomNavigation(new ReiewPreviousDeclerations()) { BarTextColor = Color.White };
 
             }
             else
@@ -506,7 +507,7 @@ namespace EGAZT
 
                 //navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
 
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
 
                 // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
@@ -519,7 +520,9 @@ namespace EGAZT
                 // navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
                 //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
                 // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
-              //navigationPage = new CustomNavigation(new CustomFeesFormView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new FasahLoginView()) { BarTextColor = Color.White };
+              // navigationPage = new CustomNavigation(new ReiewPreviousDeclerations()) { BarTextColor = Color.White };
 
             }
 

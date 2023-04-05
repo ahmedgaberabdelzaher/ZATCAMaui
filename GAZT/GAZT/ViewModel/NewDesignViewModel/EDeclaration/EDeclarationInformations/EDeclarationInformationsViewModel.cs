@@ -14,6 +14,7 @@ using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 using EGAZT.Helper;
+using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -39,7 +40,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         DateTime _MinimumDate = DateTime.Now.Date;
         public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
 
-        DateTime _MaximumDate = DateTime.Today.AddHours(-24);
+        DateTime _MaximumDate = DateTime.Now.Date.AddHours(-24);
         public DateTime MaximumDate { get { return _MaximumDate; } set { _MaximumDate = value; RaisePropertyChanged(); } }
         #endregion
 
@@ -242,6 +243,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+
+        public ICommand DownlOadFileCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                  await  DownLoadEdeclerationPdf();
+
+                });
+            }
+        }
+
+        private async Task DownLoadEdeclerationPdf()
+        {
+            IsLoading = true;
+            DownloadFile downloadFile = new DownloadFile();
+            string Lang = "ar";
+            if (!App.IsArabic)
+            {
+                Lang = "en";
+
+            }
+            else
+            {
+                Lang = "ar";
+            }
+            await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
+            IsLoading = false;
+        }
+
 
         public ICommand CloseAcknowledgePopUpPageCommand
         {

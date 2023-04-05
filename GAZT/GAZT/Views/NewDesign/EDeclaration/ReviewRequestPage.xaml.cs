@@ -18,11 +18,11 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             BindingContext = viewModel;
         }
 
-        protected override void OnDisappearing()
+        protected override bool OnBackButtonPressed()
         {
-            viewModel.Inquire = new TravelerDeclarationResponse();
-            viewModel.InquireList = new ObservableCollection<BottomSheetModel>();
-            base.OnDisappearing();
+
+            viewModel.BackMethod();
+            return true;
         }
     }
 }

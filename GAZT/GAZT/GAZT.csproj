@@ -128,6 +128,11 @@
 	  <None Remove="Views\NewDesign\DashBoardPages\PopUpPages\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\CustomFees\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\Controls\" />
+	  <None Remove="ViewModel\NewDesignViewModel\TrackShipment\" />
+	  <None Remove="Views\NewDesign\TrackShipment\" />
+	  <None Remove="Models\TrackShipment\" />
+	  <None Remove="Views\NewDesign\LoginPages\FasahLogin\" />
+	  <None Remove="Models\CustomServices\FasahModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -256,6 +261,11 @@
 		<Folder Include="Views\NewDesign\DashBoardPages\PopUpPages\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\CustomFees\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\Controls\" />
+		<Folder Include="ViewModel\NewDesignViewModel\TrackShipment\" />
+		<Folder Include="Views\NewDesign\TrackShipment\" />
+		<Folder Include="Models\TrackShipment\" />
+		<Folder Include="Views\NewDesign\LoginPages\FasahLogin\" />
+		<Folder Include="Models\CustomServices\FasahModels\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
