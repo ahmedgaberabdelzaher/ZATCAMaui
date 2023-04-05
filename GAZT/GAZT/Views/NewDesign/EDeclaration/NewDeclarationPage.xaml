@@ -514,12 +514,13 @@
                         </StackLayout>
                         <!--#endregion Cards-->
 
-                         <!--#region Review previous Option-->
+                         <!--#region Review previous LoggedIn Option-->
                          <Grid VerticalOptions="Start"
                                Margin="0,10"
                                HorizontalOptions="Start"
                                IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor,Converter={StaticResource InvertedBoolConverter}}"
-                               HeightRequest="130">
+                               HeightRequest="130"
+                               WidthRequest="175">
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ReviewPreviousLoggedInCommand}"/>
@@ -540,11 +541,12 @@
                             <Label Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
                                     TextColor="{StaticResource Primary}"
                                     FontSize="16"
+                                    LineBreakMode="WordWrap"
                                     Margin="25,10,25,15"
                                     VerticalOptions="EndAndExpand"/>
 
                          </Grid>
-                         <!--#endregion Review previous-->
+                         <!--#endregion Review previous LoggedIn-->
 
                         <!-- GoTo Product Declaration Button  -->
                         <buttons:SfButton

@@ -2936,6 +2936,7 @@ namespace EGAZT
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
             navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ListUserRequestsPage", typeof(ListUserRequestsPage));
             navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));

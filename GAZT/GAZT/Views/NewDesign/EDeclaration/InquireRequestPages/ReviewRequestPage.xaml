@@ -113,6 +113,7 @@
                         <!--#region Disclaimer-->
                         <Frame  Padding="5"
                                 CornerRadius="8"
+                                HasShadow="False"
                                 Margin="0,0,0,5"
                                 BorderColor="#FCECCD"
                                 BackgroundColor="#FCECCD"
@@ -143,6 +144,7 @@
                             Padding="15"
                             Margin="0,0,0,10"
                             CornerRadius="15"
+                            HasShadow="False"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 
@@ -406,6 +408,7 @@
                             Padding="15"
                             CornerRadius="15"
                             Margin="0,0,0,10"
+                            HasShadow="False"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 

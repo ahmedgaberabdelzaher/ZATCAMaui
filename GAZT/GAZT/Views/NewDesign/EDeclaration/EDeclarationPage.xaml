@@ -194,7 +194,8 @@
                      <!--#region Review previous Option-->
                      <Grid VerticalOptions="Start"
                            HorizontalOptions="Start"
-                           HeightRequest="130">
+                           HeightRequest="130"
+                           WidthRequest="175">
 
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ReviewPreviousCommand}"/>
@@ -234,6 +235,7 @@
                         <Label Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
                                 TextColor="{StaticResource Primary}"
                                 FontSize="16"
+                                LineBreakMode="WordWrap"
                                 Margin="25,10,25,15"
                                 VerticalOptions="EndAndExpand">
                                 <Label.Triggers>

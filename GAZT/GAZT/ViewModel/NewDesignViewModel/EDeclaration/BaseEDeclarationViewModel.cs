@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(() =>
                 {
-                    
+                    _navigationService.NavigateTo("ListUserRequestsPage");
                 });
             }
         }
