@@ -633,7 +633,8 @@
                         </StackLayout>
 
                         <!--  Travel Purpose Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsEDeclaration}">
 
                             <!--  Travel Purpose Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -679,7 +680,8 @@
                         </StackLayout>
 
                           <!--  Traveler Count Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsEDeclaration}">
 
                             <!--  Traveler Count Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -717,7 +719,7 @@
 
                         </StackLayout>
 
-                         <!--  Welcome Label for logged in only -->
+                         <!--  Passenger Label for logged in only -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="16"

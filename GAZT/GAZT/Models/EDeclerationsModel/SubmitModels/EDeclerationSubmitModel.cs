@@ -66,6 +66,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         bool _isvisitor = true;
         public bool Isvisitor { get { return _isvisitor; } set { _isvisitor = value; RaisePropertyChanged(); } }
 
+        bool _isDisclosure;
+        public bool IsDisclosure { get { return _isDisclosure; } set { _isDisclosure = value; RaisePropertyChanged(); } }
+
         int _travelDocumentType;
         public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; RaisePropertyChanged(); } }
 

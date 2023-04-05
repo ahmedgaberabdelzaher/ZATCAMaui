@@ -15,7 +15,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
     {
         TripCardModel tripCard = new TripCardModel();
         public TripCardModel TripCard { get { return tripCard; } set { tripCard = value; } }
-        
+
         string _ArrivalDepartureDateString;
         public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; RaisePropertyChanged(); } }
 
@@ -41,7 +41,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TripCard.SeaTextColor = Color.FromHex("#002447");
                         TripCard.LandTextColor = Color.FromHex("#002447");
 
-                        TripCard.IsAirTripSelected = true;
+                        // if the user select the Tobacco & Product
+                        // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"
+                        TripCard.IsAirTripSelected = SubmitModel.travelerDeclaration.IsDisclosure ? true : false;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 1=>Air
                     }
 
@@ -79,7 +81,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command( _ =>
+                return new Command(_ =>
                 {
                     try
                     {
@@ -98,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
                         IsLoading = false;
                     }
-                    
+
                 });
             }
         }
@@ -107,7 +109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command( _ =>
+                return new Command(_ =>
                 {
                     try
                     {
@@ -120,7 +122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     catch (Exception ex)
                     {
                     }
-                    
+
                 });
             }
         }
@@ -185,7 +187,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
                         IsLoading = false;
                     }
-                    
+
                 });
             }
         }
@@ -217,7 +219,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
                         IsLoading = false;
                     }
-                    
+
                 });
             }
         }
@@ -241,8 +243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool IsValidateTripInfo()
         {
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.arrivingFromDepartingToName)
-            || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.portName)
-            || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelPurposeName))
+            || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.portName))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.RequiredData;
@@ -254,23 +255,33 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.ComingGoingDateValidation;
                 return false;
             }
-            else if (SubmitModel.travelerDeclaration.tripeType == 1)
+            else if (SubmitModel.travelerDeclaration.IsDisclosure)
             {
-                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.flightNumber))
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelPurposeName))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.RequiredData;
                     return false;
                 }
 
+                else if (SubmitModel.travelerDeclaration.tripeType == 1)
+                {
+                    if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.flightNumber))
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.RequiredData;
+                        return false;
+                    }
+                }
+                else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
+                               || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.TravelerCountValidation;
+                    return false;
+                }
             }
-            else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
-                           || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
-            {
-                IsShowMsgView = true;
-                MessageTxt = AppResources.TravelerCountValidation;
-                return false;
-            }
+
             return true;
 
 

@@ -102,8 +102,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         return;
                     }
                     selectedQuestionList.Sort();
+
+                    // if the user select the Tobacco & Product
+                    // so we will remove "Traveler Count","Trip Number" & "Travel Purpose"
+                    if (selectedQuestionList.Count == 2 && selectedQuestionList.Contains(1) && selectedQuestionList.Contains(4))
+                        SubmitModel.travelerDeclaration.IsDisclosure = false;
+                    else
+                        SubmitModel.travelerDeclaration.IsDisclosure = true;
+
                     QFlow = selectedQuestionList[questionIndex]; // Set First Item
+
                     SetQuestion();
+
                     _navigationService.NavigateTo("ProductDeclarationPage");
                    
                 });
