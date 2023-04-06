@@ -321,6 +321,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             {
                 return new Command(() =>
                 {
+                    ResetDate();
+                    ResetTrackShipmentData();
+                    ResetTrackStatus();
                     _navigationService.NavigateTo("/Home", "0");
 
                 });
@@ -639,7 +642,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
         private void ResetTrackShipmentData()
         {
-            App.Locator.StateManager.SetItem("CardImage", DrawShipmentTrack.ShipmentCardImage);
             DrawShipmentTrack = new DrawShipmentTrack();
             isExpressCardSelected = false;
             isAirCardSelected = false;
@@ -658,7 +660,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         {
             if (ShipmentStatusList == null || ShipmentStatusList.Count == 0)
                 return;
-            App.Locator.StateManager.DeleteItem("CardImage");
             ShipmentStatusList = new System.Collections.ObjectModel.ObservableCollection<Models.TrackShipment.ShipmentStatus>();
             TrackShipmentResponse = new Models.TrackShipment.TrackShipmentModel();
         }
