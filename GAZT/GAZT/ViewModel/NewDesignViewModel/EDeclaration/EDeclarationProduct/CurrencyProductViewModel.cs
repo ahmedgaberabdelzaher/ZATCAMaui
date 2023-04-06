@@ -4,6 +4,8 @@ using System.Linq;
 using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Models.EDeclerationsModel;
+using EGAZT.Models.SubmitReportModel;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
@@ -17,9 +19,51 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         CurrencyModel selectedCurrencie;
         public CurrencyModel SelectedCurrencie { get { return selectedCurrencie; } set { selectedCurrencie = value; RaisePropertyChanged(); } }
 
+        bool isCurrencyPermit;
+        public bool IsCurrencyPermit { get { return isCurrencyPermit; } set { isCurrencyPermit = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<ReportFileModel> currencyUploadedFiles = new ObservableCollection<ReportFileModel>();
+        public ObservableCollection<ReportFileModel> CurrencyUploadedFiles { get { return currencyUploadedFiles; } set { currencyUploadedFiles = value; RaisePropertyChanged(); } }
+
         #endregion
 
         #region Commands
+        public ICommand SelectIsCurrencyPermitCommand
+        {
+            get
+            {
+
+                return new Command<string>((e) =>
+                {
+                    try
+                    {
+                        IsCurrencyPermit = e == "0" ? false : true;
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+                    finally
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+
+            }
+        }
+
+        public ICommand CurrencyUploadFileCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    CurrencyUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
+                });
+            }
+        }
+
         public ICommand OpenCurrenciesCommand
         {
             get
@@ -96,7 +140,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     typeID = SelectedMaterialTypes.ID,
                     purpose = SelectedPurposes.ID,
                     currencyName = SelectedCurrencie.Name,
-                    currency = SelectedCurrencie.currencyCode
+                    currency = SelectedCurrencie.currencyCode,
+                    permit = IsCurrencyPermit,
+                    attachment = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileBase64 : ""
                 };
                 SubmitModel.travelerDeclaration.currency.Add(item);
                 var cardItem = new EDeclerationCardModel()
@@ -125,6 +171,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             OtherPurpose = "";
             SelectedPurposes = null;
             TotalValue = null;
+            IsCurrencyPermit = false;
+            CurrencyUploadedFiles = null;
         }
         #endregion
     }

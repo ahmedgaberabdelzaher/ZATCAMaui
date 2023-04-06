@@ -381,7 +381,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         ObservableCollection<ReportFileModel> uploadedFiles = new ObservableCollection<ReportFileModel>();
         public ObservableCollection<ReportFileModel> UploadedFiles { get { return uploadedFiles; } set { uploadedFiles = value; RaisePropertyChanged(); } }
 
-        public async Task PickAndShow(PickOptions options,string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount=1, int maxFileSize = 2)
+        public async Task<ObservableCollection<ReportFileModel>> PickAndShow(PickOptions options,string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount=1, int maxFileSize = 2)
         {
             try
             {
@@ -402,6 +402,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             MessageTxt = maximumFileSizeMsg;
                             IsShowMsgView = true;
+                            return new ObservableCollection<ReportFileModel>();
                         }
                         else if (UploadedFiles != null && UploadedFiles.Count < maxCount)
                         {
@@ -412,28 +413,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             reportfile.fileFullName = result.FileName;
                             reportfile.fileExtinction = Path.GetExtension(result.FileName);
                             UploadedFiles.Add(reportfile);
+                            return UploadedFiles;
                            }
                         else
                         {
                             IsShowMsgView = true;
                             MessageTxt = numberOfAttachmentMsg;
-
+                            return new ObservableCollection<ReportFileModel>();
                         }
                     }
                     else
                     {
                         IsShowMsgView = true;
                         MessageTxt = maximumFileSizeMsg;
-
+                        return new ObservableCollection<ReportFileModel>();
                     }
 
                 }
+                return new ObservableCollection<ReportFileModel>();
             }
             catch (Exception ex)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.Somethingwentwrong;
-
+                return new ObservableCollection<ReportFileModel>();
             }
 
 
