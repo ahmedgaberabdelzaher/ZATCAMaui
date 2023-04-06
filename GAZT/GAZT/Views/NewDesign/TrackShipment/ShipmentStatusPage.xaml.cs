@@ -15,12 +15,6 @@ namespace EGAZT.Views.NewDesign.TrackShipment
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
-        {
-            viewModel.DrawShipmentTrack.ShipmentCardImage = App.Locator.StateManager.GetItem("CardImage") as string;
-            base.OnAppearing();
-        }
-
         protected override bool OnBackButtonPressed()
         {
 
