@@ -17,8 +17,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         /// 1 for New Decleration
         /// 2 for Prevous Requests
         /// </summary>
-        int serviceType;
-        public int ServiceType { get { return serviceType; } set { serviceType = value; RaisePropertyChanged(); } }
+        bool showReviewEntries;
+        public bool ShowReviewEntries { get { return showReviewEntries; } set { showReviewEntries = value; RaisePropertyChanged(); } }
 
         /// <summary>
         /// 1 for Visitor
@@ -34,13 +34,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public string IDResidencePassportNumber { get { return _IDResidencePassportNumber; } set { _IDResidencePassportNumber = value; RaisePropertyChanged(); } }
 
 
-        public ICommand SelcectServiceTypeCommand
+        public ICommand ReviewPreviousCommand
         {
             get
             {
                 return new Command<string>((e) =>
                 {
-                    ServiceType =int.Parse(e);
+                    ShowReviewEntries = !ShowReviewEntries;
                 });
             }
         }
@@ -62,9 +62,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                          _navigationService.NavigateTo("IAMLoginView", 1);
 
                     }
+                    ShowReviewEntries = false;
                 });
             }
         }
+
         public ICommand GoToReviewPageCommand
         {
             get
@@ -118,11 +120,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
+
         private void ResetData()
         {
             ReferenceNumber = string.Empty;
             IDResidencePassportNumber = string.Empty;
+            ShowReviewEntries = false;
         }
+
         public void BackMethod()
         {
             ResetData();

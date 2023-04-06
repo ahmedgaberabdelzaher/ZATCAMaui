@@ -66,6 +66,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         bool _isvisitor = true;
         public bool Isvisitor { get { return _isvisitor; } set { _isvisitor = value; RaisePropertyChanged(); } }
 
+        bool _isDisclosure;
+        public bool IsDisclosure { get { return _isDisclosure; } set { _isDisclosure = value; RaisePropertyChanged(); } }
+
         int _travelDocumentType;
         public int travelDocumentType { get { return _travelDocumentType; } set { _travelDocumentType = value; RaisePropertyChanged(); } }
 
@@ -80,6 +83,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         string _lastName;
         public string lastName { get { return _lastName; } set { _lastName = value; RaisePropertyChanged(); } }
+
+        string _fullName;
+        public string FullName { get { return _fullName; } set { _fullName = value; RaisePropertyChanged(); } }
 
         string _nationalityName;
         public string NationalityName { get { return _nationalityName; } set { _nationalityName = value; RaisePropertyChanged(); } }

@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.EDeclaration
+namespace EGAZT.Views.NewDesign.EDeclaration.InfoPages
 {
-    public partial class TripInformationPage : ContentPage
+    public partial class PassengerInformationPage : ContentPage
     {
         EDeclarationInformationsViewModel viewModel;
-        public TripInformationPage()
+        public PassengerInformationPage()
         {
-            InitializeComponent();
             viewModel = App.Locator.EDeclarationInformationsViewModel;
             BindingContext = viewModel;
-        }
 
+            InitializeComponent();
+
+        }
         protected override void OnDisappearing()
         {
-            viewModel.isTripPage = false;
+            viewModel.isPassengerPage = false;
             base.OnDisappearing();
         }
         protected override void OnAppearing()
         {
-            viewModel.isTripPage = true;
+            viewModel.isPassengerPage = true;
 
             base.OnAppearing();
         }

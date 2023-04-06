@@ -25,26 +25,18 @@ namespace EGAZT.Views.NewDesign.EDeclaration
 
             }
             BindingContext = viewModel;
-            
-            
+            App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
+
         }
         protected override void OnAppearing()
         {
             if (this.token != "")
             {
                 viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
-
+                App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
             }
             base.OnAppearing();
         }
-        /* public NewDeclarationPage(object payload)
-         {
-             InitializeComponent();
-             viewModel = App.Locator.BaseEDeclarationViewModel;
-             viewModel.SubmitModel.travelerDeclaration = new Models.EDeclerationsModel.SubmitModels.TravelerDeclaration();
-             // viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
-             BindingContext = viewModel;
-         }*/
     }
 }
 

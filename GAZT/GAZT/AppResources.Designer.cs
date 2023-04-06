@@ -418,7 +418,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions or fill in their data.
+        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions.
         /// </summary>
         public static string ALLanswersisNoMsg {
             get {
@@ -3387,24 +3387,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?.
-        /// </summary>
-        public static string DeclerationFirstSecurityQuestion {
-            get {
-                return ResourceManager.GetString("DeclerationFirstSecurityQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?.
-        /// </summary>
-        public static string DeclerationSecondSecurityQuestion {
-            get {
-                return ResourceManager.GetString("DeclerationSecondSecurityQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Examples – Aircraft, medicines, pets, etc..
         /// </summary>
         public static string DeclerationSecondSecurityQuestionYesHint {
@@ -3711,6 +3693,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?.
+        /// </summary>
+        public static string EDeclerationCurrencyQuestion {
+            get {
+                return ResourceManager.GetString("EDeclerationCurrencyQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it..
         /// </summary>
         public static string EDeclerationDesc {
@@ -3729,7 +3720,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You answered yes, you have to add at least one item in the cart.
+        ///   Looks up a localized string similar to You have to add at least one item in the cart.
         /// </summary>
         public static string EDeclerationNoItemAddedToCartMsg {
             get {
@@ -3740,9 +3731,27 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Do you have any new possessions of total value exceeding SAR 3,000(800$)?.
         /// </summary>
-        public static string EdeclerationSecQ {
+        public static string EdeclerationProductQuestion {
             get {
-                return ResourceManager.GetString("EdeclerationSecQ", resourceCulture);
+                return ResourceManager.GetString("EdeclerationProductQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?.
+        /// </summary>
+        public static string EDeclerationRestrictedQuestion {
+            get {
+                return ResourceManager.GetString("EDeclerationRestrictedQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? .
+        /// </summary>
+        public static string EdeclerationTobbacoQuestion {
+            get {
+                return ResourceManager.GetString("EdeclerationTobbacoQuestion", resourceCulture);
             }
         }
         
@@ -10955,15 +10964,6 @@ namespace EGAZT {
         public static string ProductDeclarationDisclaimer {
             get {
                 return ResourceManager.GetString("ProductDeclarationDisclaimer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? .
-        /// </summary>
-        public static string ProductDeclarationSubTitle {
-            get {
-                return ResourceManager.GetString("ProductDeclarationSubTitle", resourceCulture);
             }
         }
         

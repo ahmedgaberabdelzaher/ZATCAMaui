@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.TripInformationPage"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.InfoPages.TripInformationPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
@@ -10,6 +10,7 @@
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
@@ -19,8 +20,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
                 <ResourceDictionary>
                     <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
                 </ResourceDictionary>
@@ -279,6 +280,26 @@
                             Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
                             HeightRequest="2" />
+
+                        <!--  Welcome Label for logged in only -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="20"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{x:Static ResourceManager:AppResources.Hi}"
+                            TextColor="#0996D4" />
+
+                        <!--  User Label for logged in only  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="20"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{Binding SubmitModel.travelerDeclaration.FullName}"
+                            TextColor="{StaticResource Primary}" />
 
                         <!--  Type Of Trip Label  -->
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -612,7 +633,8 @@
                         </StackLayout>
 
                         <!--  Travel Purpose Field  -->
-                        <StackLayout Spacing="0">
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsEDeclaration}">
 
                             <!--  Travel Purpose Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -656,6 +678,70 @@
                             </StackLayout.GestureRecognizers>
 
                         </StackLayout>
+
+                          <!--  Traveler Count Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsEDeclaration}">
+
+                            <!--  Traveler Count Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TravelerCount}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Traveler Count Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
+                                    TextColor="#58595B" >
+                                    <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                         <!--  Passenger Label for logged in only -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            Margin="0,20"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            TextColor="#0996D4" >
+                             <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span  Text="+ " />
+                                        <Span Text="{x:Static ResourceManager:AppResources.PassengerInformation}"/>
+                                     
+                                    </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+
+                                <TapGestureRecognizer Command="{Binding GoToPersonalInfoCommand}"/>
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
 
                         <!-- GoTo Contact Information Button  -->
                         <buttons:SfButton

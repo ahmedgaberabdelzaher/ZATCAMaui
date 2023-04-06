@@ -829,7 +829,7 @@
     <value>عدد الارقام في الرقم التسلسلي يجب أن يكون 15 رقم</value>
     </data>
   <data name="Hi" xml:space="preserve">
-    <value>مرحبًا</value>
+    <value>مرحبًا،</value>
     </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>يرجى إدخال رمز التحقق</value>
@@ -9763,7 +9763,7 @@ info@zatca.gov.sa</value>
         <value>بيانات الإقرار
 </value>
     </data>
-    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+    <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
     </data>
     <data name="ProductDeclarationDisclaimer" xml:space="preserve">
@@ -9901,16 +9901,16 @@ info@zatca.gov.sa</value>
   <data name="TobacoTypeNotehint" xml:space="preserve">
     <value>توضيح: 1/20 تعني علبة تحتوي على 20 سيجارة</value>
   </data>
-  <data name="EdeclerationSecQ" xml:space="preserve">
+  <data name="EdeclerationProductQuestion" xml:space="preserve">
     <value>هل تحمل أي مقتنيات جديدة يتجاوز إجمالي قيمتها 3000 ريال سعودي (800 دولار أمريكي)؟</value>
   </data>
   <data name="Q2Hint" xml:space="preserve">
     <value>يحسب سعر جرام - الذهب والفضة – بناءاً على سعر الجرام في السعودية</value>
   </data>
-  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationCurrencyQuestion" xml:space="preserve">
     <value>هل تحمل عملات أو (أدوات مالية قابلة للتداول) أو معادن ثمينة تصل قيمتها 60000 ريال سعودي أو ما يعادلها (16000 دولار أمريكي)؟</value>
   </data>
-  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationRestrictedQuestion" xml:space="preserve">
     <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
@@ -9977,13 +9977,13 @@ info@zatca.gov.sa</value>
     <value>الوحدة</value>
   </data>
   <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
-    <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
+    <value>.يجب إضافة عنصر واحد على الاقل في السلة</value>
   </data>
   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
     <value>عذرًا ، القيمة الإجمالية المدخلة لا تتطلب التصريح</value>
   </data>
    <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة أو تملأ بياناتها</value>
+    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة</value>
   </data>
     <data name="Servicetype" xml:space="preserve">
     <value>نوع الخدمة</value>

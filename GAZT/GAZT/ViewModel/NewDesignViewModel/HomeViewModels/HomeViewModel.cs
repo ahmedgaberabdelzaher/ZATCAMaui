@@ -266,11 +266,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                    Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
                 }*/
                  ,
-                 new MenuModel()
-                {
-                   Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
-                },
-            
                   new MenuModel()
                 {
                    Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
@@ -282,6 +277,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                      
                    Name=AppResources.CarImport, ID="FasahLoginView",ImageSource="BrokerOptionality",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
                 }
+                
            };
         }
 

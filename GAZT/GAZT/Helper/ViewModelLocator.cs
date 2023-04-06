@@ -131,7 +131,6 @@ using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
-using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -176,6 +175,10 @@ using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
 using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
 using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
+using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
+using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
+using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 
 namespace EGAZT
 {
@@ -433,7 +436,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
-            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<BaseProductDeclarationViewModel>();
             SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
             SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
@@ -2932,6 +2935,7 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ChooseQuestionsPage", typeof(ChooseQuestionsPage));
             navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
             navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
             navigationService.Configure("SuccessView", typeof(SuccessView));
@@ -2939,6 +2943,7 @@ namespace EGAZT
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
             navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ListUserRequestsPage", typeof(ListUserRequestsPage));
             navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
@@ -4200,13 +4205,13 @@ namespace EGAZT
                 }
             }
         }
-        public ProductDeclarationViewModel ProductDeclarationViewModel
+        public BaseProductDeclarationViewModel ProductDeclarationViewModel
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                    return ServiceLocator.Current.GetInstance<BaseProductDeclarationViewModel>();
                 }
                 catch (Exception ex)
                 {

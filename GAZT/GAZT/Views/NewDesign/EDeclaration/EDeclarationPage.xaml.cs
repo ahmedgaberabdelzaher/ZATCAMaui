@@ -14,7 +14,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.EDeclerationViewModel;
             BindingContext = viewModel;
             InitializeComponent();
-            viewModel.ServiceType = 0;
+            viewModel.ShowReviewEntries = false;
             viewModel.IdentityType = 0;
         }
         protected override bool OnBackButtonPressed()
