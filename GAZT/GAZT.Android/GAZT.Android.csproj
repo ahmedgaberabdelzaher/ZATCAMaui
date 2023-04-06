@@ -5262,6 +5262,14 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\Account_statement.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\Account_statement_Gray.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-land-xxhdpi\sf_BannerImage.png">
@@ -7058,7 +7066,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GAZT\GAZT.csproj">
-      <Project>{9B350CEC-F646-4D16-B1A3-73B40DD7DFE9}</Project>
+      <Project>{D4BB244A-8CD1-4D2B-A78B-046B12246712}</Project>
       <Name>GAZT</Name>
     </ProjectReference>
   </ItemGroup>
