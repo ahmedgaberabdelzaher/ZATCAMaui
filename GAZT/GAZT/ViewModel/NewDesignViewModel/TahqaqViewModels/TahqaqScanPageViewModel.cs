@@ -12,6 +12,8 @@ using EGAZT.Models.EinvoiceModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
+using GAZT.Manager;
+using GAZT.Models;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -585,31 +587,48 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 {
                     IsClearedStatusVisible = false;
                     var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
-                           // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
-        var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
-                    if (data.IsSuccessStatusCode)
+                    VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp("A", "3", TinNo);
+                    if (vatLookUp.d != null)
                     {
-                        var content =await data.Content.ReadAsStringAsync();
-                        var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
-
-                        if (qrResponseData.ERROR==null)
+                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
+                        {
+                         
+                        }
+                        else
+                        {
+                          
+                        }
+                    }
+                    else
+                    {
+                  
+                    }
+                    //// Old APi T2
+                    // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
+                   // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    if (vatLookUp.d != null)
+                    {
+                        //   var content =await data.Content.ReadAsStringAsync();
+                        ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
+                        var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus==""?0:int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
+                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))
                         {
                            
-                            if (NoofTags==5&& qrResponseData.Taxpayer_RESP.EInvEnfStatus==0)
+                            if (NoofTags==5&& EInvEnfStatus == 0)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                             }
-                            if (NoofTags == 5 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            if (NoofTags == 5 && EInvEnfStatus == 1)
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidQrMessage;
                             }
-                            else if (NoofTags == 9 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            else if (NoofTags == 9 && EInvEnfStatus == 1)
                             {
                                 RegistredStatusWithDisplaQRRslt();
 
                             }
-                            else if (NoofTags == 8 && qrResponseData.Taxpayer_RESP.EInvEnfStatus == 1)
+                            else if (NoofTags == 8 && EInvEnfStatus == 1)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                                 IsClearedStatusVisible = true;
