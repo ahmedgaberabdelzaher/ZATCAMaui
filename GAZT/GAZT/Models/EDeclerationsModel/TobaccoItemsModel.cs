@@ -22,7 +22,7 @@ namespace EGAZT.Models.EDeclerationsModel
         public string MeasureUnitAR { get; set; }
         public string MeasureUnitEN { get; set; }
         public bool HasMeasureUnit { get; set; }
-        public bool HasWeight { get; set; }
+        public bool hasWeight { get; set; }
         public string MeasureUnitName
         {
             get

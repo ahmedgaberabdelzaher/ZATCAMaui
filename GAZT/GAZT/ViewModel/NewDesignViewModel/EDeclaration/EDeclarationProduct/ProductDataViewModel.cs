@@ -50,6 +50,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         isPurposeSelected = false;
                         isCurrencySelected = false;
                         isUnitsSelected = false;
+                        SelectedProductSubTypes = null;
                         if (ProductTypes == null || ProductTypes.Count > 0)
                         {
                             var productTypes = await DeclerationServices.GetProductTypes();
@@ -181,7 +182,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             }
         }
 
-        private void ClearProductData()
+        protected void ClearProductData()
         {
             SelectedProductTypes = null;
             SelectedProductSubTypes = null;
@@ -190,9 +191,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             TotalValue = null;
         }
 
-        private bool CheckProductDataNotNull()
+        protected bool CheckProductDataNotNull(bool fromFees=false)
         {
-            if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(TotalValue))
+            if (string.IsNullOrWhiteSpace(Quantity)&&fromFees==false)
+            {
+                return false;
+            }
+            if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (IsProductItemHaveSubType && SelectedProductSubTypes == null)
                 {
@@ -203,6 +208,50 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             return false;
         }
 
+        public async Task GetProducts(bool includeTobaco = false)
+        {
+            try
+            {
+                IsLoading = true;
+                isProductTypeSelected = true;
+                isTobacoTypeSelected = false;
+                isTobacotemSelected = false;
+                isProductSubTypeSelected = false;
+                isMaterialTypeSelected = false;
+                isPurposeSelected = false;
+                isCurrencySelected = false;
+                SelectedProductSubTypes = null;
+                isUnitsSelected = false;
+                if (ProductTypes == null || ProductTypes.Count > 0)
+                {
+                    var productTypes = await DeclerationServices.GetProductTypes();
+                    ProductTypes = productTypes?.Item1.data;
+                    ProductSubTypes = null;
+                }
+
+                var result = ProductTypes.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name }).ToList();
+
+
+                if (includeTobaco)
+                {
+                    result.Add(new BottomSheetModel() { Id = AppResources.Tobaco, Name = AppResources.Tobaco });
+                    var newLst = result;
+                }
+                BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                IsShowBottomSheet = true;
+                HeaderTitle = AppResources.TypeItem;
+                TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                IsLoading = false;
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
         #endregion
     }
 }

@@ -27974,5 +27974,113 @@ namespace EGAZT {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tobaco.
+        /// </summary>
+        public static string Tobaco
+        {
+            get {
+                return ResourceManager.GetString("Tobaco", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Productvalue.
+        /// </summary>
+        public static string Productvalue
+        {
+            get {
+                return ResourceManager.GetString("Productvalue", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disclaimer.
+        /// </summary>
+        public static string Disclaimer
+        {
+            get
+            {
+                return ResourceManager.GetString("Disclaimer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to FeesCalcDisclaimerTXt.
+        /// </summary>
+        public static string FeesCalcDisclaimerTXt
+        {
+            get
+            {
+                return ResourceManager.GetString("FeesCalcDisclaimerTXt", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Thetypeofmerchandise.
+        /// </summary>
+        public static string Thetypeofmerchandise
+        {
+            get
+            {
+                return ResourceManager.GetString("Thetypeofmerchandise", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Selecttheitem.
+        /// </summary>
+        public static string Selecttheitem
+        {
+            get
+            {
+                return ResourceManager.GetString("Selecttheitem", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProductValueHint.
+        /// </summary>
+        public static string ProductValueHint
+        {
+            get
+            {
+                return ResourceManager.GetString("ProductValueHint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Calculate.
+        /// </summary>
+        public static string Calculate
+        {
+            get
+            {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total2.
+        /// </summary>
+        public static string Total2
+        {
+            get
+            {
+                return ResourceManager.GetString("Total2", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CustomsFeesValue.
+        /// </summary>
+        public static string CustomsFeesValue
+        {
+            get
+            {
+                return ResourceManager.GetString("CustomsFeesValue", resourceCulture);
+            }
+        }
     }
 }

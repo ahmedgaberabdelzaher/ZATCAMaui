@@ -253,7 +253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 } ,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesFormView",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
                 }
                  ,
                  new MenuModel()
@@ -279,6 +279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 }
                 
            };
+
+            
         }
 
         public ICommand NavigateCommand

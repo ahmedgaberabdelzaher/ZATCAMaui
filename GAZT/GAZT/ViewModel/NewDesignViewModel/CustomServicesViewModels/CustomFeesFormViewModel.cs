@@ -1,13 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.Models.BaseModels;
+using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using EGAZT.Services.Interface;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using GalaSoft.MvvmLight.Views;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
-	public class CustomFeesFormViewModel: ProductDeclarationViewModel
+	public class CustomFeesFormViewModel: BaseProductDeclarationViewModel
     {
         bool isshowFeesView;
         public bool IsshowFeesView { get { return isshowFeesView; } set { isshowFeesView = value; RaisePropertyChanged(); } }
@@ -16,7 +22,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
 
 		}
-        public override ICommand OpenPoductTypesCommand
+        public new ICommand OpenPoductTypesCommand
         {
             get
             {
@@ -48,6 +54,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 return new Command<Controls.BottomSheetModel>((e) =>
                 {
                     HandleBottomSheetSelection(e,true
+
                         );
 
                 });
@@ -119,14 +126,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                         else
                         {
-                            if (!CheckProductDataNotNull())
+                            if (!CheckProductDataNotNull(true))
                             {
-                                if (int.Parse(Quantity ?? "0") <= 0)
+                              /*  if (int.Parse(Quantity ?? "0") <= 0)
                                 {
                                     IsShowMsgView = true;
                                     MessageTxt = AppResources.QuantityValidation;
                                     return;
-                                }
+                                }*/
                                 DisplayRequiredDataMsg();
                                 return;
                             }
@@ -138,7 +145,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             IsshowFeesView= await CalculateFees(1, null, product);
                             if (IsshowFeesView)
                             {
-ClearProductData();
+                                ClearProductData();
                                 SelectedCalcType = 0;
                             }
                     
@@ -158,6 +165,71 @@ ClearProductData();
 
             }
         }
+
+
+        public async Task<bool> CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
+        {
+            try
+            {
+
+                if (FeesCalculatorBody.tobacco == null)
+                {
+                    //{ new Tobacco() {  count=0, harmonizedCode="", value=0, Wight=0} }
+                    FeesCalculatorBody.tobacco = new List<Models.EDeclerationsModel.FeesCalculators.Tobacco>();
+
+                }
+                if (FeesCalculatorBody.product == null)
+                {
+                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() {  value=0, harmonizedCode="",Count=0} };
+                }
+                if (tobacco != null)
+                {
+                    if (operation == 1)
+                    {
+                        FeesCalculatorBody.tobacco.Add(tobacco);
+                        ClearTobacoData();
+                    }
+                    else
+                    {
+                        FeesCalculatorBody.tobacco.Remove(tobacco);
+                    }
+
+                }
+                if (product != null)
+                {
+                    if (operation == 1)
+                    {
+                        FeesCalculatorBody.product.Add(product);
+                        ClearProductData();
+                    }
+                    else
+                    {
+                        FeesCalculatorBody.product.Remove(product);
+
+                    }
+
+                }
+                var calres = await DeclerationServices.FeesCalculator(FeesCalculatorBody);
+                var conent = await calres.Content.ReadAsStringAsync();
+                if (calres.IsSuccessStatusCode)
+                {
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<FeesCalculatorResponse>>(conent);
+                    if (data.result != null)
+                    {
+                        FeesCalculatorResponse = data.result;
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+        }
+
     }
 }
 

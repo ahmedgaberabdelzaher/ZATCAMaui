@@ -7,7 +7,10 @@
     xmlns:controls="clr-namespace:EGAZT.Controls"
         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
      xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
-         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:behaviour="clr-namespace:GAZT.CustomControl" xmlns:controls1="clr-namespace:EGAZT.Views.NewDesign.CustomServicesPages.Controls"
+         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+         xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+         xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+         xmlns:controls1="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.QuestionsViews"
       TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}"
     x:Class="EGAZT.Views.NewDesign.CustomServicesPages.CustomFees.CustomFeesFormView">
    
@@ -112,7 +115,7 @@
 
                 <!--#endregion-->
                                             <!--#region TProductView-->
-                                <StackLayout IsVisible="false" VerticalOptions="StartAndExpand">
+                                <StackLayout VerticalOptions="StartAndExpand" IsVisible="false">
                                    <StackLayout.Triggers>
                         <DataTrigger TargetType="StackLayout" Binding="{Binding SelectedCalcType}" Value="2">
                             <Setter Property="IsVisible" Value="true"></Setter>
@@ -167,7 +170,7 @@
                                     </StackLayout>
 
                                     <!--  Quantity Field  -->
-                                    <StackLayout Spacing="0">
+                                    <StackLayout Spacing="0" IsVisible="false">
 
                                         <!--  Quantity Label  -->
                                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -207,7 +210,7 @@
                                     </StackLayout>
                            <!--#region units View-->
                                 <!--  unit Label  -->
-                                <StackLayout>
+                                <StackLayout IsVisible="false">
                                 <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>

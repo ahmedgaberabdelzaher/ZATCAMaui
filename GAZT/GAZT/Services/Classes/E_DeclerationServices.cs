@@ -24,9 +24,9 @@ namespace EGAZT.Services.Classes
         }
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>, bool, string>> GetTobacoItem(int TobacoTypeID)
         {
-            // var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/tobacco-items?tobaccoTypeID={TobacoTypeID}").ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/tobacco-items?tobaccoTypeID={TobacoTypeID}").ConfigureAwait(false);
             #region will be deleted when consume this service using DATAPower
-            var result = await HttpManager.GetAsync<TobaccoItemsNewModelResponse>($"{PageSettings.CustomPeserviceBaseURl}/Portal/api/Passengers/GetTobaccoItemsv2/{TobacoTypeID}",false).ConfigureAwait(false);
+           /* var result = await HttpManager.GetAsync<TobaccoItemsNewModelResponse>($"{PageSettings.CustomPeserviceBaseURl}/Portal/api/Passengers/GetTobaccoItemsv2/{TobacoTypeID}",false).ConfigureAwait(false);
             Tuple<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>, bool, string> response;
             ObservableCollection<TobaccoItemsModel> tobaccoItems = new ObservableCollection<TobaccoItemsModel>(); 
             if (result.Item2)
@@ -52,7 +52,7 @@ namespace EGAZT.Services.Classes
             else
             {
                 response = Tuple.Create(new DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>() { data=null, header=new Header() { moreInformation=new MoreInformation() {  backendErrors= result.Item3 } } }, true, "");
-            }
+            }*/
             #endregion
 
             return response;
@@ -74,8 +74,8 @@ namespace EGAZT.Services.Classes
         }
         public async Task<HttpResponseMessage> FeesCalculator(FeesCalculatorBody body)
         {
-            // var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}{version}/customs/calculate-fees", body).ConfigureAwait(false);
-            var custombody = new FeesCalculatorBodyCustomApi();
+           var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}{version}/customs/calculate-fees", body).ConfigureAwait(false);
+            /*var custombody = new FeesCalculatorBodyCustomApi();
             var productItems = new System.Collections.Generic.List<ProductItemCustomApi>();
             var tobacoItems = new System.Collections.Generic.List<TobaccoItemCustomApi>();
             foreach (var item in body.product)
@@ -89,7 +89,7 @@ namespace EGAZT.Services.Classes
             custombody.TobaccoItems= tobacoItems;
             custombody.ProductItems = productItems;
             var response = await HttpManager.PostAsync<FeesCalculatorBodyCustomApi>($"{PageSettings.CustomPeserviceBaseURl}/Portal/api/Passengers/calculate", custombody).ConfigureAwait(false);
-            return response;
+          */  return response;
         }
 
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PurposeModel>>, bool, string>> GetPurposes()
