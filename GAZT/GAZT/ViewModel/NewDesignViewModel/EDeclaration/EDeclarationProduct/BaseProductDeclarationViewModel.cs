@@ -101,11 +101,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         MessageTxt = AppResources.ALLanswersisNoMsg;
                         return;
                     }
+
+                    // To rearrange questions depending on IDs
+                    // Which will be important in the devlopment below
                     selectedQuestionList.Sort();
 
-                    // if the user select the Tobacco & Product
+                    // if the user select the Tobacco(1) & Product(4) or one of them only
                     // so we will remove "Traveler Count","Trip Number" & "Travel Purpose"
-                    if (selectedQuestionList.Count == 2 && selectedQuestionList.Contains(1) && selectedQuestionList.Contains(4))
+                    if ((selectedQuestionList.Count == 2 && selectedQuestionList.Contains(1) && selectedQuestionList.Contains(4))
+                        || (selectedQuestionList.Count == 1 && selectedQuestionList.Contains(1))
+                        || (selectedQuestionList.Count == 2 && selectedQuestionList.Contains(4)))
                         SubmitModel.travelerDeclaration.IsDisclosure = false;
                     else
                         SubmitModel.travelerDeclaration.IsDisclosure = true;

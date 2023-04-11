@@ -148,8 +148,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _flightNumber;
         public string flightNumber { get { return _flightNumber; } set { _flightNumber = value; RaisePropertyChanged(); } }
 
-        int _travelPurpose;
-        public int travelPurpose { get { return _travelPurpose; } set { _travelPurpose = value; } }
+        string _travelPurpose;
+        public string travelPurpose { get { return _travelPurpose; } set { _travelPurpose = value; } }
 
         string _travelPurposeName;
         public string travelPurposeName { get { return _travelPurposeName; } set { _travelPurposeName = value; RaisePropertyChanged(); } }

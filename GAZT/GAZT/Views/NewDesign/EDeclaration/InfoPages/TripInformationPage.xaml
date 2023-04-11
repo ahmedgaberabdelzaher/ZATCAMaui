@@ -681,7 +681,7 @@
 
                           <!--  Traveler Count Field  -->
                         <StackLayout Spacing="0"
-                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsEDeclaration}">
+                                     IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}">
 
                             <!--  Traveler Count Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">

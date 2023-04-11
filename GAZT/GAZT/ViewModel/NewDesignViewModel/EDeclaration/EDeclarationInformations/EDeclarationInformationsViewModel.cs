@@ -205,7 +205,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else if (isTravelPurposeSelected)
                         {
-                            SubmitModel.travelerDeclaration.travelPurpose = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.travelPurpose = e.Id;
                             SubmitModel.travelerDeclaration.travelPurposeName = e.Name;
                             isTravelPurposeSelected = false;
                             HeaderTitle = AppResources.TripInformation;
