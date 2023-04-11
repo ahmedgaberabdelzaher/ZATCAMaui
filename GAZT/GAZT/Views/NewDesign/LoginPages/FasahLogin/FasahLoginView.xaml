@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+  x:Class="EGAZT.Views.NewDesign.LoginPages.FasahLogin.FasahLoginView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT" FlowDirection="{Binding AppDirection}"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign">
+    <Grid RowDefinitions="Auto,*">
+
+        <!--#region Header-->
+        <Grid
+            ColumnDefinitions="*,*,*"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="Auto"
+            VerticalOptions="CenterAndExpand">
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="15,20,15,10" />
+                    <On Platform="Android" Value="15,20,15,10" />
+                </OnPlatform>
+            </Grid.Padding>
+
+            <!--  Left/Right icon  -->
+            <Image HorizontalOptions="Start" Style="{StaticResource SmallIcon}">
+                <Image.Triggers>
+                    <DataTrigger
+                        Binding="{Binding AppDirection}"
+                        TargetType="Image"
+                        Value="2">
+                        <Setter Property="Source" Value="arrowRight" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding AppDirection}"
+                        TargetType="Image"
+                        Value="1">
+                        <Setter Property="Source" Value="arrowLeft" />
+                    </DataTrigger>
+                </Image.Triggers>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding BackCommand}" />
+                </Image.GestureRecognizers>
+            </Image>
+            <!--  Login Icon  -->
+            <Image
+                Grid.Row="0"
+                Grid.Column="1"
+                Aspect="AspectFit"
+                HeightRequest="45"
+                HorizontalOptions="Center"
+                Source="ic_logo_gazt"
+                WidthRequest="45" />
+        </Grid>
+        <!--#region Body-->
+        <ScrollView
+            Grid.Row="1"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout
+                Padding="15"
+                HorizontalOptions="FillAndExpand"
+                Spacing="8"
+                VerticalOptions="FillAndExpand">
+
+                <!--  Login title  -->
+                <Label
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="28"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.LogintoCarimportservice}"
+                    TextColor="{StaticResource Secondary}" />
+
+                <!--  Login sub title  -->
+                <Label
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="16"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.LoginSubTitle}"
+                    TextColor="White" />
+
+                <!--  Horizontal Line  -->
+                <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+
+                <!--  UserName  -->
+                <inputLayout:SfTextInputLayout
+                    Margin="0,0,0,-15"
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    ErrorColor="#B00020"
+                    InputViewPadding="0"
+                    LeadingViewPosition="Inside"
+                    OutlineCornerRadius="15"
+                    UnfocusedColor="{StaticResource NewWarmGreyColor}">
+                    <custom:BorderlessEntry
+                        Placeholder="{x:Static ResourceManager:AppResources.UserName}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding UserNameTxt}"
+                        TextColor="{StaticResource LightBlack}" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Aspect="AspectFit" Source="user_profile" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Password  -->
+                <inputLayout:SfTextInputLayout
+                    Margin="0,0,0,26"
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    EnablePasswordVisibilityToggle="True"
+                    ErrorColor="#B00020"
+                    InputViewPadding="0"
+                    LeadingViewPosition="Inside"
+                    OutlineCornerRadius="15"
+                    UnfocusedColor="{StaticResource NewWarmGreyColor}">
+                    <custom:BorderlessEntry
+                        IsPassword="True"
+                        Placeholder="{x:Static ResourceManager:AppResources.Password}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding PasswordTxt}" />
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Aspect="AspectFit" Source="ic_VAT_reg_w" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+                </inputLayout:SfTextInputLayout>
+
+                <!--  ForgotPasswordUsername Label  -->
+                <Label
+                    Margin="0,26,0,26"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="16"
+                    HorizontalOptions="StartAndExpand"
+                    IsVisible="false"
+                    Text="{x:Static ResourceManager:AppResources.ForgotPasswordUsername}"
+                    TextColor="#5FCCC7"
+                    TextDecorations="Underline" />
+
+                <buttons:SfButton
+                    Command="{Binding LoginCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.LogIn}" />
+            </StackLayout>
+        </ScrollView>
+        <controls:OTP6Digit
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            BackgroundColor="White"
+            IsVisible="{Binding IsOTPView}" />
+        <!--#endregion Body-->
+        <controls:Loader
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsLoading}" />
+        <controls:MsgView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsShowMsgView}" />
+
+    </Grid>
+</newdesign:BaseContentPage>
+

@@ -253,7 +253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 } ,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesFormView",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
                 }
                  ,
                  new MenuModel()
@@ -268,9 +268,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  ,
                   new MenuModel()
                 {
-                   Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
-                }  
+                   Name=AppResources.ShipmentTracking, ID="ShipmentTrackingTypesPage",ImageSource="shipmentIcon",ColumnNo=isvertical?0:1,Row=isvertical?5:2,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
+                }
+                  ,
+
+                  new MenuModel()
+                {
+                     
+                   Name=AppResources.CarImport, ID="FasahLoginView",ImageSource="BrokerOptionality",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
+                }
+                
            };
+
+            
         }
 
         public ICommand NavigateCommand
@@ -283,6 +293,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                     switch (MenuItem.ID)
                     {
                         case "1":
+                          
                             _navigationService.NavigateTo("CusromServiceMenu");
                             break;
                         case "2":

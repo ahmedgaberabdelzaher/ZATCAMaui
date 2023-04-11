@@ -136,7 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         #endregion
 
         #region Methods
-        private void ClearTobacoData()
+        protected void ClearTobacoData()
         {
             SelectedTobacoItem = null;
             SelectedTobacoType = null;
@@ -144,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             IsWeighVisible = false;
         }
 
-        private bool CheckTobacoDataNotNull()
+        protected bool CheckTobacoDataNotNull()
         {
             if (SelectedTobacoItem != null && SelectedTobacoType != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(totalValue))
             {

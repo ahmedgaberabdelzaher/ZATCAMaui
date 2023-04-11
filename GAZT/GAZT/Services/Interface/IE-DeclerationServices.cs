@@ -27,7 +27,7 @@ namespace EGAZT.Services.Interface
         Task<Tuple<DATAPowerBaseResponse<InquireResponse>, bool, string>> GetInquireDecleration(string referenceNumber, string travelID);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>, bool, string>> GetCountriesCode();
         Task<Tuple<string, bool, string>> GetTransactionId();
-        Task<Tuple<TobaccoItemsNewModelResponse, bool, string>> GetTobacoItemNew(int TobacoTypeID);
+        Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>, bool, string>> GetListInquireDecleration(string travelID);
     }
        
  }

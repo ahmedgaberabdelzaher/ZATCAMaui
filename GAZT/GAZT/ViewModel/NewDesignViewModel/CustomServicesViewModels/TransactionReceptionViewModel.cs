@@ -443,6 +443,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void SetUserData(string token)
         {
+         
             var data = GetTokenData(token);
             if (data!=null)
             {

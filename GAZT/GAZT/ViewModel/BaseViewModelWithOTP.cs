@@ -51,6 +51,13 @@ namespace EGAZT.ViewModel
         string oTPFourthDigit;
         public string OTPFourthDigit { get { return oTPFourthDigit; } set { oTPFourthDigit = value; RaisePropertyChanged(); } }
 
+        string oTPFithDigit;
+        public string OTPFithDigit { get { return oTPFithDigit; } set { oTPFithDigit = value; RaisePropertyChanged(); } }
+
+        string oTPSixDigit;
+        public string OTPSixDigit { get { return oTPSixDigit; } set { oTPSixDigit = value; RaisePropertyChanged(); } }
+
+
         private string _LblCountDownTimer;
         public string LblCountDownTimer
         {
@@ -86,7 +93,7 @@ namespace EGAZT.ViewModel
         public System.Timers.Timer otpTimer;
         public int countDownSeconds;
         public string EnteredOTP = string.Empty;
-        bool IsOtpValid;
+       public bool IsOtpValid;
         public void StartOTPTimer()
         {
             // Timer            
@@ -126,7 +133,7 @@ namespace EGAZT.ViewModel
             }
         }
 
-        private void StopTimer()
+        protected void StopTimer()
         {
             otpTimer.Elapsed -= OnCountDownTimedOTPEvent;
             otpTimer.Stop();
@@ -135,7 +142,7 @@ namespace EGAZT.ViewModel
             IsOtpValid = false;
         }
 
-        public ICommand VerifyOTPCommand
+        public  ICommand VerifyOTPCommand
         {
             get
             {
@@ -212,6 +219,18 @@ namespace EGAZT.ViewModel
                                 break;
                             case "4":
                                 if (!string.IsNullOrEmpty(OTPThirdDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "5":
+                                if (!string.IsNullOrEmpty(OTPFourthDigit))
+                                {
+                                    entry.Focus();
+                                }
+                                break;
+                            case "6":
+                                if (!string.IsNullOrEmpty(OTPFithDigit))
                                 {
                                     entry.Focus();
                                 }
@@ -301,7 +320,7 @@ namespace EGAZT.ViewModel
             StopTimer();
             Preferences.Remove("OTPValue");
             Preferences.Remove("MobileNo");
-            OTPSentOnThisMobileNumber = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = EnteredOTP = "";
+            OTPSentOnThisMobileNumber = OTPFirstDigit = OTPSecondDigit = OTPThirdDigit = OTPFourthDigit = EnteredOTP=OTPFithDigit=OTPSixDigit = "";
             IsResendCodeEnabled = IsOtpValid = false;
             ResendOTPTextColor = (Color)Application.Current.Resources["ResendOTPTextColor"];
 

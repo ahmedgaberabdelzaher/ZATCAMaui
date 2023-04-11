@@ -171,8 +171,10 @@ using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
+using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
 using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
+using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
 using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
@@ -445,9 +447,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             SimpleIoc.Default.Register<StateManager>();
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
+            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+            SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<CustomFeesFormViewModel>();
               SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
                  SimpleIoc.Default.Register<ChatViewModel>();
-#endregion
+            SimpleIoc.Default.Register<FasahLoginViewModel>();
+            SimpleIoc.Default.Register<BaseLoginViewModel>();
+            #endregion
         }
 
         #region NewDesignViewModel
@@ -2945,10 +2952,14 @@ namespace EGAZT
             navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
+
+            navigationService.Configure("CustomFeesFormView", typeof(CustomFeesFormView));
             navigationService.Configure("ChatPotView", typeof(ChatPotView));
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
+
             #endregion
 
             return navigationService;
@@ -3244,6 +3255,34 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public CustomFeesFormViewModel CustomFeesFormViewModel
+ {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomFeesFormViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public FasahLoginViewModel FasahLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FasahLoginViewModel>();
                 }
                 catch (Exception ex)
                 {

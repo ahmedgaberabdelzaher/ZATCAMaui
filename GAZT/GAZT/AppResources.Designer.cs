@@ -1159,6 +1159,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculate.
+        /// </summary>
+        public static string Calculate {
+            get {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate Amount.
         /// </summary>
         public static string CalculateTheAmount {
@@ -1191,6 +1200,15 @@ namespace EGAZT {
         public static string Captcha {
             get {
                 return ResourceManager.GetString("Captcha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Car Import.
+        /// </summary>
+        public static string CarImport {
+            get {
+                return ResourceManager.GetString("CarImport", resourceCulture);
             }
         }
         
@@ -1501,11 +1519,29 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click here.
+        /// </summary>
+        public static string Clickhere {
+            get {
+                return ResourceManager.GetString("Clickhere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Click here for login.
         /// </summary>
         public static string Clickhereforlogin {
             get {
                 return ResourceManager.GetString("Clickhereforlogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here for registration.
+        /// </summary>
+        public static string ClickhereforRegistration {
+            get {
+                return ResourceManager.GetString("ClickhereforRegistration", resourceCulture);
             }
         }
         
@@ -2928,6 +2964,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs Fees Value.
+        /// </summary>
+        public static string CustomsFeesValue {
+            get {
+                return ResourceManager.GetString("CustomsFeesValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs item.
         /// </summary>
         public static string Customsitem {
@@ -3419,6 +3464,15 @@ namespace EGAZT {
         public static string DetailsTotalFeesPayable {
             get {
                 return ResourceManager.GetString("DetailsTotalFeesPayable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disclaimer: .
+        /// </summary>
+        public static string Disclaimer {
+            get {
+                return ResourceManager.GetString("Disclaimer", resourceCulture);
             }
         }
         
@@ -5880,6 +5934,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please note that the customs duties and taxes calculator only helps you to calculate the approximate total of the value of duties and taxes, and it is not legally binding. To know the actual value accurately, the customs declaration must be submitted..
+        /// </summary>
+        public static string FeesCalcDisclaimerTXt {
+            get {
+                return ResourceManager.GetString("FeesCalcDisclaimerTXt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to *The mentioned fees include all government fees and charges collected on the shipment by the Zakat, Tax and Customs Authority, and do not include any other fees or charges imposed by operators, brokers or transport and shipping companies..
         /// </summary>
         public static string FeesHint {
@@ -7356,6 +7419,16 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dear User,
+        ///We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app..
+        /// </summary>
+        public static string IAMUsernNotFoundMSg {
+            get {
+                return ResourceManager.GetString("IAMUsernNotFoundMSg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Identity type.
         /// </summary>
         public static string Identitytype {
@@ -7889,6 +7962,15 @@ namespace EGAZT {
         public static string LoginTitle {
             get {
                 return ResourceManager.GetString("LoginTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login to Car import service.
+        /// </summary>
+        public static string LogintoCarimportservice {
+            get {
+                return ResourceManager.GetString("LogintoCarimportservice", resourceCulture);
             }
         }
         
@@ -9810,6 +9892,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I Want to Receive Reward.
+        /// </summary>
+        public static string NeedReward {
+            get {
+                return ResourceManager.GetString("NeedReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering your contact information: Name , Contact Number and providing such information makes you updated on the status of your report. However, all provided information would be treated with strict confidentiality. Reports with no contact information will be looked at closely to take appropriate action..
+        /// </summary>
+        public static string NeedRewardHint {
+            get {
+                return ResourceManager.GetString("NeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
@@ -10950,6 +11050,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product value.
+        /// </summary>
+        public static string Productvalue {
+            get {
+                return ResourceManager.GetString("Productvalue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter here the total value of the items.
+        /// </summary>
+        public static string ProductValueHint {
+            get {
+                return ResourceManager.GetString("ProductValueHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View the list of prohibited items.
         /// </summary>
         public static string ProhibitedItems {
@@ -11953,6 +12071,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the item.
+        /// </summary>
+        public static string Selecttheitem {
+            get {
+                return ResourceManager.GetString("Selecttheitem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the option and complete the details.
         /// </summary>
         public static string SelectTheOptionAndCompleteDetails {
@@ -12429,6 +12556,15 @@ namespace EGAZT {
         public static string ThetotalamountplusVAT {
             get {
                 return ResourceManager.GetString("ThetotalamountplusVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type of merchandise.
+        /// </summary>
+        public static string Thetypeofmerchandise {
+            get {
+                return ResourceManager.GetString("Thetypeofmerchandise", resourceCulture);
             }
         }
         
@@ -13156,6 +13292,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tobaco.
+        /// </summary>
+        public static string Tobaco {
+            get {
+                return ResourceManager.GetString("Tobaco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clarification: 1/20 means a tray containing 20 cigarettes.
         /// </summary>
         public static string TobacoTypeNotehint {
@@ -13179,6 +13324,15 @@ namespace EGAZT {
         public static string Total {
             get {
                 return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to المجموع.
+        /// </summary>
+        public static string Total2 {
+            get {
+                return ResourceManager.GetString("Total2", resourceCulture);
             }
         }
         
@@ -16286,6 +16440,15 @@ namespace EGAZT {
         public static string Viewlist {
             get {
                 return ResourceManager.GetString("Viewlist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To view the rest of the terms and conditions  .
+        /// </summary>
+        public static string ViewRestofTermsConditions {
+            get {
+                return ResourceManager.GetString("ViewRestofTermsConditions", resourceCulture);
             }
         }
         
