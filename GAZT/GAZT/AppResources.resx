@@ -10304,4 +10304,10 @@ Zakat, Tax and Customs Authority
     <data name="NotNeedRewardHint" xml:space="preserve">
      <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
+  <data name="PreviousRequests" xml:space="preserve">
+     <value>You have {0} previous requests</value>
+  </data>
+  <data name="PreviousRequestsName" xml:space="preserve">
+     <value>Previous Requests</value>
+  </data>
 </root>

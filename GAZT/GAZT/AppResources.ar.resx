@@ -10237,4 +10237,10 @@ info@zatca.gov.sa</value>
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
+    <data name="PreviousRequests" xml:space="preserve">
+     <value>لديك {0} من الطلبات السابقة</value>
+  </data>
+    <data name="PreviousRequestsName" xml:space="preserve">
+     <value>الطلبات السابقة</value>
+  </data>
 </root>

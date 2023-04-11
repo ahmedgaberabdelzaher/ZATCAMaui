@@ -158,7 +158,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     }
                     catch (Exception ex)
                     {
-
+                        SearchText = string.Empty;
                     }
                    
                 });

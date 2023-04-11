@@ -430,6 +430,7 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
             SimpleIoc.Default.Register<TrackShipmentViewModel>();
+            SimpleIoc.Default.Register<ListUserRequestsViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
@@ -4271,6 +4272,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<UploadingPopupViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ListUserRequestsViewModel ListUserRequestsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ListUserRequestsViewModel>();
                 }
                 catch (Exception ex)
                 {

@@ -23,7 +23,9 @@ namespace EGAZT.Views.NewDesign.EDeclaration.InfoPages
         protected override void OnAppearing()
         {
             viewModel.isTripPage = true;
-
+            // if the user select the Tobacco & Product
+            // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"
+            viewModel.TripCard.IsAirTripSelected = viewModel.SubmitModel.travelerDeclaration.IsDisclosure ? true : false;
             base.OnAppearing();
         }
         protected override bool OnBackButtonPressed()

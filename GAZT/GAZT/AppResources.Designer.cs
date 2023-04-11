@@ -10788,6 +10788,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You have {0} previous requests.
+        /// </summary>
+        public static string PreviousRequests {
+            get {
+                return ResourceManager.GetString("PreviousRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Requests.
+        /// </summary>
+        public static string PreviousRequestsName {
+            get {
+                return ResourceManager.GetString("PreviousRequestsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Privacy and Policy.
         /// </summary>
         public static string PrivacyandPolicy {

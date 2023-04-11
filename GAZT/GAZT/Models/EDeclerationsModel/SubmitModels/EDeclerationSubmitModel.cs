@@ -57,7 +57,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public int? taxSequence { get; set; }
         public int? count { get; set; }
         public int? measurementUnit { get; set; }
-        public double? value { get; set; }
+        public double value { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
