@@ -89,6 +89,7 @@ namespace EGAZT.AppConfigurations
         public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
 
+        public static string EdclerationBaseURL;
 
         public static string FasahBaseUrl;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
@@ -124,6 +125,7 @@ namespace EGAZT.AppConfigurations
                     Q3AnsID=Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
+                    EdclerationBaseURL = "http://10.112.42.23/";
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -142,6 +144,7 @@ namespace EGAZT.AppConfigurations
                     Q3AnsID=Q3AnsIDProd;
                     IAMRegistration = IAMRegistraionProd;
                     FasahBaseUrl = FasahBaseUrlProd;
+                    EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -169,7 +172,9 @@ namespace EGAZT.AppConfigurations
             Target_Environment = CheckTarget_Environment();
 
             string key = "";
-        Target_Environment = "Prod";
+#if (DEBUG)
+            Target_Environment = "STG";
+#endif
             switch (Target_Environment)
             {
                 case "STG":
@@ -187,10 +192,9 @@ namespace EGAZT.AppConfigurations
         public static string GetClientSecret()
         {
             Target_Environment = CheckTarget_Environment();
-#if (!DEBUG)
-            Target_Environment = "Prod";
+#if (DEBUG)
+            Target_Environment = "STG";
 #endif
-           Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {
@@ -206,10 +210,6 @@ namespace EGAZT.AppConfigurations
             }
             return key;
         }
-        //  const string EdclerationBaseURL = "http://10.112.42.23/"; 
-
-        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/"; // production link
-
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
 
