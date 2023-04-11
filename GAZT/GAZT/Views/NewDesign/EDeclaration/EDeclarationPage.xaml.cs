@@ -14,14 +14,13 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel = App.Locator.EDeclerationViewModel;
             BindingContext = viewModel;
             InitializeComponent();
-            viewModel.ServiceType = 0;
+            viewModel.ShowReviewEntries = false;
             viewModel.IdentityType = 0;
         }
-        protected override void OnDisappearing()
+        protected override bool OnBackButtonPressed()
         {
-            viewModel.ReferenceNumber = string.Empty;
-            viewModel.IDResidencePassportNumber = string.Empty;
-            base.OnDisappearing();
+            viewModel.BackMethod();
+            return true;
         }
     }
 }

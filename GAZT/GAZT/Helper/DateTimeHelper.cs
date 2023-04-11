@@ -33,9 +33,14 @@ namespace EGAZT.Helper
                 CultureInfo cu = new CultureInfo("en-US");
                 cu.DateTimeFormat.Calendar = new GregorianCalendar();
                 var formates = new string[] { "yyyy/MM/dd", "yyyy-MM-dd", "dd-MM-yyyy",
-                                        "dd/MM/yyyy", "MM/dd/yyyy", "M/dd/yyyy", "d/MM/yyyy","M/d/yyyy","d/M/yyyy",
-                                        "dd/M/yyyy","MM/d/yyyy","d-MM-yyyy","dd-M-yyyy","MM-d-yyyy",
-                                        "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy","M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss"};
+                                        "dd/MM/yyyy", "MM/dd/yyyy", "M/dd/yyyy",
+                                        "d/MM/yyyy","M/d/yyyy","d/M/yyyy",
+                                        "dd/M/yyyy","MM/d/yyyy","d-MM-yyyy",
+                                        "dd-M-yyyy","MM-d-yyyy",
+                                        "dd-MM-yyyy'T'hh:mm:ss","MM-dd-yyyy'T'hh:mm:ss",
+                                        "dd-MM-yyyy'T'HH:mm:ss","MM-dd-yyyy'T'HH:mm:ss",
+                                        "dd-MM-yyyy","MM-dd-yyyy","M-d-yyyy","d-M-yyyy",
+                                        "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
             catch (Exception ex)

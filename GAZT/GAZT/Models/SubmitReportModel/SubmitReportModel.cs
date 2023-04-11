@@ -23,11 +23,15 @@ namespace EGAZT.Models.SubmitReportModel
         string _district;
         public string District { get { return _district; } set { _district = value; RaisePropertyChanged(); } }
 
-        bool _isNeedReward = true;
+        bool _isNeedReward = false;
         public bool IsNeedReward { get { return _isNeedReward; } set { _isNeedReward = value; RaisePropertyChanged(); } }
 
         bool _reporterWantToSharePersonalInfo = false;
         public bool ReporterWantToSharePersonalInfo { get { return _reporterWantToSharePersonalInfo; } set { _reporterWantToSharePersonalInfo = value; RaisePropertyChanged(); } }
+
+
+        string _reporterNationalId ;
+        public string ReporterNationalId { get { return _reporterNationalId; } set { _reporterNationalId = value; RaisePropertyChanged(); } }
 
         public double Longitude { get; set; }
 

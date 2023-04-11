@@ -321,6 +321,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             {
                 return new Command(() =>
                 {
+                    ResetDate();
+                    ResetTrackShipmentData();
+                    ResetTrackStatus();
                     _navigationService.NavigateTo("/Home", "0");
 
                 });
@@ -333,25 +336,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             {
                 return new Command(() =>
                 {
-                    if (TodayDateinHijri != null && TodayDateinHijri.Count > 0)
+                    Device.BeginInvokeOnMainThread(() =>
                     {
-                        string month = TodayDateinHijri[1].ToString();
-                        string day; string year;
-                        if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-                        {
-                            day = TodayDateinHijri[0].ToString();
-                            year = TodayDateinHijri[2].ToString();
-                        }
-                        else
-                        {
-                            day = TodayDateinHijri[2].ToString();
-                            year = TodayDateinHijri[0].ToString();
-                        }
-                        HijriDateToBeDisplayed = $"{day}-{month}-{year}";
 
-                        if(!HijriDateToBeDisplayed.Equals("01-01-1000"))
-                            DeclarationDateString = HijriDateToBeDisplayed;
-                    }
+                        if (TodayDateinHijri != null && TodayDateinHijri.Count > 0)
+                        {
+                            string month = TodayDateinHijri[1].ToString();
+                            string day; string year;
+                            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+                            {
+                                day = TodayDateinHijri[0].ToString();
+                                year = TodayDateinHijri[2].ToString();
+                            }
+                            else
+                            {
+                                day = TodayDateinHijri[2].ToString();
+                                year = TodayDateinHijri[0].ToString();
+                            }
+                            HijriDateToBeDisplayed = $"{day}-{month}-{year}";
+
+                            if (!HijriDateToBeDisplayed.Equals("01-01-1000"))
+                                DeclarationDateString = HijriDateToBeDisplayed;
+                        }
+
+                    });
+                    
                 });
             }
         }
@@ -631,9 +640,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             return true;
         }
 
-        public void ResetTrackShipmentData()
+        private void ResetTrackShipmentData()
         {
-            App.Locator.StateManager.SetItem("CardImage", DrawShipmentTrack.ShipmentCardImage);
             DrawShipmentTrack = new DrawShipmentTrack();
             isExpressCardSelected = false;
             isAirCardSelected = false;
@@ -646,6 +654,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
             ShipmentContainerNumber = string.Empty;
             SelectedPortName = string.Empty;
             SelectedPortId = 0;
+        }
+
+        private void ResetTrackStatus()
+        {
+            if (ShipmentStatusList == null || ShipmentStatusList.Count == 0)
+                return;
+            ShipmentStatusList = new System.Collections.ObjectModel.ObservableCollection<Models.TrackShipment.ShipmentStatus>();
+            TrackShipmentResponse = new Models.TrackShipment.TrackShipmentModel();
         }
 
         public void BackMethod()
@@ -667,8 +683,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
                 return;
             }
-
-            _navigationService.GoBack();
+           ResetDate();
+           ResetTrackShipmentData();
+           ResetTrackStatus();
+           _navigationService.GoBack();
         }
         #endregion Methods
 

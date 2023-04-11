@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.ReviewRequestPage"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages.ReviewRequestPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
@@ -19,8 +19,8 @@
      <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -113,6 +113,7 @@
                         <!--#region Disclaimer-->
                         <Frame  Padding="5"
                                 CornerRadius="8"
+                                HasShadow="False"
                                 Margin="0,0,0,5"
                                 BorderColor="#FCECCD"
                                 BackgroundColor="#FCECCD"
@@ -143,6 +144,7 @@
                             Padding="15"
                             Margin="0,0,0,10"
                             CornerRadius="15"
+                            HasShadow="False"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 
@@ -406,6 +408,7 @@
                             Padding="15"
                             CornerRadius="15"
                             Margin="0,0,0,10"
+                            HasShadow="False"
                             BorderColor="#EBEBEB"
                             Style="{StaticResource CommonTopCurves}">
 

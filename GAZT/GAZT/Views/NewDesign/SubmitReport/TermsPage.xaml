@@ -267,7 +267,8 @@
 
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
-                          <!--  Not need Reward Hinf Note  -->
+
+                        <!--  Not need Reward Hinf Note  -->
                         <Frame IsVisible="false"
                             Padding="10"
                             BackgroundColor="White"

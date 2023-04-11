@@ -10,7 +10,7 @@
     various data types are done through the TypeConverter classes 
     associated with the data types.
     
-    Example:
+    Example:Select t he item
     
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
@@ -829,7 +829,7 @@
     <value>عدد الارقام في الرقم التسلسلي يجب أن يكون 15 رقم</value>
     </data>
   <data name="Hi" xml:space="preserve">
-    <value>مرحبًا</value>
+    <value>مرحبًا،</value>
     </data>
   <data name="EnterVerificationCodeTitle" xml:space="preserve">
     <value>يرجى إدخال رمز التحقق</value>
@@ -9763,7 +9763,7 @@ info@zatca.gov.sa</value>
         <value>بيانات الإقرار
 </value>
     </data>
-    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+    <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
     </data>
     <data name="ProductDeclarationDisclaimer" xml:space="preserve">
@@ -9901,16 +9901,16 @@ info@zatca.gov.sa</value>
   <data name="TobacoTypeNotehint" xml:space="preserve">
     <value>توضيح: 1/20 تعني علبة تحتوي على 20 سيجارة</value>
   </data>
-  <data name="EdeclerationSecQ" xml:space="preserve">
+  <data name="EdeclerationProductQuestion" xml:space="preserve">
     <value>هل تحمل أي مقتنيات جديدة يتجاوز إجمالي قيمتها 3000 ريال سعودي (800 دولار أمريكي)؟</value>
   </data>
   <data name="Q2Hint" xml:space="preserve">
     <value>يحسب سعر جرام - الذهب والفضة – بناءاً على سعر الجرام في السعودية</value>
   </data>
-  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationCurrencyQuestion" xml:space="preserve">
     <value>هل تحمل عملات أو (أدوات مالية قابلة للتداول) أو معادن ثمينة تصل قيمتها 60000 ريال سعودي أو ما يعادلها (16000 دولار أمريكي)؟</value>
   </data>
-  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationRestrictedQuestion" xml:space="preserve">
     <value>هل تحمل مقتنيات أو مواد تتطلب رخصة أو تصريح لدخولها إلى السعودية (السلع الممنوعة والمقيدة)؟ </value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
@@ -9977,13 +9977,13 @@ info@zatca.gov.sa</value>
     <value>الوحدة</value>
   </data>
   <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
-    <value>.لقد تم االاجابة بنعم يجب إضافة عنصر واحد على الاقل في السلة</value>
+    <value>.يجب إضافة عنصر واحد على الاقل في السلة</value>
   </data>
   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
     <value>عذرًا ، القيمة الإجمالية المدخلة لا تتطلب التصريح</value>
   </data>
    <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة أو تملأ بياناتها</value>
+    <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة</value>
   </data>
     <data name="Servicetype" xml:space="preserve">
     <value>نوع الخدمة</value>
@@ -10141,6 +10141,15 @@ info@zatca.gov.sa</value>
     <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
+    <data name="Disclaimer" xml:space="preserve">
+    <value>إخلاء المسؤولية:</value>
+  </data>
+    <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
+    <value>يرجى مالحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم ، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي والضرائب وال يعتد بها قانونيا .</value>
+  </data>
+  <data name="CustomsFeesValue" xml:space="preserve">
+    <value>قيمة الرسوم الجمركية والضرائب</value>
+  </data>
    <data name="ShipmentTracking" xml:space="preserve">
     <value>تتبع الشحنة</value>
   </data>
@@ -10198,7 +10207,7 @@ info@zatca.gov.sa</value>
     <data name="ShipmentDeclarationNumber" xml:space="preserve">
     <value>رقم البيان الجمركي</value>
   </data>
-    <data name="ShipmentStatus" xml:space="preserve">
+  <data name="ShipmentStatus" xml:space="preserve">
     <value>حالة الشحن</value>
   </data>
   <data name="ShipmentDeclarationDetails" xml:space="preserve">
@@ -10210,16 +10219,49 @@ info@zatca.gov.sa</value>
   <data name="DownloadEdecleraton" xml:space="preserve">
     <value>تحميل الاقرار</value>
   </data>
-    <data name="cleared" xml:space="preserve">
+  <data name="Weight" xml:space="preserve">
+    <value>الوزن</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>الضريبة الانتقائية</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>رسوم إصدار البيان الجمركي</value>
+  </data>
+  <data name="Total2" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="Productvalue" xml:space="preserve">
+    <value>قيمة المنتج </value>
+  </data>
+  <data name="Calculate" xml:space="preserve">
+    <value>احتساب</value>
+  </data> 
+  <data name="Tobaco" xml:space="preserve">
+    <value>تبغ</value>
+  </data>
+    <data name="Thetypeofmerchandise" xml:space="preserve">
+    <value>اختر نوع البضاعة</value>
+  </data>
+    <data name="Selecttheitem" xml:space="preserve">
+    <value>أختر الصنف</value>
+  </data>
+    <data name="ProductValueHint" xml:space="preserve">
+    <value>أدخل هنا القيمة الإجمالية للسلع</value>
+</data>
+   <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>رسوم إصدار البيان الجمركي</value>
+   </data>
+  <data name="cleared" xml:space="preserve">
     <value>معتمده</value>
   </data>
-   <data name="UploadImage" xml:space="preserve">
+  <data name="UploadImage" xml:space="preserve">
     <value>إرفاق صورة</value>
   </data>
   <data name="UploadFile" xml:space="preserve">
     <value>إرفاق ملف</value>
   </data>
-    <data name="ReportAttachmentHelperText" xml:space="preserve">
+  <data name="ReportAttachmentHelperText" xml:space="preserve">
      <value>الإمدادات المسموحة (pdf,jpeg,jpg,doc,docx)</value>
   </data>
   <data name="NotNeedRewardHint" xml:space="preserve">
@@ -10231,5 +10273,26 @@ info@zatca.gov.sa</value>
   <data name="IAMUsernNotFoundMSg" xml:space="preserve">
     <value>" عزيزي المستخدم
 نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: ثم الدخول على التطبيق مجددًا.</value>
+  </data>
+      <data name="CarImport" xml:space="preserve">
+     <value>استيرا د السيارات </value>
+  </data>
+    <data name="LogintoCarimportservice" xml:space="preserve">
+     <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
+  </data>
+  <data name="NeedRewardHint" xml:space="preserve">
+     <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
+  </data>
+    <data name="NeedReward" xml:space="preserve">
+     <value> أرغب بالحصول على مكافأة</value>
+  </data>
+    <data name="ReportText" xml:space="preserve">
+     <value>نص البلاغ (إن تقديم معلومات تفصيلية حول البلاغ يساعدنا في ضبط البلاغ بشكل أسرع)</value>
+  </data>
+        <data name="ViewRestofTermsConditions" xml:space="preserve">
+     <value>للإطلاع على بقية الشروط والأحكام </value>
+  </data>
+    <data name="Clickhere" xml:space="preserve">
+     <value>اضغط هنا</value>
   </data>
 </root>

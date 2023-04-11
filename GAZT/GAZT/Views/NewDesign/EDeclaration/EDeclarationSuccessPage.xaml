@@ -606,9 +606,10 @@
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
                             TextColor="White" />
-                            <!--  DownLoad Pdf Button  -->
+
+                        <!--  DownLoad Pdf Button  -->
                         <buttons:SfButton
-                              BackgroundColor="#0996D4"
+                            BackgroundColor="#0996D4"
                             BorderColor="#0996D4"
                             TextColor="White"
                             Command="{Binding DownlOadFileCommand}"

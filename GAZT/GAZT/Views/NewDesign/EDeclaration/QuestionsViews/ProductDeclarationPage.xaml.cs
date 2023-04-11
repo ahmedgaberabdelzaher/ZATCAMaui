@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using EGAZT.Models.EDeclerationsModel.FeesCalculators;
-using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using Xamarin.Forms;
 
-namespace EGAZT.Views.NewDesign.EDeclaration
+namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
 {
     public partial class ProductDeclarationPage : ContentPage
     {
-        ProductDeclarationViewModel viewModel;
+        BaseProductDeclarationViewModel viewModel;
         public ProductDeclarationPage()
         {
             InitializeComponent();
@@ -18,15 +19,6 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             viewModel.FeesCalculatorBody = new FeesCalculatorBody();
 
-            if (!viewModel.IsArrivingPlaneSelected)
-            {
-                viewModel.QFlow = 3;
-            }
-            else
-            {
-                viewModel.QFlow = 1;
-            }
-            viewModel.SetQuestion();
         }
 
         protected override bool OnBackButtonPressed()

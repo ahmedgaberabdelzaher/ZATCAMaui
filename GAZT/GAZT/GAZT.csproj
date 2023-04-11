@@ -126,9 +126,17 @@
 	  <None Remove="Views\NewDesign\Zakaty\" />
 	  <None Remove="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 	  <None Remove="Views\NewDesign\DashBoardPages\PopUpPages\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\CustomFees\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\Controls\" />
 	  <None Remove="ViewModel\NewDesignViewModel\TrackShipment\" />
 	  <None Remove="Views\NewDesign\TrackShipment\" />
 	  <None Remove="Models\TrackShipment\" />
+	  <None Remove="Views\NewDesign\LoginPages\FasahLogin\" />
+	  <None Remove="Models\CustomServices\FasahModels\" />
+	  <None Remove="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationProduct\" />
+	  <None Remove="Views\NewDesign\EDeclaration\QuestionsViews\" />
+	  <None Remove="Views\NewDesign\EDeclaration\InfoPages\" />
+	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -255,9 +263,17 @@
 		<Folder Include="Views\NewDesign\Zakaty\" />
 		<Folder Include="ViewModel\NewDesignViewModel\ZakatyViewModels\" />
 		<Folder Include="Views\NewDesign\DashBoardPages\PopUpPages\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\CustomFees\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\Controls\" />
 		<Folder Include="ViewModel\NewDesignViewModel\TrackShipment\" />
 		<Folder Include="Views\NewDesign\TrackShipment\" />
 		<Folder Include="Models\TrackShipment\" />
+		<Folder Include="Views\NewDesign\LoginPages\FasahLogin\" />
+		<Folder Include="Models\CustomServices\FasahModels\" />
+		<Folder Include="ViewModel\NewDesignViewModel\EDeclaration\EDeclarationProduct\" />
+		<Folder Include="Views\NewDesign\EDeclaration\QuestionsViews\" />
+		<Folder Include="Views\NewDesign\EDeclaration\InfoPages\" />
+		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />
@@ -342,20 +358,20 @@
 		<Compile Update="Views\NewDesign\HomePages\VatServicesMenu.xaml.cs">
 		  <DependentUpon>VatServicesMenu.xaml</DependentUpon>
 		</Compile>
-		<Compile Update="Views\NewDesign\EDeclaration\ProductDeclarationPage.xaml.cs">
-		  <DependentUpon>ProductDeclarationPage.xaml</DependentUpon>
-		  </Compile>
 		<Compile Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\TransactionReceptionView.xaml.cs">
 		  <DependentUpon>TransactionReceptionView.xaml</DependentUpon>
-		</Compile>
-		<Compile Update="Views\NewDesign\EDeclaration\ContactInformationPage.xaml.cs">
-		  <DependentUpon>ContactInformationPage.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Controls\EDeclerationControls\SecurityDestrictedQuestionView.xaml.cs">
 		  <DependentUpon>SecurityDestrictedQuestionView.xaml</DependentUpon>
 		</Compile>
 		<Compile Update="Views\NewDesign\EDeclaration\EDeclarationPaymentPage.xaml.cs">
 		  <DependentUpon>EDeclarationPaymentPage.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\CustomServicesPages\CustomFees\CustomFeesFormView.xaml.cs">
+		  <DependentUpon>CustomFeesFormView.xaml</DependentUpon>
+		</Compile>
+		<Compile Update="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml.cs">
+		  <DependentUpon>TobacoView.xaml</DependentUpon>
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>

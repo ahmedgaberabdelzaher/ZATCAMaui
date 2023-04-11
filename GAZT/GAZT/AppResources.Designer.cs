@@ -418,7 +418,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions or fill in their data.
+        ///   Looks up a localized string similar to Sorry, it seems that you did not choose from the questions.
         /// </summary>
         public static string ALLanswersisNoMsg {
             get {
@@ -1195,6 +1195,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Car Import.
+        /// </summary>
+        public static string CarImport {
+            get {
+                return ResourceManager.GetString("CarImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category series.
         /// </summary>
         public static string Categoryseries {
@@ -1497,6 +1506,15 @@ namespace EGAZT {
         public static string cleared {
             get {
                 return ResourceManager.GetString("cleared", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here.
+        /// </summary>
+        public static string Clickhere {
+            get {
+                return ResourceManager.GetString("Clickhere", resourceCulture);
             }
         }
         
@@ -2856,6 +2874,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customs declaration issuance fees.
+        /// </summary>
+        public static string Customsdeclarationissuancefees {
+            get {
+                return ResourceManager.GetString("Customsdeclarationissuancefees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs duty rate.
         /// </summary>
         public static string Customsdutyrate {
@@ -3360,24 +3387,6 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?.
-        /// </summary>
-        public static string DeclerationFirstSecurityQuestion {
-            get {
-                return ResourceManager.GetString("DeclerationFirstSecurityQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?.
-        /// </summary>
-        public static string DeclerationSecondSecurityQuestion {
-            get {
-                return ResourceManager.GetString("DeclerationSecondSecurityQuestion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Examples – Aircraft, medicines, pets, etc..
         /// </summary>
         public static string DeclerationSecondSecurityQuestionYesHint {
@@ -3684,6 +3693,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?.
+        /// </summary>
+        public static string EDeclerationCurrencyQuestion {
+            get {
+                return ResourceManager.GetString("EDeclerationCurrencyQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it..
         /// </summary>
         public static string EDeclerationDesc {
@@ -3702,7 +3720,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You answered yes, you have to add at least one item in the cart.
+        ///   Looks up a localized string similar to You have to add at least one item in the cart.
         /// </summary>
         public static string EDeclerationNoItemAddedToCartMsg {
             get {
@@ -3713,9 +3731,27 @@ namespace EGAZT {
         /// <summary>
         ///   Looks up a localized string similar to Do you have any new possessions of total value exceeding SAR 3,000(800$)?.
         /// </summary>
-        public static string EdeclerationSecQ {
+        public static string EdeclerationProductQuestion {
             get {
-                return ResourceManager.GetString("EdeclerationSecQ", resourceCulture);
+                return ResourceManager.GetString("EdeclerationProductQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?.
+        /// </summary>
+        public static string EDeclerationRestrictedQuestion {
+            get {
+                return ResourceManager.GetString("EDeclerationRestrictedQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? .
+        /// </summary>
+        public static string EdeclerationTobbacoQuestion {
+            get {
+                return ResourceManager.GetString("EdeclerationTobbacoQuestion", resourceCulture);
             }
         }
         
@@ -5696,6 +5732,15 @@ namespace EGAZT {
         public static string ExciseTax {
             get {
                 return ResourceManager.GetString("ExciseTax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Excise Tax.
+        /// </summary>
+        public static string ExciseTax2 {
+            get {
+                return ResourceManager.GetString("ExciseTax2", resourceCulture);
             }
         }
         
@@ -7885,6 +7930,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login to Car import service.
+        /// </summary>
+        public static string LogintoCarimportservice {
+            get {
+                return ResourceManager.GetString("LogintoCarimportservice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login to Customs.
         /// </summary>
         public static string LogintoCustoms {
@@ -9802,6 +9856,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to I Want to Receive Reward.
+        /// </summary>
+        public static string NeedReward {
+            get {
+                return ResourceManager.GetString("NeedReward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registering your contact information: Name , Contact Number and providing such information makes you updated on the status of your report. However, all provided information would be treated with strict confidentiality. Reports with no contact information will be looked at closely to take appropriate action..
+        /// </summary>
+        public static string NeedRewardHint {
+            get {
+                return ResourceManager.GetString("NeedRewardHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to App is facing network issue, please try again later.
         /// </summary>
         public static string NetworkConnectivityIssue {
@@ -10893,15 +10965,6 @@ namespace EGAZT {
         public static string ProductDeclarationDisclaimer {
             get {
                 return ResourceManager.GetString("ProductDeclarationDisclaimer", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? .
-        /// </summary>
-        public static string ProductDeclarationSubTitle {
-            get {
-                return ResourceManager.GetString("ProductDeclarationSubTitle", resourceCulture);
             }
         }
         
@@ -16273,6 +16336,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To view the rest of the terms and conditions  .
+        /// </summary>
+        public static string ViewRestofTermsConditions {
+            get {
+                return ResourceManager.GetString("ViewRestofTermsConditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View services.
         /// </summary>
         public static string Viewservices {
@@ -17313,6 +17385,15 @@ namespace EGAZT {
         public static string VRYourVATReviewissubmittedsuccessfully {
             get {
                 return ResourceManager.GetString("VRYourVATReviewissubmittedsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weight.
+        /// </summary>
+        public static string Weight {
+            get {
+                return ResourceManager.GetString("Weight", resourceCulture);
             }
         }
         
@@ -27892,6 +27973,114 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tobaco.
+        /// </summary>
+        public static string Tobaco
+        {
+            get {
+                return ResourceManager.GetString("Tobaco", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Productvalue.
+        /// </summary>
+        public static string Productvalue
+        {
+            get {
+                return ResourceManager.GetString("Productvalue", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disclaimer.
+        /// </summary>
+        public static string Disclaimer
+        {
+            get
+            {
+                return ResourceManager.GetString("Disclaimer", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to FeesCalcDisclaimerTXt.
+        /// </summary>
+        public static string FeesCalcDisclaimerTXt
+        {
+            get
+            {
+                return ResourceManager.GetString("FeesCalcDisclaimerTXt", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Thetypeofmerchandise.
+        /// </summary>
+        public static string Thetypeofmerchandise
+        {
+            get
+            {
+                return ResourceManager.GetString("Thetypeofmerchandise", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Selecttheitem.
+        /// </summary>
+        public static string Selecttheitem
+        {
+            get
+            {
+                return ResourceManager.GetString("Selecttheitem", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ProductValueHint.
+        /// </summary>
+        public static string ProductValueHint
+        {
+            get
+            {
+                return ResourceManager.GetString("ProductValueHint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Calculate.
+        /// </summary>
+        public static string Calculate
+        {
+            get
+            {
+                return ResourceManager.GetString("Calculate", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Total2.
+        /// </summary>
+        public static string Total2
+        {
+            get
+            {
+                return ResourceManager.GetString("Total2", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to CustomsFeesValue.
+        /// </summary>
+        public static string CustomsFeesValue
+        {
+            get
+            {
+                return ResourceManager.GetString("CustomsFeesValue", resourceCulture);
             }
         }
     }

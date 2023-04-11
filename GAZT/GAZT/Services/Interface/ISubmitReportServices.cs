@@ -16,6 +16,7 @@ namespace EGAZT.Services.Interface
         // Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportModel submitReport);
         ///Data Power
          Task<DATAPowerBaseResponseResult<SubmitDataPowerResult>> CreateZatcaNewReport(SubmitReportDataPowerModel submitReport);
+         Task<BaseResponseModel<string>> CreateZatcaReport(SubmitReportModel submitReport);
 
     }
 }
