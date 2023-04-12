@@ -588,21 +588,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                     IsClearedStatusVisible = false;
                     var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp("A", "3", TinNo);
-                    if (vatLookUp.d != null)
-                    {
-                        if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))// Provided condiotion as per Vinay, Description comes null when the there is no error while calling the API
-                        {
-                         
-                        }
-                        else
-                        {
-                          
-                        }
-                    }
-                    else
-                    {
-                  
-                    }
                     //// Old APi T2
                     // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
