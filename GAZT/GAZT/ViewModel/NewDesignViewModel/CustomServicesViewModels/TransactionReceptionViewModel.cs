@@ -57,6 +57,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; RaisePropertyChanged(); } }
 
 
+        ObservableCollection<ReportFileModel> transactionUploadedFiles = new ObservableCollection<ReportFileModel>();
+        public ObservableCollection<ReportFileModel> TransactionUploadedFiles { get { return transactionUploadedFiles; } set { transactionUploadedFiles = value; RaisePropertyChanged(); } }
+
         public static ObservableCollection<UserCRResponseModel> CRCashedList;
         public static bool isCRDataFetched = false;
 
@@ -119,7 +122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 MessageTxt = AppResources.InvalidEmailFormat;
                                 return;
                             }
-                            if (UploadedFiles == null || UploadedFiles.Count <=0)
+                            if (TransactionUploadedFiles == null || TransactionUploadedFiles.Count <=0)
                             {
                                 MessageTxt = AppResources.NoFileChoosen;
                                 IsShowMsgView = true;
@@ -144,8 +147,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             subject = Subject,
                             attachement = new Attachement()
                             {
-                                fileContent = UploadedFiles.FirstOrDefault().fileBase64,
-                                fileName = UploadedFiles.FirstOrDefault().fileFullName
+                                fileContent = TransactionUploadedFiles.FirstOrDefault().fileBase64,
+                                fileName = TransactionUploadedFiles.FirstOrDefault().fileFullName
 
                             },
                             IamRegisteredUserID= IamRegisteredUserID
@@ -362,7 +365,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public void clearData()
         {
             Email = Subject = Description =CRNo= SelectedCRNo = "";
-            UploadedFiles = new ObservableCollection<ReportFileModel>();
+            TransactionUploadedFiles = new ObservableCollection<ReportFileModel>();
             UserType = "1"; 
             IsEntity = false; isCRDataFetched = false;
             IsShowBottomSheet=IsShowMsgView = false;
@@ -408,14 +411,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 });
             }
         }
+        public ICommand DeleteAttatchementCommand
+        {
+            get
+            {
+                return new Command<ReportFileModel>((file) =>
+                {
 
+                    if (file != null && TransactionUploadedFiles != null && TransactionUploadedFiles.Count > 0)
+                    {
+                        TransactionUploadedFiles.Remove(file);
+
+                    }
+                });
+            }
+        }
         public ICommand UploadFileCommand
         {
             get
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHint, AppResources.NumberofAttachments);
+                    TransactionUploadedFiles =  await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, TransactionUploadedFiles, AppResources.PDFFileHint, AppResources.NumberofAttachments);
                 });
             }
         }

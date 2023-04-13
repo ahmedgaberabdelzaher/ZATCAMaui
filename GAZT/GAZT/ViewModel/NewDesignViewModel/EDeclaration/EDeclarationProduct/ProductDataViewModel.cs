@@ -133,53 +133,61 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         #region Methods
         private async Task AddProductItem()
         {
-            if (CheckProductDataNotNull())
+            try
             {
-                if (int.Parse(Quantity ?? "0") <= 0)
+                if (CheckProductDataNotNull())
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.QuantityValidation;
-                    return;
-                }
-                if (Double.Parse(TotalValue) < 3000)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
-                    return;
-                }
-                var item = new Models.EDeclerationsModel.SubmitModels.Product()
-                {
-                    count = int.Parse(Quantity ?? "0"),
-                    typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
-                    itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
-                    value = Double.Parse(TotalValue)
+                    if (int.Parse(Quantity ?? "0") <= 0)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.QuantityValidation;
+                        return;
+                    }
+                    if (Double.Parse(TotalValue) < 3000)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
+                        return;
+                    }
+                    var item = new Models.EDeclerationsModel.SubmitModels.Product()
+                    {
+                        count = int.Parse(Quantity ?? "0"),
+                        typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
+                        itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
+                        value = Double.Parse(TotalValue)
 
-                };
+                    };
 
-                SubmitModel.travelerDeclaration.product.Add(item);
-                var cardItem = new EDeclerationCardModel()
+                    SubmitModel.travelerDeclaration.product.Add(item);
+                    var cardItem = new EDeclerationCardModel()
+                    {
+                        Name = item.typeName,
+                        desc = SelectedProductSubTypes?.Name,
+                        Price = TotalValue.ToString(),
+                        ID = item.ID,
+                        Type = 2
+                    };
+                    Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
+                    {
+                        harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
+                        value = Double.Parse(TotalValue),
+                        ID = item.ID
+                    };
+                    CardData.Add(cardItem);
+                    await CalculateFees(1, null, product);
+                    ClearProductData();
+
+                }
+                else
                 {
-                    Name = item.typeName,
-                    desc = SelectedProductSubTypes?.Name,
-                    Price = TotalValue.ToString(),
-                    ID = item.ID,
-                    Type = 2
-                };
-                Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
-                {
-                    harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
-                    value = Double.Parse(TotalValue),
-                    ID = item.ID
-                };
-                CardData.Add(cardItem);
-                await CalculateFees(1, null, product);
-                ClearProductData();
+                    DisplayRequiredDataMsg();
+                }
+            }
+            catch (Exception ex)
+            {
 
             }
-            else
-            {
-                DisplayRequiredDataMsg();
-            }
+           
         }
 
         protected void ClearProductData()

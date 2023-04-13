@@ -499,7 +499,7 @@
             <!--  Files List  -->
             <StackLayout
                 x:Name="filesLst"
-                BindableLayout.ItemsSource="{Binding UploadedFiles}"
+                BindableLayout.ItemsSource="{Binding RestrictedUploadedFiles}"
                 Spacing="0">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
@@ -530,7 +530,7 @@
                                         <Image.GestureRecognizers>
                                             <TapGestureRecognizer
                                                 BindingContext="{Binding Source={x:Reference filesLst}, Path=BindingContext}"
-                                                Command="{Binding DeleteAttatchementCommand}"
+                                                Command="{Binding DeleteRestrictedAttatchementCommand}"
                                                 CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
                                         </Image.GestureRecognizers>
                                     </Image>

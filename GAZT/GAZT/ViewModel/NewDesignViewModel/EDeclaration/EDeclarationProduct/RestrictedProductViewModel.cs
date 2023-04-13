@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.AppConfigurations;
 using EGAZT.Models.EDeclerationsModel;
+using EGAZT.Models.SubmitReportModel;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -17,6 +19,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         bool isPermit;
         public bool IsPermit { get { return isPermit; } set { isPermit = value; RaisePropertyChanged(); } }
 
+        ObservableCollection<ReportFileModel> restrictedUploadedFiles = new ObservableCollection<ReportFileModel>();
+        public ObservableCollection<ReportFileModel> RestrictedUploadedFiles { get { return restrictedUploadedFiles; } set { restrictedUploadedFiles = value; RaisePropertyChanged(); } }
         #endregion
 
         #region Commands
@@ -27,11 +31,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async () =>
                 {
-                    await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
+                    RestrictedUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, RestrictedUploadedFiles, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
                 });
             }
         }
+        public ICommand DeleteRestrictedAttatchementCommand
+        {
+            get
+            {
+                return new Command<ReportFileModel>((file) =>
+                {
 
+                    if (file != null && RestrictedUploadedFiles != null && RestrictedUploadedFiles.Count > 0)
+                    {
+                        RestrictedUploadedFiles.Remove(file);
+
+                    }
+                });
+            }
+        }
         public ICommand SelectIsPermitCommand
         {
             get
@@ -101,7 +119,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
                     permit = IsPermit,
-                    attachment = UploadedFiles != null && UploadedFiles.Count > 0 ? UploadedFiles[0].fileBase64 : ""
+                    attachment = RestrictedUploadedFiles != null && RestrictedUploadedFiles.Count > 0 ? RestrictedUploadedFiles[0].fileBase64 : ""
                 };
                 var cardItem = new EDeclerationCardModel()
                 {
@@ -129,7 +147,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             OtherPurpose = "";
             IsPermit = false;
             selectedUnit = null;
-            UploadedFiles = null;
+            RestrictedUploadedFiles = new ObservableCollection<ReportFileModel>();
             SelectedPurposes = null;
             TotalValue = null;
         }

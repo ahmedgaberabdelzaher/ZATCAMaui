@@ -1,70 +1,64 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
- xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
- xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-     xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.IAMLoginView"
-    TitleText="{x:Static ResourceManager:AppResources.IAMLogin}"
-    >
+    TitleText="{x:Static ResourceManager:AppResources.IAMLogin}">
+
     <newdesign:BaseContentPage.PancakeView>
         <Grid>
-   <WebView x:Name="IAMWebView" Source="{Binding IAMWbViewSrc}" Navigating="WebView_Navigating">
-              <!--  <WebView.Behaviors>
-                          <xct:EventToCommandBehavior Command="{Binding IAMWbViewNavigatingCommand}" EventName="Navigating" />
-                </WebView.Behaviors>-->
-            </WebView>
-        <!--  <StackLayout>
-            <Label Text="djahsdfhadjffh"></Label>
 
-                    <WebView BackgroundColor="Red" Source="http://pre-eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile"/>
+            <WebView x:Name="IAMWebView"
+                     Source="{Binding IAMWbViewSrc}"
+                     Navigating="WebView_Navigating"/>
 
-        <WebView Source="https://www.appsloveworld.com/csharp/100/450/decode-json-web-token-xamarin-android">
-                <WebView.Behaviors>
-                          <xct:EventToCommandBehavior Command="{Binding IAMWbViewNavigatingCommand}" EventName="Navigating" />
-                </WebView.Behaviors>
-            </WebView>
+            <Grid VerticalOptions="Fill"
+                  Margin="-20"
+                  IsVisible="{Binding IsNoUserShowMsg}"
+                  BackgroundColor="Gray"
+                  Opacity=".5"/>
 
-     </StackLayout>-->
-            <Grid VerticalOptions="Fill" Margin="-20" IsVisible="{Binding IsNoUserShowMsg}" BackgroundColor="Gray" Opacity=".5"></Grid>
-                <Grid Margin="-20,0,-20,0" IsVisible="{Binding IsNoUserShowMsg}"
-        Grid.Row="0"
-      
-        VerticalOptions="EndAndExpand">
+            <Grid Margin="-20,0,-20,0"
+                  IsVisible="{Binding IsNoUserShowMsg}"
+                  Grid.Row="0"
+                  VerticalOptions="EndAndExpand">
 
-        <Grid.GestureRecognizers>
-            <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
-        </Grid.GestureRecognizers>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
+                </Grid.GestureRecognizers>
 
-   
+                <yummy:PancakeView
+                    Padding="20,20,20,10"
+                    BackgroundColor="White"
+                    CornerRadius="15,15,0,0"
+                    Style="{StaticResource CommonTopCurves}"
+                    VerticalOptions="EndAndExpand">
 
-        <yummy:PancakeView
-            Padding="20,20,20,10"
-            BackgroundColor="White"
-            CornerRadius="15,15,0,0"
-            Style="{StaticResource CommonTopCurves}"
-            VerticalOptions="EndAndExpand">
+                    <StackLayout Margin="0" VerticalOptions="Center">
 
-            <StackLayout Margin="0" VerticalOptions="Center">
-
-                <Label
-                    HorizontalTextAlignment="Start"
-                    Style="{StaticResource BodyLabelBlack}"
-                    Text="{Binding MessageTxt}" />
+                        <Label
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource BodyLabelBlack}"
+                            Text="{Binding MessageTxt}" />
 
               
- <buttons:SfButton 
-                    Margin="0,0,0,10"
-                    Command="{Binding OpenIAMRegistrationUrlCommand}"
-                    Style="{StaticResource PrimaryButtonStyle}"
-                    Text="{x:Static ResourceManager:AppResources.ClickhereforRegistration}"
-                    VerticalOptions="CenterAndExpand" />
-           </StackLayout>
+                        <buttons:SfButton 
+                            Margin="0,0,0,10"
+                            Command="{Binding OpenIAMRegistrationUrlCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ClickhereforRegistration}"
+                            VerticalOptions="CenterAndExpand" />
 
-        </yummy:PancakeView>
+                    </StackLayout>
 
-    </Grid>
+                </yummy:PancakeView>
+
+            </Grid>
+
         </Grid>
     </newdesign:BaseContentPage.PancakeView>
 </newdesign:BaseContentPage>

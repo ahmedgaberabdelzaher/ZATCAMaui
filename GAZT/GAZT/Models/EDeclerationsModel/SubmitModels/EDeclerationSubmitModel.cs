@@ -14,6 +14,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public int value { get; set; }
         public int currency { get; set; }
         public string currencyName { get; set; }
+        public bool permit { get; set; }
+        public string attachment { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
@@ -22,7 +24,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string typeName { get; set; }
         public string itemCode { get; set; }
         public int count { get; set; }
-        public double? value { get; set; }
+        public double value { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
@@ -33,7 +35,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string otherpurpose { get; set; }
         public int count { get; set; }
         public int unit { get; set; }
-        public double? value { get; set; }
+        public double value { get; set; }
         public int currency { get; set; }
         public string currencyName { get; set; }
         public bool permit { get; set; }
@@ -52,10 +54,10 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string typeName { get; set; }
         public string subTypeName { get; set; }
         public long? itemCode { get; set; }
-        public int? taxSequence { get; set; }
-        public int? count { get; set; }
-        public int? measurementUnit { get; set; }
-        public double? value { get; set; }
+        public int taxSequence { get; set; }
+        public int count { get; set; }
+        public int measurementUnit { get; set; }
+        public double value { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 
@@ -146,8 +148,8 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         string _flightNumber;
         public string flightNumber { get { return _flightNumber; } set { _flightNumber = value; RaisePropertyChanged(); } }
 
-        int _travelPurpose;
-        public int travelPurpose { get { return _travelPurpose; } set { _travelPurpose = value; } }
+        string _travelPurpose;
+        public string travelPurpose { get { return _travelPurpose; } set { _travelPurpose = value; } }
 
         string _travelPurposeName;
         public string travelPurposeName { get { return _travelPurposeName; } set { _travelPurposeName = value; RaisePropertyChanged(); } }

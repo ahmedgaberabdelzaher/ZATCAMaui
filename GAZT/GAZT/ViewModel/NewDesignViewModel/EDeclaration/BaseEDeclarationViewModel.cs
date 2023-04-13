@@ -143,7 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
             SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
-
+            App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
             SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["BirthDate"].ToString());
 
             SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["ReleaseDate"].ToString());

@@ -10331,6 +10331,12 @@ Zakat, Tax and Customs Authority
     <data name="NotNeedRewardHint" xml:space="preserve">
      <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
+  <data name="PreviousRequests" xml:space="preserve">
+     <value>You have {0} previous requests</value>
+  </data>
+  <data name="PreviousRequestsName" xml:space="preserve">
+     <value>Previous Requests</value>
+</data>
     <data name="ClickhereforRegistration" xml:space="preserve">
     <value>Click here for registration</value>
   </data>
@@ -10350,13 +10356,16 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="NeedReward" xml:space="preserve">
      <value>I Want to Receive Reward</value>
   </data>
-    <data name="ReportText" xml:space="preserve">
+    <data name="ReportTextDisclaimer" xml:space="preserve">
 <value>Report Text(Providing detailed information about the communication helps us to adjust the communication faster)</value>
   </data>
       <data name="ViewRestofTermsConditions" xml:space="preserve">
      <value>To view the rest of the terms and conditions  </value>
   </data>
   <data name="Clickhere" xml:space="preserve">
-     <value>Click here</value>
+     <value>Click here</value> 
   </data>
+  <data name="SearchRerfrenceID" xml:space="preserve">
+     <value>Search by reference number</value>
+  </data> 
 </root>
