@@ -11963,6 +11963,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search by reference number.
+        /// </summary>
+        public static string SearchRerfrenceID {
+            get {
+                return ResourceManager.GetString("SearchRerfrenceID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found.
         /// </summary>
         public static string SearchRsltCountText {

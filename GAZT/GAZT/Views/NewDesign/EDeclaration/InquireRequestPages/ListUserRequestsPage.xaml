@@ -10,6 +10,7 @@
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     x:Name="page"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -101,8 +102,50 @@
                             Text="{Binding PreviousRequests}"
                             TextColor="{StaticResource NeutralGreay}" />
 
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+
+                         <!--  Search Entry  -->
+                        <inputLayout:SfTextInputLayout
+                            ContainerBackgroundColor="White"
+                            ContainerType="Outlined"
+                            ErrorColor="#B00020"
+                            FocusedColor="{StaticResource NeutralGreay}"
+                            InputViewPadding="0"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="10"
+                            UnfocusedColor="#DCDCDC"
+                            VerticalOptions="Start">
+
+                            <custom:BorderlessEntry
+                                Keyboard="Text"
+                                Placeholder="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding SearchInput}"
+                                TextColor="#002447">
+
+                                <custom:BorderlessEntry.Behaviors>
+                                    <xct:EventToCommandBehavior
+                                        Command="{Binding SearchCommand}"
+                                        EventName="TextChanged" />
+                                </custom:BorderlessEntry.Behaviors>
+
+                            </custom:BorderlessEntry>
+
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Aspect="AspectFit" Source="reportSearchBar.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+
+                        </inputLayout:SfTextInputLayout>
+
                         <StackLayout BindableLayout.ItemsSource="{Binding InquireListOfUser}"
-                                     Spacing="20">
+                                     Spacing="20"
+                                     Margin="0,0,0,10">
 
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
@@ -241,6 +284,12 @@
                                 
                                         </Grid>
 
+                                        <Frame.GestureRecognizers>
+                                             <TapGestureRecognizer
+                                                Command="{Binding Path=BindingContext.SelectedItemCommand, Source={x:Reference page}}"
+                                                CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
+
                                     </Frame>
 
                                 </DataTemplate>
@@ -249,9 +298,6 @@
 
                         </StackLayout>
                        
-
-
-
                     </StackLayout>
 
                 </ScrollView>

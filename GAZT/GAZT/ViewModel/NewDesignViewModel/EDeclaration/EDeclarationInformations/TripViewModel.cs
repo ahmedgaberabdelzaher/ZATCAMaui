@@ -264,6 +264,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     return false;
                 }
 
+                else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
+                              || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.TravelerCountValidation;
+                    return false;
+                }
+
                 else if (SubmitModel.travelerDeclaration.tripeType == 1)
                 {
                     if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.flightNumber))
@@ -273,13 +281,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         return false;
                     }
                 }
-                else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
-                               || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.TravelerCountValidation;
-                    return false;
-                }
+               
             }
 
             return true;

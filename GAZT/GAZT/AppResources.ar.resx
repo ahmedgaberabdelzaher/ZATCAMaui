@@ -10301,4 +10301,7 @@ info@zatca.gov.sa</value>
     <data name="Clickhere" xml:space="preserve">
      <value>اضغط هنا</value>
   </data>
+  <data name="SearchRerfrenceID" xml:space="preserve">
+     <value>البحث بالرقم المرجعي</value>
+  </data>
 </root>

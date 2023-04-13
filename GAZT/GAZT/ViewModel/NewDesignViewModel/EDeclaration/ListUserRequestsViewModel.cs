@@ -17,8 +17,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         ObservableCollection<TravelerDeclarationResponse> _InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
         public ObservableCollection<TravelerDeclarationResponse> InquireListOfUser { get { return _InquireListOfUser; } set { _InquireListOfUser = value; RaisePropertyChanged(); } }
 
+        ObservableCollection<TravelerDeclarationResponse> _TempInquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
+        public ObservableCollection<TravelerDeclarationResponse> TempInquireListOfUser { get { return _TempInquireListOfUser; } set { _TempInquireListOfUser = value; RaisePropertyChanged(); } }
+
         string _PreviousRequests;
         public string PreviousRequests { get { return _PreviousRequests; } set { _PreviousRequests = value; RaisePropertyChanged(); } }
+
+        string searchInput;
+        public string SearchInput { get { return searchInput; } set { searchInput = value; RaisePropertyChanged(); } }
 
 
         public ICommand OnAppearingCommand
@@ -39,6 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
                             if(InquireListOfUser !=null )
                             {
+                                TempInquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>(InquireListOfUser);
                                 PreviousRequests = String.Format(AppResources.PreviousRequests, InquireListOfUser.Count);
                                 foreach (var item in InquireListOfUser)
                                 {
@@ -67,8 +74,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             }
         }
 
+        public ICommand SearchCommand
+        {
+
+            get
+            {
+                return new Command(_ =>
+                {
+                    try
+                    {
+                        if (string.IsNullOrWhiteSpace(SearchInput.ToLower()))
+                            InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>(TempInquireListOfUser);
+                        else
+                        {
+                            var result = TempInquireListOfUser.Where(s => s.ReferenceID.ToLower().Contains(SearchInput.ToLower()));
+                            InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>(result);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        SearchInput = string.Empty;
+                    }
+
+                });
+            }
+        }
+
+        public ICommand SelectedItemCommand
+        {
+
+            get
+            {
+                return new Command<object>(async(item) =>
+                {
+                    try
+                    {
+                        var selected = item as TravelerDeclarationResponse;
+
+                        if(selected !=null)
+                        {
+                            IsLoading = true;
+                            var result = await DeclerationServices?.GetInquireDecleration(selected.ReferenceID, selected.travelID);
+
+                            if (result?.Item1?.header?.status.code == "I000000")
+                            {
+                                var inquireDecleration = result?.Item1?.data?.travelerDeclaration;
+                                if (inquireDecleration != null)
+                                {
+                                    App.Locator.StateManager.SetItem("inquireDeclaration", inquireDecleration);
+                                    _navigationService.NavigateTo("ReviewRequestPage");
+
+                                }
+                                IsLoading = false;
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.RequestTimeoutDescription;
+                                IsLoading = false;
+
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+
+                });
+            }
+        }
+
         private void ResetData()
         {
+            SearchInput = string.Empty;
+            PreviousRequests = string.Empty;
+            InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
+            TempInquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>();
         }
         public void BackMethod()
         {

@@ -159,60 +159,59 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
         private async Task AddTobacoItem()
         {
-            if (CheckTobacoDataNotNull())
+            try
             {
-
-                if (int.Parse(Quantity ?? "0") <= 0)
+                if (CheckTobacoDataNotNull())
                 {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.QuantityValidation;
-                    return;
+
+                    if (int.Parse(Quantity ?? "0") <= 0)
+                    {
+                        IsShowMsgView = true;
+                        MessageTxt = AppResources.QuantityValidation;
+                        return;
+                    }
+                    var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
+                    {
+                        count = int.Parse(Quantity ?? "0"),
+                        typeName = SelectedTobacoType.Name,
+                        itemCode = long.Parse(selectedTobacoItem.itemCode),
+                        measurementUnit = selectedTobacoItem.measurementUnit,
+                        subTypeName = SelectedTobacoItem.Name,
+                        taxSequence = SelectedTobacoItem.taxSequence
+                    };
+                    var cardItem = new EDeclerationCardModel()
+                    {
+                        Name = item.typeName,
+                        desc = item.subTypeName,
+                        ID = item.ID,
+                        Type = 1
+                    };
+
+                    SubmitModel.travelerDeclaration.tobacco.Add(item);
+                    CardData.Add(cardItem);
+                    Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
+                    {
+                        harmonizedCode = item.itemCode.ToString(),
+                        count = int.Parse(Quantity ?? "0"),
+                        sequence = item.taxSequence,
+                        ID = item.ID,
+                        Wight = string.IsNullOrWhiteSpace(Weight) ? 0 : int.Parse(Weight),
+                        value = double.Parse(TotalValue)
+                    };
+                    await CalculateFees(1, tobao, null);
+                    ClearTobacoData();
                 }
-                var item = new Models.EDeclerationsModel.SubmitModels.Tobacco()
+                else
                 {
-                    count = int.Parse(Quantity ?? "0"),
-                    typeName = SelectedTobacoType.Name,
-                    itemCode = long.Parse(selectedTobacoItem.itemCode),
-                    measurementUnit = selectedTobacoItem.measurementUnit,
-                    subTypeName = SelectedTobacoItem.Name,
-                    taxSequence = SelectedTobacoItem.taxSequence
-                };
-                /* if (SubmitModel.travelerDeclaration == null)
-                 {
-                     SubmitModel.travelerDeclaration = new TravelerDeclaration()
-                     {
-                         tobacco = new List<Models.EDeclerationsModel.SubmitModels.Tobacco>
-                         ()
-                     };
-                 }*/
-                var cardItem = new EDeclerationCardModel()
-                {
-                    Name = item.typeName,
-                    desc = item.subTypeName,
-                    //  Price = TotalValue.ToString(),
-                    ID = item.ID,
-                    Type = 1
-                };
 
-                SubmitModel.travelerDeclaration.tobacco.Add(item);
-                CardData.Add(cardItem);
-                Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
-                {
-                    harmonizedCode = item.itemCode.ToString(),
-                    count = int.Parse(Quantity ?? "0"),
-                    sequence = item.taxSequence,
-                    ID = item.ID,
-                    Wight = string.IsNullOrWhiteSpace(Weight) ? 0 : int.Parse(Weight),
-                    value = double.Parse(TotalValue)
-                };
-                await CalculateFees(1, tobao, null);
-                ClearTobacoData();
+                    DisplayRequiredDataMsg();
+                }
             }
-            else
+            catch (Exception ex)
             {
 
-                DisplayRequiredDataMsg();
             }
+           
         }
         #endregion
 

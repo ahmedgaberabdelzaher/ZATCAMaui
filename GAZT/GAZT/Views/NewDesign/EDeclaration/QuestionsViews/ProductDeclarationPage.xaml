@@ -353,7 +353,7 @@
                                 <Frame.Triggers>
                                     <DataTrigger TargetType="Frame"
                                                  Binding="{Binding QFlow}"
-                                                 Value="2">
+                                                 Value="4">
                                         <Setter Property="IsVisible"
                                                 Value="false"/>
 

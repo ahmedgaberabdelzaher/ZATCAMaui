@@ -378,10 +378,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
         #region File Upload
-        ObservableCollection<ReportFileModel> uploadedFiles = new ObservableCollection<ReportFileModel>();
-        public ObservableCollection<ReportFileModel> UploadedFiles { get { return uploadedFiles; } set { uploadedFiles = value; RaisePropertyChanged(); } }
+        
 
-        public async Task<ObservableCollection<ReportFileModel>> PickAndShow(PickOptions options,string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount=1, int maxFileSize = 2)
+        public async Task<ObservableCollection<ReportFileModel>> PickAndShow(PickOptions options, ObservableCollection<ReportFileModel> uploadedFiles, string maximumFileSizeMsg, string numberOfAttachmentMsg, int maxCount=1, int maxFileSize = 2)
         {
             try
             {
@@ -397,14 +396,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         double LenInMb = LenghtInKb / 1024;
                         double size = LenInMb;
                         double filesize = size;
-
                         if (filesize > maxFileSize)
                         {
                             MessageTxt = maximumFileSizeMsg;
                             IsShowMsgView = true;
-                            return new ObservableCollection<ReportFileModel>();
+                            return uploadedFiles;
                         }
-                        else if (UploadedFiles != null && UploadedFiles.Count < maxCount)
+
+                        else if (uploadedFiles != null && uploadedFiles.Count < maxCount)
                         {
                             var stream = await result.OpenReadAsync();
                             string content = await ConvertToBase64(stream);
@@ -412,25 +411,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             reportfile.fileBase64 = content;
                             reportfile.fileFullName = result.FileName;
                             reportfile.fileExtinction = Path.GetExtension(result.FileName);
-                            UploadedFiles.Add(reportfile);
-                            return UploadedFiles;
-                           }
+                            uploadedFiles.Add(reportfile);
+                            return uploadedFiles;
+                        }
+
                         else
                         {
                             IsShowMsgView = true;
                             MessageTxt = numberOfAttachmentMsg;
-                            return new ObservableCollection<ReportFileModel>();
+                            return uploadedFiles;
                         }
                     }
                     else
                     {
                         IsShowMsgView = true;
                         MessageTxt = maximumFileSizeMsg;
-                        return new ObservableCollection<ReportFileModel>();
+                        return uploadedFiles;
                     }
 
                 }
-                return new ObservableCollection<ReportFileModel>();
+                return uploadedFiles;
             }
             catch (Exception ex)
             {
@@ -455,22 +455,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             return Convert.ToBase64String(bytes);
         }
-        public ICommand DeleteAttatchementCommand
-        {
-            get
-            {
-                return new Command<ReportFileModel>((file) =>
-                {
-
-                    if (file != null && UploadedFiles != null && UploadedFiles.Count > 0)
-                    {
-                        UploadedFiles.Remove(file);
-
-                    //    if (UploadedFiles.Count == 0) IsTherePDFUploaded = false;
-                    }
-                });
-            }
-        }
+       
         public virtual ICommand SelectedUploadLabelCommand
         {
             get

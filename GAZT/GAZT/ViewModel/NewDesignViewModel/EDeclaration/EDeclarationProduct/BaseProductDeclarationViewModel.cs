@@ -120,7 +120,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     // so we will remove "Traveler Count","Trip Number" & "Travel Purpose"
                     if ((selectedQuestionList.Count == 2 && selectedQuestionList.Contains(1) && selectedQuestionList.Contains(4))
                         || (selectedQuestionList.Count == 1 && selectedQuestionList.Contains(1))
-                        || (selectedQuestionList.Count == 2 && selectedQuestionList.Contains(4)))
+                        || (selectedQuestionList.Count == 1 && selectedQuestionList.Contains(4)))
                         SubmitModel.travelerDeclaration.IsDisclosure = false;
                     else
                         SubmitModel.travelerDeclaration.IsDisclosure = true;

@@ -52,6 +52,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
             }
         }
+        public ICommand DeleteAttatchementCommand
+        {
+            get
+            {
+                return new Command<ReportFileModel>((file) =>
+                {
+
+                    if (file != null && CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0)
+                    {
+                        CurrencyUploadedFiles.Remove(file);
+
+                    }
+                });
+            }
+        }
 
         public ICommand CurrencyUploadFileCommand
         {
@@ -59,7 +74,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async () =>
                 {
-                    CurrencyUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
+                    CurrencyUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, CurrencyUploadedFiles,AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
                 });
             }
         }
@@ -172,7 +187,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             SelectedPurposes = null;
             TotalValue = null;
             IsCurrencyPermit = false;
-            CurrencyUploadedFiles = null;
+            CurrencyUploadedFiles = new ObservableCollection<ReportFileModel>();
         }
         #endregion
     }
