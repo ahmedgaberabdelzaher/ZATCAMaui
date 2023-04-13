@@ -619,7 +619,7 @@
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="12"
                                                 HorizontalOptions="StartAndExpand"
-                                                Text="{Binding addedDate}"
+                                                Text="{Binding ReportDate,StringFormat='{0:dd/MM/yyyy}'}"
                                                 TextColor="#002447" />
 
                                         </Grid>

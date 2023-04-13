@@ -17,7 +17,7 @@
     <newdesign:BaseContentPage.PancakeView>
       
         <Grid>
-            <ScrollView  Grid.Row="0">
+            <ScrollView VerticalScrollBarVisibility="Never"  Grid.Row="0">
                 <ScrollView.Triggers>
                     <DataTrigger TargetType="ScrollView" Binding="{Binding IsshowFeesView}" Value="true">
                         <Setter Property="IsVisible" Value="false"></Setter>

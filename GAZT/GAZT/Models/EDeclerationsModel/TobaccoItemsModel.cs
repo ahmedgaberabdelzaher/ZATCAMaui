@@ -19,15 +19,15 @@ namespace EGAZT.Models.EDeclerationsModel
             }
         }
         public Guid ID { get; set; } = Guid.NewGuid();
-        public string MeasureUnitAR { get; set; }
-        public string MeasureUnitEN { get; set; }
+        public string measureUnitAr { get; set; }
+        public string measureUnitEn { get; set; }
         public bool HasMeasureUnit { get; set; }
         public bool hasWeight { get; set; }
         public string MeasureUnitName
         {
             get
             {
-                return NameLocalization.GetLocalizedName(MeasureUnitAR, MeasureUnitEN);
+                return NameLocalization.GetLocalizedName(measureUnitAr, measureUnitEn);
             }
         }
     }

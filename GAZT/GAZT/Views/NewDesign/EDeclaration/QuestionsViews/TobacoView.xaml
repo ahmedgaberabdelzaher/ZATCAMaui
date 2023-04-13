@@ -189,7 +189,7 @@
                 </custom:CustomLabel>
 
                 <!--  MeasureUnit label   -->
-                <Label Text="{Binding SelectedTobacoItem.MeasureUnitAR}"
+                <Label Text="{Binding SelectedTobacoItem.MeasureUnitName}"
                         FontSize="14"
                         Style="{StaticResource CaptionLabelGrey}"
                         HorizontalOptions="EndAndExpand"/>

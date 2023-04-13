@@ -1,4 +1,6 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System;
+using System.Globalization;
+using GalaSoft.MvvmLight;
 
 namespace EGAZT.Models.MyReportsModel
 {
@@ -25,7 +27,8 @@ namespace EGAZT.Models.MyReportsModel
         public string tin { get; set; }
         //public List<> attachment { get; set; }
 
-        
+        public string ReportDate { get {return DateTime.Parse(addedDate).Date.ToString("dd-MM-yyyy", new CultureInfo("en-US")); } }
+
         private string reportLocation;
         public string ReportLocation { get { return reportLocation; } set { reportLocation = value; RaisePropertyChanged(); } }
     }
