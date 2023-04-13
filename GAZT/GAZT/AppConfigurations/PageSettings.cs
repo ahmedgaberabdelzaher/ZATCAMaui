@@ -88,9 +88,6 @@ namespace EGAZT.AppConfigurations
         public static string FasahBaseUrlProd = "https://soga.fasah.sa/";
         public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
-
-        public static string EdclerationBaseURL;
-
         public static string FasahBaseUrl;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
 
@@ -125,7 +122,6 @@ namespace EGAZT.AppConfigurations
                     Q3AnsID=Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
-                    EdclerationBaseURL = "http://10.112.42.23/";
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -144,7 +140,6 @@ namespace EGAZT.AppConfigurations
                     Q3AnsID=Q3AnsIDProd;
                     IAMRegistration = IAMRegistraionProd;
                     FasahBaseUrl = FasahBaseUrlProd;
-                    EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -212,7 +207,8 @@ namespace EGAZT.AppConfigurations
         }
         const string TawreedBaseURL = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/TawreedNewTRRequest.aspx";
         const string FeesCalculatorBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
-
+        const string EdclerationBaseURL = "https://eservices.zatca.gov.sa/sites/sc/";
+        //EdclerationBaseURL = "http://10.112.42.23/"; not Used
         public static string GetNewEDeclarationLinks()
         {
             if (App.IsArabic)

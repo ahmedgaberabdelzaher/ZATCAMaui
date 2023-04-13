@@ -11617,6 +11617,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Report Text(Providing detailed information about the communication helps us to adjust the communication faster).
+        /// </summary>
+        public static string ReportTextDisclaimer {
+            get {
+                return ResourceManager.GetString("ReportTextDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Report Type.
         /// </summary>
         public static string ReportType {

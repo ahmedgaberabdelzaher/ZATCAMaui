@@ -10292,7 +10292,7 @@ info@zatca.gov.sa</value>
     <data name="NeedReward" xml:space="preserve">
      <value> أرغب بالحصول على مكافأة</value>
   </data>
-    <data name="ReportText" xml:space="preserve">
+    <data name="ReportTextDisclaimer" xml:space="preserve">
      <value>نص البلاغ (إن تقديم معلومات تفصيلية حول البلاغ يساعدنا في ضبط البلاغ بشكل أسرع)</value>
   </data>
         <data name="ViewRestofTermsConditions" xml:space="preserve">
