@@ -624,6 +624,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 RegistredStatusWithDisplaQRRslt();
                                // IsShowSubmitReport = false;
                             }
+                            else
+                            {
+                                RegistredStatusWithDisplaQRRslt();
+                            }
                         }
                         else
                         {
