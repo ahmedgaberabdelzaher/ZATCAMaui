@@ -2793,6 +2793,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you have supporting document?.
+        /// </summary>
+        public static string CurrencyPermitLabel {
+            get {
+                return ResourceManager.GetString("CurrencyPermitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Password.
         /// </summary>
         public static string CurrentPassword {
@@ -10528,6 +10537,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PDF file format max size 10MB.
+        /// </summary>
+        public static string PDFFileHintMB {
+            get {
+                return ResourceManager.GetString("PDFFileHintMB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PDF file format max size 1MB.
         /// </summary>
         public static string PDFFileHintTwo {
@@ -13513,6 +13531,15 @@ namespace EGAZT {
         public static string TotalPartialPaidBillsAmount {
             get {
                 return ResourceManager.GetString("TotalPartialPaidBillsAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The total number of attached files must not exceed 10MB.
+        /// </summary>
+        public static string TotalPDFFileHintMB {
+            get {
+                return ResourceManager.GetString("TotalPDFFileHintMB", resourceCulture);
             }
         }
         

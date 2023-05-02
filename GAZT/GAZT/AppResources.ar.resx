@@ -10304,4 +10304,13 @@ info@zatca.gov.sa</value>
   <data name="SearchRerfrenceID" xml:space="preserve">
      <value>البحث بالرقم المرجعي</value>
   </data>
+  <data name="CurrencyPermitLabel" xml:space="preserve">
+     <value>هل لديك مستند داعم؟</value>
+  </data>
+  <data name="PDFFileHintMB" xml:space="preserve">
+    <value>صيغة الملف PDF أقصى حجم 10MB</value>
+  </data>
+  <data name="TotalPDFFileHintMB" xml:space="preserve">
+    <value>يجب ألا يتجاوز العدد الإجمالي للملفات المرفقة 10MB</value>
+  </data>
 </root>
