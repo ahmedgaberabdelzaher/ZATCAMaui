@@ -396,7 +396,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         double LenInMb = LenghtInKb / 1024;
                         double size = LenInMb;
                         double filesize = size;
-                        if (filesize > maxFileSize)
+                        if (filesize > maxFileSize )
                         {
                             MessageTxt = maximumFileSizeMsg;
                             IsShowMsgView = true;
@@ -410,6 +410,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             ReportFileModel reportfile = new ReportFileModel();
                             reportfile.fileBase64 = content;
                             reportfile.fileFullName = result.FileName;
+                            reportfile.fileSize = filesize;
                             reportfile.fileExtinction = Path.GetExtension(result.FileName);
                             uploadedFiles.Add(reportfile);
                             return uploadedFiles;

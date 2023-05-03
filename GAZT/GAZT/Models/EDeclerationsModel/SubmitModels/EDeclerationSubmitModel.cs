@@ -16,6 +16,7 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
         public string currencyName { get; set; }
         public bool permit { get; set; }
         public string attachment { get; set; }
+        public double attachmentSize { get; set; }
         public Guid ID { get; set; } = Guid.NewGuid();
     }
 

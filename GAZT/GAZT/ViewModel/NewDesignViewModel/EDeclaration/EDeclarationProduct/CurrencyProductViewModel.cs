@@ -25,6 +25,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         ObservableCollection<ReportFileModel> currencyUploadedFiles = new ObservableCollection<ReportFileModel>();
         public ObservableCollection<ReportFileModel> CurrencyUploadedFiles { get { return currencyUploadedFiles; } set { currencyUploadedFiles = value; RaisePropertyChanged(); } }
 
+        public double totalPDFSizes = 0.0d;
         #endregion
 
         #region Commands
@@ -61,8 +62,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
                     if (file != null && CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0)
                     {
+                        totalPDFSizes -= file.fileSize;
                         CurrencyUploadedFiles.Remove(file);
-
+                       
                     }
                 });
             }
@@ -74,7 +76,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async () =>
                 {
-                    CurrencyUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, CurrencyUploadedFiles,AppResources.PDFFileHintTwo, AppResources.NumberofAttachments, maxFileSize: 1);
+                    try
+                    {
+                       
+                        CurrencyUploadedFiles = await PickAndShow(new PickOptions() { PickerTitle = "Pick Files" }, CurrencyUploadedFiles, AppResources.PDFFileHintMB, AppResources.NumberofAttachments, maxFileSize: 10);
+
+
+                        if (CurrencyUploadedFiles?.Count > 0)
+                        {
+                            totalPDFSizes += CurrencyUploadedFiles[0].fileSize;
+                            if (totalPDFSizes >= 10.0d)
+                            {
+                                totalPDFSizes -= CurrencyUploadedFiles[0].fileSize;
+                                CurrencyUploadedFiles.Remove(CurrencyUploadedFiles[0]);
+                                IsCurrencyPermit = false;
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.TotalPDFFileHintMB;
+                                return;
+                            }
+                        }
+                            
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 });
             }
         }
@@ -147,7 +174,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             if (CheckCurrencyDataNotNull())
             {
 
-
                 var item = new Models.EDeclerationsModel.SubmitModels.Currency()
                 {
                     otherpurpose = OtherPurpose,
@@ -157,7 +183,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
                     permit = IsCurrencyPermit,
-                    attachment = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileBase64 : ""
+                    attachment = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileBase64 : "",
+                    attachmentSize = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileSize : 0
                 };
                 SubmitModel.travelerDeclaration.currency.Add(item);
                 var cardItem = new EDeclerationCardModel()
@@ -169,7 +196,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     Type = 3
                 };
                 CardData.Add(cardItem);
-
                 ClearCurrencyData();
             }
             else

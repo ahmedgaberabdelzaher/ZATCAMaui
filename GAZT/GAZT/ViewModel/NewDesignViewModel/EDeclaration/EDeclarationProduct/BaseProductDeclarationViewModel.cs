@@ -540,6 +540,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                                 break;
                             case 3:
                                 var currency = SubmitModel.travelerDeclaration.currency.First(c => c.ID == e.ID);
+                                totalPDFSizes -= currency.attachmentSize;
                                 SubmitModel.travelerDeclaration.currency.Remove(currency);
                                 break;
                             case 4:
@@ -668,6 +669,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     ClearRestrictedData();
                     break;
                 case 3:
+                    totalPDFSizes = 0;
                     ClearCurrencyData();
                     break;
                 case 4:

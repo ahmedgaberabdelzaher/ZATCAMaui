@@ -380,7 +380,7 @@
                 ContainerType="Outlined"
                 ErrorColor="#B00020"
                 FocusedColor="{StaticResource NeutralGreay}"
-                HelperText="{x:Static ResourceManager:AppResources.PDFFileHintTwo}"
+                HelperText="{x:Static ResourceManager:AppResources.PDFFileHintMB}"
                 InputViewPadding="16,0,16,0"
                 LeadingViewPosition="Inside"
                 OutlineCornerRadius="15"
