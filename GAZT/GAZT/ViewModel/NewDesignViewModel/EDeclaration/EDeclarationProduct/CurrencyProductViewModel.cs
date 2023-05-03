@@ -85,7 +85,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         if (CurrencyUploadedFiles?.Count > 0)
                         {
                             totalPDFSizes += CurrencyUploadedFiles[0].fileSize;
-                            if (totalPDFSizes >= 10.0d)
+                            if (totalPDFSizes > 10.0d)
                             {
                                 totalPDFSizes -= CurrencyUploadedFiles[0].fileSize;
                                 CurrencyUploadedFiles.Remove(CurrencyUploadedFiles[0]);
