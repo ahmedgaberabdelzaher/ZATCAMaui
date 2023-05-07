@@ -33,11 +33,12 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
+                <!--  Back Button  -->
                 <StackLayout>
 
-                    <!--  Back Button  -->
+                     <!--  Back Image  -->
                     <Image
                         HorizontalOptions="Start"
                         Rotation="0"
@@ -71,6 +72,34 @@
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.eDeclaration}"
                     VerticalOptions="Center" />
+
+                <!--  Cart Image -->
+                <StackLayout Grid.Column="2"
+                             Spacing="0"
+                             HorizontalOptions="End">
+
+                     <!--  Count Label  -->
+                    <custom:CustomLabel
+                        HorizontalOptions="Center"
+                        FontSize="14"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#4FBBBD"
+                        Text="{Binding CardData.Count}"
+                        VerticalOptions="End" />
+
+                     <!--  Cart Image -->
+                    <Image
+                        HorizontalOptions="End"
+                        Source="eCart.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenCartCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
 
             </Grid>
             <!--#endregion Header-->

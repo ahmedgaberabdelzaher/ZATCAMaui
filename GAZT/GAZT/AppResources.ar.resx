@@ -9872,10 +9872,10 @@ info@zatca.gov.sa</value>
     <value>مغادرة الى</value>
   </data>
    <data name="EntrancePort" xml:space="preserve">
-    <value>ميناء المدخل</value>
+    <value>منفذ الدخول</value>
   </data>
   <data name="ExitPort" xml:space="preserve">
-    <value>ميناء الخروج</value>
+    <value>منفذ الخروج</value>
   </data>
    <data name="ArrivalDate" xml:space="preserve">
     <value>تاريخ الوصول</value>

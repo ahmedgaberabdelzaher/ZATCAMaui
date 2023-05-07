@@ -767,6 +767,9 @@
     <BundleResource Include="Resources\BrokerOptionality%403x.png" />
     <BundleResource Include="Resources\BrokerOptionality%402x.png" />
     <BundleResource Include="Resources\BrokerOptionality.png" />
+    <BundleResource Include="Resources\eCart.png" />
+    <BundleResource Include="Resources\eCart%402x.png" />
+    <BundleResource Include="Resources\eCart%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">

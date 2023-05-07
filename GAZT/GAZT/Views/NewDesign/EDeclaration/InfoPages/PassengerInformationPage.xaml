@@ -38,7 +38,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
 
                 <StackLayout>
 

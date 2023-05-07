@@ -142,11 +142,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         private void ClearRestrictedData()
         {
             SelectedCurrencie = null;
+            RestrictedItem = string.Empty;
             SelectedMaterialTypes = null;
             Quantity = null;
             OtherPurpose = "";
             IsPermit = false;
-            selectedUnit = null;
+            SelectedUnit = null;
             RestrictedUploadedFiles = new ObservableCollection<ReportFileModel>();
             SelectedPurposes = null;
             TotalValue = null;
