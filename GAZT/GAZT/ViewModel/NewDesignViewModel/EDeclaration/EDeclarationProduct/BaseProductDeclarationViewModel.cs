@@ -781,19 +781,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 if (calres.IsSuccessStatusCode)
                 {
                     var conent = await calres.Content.ReadAsStringAsync();
-                    var data = JsonConvert.DeserializeObject<CustomApiFeesCalculatorResponse>(conent);
-                    if (data.data != null)
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<CustomApiDATA>>(conent);
+                    if (data.result != null)
                     {
-                        var Result = data.data;
-                        if (Result != null)
+                        var result = data.result;
+                        if (result != null)
                         {
-                            FeesCalculatorResponse.customsPercentage = Result.CustomesPercentage;
-                            FeesCalculatorResponse.excise = Result.Excise;
-                            FeesCalculatorResponse.totalDuty = Result.TotalDuty;
-                            FeesCalculatorResponse.totalPayment = Result.TotalPayment;
-                            FeesCalculatorResponse.vat = Result.VAT;
+                            FeesCalculatorResponse.customsPercentage = result.CustomesPercentage;
+                            FeesCalculatorResponse.excise = result.Excise;
+                            FeesCalculatorResponse.totalDuty = result.TotalDuty;
+                            FeesCalculatorResponse.totalPayment = result.TotalPayment;
+                            FeesCalculatorResponse.vat = result.VAT;
 
-                            FeesCalculatorResponse.extraFees = Result.ExtraFees;
+                            FeesCalculatorResponse.extraFees = result.ExtraFees;
 
                             return;
                         }

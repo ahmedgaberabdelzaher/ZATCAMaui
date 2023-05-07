@@ -269,7 +269,7 @@
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.NewDeclaration}"/>
+                            Text="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}"/>
 
                          <!--  Declaration Note Label  -->
                          <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
