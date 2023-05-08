@@ -132,6 +132,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
             SubmitModel.travelerDeclaration.email = iamLoginPayloadData["Email"].ToString();
             SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData["Mobile"].ToString();
+            SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
             SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
             SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
             SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
