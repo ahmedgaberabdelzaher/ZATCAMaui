@@ -10313,4 +10313,7 @@ info@zatca.gov.sa</value>
   <data name="TotalPDFFileHintMB" xml:space="preserve">
     <value>يجب ألا يتجاوز العدد الإجمالي للملفات المرفقة 10MB</value>
   </data>
+    <data name="PleaseAttach" xml:space="preserve">
+    <value>الرجاء إرفاق مستند</value>
+  </data>
 </root>

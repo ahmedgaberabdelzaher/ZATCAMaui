@@ -10627,6 +10627,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please attach a document.
+        /// </summary>
+        public static string PleaseAttach {
+            get {
+                return ResourceManager.GetString("PleaseAttach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please change password.
         /// </summary>
         public static string Pleasechangepassword {

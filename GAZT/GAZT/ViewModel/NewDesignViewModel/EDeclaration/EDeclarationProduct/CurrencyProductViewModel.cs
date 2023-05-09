@@ -157,15 +157,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         #region Methods
         private bool CheckCurrencyDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue))
+            if (IsCurrencyPermit && CurrencyUploadedFiles?.Count == 0)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.PleaseAttach;
+            }
+
+            else if (SelectedCurrencie != null && SelectedMaterialTypes != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (SelectedPurposes.ID == 8)
                 {
                     if (string.IsNullOrWhiteSpace(OtherPurpose))
+                    {
+                        DisplayRequiredDataMsg();
                         return false;
+                    }
+
                 }
                 return true;
             }
+
             return false;
         }
 
@@ -197,10 +208,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 };
                 CardData.Add(cardItem);
                 ClearCurrencyData();
-            }
-            else
-            {
-                DisplayRequiredDataMsg();
             }
         }
 

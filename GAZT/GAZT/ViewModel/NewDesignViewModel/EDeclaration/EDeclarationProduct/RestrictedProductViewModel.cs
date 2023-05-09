@@ -133,10 +133,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 SubmitModel.travelerDeclaration.restricted.Add(item);
                 ClearRestrictedData();
             }
-            else
-            {
-                DisplayRequiredDataMsg();
-            }
         }
 
         private void ClearRestrictedData()
@@ -155,15 +151,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
         private bool CheckrestrictedDataNotNull()
         {
-            if (SelectedCurrencie != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue) && SelectedUnit != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(RestrictedItem))
+            if (IsPermit && RestrictedUploadedFiles.Count == 0)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.PleaseAttach;
+            }
+
+            else if (SelectedCurrencie != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue) && SelectedUnit != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(RestrictedItem))
             {
                 if (SelectedPurposes.ID == 8)
                 {
                     if (string.IsNullOrWhiteSpace(OtherPurpose))
+                    {
+                        DisplayRequiredDataMsg();
                         return false;
+
+                    }
                 }
                 return true;
             }
+            
             return false;
         }
         #endregion
