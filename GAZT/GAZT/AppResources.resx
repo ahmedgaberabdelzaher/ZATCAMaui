@@ -10377,4 +10377,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
   <data name="TotalPDFFileHintMB" xml:space="preserve">
     <value>The total number of attached files must not exceed 10MB</value>
   </data>
+     <data name="UnifiedNumber" xml:space="preserve">
+    <value>Entity Unified Number</value>
+  </data>
 </root>

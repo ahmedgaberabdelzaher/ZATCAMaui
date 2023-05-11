@@ -10313,4 +10313,7 @@ info@zatca.gov.sa</value>
   <data name="TotalPDFFileHintMB" xml:space="preserve">
     <value>يجب ألا يتجاوز العدد الإجمالي للملفات المرفقة 10MB</value>
   </data>
+   <data name="UnifiedNumber" xml:space="preserve">
+    <value>الرقم الموحد للمنشأة</value>
+  </data>
 </root>

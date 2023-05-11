@@ -204,7 +204,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
                         IsLoading = true;
 
-                        if (!string.IsNullOrWhiteSpace(CRNo))
+                        if (!string.IsNullOrWhiteSpace(CRNo) && CRNo.Length == 10)
                         {
                             await PopupNavigation.Instance.PopAsync(true);
                             var model = new AddNewCrBody()
