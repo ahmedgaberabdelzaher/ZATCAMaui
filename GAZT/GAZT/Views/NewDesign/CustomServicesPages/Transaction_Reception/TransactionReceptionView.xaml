@@ -156,7 +156,7 @@
                                                  >
                             <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZCRNumber}"/>
+                                        <Span Text="{x:Static ResourceManager:AppResources.UnifiedNumber}"/>
                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
@@ -175,7 +175,7 @@
                                     x:Name="reportRegionEntry"
                                     IsReadOnly="True"
                                     Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZCRNumber}"
+                                    Placeholder="{x:Static ResourceManager:AppResources.UnifiedNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SelectedCRNo}"
                                     TextColor="#58595B">
@@ -378,56 +378,7 @@
                             Text="{x:Static ResourceManager:AppResources.Send}" />
             </StackLayout>
     </ScrollView>
-            <!--Add Ne CR View-->
-                    <yummy:PancakeView Grid.Row="0" VerticalOptions="EndAndExpand" Style="{StaticResource CommonTopCurves}" IsVisible="false">
-                <StackLayout>
-                    <Image Source="CloseIcon" HeightRequest="22" WidthRequest="22" HorizontalOptions="EndAndExpand">
-                        <Image.GestureRecognizers>
-                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="false"></TapGestureRecognizer>
-
-                            </Image.GestureRecognizers>
-
-                    </Image>
-                        <!--#region New CR Field -->
-                        <StackLayout Spacing="0">
-                            <!--  New CR Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                                 >
-                            <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.AddNewCRTitle}"/>
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-                             </custom:CustomLabel>
-                            <!--  New CR  Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.AddNewCRTitle}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding CRNo}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
-                 
-                        </StackLayout>
-                    <!--#endregion-->
-                              <!--  Add Button  -->
-                        <buttons:SfButton
-                            Margin="0,40"
-                            BackgroundColor="#0996D4"
-                            Command="{Binding AddNewCRCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.Add}" />
-                </StackLayout>
-
-            </yummy:PancakeView>
+            
               <!--#region Display All Crc-->
                    <!--  Bottom Sheet List  -->
             <controls:ListBottomSheet Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />

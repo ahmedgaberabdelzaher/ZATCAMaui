@@ -13976,6 +13976,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entity Unified Number.
+        /// </summary>
+        public static string UnifiedNumber {
+            get {
+                return ResourceManager.GetString("UnifiedNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unit.
         /// </summary>
         public static string units {
