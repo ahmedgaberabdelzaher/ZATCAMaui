@@ -93,7 +93,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
-                        if (SelectedCalcType==1)
+                        if (SelectedCalcType == 1)
                         {
                             if (!CheckTobacoDataNotNull())
                             {
@@ -107,48 +107,54 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 DisplayRequiredDataMsg();
                                 return;
                             }
-                                Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
+                            Models.EDeclerationsModel.FeesCalculators.Tobacco tobao = new Models.EDeclerationsModel.FeesCalculators.Tobacco()
                             {
                                 harmonizedCode = long.Parse(SelectedTobacoItem.itemCode).ToString(),
                                 count = int.Parse(Quantity ?? "0"),
                                 sequence = SelectedTobacoItem.taxSequence,
                                 ID = SelectedTobacoItem.ID,
-                                value=double.Parse(TotalValue)
+                                value = double.Parse(TotalValue),
+                                measurementUnit = SelectedTobacoItem.measurementUnit,
+                                typeName = SelectedTobacoItem?.Name,
+                                subTypeName = SelectedTobacoItem?.Name,
+                                weight = string.IsNullOrWhiteSpace(Weight) ? 0 : double.Parse(Weight),
                             };
                             IsshowFeesView = await CalculateFees(1, tobao, null);
-                                  if (IsshowFeesView)
+                            if (IsshowFeesView)
                             {
                                 ClearTobacoData();
-                               
+
                             }
-                          
-                           
+
+
                         }
                         else
                         {
                             if (!CheckProductDataNotNull(true))
                             {
-                              /*  if (int.Parse(Quantity ?? "0") <= 0)
-                                {
-                                    IsShowMsgView = true;
-                                    MessageTxt = AppResources.QuantityValidation;
-                                    return;
-                                }*/
+                                /*  if (int.Parse(Quantity ?? "0") <= 0)
+                                  {
+                                      IsShowMsgView = true;
+                                      MessageTxt = AppResources.QuantityValidation;
+                                      return;
+                                  }*/
                                 DisplayRequiredDataMsg();
                                 return;
                             }
                             Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
-                    {
-                        harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
-                        value = Double.Parse(TotalValue)
-                    };
-                            IsshowFeesView= await CalculateFees(1, null, product);
+                            {
+                                harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
+                                value = Double.Parse(TotalValue),
+                                count = int.Parse(Quantity ?? "0"),
+                                typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
+                            };
+                            IsshowFeesView = await CalculateFees(1, null, product);
                             if (IsshowFeesView)
                             {
                                 ClearProductData();
                                 SelectedCalcType = 0;
                             }
-                    
+
                         }
                     }
                     catch (Exception ex)
@@ -180,7 +186,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 if (FeesCalculatorBody.product == null)
                 {
-                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() {  value=0, harmonizedCode="",Count=0} };
+                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() {  value=0, harmonizedCode="",count=0} };
                 }
                 if (tobacco != null)
                 {

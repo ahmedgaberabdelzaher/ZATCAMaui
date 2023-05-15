@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using EGAZT.Models.EDeclerationsModel;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using Xamarin.Forms;
 
@@ -15,6 +16,9 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
             viewModel = App.Locator.ProductDeclarationViewModel;
             BindingContext = viewModel;
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
+            viewModel.CardData = new ObservableCollection<EDeclerationCardModel>();
+            viewModel.selectedQuestionList = new List<int>();
+            viewModel.questionIndex = 0;
         }
 
         protected override void OnAppearing()

@@ -154,7 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         count = int.Parse(Quantity ?? "0"),
                         typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                         itemCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : SelectedProductTypes.code,
-                        value = Double.Parse(TotalValue)
+                        value = double.Parse(TotalValue)
 
                     };
 
@@ -169,8 +169,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     };
                     Models.EDeclerationsModel.FeesCalculators.Product product = new Models.EDeclerationsModel.FeesCalculators.Product()
                     {
+                        typeName = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : SelectedProductTypes.Name,
                         harmonizedCode = IsProductItemHaveSubType ? SelectedProductSubTypes.code : item.itemCode,
-                        value = Double.Parse(TotalValue),
+                        value = double.Parse(TotalValue),
+                        count = int.Parse(Quantity ?? "0"),
                         ID = item.ID
                     };
                     CardData.Add(cardItem);

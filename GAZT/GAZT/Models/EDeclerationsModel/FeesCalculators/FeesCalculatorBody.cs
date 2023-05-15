@@ -6,9 +6,10 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
    
     public class Product
     {
+        public string typeName { get; set; }
         public string harmonizedCode { get; set; }
         public double? value { get; set; }
-        public int Count { get; set; }
+        public int count { get; set; }
         public Guid ID { get; set; }
     }
 
@@ -24,12 +25,14 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
 
     public class Tobacco
     {
+        public string typeName { get; set; }
+        public string subTypeName { get; set; }
         public string harmonizedCode { get; set; }
         public int? sequence { get; set; }
         public int count { get; set; }
         public double? value { get; set; }
-        public int MeasuringUnit { get; set; }
-        public int Wight { get; set; }
+        public int measurementUnit { get; set; }
+        public double weight { get; set; }
         public Guid ID { get; set; }
     }
 

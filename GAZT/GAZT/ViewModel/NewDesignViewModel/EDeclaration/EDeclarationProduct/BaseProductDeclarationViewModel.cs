@@ -73,8 +73,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         public ObservableCollection<QuestionModel> QuestionList { get { return questionList; } set { questionList = value; RaisePropertyChanged(); } }
 
 
-        private List<int> selectedQuestionList = new List<int>();
-        private int questionIndex = 0;
+        public List<int> selectedQuestionList = new List<int>();
+        public int questionIndex = 0;
 
 
         string selectedCalcTypeName;
@@ -719,6 +719,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         private void ClearObjectData()
         {
             FeesCalculatorResponse = new FeesCalculatorResponse();
+            FeesCalculatorBody = new FeesCalculatorBody();
             CardData = new ObservableCollection<EDeclerationCardModel>();
             SubmitModel.travelerDeclaration = new TravelerDeclaration();
             QuestionList = new ObservableCollection<QuestionModel>();

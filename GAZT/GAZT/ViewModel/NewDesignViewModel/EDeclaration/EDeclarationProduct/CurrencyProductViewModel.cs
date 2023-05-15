@@ -193,6 +193,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     purpose = SelectedPurposes.ID,
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
+                    value = Double.Parse(TotalValue),
                     permit = IsCurrencyPermit,
                     attachment = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileBase64 : "",
                     attachmentSize = CurrencyUploadedFiles != null && CurrencyUploadedFiles.Count > 0 ? CurrencyUploadedFiles[0].fileSize : 0

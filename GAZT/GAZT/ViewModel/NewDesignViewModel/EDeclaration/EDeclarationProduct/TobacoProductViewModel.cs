@@ -177,6 +177,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         itemCode = long.Parse(selectedTobacoItem.itemCode),
                         measurementUnit = selectedTobacoItem.measurementUnit,
                         subTypeName = SelectedTobacoItem.Name,
+                        value = double.Parse(TotalValue),
+                        weight = string.IsNullOrWhiteSpace(Weight) ? 0 : double.Parse(Weight),
                         taxSequence = SelectedTobacoItem.taxSequence
                     };
                     var cardItem = new EDeclerationCardModel()
@@ -194,8 +196,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         harmonizedCode = item.itemCode.ToString(),
                         count = int.Parse(Quantity ?? "0"),
                         sequence = item.taxSequence,
+                        measurementUnit = item.measurementUnit,
+                        typeName = item.typeName,
+                        subTypeName = item.subTypeName,
                         ID = item.ID,
-                        Wight = string.IsNullOrWhiteSpace(Weight) ? 0 : int.Parse(Weight),
+                        weight = string.IsNullOrWhiteSpace(Weight) ? 0 : double.Parse(Weight),
                         value = double.Parse(TotalValue)
                     };
                     await CalculateFees(1, tobao, null);

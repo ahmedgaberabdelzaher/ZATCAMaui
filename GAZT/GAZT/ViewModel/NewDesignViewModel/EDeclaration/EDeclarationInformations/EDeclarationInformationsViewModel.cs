@@ -248,30 +248,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(async() =>
+                return new Command(() =>
                 {
-                  await  DownLoadEdeclerationPdf();
+                    DownLoadEdeclerationPdf();
 
                 });
             }
         }
 
-        private async Task DownLoadEdeclerationPdf()
+        private void DownLoadEdeclerationPdf()
         {
-            IsLoading = true;
-            DownloadFile downloadFile = new DownloadFile();
-            string Lang = "ar";
-            if (!App.IsArabic)
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                Lang = "en";
+                 try
+                 {
+                     IsLoading = true;
+                     DownloadFile downloadFile = new DownloadFile();
+                     string Lang = "ar";
+                     if (!App.IsArabic)
+                     {
+                         Lang = "en";
 
-            }
-            else
-            {
-                Lang = "ar";
-            }
-            await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
-            IsLoading = false;
+                     }
+                     else
+                     {
+                         Lang = "ar";
+                     }
+                     await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
+                     IsLoading = false;
+                 }
+                 catch (Exception ex)
+                 {
+                    IsLoading = false;
+                 }
+             });
+
         }
 
 
