@@ -19980,6 +19980,132 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply for VAT on profit margin for used goods (cars).
+        /// </summary>
+        public static string ZProfitgoodsSCSRTile {
+            get {
+                return ResourceManager.GetString("ZProfitgoodsSCSRTile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply for VAT on profit margin for used goods (cars).
+        /// </summary>
+        public static string ZProfitOnGoods {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure that you want to cancel?.
+        /// </summary>
+        public static string ZProfitOnGoodsConfrimationMsg {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsConfrimationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok.
+        /// </summary>
+        public static string ZProfitOnGoodsConfrimationOk {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsConfrimationOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you practice the purchase and sale of used cars?.
+        /// </summary>
+        public static string ZProfitOnGoodsQ1 {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsQ1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear taxpayer, you are not eligible to apply for VAT on profit margin for used goods (cars).
+        /// </summary>
+        public static string ZProfitOnGoodsQ1M01Validation {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsQ1M01Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Do you practice any commercial activities other than used cars trading?.
+        /// </summary>
+        public static string ZProfitOnGoodsQ2 {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsQ2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string ZProfitOnGoodsQOptionsNo {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsQOptionsNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string ZProfitOnGoodsQOptionsYes {
+            get {
+                return ResourceManager.GetString("ZProfitOnGoodsQOptionsYes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string ZprofitsOnGoodscancel {
+            get {
+                return ResourceManager.GetString("ZprofitsOnGoodscancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submission Unsuccesful&quot;.
+        /// </summary>
+        public static string ZprofitsOnGoodsfailuremessage {
+            get {
+                return ResourceManager.GetString("ZprofitsOnGoodsfailuremessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Fill All the fields.
+        /// </summary>
+        public static string ZprofitsOnGoodsM02Vaidation {
+            get {
+                return ResourceManager.GetString("ZprofitsOnGoodsM02Vaidation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string ZprofitsOnGoodsSubmit {
+            get {
+                return ResourceManager.GetString("ZprofitsOnGoodsSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VAT on profit margin for used goods (cars) has been submitted successfully.
+        /// </summary>
+        public static string ZprofitsOnGoodsSuccessmessage {
+            get {
+                return ResourceManager.GetString("ZprofitsOnGoodsSuccessmessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scan QR Code.
         /// </summary>
         public static string ZQRScanner {

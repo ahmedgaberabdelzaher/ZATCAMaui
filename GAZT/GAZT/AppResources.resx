@@ -10292,4 +10292,53 @@ Zakat, Tax and Customs Authority
     <data name="NotNeedRewardHint" xml:space="preserve">
      <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
+   <!--6264 poC-->
+  <data name="ZProfitOnGoods" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1" xml:space="preserve">
+    <value>Do you practice the purchase and sale of used cars?</value>
+  </data>
+   <data name="ZProfitOnGoodsQ2" xml:space="preserve">
+    <value>Do you practice any commercial activities other than used cars trading?</value>
+  </data>
+   <data name="ZProfitOnGoodsQOptionsYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+   <data name="ZProfitOnGoodsQOptionsNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+   <data name="ZprofitsOnGoodsSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+   <data name="ZprofitsOnGoodscancel" xml:space="preserve">
+    <value>Cancel</value>
+    </data>
+    <data name="ZProfitOnGoodsConfrimationOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+   <!--<data name="ZProfitOnGoodsConfrimationNo" xml:space="preserve">
+    <value>تقديم</value>
+  </data>-->
+   <data name="ZProfitOnGoodsConfrimationMsg" xml:space="preserve">
+    <value>Are you sure that you want to cancel?</value>
+  </data>
+  <data name="ZProfitgoodsSCSRTile" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  
+  <!--6264 Validation-->
+  <data name="ZProfitOnGoodsQ1M01Validation" xml:space="preserve">
+    <value>Dear taxpayer, you are not eligible to apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+   <data name="ZprofitsOnGoodsM02Vaidation" xml:space="preserve">
+    <value>Please Fill All the fields</value>
+  </data>
+   <data name="ZprofitsOnGoodsSuccessmessage" xml:space="preserve">
+    <value>VAT on profit margin for used goods (cars) has been submitted successfully</value>
+  </data>
+  <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
+      <value>Submission Unsuccesful"</value>
+  </data>
+
 </root>

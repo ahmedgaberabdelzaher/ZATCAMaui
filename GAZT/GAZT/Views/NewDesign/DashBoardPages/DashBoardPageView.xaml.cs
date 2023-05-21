@@ -86,7 +86,17 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 //    ItemSpacing = 10
                 //};
 
+                //CR6264 data
+                if (App.TP.VtpmFg == "X")
+                {
+                    viewModel.istileUpdated = true;
+                }
+                else
+                {
+                    viewModel.istileUpdated = false;
+                }
 
+                //ends 
 
 
                 SetLTR();
@@ -469,6 +479,16 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
         }
 
+        private void ProfitOnGoods_Tapped(object sender, EventArgs e)
+        {
+            //  var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ProfitOnGoods_Tapped", "Profit On Goods");
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                viewModel._navigationService.NavigateTo(App.NewYesorNoPageView);
+            });
+            // AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+        }
+
         public void getYesCommandToLogout()
         {
             try
@@ -513,7 +533,14 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     if (App.LoginDataRetrieved != null)
                     {
-
+                        if (App.TP.VtpmFg == "X")
+                        {
+                            viewModel.istileUpdated = true;
+                        }
+                        else
+                        {
+                            viewModel.istileUpdated = false;
+                        }
                         if (App.LoginDataRetrieved.ZkReg == "X")
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;

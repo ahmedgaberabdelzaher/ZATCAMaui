@@ -402,7 +402,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
-
+            //Cr6264
+            SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
             //AccountStatementsDownloadPageView
             //
             #endregion
@@ -2942,6 +2943,7 @@ namespace EGAZT
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             #endregion
 
             return navigationService;
@@ -3255,6 +3257,29 @@ namespace EGAZT
                     SimpleIoc.Default.Unregister<FilesUploadPopUpViewModel>();
                     SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Vatprofit on goods CR6264
+
+        public NewYesorNoPageViewModel NewYesorNoView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<NewYesorNoPageViewModel>();
+                    SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<NewYesorNoPageViewModel>();
                 }
                 catch (Exception ex)
                 {
