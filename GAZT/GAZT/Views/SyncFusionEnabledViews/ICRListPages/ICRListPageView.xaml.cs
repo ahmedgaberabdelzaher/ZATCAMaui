@@ -218,7 +218,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

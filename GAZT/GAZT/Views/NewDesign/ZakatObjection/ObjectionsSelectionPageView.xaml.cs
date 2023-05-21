@@ -59,6 +59,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
 
         async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            try { 
             ObjectionViewModel.SelectionModel selectedItem = e.AddedItems[0] as ObjectionViewModel.SelectionModel;
 
             await Task.Delay(1000);
@@ -72,7 +73,12 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 _viewModel._navigationService.NavigateTo(App.ZakatObjectionsListPageView);
             }
 
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
         }
 
@@ -91,6 +97,8 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

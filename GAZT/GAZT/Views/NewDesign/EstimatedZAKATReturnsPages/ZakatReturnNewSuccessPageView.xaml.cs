@@ -22,7 +22,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         public ZakatReturnNewSuccessPageView(PaymentSucess paymentInfo)
         {
             InitializeComponent();
-            viewModel = App.Locator.ZAKATReturnDetailsView;
+            viewModel = App.Locator.ZAKATReturnDetailsSuccessView;
 
             // Xamarin.Forms.NavigationPage.SetHasBackButton(this, false);
            

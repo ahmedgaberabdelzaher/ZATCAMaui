@@ -767,6 +767,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
@@ -796,6 +798,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             //OnResendOTPClicked = new Command(async () =>
@@ -859,6 +863,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
             IsVerifyOTPEnabled = true;
@@ -1082,6 +1088,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
                 await Task.Run(() =>

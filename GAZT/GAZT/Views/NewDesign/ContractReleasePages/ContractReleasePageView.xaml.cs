@@ -65,7 +65,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
 

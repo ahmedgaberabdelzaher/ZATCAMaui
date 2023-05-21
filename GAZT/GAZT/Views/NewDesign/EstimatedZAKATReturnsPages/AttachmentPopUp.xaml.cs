@@ -116,6 +116,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
         
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
+            try { 
             Image deleteImage = sender as Image;
              estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if (estimateZakatAttachment != null)
@@ -139,6 +140,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 //else
                 //{
                 //}
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async Task email(string doguid, ZakatAttachment attachment)
@@ -196,6 +203,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
         private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             Xamarin.Forms.ListView Document = sender as Xamarin.Forms.ListView;
             ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
             //attachment.DocUrl;
@@ -217,6 +225,12 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
 
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         protected override void OnDisappearing()

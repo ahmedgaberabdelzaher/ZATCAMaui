@@ -4,6 +4,7 @@ using EGAZT.Models.AccountStatements;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -140,7 +141,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (Exception ex)
             {
+
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

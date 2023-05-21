@@ -1,12 +1,15 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<pages:PopupPage xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup" xmlns="http://xamarin.com/schemas/2014/forms"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 x:Class="EGAZT.Views.NewDesign.GenericPickers.NewPopupPageView"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
-                 xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
-                 xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms">
-   <ContentPage.Resources>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.GenericPickers.NewPopupPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
@@ -14,68 +17,108 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
-   <ContentPage.Content>
-    <AbsoluteLayout>
-        <BoxView BackgroundColor="Transparent" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <BoxView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Transparent">
 
-            <BoxView.GestureRecognizers>
-                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-            </BoxView.GestureRecognizers>
-        </BoxView>
-         <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0" BackgroundColor="White"
-                             x:Name="picker"
-                                 AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1,1,1,.4">
-             <StackLayout Orientation="Vertical" >
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <yummy:PancakeView
+                x:Name="picker"
+                Padding="0"
+                AbsoluteLayout.LayoutBounds="1,1,1,.4"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="White"
+                CornerRadius="14,14,0,0"
+                VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical">
 
-                  <border:SfBorder Margin="0,0,0,5" HasShadow="False" Padding="0"
-                                         Style="{StaticResource GreyBorderFrameWithShadow}">
-                    <StackLayout Orientation="Vertical">
-                    <BoxView Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start"/>
-                        <Button x:Name="PickerDoneButton" TextColor="{StaticResource Primary}" FontSize="Medium" FontAttributes="Bold" Text="{x:Static ResourceManager:AppResources.CRDone}" Clicked="PopupClose_Clicked" Margin="10,0,10,0"   BackgroundColor="Transparent" HorizontalOptions="StartAndExpand">
-                    </Button>
-                    </StackLayout>
-                </border:SfBorder>
+                    <border:SfBorder
+                        Margin="0,0,0,5"
+                        Padding="0"
+                        HasShadow="False"
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout Orientation="Vertical">
+                            <BoxView
+                                HorizontalOptions="Center"
+                                Style="{StaticResource NeutralGrayBoxViewDrag}"
+                                VerticalOptions="Start" />
+                            <Button
+                                x:Name="PickerDoneButton"
+                                Margin="10,0,10,0"
+                                BackgroundColor="Transparent"
+                                Clicked="PopupClose_Clicked"
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.CRDone}"
+                                TextColor="{StaticResource Primary}" />
+                        </StackLayout>
+                    </border:SfBorder>
 
 
-                 <!--<BoxView CornerRadius="2.5" BackgroundColor="{StaticResource NeutralLightGrey}" WidthRequest="36" HeightRequest="5"
+                    <!--<BoxView CornerRadius="2.5" BackgroundColor="{StaticResource NeutralLightGrey}" WidthRequest="36" HeightRequest="5"
                           HorizontalOptions="Center">
                        <BoxView.GestureRecognizers>
                         <SwipeGestureRecognizer Swiped="SwipeGestureRecognizer_Swiped" Direction="Down"/>
                       </BoxView.GestureRecognizers>
                      </BoxView>-->
 
-                  <StackLayout Orientation="Vertical" Margin="0,8,0,0" Padding="24,0" >
-                <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55"
-                                    HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" 
-                                        HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46"
-                                    PickerMode="Default" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="White"
-                                        BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False"
-                                     UnSelectedItemFontSize="15"
-                                        SelectedItemFontAttribute="Bold"
-                                     SelectionBackgroundColor="LightGray"
-                                    IsOpen="True"
-                                    SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    UnSelectedItemTextColor="{StaticResource NeutralBlack}"
-                                    ItemHeight="56" DisplayMemberPath="TaxType"
-                                    PickerWidth="300" ShowHeader="False" 
-                                    CancelButtonTextColor="{StaticResource Primary}" 
-                                     HeaderFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
-                                     ColumnHeaderFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
-                                     SelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}"
-                                     UnSelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}">
+                    <StackLayout
+                        Margin="0,8,0,0"
+                        Padding="24,0"
+                        Orientation="Vertical">
+                        <syncfusion:SfPicker
+                            x:Name="TaxTypePicker"
+                            BackgroundColor="White"
+                            BorderColor="White"
+                            CancelButtonTextColor="{StaticResource Primary}"
+                            ColumnHeaderFontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                                Android=GAZT_FONT_BOLD}"
+                            ColumnHeaderHeight="46"
+                            DisplayMemberPath="TaxType"
+                            FlowDirection="RightToLeft"
+                            HeaderBackgroundColor="{StaticResource Primary}"
+                            HeaderFontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                          Android=GAZT_FONT_BOLD}"
+                            HeaderHeight="55"
+                            HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                            HeaderTextColor="White"
+                            IsOpen="True"
+                            ItemHeight="56"
+                            PickerMode="Default"
+                            PickerWidth="300"
+                            SelectedItemFontAttribute="Bold"
+                            SelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                                Android=GAZT_FONT_BOLD}"
+                            SelectedItemFontSize="15"
+                            SelectedItemTextColor="{StaticResource NeutralBlack}"
+                            SelectionBackgroundColor="LightGray"
+                            ShowColumnHeader="False"
+                            ShowFooter="False"
+                            ShowHeader="False"
+                            UnSelectedItemFontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                                  Android=GAZT_FONT_BOLD}"
+                            UnSelectedItemFontSize="15"
+                            UnSelectedItemTextColor="{StaticResource NeutralBlack}">
 
-                   
-                    <syncfusion:SfPicker.Behaviors>
-                        <customcontrol:SfPickerBehavior />
-                    </syncfusion:SfPicker.Behaviors>
-                </syncfusion:SfPicker>
-                      </StackLayout>
 
-             </StackLayout>
+                            <syncfusion:SfPicker.Behaviors>
+                                <customcontrol:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                    </StackLayout>
 
-               
-             
-                 </yummy:PancakeView>
-    </AbsoluteLayout>
-   </ContentPage.Content>
+                </StackLayout>
+
+
+
+            </yummy:PancakeView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
 </pages:PopupPage>

@@ -35,10 +35,16 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
         private async void OptionItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             var selectedOption = e.Item as Option;
             await PopupNavigation.Instance.PopAsync();
             OnItemSelect?.Invoke(selectedOption.option);
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         }

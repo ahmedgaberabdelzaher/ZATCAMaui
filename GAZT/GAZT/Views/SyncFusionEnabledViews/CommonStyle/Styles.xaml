@@ -6,9 +6,9 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
     xmlns:converter="clr-namespace:GAZTeServicesApp.Converters"
-     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-    xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms">
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <Color x:Key="OrangeyYellow">#0996d4</Color>
     <Color x:Key="Transparent">Transparent</Color>
     <x:String x:Key="Cart">&#xe708;</x:String>
@@ -228,14 +228,14 @@
         <Setter Property="BorderWidth" Value="0" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-    <!--  Common style for various Lables-->
+    <!--  Common style for various Lables  -->
     <Style x:Key="GAZT_Font_Small_Bold_Label_CenterAligned_Style" TargetType="Label">
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
         <Setter Property="TextColor" Value="White" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="FontSize" Value="Small" />
-        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_BOLD}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_BOLD}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <Style x:Key="GAZT_Font_Medium_Bold_Label_CenterAligned_Style" TargetType="Label">
@@ -244,7 +244,7 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="FontSize" Value="Medium" />
-        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_MEDIUM}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_MEDIUM}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <Style x:Key="GAZT_Font_Regular_Bold_Label_CenterAligned_Style" TargetType="Label">
@@ -253,7 +253,7 @@
         <Setter Property="TextColor" Value="White" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="FontSize" Value="Micro" />
-        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_REGULAR}"/>
+        <Setter Property="FontFamily" Value="{DynamicResource GAZT_FONT_REGULAR}" />
         <Setter Property="FontAttributes" Value="Bold" />
     </Style>
     <!--  Common style for rounded buttons  -->
@@ -281,14 +281,14 @@
     </Style>
     <Style x:Key="LabelStyleCardView" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="TextColor" Value="{DynamicResource Gray-900}"/>
-        <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}"/>
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="LineHeight" Value="{OnPlatform Default=1.25, iOS=-1}" />
     </Style>
 
-    <Style TargetType="yummy:PancakeView" x:Key="CommonTopCurves">
-        <Setter Property="CornerRadius" Value="15,15,0,0"/>
-        <Setter Property="BackgroundColor" Value="White"/>
-        <Setter Property="Padding"  Value="20,20,20,20"/>
+    <Style x:Key="CommonTopCurves" TargetType="yummy:PancakeView">
+        <Setter Property="CornerRadius" Value="15,15,0,0" />
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Padding" Value="20,20,20,20" />
     </Style>
 </ResourceDictionary>

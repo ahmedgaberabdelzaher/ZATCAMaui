@@ -42,12 +42,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 }
                 catch (Exception ex)
                 {
-
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

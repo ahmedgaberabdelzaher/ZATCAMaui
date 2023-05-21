@@ -147,7 +147,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         }
         private void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         //private async void OnDeleteAttachmentClicked(object sender, EventArgs e)

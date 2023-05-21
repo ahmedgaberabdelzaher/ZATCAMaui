@@ -25,7 +25,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
         {
             InitializeComponent();
             SetLTR();
-            viewModel = App.Locator.VatInstalmentPlanPageView;
+            viewModel = App.Locator.VatInstalmentPlanSuccessPageView;
             this.BindingContext = viewModel;
         }
 
@@ -47,8 +47,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
-
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                             viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
+                        });
 
                     }
 
@@ -58,7 +60,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             {
 
 
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -13,7 +13,7 @@
                  xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:local="clr-namespace:EGAZT.CustomControl"
                  x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.NewAccountPopUpPageView">
     <!--<ScrollView>-->
-        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White">
+        <yummy:PancakeView CornerRadius="22,22,0,0"  VerticalOptions="EndAndExpand" BackgroundColor="White">
             <StackLayout>
                 <!--<Label  Grid.Row="0" Margin="10,0,10,0" Grid.Column="2" HorizontalOptions="End" VerticalOptions="Center" IsVisible="{Binding BackArrowVisible}"  Style="{StaticResource IconLabelStyle}" Text="{StaticResource Close}" >
                     <Label.GestureRecognizers>

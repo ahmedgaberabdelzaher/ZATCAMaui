@@ -19,7 +19,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
         {
             InitializeComponent();
             SetLTR();
-            viewModel = App.Locator.ZakatInstalmentPlanPageView;
+            viewModel = App.Locator.ZakatInstalmentPlanSuccessPageView;
             this.BindingContext = viewModel;
 
             if (Preferences.Get("IsFromRevok", false))
@@ -52,8 +52,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
-
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.NDReferenceNumber + " " + text, AppResources.Copied);
+                        });
                     }
                   
                 }

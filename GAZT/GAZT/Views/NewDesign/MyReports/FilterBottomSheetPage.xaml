@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    x:Class="EGAZT.Views.NewDesign.MyReports.FilterBottomSheetPage"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml"/>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+         <Grid Margin="0">
+
+            <!--Act as dimmed background style-->
+            <StackLayout
+                Opacity="0.4"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClosBottomSheetCommand}" />
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
+
+            <!--List of names inside frame-->
+            <yummy:PancakeView
+                Padding="20,15"
+                BackgroundColor="White"
+                CornerRadius="15,15,0,0"
+                HeightRequest="200"
+                Border="{yummy:BorderMarkup Color=#EBEBEB, Thickness='3'}"
+                Style="{StaticResource CommonTopCurves}"
+                VerticalOptions="EndAndExpand">
+                <StackLayout>
+
+                    <!--Header label-->
+                     <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="28"
+                        HorizontalOptions="StartAndExpand"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.NDMyReports}"/>
+
+                     <ScrollView>
+
+                        <StackLayout >
+
+                             <!--AllReports Label-->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                x:Name="nameLabel"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.AllReports}">
+
+                                <!--Name -->
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding SelectedFilterItemCommand}"
+                                        CommandParameter="-1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Margin="0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2" />
+
+                             <!--MyOpenedReports Label-->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                x:Name="nameLabel2"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.MyOpenedReports}">
+
+                                <!--Name -->
+                                 <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding SelectedFilterItemCommand}"
+                                        CommandParameter="1" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                               <!--Horizontal Line  
+                            <BoxView
+                                Margin="0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2" />
+
+                             Inprogress Label
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.ZReportStatusInprogress}">
+
+                                Name 
+                                 <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding SelectedFilterItemCommand}"
+                                        CommandParameter="2" />
+                                </Label.GestureRecognizers>
+                            </Label>-->
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Margin="0,10"
+                                BackgroundColor="{StaticResource NeutralLightGrey}"
+                                HeightRequest="2" />
+
+                            <!--MyClosedReports Label-->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                x:Name="nameLabel3"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.MyClosedReports}">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding SelectedFilterItemCommand}"
+                                        CommandParameter="3" />
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
+                        </StackLayout>
+
+                     </ScrollView>
+
+                </StackLayout>
+               
+
+            </yummy:PancakeView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+

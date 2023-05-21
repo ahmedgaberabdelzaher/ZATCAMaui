@@ -29,6 +29,8 @@ namespace EGAZT
         }
         public void NavigateTo(string pageKey,object parameter)
         {
+            bool isPageBack = pageKey.Contains("/");
+            pageKey = pageKey.Replace("/", "");
             lock (_pagesByKey)
             {
                 if (_pagesByKey.ContainsKey(pageKey))
@@ -66,8 +68,81 @@ namespace EGAZT
                         throw new InvalidOperationException(
                             "No suitable constructor found for page " + pageKey);
                     }
-                    var page = constructor.Invoke(parameters) as Page;  
+                    var page = constructor.Invoke(parameters) as Page;
                     _navigation.PushAsync(page);
+                  
+
+                    if (isPageBack)
+                    {
+                        var existingPages = _navigation.Navigation.NavigationStack.ToList();
+                        foreach (var cupage in existingPages)
+                        {
+                            if (cupage != page)
+                            {
+                                
+                                _navigation.Navigation.RemovePage(cupage);
+                            }
+                        }
+                    }
+
+                   // else
+                    
+                }
+                else
+                {
+                    throw new ArgumentException(
+                        string.Format(
+                            "No such page: {0}. Did you forget to call NavigationService.Configure?",
+                            pageKey),
+                        "pageKey");
+                }
+            }
+        }
+
+
+        public void NavigateToWithBack(string pageKey, object parameter)
+        {
+            lock (_pagesByKey)
+            {
+                if (_pagesByKey.ContainsKey(pageKey))
+                {
+                    var type = _pagesByKey[pageKey];
+                    ConstructorInfo constructor;
+                    object[] parameters;
+                    if (parameter == null)
+                    {
+                        constructor = type.GetTypeInfo()
+                            .DeclaredConstructors
+                            .FirstOrDefault(c => !c.GetParameters().Any());
+                        parameters = new object[]
+                        {
+                        };
+                    }
+                    else
+                    {
+                        constructor = type.GetTypeInfo()
+                            .DeclaredConstructors
+                            .FirstOrDefault(
+                                c =>
+                                {
+                                    var p = c.GetParameters();
+                                    return p.Count() == 1
+                                        && p[0].ParameterType == parameter.GetType();
+                                });
+                        parameters = new[]
+                        {
+                            parameter
+                        };
+                    }
+                    if (constructor == null)
+                    {
+                        throw new InvalidOperationException(
+                            "No suitable constructor found for page " + pageKey);
+                    }
+                    var page = constructor.Invoke(parameters) as Page;
+                    Application.Current.MainPage = new NavigationPage(page);
+                  
+
                 }
                 else
                 {

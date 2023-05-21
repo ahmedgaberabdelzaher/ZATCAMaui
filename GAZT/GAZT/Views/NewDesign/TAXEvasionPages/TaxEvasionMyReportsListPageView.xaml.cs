@@ -105,6 +105,7 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         private async void ChipGroup_statusFilter_SelectionChanging(object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
         {
+            try { 
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -125,11 +126,24 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             {
                 viewModel.IsLoading = false;
             });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private void ListView_TaxEvasionReportList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
+            try { 
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
             return;
         }
         protected override bool OnBackButtonPressed() => true;

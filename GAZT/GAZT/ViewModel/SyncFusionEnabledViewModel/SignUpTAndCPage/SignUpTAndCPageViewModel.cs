@@ -108,7 +108,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel
                     }
                 }
                 catch (Exception ex)
-                { 
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             GoBackClick = new Command(async () =>

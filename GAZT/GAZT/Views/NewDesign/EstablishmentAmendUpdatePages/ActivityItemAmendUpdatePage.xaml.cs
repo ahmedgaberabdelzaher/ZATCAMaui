@@ -10,6 +10,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 
 namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 {
@@ -146,6 +147,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
             }
 
         }
@@ -213,6 +215,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
         void crValidFromPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
+            try { 
             if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = crValidFromPicker.SelectedItem as ObservableCollection<object>;
@@ -226,11 +229,18 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 DateTime.TryParseExact(viewModel?.DisplayCRValidFrom, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _crvalidFrom);
                 viewModel.CRValidFrom = _crvalidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void validFromPicker_Closed(System.Object sender, System.EventArgs e)
         {
             ObservableCollection<object> selectedItem = null;
+            try { 
             if (viewModel?.taxPayerDetails?.Caltp == "G")
             {
                 selectedItem = validFromPicker.SelectedItem as ObservableCollection<object>;
@@ -243,6 +253,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.DisplayValidFrom = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
                 DateTime.TryParseExact(viewModel?.DisplayValidFrom, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _validFrom);
                 viewModel.ValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

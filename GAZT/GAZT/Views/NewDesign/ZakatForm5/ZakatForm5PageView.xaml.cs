@@ -1,10 +1,16 @@
-﻿using System;
+﻿using EGAZT.Models;
+using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
+using Syncfusion.SfPicker.XForms;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Resources;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using EGAZT.ViewModel.NewDesignViewModel;
-using Syncfusion.SfPicker.XForms;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -97,6 +103,8 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;

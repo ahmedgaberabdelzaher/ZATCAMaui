@@ -214,7 +214,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         /// Invoked when the Skip button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void Skip(object obj)
+        private void Skip()
         {
             this.MoveToNextPage();
         }
@@ -290,8 +290,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.OnBoardingAnimation
         }
 
         private void MoveToNextPage()
-        {
-            _navigationService.NavigateTo(App.SFLoginPageView, App.GAZTNewDesignDashBoardPageView);
+        {            
+            _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+           // _navigationService.NavigateTo("/LoginSelectionView");
 
             //Application.Current.MainPage.Navigation.PopAsync();
         }

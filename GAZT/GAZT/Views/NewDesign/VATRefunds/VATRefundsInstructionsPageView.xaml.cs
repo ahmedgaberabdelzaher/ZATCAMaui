@@ -52,6 +52,7 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }

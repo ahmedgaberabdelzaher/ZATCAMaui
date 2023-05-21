@@ -1,15 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <pages:PopupPage
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseInfoPopup"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:custom="clr-namespace:GAZT"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    x:Class="EGAZT.Views.NewDesign.ContractReleasePages.ContractReleaseInfoPopup">
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -20,25 +20,44 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-     <yummy:PancakeView BackgroundColor="White" CornerRadius="15,15,0,0" HorizontalOptions="FillAndExpand" VerticalOptions="End"
-                       IsVisible="true">
-        <Grid BackgroundColor="Transparent" VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="24,8,24,0">
-            
+    <yummy:PancakeView
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        HorizontalOptions="FillAndExpand"
+        IsVisible="true"
+        VerticalOptions="End">
+        <Grid
+            Margin="24,8,24,0"
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="End">
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
-            
-            <BoxView Grid.Row="0" Style="{StaticResource NeutralGrayBoxViewDrag}" HorizontalOptions="Center" VerticalOptions="Start" />
-            
-            <custom:CustomLabel Grid.Row="1" Text="{Binding InfoTitle}"
-                                HorizontalOptions="StartAndExpand"
-                                Style="{StaticResource SectionTitleBlackBold}" Margin="0,0,0,16" />
-            
-            <border:SfBorder Grid.Row="2" BorderColor="#B1B1B1" BorderWidth="1" Margin="0,0,0,10"
-                             Style="{StaticResource GreyBorderFrame}">
+
+            <BoxView
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                Style="{StaticResource NeutralGrayBoxViewDrag}"
+                VerticalOptions="Start" />
+
+            <custom:CustomLabel
+                Grid.Row="1"
+                Margin="0,0,0,16"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource SectionTitleBlackBold}"
+                Text="{Binding InfoTitle}" />
+
+            <border:SfBorder
+                Grid.Row="2"
+                Margin="0,0,0,10"
+                BorderColor="#B1B1B1"
+                BorderWidth="1"
+                Style="{StaticResource GreyBorderFrame}">
                 <Grid Margin="8">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto" />
@@ -48,24 +67,40 @@
                         <ColumnDefinition Width="auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    
-                        <Image Grid.Row="0" Grid.Column="0" HeightRequest="24" WidthRequest="24" Source="ic_vat_info.png" HorizontalOptions="Start"
-                               VerticalOptions="Center" />
-                        <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{Binding InfoTitle,StringFormat='{0}'}"
-                                            Margin="10,0,0,0" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource ValueLabelBlack}" />
-                    
-                    <custom:CustomLabel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding InfoDesc}"
-                                                                                                                                                                                                                                                                                                                                                                                        HorizontalOptions="StartAndExpand"
-                                                                                                                                                                                                                                                                                                                                                                                        Style="{StaticResource CaptionLabelGrey}" />
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        Source="ic_vat_info.png"
+                        VerticalOptions="Center"
+                        WidthRequest="24" />
+                    <custom:CustomLabel
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource ValueLabelBlack}"
+                        Text="{Binding InfoTitle, StringFormat='{0}'}" />
+
+                    <custom:CustomLabel
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{Binding InfoDesc}" />
 
                 </Grid>
             </border:SfBorder>
-            
-            <buttons:SfButton Grid.Row="3" Margin="0,24,0,24"
-                              Command="{Binding ContractInstructionsClicked}"
-                              Text="{x:Static ResourceManager:AppResources.CRDone}"
-                              Style="{StaticResource PrimaryButtonStyle}" />
+
+            <buttons:SfButton
+                Grid.Row="3"
+                Margin="0,24,0,24"
+                Command="{Binding ContractInstructionsClicked}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.CRDone}" />
         </Grid>
     </yummy:PancakeView>
 

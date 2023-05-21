@@ -1554,6 +1554,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     IsLoading = false;
                 });
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -1712,6 +1714,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 
@@ -1841,6 +1845,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                         }
                                                         catch (Exception ex)
                                                         {
+                                                            Console.WriteLine(ex.Message);
+                                                            Console.Write(ex.StackTrace.ToString());
                                                         }
                                                     }
                                                     else
@@ -1872,6 +1878,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 

@@ -1376,6 +1376,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }
@@ -1414,6 +1415,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatObjectionViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }

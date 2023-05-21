@@ -41,13 +41,20 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             viewModel.SelectedChipFilterItem = null;
             ListView_Returns.ItemTapped += (sender, e) =>
             {
-                MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
-                viewModel.SelectedListItem = SelectedItem;
-               
-                if (e.Item == null)
+                try
                 {
-                    return;
-                } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                    MyReturnsResult SelectedItem = (MyReturnsResult)e.Item;
+                    viewModel.SelectedListItem = SelectedItem;
+
+                    if (e.Item == null)
+                    {
+                        return;
+                    } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                }
             };
        // SetPickerFont();
           //  App.HideProgressView();
@@ -125,6 +132,8 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
+               
+                Console.Write(ex.StackTrace.ToString());
             }
 
             
@@ -213,8 +222,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 }
             }
             catch (Exception ex)
-            { 
-            
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             
         }
@@ -226,9 +236,14 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
         private async void payNow_Tapped(object sender, EventArgs e)
         {
-            
-            MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
-
+            try
+            {
+                MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
             //await viewModel.DoValidatePayment(SelectedItem.Fbnum);
 
             

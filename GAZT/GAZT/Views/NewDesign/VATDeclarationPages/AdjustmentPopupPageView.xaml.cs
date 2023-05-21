@@ -40,6 +40,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

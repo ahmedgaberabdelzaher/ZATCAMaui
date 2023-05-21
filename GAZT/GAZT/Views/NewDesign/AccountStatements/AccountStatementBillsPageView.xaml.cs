@@ -4,6 +4,7 @@ using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using EGAZT.Views.NewDesign.GenericPickers;
 using EGAZT.Views.NewDesign.MyBillsPages;
 using GAZT.Models;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
@@ -33,6 +34,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             viewModel = App.Locator.AccountStatementBillsPageView;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
+            viewModel.GetDashBoardMenuLst(2);
             ChangeAeroIcon();
             SetLTR();
             ChangeArrowDirection();
@@ -74,6 +76,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+
 
                 }
             });
@@ -222,6 +227,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
 
                 }
             }
@@ -233,11 +241,18 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         async void LVNormalStatements_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
+            try { 
             var item = e.Item as MyBills;
             await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));
 
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
 
         }
     }

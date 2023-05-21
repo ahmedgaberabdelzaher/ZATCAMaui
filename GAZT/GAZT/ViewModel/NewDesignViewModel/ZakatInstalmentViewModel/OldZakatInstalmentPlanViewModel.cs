@@ -1520,6 +1520,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2431,6 +2433,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2744,7 +2748,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (Exception ex)
             {
 
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
 
             }
@@ -2819,7 +2824,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
 
 
@@ -2890,7 +2896,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
 
 
@@ -3595,6 +3602,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 
@@ -3803,6 +3812,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             catch (GAZTVATRegistrationInProcessException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -3996,6 +4007,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (GAZTUnlockAccountException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (InternetException ex)
             {
@@ -4008,6 +4021,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void NewAttachmentClicked()
@@ -4030,6 +4045,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async void SummaryInstallmentDetailsBtnClicked()
@@ -4118,6 +4135,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -4154,6 +4173,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -4745,6 +4766,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -4891,6 +4914,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
 
             catch (Exception ex)
             {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5353,6 +5379,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentPlanViewModel
                     catch (Exception ex)
                     {
                         IsLoading = false;
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                         return null;
 
                     }

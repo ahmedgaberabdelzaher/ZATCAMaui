@@ -1117,6 +1117,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
         }

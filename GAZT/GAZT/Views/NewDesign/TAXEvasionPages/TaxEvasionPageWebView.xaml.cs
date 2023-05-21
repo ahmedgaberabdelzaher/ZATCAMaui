@@ -28,14 +28,21 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
         void SetLanguage()
         {
+            string Url = "";
             if (App.IsArabic)
             {
-                taxEvasionWebView.Source = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+                Url = "https://zatca.gov.sa/ar/ContactUs/Pages/ReportFraudMV.aspx";
+             //  Url = "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx";
+
             }
             else
             {
-                taxEvasionWebView.Source = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+                Url = "https://zatca.gov.sa/en/ContactUs/Pages/ReportFraudMV.aspx";
+             //Url  = "https://stgextportal.gazt.gov.sa/en/ContactUs/Pages/ReportFraudMVV1.aspx";
             }
+            taxEvasionWebView.Source = Url;
+           // taxEvasionHybridWebView.Source = Url;
+
         }
 
         protected override void OnAppearing()
@@ -70,17 +77,44 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
         }
         private void TOnBackButtonClicked(object sender, EventArgs e)
         {
+            if (taxEvasionWebView.CanGoBack)
+            {
+                taxEvasionWebView.GoBack();
+                return;
+            }
             viewModel._navigationService.GoBack();
         }
 
         private void taxEvasionWebView_Navigated(object sender, WebNavigatedEventArgs e)
         {
+            
             loadingIndicator.IsVisible = false;
         }
 
         private void taxEvasionWebView_Navigating(object sender, WebNavigatingEventArgs e)
         {
+            /*if (e.Url=="https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
+            {
+                loadingIndicator.IsVisible = true;
+                return;
+            }
+            loadingIndicator.IsVisible = false;*/
             loadingIndicator.IsVisible = true;
+        }
+
+        void taxEvasionHybridWebView_Navigated(System.Object sender, Xamarin.Forms.WebNavigatedEventArgs e)
+        {
+            loadingIndicator.IsVisible = false;
+        }
+
+        void taxEvasionHybridWebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
+        {
+            if (e.Url == "https://stgextportal.gazt.gov.sa/ar/ContactUs/Pages/ReportFraudMVV1.aspx")
+            {
+                loadingIndicator.IsVisible =false ;
+                return;
+            }
+            loadingIndicator.IsVisible = false;
         }
     }
 }

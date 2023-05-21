@@ -1,10 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.TaxpayerProfileSuccessPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.TaxpayerProfile.TaxpayerProfileSuccessPage"
     xmlns:custom="clr-namespace:GAZT"
-    
     BackgroundImageSource="partials_background.png">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,24 +14,24 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout Padding="24"
-                     Orientation="Vertical">
-            <Image Source="Forget_ic_success.png"
-                   Margin="0,90,0,0"/>
-            <custom:CustomLabel Text="{Binding SuccessTitleLbl}"
-                                Style="{StaticResource SectionTitleWhiteBold}"
-                                HorizontalOptions="Center"/>
-            <custom:CustomLabel Text="{Binding successCaptionLbl}"
-                                HorizontalOptions="Center"
-                                Style="{StaticResource CaptionLabelWhite}"/>
-            <custom:CustomLabel Text="{Binding ButtonLabelText}"
-                                VerticalOptions="EndAndExpand"
-                                TextColor="{StaticResource NewDullOrangeColor}"
-                                Style="{StaticResource ButtonLabelBlackBold}"
-                                HorizontalOptions="Center">
+        <StackLayout Padding="24" Orientation="Vertical">
+            <Image Margin="0,90,0,0" Source="Forget_ic_success.png" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource SectionTitleWhiteBold}"
+                Text="{Binding SuccessTitleLbl}" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource CaptionLabelWhite}"
+                Text="{Binding successCaptionLbl}" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource ButtonLabelBlackBold}"
+                Text="{Binding ButtonLabelText}"
+                TextColor="{StaticResource NewDullOrangeColor}"
+                VerticalOptions="EndAndExpand">
                 <custom:CustomLabel.GestureRecognizers>
-                    <TapGestureRecognizer NumberOfTapsRequired="1"
-                                          Tapped="OnGoToProfileLblTapped" />
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnGoToProfileLblTapped" />
                 </custom:CustomLabel.GestureRecognizers>
             </custom:CustomLabel>
         </StackLayout>

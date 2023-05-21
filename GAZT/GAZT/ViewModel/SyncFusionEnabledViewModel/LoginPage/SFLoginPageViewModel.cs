@@ -21,6 +21,35 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
     [Preserve(AllMembers = true)]
     public class SFLoginPageViewModel : SFLoginViewModel
     {
+       /* int currentTab = 1;
+        public int CurrentTab { get { return currentTab; } set { currentTab = value; RaisePropertyChanged(); } }
+        
+        public ICommand ChangeCurrentTabCommand
+        {
+            get
+            {
+                return new Command<string>((tab) =>
+                {
+                    if (tab != currentTab.ToString())
+                    {
+                        // _navigationService.GoBack();
+                     if (tab == "3")
+                        {
+                            _navigationService.NavigateTo($"/LiveVideoPage");
+                            return;
+                        }
+                        else if (tab=="2")
+                        {
+                            _navigationService.NavigateTo("/SideMenuView");
+                            return;
+                        }
+                        _navigationService.NavigateTo("/Home", tab);
+                      
+                    }
+
+                });
+            }
+        }*/
         #region Fields
         //public string password = "Test@123";
         //private string email = "3102285896";
@@ -591,7 +620,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                         App.HasToRefreshLoaderOnDashboard = true;
                     });
 
@@ -722,7 +751,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                         App.HasToRefreshLoaderOnDashboard = true;
                         //TODO for continue work on EST added by ashwini
                         //_navigationService.NavigateTo(App.EstablishmentRegistrationPage);

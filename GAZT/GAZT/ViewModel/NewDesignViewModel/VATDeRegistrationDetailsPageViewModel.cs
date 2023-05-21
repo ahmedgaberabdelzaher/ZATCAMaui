@@ -2754,7 +2754,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                     {
                                         IsLoading = false;
                                     });
-                                    await _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                         _dialogService.ShowMessage(AppResources.ZTotalFilesizeshouldnotbemorethan300MB, AppResources.Information);
+                                    });
                                 }
                             }
                             else
@@ -2764,7 +2767,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 {
                                     IsLoading = false;
                                 });
-                                await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                     _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                                });
                             }
                         }
                         else
@@ -2774,7 +2780,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
                                 IsLoading = false;
                             });
-                            await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                 _dialogService.ShowMessage(AppResources.ZZGeneralMessage_UploadFilesWithAllowedExtensionsOnly, AppResources.Information);
+                            });
                         }
                     }
                 }
@@ -2782,7 +2791,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
                 }
             }
@@ -3270,7 +3279,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
 
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 return response;
             }
         }

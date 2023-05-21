@@ -256,7 +256,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             

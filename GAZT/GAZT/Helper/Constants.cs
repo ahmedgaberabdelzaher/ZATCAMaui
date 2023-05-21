@@ -5,6 +5,9 @@ namespace GAZT.Helper
     [Preserve(AllMembers = true)]
     public static class Constants
     {
+        public static string CustomUserNameAuthorization = "mobile_dev";
+        public static string CustomPasswordAuthorization = "mobile@dev";
+
         public static string ContentType = "application/json";
 
         public static string DevUrlPort = ":8080";
@@ -54,12 +57,12 @@ namespace GAZT.Helper
         //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
-
+      
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
+     
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
@@ -69,12 +72,12 @@ namespace GAZT.Helper
         //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = PreprodDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
+      
         //public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = ProdDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
+      
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
 
@@ -429,10 +432,10 @@ namespace GAZT.Helper
         //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000000000001088319',Fguid='005056B1365C1EDB82951CC479769E28',Taxtype='D',FiscalYear='2020',StatementFilter='04',FromDt=datetime'2020-8-1T00:00:00',ToDt=datetime'2020-10-31T00:00:00',Langz='E')/$value
         public static string AccountStatementDownloadPdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',";
 
-
-
         #endregion
 
+        //vatGoodsprofitsmargins Cr6264
+        public static string TaxpayervatgoodsAmrgin = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGWP_VTPM_SRV/HeaderSet";
 
         #region Payment Integration
 
@@ -479,5 +482,7 @@ namespace GAZT.Helper
         // public static string ZAtcaCustomsdeclarationsAr = "https://10.113.98.41/sites/sc/ar/app-view/Pages/checkBayan.aspx";
 
         public static string TaxpayerSubsidyRequest = string.Empty;
+        public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV";
+
     }
 }

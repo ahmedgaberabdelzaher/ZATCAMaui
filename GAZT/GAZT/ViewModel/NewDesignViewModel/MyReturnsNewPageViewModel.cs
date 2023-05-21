@@ -777,6 +777,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1463,7 +1465,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
 
@@ -1482,7 +1485,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
 

@@ -704,7 +704,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
 
@@ -723,7 +724,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

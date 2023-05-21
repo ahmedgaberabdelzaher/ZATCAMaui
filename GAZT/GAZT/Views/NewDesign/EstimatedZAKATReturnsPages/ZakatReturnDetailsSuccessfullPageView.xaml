@@ -1,19 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             mc:Ignorable="d"
-             NavigationPage.HasNavigationBar="False"
-             Title= "{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
-             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-             BackgroundImageSource="partials_background"
-           x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZakatReturnDetailsSuccessfullPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages.ZakatReturnDetailsSuccessfullPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+    BackgroundImageSource="partials_background"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
 
@@ -21,100 +22,156 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-             <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="180" />
-                    </Style>
-                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
-                        <Setter Property="Rotation" Value="0" />
-                    </Style>
-                        <Style TargetType="yummy:PancakeView" x:Key="MainPage">
-                <Setter Property="BackgroundColor" Value="White"/>
-                <Setter Property="Padding" Value="20,20,20,10"/>
-                <Setter Property="CornerRadius" Value="15,15,0,0"/>
+            <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="180" />
             </Style>
-            <Style TargetType="Label" x:Key="HorizontalEnd" >
-                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
-                <Setter Property="HorizontalTextAlignment" Value="End"/>
+            <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                <Setter Property="Rotation" Value="0" />
+            </Style>
+            <Style x:Key="MainPage" TargetType="yummy:PancakeView">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Padding" Value="20,20,20,10" />
+                <Setter Property="CornerRadius" Value="15,15,0,0" />
+            </Style>
+            <Style x:Key="HorizontalEnd" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="16" />
             </Style>
-            <Style TargetType="Label" x:Key="SectionTitleBlackTopNegative10" >
+            <Style x:Key="SectionTitleBlackTopNegative10" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
                 <Setter Property="FontSize" Value="20" />
-                <Setter Property="Margin" Value="0,-10,0,0"/>
+                <Setter Property="Margin" Value="0,-10,0,0" />
             </Style>
-       <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
 
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid Grid.Row="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="36*"/>
-                <RowDefinition Height="2*"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36*" />
+                    <RowDefinition Height="2*" />
 
-                <RowDefinition Height="62*"/>
-            </Grid.RowDefinitions>
+                    <RowDefinition Height="62*" />
+                </Grid.RowDefinitions>
 
-            <StackLayout Grid.Row="0" Margin="0,8,0,10" Spacing="0" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
-                <Image Source="Forget_ic_success"/>
-                <Label Text="{x:Static ResourceManager:AppResources.NDZakatReturn}" Margin="0,0,0,0" TextColor="White" Style="{StaticResource SectionTitleBlack}" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" />
-                <Label Text="{x:Static ResourceManager:AppResources.NDSubmittedSuccessfully}"  TextColor="White" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource BodyLabelBlack}" Margin="0,-10,0,0" IsVisible="{Binding SetSuccessMessageVisibility}"/>
-                <custom:CustomLabel  TextColor="White" HorizontalTextAlignment="Center" Style="{StaticResource CaptionLabelBlack}" StyleId="OnBoardText" >
-                    <custom:CustomLabel.FormattedText>
-                    <FormattedString>
-                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
-                        <Span Text="&#160;&#160;"/>
-                        <Span Text="{Binding ZAKATAmount}" TextColor="White" />
-                        <Span Text="&#160;"/>
-                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
-                    </FormattedString>
-                </custom:CustomLabel.FormattedText>
+                <StackLayout
+                    Grid.Row="0"
+                    Margin="0,8,0,10"
+                    HorizontalOptions="CenterAndExpand"
+                    Spacing="0"
+                    VerticalOptions="Start">
+                    <Image Source="Forget_ic_success" />
+                    <Label
+                        Margin="0,0,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource SectionTitleBlack}"
+                        Text="{x:Static ResourceManager:AppResources.NDZakatReturn}"
+                        TextColor="White" />
+                    <Label
+                        Margin="0,-10,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding SetSuccessMessageVisibility}"
+                        Style="{StaticResource BodyLabelBlack}"
+                        Text="{x:Static ResourceManager:AppResources.NDSubmittedSuccessfully}"
+                        TextColor="White" />
+                    <custom:CustomLabel
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource CaptionLabelBlack}"
+                        StyleId="OnBoardText"
+                        TextColor="White">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.ZZZZZakatReturnSubmittedNew}" />
+                                <Span Text="&#160;&#160;" />
+                                <Span Text="{Binding ZAKATAmount}" TextColor="White" />
+                                <Span Text="&#160;" />
+                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" TextColor="White" />
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
                     </custom:CustomLabel>
-            </StackLayout>
+                </StackLayout>
 
-            <yummy:PancakeView  Grid.Row="2" CornerRadius="15,15,0,0" VerticalOptions="EndAndExpand" Padding="20,20,20,10" HasShadow="False" BackgroundColor="White">
-                <Grid HorizontalOptions="FillAndExpand" x:Name="MainGrid" Padding="0,0,0,0" VerticalOptions="FillAndExpand" RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <ScrollView VerticalScrollBarVisibility="Never" Grid.Row="0">
-                        <StackLayout Spacing="0" >
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <custom:CustomLabel WidthRequest="180" Text="{Binding ReferenceNumber}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <Image Source="zakat_copy.png">
-                                    <Image.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked"/>
-                                    </Image.GestureRecognizers>
-                                        
-                                    </Image>
-                                </StackLayout>
-                            </border:SfBorder >
+                <yummy:PancakeView
+                    Grid.Row="2"
+                    Padding="20,20,20,10"
+                    BackgroundColor="White"
+                    CornerRadius="15,15,0,0"
+                    VerticalOptions="EndAndExpand">
+                    <Grid
+                        x:Name="MainGrid"
+                        Padding="0,0,0,0"
+                        HorizontalOptions="FillAndExpand"
+                        RowSpacing="0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+                            <StackLayout Spacing="0">
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
+                                        <custom:CustomLabel
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <custom:CustomLabel
+                                            FontSize="11"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding ReferenceNumber}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center"
+                                            WidthRequest="180" />
+                                        <Image Source="zakat_copy.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCopySadadNumberButtonClicked" />
+                                            </Image.GestureRecognizers>
 
-                            <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
-                                    <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZVatTaxablePeriod}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <custom:CustomLabel WidthRequest="180" Text="{Binding TaxablePeriod}" Style="{StaticResource ValueLabelBlack}" FontSize="11" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <Image Source="zakat_copy.png">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Tapped="OnCopyTaxablePeriodClicked"/>
-                                        </Image.GestureRecognizers>
-                                        
-                                    </Image>
-                                </StackLayout>
-                            </border:SfBorder >
+                                        </Image>
+                                    </StackLayout>
+                                </border:SfBorder>
 
-                            <!--
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Padding="5,10,5,10" Orientation="Horizontal">
+                                        <custom:CustomLabel
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ZVatTaxablePeriod}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+                                        <custom:CustomLabel
+                                            FontSize="11"
+                                            HorizontalOptions="Start"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="{Binding TaxablePeriod}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center"
+                                            WidthRequest="180" />
+                                        <Image Source="zakat_copy.png">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnCopyTaxablePeriodClicked" />
+                                            </Image.GestureRecognizers>
+
+                                        </Image>
+                                    </StackLayout>
+                                </border:SfBorder>
+
+                                <!--
                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
                                 <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZSADADGAZTId}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start"/>
@@ -128,7 +185,7 @@
                                 <StackLayout Orientation="Horizontal"  Padding="5,10,5,10">
 
                                     <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZakatAmount}" Style="{StaticResource CaptionLabelGrey}" VerticalTextAlignment="Center" HorizontalOptions="Start" VerticalOptions="Center"/>
-                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" VerticalOptions="Center" >                                       
+                                    <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal" VerticalOptions="Center" >
                                         <custom:CustomLabel>
                                             <Label.FormattedText>
                                                 <FormattedString>
@@ -141,78 +198,112 @@
                                     </StackLayout>
                                 </StackLayout>
                             </border:SfBorder>
-                            -->
+                                -->
 
-                         <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZBillDetailsDisclaimer}" Style="{StaticResource SectionTitleBlack}"/>
-                             <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrame}">
-                                 <StackLayout Orientation="Vertical" Padding="10,5,5,5">
- <custom:CustomLabel  Style="{StaticResource ValueLabelGrey}">
-       <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo1}"  />
-                                            <Span Text="&#10;"/>
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo2}"  />
-                                        </FormattedString>
-                                    </Label.FormattedText>
+                                <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZBillDetailsDisclaimer}" />
+                                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrame}">
+                                    <StackLayout Padding="10,5,5,5" Orientation="Vertical">
+                                        <custom:CustomLabel Style="{StaticResource ValueLabelGrey}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo1}" />
+                                                    <Span Text="&#10;" />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZBillDeatilsInfo2}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
 
- </custom:CustomLabel>
+                                        </custom:CustomLabel>
 
-                                 </StackLayout>
-                                
-                            </border:SfBorder >
-                        </StackLayout>
-                    </ScrollView>
-                    <StackLayout Grid.Row="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Orientation="Vertical" Spacing="8" BackgroundColor="White" Padding="0,8,0,0">
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" Clicked="PayNowClicked" Style="{StaticResource PrimaryButtonStyle}" IsVisible="{Binding IsPayNowVisible}"/>
-                        <buttons:SfButton Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnInvoiceClicked}"/>
-                        <!--<Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}" >
+                                    </StackLayout>
+
+                                </border:SfBorder>
+                            </StackLayout>
+                        </ScrollView>
+                        <StackLayout
+                            Grid.Row="1"
+                            Padding="0,8,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            Spacing="8"
+                            VerticalOptions="FillAndExpand">
+                            <buttons:SfButton
+                                Clicked="PayNowClicked"
+                                IsVisible="{Binding IsPayNowVisible}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}" />
+                            <buttons:SfButton
+                                Command="{Binding OnInvoiceClicked}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.ZVATInvoiceButton}" />
+                            <!--<Label Text="{x:Static ResourceManager:AppResources.NDReturns}" TextColor="{StaticResource NewDullOrangeColor}" HorizontalTextAlignment="Center" Style="{StaticResource ValueLabelBlack}" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="OnReturnClicked"/>
                             </Label.GestureRecognizers>
                         </Label>-->
-                    </StackLayout>
-                </Grid>
+                        </StackLayout>
+                    </Grid>
 
-            </yummy:PancakeView>
-
-
-        </Grid>
+                </yummy:PancakeView>
 
 
-         <Grid Padding="15,10,15,10" Grid.Row="0">
+            </Grid>
+
+
+            <Grid Grid.Row="0" Padding="15,10,15,10">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="20*"/>
-                    <ColumnDefinition Width="60*"/>
-                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="60*" />
+                    <ColumnDefinition Width="20*" />
                 </Grid.ColumnDefinitions>
 
-                <custom:CustomLabel Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDInvoiceDetail}" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
+                <custom:CustomLabel
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.NDInvoiceDetail}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
 
-                <StackLayout Grid.Row="0" Grid.Column="2" HorizontalOptions="End">
-                    <Image IsVisible="{Binding IsBackBtnVisible}" Source="close" Style="{DynamicResource BackButtonArrow}" VerticalOptions="CenterAndExpand" HorizontalOptions="End">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    HorizontalOptions="End">
+                    <Image
+                        HorizontalOptions="End"
+                        IsVisible="{Binding IsBackBtnVisible}"
+                        Source="close"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
                         <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding OnBackButtonClicked}"/>
-                    </Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OnBackButtonClicked}" />
+                        </Image.GestureRecognizers>
                     </Image>
-                    
+
                 </StackLayout>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" IsVisible="{Binding Source={x:Reference Name=MainGrid},Path=BindingContext.isLabelVisible}">
-                    <Image IsVisible="{Binding IsBackBtnVisible}" Source="{Binding RefreshIconImageSource}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand">
-
-                    </Image>
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    IsVisible="{Binding Source={x:Reference Name=MainGrid}, Path=BindingContext.isLabelVisible}">
+                    <Image
+                        HorizontalOptions="EndAndExpand"
+                        IsVisible="{Binding IsBackBtnVisible}"
+                        Source="{Binding RefreshIconImageSource}"
+                        VerticalOptions="CenterAndExpand" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnRefreshButtonClicked"/>
+                        <TapGestureRecognizer Tapped="OnRefreshButtonClicked" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
 
             </Grid>
 
-            </Grid>
- 
-      
+        </Grid>
+
+
     </ContentPage.Content>
 </ContentPage>

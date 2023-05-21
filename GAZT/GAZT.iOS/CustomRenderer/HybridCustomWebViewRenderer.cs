@@ -34,6 +34,7 @@ namespace GAZT.iOS.CustomRenderer
         {
             userController = config.UserContentController;
         }
+       
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
@@ -104,6 +105,10 @@ namespace GAZT.iOS.CustomRenderer
                     App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
                     element.InvokeAction("requestTimedout");
                 }
+                else
+                {
+
+                }
             }
             catch(Exception ex)
             {
@@ -111,6 +116,7 @@ namespace GAZT.iOS.CustomRenderer
                 Console.Write(ex.StackTrace.ToString());
             }
         }
+
 
         private static bool isUserLogingApiCalled = false;
 
@@ -161,6 +167,8 @@ namespace GAZT.iOS.CustomRenderer
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -217,6 +225,7 @@ namespace GAZT.iOS.CustomRenderer
                                 }
                                 catch (Exception ex)
                                 {
+                                    Console.WriteLine(ex.Message);
                                     Console.Write(ex.ToString());
                                     Console.Write(ex.StackTrace.ToString());
                                 }
@@ -265,6 +274,7 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);                  
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                     IsError = true;

@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             InitializeComponent();
 
             SetLTR();
-            viewModel = App.Locator.OldZakatInstalmentPlanPageView;
+            viewModel = App.Locator.OldZakatInstalmentPlanSuccessPageView;
             this.BindingContext = viewModel;
 
 

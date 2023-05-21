@@ -126,7 +126,7 @@ namespace GettingStarted.Droid
             }
             else
             {
-
+               
                 //Set the config of Bitmap format we required to render the PDF pages
                 bitmap.SetConfig(m_bitmapConfig);
                 //Open the PDF page with the specified page index to render the page as bitmap

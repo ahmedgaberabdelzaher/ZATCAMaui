@@ -846,6 +846,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 
@@ -882,7 +884,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
 
@@ -1035,7 +1038,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         else
                         {
                             //     Dear taxpayer, the return is under GAZT review and cannot be amended.
-                            if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under GAZT review and cannot be amended."))// message is always coming in english from the server
+
+                            //Dear taxpayer, the return is under ZATCA review and cannot be amended.
+                            if (WebServiceManager.ErrorMessage.Equals("Dear taxpayer, the return is under ZATCA review and cannot be amended."))// message is always coming in english from the server
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
                                 {
@@ -1653,6 +1658,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             catch (Exception ex)
                             {
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
                         else
@@ -1684,6 +1691,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                             catch (Exception ex)
                             {
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
                             }
                             //Device.BeginInvokeOnMainThread(async () => {
                             //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
@@ -1736,6 +1745,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
             }
         }
@@ -2118,6 +2129,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

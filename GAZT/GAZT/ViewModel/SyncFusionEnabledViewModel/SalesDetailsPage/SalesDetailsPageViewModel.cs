@@ -372,6 +372,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
 
@@ -558,6 +560,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -792,6 +796,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             AttachSet attachSet = new AttachSet();
             attachSet.results = EstimateZakatAttachmentList;
@@ -1332,6 +1338,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         #endregion

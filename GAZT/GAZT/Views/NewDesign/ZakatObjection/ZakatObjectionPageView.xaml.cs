@@ -76,6 +76,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
         }
         private async void SummaryAttachments_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+            try { 
             await Task.Run(() =>
             {
                 viewModel.IsLoading = true;
@@ -102,7 +103,12 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             {
                 viewModel.IsLoading = false;
             });
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
 
         }
@@ -134,6 +140,7 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
             catch (Exception ex)
             {
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
 

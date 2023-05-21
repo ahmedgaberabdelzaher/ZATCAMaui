@@ -1,16 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-                 mc:Ignorable="d"
-                 xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-                   xmlns:ResourceManager="clr-namespace:EGAZT"
-                 xmlns:FontImage="clr-namespace:MVP.FontIcons"
-                xmlns:custom="clr-namespace:GAZT"
-xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"            x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignShowVatInformationPopUpPageView">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.GAZTNewDesignShowVatInformationPopUpPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -20,48 +22,62 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
             <converters:BoolToVisibilityConverter x:Key="xBoolToVisibilityConverter" />
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView x:Name="MainPanCakeView" CornerRadius="8,8,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView
+        x:Name="MainPanCakeView"
+        Padding="15"
+        BackgroundColor="White"
+        CornerRadius="8,8,0,0"
+        VerticalOptions="EndAndExpand">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <!--<custom:CustomLabel Grid.Row="0" Text="{Binding MainString}" Style="{StaticResource SectionTitleBlack}"/>-->
-            <ListView  x:Name="InformationList"
-                           Grid.Row="1"
-           ItemsSource="{Binding HeaderWithInfoList}"
-          HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                           
-                               BackgroundColor="White"
-                     
-            SeparatorVisibility="None"
-            >
+            <ListView
+                x:Name="InformationList"
+                Grid.Row="1"
+                BackgroundColor="White"
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding HeaderWithInfoList}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Spacing="15" Margin="0,0,0,7">
-                                <Frame CornerRadius="12" HasShadow="False" BorderColor="{StaticResource DarkGrayTextColor}" Padding="15">
+                            <StackLayout Margin="0,0,0,7" Spacing="15">
+                                <Frame
+                                    Padding="15"
+                                    BorderColor="{StaticResource DarkGrayTextColor}"
+                                    CornerRadius="12"
+                                    HasShadow="False">
                                     <StackLayout>
                                         <StackLayout IsVisible="{Binding IsHeaderAvailable}">
-                                            <StackLayout Orientation="Horizontal" >
-                                                <Image Source="ic_vat_info"/>
-                                                <custom:CustomLabel x:Name="HeaderTextlbl"   Text="{Binding HeaderText}" Style="{StaticResource BodyLabelBlack}" VerticalOptions="CenterAndExpand">
+                                            <StackLayout Orientation="Horizontal">
+                                                <Image Source="ic_vat_info" />
+                                                <custom:CustomLabel
+                                                    x:Name="HeaderTextlbl"
+                                                    Style="{StaticResource BodyLabelBlack}"
+                                                    Text="{Binding HeaderText}"
+                                                    VerticalOptions="CenterAndExpand">
                                                     <custom:CustomLabel.Triggers>
-                                                        <DataTrigger TargetType="custom:CustomLabel" Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}" Value="0">
+                                                        <DataTrigger
+                                                            Binding="{Binding Source={x:Reference HeaderTextlbl}, Path=Text.Length}"
+                                                            TargetType="custom:CustomLabel"
+                                                            Value="0">
                                                             <Setter Property="IsVisible" Value="False" />
                                                         </DataTrigger>
                                                     </custom:CustomLabel.Triggers>
                                                 </custom:CustomLabel>
                                             </StackLayout>
-                                            <Label Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding Message}" />
                                         </StackLayout>
-                                        <StackLayout Orientation="Horizontal" IsVisible="{Binding IsHeaderAvailable,Converter={StaticResource xBoolToVisibilityConverter},ConverterParameter='invert'}">
-                                            <Image Source="ic_vat_info" VerticalOptions="Start"/>
-                                            <Label Text="{Binding Message}" Style="{StaticResource CaptionLabelGrey}" />
+                                        <StackLayout IsVisible="{Binding IsHeaderAvailable, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}" Orientation="Horizontal">
+                                            <Image Source="ic_vat_info" VerticalOptions="Start" />
+                                            <Label Style="{StaticResource CaptionLabelGrey}" Text="{Binding Message}" />
                                         </StackLayout>
                                     </StackLayout>
                                 </Frame>
@@ -84,22 +100,51 @@ xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Butto
                 </ListView.ItemTemplate>
             </ListView>
 
-            <StackLayout  Grid.Row="2" Margin="0,0,0,0"  VerticalOptions="FillAndExpand">
+            <StackLayout
+                Grid.Row="2"
+                Margin="0,0,0,0"
+                VerticalOptions="FillAndExpand">
 
-                <buttons:SfButton x:Name="btnprimary" Clicked="DoneButtonClicked"  VerticalOptions="CenterAndExpand" Margin="10,0,10,0"  Text="{x:Static ResourceManager:AppResources.ZZZZDone}" Style="{StaticResource PrimaryButtonStyle}"/>
+                <buttons:SfButton
+                    x:Name="btnprimary"
+                    Margin="10,0,10,0"
+                    Clicked="DoneButtonClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                    VerticalOptions="CenterAndExpand" />
 
-                <buttons:SfButton x:Name="FirstLink" Text="{Binding FirstLinkText}" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" Clicked="FirstLinkClicked" BackgroundColor="Transparent" Margin="0,-10,0,3">
+                <buttons:SfButton
+                    x:Name="FirstLink"
+                    Margin="0,-10,0,3"
+                    BackgroundColor="Transparent"
+                    Clicked="FirstLinkClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{Binding FirstLinkText}"
+                    TextColor="{StaticResource NewDullOrangeColor}">
                     <buttons:SfButton.Triggers>
-                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Source={x:Reference FirstLink}, Path=Text.Length}" Value="0">
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference FirstLink}, Path=Text.Length}"
+                            TargetType="buttons:SfButton"
+                            Value="0">
                             <Setter Property="IsVisible" Value="False" />
                         </DataTrigger>
                     </buttons:SfButton.Triggers>
                 </buttons:SfButton>
 
 
-                <buttons:SfButton x:Name="SecondLink" Text="{Binding SecondLinkText}" TextColor="{StaticResource NewDullOrangeColor}" Style="{StaticResource PrimaryButtonStyle}" Clicked="SecondLinkClicked" BackgroundColor="Transparent" Margin="0,-10,0,3">
+                <buttons:SfButton
+                    x:Name="SecondLink"
+                    Margin="0,-10,0,3"
+                    BackgroundColor="Transparent"
+                    Clicked="SecondLinkClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{Binding SecondLinkText}"
+                    TextColor="{StaticResource NewDullOrangeColor}">
                     <buttons:SfButton.Triggers>
-                        <DataTrigger TargetType="buttons:SfButton" Binding="{Binding Source={x:Reference SecondLink}, Path=Text.Length}" Value="0">
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference SecondLink}, Path=Text.Length}"
+                            TargetType="buttons:SfButton"
+                            Value="0">
                             <Setter Property="IsVisible" Value="False" />
                         </DataTrigger>
                     </buttons:SfButton.Triggers>

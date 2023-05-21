@@ -71,6 +71,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
 
         #region Properties
+        private string _newVatEligibleStartDate = string.Empty;
+        public string NewVatEligibleStartDate
+        {
+            get
+            {
+                return _newVatEligibleStartDate;
+            }
+            set
+            {
+                if (_newVatEligibleStartDate == value) return;
+                _newVatEligibleStartDate = value;
+                RaisePropertyChanged("NewVatEligibleStartDate");
+            }
+        }
+
+        private bool _isNewStartDateInfoChecked = false;
+        public bool IsNewStartDateInfoChecked
+        {
+            get
+            {
+                return _isNewStartDateInfoChecked;
+            }
+            set
+            {
+                if (_isNewStartDateInfoChecked == value) return;
+                _isNewStartDateInfoChecked = value;
+                if (_isNewStartDateInfoChecked)
+                {
+                    //isNewEligibleStartDateIsValid = true;
+                    CheckCR1450FieldsValid();
+                }
+                RaisePropertyChanged("IsNewStartDateInfoChecked");
+            }
+        }
+
+
         private Color _continueButtonnBackroundColor =  (Color)Application.Current.Resources["Secondary"];
         public Color ContinueButtonnBackroundColor
         {
@@ -3361,6 +3397,150 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
             {
                 return false;
             }
+        }
+
+        public async Task getVatEligibleDate(string vatEligibleStartDate)
+        {
+            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp("we can proceed now"));
+
+            // throw new NotImplementedException();
+
+            await Task.Run(() =>
+            {
+                IsLoading = true;
+            });
+
+            await Task.Run(async () =>
+            {
+                VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(vatEligibleStartDate + "T00:00:00", "");
+
+                PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+                if (vATcommencementData.d.ErrorFg == "X")
+                {
+                    await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.VATEligibleDateError1));
+                    IsLoading = false;
+                }
+                else
+                {
+                    if (vATcommencementData != null && vATcommencementData.d != null
+                    && vATcommencementData.d.__metadata != null && vATcommencementData.d.__metadata.uri != null)
+                    {
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
+                            {
+                                String dateSource = await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
+
+                                // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
+                                VatEligibleStartDate = UtilityManager.ConvertDateFormatToDDMMYYYYY(dateSource);
+                            }
+                            IsLoading = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
+                            IsLoading = false;
+                        }
+                    }
+                }
+                IsLoading = false;
+            });
+        }
+
+        public async Task GetNewVatEligibleDateAsync(string newVatDate)
+        {
+            try
+            {
+                await Task.Run(() =>
+                {
+                    IsLoading = true;
+                });
+
+                await Task.Run(async () =>
+                {
+                    VatCommencementDateFormat vATcommencementData = await VatRegistrationWebServiceManager.GAZTGetVATEligibilityDate(newVatDate + "T00:00:00", "VT_EFDT");
+
+                    PopToRootPage();// If seesion Expired it will navigate to Dashboard page
+
+                    if (vATcommencementData != null && vATcommencementData.d != null && vATcommencementData.d.VatTaxDt != null)
+                    {
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(vATcommencementData.d.__metadata.uri))
+                            {
+                                //String dateSource = await filerDateFromResponse(vATcommencementData.d.__metadata.uri);
+
+                                // VatEligibleStartDate = String.Join("-", dateSource.Split('-').Reverse());
+                                NewVatEligibleStartDate = UtilityManager.DDMMFormatDateToYYYYFromDateTypeString(vATcommencementData.d.VatTaxDt);
+
+                                //isNewEligibleStartDateIsValid = true;
+                                CheckCR1450FieldsValid();
+
+                            }
+                            IsLoading = false;
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
+                            IsLoading = false;
+                            NewVatEligibleStartDate = string.Empty;
+                        }
+                    }
+                    IsLoading = false;
+                });
+            }
+            catch (GAZTVATRegistrationInProcessException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    NewVatEligibleStartDate = string.Empty;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    //_navigationService.GoBack();
+                    IsLoading = false;
+                });
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    NewVatEligibleStartDate = string.Empty;
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                    IsLoading = false;
+                });
+            }
+        }
+
+        public void CheckCR1450FieldsValid()
+        {
+            if (IsNewStartDateInfoChecked && !string.IsNullOrEmpty(NewVatEligibleStartDate))
+            {
+                IsContinueButtonEnable = true;
+            }
+            else
+            {
+                IsContinueButtonEnable = false;
+            }
+        }
+
+        private async Task<string> filerDateFromResponse(string uri)
+        {
+            try
+            {
+                int startPos = uri.LastIndexOf("taxDateSet(datetime'") + "taxDateSet(datetime'".Length;
+                int length = uri.IndexOf("T00%3A00%3A00')") - startPos;
+                string sub = uri.Substring(startPos, length);
+                return sub;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                return "";
+            }
+
         }
         #endregion
     }

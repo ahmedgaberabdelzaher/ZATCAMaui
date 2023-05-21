@@ -148,24 +148,30 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             {
                 viewModel.IsLoading = true;
             });
-            var attachment = e.ItemData as Attachment;
-
-            //if (attachment.Filename.Contains(".")) ;
-            string[] Extentionarray = attachment.Filename.Split('.');
-            string Extention = Extentionarray.Last();
-
-            if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+            try
             {
-                if (attachment.DocUrl != null)
+                var attachment = e.ItemData as Attachment;
+
+                //if (attachment.Filename.Contains(".")) ;
+                string[] Extentionarray = attachment.Filename.Split('.');
+                string Extention = Extentionarray.Last();
+
+                if (Extention.Equals("PDF") || Extention.Equals("pdf"))
                 {
-                    viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    if (attachment.DocUrl != null)
+                    {
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                    }
+                }
+                else
+                {
+                    await email(attachment.Doguid, attachment);
                 }
             }
-            else
-            {
-                await email(attachment.Doguid, attachment);
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
-
 
 
             await Task.Run(() =>
@@ -240,6 +246,8 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
 

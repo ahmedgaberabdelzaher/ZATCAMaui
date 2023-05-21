@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.NewDeclarationPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+     <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" >
+
+                            <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--Circle view-->
+                        <Grid RowDefinitions="Auto"
+                              Margin="0,30"
+                              ColumnSpacing="0"
+                              VerticalOptions="Start"
+                              HorizontalOptions="CenterAndExpand"
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+                            <!--Circle button 1-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    BorderWidth="1"
+                                    InputTransparent="True"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="EndAndExpand"
+                                    BorderColor="#0996D4"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0996D4"
+                                    Text="1">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 2-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="2">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 3-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="4"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="3">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 4-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="6"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="4">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="7"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 5-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="8"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="5">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                             </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="9"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2" />
+
+                            <!--Circle button 6-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="10"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="6">
+                                 <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                        </Grid>
+
+                        <!--  New Declaration Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.NewDeclaration}"/>
+
+                         <!--  Declaration Note Label  -->
+                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                             FontSize="16"
+                                             Margin="0,0,0,10"
+                                             LineSpacing="1"
+                                             LineBreakMode="WordWrap">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
+                                              TextColor="{StaticResource NeutralGreay}"/>
+                                        <Span TextColor="{StaticResource Primary}"
+                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                                <custom:CustomLabel.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
+                                </custom:CustomLabel.GestureRecognizers>
+
+                         </custom:CustomLabel>
+                       
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,25"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+                        <!--  Question Field Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationQuestion}"/>
+                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+                        <!--#region Cards-->
+                        <StackLayout VerticalOptions="Start"
+                                     HorizontalOptions="FillAndExpand"
+                                     Spacing="10"
+                                     Orientation="Horizontal">
+
+                            <!--Arriving Card-->
+                            <Grid
+                                WidthRequest="171"
+                                Padding="0"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="136">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                       Source="Unselected.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="Unselected.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding IsArrivingPlaneSelected}"
+                                                    TargetType="Image"
+                                                    Value="False">
+                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout VerticalOptions="EndAndExpand"
+                                            HorizontalOptions="StartAndExpand"
+                                             Margin="15,10"
+                                            Spacing="5">
+
+                                    <!--Arriving plane icon-->
+                                    <Image Aspect="AspectFit"
+                                            WidthRequest="40"
+                                            HeightRequest="30"
+                                            HorizontalOptions="StartAndExpand"
+                                            Source="arrivingPlane.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="arrivingPlane.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="fillArriving.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                    </Image>
+
+                                    <!--  Arriving Label  -->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="16"
+                                        TextColor="White"
+                                        Text="{x:Static ResourceManager:AppResources.ArrivingToKSA}">
+
+                                            <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="1"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                            <!--Departing card-->
+                            <Grid
+                                WidthRequest="171"
+                                Padding="0"
+                                VerticalOptions="StartAndExpand"
+                                HorizontalOptions="StartAndExpand"
+                                HeightRequest="136">
+
+                                <!--Background image selected-->
+                                <Image Aspect="AspectFill"
+                                        Source="UnselectedCard.png">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                    <Setter Property="Source" Value="Unselected.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout VerticalOptions="EndAndExpand"
+                                            HorizontalOptions="StartAndExpand"
+                                            Margin="15,10"
+                                            Spacing="5">
+
+                                    <!--Departing Plane image-->
+                                    <Image Aspect="AspectFit"
+                                            VerticalOptions="StartAndExpand"
+                                            HorizontalOptions="StartAndExpand"
+                                            WidthRequest="40"
+                                            HeightRequest="30"
+                                            Source="DepartingPlane.png">
+
+                                            <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                    <Setter Property="Source" Value="DepartingPlane.png"/>
+                                            </DataTrigger>
+
+                                                <DataTrigger
+                                                    Binding="{Binding IsArrivingPlaneSelected}"
+                                                    TargetType="Image"
+                                                    Value="False">
+                                                    <Setter Property="Source" Value="unFillDepartingPlane.png"/>
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                    </Image>
+
+                                    <!--Departing label-->
+                                    <custom:CustomLabel
+                                        HorizontalOptions="StartAndExpand"
+                                        FontSize="16"
+                                        TextColor="{StaticResource Primary}"
+                                        Text="{x:Static ResourceManager:AppResources.DepartingToKSA}">
+
+                                        <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                    <Setter Property="TextColor" Value="White"/>
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding IsArrivingPlaneSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                            </DataTrigger>
+                                        </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel>
+
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="2"/>
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+                        <!--#endregion Cards-->
+
+
+                        <!-- GoTo Product Declaration Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            VerticalOptions="EndAndExpand"
+                            Command="{Binding GoToEDeclarationTermsPopupPageCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+
+         </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

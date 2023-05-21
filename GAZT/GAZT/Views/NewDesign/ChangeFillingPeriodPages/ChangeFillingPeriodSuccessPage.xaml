@@ -1,19 +1,21 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-             ios:Page.UseSafeArea="true"
-             FlowDirection="RightToLeft"
-             mc:Ignorable="d"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodSuccessPage"
-             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background">
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.ChangeFillingPeriodPages.ChangeFillingPeriodSuccessPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,23 +28,45 @@
     <ContentPage.Content>
 
         <StackLayout>
-            <StackLayout Padding="40" VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <StackLayout
+                Padding="40"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand">
 
-                <Image HeightRequest="120" WidthRequest="120"
-                       HorizontalOptions="Center" VerticalOptions="Center" Aspect="AspectFit"
-                       Source="Forget_ic_success" >
-                </Image>
-                <Label Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text= "{x:Static ResourceManager:AppResources.VFCSuccessDesc}" FontFamily="{StaticResource SomarSemiBold}"
-                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    HorizontalOptions="Center"
+                    Source="Forget_ic_success"
+                    VerticalOptions="Center"
+                    WidthRequest="120" />
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
+                    TextColor="White" />
+                <Label
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static ResourceManager:AppResources.VFCSuccessDesc}"
+                    TextColor="White" />
             </StackLayout>
             <ScrollView>
-                <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" HasShadow="False"
-                                   VerticalOptions="EndAndExpand">
+                <yummy:PancakeView
+                    Padding="20"
+                    BackgroundColor="White"
+                    CornerRadius="20,20,0,0"
+                    VerticalOptions="EndAndExpand">
                     <StackLayout>
 
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="10,5,10,5"
-                               HasShadow="False">
+                        <Frame
+                            Margin="10,5,10,5"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
                             <Grid Padding="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto" />
@@ -52,42 +76,60 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="0"
-                                                    Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
-                                                    VerticalOptions="Center" FontSize="11" TextColor="{StaticResource DarkGrayTextColor}"
-                                                    HorizontalOptions="Start" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    FontSize="11"
+                                    HorizontalOptions="Start"
+                                    Text="{x:Static ResourceManager:AppResources.CRReferenceNumber}"
+                                    TextColor="{StaticResource DarkGrayTextColor}"
+                                    VerticalOptions="Center" />
 
-                                <custom:CustomLabel x:Name="ReferenceNumberTxt"
-                                                    Grid.Row="0"
-                                                    Grid.Column="1"
-                                                    FontSize="15"
-                                                    Style="{StaticResource ValueLabelBlack}"
-                                                    VerticalOptions="Center" HorizontalOptions="End" TextColor="{StaticResource PrimaryColor}" Text="{Binding ReferenceNumber}" />
+                                <custom:CustomLabel
+                                    x:Name="ReferenceNumberTxt"
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    FontSize="15"
+                                    HorizontalOptions="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding ReferenceNumber}"
+                                    TextColor="{StaticResource PrimaryColor}"
+                                    VerticalOptions="Center" />
 
                                 <Image Grid.Row="0" Grid.Column="2">
                                     <Image.Source>
-                                        <FontImageSource FontFamily="UserIconFont" Color="{StaticResource SecondaryNew}" Size="25"
-                                                         Glyph="{x:Static FontImage:IconFonts.ContentCopy}" />
+                                        <FontImageSource
+                                            FontFamily="UserIconFont"
+                                            Glyph="{x:Static FontImage:IconFonts.ContentCopy}"
+                                            Size="25"
+                                            Color="{StaticResource SecondaryNew}" />
                                     </Image.Source>
                                 </Image>
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="ReferenceNumberCopyTapped"/>
+                                    <TapGestureRecognizer Tapped="ReferenceNumberCopyTapped" />
                                 </Grid.GestureRecognizers>
                             </Grid>
                         </Frame>
 
-                        <buttons:SfButton 
-                                          Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
-                                          Clicked="Download_Acknowledgement"
-                                          CornerRadius="10" VerticalOptions="End"
-                                             FontFamily="{StaticResource SomarBold}"
-                                          HeightRequest="46" Margin="10,20,10,20" FontSize="15" Grid.ColumnSpan="2"
-                                          BackgroundColor="{StaticResource Secondary}" TextColor="White" />
+                        <buttons:SfButton
+                            Grid.ColumnSpan="2"
+                            Margin="10,20,10,20"
+                            BackgroundColor="{StaticResource Secondary}"
+                            Clicked="Download_Acknowledgement"
+                            CornerRadius="10"
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="15"
+                            HeightRequest="46"
+                            Text="{x:Static ResourceManager:AppResources.CRDownloadConfirmation}"
+                            TextColor="White"
+                            VerticalOptions="End" />
 
-                        <custom:CustomLabel Margin="10,0,10,15"
-                                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
-                                            TextColor="{StaticResource Primary}" HorizontalOptions="Center"
-                                            HorizontalTextAlignment="Center">
+                        <custom:CustomLabel
+                            Margin="10,0,10,15"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.ChangeFillingPeriod}"
+                            TextColor="{StaticResource Primary}">
                             <custom:CustomLabel.GestureRecognizers>
                                 <TapGestureRecognizer Tapped="Dashboard_Tapped" />
                             </custom:CustomLabel.GestureRecognizers>

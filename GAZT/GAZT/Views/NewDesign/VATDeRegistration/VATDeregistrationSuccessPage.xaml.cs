@@ -72,7 +72,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 {
                     var text = await Clipboard.GetTextAsync();
                     var displayText = AppResources.VATRSAppNumber + " " + text;
-                    await viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                         viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                    });
                 }
             }
 

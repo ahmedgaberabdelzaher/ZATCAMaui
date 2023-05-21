@@ -43,7 +43,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return;
             }
         }
@@ -219,6 +220,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -286,6 +289,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -346,6 +351,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -407,6 +414,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -473,6 +482,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -530,6 +541,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -588,6 +601,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -642,6 +657,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -862,8 +879,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
-                throw;
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+               // throw;
             }
         }
 
@@ -1098,7 +1116,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1370,14 +1389,19 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             catch (GAZTUnlockAccountException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
-            catch (InternetException)
+            catch (InternetException ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1663,7 +1687,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

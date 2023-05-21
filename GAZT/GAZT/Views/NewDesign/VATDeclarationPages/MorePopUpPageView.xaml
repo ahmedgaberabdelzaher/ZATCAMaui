@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-                 xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.MorePopUpPageView">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATDeclarationPages.MorePopUpPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,11 +18,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
-        <StackLayout HorizontalOptions="CenterAndExpand" BackgroundColor="White">
+    <yummy:PancakeView
+        Padding="15"
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        VerticalOptions="EndAndExpand">
+        <StackLayout BackgroundColor="White" HorizontalOptions="CenterAndExpand">
 
-            
-<!--                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
+
+            <!--                <Image HorizontalOptions="EndAndExpand" Margin="15,15,15,1" >
                     <Image.Source>
                         <FontImageSource FontFamily="UserIconFont" Color="LightGray" Size="25" Glyph="{x:Static FontImage:IconFonts.Close}"/>
                     </Image.Source>
@@ -29,23 +34,28 @@
                         <TapGestureRecognizer Tapped="OnClose"/>
                     </Image.GestureRecognizers>
                 </Image>-->
-            <ListView  x:Name="btnList"
-                           Grid.Row="1"
-           ItemsSource="{Binding VatReturnUIButtons}"
-          HorizontalOptions="CenterAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                           ItemSelected="SelectButton"
-                               BackgroundColor="White"
-                     HeightRequest="165"
-            SeparatorVisibility="None"
-            >
+            <ListView
+                x:Name="btnList"
+                Grid.Row="1"
+                BackgroundColor="White"
+                HasUnevenRows="True"
+                HeightRequest="165"
+                HorizontalOptions="CenterAndExpand"
+                ItemSelected="SelectButton"
+                ItemsSource="{Binding VatReturnUIButtons}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                            <custom:CustomLabel BackgroundColor="White" Text="{Binding}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}"/>
+                            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <custom:CustomLabel
+                                    BackgroundColor="White"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource SectionTitleBlack}"
+                                    Text="{Binding}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -65,7 +65,14 @@ namespace EGAZT.Views.NewDesign.VATReview
 
         private void VRVSItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+            try { 
             viewModel.OpenAttachment(e.ItemData as Attachment);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

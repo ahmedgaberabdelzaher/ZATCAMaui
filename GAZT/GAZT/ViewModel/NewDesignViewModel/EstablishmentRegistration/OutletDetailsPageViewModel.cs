@@ -1040,7 +1040,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

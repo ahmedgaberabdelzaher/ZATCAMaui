@@ -1,8 +1,11 @@
-﻿using EGAZT.Helper;
+﻿using EGAZT.AppConfigurations;
+using EGAZT.Helper;
 using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.Models.EnumModels;
 using EGAZT.Models.PaymentModel;
+using EGAZT.Models.SurveyModels;
+using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.MyBillsPages;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -23,6 +26,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -32,6 +36,138 @@ namespace EGAZT.ViewModel.NewDesignViewModel
     public class GAZTNewDesignDashBoardPageViewModel : BaseViewModel
     {
         #region Variable
+        bool isSurveyVisible ;
+        public bool IsSurveyVisible
+        {
+            get
+            {
+                return isSurveyVisible;
+            }
+            set
+            {
+
+
+                isSurveyVisible = value;
+                RaisePropertyChanged();
+            }
+        }
+        //Cr6264
+        private bool _IstileUpdated = true;
+        public bool istileUpdated
+        {
+            get => _IstileUpdated;
+            set
+            {
+                if (_IstileUpdated == value) return;
+
+                _IstileUpdated = value;
+                RaisePropertyChanged("istileUpdated");
+            }
+        }
+
+        int fQanswer;
+        public int FQanswer
+        {
+            get
+            {
+                return fQanswer;
+            }
+            set
+            {
+                fQanswer = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        int qNumber=2;
+        public int QNumber
+        {
+            get
+            {
+                return qNumber;
+            }
+            set
+            {
+                qNumber = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        int surveyCurrentStep =0;
+        public int SurveyCurrentStep
+        {
+            get
+            {
+                return surveyCurrentStep;
+            }
+            set
+            {
+                surveyCurrentStep = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        string sQAnswer;
+        public string SQAnswer
+        {
+            get
+            {
+                return sQAnswer;
+            }
+            set
+            {
+                sQAnswer = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        string questionTxt;
+        public string QuestionTxt
+        {
+            get
+            {
+                return questionTxt;
+            }
+            set
+            {
+                questionTxt = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        SurveyQuestions selctedImojy;
+        public SurveyQuestions SelctedImojy
+        {
+            get
+            {
+                return selctedImojy;
+            }
+            set
+            {
+                selctedImojy = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "61c32bf2527cacedb5d3192c" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "61c32bf2527cacedb5d3192d" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "61c32bf2527cacedb5d3192f" },new SurveyQuestions() { ImojieSource = "Angry", ID = "61c32bf2527cacedb5d31930" }};
+        public ObservableCollection<SurveyQuestions> ImojiesLst
+        {
+            get
+            {
+                return new ObservableCollection<SurveyQuestions>(imojiesLst?.Reverse());
+            }
+            set
+            {
+               imojiesLst = value;
+                RaisePropertyChanged();
+            }
+        }
+
+
 
         public string selectedFbNum = "";
         public string selectedSadadNo = "";
@@ -1695,9 +1831,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         #endregion
 
         #region Constructor
-
-        public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        ISurveyServices _surveyServices;
+        public GAZTNewDesignDashBoardPageViewModel(INavigationService navigationService, IDialogService dialogService, ISurveyServices surveyServices) : base(navigationService, dialogService)
         {
+           // ISEndSurvey = true;
+            // IsShowMsgView = true;
+            _surveyServices = surveyServices;
             MenuViewVisible = false;
             LiveChatVisible = false;
             AccountStatementVisible = false;
@@ -1723,6 +1862,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             MenuViewVisible = false;
             HomeViewVisible = true;
+            //GetDashBoardMenuLst(1);
 
         }
         #endregion
@@ -1948,11 +2088,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
         private async Task<bool> ProcessApplePay()
         {
-            var Amount = Convert.ToDouble(PaymentData.d.Amount);
-            var BillAmount = Math.Round(Amount, 2);
-
-            DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
-            return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+            try
+            {
+                var Amount = Convert.ToDouble(PaymentData.d.Amount);
+                var BillAmount = Math.Round(Amount, 2);
+                DependencyService.Get<IApplePayAuthorizer>().IsPaymentFromDashboard(true);
+                return DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment(BillAmount, AppResources.ApplePayText);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+                return false;
+            }
         }
 
         public async Task UpdateApplePayPaymentGuid()
@@ -2064,7 +2212,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         TaxpayerName = App.TP.NameOrg1;
                     }
                 }
-                DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+
+                try
+                {
+                    DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
+
+                }
+                catch (GAZTErrorException ex)
+                {
+
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+                }
 
                 if (App.isMybillsRefresh) {
 
@@ -2099,13 +2258,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     }
                 }
-
-
-                
-
-
-
-
             }
             catch (AggregateException ae)
             {
@@ -2132,12 +2284,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             if (MessageForTheUser == AppResources.ZZInternetConnectionMessage)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                     _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                });
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.NetworkConnectivityIssue)
                             {
-                                await _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                     _dialogService.ShowMessage(MessageForTheUser, AppResources.Information);
+                                });
                                 _navigationService.GoBack();
                             }
                             else if (MessageForTheUser == AppResources.ZYourSessionhasexpiredPleaseLoginagain)
@@ -2146,10 +2304,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             }
                         });
                     }
-                    else
-                    {
-                        throw;
-                    }
+                   
                 }
             }
             catch (GAZTSessionExpiredException)
@@ -2164,6 +2319,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 Console.WriteLine(ex.Message);
                 IsLoading = false;
+                Console.Write(ex.StackTrace.ToString());
             }
 
             IsLoading = false;
@@ -2459,8 +2615,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             MyObligationAmount = 0.0;
             var temp1 = new List<OverduePaymentAndUnSubmittedReturn>();
             var pendingBills = new ObservableCollection<OverduePaymentAndUnSubmittedReturn>();
-            List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
-            AllBills = TempBills;
+
+
+            try
+            {
+                List<OverduePaymentAndUnSubmittedReturn> TempBills = await WebServiceManager.GAZTGetPaymentOverdueSetForDashboardData(App.IsArabic ? "A" : "E", App.TP.Userid);
+                AllBills = TempBills;
+
+           
+           
 
             if (TempBills != null)
             {
@@ -2551,9 +2714,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception ex)
                             {
-                                Console.WriteLine(e.Message);
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
 
                             }
 
@@ -2645,6 +2810,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             catch (Exception e)
                             {
                                 Console.WriteLine(e.Message);
+                                Console.Write(e.StackTrace.ToString());
 
                             }
 
@@ -2707,6 +2873,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 temp2.Add(ee);
             }
             Device.BeginInvokeOnMainThread(() => Returns = temp2);
+
+            }
+            catch (GAZTErrorException ex)
+            {
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
 
         }
         private async Task getDashboardInstalmentPlan()
@@ -2976,6 +3150,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                     if (SelectedCommitmentFilterValue.Equals(AppResources.ZZUpcomingCommitments))
@@ -3070,10 +3246,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         });
                     }
                     // Rethrow any other exception.
-                    else
-                    {
-                        throw;
-                    }
+                    
                 }
             }
             catch (GAZTSessionExpiredException ex)
@@ -3084,8 +3257,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopToRootPage();
                 });
             }
-            catch
+            catch(Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 IsLoading = false;
             }
         }
@@ -3465,10 +3640,314 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Console.Write(ex.ToString());
                     Console.Write(ex.StackTrace.ToString());
                 }
-                _navigationService.GoBack();
+                _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
+                //_navigationService.GoBack();
             });
         }
 
         #endregion
+
+        #region Survey
+        bool iSEndSurvey;
+        public bool ISEndSurvey { get { return iSEndSurvey; } set { iSEndSurvey = value;RaisePropertyChanged(); } }
+
+        public ICommand SurveyNextCommand
+        {
+            get
+            {
+                return new Command<string>(async(currentStep) =>
+                {
+
+                   /* if (currentStep== "3")
+                    {
+                        ISEndSurvey = true;
+                    } */
+                    SurveyCurrentStep = int.Parse(currentStep);
+                  
+                    if (SurveyCurrentStep==4)
+                    {
+                        await PopupNavigation.Instance.PopAsync(true);
+                        SurveyCurrentStep = 0;
+                        IsShowMsgView = false;
+                    }
+                });
+            }
+        }
+
+        public ICommand SelectedImojieCommand
+        {
+            get
+            {
+                return new Command<SurveyQuestions>((selectedAnswer) =>
+                {
+                    FQanswer =int.Parse(selectedAnswer.ID);
+                });
+            }
+        }
+
+        public ICommand SlectedImojieCommand
+        {
+            get
+            {
+                return new Command<SurveyQuestions>((selected) =>
+                {
+
+                    SelctedImojy = selected;
+                    if (selected.ID== "61c32bf2527cacedb5d31930" || selected.ID== "61c32bf2527cacedb5d3192f")
+                    {
+                        QuestionTxt = AppResources.SurveyQ2;
+                        QNumber = 2;
+                    }
+                    else
+                    {
+                        QuestionTxt = AppResources.SurveyQ3;
+                        QNumber = 3;
+
+                    }
+                    SurveyCurrentStep = 2;
+                });
+            }
+        }
+
+        public ICommand SurveyActionCommand
+        {
+            get
+            {
+                return new Command<string>(async (action) =>
+                {
+                   
+                    if (action =="0")
+                    {
+                        IsShowMsgView = false;
+                        IsLoading = true;
+                       await AddSurveyForToday(true);
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        IsSurveyVisible = true;
+                        SurveyCurrentStep = 1;
+                    }
+                });
+            }
+        }
+        public int  SchedukeID { get; set; }
+
+        public ICommand CheckSurveyCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    CultureInfo enCul = new CultureInfo("en-US");
+                    var Defdate = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    var date=  Preferences.Get("DateOfSurvey", Defdate);
+                 var isSurveyDone=Preferences.Get("IsSurveyTaken", false);
+                    var UsedTin= Preferences.Get("TIN", "");
+                    if (date== Defdate&& isSurveyDone&&UsedTin== App.TP.Tin)
+                    {
+                        return;
+                    }
+                    if (!IsShowMsgView)
+                    {
+                 IsShowMsgView = await HaveSurveyForToday();
+                        if (IsShowMsgView)
+                        {
+                            Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp poupWindow = new Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp();
+                            await PopupNavigation.Instance.PushAsync(poupWindow);
+                        }
+                    }
+                 });
+            }
+        }
+
+        public ICommand AddSurveyCommand
+        {
+            get
+            {
+                return new Command<string>(async(isdismiss) =>
+                {
+                    SurveyCurrentStep = 3;
+                    IsLoading = true;
+                   await AddSurveyForToday(isdismiss == "0" ? false : true);
+                    IsLoading = false;
+                });
+            }
+        }
+
+
+        public async Task<bool> AddSurveyForToday(bool isDismiss=false)
+        {
+            CultureInfo enCul = new CultureInfo("en-US");
+            var date = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+            var tin = App.TP.Tin;
+            AddSurveyBody body = new AddSurveyBody()
+            {
+                dismiss = isDismiss,
+                scheduleid = SchedukeID,
+                tin =long.Parse( App.TP.Tin)
+            };
+            if (isDismiss)
+            {
+                var res = await _surveyServices.AddSurveyData(body);
+                if (res.IsSuccessStatusCode)
+                {
+                    var DateOfSurvey = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    Preferences.Set("DateOfSurvey", DateOfSurvey);
+                    Preferences.Set("IsSurveyTaken", true);
+                    Preferences.Set("TIN", App.TP.Tin);
+                    SurveyCurrentStep = 0;
+                    ISEndSurvey = true;
+                    await PopupNavigation.Instance.PopAsync(true);
+                    return false;
+                }
+            }
+            var VocBody = new VocAddSurveyAnswerModel()
+            {
+
+                collectID = PageSettings.CollectorId,
+                surveyID = PageSettings.SurveyID,
+                feedback = new List<ResponseArr>()
+                {
+                 new ResponseArr()
+                 {
+                     date=new Date()
+                     {
+                         start=date,
+                         end=date
+                     },
+                     user=new CustomData()
+                     {
+                         CustomerSegment="TIN",
+                          mobile=App.TP.Mobile,
+                           firstName=App.TP.Name,
+                           TIN=App.TP.Tin,
+                           email=App.TP.Email
+                     },
+                     surveyAnswers=new List<Answer>()
+                     {
+                         new Answer()
+                         {
+                             questionID=PageSettings.Q1ID,
+                             answer=new List<An>()
+                             {
+                                 new An()
+                                 {
+                                     rowId=PageSettings.Q1AnsID,
+                                     columnID=SelctedImojy.ID
+                                 }
+                             }
+                         },
+                         new Answer()
+                         {
+                             questionID=QNumber==2?PageSettings.Q2ID:PageSettings.Q3ID,
+                             answer=new List<An>()
+                             {
+                                 new An()
+                                 {
+                                     rowId=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
+                                     text=SQAnswer
+                                 }
+                             }
+                         }
+                     }
+                 }
+                }
+            };
+            var VocResp = await _surveyServices.AddSurveyAnswerToVoc(VocBody, "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI2MGJmNTVjZWI4ZDM5ZjAzZWQ4ZDY0NDIiLCJpYXQiOjE2NjE3NzE5Nzd9.Mkihfva6j2iGT6LV9aQzLFxxCvSMnpBnHhw1Ikz8-OI");
+            if (VocResp.IsSuccessStatusCode)
+            {
+                var res = await _surveyServices.AddSurveyData(body);
+                if (res.IsSuccessStatusCode)
+                {
+                    var DateOfSurvey = DateTime.Now.Date.ToString("MM-dd-yyyy", enCul);
+                    Preferences.Set("DateOfSurvey", DateOfSurvey);
+                    Preferences.Set("IsSurveyTaken", true);
+                    Preferences.Set("TIN", App.TP.Tin);
+                   // SurveyCurrentStep = 0;
+
+                }
+            }
+            ISEndSurvey = true;
+      
+            SQAnswer = "";
+                //  IsShowMsgView = false;
+            return false;
+        }
+
+
+        public async Task<bool> HaveSurveyForToday()
+        {
+            CultureInfo enCul = new CultureInfo("en-US");
+            var date = DateTime.Now.Date.ToString("MM-dd-yyyy",enCul);
+           var res=await _surveyServices.GetSurveyByDate(App.TP.Tin, date);
+            if (res.Item2)
+            {
+                if (res.Item1.data!=null&&(res.Item1.data.isuservotedbefore==false&&res.Item1.data.dismiss==false))
+                {
+                    
+                    SchedukeID = res.Item1.data.id;
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        #endregion
+        public override ICommand MenuNavigationCommand
+        {
+            get
+            {
+                return new Command<MenuModel>((Selecteditem) =>
+                {
+                    if (Selecteditem.ID == "Home")
+                    {
+
+                        _navigationService.NavigateTo($"{Selecteditem.ID}", "3");
+
+                        return;
+                    }
+                    else if (Selecteditem.ID == "menu")
+                    {
+                        GetDashBoardMenuLst(4);
+                        MenuViewVisible = true;
+                        HomeViewVisible = false;
+                        return;
+                    }
+                    else if (Selecteditem.ID == "GAZTNewDesignDashBoardPageView")
+                    {
+                        GetDashBoardMenuLst(1);
+                        MenuViewVisible = false;
+                        HomeViewVisible = true;
+                        return;
+                    }
+                    _navigationService.NavigateTo($"{Selecteditem.ID}");
+
+                });
+            }
+        }
+
+        public ICommand GoToChatCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                 _navigationService.NavigateTo("ChatPotView");
+                });
+            }
+        }
+
+        public ICommand GoToRateUsCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                 _navigationService.NavigateTo("RateUs");
+                });
+            }
+        }
+
     }
 }

@@ -135,7 +135,45 @@ using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
+using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+using EGAZT.Views.NewDesign.CustomServicesPages;
+using EGAZT.Services.Interface;
+using EGAZT.Services.Classes;
+using EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels;
+using EGAZT.Views.NewDesign.TahqaqViews;
+using EGAZT.Views.NewDesign.VAT;
+using EGAZT.ViewModel.NewDesignViewModel.VAT;
+using EGAZT.ViewModel.NewDesignViewModel.SubmitReport;
+using EGAZT.Views.NewDesign.SubmitReport;
+using EGAZT.Controls;
 
+using EGAZT.ViewModel.NewDesignViewModel.MyReportsVM;
+using EGAZT.Views.NewDesign.MyReports;
+
+using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.ViewModel.NewDesignViewModel.HomeViewModels;
+using EGAZT.Views.NewDesign.HomePages;
+using EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM;
+using EGAZT.Views.NewDesign.LiveVideo;
+using EGAZT.Views.NewDesign.Survey;
+using EGAZT.ViewModel.NewDesignViewModel.SurveyViewModels;
+using EGAZT.ViewModel.NewDesignViewModel.LoginViewModels;
+using EGAZT.Views.NewDesign.LoginPages;
+using EGAZT.Views.NewDesign.CustomServicesPages.CustomDashBoard;
+using EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM;
+using EGAZT.Views.NewDesign.ReportOTP;
+using System.Net.Http;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
+using EGAZT.Views.NewDesign.EDeclaration;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
+using EGAZT.Helper;
+using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
+using EGAZT.Views.NewDesign.Zakaty;
+using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
+using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
+using EGAZT.Views.NewDesign.TrackShipment;
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
@@ -148,6 +186,21 @@ namespace EGAZT
             var navigationService = this.CreateNavigationService();
             SimpleIoc.Default.Register<INavigationService>(() => navigationService);
             SimpleIoc.Default.Register<IDialogService, DialogService>();
+            SimpleIoc.Default.Register<ICustomInquiryService, CustomInquiryService>();
+            SimpleIoc.Default.Register<ITraiffSectionsServices, TraiffSectionsServices>();
+            SimpleIoc.Default.Register<IBalaghServices, BalaghServices>();
+            SimpleIoc.Default.Register<IlaboratoryInsuranseFeesServices, laboratoryInsuranseFeesServices>();
+            SimpleIoc.Default.Register<ICommonServices, CommonServices>();
+            SimpleIoc.Default.Register<ITahqaqServices, TahqaqServices>();
+            SimpleIoc.Default.Register<ITaxCalculatorServices, TaxCalculatorServices>();
+            SimpleIoc.Default.Register<ISubmitReportServices, SubmitReportServices>();
+            SimpleIoc.Default.Register<IMyReportsServices, MyReportsServices>();
+            SimpleIoc.Default.Register<ISurveyServices, SurveyServices>();
+            SimpleIoc.Default.Register<IUserServices, UserServices>();
+            SimpleIoc.Default.Register<ITwareedServices, TwareedServices>();
+            SimpleIoc.Default.Register<IE_DeclerationServices, E_DeclerationServices>();
+            SimpleIoc.Default.Register<ITrackShipment, TrackShipmentServices>();
+            SimpleIoc.Default.Register<EDeclerationSubmitModel>();
 
             #region NewDesignIOC
             SimpleIoc.Default.Register<GAZTNewDesignRecoverUsernameViewModel>();
@@ -350,9 +403,49 @@ namespace EGAZT
             SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
 
+            //Cr6264
+            SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
+
             //AccountStatementsDownloadPageView
             //
             #endregion
+
+            #region Customs Service IoC
+            SimpleIoc.Default.Register<InquiryAboutCustomsDeclarationViewModel>();
+            SimpleIoc.Default.Register<TraifSectionsViewModel>();
+            SimpleIoc.Default.Register<ReportFinancialViolationViewModel>();
+            SimpleIoc.Default.Register<ReportsMenuViewModel>();
+            SimpleIoc.Default.Register<LaboratoryPaymentOfInsuranceFeesViewModel>();
+            SimpleIoc.Default.Register<SearchIndiactivePriceForExciseGoodsViewModel>();
+            SimpleIoc.Default.Register<ExciseTaxViewModel>();
+            SimpleIoc.Default.Register<TahqaqScanPageViewModel>();
+            SimpleIoc.Default.Register<TaxCalculatorViewModel>();
+            SimpleIoc.Default.Register<SubmitReportViewModel>();
+            SimpleIoc.Default.Register<LiveVideoViewModel>();
+            SimpleIoc.Default.Register<ReportOTPViewModel>();
+
+            SimpleIoc.Default.Register<MyReportsViewModel>();
+            SimpleIoc.Default.Register<UploadingPopupViewModel>();
+
+            SimpleIoc.Default.Register<E_DeclerationViewModel>();
+            SimpleIoc.Default.Register<TrackShipmentViewModel>();
+            SimpleIoc.Default.Register<HomeViewModel>();
+            SimpleIoc.Default.Register<RateUsViewModel>();
+            SimpleIoc.Default.Register<CustomLoginViewModel>();
+            SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
+            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
+            SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
+            SimpleIoc.Default.Register<TransactionReceptionViewModel>();
+            SimpleIoc.Default.Register<IAMLoginViewModel>();
+            SimpleIoc.Default.Register<ReviewRequestViewModel>();
+            SimpleIoc.Default.Register<EDeclerationViewModel>();
+            SimpleIoc.Default.Register<CustomsPaymentViewModel>();
+            SimpleIoc.Default.Register<StateManager>();
+            SimpleIoc.Default.Register<AboutZakatyViewModel>();
+              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+                 SimpleIoc.Default.Register<ChatViewModel>();
+#endregion
         }
 
         #region NewDesignViewModel
@@ -367,6 +460,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -381,6 +476,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -395,6 +492,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -405,10 +504,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxpayerSubsidyViewModel>();
+                    SimpleIoc.Default.Register<TaxpayerSubsidyViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerSubsidyViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -423,6 +526,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -437,6 +542,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -451,6 +558,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -466,6 +575,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -481,6 +592,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -495,6 +608,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -509,6 +624,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -524,6 +641,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -539,6 +658,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -554,6 +675,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -568,6 +691,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -585,6 +710,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -595,10 +722,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxpayerCorrespondanceDetailPageViewModel>();
+                    SimpleIoc.Default.Register<TaxpayerCorrespondanceDetailPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayerCorrespondanceDetailPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -610,10 +741,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxpayersCertificatesPageViewModel>();
+                    SimpleIoc.Default.Register<TaxpayersCertificatesPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxpayersCertificatesPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -624,10 +759,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
+                    SimpleIoc.Default.Register<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignVATReturnUpdatedUIPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -642,6 +781,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -656,6 +797,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -667,10 +810,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatForm5PageViewModel>();
+                    SimpleIoc.Default.Register<ZakatForm5PageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatForm5PageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -685,6 +832,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -695,10 +844,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<GAZTNewDesignMyBillsPageViewModel>();
+                    SimpleIoc.Default.Register<GAZTNewDesignMyBillsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyBillsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -709,10 +862,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<GAZTNewDesignMyReturnsNewPageViewModel>();
+                    SimpleIoc.Default.Register<GAZTNewDesignMyReturnsNewPageViewModel>();
                     return ServiceLocator.Current.GetInstance<GAZTNewDesignMyReturnsNewPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -730,6 +887,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -746,6 +905,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -762,6 +923,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -772,10 +935,13 @@ namespace EGAZT
             {
                 try
                 {
+
                     return ServiceLocator.Current.GetInstance<VATDeregistrationSuccessPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -786,10 +952,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<NewZakatObjectionPageViewModel>();
+                    SimpleIoc.Default.Register<NewZakatObjectionPageViewModel>();
                     return ServiceLocator.Current.GetInstance<NewZakatObjectionPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -807,6 +977,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -824,6 +996,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -834,10 +1008,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<OutletDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<OutletDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<OutletDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -855,6 +1033,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -865,10 +1045,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ActivityItemPageViewModel>();
+                    SimpleIoc.Default.Register<ActivityItemPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ActivityItemPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -879,10 +1063,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ActivityItemAmendUpdatePageViewModel>();
+                    SimpleIoc.Default.Register<ActivityItemAmendUpdatePageViewModel>();
                     return ServiceLocator.Current.GetInstance<ActivityItemAmendUpdatePageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -897,6 +1085,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -911,6 +1101,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -925,6 +1117,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -940,6 +1134,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -954,6 +1150,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -970,6 +1168,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -984,6 +1184,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -998,6 +1200,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1012,6 +1216,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1026,6 +1232,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1040,6 +1248,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1059,6 +1269,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1167,6 +1379,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1183,6 +1397,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1197,6 +1413,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1211,6 +1429,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1225,6 +1445,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1240,6 +1462,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1254,6 +1478,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1267,10 +1493,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<MyBillsViewModel>();
+                    SimpleIoc.Default.Register<MyBillsViewModel>();
                     return ServiceLocator.Current.GetInstance<MyBillsViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1282,10 +1512,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATLookupPageViewModel>();
+                    SimpleIoc.Default.Register<VATLookupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATLookupPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1296,10 +1530,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatReturnListPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatReturnListPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnListPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1310,10 +1548,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatReturnDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatReturnDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1325,10 +1567,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<SalesDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<SalesDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<SalesDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1339,10 +1585,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<AmendSalesDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<AmendSalesDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AmendSalesDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1358,6 +1608,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1369,10 +1621,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATReturnsPageViewModelEX>();
+                    SimpleIoc.Default.Register<VATReturnsPageViewModelEX>();
                     return ServiceLocator.Current.GetInstance<VATReturnsPageViewModelEX>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1383,10 +1639,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<AcknowledgementDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<AcknowledgementDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<AcknowledgementDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1401,6 +1661,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1415,6 +1677,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1429,6 +1693,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1443,6 +1709,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1457,6 +1725,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1472,6 +1742,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1482,10 +1754,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportMobilePageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportMobilePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportMobilePageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1496,10 +1772,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportTypePageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportTypePageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportTypePageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1510,10 +1790,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportFormPageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportFormPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportFormPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1524,10 +1808,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionFormPageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionFormPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionFormPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1538,10 +1826,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionRegistrationViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionRegistrationViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionRegistrationViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1556,6 +1848,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1570,6 +1864,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1584,6 +1880,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1598,6 +1896,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1612,6 +1912,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1626,6 +1928,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1640,6 +1944,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1654,6 +1960,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1672,6 +1980,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1686,6 +1996,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1700,6 +2012,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1714,6 +2028,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1728,6 +2044,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1742,6 +2060,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1756,6 +2076,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1766,10 +2088,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATIndividualSignupPageViewModel>();
+                    SimpleIoc.Default.Register<VATIndividualSignupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATIndividualSignupPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1780,10 +2106,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<IndividualRegistrationPageViewModel>();
+                    SimpleIoc.Default.Register<IndividualRegistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<IndividualRegistrationPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1798,6 +2128,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1808,10 +2140,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATRegistrationPageViewModel>();
+                    SimpleIoc.Default.Register<VATRegistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRegistrationPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1829,6 +2165,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1839,10 +2177,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATRegistrationDisplayDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRegistrationDisplayDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1857,6 +2199,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1871,6 +2215,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1885,6 +2231,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1899,6 +2247,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1914,6 +2264,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1929,6 +2281,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1944,6 +2298,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1959,6 +2315,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1974,6 +2332,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1985,10 +2345,31 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZAKATReturnDetailsViewModel>();
+                    SimpleIoc.Default.Register<ZAKATReturnDetailsViewModel>();
                     return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public ZAKATReturnDetailsViewModel ZAKATReturnDetailsSuccessView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZAKATReturnDetailsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2004,6 +2385,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2015,10 +2398,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATRefundDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<VATRefundDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2036,6 +2423,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2051,6 +2440,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2062,10 +2453,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATRefundsInstructionsPageViewModel>();
+                    SimpleIoc.Default.Register<VATRefundsInstructionsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<VATRefundsInstructionsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2079,10 +2474,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatReturnDetailsSuccessfullPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatReturnDetailsSuccessfullPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatReturnDetailsSuccessfullPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2098,6 +2497,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2114,6 +2515,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2130,6 +2533,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2144,6 +2549,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2159,6 +2566,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2175,6 +2584,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2193,6 +2604,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2211,6 +2624,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2229,6 +2644,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2247,6 +2664,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2263,6 +2682,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2470,12 +2891,363 @@ namespace EGAZT
             //AccountStatementsDownloadPageViewModel
             //AccountStatementsFiltersPageViewModel
             //End Account Statements
+
+            //Custom Services
+            navigationService.Configure(App.InquiryAboutCustomsDeclarationView, typeof(InquiryAboutCustomsDeclaration));
+            navigationService.Configure(App.TraifSectionsView, typeof(TraifSections));
+            navigationService.Configure("ReportFinancialViolation", typeof(ReportFinancialViolation));
+            navigationService.Configure("ReportsPage", typeof(ReportsPage));
+            navigationService.Configure(App.LaboratoryPaymentOfInsuranceFees, typeof(LaboratoryPaymentOfInsuranceFees));
+            navigationService.Configure("ExciseTax", typeof(ExciseTax));
+            navigationService.Configure("SearchIndiactivePriceForExciseGoods", typeof(SearchIndiactivePriceForExciseGoods));
+            navigationService.Configure("TahqaqScanPage", typeof(TahqaqScanPage));
+            navigationService.Configure("TaxCalculator", typeof(TaxCalculator));
+            navigationService.Configure("E_InvoicesScan", typeof(E_InvoicesScan));
+            navigationService.Configure("SubmitReportPage", typeof(SubmitReportPage));
+            navigationService.Configure("TermsPage", typeof(TermsPage));
+            navigationService.Configure("MyReportsPage", typeof(MyReportsPage));
+            navigationService.Configure("LiveVideoPage", typeof(LiveVideoPage));
+            navigationService.Configure("MyReportDetailsPage", typeof(MyReportDetailsPage));
+            navigationService.Configure("ReportSuccessPage", typeof(ReportSuccessPage));
+            navigationService.Configure("EDeclerationView", typeof(EDeclerationView));
+            navigationService.Configure("CreateE_Declaration", typeof(CreateE_Declaration));
+            navigationService.Configure("ReiewPreviousDeclerations", typeof(ReiewPreviousDeclerations));
+            navigationService.Configure("Home", typeof(Home));
+            navigationService.Configure("CusromServiceMenu", typeof(CusromServiceMenu));
+            navigationService.Configure("ExciseServices", typeof(ExciseServices));
+            navigationService.Configure("VatServicesMenu", typeof(VatServicesMenu));
+            navigationService.Configure("GeneralServices", typeof(GeneralServices));
+            navigationService.Configure("SideMenuView", typeof(SideMenuView));
+            navigationService.Configure("RateUs", typeof(RateUs));
+            navigationService.Configure("CustomLogin", typeof(CustomLogin));
+            navigationService.Configure("CustomDashBoardVi", typeof(CustomDashBoardVi));
+            navigationService.Configure("LoginSelectionView", typeof(LoginSelectionView));
+            navigationService.Configure("ReportOTPPage", typeof(ReportOTPPage));
+            navigationService.Configure("InquiryAboutMyReportsPage", typeof(InquiryAboutMyReportsPage));
+            navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
+            navigationService.Configure("ContactUs", typeof(ContactUs));
+            navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
+            navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
+            navigationService.Configure("SuccessView", typeof(SuccessView));
+            navigationService.Configure("IAMLoginView", typeof(IAMLoginView));
+            navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
+            navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
+            navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
+            navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
+            navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
+            navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
+            navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
+            navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
+            navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
+            navigationService.Configure("ChatPotView", typeof(ChatPotView));
+            navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
+            navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
+            navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             #endregion
 
             return navigationService;
         }
+        
         #endregion
+        public InquiryAboutCustomsDeclarationViewModel InquiryAboutCustomsDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InquiryAboutCustomsDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
 
+    public TraifSectionsViewModel traifSectionsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TraifSectionsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ReportFinancialViolationViewModel reportFinancialViolationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportFinancialViolationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ReportsMenuViewModel reportsMenuViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportsMenuViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public LaboratoryPaymentOfInsuranceFeesViewModel LaboratoryPaymentOfInsuranceFeesViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LaboratoryPaymentOfInsuranceFeesViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public ExciseTaxViewModel exciseTaxViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ExciseTaxViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public SearchIndiactivePriceForExciseGoodsViewModel searchIndiactivePriceForExciseGoodsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SearchIndiactivePriceForExciseGoodsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public TahqaqScanPageViewModel tahqaqScanPageViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TahqaqScanPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public TaxCalculatorViewModel taxCalculatorViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TaxCalculatorViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public E_DeclerationViewModel eDeclerationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<E_DeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public HomeViewModel homeViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<HomeViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public RateUsViewModel rateUsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RateUsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public CustomLoginViewModel CustomLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomLoginViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public TransactionReceptionViewModel TransactionReceptionViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TransactionReceptionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public IAMLoginViewModel IAMLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<IAMLoginViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public EDeclerationViewModel EDeclerationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclerationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public CustomsPaymentViewModel CustomsPaymentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomsPaymentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public AboutZakatyViewModel AboutZakatyViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<AboutZakatyViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
+        public CustomServiceMenuViewModel CustomServiceMenuViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomServiceMenuViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+      public ChatViewModel ChatViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView
@@ -2484,10 +3256,37 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<FilesUploadPopUpViewModel>();
+                    SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Vatprofit on goods CR6264
+
+        public NewYesorNoPageViewModel NewYesorNoView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<NewYesorNoPageViewModel>();
+                    SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<NewYesorNoPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2503,10 +3302,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<InstalmentPlanViewModel>();
+                    SimpleIoc.Default.Register<InstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<InstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2521,14 +3324,36 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATInstalmentPlanViewModel>();
+                    SimpleIoc.Default.Register<VATInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
         }
+
+        public VATInstalmentPlanViewModel VatInstalmentPlanSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VATInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
 
         public VATInstalmentPlanListViewModel VatInstalmentPlanListPageView
         {
@@ -2536,10 +3361,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VATInstalmentPlanListViewModel>();
+                    SimpleIoc.Default.Register<VATInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<VATInstalmentPlanListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2553,10 +3382,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<InstructionsBottomPopUpViewModel>();
+                    SimpleIoc.Default.Register<InstructionsBottomPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<InstructionsBottomPopUpViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2572,6 +3405,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2587,6 +3422,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2597,10 +3434,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<AddNotePopUpViewModel>();
+                    SimpleIoc.Default.Register<AddNotePopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<AddNotePopUpViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2612,10 +3453,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ViewNotePopUpViewModel>();
+                    SimpleIoc.Default.Register<ViewNotePopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<ViewNotePopUpViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2629,24 +3474,51 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanViewModel>();
+                    SimpleIoc.Default.Register<ZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
         }
+
+        public ZakatInstalmentPlanViewModel ZakatInstalmentPlanSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    
+                    return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
         public ZakatInstalmentPlanListViewModel ZakatInstalmentPlanListPageView
         {
             get
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatInstalmentPlanListViewModel>();
+                    SimpleIoc.Default.Register<ZakatInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2658,10 +3530,31 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<OldZakatInstalmentPlanViewModel>();
+                    SimpleIoc.Default.Register<OldZakatInstalmentPlanViewModel>();
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+        public OldZakatInstalmentPlanViewModel OldZakatInstalmentPlanSuccessPageView
+        {
+            get
+            {
+                try
+                {              
+                    return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2672,10 +3565,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<OldZakatInstalmentPlanListViewModel>();
+                    SimpleIoc.Default.Register<OldZakatInstalmentPlanListViewModel>();
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2699,6 +3596,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2716,6 +3615,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2731,24 +3632,49 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ChangeFillingPeriodViewModel>();
+                    SimpleIoc.Default.Register<ChangeFillingPeriodViewModel>();
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
         }
+        public ChangeFillingPeriodViewModel ChangeFillingPeriodSuccessPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ChangeFillingPeriodViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
         public ChangeFillingPeriodListViewModel ChangeFillingPeriodListPageView
         {
             get
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ChangeFillingPeriodListViewModel>();
+                    SimpleIoc.Default.Register<ChangeFillingPeriodListViewModel>();
                     return ServiceLocator.Current.GetInstance<ChangeFillingPeriodListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2761,10 +3687,31 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VatReviewViewModel>();
+                    SimpleIoc.Default.Register<VatReviewViewModel>();
                     return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        
+        public VatReviewViewModel VatReviewSuccessView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<VatReviewViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2775,10 +3722,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<VatReviewListViewModel>();
+                    SimpleIoc.Default.Register<VatReviewListViewModel>();
                     return ServiceLocator.Current.GetInstance<VatReviewListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2791,10 +3742,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ObjectionViewModel>();
+                    SimpleIoc.Default.Register<ObjectionViewModel>();
                     return ServiceLocator.Current.GetInstance<ObjectionViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2820,10 +3775,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatObjectionsListViewModel>();
+                    SimpleIoc.Default.Register<ZakatObjectionsListViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatObjectionsListViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2835,10 +3794,30 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatObjectionViewModel>();
+                    SimpleIoc.Default.Register<ZakatObjectionViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public ZakatObjectionViewModel ZakatObjectionSuccessView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ZakatObjectionViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2852,10 +3831,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatDeregistrationPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatDeregistrationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatDeregistrationPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2866,10 +3849,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<TaxEvasionReportDetailPageViewModel>();
+                    SimpleIoc.Default.Register<TaxEvasionReportDetailPageViewModel>();
                     return ServiceLocator.Current.GetInstance<TaxEvasionReportDetailPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2881,6 +3868,7 @@ namespace EGAZT
             {
                 try
                 {
+
                     SimpleIoc.Default.Unregister<TINDeregistrationPageViewModel>();
                     SimpleIoc.Default.Register<TINDeregistrationPageViewModel>();
 
@@ -2888,6 +3876,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2899,10 +3889,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<CalendarPickerPageViewModel>();
+                    SimpleIoc.Default.Register<CalendarPickerPageViewModel>();
                     return ServiceLocator.Current.GetInstance<CalendarPickerPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2913,10 +3907,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<PickerPageViewModel>();
+                    SimpleIoc.Default.Register<PickerPageViewModel>();
                     return ServiceLocator.Current.GetInstance<PickerPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2927,10 +3925,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatRegistrationDetailsListPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatRegistrationDetailsListPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationDetailsListPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2945,6 +3947,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2956,10 +3960,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatRegistrationTaxPayerDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationTaxPayerDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2971,10 +3979,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatRegistrationOutletsDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatRegistrationOutletsDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationOutletsDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2986,10 +3998,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ZakatRegistrationFinancialDetailsPageViewModel>();
+                    SimpleIoc.Default.Register<ZakatRegistrationFinancialDetailsPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ZakatRegistrationFinancialDetailsPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3005,6 +4021,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3020,6 +4038,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3035,6 +4055,8 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3046,10 +4068,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<ShowVatInformationConfirmationPageViewModel>();
+                    SimpleIoc.Default.Register<ShowVatInformationConfirmationPageViewModel>();
                     return ServiceLocator.Current.GetInstance<ShowVatInformationConfirmationPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3062,10 +4088,14 @@ namespace EGAZT
             {
                 try
                 {
+                    SimpleIoc.Default.Unregister<RefundAccountPopupPageViewModel>();
+                    SimpleIoc.Default.Register<RefundAccountPopupPageViewModel>();
                     return ServiceLocator.Current.GetInstance<RefundAccountPopupPageViewModel>();
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -3080,14 +4110,196 @@ namespace EGAZT
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
         }
 
-
-
-        //
+        public SubmitReportViewModel SubmitReportViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<SubmitReportViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public MyReportsViewModel MyReportsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<MyReportsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public LiveVideoViewModel LiveVideoViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<LiveVideoViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ReportOTPViewModel ReportOTPViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReportOTPViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public BaseEDeclarationViewModel BaseEDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<BaseEDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ProductDeclarationViewModel ProductDeclarationViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclarationInformationsViewModel EDeclarationInformationsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclarationInformationsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public ReviewRequestViewModel ReviewRequestViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ReviewRequestViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclarationPaymentViewModel EDeclarationPaymentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclarationPaymentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public EDeclerationSubmitModel EDeclerationSubmitModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<EDeclerationSubmitModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public TrackShipmentViewModel TrackShipmentViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<TrackShipmentViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public StateManager StateManager
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<StateManager>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public UploadingPopupViewModel UploadingPopupViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<UploadingPopupViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+    //
     }
 
 

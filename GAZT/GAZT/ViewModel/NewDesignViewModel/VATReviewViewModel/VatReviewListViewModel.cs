@@ -663,13 +663,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             //AddOutletDecisionOptions();
         }
 
-        public async void ShowVatReviewPage()
+        public void ShowVatReviewPage()
         {
 
             App.selectedVATItem = "";
             App.selectedVATItemFbust = "";
-            await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
-            // _navigationService.NavigateTo(App.VatReviewPageView);
+            //await Application.Current.MainPage.Navigation.PushAsync(new VatReviewPageView());
+             _navigationService.NavigateTo(App.VatReviewPageView);
         }
 
         public void ResetListData()
@@ -1145,7 +1145,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
 
                 });

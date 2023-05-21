@@ -108,7 +108,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -191,7 +192,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void triggerIban(string messagestring)
@@ -255,7 +257,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
@@ -582,12 +585,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         private async void IDTypeDropdown_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try { 
             IBANType selectedIBANType = (IBANType)e.NewValue;
             IDTypeDropdown.SelectedItem = selectedIBANType;
             viewModel.SelectedIBANType = selectedIBANType;
             viewModel.SelectedIBANTypePrev = selectedIBANType;
             viewModel.TxtSelectedIBANType = selectedIBANType.Text;
             await viewModel.SetIBANIdNumber();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
             //if (viewModel.IsVisibleSummary == true)
             //{
             //    if (viewModel.IsVisibleDropdownForRefund == true)
@@ -720,7 +730,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void getNoRefundMsgCommand()
@@ -739,7 +750,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

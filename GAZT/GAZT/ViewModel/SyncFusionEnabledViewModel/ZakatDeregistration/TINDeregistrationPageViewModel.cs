@@ -3402,7 +3402,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -3639,7 +3640,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     catch (Exception ex)
                     {
-
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -3847,6 +3849,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
 
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
@@ -3901,6 +3905,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         {
                             Console.Write("---------------------------");
                             Console.Write(ex.StackTrace.ToString());
+
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
@@ -4031,6 +4036,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -4165,6 +4172,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTVATChangeFillingPeriodException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -4818,7 +4827,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                         }
                                                         catch (Exception ex)
                                                         {
-
+                                                            Console.WriteLine(ex.Message);
+                                                            Console.Write(ex.StackTrace.ToString());
                                                         }
 
                                                     }
@@ -5236,6 +5246,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -6888,7 +6900,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -6929,6 +6942,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return new List<Attachment>();
             }
 
@@ -7125,7 +7140,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

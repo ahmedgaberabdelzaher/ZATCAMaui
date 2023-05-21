@@ -91,7 +91,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 var index = OutletTabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 OutletTabScrollView.ScrollToAsync(OutletTabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         void OutletTabSfChipGroup_SelectionChanging(System.Object sender, Syncfusion.Buttons.XForms.SfChip.SelectionChangingEventArgs e)
@@ -109,7 +113,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception ex) { }
+            catch (Exception ex) {
+
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         private EstablishmentRegistrationOutletTabsEnum getEnumFromChipsLabel(string label)
@@ -132,6 +140,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         private async void OutletType_Clicked(object sender, EventArgs e)
         {
+            try { 
             var result = await DisplayActionSheet(AppResources.SelectOutletType, null, null, viewModel.ListOutletTypes.ToArray());
 
             if (result != null && result == AppResources.ESTMainOutlet && viewModel.ListOutlets != null && viewModel.ListOutlets.Count > 0 && viewModel.ListOutlets.Exists(x => x.Actcat == "M"))
@@ -143,6 +152,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             else if (result != null && result != AppResources.ZZZOkayText)
             {
                 viewModel.SelectedOutletType = result;
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

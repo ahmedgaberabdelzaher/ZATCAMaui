@@ -509,7 +509,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                     catch (GAZTVATChangeFillingPeriodException ex)
                     {
-                        throw ex;
+
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                            IsLoading = false;
+                        });
+                        //throw ex;
                     }
                     catch (InternetException ex)
                     {

@@ -118,6 +118,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
             viewModel.IsLoading = true;
@@ -217,6 +219,8 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
 

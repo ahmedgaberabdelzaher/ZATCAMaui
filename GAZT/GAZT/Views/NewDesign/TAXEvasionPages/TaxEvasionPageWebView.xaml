@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ResourceManager="clr-namespace:EGAZT"
-             NavigationPage.HasNavigationBar="False"
-             BackgroundImageSource="partials_background.png"
-             xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" xmlns:custom="clr-namespace:GAZT" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionPageWebView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionPageWebView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -25,57 +28,104 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
-            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}" Padding="20,20,20,0" >
+
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,20,20,0"
+                Style="{StaticResource CommonTopCurves}">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                   
-                    <!--FAQ View Starts-->
+
+                    <!--  FAQ View Starts  -->
                     <StackLayout>
-                        <WebView x:Name="taxEvasionWebView"  Margin="-20,-40,-20,0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Navigated="taxEvasionWebView_Navigated" Navigating="taxEvasionWebView_Navigating"/>
+                                             <!--   <OnPlatform x:TypeArguments="View">
+
+                            <On Platform="Android">
+                                  <ResourceManager:HybridWebView
+                            x:Name="taxEvasionHybridWebView"
+                            Margin="-20,-40,-20,0"
+                            HorizontalOptions="FillAndExpand"
+                            Navigated="taxEvasionHybridWebView_Navigated"
+                            Navigating="taxEvasionHybridWebView_Navigating"
+                            VerticalOptions="FillAndExpand" />
+                            </On>
+
+                             <On Platform="iOS">-->
+                                <WebView
+                            x:Name="taxEvasionWebView"
+                            Margin="-20,-40,-20,0"
+                            HorizontalOptions="FillAndExpand"
+                            Navigated="taxEvasionWebView_Navigated"
+                            Navigating="taxEvasionWebView_Navigating"
+                            VerticalOptions="FillAndExpand" /> 
+                          <!-- </On>
+                        </OnPlatform>--> 
+                      
                     </StackLayout>
-                   
+
                 </Grid>
             </yummy:PancakeView>
-               <Grid x:Name="loadingIndicator" Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-                <StackLayout  Orientation="Vertical" BackgroundColor="Transparent"  VerticalOptions="FillAndExpand">
-                </StackLayout>
-                <StackLayout  Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                        <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                         TextColor="{StaticResource Secondary}"/>
-                        <!--Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"-->
+            <Grid
+                x:Name="loadingIndicator"
+                Grid.Row="1"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout
+                    BackgroundColor="Transparent"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
+                        <!--  Title="{x:Static custom2:AppResources.ActivityIndicatorTitle}"  -->
                     </StackLayout>
                 </StackLayout>
             </Grid>
 
             <Grid Grid.Row="0" Padding="20,5,20,5">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10*"/>
-                    <ColumnDefinition Width="80*"/>
-                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="80*" />
+                    <ColumnDefinition Width="10*" />
                 </Grid.ColumnDefinitions>
                 <StackLayout Grid.Column="0">
-                    <Image Source="arrowLeftwhite.png" VerticalOptions="CenterAndExpand" HorizontalOptions="Start" Style="{DynamicResource BackButtonArrow}"/>
+                    <Image
+                        HorizontalOptions="Start"
+                        Source="arrowLeftwhite.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" />
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TOnBackButtonClicked" NumberOfTapsRequired="1"/>
+                        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TOnBackButtonClicked" />
                     </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <custom:CustomLabel Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center" VerticalOptions="Center" HorizontalTextAlignment="Center"/>
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                    VerticalOptions="Center" />
             </Grid>
         </Grid>
     </ContentPage.Content>

@@ -804,6 +804,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+
                             }
                         }
                         else
@@ -828,6 +829,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                                     .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
+
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
 
@@ -1445,6 +1450,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
+         //   GetDashBoardMenuLst(2);
         }
 
         public void ApplyFilter()
@@ -1703,6 +1709,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
 
+
                 return "";
             }
         }
@@ -1809,6 +1816,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
             }
         }
 
@@ -1847,6 +1857,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1942,6 +1954,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     IsLoading = false;
                 });
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2015,6 +2030,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2172,12 +2189,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
+
             }
             catch (InternetException ex)
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                _navigationService.GoBack();
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+
+                
             }
             catch (Exception ex)
             {
@@ -2263,6 +2286,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 {
                     IsLoading = false;
                 });
+
             }
         }
         public static string GetMonthName(string Month)

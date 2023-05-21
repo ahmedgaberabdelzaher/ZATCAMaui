@@ -62,7 +62,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 viewModel.IsLoading = false;
 
             }
@@ -89,7 +90,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -175,8 +177,15 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private void Installment_ValueChanged(object sender, ValueChangedEventArgs args)
         {
+            try { 
             var newVal = args.NewValue;
             viewModel.NoOfInstalments = Convert.ToInt32(newVal);
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
@@ -219,6 +228,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -535,7 +546,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                             }
                             catch (Exception ex)
                             {
-
+                                Console.WriteLine(ex.Message);
+                                Console.Write(ex.StackTrace.ToString());
                             }
                         });
                     }
@@ -608,6 +620,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -639,7 +653,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -760,7 +775,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -787,7 +803,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

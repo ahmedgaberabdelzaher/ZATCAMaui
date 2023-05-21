@@ -45,7 +45,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
                     }
@@ -60,7 +61,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

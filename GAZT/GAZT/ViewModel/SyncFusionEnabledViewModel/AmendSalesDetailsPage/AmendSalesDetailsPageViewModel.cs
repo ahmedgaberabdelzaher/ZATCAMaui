@@ -422,6 +422,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
         }
@@ -440,6 +442,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
             public void PopToRootPage()
@@ -500,6 +504,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
                       // int k = 5;
             //ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();

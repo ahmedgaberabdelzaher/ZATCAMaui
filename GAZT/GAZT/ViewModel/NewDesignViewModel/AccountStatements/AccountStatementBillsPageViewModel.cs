@@ -788,6 +788,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = false;
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
+
             }
 
         }
@@ -898,10 +900,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         catch (Exception ex)
                         {
 
-                        }
-                
-  
-                   }
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
+                    }
+
+
+                }
                 
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
@@ -926,17 +931,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             catch (InternetException ex)
             {
                 IsLoading = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+             
                 _navigationService.GoBack();
+                });
+              
             }
             catch (Exception ex)
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
+
+
             }
         }
 
@@ -980,13 +993,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             IsLoading = false;
                         });
                         return;
+
+
                     }
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
 
                 }
-          
+
 
                 if (isFromFilter)
                 {
@@ -1022,6 +1040,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
 
                     }
 
@@ -1085,6 +1106,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     }
                     catch (Exception ex)
                     {
+
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.ToString());
+                        Console.Write(ex.StackTrace.ToString());
 
                     }
 
@@ -1288,11 +1313,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 }
                 catch (Exception ex) {
 
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
+
+
+
                 }
 
 
 
-              
+
             }
 
 

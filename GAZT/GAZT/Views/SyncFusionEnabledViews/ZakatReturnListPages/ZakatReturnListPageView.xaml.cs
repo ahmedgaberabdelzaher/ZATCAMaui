@@ -176,11 +176,18 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
         }
         private void BPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try { 
             ZAKATStatus selectedZakatStatus = (ZAKATStatus)e.NewValue;
             BPicker.SelectedItem = selectedZakatStatus;
             viewModel.SelectedICRStatus = selectedZakatStatus;
             viewModel.SelectedICRStatusPrev = selectedZakatStatus;
             viewModel.TxtSelectedStatus = selectedZakatStatus.Value;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
@@ -206,6 +213,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             else

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="EGAZT.Controls.ListBottomSheet"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentView.Resources>
+
+         <converter:RemoveLastLineConverter x:Key="RemoveLastLineConverter" />
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+
+        <!--  List of names inside frame  -->
+        <yummy:PancakeView Padding="20" Style="{StaticResource CommonTopCurves}">
+
+            <StackLayout Spacing="0">
+
+                <!--  Search Entry  -->
+                <inputLayout:SfTextInputLayout
+                    ContainerBackgroundColor="White"
+                    ContainerType="Outlined"
+                    ErrorColor="#B00020"
+                    FocusedColor="{StaticResource NeutralGreay}"
+                    InputViewPadding="0"
+                    LeadingViewPosition="Inside"
+                    OutlineCornerRadius="10"
+                    UnfocusedColor="#DCDCDC"
+                    VerticalOptions="Start">
+
+                    <custom:BorderlessEntry
+                        x:Name="searchEntry"
+                        Keyboard="Text"
+                        Placeholder="{x:Static ResourceManager:AppResources.ZSearch}"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding SearchText}"
+                        TextColor="#002447">
+
+                        <custom:BorderlessEntry.Behaviors>
+                            <xct:EventToCommandBehavior
+                                Command="{Binding SearchEntryCommand}"
+                                CommandParameter="{Binding Source={x:Reference searchEntry}}"
+                                EventName="TextChanged" />
+                        </custom:BorderlessEntry.Behaviors>
+
+                    </custom:BorderlessEntry>
+
+                    <inputLayout:SfTextInputLayout.LeadingView>
+                        <Image Aspect="AspectFit" Source="reportSearchBar.png" />
+                    </inputLayout:SfTextInputLayout.LeadingView>
+
+                </inputLayout:SfTextInputLayout>
+
+              
+                <CollectionView
+                    x:Name="itemList"
+                    CollectionView.ItemsSource="{Binding BottomSheetList}"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                                        VerticalItemSpacing="10" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout x:Name="selectedItem">
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="18"
+                                    LineBreakMode="WordWrap"
+                                    Text="{Binding Name}"
+                                    TextColor="#002447">
+
+                                    <!--  Name  -->
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                            Command="{Binding SelectedBottomItemCommand}"
+                                            CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                 <!--  Horizontal Line  -->
+                                <BoxView
+                                    WidthRequest="20"
+                                    Margin="0,0,0,10"
+                                    VerticalOptions="Center"
+                                    IsVisible="{Binding HasLine,
+                                    Converter={StaticResource RemoveLastLineConverter},
+                                    ConverterParameter={x:Reference itemList}}"
+                                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                                    HeightRequest="2" />
+
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+
+
+        </yummy:PancakeView>
+
+    </ContentView.Content>
+</ContentView>

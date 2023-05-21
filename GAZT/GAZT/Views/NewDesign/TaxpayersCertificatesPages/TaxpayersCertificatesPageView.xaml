@@ -1,12 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             mc:Ignorable="d"
-             x:Class="EGAZT.Views.NewDesign.TaxpayersCertificatesPages.TaxpayersCertificatesPageView" 
-             xmlns:ResourceManager="clr-namespace:EGAZT" xmlns:custom="clr-namespace:GAZT" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms" xmlns:custom1="clr-namespace:GAZT.CustomControl" xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms" FlowDirection="RightToLeft"
-             NavigationPage.HasNavigationBar="False" BackgroundImageSource="partials_background.png">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TaxpayersCertificatesPages.TaxpayersCertificatesPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:custom1="clr-namespace:GAZT.CustomControl"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncfusion="clr-namespace:Syncfusion.SfPicker.XForms;assembly=Syncfusion.SfPicker.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="RightToLeft"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -30,19 +39,32 @@
                 <StackLayout>
                     <Grid Padding="0,5,15,5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.Certificates}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.Certificates}" />
 
-                        <Image Grid.Row="0" Grid.Column="0" x:Name="Image_backArrow" IsVisible="{Binding IsBackStepButtonVisible}" Style="{DynamicResource BackButtonArrow}"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Source="arrowLeftwhite" >
+                        <Image
+                            x:Name="Image_backArrow"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
 
@@ -56,19 +78,29 @@
                         </StackLayout>-->
                     </Grid>
 
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
-                  Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Padding="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,15,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
 
                             <Grid.RowDefinitions>
                                 <!--<RowDefinition Height="10*" />-->
                                 <RowDefinition Height="100*" />
 
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
@@ -78,104 +110,188 @@
     </ContentPage.ControlTemplate>
     <ContentPage.Content>
         <Grid>
-        <Grid Padding="15" VerticalOptions="FillAndExpand" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <StackLayout Spacing="5" Grid.Row="0">
+            <Grid Padding="15" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Spacing="5">
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="auto"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="30"/>
-                    </Grid.ColumnDefinitions>
-                    <custom:CustomLabel Text="{Binding FilterLabelText}" Grid.Column="0" Grid.Row="0" Style="{StaticResource PageTitleBlack}" Padding="0,10,0,0">
-                    </custom:CustomLabel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <custom:CustomLabel
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Padding="0,10,0,0"
+                            Style="{StaticResource PageTitleBlack}"
+                            Text="{Binding FilterLabelText}" />
 
-                    <Image Grid.Row="0" Grid.Column="1" Source="arrowDropdown"  HorizontalOptions="Start" VerticalOptions="Center">
-                    <Image.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="iOS" Value="5,-5,5,0"/>
-                            <On Platform="Android" Value="5,15,5,0"/>
-                        </OnPlatform>
-                    </Image.Margin>
-                    </Image>
-                    <!--                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Start"
+                            Source="arrowDropdown"
+                            VerticalOptions="Center">
+                            <Image.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="iOS" Value="5,-5,5,0" />
+                                    <On Platform="Android" Value="5,15,5,0" />
+                                </OnPlatform>
+                            </Image.Margin>
+                        </Image>
+                        <!--                    <Label Grid.Row="0" Grid.Column="1" x:Name="Image_backArrow" Margin="5,10,5,0" HorizontalOptions="Start" VerticalOptions="Center"
                            Style="{StaticResource IconLabelStyle}" Text="{StaticResource Back}" Rotation="270"/>-->
 
-                    <custom:CustomButton x:Name="btn" Grid.Column="0" Grid.Row="0"  Clicked="btn_Clicked" Grid.ColumnSpan="2" BackgroundColor="Transparent"  >
+                        <custom:CustomButton
+                            x:Name="btn"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Grid.ColumnSpan="2"
+                            BackgroundColor="Transparent"
+                            Clicked="btn_Clicked" />
 
-                    </custom:CustomButton>
-
-                    <syncfusion:SfPicker FlowDirection="RightToLeft"  x:Name="TaxTypePicker"  HeaderHeight="55" HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}" HeaderTextColor="White" ShowColumnHeader="False" ColumnHeaderHeight="46" PickerMode="Dialog" HeaderBackgroundColor="{StaticResource Primary}" BorderColor="Black" BackgroundColor="White" SelectedItemFontSize="15" ShowFooter="False" SelectedItemFontAttribute="Bold" SelectedItemTextColor="{StaticResource NeutralBlack}" UnSelectedItemTextColor="{StaticResource NeutralBlack}" ItemHeight="40" DisplayMemberPath="TaxType" ItemsSource="{Binding TaxTypeForFilter}"  Grid.Row="0" Grid.Column="0" Margin="10,0,10,0" PickerHeight="250" PickerWidth="300" ShowHeader="False" OKButtonTextColor="{StaticResource Primary}" CancelButtonTextColor="{StaticResource Primary}" OKButtonBackgroundColor="#EAF7CC" CancelButtonBackgroundColor="#EAF7CC" SelectionChanged="TaxTypePicker_SelectionChanged">
-                        <syncfusion:SfPicker.Behaviors>
-                            <custom1:SfPickerBehavior />
-                        </syncfusion:SfPicker.Behaviors>
-                    </syncfusion:SfPicker>
-                </Grid>
-                <custom:CustomLabel Text="{Binding AmountLabel}" Style="{StaticResource CaptionLabelGrey}"/>
-            </StackLayout>
-            <StackLayout Grid.Row="1">
-                <!-- My Bills template UI Starts -->
-
-                <!-- My Bills template UI Ends  ItemTapped="Bills_ItemTapped" -->
-
-                <ListView  x:Name="List_Certificate" ItemsSource="{Binding CertificateListToDisplay,Mode=TwoWay}" IsVisible="{Binding IsCertificateListVisible}" VerticalScrollBarVisibility="Never" HorizontalOptions="FillAndExpand" SelectedItem="{Binding SelectedCertificate}"
-            VerticalOptions="FillAndExpand" HasUnevenRows="True" BackgroundColor="White" SeparatorVisibility="None" >
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <border:SfBorder   Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
-                                    <Grid Padding="15">
-                                        <Grid.RowDefinitions >
-                                            <RowDefinition Height="auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*"/>
-                                            <ColumnDefinition Width="85*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <StackLayout Grid.Row="0" Grid.Column="1">
-                                            <custom:CustomLabel Text="{Binding Descript}" Style="{StaticResource CaptionLabelBlack}" VerticalOptions="CenterAndExpand"/>
-                                            <!--<Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />-->
-                                        </StackLayout>
-                                        <Image Source="newui_ic_pdf.png" Grid.Row="0" Grid.Column="0" Aspect="AspectFit" HorizontalOptions="End" VerticalOptions="CenterAndExpand" Margin="10,0,10,0"/>
-
-                               
-
-                                    </Grid>
-                                </border:SfBorder >
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                    <custom:CustomLabel Margin="0,20,0,0"  Text="{x:Static ResourceManager:AppResources.Nocertificateavailable}" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsNoDataLabelVisible}"/>
-
-            </StackLayout>
-
-        </Grid>
-        <Grid Grid.Row="0" Grid.Column="0"  IsVisible="{Binding IsLoading}">
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Black" Opacity="0.4" VerticalOptions="FillAndExpand">
-            </StackLayout>
-            <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" BackgroundColor="Transparent" Opacity="0.8" VerticalOptions="Center" HorizontalOptions="Center" Padding="15,15">
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <busyindicator:SfBusyIndicator x:Name="busyindicatorForLanding" 
-                                           EnableAnimation="True"
-                                       AnimationType="SingleCircle"
-                                           HorizontalOptions="CenterAndExpand"
-                                           VerticalOptions="CenterAndExpand"
-                                           IsBusy="True"
-                                       ViewBoxWidth = "70" 
-                                         
-                                       TitlePlacement="Bottom"
-                                       ViewBoxHeight="70" 
-                                        TextColor="{StaticResource Secondary}"/>
+                        <syncfusion:SfPicker
+                            x:Name="TaxTypePicker"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="10,0,10,0"
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                            CancelButtonBackgroundColor="#EAF7CC"
+                            CancelButtonTextColor="{StaticResource Primary}"
+                            ColumnHeaderHeight="46"
+                            DisplayMemberPath="TaxType"
+                            FlowDirection="RightToLeft"
+                            HeaderBackgroundColor="{StaticResource Primary}"
+                            HeaderHeight="55"
+                            HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
+                            HeaderTextColor="White"
+                            ItemHeight="40"
+                            ItemsSource="{Binding TaxTypeForFilter}"
+                            OKButtonBackgroundColor="#EAF7CC"
+                            OKButtonTextColor="{StaticResource Primary}"
+                            PickerHeight="250"
+                            PickerMode="Dialog"
+                            PickerWidth="300"
+                            SelectedItemFontAttribute="Bold"
+                            SelectedItemFontSize="15"
+                            SelectedItemTextColor="{StaticResource NeutralBlack}"
+                            SelectionChanged="TaxTypePicker_SelectionChanged"
+                            ShowColumnHeader="False"
+                            ShowFooter="False"
+                            ShowHeader="False"
+                            UnSelectedItemTextColor="{StaticResource NeutralBlack}">
+                            <syncfusion:SfPicker.Behaviors>
+                                <custom1:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                    </Grid>
+                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding AmountLabel}" />
                 </StackLayout>
-            </StackLayout>
-        </Grid>
+                <StackLayout Grid.Row="1">
+                    <!--  My Bills template UI Starts  -->
+
+                    <!--  My Bills template UI Ends  ItemTapped="Bills_ItemTapped"  -->
+
+                    <ListView
+                        x:Name="List_Certificate"
+                        BackgroundColor="White"
+                        HasUnevenRows="True"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsCertificateListVisible}"
+                        ItemsSource="{Binding CertificateListToDisplay, Mode=TwoWay}"
+                        SelectedItem="{Binding SelectedCertificate}"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                        <Grid Padding="15">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15*" />
+                                                <ColumnDefinition Width="85*" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="1">
+                                                <custom:CustomLabel
+                                                    Style="{StaticResource CaptionLabelBlack}"
+                                                    Text="{Binding Descript}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <!--<Label Text=" Date" Style="{StaticResource CaptionLabelGrey}" />-->
+                                            </StackLayout>
+                                            <Image
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Margin="10,0,10,0"
+                                                Aspect="AspectFit"
+                                                HorizontalOptions="End"
+                                                Source="newui_ic_pdf.png"
+                                                VerticalOptions="CenterAndExpand" />
+
+
+
+                                        </Grid>
+                                    </border:SfBorder>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <custom:CustomLabel
+                        Margin="0,20,0,0"
+                        HorizontalOptions="Center"
+                        IsVisible="{Binding IsNoDataLabelVisible}"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.Nocertificateavailable}"
+                        VerticalOptions="Center" />
+
+                </StackLayout>
+
+            </Grid>
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            EnableAnimation="True"
+                            HorizontalOptions="CenterAndExpand"
+                            IsBusy="True"
+                            TextColor="{StaticResource Secondary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="CenterAndExpand"
+                            ViewBoxHeight="70"
+                            ViewBoxWidth="70" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

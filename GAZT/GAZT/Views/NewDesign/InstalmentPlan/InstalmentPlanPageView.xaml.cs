@@ -35,7 +35,8 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

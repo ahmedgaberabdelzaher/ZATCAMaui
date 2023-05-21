@@ -20,6 +20,8 @@ using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.XForms.iOS.Buttons;
 using System;
 using System.Threading.Tasks;
+using MediaManager;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 namespace GAZT.iOS
 {
@@ -49,6 +51,7 @@ namespace GAZT.iOS
             (sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
             Xamarin.Forms.Forms.Init();
+            KeyboardOverlapRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
             //  UINavigationBar.Appearance.TintColor = UIColor.Red;
             App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
@@ -62,7 +65,7 @@ namespace GAZT.iOS
             SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
             SfCardLayoutRenderer.Init();
-       
+            CrossMediaManager.Current.Init();
             new SfRotator();
             SfListViewRenderer.Init();
             SfEffectsViewRenderer.Init();  //Initialize only when effects view is added to Listview.
@@ -78,6 +81,7 @@ namespace GAZT.iOS
 
             var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+
             AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
             config.CollectorURL = "https://eum.gazt.gov.sa:443";
             AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
@@ -97,7 +101,6 @@ namespace GAZT.iOS
             Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
 
             App.InitializeAppDynamics();
-
             LoadApplication(iosapp);
 
             return base.FinishedLaunching(app, options);
@@ -168,5 +171,37 @@ namespace GAZT.iOS
             }
         }
 
+        //Export("AEDMApplicationDidBecomeActive:")]
+        //private static void AEDMApplicationDidBecomeActive(UIApplication application)
+        //{
+        //    DidBecomeActive(application);
+        //}
+        [Export("oneSignalApplicationDidBecomeActive:")]
+        public void OneSignalApplicationDidBecomeActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnActivated method.
+            OnActivated(application);
+        }
+
+        [Export("oneSignalApplicationWillResignActive:")]
+        public void OneSignalApplicationWillResignActive(UIApplication application)
+        {
+            // Remove line if you don't have a OnResignActivation method.
+            OnResignActivation(application);
+        }
+
+        [Export("oneSignalApplicationDidEnterBackground:")]
+        public void OneSignalApplicationDidEnterBackground(UIApplication application)
+        {
+            // Remove line if you don't have a DidEnterBackground method.
+            DidEnterBackground(application);
+        }
+
+        [Export("oneSignalApplicationWillTerminate:")]
+        public void OneSignalApplicationWillTerminate(UIApplication application)
+        {
+            // Remove line if you don't have a WillTerminate method.
+            WillTerminate(application);
+        }
     }
 }

@@ -74,7 +74,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -92,7 +93,8 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

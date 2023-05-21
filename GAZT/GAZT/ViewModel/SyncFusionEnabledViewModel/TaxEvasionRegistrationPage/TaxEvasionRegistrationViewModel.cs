@@ -240,6 +240,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -320,6 +322,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionRegistrationPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>

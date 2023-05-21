@@ -1,4 +1,4 @@
-﻿using CommonServiceLocator;
+using CommonServiceLocator;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.OnboardingPages;
 using EGAZT.Views.SyncFusionEnabledViews.ActivityIndicator;
@@ -24,12 +24,39 @@ using System.IO;
 using AppDynamics.Agent;
 using Newtonsoft.Json;
 using GAZT.Helper;
+using EGAZT.Views.NewDesign.CustomServicesPages;
+using EGAZT.Views.NewDesign.Template;
+using EGAZT.Views.NewDesign.TahqaqViews;
+using EGAZT.Views.NewDesign.VAT;
+using EGAZT.Views.NewDesign.LiveVideo;
+using EGAZT.Views.NewDesign.LoginPages;
+using EGAZT.Views.NewDesign.ForgotPasswordPages;
+using EGAZT.Views.NewDesign.ReportOTP;
+using EGAZT.Views.NewDesign.SubmitReport;
+using EGAZT.AppConfigurations;
+using Environment = System.Environment;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration;
+using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
+using EGAZT.Views.NewDesign.Zakaty;
+using EGAZT.Views.NewDesign.Common;
 
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
     public partial class App : Application
     {
+
+        // public static string CustomBaseUrl = "http://10.112.34.26:8024/";
+        // public static string CustomBaseUrl = "http://10.112.34.38:8024/";
+        //public static string VatCustom = "http://172.50.15.39:8443/api/";
+        //public static string CustomBaseUrl = "https://stzgw-apic-gov.gazt.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
+        // public static string CustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
+        // public static string VatBaseUrl = "https://vatmobile.zatca.gov.sa/api";
+        //public static string VatBaseUrl = "http://172.50.15.39:80/api";
+        public static string CustomBaseUrl;
+        public static string VatCustom;
+        public static string VatBaseUrl;
         #region new design views
 
         public static Stopwatch stopWatch = new Stopwatch();
@@ -122,7 +149,7 @@ namespace EGAZT
         #endregion
 
         #region new design views Release2
-        
+
         public static string MyBillsMultiplePayableList = "MyBillsMultiplePayableList";
         public static string InstalmentPlanPageView = "InstalmentPlanPageView";
         public static string VatInstalmentPlanSuccessPage = "VatInstalmentPlanSuccessPage";
@@ -269,12 +296,20 @@ namespace EGAZT
         public static string AccountStatementsNewFilterPageView = "AccountStatementsNewFilterPageView";
         public static string AccountStatementsDownloadPageView = "AccountStatementsDownloadPageView";
 
+        public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
+
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 
         //VATRefundsListPageView
         #endregion
+        #region CustomsView
+        public static string InquiryAboutCustomsDeclarationView = "InquiryAboutCustomsDeclarationView";
+        public static string TraifSectionsView = "TraifSections";
+        public static string LaboratoryPaymentOfInsuranceFees = "LaboratoryPaymentOfInsuranceFees";
 
+
+        #endregion
         public static Enums.PageExecutionType VATType { get; set; }
         public static Enums.PageExecutionType ZAKATType { get; set; }
         public static string fontFamilyBold = null;
@@ -326,7 +361,9 @@ namespace EGAZT
         public static bool isFromDashboard = false;
         public static string selectedForm12Fbguid = string.Empty;
         public static bool isMybillsRefresh = false;
+        //Cr6264
 
+        public static bool IsVAtProfitForGoods { get; set; }
         //in Seconds
         public static int IdleTimeToLogout = 100;
 
@@ -361,9 +398,16 @@ namespace EGAZT
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
+            PageSettings.GetBaseURL("Prod");
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");18v
+            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");19v
 
-           // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");
+            // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjA0NjIyQDMyMzAyZTMxMmUzMElHeGNPa25sMVBueHdHZW9ZWXRyQ05nQlg3czJwWENqYXdpS2tVWXE3NEE9");//20v
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
+            //latest syncfusion key 
+           // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Mgo+DSMBaFt+QHJqVk1hXk5Hd0BLVGpAblJ3T2ZQdVt5ZDU7a15RRnVfR11kSXhQfkRrUXxacw==;Mgo+DSMBPh8sVXJ1S0R+X1pFdEBBXHxAd1p/VWJYdVt5flBPcDwsT3RfQF5jTH5UdkNgUX5WeHFTRQ==;ORg4AjUWIQA/Gnt2VFhiQlJPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXtTcUVlWndfeHxSQGM=;MTk1NTk1N0AzMjMxMmUzMjJlMzNWYTZwbHdwcTk3cUtZRlRjbUNpWnFQZ2FuWUl0S0NqL3o4bDAwYTdmMHdjPQ==;MTk1NTk1OEAzMjMxMmUzMjJlMzNtamViNnJqU1dlVzdXTTRlVVYzZkNYMjVla0VMamExVFl1OW5sN2ZvdXhBPQ==;NRAiBiAaIQQuGjN/V0d+Xk9HfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hSn5WdkJjX3xWcXxcQGBf;MTk1NTk2MEAzMjMxMmUzMjJlMzNrdmZ1dE1ySEdnMjVJM2duNXl6U01ZdEp1UmpTdzh3NHRXSHJWQUV6T3pnPQ==;MTk1NTk2MUAzMjMxMmUzMjJlMzNhSTh1Ykl2Rll4VVdQWVQyU0NseVdXWmpnZzFxa3hndkpMZlpDWmRHZTlJPQ==;Mgo+DSMBMAY9C3t2VFhiQlJPd11dXmJWd1p/THNYflR1fV9DaUwxOX1dQl9gSXtTcUVlWndfeXRTRGM=;MTk1NTk2M0AzMjMxMmUzMjJlMzNZV3pJNDc4eExwWXhWTm1vVW9YZVBRVHVoVjQ0eGR0YUs2MW50bEdFNFJvPQ==;MTk1NTk2NEAzMjMxMmUzMjJlMzNTMnQ0MHRobksvV3FyL2lWMzlKcmFldEdnMVRTaGw5c3dmcW1pNk1Xb09BPQ==;MTk1NTk2NUAzMjMxMmUzMjJlMzNrdmZ1dE1ySEdnMjVJM2duNXl6U01ZdEp1UmpTdzh3NHRXSHJWQUV6T3pnPQ=="); // 21.1.*
+
+
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
             bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
@@ -414,7 +458,7 @@ namespace EGAZT
                 CreateClientHandler();
                 ResetAndContinueSession();
             }
-            catch (Exception )
+            catch (Exception)
             {
 
             }
@@ -438,14 +482,51 @@ namespace EGAZT
             //VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
-
+            //NEw
             if (!hasKey)
             {
-                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                // navigationPage=new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
+
+                //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
+
+               navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+
+                //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
+               //   navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
+              //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
+
             }
             else
             {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
+
+                //navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
+
+               navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+
+                // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
+                //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
+                // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
+             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
+
             }
 
             var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
@@ -456,11 +537,11 @@ namespace EGAZT
             _dialogService = dialogService;
             MainPage = navigationPage;
 
-            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp",  (sender, arg) =>
+            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", (sender, arg) =>
             {
                 if (App.DoesLoginNeedToBeRefreshed == true)
                 {
-                    Device.BeginInvokeOnMainThread( () =>
+                    Device.BeginInvokeOnMainThread(() =>
                     {
                         try
                         {
@@ -480,12 +561,13 @@ namespace EGAZT
                         }
                         catch (Exception ex)
                         {
-
+                            Console.Write(ex.ToString());
+                            Console.Write(ex.StackTrace.ToString());
                         }
                     });
                 }
             });
-          
+
             InitializeAppDynamics();
         }
 
@@ -526,7 +608,7 @@ namespace EGAZT
                     Preferences.Set("Preferences_DefaultLanguage", "En");
                 }
             }
-            catch (Exception )
+            catch (Exception)
             {
                 Preferences.Set("Preferences_DefaultLanguage", "Ar");
             }
@@ -638,11 +720,11 @@ namespace EGAZT
             {
                 IsJailBrokenDevice = DependencyService.Get<IDeviceInfo>().IsJailBreakDetected();
             }
-            catch (Exception )
+            catch (Exception)
             {
-               
+
             }
-        
+
         }
 
         public static Task ResetAndContinueSession()
@@ -674,7 +756,7 @@ namespace EGAZT
                 // Always return true as to keep our device timer running.
             });
             return null;
-        }       
+        }
 
         protected override void OnSleep()
         {
@@ -690,7 +772,7 @@ namespace EGAZT
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
-        
+
         }
 
         public static void InitializeAppDynamics()
@@ -705,7 +787,7 @@ namespace EGAZT
             AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
         }
 
-        
+
 
         public static void DisplayProgressView()
         {
@@ -719,6 +801,8 @@ namespace EGAZT
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -967,7 +1051,7 @@ namespace EGAZT
         private static void DisplayCrashReport()
         {
             const string errorFilename = "Fatal.log";
-            var libraryPath = Environment.GetFolderPath(Device.RuntimePlatform==Device.iOS? Environment.SpecialFolder.Resources: Environment.SpecialFolder.Personal);
+            var libraryPath = Environment.GetFolderPath(Device.RuntimePlatform == Device.iOS ? Environment.SpecialFolder.Resources : Environment.SpecialFolder.Personal);
             var errorFilePath = Path.Combine(libraryPath, errorFilename);
 
             if (!File.Exists(errorFilePath))

@@ -6,6 +6,7 @@ using EGAZT.Models;
 using EGAZT.Models.AccountStatements;
 using EGAZT.ViewModel.NewDesignViewModel.AccountStatements;
 using EGAZT.Views.NewDesign.GenericPickers;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
@@ -39,7 +40,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
         }
@@ -160,7 +163,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             else
@@ -190,8 +195,11 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
+
         }
 
         void Button_TransactionTypeFilter_Clicked(System.Object sender, System.EventArgs e)
@@ -381,19 +389,30 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             /*var item = e.Item as ASResult;
 
             await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
-
+            try { 
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         async void LVNormalStatements_ItemTapped(System.Object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
             /*var item = e.Item as ASResult;
             await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
-
+            try { 
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
         /*     private void StatusList_Tapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
@@ -409,6 +428,7 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
         private void ChipsData_Tapped(object sender, EventArgs e)
         {
+            try { 
             Grid chipGrid = sender as Grid;
             ASResult chipModel = (ASResult)chipGrid.BindingContext;
             if (chipModel != null)
@@ -416,7 +436,12 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 viewModel.FromStatus = chipModel.StatusDesc;
                 viewModel.ApplyFilter();
             }
-
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
 
     }

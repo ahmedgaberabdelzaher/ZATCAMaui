@@ -1,5 +1,6 @@
 ﻿using System;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
@@ -74,6 +75,9 @@ namespace EGAZT.Views.NewDesign.Common
             catch (Exception ex)
             {
 
+                Console.Write(ex.StackTrace.ToString());
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

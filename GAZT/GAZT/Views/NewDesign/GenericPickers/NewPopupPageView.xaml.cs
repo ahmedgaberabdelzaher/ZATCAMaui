@@ -33,7 +33,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             await picker.TranslateTo(0, 500, 0);
             await picker.TranslateTo(0, 0, 250);
@@ -87,7 +88,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -101,7 +103,8 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

@@ -732,6 +732,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         //private string NewMobileNumberFormate(string mobileNumber)
@@ -895,7 +897,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -973,7 +976,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpFormPage_ViewModel
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {

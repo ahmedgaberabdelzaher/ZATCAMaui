@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             BackgroundImageSource="partials_background.png"
-             NavigationPage.HasNavigationBar="False"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
-              xmlns:ResourceManager="clr-namespace:EGAZT"
-             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-               xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-             x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionReportDetailPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TAXEvasionPages.TaxEvasionReportDetailPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:converters="clr-namespace:EGAZT.NewDesignConverters"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:gmaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -24,10 +25,10 @@
                     </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="Entry" x:Key="EntryHeight48">
+            <Style x:Key="EntryHeight48" TargetType="Entry">
                 <Setter Property="HorizontalTextAlignment" Value="Start" />
-                <Setter Property="VerticalTextAlignment" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="FontFamily" Value="{StaticResource SomarRegular}" />
                 <Setter Property="FontSize" Value="15" />
                 <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
@@ -35,11 +36,11 @@
                 <Setter Property="PlaceholderColor" Value="{StaticResource NeutralGreay}" />
             </Style>
 
-            <Style TargetType="Frame" x:Key="circleFrame">
-                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}"/>
-                <Setter Property="Padding" Value="10"/>
-                <Setter Property="CornerRadius" Value="50"/>
-                <Setter Property="HasShadow" Value="False"/>
+            <Style x:Key="circleFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
+                <Setter Property="Padding" Value="10" />
+                <Setter Property="CornerRadius" Value="50" />
+                <Setter Property="HasShadow" Value="False" />
             </Style>
             <converters:NewTaxEvasionTabEnumToVisibilityConverter x:Key="enumToVisibilityConverter" />
         </ResourceDictionary>
@@ -51,29 +52,55 @@
                 <StackLayout>
                     <Grid Padding="15,5,15,5">
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.NDTaxEvasion}" />
 
-                        <Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" Style="{DynamicResource BackButtonArrow}">
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsBackStepButtonVisible}"
+                            Source="arrowLeftwhite"
+                            Style="{DynamicResource BackButtonArrow}"
+                            VerticalOptions="CenterAndExpand">
                             <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}"/>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.OnBackButtonClicked}" />
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
 
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" Padding="0,15,0,0" BackgroundColor="White" x:Name="VATRMainGrid">
+                    <yummy:PancakeView
+                        Padding="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="FillAndExpand">
+                        <Grid
+                            x:Name="VATRMainGrid"
+                            Margin="0"
+                            Padding="0,15,0,0"
+                            BackgroundColor="White"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="100*" />
                             </Grid.RowDefinitions>
-                            <ContentPresenter VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.Row="0" BackgroundColor="White"/>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
                 </StackLayout>
@@ -82,144 +109,267 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <ScrollView Grid.Row="1" >
+        <ScrollView Grid.Row="1">
             <StackLayout Padding="15">
-                <Grid BindingContext="{Binding SelectedTaxEvasionListItem}" >
+                <Grid BindingContext="{Binding SelectedTaxEvasionListItem}">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
                     </Grid.ColumnDefinitions>
-                    <custom:CustomLabel HorizontalOptions="StartAndExpand" Text="{Binding CompanyName}" Style="{StaticResource PageTitleBlack}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                    <yummy:PancakeView  Padding="10,10,10,10" CornerRadius="14" Grid.Row="0" Grid.Column="1"  HeightRequest="24" BorderThickness="1" BackgroundColor="{Binding FrameColorHighlight}"  VerticalOptions="CenterAndExpand" HorizontalOptions="End" >
-                        <custom:CustomLabel Text="{Binding Status}" Style="{StaticResource CaptionLabelGrey}" TextColor="{Binding TextColorHighlight}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <custom:CustomLabel
+                        HorizontalOptions="StartAndExpand"
+                        LineBreakMode="TailTruncation"
+                        Style="{StaticResource PageTitleBlack}"
+                        Text="{Binding CompanyName}"
+                        VerticalTextAlignment="Center" />
+                    <yummy:PancakeView
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Padding="10,10,10,10"
+                        BackgroundColor="{Binding FrameColorHighlight}"
+                        CornerRadius="14"
+                        HeightRequest="24"
+                        HorizontalOptions="End"
+                        VerticalOptions="CenterAndExpand">
+                        <yummy:PancakeView.Border>
+                            <yummy:Border Thickness="1" />
+                        </yummy:PancakeView.Border>
+                        <custom:CustomLabel
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource CaptionLabelGrey}"
+                            Text="{Binding Status}"
+                            TextColor="{Binding TextColorHighlight}"
+                            VerticalOptions="CenterAndExpand">
                             <custom:CustomLabel.Triggers>
-                                <!--Text="{Binding statusMessage}" TextColor="{Binding statusColor}"-->
-                                <DataTrigger TargetType="Label" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
-                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                <!--  Text="{Binding statusMessage}" TextColor="{Binding statusColor}"  -->
+                                <DataTrigger
+                                    Binding="{Binding Status}"
+                                    TargetType="Label"
+                                    Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
+                                    <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                 </DataTrigger>
-                                <DataTrigger TargetType="Label" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
+                                <DataTrigger
+                                    Binding="{Binding Status}"
+                                    TargetType="Label"
+                                    Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
                                     <Setter Property="TextColor" Value="{StaticResource ErrorColor}" />
                                 </DataTrigger>
                             </custom:CustomLabel.Triggers>
                         </custom:CustomLabel>
                         <yummy:PancakeView.Triggers>
-                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}" Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
+                            <DataTrigger
+                                Binding="{Binding Status}"
+                                TargetType="yummy:PancakeView"
+                                Value="{x:Static ResourceManager:AppResources.ZTEReportReportOpen}">
                                 <Setter Property="BackgroundColor" Value="{StaticResource BackgroundGray}" />
                             </DataTrigger>
-                            <DataTrigger TargetType="yummy:PancakeView" Binding="{Binding Status}"  Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
-                                <Setter Property="BackgroundColor" Value="#F5F5F5"/>
+                            <DataTrigger
+                                Binding="{Binding Status}"
+                                TargetType="yummy:PancakeView"
+                                Value="{x:Static ResourceManager:AppResources.ZTEReportStatusCompleted}">
+                                <Setter Property="BackgroundColor" Value="#F5F5F5" />
                             </DataTrigger>
                         </yummy:PancakeView.Triggers>
                     </yummy:PancakeView>
                 </Grid>
-                
-                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+
+                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Padding="16">
-                            <Image Source="vat_user" HeightRequest="30"/>
+                        <StackLayout Padding="16" Orientation="Horizontal">
+                            <Image HeightRequest="30" Source="vat_user" />
                             <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
-                                
+
 
 
                             </Frame>-->
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDReporterInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
-                        </StackLayout> 
+                            <custom:CustomLabel
+                                LineBreakMode="TailTruncation"
+                                Style="{StaticResource SectionTitleBlackBold}"
+                                Text="{x:Static ResourceManager:AppResources.NDReporterInformation}"
+                                VerticalTextAlignment="Center" />
+                        </StackLayout>
 
-                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
 
                         <StackLayout Padding="15" Spacing="10">
-                            <StackLayout Orientation="Horizontal" BindingContext="{Binding SelectedTaxEvasionListItem}" >
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding Username}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout> 
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.PhoneNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout> 
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text=" " Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                            <StackLayout BindingContext="{Binding SelectedTaxEvasionListItem}" Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterName}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding Username}" />
                             </StackLayout>
-                            <Frame   BackgroundColor="White"     Style="{StaticResource GAZTFrameStyleForEntry}" x:Name="FrmReportLocation">
-                                <gmaps:Map Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"  Margin="-12"  MapType="Street" IsEnabled="False" x:Name="mapView" HeightRequest="200" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" />
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionMobileNumber}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.PhoneNumber}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReporterLocation}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text=" " />
+                            </StackLayout>
+                            <Frame
+                                x:Name="FrmReportLocation"
+                                BackgroundColor="White"
+                                Style="{StaticResource GAZTFrameStyleForEntry}">
+                                <gmaps:Map
+                                    x:Name="mapView"
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="2"
+                                    Margin="-12"
+                                    HeightRequest="200"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsEnabled="False"
+                                    MapType="Street"
+                                    VerticalOptions="CenterAndExpand" />
                             </Frame>
                         </StackLayout>
                     </StackLayout>
                 </border:SfBorder>
 
-                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Padding="16">
-                            <Image Source="ic_company.png"/>
+                        <StackLayout Padding="16" Orientation="Horizontal">
+                            <Image Source="ic_company.png" />
                             <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
-                                
+
 
 
                             </Frame>-->
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/> 
+                            <custom:CustomLabel
+                                LineBreakMode="TailTruncation"
+                                Style="{StaticResource SectionTitleBlackBold}"
+                                Text="{x:Static ResourceManager:AppResources.NDFacilityInformation}"
+                                VerticalTextAlignment="Center" />
                         </StackLayout>
 
-                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
 
                         <StackLayout Padding="16" Spacing="10">
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.CompanyName}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout> 
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.Tin}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand"/>
-                            </StackLayout> 
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.VatNumber}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionFacilityName}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.CompanyName}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.RegionNameAr}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                            </StackLayout> 
-                            <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.City}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionTIN}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.Tin}" />
                             </StackLayout>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" Style="{StaticResource BodyLabelGrey}"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.District}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
-                            </StackLayout> 
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionVATNumber}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.VatNumber}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionRegion}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.RegionNameAr}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionCity}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.City}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionDistrict}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.District}" />
+                            </StackLayout>
                             <StackLayout Orientation="Horizontal" Spacing="10">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}" Style="{StaticResource BodyLabelGrey}" WidthRequest="50"/>
-                                <custom:CustomLabel Text="{Binding SelectedTaxEvasionListItem.Street}" Style="{StaticResource ValueLabelBlack}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionStreet}"
+                                    WidthRequest="50" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding SelectedTaxEvasionListItem.Street}" />
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </border:SfBorder>
 
-                <border:SfBorder Margin="0,10,0,10"  Style="{StaticResource GreyBorderFrameWithShadow}">
+                <border:SfBorder Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" Padding="16">
-                             <Image Source="zakat_details"/>
+                        <StackLayout Padding="16" Orientation="Horizontal">
+                            <Image Source="zakat_details" />
                             <!--<Frame Style="{StaticResource circleFrame}" BackgroundColor="{StaticResource BackgroundGray}">
-                               
+
 
 
                             </Frame>-->
-                            <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource SectionTitleBlackBold}" LineBreakMode="TailTruncation" VerticalTextAlignment="Center"/>
+                            <custom:CustomLabel
+                                LineBreakMode="TailTruncation"
+                                Style="{StaticResource SectionTitleBlackBold}"
+                                Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}"
+                                VerticalTextAlignment="Center" />
                         </StackLayout>
 
-                        <BoxView HorizontalOptions="FillAndExpand"  HeightRequest="1" BackgroundColor="LightGray" />
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
 
                         <StackLayout Padding="15" Spacing="10">
-                            <Grid >
+                            <Grid>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <custom:CustomLabel Grid.Row="0" Grid.Column="1" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}" Style="{StaticResource BodyLabelGrey}" WidthRequest="200"/>
-                                <Label Grid.Row="0" Grid.Column="2" Text="{Binding SelectedTaxEvasionListItem.Category}"  Style="{StaticResource BodyLabelGrey}" TextColor="{StaticResource BlackLabelTextColor}" HorizontalOptions="EndAndExpand" HorizontalTextAlignment="End"/>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportType}"
+                                    WidthRequest="200" />
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding SelectedTaxEvasionListItem.Category}"
+                                    TextColor="{StaticResource BlackLabelTextColor}" />
                             </Grid>
                             <StackLayout Orientation="Horizontal">
-                                <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" Style="{StaticResource BodyLabelGrey}"/>
-                                <Label Text="{Binding SelectedTaxEvasionListItem.Content}" Style="{StaticResource BodyLabelGrey}" TextColor="{StaticResource BlackLabelTextColor}" HorizontalTextAlignment="End" HorizontalOptions="EndAndExpand"/>
+                                <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReportDetails}" />
+                                <Label
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding SelectedTaxEvasionListItem.Content}"
+                                    TextColor="{StaticResource BlackLabelTextColor}" />
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

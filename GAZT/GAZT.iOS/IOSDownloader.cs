@@ -96,6 +96,8 @@ namespace GAZT.iOS
             catch (Exception ex)
             {
                 //Exception Logging
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

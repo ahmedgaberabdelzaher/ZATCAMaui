@@ -52,7 +52,8 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

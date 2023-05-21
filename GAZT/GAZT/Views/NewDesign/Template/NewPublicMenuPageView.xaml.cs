@@ -65,7 +65,8 @@ namespace EGAZT.Views.NewDesign.Template
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }

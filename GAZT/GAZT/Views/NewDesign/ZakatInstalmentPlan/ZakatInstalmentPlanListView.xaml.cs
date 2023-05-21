@@ -44,7 +44,8 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -71,6 +72,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         async void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
         {
+            try { 
             InstalmentPlanModel selectedItem = e.AddedItems[0] as InstalmentPlanModel;
             await Task.Delay(1000);
 
@@ -85,7 +87,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.EnableRevokZakatInstalment();
                 await viewModel.GetZakatRevokList();
             }
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
 
         protected async override void OnAppearing()
@@ -106,6 +113,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
         private async void SummaryattachmentsListView_ItemTapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
         {
+            try { 
             var item = e.ItemData as ZakatListModel;
             if (item != null)
             {
@@ -135,7 +143,12 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             }
 
 
-
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
 
 
         }

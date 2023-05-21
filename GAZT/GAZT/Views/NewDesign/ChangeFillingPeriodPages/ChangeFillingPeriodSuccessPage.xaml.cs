@@ -23,7 +23,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
 
             SetLTR();
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            viewModel = App.Locator.ChangeFillingPeriodPageView;
+            viewModel = App.Locator.ChangeFillingPeriodSuccessPageView;
             this.BindingContext = viewModel;
         }
 
@@ -85,8 +85,11 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(
                             AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+                        });
                     }
                 }
             }

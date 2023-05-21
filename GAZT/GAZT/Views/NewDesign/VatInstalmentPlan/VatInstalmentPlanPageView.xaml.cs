@@ -58,7 +58,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -137,7 +138,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -220,6 +222,7 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -278,7 +281,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
 
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -486,6 +490,8 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -201,6 +201,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)

@@ -17,6 +17,10 @@ using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
 using Android.Content;
+using Acr.UserDialogs;
+using MediaManager;
+using Rg.Plugins.Popup.Services;
+using System.Net;
 
 namespace GAZT.Droid
 {
@@ -41,15 +45,17 @@ namespace GAZT.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             Xamarin.FormsGoogleMaps.Init(this, savedInstanceState);
-
-            Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
+            Rg.Plugins.Popup.Popup.Init(this);
+            UserDialogs.Init(this);
+            CrossMediaManager.Current.Init(this);
             if (Android.OS.Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.P)
             {
                 Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
             }
 
             // Xamarin.Essentials.Platform.Init(this, bundle);
-            System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+            ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
+          //  System.Net.ServicePointManager.ServerCertificateValidationCallback += (o, cert, chain, errors) => true;
             if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.WriteExternalStorage) != (int)Permission.Granted)
             {
                 ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.WriteExternalStorage }, 0);
@@ -101,8 +107,9 @@ namespace GAZT.Droid
             AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
             TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
             LoadApplication(app);
+       
             global::Xamarin.Forms.Application.Current.On<Xamarin.Forms.PlatformConfiguration.Android>()
-             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Pan);
+             .UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
         }
 
         //private void RequestStorageAccess()
@@ -204,10 +211,10 @@ namespace GAZT.Droid
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-            for (int i = 0; i < permissions.Length; i++)
+           // PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+          /*   for (int i = 0; i < permissions.Length; i++)
             {
-                if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)
+               if (permissions[i].Equals("android.permission.CAMERA") && grantResults[i] == Permission.Granted)
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
@@ -215,15 +222,23 @@ namespace GAZT.Droid
                 {
                     global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
                 }
-            }
-
+            }*/
+           
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
-        public override void OnBackPressed()
+        public override async void OnBackPressed()
         {
-            App.OnBackPressed();
+            if (Rg.Plugins.Popup.Popup.SendBackPressed(base.OnBackPressed))
+            {
+                await PopupNavigation.Instance.PopAsync(true);
+            }
+            else
+            {
+                App.OnBackPressed();
+            }
+            
         }
 
         private void PreventLinkerFromStrippingCommonLocalizationReferences()

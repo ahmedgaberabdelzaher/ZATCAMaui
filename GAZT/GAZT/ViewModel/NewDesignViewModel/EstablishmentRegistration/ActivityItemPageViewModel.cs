@@ -14,6 +14,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
+using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using Plugin.FilePicker;
 using Rg.Plugins.Popup.Services;
 using Xamarin.Essentials;
@@ -100,6 +101,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {"90721", "Municipality" },
             {"90724", "Ministry of Petroleum and Mineral Resources" },
             {"90740", "General Sports Authority" },
+             {"90742","General Commission For Audiovisual Media" },
             {"90718", "Other" }
         };
         private Dictionary<string, string> ArIssueBy = new Dictionary<string, string>()
@@ -129,6 +131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {"90729", "وزارة العدل" },
             {"90721", "الهيئة السعودية للمهندسين" },
             {"90724", "وزارة البترول والثروة المعدنية" },
+              {"90742", "هيئة الإعلام المرئي والمسموع"},
             {"90718", "غير معرف" }
         };
         private bool CanExecuteClickCommand(object args) => EnableInputFields;
@@ -930,6 +933,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                         {
                                             Console.Write(ex.ToString());
                                             Console.Write(ex.StackTrace.ToString());
+
                                         }
                                     }
                                     else
@@ -964,6 +968,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
             }
         }
         private async void fetchTabDataAndBind()
@@ -1090,6 +1097,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
+
             }
             finally
             {
@@ -1289,6 +1297,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+
             }
             finally
             {
@@ -1520,6 +1531,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

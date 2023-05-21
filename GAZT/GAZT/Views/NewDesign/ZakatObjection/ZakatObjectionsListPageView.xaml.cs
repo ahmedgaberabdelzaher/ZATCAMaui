@@ -49,7 +49,8 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
             }
             catch (Exception ex)
             {
-               
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

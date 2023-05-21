@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.VatReview
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
 
-            viewModel = App.Locator.VatReviewView;
+            viewModel = App.Locator.VatReviewSuccessView;
 
             this.BindingContext = viewModel;
         }
@@ -84,7 +84,8 @@ namespace EGAZT.Views.NewDesign.VatReview
             catch (Exception ex)
             {
 
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }

@@ -57,6 +57,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         }
         private void OnGoToLoginClicked(object sender, EventArgs e)
         {
+            try { 
             if (Navigation.NavigationStack.Count > 0)
             {
                 Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
@@ -65,6 +66,12 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 Navigation.RemovePage(pg1);
             }
             viewModel._navigationService.GoBack();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
     }
 }

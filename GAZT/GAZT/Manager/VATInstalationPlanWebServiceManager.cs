@@ -49,6 +49,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
 
@@ -127,6 +129,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -181,6 +185,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
 
@@ -233,6 +239,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
 
@@ -285,6 +293,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
 
@@ -352,7 +362,9 @@ namespace EGAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                                throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                //throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                throw new GAZTErrorException(errorMessage);
+
                             }
                         }
                     }
@@ -364,6 +376,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -449,6 +463,8 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }

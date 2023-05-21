@@ -15,7 +15,7 @@
              xmlns:local1="clr-namespace:GAZT"
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.InternationalCodeSearchPage">
     <ScrollView>
-        <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Margin="0,150,0,0">
+        <yummy:PancakeView CornerRadius="22,22,0,0"  VerticalOptions="EndAndExpand" BackgroundColor="White" Margin="0,150,0,0">
 
             <Grid>
 

@@ -22,6 +22,7 @@ namespace GAZT.iOS
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 LogUnhandledException(ex);
             }
         }

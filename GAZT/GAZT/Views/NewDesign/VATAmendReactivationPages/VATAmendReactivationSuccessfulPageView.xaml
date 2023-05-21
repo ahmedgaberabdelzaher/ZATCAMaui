@@ -1,81 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             NavigationPage.HasNavigationBar="False"             
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:FontImage="clr-namespace:MVP.FontIcons"
-             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-             BackgroundColor="{StaticResource Primary}"
-             xmlns:custom2="clr-namespace:EGAZT"
-             x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationSuccessfulPageView">
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationSuccessfulPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:MVP.FontIcons"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom2="clr-namespace:EGAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="{StaticResource Primary}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="/Views/SyncFusionEnabledViews/Common/Styles.xaml"/>
+                <ResourceDictionary Source="/Views/SyncFusionEnabledViews/Common/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="BoxView">
-                <Setter Property="HeightRequest" Value="10"/>
-                <Setter Property="WidthRequest" Value="10"/>
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="WidthRequest" Value="10" />
             </Style>
             <Style TargetType="Label">
-                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
             </Style>
             <Style TargetType="Button">
-                <Setter Property="FontFamily" Value="{StaticResource SomarBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Padding="40" VerticalOptions="CenterAndExpand">
-                <Image Source="Forget_ic_success.png" HeightRequest="120" WidthRequest="120"   Aspect="AspectFit"/>
-                <Label x:Name="lblSuccessMessage" Text="{x:Static custom2:AppResources.ZVatAcknowledgment}" Style="{StaticResource PageTitleWhite}" HorizontalTextAlignment="Center" />
-                <Label Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}" Style="{StaticResource BodyLabelWhite}"
-                       HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                <Image
+                    Aspect="AspectFit"
+                    HeightRequest="120"
+                    Source="Forget_ic_success.png"
+                    WidthRequest="120" />
+                <Label
+                    x:Name="lblSuccessMessage"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource PageTitleWhite}"
+                    Text="{x:Static custom2:AppResources.ZVatAcknowledgment}" />
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource BodyLabelWhite}"
+                    Text="{x:Static custom2:AppResources.VATAmendReactivationSuccessfulAkwdg}" />
             </StackLayout>
             <ScrollView>
-                <yummy:PancakeView BackgroundColor="White" CornerRadius="22,22,0,0" Padding="20" HasShadow="False" Margin="0,-20,0,0"  VerticalOptions="EndAndExpand">
+                <yummy:PancakeView
+                    Margin="0,-20,0,0"
+                    Padding="20"
+                    BackgroundColor="White"
+                    CornerRadius="22,22,0,0"
+                    VerticalOptions="EndAndExpand">
                     <StackLayout Padding="0,0,0,10">
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
-                            <Grid ColumnSpacing="10" Padding="10" >
+                        <Frame
+                            Margin="0,20,0,0"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <Grid Padding="10" ColumnSpacing="10">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Text="{x:Static custom2:AppResources.VATRSName}"  VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                <Label Grid.Column="1" x:Name="Label_Name" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                                <Label
+                                    Grid.Column="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static custom2:AppResources.VATRSName}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    x:Name="Label_Name"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource BodyLabelBlackMedium}"
+                                    VerticalOptions="Center" />
                             </Grid>
                         </Frame>
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,0" HasShadow="False">
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{x:Static custom2:AppResources.VATRSAppNumber}" VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}" HorizontalOptions="StartAndExpand"/>
+                        <Frame
+                            Margin="0,20,0,0"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static custom2:AppResources.VATRSAppNumber}"
+                                    VerticalOptions="Center" />
                                 <StackLayout HorizontalOptions="EndAndExpand" Orientation="Horizontal">
-                                    <Label x:Name="Label_ApplicationNumber" Text="" VerticalOptions="Center" Style="{StaticResource BodyLabelBlackMedium}" />
-                                    <Image Source="MainGrayCopy" Style="{StaticResource SmallIcon}"/>
+                                    <Label
+                                        x:Name="Label_ApplicationNumber"
+                                        Style="{StaticResource BodyLabelBlackMedium}"
+                                        Text=""
+                                        VerticalOptions="Center" />
+                                    <Image Source="MainGrayCopy" Style="{StaticResource SmallIcon}" />
                                 </StackLayout>
                             </StackLayout>
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Tapped="Image_Copy_Tapped"/>
+                                <TapGestureRecognizer Tapped="Image_Copy_Tapped" />
                             </Frame.GestureRecognizers>
                         </Frame>
-                        <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" Margin="0,20,0,10" HasShadow="False">
-                            <StackLayout Orientation="Horizontal" Padding="10">
-                                <Label Text="{x:Static custom2:AppResources.Date}" VerticalOptions="Center" Style="{StaticResource CaptionLabelGrey}"  HorizontalOptions="StartAndExpand"/>
-                                <Label x:Name="Label_Date" Style="{StaticResource BodyLabelBlackMedium}" VerticalOptions="Center" HorizontalOptions="EndAndExpand"/>
+                        <Frame
+                            Margin="0,20,0,10"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static custom2:AppResources.Date}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    x:Name="Label_Date"
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource BodyLabelBlackMedium}"
+                                    VerticalOptions="Center" />
                             </StackLayout>
                         </Frame>
-                        <buttons:SfButton Text="{x:Static custom2:AppResources.VatInstalmentDownload}"
-                                           VerticalOptions="End" FontAttributes="Bold"
-                                         Margin="10,20,10,20"  Grid.ColumnSpan="2"
-                                          Clicked="SfButton_Clicked"
-                                                   Style="{StaticResource PrimaryButtonStyle}"/>
-                        <buttons:SfButton x:Name="btnDashboard" Text="{x:Static custom2:AppResources.ZZZZGotoDashboard}" VerticalOptions="End"
-                                       Clicked="btnDashboard_Clicked"   Margin="10,0,10,0"   Grid.ColumnSpan="2" 
-                                      Style="{StaticResource PrimaryButtonStyle}" />
+                        <buttons:SfButton
+                            Grid.ColumnSpan="2"
+                            Margin="10,20,10,20"
+                            Clicked="SfButton_Clicked"
+                            FontAttributes="Bold"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static custom2:AppResources.VatInstalmentDownload}"
+                            VerticalOptions="End" />
+                        <buttons:SfButton
+                            x:Name="btnDashboard"
+                            Grid.ColumnSpan="2"
+                            Margin="10,0,10,0"
+                            Clicked="btnDashboard_Clicked"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static custom2:AppResources.ZZZZGotoDashboard}"
+                            VerticalOptions="End" />
                     </StackLayout>
                 </yummy:PancakeView>
             </ScrollView>

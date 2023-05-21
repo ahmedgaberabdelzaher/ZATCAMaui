@@ -328,7 +328,7 @@
     <value>TIN </value>
   </data>
   <data name="TotalAmount" xml:space="preserve">
-    <value>Total amount</value>
+    <value>Total value</value>
   </data>
   <data name="TotalOfBillsUnpaid" xml:space="preserve">
     <value>Total unpaid-bill amount SAR:</value>
@@ -340,7 +340,7 @@
     <value>25% from  objected amount</value>
   </data>
   <data name="VATRegistrationCertificate" xml:space="preserve">
-    <value>VAT registration certificate</value>
+    <value>VAT Registration Validation</value>
   </data>
   <data name="VersonCheckErrorTitle" xml:space="preserve">
     <value>New Version Available</value>
@@ -455,7 +455,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Forgot Username or Password?</value>
   </data>
   <data name="Individual" xml:space="preserve">
-    <value>Individual/Personal business</value>
+    <value>Individual</value>
   </data>
   <data name="Company" xml:space="preserve">
     <value>Corporate</value>
@@ -803,7 +803,7 @@ amendments do not match what was calculated by the General Authority for Zakat a
     <value>Please select the ID Type value</value>
   </data>
   <data name="ZSearchParameter" xml:space="preserve">
-    <value>Search Parameter  </value>
+    <value>Search Type </value>
   </data>
   <data name="ZVATAccountNumber" xml:space="preserve">
     <value>VAT Account Number</value>
@@ -2178,7 +2178,7 @@ Should we require further information, we would be in contact.</value>
     <comment>Form Bundle</comment>
   </data>
   <data name="ZVATLookupCRNumberType3" xml:space="preserve">
-    <value>Commercial Registration Number</value>
+    <value>CR / License / Contract No. </value>
   </data>
   <data name="ZVATLookupIDTaxpayerTinType1" xml:space="preserve">
     <value>VAT Account Number</value>
@@ -2956,9 +2956,6 @@ Should we require further information, we would be in contact.</value>
   <data name="ZZPleaseEnterValidId" xml:space="preserve">
     <value>Please enter a valid ID</value>
     <comment>signup</comment>
-  </data>
-  <data name="Copied" xml:space="preserve">
-    <value>Copied</value>
   </data>
   <data name="ZZGCCIDdonotstartwith0" xml:space="preserve">
     <value>GCC ID should not start with 0</value>
@@ -3876,7 +3873,7 @@ If you are a non-resident taxpayer, it should reflect the date when you made you
     <value>Please follow the steps</value>
   </data>
   <data name="ZVATLookUpSearchButtonText" xml:space="preserve">
-    <value>Search VAT</value>
+    <value>Search</value>
   </data>
   <data name="ZVATLookUpNewSearchButtonText" xml:space="preserve">
     <value>New VAT Search</value>
@@ -4889,7 +4886,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <comment>VATAmendReactivationSuccessfulPageView</comment>
   </data>
   <data name="SelectTheOptionAndCompleteDetails" xml:space="preserve">
-    <value />
+    <value>Select the option and complete the details</value>
   </data>
   <data name="Corporate" xml:space="preserve">
     <value>Corporate</value>
@@ -6711,7 +6708,7 @@ In Case you want to request for an exception for quarterly filing, Kindly provid
     <value>The new email must not match the old email</value>
   </data>
   <data name="ZZZZCarriedCreditDetails" xml:space="preserve">
-    <value>Carried Credit Details</value>
+    <value>Carried Previous Credit Details</value>
   </data>
   <data name="ESTAddOutlet" xml:space="preserve">
     <value>Add Outlet</value>
@@ -9046,5 +9043,1301 @@ I acknowledge that the above bank account information is correct and assume full
   </data>
   <data name="TaxPayerSubsidyRequest" xml:space="preserve">
     <value>E-invoicing Subsidy Request</value>
+  </data>
+  <data name="Inquiryaboutacustomsdeclaration" xml:space="preserve">
+    <value>Inquiry about a customs declaration</value>
+  </data>
+  <data name="Inquirethrough" xml:space="preserve">
+     <value>Inquire through</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+     <value>Port</value>
+  </data>
+  <data name="Declarationtype" xml:space="preserve">
+     <value>Declaration type</value>
+  </data>
+  <data name="DeclarationNumber" xml:space="preserve">
+     <value>Declaration Number</value>
+  </data>
+  <data name="DeclarationDate" xml:space="preserve">
+     <value>Declaration Date</value>
+  </data>
+  <data name="Billofladingnumber" xml:space="preserve">
+     <value>Bill of lading number</value>
+  </data>
+  <data name="Shippingcompany" xml:space="preserve">
+     <value>Shipping company</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+     <value>Details</value>
+  </data>
+  <data name="Inquiryforpolicyinformation" xml:space="preserve">
+     <value>Inquiry for policy information</value>
+  </data>
+  <data name="InQuerywithstatementinformation" xml:space="preserve">
+     <value>InQuery with statement information</value>
+  </data>
+  <data name="Importerinformation" xml:space="preserve">
+     <value>Importer information</value>
+  </data>
+  <data name="Inferentialnumber" xml:space="preserve">
+     <value>Inferential number</value>
+  </data>
+  <data name="Statementitems" xml:space="preserve">
+     <value>Statement items</value>
+  </data>
+  <data name="Customsitem" xml:space="preserve">
+     <value>Customs item</value>
+  </data>
+  <data name="Categoryseries" xml:space="preserve">
+     <value>Category series</value>
+  </data>
+  <data name="CountryofOrigin" xml:space="preserve">
+     <value>Country of Origin</value>
+  </data>
+  <data name="Customsitemdescription" xml:space="preserve">
+     <value>Customs item description</value>
+  </data>
+  <data name="Feedetails" xml:space="preserve">
+     <value>Fee details</value>
+  </data>
+  <data name="FeeType" xml:space="preserve">
+     <value>Fee Type</value>
+  </data>
+  <data name="FeeCost" xml:space="preserve">
+     <value>Fee Cost</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+     <value>Total</value>
+  </data>
+  <data name="Importerinformationtxt" xml:space="preserve">
+     <value>Importer information</value>
+  </data>
+  <data name="NoInternet" xml:space="preserve">
+     <value>No Internet Connection</value>
+  </data>
+  <data name="ServerError" xml:space="preserve">
+     <value>Server Error</value>
+  </data>
+  <data name="ServerErrorOrNoInternetConnection" xml:space="preserve">
+     <value>Server Error Or NoInternet Connection</value>
+  </data>
+  <data name="Valueinforeigncurrency" xml:space="preserve">
+     <value>Value in foreign currency</value>
+  </data>
+  <data name="Countrycurrency" xml:space="preserve">
+     <value>Country currency</value>
+  </data>
+  <data name="Measuringunit" xml:space="preserve">
+     <value>Measuring unit</value>
+  </data>
+  <data name="CustomsfeesSAR" xml:space="preserve">
+     <value>Customs fees (SAR)</value>
+  </data>
+  <data name="CustomsvalueSAR" xml:space="preserve">
+     <value>Customs value (SAR)</value>
+  </data>
+  <data name="DeclarationNotAvailableMsg" xml:space="preserve">
+     <value>This declaration is not available in the Zakat, Tax and Customs Authority system, please check the statement information and try again</value>
+  </data>
+  <data name="ItemDescription" xml:space="preserve">
+     <value>Item Description</value>
+  </data>
+  <data name="InquiryDataRequiredAttentionMsg" xml:space="preserve">
+     <value>Please enter all required data</value>
+  </data>
+  <data name="NoDataFound" xml:space="preserve">
+     <value>No Data Found </value>
+     </data>
+  <data name="TariffSections" xml:space="preserve">
+     <value>Tariff Sections</value>
+  </data>
+  <data name="HS" xml:space="preserve">
+     <value>HS</value>
+  </data>
+  <data name="Effectivedate" xml:space="preserve">
+     <value>Effective date </value>
+  </data>
+  <data name="Duty" xml:space="preserve">
+     <value>Duty</value>
+  </data>
+  <data name="RequiredProcedures" xml:space="preserve">
+     <value>Required Procedures</value>
+  </data>
+  <data name="Searchbynameorsection" xml:space="preserve">
+     <value>Search by name or section</value>
+  </data>
+  <data name="Free" xml:space="preserve">
+     <value>Free</value>
+  </data>
+  <data name="NameForImprter" xml:space="preserve">
+     <value>Name</value>
+  </data>
+  <data name="Quantity" xml:space="preserve">
+     <value>Quantity</value>
+  </data>
+  <data name="FeeDescription" xml:space="preserve">
+     <value>Fee Description</value>
+  </data>
+  <data name="Submitanewreport" xml:space="preserve">
+     <value>Submit new report</value>
+  </data>
+  <data name="BalaghHint" xml:space="preserve">
+     <value>Please seek accuracy, objectivity, and clarity and avoid personal disputes, ambiguity symbols and signs, or providing incomplete information. Please provide all the detailed information that you have and attach the evidence that proves the report.
+
+Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin)</value>
+  </data>
+  <data name="ReportType" xml:space="preserve">
+     <value>Report Type</value>
+  </data>
+  <data name="ReportLocation" xml:space="preserve">
+     <value>Report Location</value>
+  </data>
+  <data name="ReportText" xml:space="preserve">
+     <value>Report Text</value>
+  </data>
+  <data name="BalaghSupportedFileMsg" xml:space="preserve">
+    <value>Jpg, PDF, png. accepted files</value>
+  </data>
+  <data name="MaximumFileSizeMsg" xml:space="preserve">
+    <value>File size should not be more than 2MB</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="Reportsubmittedsuccessfully" xml:space="preserve">
+    <value>Report submitted successfully</value>
+  </data>
+  <data name="Addattachments" xml:space="preserve">
+    <value>Add attachments</value>
+  </data>
+  <data name="BalaghPolicytxt" xml:space="preserve">
+    <value>I have read the Reports and Complaints Policy and agree to abide by what has been stated</value>
+  </data>
+  <data name="ReportSentSuccess" xml:space="preserve">
+    <value>The report has been sent successfully</value>
+  </data>
+  <data name="ReportSendingDate" xml:space="preserve">
+    <value>date of sending the report</value>
+  </data>
+  <data name="Thereportnumber" xml:space="preserve">
+    <value>The report number</value>
+  </data>
+  <data name="Backtomainmenu" xml:space="preserve">
+    <value>Back to main menu</value>
+  </data>
+  <data name="MB" xml:space="preserve">
+    <value>MB</value>
+  </data>
+  <data name="FieldRequired" xml:space="preserve">
+    <value>Field Required</value>
+  </data>
+  <data name="Mailnotcorrect" xml:space="preserve">
+    <value>Mail not correct</value>
+  </data>
+  <data name="PhoneNotCorrect" xml:space="preserve">
+    <value>The mobile number is incorrect</value>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Phone Number</value>
+  </data>
+  <data name="PolicyValidationMsg" xml:space="preserve">
+    <value>The notifications and complaints policy must be approved first</value>
+  </data>
+  <data name="Zakatortaxreport" xml:space="preserve">
+    <value>Zakat or tax report</value>
+  </data>
+  <data name="Reportafinancialoradministrativeviolation" xml:space="preserve">
+    <value>Report a financial or administrative violation</value>
+  </data>
+  <data name="IndicateTheTypeOfReport" xml:space="preserve">
+    <value>Indicate report Type</value>
+  </data>
+  <data name="ItemDescriptions" xml:space="preserve">
+     <value>Item Description</value>
+  </data>
+  <data name="Customsdutyrate" xml:space="preserve">
+     <value>Customs duty rate</value>
+  </data>
+  <data name="FeeDescriptions" xml:space="preserve">
+     <value>Fee Description</value>
+  </data>
+  <data name="BillInfoInquiryHint" xml:space="preserve">
+     <value>This service cannot be used for a Bill of less than one thousand (SAR)</value>
+  </data>
+  <data name="InquireaboutPaymentofInsuranceTitle" xml:space="preserve">
+     <value> Inquire about Payment of Insurance fees for private laboratories</value>
+  </data>
+  <data name="RequestNumber" xml:space="preserve">
+     <value>Request Number</value>
+  </data>
+  <data name="RequestDate" xml:space="preserve">
+     <value>Request Date</value>
+  </data>
+  <data name="InquiryResult" xml:space="preserve">
+     <value>Inquiry Result</value>
+  </data>
+  <data name="Inquire" xml:space="preserve">
+     <value>Inquire</value>
+  </data>
+  <data name="RequestNotFoundMsg" xml:space="preserve">
+     <value>This request is not available in
+the Zakat, Tax and Customs
+￼Authority system, please
+￼connect from the request
+￼information and try again</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+     <value>Clear</value>
+  </data>
+  <data name="Word" xml:space="preserve">
+     <value>Word</value>
+  </data>
+  <data name="HSHeading" xml:space="preserve">
+     <value>HS Heading</value>
+  </data>
+  <data name="SearchField" xml:space="preserve">
+     <value>Search Field </value>
+  </data>
+  <data name="SearchFor" xml:space="preserve">
+     <value>Search For</value>
+  </data>
+  <data name="BalaghHintFthLne" xml:space="preserve">
+     <value>Please seek accuracy, objectivity, and clarity and avoid personal disputes</value>
+  </data>
+  <data name="BalaghHintSecLne" xml:space="preserve">
+     <value>Ambiguity symbols and signs, or providing incomplete information</value>
+  </data>
+  <data name="BalaghHintThrdLne" xml:space="preserve">
+     <value>Please provide all the detailed information that you have and attach the evidence that proves the report</value>
+  </data>
+  <data name="BalaghHintFrthLne" xml:space="preserve">
+     <value>Remember the words of God Almighty in his book: (And those who annoy believing men and women undeservedly, they bear (on themselves) the crime of slander and plain sin)</value>
+  </data>
+  <data name="OTPMsgBody" xml:space="preserve">
+     <value>Activation code: </value>
+  </data>
+  <data name="FeesHint" xml:space="preserve">
+     <value>*The mentioned fees include all government fees and charges collected on the shipment by the Zakat, Tax and Customs Authority, and do not include any other fees or charges imposed by operators, brokers or transport and shipping companies.</value>
+  </data>
+  <data name="SearchRsltCountText" xml:space="preserve">
+     <value>Found</value>
+  </data>
+  <data name="SelectPortFirst" xml:space="preserve">
+     <value>Please select port</value>
+  </data>
+  <data name="RequestInformation" xml:space="preserve">
+     <value>Request Information</value>
+  </data>
+  <data name="ExciseTax" xml:space="preserve">
+     <value>Excise Tax</value>
+  </data>
+  <data name="searchingandviewingtheindicativepricesforexciseGoods" xml:space="preserve">
+     <value>Searching and viewing the indicative prices for excise Goods</value>
+  </data>
+  <data name="Copied" xml:space="preserve">
+     <value>Copied</value>
+  </data>
+  <data name="TahqaqService" xml:space="preserve">
+     <value>Tahqaq Service</value>
+  </data>
+  <data name="VerificationForm" xml:space="preserve">
+     <value>Verification Form</value>
+  </data>
+  <data name="VerificationFormHint" xml:space="preserve">
+     <value>Choose the number type from the list below and then enter the ten-digit number</value>
+  </data>
+  <data name="QRCode" xml:space="preserve">
+     <value>Code</value>
+  </data>
+  <data name="ScantheQRcode" xml:space="preserve">
+     <value>Scan the QR code</value>
+  </data>
+  <data name="PlacetheQRCodeinsidetheframe" xml:space="preserve">
+     <value>Place the QR Code inside the frame</value>
+  </data>
+  <data name="Or" xml:space="preserve">
+     <value>OR</value>
+  </data>
+  <data name="Use" xml:space="preserve">
+     <value>Use</value>
+  </data>
+  <data name="Correcttaxstamp" xml:space="preserve">
+     <value>Correct tax stamp</value>
+  </data>
+  <data name="ProductDescription" xml:space="preserve">
+     <value>Product Description</value>
+  </data>
+  <data name="OrganisationName" xml:space="preserve">
+     <value>Organization Name</value>
+  </data>
+  <data name="ProductionDate" xml:space="preserve">
+     <value>Production Date</value>
+  </data>
+  <data name="Incorrecttaxstamp" xml:space="preserve">
+     <value>Invalid tax stamp</value>
+  </data>
+  <data name="Submitareport" xml:space="preserve">
+     <value>Submit a report</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+     <value>Exit</value>
+  </data>
+  <data name="EnterQrCodeHere" xml:space="preserve">
+     <value>Enter code here</value>
+  </data>
+  <data name="PleaseEnterQRCodeHer" xml:space="preserve">
+     <value>please Enter code</value>
+  </data>
+  <data name="VATCalculator" xml:space="preserve">
+     <value>VAT Calculator</value>
+  </data>
+  <data name="VATCalculatorDesc" xml:space="preserve">
+     <value>Please complete the information to calculate the tax</value>
+  </data>
+  <data name="ConsumerCalculator" xml:space="preserve">
+     <value>Consumer Calculator</value>
+  </data>
+  <data name="MerchantCalculator" xml:space="preserve">
+     <value>Merchant Calculator</value>
+  </data>
+  <data name="Totaltaxablepurchases" xml:space="preserve">
+     <value>Total taxable purchases</value>
+  </data>
+  <data name="CalculateTheAmount" xml:space="preserve">
+     <value>Calculate Amount</value>
+  </data>
+  <data name="Totaltaxablesales" xml:space="preserve">
+     <value>Total taxable sales</value>
+  </data>
+  <data name="Totalnontaxablesales" xml:space="preserve">
+     <value>Total non-taxable sales</value>
+  </data>
+  <data name="Totalnontaxablepurchases" xml:space="preserve">
+     <value>Total non-taxable purchases</value>
+  </data>
+  <data name="ReportDetails" xml:space="preserve">
+     <value>Report Details</value>
+  </data>
+  <data name="ReportDetailsNote" xml:space="preserve">
+     <value>Please complete the details below</value>
+  </data>
+  <data name="ReportNote" xml:space="preserve">
+     <value>If the authority informs you of malicious or false information, it will expose you to legal accountability</value>
+  </data>
+  <data name="ReportFullName" xml:space="preserve">
+     <value>Full name</value>
+  </data>
+  <data name="ReportDisclaimer" xml:space="preserve">
+     <value>Please inform us of the name and location of the place where the product was purchased</value>
+  </data>
+  <data name="ReportCity" xml:space="preserve">
+     <value>City</value>
+  </data>
+  <data name="ReportStreetName" xml:space="preserve">
+     <value>Street name</value>
+  </data>
+  <data name="ReportMerchantName" xml:space="preserve">
+     <value>Merchant name</value>
+  </data>
+  <data name="SendReportButton" xml:space="preserve">
+     <value>Send Report</value>
+  </data>
+  <data name="AttachmentHelperText" xml:space="preserve">
+     <value>Allowed extensions (PDF,png,JPG)</value>
+  </data>
+  <data name="RewardCheckBox" xml:space="preserve">
+     <value>I don’t want to receive a reward</value>
+  </data>
+  <data name="Einvoice" xml:space="preserve">
+     <value>E-invoice Certificate</value>
+  </data>
+  <data name="ReportCategory" xml:space="preserve">
+     <value>Report Category</value>
+  </data>
+  <data name="WorkType" xml:space="preserve">
+     <value>Company business activity</value>
+  </data>
+  <data name="InvalidValue" xml:space="preserve">
+     <value>Please fill the missing fields</value>
+  </data>
+  <data name="ViolationDate" xml:space="preserve">
+     <value>Violation Date</value>
+  </data>
+  <data name="ReportSuccessMsg" xml:space="preserve">
+     <value>We thank you for your cooperation with the Zakat, Tax and Customs Authority. We will respond as soon as possible</value>
+  </data>
+  <data name="InvalidQrMessage" xml:space="preserve">
+         <value>Thank you for scanning the QR code. QR code information has been transmitted to ZATCA</value>
+  </data>
+  <data name="InValidCode" xml:space="preserve">
+      <value>InValid Code</value>
+  </data>
+  <data name="InCorrecttaxinvoice" xml:space="preserve">
+      <value>InCorrect tax invoice</value>
+  </data>
+  <data name="Correcttaxinvoice" xml:space="preserve">
+      <value>Correct tax invoice</value>
+  </data>
+  <data name="VATRegistrationNumber" xml:space="preserve">
+      <value>VAT Registration Number</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+      <value>Invoice date</value>
+  </data>
+  <data name="InvoiceAmount" xml:space="preserve">
+      <value>Invoice Amount</value>
+  </data>
+  <data name="VATAmount" xml:space="preserve">
+      <value>VAT Amount</value>
+  </data>
+  <data name="Correct" xml:space="preserve">
+      <value>Correct</value>
+  </data>
+  <data name="Incorrect" xml:space="preserve">
+      <value>Incorrect</value>
+  </data>
+  <data name="UnregisteredFacility" xml:space="preserve">
+      <value>Unregistered Facility</value>
+  </data>
+  <data name="Registered" xml:space="preserve">
+      <value>VAT Registered</value>
+  </data>
+  <data name="NotRegistered" xml:space="preserve">
+      <value>Not a VAT Registered</value>
+  </data>
+  <data name="ThetotalamountplusVAT" xml:space="preserve">
+      <value>The total amount plus VAT</value>
+  </data>
+  <data name="TotalPriceValue" xml:space="preserve">
+       <value>Total Price Value</value>
+  </data>
+  <data name="eDeclaration" xml:space="preserve">
+       <value>E-Declaration</value>
+  </data>
+  <data name="Reviewapreviousrequest" xml:space="preserve">
+       <value>Review a previous request</value>
+  </data>
+  <data name="CustomsDeclarationforTravelers" xml:space="preserve">
+       <value>Customs Declaration for Travelers</value>
+   </data>
+    <data name="AllReports" xml:space="preserve">
+      <value>All reports</value>
+   </data>
+   <data name="AddNewReport" xml:space="preserve">
+      <value>New Report</value>
+   </data>
+   <data name="Reports" xml:space="preserve">
+      <value>Reports</value>
+   </data>
+    <data name="MyOpenedReports" xml:space="preserve">
+      <value>My open reports </value>
+   </data>
+   <data name="MyClosedReports" xml:space="preserve">
+      <value>My closed reports</value>
+   </data>
+   <data name="ClosedReports" xml:space="preserve">
+      <value>Closed</value>
+   </data>
+   <data name="OpenReports" xml:space="preserve">
+      <value>Open</value>
+   </data> 
+    <data name="Home" xml:space="preserve">
+        <value>Home</value>
+    </data>
+    <data name="ZATCAServices" xml:space="preserve">
+        <value>ZATCA Services</value>
+    </data>
+    <data name="EXCISETAXServices" xml:space="preserve">
+        <value>Excise Services</value>
+    </data>
+    <data name="LiveVideoTitle" xml:space="preserve">
+        <value>Live Video</value>
+    </data>
+     <data name="LiveVideoSubTitle" xml:space="preserve">
+        <value>Salwa Port Live Stream</value>
+    </data>
+     <data name="PortName" xml:space="preserve">
+        <value>Port name</value>
+    </data>
+     <data name="NumberofAttachments" xml:space="preserve">
+        <value>The maximum nuber of attachments you can upload is 1</value>
+    </data>
+    <data name="ReportLocationPlaceholder" xml:space="preserve">
+        <value>Select the location on the map</value>
+    </data>
+    <data name="ReportDetailsSubTitle" xml:space="preserve">
+         <value>You must fill in all of the following fields</value>
+    </data>
+    <data name="PerviousButton" xml:space="preserve">
+        <value>Pervious</value>
+    </data>
+    <data name="ReportReward" xml:space="preserve">
+       <value>The report is eligible for the reward automatically after validation and verification, unless the check box above was selected</value>
+    </data>
+    <data name="ReportSecondNote1" xml:space="preserve">
+        <value>1- The award is given according to the discretionary authority of the authority, provided that the Fulfillment of the following conditions:</value>
+    </data>
+    <data name="ReportSecondNote2" xml:space="preserve">
+        <value>That the communication led to the detection of any violations mentioned in this regulation.</value>
+    </data>
+     <data name="ReportSecondNote3" xml:space="preserve">
+        <value>That the reporter is a staff member of the Authority, a spouse, a brother-in-law, or a first-degree relative.</value>
+    </data>
+    <data name="ReportSecondNote4" xml:space="preserve">
+        <value>The disclosure of the case in question should not be one of the reporting duties, if he is a public employee or the like.</value>
+    </data>
+    <data name="ReportSecondNote5" xml:space="preserve">
+        <value>The violation should not have been previously reported or rewarded by the authority.</value>
+    </data>
+    <data name="ReportSecondNote6" xml:space="preserve">
+        <value>2- The entitlement to the reward is based on a decision issued by the Remuneration Committee whistleblowers.</value>
+    </data>
+    <data name="ReportSecondNote7" xml:space="preserve">
+        <value>3- He shall not be entitled to the award until after collecting the amounts due.</value>
+    </data>
+     <data name="ReportSecondNote8" xml:space="preserve">
+        <value>To view the rest of the terms and conditions, click here</value>
+    </data>
+    <data name="ReportSecondNote9" xml:space="preserve">
+        <value>The Authority is obligated to preserve all the data of the amount and to deal in strict confidence with all the data provided</value>
+    </data>
+    <data name="EmptyReports" xml:space="preserve">
+        <value>You do not have any reports</value>
+    </data>
+    <data name="Viewservices" xml:space="preserve">
+        <value>View services</value>
+    </data>
+        <data name="Port1Name" xml:space="preserve">
+        <value>Arrivals to Saudi Arabia - Passports</value>
+    </data>
+        <data name="Port2Name" xml:space="preserve">
+        <value>Departures from Saudi Arabia - Passports</value>
+    </data>
+        <data name="Port3Name" xml:space="preserve">
+        <value>Arrivals to Saudi Arabia - Customs</value>
+    </data>
+        <data name="Port4Name" xml:space="preserve">
+        <value>Departures to Saudi Arabia - Customs</value>
+    </data>
+      <data name="EinvoiceScanning" xml:space="preserve">
+        <value>E-Invoice Validation</value>
+    </data>
+    <data name="TaxCalculator" xml:space="preserve">
+        <value>Merchant and Customer Calculator</value>
+    </data>
+      <data name="AboutZATCA" xml:space="preserve">
+    <value>About ZATCA</value>
+  </data>
+  <data name="FAQ" xml:space="preserve">
+    <value>FAQ</value>
+  </data>
+      <data name="RateUs" xml:space="preserve">
+        <value>Rate us</value>
+    </data>
+      <data name="CustomerServices" xml:space="preserve">
+        <value>Customer Services</value>
+    </data>
+        <data name="PrivacyandPolicy" xml:space="preserve">
+        <value>Privacy and Policy</value>
+    </data>
+        <data name="ContactUs" xml:space="preserve">
+        <value>Contact Us</value>
+    </data>
+      <data name="EdcuationJourney" xml:space="preserve">
+        <value>Edcuation Journey</value>
+    </data>
+  <data name="SurveyQ1" xml:space="preserve">
+        <value>Overall, I am satisfied with my experience with the Mobile App at the Zakat, Tax and Customs Authority ?</value>
+    </data>
+  <data name="SurveyQ2" xml:space="preserve">
+        <value>We noticed you dissatisfied with the question in the previous page. Kindly clarify the reason for dissatisfaction to help us improve your experience</value>
+    </data>
+  <data name="SurveyQ3" xml:space="preserve">
+        <value>Do you have any additional comments for the Zakat, Tax and Customs Authority?</value>
+    </data>
+       <data name="ThankYou" xml:space="preserve">
+        <value>Thank You</value>
+    </data>
+      <data name="DearCustomer" xml:space="preserve">
+        <value>Dear Customer</value>
+    </data>
+       <data name="SurveyThankMsg" xml:space="preserve">
+        <value>Thank you for taking the time to complete this survey.
+Your feedback is important to us and we strive to improve your experience in the future.
+Zakat, Tax and Customs Authority
+</value>
+</data>
+   <data name="SurveyIntroMsg" xml:space="preserve">
+<value>Through your experience of our service (E-services) on our website, please rate your satisfaction with the service from “completely satisfied” to “not completely satisfied.” How satisfied are you with your experience with our e-services (E-services) on our website?</value>
+    </data>
+       <data name="questionnaire" xml:space="preserve">
+        <value>Questionnaire</value>
+    </data>
+     <data name="End" xml:space="preserve">
+        <value>End</value>
+    </data>
+    <data name="LoginSubTitle" xml:space="preserve">
+     <value>Welcome to a New Digital Tax Experience</value>
+  </data>
+  <data name="TINEmailCustomUsername" xml:space="preserve">
+     <value>TIN or Email or Custom Username</value>
+  </data>
+  <data name="ForgotPasswordUsername" xml:space="preserve">
+     <value>Forgot Password or Username?</value>
+  </data>
+  <data name="AccountRegister" xml:space="preserve">
+    <value>Don't have an Account? Register</value>
+  </data>
+  <data name="LogintoCustoms" xml:space="preserve">
+    <value>Login to Customs</value>
+  </data>
+   <data name="InvalidUserNameOrPassword" xml:space="preserve">
+    <value>Invalid User Name Or Password</value>
+  </data>
+     <data name="Selectaccounttype" xml:space="preserve">
+    <value>Select account type</value>
+  </data>
+     <data name="Customs" xml:space="preserve">
+    <value>Customs</value>
+  </data>
+     <data name="ZakatandTax" xml:space="preserve">
+    <value>Zakat and Tax</value>
+  </data>
+     <data name="ReportOTPMSG" xml:space="preserve">
+         <value>Please enter the verification code that was sent to your mobile</value>
+    </data>
+     <data name="PerviousReports" xml:space="preserve">
+         <value>Previous Reports</value>
+    </data>
+     <data name="InquriyMyReports" xml:space="preserve">
+         <value>Please choose a method to search for the report</value>
+    </data>
+     <data name="ReportNumberRequired" xml:space="preserve">
+         <value>Please enter the report number</value>
+    </data>
+        <data name="ShowPerviousReports" xml:space="preserve">
+         <value>View previous reports</value>
+    </data>
+    <data name="ReportsNote" xml:space="preserve">
+         <value>If the authority informs you of malicious or false information, it will expose you to legal accountability</value>
+    </data>
+      <data name="ChooseReports" xml:space="preserve">
+         <value>Reports</value>
+    </data>
+    <data name="CreateAccount" xml:space="preserve">
+        <value>Create an account</value>
+    </data>
+   <data name="LocationAccess" xml:space="preserve">
+        <value>Please grant  Location access first.</value>
+    </data> 
+    <data name="Langauge" xml:space="preserve">
+          <value>العربية</value>
+     </data>
+     <data name="ReportMissingField" xml:space="preserve">
+          <value>Missing field</value>
+     </data>
+      <data name="RequiredData" xml:space="preserve">
+         <value>Please fill the required fields</value>
+      </data>
+    <data name="RefunableAmount" xml:space="preserve">
+        <value>Refunable Amount</value>
+    </data>
+     <data name="VATPayable" xml:space="preserve">
+        <value>VAT Payable</value>
+    </data>
+     <data name="VatRegistretionServiceDesc" xml:space="preserve">
+        <value>This service allows beneficiaries to check the registration's validity by entering the TIN number, VAT certificate, CR, Serial Number, or by scanning a QR code.</value>
+    </data>
+     <data name="EinvoiceServiceDesc" xml:space="preserve">
+        <value>Scanning the QR code allows beneficiaries to validate the electronic bill.</value>
+    </data>
+    <data name="VatCalculationServiceDesc" xml:space="preserve">
+        <value>This service allows beneficiaries to calculate the total amount of the VAT refund by entering the total value of the purchases and sales.</value>
+    </data>
+    <data name="BackToHome" xml:space="preserve">
+        <value>Back to Home</value>
+    </data>
+     <data name="GeneralServicesTip" xml:space="preserve">
+        <value>I call you a duplicate about the origin of the remnants of the authority's competences.</value>
+    </data>
+    <data name="CustomServicesTip1" xml:space="preserve">
+        <value>It provides you with an integrated guide that shows commodity information, codes and lists with their customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip2" xml:space="preserve">
+        <value>It allows you to inquire about commodity information, codes, customs declaration and fees.</value>
+    </data>
+     <data name="CustomServicesTip3" xml:space="preserve">
+        <value>It enables you to electronically declare the materials to be disclosed upon entering or before leaving Saudi Arabia.</value>
+    </data>
+    <data name="CustomServicesTip4" xml:space="preserve">
+        <value>Enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
+    </data>
+    <data name="CustomServicesTip5" xml:space="preserve">
+        <value>Allows customs customers to submit supply transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters.</value>
+    </data>
+    <data name="TaxServicesTip1" xml:space="preserve">
+        <value>Allows you to access and calculate the Excise Goods Tax price list electronically</value>
+    </data>
+    <data name="TaxServicesTip2" xml:space="preserve">
+        <value>Scanning the QR code allows you to validate excise Goods</value>
+    </data>
+ <data name="CustomNote1" xml:space="preserve">
+        <value>Provides you with an integrated guide showing commodity information, codes and lists with their customs declaration and fees.</value>
+    </data>
+    <data name="CustomNote2" xml:space="preserve">
+        <value>Allows you to inquire about commodity information, codes, customs declaration and fees.</value>
+    </data>
+    <data name="CustomNote3" xml:space="preserve">
+        <value>It enables you to electronically declare the materials to be disclosed upon entering Saudi Arabia or before leaving it.</value>
+    </data>
+    <data name="CustomNote4" xml:space="preserve">
+        <value>It enables you to inquire about the fees for samples analysis requests sent to it by customs.</value>
+    </data>
+     <data name="RegisteredVAT" xml:space="preserve">
+        <value>VAT Registered</value>
+    </data>
+<data name="VATCertificateNumber" xml:space="preserve">
+        <value>VAT Certificate Number</value>
+    </data>
+    <data name="unableToVerify" xml:space="preserve">
+        <value>Unable To Verify</value>
+    </data> 
+ <data name="PleaseEnter" xml:space="preserve">
+     <value>Please enter</value>
+    </data>
+  <data name="VATCertificateNumberValidation" xml:space="preserve">
+        <value>The number of digits in the tax certificate number must be 15 digits</value>
+    </data>
+    <data name="AccountS" xml:space="preserve">
+        <value>Account S</value>
+    </data>
+      <data name="MenuDashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+    <data name="ProductDeclaration" xml:space="preserve">
+        <value>Declaration Data</value>
+    </data>
+  <data name="NewDeclaration" xml:space="preserve">
+        <value>New Declaration</value>
+    </data>
+    <data name="NewDeclarationNote" xml:space="preserve">
+        <value>The e-Declaration facilitates the procedures for your arrival and departure without the need to wait and also protects you from legal liability, to know the details of the declaration, you can see </value>
+    </data>
+    <data name="NewDeclarationQuestion" xml:space="preserve">
+        <value>Coming to the kingdom or leaving?</value>
+    </data>
+    <data name="ArrivingToKSA" xml:space="preserve">
+        <value>Arriving to KSA</value>
+    </data>
+    <data name="DepartingToKSA" xml:space="preserve">
+        <value>Departing from KSA</value>
+    </data> 
+    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+        <value>Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? </value>
+    </data>
+    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+        <value>If the product not found in the list, please recognize the office of acting upon arrival.</value>
+    </data>
+    <data name="TypeItem" xml:space="preserve">
+        <value>Type of item</value>
+    </data>
+    <data name="ProductName" xml:space="preserve">
+        <value>Product name</value>
+    </data>
+    <data name="AddItem" xml:space="preserve">
+        <value>Add item</value>
+    </data>
+    <data name="TotalFeesPayable" xml:space="preserve">
+        <value>Total fees payable</value>
+    </data>
+    <data name="DetailsTotalFeesPayable" xml:space="preserve">
+        <value>Details of the fees payable</value>
+    </data>
+    <data name="Select" xml:space="preserve">
+        <value>Select</value>
+    </data>
+  <data name="TransactionReception" xml:space="preserve">
+    <value>Transaction Reception</value>
+  </data>
+  <data name="NewTransactionReception" xml:space="preserve">
+    <value>New Transaction Reception</value>
+  </data>
+  <data name="Pleasecompletethedata" xml:space="preserve">
+    <value>Please complete the data</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entity</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="Enterthesubjectofthetransaction" xml:space="preserve">
+    <value>Enter the subject of the transaction</value>
+  </data>
+    <data name="Transactiondescription" xml:space="preserve">
+    <value>Ward content</value>
+  </data>
+  <data name="PDFFileHint" xml:space="preserve">
+    <value>PDF file format max size 2MB</value>
+  </data>
+    <data name="UserType" xml:space="preserve">
+    <value>Department Type</value>
+  </data>
+    <data name="Yourrequesthasbeensentsuccessfully" xml:space="preserve">
+    <value>Your request has been sent successfully</value>
+  </data>
+  <data name="Youwillbenotifiedofthestatusoftherequestviamobilephone" xml:space="preserve">
+    <value>Your request has been sent successfully، You will be notified of the status of the request via mobile phone</value>
+  </data>
+  <data name="Referencenumber" xml:space="preserve">
+    <value>Reference number</value>
+  </data>
+  <data name="AddNewCR" xml:space="preserve">
+    <value>Add New CR +</value>
+  </data>
+  <data name="Enter" xml:space="preserve">
+    <value>Enter</value>
+  </data>
+  <data name="PassengerInformation" xml:space="preserve">
+    <value>Passenger Information</value>
+  </data>
+   <data name="Passport" xml:space="preserve">
+    <value>Passport</value>
+  </data>
+  <data name="GccNationalID" xml:space="preserve">
+    <value>Gcc National ID</value>
+  </data>
+  <data name="MiddleName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="ItsSource" xml:space="preserve">
+    <value>Its Source</value>
+  </data>
+  <data name="ReleaseDate" xml:space="preserve">
+    <value>Release Date</value>
+  </data>
+  <data name="TravelerCount" xml:space="preserve">
+    <value>Traveler Count</value>
+  </data>
+  <data name="TripInformation" xml:space="preserve">
+    <value>Trip Information</value>
+  </data>
+  <data name="AirTrip" xml:space="preserve">
+    <value>Air Trip</value>
+  </data>
+  <data name="LandTrip" xml:space="preserve">
+    <value>Land Trip</value>
+  </data>
+  <data name="SeaTrip" xml:space="preserve">
+    <value>Sea Trip</value>
+  </data>
+  <data name="TypeOfTrip" xml:space="preserve">
+    <value>Type of Trip</value>
+  </data>
+  <data name="ComingFrom" xml:space="preserve">
+    <value>Coming From</value>
+  </data>
+  <data name="GoingTo" xml:space="preserve">
+    <value>Going To</value>
+  </data>
+   <data name="EntrancePort" xml:space="preserve">
+    <value>Entrance Port</value>
+  </data>
+  <data name="ExitPort" xml:space="preserve">
+    <value>Exit Port</value>
+  </data>
+   <data name="ArrivalDate" xml:space="preserve">
+    <value>Arrival Date</value>
+  </data>
+  <data name="DepartureDate" xml:space="preserve">
+    <value>Departure Date</value>
+  </data>
+   <data name="TripNumber" xml:space="preserve">
+    <value>Trip Number</value>
+  </data>
+  <data name="TravelPurpose" xml:space="preserve">
+    <value>Travel Purpose</value>
+  </data>
+ <data name="CustomFeesCalculator" xml:space="preserve">
+    <value>Custom and TAX Fees Calculator</value>
+  </data>
+  <data name="EDeclerationDesc" xml:space="preserve">
+    <value>It enables you to electronically declare the materials to be disclosed when entering Saudi Arabia or before leaving it.</value>
+  </data>
+    <data name="TawreedServiceDesc" xml:space="preserve">
+    <value>It allows customs clients to send import transactions electronically and to know the status of acceptance and rejection without the need to visit the customs headquarters</value>
+  </data>
+      <data name="TobacoTypeNotehint" xml:space="preserve">
+    <value>Clarification: 1/20 means a tray containing 20 cigarettes</value>
+  </data>
+       <data name="EdeclerationSecQ" xml:space="preserve">
+    <value>Do you have any new possessions of total value exceeding SAR 3,000(800$)?</value>
+  </data>
+      <data name="Q2Hint" xml:space="preserve">
+    <value>Calculates the price of Gram – Gold and Silver – Based on the price of grams in Saudi Arabia</value>
+  </data>
+  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+    <value>Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+    <value>Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?</value>
+  </data>
+  <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
+    <value>Examples – Aircraft, medicines, pets, etc.</value>
+  </data>
+    <data name="MaterialType" xml:space="preserve">
+    <value>Material Type</value>
+  </data>
+  <data name="Purpose" xml:space="preserve">
+    <value>Purpose</value>
+  </data>
+  <data name="OtherPurpose" xml:space="preserve">
+    <value>Other Purpose</value>
+  </data>
+    <data name="TotalValue" xml:space="preserve">
+    <value>Total Value</value>
+  </data>
+  <data name="Currency" xml:space="preserve">
+    <value>Currency</value>
+  </data>
+  <data name="ContactInformation" xml:space="preserve">
+    <value>Contact Information</value>
+  </data>
+  <data name="AddressKSA" xml:space="preserve">
+    <value>Address in KSA</value>
+  </data>
+  <data name="CreatedSuccessfully" xml:space="preserve">
+    <value>Created Successfully</value>
+  </data>
+  <data name="CreatedSuccessfullyMsg" xml:space="preserve">
+    <value>The e-declration has been created successfully</value>
+  </data>
+  <data name="DeclarationAcknowledge" xml:space="preserve">
+    <value>Acknowledge</value>
+  </data>
+   <data name="AcknowledgeNote1" xml:space="preserve">
+    <value>I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work</value>
+  </data>
+  <data name="AcknowledgeNote2" xml:space="preserve">
+    <value>I take full responsibility for the correctness and accuracy of the information provided by me</value>
+  </data>
+  <data name="AcknowledgeNote3" xml:space="preserve">
+    <value>I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Customs Authority</value>
+  </data>
+  <data name="AcknowledgeNote4" xml:space="preserve">
+    <value>I further assume full responsibility in case the General Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability</value>
+  </data>
+  <data name="AcknowledgeNote5" xml:space="preserve">
+    <value>Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the customs officer</value>
+  </data>
+  <data name="TermsConditions" xml:space="preserve">
+    <value>I have Read the terms and conditions</value>
+  </data>
+    <data name="ProhibitedItems" xml:space="preserve">
+    <value>View the list of prohibited items</value>
+  </data>
+   <data name="ApproveDeclaration" xml:space="preserve">
+    <value>Approve Declaration</value>
+  </data>
+  <data name="Checkout" xml:space="preserve">
+    <value>Checkout</value>
+   </data>
+  <data name="units" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
+    <value>You answered yes, you have to add at least one item in the cart</value>
+  </data>
+   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
+    <value>Sorry, the entered total value does not require the declaration</value>
+  </data>
+  <data name="ALLanswersisNoMsg" xml:space="preserve">
+    <value>Sorry, it seems that you did not choose from the questions or fill in their data</value>
+  </data>
+  <data name="Servicetype" xml:space="preserve">
+    <value>Service type</value>
+  </data>
+  <data name="Identitytype" xml:space="preserve">
+    <value>Identity type</value>
+  </data>
+  <data name="Visitor" xml:space="preserve">
+    <value>Visitor</value>
+  </data>
+    <data name="Citizen" xml:space="preserve">
+    <value>Citizen / Resident</value>
+  </data>
+   <data name="IAMLogin" xml:space="preserve">
+    <value>IAM Login</value>
+  </data>
+  <data name="PaymentDetails" xml:space="preserve">
+    <value>Payment Details</value>
+  </data>
+  <data name="TotalAmountNumeric" xml:space="preserve">
+    <value>Total amount in numeric</value>
+  </data>
+  <data name="TotalAmountWriting" xml:space="preserve">
+    <value>Total amount in writing</value>
+  </data>
+  <data name="DateBirthValidation" xml:space="preserve">
+    <value>The date of birth cannot be in the present or the future</value>
+  </data>
+  <data name="ReleaseDateValidation" xml:space="preserve">
+    <value>Release Date can't be in the future</value>
+  </data>
+  <data name="EndDateValidation" xml:space="preserve">
+    <value>End Date can't be in the past</value>
+  </data>
+  <data name="ComingGoingDateValidation" xml:space="preserve">
+    <value>Date can't be in the past</value>
+  </data>
+    <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+    <value>SADAD Number: </value>
+  </data>
+     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+    <value>(The service provider code for Saudi Customs is 030)</value>
+</data>
+  <data name="ElectronicDeclaration" xml:space="preserve">
+    <value>The electronic declaration has been completed successfully.</value>
+  </data>
+  <data name="TravellerPassport" xml:space="preserve">
+    <value>ID (Passport or GCC)</value>
+  </data>
+  <data name="TripDate" xml:space="preserve">
+    <value>Travel Date</value>
+  </data>
+   <data name="PaidPaymentStatus" xml:space="preserve">
+   <value>Paid</value>
+  </data>
+  <data name="NotPaidPaymentStatus" xml:space="preserve">
+    <value>Not Paid</value>
+  </data>
+  <data name="IDResidencePassportNumber" xml:space="preserve">
+    <value>ID / Residence / Passport Number</value>
+  </data>
+  <data name="ReviewRequest" xml:space="preserve">
+    <value>Review the request</value>
+  </data>
+     <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+     <data name="AddNewCRTitle" xml:space="preserve">
+    <value>Add New CR</value> 
+  </data> 
+  <data name="Viewlist" xml:space="preserve">
+    <value>View list</value> 
+  </data>
+  <data name="ZAKATYDesc" xml:space="preserve">
+    <value>Zakaty Platform is a well-balanced and integrated zakat environment that enables individuals to calculate the amount of zakat due on a variety of items as well as to pay zakat efficiently and conveniently through electronic payment channels to those who are specifically entitled to social security.</value> 
+  </data>
+    <data name="GoToZakatyPortal" xml:space="preserve">
+    <value>Go To Zakaty Portal</value> 
+  </data>
+  <data name="DownloadApp" xml:space="preserve">
+    <value>To download the app</value> 
+  </data>
+  <data name="About Zakaty" xml:space="preserve">
+    <value>About Zakaty</value> 
+  </data>
+  <data name="Zakaty" xml:space="preserve">
+    <value>Zakaty</value> 
+  </data>
+    <data name="ThankYou!" xml:space="preserve">
+    <value>Thank You!</value> 
+  </data>
+   <data name="NoFileChoosen" xml:space="preserve">
+    <value>No file was selected</value> 
+  </data>
+   <data name="VATEligibleDateError1" xml:space="preserve">
+     <value>Dear Taxpayer, The VAT effective date should be from 1-1-2018 and no greater than the start of next month when submitting the application</value>
+   </data>
+  <data name="SelectAnswerMessage" xml:space="preserve">
+    <value>Please Select Answer</value>
+</data>
+  <data name="TravelerCountValidation" xml:space="preserve">
+    <value>Traveler count must be more than 0</value> 
+  </data>
+   <data name="QuantityValidation" xml:space="preserve">
+    <value>Quantity must be more than 0</value> 
+  </data>
+  <data name="AddressKSAValidation" xml:space="preserve">
+    <value>The address can't contains any special characters</value> 
+  </data>
+  <data name="PermitLabel" xml:space="preserve">
+    <value>Do you have a permit?</value> 
+  </data>
+  <data name="EDeclarationTermsHeaderOne" xml:space="preserve">
+    <value>This service allows filling out the declaration form for the materials that must be declared and submitting it to customs officials upon entering or leaving Saudi territory for international travelers. These materials include:</value> 
+  </data>
+  <data name="EDeclarationTermsOne" xml:space="preserve">
+     <value>Coins or bearer negotiable instruments, gold bullion, precious metals and stones and jewelry with a value of up to 60,000 riyals or more, or the equivalent in foreign currencies.</value>
+  </data>
+  <data name="EDeclarationTermsTwo" xml:space="preserve">
+     <value>Goods in commercial quantities or with a value higher than 3000 riyals.</value>
+  </data>
+  <data name="EDeclarationTermsThree" xml:space="preserve">
+     <value>Goods subject to Excise Tax.</value>
+  </data>
+  <data name="EDeclarationTermsFour" xml:space="preserve">
+     <value>Prohibited and restricted goods and materials.</value>
+  </data>
+   <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
+    <value>The list of materials that must be declared for international travelers leaving Saudi Arabia is limited to the following:</value> 
+  </data>
+  <data name="EDeclarationTermsFive" xml:space="preserve">
+     <value>Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials.</value>
+  </data>
+  <data name="MasterVisa" xml:space="preserve">
+     <value>Master/Visa</value>
+  </data>
+    <data name="PDFFileHintTwo" xml:space="preserve">
+     <value>PDF file format max size 1MB</value>
+</data>
+    <data name="CRNoAddedSuccess" xml:space="preserve">
+     <value>CR Number added successfully</value>
+  </data>
+   <data name="NumberHint" xml:space="preserve">
+    <value>Numbers must be entered in English</value>
+  </data>
+   <data name="CustomDeclarationInformation" xml:space="preserve">
+    <value>Customs declaration information.</value>
+  </data>
+   <data name="PassengerNationality" xml:space="preserve">
+    <value>Nationality</value>
+  </data>
+  <data name="ArrivingFromORDepartingTo" xml:space="preserve">
+    <value>Arriving From or Departing To</value>
+  </data>
+  <data name="ShipmentTracking" xml:space="preserve">
+    <value>Shipment Tracking</value>
+  </data>
+  <data name="SelectShipmentType" xml:space="preserve">
+    <value>Select Shipment Type</value>
+  </data>
+  <data name="Track" xml:space="preserve">
+    <value>Track</value>
+  </data>
+  <data name="ExpressShipping" xml:space="preserve">
+    <value>Express Shipping</value>
+  </data>
+  <data name="AirFreight" xml:space="preserve">
+    <value>Air Freight</value>
+  </data>
+  <data name="SeaFreight" xml:space="preserve">
+    <value>Sea Freight</value>
+  </data>
+  <data name="LandFreight" xml:space="preserve">
+    <value>Land Freight</value>
+  </data>
+  <data name="TrainFreight" xml:space="preserve">
+    <value>Train Freight</value>
+  </data>
+  <data name="SearchBy" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+    <data name="DeclarationBillNumber" xml:space="preserve">
+    <value>Declaration Number\Bill Number</value>
+  </data>
+  <data name="BillNumber" xml:space="preserve">
+    <value>Bill Number</value>
+  </data>
+  <data name="ShipmentDeclarationNumber" xml:space="preserve">
+    <value>Declaration Number</value>
+  </data>
+  <data name="ShipmentDeclarationDetails" xml:space="preserve">
+    <value>Declaration Details</value>
+  </data>
+  <data name="TotalFees" xml:space="preserve">
+    <value>Total Fees</value>
+  </data>
+  <data name="CustomsFees" xml:space="preserve">
+    <value>Customs Fees</value>
+  </data>
+  <data name="OtherFees" xml:space="preserve">
+    <value>Other Fees</value>
+  </data>
+  <data name="CIFValue" xml:space="preserve">
+    <value>CIF Value</value>
+  </data>
+  <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+    <value>For more accurate results, please enter Declaration Details.</value>
+  </data>
+  <data name="DeclarationDisclaimer" xml:space="preserve">
+    <value>The Custom Declaration doesn't Create yet.</value>
+  </data>
+  <data name="VATDisclaimer" xml:space="preserve">
+    <value>The VAT is 15% of the total shipment value.</value>
+  </data>
+  <data name="ShipmentStatus" xml:space="preserve">
+    <value>Shipment Status</value>
+  </data>
+    <data name="ContainerNumber" xml:space="preserve">
+    <value>Container Number</value>
+  </data>
+    <data name="DownloadEdecleraton" xml:space="preserve">
+    <value>Download decleration</value>
+  </data>
+  <data name="cleared" xml:space="preserve">
+    <value>cleared</value>
+    </data>
+  <data name="UploadImage" xml:space="preserve">
+    <value>Upload Image</value>
+  </data>
+  <data name="UploadFile" xml:space="preserve">
+    <value>Upload File</value>
+  </data>
+    <data name="ReportAttachmentHelperText" xml:space="preserve">
+     <value>Allowed extensions (pdf,jpeg,jpg,doc,docx)</value>
+  </data>
+    <data name="NotNeedRewardHint" xml:space="preserve">
+     <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
+  </data>
+  <!--6264 poC-->
+  <data name="ZProfitOnGoods" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1" xml:space="preserve">
+    <value>Do you practice the purchase and sale of used cars?</value>
+  </data>
+   <data name="ZProfitOnGoodsQ2" xml:space="preserve">
+    <value>Do you practice any commercial activities other than used cars trading?</value>
+  </data>
+   <data name="ZProfitOnGoodsQOptionsYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+   <data name="ZProfitOnGoodsQOptionsNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+   <data name="ZprofitsOnGoodsSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+   <data name="ZprofitsOnGoodscancel" xml:space="preserve">
+    <value>Cancel</value>
+    </data>
+    <data name="ZProfitOnGoodsConfrimationOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+   <!--<data name="ZProfitOnGoodsConfrimationNo" xml:space="preserve">
+    <value>تقديم</value>
+  </data>-->
+   <data name="ZProfitOnGoodsConfrimationMsg" xml:space="preserve">
+    <value>Are you sure that you want to cancel?</value>
+  </data>
+  <data name="ZProfitgoodsSCSRTile" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  
+  <!--6264 Validation-->
+  <data name="ZProfitOnGoodsQ1M01Validation" xml:space="preserve">
+    <value>Dear taxpayer, you are not eligible to apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+   <data name="ZprofitsOnGoodsM02Vaidation" xml:space="preserve">
+    <value>Please Fill All the fields</value>
+  </data>
+   <data name="ZprofitsOnGoodsSuccessmessage" xml:space="preserve">
+    <value>VAT on profit margin for used goods (cars) has been submitted successfully</value>
+  </data>
+  <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
+      <value>Submission Unsuccesful"</value>
   </data>
 </root>

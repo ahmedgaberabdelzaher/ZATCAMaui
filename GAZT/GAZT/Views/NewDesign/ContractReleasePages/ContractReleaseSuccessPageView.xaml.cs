@@ -93,7 +93,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.CRReferenceNumber + " " + text, AppResources.Copied);
+                        });
                     }
                 }
             }
@@ -159,7 +162,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     if (Clipboard.HasText)
                     {
                         var text = await Clipboard.GetTextAsync();
-                        await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            await viewModel._dialogService.ShowMessageBox(AppResources.CRContractingNumber + " " + text, AppResources.Copied);
+                        });
                     }
                 }
             }

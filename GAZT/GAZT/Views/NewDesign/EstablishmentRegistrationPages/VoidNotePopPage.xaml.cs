@@ -1,5 +1,6 @@
 ﻿using Rg.Plugins.Popup.Pages;
 using Rg.Plugins.Popup.Services;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -46,7 +47,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
 
         void notes_TextChanged(System.Object sender, Xamarin.Forms.TextChangedEventArgs e)
         {
+            try { 
             notesInputLayout.HasError = string.IsNullOrWhiteSpace(notes.Text);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
+            }
         }
     }
 }

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="EGAZT.Controls.EntryWithSAR"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:control="clr-namespace:GAZTeServicesApp.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:customcontrol="clr-namespace:GAZT.CustomControl"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    x:Name="CustomEntryWithSAR">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <StackLayout Margin="0,9,0,0" Style="{StaticResource SFTaxPayerProfile}">
+        <custom:CustomLabel x:Name="Title" Style="{StaticResource CaptionLabelGrey}" />
+        <inputLayout:SfTextInputLayout
+            Margin="0,-10,0,0"
+            ContainerType="Outlined"
+            FocusedColor="#999999"
+            InputViewPadding="16,0,16,0"
+            LeadingViewPosition="Inside"
+            OutlineCornerRadius="14"
+            Style="{StaticResource InputTableTextInputLayoutStyle}">
+            <custom:BorderlessEntry
+                x:Name="TextValue"
+                Keyboard="Numeric"
+                MaxLength="21"
+                Placeholder="{Binding Source={x:Reference CustomEntryWithSAR}, Path=Placeholder}"
+                Style="{StaticResource DefaultEntry}"
+                Text="{Binding Source={x:Reference CustomEntryWithSAR}, Path=ValueText}"
+                VerticalTextAlignment="Center" />
+            <inputLayout:SfTextInputLayout.TrailingView>
+                <Label
+                    FontSize="16"
+                    Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                    TextColor="#999999" />
+            </inputLayout:SfTextInputLayout.TrailingView>
+        </inputLayout:SfTextInputLayout>
+    </StackLayout>
+
+</ContentView>

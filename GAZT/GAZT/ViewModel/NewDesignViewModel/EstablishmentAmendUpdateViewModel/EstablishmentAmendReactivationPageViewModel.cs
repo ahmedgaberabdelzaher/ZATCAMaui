@@ -2466,6 +2466,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                         }
                                         catch (Exception ex)
                                         {
+                                            Console.Write(ex.ToString());
+                                            Console.Write(ex.StackTrace.ToString());
                                         }
                                     }
                                     else
@@ -2501,6 +2503,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2526,6 +2530,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2609,7 +2615,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             }
                             catch (Exception ex)
                             {
-
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
                             }
 
 
@@ -3275,7 +3282,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (Exception ex)
             {
-                ex.ToString();
+               // ex.ToString();
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             return true;
         }
@@ -3426,7 +3435,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             catch (Exception ex)
             {
                 IsLoading = false;
-                ex.ToString();
+                // ex.ToString();
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 if (ex is HTTPBadRequestException)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -3565,6 +3576,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 return flag;
             }

@@ -126,7 +126,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             viewModel._navigationService.GoBack();
 

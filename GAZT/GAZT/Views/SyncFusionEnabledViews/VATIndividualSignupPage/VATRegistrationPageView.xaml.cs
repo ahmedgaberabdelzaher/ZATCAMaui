@@ -63,7 +63,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -135,7 +136,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -181,7 +183,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
             }
         }
-        private void DpEStartDate_Closed(object sender, EventArgs e)
+        private async void DpEStartDate_Closed(object sender, EventArgs e)
         {
             try
             {
@@ -189,13 +191,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 string month = selectedItem[1].ToString();
                 string day = selectedItem[0].ToString();
                 string year = selectedItem[2].ToString();
-                viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
+                //viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
                 //          string DOB = year + month + day;
 
+                await viewModel.getVatEligibleDate(year + "-" + month + "-" + day);
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -213,7 +217,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -301,7 +306,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -459,7 +465,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public async void step5Validation()
@@ -837,6 +844,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -909,6 +918,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -988,7 +999,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
 
             }
@@ -1058,7 +1070,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
 
@@ -1140,7 +1153,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
 
 
@@ -1277,7 +1291,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1306,6 +1321,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1330,6 +1347,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1353,7 +1372,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void setIban()
@@ -1565,7 +1585,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -1657,7 +1678,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
             }
         }
@@ -1804,7 +1826,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -1828,7 +1851,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void setAttachmentImporterExporterVisibility()
@@ -1864,7 +1888,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         private async void onMoreOptionClicked(object sender, EventArgs e)
@@ -2040,7 +2065,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             catch (Exception ex)
             {
 
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2091,7 +2117,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             catch (Exception ex)
             {
 
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2131,7 +2158,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2145,7 +2173,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
 
 
@@ -2285,7 +2314,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -2398,7 +2428,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -2440,7 +2471,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2726,7 +2758,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2847,7 +2880,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -2956,7 +2990,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         catch (Exception ex)
                         {
-
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
                             {
@@ -3085,7 +3120,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
                 catch (Exception ex)
                 {
-
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                     Device.BeginInvokeOnMainThread(async () =>
                     {
@@ -3182,7 +3218,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 {
                     viewModel.IsLoading = true;
                 });
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
             await Task.Run(() =>
             {
@@ -3254,7 +3291,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3623,6 +3661,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3643,7 +3683,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -3662,7 +3703,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

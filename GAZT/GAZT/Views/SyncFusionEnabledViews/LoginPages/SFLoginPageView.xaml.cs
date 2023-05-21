@@ -53,7 +53,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
-              
+                viewModel.CurrentTab = 1;
 
                 if (App.IsArabic)
                 {
@@ -371,14 +371,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 try
                                 {
                                     string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+                                    double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+                                    double AppVer = Convert.ToDouble(App.LoginDataRetrieved.AppVersion.Split('-')[1].Replace(".", string.Empty));
 
                                     if (minMaxVersions.Count() > 1)
                                     {
-                                        double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
-                                        double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
-                                        double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+                                       // double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
+                                       // double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
 
-                                        if (currVer >= minVer && currVer <= maxVer)
+                                      //  if (currVer >= minVer && currVer <= maxVer)
+                                      if(currVer >= AppVer||1==1)
                                         {
                                             App.IsUserLoggedIn = true;
                                             Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
@@ -397,7 +399,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     {
                                         App.LoginDataRetrieved.AppVersion = string.Empty;
 
-                                        if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        // if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        if ( currVer>=AppVer)
                                         {
                                             App.IsUserLoggedIn = true;
                                             await viewModel.LoginCompletedInWebView();
@@ -414,6 +417,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 }
                                 catch (Exception ex)
                                 {
+                                    Console.WriteLine(ex.Message);
+                                    Console.Write(ex.StackTrace.ToString());
                                     await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }
                             }
@@ -548,6 +553,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         catch (Exception ex)
                         {
                             Console.WriteLine(ex.Message);
+                            Console.WriteLine(ex.Message);
+                            Console.Write(ex.StackTrace.ToString());
                         }
                     });
                 });
@@ -686,6 +693,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     catch (Exception ex)
                     {
                         Console.WriteLine(ex.Message);
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 });
             }
@@ -745,9 +754,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         }
         private void TinsPicker_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {
+            try { 
             TIN SelectedTin = (TIN)e.NewValue;
             viewModel.SelectedTinId = SelectedTin;
             viewModel.SelectedTinIdPrev = SelectedTin;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
         }
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
         {

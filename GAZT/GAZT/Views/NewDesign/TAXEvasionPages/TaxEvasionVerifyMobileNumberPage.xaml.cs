@@ -55,7 +55,8 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void ChangeAeroIcon()

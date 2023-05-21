@@ -1680,7 +1680,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
-
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2143,6 +2144,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2168,6 +2171,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {
@@ -2744,6 +2749,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 IsLoading = false;
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
             }
@@ -3026,7 +3033,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                //ex.ToString();
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
             return true;
         }
@@ -3185,7 +3194,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 IsLoading = false;
-                ex.ToString();
+                // ex.ToString();
+
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 if (ex is HTTPBadRequestException)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -3362,6 +3374,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

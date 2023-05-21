@@ -21,7 +21,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     
-    <yummy:PancakeView CornerRadius="22,22,0,0" HasShadow="False" VerticalOptions="End" BackgroundColor="White">
+    <yummy:PancakeView CornerRadius="22,22,0,0" VerticalOptions="End" BackgroundColor="White">
         <Grid>
             <StackLayout Padding="0,0,0,0" Margin="10,0,10,0">
 

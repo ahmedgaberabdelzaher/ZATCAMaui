@@ -49,6 +49,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         #endregion
@@ -74,6 +76,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         #endregion
         private async void OnDownloadAttachmentClicked(object sender, EventArgs e)
         {
+            try { 
             Image DownloadImage = sender as Image;
             ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
             //attachment.DocUrl;
@@ -110,8 +113,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                         }
                         catch (Exception ex)
                         {
-
-                        }
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
+                            }
                     }
                     else
                     {
@@ -126,24 +130,30 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 }
             }
         }
-        /* Image DownloadImage = sender as Image;
-         ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
-         //attachment.DocUrl;
-         if (attachment.Filename.Contains(".")) ;
-         string Extention = attachment.Filename.Split('.')[1];
-         if (Extention.Equals("PDF") || Extention.Equals("pdf"))
-         {
-             if (attachment.DocUrl != null)
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
+            }
+            /* Image DownloadImage = sender as Image;
+             ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
+             //attachment.DocUrl;
+             if (attachment.Filename.Contains(".")) ;
+             string Extention = attachment.Filename.Split('.')[1];
+             if (Extention.Equals("PDF") || Extention.Equals("pdf"))
              {
-                 viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                 if (attachment.DocUrl != null)
+                 {
+                     viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                 }
              }
-         }
-         else
-         {
-             await email(attachment.Doguid, attachment);
-         }
-         if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;*/
-    }
+             else
+             {
+                 await email(attachment.Doguid, attachment);
+             }
+             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;*/
+        }
         private async Task DownloadAndSaveFile(string pathToFile, string fileContents)
         {
             File.WriteAllBytes(pathToFile, Convert.FromBase64String(fileContents));
@@ -196,6 +206,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
         }
         private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
         {
+            try { 
             Image deleteImage = sender as Image;
             ZakatAttachment estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
             if (estimateZakatAttachment != null)
@@ -208,6 +219,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 else
                 {
                 }
+            }
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.StackTrace.ToString());
+                Console.WriteLine(ex.Message);
             }
         }
         public async Task email(string doguid, ZakatAttachment attachment)
@@ -255,6 +272,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 }
                 catch (Exception ex)
                 {
+                    Console.Write(ex.ToString());
+                    Console.Write(ex.StackTrace.ToString());
                 }
             });
             await Task.Run(() =>

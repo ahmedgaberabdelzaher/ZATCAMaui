@@ -1029,7 +1029,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             }
             catch (Exception ex)
-            {
+                {
+                    
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
@@ -1133,7 +1134,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1269,7 +1272,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
             }
             catch (Exception ex)
-            {
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 await Task.Run(() =>
                 {
                     IsLoading = false;

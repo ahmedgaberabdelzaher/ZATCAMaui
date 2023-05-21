@@ -1233,7 +1233,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)
                     await PopupNavigation.Instance.PopAsync(false);
-                await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.ToString(), AppResources.Information);
+                });
                 return;
             }
             catch (GAZTVATRegistrationInProcessException ex)
@@ -1716,7 +1719,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             catch (Exception ex)
             {
                 IsLoading1 = false;
-                await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                });
                 Console.Write(ex.ToString());
                 Console.Write(ex.StackTrace.ToString());
                 //throw;

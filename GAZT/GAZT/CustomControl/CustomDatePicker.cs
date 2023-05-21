@@ -25,7 +25,7 @@ namespace GAZT.CustomControl
         //public ObservableCollection<object> Format;
         // Resolving Issue of Date of Birth to prevent selecting future date
         // @Divya Jannapureddy added line number 28
-     
+
         public ObservableCollection<string> Headers { get; set; }
 
 
@@ -68,14 +68,14 @@ namespace GAZT.CustomControl
             {
                 if (!App.IsArabic)
                 {
-                    
+
                     Headers.Add("DAY");
                     Headers.Add("MONTH");
                     Headers.Add("YEAR");
                 }
                 else
                 {
-                    
+
                     Headers.Add("يوم");
                     Headers.Add("شهر");//month
                     Headers.Add("عام");
@@ -85,14 +85,14 @@ namespace GAZT.CustomControl
             {
                 if (!App.IsArabic)
                 {
-                    
+
                     Headers.Add("Day");
                     Headers.Add("Month");
                     Headers.Add("Year");
                 }
                 else
                 {
-                    
+
                     Headers.Add("يوم");
                     Headers.Add("شهر");//Month
                     Headers.Add("عام");
@@ -154,7 +154,7 @@ namespace GAZT.CustomControl
                             {
                                 if (resetDateforMonth(month))
                                 {
-                                    for (int j = 1; j <= DateTime.Today.Day; j++)
+                                    for (int j = 1; j <= DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month); j++)
                                     {
                                         if (j < 10)
                                         {
@@ -178,7 +178,7 @@ namespace GAZT.CustomControl
                                     }
                                 }
 
-                                for (int i = 1; i <= DateTime.Today.Month; i++)
+                                for (int i = 1; i < 13; i++)
                                 {
                                     if (i < 10)
                                     {
@@ -199,37 +199,37 @@ namespace GAZT.CustomControl
                                 }
 
                             }
-                           //if (resetDateforMonth(month))
-                           // {
-                           //     //for (int j = 1; j <= DateTime.Today.Day; j++)
-                           //     //{
-                           //     //    if (j < 10)
-                           //     //    {
-                           //     //        days.Add("0" + j);
-                           //     //    }
-                           //     //    else
-                           //     //        days.Add(j.ToString());
-                           //     //}
-                           //     for (int i = 1; i <= DateTime.Today.Month; i++)
-                           //     {
-                           //         if (i < 10)
-                           //         {
-                           //             if (!Month.Contains("0" + i)) { Month.Add("0" + i); }
-                           //             if (!months.ContainsKey("0" + i))
-                           //             {
-                           //                 months.Add("0" + i, "0" + i);
-                           //             }
-                           //         }
-                           //         else
-                           //         {
-                           //             if (!Month.Contains(i.ToString())) { Month.Add(i.ToString()); }
-                           //             if (!months.ContainsKey(i.ToString()))
-                           //             {
-                           //                 months.Add(i.ToString(), i.ToString());
-                           //             }
-                           //         }
-                           //     }
-                           // }
+                            //if (resetDateforMonth(month))
+                            // {
+                            //     //for (int j = 1; j <= DateTime.Today.Day; j++)
+                            //     //{
+                            //     //    if (j < 10)
+                            //     //    {
+                            //     //        days.Add("0" + j);
+                            //     //    }
+                            //     //    else
+                            //     //        days.Add(j.ToString());
+                            //     //}
+                            //     for (int i = 1; i <= DateTime.Today.Month; i++)
+                            //     {
+                            //         if (i < 10)
+                            //         {
+                            //             if (!Month.Contains("0" + i)) { Month.Add("0" + i); }
+                            //             if (!months.ContainsKey("0" + i))
+                            //             {
+                            //                 months.Add("0" + i, "0" + i);
+                            //             }
+                            //         }
+                            //         else
+                            //         {
+                            //             if (!Month.Contains(i.ToString())) { Month.Add(i.ToString()); }
+                            //             if (!months.ContainsKey(i.ToString()))
+                            //             {
+                            //                 months.Add(i.ToString(), i.ToString());
+                            //             }
+                            //         }
+                            //     }
+                            // }
                             else
                             {
                                 for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
@@ -241,7 +241,7 @@ namespace GAZT.CustomControl
                                     else
                                         days.Add(j.ToString());
                                 }
-                                for (int i = 1; i <= 12; i++)
+                                for (int i = 1; i < 13; i++)
                                 {
                                     if (i < 10)
                                     {
@@ -349,7 +349,7 @@ namespace GAZT.CustomControl
                                 }
 
                             }
-                            
+
                             else
                             {
                                 for (int j = 1; j <= DateTime.DaysInMonth(year, month); j++)
@@ -403,7 +403,7 @@ namespace GAZT.CustomControl
             Day?.Clear();
             Year?.Clear();
             //populate months
-            for (int i = 1; i <= DateTime.Today.Month; i++)
+            for (int i = 1; i < 13; i++)
             {
                 if (i < 10)
                 {
@@ -424,12 +424,12 @@ namespace GAZT.CustomControl
                 // Month.Add(CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(i).Substring(0, 3));
             }
             //populate year
-            for (int i = 1100; i <= DateTime.Today.Year; i++)
+            for (int i = 1900; i < 2050; i++)
             {
                 Year.Add(i.ToString());
             }
             //populate Days
-            for (int i = 1; i <= DateTime.Today.Day; i++)
+            for (int i = 1; i <= DateTime.DaysInMonth(DateTime.Today.Year, DateTime.Today.Month); i++)
             {
                 if (i < 10)
                 {
@@ -440,7 +440,7 @@ namespace GAZT.CustomControl
             }
             Date.Add(Day);
             Date.Add(Month);
-            
+
             Date.Add(Year);
         }
         private void PopulateFutureDateCollection()

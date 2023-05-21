@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:custom="clr-namespace:GAZT"
-             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-             xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-             x:Class="EGAZT.Views.NewDesign.Common.MoreMenuPopUpPageViewRTwo">
+<pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.Common.MoreMenuPopUpPageViewRTwo"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    mc:Ignorable="d">
     <pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,25 +17,34 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
-    <yummy:PancakeView CornerRadius="15,15,0,0" HasShadow="False" VerticalOptions="EndAndExpand" BackgroundColor="White" Padding="15">
+    <yummy:PancakeView
+        Padding="15"
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        VerticalOptions="EndAndExpand">
         <StackLayout HorizontalOptions="CenterAndExpand">
-            <ListView  x:Name="btnList"
-                           Grid.Row="1"
-           ItemsSource="{Binding VatReturnUIButtons}"
-          HorizontalOptions="CenterAndExpand"
-            VerticalOptions="FillAndExpand"
-            HasUnevenRows="True"
-                           ItemSelected="SelectButton"
-                               BackgroundColor="White"
-                     HeightRequest="130"
-            SeparatorVisibility="None"
-            >
+            <ListView
+                x:Name="btnList"
+                Grid.Row="1"
+                BackgroundColor="White"
+                HasUnevenRows="True"
+                HeightRequest="130"
+                HorizontalOptions="CenterAndExpand"
+                ItemSelected="SelectButton"
+                ItemsSource="{Binding VatReturnUIButtons}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
 
-                            <custom:CustomLabel Text="{Binding}" FontFamily="{StaticResource SomarBold}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" Style="{StaticResource SectionTitleBlack}"/>
+                            <custom:CustomLabel
+                                FontFamily="{StaticResource SomarBold}"
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource SectionTitleBlack}"
+                                Text="{Binding}" />
 
                         </ViewCell>
                     </DataTemplate>

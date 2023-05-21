@@ -109,11 +109,15 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     throw new GAZTErrorException(ex.Message);
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
                     return null;
                 }
             }
@@ -170,6 +174,8 @@ namespace EGAZT.Manager
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 Console.WriteLine(ex.Message);
             }
 
@@ -361,6 +367,8 @@ namespace EGAZT.Manager
 
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }
@@ -450,7 +458,9 @@ namespace EGAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    App.IsSessionExpired = true;
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
                     return null;
                 }
             }

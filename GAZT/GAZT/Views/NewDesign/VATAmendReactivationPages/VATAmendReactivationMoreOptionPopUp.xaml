@@ -1,29 +1,51 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationMoreOptionPopUp"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.VATAmendReactivationPages.VATAmendReactivationMoreOptionPopUp"
-        xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:custom="clr-namespace:GAZT"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    
->
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <ContentPage.Content>
-         <yummy:PancakeView  VerticalOptions="EndAndExpand" CornerRadius="15,15,0,0" BackgroundColor="White">
-            <StackLayout Spacing="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="130">
-                 <ListView  HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" HasUnevenRows="True" x:Name="optionList" HeightRequest="100" SeparatorVisibility="None" ItemTapped="OptionItemTapped">
+        <yummy:PancakeView
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            VerticalOptions="EndAndExpand">
+            <StackLayout
+                Grid.Row="0"
+                HeightRequest="130"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+                <ListView
+                    x:Name="optionList"
+                    HasUnevenRows="True"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    ItemTapped="OptionItemTapped"
+                    SeparatorVisibility="None"
+                    VerticalOptions="CenterAndExpand">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="50">
-                                    <custom:CustomLabel Text="{Binding option}" FontFamily="{StaticResource SomarSemiBold}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Margin="10"/>
+                                <StackLayout
+                                    HeightRequest="50"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <custom:CustomLabel
+                                        Margin="10"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        HorizontalOptions="CenterAndExpand"
+                                        HorizontalTextAlignment="Center"
+                                        Text="{Binding option}"
+                                        VerticalTextAlignment="Center" />
                                 </StackLayout>
-                               </ViewCell>
+                            </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView> 
+                </ListView>
             </StackLayout>
-    </yummy:PancakeView>
+        </yummy:PancakeView>
     </ContentPage.Content>
 </pages:PopupPage>

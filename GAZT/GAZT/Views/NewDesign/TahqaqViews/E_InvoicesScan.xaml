@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.TahqaqViews.E_InvoicesScan"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="auto,*">
+        <!--#region Scan View-->
+        <yummy:PancakeView
+            Grid.Row="1"
+            Margin="0"
+            Padding="0"
+            IsVisible="{Binding IsShowScanView}"
+            Style="{StaticResource CommonTopCurves}">
+            <Grid Padding="0,0,0,0" RowDefinitions="1.2*,*,*,*,*">
+                <Grid
+                    x:Name="MainGrid"
+                    Grid.RowSpan="5"
+                    Margin="0,0,0,0" />
+                <!-- <zxing:ZXingScannerView  x:Name="zxing"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True" IsScanning="True"
+                     BackgroundColor="White">
+                                </zxing:ZXingScannerView>-->
+                <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
+                    <Frame BackgroundColor="Black" Opacity=".44" />
+
+                    <StackLayout Margin="0,30,0,30">
+
+                        <Label
+                            FontFamily="{StaticResource FontSomarBold}"
+                            FontSize="22"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
+                            TextColor="White" />
+                        <!--<Label
+                            Margin="0,0,0,30"
+                            FontSize="14"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"
+                            TextColor="White" />-->
+                        <BoxView HeightRequest="30" />
+                    </StackLayout>
+                </Grid>
+
+                <Grid
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    Margin="2,0,2,-7"
+                    FlowDirection="RightToLeft">
+                    <Path
+                        Margin="-3,-7,-3,0"
+                        Data="M 0,0 L 36,0 36,36Z"
+                        Fill="Black"
+                        HorizontalOptions="End"
+                        Opacity=".45"
+                        Rotation="-90"
+                        Stroke="transparent"
+                        VerticalOptions="Start" />
+                    <Image
+                        Margin="-5,-15,-5,0"
+                        HeightRequest="90"
+                        HorizontalOptions="StartAndExpand"
+                        Rotation="-90"
+                        Source="Path"
+                        VerticalOptions="Start" />
+                    <Path
+                        Margin="-7,-6,-15,0"
+                        Data="M 0,0 L 30,0 30,30Z"
+                        Fill="Black"
+                        HorizontalOptions="Start"
+                        Opacity=".45"
+                        VerticalOptions="Start" />
+                    <Image
+                        Margin="-3,-15,-5,0"
+                        HeightRequest="90"
+                        HorizontalOptions="End"
+                        Rotation="-180"
+                        Source="Path"
+                        VerticalOptions="Start" />
+
+                    <Path
+                        Margin="-3,0,-3,-.2"
+                        Data="M 0,0 L 45,0 45,45"
+                        Fill="Black"
+                        HorizontalOptions="Start"
+                        Opacity=".45"
+                        Rotation="90"
+                        Stroke="transparent"
+                        VerticalOptions="End" />
+                    <Image
+                        Margin="-3,0,-3,0"
+                        HeightRequest="90"
+                        HorizontalOptions="StartAndExpand"
+                        Source="Path"
+                        VerticalOptions="End" />
+                    <Path
+                        Margin="-3,0,-3,0"
+                        Data="M 0,0 L 45,0 45,45"
+                        Fill="Black"
+                        HorizontalOptions="End"
+                        Opacity=".45"
+                        Rotation="180"
+                        Stroke="transparent"
+                        VerticalOptions="End" />
+                    <Image
+                        Margin="-3,0,-3,0"
+                        HeightRequest="90"
+                        HorizontalOptions="End"
+                        Rotation="90"
+                        Source="Path"
+                        VerticalOptions="End" />
+
+                </Grid>
+
+
+                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
+                    <Frame BackgroundColor="Black" Opacity=".44" />
+                    <StackLayout>
+                        <Label
+                            Grid.Row="3"
+                            Margin="0,40,27,0"
+                            HorizontalOptions="CenterAndExpand"
+                            TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span FontFamily="{StaticResource FontSomarBold}" FontSize="24" />
+                                    <Span FontSize="16" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame
+                            Grid.Row="4"
+                            Margin="21,27,27,40"
+                            Padding="12"
+                            BackgroundColor="Transparent"
+                            CornerRadius="14"
+                            HasShadow="False">
+
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                TextColor="White" />
+                        </Frame>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </yummy:PancakeView>
+
+        <!--#endregion-->
+        <!--#region Success Result View-->
+        <yummy:PancakeView
+            Grid.Row="1"
+            Padding="20,20,20,0"
+            IsVisible="{Binding IsShowRsltView}"
+            Style="{StaticResource CommonTopCurves}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <ScrollView
+                    Grid.Row="0"
+                    Padding="0,0,0,32"
+                    VerticalScrollBarVisibility="Never">
+                    <StackLayout Padding="0,12,0,0">
+                        <Image
+                            Margin="0,10,0,10"
+                            HeightRequest="70"
+                            HorizontalOptions="CenterAndExpand"
+                            Source="SuccessQr"
+                            WidthRequest="70" />
+                        <Label
+                            FontFamily="{StaticResource FontSomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.Correcttaxinvoice}"
+                            TextColor="{StaticResource PrimaryColor}" />
+                        <Frame
+                            Margin="0"
+                            Padding="0"
+                            BorderColor="LightGray"
+                            CornerRadius="8"
+                            HasShadow="False">
+                            <StackLayout Margin="16">
+                                <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
+                                    <Label
+                                        Grid.Row="0"
+                                        FontFamily="{StaticResource FontSomarBold}"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{Binding SellerName}"
+                                        TextColor="{StaticResource PrimaryColor}" />
+                                    <Grid Grid.Column="1" RowDefinitions="auto">
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="Orange"
+                                            CornerRadius="14"
+                                            HasShadow="False"
+                                            Opacity=".1"
+                                            VerticalOptions="FillAndExpand">
+                                            <Frame.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding RegisterStatus}"
+                                                    TargetType="Frame"
+                                                    Value="{x:Static ResourceManager:AppResources.Registered}">
+                                                    <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                </DataTrigger>
+                                            </Frame.Triggers>
+
+                                        </Frame>
+                                        <Label
+                                            Margin="10,3,10,3"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="{Binding RegisterStatus}"
+                                            TextColor="Orange"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding RegisterStatus}"
+                                                    TargetType="Label"
+                                                    Value="{x:Static ResourceManager:AppResources.Registered}">
+                                                    <Setter Property="TextColor" Value="#62B34F" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+
+                                        </Label>
+
+                                    </Grid>
+                                </Grid>
+                                <BoxView Style="{StaticResource lineSeperator}" />
+                                <Grid
+                                    ColumnDefinitions="*,*"
+                                    ColumnSpacing="10"
+                                    RowDefinitions="auto,auto">
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.VATRegistrationNumber}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding VatNumber}" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.TimeStamp}" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" />
+                                </Grid>
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.InvoiceAmount}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding InvoiceAmount}" />
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.VATAmount}" />
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding VatAmount}" />
+                                          <!--#region Cleared Status-->
+                           <Grid IsVisible="{Binding IsClearedStatusVisible}" HorizontalOptions="End"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" RowDefinitions="auto">
+                                        <Frame
+                                            Padding="0"
+                                            BackgroundColor="#62B34F"
+                                            CornerRadius="14"
+                                            HasShadow="False"
+                                            Opacity=".1"
+                                            VerticalOptions="FillAndExpand">
+                                         
+                                        </Frame>
+                                        <Label
+                                            Margin="10,3,10,3"
+                                            HorizontalOptions="CenterAndExpand"
+                                               Text="{x:Static ResourceManager:AppResources.cleared}"
+                                            TextColor="#62B34F"
+                                            VerticalOptions="CenterAndExpand">
+                                        </Label>
+
+                                    </Grid>
+                        <!--#endregion-->
+                                </Grid>
+                            </StackLayout>
+                        </Frame>
+                  
+                        <Frame
+                            Margin="5,5,5,5"
+                            Padding="12"
+                            BackgroundColor="#00BBBD"
+                            CornerRadius="14"
+                            HasShadow="False"
+                            IsVisible="{Binding IsShowSubmitReport}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
+                            </Frame.GestureRecognizers>
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.Submitareport}"
+                                TextColor="White" />
+                        </Frame>
+
+                    </StackLayout>
+                </ScrollView>
+
+
+
+
+            </Grid>
+        </yummy:PancakeView>
+        <!--#endregion-->
+        <!--  Header  -->
+
+        <controls:Header
+            Grid.Row="0"
+            Padding="0,35,0,10"
+            TitleText="{x:Static ResourceManager:AppResources.EinvoiceScanning}">
+            <controls:Header.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,35,0,10" />
+                    <On Platform="Android" Value="0,35,0,10" />
+                </OnPlatform>
+            </controls:Header.Padding>
+
+        </controls:Header>
+        <controls:MsgView
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsShowMsgView}" />
+        <controls:Loader
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>

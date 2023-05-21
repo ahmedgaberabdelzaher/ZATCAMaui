@@ -55,7 +55,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             catch (Exception ex)
             {
                 scrollView.ScrollToAsync(0, 500, true);
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
             }
 
@@ -930,6 +931,8 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 

@@ -450,6 +450,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -469,6 +471,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
                 }
                 catch (Exception ex)
                 {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
                 }
             }
         }
@@ -902,6 +906,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
                                         }
                                         catch (Exception ex)
                                         {
+                                            Console.WriteLine(ex.Message);
+                                            Console.Write(ex.StackTrace.ToString());
                                         }
                                     }
                                     else
@@ -966,6 +972,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1120,6 +1128,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
             //}
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 //    Device.BeginInvokeOnMainThread(async () =>
                 //    {
                 //        await Task.Run(() =>
@@ -1156,6 +1166,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionFormPage_ViewMode
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void PopToRootPage()

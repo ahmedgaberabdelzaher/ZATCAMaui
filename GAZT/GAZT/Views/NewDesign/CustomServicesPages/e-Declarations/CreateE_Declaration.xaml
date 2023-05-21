@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations.CreateE_Declaration"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid RowDefinitions="auto,*">
+        <yummy:PancakeView
+            Grid.Row="1"
+            Padding="20,20,20,0"
+            Style="{StaticResource CommonTopCurves}">
+            <WebView x:Name="wbview"
+                Margin="-20,-40,-20,0"
+                HorizontalOptions="FillAndExpand"
+                IsTabStop="True" Navigating="wbview_Navigating"
+                VerticalOptions="FillAndExpand" />
+        </yummy:PancakeView>
+        <!--                Source="{Binding EFormWebViewUrl}"
+<controls:Header TitleText="{x:Static ResourceManager:AppResources.eDeclaration}" />
+       -->
+        <controls:Header x:Name="header"/>
+        <controls:Loader
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            IsVisible="{Binding IsLoading}" />
+    </Grid>
+</ContentPage>

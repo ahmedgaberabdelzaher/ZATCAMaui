@@ -34,7 +34,8 @@ namespace EGAZT.Views.NewDesign.Common
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -73,7 +74,8 @@ namespace EGAZT.Views.NewDesign.Common
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

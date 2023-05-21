@@ -859,8 +859,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
-                    catch (Exception Ex)
+                    catch (Exception ex)
                     {
+                        Console.WriteLine(ex.Message);
+                        Console.Write(ex.StackTrace.ToString());
                     }
                 }
                 RaisePropertyChanged("SelectedIdType");
@@ -1855,7 +1857,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
             }
         }
 
@@ -2269,6 +2272,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.StackTrace.ToString());
                 return null;
             }
         }
