@@ -1872,14 +1872,14 @@
                                             <!--  Subsidy Request Ends  -->
                                                  <!--CR6264 starts-->
                                        
-                                            <StackLayout Orientation="Horizontal" Spacing="20" IsVisible="{Binding istileUpdated}">
+                                            <StackLayout x:Name="tileUpdatedView" Orientation="Horizontal" Spacing="20" IsVisible="{Binding istileUpdated}">
                                                 <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}"/>
                                                 <custom:CustomLabel Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" Style="{StaticResource ButtonLabelWhiteBold}"/>
                                                 <StackLayout.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped"/>
                                                 </StackLayout.GestureRecognizers>
                                             </StackLayout>
-                                          <BoxView Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding istileUpdated}"/>
+                                          <BoxView x:Name="tileUpdatedBoxView"  Style="{StaticResource WhiteLineSeperator}" IsVisible="{Binding istileUpdated}"/>
 
     <!--CR6264 ends -->
                                                <!--  RateUS  Starts  -->

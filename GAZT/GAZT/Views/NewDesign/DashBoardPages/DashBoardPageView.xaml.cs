@@ -99,6 +99,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 //ends 
 
 
+                MessagingCenter.Subscribe<Object>(this, "HideProfitGoods", (sender) =>
+                {
+
+                    viewModel.istileUpdated = false;
+                    tileUpdatedView.IsVisible = false;
+                    tileUpdatedBoxView.IsVisible = false;
+
+                    OnDataLoad();
+
+                    //         Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
+
+                });
                 SetLTR();
             }
             catch (Exception ex)
@@ -438,6 +450,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 Console.Write(ex.StackTrace.ToString());
             }
 
+
+
         }
 
         public void SetPickerFont()
@@ -735,7 +749,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
             MessagingCenter.Unsubscribe<App, string>(this, "DashboardApplePayData");
             MessagingCenter.Unsubscribe<object, string>(this, "MultipleBillsContinue");
-
+            MessagingCenter.Unsubscribe<object, string>(this, "HideProfitGoods");
 
 
             isTimerOff = true;
