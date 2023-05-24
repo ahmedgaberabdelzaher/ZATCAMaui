@@ -15,6 +15,7 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
 using Newtonsoft.Json;
+using Org.BouncyCastle.Utilities.Encoders;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -141,9 +142,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         }
 
         public bool IsBase64(string base64String)
-        {
-            if (string.IsNullOrEmpty(base64String) || base64String.Length % 4 != 0
-               || base64String.Contains(" ") || base64String.Contains("\t") || base64String.Contains("\r") || base64String.Contains("\n"))
+        {//|| base64String.Length % 4 != 0
+            if (string.IsNullOrEmpty(base64String) 
+               || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
                 return false;
 
             try
@@ -196,6 +197,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             MessageTxt = AppResources.InvalidQrMessage;
                             return;
                         }
+                        //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
                         byte[] byteList = Convert.FromBase64String(code);
                         int currentPosition = 0;
                         // NoofTags = byteList.Length;
@@ -407,13 +409,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         {
             try
             {
-               var culture = CultureInfo.CreateSpecificCulture("en-US");
+               var culture = CultureInfo.InvariantCulture;
                 DateTime myDate = DateTime.Now;
-                DateTimeStyles styles = DateTimeStyles.None;
+                DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
-                if (DateTime.TryParse(dateValue, culture, styles, out myDate))
-                {
-                    TimeStamp = myDate.ToString("dd/MM/yyyy hh:mm");
+                if (DateTime.TryParse(dateValue,culture,styles, out myDate))
+                
+               /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+    DateTimeStyles.AdjustToUniversal, out myDate))*/
+                {//2023-05-13T19:25:59Z
+                    /* var date = DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal,out myDate);*/
+                    var olddate = DateTime.Parse(dateValue);
+                    var olldkind = olddate.Kind;
+                    var newkind = myDate.Kind;
+
+                    if (dateValue.Contains("Z"))
+                    {
+                        myDate = myDate.ToUniversalTime();
+                        olddate = myDate;
+                    }
+                   TimeStamp = olddate.ToString("dd/MM/yyyy HH:mm");
                     return true;
 
                 }
