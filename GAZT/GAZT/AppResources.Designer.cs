@@ -337,7 +337,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add New CR +.
+        ///   Looks up a localized string similar to Add Entity Unified Number +.
         /// </summary>
         public static string AddNewCR {
             get {
