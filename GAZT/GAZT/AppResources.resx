@@ -9894,7 +9894,7 @@ Zakat, Tax and Customs Authority
     <value>Reference number</value>
   </data>
   <data name="AddNewCR" xml:space="preserve">
-    <value>Add Entity Unified Number +</value>
+    <value>+ Add Entity Unified Number</value>
   </data>
   <data name="Enter" xml:space="preserve">
     <value>Enter</value>
@@ -10122,7 +10122,7 @@ Zakat, Tax and Customs Authority
     <value>Add</value>
   </data>
      <data name="AddNewCRTitle" xml:space="preserve">
-    <value>Add New CR</value> 
+    <value>Add Entity Unified Number</value> 
   </data> 
   <data name="Viewlist" xml:space="preserve">
     <value>View list</value> 
