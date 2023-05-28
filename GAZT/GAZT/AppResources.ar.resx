@@ -10225,7 +10225,7 @@ info@zatca.gov.sa</value>
       <data name="ExciseTax2" xml:space="preserve">
     <value>الضريبة الانتقائية</value>
   </data>
-        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم إصدار البيان الجمركي</value>
   </data>
   <data name="Total2" xml:space="preserve">
@@ -10318,5 +10318,14 @@ info@zatca.gov.sa</value>
   </data>
    <data name="UnifiedNumber" xml:space="preserve">
     <value>الرقم الموحد للمنشأة</value>
+  </data>
+  <data name="NDTotalDisclaimer" xml:space="preserve">
+    <value>المجموع: الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة إصدار البيان الجمركي + ضريبة القيمة المضافة</value>
+  </data>
+   <data name="CustomsdeclarationDisclaimer" xml:space="preserve">
+    <value>قيمة المنتج x الرسوم الجمركية</value>
+  </data>
+  <data name="VATCertificatesDisclaimer" xml:space="preserve">
+    <value>(الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة المنتج أو سعر الحد الأدنى أيهما أعلى + رسوم إصدار البيان الجمركي) x نسبة ضريبة القيمة المضافة</value>
   </data>
 </root>

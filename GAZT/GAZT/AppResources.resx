@@ -10383,4 +10383,13 @@ We regret that you are unable to use the service at this time. Please sign up fo
      <data name="UnifiedNumber" xml:space="preserve">
     <value>Entity Unified Number</value>
   </data>
+ <data name="NDTotalDisclaimer" xml:space="preserve">
+    <value>Total: Customs duties + Excise fees 'if exist' + Customs declaration's fees + VAT</value>
+ </data>
+  <data name="CustomsdeclarationDisclaimer" xml:space="preserve">
+    <value>Product value x customs duties</value>
+  </data>
+    <data name="VATCertificatesDisclaimer" xml:space="preserve">
+    <value>(Customs duties + excise tax if any + product value or minimum price, whichever is higher + customs declaration issuance fees) x VAT rate</value>
+  </data>
 </root>

@@ -2883,6 +2883,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Product value x customs duties.
+        /// </summary>
+        public static string CustomsdeclarationDisclaimer {
+            get {
+                return ResourceManager.GetString("CustomsdeclarationDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Customs Declaration for Travelers.
         /// </summary>
         public static string CustomsDeclarationforTravelers {
@@ -9622,6 +9631,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Total: Customs duties + Excise fees &apos;if exist&apos; + Customs declaration&apos;s fees + VAT.
+        /// </summary>
+        public static string NDTotalDisclaimer {
+            get {
+                return ResourceManager.GetString("NDTotalDisclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Total number of bills.
         /// </summary>
         public static string NDTotalNumberOfBills {
@@ -14360,6 +14378,15 @@ namespace EGAZT {
         public static string VATCertificates {
             get {
                 return ResourceManager.GetString("VATCertificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Customs duties + excise tax if any + product value or minimum price, whichever is higher + customs declaration issuance fees) x VAT rate.
+        /// </summary>
+        public static string VATCertificatesDisclaimer {
+            get {
+                return ResourceManager.GetString("VATCertificatesDisclaimer", resourceCulture);
             }
         }
         
