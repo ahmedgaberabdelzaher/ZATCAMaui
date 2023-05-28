@@ -253,17 +253,7 @@
                     <StackLayout Orientation="Horizontal">
 
                         <Label Style="{StaticResource BodyLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" >
-
-                             <Label.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
-                                        <Span Text=" " />
-                                        <Span Text="5%" />
-                                    </FormattedString>
-                            </Label.FormattedText>
-
-                        </Label>
+                                Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
 
                         <Label Style="{StaticResource BodyLabelBlack}"
                                 HorizontalOptions="EndAndExpand">
@@ -279,12 +269,6 @@
                         </Label>
 
                     </StackLayout>
-
-                    <!--CustomsdeclarationDisclaimer Label-->
-                    <Label Style="{StaticResource BodyLabelGrey}"
-                           FontSize="12"
-                           Margin="0,-10,0,0"
-                           Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
 
                     <!--ExciseTax2 Label-->
                     <StackLayout Orientation="Horizontal">
@@ -308,8 +292,17 @@
                     <!--CustomsFees-->
                     <StackLayout Orientation="Horizontal">
                       
-                        <Label Style="{StaticResource BodyLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                        <Label Style="{StaticResource BodyLabelGrey}">
+
+                             <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                        <Span Text=" " />
+                                        <Span Text="5%" />
+                                    </FormattedString>
+                            </Label.FormattedText>
+
+                        </Label>
 
                         <Label Style="{StaticResource BodyLabelBlack}"
                                 HorizontalOptions="EndAndExpand">
@@ -323,6 +316,12 @@
                         </Label>
 
                     </StackLayout>
+
+                     <!--CustomsFeesDisclaimer Label-->
+                    <Label Style="{StaticResource BodyLabelGrey}"
+                           FontSize="12"
+                           Margin="0,-10,0,0"
+                           Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
 
                     <!--VATCertificates-->
                     <StackLayout Orientation="Horizontal">
