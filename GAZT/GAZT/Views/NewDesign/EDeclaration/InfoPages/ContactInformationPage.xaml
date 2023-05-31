@@ -66,7 +66,7 @@
                 <custom:CustomLabel
                     Grid.Column="1"
                     HorizontalOptions="Center"
-                    FontSize="20"
+                    FontSize="15"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}" 
                     Text="{Binding HeaderTitle}"
@@ -87,11 +87,11 @@
 
                         <!--Circle view-->
                         <Grid RowDefinitions="Auto"
-                              Margin="0,30"
+                              Margin="0,30,0,10"
                               ColumnSpacing="0"
                               VerticalOptions="Start"
                               HorizontalOptions="CenterAndExpand"
-                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
 
                             <!--Circle button 1-->
                             <ImageButton 
@@ -163,7 +163,7 @@
                                 HeightRequest="2" />
 
                             <!--Circle button 4-->
-                             <ImageButton 
+                            <Button 
                                     WidthRequest="30"
                                     HeightRequest="30"
                                     CornerRadius="15"
@@ -172,57 +172,11 @@
                                     Grid.Column="6"
                                     VerticalOptions="CenterAndExpand"
                                     HorizontalOptions="StartAndExpand"
-                                    BackgroundColor="#0996D4"
                                     BorderColor="#0996D4"
-                                    Padding="5"
-                                    Source="reportCheckMark.png"/>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="7"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#0996D4"
-                                HeightRequest="2" />
-
-                            <!--Circle button 5-->
-                            <ImageButton 
-                                WidthRequest="30"
-                                HeightRequest="30"
-                                CornerRadius="15"
-                                InputTransparent="True"
-                                BorderWidth="1"
-                                Grid.Column="8"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                BackgroundColor="#0996D4"
-                                BorderColor="#0996D4"
-                                Padding="5"
-                                Source="reportCheckMark.png"/>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="9"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#0996D4"
-                                HeightRequest="2" />
-
-                            <!--Circle button 6-->
-                            <Button 
-                                WidthRequest="30"
-                                HeightRequest="30"
-                                CornerRadius="15"
-                                InputTransparent="True"
-                                BorderWidth="1"
-                                Grid.Column="10"
-                                VerticalOptions="CenterAndExpand"
-                                HorizontalOptions="StartAndExpand"
-                                BorderColor="#0996D4"
-                                BackgroundColor="Transparent"
-                                TextColor="#0996D4"
-                                Text="6">
-                                <Button.Padding>
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0996D4"
+                                    Text="4">
+                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
@@ -239,34 +193,6 @@
                             HorizontalOptions="StartAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ContactInformation}"
                             TextColor="{StaticResource Primary}" />
-
-                        <!--  Contact Note Label  -->
-                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                             FontSize="16"
-                                             Margin="0,0,0,10"
-                                             LineSpacing="1"
-                                             LineBreakMode="WordWrap">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
-                                              TextColor="{StaticResource NeutralGreay}"/>
-                                        <Span TextColor="{StaticResource Primary}"
-                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-
-                                <custom:CustomLabel.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
-                                </custom:CustomLabel.GestureRecognizers>
-
-                         </custom:CustomLabel>
-
-                        <!--  Horizontal Line  -->
-                        <BoxView
-                            WidthRequest="20"
-                            Margin="0,0,0,10"
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2" />
 
 
                         <!--  Phone Field  -->

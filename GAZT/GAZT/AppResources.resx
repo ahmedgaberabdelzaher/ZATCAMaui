@@ -10398,4 +10398,19 @@ We regret that you are unable to use the service at this time. Please sign up fo
   <data name="TotalPriceValueCart" xml:space="preserve">
        <value>Value</value>
   </data>
+    <data name="RestrictedDisc" xml:space="preserve">
+       <value>You have reached the maximum allowed items.</value>
+  </data>
+    <data name="ElectronicDevicesDisc" xml:space="preserve">
+       <value>Sorry... the entered quantity requires a visit to the declaration office upon arrival.</value>
+  </data>
+  <data name="AddingItems" xml:space="preserve">
+       <value>Adding Items</value>
+  </data>
+    <data name="EDeclarationArrivalHeader" xml:space="preserve">
+       <value>E-Declaration for arrival</value>
+  </data>
+    <data name="EDeclarationDepatureHeader" xml:space="preserve">
+       <value>E-Declaration for departure</value>
+  </data>
 </root>

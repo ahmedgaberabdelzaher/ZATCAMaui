@@ -156,6 +156,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.PleaseAttach;
+                return false;
+            }
+            // Make sure items don't exceed 5
+            else if (SubmitModel.travelerDeclaration.restricted.Count == 5)
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RestrictedDisc;
+                return false;
             }
 
             else if (SelectedCurrencie != null && SelectedPurposes != null && !string.IsNullOrWhiteSpace(TotalValue) && SelectedUnit != null && !string.IsNullOrWhiteSpace(Quantity) && !string.IsNullOrWhiteSpace(RestrictedItem))
@@ -169,10 +177,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
                     }
                 }
-                return true;
+                
             }
             
-            return false;
+            return true;
         }
         #endregion
     }

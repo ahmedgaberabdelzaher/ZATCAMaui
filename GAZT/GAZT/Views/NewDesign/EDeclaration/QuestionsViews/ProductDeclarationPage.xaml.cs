@@ -16,6 +16,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
             viewModel = App.Locator.ProductDeclarationViewModel;
             BindingContext = viewModel;
             viewModel.IsArrivingPlaneSelected = viewModel.SubmitModel.travelerDeclaration.travelingType == 2 ? false : true;
+            viewModel.HeaderTitle = viewModel.IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
             viewModel.FeesCalculatorResponse = new FeesCalculatorResponse();
             viewModel.FeesCalculatorBody = new FeesCalculatorBody();
 

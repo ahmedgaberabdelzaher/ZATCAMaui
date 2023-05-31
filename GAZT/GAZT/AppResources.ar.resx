@@ -9760,8 +9760,7 @@ info@zatca.gov.sa</value>
         <value>المغادرة من المملكة العربية السعودية</value>
     </data> 
       <data name="ProductDeclaration" xml:space="preserve">
-        <value>بيانات الإقرار
-</value>
+        <value>بيانات الإقرار</value>
     </data>
     <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
@@ -10333,5 +10332,20 @@ info@zatca.gov.sa</value>
   </data>
   <data name="TotalPriceValueCart" xml:space="preserve">
        <value>القيمة</value>
+  </data>
+  <data name="RestrictedDisc" xml:space="preserve">
+       <value>لقد وصلت للحد المسموح</value>
+  </data>
+    <data name="ElectronicDevicesDisc" xml:space="preserve">
+       <value>عفواً ... الكمية المدخلة تتطلب زيارة مكتب الإقرار فور الوصول</value>
+  </data>
+<data name="AddingItems" xml:space="preserve">
+       <value>إضافة المقتنيات</value>
+  </data>
+  <data name="EDeclarationArrivalHeader" xml:space="preserve">
+       <value>الإقرار الإكتروني للقادمين</value>
+  </data>
+    <data name="EDeclarationDepatureHeader" xml:space="preserve">
+       <value>الإقرار الإكتروني للمغادرين</value>
   </data>
 </root>

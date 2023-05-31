@@ -84,6 +84,7 @@
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
+
                         <!--  Payment Details Label  -->
                         <Label
                             FontFamily="{StaticResource SomarBold}"
@@ -91,27 +92,6 @@
                             HorizontalOptions="StartAndExpand"
                             Text="{x:Static ResourceManager:AppResources.PaymentDetails}"
                             TextColor="{StaticResource Primary}" />
-
-                        <!--  Payment Note Label  -->
-                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                             FontSize="16"
-                                             Margin="0,0,0,10"
-                                             LineSpacing="1"
-                                             LineBreakMode="WordWrap">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
-                                              TextColor="{StaticResource NeutralGreay}"/>
-                                        <Span TextColor="{StaticResource Primary}"
-                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-
-                                <custom:CustomLabel.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
-                                </custom:CustomLabel.GestureRecognizers>
-
-                         </custom:CustomLabel>
 
 
                         <!--  Horizontal Line  -->

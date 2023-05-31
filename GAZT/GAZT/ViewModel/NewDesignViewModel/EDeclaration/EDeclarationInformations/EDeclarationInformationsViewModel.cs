@@ -114,22 +114,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
                             }
                                 
-                        }
-                        
-                        HeaderTitle = AppResources.PassengerInformation;
+                        } 
                     }
                     else if(isTripPage)
                     {
-                        HeaderTitle = AppResources.TripInformation;
                         IsArrivingPlaneSelected = SubmitModel.travelerDeclaration.travelingType == 1 ? true : false;
-                    }
-                    else if(isContactPage)
-                    {
-                        HeaderTitle = AppResources.ContactInformation;
+                        
                     }
 
+                    HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
 
-                    
+
+
                 });
             }
         }
@@ -179,7 +175,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             SubmitModel.travelerDeclaration.NationalityName = e.Name;
                             SubmitModel.travelerDeclaration.nationality = int.Parse(e.Id);
                             isNationalitySelected = false;
-                            HeaderTitle = AppResources.PassengerInformation;
+                            
                         }
                         else if (isItsSourceSelected)
                         {
@@ -187,35 +183,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             SubmitModel.travelerDeclaration.travelIssuerName = e.Name;
                             SubmitModel.travelerDeclaration.passIssuingCountry = int.Parse(e.Id);
                             isItsSourceSelected = false;
-                            HeaderTitle = AppResources.PassengerInformation;
+                            
                         }
                         else if (isComingGoingSelected)
                         {
                             SubmitModel.travelerDeclaration.arrivingFromDepartingTo = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.arrivingFromDepartingToName = e.Name;
                             isComingGoingSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+                            
                         }
                         else if (isPortSelected)
                         {
                             SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.portName = e.Name;
                             isPortSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+                            
                         }
                         else if (isTravelPurposeSelected)
                         {
                             SubmitModel.travelerDeclaration.travelPurpose = e.Id;
                             SubmitModel.travelerDeclaration.travelPurposeName = e.Name;
                             isTravelPurposeSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+                            
                         }
                         else
                         {
                             SubmitModel.travelerDeclaration.CountryCode =$"+{Regex.Replace(e.Name, @"[^\d]", "")}";
-                            HeaderTitle = AppResources.ContactInformation;
+                            
                         }
 
+                        HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -327,15 +324,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             if (IsShowBottomSheet)
             {
                 IsShowBottomSheet = false;
-                if (isPassengerPage)
-                    HeaderTitle = AppResources.PassengerInformation;
-
-                else if (isTripPage)
-                    HeaderTitle = AppResources.PassengerInformation;
-
-                else
-                    HeaderTitle = AppResources.ContactInformation;
-
+                HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
 
                 return;
             }

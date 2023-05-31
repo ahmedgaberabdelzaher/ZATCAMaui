@@ -29,6 +29,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
         ProductTypesModel selectedProductSubTypes;
         public ProductTypesModel SelectedProductSubTypes { get { return selectedProductSubTypes; } set { selectedProductSubTypes = value; RaisePropertyChanged(); } }
 
+        private int countElectronicDevices = 0;
         #endregion
 
         #region Commands
@@ -158,7 +159,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
                     };
 
+                    if (SelectedProductSubTypes?.code == "851712000001" ||
+                        SelectedProductSubTypes?.code == "847130000002" ||
+                        SelectedProductSubTypes?.code == "847130000003")
+                    {
+                        countElectronicDevices = int.Parse(Quantity ?? "0");
+                    }
+
                     SubmitModel.travelerDeclaration.product.Add(item);
+
                     var cardItem = new EDeclerationCardModel()
                     {
                         Name = item.typeName,
@@ -181,10 +190,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     ClearProductData();
 
                 }
-                else
-                {
-                    DisplayRequiredDataMsg();
-                }
             }
             catch (Exception ex)
             {
@@ -204,19 +209,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
         protected bool CheckProductDataNotNull(bool fromFees=false)
         {
-            if (string.IsNullOrWhiteSpace(Quantity)&&fromFees==false)
+            // Make sure total electronic devices only don't exceed 2
+            if ((SelectedProductSubTypes?.code == "851712000001" ||
+                SelectedProductSubTypes?.code == "847130000002" ||
+                SelectedProductSubTypes?.code == "847130000003") && (int.Parse(Quantity ?? "0") + countElectronicDevices) > 2)
             {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.ElectronicDevicesDisc;
                 return false;
             }
-            if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(TotalValue))
+
+            else if (string.IsNullOrWhiteSpace(Quantity) && fromFees == false)
+            {
+                DisplayRequiredDataMsg();
+                return false;
+            }
+            else if (SelectedProductTypes != null && !string.IsNullOrWhiteSpace(TotalValue))
             {
                 if (IsProductItemHaveSubType && SelectedProductSubTypes == null)
                 {
+                    DisplayRequiredDataMsg();
                     return false;
                 }
-                return true;
             }
-            return false;
+            return true;
         }
 
         public async Task GetProducts(bool includeTobaco = false)

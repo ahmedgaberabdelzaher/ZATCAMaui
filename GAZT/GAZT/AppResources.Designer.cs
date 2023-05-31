@@ -328,6 +328,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adding Items.
+        /// </summary>
+        public static string AddingItems {
+            get {
+                return ResourceManager.GetString("AddingItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add item.
         /// </summary>
         public static string AddItem {
@@ -3675,6 +3684,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to E-Declaration for arrival.
+        /// </summary>
+        public static string EDeclarationArrivalHeader {
+            get {
+                return ResourceManager.GetString("EDeclarationArrivalHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-Declaration for departure.
+        /// </summary>
+        public static string EDeclarationDepatureHeader {
+            get {
+                return ResourceManager.GetString("EDeclarationDepatureHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Materials that are prohibited to be exported (such as antiquities and the like) and subsidized materials..
         /// </summary>
         public static string EDeclarationTermsFive {
@@ -3842,6 +3869,15 @@ namespace EGAZT {
         public static string ElectronicDeclaration {
             get {
                 return ResourceManager.GetString("ElectronicDeclaration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry... the entered quantity requires a visit to the declaration office upon arrival..
+        /// </summary>
+        public static string ElectronicDevicesDisc {
+            get {
+                return ResourceManager.GetString("ElectronicDevicesDisc", resourceCulture);
             }
         }
         
@@ -11779,6 +11815,15 @@ namespace EGAZT {
         public static string ResendVerificationCode {
             get {
                 return ResourceManager.GetString("ResendVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have reached the maximum allowed items..
+        /// </summary>
+        public static string RestrictedDisc {
+            get {
+                return ResourceManager.GetString("RestrictedDisc", resourceCulture);
             }
         }
         

@@ -454,7 +454,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             isUnitsSelected = false;
                         }
                         IsShowBottomSheet = false;
-                        HeaderTitle = AppResources.eDeclaration;
+                        HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
@@ -692,7 +692,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             if (IsShowBottomSheet)
             {
                 IsShowBottomSheet = false;
-                HeaderTitle = AppResources.eDeclaration;
+                HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                 return;
             }
             ClearData();
@@ -836,7 +836,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     {
                         SelectedCalcType = 1;
                         IsShowBottomSheet = false;
-                        HeaderTitle = AppResources.eDeclaration;
+                        HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                         SearchText = string.Empty;
                         isProductTypeSelected = false;
 
@@ -885,7 +885,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     isUnitsSelected = false;
                 }
                 IsShowBottomSheet = false;
-                HeaderTitle = AppResources.eDeclaration;
+                HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                 SearchText = string.Empty;
                 TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                 IsLoading = false;

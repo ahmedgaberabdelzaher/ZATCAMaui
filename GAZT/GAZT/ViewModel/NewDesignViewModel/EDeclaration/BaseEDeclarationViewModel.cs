@@ -59,6 +59,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     IsArrivingPlaneSelected = e == "1" ? true : false;
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
+                    HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                 });
             }
         }
@@ -81,6 +82,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     await PopupNavigation.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
+                    HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                     _navigationService.NavigateTo("ChooseQuestionsPage");
                 });
             }

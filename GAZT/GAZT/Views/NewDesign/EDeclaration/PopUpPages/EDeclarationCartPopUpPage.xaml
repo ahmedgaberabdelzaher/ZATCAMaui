@@ -114,7 +114,8 @@
                                         <DataTemplate>
 
                                             <Grid ColumnDefinitions="Auto,*,Auto"
-                                                  ColumnSpacing="10"
+                                                  ColumnSpacing="0"
+                                                  RowSpacing="0"
                                                   x:Name="selectedProduct"
                                                   RowDefinitions="Auto,Auto,Auto,Auto">
 
@@ -136,28 +137,34 @@
 
                                                 </Image>
 
-                                                <!--Product name-->
-                                                <custom:CustomLabel
-                                                    HorizontalOptions="Start"
-                                                    FontSize="12"
-                                                    Grid.Column="1"
-                                                    TextColor="#565655"
-                                                    LineBreakMode="WordWrap"
-                                                    Text="{Binding Name}"
-                                                    VerticalOptions="Start" />
+                                                <StackLayout Grid.RowSpan="2"
+                                                             Grid.ColumnSpan="2">
 
-                                                <!--Product Desc.-->
-                                                <custom:CustomLabel
-                                                    HorizontalOptions="Start"
-                                                    FontSize="12"
-                                                    Grid.Column="1"
-                                                    Grid.Row="1"
-                                                    TextColor="#999999"
-                                                    LineBreakMode="WordWrap"
-                                                    Text="{Binding desc}"
-                                                    VerticalOptions="Start" />
+                                                    <!--Product name-->
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="Center"
+                                                        FontSize="12"
+                                                        Margin="10,0"
+                                                        Grid.ColumnSpan="2"
+                                                        TextColor="#565655"
+                                                        Text="{Binding Name}"
+                                                        VerticalOptions="Start" />
 
+                                                    <!--Product Desc.-->
+                                                    <custom:CustomLabel
+                                                        HorizontalOptions="Center"
+                                                        FontSize="12"
+                                                        Grid.ColumnSpan="2"
+                                                        Grid.Row="1"
+                                                        TextColor="#999999"
+                                                        LineBreakMode="WordWrap"
+                                                        Text="{Binding desc}"
+                                                        VerticalOptions="Start" />
+
+                                                </StackLayout>
+                                                
                                                 <StackLayout Grid.Row="2"
+                                                             Grid.ColumnSpan="2"
                                                              HorizontalOptions="Start"
                                                              VerticalOptions="Start"
                                                              Orientation="Horizontal">
