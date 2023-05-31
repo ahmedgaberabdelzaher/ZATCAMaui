@@ -5020,7 +5020,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Tax Management</value>
   </data>
   <data name="NDTotal" xml:space="preserve">
-    <value>Total</value>
+    <value>Total value</value>
   </data>
   <data name="NDTotalNumberOfBills" xml:space="preserve">
     <value>Total number of bills</value>
@@ -10391,5 +10391,11 @@ We regret that you are unable to use the service at this time. Please sign up fo
   </data>
     <data name="VATCertificatesDisclaimer" xml:space="preserve">
     <value>(Customs duties + excise tax if any + product value or minimum price, whichever is higher + customs declaration issuance fees) x VAT rate</value>
+  </data>
+    <data name="QTY" xml:space="preserve">
+    <value>QTY</value>
+  </data>
+  <data name="TotalPriceValueCart" xml:space="preserve">
+       <value>Value</value>
   </data>
 </root>

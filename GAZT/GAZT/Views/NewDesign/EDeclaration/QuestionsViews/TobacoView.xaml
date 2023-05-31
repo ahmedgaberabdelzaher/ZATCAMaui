@@ -158,16 +158,23 @@
                         OutlineCornerRadius="15"
                         UnfocusedColor="{StaticResource NeutralGreay}">
                 <custom:BorderlessEntry
-
                         Keyboard="Numeric"
                         Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                         Style="{StaticResource DefaultEntry}"
                         Text="{Binding TotalValue}"
                         TextColor="#58595B" >
-                <custom:BorderlessEntry.Behaviors>
-                    <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
-                </custom:BorderlessEntry.Behaviors>
-            </custom:BorderlessEntry>
+
+                        <custom:BorderlessEntry.Behaviors>
+                            <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
+                        </custom:BorderlessEntry.Behaviors>
+
+                </custom:BorderlessEntry>
+
+                  <inputLayout:SfTextInputLayout.TrailingView>
+                     <custom:CustomLabel
+                            Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                            Style="{StaticResource CaptionLabelGrey}" />
+                  </inputLayout:SfTextInputLayout.TrailingView>
             </inputLayout:SfTextInputLayout>
 
         </StackLayout>

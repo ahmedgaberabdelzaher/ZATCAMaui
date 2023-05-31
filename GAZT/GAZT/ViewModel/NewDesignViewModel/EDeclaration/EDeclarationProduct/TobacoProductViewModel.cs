@@ -185,6 +185,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     {
                         Name = item.typeName,
                         desc = item.subTypeName,
+                        Price = $"{TotalValue} {AppResources.ZSAR}",
+                        QTY = Quantity,
                         ID = item.ID,
                         Type = 1
                     };

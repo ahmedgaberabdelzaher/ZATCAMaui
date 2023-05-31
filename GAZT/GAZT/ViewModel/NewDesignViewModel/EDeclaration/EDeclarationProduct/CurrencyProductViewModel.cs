@@ -203,7 +203,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 {
                     Name = SelectedMaterialTypes.Name,
                     desc = SelectedPurposes.Name,
-                    Price = TotalValue.ToString(),
+                    Price = $"{TotalValue} {item.currencyName}",
                     ID = item.ID,
                     Type = 3
                 };

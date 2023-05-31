@@ -207,6 +207,12 @@
                     </custom:BorderlessEntry.Behaviors>
 
                 </custom:BorderlessEntry>
+
+              <inputLayout:SfTextInputLayout.TrailingView>
+                 <custom:CustomLabel
+                        Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                        Style="{StaticResource CaptionLabelGrey}" />
+              </inputLayout:SfTextInputLayout.TrailingView>
         </inputLayout:SfTextInputLayout>
 
      </StackLayout>

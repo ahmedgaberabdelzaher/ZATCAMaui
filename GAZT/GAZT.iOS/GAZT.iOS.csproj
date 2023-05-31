@@ -770,6 +770,15 @@
     <BundleResource Include="Resources\eCart.png" />
     <BundleResource Include="Resources\eCart%402x.png" />
     <BundleResource Include="Resources\eCart%403x.png" />
+    <BundleResource Include="Resources\product.png" />
+    <BundleResource Include="Resources\product%402x.png" />
+    <BundleResource Include="Resources\product%403x.png" />
+    <BundleResource Include="Resources\quantity.png" />
+    <BundleResource Include="Resources\quantity%402x.png" />
+    <BundleResource Include="Resources\quantity%403x.png" />
+    <BundleResource Include="Resources\info.png" />
+    <BundleResource Include="Resources\info%402x.png" />
+    <BundleResource Include="Resources\info%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1084,6 +1093,9 @@
     </PackageReference>
     <PackageReference Include="Xam.Plugins.Forms.KeyboardOverlap">
       <Version>1.0.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.myToolTip">
+      <Version>1.0.0.7</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

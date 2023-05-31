@@ -9613,7 +9613,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total.
+        ///   Looks up a localized string similar to Total value.
         /// </summary>
         public static string NDTotal {
             get {
@@ -11154,6 +11154,15 @@ namespace EGAZT {
         public static string QRCode {
             get {
                 return ResourceManager.GetString("QRCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to QTY.
+        /// </summary>
+        public static string QTY {
+            get {
+                return ResourceManager.GetString("QTY", resourceCulture);
             }
         }
         
@@ -13576,6 +13585,15 @@ namespace EGAZT {
         public static string TotalPriceValue {
             get {
                 return ResourceManager.GetString("TotalPriceValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string TotalPriceValueCart {
+            get {
+                return ResourceManager.GetString("TotalPriceValueCart", resourceCulture);
             }
         }
         

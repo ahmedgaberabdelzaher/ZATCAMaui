@@ -114,7 +114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     typeName = RestrictedItem,
                     unit = SelectedUnit.id,
                     count = int.Parse(Quantity ?? "0"),
-                    value = Double.Parse(TotalValue),
+                    value = double.Parse(TotalValue),
                     purpose = SelectedPurposes.ID,
                     currencyName = SelectedCurrencie.Name,
                     currency = SelectedCurrencie.currencyCode,
@@ -125,7 +125,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 {
                     Name = item.typeName,
                     desc = SelectedPurposes.Name,
-                    Price = TotalValue.ToString(),
+                    Price = $"{TotalValue} {item.currencyName}",
+                    QTY =Quantity,
                     ID = item.ID,
                     Type = 4
                 };

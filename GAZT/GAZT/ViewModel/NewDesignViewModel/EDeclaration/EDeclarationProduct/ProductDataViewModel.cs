@@ -163,7 +163,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     {
                         Name = item.typeName,
                         desc = SelectedProductSubTypes?.Name,
-                        Price = TotalValue.ToString(),
+                        Price = $"{TotalValue} {AppResources.ZSAR}",
+                        QTY = Quantity,
                         ID = item.ID,
                         Type = 2
                     };

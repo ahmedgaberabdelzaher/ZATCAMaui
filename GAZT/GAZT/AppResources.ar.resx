@@ -4976,7 +4976,7 @@
     <value>Tax Management</value>
     </data>
   <data name="NDTotal" xml:space="preserve">
-    <value>الإجمالي</value>
+    <value>إجمالى المستحق</value>
     </data>
   <data name="NDTotalNumberOfBills" xml:space="preserve">
     <value>إجمالي عدد الفواتير</value>
@@ -10327,5 +10327,11 @@ info@zatca.gov.sa</value>
   </data>
   <data name="VATCertificatesDisclaimer" xml:space="preserve">
     <value>(الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة المنتج أو سعر الحد الأدنى أيهما أعلى + رسوم إصدار البيان الجمركي) x نسبة ضريبة القيمة المضافة</value>
+  </data>
+    <data name="QTY" xml:space="preserve">
+    <value>الكمية</value>
+  </data>
+  <data name="TotalPriceValueCart" xml:space="preserve">
+       <value>القيمة</value>
   </data>
 </root>
