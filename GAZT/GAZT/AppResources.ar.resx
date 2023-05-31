@@ -10225,7 +10225,6 @@ info@zatca.gov.sa</value>
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
-  
   <!--6264 poC-->
   <data name="ZProfitOnGoods" xml:space="preserve">
     <value>التسجيل في ضريبة القيمة المضافة علي هامش الربح (سيارات)</value>
@@ -10272,5 +10271,12 @@ info@zatca.gov.sa</value>
   </data>
   <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
       <value>تقديم غير ناجح</value>
+</data>
+     <data name="ClickhereforRegistration" xml:space="preserve">
+    <value>اضغط هنا للتسجيل</value>
+  </data>
+  <data name="IAMUsernNotFoundMSg" xml:space="preserve">
+    <value>" عزيزي المستخدم
+نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: ثم الدخول على التطبيق مجددًا.</value>
   </data>
 </root>

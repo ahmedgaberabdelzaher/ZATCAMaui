@@ -10340,5 +10340,11 @@ Zakat, Tax and Customs Authority
   <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
       <value>Submission Unsuccesful"</value>
   </data>
-
+    <data name="ClickhereforRegistration" xml:space="preserve">
+    <value>Click here for registration</value>
+  </data>
+    <data name="IAMUsernNotFoundMSg" xml:space="preserve">
+    <value>Dear User,
+We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app.</value>
+  </data>
 </root>
