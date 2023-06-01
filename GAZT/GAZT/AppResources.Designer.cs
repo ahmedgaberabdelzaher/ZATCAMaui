@@ -1222,6 +1222,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Details of the declared items.
+        /// </summary>
+        public static string CartHeader {
+            get {
+                return ResourceManager.GetString("CartHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Category series.
         /// </summary>
         public static string Categoryseries {
@@ -3905,6 +3914,15 @@ namespace EGAZT {
         public static string Emailverificationcodesentsuccessfully {
             get {
                 return ResourceManager.GetString("Emailverificationcodesentsuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sorry, the cart is empty.
+        /// </summary>
+        public static string EmptyCart {
+            get {
+                return ResourceManager.GetString("EmptyCart", resourceCulture);
             }
         }
         
@@ -13630,15 +13648,6 @@ namespace EGAZT {
         public static string TotalPriceValue {
             get {
                 return ResourceManager.GetString("TotalPriceValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Value.
-        /// </summary>
-        public static string TotalPriceValueCart {
-            get {
-                return ResourceManager.GetString("TotalPriceValueCart", resourceCulture);
             }
         }
         

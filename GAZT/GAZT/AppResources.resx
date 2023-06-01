@@ -10395,8 +10395,8 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="QTY" xml:space="preserve">
     <value>QTY</value>
   </data>
-  <data name="TotalPriceValueCart" xml:space="preserve">
-       <value>Value</value>
+  <data name="CartHeader" xml:space="preserve">
+       <value>Details of the declared items</value>
   </data>
     <data name="RestrictedDisc" xml:space="preserve">
        <value>You have reached the maximum allowed items.</value>
@@ -10412,5 +10412,8 @@ We regret that you are unable to use the service at this time. Please sign up fo
   </data>
     <data name="EDeclarationDepatureHeader" xml:space="preserve">
        <value>E-Declaration for departure</value>
+  </data>
+  <data name="EmptyCart" xml:space="preserve">
+       <value>Sorry, the cart is empty</value>
   </data>
 </root>

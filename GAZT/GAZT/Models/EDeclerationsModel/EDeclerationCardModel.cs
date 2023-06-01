@@ -9,7 +9,7 @@ namespace EGAZT.Models.EDeclerationsModel
         public string QTY { get; set; }
         public Guid ID { get; set; }
         public int Type { get; set; }
-        public bool HasLine { get; set; } = true;
+        public bool HasLine { get; set; }
     }
 }
 

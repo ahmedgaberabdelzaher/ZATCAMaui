@@ -170,8 +170,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
                     var cardItem = new EDeclerationCardModel()
                     {
-                        Name = item.typeName,
-                        desc = SelectedProductSubTypes?.Name,
+                        Name = SelectedProductTypes.Name,
+                        desc = IsProductItemHaveSubType ? SelectedProductSubTypes.Name : string.Empty,
                         Price = $"{TotalValue} {AppResources.ZSAR}",
                         QTY = Quantity,
                         ID = item.ID,

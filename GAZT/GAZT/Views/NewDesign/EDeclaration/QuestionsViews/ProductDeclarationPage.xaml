@@ -473,7 +473,7 @@
 
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}"></TapGestureRecognizer>
+                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </StackLayout>

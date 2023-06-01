@@ -92,8 +92,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
             {
                 return new Command(async _ =>
                 {
-                    EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
-                    await PopupNavigation.Instance.PushAsync(poupWindow);
+                    if(CardData != null && CardData.Count != 0)
+                    {
+                       
+                        EDeclarationCartPopUpPage poupWindow = new EDeclarationCartPopUpPage();
+                        await PopupNavigation.Instance.PushAsync(poupWindow);
+                        return;
+                    }
+
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.EmptyCart;
 
                 });
             }

@@ -10330,8 +10330,8 @@ info@zatca.gov.sa</value>
     <data name="QTY" xml:space="preserve">
     <value>الكمية</value>
   </data>
-  <data name="TotalPriceValueCart" xml:space="preserve">
-       <value>القيمة</value>
+  <data name="CartHeader" xml:space="preserve">
+       <value>تفاصيل المواد المفصح عنها</value>
   </data>
   <data name="RestrictedDisc" xml:space="preserve">
        <value>لقد وصلت للحد المسموح</value>
@@ -10347,5 +10347,8 @@ info@zatca.gov.sa</value>
   </data>
     <data name="EDeclarationDepatureHeader" xml:space="preserve">
        <value>الإقرار الإكتروني للمغادرين</value>
+  </data>
+      <data name="EmptyCart" xml:space="preserve">
+       <value>عفواً، السلة فارغة</value>
   </data>
 </root>
