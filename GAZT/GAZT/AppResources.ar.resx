@@ -9824,7 +9824,7 @@ info@zatca.gov.sa</value>
     <value>الرقم المرجعي</value>
   </data>
   <data name="AddNewCR" xml:space="preserve">
-    <value>+ اضافة سجل تجاري جديد</value> 
+    <value>+ إضافة الرقم الموحد للمنشأة</value> 
   </data>
   <data name="Enter" xml:space="preserve">
     <value>أدخل</value>
@@ -10055,7 +10055,7 @@ info@zatca.gov.sa</value>
     <value>اضافه</value>
   </data>
    <data name="AddNewCRTitle" xml:space="preserve">
-    <value>اضافة سجل تجاري جديد</value> 
+    <value>إضافة الرقم الموحد للمنشأة</value> 
   </data>
   <data name="Viewlist" xml:space="preserve">
     <value>اطلع على القائمة</value> 
