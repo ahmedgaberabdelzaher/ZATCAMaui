@@ -10279,4 +10279,7 @@ info@zatca.gov.sa</value>
     <value>" عزيزي المستخدم
 نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: ثم الدخول على التطبيق مجددًا.</value>
   </data>
+   <data name="UnifiedNumber" xml:space="preserve">
+    <value>الرقم الموحد للمنشأة</value>
+  </data>
 </root>
