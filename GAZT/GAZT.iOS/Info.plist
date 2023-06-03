@@ -93,10 +93,10 @@
 	<key>NSAppleMusicUsageDescription </key>
 	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.8</string>
+	<string>1.1.9</string>
 	<key>CFBundleVersion</key>
-	<string>1.1.8</string>
+	<string>1.1.9</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.gazt.enterprise.zatca</string>
+	<string>com.gazt.egazt</string>
 </dict>
 </plist>
