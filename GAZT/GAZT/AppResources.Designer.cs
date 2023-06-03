@@ -337,7 +337,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add New CR +.
+        ///   Looks up a localized string similar to + Add Entity Unified Number.
         /// </summary>
         public static string AddNewCR {
             get {
@@ -346,7 +346,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add New CR.
+        ///   Looks up a localized string similar to Add Entity Unified Number.
         /// </summary>
         public static string AddNewCRTitle {
             get {
@@ -13747,6 +13747,15 @@ namespace EGAZT {
         public static string unableToVerify {
             get {
                 return ResourceManager.GetString("unableToVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity Unified Number.
+        /// </summary>
+        public static string UnifiedNumber {
+            get {
+                return ResourceManager.GetString("UnifiedNumber", resourceCulture);
             }
         }
         

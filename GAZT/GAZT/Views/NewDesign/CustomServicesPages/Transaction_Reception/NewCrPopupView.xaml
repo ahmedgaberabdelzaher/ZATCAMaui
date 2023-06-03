@@ -62,6 +62,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    MaxLength="10"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddNewCRTitle}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CRNo}"
