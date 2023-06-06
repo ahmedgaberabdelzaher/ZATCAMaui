@@ -154,8 +154,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command<DatePicker>((control) =>
                 {
-                    control?.Focus();
+                    try
+                    {
+                        control?.Focus();
 
+                        if (SubmitModel.travelerDeclaration.travelDate.Date == DateTime.Now.Date)
+                            ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 });
             }
         }

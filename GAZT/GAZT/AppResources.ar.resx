@@ -9778,10 +9778,10 @@ info@zatca.gov.sa</value>
         <value>إضافة الى السلة</value>
     </data>
     <data name="TotalFeesPayable" xml:space="preserve">
-        <value>إجمالي الرسوم المستحقة</value>
+        <value>إجمالي المستحق</value>
     </data>
     <data name="DetailsTotalFeesPayable" xml:space="preserve">
-        <value>تفاصيل الرسوم المستحقة</value>
+        <value>تفاصيل الإجمالي المستحق</value>
     </data>
     <data name="Select" xml:space="preserve">
         <value>اختار</value>

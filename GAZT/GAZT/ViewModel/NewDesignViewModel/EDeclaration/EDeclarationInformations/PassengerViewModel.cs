@@ -115,8 +115,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command<DatePicker>((control) =>
                 {
-                    control?.Focus();
+                    try
+                    {
+                        control?.Focus();
 
+                        if (control.ClassId.ToLower().Equals("releasedateentry") &&
+                            SubmitModel.travelerDeclaration.passIssuingDate.Date == DateTime.Now.Date.AddHours(-24))
+                            ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+
+                        else if (control.ClassId.ToLower().Equals("enddateentry") &&
+                            SubmitModel.travelerDeclaration.passExpiryDate.Date == DateTime.Now.Date)
+                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+
+                        else
+                            BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 });
             }
         }

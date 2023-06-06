@@ -3495,7 +3495,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Details of the fees payable.
+        ///   Looks up a localized string similar to Details of the total dues.
         /// </summary>
         public static string DetailsTotalFeesPayable {
             get {
@@ -13508,7 +13508,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total fees payable.
+        ///   Looks up a localized string similar to Total Dues.
         /// </summary>
         public static string TotalFeesPayable {
             get {

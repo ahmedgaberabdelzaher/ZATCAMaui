@@ -815,6 +815,7 @@
                                                 Format="dd/MM/yyyy"
                                                 x:Name="ReleaseDate"
                                                 IsVisible="false"
+                                                ClassId="releasedateentry"
                                                 MaximumDate="{Binding MaximumDate}">
 
                                         <DatePicker.Behaviors>
@@ -882,6 +883,7 @@
                                                 Format="dd/MM/yyyy"
                                                 x:Name="EndDate"
                                                 IsVisible="false"
+                                                ClassId="enddateentry"
                                                 MinimumDate="{Binding MinimumDate}">
 
                                         <DatePicker.Behaviors>
@@ -949,6 +951,7 @@
                                                 MaximumDate="{Binding MaximumDate}"
                                                 x:Name="DateBirth"
                                                 IsVisible="false"
+                                                ClassId="birthdateentry"
                                                 Format="dd/MM/yyyy">
 
                                         <DatePicker.Behaviors>

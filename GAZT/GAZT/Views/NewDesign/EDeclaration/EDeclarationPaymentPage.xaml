@@ -352,9 +352,64 @@
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
 
             <!--  Popup Msg  -->
-            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+             <Grid
+                Margin="0"
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsShowMsgView}"
+                VerticalOptions="FillAndExpand">
 
-        </Grid>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
+                </Grid.GestureRecognizers>
+
+                <StackLayout
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    VerticalOptions="FillAndExpand" />
+
+                <yummy:PancakeView
+                    Padding="20,20,20,10"
+                    BackgroundColor="White"
+                    CornerRadius="15,15,0,0"
+                    Style="{StaticResource CommonTopCurves}"
+                    VerticalOptions="EndAndExpand">
+
+                    <StackLayout Margin="0"
+                                 VerticalOptions="Center">
+
+                        <StackLayout Orientation="Horizontal" >
+
+                            <Label
+                                HorizontalTextAlignment="Start"
+                                Style="{StaticResource BodyLabelBlack}"
+                                Text="{Binding MessageTxt}" />
+
+                            <Image Source="Copy"
+                                   Aspect="AspectFit"
+                                   VerticalOptions="Start"
+                                   WidthRequest="25"
+                                   HeightRequest="25"/>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CopyCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <buttons:SfButton
+                            Margin="0,0,0,10"
+                            Command="{Binding CloseMsgViewCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+                </yummy:PancakeView>
+
+             </Grid>
+
+         </Grid>
 
     </ContentPage.Content>
 </ContentPage>

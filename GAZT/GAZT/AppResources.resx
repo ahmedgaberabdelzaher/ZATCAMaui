@@ -9849,10 +9849,10 @@ Zakat, Tax and Customs Authority
         <value>Add item</value>
     </data>
     <data name="TotalFeesPayable" xml:space="preserve">
-        <value>Total fees payable</value>
+        <value>Total Dues</value>
     </data>
     <data name="DetailsTotalFeesPayable" xml:space="preserve">
-        <value>Details of the fees payable</value>
+        <value>Details of the total dues</value>
     </data>
     <data name="Select" xml:space="preserve">
         <value>Select</value>
