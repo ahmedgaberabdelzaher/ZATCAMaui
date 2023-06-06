@@ -28,6 +28,7 @@ using Xamarin.Forms.Internals;
 using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
+using static EGAZT.Models.LoginSSOModel;
 using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
@@ -40,7 +41,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         IndividualRegistrationPageViewModel viewModel;
         ObservableCollection<InternationalMobileData> mobileData = null;
 
-        public IndividualRegistrationPageView()
+        public IndividualRegistrationPageView(string isGulf)
         {
             InitializeComponent();
             
@@ -48,6 +49,23 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
             this.BindingContext = viewModel;
             viewModel.IsHijriCal = false;
+
+            if (isGulf == "Gulf")
+            {
+                viewModel.IsGulfER = true;
+                viewModel.IsCitizen = false;
+            }
+            else if(isGulf == "RegisterPageSSO" )
+            {
+                viewModel.IsGulfER = false;
+                viewModel.IsCitizen = true;
+            }
+            else
+            {
+                viewModel.IsGulfER = true;
+                viewModel.IsCitizen = false;
+            }
+
 
             viewModel.ClearData();
              Task.Run(async() =>
@@ -88,10 +106,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
             }
             SetPickerFont();
-
             _ = viewModel.GetCaptchAndGUID();
         }
-
+        
         
         private void SetLTR()
         {
@@ -183,8 +200,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
         {
             base.OnDisappearing();
             viewModel.StopTimer = false;
-            viewModel.TotalSec = -10;
-            
+            viewModel.TotalSec = -10;  
         }
         private void GAZTBorderlessEntry_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -1160,7 +1176,53 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
+            idType.Text = "";
+            Number.Text = "";
+            Birthdt.Text = "";
+            Firstname.Text = "";
+            if (viewModel.IsCitizen)
+            {
+                Task.Run(async () =>
+                {
 
+                    try
+                    {
+                        viewModel.modelSSOID = await WebServiceManager.LoginDataSSO();
+                        //viewModel.IdNumber = viewModel.modelSSOID.results[0].Idnumber;
+                        Device.BeginInvokeOnMainThread(async () =>
+                        {
+                            // EntryIDNumber.Text = viewModel.modelSSOID.results[0].Idnumber;
+                            if (viewModel.modelSSOID.results[0].IdType == "ZS0015")
+                            {
+                                idType.Text = AppResources.NationaID;
+                            }
+                            else
+                            {
+                                idType.Text = AppResources.VFCIqamaID;
+                            }
+
+                            Number.Text = viewModel.modelSSOID.results[0].Idnumber;
+                            Birthdt.Text = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt);
+                            viewModel.DOBddyymm = UtilityManager.FormatDateToYYYYDDMMFromDateTypeString(viewModel.modelSSOID.results[0].Birthdt); ;
+                            Firstname.Text = viewModel.modelSSOID.results[0].Firstname;
+
+                            await Task.Run(() =>
+                            {
+                                viewModel.IsLoading = false;
+                            });
+                        });
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                    //viewModel.TxtIDType = viewModel.modelSSOID.results[0].Idnumber;
+                });
+
+            }
+           
+            
 
             if (Device.RuntimePlatform == Device.Android)
             {
@@ -1513,7 +1575,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 if (viewModel.IsHijriCal)
                 {
                     
-                        var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
+                    var selectedItem = SignUpDOBHijri.SelectedItem as ObservableCollection<object>;
                     string month = selectedItem[1].ToString();
                     string day = selectedItem[0].ToString();
                     string year = selectedItem[2].ToString();
@@ -1666,35 +1728,35 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         }
                         break;
                     case Xamarin.Forms.Device.Android:
-                        DDlIDType.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        DDlIDType.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        DDlIDType.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        DDlIDType.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
+                        DDlIDType.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        DDlIDType.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy 
 
-                        GCCPicker_Country.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        GCCPicker_Country.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        GCCPicker_Country.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        GCCPicker_Country.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
+                        GCCPicker_Country.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        GCCPicker_Country.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        GCCPicker_Country.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        GCCPicker_Country.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy  
 
-                        Picker_Region.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Region.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Region.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_Region.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        Picker_Region.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Region.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Region.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_Region.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
 
-                        Picker_City.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_City.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_City.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        Picker_City.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        Picker_City.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_City.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_City.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        Picker_City.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
 
-                        SignUpDOB.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOB.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOB.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOB.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        SignUpDOB.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOB.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
 
-                        SignUpDOBHijri.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOBHijri.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOBHijri.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        SignUpDOBHijri.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        SignUpDOBHijri.HeaderFontFamily = "Somar-SemiBold";//"Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOBHijri.ColumnHeaderFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOBHijri.SelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";
+                        SignUpDOBHijri.UnSelectedItemFontFamily = "Somar-SemiBold";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
                         break;
                 }
             }
