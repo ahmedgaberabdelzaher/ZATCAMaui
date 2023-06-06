@@ -53,6 +53,7 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
 using static EGAZT.Models.NewYesorNoPageModel;
 using static EGAZT.Models.LoginSSOModel;
+using static Xamarin.Essentials.Permissions;
 
 
 namespace GAZT.Manager
@@ -6264,7 +6265,9 @@ namespace GAZT.Manager
                     }
                     else
                     {
-                        var strings = App.GUIDFrSSO.Split("guid=");
+                        List<string> strings = new List<string>(
+    App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
+                     //   string[] strings = App.GUIDFrSSO.Split("Testvd");
                         guid = strings[1];
                        
                     }

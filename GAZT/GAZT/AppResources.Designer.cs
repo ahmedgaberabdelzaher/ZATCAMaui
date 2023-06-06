@@ -20198,6 +20198,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Citizen / Resident.
+        /// </summary>
+        public static string ZREGCitizen {
+            get {
+                return ResourceManager.GetString("ZREGCitizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gulf Citizen.
+        /// </summary>
+        public static string ZREGGulfCtzn {
+            get {
+                return ResourceManager.GetString("ZREGGulfCtzn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string ZReportStatusClose {

@@ -10282,4 +10282,11 @@ info@zatca.gov.sa</value>
    <data name="UnifiedNumber" xml:space="preserve">
     <value>الرقم الموحد للمنشأة</value>
   </data>
+  <!--6094-->
+<data name="ZREGCitizen" xml:space="preserve">
+<value>مواطن / مقيم</value>
+</data>
+<data name="ZREGGulfCtzn" xml:space="preserve">
+<value>مواطن خليجي</value>
+</data>
 </root>

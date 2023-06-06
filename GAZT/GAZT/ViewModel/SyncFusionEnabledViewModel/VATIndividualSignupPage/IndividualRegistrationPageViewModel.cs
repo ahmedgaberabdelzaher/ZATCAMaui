@@ -1,4 +1,5 @@
 ﻿//using CalendarView;
+using EGAZT.Helper;
 using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -2669,7 +2670,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             {
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
-                DateTime dt = Convert.ToDateTime(date1);
+                DateTime dt = DateTimeHelper.DateTimeFormater(date1);
                 dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
                 long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
                 unixTimestamp = unixTimestamp * 1000;
@@ -2753,7 +2754,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 if (IsCitizen)
                 {
 
-                    var strings = App.GUIDFrSSO.Split("guid=");
+                    // var strings = App.GUIDFrSSO.Split("guid=");
+                    //   var strings = App.GUIDFrSSO.Split("guid=");
+                    List<string> strings = new List<string>(
+     App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
                     var guid = strings[1];
                     Mguid = guid;
                 }

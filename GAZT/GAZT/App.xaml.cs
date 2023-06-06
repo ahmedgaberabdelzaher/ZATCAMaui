@@ -40,6 +40,7 @@ using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.Views.NewDesign.Common;
+using System.Runtime.InteropServices;
 
 namespace EGAZT
 {
@@ -58,6 +59,10 @@ namespace EGAZT
         public static string VatCustom;
         public static string VatBaseUrl;
         #region new design views
+
+        public static string GUIDFrSSO { get; set; }
+        public static bool successMsg { get; set; }
+        public static bool isAndroidUrlloaded = false;
 
         public static Stopwatch stopWatch = new Stopwatch();
         public const int defaultTimespan = 30;

@@ -1135,11 +1135,11 @@ namespace GAZT.Manager
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
                 return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return null;
             }
-           
+
         }
 
 
@@ -1377,6 +1377,49 @@ namespace GAZT.Manager
                       .ParseExact(dateToConvert, "yyyy-MM-dd", CultureInfo.InvariantCulture)
                       .ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
             return result;
+        }
+        public static string FormatDateToYYYYDDMMFromDateTypeString(DateTime? dateToConvert)
+        {
+            string requiredDate = string.Empty;
+
+
+
+            DateTime dateStart = new DateTime();
+
+
+
+            dateStart = (DateTime)dateToConvert;
+
+
+
+            GregorianCalendar hjCalendar = new GregorianCalendar();
+            int year = hjCalendar.GetYear(dateStart);
+            int month = hjCalendar.GetMonth(dateStart);
+            int day = hjCalendar.GetDayOfMonth(dateStart);
+
+
+
+            string dateStr = string.Format("{0:00}/{1}/{2}", year, month, day);
+
+
+
+
+            string dt1 = string.Empty;
+            string[] dts = null;
+            dts = dateStr.Split('/');
+
+
+
+            dt1 = dts[0] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[2];
+
+
+
+
+            requiredDate = dt1;
+
+
+
+            return dateStr;
         }
 
     }

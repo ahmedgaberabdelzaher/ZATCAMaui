@@ -10350,4 +10350,11 @@ We regret that you are unable to use the service at this time. Please sign up fo
      <data name="UnifiedNumber" xml:space="preserve">
     <value>Entity Unified Number</value>
   </data>
+  <!--6094-->
+<data name="ZREGCitizen" xml:space="preserve">
+<value>Citizen / Resident</value>
+</data>
+<data name="ZREGGulfCtzn" xml:space="preserve">
+<value>Gulf Citizen</value>
+</data>
 </root>
