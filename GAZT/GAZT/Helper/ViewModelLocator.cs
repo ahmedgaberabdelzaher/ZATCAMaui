@@ -304,7 +304,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
 
-
+            //CR6094
+            SimpleIoc.Default.Register<NafathPopupPageViewModel>();
+            SimpleIoc.Default.Register<NafathLoginPageViewModel>();
 
             #endregion
 
@@ -464,6 +466,41 @@ namespace EGAZT
                 }
             }
         }
+
+        //CR6094
+           public NafathPopupPageViewModel NafathPopupPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NafathPopupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public NafathLoginPageViewModel NafathLoginPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NafathLoginPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
         public TaxManagementPageViewModel TaxManagementPageView
         {
             get
@@ -2943,6 +2980,10 @@ namespace EGAZT
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+
+//CR6094
+            navigationService.Configure(App.NafathPopUpPage, typeof(NafathPopUpPage));
+            navigationService.Configure(App.NafathLoginPageView, typeof(NafathLoginPageView));
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             #endregion
 

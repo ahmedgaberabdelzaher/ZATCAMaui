@@ -172,6 +172,8 @@ namespace GAZT.Helper
         public static string GAZTGetAllAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '";
         #endregion
 
+        public static string GetLoginDetaialsSSO = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$filter=Type eq '1' and Mguid eq '";//6094
+
         #region Tax Evasion New API - Pointing to Prod
 
         public static string GAZTTaxEvasionGetCategories = "https://vat2.gazt.gov.sa/api/v4/list-categories";

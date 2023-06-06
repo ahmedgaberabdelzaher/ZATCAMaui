@@ -8,6 +8,7 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using ObjCRuntime;
+using Syncfusion.SfRangeSlider.XForms;
 using UIKit;
 using WebKit;
 using Xamarin.Forms;
@@ -34,7 +35,6 @@ namespace GAZT.iOS.CustomRenderer
         {
             userController = config.UserContentController;
         }
-       
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
@@ -81,6 +81,7 @@ namespace GAZT.iOS.CustomRenderer
         public DisplayLinkWebViewDelegateNew(HybridWebView element)
         {
             this.element = element;
+          //  this.element.Navigation = this;
         }
         
         private bool IsError = false;
@@ -90,6 +91,7 @@ namespace GAZT.iOS.CustomRenderer
             Console.WriteLine("ContentProcessDidTerminate");
         }
 
+        [Foundation.Export("webView:didFailProvisionalNavigation:withError:")]
         public override void DidFailProvisionalNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
             Console.WriteLine("DidFailProvisionalNavigation");
@@ -107,7 +109,8 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 else
                 {
-
+                    App.IsLoginCalled = false;
+                    element.InvokeAction("requestTimedout");
                 }
             }
             catch(Exception ex)
@@ -117,13 +120,15 @@ namespace GAZT.iOS.CustomRenderer
             }
         }
 
-
         private static bool isUserLogingApiCalled = false;
 
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
+            Console.WriteLine("DidStartNavigation -" + webView.Url.ToString());
             isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
+
+            //speradsso.eradsso
 
             if (apiUrl.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.ArePreLoginLangCookiesSet == true && App.IsLoginCalled == false)
             {
@@ -144,6 +149,16 @@ namespace GAZT.iOS.CustomRenderer
             if (apiUrl.ToString().Contains("IsBacktoLogin=Y"))
             {
                 element.InvokeAction("navigateBackToLoginPage");
+            }
+
+            if (apiUrl.ToString().Contains("IsSSOLogon=Y"))
+            {
+                element.InvokeAction("IsloginControl");
+            }
+            if (apiUrl.ToString().Contains("IsSignUp=Y&guid="))
+            {
+                App.GUIDFrSSO = apiUrl.ToString();
+                element.InvokeAction("navigateToVATIndividualSignupPageSSO");
             }
 
             if (apiUrl.ToString().Contains("IsSIGNUP=Y"))
@@ -172,14 +187,15 @@ namespace GAZT.iOS.CustomRenderer
                 }
             }
         }
-
+       
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
-            Console.WriteLine("DidFinishNavigation");
+            Console.WriteLine("DidFinishNavigation -" + webView.Url.ToString());
             WKHttpCookieStore wKHttpCookieStore = webView.Configuration.WebsiteDataStore.HttpCookieStore;
 
             Uri tempUrl = webView.Url;
 
+           
             if (tempUrl.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies) && App.IsLoginCalled == false)
             {
                 element.InvokeAction("hideLoadingIndicator");

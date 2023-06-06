@@ -298,6 +298,10 @@ namespace EGAZT
 
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
+        //cr6094
+              public static string NafathPopUpPage = "NafathPopUpPage";
+              public static string NafathLoginPageView = "NafathLoginPageView";
+
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 

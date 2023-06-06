@@ -134,6 +134,10 @@
 	  <None Remove="VATgoodsOnprofit\Model\" />
 	  <None Remove="VATgoodsOnprofit\ViewModel\" />
 
+	  <None Remove="Nafat\" />
+	  <None Remove="Nafat\view\" />
+	  <None Remove="Nafat\viewmodel\" />
+	  <None Remove="Nafat\Model\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -267,6 +271,10 @@
 		<Folder Include="VATgoodsOnprofit\View\" />
 		<Folder Include="VATgoodsOnprofit\Model\" />
 		<Folder Include="VATgoodsOnprofit\ViewModel\" />
+		<Folder Include="Nafat\" />
+		<Folder Include="Nafat\view\" />
+		<Folder Include="Nafat\viewmodel\" />
+		<Folder Include="Nafat\Model\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

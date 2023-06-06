@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using Xamarin.Forms.PlatformConfiguration;
 using Xamarin.Forms.PlatformConfiguration.iOSSpecific;
 using Xamarin.Forms.Xaml;
 namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
@@ -34,6 +35,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private double width = 0;
         private double height = 0;
         HybridWebView hybridWebView;
+       // HybridWebView hybridWebView = new HybridWebView();
+
+        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
@@ -47,13 +51,14 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 App.VATType = PageExecutionType.Register;
                 App.ZAKATType = PageExecutionType.Register;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
-                this.BindingContext = viewModel = App.Locator.SFLoginPageView;
+                viewModel = App.Locator.SFLoginPageView;
+                this.BindingContext = viewModel;// = App.Locator.SFLoginPageView;
                 //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
                 ChangeAeroIcon();
                 CheckFirstTimeorNot();
                 GetDeviceID();
                 viewModel.NavigateToThisService = strNavigateToThisService;
-                viewModel.CurrentTab = 1;
+                hybridWebView.BackgroundColor = (Color)App.Current.Resources["Primary"];
 
                 if (App.IsArabic)
                 {
@@ -104,6 +109,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 App.ArePreLoginLangCookiesSet = false;
                 App.IsLoginCalled = false;
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
 
                 Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
                 viewModel.TINIndex = 0;
@@ -197,10 +206,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
             try
             {
-                //viewModel.password = string.Empty;
-                //viewModel.email = string.Empty;
-                // viewModel.Password = string.Empty;
-                // viewModel.Email = string.Empty;
                 MessagingCenter.Subscribe<string>(this, "TinList", message =>
                 {
                     viewModel.IsVisibleTinIds = true;
@@ -213,14 +218,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 viewModel.CurrentAttempt = 0;
                 if (App.CurrentDropdownTIN != null)
                     viewModel.SelectedTinId = App.CurrentDropdownTIN;
-
-                //if (App.IsSessionExpired)
-                //{
-                //    await viewModel._dialogService.ShowMessageBox(AppResources.ZYourSessionhasexpiredPleaseLoginagain, AppResources.Information);
-                //}
-                //else
-                //{
-                //}
 
                 viewModel.IsVisibleTinIds = false;
 
@@ -238,7 +235,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 }
 
                 var platform = Xamarin.Essentials.DeviceInfo.Platform;
-                if (platform == DevicePlatform.Android && App.isAndroidRefresh == false)
+                if (platform == DevicePlatform.Android && App.isAndroidRefresh == false) //#CR2068
                 {
                     if (hybridWebView != null)
                     {
@@ -247,8 +244,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     hybridWebView = new HybridWebView();
                     //App.isAndroidRefresh = true;
                     ContinuedFunc(lang);
-
-
                 }
                 else
                 {
@@ -284,288 +279,331 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private void ContinuedFunc(string lang)
             {
 
-                Device.BeginInvokeOnMainThread(async () =>
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                if (hybridWebView != null)
                 {
-                    viewModel.IsLoading = true;
-                    hybridWebView.Opacity = 0;
-                    var objSession = Xamarin.Forms.Application.Current.Properties.ContainsKey("IsSessionExpired") ? Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] : null;
-                    if (objSession != null && bool.Parse(objSession.ToString()))
-                    {
-                        loginGrid.Opacity = 0;
-                        sessionExpiredView.IsVisible = true;
-                    }
-                });
+                    loginGrid.Children.Remove(hybridWebView);
+                }
+                hybridWebView = new HybridWebView();
+                    // App.isAndroidUrlloaded = true;
+                    anotherFunc(lang);
 
-                hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
+
+            });
+            var platform = Xamarin.Essentials.DeviceInfo.Platform;
+            hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
                 hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
 
                 hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
-                hybridWebView.RegisterAction(async (data) =>
+            hybridWebView.RegisterAction(async (data) =>
+            {
+                if (platform == DevicePlatform.iOS)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    if (hybridWebView != null)
                     {
-                        try
+                        loginGrid.Children.Remove(hybridWebView);
+                    }
+
+                    hybridWebView = new HybridWebView();
+                    anotherFunc(lang);
+                }
+                else
+                {
+
+                }
+            });
+
+                var safeInsets = On<Xamarin.Forms.PlatformConfiguration.iOS>().SafeAreaInsets();
+
+                if (Device.RuntimePlatform == Device.iOS && safeInsets.Bottom == 0)
+                {
+                    loginGrid.Margin = new Thickness(0, -50, 0, -30);
+                }
+            }
+
+        private void anotherFunc(string lang)
+        {
+
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                viewModel.IsLoading = true;
+                hybridWebView.Opacity = 0;
+                var objSession = Xamarin.Forms.Application.Current.Properties.ContainsKey("IsSessionExpired") ? Xamarin.Forms.Application.Current.Properties["IsSessionExpired"] : null;
+                if (objSession != null && bool.Parse(objSession.ToString()))
+                {
+                    loginGrid.Opacity = 0;
+                    sessionExpiredView.IsVisible = true;
+                }
+            });
+
+            hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
+            hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
+
+            hybridWebView.Url = viewModel.CreateLoginURL(lang);
+
+            hybridWebView.RegisterAction(async (data) =>
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    try
+                    {
+                        if (data == "displayLoginLoadingIndicator")
                         {
-                            if (data == "displayLoginLoadingIndicator")
+                            hybridWebView.Opacity = 0;
+                            viewModel.IsLoading = true;
+                        }
+
+                        if (data == "displayLoadingIndicator")
+                        {
+                            viewModel.IsLoading = true;
+                        }
+
+                        if (data == "hideLoadingIndicator")
+                        {
+                            hybridWebView.Opacity = 1;
+                            viewModel.IsLoading = false;
+
+                        }
+
+                        if (data == "hideLoginLoadingIndicator")
+                        {
+                            viewModel.IsLoading = false;
+                        }
+
+                        if (data == "IsloginControl")
+                        {
+                            hybridWebView.Url = viewModel.CreateLoginURL(lang); 
+                        }
+
+                        if (data == "requestTimedout")
+                        {
+                            hybridWebView.Opacity = 0;
+                            viewModel.IsLoading = false;
+                            App.isAndroidUrlloaded = false;
+
+                            if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
                             {
-                                hybridWebView.Opacity = 0;
-                                viewModel.IsLoading = true;
+                                App.LoginDataRetrieved.AppMsg = AppResources.RequestTimeoutDescription;
                             }
 
-                            if (data == "displayLoadingIndicator")
+                            if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
                             {
-                                viewModel.IsLoading = true;
-                            }
-
-                            if (data == "hideLoadingIndicator")
-                            {
-                                hybridWebView.Opacity = 1;
-                                viewModel.IsLoading = false;
+                                App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
 
                             }
 
-                            if (data == "hideLoginLoadingIndicator")
+                            await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                            //hybridWebView.RefreshCommand();
+
+                            try
                             {
-                                viewModel.IsLoading = false;
+                                await LogoffUser();
+                                GoBackToOnaboardingScreen();
                             }
-
-                            if (data == "requestTimedout")
+                            catch (Exception ex)
                             {
-                                hybridWebView.Opacity = 0;
-                                viewModel.IsLoading = false;
-                                App.isAndroidRefresh = false;
-
-                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
-                                {
-                                    App.LoginDataRetrieved.AppMsg = AppResources.RequestTimeoutDescription;
-                                }
-
-                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
-                                {
-                                    App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
-
-                                }
-
-                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                //hybridWebView.RefreshCommand();
-
-                                try
-                                {
-                                    await LogoffUser();
-                                    GoBackToOnaboardingScreen();
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
-                                    GoBackToOnaboardingScreen();
-                                }
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
+                                GoBackToOnaboardingScreen();
                             }
+                        }
 
-                            if (data == "success")
+                        if (data == "success")
+                        {
+                            //App.IsUserLoggedIn = true;
+                            //await viewModel.LoginCompletedInWebView();
+
+                            try
                             {
-                                //App.IsUserLoggedIn = true;
-                                //await viewModel.LoginCompletedInWebView();
+                                string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
 
-                                try
+                                if (minMaxVersions.Count() > 1)
                                 {
-                                    string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+                                    double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
+                                    double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
                                     double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
-                                    double AppVer = Convert.ToDouble(App.LoginDataRetrieved.AppVersion.Split('-')[1].Replace(".", string.Empty));
 
-                                    if (minMaxVersions.Count() > 1)
+                                    if (currVer >= minVer && currVer <= maxVer)
                                     {
-                                       // double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
-                                       // double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
-
-                                      //  if (currVer >= minVer && currVer <= maxVer)
-                                      if(currVer >= AppVer||1==1)
-                                        {
-                                            App.IsUserLoggedIn = true;
-                                            Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
-                                            await viewModel.LoginCompletedInWebView();
-                                        }
-                                        else
-                                        {
-                                            hybridWebView.Opacity = 0;
-                                            viewModel.IsLoading = false;
-
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                            await LogoffUser();
-                                        }
+                                        App.IsUserLoggedIn = true;
+                                        Xamarin.Forms.Application.Current.Properties["timeOut"] = DateTime.Now;
+                                        await viewModel.LoginCompletedInWebView();
                                     }
                                     else
                                     {
-                                        App.LoginDataRetrieved.AppVersion = string.Empty;
+                                        hybridWebView.Opacity = 0;
+                                        viewModel.IsLoading = false;
 
-                                        // if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
-                                        if ( currVer>=AppVer)
-                                        {
-                                            App.IsUserLoggedIn = true;
-                                            await viewModel.LoginCompletedInWebView();
-                                        }
-                                        else
-                                        {
-                                            hybridWebView.Opacity = 0;
-                                            viewModel.IsLoading = false;
-
-                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                            await LogoffUser();
-                                        }
+                                        await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                        await LogoffUser();
                                     }
                                 }
-                                catch (Exception ex)
-                                {
-                                    Console.WriteLine(ex.Message);
-                                    Console.Write(ex.StackTrace.ToString());
-                                    await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                                }
-                            }
-
-                            if (data == "navigateToForgotUsernamePage")
-                            {
-                                hybridWebView.Opacity = 0;
-                                //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
-                                await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
-                                //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
-                            }
-
-                            if (data == "navigateToUnlockAccountPage")
-                            {
-                                hybridWebView.Opacity = 0;
-                                await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
-                            }
-
-                            if (data == "navigateToVATIndividualSignupPage")
-                            {
-                                hybridWebView.Opacity = 0;
-                                //viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
-                                viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
-                            }
-
-                            if (data == "navigateBackToLoginPage")
-                            {
-                                App.IsLoginCalled = false;
-                                OnAppearing();
-                            }
-
-                            if (data == "error")
-                            {
-                                hybridWebView.Opacity = 0;
-                                viewModel.IsLoading = false;
-
-                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
-                                {
-                                    App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
-                                }
-
-                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
-                                {
-                                    App.LoginDataRetrieved.MsgTitle = AppResources.Information;
-                                };
-
-                                //await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                ////hybridWebView.RefreshCommand();
-
-                                // LogoffUser();
-                                //Please complete registration process on Portal to Login into the app.
-                                // Test code for implementing the VAT Registration
-                                if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
-                                {
-                                    App.IsUserLoggedIn = true;
-                                    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
-                                }
                                 else
                                 {
-                                    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                    await LogoffUser();
-                                }
+                                    App.LoginDataRetrieved.AppVersion = string.Empty;
 
-                                //hybridWebView.RefreshCommand();
-                            }
-
-                            if (data == "errorGeneric")
-                            {
-                                hybridWebView.Opacity = 0;
-                                viewModel.IsLoading = false;
-
-                                await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                                viewModel.IsLoading = true;
-
-                                if (App.TP != null)
-                                    App.TP = null;
-                                if (App.PreviousIsArabic)
-                                {
-                                    String langName = "ar-AE";
-                                    AppResources.Culture = new CultureInfo(langName);
-                                }
-                                else
-                                {
-                                    String langName = "en-US";
-                                    AppResources.Culture = new CultureInfo(langName);
-                                }
-
-                                try
-                                {
-                                    await WebServiceManager.GAZTLogOff();
-                                }
-                                catch
-                                {
-
-                                }
-
-
-                                viewModel.IsLoading = false;
-
-                                var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
-                                foreach (var item in _navigation.NavigationStack)
-                                {
-                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                    if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
                                     {
-                                        _navigation.RemovePage(item);
-                                        break;
+                                        App.IsUserLoggedIn = true;
+                                        await viewModel.LoginCompletedInWebView();
+                                    }
+                                    else
+                                    {
+                                        hybridWebView.Opacity = 0;
+                                        viewModel.IsLoading = false;
+
+                                        await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                        await LogoffUser();
                                     }
                                 }
-
-                                App.IsLogOut = true;
-                                App.IsLoginCalled = false;
-                                App.IsSamlApiCalledAndroid = false;
-
-                                try
-                                {
-                                    App.httpClientHandler = new HttpClientHandler();
-                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                                }
-                                catch (Exception ex)
-                                {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
-                                }
-
-                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-                                _navigation.NavigationStack.ToList().Clear();
-
+                            }
+                            catch (Exception ex)
+                            {
+                                await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                             }
                         }
 
-                        catch (Exception ex)
+                        if (data == "navigateToForgotUsernamePage")
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+                            hybridWebView.Opacity = 0;
+                            //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
+                            await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
+                            //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
                         }
-                    });
+
+                        if (data == "navigateToUnlockAccountPage")
+                        {
+                            hybridWebView.Opacity = 0;
+                            await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
+                        }
+
+                        if (data == "navigateToVATIndividualSignupPage")
+                        {
+                            hybridWebView.Opacity = 0;
+                            //viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
+                            viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
+                        }
+
+                        if (data == "navigateToVATIndividualSignupPageSSO")
+                        {
+                            //await viewModel.getSSODetails();
+                           // viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+                            viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                        }
+
+                        if (data == "navigateBackToLoginPage")
+                        {
+                            App.IsLoginCalled = false;
+                            OnAppearing();
+                        }
+
+                        if (data == "error")
+                        {
+                            hybridWebView.Opacity = 0;
+                            viewModel.IsLoading = false;
+
+                            if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                            {
+                                App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
+                            }
+
+                            if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                            {
+                                App.LoginDataRetrieved.MsgTitle = AppResources.Information;
+                            };
+
+                            if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
+                            {
+                                App.IsUserLoggedIn = true;
+                                await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
+                            }
+                            else
+                            {
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                await LogoffUser();
+                            }
+                        }
+
+                        if (data == "errorGeneric")
+                        {
+                            hybridWebView.Opacity = 0;
+                            viewModel.IsLoading = false;
+
+                            await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                            viewModel.IsLoading = true;
+
+                            if (App.TP != null)
+                                App.TP = null;
+                            if (App.PreviousIsArabic)
+                            {
+                                String langName = "ar-AE";
+                                AppResources.Culture = new CultureInfo(langName);
+                            }
+                            else
+                            {
+                                String langName = "en-US";
+                                AppResources.Culture = new CultureInfo(langName);
+                            }
+
+                            try
+                            {
+                                await WebServiceManager.GAZTLogOff();
+                            }
+                            catch
+                            {
+
+                            }
+
+
+                            viewModel.IsLoading = false;
+
+                            var _navigation = Xamarin.Forms.Application.Current.MainPage.Navigation;
+                            foreach (var item in _navigation.NavigationStack)
+                            {
+                                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                {
+                                    _navigation.RemovePage(item);
+                                    break;
+                                }
+                            }
+
+                            App.IsLogOut = true;
+                            App.IsLoginCalled = false;
+                            App.IsSamlApiCalledAndroid = false;
+
+                            try
+                            {
+                                App.httpClientHandler = new HttpClientHandler();
+                                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.Write(ex.ToString());
+                                Console.Write(ex.StackTrace.ToString());
+                            }
+
+                            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                            _navigation.NavigationStack.ToList().Clear();
+
+                        }
+                    }
+
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 });
+            });
 
-                loginGrid.Children.Add(hybridWebView, 0, 0);
-                loginGrid.LowerChild(hybridWebView);
-            }
+            loginGrid.Children.Add(hybridWebView, 0, 0);
+            loginGrid.LowerChild(hybridWebView);
+        }
 
-
-            private async Task LogoffUser()
-            {
+        private async Task LogoffUser()
+        {
             viewModel.IsLoading = true;
 
             if (App.TP != null)
@@ -660,6 +698,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         if (data == "hideLoadingIndicator")
                         {
                             viewModel.IsLoading = false;
+                        }
+
+                        if (data == "IsloginControl")
+                        {
+                            viewModel.IsLoading = true;
+                            hybridWebView.Url = viewModel.CreateLoginURL(lang);
                         }
 
                         if (data == "hideLoginLoadingIndicator")
@@ -795,10 +839,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private void btnLoginClicked(object sender, EventArgs e)
         {
             sessionExpiredView.IsVisible = false;
+            Console.WriteLine("Login clicked");
             loginGrid.Opacity = 1;
             App.Current.Properties["IsSessionExpired"] = false;
-            App.isAndroidRefresh = false;
-
+            App.isAndroidUrlloaded = false;
             OnAppearing();
 
             App.ResetAndContinueSession();

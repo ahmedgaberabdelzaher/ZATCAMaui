@@ -80,7 +80,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+               // viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+
+                PopupNavigation.Instance.PushAsync(new NafathPopUpPage());//CR6094
 
             });
         }
