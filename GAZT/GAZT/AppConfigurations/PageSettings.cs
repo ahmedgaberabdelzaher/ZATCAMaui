@@ -70,6 +70,9 @@ namespace EGAZT.AppConfigurations
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
         public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
 
+        public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
+        public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
+
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -80,6 +83,7 @@ namespace EGAZT.AppConfigurations
 
         public static string VatSTGBaseUrl = "https://vatapis.zatca.gov.sa/api";
         public static string EinvoiceBaseURl = "https://stgdx1as1.mygazt.gov.sa:50001";
+        public static string IAMRegistration;
 
 
         public static string GetBaseURL(string environment = "STG")
@@ -107,7 +111,7 @@ namespace EGAZT.AppConfigurations
                     Q1AnsID=Q1AnsIDStg;
                     Q2AnsID=Q2AnsIDStg;
                     Q3AnsID=Q3AnsIDStg;
-
+                    IAMRegistration = IAMRegistraionStG;
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -124,6 +128,7 @@ namespace EGAZT.AppConfigurations
                     Q1AnsID=Q1AnsIDProd;
                     Q2AnsID=Q2AnsIDProd;
                     Q3AnsID=Q3AnsIDProd;
+                    IAMRegistration = IAMRegistraionProd;
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -140,6 +145,7 @@ namespace EGAZT.AppConfigurations
                     Q1AnsID = Q1AnsIDStg;
                     Q2AnsID = Q2AnsIDStg;
                     Q3AnsID = Q3AnsIDStg;
+                    IAMRegistration = IAMRegistraionStG;
                     break;
             }
             return key;
@@ -152,7 +158,7 @@ namespace EGAZT.AppConfigurations
             Target_Environment = "STG";
 #endif
             string key = "";
-         Target_Environment = "Prod";
+        Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case"STG":
@@ -297,6 +303,7 @@ namespace EGAZT.AppConfigurations
                 return $"{ProhibitedGoodsLstURl}en/declare";
             }
         }
+
 
     }
 }

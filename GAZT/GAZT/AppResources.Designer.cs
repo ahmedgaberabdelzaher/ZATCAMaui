@@ -337,7 +337,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add New CR +.
+        ///   Looks up a localized string similar to + Add Entity Unified Number.
         /// </summary>
         public static string AddNewCR {
             get {
@@ -346,7 +346,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add New CR.
+        ///   Looks up a localized string similar to Add Entity Unified Number.
         /// </summary>
         public static string AddNewCRTitle {
             get {
@@ -1506,6 +1506,15 @@ namespace EGAZT {
         public static string Clickhereforlogin {
             get {
                 return ResourceManager.GetString("Clickhereforlogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click here for registration.
+        /// </summary>
+        public static string ClickhereforRegistration {
+            get {
+                return ResourceManager.GetString("ClickhereforRegistration", resourceCulture);
             }
         }
         
@@ -7325,6 +7334,16 @@ namespace EGAZT {
         public static string IAMLogin {
             get {
                 return ResourceManager.GetString("IAMLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dear User,
+        ///We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app..
+        /// </summary>
+        public static string IAMUsernNotFoundMSg {
+            get {
+                return ResourceManager.GetString("IAMUsernNotFoundMSg", resourceCulture);
             }
         }
         
@@ -13728,6 +13747,15 @@ namespace EGAZT {
         public static string unableToVerify {
             get {
                 return ResourceManager.GetString("unableToVerify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity Unified Number.
+        /// </summary>
+        public static string UnifiedNumber {
+            get {
+                return ResourceManager.GetString("UnifiedNumber", resourceCulture);
             }
         }
         

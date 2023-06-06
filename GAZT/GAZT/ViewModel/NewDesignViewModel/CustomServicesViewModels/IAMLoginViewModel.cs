@@ -23,6 +23,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string priceText;
         public string PriceText { get { return priceText; } set { priceText = value; RaisePropertyChanged(); } }
 
+        bool isNoUserShowMsg;
+        public bool IsNoUserShowMsg { get { return isNoUserShowMsg; } set { isNoUserShowMsg = value; RaisePropertyChanged(); } }
+
 
         public IAMLoginViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
@@ -50,10 +53,46 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
+        public ICommand OpenIAMRegistrationUrlCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+
+                    var url = PageSettings.IAMRegistration;
+                    Xamarin.Essentials.Launcher.OpenAsync(url);
+                    IsNoUserShowMsg = false;
+                    _navigationService.GoBack();
+                   
+                });
+            }
+        }
+
+        public ICommand CloseMsgCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    IsNoUserShowMsg = false;
+                    _navigationService.GoBack();
+
+                });
+            }
+        }
+
         public void GetIAMToken(string url)
         {
             string token = HttpUtility.ParseQueryString(new Uri(url).Query).Get("token");
-
+            if (token == "UserNotFound")
+            {
+                IsNoUserShowMsg = true;
+                MessageTxt = AppResources.IAMUsernNotFoundMSg;
+                IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
+                //_dialogService.ShowMessageBox("This user not registered inside zatca please register first", "User Not exist");
+                return;
+            }
             // var payload = GetTokenData(token);
             var navigation = Application.Current.MainPage.Navigation;
             var currentPage = navigation.NavigationStack.LastOrDefault();
