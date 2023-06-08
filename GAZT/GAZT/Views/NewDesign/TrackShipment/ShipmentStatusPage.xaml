@@ -175,13 +175,13 @@
                                 <StackLayout Orientation="Horizontal"
                                                 Spacing="0">
 
-                                    <!--  Declaration Label  -->
+                                    <!--  Declaration/Bill Label  -->
                                     <custom:CustomLabel
                                         HorizontalOptions="StartAndExpand"
                                         FontSize="20"
                                         Padding="10"
                                         TextColor="#002447" 
-                                        Text="{x:Static ResourceManager:AppResources.DeclarationBillNumber}"
+                                        Text="{Binding StatusTitle}"
                                         VerticalOptions="Start" />
 
                                 </StackLayout>

@@ -62,6 +62,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
         TrackShipmentModel trackShipmentResponse;
         public TrackShipmentModel TrackShipmentResponse { get { return trackShipmentResponse; } set { trackShipmentResponse = value; RaisePropertyChanged(); } }
 
+        string statusTitle;
+        public string StatusTitle { get { return statusTitle; } set { statusTitle = value; RaisePropertyChanged(); } }
+
         #endregion Properties
 
         #region Commands
@@ -115,20 +118,40 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         IsLoading = true;
 
                         if (isExpressCardSelected)
+                        {
+                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}": $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
                             await GetExpressShipping(DrawShipmentTrack.IsDeclarationSelected);
+                        }
+                            
 
 
                         else if (isAirCardSelected)
+                        {
+                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}" : $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
                             await GetAirShipping(DrawShipmentTrack.IsDeclarationSelected);
 
+                        }
+
                         else if (isSeaCardSelected)
+                        {
+                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}" : $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
                             await GetSeaShipping(DrawShipmentTrack.IsDeclarationSelected);
+                        }
+                            
 
                         else if (isLandCardSelected)
+                        {
+                            StatusTitle = $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}";
                             await GetLandShipping();
+                        }
+                            
 
                         else
+                        {
+                            StatusTitle = DrawShipmentTrack.IsDeclarationSelected ? $"{AppResources.DeclarationNumber}: {ShipmentDeclarationNumber}" : $"{AppResources.Billofladingnumber}: {ShipmentBillNumber}";
                             await GetTrainShipping(DrawShipmentTrack.IsDeclarationSelected);
+                        }
+                            
 
                         
 
