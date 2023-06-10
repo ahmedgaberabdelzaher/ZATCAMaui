@@ -2668,9 +2668,17 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             try
             {
+                //var Bdt1 = string.Empty;
+                //string date1 = DOB;
+                //DateTime dt = DateTimeHelper.DateTimeFormater(date1);
+                //dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+                //long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
+                //unixTimestamp = unixTimestamp * 1000;
+                //Bdt1 = "" + "/Date(" + unixTimestamp + ")/";
+
                 var Bdt1 = string.Empty;
                 string date1 = DOB;
-                DateTime dt = DateTimeHelper.DateTimeFormater(date1);
+                DateTime dt = Convert.ToDateTime(date1);
                 dt = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
                 long unixTimestamp = ((long)(dt.Subtract(new DateTime(1970, 1, 1))).TotalSeconds);
                 unixTimestamp = unixTimestamp * 1000;
