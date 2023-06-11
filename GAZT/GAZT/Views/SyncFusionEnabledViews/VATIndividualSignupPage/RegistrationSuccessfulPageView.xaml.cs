@@ -50,7 +50,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 var text = await Clipboard.GetTextAsync();
                 var displayText = AppResources.TINS + " " + text;
-               // viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                //var displayText1 = displayText + " " + AppResources.CopiedSuccessMessage;
+                //await viewModel._dialogService.ShowMessage(displayText1, AppResources.Copied);
+                copyLabel.IsVisible = true;
+                await System.Threading.Tasks.Task.Delay(2000); // Delay for 2 seconds
+                copyLabel.IsVisible = false;
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();

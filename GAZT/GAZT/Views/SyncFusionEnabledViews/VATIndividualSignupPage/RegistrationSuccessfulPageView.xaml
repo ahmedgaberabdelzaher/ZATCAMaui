@@ -44,6 +44,12 @@
                 <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
+            <StackLayout x:Name="copyLabel" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" Padding="15">
+
+                  <Label Text="{x:Static local:AppResources.CopiedSuccessMessage}"
+                         FontFamily="{StaticResource SomarSemiBold}" FontSize="15"/>
+
+             </StackLayout>
             <yummy:PancakeView BackgroundColor="White" CornerRadius="20,20,0,0" Padding="20" VerticalOptions="EndAndExpand">
                 <StackLayout>
                     <Frame BorderColor="LightGray" Padding="0" CornerRadius="8" HasShadow="False" Margin="0,20,0,0">
