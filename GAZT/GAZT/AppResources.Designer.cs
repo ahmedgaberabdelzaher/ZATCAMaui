@@ -1672,6 +1672,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Successfully Copied.
+        /// </summary>
+        public static string CopiedSuccessMessage {
+            get {
+                return ResourceManager.GetString("CopiedSuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy SADAD number.
         /// </summary>
         public static string CopySADADNumber {
@@ -28031,11 +28040,23 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You have successfully registered to ZATCA Services. Use the following TIN number to login with ZATCA.
+        ///   Looks up a localized string similar to You have Successfully registered to ZATCA Services.
+        ///        You have received an SMS with the TIN Number.
+        ///        Please login to your account through Nafath..
         /// </summary>
         public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices {
             get {
                 return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have Successfully registered to ZATCA Services.
+        ///        You have received an SMS with the TIN Number..
+        /// </summary>
+        public static string ZZZZYouhavesuccessfullyregisteredtoGAZTServices1 {
+            get {
+                return ResourceManager.GetString("ZZZZYouhavesuccessfullyregisteredtoGAZTServices1", resourceCulture);
             }
         }
         

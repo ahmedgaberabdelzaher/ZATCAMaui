@@ -3660,8 +3660,8 @@
     <comment>Tax Evasion</comment>
     </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح. لتسجيل الدخول، يرجى استخدام الرقم المميز الخاص بك</value>
-    <comment>New SignUp</comment>
+    <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح، تسجيل الدخول عبر النفاذ الوطني الموحد</value>
+    <comment>New SignUp CR 6094</comment>
     </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
     <value>إضافة نوع جديد</value>
@@ -10288,5 +10288,13 @@ info@zatca.gov.sa</value>
 </data>
 <data name="ZREGGulfCtzn" xml:space="preserve">
 <value>مواطن خليجي</value>
+</data>
+  <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices1" xml:space="preserve">
+    <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح، لتسجيل الدخول، يرجي استخدام الرقم المميز الخاص بك</value>
+    <comment>New SignUp CR 6094</comment>
+  </data>
+  <data name="CopiedSuccessMessage" xml:space="preserve">
+<value>تم النسخ</value>
+<comment>NafathSignup</comment>
 </data>
 </root>

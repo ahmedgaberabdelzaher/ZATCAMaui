@@ -5,6 +5,7 @@ using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -28,6 +29,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             this.BindingContext = viewModel;
             viewModel.TINnumber = TIN;
             //App.IsArabic = false;
+            if(App.successMsg == true)
+            {
+                viewModel.IsGulf = true;
+                viewModel.IsCitizen = false;
+            }
+            else
+            {
+                viewModel.IsCitizen = true;
+                viewModel.IsGulf = false;
+            }
             SetLTR();
         }
         private void SetLTR()

@@ -40,8 +40,10 @@
                 </Image>-->
                 <Image Source="Forget_ic_success.png"   Aspect="AspectFit"/>
                 <!--ZZZZRegistrationSuccessful Text="Registration Successful" Text="You have successfully Registered to GAZT Services. Use the Following TIN number to login with GAZT"-->
-                <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
-                <Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}"  FontFamily="{StaticResource SomarSemiBold}"
+       <Label Text="{x:Static local:AppResources.ZZZZRegistrationSuccessful}" FontFamily="{StaticResource SomarBold}"  FontSize="Large" TextColor="White" HorizontalTextAlignment="Center"/>
+<Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices}" IsVisible="{Binding IsCitizen}"  FontFamily="{StaticResource SomarSemiBold}"
+                       TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+<Label Text="{x:Static local:AppResources.ZZZZYouhavesuccessfullyregisteredtoGAZTServices1}" IsVisible="{Binding IsGulf}" FontFamily="{StaticResource SomarSemiBold}"
                        TextColor="White" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
             </StackLayout>
             <StackLayout x:Name="copyLabel" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="White" Padding="15">
