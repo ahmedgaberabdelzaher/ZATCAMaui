@@ -90,6 +90,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
         private void btnDashboard_Clicked(object sender, EventArgs e)
         {
+            Exception exception = new Exception();
             try
             {
                 // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
@@ -108,6 +109,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             catch(Exception ex)
             {
+                exception = ex;
+            }
+            finally
+            {
+                if(exception)
+                {
+                    viewModel._navigationService.NavigateTo(App.SFLoginPageView);
+                    exception = null;
+                }
+                else
+                {
+                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                    exception = null;
+                }
 
             }
 

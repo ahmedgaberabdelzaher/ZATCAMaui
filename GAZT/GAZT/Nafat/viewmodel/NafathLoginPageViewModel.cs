@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using AppDynamics.Agent;
+using System.Windows.Input;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 {
@@ -16,6 +17,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand OnBackButtonClicked { get; set; }
         public int CurrentAttempt = 0;
         public NafathLoginPageViewModel(INavigationService navigationService, IDialogService dialogService)
 
@@ -30,6 +32,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             {
                 throw new ArgumentNullException("dialogService");
             }
+            OnBackButtonClicked = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.GoBack();
+            });
         }
 
         public bool IsLoading { get; internal set; }
@@ -57,9 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
 
             if (TPProfile != null)
-            {
-                
-
+            { ]
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
                 App.TP.Userid = TPProfile.Tin;
