@@ -63,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
             TaxPayerProfile TPProfile = await WebServiceManager.GetTPProfileDataAPICall(UserId);
 
             if (TPProfile != null)
-            { ]
+            { 
                 App.TP = new TaxPayerProfile();
                 App.TP = TPProfile;
                 App.TP.Userid = TPProfile.Tin;

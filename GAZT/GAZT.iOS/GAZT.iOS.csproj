@@ -161,8 +161,8 @@
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchExtraArgs>--linkskip=Xamarin.CommunityToolkit -gcc_flags "-Wl -sectcreate __RESTRICT __restrict /dev/null"</MtouchExtraArgs>
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
-    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
-    <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
+    <CodesignProvision>eGazt Enterprise Distribution Profile</CodesignProvision>
+    <CodesignKey>iPhone Distribution: General Authority of Zakat &amp; Tax</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>

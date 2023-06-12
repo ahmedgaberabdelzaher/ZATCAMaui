@@ -113,14 +113,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
             finally
             {
-                if(exception)
+                if (exception.Equals(null))
                 {
                     viewModel._navigationService.NavigateTo(App.SFLoginPageView);
+
                     exception = null;
                 }
                 else
                 {
                     viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+
                     exception = null;
                 }
 
