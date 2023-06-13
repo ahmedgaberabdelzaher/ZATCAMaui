@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -19,6 +20,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
     {
         public readonly INavigationService _navigationService;
         public readonly IDialogService _dialogService;
+        public ICommand btn_LoginScreen { get; set; }
 
         private bool isGulf;
         public bool IsGulf
@@ -79,6 +81,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 throw new ArgumentNullException("dialogService");
             }
             _dialogService = dialogService;
+
+            btn_LoginScreen = new Xamarin.Forms.Command(() =>
+            {
+                _navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
+            });
         }
       
 

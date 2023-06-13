@@ -50,7 +50,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             App.GUIDFrSSO = "";
 
             await PopupNavigation.Instance.PopAsync();
-            try {
+            try
+            {
                  //await this.Navigation.PushAsync(new NafathLoginPageView());
                 viewModel._navigationService.NavigateTo(App.NafathLoginPageView);
             }

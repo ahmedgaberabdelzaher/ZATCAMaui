@@ -74,7 +74,7 @@
                     </Frame>
                     
                     <buttons:SfButton x:Name="btnDashboard"   Text="{x:Static local:AppResources.ZZZZProceedtoHomescreen}" CornerRadius="10" VerticalOptions="End" FontAttributes="Bold" 
-                                      HeightRequest="46" Clicked="btnDashboard_Clicked"  FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
+                                      HeightRequest="46" Command="{Binding btn_LoginScreen}"  FontFamily="{StaticResource SomarSemiBold}"  Margin="10,0,10,0" FontSize="15"   Grid.ColumnSpan="2" 
                                       Style="{StaticResource SfButtonStyle}" BackgroundColor="Transparent" TextColor="{StaticResource Primary}" />
                 </StackLayout>
             </yummy:PancakeView>

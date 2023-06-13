@@ -1,4 +1,5 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
@@ -87,49 +88,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
         protected override bool OnBackButtonPressed() => true;
-
-        private void btnDashboard_Clicked(object sender, EventArgs e)
-        {
-            Exception exception = new Exception();
-            try
-            {
-                // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                //  viewModel._navigationService.NavigateTo(App.SFLoginPageView);
-
-                if (Navigation.NavigationStack.Count > 0)
-                {
-                    Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
-                    Navigation.RemovePage(pg);
-                    Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                    Navigation.RemovePage(pg1);
-                }
-                viewModel._navigationService.GoBack();
-
-                //    viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-            }
-            catch(Exception ex)
-            {
-                exception = ex;
-            }
-            finally
-            {
-                if (exception.Equals(null))
-                {
-                    viewModel._navigationService.NavigateTo(App.SFLoginPageView);
-
-                    exception = null;
-                }
-                else
-                {
-                    viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-
-                    exception = null;
-                }
-
-            }
-
-        }
-
 
     }
 }

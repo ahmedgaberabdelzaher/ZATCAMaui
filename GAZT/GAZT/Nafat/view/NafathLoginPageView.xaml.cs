@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using EGAZT;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM;
 using GAZT.Helper;
@@ -22,9 +23,34 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
         {
             InitializeComponent();
             viewModel = App.Locator.NafathLoginPageView;
-            BindingContext = viewModel;
+            this.BindingContext = viewModel;
             On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
-            SetLTRDirection();
+            SetLTR();
+            ChangeAeroIcon();
+
+        }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+            else
+            {
+                this.FlowDirection = FlowDirection.RightToLeft;
+            }
+        }
+        public void ChangeAeroIcon()
+        {
+            if (App.IsArabic)
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
+            }
+            else
+            {
+                Resources["BackButtonArrow"] = Resources["ArrowImageForEnglishStyle"];
+            }
         }
 
         protected override void OnAppearing()
@@ -43,7 +69,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         Hybridview = new HybridWebView();
                         Hybridview.Url = url;
                         RegnagaftGrid.Children.Add(Hybridview, 0, 0);
-                        Hybridview.RegisterAction(async (obj) => {
+                        Hybridview.RegisterAction(async (obj) =>
+                        {
                             if (obj == "navigateToVATIndividualSignupPageSSO")
                             {
                                 Device.BeginInvokeOnMainThread(async () =>
@@ -148,19 +175,14 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             });
 
 
-            
+
         }
 
         void webviewNavigated(object sender, WebNavigatedEventArgs e)
         {
-           
-        }
 
-        public void SetLTRDirection()
-        {
-
-           
         }
+     
     }
 }
 
