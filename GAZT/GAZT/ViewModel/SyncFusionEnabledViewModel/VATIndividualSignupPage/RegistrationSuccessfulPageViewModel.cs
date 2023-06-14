@@ -84,7 +84,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
             btn_LoginScreen = new Xamarin.Forms.Command(() =>
             {
-                _navigationService.NavigateTo(App.SFLoginPageView,App.SFLandingPageView);
+                _navigationService.NavigateTo($"/{App.SFLoginPageView}",App.SFLandingPageView);
             });
         }
       

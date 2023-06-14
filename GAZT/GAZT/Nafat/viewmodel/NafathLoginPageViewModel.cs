@@ -103,7 +103,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView);
+                        _navigationService.NavigateTo(App.GAZTNewDesignDashBoardPageView,false);
                         App.HasToRefreshLoaderOnDashboard = true;
                     });
 
