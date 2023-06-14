@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gazt.egazt" android:installLocation="internalOnly" android:versionName="5.1.1.9" android:versionCode="389">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gazt.egazt" android:installLocation="internalOnly" android:versionName="5.1.2.2" android:versionCode="391">
 	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="32" />
 	<uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
