@@ -48,12 +48,15 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             try
             {
                 InitializeComponent();
+             
                 App.VATType = PageExecutionType.Register;
                 App.ZAKATType = PageExecutionType.Register;
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, " ");
                 viewModel = App.Locator.SFLoginPageView;
+               
                 this.BindingContext = viewModel;// = App.Locator.SFLoginPageView;
-                //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                                                //On<Xamarin.Forms.PlatformConfiguration.iOS>().SetUseSafeArea(true);
+                viewModel.CurrentTab = 1;
                 ChangeAeroIcon();
                 CheckFirstTimeorNot();
                 GetDeviceID();
@@ -116,6 +119,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 Xamarin.Forms.NavigationPage.SetHasNavigationBar(this, false);
                 viewModel.TINIndex = 0;
+              
             }
             catch (Exception ex)
             {
@@ -147,7 +151,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     viewModel.IsLoading = false;
                 }
             });
-
+            viewModel.CurrentTab = 1;
             viewModel.IsLoading = false;
         }
 

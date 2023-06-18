@@ -176,7 +176,7 @@
         Margin="0" Padding="0"
         BackgroundColor="#002447"
         CornerRadius="15,15,0,0" Grid.Row="0" VerticalOptions="EndAndExpand">
-            <controls:BottomMenu >
+            <controls:BottomMenu>
                 <controls:BottomMenu.Margin>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="iOS" Value="10,0,10,15" />
