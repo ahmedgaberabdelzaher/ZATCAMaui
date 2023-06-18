@@ -70,7 +70,7 @@
                                 <!--  Question Hint Label  -->
                                 <custom:CustomLabel
                                     Grid.Row="1"
-                                    Grid.Column="1"
+                                    Grid.Column="1" LineSpacing=".8"
                                     FontSize="12"
                                     HorizontalOptions="StartAndExpand"
                                     Text="{x:Static ResourceManager:AppResources.FeesCalcDisclaimerTXt}"
