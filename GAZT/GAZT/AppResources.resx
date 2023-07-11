@@ -10416,4 +10416,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
   <data name="EmptyCart" xml:space="preserve">
        <value>Sorry, the cart is empty</value>
   </data>
+    <data name="PrivacyPolicy" xml:space="preserve">
+       <value>Privacy Policy</value>
+  </data>
 </root>

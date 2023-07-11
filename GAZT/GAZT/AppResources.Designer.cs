@@ -11014,6 +11014,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Privacy Policy.
+        /// </summary>
+        public static string PrivacyPolicy {
+            get {
+                return ResourceManager.GetString("PrivacyPolicy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INFORMATION THE ZAKAT,TAX AND CUSTOMS AUTHORITY MAY COLLECT FROM YOU.
         /// </summary>
         public static string PrivacyPolicyPra1 {

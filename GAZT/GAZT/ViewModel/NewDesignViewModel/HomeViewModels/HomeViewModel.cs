@@ -106,7 +106,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 },
                 new MenuModel()
                 {
-                   Name=AppResources.PrivacyandPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"
+                   Name=AppResources.PrivacyPolicy, ID=App.PrivacyAndPolicyPageView,ImageSource="PrivacyandPolicy"
                 },
                  new MenuModel()
                 {

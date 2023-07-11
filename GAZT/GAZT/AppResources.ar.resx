@@ -10351,4 +10351,7 @@ info@zatca.gov.sa</value>
       <data name="EmptyCart" xml:space="preserve">
        <value>عفواً، السلة فارغة</value>
   </data>
+      <data name="PrivacyPolicy" xml:space="preserve">
+    <value>سياسة الخصوصية</value>
+  </data>
 </root>
