@@ -225,7 +225,7 @@
                                     Keyboard="Telephone"
                                     Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitModel.travelerDeclaration.phoneNumber}"
+                                    Text="{Binding MobileNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
                                     <StackLayout Orientation="Horizontal"
