@@ -458,17 +458,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 
-        public void SetUserData(string token)
+        public void SetUserData(object payload)
         {
-         
-            var data = GetTokenData(token);
-            if (data!=null)
+            if (payload != null)
             {
-            IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-            // IamLoginPayloadData.TryGetValue("FirstName",out SubmitModel.travelerDeclaration.firstName);
-            NationalId = iamLoginPayloadData["NationlId"].ToString();
-            MobileNo ="+966"+ iamLoginPayloadData["Mobile"].ToString();
-            IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());
+                IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
+                NationalId = iamLoginPayloadData["NationlId"].ToString();
+                MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
+                IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());
             }
         }
 

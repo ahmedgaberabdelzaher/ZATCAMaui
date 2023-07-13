@@ -111,7 +111,7 @@
                             FontSize="20"
                             HorizontalOptions="StartAndExpand"
                             MaxLines="1"
-                            Text="{Binding Username}"
+                            Text="{Binding UnRegisteredUser.FullName}"
                             TextColor="{StaticResource Primary}" />
 
 
@@ -145,7 +145,7 @@
                                     Keyboard="Telephone"
                                     Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding MobileNumber}"
+                                    Text="{Binding UnRegisteredUser.mobileNumber}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -179,7 +179,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding UnRegisteredUser.emailAddress}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -213,7 +213,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Address}"
+                                    Text="{Binding UnRegisteredUser.address}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
@@ -222,7 +222,7 @@
                         <buttons:SfButton
                             Margin="0,5"
                             VerticalOptions="EndAndExpand"
-                            Command="{Binding SubmitCommand}"
+                            Command="{Binding SubmitUserCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 

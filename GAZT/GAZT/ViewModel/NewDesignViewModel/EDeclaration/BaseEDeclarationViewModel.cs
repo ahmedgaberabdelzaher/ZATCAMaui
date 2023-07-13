@@ -13,6 +13,7 @@ using Rg.Plugins.Popup.Services;
 using EGAZT.AppConfigurations;
 using Xamarin.Forms;
 using static Org.BouncyCastle.Bcpg.Attr.ImageAttrib;
+using EGAZT.Models.TahqaqModels;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -47,6 +48,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         public EDeclerationSubmitModel SubmitModel { get { return _submitModel; } set { _submitModel = value; RaisePropertyChanged(); } }
 
         public IDictionary<string, object> IamLoginPayloadData;
+
+
         #endregion
 
 
@@ -63,7 +66,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 });
             }
         }
-         public ICommand ReviewPreviousLoggedInCommand
+        public ICommand ReviewPreviousLoggedInCommand
         {
             get
             {
@@ -78,7 +81,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     await PopupNavigation.Instance.PopAsync(true);
                     SubmitModel.travelerDeclaration.travelingType = IsArrivingPlaneSelected ? 1 : 2;
@@ -109,7 +112,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     try
                     {
-                        Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
+                     Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
                     }
                     catch (Exception ex)
                     {
@@ -129,47 +132,44 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
         public void SetPassangerData(object data)
         {
-            App.Locator.StateManager.SetItem("IAMLoginPassengerData", data);
-            IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
 
-            SubmitModel.travelerDeclaration.email = iamLoginPayloadData["Email"].ToString();
-            SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData["Mobile"].ToString();
-            SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
-            SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
-            SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
-            SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
-            App.Locator.StateManager.SetItem("FullName", SubmitModel.travelerDeclaration.FullName);
-            SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData["Nationality"].ToString();
-            SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
-            // Its source is empty so field with nationality
-            SubmitModel.travelerDeclaration.travelIssuerName = iamLoginPayloadData["Nationality"].ToString(); 
-            SubmitModel.travelerDeclaration.travelIssuerID = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
-
-            SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
-            SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
-            App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
-            SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["BirthDate"].ToString());
-
-            SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["ReleaseDate"].ToString());
-
-            SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["EndDate"].ToString());
-        }
-        public object GetTokenData(string token = "")
-        {
             try
             {
-                string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
-                var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
-                SetPassangerData(payload);
-                return payload;
+                if (data == null) return;
+
+                IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
+
+                SubmitModel.travelerDeclaration.email = iamLoginPayloadData["Email"].ToString();
+                SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData["Mobile"].ToString();
+                SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
+                SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
+                SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
+                SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
+                App.Locator.StateManager.SetItem("FullName", SubmitModel.travelerDeclaration.FullName);
+                SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData["Nationality"].ToString();
+                SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
+
+                // Its source is empty so it must be KSA as the user maybe resident or citizen.
+                SubmitModel.travelerDeclaration.travelIssuerName = App.IsArabic ? "السعودية" : "SAUDI ARABIA";
+                SubmitModel.travelerDeclaration.travelIssuerID = 100; // it must be KSA => 100 because the user is resident or citizen
+
+                SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
+                SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
+                App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
+                SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["BirthDate"].ToString());
+
+                SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["ReleaseDate"].ToString());
+
+                SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["EndDate"].ToString());
             }
             catch (Exception ex)
             {
-                return null;
+
             }
 
-
         }
+
+
 
     }
 }
