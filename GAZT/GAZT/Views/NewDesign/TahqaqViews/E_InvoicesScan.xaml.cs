@@ -30,11 +30,11 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             zxing.Options = new MobileBarcodeScanningOptions()
             {
                 UseFrontCameraIfAvailable = false,
-                PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX, BarcodeFormat.EAN_13 },
+                PossibleFormats = new List<BarcodeFormat>() { BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX, BarcodeFormat.EAN_13, BarcodeFormat.All_1D },
                 TryHarder = true,
                 AutoRotate = false,
                 TryInverted = true,
-                UseCode39ExtendedMode = true,
+                UseCode39ExtendedMode = true, UseNativeScanning = true, 
                 DelayBetweenContinuousScans = 0,
                 CameraResolutionSelector = availableResolutions =>
                 {
@@ -100,7 +100,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             InitializeComponent();
             MainGrid.Children.Add(zxing);
             zxing.AutoFocus();
-
+           
         }
         protected override async void OnAppearing()
         {

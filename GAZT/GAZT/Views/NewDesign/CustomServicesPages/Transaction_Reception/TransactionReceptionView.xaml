@@ -323,7 +323,7 @@
                             <!--  Files List  -->
                             <StackLayout
                                 x:Name="filesLst"
-                                BindableLayout.ItemsSource="{Binding UploadedFiles}"
+                                BindableLayout.ItemsSource="{Binding TransactionUploadedFiles}"
                                 Spacing="0">
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>

@@ -34,6 +34,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool isPaymentRequired;
         public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
 
+        string mobileNumber;
+        public string MobileNumber { get { return mobileNumber; } set { mobileNumber = value; RaisePropertyChanged(); } }
+
         private ObservableCollection<BottomSheetModel> countryWithFlags { get; set; } = new ObservableCollection<BottomSheetModel>();
 
 
@@ -162,6 +165,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     if (SubmitModel.travelerDeclaration.IsTermsChecked)
                     {
                         await PopupNavigation.Instance.PopAsync(true);
+                        SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + MobileNumber;
                         var res = await SubmitDecleration();
                         if (res)
                         {
@@ -184,12 +188,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
 
                                 _navigationService.NavigateTo("/EDeclarationSuccessPage");
+                                MobileNumber = string.Empty;
                             }
                             
                         }
                         else
                         {
-                            SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, SubmitModel.travelerDeclaration.CountryCode.Length);
                             IsShowMsgView = true;
                             MessageTxt = AppResources.RequestTimeoutDescription;
                         }
@@ -230,7 +234,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             Regex phoneRegex = new Regex(@"^[0-9]+$");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
             Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]"); 
-            if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.phoneNumber)
+            if (string.IsNullOrWhiteSpace(MobileNumber)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.address)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.email))
             {
@@ -245,7 +249,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.InvalidEmailFormat;
                 return false;
             }
-            else if (!phoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
+            else if (!phoneRegex.IsMatch(MobileNumber))
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.EnterValidMobileNumber;
@@ -253,7 +257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
             else if (SubmitModel.travelerDeclaration.CountryCode.Equals("+966"))
             {
-                if (!KSAphoneRegex.IsMatch(SubmitModel.travelerDeclaration.phoneNumber))
+                if (!KSAphoneRegex.IsMatch(MobileNumber))
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.EnterValidMobileNumber;
@@ -267,7 +271,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.AddressKSAValidation;
                 return false;
             }
-            SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + SubmitModel.travelerDeclaration.phoneNumber;
             return true;
 
         }

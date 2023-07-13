@@ -115,8 +115,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command<DatePicker>((control) =>
                 {
-                    control?.Focus();
+                    try
+                    {
+                        control?.Focus();
 
+                        if (control.ClassId.ToLower().Equals("releasedateentry") &&
+                            SubmitModel.travelerDeclaration.passIssuingDate.Date == DateTime.Now.Date.AddHours(-24))
+                            ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
+
+                        else if (control.ClassId.ToLower().Equals("enddateentry") &&
+                            SubmitModel.travelerDeclaration.passExpiryDate.Date == DateTime.Now.Date)
+                            EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
+
+                        else
+                            BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
+                    }
+                    catch (Exception ex)
+                    {
+
+                    }
+                   
                 });
             }
         }
@@ -222,10 +240,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    if (IsValidatePassenger())
+                    // in case visitor (navigation => Passenger, Trip, contact & payment)
+                    if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        isTripPage = true;
-                        _navigationService.NavigateTo("TripInformationPage");
+                        if (IsValidatePassenger())
+                        {
+                            isTripPage = true;
+                            _navigationService.NavigateTo("TripInformationPage");
+                        }
+                    }
+
+                    // in case loggedIn (navigation => come from trip to show passenger, contact & payment)
+                    else
+                    {
+                        if (IsValidatePassenger())
+                        {
+                            isContactPage = true;
+                            _navigationService.NavigateTo("ContactInformationPage");
+                        }
                     }
 
                 });
@@ -272,21 +304,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         MessageTxt = AppResources.EndDateValidation;
                         return false;
                     }
-                    else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
-                            || int.Parse(SubmitModel.travelerDeclaration.travelersCount) <= 0)
-                    {
-                        IsShowMsgView = true;
-                        MessageTxt = AppResources.TravelerCountValidation;
-                        return false;
-                    }
+                   
 
-                }
-                else if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.travelersCount)
-                        || int.Parse(SubmitModel.travelerDeclaration.travelersCount ?? "0") <= 0)
-                {
-                    IsShowMsgView = true;
-                    MessageTxt = AppResources.TravelerCountValidation;
-                    return false;
                 }
                 return true;
             }

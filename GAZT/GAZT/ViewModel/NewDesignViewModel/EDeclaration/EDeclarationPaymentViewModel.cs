@@ -11,6 +11,7 @@ using GalaSoft.MvvmLight.Views;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Converters;
 using Xamarin.Essentials;
+using Acr.UserDialogs;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -76,12 +77,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         IsShowMsgView = true;
                         MessageTxt = AppResources.EDEcelarationSADADFrstMsg + TravelerDeclarationResponse.sadadNumber + $"\n{AppResources.EDEcelarationSADADSecondMsg}";
                     }
-                    //if (SelctedPaymentType == PaymentTypes.Visa)
                     else
                     {
-                      // await Launcher.OpenAsync($"{AppConfigurations.PageSettings.GetCustomsPaymentUrl()}{TravelerDeclarationResponse.paymentOrder}");
                        _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                     }
+
+                });
+            }
+        }
+
+        public ICommand CopyCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Clipboard.SetTextAsync(TravelerDeclarationResponse.sadadNumber.ToString());
+                    UserDialogs.Instance.Toast(AppResources.Copied, TimeSpan.FromSeconds(1));
 
                 });
             }

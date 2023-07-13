@@ -1,7 +1,11 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
+using EGAZT.AppConfigurations;
 using EGAZT.Helper;
+using EGAZT.Models;
 using EGAZT.Models.CustomServices;
+using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 
 namespace EGAZT.Services.Classes
@@ -27,6 +31,12 @@ namespace EGAZT.Services.Classes
         {
             var response = await HttpManager.GetAsync<CustomPortsModel>(App.CustomBaseUrl + $"Common/GetCustomPort?porttype={portType}", true).ConfigureAwait(false);
 
+            return response;
+        }
+
+        public async Task<HttpResponseMessage> ZATCAUserRegister(ZATCAUserRegisterModel user)
+        {
+            var response = await HttpManager.PostAsync<ZATCAUserRegisterModel>($"{PageSettings.ZATCABaseURL}v1/zatca-portal/user-register",user).ConfigureAwait(false);
             return response;
         }
 

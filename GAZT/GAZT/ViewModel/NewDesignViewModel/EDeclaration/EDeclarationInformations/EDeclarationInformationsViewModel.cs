@@ -28,14 +28,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool isPortSelected;
         private bool isTravelPurposeSelected;
         private bool isFirstTime = true;
-        public bool isPassengerPage  = true;
+        public bool isPassengerPage = true;
         public bool isTripPage;
         public bool isContactPage;
 
         List<CountryModel> countries = new List<CountryModel>();
 
-        string refNo ;
-        public string RefNo  { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
+        string refNo;
+        public string RefNo { get { return refNo; } set { refNo = value; RaisePropertyChanged(); } }
 
         DateTime _MinimumDate = DateTime.Now.Date;
         public DateTime MinimumDate { get { return _MinimumDate; } set { _MinimumDate = value; RaisePropertyChanged(); } }
@@ -52,7 +52,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
                 {
                     // this condition to load countries only once for
                     // 3 paages
@@ -64,9 +64,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         isFirstTime = false;
                         IsLoading = false;
                     }
-                    if(isPassengerPage)
+                    if (isPassengerPage)
                     {
-                         
+
                         if (!SubmitModel.travelerDeclaration.Isvisitor)
                         {
                             // Set passenger data in case the user go to the passenger
@@ -79,14 +79,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 var passengerData = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
                                 SetPassangerData(passengerData);
                             }
-                                
+
                             IDName = AppResources.ZZNationalID;
                             IDNumberPlaceHolder = "0000000000";
                             IDNumberKeyboard = Keyboard.Numeric;
                             ReleaseDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passIssuingDate);
                             EndDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.passExpiryDate);
                             BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
-                            if (SubmitModel.travelerDeclaration.travelID !=null)
+                            if (SubmitModel.travelerDeclaration.travelID != null)
                             {
                                 if (SubmitModel.travelerDeclaration.travelID.ToLower().StartsWith("1"))
                                 {
@@ -97,12 +97,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                     SubmitModel.travelerDeclaration.travelDocumentType = 3; // Resident
                                 }
                             }
-                           
+
                         }
                         else // Visitor
                         {
                             //Set Default value for first time only
-                            if(SubmitModel.travelerDeclaration.gender == 0)
+                            if (SubmitModel.travelerDeclaration.gender == 0)
                                 SubmitModel.travelerDeclaration.gender = 1; // Male
 
                             //Set Default value for first time only
@@ -113,23 +113,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 IDNumberKeyboard = Keyboard.Text;
                                 SubmitModel.travelerDeclaration.travelDocumentType = 4; // Visitor Passport => 4
                             }
-                                
+
                         }
-                        
-                        HeaderTitle = AppResources.PassengerInformation;
-                    }
-                    else if(isTripPage)
-                    {
-                        HeaderTitle = AppResources.TripInformation;
-                        IsArrivingPlaneSelected = SubmitModel.travelerDeclaration.travelingType == 1 ? true : false;
-                    }
-                    else if(isContactPage)
-                    {
-                        HeaderTitle = AppResources.ContactInformation;
                     }
 
+                    else if (isContactPage & !SubmitModel.travelerDeclaration.Isvisitor)
+                    {
+                        MobileNumber = SubmitModel.travelerDeclaration.phoneNumber;
+                    }
+                    IsArrivingPlaneSelected = SubmitModel.travelerDeclaration.travelingType == 1 ? true : false;
+                    HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
 
-                    
+
+
                 });
             }
         }
@@ -158,9 +154,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     }
                     catch (Exception ex)
                     {
-
+                        SearchText = string.Empty;
                     }
-                   
+
                 });
             }
         }
@@ -179,7 +175,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             SubmitModel.travelerDeclaration.NationalityName = e.Name;
                             SubmitModel.travelerDeclaration.nationality = int.Parse(e.Id);
                             isNationalitySelected = false;
-                            HeaderTitle = AppResources.PassengerInformation;
+
                         }
                         else if (isItsSourceSelected)
                         {
@@ -187,35 +183,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             SubmitModel.travelerDeclaration.travelIssuerName = e.Name;
                             SubmitModel.travelerDeclaration.passIssuingCountry = int.Parse(e.Id);
                             isItsSourceSelected = false;
-                            HeaderTitle = AppResources.PassengerInformation;
+
                         }
                         else if (isComingGoingSelected)
                         {
                             SubmitModel.travelerDeclaration.arrivingFromDepartingTo = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.arrivingFromDepartingToName = e.Name;
                             isComingGoingSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+
                         }
                         else if (isPortSelected)
                         {
                             SubmitModel.travelerDeclaration.port = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.portName = e.Name;
                             isPortSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+
                         }
                         else if (isTravelPurposeSelected)
                         {
-                            SubmitModel.travelerDeclaration.travelPurpose = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.travelPurpose = e.Id;
                             SubmitModel.travelerDeclaration.travelPurposeName = e.Name;
                             isTravelPurposeSelected = false;
-                            HeaderTitle = AppResources.TripInformation;
+
                         }
                         else
                         {
-                            SubmitModel.travelerDeclaration.CountryCode =$"+{Regex.Replace(e.Name, @"[^\d]", "")}";
-                            HeaderTitle = AppResources.ContactInformation;
+                            SubmitModel.travelerDeclaration.CountryCode = $"+{Regex.Replace(e.Name, @"[^\d]", "")}";
+
                         }
 
+                        HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
                         IsShowBottomSheet = false;
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
@@ -239,7 +236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("/Home", "0");
-                 
+
                 });
             }
         }
@@ -248,30 +245,41 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command(async() =>
+                return new Command(() =>
                 {
-                  await  DownLoadEdeclerationPdf();
+                    DownLoadEdeclerationPdf();
 
                 });
             }
         }
 
-        private async Task DownLoadEdeclerationPdf()
+        private void DownLoadEdeclerationPdf()
         {
-            IsLoading = true;
-            DownloadFile downloadFile = new DownloadFile();
-            string Lang = "ar";
-            if (!App.IsArabic)
+            Device.BeginInvokeOnMainThread(async () =>
             {
-                Lang = "en";
+                try
+                {
+                    IsLoading = true;
+                    DownloadFile downloadFile = new DownloadFile();
+                    string Lang = "ar";
+                    if (!App.IsArabic)
+                    {
+                        Lang = "en";
 
-            }
-            else
-            {
-                Lang = "ar";
-            }
-            await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
-            IsLoading = false;
+                    }
+                    else
+                    {
+                        Lang = "ar";
+                    }
+                    await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
+                    IsLoading = false;
+                }
+                catch (Exception ex)
+                {
+                    IsLoading = false;
+                }
+            });
+
         }
 
 
@@ -279,9 +287,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command( async() =>
+                return new Command(async () =>
                 {
-                    SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.phoneNumber.Remove(0, SubmitModel.travelerDeclaration.CountryCode.Length);
                     await PopupNavigation.Instance.PopAsync(true);
 
                 });
@@ -304,10 +311,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         {
             get
             {
-                return new Command( _ =>
+                return new Command(_ =>
                 {
                     _navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
-                    
+
                 });
             }
         }
@@ -316,22 +323,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             if (IsShowBottomSheet)
             {
                 IsShowBottomSheet = false;
-                if (isPassengerPage)
-                    HeaderTitle = AppResources.PassengerInformation;
-
-                else if (isTripPage)
-                    HeaderTitle = AppResources.PassengerInformation;
-
-                else
-                    HeaderTitle = AppResources.ContactInformation;
-
+                HeaderTitle = IsArrivingPlaneSelected ? AppResources.EDeclarationArrivalHeader : AppResources.EDeclarationDepatureHeader;
 
                 return;
             }
 
             _navigationService.GoBack();
         }
-        
+
 
         #endregion
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)

@@ -8,6 +8,7 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -20,6 +21,9 @@
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+             <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -79,193 +83,13 @@
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
-                        <!--Circle view-->
-                        <Grid RowDefinitions="Auto"
-                              Margin="0,30"
-                              ColumnSpacing="0"
-                              VerticalOptions="Start"
-                              HorizontalOptions="CenterAndExpand"
-                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
-
-                            <!--Circle button 1-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    BorderWidth="1"
-                                    InputTransparent="True"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="EndAndExpand"
-                                    BorderColor="#0996D4"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#0996D4"
-                                    Text="1">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                            </Button>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="1"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2" />
-
-                            <!--Circle button 2-->
-                             <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="2"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="2">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                             </Button>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="3"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2" />
-
-                            <!--Circle button 3-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="4"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="3">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                             </Button>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="5"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2" />
-
-                            <!--Circle button 4-->
-                             <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="6"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="4">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                            </Button>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="7"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2" />
-
-                            <!--Circle button 5-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="8"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="5">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                             </Button>
-
-                            <!--  Horizontal Line  -->
-                            <BoxView
-                                Grid.Column="9"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
-                                BackgroundColor="#B8BABA"
-                                HeightRequest="2" />
-
-                            <!--Circle button 6-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="10"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#B8BABA"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#565655"
-                                    Text="6">
-                                 <Button.Padding>
-                                    <OnPlatform x:TypeArguments="Thickness">
-                                        <On Platform="Android">0</On>
-                                    </OnPlatform>
-                                </Button.Padding>
-
-                            </Button>
-
-                        </Grid>
 
                         <!--  New Declaration Label  -->
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.NewDeclaration}"/>
+                            Text="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}"/>
 
                          <!--  Declaration Note Label  -->
                          <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
@@ -288,7 +112,6 @@
 
                          </custom:CustomLabel>
                        
-
                         <!--  Horizontal Line  -->
                         <BoxView
                             WidthRequest="20"
@@ -405,7 +228,8 @@
                                 </StackLayout>
 
                                 <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="1"/>
+                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}"
+                                                           CommandParameter="1"/>
                                 </Grid.GestureRecognizers>
 
                             </Grid>
@@ -510,6 +334,39 @@
                         </StackLayout>
                         <!--#endregion Cards-->
 
+                         <!--#region Review previous LoggedIn Option-->
+                         <Grid VerticalOptions="Start"
+                               Margin="0,10"
+                               HorizontalOptions="Start"
+                               IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor,Converter={StaticResource InvertedBoolConverter}}"
+                               HeightRequest="130"
+                               WidthRequest="175">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ReviewPreviousLoggedInCommand}"/>
+
+                            </Grid.GestureRecognizers>
+
+                            <Image Source="QUnselected.png"
+                                    Aspect="Fill"/>
+
+                            <Image
+                                Margin="17,25,17,10"
+                                HeightRequest="33"
+                                HorizontalOptions="Start"
+                                Source="reviewapreviousrequest"
+                                VerticalOptions="Start"
+                                WidthRequest="30"/>
+
+                            <Label Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
+                                    TextColor="{StaticResource Primary}"
+                                    FontSize="16"
+                                    LineBreakMode="WordWrap"
+                                    Margin="25,10,25,15"
+                                    VerticalOptions="EndAndExpand"/>
+
+                         </Grid>
+                         <!--#endregion Review previous LoggedIn-->
 
                         <!-- GoTo Product Declaration Button  -->
                         <buttons:SfButton

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using Rg.Plugins.Popup.Pages;
 using Xamarin.Forms;
 
@@ -9,7 +9,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.PopUpPages
 {
     public partial class EDeclarationCartPopUpPage : PopupPage
     {
-        ProductDeclarationViewModel viewModel;
+        BaseProductDeclarationViewModel viewModel;
         public EDeclarationCartPopUpPage()
         {
             try

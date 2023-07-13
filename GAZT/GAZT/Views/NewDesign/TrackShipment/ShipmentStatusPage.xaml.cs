@@ -14,17 +14,12 @@ namespace EGAZT.Views.NewDesign.TrackShipment
             BindingContext = viewModel;
             InitializeComponent();
         }
-        protected override void OnAppearing()
+
+        protected override bool OnBackButtonPressed()
         {
-            viewModel.DrawShipmentTrack.ShipmentCardImage = App.Locator.StateManager.GetItem("CardImage") as string;
-            base.OnAppearing();
-        }
-        protected override void OnDisappearing()
-        {
-            App.Locator.StateManager.DeleteItem("CardImage");
-            viewModel.ShipmentStatusList = new System.Collections.ObjectModel.ObservableCollection<Models.TrackShipment.ShipmentStatus>();
-            viewModel.TrackShipmentResponse = new Models.TrackShipment.TrackShipmentModel();
-            base.OnDisappearing();
+
+            viewModel.BackMethod();
+            return true;
         }
     }
 }

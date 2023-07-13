@@ -47,11 +47,11 @@
                             <ColumnDefinition Width="20*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.ZZZPrivacyandPolicy}"     FontFamily="{StaticResource SomarBold}"
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static local:AppResources.PrivacyPolicy}"     FontFamily="{StaticResource SomarBold}"
                                   TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="Large" />
                         <Label Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}"  Style="{StaticResource IconLabelStyle}" Text="{DynamicResource StyleReverseBack}" TextColor="{StaticResource SecondaryNew}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer      Command="{TemplateBinding BindingContext.BackButtonClicked}" ></TapGestureRecognizer>
+                                <TapGestureRecognizer   Tapped="BackButtonClicked"    ></TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
                     </Grid>

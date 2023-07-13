@@ -57,7 +57,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PrivacyAndPolicy
                     viewModel.WebUrl = "file:///android_asset/PrivacyPolicy_AR.html";
                 }
             }
-        }
+         /*
+
+            if (!App.IsArabic)
+                {
+                    viewModel.WebUrl = "https://zatca.gov.sa/en/Pages/PrivacyPolicy.aspx";
+                }
+                else
+                {
+                    viewModel.WebUrl = "https://zatca.gov.sa/ar/Pages/PrivacyPolicy.aspx";
+                }  */ }
         #endregion
         #region Method
         public void ChangeAeroIcon()

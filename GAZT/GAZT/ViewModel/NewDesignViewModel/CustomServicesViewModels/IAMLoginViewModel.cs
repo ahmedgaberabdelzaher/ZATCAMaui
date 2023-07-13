@@ -30,27 +30,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         public IAMLoginViewModel(INavigationService navigationServices, IDialogService dialogService) : base(navigationServices, dialogService)
         {
             IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
-            //GetTokenData();
-        }
-        public ICommand IAMWbViewNavigatingCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-
-                    double no = 22.5;
-
-                    var moneyToWordConverter = new NumberToWord((decimal)no, new CurrencyInfo(CurrencyInfo.Currencies.SaudiArabia));
-                    PriceText = App.IsArabic ? moneyToWordConverter.ConvertToArabic() : moneyToWordConverter.ConvertToEnglish();
-                    // IAMWbViewSrc = "http://172.25.39.60:8443/Home/Result?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
-                    if (IAMWbViewSrc.Contains("token"))
-                    {
-                        GetIAMToken(IAMWbViewSrc);
-
-                    }
-                });
-            }
         }
 
         public ICommand OpenIAMRegistrationUrlCommand
@@ -69,19 +48,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
         }
 
-        public ICommand CloseMsgCommand
-        {
-            get
-            {
-                return new Command(() =>
-                {
-                    IsNoUserShowMsg = false;
-                    _navigationService.GoBack();
-
-                });
-            }
-        }
-
         public void GetIAMToken(string url)
         {
             string token = HttpUtility.ParseQueryString(new Uri(url).Query).Get("token");
@@ -90,10 +56,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 IsNoUserShowMsg = true;
                 MessageTxt = AppResources.IAMUsernNotFoundMSg;
                 IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
-                //_dialogService.ShowMessageBox("This user not registered inside zatca please register first", "User Not exist");
                 return;
             }
-            // var payload = GetTokenData(token);
             var navigation = Application.Current.MainPage.Navigation;
             var currentPage = navigation.NavigationStack.LastOrDefault();
            
@@ -101,39 +65,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 navigation.InsertPageBefore(new NewDeclarationPage(token), currentPage);
                 _navigationService.GoBack();
-               // _navigationService.NavigateTo("NewDeclarationPage", token);
             }
             else
             {
                 navigation.InsertPageBefore(new TransactionReceptionView(token), currentPage);
                 _navigationService.GoBack();
-             //   _navigationService.NavigateTo("TransactionReceptionView", token);
             }
 
-          //  IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
         }
 
-        private static IDictionary<string, object> GetTokenData(string token)
-        {
-            try
-            {
-                if (!String.IsNullOrEmpty(token))
-                {
-                token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJGaXJzdE5hbWUiOiLYrdiz2KfZhSIsIk1pZGRsZU5hbWUiOiLYudmE2YoiLCJMYXN0TmFtZSI6Itin2YTYsdmB2KfYudmKIiwiTmF0aW9uYWxpdHkiOiLYp9mE2YXZhdmE2YPYqSDYp9mE2LnYsdio2YrYqSDYp9mE2LPYudmI2K_ZitipIiwiR2VuZGVyIjoiTWFsZSIsIlJlbGVhc2VEYXRlIjoiMTQzOS8wMi8yNyIsIkVuZERhdGUiOiIiLCJJdHNTb3VyY2UiOiIiLCJleHAiOjE2Nzk2NTY4NzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.wtcTe9eJ9wWiHe2_3d4JXbEmlWfX3yH9_IYHBQfeQrk";
-                }
-                // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
-                string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
-                var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
-                return payload;
-                //  var mobile = payload["Mobile"];
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+        // Not Used
+        //private static IDictionary<string, object> GetTokenData(string token)
+        //{
+        //    try
+        //    {
+        //        if (!String.IsNullOrEmpty(token))
+        //        {
+        //        token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJGaXJzdE5hbWUiOiLYrdiz2KfZhSIsIk1pZGRsZU5hbWUiOiLYudmE2YoiLCJMYXN0TmFtZSI6Itin2YTYsdmB2KfYudmKIiwiTmF0aW9uYWxpdHkiOiLYp9mE2YXZhdmE2YPYqSDYp9mE2LnYsdio2YrYqSDYp9mE2LPYudmI2K_ZitipIiwiR2VuZGVyIjoiTWFsZSIsIlJlbGVhc2VEYXRlIjoiMTQzOS8wMi8yNyIsIkVuZERhdGUiOiIiLCJJdHNTb3VyY2UiOiIiLCJleHAiOjE2Nzk2NTY4NzgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.wtcTe9eJ9wWiHe2_3d4JXbEmlWfX3yH9_IYHBQfeQrk";
+        //        }
+        //        // token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6InNhYmR1bG1vaXpAemF0Y2EuZ292LnNhIiwiRW1haWwiOiJzYWJkdWxtb2l6QHphdGNhLmdvdi5zYSIsIk1vYmlsZSI6IjUwOTMzOTM2NCIsIk5hdGlvbmxJZCI6IjEwMzExNjQ0NTAiLCJJZCI6IjIyODE3NDIiLCJleHAiOjE2Njk3MDk3ODgsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjA2MDQiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjYwNjA0In0.vBgCVsCqKOSJobIOXqfeLFhVl9dBYe8-dGAxEtEPfew";
+        //        string secretKey = "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM";
+        //        var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey) as IDictionary<string, object>;
+        //        return payload;
+        //        //  var mobile = payload["Mobile"];
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return null;
+        //    }
          
 
-        }
+        //}
     }
 }
 

@@ -5022,7 +5022,7 @@ The account is now unlocked, and the password reset for TIN xxxxxx successfully.
     <value>Tax Management</value>
   </data>
   <data name="NDTotal" xml:space="preserve">
-    <value>Total</value>
+    <value>Total value</value>
   </data>
   <data name="NDTotalNumberOfBills" xml:space="preserve">
     <value>Total number of bills</value>
@@ -9835,7 +9835,7 @@ Zakat, Tax and Customs Authority
     <data name="DepartingToKSA" xml:space="preserve">
         <value>Departing from KSA</value>
     </data> 
-    <data name="ProductDeclarationSubTitle" xml:space="preserve">
+    <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
         <value>Do you have tobacco products or their derivatives more than 200 cigarettes or 25 cigar or 500 grams or cigarettes/electronic hookahs more than one device (hookah) and 60 ml of its own liquid? </value>
     </data>
     <data name="ProductDeclarationDisclaimer" xml:space="preserve">
@@ -9851,10 +9851,10 @@ Zakat, Tax and Customs Authority
         <value>Add item</value>
     </data>
     <data name="TotalFeesPayable" xml:space="preserve">
-        <value>Total fees payable</value>
+        <value>Total Dues</value>
     </data>
     <data name="DetailsTotalFeesPayable" xml:space="preserve">
-        <value>Details of the fees payable</value>
+        <value>Details of the total dues</value>
     </data>
     <data name="Select" xml:space="preserve">
         <value>Select</value>
@@ -9973,16 +9973,16 @@ Zakat, Tax and Customs Authority
       <data name="TobacoTypeNotehint" xml:space="preserve">
     <value>Clarification: 1/20 means a tray containing 20 cigarettes</value>
   </data>
-       <data name="EdeclerationSecQ" xml:space="preserve">
+       <data name="EdeclerationProductQuestion" xml:space="preserve">
     <value>Do you have any new possessions of total value exceeding SAR 3,000(800$)?</value>
   </data>
       <data name="Q2Hint" xml:space="preserve">
     <value>Calculates the price of Gram – Gold and Silver – Based on the price of grams in Saudi Arabia</value>
   </data>
-  <data name="DeclerationFirstSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationCurrencyQuestion" xml:space="preserve">
     <value>Do you have currencies, (negotiable financial instruments), or precious metals of value SAR 60,000 or its equivalent ($ 16,000)?</value>
   </data>
-  <data name="DeclerationSecondSecurityQuestion" xml:space="preserve">
+  <data name="EDeclerationRestrictedQuestion" xml:space="preserve">
     <value>Do you have any possessions or materials that require a license or permit to enter Saudi Arabia?</value>
   </data>
   <data name="DeclerationSecondSecurityQuestionYesHint" xml:space="preserve">
@@ -10049,13 +10049,13 @@ Zakat, Tax and Customs Authority
     <value>Unit</value>
   </data>
   <data name="EDeclerationNoItemAddedToCartMsg" xml:space="preserve">
-    <value>You answered yes, you have to add at least one item in the cart</value>
+    <value>You have to add at least one item in the cart</value>
   </data>
    <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
     <value>Sorry, the entered total value does not require the declaration</value>
   </data>
   <data name="ALLanswersisNoMsg" xml:space="preserve">
-    <value>Sorry, it seems that you did not choose from the questions or fill in their data</value>
+    <value>Sorry, it seems that you did not choose from the questions</value>
   </data>
   <data name="Servicetype" xml:space="preserve">
     <value>Service type</value>
@@ -10210,6 +10210,15 @@ Zakat, Tax and Customs Authority
   <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>Arriving From or Departing To</value>
   </data>
+  <data name="Disclaimer" xml:space="preserve">
+    <value>Disclaimer: </value>
+  </data>
+  <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
+    <value>Please note that the customs duties and taxes calculator only helps you to calculate the approximate total of the value of duties and taxes, and it is not legally binding. To know the actual value accurately, the customs declaration must be submitted.</value>
+  </data>
+    <data name="CustomsFeesValue" xml:space="preserve">
+    <value>Customs Fees Value</value>
+</data>
   <data name="ShipmentTracking" xml:space="preserve">
     <value>Shipment Tracking</value>
   </data>
@@ -10279,6 +10288,36 @@ Zakat, Tax and Customs Authority
     <data name="DownloadEdecleraton" xml:space="preserve">
     <value>Download decleration</value>
   </data>
+      <data name="Weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+      <data name="ExciseTax2" xml:space="preserve">
+    <value>Excise Tax</value>
+  </data>
+        <data name="Customsdeclarationissuancefees" xml:space="preserve">
+    <value>Customs declaration issuance fees</value>
+  </data>
+  <data name="Total2" xml:space="preserve">
+    <value>المجموع</value>
+  </data>
+  <data name="Productvalue" xml:space="preserve">
+    <value>Product value</value>
+  </data>
+    <data name="Calculate" xml:space="preserve">
+    <value>Calculate</value>
+  </data>
+  <data name="Tobaco" xml:space="preserve">
+    <value>Tobaco</value>
+  </data>
+  <data name="Thetypeofmerchandise" xml:space="preserve">
+    <value>The type of merchandise</value>
+  </data>
+  <data name="Selecttheitem" xml:space="preserve">
+    <value>Select the item</value>
+  </data>
+  <data name="ProductValueHint" xml:space="preserve">
+    <value>Enter here the total value of the items</value>
+</data>
   <data name="cleared" xml:space="preserve">
     <value>cleared</value>
     </data>
@@ -10342,15 +10381,18 @@ Zakat, Tax and Customs Authority
   <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
       <value>Submission Unsuccesful"</value>
   </data>
+  <data name="PreviousRequests" xml:space="preserve">
+     <value>You have {0} previous requests</value>
+  </data>
+  <data name="PreviousRequestsName" xml:space="preserve">
+     <value>Previous Requests</value>
+</data>
     <data name="ClickhereforRegistration" xml:space="preserve">
     <value>Click here for registration</value>
   </data>
     <data name="IAMUsernNotFoundMSg" xml:space="preserve">
     <value>Dear User,
 We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app.</value>
-  </data>
-     <data name="UnifiedNumber" xml:space="preserve">
-    <value>Entity Unified Number</value>
   </data>
   <!--6094-->
 <data name="ZREGCitizen" xml:space="preserve">
@@ -10368,4 +10410,79 @@ We regret that you are unable to use the service at this time. Please sign up fo
 <value>Successfully Copied</value>
 <comment>NafathSignup</comment>
 </data>
+      <data name="CarImport" xml:space="preserve">
+    <value>Car Import</value>
+  </data>
+    <data name="LogintoCarimportservice" xml:space="preserve">
+    <value>Login to Car import service</value>
+  </data>
+    <data name="NeedRewardHint" xml:space="preserve">
+     <value>Registering your contact information: Name , Contact Number and providing such information makes you updated on the status of your report. However, all provided information would be treated with strict confidentiality. Reports with no contact information will be looked at closely to take appropriate action.</value>
+  </data>
+    <data name="NeedReward" xml:space="preserve">
+     <value>I Want to Receive Reward</value>
+  </data>
+    <data name="ReportTextDisclaimer" xml:space="preserve">
+<value>Report Text(Providing detailed information about the communication helps us to adjust the communication faster)</value>
+  </data>
+      <data name="ViewRestofTermsConditions" xml:space="preserve">
+     <value>To view the rest of the terms and conditions  </value>
+  </data>
+  <data name="Clickhere" xml:space="preserve">
+     <value>Click here</value> 
+  </data>
+  <data name="SearchRerfrenceID" xml:space="preserve">
+     <value>Search by reference number</value>
+  </data>
+    <data name="CurrencyPermitLabel" xml:space="preserve">
+     <value>Do you have supporting document?</value>
+  </data>
+  <data name="PDFFileHintMB" xml:space="preserve">
+    <value>PDF file format max size 10MB</value>
+  </data>
+  <data name="TotalPDFFileHintMB" xml:space="preserve">
+    <value>The total number of attached files must not exceed 10MB</value>
+  </data>
+  <data name="PleaseAttach" xml:space="preserve">
+    <value>Please attach a document</value>
+</data>
+     <data name="UnifiedNumber" xml:space="preserve">
+    <value>Entity Unified Number</value>
+  </data>
+ <data name="NDTotalDisclaimer" xml:space="preserve">
+    <value>Total: Customs duties + Excise fees 'if exist' + Customs declaration's fees + VAT</value>
+ </data>
+  <data name="CustomsdeclarationDisclaimer" xml:space="preserve">
+    <value>Product value x customs duties</value>
+  </data>
+    <data name="VATCertificatesDisclaimer" xml:space="preserve">
+    <value>(Customs duties + excise tax if any + product value or minimum price, whichever is higher + customs declaration issuance fees) x VAT rate</value>
+  </data>
+    <data name="QTY" xml:space="preserve">
+    <value>QTY</value>
+  </data>
+  <data name="CartHeader" xml:space="preserve">
+       <value>Details of the declared items</value>
+  </data>
+    <data name="RestrictedDisc" xml:space="preserve">
+       <value>You have reached the maximum allowed items.</value>
+  </data>
+    <data name="ElectronicDevicesDisc" xml:space="preserve">
+       <value>Sorry... the entered quantity requires a visit to the declaration office upon arrival.</value>
+  </data>
+  <data name="AddingItems" xml:space="preserve">
+       <value>Adding Items</value>
+  </data>
+    <data name="EDeclarationArrivalHeader" xml:space="preserve">
+       <value>E-Declaration for arrival</value>
+  </data>
+    <data name="EDeclarationDepatureHeader" xml:space="preserve">
+       <value>E-Declaration for departure</value>
+  </data>
+  <data name="EmptyCart" xml:space="preserve">
+       <value>Sorry, the cart is empty</value>
+  </data>
+    <data name="PrivacyPolicy" xml:space="preserve">
+       <value>Privacy Policy</value>
+  </data>
 </root>

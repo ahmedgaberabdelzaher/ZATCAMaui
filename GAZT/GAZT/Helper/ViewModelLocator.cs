@@ -131,7 +131,6 @@ using EGAZT.Views.NewDesign.AccountStatements;
 using EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages;
 using EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel;
 using EGAZT.ViewModel.NewDesignViewModel.Common;
-using EGAZT.ViewModel.NewDesignViewModel.VATRefunds;
 
 using Xamarin.Forms.Internals;
 using EGAZT.Views.NewDesign.PaymentOptions;
@@ -172,8 +171,15 @@ using EGAZT.Helper;
 using EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.ViewModel.NewDesignViewModel.SupportPageVM;
+using EGAZT.Views.NewDesign.CustomServicesPages.CustomFees;
 using EGAZT.ViewModel.NewDesignViewModel.TrackShipment;
 using EGAZT.Views.NewDesign.TrackShipment;
+using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
+using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
+using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
+using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
+using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
+
 namespace EGAZT
 {
     [Preserve(AllMembers = true)]
@@ -429,12 +435,14 @@ namespace EGAZT
 
             SimpleIoc.Default.Register<E_DeclerationViewModel>();
             SimpleIoc.Default.Register<TrackShipmentViewModel>();
+            SimpleIoc.Default.Register<ListUserRequestsViewModel>();
             SimpleIoc.Default.Register<HomeViewModel>();
             SimpleIoc.Default.Register<RateUsViewModel>();
             SimpleIoc.Default.Register<CustomLoginViewModel>();
             SimpleIoc.Default.Register<BaseEDeclarationViewModel>();
-            SimpleIoc.Default.Register<ProductDeclarationViewModel>();
+            SimpleIoc.Default.Register<BaseProductDeclarationViewModel>();
             SimpleIoc.Default.Register<EDeclarationInformationsViewModel>();
+            SimpleIoc.Default.Register<RegisterZATCAUserViewModel>();
             SimpleIoc.Default.Register<EDeclarationPaymentViewModel>();
             SimpleIoc.Default.Register<TransactionReceptionViewModel>();
             SimpleIoc.Default.Register<IAMLoginViewModel>();
@@ -443,9 +451,14 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomsPaymentViewModel>();
             SimpleIoc.Default.Register<StateManager>();
             SimpleIoc.Default.Register<AboutZakatyViewModel>();
-              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-                 SimpleIoc.Default.Register<ChatViewModel>();
-#endregion
+            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+            SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<CustomFeesFormViewModel>();
+            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+            SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<FasahLoginViewModel>();
+            SimpleIoc.Default.Register<BaseLoginViewModel>();
+            #endregion
         }
 
         #region NewDesignViewModel
@@ -468,7 +481,7 @@ namespace EGAZT
         }
 
         //CR6094
-           public NafathPopupPageViewModel NafathPopupPage
+        public NafathPopupPageViewModel NafathPopupPage
         {
             get
             {
@@ -2962,6 +2975,7 @@ namespace EGAZT
             navigationService.Configure("InquiryAboutAddOrShowReportsPage", typeof(InquiryAboutAddOrShowReportsPage));
             navigationService.Configure("ContactUs", typeof(ContactUs));
             navigationService.Configure("NewDeclarationPage", typeof(NewDeclarationPage));
+            navigationService.Configure("ChooseQuestionsPage", typeof(ChooseQuestionsPage));
             navigationService.Configure("ProductDeclarationPage", typeof(ProductDeclarationPage));
             navigationService.Configure("TransactionReceptionView", typeof(TransactionReceptionView));
             navigationService.Configure("SuccessView", typeof(SuccessView));
@@ -2969,27 +2983,31 @@ namespace EGAZT
             navigationService.Configure("PassengerInformationPage", typeof(PassengerInformationPage));
             navigationService.Configure("ReviewRequestPage", typeof(ReviewRequestPage));
             navigationService.Configure("TripInformationPage", typeof(TripInformationPage));
+            navigationService.Configure("ListUserRequestsPage", typeof(ListUserRequestsPage));
             navigationService.Configure("ContactInformationPage", typeof(ContactInformationPage));
             navigationService.Configure("EDeclarationSuccessPage", typeof(EDeclarationSuccessPage));
             navigationService.Configure("EDeclarationPaymentPage", typeof(EDeclarationPaymentPage));
+            navigationService.Configure("RegisterZATCAUserPage", typeof(RegisterZATCAUserPage));
             navigationService.Configure("EDeclarationPage", typeof(EDeclarationPage));
             navigationService.Configure("TrackShipmentPage", typeof(TrackShipmentPage));
             navigationService.Configure("PaymentWebView", typeof(PaymentWebView));
             navigationService.Configure("AboutZakatyView", typeof(AboutZakatyView));
+
+            navigationService.Configure("CustomFeesFormView", typeof(CustomFeesFormView));
             navigationService.Configure("ChatPotView", typeof(ChatPotView));
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
-
-//CR6094
+            //CR6094
             navigationService.Configure(App.NafathPopUpPage, typeof(NafathPopUpPage));
             navigationService.Configure(App.NafathLoginPageView, typeof(NafathLoginPageView));
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
+            navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
             #endregion
 
             return navigationService;
         }
-        
+
         #endregion
         public InquiryAboutCustomsDeclarationViewModel InquiryAboutCustomsDeclarationViewModel
         {
@@ -3006,7 +3024,7 @@ namespace EGAZT
             }
         }
 
-    public TraifSectionsViewModel traifSectionsViewModel
+        public TraifSectionsViewModel traifSectionsViewModel
         {
             get
             {
@@ -3273,13 +3291,41 @@ namespace EGAZT
                 }
             }
         }
-      public ChatViewModel ChatViewModel
+        public ChatViewModel ChatViewModel
         {
             get
             {
                 try
                 {
                     return ServiceLocator.Current.GetInstance<ChatViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public CustomFeesFormViewModel CustomFeesFormViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<CustomFeesFormViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public FasahLoginViewModel FasahLoginViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<FasahLoginViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -3532,7 +3578,7 @@ namespace EGAZT
             {
                 try
                 {
-                    
+
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
@@ -3587,7 +3633,7 @@ namespace EGAZT
             get
             {
                 try
-                {              
+                {
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
@@ -3738,7 +3784,7 @@ namespace EGAZT
                 }
             }
         }
-        
+
         public VatReviewViewModel VatReviewSuccessView
         {
             get
@@ -4226,13 +4272,13 @@ namespace EGAZT
                 }
             }
         }
-        public ProductDeclarationViewModel ProductDeclarationViewModel
+        public BaseProductDeclarationViewModel ProductDeclarationViewModel
         {
             get
             {
                 try
                 {
-                    return ServiceLocator.Current.GetInstance<ProductDeclarationViewModel>();
+                    return ServiceLocator.Current.GetInstance<BaseProductDeclarationViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -4247,6 +4293,20 @@ namespace EGAZT
                 try
                 {
                     return ServiceLocator.Current.GetInstance<EDeclarationInformationsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        public RegisterZATCAUserViewModel RegisterZATCAUserViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<RegisterZATCAUserViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -4338,7 +4398,21 @@ namespace EGAZT
                 }
             }
         }
-    //
+        public ListUserRequestsViewModel ListUserRequestsViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<ListUserRequestsViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+        //
     }
 
 

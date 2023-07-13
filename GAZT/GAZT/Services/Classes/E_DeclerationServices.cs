@@ -27,7 +27,6 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TobaccoItemsModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/tobacco-items?tobaccoTypeID={TobacoTypeID}").ConfigureAwait(false);
             return response;
         }
-
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>, bool, string>> GetProductTypes()
         {
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<ProductTypesModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/good-types").ConfigureAwait(false);
@@ -40,8 +39,8 @@ namespace EGAZT.Services.Classes
         }
         public async Task<HttpResponseMessage> FeesCalculator(FeesCalculatorBody body)
         {
-            var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}{version}/customs/calculate-fees",body).ConfigureAwait(false);
-            return response;
+           var response = await HttpManager.PostAsync<FeesCalculatorBody>($"{PageSettings.ZATCABaseURL}{version}/customs/calculate-fees", body).ConfigureAwait(false);
+          return response;
         }
 
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PurposeModel>>, bool, string>> GetPurposes()
@@ -86,6 +85,13 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<InquireResponse>>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/inquire-declaration?declarationID={referenceNumber}&travelID={travelID}").ConfigureAwait(false);
             return response;
         }
+
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>, bool, string>> GetListInquireDecleration(string travelID)
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<TravelerDeclarationResponse>>>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/inquire-declarations?travelID={travelID}").ConfigureAwait(false);
+            return response;
+        }
+
 
         public async Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body)
         {
