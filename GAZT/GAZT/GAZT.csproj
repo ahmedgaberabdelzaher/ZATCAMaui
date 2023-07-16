@@ -146,6 +146,7 @@
 	  <None Remove="Views\NewDesign\EDeclaration\QuestionsViews\" />
 	  <None Remove="Views\NewDesign\EDeclaration\InfoPages\" />
 	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
+	  <None Remove="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -292,6 +293,7 @@
 		<Folder Include="Views\NewDesign\EDeclaration\QuestionsViews\" />
 		<Folder Include="Views\NewDesign\EDeclaration\InfoPages\" />
 		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
+		<Folder Include="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

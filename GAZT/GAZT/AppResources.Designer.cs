@@ -7690,6 +7690,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inquiry about Customs Issues.
+        /// </summary>
+        public static string InquiryaboutCustomsIssuesView {
+            get {
+                return ResourceManager.GetString("InquiryaboutCustomsIssuesView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please enter all required data.
         /// </summary>
         public static string InquiryDataRequiredAttentionMsg {

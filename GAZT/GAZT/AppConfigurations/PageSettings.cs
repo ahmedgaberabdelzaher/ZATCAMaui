@@ -76,6 +76,9 @@ namespace EGAZT.AppConfigurations
         public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
         public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
 
+        public static string CustomsIssuesProd = "http://esvc-web1-stg.ga.customs.gov.sa";
+        public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -92,7 +95,7 @@ namespace EGAZT.AppConfigurations
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
         public static string FasahBaseUrl;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
-
+        public static string CurrentEnvironment="STG";
         private static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
@@ -327,6 +330,18 @@ namespace EGAZT.AppConfigurations
             else
             {
                 return $"{FasahRedirectUrl}en/redirection/1.0/?s=Brokers_optionality&t=";
+            }
+        }
+
+        public static string GetCustomsIssueUrl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+            }
+            else
+            {
+                return $"{CustomsIssuesProd}/sites/sc/en/app-view/Pages/NewSettlementRequest.aspx";
             }
         }
 

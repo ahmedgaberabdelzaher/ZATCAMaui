@@ -278,7 +278,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                    Name=AppResources.InquireaboutPaymentofInsuranceTitle, ID="LaboratoryPaymentOfInsuranceFees",ImageSource="LabfeesInquiry",ColumnNo=isvertical?0:1,Row=isvertical?7:3,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
                 }
-                
+                   ,
+                 new MenuModel()
+                {
+                   Name=AppResources.InquiryaboutCustomsIssuesView, ID="InquiryaboutCustomsIssuesView",ImageSource="InquireCustomDeclerations",ColumnNo=0,Row=isvertical?8:4,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomNote4:""
+                }
            };
 
             
