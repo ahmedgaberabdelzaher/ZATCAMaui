@@ -9735,61 +9735,61 @@ info@zatca.gov.sa</value>
   <data name="unableToVerify" xml:space="preserve">
         <value>تعذر التحقق, نرجو المحاولة مرة أخرى لاحقا</value>
     </data>
-    <data name="PleaseEnter" xml:space="preserve">
+  <data name="PleaseEnter" xml:space="preserve">
         <value>يرجى إدخال</value>
     </data>
-     <data name="AccountS" xml:space="preserve">
+  <data name="AccountS" xml:space="preserve">
      <value>ك.الحساب</value>
      </data>
-     <data name="MenuDashboard" xml:space="preserve">
+  <data name="MenuDashboard" xml:space="preserve">
     <value>بياناتي</value>
   </data>
-     <data name="NewDeclaration" xml:space="preserve">
+  <data name="NewDeclaration" xml:space="preserve">
         <value>إقرار جديد</value>
     </data>
-    <data name="NewDeclarationNote" xml:space="preserve">
+  <data name="NewDeclarationNote" xml:space="preserve">
         <value>يسهل الإقرار الإلكتروني إجراءات وصولك ومغادرتك دون الحاجة إلى الانتظار كما يحميك من المسؤولية القانونية ، لمعرفة تفاصيل الإعلان يمكنك الإطلاع على </value>
     </data>
-    <data name="NewDeclarationQuestion" xml:space="preserve">
+  <data name="NewDeclarationQuestion" xml:space="preserve">
         <value>القدوم إلى المملكة أم المغادرة؟</value>
     </data>
-    <data name="ArrivingToKSA" xml:space="preserve">
+  <data name="ArrivingToKSA" xml:space="preserve">
         <value>الوصول إلى المملكة العربية السعودية</value>
     </data>
-    <data name="DepartingToKSA" xml:space="preserve">
+  <data name="DepartingToKSA" xml:space="preserve">
         <value>المغادرة من المملكة العربية السعودية</value>
-    </data> 
-      <data name="ProductDeclaration" xml:space="preserve">
+    </data>
+  <data name="ProductDeclaration" xml:space="preserve">
         <value>بيانات الإقرار</value>
     </data>
-    <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
+  <data name="EdeclerationTobbacoQuestion" xml:space="preserve">
         <value>هل لديك منتجات تبغ أو مشتقاتها أكثر من 200 سيجارة أو 25 سيجار أو 500 جرام أو سجائر / شيشة إلكترونية أكثر من جهاز (شيشة) و 60 مل من سائلها؟ </value>
     </data>
-    <data name="ProductDeclarationDisclaimer" xml:space="preserve">
+  <data name="ProductDeclarationDisclaimer" xml:space="preserve">
         <value>في حال عدم العثور على المنتج في القائمة، يرجى الإقرار في مكتب الإقرار عند الوصول</value>
     </data>
-    <data name="TypeItem" xml:space="preserve">
+  <data name="TypeItem" xml:space="preserve">
         <value>نوع المادة</value>
     </data>
-    <data name="ProductName" xml:space="preserve">
+  <data name="ProductName" xml:space="preserve">
         <value>اسم المنتج</value>
     </data>
-    <data name="AddItem" xml:space="preserve">
+  <data name="AddItem" xml:space="preserve">
         <value>إضافة الى السلة</value>
     </data>
-    <data name="TotalFeesPayable" xml:space="preserve">
+  <data name="TotalFeesPayable" xml:space="preserve">
         <value>إجمالي المستحق</value>
     </data>
-    <data name="DetailsTotalFeesPayable" xml:space="preserve">
+  <data name="DetailsTotalFeesPayable" xml:space="preserve">
         <value>تفاصيل الإجمالي المستحق</value>
     </data>
-    <data name="Select" xml:space="preserve">
+  <data name="Select" xml:space="preserve">
         <value>اختار</value>
     </data>
   <data name="TransactionReception" xml:space="preserve">
     <value>توريد المعاملات</value>
   </data>
-<data name="NewTransactionReception" xml:space="preserve">
+  <data name="NewTransactionReception" xml:space="preserve">
     <value>توريد معاملة جديدة</value>
   </data>
   <data name="Pleasecompletethedata" xml:space="preserve">
@@ -9804,7 +9804,7 @@ info@zatca.gov.sa</value>
   <data name="Enterthesubjectofthetransaction" xml:space="preserve">
     <value>أدخل موضوع المعاملة</value>
   </data>
-    <data name="Transactiondescription" xml:space="preserve">
+  <data name="Transactiondescription" xml:space="preserve">
     <value>وصف المعاملة</value>
   </data>
   <data name="PDFFileHint" xml:space="preserve">
@@ -9831,7 +9831,7 @@ info@zatca.gov.sa</value>
   <data name="PassengerInformation" xml:space="preserve">
     <value>معلومات الركاب</value>
   </data>
-   <data name="Passport" xml:space="preserve">
+  <data name="Passport" xml:space="preserve">
     <value>جواز سفر</value>
   </data>
   <data name="GccNationalID" xml:space="preserve">
@@ -9870,19 +9870,19 @@ info@zatca.gov.sa</value>
   <data name="GoingTo" xml:space="preserve">
     <value>مغادرة الى</value>
   </data>
-   <data name="EntrancePort" xml:space="preserve">
+  <data name="EntrancePort" xml:space="preserve">
     <value>منفذ الدخول</value>
   </data>
   <data name="ExitPort" xml:space="preserve">
     <value>منفذ الخروج</value>
   </data>
-   <data name="ArrivalDate" xml:space="preserve">
+  <data name="ArrivalDate" xml:space="preserve">
     <value>تاريخ الوصول</value>
   </data>
   <data name="DepartureDate" xml:space="preserve">
     <value>تاريخ المغادرة</value>
   </data>
-   <data name="TripNumber" xml:space="preserve">
+  <data name="TripNumber" xml:space="preserve">
     <value>رقم الرحلة</value>
   </data>
   <data name="TravelPurpose" xml:space="preserve">
@@ -9924,13 +9924,13 @@ info@zatca.gov.sa</value>
   <data name="OtherPurpose" xml:space="preserve">
     <value>الغرض الآخر</value>
   </data>
-    <data name="TotalValue" xml:space="preserve">
+  <data name="TotalValue" xml:space="preserve">
     <value>القيمة الإجمالية</value>
   </data>
   <data name="Currency" xml:space="preserve">
     <value>العملة</value>
   </data>
-    <data name="ContactInformation" xml:space="preserve">
+  <data name="ContactInformation" xml:space="preserve">
     <value>معلومات التواصل</value>
   </data>
   <data name="AddressKSA" xml:space="preserve">
@@ -9942,10 +9942,10 @@ info@zatca.gov.sa</value>
   <data name="CreatedSuccessfullyMsg" xml:space="preserve">
     <value>تم إنشاء البيان الإلكتروني بنجاح.</value>
   </data>
-   <data name="DeclarationAcknowledge" xml:space="preserve">
+  <data name="DeclarationAcknowledge" xml:space="preserve">
     <value>إقرار</value>
   </data>
-   <data name="AcknowledgeNote1" xml:space="preserve">
+  <data name="AcknowledgeNote1" xml:space="preserve">
     <value>أقر بموجب هذا بأن هذا الإعلان الإلكتروني مملوك لمصلحة الجمارك العامة التي لها الحق في استخدام المعلومات المدخلة للأغراض الإحصائية المتعلقة بعملها.</value>
   </data>
   <data name="AcknowledgeNote2" xml:space="preserve">
@@ -9960,7 +9960,7 @@ info@zatca.gov.sa</value>
   <data name="AcknowledgeNote5" xml:space="preserve">
     <value>لا يسمح برد المبالغ المحصلة (الرسوم والضرائب) إلا في حالة الإحالة إلى مكتب التصريح بميناء الدخول عند الوصول إلى المملكة وقبل مغادرة الميناء بحيث يمكن إجراء مراسلات الحيازة من قبل الجمارك. ضابط</value>
   </data>
-   <data name="TermsConditions" xml:space="preserve">
+  <data name="TermsConditions" xml:space="preserve">
     <value>لقد قرأت الشروط والأحكام</value>
   </data>
   <data name="ProhibitedItems" xml:space="preserve">
@@ -9981,25 +9981,25 @@ info@zatca.gov.sa</value>
   <data name="EDeclerationenteredValuedoesnotrequirethedeclaration" xml:space="preserve">
     <value>عذرًا ، القيمة الإجمالية المدخلة لا تتطلب التصريح</value>
   </data>
-   <data name="ALLanswersisNoMsg" xml:space="preserve">
+  <data name="ALLanswersisNoMsg" xml:space="preserve">
     <value>عذرًا ، يبدو أنك لم تختر من بين الأسئلة</value>
   </data>
-    <data name="Servicetype" xml:space="preserve">
+  <data name="Servicetype" xml:space="preserve">
     <value>نوع الخدمة</value>
   </data>
   <data name="Identitytype" xml:space="preserve">
     <value>نوع الهوية</value>
   </data>
-    <data name="Visitor" xml:space="preserve">
+  <data name="Visitor" xml:space="preserve">
     <value>زائر</value>
   </data>
-    <data name="Citizen" xml:space="preserve">
+  <data name="Citizen" xml:space="preserve">
     <value>مواطن / مقيم</value>
   </data>
-      <data name="IAMLogin" xml:space="preserve">
+  <data name="IAMLogin" xml:space="preserve">
     <value>نفاذ</value>
   </data>
-    <data name="PaymentDetails" xml:space="preserve">
+  <data name="PaymentDetails" xml:space="preserve">
     <value>بيانات الدفع</value>
   </data>
   <data name="TotalAmountNumeric" xml:space="preserve">
@@ -10008,7 +10008,7 @@ info@zatca.gov.sa</value>
   <data name="TotalAmountWriting" xml:space="preserve">
     <value>المبلغ الإجمالي كتابة</value>
   </data>
-    <data name="DateBirthValidation" xml:space="preserve">
+  <data name="DateBirthValidation" xml:space="preserve">
     <value>لا يمكن أن يكون تاريخ الميلاد في الحاضر او المستقبل</value>
   </data>
   <data name="ReleaseDateValidation" xml:space="preserve">
@@ -10020,13 +10020,13 @@ info@zatca.gov.sa</value>
   <data name="ComingGoingDateValidation" xml:space="preserve">
     <value>لا يمكن أن يكون التاريخ في الماضي</value>
   </data>
-   <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
+  <data name="EDEcelarationSADADFrstMsg" xml:space="preserve">
     <value>رقم فاتورة سداد:</value>
   </data>
-     <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
+  <data name="EDEcelarationSADADSecondMsg" xml:space="preserve">
     <value>(رقم مفوتر هيئة الزكاة والضريبة والجمارك 030)</value>
 </data>
-    <data name="ElectronicDeclaration" xml:space="preserve">
+  <data name="ElectronicDeclaration" xml:space="preserve">
     <value>تم استكمال الإعلان الإلكتروني بنجاح.</value>
   </data>
   <data name="TravellerPassport" xml:space="preserve">
@@ -10035,7 +10035,7 @@ info@zatca.gov.sa</value>
   <data name="TripDate" xml:space="preserve">
     <value>تاريخ الرحلة</value>
   </data>
- <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
+  <data name="VATInstalmentListInstalmentPaymentStatus" xml:space="preserve">
     <value>حالة السداد</value>
   </data>
   <data name="PaidPaymentStatus" xml:space="preserve">
@@ -10050,16 +10050,16 @@ info@zatca.gov.sa</value>
   <data name="ReviewRequest" xml:space="preserve">
     <value>راجع الطلب</value>
   </data>
-   <data name="Add" xml:space="preserve">
+  <data name="Add" xml:space="preserve">
     <value>اضافه</value>
   </data>
-   <data name="AddNewCRTitle" xml:space="preserve">
+  <data name="AddNewCRTitle" xml:space="preserve">
     <value>إضافة الرقم الموحد للمنشأة</value> 
   </data>
   <data name="Viewlist" xml:space="preserve">
     <value>اطلع على القائمة</value> 
   </data>
-    <data name="ZAKATYDesc" xml:space="preserve">
+  <data name="ZAKATYDesc" xml:space="preserve">
     <value>(منصة زكاتي عبارة عن بيئة زكوية متوازنة و متكاملة تتيح للأفراد إمكانية حساب الزكاة المستحقة  من خلال عدة بنود والقدرة على  أداء زكاتهم بشكل سلس وميسر من خلال خدمة قنوات الدفع الإلكترونية لتصل لمستحقيها بشكل مباشر في الضمان الاجتماعي)</value> 
   </data>
   <data name="GoToZakatyPortal" xml:space="preserve">
@@ -10080,19 +10080,19 @@ info@zatca.gov.sa</value>
   <data name="NoFileChoosen" xml:space="preserve">
     <value>لم يتم اختيار أي ملف</value> 
   </data>
-   <data name="VATEligibleDateError1" xml:space="preserve">
+  <data name="VATEligibleDateError1" xml:space="preserve">
     <value>عزيزي المكلف، تاريخ نفاذ التسجيل في ضريبة القيمة المضافة يجب أن يكون من 1-1-2018 و بحد اقصى بداية الشهر القادم من تاريخ تقديم الطلب</value>
   </data>
- <data name="SelectAnswerMessage" xml:space="preserve">
+  <data name="SelectAnswerMessage" xml:space="preserve">
    <value>الرجاء تحديد إجابة</value>
  </data>
-   <data name="TravelerCountValidation" xml:space="preserve">
+  <data name="TravelerCountValidation" xml:space="preserve">
     <value>يجب أن يكون عدد المسافرين أكثر من 0</value> 
   </data>
-   <data name="QuantityValidation" xml:space="preserve">
+  <data name="QuantityValidation" xml:space="preserve">
     <value>يجب أن يكون الكمية أكثر من 0</value> 
   </data>
-   <data name="AddressKSAValidation" xml:space="preserve">
+  <data name="AddressKSAValidation" xml:space="preserve">
     <value>لا يمكن أن يحتوي العنوان على أي رموز خاصة</value> 
   </data>
   <data name="PermitLabel" xml:space="preserve">
@@ -10101,7 +10101,7 @@ info@zatca.gov.sa</value>
   <data name="EDeclarationTermsHeaderOne" xml:space="preserve">
     <value>تتيح هذه الخدمة إمكانية تعبئة نموذج الإقرار عن المواد الواجب الإقرار عنها وتقديمه لموظفي الجمارك عند دخول أو مغادرة الأراضي السعودية للمسافرين الدوليين، وتشمل هذه المواد:</value> 
   </data>
-   <data name="EDeclarationTermsOne" xml:space="preserve">
+  <data name="EDeclarationTermsOne" xml:space="preserve">
     <value>العملات أو الأدوات القابلة للتداول لحاملها والسبائك الذهبية والمعادن الثمينة والأحجار الكريمة والمجوهرات بما يصل قيمتها إلى 60,000 ريال أو أكثر أو ما يعادلها من العملات الأجنبية.</value> 
   </data>
   <data name="EDeclarationTermsTwo" xml:space="preserve">
@@ -10113,7 +10113,7 @@ info@zatca.gov.sa</value>
   <data name="EDeclarationTermsFour" xml:space="preserve">
      <value>السلع والمواد المحظورة والمقيدة.</value>
   </data>
-   <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
+  <data name="EDeclarationTermsHeaderTwo" xml:space="preserve">
     <value>وتقتصر قائمة المواد اللازم الإقرار عنها للمسافرين الدوليين المغادرين للأراضي السعودية على المواد التالية:</value> 
   </data>
   <data name="EDeclarationTermsFive" xml:space="preserve">
@@ -10125,7 +10125,7 @@ info@zatca.gov.sa</value>
   <data name="PDFFileHintTwo" xml:space="preserve">
     <value>صيغة الملف PDF أقصى حجم 1MB</value>
 </data>
-   <data name="CRNoAddedSuccess" xml:space="preserve">
+  <data name="CRNoAddedSuccess" xml:space="preserve">
      <value>تمت اضافه رقم السجل التجاري بنجاح</value>
   </data>
   <data name="NumberHint" xml:space="preserve">
@@ -10137,19 +10137,19 @@ info@zatca.gov.sa</value>
   <data name="PassengerNationality" xml:space="preserve">
     <value>جنسية المسافر</value>
   </data>
-    <data name="ArrivingFromORDepartingTo" xml:space="preserve">
+  <data name="ArrivingFromORDepartingTo" xml:space="preserve">
     <value>الوصول من أو المغادرة إلى</value>
   </data>
-    <data name="Disclaimer" xml:space="preserve">
+  <data name="Disclaimer" xml:space="preserve">
     <value>إخلاء المسؤولية:</value>
   </data>
-    <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
+  <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
     <value>يرجى ملاحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم ، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي والضرائب ولا يعتد بها قانونيا .</value>
   </data>
   <data name="CustomsFeesValue" xml:space="preserve">
     <value>قيمة الرسوم الجمركية والضرائب</value>
   </data>
-   <data name="ShipmentTracking" xml:space="preserve">
+  <data name="ShipmentTracking" xml:space="preserve">
     <value>تتبع الشحنة</value>
   </data>
   <data name="SelectShipmentType" xml:space="preserve">
@@ -10176,7 +10176,7 @@ info@zatca.gov.sa</value>
   <data name="SearchBy" xml:space="preserve">
     <value>البحث عن طريق</value>
   </data>
-    <data name="DeclarationBillNumber" xml:space="preserve">
+  <data name="DeclarationBillNumber" xml:space="preserve">
     <value>رقم البيان/رقم الفاتورة</value>
   </data>
   <data name="TotalFees" xml:space="preserve">
@@ -10191,7 +10191,7 @@ info@zatca.gov.sa</value>
   <data name="CIFValue" xml:space="preserve">
     <value>قيمة CIF</value>
   </data>
-   <data name="ShipmentTrackingSubTitle" xml:space="preserve">
+  <data name="ShipmentTrackingSubTitle" xml:space="preserve">
     <value>للحصول على نتائج أكثر دقة ، يرجى إدخال تفاصيل البيان.</value>
   </data>
   <data name="DeclarationDisclaimer" xml:space="preserve">
@@ -10200,10 +10200,10 @@ info@zatca.gov.sa</value>
   <data name="VATDisclaimer" xml:space="preserve">
     <value>تبلغ ضريبة القيمة المضافة 15٪ من إجمالي قيمة الشحنة.</value>
   </data>
-    <data name="BillNumber" xml:space="preserve">
+  <data name="BillNumber" xml:space="preserve">
     <value>رقم البوليصة</value>
   </data>
-    <data name="ShipmentDeclarationNumber" xml:space="preserve">
+  <data name="ShipmentDeclarationNumber" xml:space="preserve">
     <value>رقم البيان الجمركي</value>
   </data>
   <data name="ShipmentStatus" xml:space="preserve">
@@ -10221,10 +10221,10 @@ info@zatca.gov.sa</value>
   <data name="Weight" xml:space="preserve">
     <value>الوزن</value>
   </data>
-      <data name="ExciseTax2" xml:space="preserve">
+  <data name="ExciseTax2" xml:space="preserve">
     <value>الضريبة الانتقائية</value>
   </data>
-    <data name="Customsdeclarationissuancefees" xml:space="preserve">
+  <data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم إصدار البيان الجمركي</value>
   </data>
   <data name="Total2" xml:space="preserve">
@@ -10235,20 +10235,20 @@ info@zatca.gov.sa</value>
   </data>
   <data name="Calculate" xml:space="preserve">
     <value>احتساب</value>
-  </data> 
+  </data>
   <data name="Tobaco" xml:space="preserve">
     <value>تبغ</value>
   </data>
-    <data name="Thetypeofmerchandise" xml:space="preserve">
+  <data name="Thetypeofmerchandise" xml:space="preserve">
     <value>اختر نوع البضاعة</value>
   </data>
-    <data name="Selecttheitem" xml:space="preserve">
+  <data name="Selecttheitem" xml:space="preserve">
     <value>أختر الصنف</value>
   </data>
-    <data name="ProductValueHint" xml:space="preserve">
+  <data name="ProductValueHint" xml:space="preserve">
     <value>أدخل هنا القيمة الإجمالية للسلع</value>
 </data>
-   <data name="Customsdeclarationissuancefees" xml:space="preserve">
+  <data name="Customsdeclarationissuancefees" xml:space="preserve">
     <value>رسوم إصدار البيان الجمركي</value>
    </data>
   <data name="cleared" xml:space="preserve">
@@ -10266,38 +10266,38 @@ info@zatca.gov.sa</value>
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
-    <data name="PreviousRequests" xml:space="preserve">
+  <data name="PreviousRequests" xml:space="preserve">
      <value>لديك {0} من الطلبات السابقة</value>
   </data>
-    <data name="PreviousRequestsName" xml:space="preserve">
+  <data name="PreviousRequestsName" xml:space="preserve">
      <value>الطلبات السابقة</value>
 </data>
-     <data name="ClickhereforRegistration" xml:space="preserve">
+  <data name="ClickhereforRegistration" xml:space="preserve">
     <value>اضغط هنا للتسجيل</value>
   </data>
   <data name="IAMUsernNotFoundMSg" xml:space="preserve">
     <value>" عزيزي المستخدم
 نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: ثم الدخول على التطبيق مجددًا.</value>
   </data>
-      <data name="CarImport" xml:space="preserve">
+  <data name="CarImport" xml:space="preserve">
      <value>استيرا د السيارات </value>
   </data>
-    <data name="LogintoCarimportservice" xml:space="preserve">
+  <data name="LogintoCarimportservice" xml:space="preserve">
      <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
   </data>
   <data name="NeedRewardHint" xml:space="preserve">
      <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
   </data>
-    <data name="NeedReward" xml:space="preserve">
+  <data name="NeedReward" xml:space="preserve">
      <value> أرغب بالحصول على مكافأة</value>
   </data>
-    <data name="ReportTextDisclaimer" xml:space="preserve">
+  <data name="ReportTextDisclaimer" xml:space="preserve">
      <value>نص البلاغ (إن تقديم معلومات تفصيلية حول البلاغ يساعدنا في ضبط البلاغ بشكل أسرع)</value>
   </data>
-        <data name="ViewRestofTermsConditions" xml:space="preserve">
+  <data name="ViewRestofTermsConditions" xml:space="preserve">
      <value>للإطلاع على بقية الشروط والأحكام </value>
   </data>
-    <data name="Clickhere" xml:space="preserve">
+  <data name="Clickhere" xml:space="preserve">
      <value>اضغط هنا</value>
   </data>
   <data name="SearchRerfrenceID" xml:space="preserve">
@@ -10315,19 +10315,19 @@ info@zatca.gov.sa</value>
   <data name="PleaseAttach" xml:space="preserve">
     <value>الرجاء إرفاق مستند</value>
   </data>
-   <data name="UnifiedNumber" xml:space="preserve">
+  <data name="UnifiedNumber" xml:space="preserve">
     <value>الرقم الموحد للمنشأة</value>
   </data>
   <data name="NDTotalDisclaimer" xml:space="preserve">
     <value>المجموع: الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة إصدار البيان الجمركي + ضريبة القيمة المضافة</value>
   </data>
-   <data name="CustomsdeclarationDisclaimer" xml:space="preserve">
+  <data name="CustomsdeclarationDisclaimer" xml:space="preserve">
     <value>قيمة المنتج x الرسوم الجمركية</value>
   </data>
   <data name="VATCertificatesDisclaimer" xml:space="preserve">
     <value>(الرسوم الجمركية + الضريبة الانتقائية إن وجدت + قيمة المنتج أو سعر الحد الأدنى أيهما أعلى + رسوم إصدار البيان الجمركي) x نسبة ضريبة القيمة المضافة</value>
   </data>
-    <data name="QTY" xml:space="preserve">
+  <data name="QTY" xml:space="preserve">
     <value>الكمية</value>
   </data>
   <data name="CartHeader" xml:space="preserve">
@@ -10336,22 +10336,22 @@ info@zatca.gov.sa</value>
   <data name="RestrictedDisc" xml:space="preserve">
        <value>لقد وصلت للحد المسموح</value>
   </data>
-    <data name="ElectronicDevicesDisc" xml:space="preserve">
+  <data name="ElectronicDevicesDisc" xml:space="preserve">
        <value>عفواً ... الكمية المدخلة تتطلب زيارة مكتب الإقرار فور الوصول</value>
   </data>
-<data name="AddingItems" xml:space="preserve">
+  <data name="AddingItems" xml:space="preserve">
        <value>إضافة المقتنيات</value>
   </data>
   <data name="EDeclarationArrivalHeader" xml:space="preserve">
        <value>الإقرار الإكتروني للقادمين</value>
   </data>
-    <data name="EDeclarationDepatureHeader" xml:space="preserve">
+  <data name="EDeclarationDepatureHeader" xml:space="preserve">
        <value>الإقرار الإكتروني للمغادرين</value>
   </data>
-      <data name="EmptyCart" xml:space="preserve">
+  <data name="EmptyCart" xml:space="preserve">
        <value>عفواً، السلة فارغة</value>
   </data>
-      <data name="PrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
 </root>
