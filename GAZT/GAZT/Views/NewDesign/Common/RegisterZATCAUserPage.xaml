@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.Common.RegisterZATCAUserPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.Common.RegisterZATCAUserPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
@@ -16,17 +16,17 @@
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />  
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-     <ContentPage.Content>
-         <Grid RowDefinitions="Auto,*">
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
@@ -39,7 +39,7 @@
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
                             <DataTrigger
@@ -61,10 +61,10 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    HorizontalOptions="Center"
                     FontSize="20"
+                    HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{Binding HeaderTitle}"
                     VerticalOptions="Center" />
 
@@ -91,12 +91,12 @@
 
                         <!--  Horizontal Line  -->
                         <BoxView
-                            WidthRequest="20"
                             Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2" />
+                            HeightRequest="2"
+                            WidthRequest="20" />
 
-                        <!--  Welcome Label -->
+                        <!--  Welcome Label  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="20"
@@ -105,7 +105,7 @@
                             Text="{x:Static ResourceManager:AppResources.Hi}"
                             TextColor="#0996D4" />
 
-                        <!--  Username Label -->
+                        <!--  Username Label  -->
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="20"
@@ -136,10 +136,10 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Telephone"
@@ -184,7 +184,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                         <!--  Address Field  -->
+                        <!--  Address Field  -->
                         <StackLayout Spacing="0">
 
                             <!--  Address Label  -->
@@ -218,24 +218,24 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                        <!-- GoTo Success Button  -->
+                        <!--  GoTo Success Button  -->
                         <buttons:SfButton
                             Margin="0,5"
-                            VerticalOptions="EndAndExpand"
                             Command="{Binding SubmitUserCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
 
                         <!--  Cancel Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
-                            TextColor="{StaticResource Secondary}"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.CancelText}" />
+                            Text="{x:Static ResourceManager:AppResources.CancelText}"
+                            TextColor="{StaticResource Secondary}" />
 
                     </StackLayout>
 

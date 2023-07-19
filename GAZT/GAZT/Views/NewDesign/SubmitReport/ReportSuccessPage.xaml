@@ -130,7 +130,7 @@
                                     Style="{StaticResource SmallIcon}" />
 
                                 <StackLayout.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CopyCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding CopyCommand}" />
                                 </StackLayout.GestureRecognizers>
 
                             </StackLayout>

@@ -70,9 +70,10 @@
                                 <!--  Question Hint Label  -->
                                 <custom:CustomLabel
                                     Grid.Row="1"
-                                    Grid.Column="1" LineSpacing=".8"
+                                    Grid.Column="1"
                                     FontSize="12"
                                     HorizontalOptions="StartAndExpand"
+                                    LineSpacing=".8"
                                     Text="{x:Static ResourceManager:AppResources.FeesCalcDisclaimerTXt}"
                                     TextColor="Gray" />
                             </Grid>
@@ -403,8 +404,7 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2">
 
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.Productvalue}" />
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Productvalue}" />
 
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -424,23 +424,24 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2">
 
-                                    <Label Style="{StaticResource BodyLabelGrey}" >
+                                    <Label Style="{StaticResource BodyLabelGrey}">
 
-                                           <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="5%" />
-                                                </FormattedString>
-                                           </Label.FormattedText>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                                <Span Text=" " />
+                                                <Span Text="5%" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
 
                                     </Label>
 
-                                     <!--CustomsFeesDisclaimer Label-->
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                           FontSize="12"
-                                           Margin="0,-10,0,0"
-                                           Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
+                                    <!--  CustomsFeesDisclaimer Label  -->
+                                    <Label
+                                        Margin="0,-10,0,0"
+                                        FontSize="12"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}" />
 
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -460,8 +461,7 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2">
 
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
 
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -491,8 +491,7 @@
 
                                     </StackLayout.Triggers>
 
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
 
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -511,24 +510,24 @@
                                     Grid.Column="0"
                                     Grid.ColumnSpan="2">
 
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                           Text="{x:Static ResourceManager:AppResources.VATCertificates}" >
+                                    <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}">
 
-                                            <Label.FormattedText>
-                                                <FormattedString>
-                                                    <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
-                                                    <Span Text=" " />
-                                                    <Span Text="15%" />
-                                                </FormattedString>
-                                            </Label.FormattedText>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                                <Span Text=" " />
+                                                <Span Text="15%" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
 
                                     </Label>
 
-                                    <!--VATCertificates Disclamier-->
-                                    <Label Style="{StaticResource BodyLabelGrey}"
-                                            FontSize="12"
-                                            Margin="0,-10,0,0"
-                                            Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
+                                    <!--  VATCertificates Disclamier  -->
+                                    <Label
+                                        Margin="0,-10,0,0"
+                                        FontSize="12"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}" />
 
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
@@ -543,8 +542,7 @@
                                 </StackLayout>
                             </Grid>
 
-                            <Grid Margin="5"
-                                  VerticalOptions="EndAndExpand">
+                            <Grid Margin="5" VerticalOptions="EndAndExpand">
 
                                 <Frame
                                     Margin="-16"
@@ -556,31 +554,31 @@
 
                                 <StackLayout VerticalOptions="CenterAndExpand">
 
-                                     <StackLayout Orientation="Horizontal">
-                                            <Label
-                                                FontSize="20"
-                                                Text="{x:Static ResourceManager:AppResources.Total2}"
-                                                TextColor="#002447" />
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label
+                                            FontSize="20"
+                                            Text="{x:Static ResourceManager:AppResources.Total2}"
+                                            TextColor="#002447" />
 
-                                            <Label HorizontalOptions="EndAndExpand"
-                                                   Style="{StaticResource BodyLabelBlack}">
-                                                <Label.FormattedText>
-                                                    <FormattedString>
-                                                        <Span Text="{Binding FeesCalculatorResponse.totalPayment}" />
-                                                        <Span Text=" " />
-                                                        <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                                    </FormattedString>
-                                                </Label.FormattedText>
-                                            </Label>
-                                     </StackLayout>
+                                        <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
 
-                                     <!--Total Disclaimer-->
-                                     <Label Style="{StaticResource BodyLabelGrey}"
-                                            FontSize="12"
-                                            TextColor="#002447"
-                                            Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}" />
+                                    <!--  Total Disclaimer  -->
+                                    <Label
+                                        FontSize="12"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}"
+                                        TextColor="#002447" />
                                 </StackLayout>
-                               
+
                             </Grid>
 
                         </StackLayout>
@@ -594,8 +592,7 @@
             </Grid>
 
             <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.Row="0"
-                                      IsVisible="{Binding IsShowBottomSheet}" />
+            <controls:ListBottomSheet Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
 
         </Grid>
     </newdesign:BaseContentPage.PancakeView>

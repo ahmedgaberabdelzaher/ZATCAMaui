@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
- xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
- xmlns="http://xamarin.com/schemas/2014/forms"
+    x:Class="EGAZT.Views.NewDesign.DashBoardPages.ChatPotView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-       TitleText="{x:Static ResourceManager:AppResources.NDChat}"
-    x:Class="EGAZT.Views.NewDesign.DashBoardPages.ChatPotView">
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    TitleText="{x:Static ResourceManager:AppResources.NDChat}">
     <newdesign:BaseContentPage.PancakeView>
         <WebView x:Name="ChatWebView" />
     </newdesign:BaseContentPage.PancakeView>

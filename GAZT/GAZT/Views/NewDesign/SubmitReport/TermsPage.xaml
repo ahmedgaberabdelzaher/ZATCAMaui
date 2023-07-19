@@ -269,16 +269,20 @@
                         </StackLayout>
 
                         <!--  Not need Reward Hinf Note  -->
-                        <Frame IsVisible="false"
+                        <Frame
                             Padding="10"
                             BackgroundColor="White"
                             BorderColor="#E6E6E6"
                             CornerRadius="10"
                             HorizontalOptions="FillAndExpand"
+                            IsVisible="false"
                             VerticalOptions="StartAndExpand">
                             <Frame.Triggers>
-                                <DataTrigger TargetType="Frame" Binding="{Binding SubmitReport.IsNeedReward}" Value="false">
-                                    <Setter Property="IsVisible" Value="true"></Setter>
+                                <DataTrigger
+                                    Binding="{Binding SubmitReport.IsNeedReward}"
+                                    TargetType="Frame"
+                                    Value="false">
+                                    <Setter Property="IsVisible" Value="true" />
 
                                 </DataTrigger>
                             </Frame.Triggers>
@@ -288,15 +292,14 @@
                                 Spacing="10"
                                 VerticalOptions="CenterAndExpand">
 
-                            
+
 
                                 <!--  No need reward hint text Label  -->
                                 <custom:CustomLabel
                                     FontSize="12"
                                     HorizontalOptions="StartAndExpand"
                                     LineSpacing="0.8"
-                                    Text="{x:Static ResourceManager:AppResources.NotNeedRewardHint}"
-                                     />
+                                    Text="{x:Static ResourceManager:AppResources.NotNeedRewardHint}" />
 
                             </StackLayout>
 
