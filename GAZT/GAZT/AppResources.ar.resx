@@ -3660,8 +3660,8 @@
     <comment>Tax Evasion</comment>
     </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح. لتسجيل الدخول، يرجى استخدام الرقم المميز الخاص بك</value>
-    <comment>New SignUp</comment>
+    <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح، تسجيل الدخول عبر النفاذ الوطني الموحد</value>
+    <comment>New SignUp CR 6094</comment>
     </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
     <value>إضافة نوع جديد</value>
@@ -10266,6 +10266,48 @@ info@zatca.gov.sa</value>
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>إن عدم الإفصاح عن البيانات الشخصية سيلغي حقك بالحصول على المكافأة التشجيعية، ولن يتم استلام إشعارات بخصوص كافة الإجراءات المتخذة على بلاغكم</value>
   </data>
+  <data name="ZProfitOnGoods" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة علي هامش الربح (سيارات)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1" xml:space="preserve">
+    <value>هل يوجد لديكم توريدات شراء وبيع السيارات المستعملة؟</value>
+  </data>
+  <data name="ZProfitOnGoodsQ2" xml:space="preserve">
+    <value>هل يوجد لديكم توريدات أخرى بخلاف توريدات السيارات المستعملة؟</value>
+  </data>
+  <data name="ZProfitOnGoodsQOptionsYes" xml:space="preserve">
+    <value>نعم</value>
+  </data>
+  <data name="ZProfitOnGoodsQOptionsNo" xml:space="preserve">
+    <value>لا</value>
+  </data>
+  <data name="ZprofitsOnGoodsSubmit" xml:space="preserve">
+    <value>تقديم</value>
+  </data>
+  <data name="ZprofitsOnGoodscancel" xml:space="preserve">
+    <value>إلغاء</value> 
+  </data>
+  <data name="ZProfitOnGoodsConfrimationOk" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="ZProfitOnGoodsConfrimationMsg" xml:space="preserve">
+    <value>هل انت متأكد في رغبتك بالغاء الطلب؟</value>
+  </data>
+  <data name="ZProfitgoodsSCSRTile" xml:space="preserve">
+    <value>التسجيل في ضريبة القيمة المضافة علي هامش الربح (سيارات)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1M01Validation" xml:space="preserve">
+    <value>.عزيزي المكلف، أنت غير مؤهل لتطبيق ضريبة القيمة المضافة على هامش الربح للسلع المستعملة (السيارات)</value>
+  </data>
+  <data name="ZprofitsOnGoodsM02Vaidation" xml:space="preserve">
+    <value>الرجاء تعبئة جميع الحقول المطلوبة</value>
+  </data>
+  <data name="ZprofitsOnGoodsSuccessmessage" xml:space="preserve">
+    <value>تم بنجاح تقديم ضريبة القيمة المضافة على هامش الربح للسلع المستعملة (السيارات)</value>
+  </data>
+  <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
+      <value>تقديم غير ناجح</value>
+       </data>
   <data name="PreviousRequests" xml:space="preserve">
      <value>لديك {0} من الطلبات السابقة</value>
   </data>
@@ -10279,6 +10321,20 @@ info@zatca.gov.sa</value>
     <value>" عزيزي المستخدم
 نعتذر لا يمكنك الاستفادة من الخدمة حاليًا..  يرجى التسجيل أولًا بالخدمة عبر موقعنا الإلكتروني: ثم الدخول على التطبيق مجددًا.</value>
   </data>
+  <data name="ZREGCitizen" xml:space="preserve">
+    <value>مواطن / مقيم</value>
+  </data>
+  <data name="ZREGGulfCtzn" xml:space="preserve">
+     <value>مواطن خليجي</value>
+  </data>
+  <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices1" xml:space="preserve">
+     <value>تم التسجيل في خدمات هيئة الزكاة والضريبة والجمارك بنجاح، لتسجيل الدخول، يرجي استخدام الرقم المميز الخاص بك</value>
+     <comment>New SignUp CR 6094</comment>
+  </data>
+  <data name="CopiedSuccessMessage" xml:space="preserve">
+     <value>تم النسخ</value>
+     <comment>NafathSignup</comment>
+  </data>
   <data name="CarImport" xml:space="preserve">
      <value>استيرا د السيارات </value>
   </data>
@@ -10286,7 +10342,7 @@ info@zatca.gov.sa</value>
      <value>تسجيل الدخول إلى خدمه استيراد السيارات</value>
   </data>
   <data name="NeedRewardHint" xml:space="preserve">
-     <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
+      <value>تسجيل معلوماتك الشخصية من اسم ورقم تواصل وتقديمها يجعلك على اطلاع بحالة البلاغ حيث يتم التعامل بسرية تامة مع كافة البيانات المقدمة. ‏علما أن البلاغات التي تقدم بدون اسم أو رقم تواصل سيتم التعامل معها وأخذ الإجراء </value>
   </data>
   <data name="NeedReward" xml:space="preserve">
      <value> أرغب بالحصول على مكافأة</value>

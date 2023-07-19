@@ -56,13 +56,14 @@ namespace EGAZT.AppConfigurations
         public static string VatCustomSTGURL = "https://vatapislb.zatca.gov.sa/api/";
         public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
-        public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/v1/api/customs/";
+
+        public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
 
         //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
-        public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.gazt.gov.sa/gazt-integration/third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=New-Mobile";
-       // public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/IamExt/_iam/Iaminit.aspx?APPID=New-Mobile";
+        public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/";
+        // public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/IamExt/_iam/Iaminit.aspx?APPID=New-Mobile"; Deprecated
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
@@ -90,7 +91,7 @@ namespace EGAZT.AppConfigurations
         public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
         public static string FasahBaseUrl;
-        public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
+        public static string FasahApiKey = "Av549-e756Z-4c29-a16a-287de9c04755";
 
         private static string CheckTarget_Environment(string environment = "STG")
         {
@@ -112,15 +113,15 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
-                    SurveyID=SurveyIDStg;
-                    CollectorId=CollectorIdStg;
-                    SurveyToken=SurveyTokenStg;
-                    Q1ID=Q1IDStg;
-                    Q2ID=Q2IDStg;
-                    Q3ID=Q3IDStg;
-                    Q1AnsID=Q1AnsIDStg;
-                    Q2AnsID=Q2AnsIDStg;
-                    Q3AnsID=Q3AnsIDStg;
+                    SurveyID = SurveyIDStg;
+                    CollectorId = CollectorIdStg;
+                    SurveyToken = SurveyTokenStg;
+                    Q1ID = Q1IDStg;
+                    Q2ID = Q2IDStg;
+                    Q3ID = Q3IDStg;
+                    Q1AnsID = Q1AnsIDStg;
+                    Q2AnsID = Q2AnsIDStg;
+                    Q3AnsID = Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
                     break;
@@ -130,15 +131,15 @@ namespace EGAZT.AppConfigurations
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginProdBaseUrl;
-                    SurveyID=SurveyIDProd;
-                    CollectorId=CollectorIdProd;
-                    SurveyToken=SurveyTokenProd;
-                    Q1ID=Q1IDProd;
-                    Q2ID=Q2IDProd;
-                    Q3ID=Q3IDProd;
-                    Q1AnsID=Q1AnsIDProd;
-                    Q2AnsID=Q2AnsIDProd;
-                    Q3AnsID=Q3AnsIDProd;
+                    SurveyID = SurveyIDProd;
+                    CollectorId = CollectorIdProd;
+                    SurveyToken = SurveyTokenProd;
+                    Q1ID = Q1IDProd;
+                    Q2ID = Q2IDProd;
+                    Q3ID = Q3IDProd;
+                    Q1AnsID = Q1AnsIDProd;
+                    Q2AnsID = Q2AnsIDProd;
+                    Q3AnsID = Q3AnsIDProd;
                     IAMRegistration = IAMRegistraionProd;
                     FasahBaseUrl = FasahBaseUrlProd;
                     break;

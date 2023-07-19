@@ -51,8 +51,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 RaisePropertyChanged();
             }
         }
+        //Cr6264
+        private bool _IstileUpdated = true;
+        public bool istileUpdated
+        {
+            get => _IstileUpdated;
+            set
+            {
+                if (_IstileUpdated == value) return;
 
-      
+                _IstileUpdated = value;
+                RaisePropertyChanged("istileUpdated");
+            }
+        }
+
         int fQanswer;
         public int FQanswer
         {

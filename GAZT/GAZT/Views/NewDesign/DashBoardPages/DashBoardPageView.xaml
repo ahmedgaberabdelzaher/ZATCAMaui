@@ -1870,7 +1870,25 @@
                                                 <BoxView Style="{StaticResource WhiteLineSeperator}" />
                                             </StackLayout>
                                             <!--  Subsidy Request Ends  -->
+                                            <!--  CR6264 starts  -->
 
+                                            <StackLayout
+                                                x:Name="tileUpdatedView"
+                                                IsVisible="{Binding istileUpdated}"
+                                                Orientation="Horizontal"
+                                                Spacing="20">
+                                                <Image Source="taxpayer_subsidy.png" Style="{StaticResource SmallIcon}" />
+                                                <custom:CustomLabel Style="{StaticResource ButtonLabelWhiteBold}" Text="{x:Static ResourceManager:AppResources.ZProfitgoodsSCSRTile}" />
+                                                <StackLayout.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ProfitOnGoods_Tapped" />
+                                                </StackLayout.GestureRecognizers>
+                                            </StackLayout>
+                                            <BoxView
+                                                x:Name="tileUpdatedBoxView"
+                                                IsVisible="{Binding istileUpdated}"
+                                                Style="{StaticResource WhiteLineSeperator}" />
+
+                                            <!--  CR6264 ends  -->
                                             <!--  RateUS  Starts  -->
                                             <StackLayout Orientation="Vertical" Spacing="20">
                                                 <StackLayout Orientation="Horizontal" Spacing="20">

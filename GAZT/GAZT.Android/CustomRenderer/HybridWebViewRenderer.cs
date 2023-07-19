@@ -23,10 +23,6 @@ using System.Net.Http;
 using GAZT.Manager;
 using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
 using System.ComponentModel;
-using Android.App;
-using System.IO;
-using Xamarin.Essentials;
-using Android.Widget;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace EGAZT.Droid.CustomRenderer
@@ -56,8 +52,6 @@ namespace EGAZT.Droid.CustomRenderer
                 //Control.Settings.MixedContentMode = MixedContentHandling.NeverAllow;
 
                 Control.SetWebViewClient(new HybridWebViewClient((HybridWebView)Element));
-                Control.SetDownloadListener(new CustomDownloadListener());
-
                 Control.AddJavascriptInterface(new JSBridge(this), "jsBridge");
 
                 //((HybridWebView)Element).Cleanup();
@@ -72,7 +66,7 @@ namespace EGAZT.Droid.CustomRenderer
 
                 Control.Settings.MixedContentMode = MixedContentHandling.AlwaysAllow;
                 Control.SetWebViewClient(new HybridWebViewClient((HybridWebView)Element));
-                Control.SetDownloadListener(new CustomDownloadListener());
+
                 var tempElement = (HybridWebView)e.NewElement;
                 tempElement.RefreshCommand = () =>
                 {
@@ -158,30 +152,53 @@ namespace EGAZT.Droid.CustomRenderer
             Console.WriteLine("OnReceivedLoginRequest");
         }
 
+        //@Override
+        //    public void onReceivedSslError(WebView view, SslErrorHandler handler,
+        //                                   SslError error)
+        //{
+
+        //    switch (error.getPrimaryError())
+        //    {
+        //        case SslError.SSL_UNTRUSTED:
+        //            LogUtility.debug("SslError : The certificate authority is not trusted.");
+        //            break;
+        //        case SslError.SSL_EXPIRED:
+        //            LogUtility.debug("SslError : The certificate has expired.");
+        //            break;
+        //        case SslError.SSL_IDMISMATCH:
+        //            LogUtility.debug("The certificate Hostname mismatch.");
+        //            break;
+        //        case SslError.SSL_NOTYETVALID:
+        //            LogUtility.debug("The certificate is not yet valid.");
+        //            break;
+        //    }
+        //    handler.proceed();
+        //}
+
         public override void OnReceivedSslError(Android.Webkit.WebView view, SslErrorHandler handler, SslError error)
         {
-            base.OnReceivedSslError(view, handler, error);
-            System.String message = "Certificate error.";
+            //base.OnReceivedSslError(view, handler, error);
+            //System.String message = "Certificate error.";
 
-            switch (error.PrimaryError)
-            {
-                case SslErrorType.Untrusted:
-                    message = "The certificate authority is not trusted.";
-                    break;
-                case SslErrorType.Expired:
-                    message = "The certificate has expired.";
-                    break;
-                case SslErrorType.Idmismatch:
-                    message = "The certificate Hostname mismatch.";
-                    break;
-                case SslErrorType.Notyetvalid:
-                    message = "The certificate is not yet valid.";
-                    break;
-            }
+            //switch (error.PrimaryError)
+            //{
+            //    case SslErrorType.Untrusted:
+            //        message = "The certificate authority is not trusted.";
+            //        break;
+            //    case SslErrorType.Expired:
+            //        message = "The certificate has expired.";
+            //        break;
+            //    case SslErrorType.Idmismatch:
+            //        message = "The certificate Hostname mismatch.";
+            //        break;
+            //    case SslErrorType.Notyetvalid:
+            //        message = "The certificate is not yet valid.";
+            //        break;
+            //}
 
             handler.Proceed();
 
-            Console.WriteLine(message);
+            //Console.WriteLine(message);
         }
 
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
@@ -258,6 +275,19 @@ namespace EGAZT.Droid.CustomRenderer
                 _hybridWebView.InvokeAction("navigateBackToLoginPage");
             }
 
+            if (url.ToString().Contains("IsSSOLogon=Y"))
+            {
+                _hybridWebView.InvokeAction("displayLoadingIndicator");
+                App.IsLoginCalled = true;
+            }
+
+            if (url.ToString().Contains("IsSignUp=Y&guid="))
+            {
+                 string guid = url.ToString();
+                 App.GUIDFrSSO = guid;
+                _hybridWebView.InvokeAction("navigateToVATIndividualSignupPageSSO");
+            }
+
             if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
                 App.IsLoginCalled = true;
@@ -298,24 +328,24 @@ namespace EGAZT.Droid.CustomRenderer
 
         public override void OnReceivedSslError(Android.Webkit.WebView view, SslErrorHandler handler, SslError error)
         {
-            base.OnReceivedSslError(view, handler, error);
+           // base.OnReceivedSslError(view, handler, error);
             System.String message = "Certificate error.";
 
-            switch (error.PrimaryError)
-            {
-                case SslErrorType.Untrusted:
-                    message = "The certificate authority is not trusted.";
-                    break;
-                case SslErrorType.Expired:
-                    message = "The certificate has expired.";
-                    break;
-                case SslErrorType.Idmismatch:
-                    message = "The certificate Hostname mismatch.";
-                    break;
-                case SslErrorType.Notyetvalid:
-                    message = "The certificate is not yet valid.";
-                    break;
-            }
+            //switch (error.PrimaryError)
+            //{
+            //    case SslErrorType.Untrusted:
+            //        message = "The certificate authority is not trusted.";
+            //        break;
+            //    case SslErrorType.Expired:
+            //        message = "The certificate has expired.";
+            //        break;
+            //    case SslErrorType.Idmismatch:
+            //        message = "The certificate Hostname mismatch.";
+            //        break;
+            //    case SslErrorType.Notyetvalid:
+            //        message = "The certificate is not yet valid.";
+            //        break;
+            //}
 
             handler.Proceed();
 
@@ -496,29 +526,4 @@ namespace EGAZT.Droid.CustomRenderer
         //    }
         //}
     }
-    public class CustomDownloadListener : Java.Lang.Object, IDownloadListener
-    {
-        public void OnDownloadStart(string url, string userAgent, string contentDisposition, string mimetype, long contentLength)
-        {
-            try
-            {
-                DownloadManager.Request request = new DownloadManager.Request(Android.Net.Uri.Parse(url));
-                request.AllowScanningByMediaScanner();
-                request.SetNotificationVisibility(DownloadVisibility.VisibleNotifyCompleted);
-                // if this path is not create, we can create it.
-                string thmblibrary = FileSystem.AppDataDirectory + "/download";
-                if (!Directory.Exists(thmblibrary))
-                    Directory.CreateDirectory(thmblibrary);
-                request.SetDestinationInExternalFilesDir(Android.App.Application.Context, FileSystem.AppDataDirectory, "download");
-                DownloadManager dm = (DownloadManager)Android.App.Application.Context.GetSystemService(Android.App.Application.DownloadService);
-                dm.Enqueue(request);
-               // Toast.MakeText(Android.App.Application.Context, "Downloading File", ToastLength.Long).Show();
-
-            }
-            catch (Exception)
-            {
-            }
-
-        }
-    }
-    }
+}

@@ -28,6 +28,8 @@ namespace GAZT.Models
         public string Country { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
+        public string EinvEnfStatus { get; set; }
+        public string EinvEnfDt { get; set; }
     }
     [Preserve(AllMembers = true)]
     public class VATLookUpD

@@ -40,6 +40,7 @@ using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.Zakaty;
 using EGAZT.Views.NewDesign.Common;
+using System.Runtime.InteropServices;
 using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
 
 namespace EGAZT
@@ -59,6 +60,10 @@ namespace EGAZT
         public static string VatCustom;
         public static string VatBaseUrl;
         #region new design views
+
+        public static string GUIDFrSSO { get; set; }
+        public static bool successMsg { get; set; }
+        public static bool isAndroidUrlloaded = false;
 
         public static Stopwatch stopWatch = new Stopwatch();
         public const int defaultTimespan = 30;
@@ -297,6 +302,12 @@ namespace EGAZT
         public static string AccountStatementsNewFilterPageView = "AccountStatementsNewFilterPageView";
         public static string AccountStatementsDownloadPageView = "AccountStatementsDownloadPageView";
 
+        public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
+
+        //cr6094
+              public static string NafathPopUpPage = "NafathPopUpPage";
+              public static string NafathLoginPageView = "NafathLoginPageView";
+
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 
@@ -306,8 +317,6 @@ namespace EGAZT
         public static string InquiryAboutCustomsDeclarationView = "InquiryAboutCustomsDeclarationView";
         public static string TraifSectionsView = "TraifSections";
         public static string LaboratoryPaymentOfInsuranceFees = "LaboratoryPaymentOfInsuranceFees";
-
-
         #endregion
         public static Enums.PageExecutionType VATType { get; set; }
         public static Enums.PageExecutionType ZAKATType { get; set; }
@@ -360,7 +369,9 @@ namespace EGAZT
         public static bool isFromDashboard = false;
         public static string selectedForm12Fbguid = string.Empty;
         public static bool isMybillsRefresh = false;
+        //Cr6264
 
+        public static bool IsVAtProfitForGoods { get; set; }
         //in Seconds
         public static int IdleTimeToLogout = 100;
 
@@ -398,6 +409,7 @@ namespace EGAZT
             PageSettings.GetBaseURL("STG");
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");18v
             //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");19v
+
 
             // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjA0NjIyQDMyMzAyZTMxMmUzMElHeGNPa25sMVBueHdHZW9ZWXRyQ05nQlg3czJwWENqYXdpS2tVWXE3NEE9");//20v
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*

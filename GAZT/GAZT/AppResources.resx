@@ -3668,8 +3668,10 @@ Should we require further information, we would be in contact.</value>
     <comment>Tax Evasion</comment>
   </data>
   <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices" xml:space="preserve">
-    <value>You have successfully registered to ZATCA Services. Use the following TIN number to login with ZATCA</value>
-    <comment>New SignUp</comment>
+<value>You have Successfully registered to ZATCA Services.
+        You have received an SMS with the TIN Number.
+        Please login to your account through Nafath.</value>
+<comment>New SignUp CR 6094</comment>
   </data>
   <data name="ZZZAttachementAddNewType" xml:space="preserve">
     <value>Add New Type</value>
@@ -10331,6 +10333,48 @@ Zakat, Tax and Customs Authority
   <data name="NotNeedRewardHint" xml:space="preserve">
      <value>Not disclosing the personal information will eliminate your right to receive any reward, and all notifications regarding all actions taken on your report will not be received</value>
   </data>
+  <data name="ZProfitOnGoods" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1" xml:space="preserve">
+    <value>Do you practice the purchase and sale of used cars?</value>
+  </data>
+  <data name="ZProfitOnGoodsQ2" xml:space="preserve">
+    <value>Do you practice any commercial activities other than used cars trading?</value>
+  </data>
+  <data name="ZProfitOnGoodsQOptionsYes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="ZProfitOnGoodsQOptionsNo" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="ZprofitsOnGoodsSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="ZprofitsOnGoodscancel" xml:space="preserve">
+    <value>Cancel</value>
+    </data>
+  <data name="ZProfitOnGoodsConfrimationOk" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="ZProfitOnGoodsConfrimationMsg" xml:space="preserve">
+    <value>Are you sure that you want to cancel?</value>
+  </data>
+  <data name="ZProfitgoodsSCSRTile" xml:space="preserve">
+    <value>Apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  <data name="ZProfitOnGoodsQ1M01Validation" xml:space="preserve">
+    <value>Dear taxpayer, you are not eligible to apply for VAT on profit margin for used goods (cars)</value>
+  </data>
+  <data name="ZprofitsOnGoodsM02Vaidation" xml:space="preserve">
+    <value>Please Fill All the fields</value>
+  </data>
+  <data name="ZprofitsOnGoodsSuccessmessage" xml:space="preserve">
+    <value>VAT on profit margin for used goods (cars) has been submitted successfully</value>
+  </data>
+  <data name="ZprofitsOnGoodsfailuremessage" xml:space="preserve">
+      <value>Submission Unsuccesful"</value>
+  </data>
   <data name="PreviousRequests" xml:space="preserve">
      <value>You have {0} previous requests</value>
   </data>
@@ -10344,7 +10388,23 @@ Zakat, Tax and Customs Authority
     <value>Dear User,
 We regret that you are unable to use the service at this time. Please sign up for the service first via our website, and then log back into the app.</value>
   </data>
+  <data name="ZREGCitizen" xml:space="preserve">
+<value>Citizen / Resident</value>
+</data>
+  <data name="ZREGGulfCtzn" xml:space="preserve">
+<value>Gulf Citizen</value>
+</data>
+  <data name="ZZZZYouhavesuccessfullyregisteredtoGAZTServices1" xml:space="preserve">
+<value>You have Successfully registered to ZATCA Services.
+        You have received an SMS with the TIN Number.</value>
+<comment>New SignUp CR 6094</comment>
+</data>
+  <data name="CopiedSuccessMessage" xml:space="preserve">
+<value>Successfully Copied</value>
+<comment>NafathSignup</comment>
+</data>
   <data name="CarImport" xml:space="preserve">
+
     <value>Car Import</value>
   </data>
   <data name="LogintoCarimportservice" xml:space="preserve">

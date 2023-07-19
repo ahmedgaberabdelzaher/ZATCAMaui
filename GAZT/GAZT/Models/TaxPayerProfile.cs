@@ -163,7 +163,7 @@ namespace GAZT.Models
         public string Cancel { get; set; }
         public string Conf { get; set; }
         public string Login { get; set; }
-
+        public string VtpmFg { get; set; }
         // * For UI + Other API Calls
         public string Name
         {

@@ -49,6 +49,12 @@ using Formatting = Newtonsoft.Json.Formatting;
 using Xamarin.Forms.Internals;
 using EGAZT.Manager;
 using EGAZT.Models.PaymentModel;
+using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
+using Rg.Plugins.Popup.Services;
+using static EGAZT.Models.NewYesorNoPageModel;
+using static EGAZT.Models.LoginSSOModel;
+using static Xamarin.Essentials.Permissions;
+
 
 namespace GAZT.Manager
 {
@@ -6180,6 +6186,141 @@ namespace GAZT.Manager
         }
 
         #endregion
+
+        //--CR6264
+        public static async Task<ProfitGoods> SaveVAtProfitGoodsAsync(VATFoodResults modelDetails)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+
+                    //ZakatInstalmentPlanResponse _zakatResponseObject = new ZakatInstalmentPlanResponse();
+                    string LangZ = WebServiceManager.GetLangZParameterAREN();
+                    String url = Constants.TaxpayervatgoodsAmrgin;
+                    var uri = new Uri(url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    var serilized = JsonConvert.SerializeObject(modelDetails);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpResponseMessage res = client.PostAsync(uri, contentPost).Result;
+                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                    _zakatReturnDetailsDesponsestr = JObject.Parse(_zakatReturnDetailsDesponsestr)["d"].ToString();
+                    ProfitGoods profit = JsonConvert.DeserializeObject<ProfitGoods>(_zakatReturnDetailsDesponsestr);
+                    if (res.IsSuccessStatusCode)
+                    {
+
+                    }
+                    else
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                        }
+                    }
+                    return profit;
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    //App.IsSessionExpired = true;
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+        }
+
+        //CR6094
+        public static async Task<LoginSSOModelClass> LoginDataSSO()
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                try
+                {
+                    string LangZAREN = WebServiceManager.GetLangZParameterAREN();
+                    var guid = "";
+                    if (App.GUIDFrSSO == "")
+                    {
+                        guid = "";
+                    }
+                    else
+                    {
+                        List<string> strings = new List<string>(
+    App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
+                     //   string[] strings = App.GUIDFrSSO.Split("Testvd");
+                        guid = strings[1];
+                       
+                    }
+                    String url = Constants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language="+LangZAREN;
+                    Console.WriteLine("GetLoginDetaialsSSO" + url);
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+                    client.DefaultRequestHeaders.Add("Token", "123");
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+                    
+                    HttpResponseMessage res = await GetServiceManager.MakeGetAPICall(url, false, "");
+                    var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
+                    _zakatReturnDetailsDesponsestr = JObject.Parse(_zakatReturnDetailsDesponsestr)["d"].ToString();
+                    LoginSSOModelClass SSOModel = JsonConvert.DeserializeObject<LoginSSOModelClass>(_zakatReturnDetailsDesponsestr);
+
+                    if (res.IsSuccessStatusCode)
+                    {
+
+                    }
+                    else
+                    {
+                        await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
+
+                        ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(_zakatReturnDetailsDesponsestr);
+                        if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
+                        {
+                            WebServiceManager.ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
+                            WebServiceManager.ErrorMessageForVAT += errorMesg.error.innererror.errordetails[1].message;
+                            String WithReplacedString = WebServiceManager.ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
+                            WebServiceManager.ErrorMessageForVAT = WithReplacedString;
+                            //ErrorMessageForVAT
+                            throw new GAZTVATRegistrationInProcessException(WebServiceManager.ErrorMessageForVAT);
+                        }
+                    }
+                    return SSOModel;
+
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+
+        }
 
     }
 }

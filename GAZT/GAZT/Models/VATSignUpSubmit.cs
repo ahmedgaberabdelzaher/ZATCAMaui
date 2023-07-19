@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using Xamarin.Forms.Internals;
 
@@ -53,7 +54,10 @@ namespace EGAZT.Models
         public string EmailCode { get; set; }
         [DataMember]
         public string Submit { get; set; }
-
+         [DataMember]
+        public string Captcha { get; set; }
+     [DataMember]
+        public string Mguid { get; set; }
     }
 
 
@@ -156,6 +160,8 @@ namespace EGAZT.Models
         public string Tin { get; set; }
         [DataMember]
         public string Type { get; set; }
+        [DataMember]
+        public string Captcha { get; set; }
     }
 
     [Preserve(AllMembers = true)]

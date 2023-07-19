@@ -14,7 +14,7 @@
              xmlns:custom="clr-namespace:GAZT"
              xmlns:custom1="clr-namespace:GAZT.CustomControl"
              xmlns:busyindicator="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
-		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom2="clr-namespace:EGAZT.CustomControl"
+		     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" xmlns:custom2="clr-namespace:EGAZT.CustomControl" 
              x:Class="EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage.IndividualRegistrationPageView"
              BackgroundImageSource="partials_background.png"
              NavigationPage.HasNavigationBar="False">
@@ -51,11 +51,11 @@
 
                 <!--<StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White">-->
-                    <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
+                <Grid HorizontalOptions="FillAndExpand" ColumnSpacing="0" BackgroundColor="White" VerticalOptions="FillAndExpand" Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
 
                     <Grid Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0" 
                   BackgroundColor="White" RowSpacing="0" >
@@ -80,11 +80,10 @@
 
 
                                     <!--Individual Registration-->
-                                    <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0" Margin="0" 
-                          x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
+                                    <Grid  Grid.Row="0"  Grid.Column="0"  Padding="0,10,0,0" Margin="0" x:Name="IndividualRegistrationView" IsVisible="{Binding IndividualRegistrationView}">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto"/>
-                                            <RowDefinition Height="auto"/>
+                                            <RowDefinition Height="*"/>
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="100*"/>
@@ -95,9 +94,85 @@
                                             <BoxView  Style="{StaticResource lineSeperator}" Margin="10,0,10,15"/>
                                         </StackLayout>
 
-                                        <ScrollView Grid.Row="1" Padding="10,0,10,0">
-                                            <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                              ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                        <Grid Grid.Row="1" IsVisible="{Binding IsCitizen}">
+                                        <ScrollView  Padding="10,0,10,0" Background="white">
+                           <Grid  Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="100*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <StackLayout x:Name="IDtYpe" Grid.Row="0">
+                                                    <custom:CustomLabel Style="{StaticResource CardLabelBlack}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span  Text="{x:Static local:AppResources.ZZIDType}"  />
+                                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                    <border:SfBorder  HasShadow="False" BorderColor="{StaticResource Secondary}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                        <Label Style="{StaticResource CardLabelBlack}" Text="{Binding IdType}" Padding="10" HeightRequest="40" x:Name="idType">
+                                                        </Label>
+                                                    </border:SfBorder>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="IDNumber" Grid.Row="1">
+                                                    <custom:CustomLabel Style="{StaticResource CardLabelBlack}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span  Text="{x:Static local:AppResources.IDNumber}"  />
+                                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                    <border:SfBorder  HasShadow="False" BorderColor="{StaticResource Secondary}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                        <Label Style="{StaticResource CardLabelBlack}" Text="{Binding Idnumber}" Padding="10" HeightRequest="40" x:Name="Number">
+                                                        </Label>
+                                                    </border:SfBorder>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="DateOfBirth" Grid.Row="2">
+                                                    <custom:CustomLabel Style="{StaticResource CardLabelBlack}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span  Text="{x:Static local:AppResources.ZZDateofBirth}"  />
+                                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                    <border:SfBorder  HasShadow="False" BorderColor="{StaticResource Secondary}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                        <Label Style="{StaticResource CardLabelBlack}" Text="{Binding Birthdt}" Padding="10" HeightRequest="40" x:Name="Birthdt">
+
+                                                        </Label>
+                                                    </border:SfBorder>
+                                                </StackLayout>
+                                                <StackLayout  x:Name="NameofTp" Grid.Row="3">
+                                                    <custom:CustomLabel Style="{StaticResource CardLabelBlack}" Grid.Row="0"   Padding="0,0,0,0" HorizontalOptions="Start" >
+                                                        <custom:CustomLabel.FormattedText>
+                                                            <FormattedString>
+                                                                <Span  Text="{x:Static local:AppResources.ZZName}"  />
+                                                                <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                                            </FormattedString>
+                                                        </custom:CustomLabel.FormattedText>
+                                                    </custom:CustomLabel>
+                                                    <border:SfBorder  HasShadow="False" BorderColor="{StaticResource Secondary}" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                        <custom:CustomLabel Style="{StaticResource CardLabelBlack}" Text="{Binding Firstname}" Padding="10" HeightRequest="40" x:Name="Firstname">
+                                                        </custom:CustomLabel>
+                                                    </border:SfBorder>
+                                                </StackLayout>
+                                            </Grid>
+                                        </ScrollView>
+                                      </Grid>
+                                       
+                                     
+                                      <Grid IsVisible="{Binding IsGulfER}" Grid.Row="1">
+                                         <ScrollView Padding="10,0,10,0" >
+                                            <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto"/>
                                                     <RowDefinition Height="auto"/>
@@ -107,7 +182,7 @@
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="auto"/>
                                                 </Grid.ColumnDefinitions>
-                                                <StackLayout Grid.Column="0" Grid.Row="0" >
+                                                <StackLayout Grid.Column="0" Grid.Row="0" IsEnabled="False">
                                                     <Grid>
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
@@ -129,9 +204,9 @@
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0">
-                                                     <custom:BorderlessEntry Text="{Binding TxtIDType}" FontFamily="{StaticResource SomarLight}" FontSize="Small" 
+                                                            <custom:BorderlessEntry Text="{Binding TxtIDType}" FontFamily="{StaticResource SomarLight}" FontSize="Small" 
                                                         Placeholder="{x:Static local:AppResources.ZZIDType}"  IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}">
-                                                                </custom:BorderlessEntry>
+                                                            </custom:BorderlessEntry>
                                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                                 <Image Source="arrowDropdown.png"/>
 
@@ -230,7 +305,7 @@
                                                             </buttons:SfChipGroup>
 
                                                         </StackLayout>
-                                                        
+
                                                         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="0,-6,0,-6"
                                         ContainerType="Outlined" x:Name="FrmDBO"    UnfocusedColor="#B1B1B1" 
                                                                 OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"                                                                        
@@ -239,15 +314,16 @@
 
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" HasError="{Binding FrameDOBError}">
-                                                         
-                                                                <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SomarLight}" Text ="{Binding DOBddyymm}"
+
+                                                            <custom:BorderlessEntry  x:Name="DateEntry"  FontFamily="{StaticResource SomarLight}" Text ="{Binding DOBddyymm}"
                                                                                          Focused="OnDateEntryFocussed" Unfocused="DatePicker_Unfocused"
                                                                                          TextChanged="DateEntry_TextChanged" Placeholder="dd/MM/yyyy" FontSize="Small" Style="{StaticResource DefaultEntry}" TextColor="{StaticResource Primary}">
-                                                                </custom:BorderlessEntry> <!--Placeholder="yyyy/MM/dd"-->
+                                                            </custom:BorderlessEntry>
+                                                            <!--Placeholder="yyyy/MM/dd"-->
                                                             <inputLayout:SfTextInputLayout.TrailingView>
                                                                 <Image Source="calendar.png">
                                                                 </Image>
-                                                   </inputLayout:SfTextInputLayout.TrailingView>
+                                                            </inputLayout:SfTextInputLayout.TrailingView>
                                                         </inputLayout:SfTextInputLayout>
 
                                                         <Button Grid.Row="1" x:Name="btn4" BackgroundColor="Transparent" Clicked="btnDate_Clicked" Margin="0,0,0,0" />
@@ -315,7 +391,7 @@ Closed="SignUpDOB_Closed"
 								ItemHeight="45" >
                                                         </custom1:CustomHijriDatePicker>
 
-                                                        
+
 
                                                     </Grid>
                                                 </StackLayout>
@@ -348,11 +424,12 @@ Closed="SignUpDOB_Closed"
                                                     </inputLayout:SfTextInputLayout>
                                                 </StackLayout>
                                             </Grid>
-                                        </ScrollView>
+                                           </ScrollView>
                                     </Grid>
+                                 </Grid>
 
                                     <!--National Address-->
-                             
+
                                     <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="NationalAddressView" IsVisible="{Binding NationalAddressView}">
                                         <Grid.RowDefinitions>
@@ -406,17 +483,17 @@ Closed="SignUpDOB_Closed"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" >
 
-                                                                    <custom:BorderlessEntry    Text="{Binding CountryName}" 
+                                                                <custom:BorderlessEntry    Text="{Binding CountryName}" 
                                                         Placeholder="{x:Static local:AppResources.ZZZZCountry}"
                                                                                                IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}"
                                                                                                IsEnabled="{Binding SetEnabilityToCountryList}" >
 
-                                                                    </custom:BorderlessEntry>
+                                                                </custom:BorderlessEntry>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                                               <Image Source="arrowDropdown.png">
-                                                                        
+                                                                    <Image Source="arrowDropdown.png">
+
                                                                     </Image>
-                                                  </inputLayout:SfTextInputLayout.TrailingView>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                         </Grid>
                                                     </StackLayout>
@@ -445,17 +522,17 @@ Closed="SignUpDOB_Closed"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" HasError="{Binding FrameGccCountyError}" >
-                                                                
-                                                                    <custom:BorderlessEntry  x:Name="GccCountryName" Text="{Binding CountryName}" FontSize="Small"
+
+                                                                <custom:BorderlessEntry  x:Name="GccCountryName" Text="{Binding CountryName}" FontSize="Small"
                                                         Placeholder="{x:Static local:AppResources.ZZZZCountry}" IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}"
                                                                                              IsEnabled="{Binding SetEnabilityToCountryList}"
                                                                                              TextChanged="GccCountryName_TextChanged">
-                                                                    </custom:BorderlessEntry>
+                                                                </custom:BorderlessEntry>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image Source="arrowDropdown.png">
-                                                                        
-                                            </Image>
-                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                                                    </Image>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="GCCPickerBtn_Country" Clicked="GCCPickerBtn_Country_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -511,14 +588,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" HasError="{Binding FrameRegionError}" >
-                                                             
-                                                                    <custom:BorderlessEntry x:Name="Entry_Region"  FontFamily="{StaticResource SomarLight}"  Text="{Binding Region}" FontSize="Small"
+
+                                                                <custom:BorderlessEntry x:Name="Entry_Region"  FontFamily="{StaticResource SomarLight}"  Text="{Binding Region}" FontSize="Small"
                                                         Placeholder="{x:Static local:AppResources.ZZZZProvinceRegion}" IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}" TextChanged="Entry_Region_TextChanged">
-                                                                    </custom:BorderlessEntry>
+                                                                </custom:BorderlessEntry>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
-                                                              <Image Source="arrowDropdown.png">
+                                                                    <Image Source="arrowDropdown.png">
                                                                     </Image>
-                                  </inputLayout:SfTextInputLayout.TrailingView>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_Region" Clicked="PickerBtn_Region_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -578,16 +655,16 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0" HasError="{Binding FrameCityError}" >
-                                                                
-                                                                    <custom:BorderlessEntry x:Name="Entry_City"  Text="{Binding CityName}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}" TextChanged="Entry_City_TextChanged"
+
+                                                                <custom:BorderlessEntry x:Name="Entry_City"  Text="{Binding CityName}" FontSize="Small" IsVisible="{Binding SetCityListVisibility}" TextChanged="Entry_City_TextChanged"
                                                         Placeholder="{x:Static local:AppResources.ZZZZCity} " IsSpellCheckEnabled="False" Style="{StaticResource DefaultEntry}">
-                                                                    </custom:BorderlessEntry>
+                                                                </custom:BorderlessEntry>
                                                                 <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image Source="arrowDropdown.png">
-                                                                        
+
                                                                     </Image>
 
-                                 </inputLayout:SfTextInputLayout.TrailingView>
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                             <custom:CustomButton  Grid.Row="1" x:Name="PickerBtn_City" Clicked="PickerBtn_City_Clicked" FontSize="Small" BackgroundColor="Transparent" Margin="0,0,0,0"  >
                                                             </custom:CustomButton>
@@ -691,7 +768,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
                                                 </Grid>
+
                                             </ScrollView>
+
                                         </StackLayout>
 
                                     </Grid>
@@ -748,7 +827,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                     </StackLayout>
 
                                                     <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-                                                        
+
                                                         <custom:CustomLabel Style="{StaticResource CardLabelBlack}"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
                                                             <custom:CustomLabel.FormattedText>
@@ -758,7 +837,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
-                                                        
+
                                                         <inputLayout:SfTextInputLayout   x:Name="FrmConfirmEmail"  Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0,-6,0,-6"
                                                 ContainerType="Outlined"  UnfocusedColor="#B1B1B1"
                                                                 OutlineCornerRadius="8" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020"                                                                  
@@ -787,15 +866,15 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>
                                                         </custom:CustomLabel>
-                                  
 
-                                                            <Frame BorderColor="LightGray"  Padding="18,0,18,6" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
+
+                                                        <Frame BorderColor="LightGray"  Padding="18,0,18,6" HasShadow="False" CornerRadius="8" Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">
                                                             <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal" VerticalOptions="CenterAndExpand" Padding="0">
                                                                 <Image HorizontalOptions="Start" Source="arrowDropdown.png" >
-                                                   
-                                                                        <Image.GestureRecognizers>
-                                                                    <TapGestureRecognizer Tapped="CountryCodes_Clicked"/>
-                                                                </Image.GestureRecognizers>
+
+                                                                    <Image.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="CountryCodes_Clicked"/>
+                                                                    </Image.GestureRecognizers>
                                                                 </Image>
                                                                 <custom:CustomButton HorizontalOptions="Start" VerticalOptions="Center" TextColor="{StaticResource PrimaryColor}"
                                                                  Text="{Binding TxtCountryCode}" x:Name="IntnlCodes" Clicked="CountryCodes_Clicked"
@@ -812,16 +891,16 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                 </custom:BorderlessEntry>
 
                                                             </StackLayout>
-                                                                </Frame>
-                                                    
-                                                      
-                                                          
+                                                        </Frame>
+
+
+
                                                     </StackLayout>
                                                 </Grid>
                                             </ScrollView>
                                         </StackLayout>
                                     </Grid>
-                  
+
                                     <!--Summery Grid.ColumnSpan="2"  -->
                                     <Grid Grid.Row="0" Grid.Column="0" Padding="0,10,0,0"
                               x:Name="SummeryView"  IsVisible="{Binding SummeryView}">
@@ -968,10 +1047,10 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" FontFamily="{StaticResource SomarSemiBold}" Grid.Row="0" Grid.Column="0" Text="{x:Static local:AppResources.ZZMobileNumber}" />
                                                         <Label Text="{Binding MobileNumber}" HorizontalOptions="Start" FlowDirection="LeftToRight" Style="{StaticResource GAZTSmallBlackLabel}" FontFamily="{StaticResource SomarSemiBold}" Grid.Row="0" Grid.Column="1" TextColor="{StaticResource PrimaryColor}">
                                                             <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="{Binding TxtCountryCode}"  />
-                                                                        <Span  Text="{Binding MobileNumber}"  />
-                                                                    </FormattedString>
+                                                                <FormattedString>
+                                                                    <Span Text="{Binding TxtCountryCode}"  />
+                                                                    <Span  Text="{Binding MobileNumber}"  />
+                                                                </FormattedString>
                                                             </Label.FormattedText>
                                                         </Label>
 
@@ -988,6 +1067,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             </border:SfBorder>
                                         </StackLayout>
                                     </Grid>
+
                                     <!--Password-->
                                     <Grid Grid.Row="0" Grid.Column="0"  Padding="0,10,0,0"
                               x:Name="PasswordView" IsVisible="{Binding PasswordView}">
@@ -995,16 +1075,18 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                             <RowDefinition Height="auto"/>
                                             <RowDefinition Height="auto"/>
                                         </Grid.RowDefinitions>
-                                        <StackLayout Grid.Row="0">
+                                        
+                                        <StackLayout Grid.Row="0" IsVisible="{Binding passwordMainView}">
                                             <Label Style="{StaticResource GAZTMediumBoldBlackLabelStyle}"   Text="{x:Static local:AppResources.Password}" Margin="10,0,10,0" FontFamily="{StaticResource SomarBold}" FontSize="22"  VerticalOptions="Center"  TextColor="{StaticResource PrimaryColor}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                                             <Label Style="{StaticResource GAZTMediumGrayLabelStyle}" Margin="10,0,10,0" FontSize="15" FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.ZZZZCreateasecurePassword}"   />
                                             <BoxView Style="{StaticResource lineSeperator}" Margin="10,0,10,15"/>
                                         </StackLayout>
+
                                         <StackLayout Grid.Row="1">
                                             <ScrollView Padding="10,0,10,0">
                                                 <StackLayout>
                                                     <Grid Padding="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
-                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White">
+                                        ColumnSpacing="0" RowSpacing="15" BackgroundColor="White" IsVisible="{Binding passwordMainView}">
                                                         <Grid.RowDefinitions>
                                                             <RowDefinition Height="auto"/>
                                                             <RowDefinition Height="auto"/>
@@ -1014,13 +1096,13 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <Grid.ColumnDefinitions>
                                                             <ColumnDefinition Width="auto"/>
                                                         </Grid.ColumnDefinitions>
-                                                        
-                                                           <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+
+                                                        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsGulfER}">
                                                             <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
                                                                 <custom:CustomLabel.FormattedText>
                                                                     <FormattedString>
-                                                                          <Span Text="{x:Static local:AppResources.NewPassword}" FontFamily="{StaticResource SomarSemiBold}" />
+                                                                        <Span Text="{x:Static local:AppResources.NewPassword}" FontFamily="{StaticResource SomarSemiBold}" />
                                                                         <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
                                                                     </FormattedString>
                                                                 </custom:CustomLabel.FormattedText>
@@ -1040,18 +1122,18 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                         <local:PasswordTextBehaviour/>
                                                                     </custom:BorderlessEntry.Behaviors>
                                                                 </custom:BorderlessEntry>
-                                                               <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image x:Name="ImageSeePassword" Source="hidePassword.png">
-                                                                        
+
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeePassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
 
                                                                     </Image>
-                                                               </inputLayout:SfTextInputLayout.TrailingView>    
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
-                                                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                                        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" IsVisible="{Binding IsGulfER}">
                                                             <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static local:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
                                                             <custom:CustomLabel Style="{StaticResource GAZTSmallGrayLabelStyle}"   Padding="0,0,0,0" HorizontalOptions="Start" >
 
@@ -1076,41 +1158,41 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                         <local:PasswordTextBehaviour/>
                                                                     </custom:BorderlessEntry.Behaviors>
                                                                 </custom:BorderlessEntry>
-                                                               <inputLayout:SfTextInputLayout.TrailingView>
+                                                                <inputLayout:SfTextInputLayout.TrailingView>
                                                                     <Image  x:Name="ImageSeeConfirmPassword" Source="hidePassword.png">
-                                                                        
+
                                                                         <Image.GestureRecognizers>
                                                                             <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped"/>
                                                                         </Image.GestureRecognizers>
 
                                                                     </Image>
-                                                               </inputLayout:SfTextInputLayout.TrailingView>    
+                                                                </inputLayout:SfTextInputLayout.TrailingView>
                                                             </inputLayout:SfTextInputLayout>
                                                         </StackLayout>
 
                                                         <StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image Source="{Binding MinEight}" HorizontalOptions="Start">
-                                                                   
+
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.ZZZZAtleast8characterslong}" TextColor="#010101"/>
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image Source="{Binding CapsSmall}" HorizontalOptions="Start">
-                                                                    
+
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.ZZZZEnglishcapitalandsmallletters}" TextColor="#010101"  />
                                                             </StackLayout>
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image Source="{Binding MaxSixteen}" HorizontalOptions="Start">
-                                                                    
+
                                                                 </Image>
                                                                 <Label FontFamily="{StaticResource SomarSemiBold}" Text="{x:Static local:AppResources.ZZZZNotexceed16characters}" TextColor="#010101"  />
                                                             </StackLayout>
 
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image Source="{Binding NumSymbol}" HorizontalOptions="Start">
-                                                                    
+
                                                                 </Image>
                                                                 <Label  FontFamily="{StaticResource SomarSemiBold}"  Text="{x:Static local:AppResources.ZZZZNumbersandsymbols}" TextColor="#010101" />
                                                             </StackLayout>
@@ -1133,7 +1215,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                                                             <StackLayout Orientation="Horizontal">
                                                                 <Image Source="clock.png">
-                                                                    
+
                                                                 </Image>
                                                                 <Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{Binding OTPValidDuration}"/>
                                                             </StackLayout>
@@ -1149,11 +1231,11 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                             LeadingViewPosition="Inside"
                                                             Style="{StaticResource TextInputLayout}"
                                                             InputViewPadding="16,0,16,0">
-                                                                    <custom:BorderlessEntry Keyboard="Numeric" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SomarLight}" Text="{Binding OTP}" FontSize="Small" MaxLength="4"
+                                                                <custom:BorderlessEntry Keyboard="Numeric" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource SomarLight}" Text="{Binding OTP}" FontSize="Small" MaxLength="4"
                                                                 Placeholder="{x:Static local:AppResources.EnterOTP}" WidthRequest="128" IsPassword="{Binding IsOTPEncripted}"
                                                                                             Style="{StaticResource DefaultEntry}">
-                                                                    </custom:BorderlessEntry>
-                                                              <!--<inputLayout:SfTextInputLayout.TrailingView>
+                                                                </custom:BorderlessEntry>
+                                                                <!--<inputLayout:SfTextInputLayout.TrailingView>
                                                               <Image HorizontalOptions="EndAndExpand" x:Name="ImageSeeOtp">
                                                                         <Image.Source>
                                                                             <FontImageSource FontFamily="UserIconFont" Color="DarkGreen" Size="25"
@@ -1166,7 +1248,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                               </inputLayout:SfTextInputLayout.TrailingView>-->
                                                             </inputLayout:SfTextInputLayout>
                                                             <!--ResendOTP-->
-                                                            <buttons:SfButton x:Name="btnResendOtp" Text="{x:Static local:AppResources.ResendOTP}"   FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
+                                                            <buttons:SfButton x:Name="btnResendOtp" Text="{x:Static local:AppResources.ResendOTP}"   FontFamily="{StaticResource SomarRegular}"  CornerRadius="0" VerticalOptions="End" 
                                   HeightRequest="56" Command="{Binding OnResendButtonClick}"    FontSize="15"  Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding ButtonDisableColor}"  />
                                                         </StackLayout>
 
@@ -1180,14 +1262,14 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                         </ScrollView>
                         <!--</Grid> VerifyButtonDisableTextColor BackgroundColor="{StaticResource Secondary}"-->
                         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="White" Padding="20,8,20,10">
-                            <!--<buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource GAZT_FONT_BOLD}"  CornerRadius="0" VerticalOptions="End" 
+                            <!--<buttons:SfButton x:Name="btnContinue" Text="{Binding ContinueButtonText}"  FontFamily="{StaticResource SomarRegular}"  CornerRadius="0" VerticalOptions="End" 
                                   HeightRequest="56" Command="{Binding OnContinueButtonClick}"    FontSize="15"   Grid.ColumnSpan="2" Style="{StaticResource SfButtonStyle}" BackgroundColor="{Binding VerifyButtonDisableColor}"  />-->
                             <buttons:SfButton  x:Name="btnContinue" Text="{Binding ContinueButtonText}" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding OnContinueButtonClick}"/>
                         </StackLayout>
                     </Grid>
-                        
-                        <StackLayout BackgroundColor="White" Grid.Row="0" >
-                       
+
+                    <StackLayout BackgroundColor="White" Grid.Row="0" >
+
                         <Grid Padding="15,0,15,0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="20*"/>
@@ -1218,8 +1300,8 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
 
                         <commonView:PageIndicatorView Padding="10,0,0,0" Margin="10,0,10,0" MaxNum="{Binding MaxIndex}" MinNum="{Binding CurrentIndex}" DotSize="12" HorizontalOptions="End"/>
                     </StackLayout>
-                        
-                    </Grid>
+
+                </Grid>
                 <!--</StackLayout>-->
             </yummy:PancakeView>
 
@@ -1245,6 +1327,6 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                 </StackLayout>
             </Grid>
         </Grid>
-      
+
     </ContentPage.Content>
 </ContentPage>

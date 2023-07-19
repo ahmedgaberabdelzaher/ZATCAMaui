@@ -57,27 +57,29 @@ namespace GAZT.Helper
         //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = DevDomainForCookies;
         //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
-      
+     /*
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-    
+     */
         //public static string BaseUrlOfODataServices = UatBaseUrlForODataServices;
         //public static string BaseUrlOfAuthentication = UatBaseUrlForAuthentication;
         //public static string DomainUrlForCookies = UatDomainForCookies;
         //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-
-        //public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = PreprodDomainForCookies;
-        //public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-      /*
+/*
+        public static string BaseUrlOfODataServices = PreProdBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = PreProdBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = PreprodDomainForCookies;
+        public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
+    */  
+       
         public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = ProdDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-      */
+      
+    
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
 
@@ -169,6 +171,8 @@ namespace GAZT.Helper
         #region DownloadAttachment
         public static string GAZTGetAllAttachments = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_GET_DOCUMENT_SRV/AttachSet?$filter=ByPusr eq '";
         #endregion
+
+        public static string GetLoginDetaialsSSO = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZVTIA_SIGNUP_SRV/signup_headerSet?$filter=Type eq '1' and Mguid eq '";//6094
 
         #region Tax Evasion New API - Pointing to Prod
 
@@ -432,10 +436,10 @@ namespace GAZT.Helper
         //https://tstdg1as1.mygazt.gov.sa:8080/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_SRV/zpdfDownloadSet(Euser='00000000000001088319',Fguid='005056B1365C1EDB82951CC479769E28',Taxtype='D',FiscalYear='2020',StatementFilter='04',FromDt=datetime'2020-8-1T00:00:00',ToDt=datetime'2020-10-31T00:00:00',Langz='E')/$value
         public static string AccountStatementDownloadPdf = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_ACCOUNT_STATEMENT_srv/zpdfDownloadSet(Euser='',";
 
-
-
         #endregion
 
+        //vatGoodsprofitsmargins Cr6264
+        public static string TaxpayervatgoodsAmrgin = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDGWP_VTPM_SRV/HeaderSet";
 
         #region Payment Integration
 

@@ -310,7 +310,9 @@ namespace EGAZT
             SimpleIoc.Default.Register<VATDeclarationAttachmentPageViewModel>();
             SimpleIoc.Default.Register<VATRegistrationDisplayDetailsPageViewModel>();
 
-
+            //CR6094
+            SimpleIoc.Default.Register<NafathPopupPageViewModel>();
+            SimpleIoc.Default.Register<NafathLoginPageViewModel>();
 
             #endregion
 
@@ -408,7 +410,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<AccountStatementBillsPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsFiltersPageViewModel>();
             SimpleIoc.Default.Register<AccountStatementsDownloadPageViewModel>();
-
+            //Cr6264
+            SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
             //AccountStatementsDownloadPageView
             //
             #endregion
@@ -451,8 +454,8 @@ namespace EGAZT
             SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
             SimpleIoc.Default.Register<ChatViewModel>();
             SimpleIoc.Default.Register<CustomFeesFormViewModel>();
-              SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
-                 SimpleIoc.Default.Register<ChatViewModel>();
+            SimpleIoc.Default.Register<CustomServiceMenuViewModel>();
+            SimpleIoc.Default.Register<ChatViewModel>();
             SimpleIoc.Default.Register<FasahLoginViewModel>();
             SimpleIoc.Default.Register<BaseLoginViewModel>();
             #endregion
@@ -476,6 +479,41 @@ namespace EGAZT
                 }
             }
         }
+
+        //CR6094
+        public NafathPopupPageViewModel NafathPopupPage
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NafathPopupPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+        public NafathLoginPageViewModel NafathLoginPageView
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<NafathLoginPageViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
         public TaxManagementPageViewModel TaxManagementPageView
         {
             get
@@ -2960,13 +2998,16 @@ namespace EGAZT
             navigationService.Configure("ShipmentTrackingTypesPage", typeof(ShipmentTrackingTypesPage));
             navigationService.Configure("ShipmentStatusPage", typeof(ShipmentStatusPage));
             navigationService.Configure("UploadingPopup", typeof(UploadingPopup));
+            //CR6094
+            navigationService.Configure(App.NafathPopUpPage, typeof(NafathPopUpPage));
+            navigationService.Configure(App.NafathLoginPageView, typeof(NafathLoginPageView));
+            navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
-
             #endregion
 
             return navigationService;
         }
-        
+
         #endregion
         public InquiryAboutCustomsDeclarationViewModel InquiryAboutCustomsDeclarationViewModel
         {
@@ -2983,7 +3024,7 @@ namespace EGAZT
             }
         }
 
-    public TraifSectionsViewModel traifSectionsViewModel
+        public TraifSectionsViewModel traifSectionsViewModel
         {
             get
             {
@@ -3250,7 +3291,7 @@ namespace EGAZT
                 }
             }
         }
-      public ChatViewModel ChatViewModel
+        public ChatViewModel ChatViewModel
         {
             get
             {
@@ -3265,7 +3306,7 @@ namespace EGAZT
             }
         }
         public CustomFeesFormViewModel CustomFeesFormViewModel
- {
+        {
             get
             {
                 try
@@ -3303,6 +3344,29 @@ namespace EGAZT
                     SimpleIoc.Default.Unregister<FilesUploadPopUpViewModel>();
                     SimpleIoc.Default.Register<FilesUploadPopUpViewModel>();
                     return ServiceLocator.Current.GetInstance<FilesUploadPopUpViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    return null;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Vatprofit on goods CR6264
+
+        public NewYesorNoPageViewModel NewYesorNoView
+        {
+            get
+            {
+                try
+                {
+                    SimpleIoc.Default.Unregister<NewYesorNoPageViewModel>();
+                    SimpleIoc.Default.Register<NewYesorNoPageViewModel>();
+                    return ServiceLocator.Current.GetInstance<NewYesorNoPageViewModel>();
                 }
                 catch (Exception ex)
                 {
@@ -3514,7 +3578,7 @@ namespace EGAZT
             {
                 try
                 {
-                    
+
                     return ServiceLocator.Current.GetInstance<ZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
@@ -3569,7 +3633,7 @@ namespace EGAZT
             get
             {
                 try
-                {              
+                {
                     return ServiceLocator.Current.GetInstance<OldZakatInstalmentPlanViewModel>();
                 }
                 catch (Exception ex)
@@ -3720,7 +3784,7 @@ namespace EGAZT
                 }
             }
         }
-        
+
         public VatReviewViewModel VatReviewSuccessView
         {
             get
@@ -4348,7 +4412,7 @@ namespace EGAZT
                 }
             }
         }
-    //
+        //
     }
 
 

@@ -1,10 +1,12 @@
-﻿using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
+﻿using EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels;
+using EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage;
 using EGAZT.Views.NewDesign.VATDeclarationPages;
 using GAZT.Models;
 using Rg.Plugins.Popup.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -28,6 +30,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             this.BindingContext = viewModel;
             viewModel.TINnumber = TIN;
             //App.IsArabic = false;
+            if(App.successMsg == true)
+            {
+                viewModel.IsGulf = true;
+                viewModel.IsCitizen = false;
+            }
+            else
+            {
+                viewModel.IsCitizen = true;
+                viewModel.IsGulf = false;
+            }
             SetLTR();
         }
         private void SetLTR()
@@ -50,7 +62,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             {
                 var text = await Clipboard.GetTextAsync();
                 var displayText = AppResources.TINS + " " + text;
-               // viewModel._dialogService.ShowMessage(displayText, AppResources.Copied);
+                //var displayText1 = displayText + " " + AppResources.CopiedSuccessMessage;
+                //await viewModel._dialogService.ShowMessage(displayText1, AppResources.Copied);
+                copyLabel.IsVisible = true;
+                await System.Threading.Tasks.Task.Delay(2000); // Delay for 2 seconds
+                copyLabel.IsVisible = false;
                 List<HeaderWithInfo> headerWithInfos = new List<HeaderWithInfo>();
                 HeaderWithInfo headerAmountInfo = new HeaderWithInfo();
                 NewDesignPopUp newDesignPopUp = new NewDesignPopUp();
@@ -72,32 +88,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             }
         }
         protected override bool OnBackButtonPressed() => true;
-
-        private void btnDashboard_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                // viewModel._navigationService.NavigateTo(App.SFAnonymousLandingPageView);
-                //  viewModel._navigationService.NavigateTo(App.SFLoginPageView);
-
-                if (Navigation.NavigationStack.Count > 0)
-                {
-                    Xamarin.Forms.Page pg = Navigation.NavigationStack[Navigation.NavigationStack.Count - 3];
-                    Navigation.RemovePage(pg);
-                    Xamarin.Forms.Page pg1 = Navigation.NavigationStack[Navigation.NavigationStack.Count - 2];
-                    Navigation.RemovePage(pg1);
-                }
-                viewModel._navigationService.GoBack();
-
-                //    viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-            }
-            catch(Exception ex)
-            {
-
-            }
-
-        }
-
 
     }
 }

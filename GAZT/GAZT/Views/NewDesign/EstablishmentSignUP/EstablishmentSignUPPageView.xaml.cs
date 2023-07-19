@@ -1,4 +1,5 @@
 ﻿using EGAZT.ViewModel.NewDesignViewModel;
+using Rg.Plugins.Popup.Services;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -80,7 +81,9 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
             Device.BeginInvokeOnMainThread(() =>
             {
-                viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+               // viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
+
+                PopupNavigation.Instance.PushAsync(new NafathPopUpPage());//CR6094
 
             });
         }

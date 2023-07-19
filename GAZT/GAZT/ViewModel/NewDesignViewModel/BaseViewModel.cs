@@ -150,6 +150,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 
                                 break;
                             case "1":
+                                CurrentTab = 1;
                                 _navigationService.NavigateTo($"/{App.SFLoginPageView}", App.GAZTNewDesignDashBoardPageView);
                                 break;
                             case "2":
@@ -172,6 +173,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             return;
                         }*/
                         var di = AppDirection;
+                        if (tab=="1")
+                        {
+                            CurrentTab = 1;
+                        }
                         CurrentTab = int.Parse(tab);
                         Title = tab == "0" ? AppResources.Home : AppResources.ZZZMenu;
 
