@@ -76,7 +76,7 @@ namespace EGAZT.AppConfigurations
         public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
         public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
 
-        public static string CustomsIssuesProd = "http://esvc-web1-stg.ga.customs.gov.sa";
+        public static string CustomsIssuesProd = "https://peservices.zatca.gov.sa";
         public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
 
 
@@ -337,11 +337,11 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+                return $"{CustomsIssuesProd}/sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
             }
             else
             {
-                return $"{CustomsIssuesProd}/sites/sc/en/app-view/Pages/NewSettlementRequest.aspx";
+                return $"{CustomsIssuesProd}sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
             }
         }
 
