@@ -6,6 +6,7 @@ using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.AppConfigurations;
 using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
 using EGAZT.Models.SubmitReportModel;
@@ -111,6 +112,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     try
                     {
+
+                       
+                        await Browser.OpenAsync("https://zakaty.gov.sa/pay_zakat?amount=2", new BrowserLaunchOptions
+                        {
+                            LaunchMode = BrowserLaunchMode.SystemPreferred,
+                            TitleMode = BrowserTitleMode.Show,
+                            PreferredToolbarColor = Color.AliceBlue,
+                            PreferredControlColor = Color.Violet
+                        });
+                       
                         IsLoading = true;
                         Regex EmailRgx = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
