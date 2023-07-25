@@ -9790,7 +9790,7 @@ info@zatca.gov.sa</value>
     <value>برجاء إكمال البيانات </value>
   </data>
   <data name="Entity" xml:space="preserve">
-    <value>كيان</value>
+    <value>شركات</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>الموضوع</value>
@@ -10436,5 +10436,23 @@ info@zatca.gov.sa</value>
   </data> 
     <data name="InquiryaboutCustomsIssuesView" xml:space="preserve">
        <value> الاستعلام عن القضايا الجمركية</value>
+</data>
+<data name="nationaladdress" xml:space="preserve">
+    <value>العنوان الوطني</value>
+  </data>
+      <data name="Buildingnumber" xml:space="preserve">
+    <value> رقم المبنى</value>
+  </data>
+      <data name="Streetname" xml:space="preserve">
+    <value> اسم الشارع</value>
+  </data>
+      <data name="Districtname" xml:space="preserve">
+    <value> اسم الحي</value>
+  </data>
+  <data name="Cityname" xml:space="preserve">
+    <value>اسم المدينة </value>
+  </data>
+    <data name="PostalCode" xml:space="preserve">
+    <value> الرمز البريدي</value>
   </data>
 </root>
