@@ -10485,4 +10485,22 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="PrivacyPolicy" xml:space="preserve">
        <value>Privacy Policy</value>
   </data>
+      <data name="nationaladdress" xml:space="preserve">
+    <value>National address</value>
+  </data>
+      <data name="Buildingnumber" xml:space="preserve">
+    <value>Building number</value>
+  </data>
+      <data name="Streetname" xml:space="preserve">
+    <value>Street name</value>
+  </data>
+      <data name="Districtname" xml:space="preserve">
+    <value>District name</value>
+  </data>
+  <data name="Cityname" xml:space="preserve">
+    <value>City name</value>
+  </data>
+    <data name="PostalCode" xml:space="preserve">
+    <value>Postal Code</value>
+  </data>
 </root>

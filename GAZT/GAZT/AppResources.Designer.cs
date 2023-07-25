@@ -1168,6 +1168,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Building number.
+        /// </summary>
+        public static string Buildingnumber {
+            get {
+                return ResourceManager.GetString("Buildingnumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Calculate.
         /// </summary>
         public static string Calculate {
@@ -1515,6 +1524,15 @@ namespace EGAZT {
         public static string Citizen {
             get {
                 return ResourceManager.GetString("Citizen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City name.
+        /// </summary>
+        public static string Cityname {
+            get {
+                return ResourceManager.GetString("Cityname", resourceCulture);
             }
         }
         
@@ -3518,6 +3536,15 @@ namespace EGAZT {
         public static string Disclaimer {
             get {
                 return ResourceManager.GetString("Disclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to District name.
+        /// </summary>
+        public static string Districtname {
+            get {
+                return ResourceManager.GetString("Districtname", resourceCulture);
             }
         }
         
@@ -8362,6 +8389,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National address.
+        /// </summary>
+        public static string nationaladdress {
+            get {
+                return ResourceManager.GetString("nationaladdress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accounting.
         /// </summary>
         public static string NDAccounting {
@@ -10906,6 +10942,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Postal Code.
+        /// </summary>
+        public static string PostalCode {
+            get {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - To enable the ZATCA to administer, and improve the site and the services ZATCA offers on the Site;.
         /// </summary>
         public static string PPSubTitle1 {
@@ -12409,6 +12454,15 @@ namespace EGAZT {
         public static string Statementitems {
             get {
                 return ResourceManager.GetString("Statementitems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street name.
+        /// </summary>
+        public static string Streetname {
+            get {
+                return ResourceManager.GetString("Streetname", resourceCulture);
             }
         }
         
