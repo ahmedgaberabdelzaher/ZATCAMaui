@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews
 {	
-	public partial class InquiryaboutCustomsIssuesView : BaseContentPage
+	public partial class InquiryaboutCustomsIssuesView : ContentPage
     {
 
 		InquiryaboutCustomsIssuesViewModel viewModel;
@@ -19,6 +19,16 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesVie
             InitializeComponent ();
             webc.Source = url;
         }
-	}
+
+        void BackTapped(System.Object sender, System.EventArgs e)
+        {
+             if (webc.CanGoBack)
+         {
+             webc.GoBack();
+             return;
+         }
+         viewModel._navigationService.GoBack();
+        }
+    }
 }
 

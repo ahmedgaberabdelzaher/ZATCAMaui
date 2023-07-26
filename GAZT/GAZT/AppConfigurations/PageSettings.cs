@@ -341,7 +341,7 @@ namespace EGAZT.AppConfigurations
             }
             else
             {
-                return $"{CustomsIssuesProd}sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
+                return $"{CustomsIssuesProd}/sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
             }
         }
 
