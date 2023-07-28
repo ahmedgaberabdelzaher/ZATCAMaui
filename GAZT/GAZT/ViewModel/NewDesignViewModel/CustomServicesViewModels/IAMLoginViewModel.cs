@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Views.NewDesign.EDeclaration;
 using EGAZT.Views.NewDesign.MyReports;
 using GalaSoft.MvvmLight.Views;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 using ZXing.Aztec.Internal;
 
@@ -43,10 +45,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 return new Command(() =>
                 {
                     _navigationService.NavigateTo("RegisterZATCAUserPage", CommingFrom);
-                    //var url = PageSettings.IAMRegistration;
-                    //Xamarin.Essentials.Launcher.OpenAsync(url);
                     IsNoUserShowMsg = false;
-                    //_navigationService.GoBack();
 
                 });
             }
@@ -62,7 +61,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                 var payload = GetTokenData(token);
 
-                if(payload != null)
+                if (payload != null)
                 {
                     App.Locator.StateManager.SetItem("IAMLoginPassengerData", payload);
 
@@ -74,8 +73,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     {
                         IsNoUserShowMsg = true;
                         MessageTxt = AppResources.IAMUsernNotFoundMSg;
-                        //IAMWbViewSrc = PageSettings.IAMLoginBaseUrl;
-                        HandleUnRegisteredUser(payload);
+                        HandleUnRegisteredUser(iamLoginPayloadData);
                         return;
                     }
 
@@ -104,10 +102,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         }
 
-        private void HandleUnRegisteredUser(object payload)
+        private void HandleUnRegisteredUser(IDictionary<string, object> iamLoginPayloadData)
         {
-            IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
-
             bool language = App.IsArabic;
 
             User.firstName = language ? iamLoginPayloadData["arabicFirstName"].ToString() :
@@ -128,7 +124,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
             User.gender = iamLoginPayloadData["gender"].ToString() == "Male" ? true : false;
 
-            User.nationalId = iamLoginPayloadData["NationlId"].ToString();
+            User.nationalId = iamLoginPayloadData["IdNo"].ToString();
 
             User.birthDate = iamLoginPayloadData["dob"].ToString();
 

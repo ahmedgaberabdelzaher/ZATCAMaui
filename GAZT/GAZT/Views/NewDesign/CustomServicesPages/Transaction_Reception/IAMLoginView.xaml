@@ -12,10 +12,9 @@
     <newdesign:BaseContentPage.PancakeView>
         <Grid>
 
-            <WebView
-                x:Name="IAMWebView"
-                Navigating="WebView_Navigating"
-                Source="{Binding IAMWbViewSrc}" />
+            <WebView x:Name="IAMWebView"
+                     Source="{Binding IAMWbViewSrc}"
+                     Navigating="WebView_Navigating"/>
 
             <Grid
                 Margin="-20"

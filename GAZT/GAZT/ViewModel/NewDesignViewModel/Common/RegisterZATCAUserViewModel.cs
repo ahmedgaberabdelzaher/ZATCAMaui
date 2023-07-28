@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.BaseModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Views.NewDesign.EDeclaration;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
+using Prism.Navigation.Xaml;
 using Xamarin.Forms;
 namespace EGAZT.ViewModel.NewDesignViewModel.Common
 {
@@ -34,11 +37,82 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             {
                 return new Command(async() =>
                 {
-                    await RegisterUser(UnRegisteredUser);
+                    if(IsValidInfo())
+                        await RegisterUser(UnRegisteredUser);
                 });
             }
         }
-        
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+
+                    if (CommingFrom == 1)
+                    {
+                        navigation.InsertPageBefore(new EDeclarationPage(), currentPage);
+                        _navigationService.GoBack();
+                    }
+                    else
+                    {
+                        navigation.InsertPageBefore(new Home(), currentPage);
+                        _navigationService.GoBack();
+                    }
+
+                    ResetData();
+                });
+            }
+        }
+
+        private void ResetData()
+        {
+            UnRegisteredUser.mobileNumber = string.Empty;
+            UnRegisteredUser.emailAddress = string.Empty;
+            UnRegisteredUser.address = string.Empty;
+        }
+
+        private bool IsValidInfo()
+        {
+
+            Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");
+            Regex phoneRegex = new Regex(@"^[0-9]+$");
+            Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]");
+            if (string.IsNullOrWhiteSpace(UnRegisteredUser.mobileNumber)
+                    || string.IsNullOrWhiteSpace(UnRegisteredUser.emailAddress)
+                    || string.IsNullOrWhiteSpace(UnRegisteredUser.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+
+            }
+            else if (!Email.IsMatch(UnRegisteredUser.emailAddress.ToLower()))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.InvalidEmailFormat;
+                return false;
+            }
+            else if (!KSAphoneRegex.IsMatch(UnRegisteredUser.mobileNumber))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
+            else if (address.IsMatch(UnRegisteredUser.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.AddressKSAValidation;
+                return false;
+            }
+            return true;
+
+        }
 
         private async Task RegisterUser(ZATCAUserRegisterModel UnRegisteredUser)
         {
@@ -53,6 +127,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     if (data.status.code == "I000000")
                     {
                         HandleSuccessUserNavigation();
+                        ResetData();
                     }
                     else if (!string.IsNullOrWhiteSpace(data.moreInformation?.backendErrors))
                     {
@@ -105,7 +180,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             }
 
         }
-
     }
 }
 

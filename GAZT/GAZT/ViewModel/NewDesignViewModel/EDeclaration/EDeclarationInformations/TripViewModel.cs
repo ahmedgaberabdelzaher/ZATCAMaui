@@ -113,7 +113,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 {
                     try
                     {
-                        if (IsValidateTripInfo() && !SubmitModel.travelerDeclaration.Isvisitor) // Is loggedIn
+                        if (IsValidTripInfo() && !SubmitModel.travelerDeclaration.Isvisitor) // Is loggedIn
                         {
                             isPassengerPage = true;
                             _navigationService.NavigateTo("PassengerInformationPage");
@@ -240,7 +240,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    if (IsValidateTripInfo())
+                    if (IsValidTripInfo())
                     {
                         isContactPage = true;
                         _navigationService.NavigateTo("ContactInformationPage");
@@ -250,7 +250,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        private bool IsValidateTripInfo()
+        private bool IsValidTripInfo()
         {
             if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.arrivingFromDepartingToName)
             || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.portName))

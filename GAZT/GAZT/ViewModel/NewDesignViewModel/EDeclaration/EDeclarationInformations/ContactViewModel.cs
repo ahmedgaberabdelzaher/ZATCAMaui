@@ -46,7 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    if (IsValidateContactInfo())
+                    if (IsValidContactInfo())
                     {
 
                         AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
@@ -223,7 +223,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        private bool IsValidateContactInfo()
+        private bool IsValidContactInfo()
         {
 
             Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");

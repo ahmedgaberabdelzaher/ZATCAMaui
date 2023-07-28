@@ -12,7 +12,21 @@ namespace EGAZT.Views.NewDesign.EDeclaration
 
         object payload;
 
-        public NewDeclarationPage(object payload)
+        public NewDeclarationPage()
+        {
+            InitializeComponent();
+            viewModel = App.Locator.BaseEDeclarationViewModel;
+
+            viewModel.SubmitModel.travelerDeclaration = new Models.EDeclerationsModel.SubmitModels.TravelerDeclaration();
+
+            viewModel.SubmitModel.travelerDeclaration.Isvisitor = true;
+
+            App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
+
+            BindingContext = viewModel;
+        }
+
+        public NewDeclarationPage(object payload = null)
         {
             InitializeComponent();
             viewModel = App.Locator.BaseEDeclarationViewModel;
@@ -33,8 +47,8 @@ namespace EGAZT.Views.NewDesign.EDeclaration
             }
             BindingContext = viewModel;
 
-
         }
+
         protected override void OnAppearing()
         {
             if (this.payload != null)

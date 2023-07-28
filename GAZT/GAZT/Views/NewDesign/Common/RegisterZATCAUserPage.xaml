@@ -65,7 +65,7 @@
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
-                    Text="{Binding HeaderTitle}"
+                    Text="{x:Static ResourceManager:AppResources.RegisterUserInZATCA}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -89,13 +89,6 @@
                             Text="{x:Static ResourceManager:AppResources.ContactInformation}"
                             TextColor="{StaticResource Primary}" />
 
-                        <!--  Horizontal Line  -->
-                        <BoxView
-                            Margin="0,0,0,10"
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
-
                         <!--  Welcome Label  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
@@ -118,7 +111,7 @@
                         <!--  MobileNumber Field  -->
                         <StackLayout Spacing="0">
 
-                            <!--  MobileNumber Label  -->
+                            <!--MobileNumber Label-->  
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
@@ -130,30 +123,35 @@
 
                             </custom:CustomLabel>
 
-                            <!--  MobileNumber Entry  -->
+                            <!--MobileNumber Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                                InputViewPadding="0"
+                                InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
+
                                 <custom:BorderlessEntry
                                     Keyboard="Telephone"
                                     Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding UnRegisteredUser.mobileNumber}"
                                     TextColor="#58595B" />
+
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Label Text="+966" />
+                                </inputLayout:SfTextInputLayout.LeadingView>
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
                         <!--  Email Field  -->
                         <StackLayout Spacing="0">
 
-                            <!--  Email Label  -->
+                              <!--Email Label-->  
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
@@ -165,7 +163,7 @@
 
                             </custom:CustomLabel>
 
-                            <!--  Email Entry  -->
+                              <!--Email Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
@@ -187,7 +185,7 @@
                         <!--  Address Field  -->
                         <StackLayout Spacing="0">
 
-                            <!--  Address Label  -->
+                            <!--Address Label-->  
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
 
                                 <custom:CustomLabel.FormattedText>
@@ -199,7 +197,7 @@
 
                             </custom:CustomLabel>
 
-                            <!--  Address Entry  -->
+                            <!--Address Entry-->  
                             <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
@@ -209,6 +207,7 @@
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
+
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
@@ -223,7 +222,7 @@
                             Margin="0,5"
                             Command="{Binding SubmitUserCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            Text="{x:Static ResourceManager:AppResources.RegisterZATCA}"
                             VerticalOptions="EndAndExpand" />
 
                         <!--  Cancel Button  -->
@@ -243,9 +242,6 @@
 
             </yummy:PancakeView>
             <!--#endregion Body-->
-
-            <!--  Bottom Sheet List  -->
-            <controls:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
 
             <!--  Loader  -->
             <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />

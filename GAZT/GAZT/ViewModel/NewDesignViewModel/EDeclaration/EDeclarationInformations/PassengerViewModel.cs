@@ -243,7 +243,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     // in case visitor (navigation => Passenger, Trip, contact & payment)
                     if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        if (IsValidatePassenger())
+                        if (IsValidPassenger())
                         {
                             isTripPage = true;
                             _navigationService.NavigateTo("TripInformationPage");
@@ -253,7 +253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     // in case loggedIn (navigation => come from trip to show passenger, contact & payment)
                     else
                     {
-                        if (IsValidatePassenger())
+                        if (IsValidPassenger())
                         {
                             isContactPage = true;
                             _navigationService.NavigateTo("ContactInformationPage");
@@ -264,7 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        private bool IsValidatePassenger()
+        private bool IsValidPassenger()
         {
             try
             {
