@@ -10533,4 +10533,16 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="PostalCode" xml:space="preserve">
     <value>Postal Code</value>
   </data>
+    <data name="BuildingNoValidationMsg" xml:space="preserve">
+    <value>Four unique digits representing a residential or commercial building must be entered.</value>
+  </data>
+  <data name="PostalValidationMsg" xml:space="preserve">
+    <value>Five digits must be entered for the postal code.</value>
+  </data>
+  <data name="additionalNoValidationMsg" xml:space="preserve">
+    <value>Four digits must be entered for the additional number.</value>
+  </data>
+    <data name="SecondaryNumber" xml:space="preserve">
+    <value>Secondary Number</value>
+  </data>
 </root>

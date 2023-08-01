@@ -346,6 +346,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Four digits must be entered for the additional number..
+        /// </summary>
+        public static string additionalNoValidationMsg {
+            get {
+                return ResourceManager.GetString("additionalNoValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to + Add Entity Unified Number.
         /// </summary>
         public static string AddNewCR {
@@ -1164,6 +1173,15 @@ namespace EGAZT {
         public static string BreakDownLabel {
             get {
                 return ResourceManager.GetString("BreakDownLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Four unique digits representing a residential or commercial building must be entered..
+        /// </summary>
+        public static string BuildingNoValidationMsg {
+            get {
+                return ResourceManager.GetString("BuildingNoValidationMsg", resourceCulture);
             }
         }
         
@@ -11041,6 +11059,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Five digits must be entered for the postal code..
+        /// </summary>
+        public static string PostalValidationMsg {
+            get {
+                return ResourceManager.GetString("PostalValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to - To enable the ZATCA to administer, and improve the site and the services ZATCA offers on the Site;.
         /// </summary>
         public static string PPSubTitle1 {
@@ -12274,6 +12301,15 @@ namespace EGAZT {
         public static string SeaTrip {
             get {
                 return ResourceManager.GetString("SeaTrip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secondary Number.
+        /// </summary>
+        public static string SecondaryNumber {
+            get {
+                return ResourceManager.GetString("SecondaryNumber", resourceCulture);
             }
         }
         
