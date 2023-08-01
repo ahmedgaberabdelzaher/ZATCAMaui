@@ -53,6 +53,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         bool isOpenAddNewCr;
         public bool IsOpenAddNewCr { get { return isOpenAddNewCr; } set { isOpenAddNewCr = value; RaisePropertyChanged(); } }
 
+    int buildingNo;
+        public int BuildingNo { get { return buildingNo; } set { buildingNo = value; RaisePropertyChanged(); } }
+
+        string streetName;
+        public string StreetName { get { return streetName; } set { streetName = value; RaisePropertyChanged(); } }
+
+        string districtName;
+        public string DistrictName{ get { return districtName; } set { districtName = value; RaisePropertyChanged(); } }
+
+        string cityName;
+        public string CityName { get { return cityName; } set { cityName = value; RaisePropertyChanged(); } }
+
+        string postalCode;
+        public string PostalCode { get { return postalCode; } set { postalCode = value; RaisePropertyChanged(); } }
+
+
+        string seconderyNo;
+        public string SeconderyNo { get { return postalCode; } set { postalCode = value; RaisePropertyChanged(); } }
+
+        string registrationNo;
+        public string RegistrationNo { get { return registrationNo; } set { registrationNo = value; RaisePropertyChanged(); } }
+
 
         ObservableCollection<UserCRResponseModel> cRLst;
         public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; RaisePropertyChanged(); } }
@@ -123,9 +145,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         });
                        
                         IsLoading = true;
+                        if (!int.TryParse(BuildingNo.ToString(),out int value)||BuildingNo.ToString().Length!=4)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.BuildingNoValidationMsg;
+                            return;
+                        }
+                        if (!int.TryParse(postalCode.ToString(), out int e) || postalCode.ToString().Length != 5)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.PostalValidationMsg;
+                            return;
+                        }
+                        if (!int.TryParse(SeconderyNo.ToString(), out int a) || SeconderyNo.ToString().Length != 4)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.additionalNoValidationMsg;
+                            return;
+                        }
                         Regex EmailRgx = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
-                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
+                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email)&& !string.IsNullOrWhiteSpace(CityName)&& !string.IsNullOrWhiteSpace(StreetName))
                     {
                      if (!EmailRgx.IsMatch(Email.ToLower()))
                             {
