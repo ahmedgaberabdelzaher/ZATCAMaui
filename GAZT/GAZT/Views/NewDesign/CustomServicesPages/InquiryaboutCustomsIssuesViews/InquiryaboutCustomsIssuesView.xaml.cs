@@ -25,7 +25,9 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesVie
              if (webc.CanGoBack)
          {
              webc.GoBack();
-             return;
+                var url = PageSettings.GetCustomsIssueUrl();
+                webc.Source = url;
+                return;
          }
          viewModel._navigationService.GoBack();
         }
