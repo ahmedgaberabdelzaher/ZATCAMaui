@@ -32,6 +32,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<UserCRResponseModel>>>($"{PageSettings.ZATCABaseURL}{version}/portal/twareed/cr-details?userID={UserId}").ConfigureAwait(false);
             return response;
         }
-}
+        public async Task<Tuple<DATAPowerBaseResponse<CrTinNoModel>, bool, string>> GetCurrentCRTiNo(string CRNo)
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<CrTinNoModel>>($"{PageSettings.ZATCABaseURL}/v1/erad/real-estate/company/?IDType=CommercialRegistrationNumber&IDNumber={CRNo}",false,"99",true).ConfigureAwait(false);
+            return response;
+        }
+    }
 }
 

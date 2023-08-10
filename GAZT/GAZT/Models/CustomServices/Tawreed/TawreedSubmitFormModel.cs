@@ -16,11 +16,10 @@ namespace EGAZT.Models.CustomServices.Tawreed
         public string email { get; set; }
         public string CrNumber { get; set; }
         public string referenceNumber { get; set; }
-        public long IamRegisteredUserID { get; set; }
+        public long iamRegisteredUserID { get; set; }
         public string mobileNumber { get; set; }
         public Attachement attachement { get; set; }
         public int crNumber { get; set; }
-        public string iamRegisteredUserID { get; set; }
         public int TIN { get; set; }
         public int buildingNumber { get; set; }
         public string streetNumber { get; set; }
