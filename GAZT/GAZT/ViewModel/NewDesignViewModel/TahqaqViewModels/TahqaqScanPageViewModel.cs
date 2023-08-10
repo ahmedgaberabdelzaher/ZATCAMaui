@@ -178,7 +178,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                         // string code = Result.Text;
                         string code = scanCode;
-                        if (code=="-1")
+
+                            //  code = "ARNBY21lIFdpZGdldOKAmXMgTFREAg8zMTExMTExMTExMDExMTMDFDIwMjItMDktMDVUMTY6NTc6MDJaBAUyNy42MAUDMy42BixKemg4RTQwWjZwQkhzWEQ5d2QwUnF4Nmg2Q1BSUUdNUEhVdTZXVVZremZzPQdgTUVRQ0lGd1dQYUxmN3RWK08xalZWYU1VbWJmcWJmbzgyVUVOSnhZRGdFcEFuaHE5QWlBQ1MvOVM4R0V1ZVRsUzJhNndKZEFqblVyY3RJcnBvaFkvc2pZbFExcXhEUT09CFgwVjAQBgcqhkjOPQIBBgUrgQQACgNCAARhgwyg5oVgCEw7+y16i19nJq+vqnXVJKXCwr1rOawtjtvVv4UuGowCuEHZ2ocpujGoo1++QoN4+GmqO6LmFyfR";
+                            code = "AYGO2KfZhNi02LHZg9ipINin2YTYudin2YTZhdmK2Kkg2KfZhNmF2YjYp9ivINin2YTYqNmG2KfYoSDYp9mE2YXYrdiv2YjYr9ipINio2YrZhtmD2LMgfCBUaGUgSW50ZXJuYXRpb25hbCBDby4gZm9yIEJ1aWxkaW5nIE1hdGVyaWFscyBMdGQiQklORVgiLgIPMzAwMjQ1MTk4NzAwMDAzAxQyMDIzLTA3LTEyVDE1OjIxOjQ1WgQGMTcyLjUwBQUyMi41MAYABwAIAAkA";
+                            if (code=="-1")
                         {
                             return;
                         }
@@ -197,7 +200,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             MessageTxt = AppResources.InvalidQrMessage;
                             return;
                         }
-                        //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
+                       //  code = "ARNBY21lIFdpZGdldOKAmXMgTFREAg8zMTExMTExMTExMDExMTMDFDIwMjItMDktMDVUMTY6NTc6MDJaBAUyNy42MAUDMy42BixKemg4RTQwWjZwQkhzWEQ5d2QwUnF4Nmg2Q1BSUUdNUEhVdTZXVVZremZzPQdgTUVRQ0lGd1dQYUxmN3RWK08xalZWYU1VbWJmcWJmbzgyVUVOSnhZRGdFcEFuaHE5QWlBQ1MvOVM4R0V1ZVRsUzJhNndKZEFqblVyY3RJcnBvaFkvc2pZbFExcXhEUT09CFgwVjAQBgcqhkjOPQIBBgUrgQQACgNCAARhgwyg5oVgCEw7+y16i19nJq+vqnXVJKXCwr1rOawtjtvVv4UuGowCuEHZ2ocpujGoo1++QoN4+GmqO6LmFyfR";
                         byte[] byteList = Convert.FromBase64String(code);
                         int currentPosition = 0;
                         // NoofTags = byteList.Length;

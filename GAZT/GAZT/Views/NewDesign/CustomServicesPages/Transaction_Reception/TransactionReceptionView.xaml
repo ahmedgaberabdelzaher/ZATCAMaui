@@ -202,7 +202,7 @@
                   </StackLayout>
                     <!--#endregion-->
                     <!--#region TinNo View-->
-                                        <StackLayout IsVisible="{Binding IsEntity}">
+                                        <StackLayout IsVisible="{Binding IsTinNoVisible}">
                         <StackLayout Spacing="0">
                    
                             <!--  Tin Label  -->
@@ -231,7 +231,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.TIN}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SelectedCRNo}"
+                                    Text="{Binding TIN}"
                                     TextColor="#58595B">
                                 </custom:BorderlessEntry>
                            
@@ -262,7 +262,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding BuildingNo}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -280,7 +280,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.Streetname}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding StreetName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -298,7 +298,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Districtname}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding DistrictName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -316,7 +316,7 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Cityname}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding CityName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -336,11 +336,11 @@
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.PostalCode}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding PostalCode}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
-                                  <Label Text="ي الرقم اإلضافي "  Grid.Row="4" Grid.Column="1"></Label>
+                                  <Label Text="{x:Static ResourceManager:AppResources.SecondaryNumber}"  Grid.Row="4" Grid.Column="1"></Label>
                                          <!--   Number Secondar Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="1"
                                 ContainerBackgroundColor="White"
@@ -352,9 +352,9 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
-                                    Placeholder="الرقم اإلضافي "
+                                    Placeholder="{x:Static ResourceManager:AppResources.SecondaryNumber}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Email}"
+                                    Text="{Binding SeconderyNo}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
