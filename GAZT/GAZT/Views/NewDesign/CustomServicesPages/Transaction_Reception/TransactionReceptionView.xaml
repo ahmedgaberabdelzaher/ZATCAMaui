@@ -211,7 +211,6 @@
                             <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.TIN}"/>
-                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                              </custom:CustomLabel>
@@ -248,7 +247,15 @@
                         <StackLayout>
                         <Label Text="{x:Static ResourceManager:AppResources.nationaladdress}" TextColor="{StaticResource PrimaryColor}" FontSize="20" FontAttributes="Bold"></Label>
                         <Grid RowDefinitions="auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*">
-                                <Label Text="{x:Static ResourceManager:AppResources.Buildingnumber}" Grid.Row="0" Grid.Column="0"></Label>
+                                <Label Grid.Row="0" Grid.Column="0">
+                                       <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Buildingnumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
                                       <!--  Buildingnumber Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0"
                                 ContainerBackgroundColor="White"
@@ -259,14 +266,22 @@
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Email"
+                                    Keyboard="Numeric"
                                     Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding BuildingNo}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
-                                  <Label Text="{x:Static ResourceManager:AppResources.Streetname}"  Grid.Row="0" Grid.Column="1"></Label>
+                                  <Label  Grid.Row="0" Grid.Column="1">
+                                    <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Streetname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
                                    <!--  Streetname Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="1"
                                 ContainerBackgroundColor="White"
@@ -284,7 +299,15 @@
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
-                                 <Label Text="{x:Static ResourceManager:AppResources.Districtname}"  Grid.Row="2" Grid.Column="0"></Label>
+                                 <Label Grid.Row="2" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Districtname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
                                         <!--  Districtname Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="0"
                                 ContainerBackgroundColor="White"
@@ -302,7 +325,15 @@
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
-                                <Label Text="{x:Static ResourceManager:AppResources.Cityname}"  Grid.Row="2" Grid.Column="1"></Label>
+                                <Label Grid.Row="2" Grid.Column="1">
+                                            <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Cityname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
                                     <!--  Cityname Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="1"
                                 ContainerBackgroundColor="White"
@@ -322,7 +353,15 @@
 
 
 
-                                  <Label Text="{x:Static ResourceManager:AppResources.PostalCode}"  Grid.Row="4" Grid.Column="0"></Label>
+                                  <Label Text="{x:Static ResourceManager:AppResources.PostalCode}"  Grid.Row="4" Grid.Column="0">
+                                                                                <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PostalCode}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
                                          <!--  PostalCode Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="0"
                                 ContainerBackgroundColor="White"
@@ -340,7 +379,16 @@
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
-                                  <Label Text="{x:Static ResourceManager:AppResources.SecondaryNumber}"  Grid.Row="4" Grid.Column="1"></Label>
+                                  <Label Grid.Row="4" Grid.Column="1">
+                                                                   <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.SecondaryNumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+
+                                </Label>
                                          <!--   Number Secondar Entry  -->
                             <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="1"
                                 ContainerBackgroundColor="White"
