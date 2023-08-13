@@ -251,26 +251,28 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                         if (FeesCalculatorResponse.totalDuty!=null&&FeesCalculatorResponse.totalDuty > 0)
                         {
-                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
+                            //CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
                             if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
                             {
                                 CustomFeesPercentage = "";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation}";
                             }
                             else
                             {
 
                                 CustomFeesPercentage = "5%";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} *5%";
                             }
                         }
                         else
                         {
-                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
+                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} * 0%";
                             CustomFeesPercentage = "";
                         }
                         if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
                         {
                            
-                                ExiseTaxCaluclat = $"{AppResources.ExciseTax2} ={FeesCalculatorResponse.productFinalPrice} +{FeesCalculatorResponse.totalDuty} ";
+                                ExiseTaxCaluclat = $"{AppResources.ExciseTax2} ={FeesCalculatorResponse.tobaccoExciseTaxEquation}";
           
                         }
                       
