@@ -34,6 +34,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string exiseTaxCaluclat;
         public string ExiseTaxCaluclat { get { return exiseTaxCaluclat; } set { exiseTaxCaluclat = value; RaisePropertyChanged(); } }
 
+        double productValue;
+        public double ProductValue { get { return productValue; } set { productValue = value; RaisePropertyChanged(); } }
 
         public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService,declerationServices)
         {
@@ -110,6 +112,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+                        ProductValue = double.Parse(TotalValue);
+
                         if (SelectedCalcType == 1)
                         {
                             if (!CheckTobacoDataNotNull())
@@ -255,7 +259,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
                             {
                                 CustomFeesPercentage = "";
-                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation}";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation.ToString()}";
                             }
                             else
                             {

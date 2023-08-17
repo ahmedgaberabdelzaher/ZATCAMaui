@@ -9383,7 +9383,7 @@ info@zatca.gov.sa</value>
      <value>المبلغ الإجمالي مضافا إليه ضريبة القيمة المضافة</value>
     </data>
   <data name="TotalPriceValue" xml:space="preserve">
-         <value>القيمة الإجمالية</value>
+    <value>القيمة الإجمالية للسلع</value>
     </data>
   <data name="ReportDetails" xml:space="preserve">
      <value>تفاصيل البلاغ</value>

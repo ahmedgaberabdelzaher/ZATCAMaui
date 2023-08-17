@@ -161,7 +161,7 @@
                         Keyboard="Numeric"
                         Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
                         Style="{StaticResource DefaultEntry}"
-                        Text="{Binding TotalValue}"
+                        Text="{Binding TotalValue,StringFormat='{}{0:#,##,#}'}"
                         TextColor="#58595B" >
 
                         <custom:BorderlessEntry.Behaviors>
@@ -171,8 +171,8 @@
                 </custom:BorderlessEntry>
 
                   <inputLayout:SfTextInputLayout.TrailingView>
-                     <custom:CustomLabel
-                            Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                     <custom:CustomLabel WidthRequest="100"
+                            Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
                             Style="{StaticResource CaptionLabelGrey}" />
                   </inputLayout:SfTextInputLayout.TrailingView>
             </inputLayout:SfTextInputLayout>

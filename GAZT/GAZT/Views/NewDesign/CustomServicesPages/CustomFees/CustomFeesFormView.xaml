@@ -295,7 +295,7 @@
                                     Keyboard="Numeric"
                                     Placeholder="{x:Static ResourceManager:AppResources.Productvalue}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TotalValue}"
+                                    Text="{Binding TotalValue,StringFormat='{}{0:#,##,#}'}"
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.Behaviors>
                                         <behaviour:OnlyNumericWithDecimalValuesBehaviour />
@@ -414,7 +414,7 @@
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.productFinalPrice,StringFormat='{}{0:#,##,#}'}" />
+                                                <Span Text="{Binding ProductValue,StringFormat='{}{0:#,##,#}'}" />
                                                 <Span Text=" " />
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                             </FormattedString>
@@ -454,7 +454,7 @@
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{}{0:#,##,#}'}" />
+                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
                                                 <Span Text=" " />
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                             </FormattedString>
