@@ -337,11 +337,11 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                return $"{CustomsIssuesProd}/sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
             else
             {
-                return $"{CustomsIssuesProd}/sites/sc/ar/PublicInquiryServices/Pages/SettlementPages/NewSettlementRequest.aspx";
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
         }
 
