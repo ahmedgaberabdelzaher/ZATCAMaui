@@ -18,6 +18,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         bool isshowFeesView;
         public bool IsshowFeesView { get { return isshowFeesView; } set { isshowFeesView = value; RaisePropertyChanged(); } }
 
+        string vatPercenntage;
+        public string VatPercenntage { get { return vatPercenntage; } set { vatPercenntage = value; RaisePropertyChanged(); } }
+
+        string customFeesPercentage;
+        public string CustomFeesPercentage { get { return customFeesPercentage; } set { customFeesPercentage = value; RaisePropertyChanged(); } }
+
+
+        string vatCalculte;
+        public string VatCalculte { get { return vatCalculte; } set { vatCalculte = value; RaisePropertyChanged(); } }
+
+        string customFeesCalculate;
+        public string CustomFeesCalculate { get { return customFeesCalculate; } set { customFeesCalculate = value; RaisePropertyChanged(); } }
+
+        string exiseTaxCaluclat;
+        public string ExiseTaxCaluclat { get { return exiseTaxCaluclat; } set { exiseTaxCaluclat = value; RaisePropertyChanged(); } }
+
+        double productValue;
+        public double ProductValue { get { return productValue; } set { productValue = value; RaisePropertyChanged(); } }
+
         public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService,declerationServices)
         {
 
@@ -93,6 +112,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     try
                     {
                         IsLoading = true;
+                        ProductValue = double.Parse(TotalValue);
+
                         if (SelectedCalcType == 1)
                         {
                             if (!CheckTobacoDataNotNull())
@@ -223,6 +244,42 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     if (data.result != null)
                     {
                         FeesCalculatorResponse = data.result;
+                        if (FeesCalculatorResponse.vat!=null&& FeesCalculatorResponse.vat > 0)
+                        {
+                            VatPercenntage = "15%";
+                            VatCalculte = $"{AppResources.VATCertificates} = ({FeesCalculatorResponse.productFinalPrice} + {FeesCalculatorResponse.totalDuty} + {FeesCalculatorResponse.excise} + {FeesCalculatorResponse.extraFees})*15%";
+                        }
+                        else
+                        {
+                            VatPercenntage = "";
+                        }
+                        if (FeesCalculatorResponse.totalDuty!=null&&FeesCalculatorResponse.totalDuty > 0)
+                        {
+                            //CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
+                            if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
+                            {
+                                CustomFeesPercentage = "";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation.ToString()}";
+                            }
+                            else
+                            {
+
+                                CustomFeesPercentage = "5%";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} *5%";
+                            }
+                        }
+                        else
+                        {
+                            CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty} * 0%";
+                            CustomFeesPercentage = "";
+                        }
+                        if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
+                        {
+                           
+                                ExiseTaxCaluclat = $"{AppResources.ExciseTax2} ={FeesCalculatorResponse.tobaccoExciseTaxEquation}";
+          
+                        }
+                      
                         return true;
                     }
 

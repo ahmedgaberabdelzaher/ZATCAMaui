@@ -15,14 +15,14 @@ namespace EGAZT.Models.EDeclerationsModel.FeesCalculators
         public double? vat { get; set; }
         public double? extraFees { get; set; }
         public double? excise { get; set; }
-        public double? totalDuty { get; set; }
+        public double totalDuty { get; set; } = 0;
     }
 
 
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
     public class CustomApiDATA
     {
-        public double? TotalDuty { get; set; }
+        public double TotalDuty { get; set; } = 0;
         public double? Excise { get; set; }
         public double? ExtraFees { get; set; }
         public double? VAT { get; set; }
