@@ -65,6 +65,7 @@
     <AndroidSigningKeyPass>Pm@dmin**</AndroidSigningKeyPass>
     <AndroidPackageFormat>aab</AndroidPackageFormat>
 <AndroidLinkTool>r8</AndroidLinkTool>
+<AndroidKeyStore>True</AndroidKeyStore>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
