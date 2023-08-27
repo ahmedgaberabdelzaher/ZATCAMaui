@@ -156,6 +156,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
@@ -216,6 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;

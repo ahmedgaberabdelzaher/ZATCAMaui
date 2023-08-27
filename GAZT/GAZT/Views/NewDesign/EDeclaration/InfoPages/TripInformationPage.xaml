@@ -515,7 +515,8 @@
                         </StackLayout>
 
                         <!--  Trip Number Field  -->
-                        <StackLayout IsVisible="{Binding TripCard.IsAirTripSelected}" Spacing="0">
+                        <StackLayout IsVisible="{Binding TripCard.IsAirTripSelected}"
+                                     Spacing="0">
 
                             <!--  Trip Number Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -548,7 +549,8 @@
                         </StackLayout>
 
                         <!--  Travel Purpose Field  -->
-                        <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}" Spacing="0">
+                        <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}"
+                                     Spacing="0">
 
                             <!--  Travel Purpose Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -631,6 +633,170 @@
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
+
+                        <!--#region Plates -->
+
+                        <!--  Plates Country Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding TripCard.IsLandTripSelected}">
+
+                            <!-- Plates Country Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!-- Plates Country Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCountryName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Plates City Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding HasPlatesCity}">
+
+                            <!-- Plates City Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!-- Plates City Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCityName}"
+                                    TextColor="#58595B">
+                                    <custom:BorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+                                    </custom:BorderlessEntry.GestureRecognizers>
+                                </custom:BorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Plates Number Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding HasPlatesCity}">
+
+                            <!--  Plates Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                         <!--  Plates Letter Field  -->
+                        <StackLayout Spacing="0"
+                                     IsVisible="{Binding HasPlatesCity}">
+
+                            <!--  Plates Letter Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesLetter}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates Letter Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--#endregion Plates--> 
 
                         <!--  Passenger Label for logged in only  -->
                         <Label
