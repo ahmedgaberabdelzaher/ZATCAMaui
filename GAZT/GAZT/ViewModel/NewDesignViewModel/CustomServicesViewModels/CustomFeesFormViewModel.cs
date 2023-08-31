@@ -5,7 +5,6 @@ using System.Windows.Input;
 using EGAZT.Models.BaseModels;
 using EGAZT.Models.EDeclerationsModel.FeesCalculators;
 using EGAZT.Services.Interface;
-using EGAZT.ViewModel.NewDesignViewModel.EDeclaration;
 using EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
@@ -13,7 +12,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {
-	public class CustomFeesFormViewModel: BaseProductDeclarationViewModel
+    public class CustomFeesFormViewModel : BaseProductDeclarationViewModel
     {
         bool isshowFeesView;
         public bool IsshowFeesView { get { return isshowFeesView; } set { isshowFeesView = value; RaisePropertyChanged(); } }
@@ -37,10 +36,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         double productValue;
         public double ProductValue { get { return productValue; } set { productValue = value; RaisePropertyChanged(); } }
 
-        public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService,declerationServices)
+        public CustomFeesFormViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
         {
 
-		}
+        }
         public new ICommand OpenPoductTypesCommand
         {
             get
@@ -59,7 +58,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             get
             {
-                return new Command( () => {
+                return new Command(() =>
+                {
 
                     BackMethod();
                 });
@@ -72,9 +72,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             {
                 return new Command<Controls.BottomSheetModel>((e) =>
                 {
-                    HandleBottomSheetSelection(e,true
-
-                        );
+                    HandleBottomSheetSelection(e, true);
 
                 });
             }
@@ -85,6 +83,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             SelectedCalcType = 0;
             SelectedCalcTypeName = "";
+            TotalValue = string.Empty;
+            
             if (IsShowBottomSheet)
             {
                 IsShowBottomSheet = false;
@@ -102,6 +102,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
             }
         }
+
         public ICommand CalculateCommand
         {
             get
@@ -187,12 +188,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         FeesCalculatorBody = new Models.EDeclerationsModel.FeesCalculators.FeesCalculatorBody();
                         IsLoading = false;
                     }
-                  
+
                 });
 
             }
         }
-
 
         public async Task<bool> CalculateFees(int operation = 1, Models.EDeclerationsModel.FeesCalculators.Tobacco tobacco = null, Models.EDeclerationsModel.FeesCalculators.Product product = null)
         {
@@ -207,7 +207,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 if (FeesCalculatorBody.product == null)
                 {
-                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() {  value=0, harmonizedCode="",count=0} };
+                    FeesCalculatorBody.product = new List<Models.EDeclerationsModel.FeesCalculators.Product>() { new Product() { value = 0, harmonizedCode = "", count = 0 } };
                 }
                 if (tobacco != null)
                 {
@@ -244,7 +244,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     if (data.result != null)
                     {
                         FeesCalculatorResponse = data.result;
-                        if (FeesCalculatorResponse.vat!=null&& FeesCalculatorResponse.vat > 0)
+                        if (FeesCalculatorResponse.vat != null && FeesCalculatorResponse.vat > 0)
                         {
                             VatPercenntage = "15%";
                             VatCalculte = $"{AppResources.VATCertificates} = ({FeesCalculatorResponse.productFinalPrice} + {FeesCalculatorResponse.totalDuty} + {FeesCalculatorResponse.excise} + {FeesCalculatorResponse.extraFees})*15%";
@@ -253,7 +253,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         {
                             VatPercenntage = "";
                         }
-                        if (FeesCalculatorResponse.totalDuty!=null&&FeesCalculatorResponse.totalDuty > 0)
+                        if (FeesCalculatorResponse.totalDuty != null && FeesCalculatorResponse.totalDuty > 0)
                         {
                             //CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
                             if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
@@ -275,11 +275,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                         if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
                         {
-                           
-                                ExiseTaxCaluclat = $"{AppResources.ExciseTax2} ={FeesCalculatorResponse.tobaccoExciseTaxEquation}";
-          
+
+                            ExiseTaxCaluclat = $"{AppResources.ExciseTax2} ={FeesCalculatorResponse.tobaccoExciseTaxEquation}";
+
                         }
-                      
+
                         return true;
                     }
 

@@ -10,6 +10,8 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:numericinput="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
     HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}">
 
@@ -286,33 +288,44 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
-                                HelperText="{x:Static ResourceManager:AppResources.ProductValueHint}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                FlowDirection="LeftToRight"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Productvalue}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding TotalValue,StringFormat='{}{0:#,##,#}'}"
-                                    TextColor="#58595B">
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <behaviour:OnlyNumericWithDecimalValuesBehaviour />
-                                    </custom:BorderlessEntry.Behaviors>
-                                </custom:BorderlessEntry>
-                                  <inputLayout:SfTextInputLayout.TrailingView>
-                            <custom:CustomLabel WidthRequest="100"
-                                Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
-                                Style="{StaticResource CaptionLabelGrey}" />
-                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <numericinput:SfNumericTextBox
+                                    Watermark="{x:Static ResourceManager:AppResources.Productvalue}"
+                                    Value="{Binding TotalValue}"
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="15"
+                                    HeightRequest="48"
+                                    WidthRequest="150"
+                                    EnableGroupSeparator="True"
+                                    GroupSeparatorMode="Always"
+                                    AllowDefaultDecimalDigits="False"
+                                    WatermarkColor="{StaticResource NeutralGreay}"
+                                    FormatString="n"
+                                    TextAlignment="Start"
+                                    HorizontalOptions="Fill"
+                                    TextColor="#58595B"/>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <custom:CustomLabel
+                                        WidthRequest="70"
+                                        FlowDirection="LeftToRight"
+                                        Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
+                                        Style="{StaticResource CaptionLabelGrey}" />
+                                 </inputLayout:SfTextInputLayout.TrailingView>
+
                             </inputLayout:SfTextInputLayout>
+
                             <Label
-                                Margin="16,0,16,0"
                                 FontSize="12"
-                                IsVisible="false"
-                                Text="{x:Static ResourceManager:AppResources.NumberHint}"
+                                Margin="3,-10,3,0"
+                                Text="{x:Static ResourceManager:AppResources.ProductValueHint}"
                                 TextColor="#58595B" />
+
                         </StackLayout>
 
                     </StackLayout>
@@ -461,7 +474,7 @@
                                         </Label.FormattedText>
 
                                     </Label>
-                                                                                <Label Style="{StaticResource BodyLabelGrey}"
+                                    <Label Style="{StaticResource BodyLabelGrey}"
                                             FontSize="12"
                                             Margin="0,-10,0,0"
                                             Text="{Binding CustomFeesCalculate}" />

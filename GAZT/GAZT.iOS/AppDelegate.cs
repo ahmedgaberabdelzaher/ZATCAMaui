@@ -22,6 +22,7 @@ using System;
 using System.Threading.Tasks;
 using MediaManager;
 using KeyboardOverlap.Forms.Plugin.iOSUnified;
+using Syncfusion.SfNumericTextBox.XForms.iOS;
 
 namespace GAZT.iOS
 {
@@ -64,6 +65,7 @@ namespace GAZT.iOS
             SfPickerRenderer.Init();
             SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
+            new SfNumericTextBoxRenderer();
             SfCardLayoutRenderer.Init();
             CrossMediaManager.Current.Init();
             new SfRotator();
