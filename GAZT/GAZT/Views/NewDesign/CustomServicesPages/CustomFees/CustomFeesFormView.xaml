@@ -269,10 +269,11 @@
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
                         <!--#endregion-->
-                        <!--  Value Field  -->
+
+                        <!--  Total Value Field  -->
                         <StackLayout Spacing="0">
 
-                            <!--  Quantity Label  -->
+                            <!--  Total Value Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
