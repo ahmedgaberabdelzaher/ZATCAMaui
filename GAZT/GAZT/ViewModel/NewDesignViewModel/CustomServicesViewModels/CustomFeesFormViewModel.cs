@@ -83,7 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             SelectedCalcType = 0;
             SelectedCalcTypeName = "";
-            TotalValue = string.Empty;
+            TotalValue = "0";
             
             if (IsShowBottomSheet)
             {
