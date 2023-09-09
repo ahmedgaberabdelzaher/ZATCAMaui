@@ -342,16 +342,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
-            else if (!string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCountryName))
+
+            else if (SubmitModel.travelerDeclaration.plateCountryCode == 120 ||
+                     SubmitModel.travelerDeclaration.plateCountryCode == 110 ||
+                     SubmitModel.travelerDeclaration.plateCountryCode == 115)
             {
-                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCityName)
-                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.plateNumber))
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCityName))
                 {
                     IsShowMsgView = true;
-                    MessageTxt = AppResources.RequiredData;
+                    MessageTxt = AppResources.ChooseCity;
                     return false;
                 }
             }
+
+            else if (SubmitModel.travelerDeclaration.plateCountryCode == 113)
+            {
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCityName)
+                    && !string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.plateNumber)
+                    && string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.plateLetters))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ChooseCity;
+                    return false;
+                }
+            }
+
             else if (SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date)
             {
                 IsShowMsgView = true;

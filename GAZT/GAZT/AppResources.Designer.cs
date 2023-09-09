@@ -1492,6 +1492,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select city.
+        /// </summary>
+        public static string ChooseCity {
+            get {
+                return ResourceManager.GetString("ChooseCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string ChooseReports {
