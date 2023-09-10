@@ -4188,7 +4188,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Entity.
+        ///   Looks up a localized string similar to Company.
         /// </summary>
         public static string Entity {
             get {
