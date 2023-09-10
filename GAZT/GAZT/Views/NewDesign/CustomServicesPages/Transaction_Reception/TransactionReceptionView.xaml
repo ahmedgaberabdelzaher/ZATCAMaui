@@ -295,7 +295,7 @@
                                     Keyboard="Email"
                                     Placeholder="{x:Static ResourceManager:AppResources.Streetname}"
                                     Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding StreetName}"
+                                    Text="{Binding StreetName}" MaxLength="50"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
 
@@ -320,7 +320,7 @@
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.Districtname}"
-                                    Style="{StaticResource DefaultEntry}"
+                                    Style="{StaticResource DefaultEntry}" MaxLength="50"
                                     Text="{Binding DistrictName}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>
@@ -341,10 +341,10 @@
                                 FocusedColor="{StaticResource NeutralGreay}"
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
+                                OutlineCornerRadius="15" 
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Text"
+                                    Keyboard="Text" MaxLength="50"
                                     Placeholder="{x:Static ResourceManager:AppResources.Cityname}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CityName}"
