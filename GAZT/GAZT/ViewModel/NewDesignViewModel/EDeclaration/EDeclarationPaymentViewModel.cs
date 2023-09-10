@@ -74,8 +74,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 {
                     if (SelctedPaymentType == PaymentTypes.SADAD)
                     {
-                        IsShowMsgView = true;
+                       
                         MessageTxt = AppResources.EDEcelarationSADADFrstMsg + TravelerDeclarationResponse.sadadNumber + $"\n{AppResources.EDEcelarationSADADSecondMsg}";
+                    IsShowMsgView = true;
                     }
                     else
                     {

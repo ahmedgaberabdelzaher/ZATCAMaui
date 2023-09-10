@@ -67,6 +67,8 @@ namespace EGAZT.AppConfigurations
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
+        public static string CustomPaymentProdURl = "https://payments-eservices.zatca.gov.sa/payment/initiate/";
+
         public static string CustomPeserviceBaseURl = "https://pre-eservices.zatca.gov.sa";
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
@@ -105,6 +107,7 @@ namespace EGAZT.AppConfigurations
         public static void GetBaseURL(string environment = "STG")
         {
             Target_Environment = CheckTarget_Environment(environment);
+            Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case "STG":
@@ -167,11 +170,12 @@ namespace EGAZT.AppConfigurations
         public static string GetClientID()
         {
             Target_Environment = CheckTarget_Environment();
-
+            Target_Environment = "Prod";
             string key = "";
 #if (DEBUG)
             Target_Environment = "STG";
 #endif
+            Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case "STG":
@@ -192,6 +196,7 @@ namespace EGAZT.AppConfigurations
 #if (DEBUG)
             Target_Environment = "STG";
 #endif
+            Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {
@@ -249,13 +254,29 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetCustomsPaymentUrl()
         {
-            if (App.IsArabic)
+            Target_Environment = CheckTarget_Environment();
+            Target_Environment = "Prod";
+            if (Target_Environment == "Prod")
             {
-                return CustomPaymentSTGURl;
+                if (App.IsArabic)
+                {
+                    return CustomPaymentProdURl;
+                }
+                else
+                {
+                    return CustomPaymentProdURl;
+                }
             }
             else
             {
-                return CustomPaymentSTGURl;
+                if (App.IsArabic)
+                {
+                    return CustomPaymentSTGURl;
+                }
+                else
+                {
+                    return CustomPaymentSTGURl;
+                }
             }
         }
 
