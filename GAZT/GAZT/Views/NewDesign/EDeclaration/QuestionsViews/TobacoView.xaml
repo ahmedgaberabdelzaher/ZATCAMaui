@@ -269,21 +269,22 @@
                     OutlineCornerRadius="15"
                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     UnfocusedColor="{StaticResource NeutralGreay}">
-
-                <custom:BorderlessEntry
-                        x:Name="quantityEntry"
-                        Keyboard="Numeric"
-                        Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding Quantity}"
-                        TextColor="#58595B" >
-
-                    <custom:BorderlessEntry.Behaviors>
-                        <behaviour:OnlyNumericValuesBehaviour/>
-                    </custom:BorderlessEntry.Behaviors>
-
-                </custom:BorderlessEntry>
-
+                    <numericinput:SfNumericTextBox
+                    Watermark="{x:Static ResourceManager:AppResources.Quantity}"
+                    Value="{Binding Quantity}"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    WidthRequest="150"
+                    EnableGroupSeparator="True"
+                    GroupSeparatorMode="Always"
+                    AllowDefaultDecimalDigits="False"
+                    WatermarkColor="{StaticResource NeutralGreay}"
+                    FormatString="n"
+                    TextAlignment="Start"
+                    HorizontalOptions="Fill"
+                    TextColor="#58595B"/>
+             
             </inputLayout:SfTextInputLayout>
 
         </StackLayout>

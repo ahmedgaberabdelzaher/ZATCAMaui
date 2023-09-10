@@ -214,17 +214,21 @@
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    Keyboard="Numeric"
-                                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding Quantity}"
-                                    TextColor="#58595B">
-                                    <custom:BorderlessEntry.Behaviors>
-                                        <behaviour:OnlyNumericValuesBehaviour />
-                                    </custom:BorderlessEntry.Behaviors>
-
-                                </custom:BorderlessEntry>
+                                   <numericinput:SfNumericTextBox
+                    Watermark="{x:Static ResourceManager:AppResources.Quantity}"
+                    Value="{Binding Quantity}"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    WidthRequest="150"
+                    EnableGroupSeparator="True"
+                    GroupSeparatorMode="Always"
+                    AllowDefaultDecimalDigits="False"
+                    WatermarkColor="{StaticResource NeutralGreay}"
+                    FormatString="n"
+                    TextAlignment="Start"
+                    HorizontalOptions="Fill"
+                    TextColor="#58595B"/>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -468,7 +472,7 @@
                                     <Label Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
+                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{}{0:#,##,#}'}" />
                                                 <Span Text=" " />
                                                 <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                             </FormattedString>
