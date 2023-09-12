@@ -100,7 +100,7 @@ namespace EGAZT.Services.Classes
 
         public async Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body)
         {
-            var response = await HttpManager.PostAsync<EDeclerationSubmitModel>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/submit-declaration", body).ConfigureAwait(false);
+            var response = await HttpManager.PostAsync<EDeclerationSubmitModel>($"{PageSettings.ZATCABaseURL}v2/zatca/customs/declaration/submit-declaration", body).ConfigureAwait(false);
             return response;
         }
 
