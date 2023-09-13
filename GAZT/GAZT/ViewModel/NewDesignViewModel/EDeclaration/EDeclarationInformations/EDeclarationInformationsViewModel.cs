@@ -210,10 +210,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
                         else if (isPlatesCountrySelected)
                         {
+                            HasPlatesCity = false;
                             SubmitModel.travelerDeclaration.plateCountryCode = int.Parse(e.Id);
                             SubmitModel.travelerDeclaration.PlatesCountryName = e.Name;
                             isPlatesCountrySelected = false;
-                            HasPlatesCity = true;
+                            if (SubmitModel.travelerDeclaration.plateCountryCode == 120 || SubmitModel.travelerDeclaration.plateCountryCode == 110 || SubmitModel.travelerDeclaration.plateCountryCode == 115 | SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                            {
+                                HasPlatesCity = true;
+                            }
+                            else
+                            {
+                                HasPlatesCity = false;
+                            }
+                           
                             SubmitModel.travelerDeclaration.plateCityCode = 0;
                             SubmitModel.travelerDeclaration.PlatesCityName = string.Empty;
 

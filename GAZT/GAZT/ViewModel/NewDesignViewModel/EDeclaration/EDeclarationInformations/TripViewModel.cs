@@ -22,6 +22,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         bool hasPlatesCity;
         public bool HasPlatesCity { get { return hasPlatesCity; } set { hasPlatesCity = value; RaisePropertyChanged(); } }
 
+        bool isCityVisible;
+        public bool IsCityVisible { get { return isCityVisible; } set { isCityVisible = value; RaisePropertyChanged(); } }
+
         public ICommand TripCardCommand
         {
             get
@@ -38,7 +41,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     SubmitModel.travelerDeclaration.PlatesCityName = string.Empty;
                     SubmitModel.travelerDeclaration.plateCountryCode = 0;
                     SubmitModel.travelerDeclaration.PlatesCountryName = string.Empty;
-                    SubmitModel.travelerDeclaration.plateLetters = string.Empty;
+                    SubmitModel.travelerDeclaration.plateNumber = string.Empty;
                     SubmitModel.travelerDeclaration.plateLetters = string.Empty;
                     HasPlatesCity = false;
                     if (selectedTrip == (int)TripName.AirTrip)
