@@ -445,9 +445,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 DateTime myDate = DateTime.Now;
                 DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
-                //if (DateTime.TryParse(dateValue,culture,styles, out myDate))
-                if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture,
-       DateTimeStyles.AdjustToUniversal, out myDate))
+                if (DateTime.TryParse(dateValue,culture,styles, out myDate))
+                /*if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal, out myDate))*/
                /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
     DateTimeStyles.AdjustToUniversal, out myDate))*/
                 {//2023-05-13T19:25:59Z
