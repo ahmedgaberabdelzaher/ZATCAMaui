@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.EinvoiceModels;
+using EGAZT.Models.SurveyModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
@@ -178,7 +179,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                         // string code = Result.Text;
                         string code = scanCode;
-                        if (code=="-1")
+                            //   code = "AYGO2KfZhNi02LHZg9ipINin2YTYudin2YTZhdmK2Kkg2KfZhNmF2YjYp9ivINin2YTYqNmG2KfYoSDYp9mE2YXYrdiv2YjYr9ipINio2YrZhtmD2LMgfCBUaGUgSW50ZXJuYXRpb25hbCBDby4gZm9yIEJ1aWxkaW5nIE1hdGVyaWFscyBMdGQiQklORVgiLgIPMzAwMjQ1MTk4NzAwMDAzAxQyMDIzLTA3LTEyVDE1OjIxOjQ1WgQGMTcyLjUwBQUyMi41MAYABwAIAAkA";
+                           // code = "AT5KYWhleiBJbnRlcm5hdGlvbmFsIENvbXBhbnkgZm9yIEluZm9ybWF0aW9uIFN5c3RlbXMgVGVjaG5vbG9neQIPMzEwMTkxNjI3NDEwMDAzAxMyMDIzLTAxLTA2VDE0OjIyOjA4BAQ5LjAwBQQxLjE3";
+                            if (code=="-1")
                         {
                             return;
                         }
@@ -199,11 +202,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
                         byte[] byteList = Convert.FromBase64String(code);
-                        int currentPosition = 0;
-                        // NoofTags = byteList.Length;
+                        int currentPosition = 1;
+                            // NoofTags = byteList.Length;
+                            int tagNumber = 1;
                         while (currentPosition<byteList.Length)
                         {
-                            int tagNumber = byteList[currentPosition];
+                           // int tagNumber = byteList[currentPosition];
                            
                             currentPosition++;
                             // Read Length
@@ -220,9 +224,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             currentPosition += valueLength;
                             SetDataToModel(tagNumber, messageAsText);
                                 NoofTags = tagNumber;
-
+                                tagNumber++;
 
                         }
+                            if (NoofTags<5)
+                            {
+                                currentPosition = 0;
+                                tagNumber = 1;
+                                while (currentPosition < byteList.Length)
+                                {
+                                    // int tagNumber = byteList[currentPosition];
+
+                                    currentPosition++;
+                                    // Read Length
+                                    int valueLength = byteList[currentPosition];
+                                    Debug.WriteLine(valueLength);
+
+                                    currentPosition++;
+                                    // Read Message
+                                    int lastPosition = currentPosition + valueLength + 1;
+                                    var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                    String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                    Debug.WriteLine(messageAsText);
+                                    // Utf8Decoder().convert(message.toList());
+                                    currentPosition += valueLength;
+                                    SetDataToModel(tagNumber, messageAsText);
+                                    NoofTags = tagNumber;
+                                    tagNumber++;
+
+                                }
+                            }
                        var res= qrValidation(eInvoiceQRModel);
                         if (res=="")
                         {
@@ -381,6 +412,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 result = "Date is not Valid";
             }
+
             return result;
         }
 
@@ -413,8 +445,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 DateTime myDate = DateTime.Now;
                 DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
-                if (DateTime.TryParse(dateValue,culture,styles, out myDate))
-                
+                //if (DateTime.TryParse(dateValue,culture,styles, out myDate))
+                if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal, out myDate))
                /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
     DateTimeStyles.AdjustToUniversal, out myDate))*/
                 {//2023-05-13T19:25:59Z
@@ -647,18 +680,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         else
                         {
-                            if (NoofTags == 5)
-                            {
+                           /* if (NoofTags == 5)
+                            {*/
                                 RegisterStatus = AppResources.NotRegistered;
                                 IsShowSubmitReport = true;
                                 IsShowRsltView = true;
                                 IsShowScanView = false;
-                            }
+                           /* }
                            else
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidQrMessage;
-                            }
+                            }*/
                         }
                   
                     }
