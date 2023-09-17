@@ -5,6 +5,7 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
      xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
          xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -237,7 +238,7 @@
                             </inputLayout:SfTextInputLayout>
                        
                     </StackLayout>
-                
+                 
                   </StackLayout>
 
                     <!--#endregion-->
@@ -270,7 +271,12 @@
                                     Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding BuildingNo}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+                                          <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                    </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                                   <Label  Grid.Row="0" Grid.Column="1">

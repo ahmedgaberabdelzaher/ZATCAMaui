@@ -34,7 +34,7 @@ namespace EGAZT.Services.Classes
         }
         public async Task<Tuple<DATAPowerBaseResponse<CrTinNoModel>, bool, string>> GetCurrentCRTiNo(string CRNo)
         {
-            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<CrTinNoModel>>($"{PageSettings.ZATCABaseURL}/v1/erad/real-estate/company/?IDType=CommercialRegistrationNumber&IDNumber={CRNo}",false,"99",true).ConfigureAwait(false);
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<CrTinNoModel>>($"{PageSettings.ZATCABaseURL}/v1/erad/real-estate/enterprise/?IDType=CommercialRegistrationNumber&IDNumber={CRNo}",false,"99",true).ConfigureAwait(false);
             return response;
         }
     }
