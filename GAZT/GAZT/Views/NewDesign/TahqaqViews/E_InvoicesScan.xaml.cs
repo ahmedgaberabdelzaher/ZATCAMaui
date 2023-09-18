@@ -81,21 +81,32 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 },
 
             };
+            bool scanFinished = false;
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel.IsScanning = false;
-                 //   zxing.IsScanning = false;
-                    // Stop analysis until we navigate away so we don't keep reading barcodes
-                    // zxing.IsAnalyzing = false;
-                    viewModel.scanCode = result.Text;
-                    viewModel.ScanEnvoiceQrCommand.Execute(null);
-                    // Show an alert
-                    //  await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    if (!scanFinished)
+                    {
+                        if (int.TryParse(result.Text,out int res))
+                        {
+                            return;
+                        }
+                        viewModel.IsScanning = false;
+                        //   zxing.IsScanning = false;
+                        // Stop analysis until we navigate away so we don't keep reading barcodes
+                        // zxing.IsAnalyzing = false;
+                        viewModel.scanCode = result.Text;
+                        viewModel.ScanEnvoiceQrCommand.Execute(null);
+                        // Show an alert
+                        //  await DisplayAlert("Scanned Barcode", result.Text, "OK");
 
-                    // Navigate away
-                    // await Navigation.PopAsync();
-                    viewModel.IsScanning = false;
+                        // Navigate away
+                        // await Navigation.PopAsync();
+                        zxing.IsScanning = false;
+                        viewModel.IsScanning = false;
+                        scanFinished = true;
+                    }
+                 
                 });
 
             InitializeComponent();

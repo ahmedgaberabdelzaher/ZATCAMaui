@@ -150,8 +150,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
             try
             {
-                Convert.FromBase64String(base64String);
-                return true;
+                try
+                {
+                    Convert.FromBase64String(base64String);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+             
             }
             catch (Exception exception)
             {
@@ -574,7 +582,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         IsCheckWithCode=IsShowRsltView=IsShowFailRsltView= FromCheckWithCode = false;
                          IsShowScanView = true;
                         IsAnalyzing = IsScanning = true;
-
+                        _navigationService.GoBack();
 
                         return;
                     }
