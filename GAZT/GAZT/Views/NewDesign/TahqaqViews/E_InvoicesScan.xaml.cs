@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 UseCode39ExtendedMode = true, UseNativeScanning = true, 
                 DelayBetweenContinuousScans = 0,
                 CameraResolutionSelector = availableResolutions =>
-                {
+                { 
                     var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
                     var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
 
@@ -95,6 +95,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
 
                     // Navigate away
                     // await Navigation.PopAsync();
+                    viewModel.IsScanning = false;
                 });
 
             InitializeComponent();
@@ -113,6 +114,18 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
            // zxing.IsScanning = viewModel.IsScanning;
             base.OnAppearing();
       
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (viewModel.IsShowRsltView)
+            {
+
+                viewModel.BackCommand.Execute(null);
+                return false;
+            }
+
+            return base.OnBackButtonPressed();
         }
     }
 }

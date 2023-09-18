@@ -204,11 +204,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         byte[] byteList = Convert.FromBase64String(code);
                         int currentPosition = 1;
                             // NoofTags = byteList.Length;
-                            int tagNumber = 1;
-                        while (currentPosition<byteList.Length)
+                            int tagNumber = 0;
+                            while (currentPosition<byteList.Length)
                         {
-                           // int tagNumber = byteList[currentPosition];
-                           
+                                // int tagNumber = byteList[currentPosition];
+                                tagNumber++;
                             currentPosition++;
                             // Read Length
                             int valueLength = byteList[currentPosition];
@@ -224,18 +224,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             currentPosition += valueLength;
                             SetDataToModel(tagNumber, messageAsText);
                                 NoofTags = tagNumber;
-                                tagNumber++;
+                               // tagNumber++;
 
                         }
                             if (NoofTags<5)
                             {
                                 currentPosition = 0;
-                                tagNumber = 1;
+                                tagNumber = 0;
                                 while (currentPosition < byteList.Length)
                                 {
                                     // int tagNumber = byteList[currentPosition];
 
                                     currentPosition++;
+                                    tagNumber++;
                                     // Read Length
                                     int valueLength = byteList[currentPosition];
                                     Debug.WriteLine(valueLength);
@@ -250,7 +251,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                     currentPosition += valueLength;
                                     SetDataToModel(tagNumber, messageAsText);
                                     NoofTags = tagNumber;
-                                    tagNumber++;
+                                  
 
                                 }
                             }
