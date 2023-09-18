@@ -755,6 +755,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    MaxLength="30"
                                     Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
@@ -794,6 +795,7 @@
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
+                                    MaxLength="4"
                                     Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
