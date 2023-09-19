@@ -479,7 +479,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void clearData()
         {
-            Email = Subject = Description =CRNo= SelectedCRNo =StreetName=CityName=DistrictName="";
+            Email = Subject = Description =CRNo= SelectedCRNo =StreetName=CityName=DistrictName=PostalCode=SeconderyNo ="";
             TIN = 0;
             BuildingNo = 0;
             TransactionUploadedFiles = new ObservableCollection<ReportFileModel>();
