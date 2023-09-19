@@ -108,6 +108,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsEntity = selectedType == "2" ? true : false;
                     UserType = selectedType;
                     IsAddNewCR = false;
+                    if (!IsEntity)
+                    {
+                        IsTinNoVisible = false;
+                    }
+                
                 });
             }
         }
