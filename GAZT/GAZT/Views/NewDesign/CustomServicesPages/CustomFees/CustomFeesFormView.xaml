@@ -214,25 +214,28 @@
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
+
                                    <numericinput:SfNumericTextBox
-                    Watermark="{x:Static ResourceManager:AppResources.Quantity}"
-                    Value="{Binding Quantity}"
-                    FontFamily="{StaticResource SomarRegular}"
-                    FontSize="15"
-                    HeightRequest="48"
-                    WidthRequest="150"
-                    EnableGroupSeparator="True"
-                    GroupSeparatorMode="Always"
-                    AllowDefaultDecimalDigits="False"
-                    WatermarkColor="{StaticResource NeutralGreay}"
-                    FormatString="n"
-                    TextAlignment="Start"
-                    HorizontalOptions="Fill"
-                    TextColor="#58595B"/>
+                                        Watermark="{x:Static ResourceManager:AppResources.Quantity}"
+                                        Value="{Binding Quantity}"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="15"
+                                        HeightRequest="48"
+                                        WidthRequest="150"
+                                        EnableGroupSeparator="True"
+                                        GroupSeparatorMode="Always"
+                                        AllowDefaultDecimalDigits="False"
+                                        WatermarkColor="{StaticResource NeutralGreay}"
+                                        FormatString="n"
+                                        TextAlignment="Start"
+                                        HorizontalOptions="Fill"
+                                        TextColor="#58595B"/>
+
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
                         <!--#region units View-->
+
                         <!--  unit Label  -->
                         <StackLayout IsVisible="false">
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -299,29 +302,34 @@
                                 FlowDirection="LeftToRight"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
-                                <numericinput:SfNumericTextBox
-                                    Watermark="{x:Static ResourceManager:AppResources.Productvalue}"
-                                    Value="{Binding TotalValue}"
-                                    FontFamily="{StaticResource SomarRegular}"
-                                    FontSize="15"
-                                    HeightRequest="48"
-                                    WidthRequest="150"
-                                    EnableGroupSeparator="True"
-                                    GroupSeparatorMode="Always"
-                                    AllowDefaultDecimalDigits="False"
-                                    WatermarkColor="{StaticResource NeutralGreay}"
-                                    FormatString="n"
-                                    TextAlignment="Start"
-                                    HorizontalOptions="Fill"
-                                    TextColor="#58595B"/>
+                                <StackLayout Orientation="Horizontal"
+                                             FlowDirection="LeftToRight">
 
-                                <inputLayout:SfTextInputLayout.TrailingView>
-                                    <custom:CustomLabel
-                                        WidthRequest="70"
-                                        FlowDirection="LeftToRight"
-                                        Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
-                                        Style="{StaticResource CaptionLabelGrey}" />
-                                 </inputLayout:SfTextInputLayout.TrailingView>
+                                      <numericinput:SfNumericTextBox
+                                            Watermark="{x:Static ResourceManager:AppResources.Productvalue}"
+                                            Value="{Binding TotalValue}"
+                                            FontFamily="{StaticResource SomarRegular}"
+                                            FontSize="15"
+                                            WidthRequest="180"
+                                            HeightRequest="48"
+                                            EnableGroupSeparator="True"
+                                            GroupSeparatorMode="Always"
+                                            AllowDefaultDecimalDigits="False"
+                                            WatermarkColor="{StaticResource NeutralGreay}"
+                                            FormatString="n"
+                                            HorizontalOptions="FillAndExpand"
+                                            TextAlignment="Start"
+                                            TextColor="#58595B"/>
+
+                    
+                                      <custom:CustomLabel
+                                            HorizontalOptions="EndAndExpand"
+                                            VerticalTextAlignment="Center"
+                                            VerticalOptions="Center"
+                                            Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
+                                            Style="{StaticResource CaptionLabelGrey}" />
+
+                                </StackLayout>
 
                             </inputLayout:SfTextInputLayout>
 
