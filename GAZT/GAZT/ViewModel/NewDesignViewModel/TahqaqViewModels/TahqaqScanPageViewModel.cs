@@ -264,7 +264,36 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 }
                             }
                        var res= qrValidation(eInvoiceQRModel);
-                        if (res=="")
+                            if (NoofTags <= 5 && res!="")
+                            {
+                                currentPosition = 0;
+                                tagNumber = 0;
+                                while (currentPosition < byteList.Length)
+                                {
+                                    // int tagNumber = byteList[currentPosition];
+
+                                    currentPosition++;
+                                    tagNumber++;
+                                    // Read Length
+                                    int valueLength = byteList[currentPosition];
+                                    Debug.WriteLine(valueLength);
+
+                                    currentPosition++;
+                                    // Read Message
+                                    int lastPosition = currentPosition + valueLength + 1;
+                                    var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                    String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                    Debug.WriteLine(messageAsText);
+                                    // Utf8Decoder().convert(message.toList());
+                                    currentPosition += valueLength;
+                                    SetDataToModel(tagNumber, messageAsText);
+                                    NoofTags = tagNumber;
+
+
+                                }
+                                res = qrValidation(eInvoiceQRModel);
+                            }
+                            if (res=="")
                         {
                                 bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false; 
                              await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
