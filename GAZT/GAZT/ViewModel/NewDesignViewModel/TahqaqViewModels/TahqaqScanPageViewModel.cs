@@ -264,7 +264,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 }
                             }
                        var res= qrValidation(eInvoiceQRModel);
-                            if (NoofTags <= 5 && res!="")
+                            if ((NoofTags <= 5 && res!="")|| (NoofTags <= 8 && res != ""))
                             {
                                 currentPosition = 0;
                                 tagNumber = 0;

@@ -10225,7 +10225,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a VAT Registered.
+        ///   Looks up a localized string similar to Not VAT Registered.
         /// </summary>
         public static string NotRegistered {
             get {

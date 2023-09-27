@@ -34,8 +34,8 @@ namespace GAZT.Helper
         public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.zatca.gov.sa";
         public static string PreProdBaseUrlForAuthentication = "https://logint.zatca.gov.sa";
 
-        public static string ProdBaseUrlForODataServices = "https://sapgateway.zatca.gov.sa:443";
-        public static string ProdBaseUrlForAuthentication = "https://login.zatca.gov.sa:443";
+        public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
+        public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
 
         #region Cookie Info
 

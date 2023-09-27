@@ -9506,7 +9506,7 @@ the Zakat, Tax and Customs
       <value>VAT Registered</value>
   </data>
   <data name="NotRegistered" xml:space="preserve">
-      <value>Not a VAT Registered</value>
+      <value>Not VAT Registered</value>
   </data>
   <data name="ThetotalamountplusVAT" xml:space="preserve">
       <value>The total amount plus VAT</value>
