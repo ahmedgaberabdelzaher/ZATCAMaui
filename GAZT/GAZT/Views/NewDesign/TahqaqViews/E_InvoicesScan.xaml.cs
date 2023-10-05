@@ -112,7 +112,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
             InitializeComponent();
             MainGrid.Children.Add(zxing);
             zxing.AutoFocus();
-          //  viewModel.ScanEnvoiceQrCommand.Execute(null);
+       //viewModel.ScanEnvoiceQrCommand.Execute(null);
            
         }
         protected override async void OnAppearing()

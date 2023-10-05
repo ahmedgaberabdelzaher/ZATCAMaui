@@ -685,12 +685,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus==""?0:int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
                         if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))
                         {
-                           
-                            if (NoofTags==5&& EInvEnfStatus == 0)
+
+                            if (NoofTags == 5 && EInvEnfStatus == 0)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                             }
-                            if (NoofTags == 5 && EInvEnfStatus == 1)
+                            else if (NoofTags == 5 && EInvEnfStatus == 1)
                             {
                                 IsShowMsgView = true;
                                 MessageTxt = AppResources.InvalidQrMessage;
@@ -706,14 +706,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            if (NoofTags==8)
-                            {
-                                RegistredStatusWithDisplaQRRslt();
-                               // IsShowSubmitReport = false;
-                            }
                             else
                             {
-                                RegistredStatusWithDisplaQRRslt();
+                                if (NoofTags == 8)
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                    // IsShowSubmitReport = false;
+                                }
+                                else
+                                {
+                                    RegistredStatusWithDisplaQRRslt();
+                                }
                             }
                         }
                         else
