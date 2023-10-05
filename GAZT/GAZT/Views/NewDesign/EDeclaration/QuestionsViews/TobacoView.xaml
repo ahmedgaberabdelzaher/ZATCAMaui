@@ -232,11 +232,13 @@
                     LeadingViewPosition="Inside"
                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     OutlineCornerRadius="15"
+                    FlowDirection="LeftToRight"
                     UnfocusedColor="{StaticResource NeutralGreay}">
 
                 <numericinput:SfNumericTextBox
                     Watermark="{x:Static ResourceManager:AppResources.Weight}"
                     Value="{Binding Weight}"
+                    FlowDirection="LeftToRight"
                     FontFamily="{StaticResource SomarRegular}"
                     FontSize="15"
                     HeightRequest="48"
@@ -275,6 +277,7 @@
                     FocusedColor="{StaticResource NeutralGreay}"
                     InputViewPadding="16,0,16,0"
                     LeadingViewPosition="Inside"
+                    FlowDirection="LeftToRight"
                     OutlineCornerRadius="15"
                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     UnfocusedColor="{StaticResource NeutralGreay}">
@@ -282,6 +285,7 @@
                     <numericinput:SfNumericTextBox
                         Watermark="{x:Static ResourceManager:AppResources.Quantity}"
                         Value="{Binding Quantity}"
+                        FlowDirection="LeftToRight"
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="15"
                         HeightRequest="48"

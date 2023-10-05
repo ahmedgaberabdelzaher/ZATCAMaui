@@ -214,6 +214,7 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                FlowDirection="LeftToRight"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                    <numericinput:SfNumericTextBox
@@ -221,6 +222,7 @@
                                         Value="{Binding Quantity}"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
+                                        FlowDirection="LeftToRight"
                                         HeightRequest="48"
                                         WidthRequest="150"
                                         EnableGroupSeparator="True"
