@@ -382,7 +382,7 @@
                                             Style="{StaticResource BodyLabelBlack}">
                                         <Label.FormattedText>
                                             <FormattedString>
-                                                <Span Text="{Binding FeesCalculatorResponse.vat}" />
+                                                <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{0:n}'}" />
                                                 <Span Text=" " />
                                                 <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                             </FormattedString>
@@ -443,7 +443,7 @@
                                     VerticalOptions="Start" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment}"/>
+                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{0:n}'}"/>
                                             <Span  Text="  " />
                                             <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                         </FormattedString>

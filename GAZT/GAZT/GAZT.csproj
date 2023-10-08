@@ -187,7 +187,7 @@
 	        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.1.1" />
 	        <PackageReference Include="Portable.JWT" Version="1.0.5" />
 	        <PackageReference Include="Plugin.myToolTip" Version="1.0.0.7" />
-	        <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="20.3.0.47" />
+	        <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="20.3.0.47" /> 
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />

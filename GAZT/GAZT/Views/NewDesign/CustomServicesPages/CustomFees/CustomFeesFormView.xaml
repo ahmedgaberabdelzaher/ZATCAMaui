@@ -445,7 +445,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding ProductValue,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding ProductValue,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -485,7 +485,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -514,7 +514,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.extraFees,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.extraFees,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -550,7 +550,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.excise,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.excise,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -594,7 +594,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -636,7 +636,7 @@
                                                        Style="{StaticResource BodyLabelBlack}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{}{0:#,##,#}'}" />
+                                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{0:n}'}" />
                                                             <Span Text=" " />
                                                             <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                         </FormattedString>
