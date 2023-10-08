@@ -214,6 +214,12 @@
     <PackageReference Include="Portable.JWT">
       <Version>1.0.5</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Core">
+      <Version>1.12.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Config">
+      <Version>121.4.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_Android.cs" />
@@ -526,7 +532,6 @@
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-CN\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-TW\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zu\viewer.properties" />
-    <GoogleServicesJson Include="PUSH Notifications\google-services.json" />
     <AndroidAsset Include="Assets\UIFontIcons.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -9953,6 +9958,9 @@
     <AndroidResource Include="Resources\drawable\vat_tile_listofsignup.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

@@ -779,6 +779,7 @@
     <BundleResource Include="Resources\info.png" />
     <BundleResource Include="Resources\info%402x.png" />
     <BundleResource Include="Resources\info%403x.png" />
+    <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -1096,6 +1097,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.myToolTip">
       <Version>1.0.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig">
+      <Version>8.10.0.3</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
