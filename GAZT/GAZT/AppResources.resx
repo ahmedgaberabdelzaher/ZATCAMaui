@@ -10485,4 +10485,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="PrivacyPolicy" xml:space="preserve">
        <value>Privacy Policy</value>
   </data>
+  <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>We're excited to let you know about our latest update and we strongly advise you to update the app.</value>
+  </data>
 </root>
