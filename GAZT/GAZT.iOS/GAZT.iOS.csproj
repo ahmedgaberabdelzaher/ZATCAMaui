@@ -779,8 +779,8 @@
     <BundleResource Include="Resources\info.png" />
     <BundleResource Include="Resources\info%402x.png" />
     <BundleResource Include="Resources\info%403x.png" />
-    <BundleResource Include="GoogleService-Info.plist" />
     <Compile Include="DependencyServices\ForceUpdate.cs" />
+    <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
