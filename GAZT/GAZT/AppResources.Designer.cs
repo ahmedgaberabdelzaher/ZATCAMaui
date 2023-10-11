@@ -13481,7 +13481,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المجموع.
+        ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string Total2 {
             get {
