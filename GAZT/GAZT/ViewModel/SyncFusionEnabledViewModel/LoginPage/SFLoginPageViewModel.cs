@@ -53,7 +53,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
                 {
                     VersionTracking.Track();
                     await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
-                    var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForeUpdate"));
+                    var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForceUpdate"));
 
                     switch (Device.RuntimePlatform)
                     {

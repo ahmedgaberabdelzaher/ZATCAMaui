@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "605927941971",
-    "project_id": "zatca-xamarin",
-    "storage_bucket": "zatca-xamarin.appspot.com"
+    "project_number": "976093875605",
+    "project_id": "zatca-adb9a",
+    "storage_bucket": "zatca-adb9a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:605927941971:android:a1cc0ae449095f5dda23a6",
+        "mobilesdk_app_id": "1:976093875605:android:c8d2e6ae8aea014fb87a9c",
         "android_client_info": {
           "package_name": "com.gazt.egazt"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAfhMjmpz4xsg1VSb5tkqdjT8e1bLWy_HA"
+          "current_key": "AIzaSyBrw2A4YgUOC4QvEy_C9MzLdqpCcfD_RCg"
         }
       ],
       "services": {

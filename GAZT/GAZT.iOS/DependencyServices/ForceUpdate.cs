@@ -24,7 +24,7 @@ namespace GAZT.iOS.DependencyServices
 
             Dictionary<object, object> dic = new Dictionary<object, object>
             {
-                { "IsForeUpdate", false },
+                { "IsForceUpdate", false },
                 { "BuildNumber_Android", string.Empty },
                 { "BuildNumber_iOS",  string.Empty },
 

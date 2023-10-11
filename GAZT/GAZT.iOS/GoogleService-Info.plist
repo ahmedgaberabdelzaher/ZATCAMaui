@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyAOqatvkLRg8wfjCxqunu8UxlEqlAIc0WI</string>
+	<string>AIzaSyBvSbp1qsypulYMT32YPuXQ8I2NMcuIi9A</string>
 	<key>GCM_SENDER_ID</key>
-	<string>605927941971</string>
+	<string>976093875605</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.gazt.egazt</string>
 	<key>PROJECT_ID</key>
-	<string>zatca-xamarin</string>
+	<string>zatca-adb9a</string>
 	<key>STORAGE_BUCKET</key>
-	<string>zatca-xamarin.appspot.com</string>
+	<string>zatca-adb9a.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:605927941971:ios:b4bcbe930ced34a2da23a6</string>
+	<string>1:976093875605:ios:c1e02fa8d0d4280ab87a9c</string>
 </dict>
 </plist>

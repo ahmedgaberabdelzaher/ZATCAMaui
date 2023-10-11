@@ -95,7 +95,7 @@ namespace EGAZT.AppConfigurations
         public static string FasahBaseUrl;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
 
-        private static string CheckTarget_Environment(string environment = "STG")
+        public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
             if (string.IsNullOrWhiteSpace(Target_Environment))
@@ -107,7 +107,6 @@ namespace EGAZT.AppConfigurations
         public static void GetBaseURL(string environment = "STG")
         {
             Target_Environment = CheckTarget_Environment(environment);
-            Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case "STG":
@@ -170,12 +169,7 @@ namespace EGAZT.AppConfigurations
         public static string GetClientID()
         {
             Target_Environment = CheckTarget_Environment();
-            Target_Environment = "Prod";
             string key = "";
-#if (DEBUG)
-            Target_Environment = "STG";
-#endif
-            Target_Environment = "Prod";
             switch (Target_Environment)
             {
                 case "STG":
@@ -193,10 +187,6 @@ namespace EGAZT.AppConfigurations
         public static string GetClientSecret()
         {
             Target_Environment = CheckTarget_Environment();
-#if (DEBUG)
-            Target_Environment = "STG";
-#endif
-            Target_Environment = "Prod";
             string key = "";
             switch (Target_Environment)
             {
@@ -255,7 +245,6 @@ namespace EGAZT.AppConfigurations
         public static string GetCustomsPaymentUrl()
         {
             Target_Environment = CheckTarget_Environment();
-            Target_Environment = "Prod";
             if (Target_Environment == "Prod")
             {
                 if (App.IsArabic)

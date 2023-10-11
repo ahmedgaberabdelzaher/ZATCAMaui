@@ -25,7 +25,7 @@ namespace GAZT.Droid.DependencyServices
 
             Dictionary<string, Java.Lang.Object> dic = new Dictionary<string, Java.Lang.Object>
             {
-                { "IsForeUpdate", false },
+                { "IsForceUpdate", false },
                  { "BuildNumber_Android", string.Empty },
                 { "BuildNumber_iOS",  string.Empty },
 
