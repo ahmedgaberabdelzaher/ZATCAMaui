@@ -6078,7 +6078,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We&apos;re excited to let you know about our latest update and we strongly advise you to update the app..
+        ///   Looks up a localized string similar to We would like to inform you about our latest update, and we kindly request that you update the application..
         /// </summary>
         public static string ForceUpdateMsg {
             get {

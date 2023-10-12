@@ -51,52 +51,64 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SFLoginPage_ViewModel
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    VersionTracking.Track();
-                    await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
-                    var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForceUpdate"));
-
-                    switch (Device.RuntimePlatform)
+                    try
                     {
-                        case Device.Android:
+                        if (Helper.NetworkCheck.IsInternet())
+                        {
+                            VersionTracking.Track();
+                            await DependencyService.Get<IForceUpdate>().FetchAndActivateAsync();
+                            var hasForceUpdateResult = bool.Parse(DependencyService.Get<IForceUpdate>().GetValue("IsForceUpdate"));
 
-                            var currentAndroidBuild = int.Parse(VersionTracking.CurrentBuild);
-                            var firebaseAndroidBuild = int.Parse(DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_Android"));
-
-                            if (hasForceUpdateResult && currentAndroidBuild < firebaseAndroidBuild)
+                            switch (Device.RuntimePlatform)
                             {
-                                await App.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
-                                await Launcher.OpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.gazt.egazt"));
-                                System.Diagnostics.Process.GetCurrentProcess().Kill();
+                                case Device.Android:
+
+                                    var currentAndroidBuild = int.Parse(VersionTracking.CurrentBuild);
+                                    var firebaseAndroidBuild = int.Parse(DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_Android"));
+
+                                    if (hasForceUpdateResult && currentAndroidBuild < firebaseAndroidBuild)
+                                    {
+                                        await App.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
+                                        await Launcher.OpenAsync(new Uri("https://play.google.com/store/apps/details?id=com.gazt.egazt"));
+                                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                                    }
+                                    break;
+
+
+                                case Device.iOS:
+                                    var currentiOSBuild = VersionTracking.CurrentBuild;
+                                    var currentiOSBuildInt = Array.ConvertAll(currentiOSBuild.Split('.'), Int32.Parse);
+
+                                    var firebaseiOSBuild = DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_iOS");
+                                    var firebaseiOSBuildInt = Array.ConvertAll(firebaseiOSBuild.Split('.'), Int32.Parse);
+
+                                    if (currentiOSBuild[0] > firebaseiOSBuild[0])
+                                        return;
+
+                                    else if (hasForceUpdateResult && (currentiOSBuildInt[0] < firebaseiOSBuildInt[0] ||
+                                                 currentiOSBuildInt[1] < firebaseiOSBuildInt[1] ||
+                                                 currentiOSBuildInt[2] < firebaseiOSBuildInt[2]))
+                                    {
+                                        await App.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
+                                        await Launcher.OpenAsync(new Uri("https://apps.apple.com/sa/app/zatca/id1517289036"));
+                                        System.Diagnostics.Process.GetCurrentProcess().Kill();
+                                    }
+
+
+                                    break;
+
+                                default:
+                                    break;
                             }
-                            break;
+                        }
+                      
 
-
-                        case Device.iOS:
-                            var currentiOSBuild = VersionTracking.CurrentBuild;
-                            var currentiOSBuildInt = Array.ConvertAll(currentiOSBuild.Split('.'), Int32.Parse);
-
-                            var firebaseiOSBuild = DependencyService.Get<IForceUpdate>().GetValue("BuildNumber_iOS");
-                            var firebaseiOSBuildInt = Array.ConvertAll(firebaseiOSBuild.Split('.'), Int32.Parse);
-
-                            if (currentiOSBuild[0] > firebaseiOSBuild[0])
-                                return;
-
-                            else if (hasForceUpdateResult && (currentiOSBuildInt[0] < firebaseiOSBuildInt[0] ||
-                                         currentiOSBuildInt[1] < firebaseiOSBuildInt[1] ||
-                                         currentiOSBuildInt[2] < firebaseiOSBuildInt[2]))
-                            {
-                                await App.Current.MainPage.DisplayAlert(AppResources.TPUpdate, AppResources.ForceUpdateMsg, AppResources.OKText);
-                                await Launcher.OpenAsync(new Uri("https://apps.apple.com/sa/app/zatca/id1517289036"));
-                                System.Diagnostics.Process.GetCurrentProcess().Kill();
-                            }
-                              
-
-                            break;
-
-                        default:
-                            break;
                     }
+                    catch (Exception ex)
+                    {
 
+                    }
+                 
                 });
 
             }

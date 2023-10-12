@@ -114,7 +114,7 @@
 
 --linkskip=Microsoft.Practices.ServiceLocation</MtouchExtraArgs>
     <IOSDebuggerPort>10001</IOSDebuggerPort>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>ZatcaDevProfole</CodesignProvision>
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
