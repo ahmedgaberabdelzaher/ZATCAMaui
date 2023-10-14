@@ -25,14 +25,14 @@ namespace GAZT.Helper
         public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
         public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
 
-        public static string QABaseUrlForODataServices = "https://sapgatewayqa.zatca.gov.sa";
-        public static string QABaseUrlForAuthentication = "https://loginqa.zatca.zatca.sa:443";
+        public static string QABaseUrlForODataServices = "https://sapgatewayqa.gazt.gov.sa";
+        public static string QABaseUrlForAuthentication = "https://loginqa.gazt.gov.sa:443";
 
-        public static string UatBaseUrlForODataServices = "https://sapgatewayuat.zatca.gov.sa";
-        public static string UatBaseUrlForAuthentication = "https://loginu.gazt.zatca.sa";
+        public static string UatBaseUrlForODataServices = "https://sapgatewayuat.gazt.gov.sa";
+        public static string UatBaseUrlForAuthentication = "https://loginu.gazt.gov.sa";
 
-        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.zatca.gov.sa";
-        public static string PreProdBaseUrlForAuthentication = "https://logint.zatca.gov.sa";
+        public static string PreProdBaseUrlForODataServices = "https://sapgatewayt.gazt.gov.sa";
+        public static string PreProdBaseUrlForAuthentication = "https://logint.gazt.gov.sa";
 
         public static string ProdBaseUrlForODataServices = "https://sapgateway.gazt.gov.sa:443";
         public static string ProdBaseUrlForAuthentication = "https://login.gazt.gov.sa:443";
@@ -40,14 +40,14 @@ namespace GAZT.Helper
         #region Cookie Info
 
         public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
-        public static string QADomainForCookies = "loginqa.zatca.gov.sa";
-        public static string PreprodDomainForCookies = "logint.zatca.gov.sa";
-        public static string UatDomainForCookies = "loginu.zatca.gov.sa";
+        public static string QADomainForCookies = "loginqa.gazt.gov.sa";
+        public static string PreprodDomainForCookies = "logint.gazt.gov.sa";
+        public static string UatDomainForCookies = "loginu.gazt.gov.sa";
 
-        public static string ProdDomainForCookies = "login.zatca.gov.sa";
+        public static string ProdDomainForCookies = "login.gazt.gov.sa";
 
         public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
-        public static string QAPrepprodProdPartialDomainForCookies = ".zatca.gov.sa";
+        public static string QAPrepprodProdPartialDomainForCookies = ".gazt.gov.sa";
 
         public static string LanguageCookieNameForLogin = "langMobile";
 
@@ -471,8 +471,8 @@ namespace GAZT.Helper
         public static string GAZTSuggestURLen = "https://zatca.gov.sa/en/ContactUs/Pages/SuggestAndComplaintMV.aspx";
         public static string GAZTSuggestURLar = "https://zatca.gov.sa/ar/ContactUs/Pages/SuggestAndComplaintMV.aspx";
 
-        public static string GAZTVisitPortalUrlEN = "https://login.zatca.gov.sa/irj/portal?ume.logon.locale=en&login=X";
-        public static string GAZTVisitPortalUrlAR = "https://login.zatca.gov.sa/irj/portal?ume.logon.locale=ar&login=X";
+        public static string GAZTVisitPortalUrlEN = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=en&login=X";
+        public static string GAZTVisitPortalUrlAR = "https://login.gazt.gov.sa/irj/portal?ume.logon.locale=ar&login=X";
 
 
         public static string ZAtcaCustomsTarrifsEN = "https://www.customs.gov.sa/en/Integrated-Tariff-appview";

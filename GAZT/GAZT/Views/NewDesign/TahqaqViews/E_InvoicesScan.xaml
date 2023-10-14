@@ -240,9 +240,9 @@
                                 </Grid>
                                 <BoxView Style="{StaticResource lineSeperator}" />
                                 <Grid
-                                    ColumnDefinitions="*"
+                                    ColumnDefinitions="*,*"
                                     ColumnSpacing="10"
-                                    RowDefinitions="auto,auto,auto,auto">
+                                    RowDefinitions="auto,auto">
                                     <Label
                                         Grid.Row="0"
                                         Grid.Column="0"
@@ -254,23 +254,15 @@
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{Binding VatNumber}" />
                                     <Label
-                                        Grid.Row="2"
-                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
                                         Style="{StaticResource BodyLabelGrey}"
                                         Text="{x:Static ResourceManager:AppResources.TimeStamp}" />
                                     <Label
-                                        Grid.Row="3"
-                                        Grid.Column="0" FlowDirection="LeftToRight" HorizontalTextAlignment="Start"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
                                         Style="{StaticResource BodyLabelBlack}"
-                                        Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" >
-                                        <Label.Triggers>
-                                            <DataTrigger TargetType="Label" Binding="{Binding AppDirection}" Value="RTL">
-                                                <Setter Property="HorizontalTextAlignment" Value="End"></Setter>
-
-                                            </DataTrigger>
-
-                                        </Label.Triggers>
-                                        </Label>
+                                        Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" />
                                 </Grid>
                                 <Label
                                     Grid.Row="0"

@@ -168,7 +168,7 @@ namespace EGAZT.AppConfigurations
 
         public static string GetClientID()
         {
-            Target_Environment = CheckTarget_Environment();
+         //   Target_Environment = CheckTarget_Environment();
             string key = "";
             switch (Target_Environment)
             {
@@ -186,7 +186,7 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetClientSecret()
         {
-            Target_Environment = CheckTarget_Environment();
+           // Target_Environment = CheckTarget_Environment();
             string key = "";
             switch (Target_Environment)
             {
@@ -244,7 +244,7 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetCustomsPaymentUrl()
         {
-            Target_Environment = CheckTarget_Environment();
+            //Target_Environment = CheckTarget_Environment();
             if (Target_Environment == "Prod")
             {
                 if (App.IsArabic)
