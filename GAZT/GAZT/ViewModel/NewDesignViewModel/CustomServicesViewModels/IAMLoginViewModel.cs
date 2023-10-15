@@ -50,8 +50,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void GetIAMToken(string url)
         {
+           
             string token = HttpUtility.ParseQueryString(new Uri(url).Query).Get("token");
-            if (token == "UserNotFound")
+
+            if (token == "UserNotFound" && CommingFrom == 1) return;
+
+            if (token == "UserNotFound" && CommingFrom != 1)
             {
                 IsNoUserShowMsg = true;
                 MessageTxt = AppResources.IAMUsernNotFoundMSg;

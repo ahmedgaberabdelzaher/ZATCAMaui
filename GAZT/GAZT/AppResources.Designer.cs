@@ -6078,6 +6078,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We would like to inform you about our latest update, and we kindly request that you update the application..
+        /// </summary>
+        public static string ForceUpdateMsg {
+            get {
+                return ResourceManager.GetString("ForceUpdateMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot password.
         /// </summary>
         public static string ForgotPassword {
@@ -10225,7 +10234,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a VAT Registered.
+        ///   Looks up a localized string similar to Not VAT Registered.
         /// </summary>
         public static string NotRegistered {
             get {

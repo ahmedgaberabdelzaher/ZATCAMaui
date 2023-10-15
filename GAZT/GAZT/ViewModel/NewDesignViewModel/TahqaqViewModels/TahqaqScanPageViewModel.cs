@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models.EinvoiceModels;
+using EGAZT.Models.SurveyModels;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
@@ -21,7 +22,7 @@ using Xamarin.Forms;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 {
-    public class TahqaqScanPageViewModel:BaseViewModel
+    public class TahqaqScanPageViewModel : BaseViewModel
     {
         string _scanCode;
         public string scanCode { get { return _scanCode; } set { _scanCode = value; RaisePropertyChanged(); } }
@@ -39,20 +40,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
 
         ITahqaqServices _tahqaqServices;
-        public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService,ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
+        public TahqaqScanPageViewModel(INavigationService navigationService, IDialogService dialogService, ITahqaqServices tahqaqServices) : base(navigationService, dialogService)
         {
             _tahqaqServices = tahqaqServices;
             eInvoiceQRModel = new EInvoiceQRModel();
             //  scanCode = "SAA6216738003275";
             //ScanEnvoiceQrCommand.Execute(null);
-       
+
         }
 
         string _RegisterStatus;
         public string RegisterStatus { get { return _RegisterStatus; } set { _RegisterStatus = value; RaisePropertyChanged(); } }
 
         bool _IsShowRsltView;
-        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value;  RaisePropertyChanged(); } }
+        public bool IsShowRsltView { get { return _IsShowRsltView; } set { _IsShowRsltView = value; RaisePropertyChanged(); } }
 
         bool _IsShowSubmitReport;
         public bool IsShowSubmitReport { get { return _IsShowSubmitReport; } set { _IsShowSubmitReport = value; RaisePropertyChanged(); } }
@@ -61,10 +62,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         bool _IsShowFailRsltView;
         public bool IsShowFailRsltView { get { return _IsShowFailRsltView; } set { _IsShowFailRsltView = value; RaisePropertyChanged(); } }
 
-        bool _IsShowScanView=true;
+        bool _IsShowScanView = true;
         public bool IsShowScanView { get { return _IsShowScanView; } set { _IsShowScanView = value; RaisePropertyChanged(); } }
 
-        bool _IsCheckWithCode ;
+        bool _IsCheckWithCode;
         public bool IsCheckWithCode { get { return _IsCheckWithCode; } set { _IsCheckWithCode = value; RaisePropertyChanged(); } }
 
         Pack _QrRslt;
@@ -90,7 +91,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             }
         }
 
-         bool _IsScanning = true;
+        bool _IsScanning = true;
         public bool IsScanning
         {
             get { return _IsScanning; }
@@ -119,10 +120,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         scanCode = Result.Text;
                         await CheckQr();
                         IsLoading = false;
-                       
+
                     });
 
-                   
+
                 });
             }
         }
@@ -143,14 +144,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         public bool IsBase64(string base64String)
         {//|| base64String.Length % 4 != 0
-            if (string.IsNullOrEmpty(base64String) 
+            if (string.IsNullOrEmpty(base64String)
                || !Regex.IsMatch(base64String, @"^[a-zA-Z0-9\+/]*={0,3}$", RegexOptions.None))
                 return false;
 
             try
             {
-                Convert.FromBase64String(base64String);
-                return true;
+                try
+                {
+                    Convert.FromBase64String(base64String);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    return false;
+                }
+
             }
             catch (Exception exception)
             {
@@ -169,80 +178,111 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 return new Command(() =>
 
                 {
-                    Device.BeginInvokeOnMainThread(async() =>
+                    Device.BeginInvokeOnMainThread(async () =>
                     {
                         try
                         {
 
-                       IsLoading = true;
+                            IsLoading = true;
 
-                        // string code = Result.Text;
-                        string code = scanCode;
-                        if (code=="-1")
-                        {
-                            return;
-                        }
-                       /* if (code.Length!=15)
-                        {
-                            // string code = "ASR2YWx1ZXMuYWRkcmVzcy5raXRvcGlTYS50YXhwYXllck5hbWUCDzMxMDQwOTY1NTcwMDAwMwMYMjAyMi0wNy0xOVQxMzozMjo0My40MTFaBAU0Mi4wMAUENS40OA==";
-                      IsShowMsgView = true;
-                            MessageTxt = AppResources.InValidCode;
-                        }*/
-                        if (!IsBase64(code))
-                        {
-                            eInvoiceQRModel.InvalidData = code;
-                              await AddQRLog(eInvoiceQRModel);
+                            // string code = Result.Text;
+                            string code = scanCode;
+                            //   code = "AYGO2KfZhNi02LHZg9ipINin2YTYudin2YTZhdmK2Kkg2KfZhNmF2YjYp9ivINin2YTYqNmG2KfYoSDYp9mE2YXYrdiv2YjYr9ipINio2YrZhtmD2LMgfCBUaGUgSW50ZXJuYXRpb25hbCBDby4gZm9yIEJ1aWxkaW5nIE1hdGVyaWFscyBMdGQiQklORVgiLgIPMzAwMjQ1MTk4NzAwMDAzAxQyMDIzLTA3LTEyVDE1OjIxOjQ1WgQGMTcyLjUwBQUyMi41MAYABwAIAAkA";
+                            // code = "AT5KYWhleiBJbnRlcm5hdGlvbmFsIENvbXBhbnkgZm9yIEluZm9ybWF0aW9uIFN5c3RlbXMgVGVjaG5vbG9neQIPMzEwMTkxNjI3NDEwMDAzAxMyMDIzLTAxLTA2VDE0OjIyOjA4BAQ5LjAwBQQxLjE3";
+                            if (code == "-1")
+                            {
+                                return;
+                            }
+                            /* if (code.Length!=15)
+                             {
+                                 // string code = "ASR2YWx1ZXMuYWRkcmVzcy5raXRvcGlTYS50YXhwYXllck5hbWUCDzMxMDQwOTY1NTcwMDAwMwMYMjAyMi0wNy0xOVQxMzozMjo0My40MTFaBAU0Mi4wMAUENS40OA==";
+                           IsShowMsgView = true;
+                                 MessageTxt = AppResources.InValidCode;
+                             }*/
+                            if (!IsBase64(code))
+                            {
+                                eInvoiceQRModel.InvalidData = code;
+                                await AddQRLog(eInvoiceQRModel);
                                 IsLoading = false;
-                            IsShowMsgView = true;
-                            MessageTxt = AppResources.InvalidQrMessage;
-                            return;
-                        }
-                        //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
-                        byte[] byteList = Convert.FromBase64String(code);
-                        int currentPosition = 0;
-                        // NoofTags = byteList.Length;
-                        while (currentPosition<byteList.Length)
-                        {
-                            int tagNumber = byteList[currentPosition];
-                           
-                            currentPosition++;
-                            // Read Length
-                            int valueLength = byteList[currentPosition];
-                            Debug.WriteLine(valueLength);
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                                return;
+                            }
+                            //  code = "AUrYtNix2YPYqSDYp9mE2K/YsdmK2LMg2YTZhNiu2K/Zhdin2Kog2KfZhNio2KrYsdmI2YTZitipINmI2KfZhNmG2YLZhNmK2KfYqgIPMzAwMDU2NDYyMzAwMDAzAxQyMDIzLTA1LTEzVDE5OjI1OjU5WgQFNTAuMDIFBDYuNTIGLFhLcyt4M2VrM1JvY21yS2lMdzdhZVZuaitNZDdHRnhML2NjNmk3dmRRRkE9B2BNRVFDSUtNblpOeHlYb3NOTGpKalZPcWQvUDI5WHJxQi95TmJ0ZmQ1Wm5PcGRXVGtBaUJWQUE2eFNTWkxHekFsaGdqcVlyQmFobHZIZzVZTkdHVUFGZW9BTXgyUVpBPT0IWDBWMBAGByqGSM49AgEGBSuBBAAKA0IABI/9OKmqTjHjta6j6JOIz11T1SRSiy9OCaTaepysFnlhzgeii+nknOn8bOYqsvq2xuY6GaPPKBD+7qytEWk6cWgJRjBEAiA2MdHOYnHsV7VtGZFcxuNek53vqGO//1OZO70/oTyZqQIgLF1Vc+ANeI0cqw52ytxWJWLb7KqC+q+wRBckr+6j0hE=";
+                            byte[] byteList = Convert.FromBase64String(code);
+                            int currentPosition = 1;
+                            // NoofTags = byteList.Length;
+                            int tagNumber = 0;
+                            while (currentPosition < byteList.Length)
+                            {
+                                // int tagNumber = byteList[currentPosition];
+                                tagNumber++;
+                                currentPosition++;
+                                // Read Length
+                                int valueLength = byteList[currentPosition];
+                                Debug.WriteLine(valueLength);
 
-                            currentPosition++;
-                            // Read Message
-                            int lastPosition = currentPosition + valueLength+1;
-                            var message = byteList.Skip(currentPosition).Take(lastPosition- (currentPosition + 1));
-                            String messageAsText = Encoding.UTF8.GetString(message.ToArray());
-                            Debug.WriteLine(messageAsText);
-                            // Utf8Decoder().convert(message.toList());
-                            currentPosition += valueLength;
-                            SetDataToModel(tagNumber, messageAsText);
+                                currentPosition++;
+                                // Read Message
+                                int lastPosition = currentPosition + valueLength + 1;
+                                var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                Debug.WriteLine(messageAsText);
+                                // Utf8Decoder().convert(message.toList());
+                                currentPosition += valueLength;
+                                SetDataToModel(tagNumber, messageAsText);
                                 NoofTags = tagNumber;
+                                // tagNumber++;
+
+                            }
+                            if (NoofTags < 5)
+                            {
+                                currentPosition = 0;
+                                tagNumber = 0;
+                                while (currentPosition < byteList.Length)
+                                {
+                                    // int tagNumber = byteList[currentPosition];
+
+                                    currentPosition++;
+                                    tagNumber++;
+                                    // Read Length
+                                    int valueLength = byteList[currentPosition];
+                                    Debug.WriteLine(valueLength);
+
+                                    currentPosition++;
+                                    // Read Message
+                                    int lastPosition = currentPosition + valueLength + 1;
+                                    var message = byteList.Skip(currentPosition).Take(lastPosition - (currentPosition + 1));
+                                    String messageAsText = Encoding.UTF8.GetString(message.ToArray());
+                                    Debug.WriteLine(messageAsText);
+                                    // Utf8Decoder().convert(message.toList());
+                                    currentPosition += valueLength;
+                                    SetDataToModel(tagNumber, messageAsText);
+                                    NoofTags = tagNumber;
 
 
-                        }
-                       var res= qrValidation(eInvoiceQRModel);
-                        if (res=="")
-                        {
-                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false; 
-                             await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
+                                }
+                            }
+                            var res = qrValidation(eInvoiceQRModel);
+                            if (res == "")
+                            {
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false;
+                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
 
                                 ///Old Scenario
-                            /*    IsShowRsltView = true;
-                            IsShowScanView = false;
-                            await GetQrData(eInvoiceQRModel.vatNumber);*/
-                        }
-                        else
-                        {
-                            IsShowMsgView = true;
-                            MessageTxt = AppResources.InvalidQrMessage;
+                                /*    IsShowRsltView = true;
+                                IsShowScanView = false;
+                                await GetQrData(eInvoiceQRModel.vatNumber);*/
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
 
-                        }
-                       
-                       IsLoading = false;
-                       await AddQRLog(eInvoiceQRModel);
+                            }
+
+                            IsLoading = false;
+                            await AddQRLog(eInvoiceQRModel);
 
                         }
                         catch (Exception ex)
@@ -256,7 +296,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                     });
 
-                   
+
                 });
             }
         }
@@ -271,23 +311,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         eInvoiceQRModel.sellerName = messageAsText.Trim();
                         SellerName = messageAsText.Trim();
                         Debug.WriteLine($"Seller Name {messageAsText}");
- break;
+                        break;
                     }
-                   
+
 
                 case 2:
                     {
                         eInvoiceQRModel.vatNumber = messageAsText.Trim();
                         VatNumber = messageAsText.Trim();
                         Debug.WriteLine($"Vat No {messageAsText}");
-                    break;
+                        break;
                     }
-                   
+
 
                 case 3:
                     {
                         eInvoiceQRModel.timeStamp = messageAsText.Trim();
-                       // TimeStamp = messageAsText.Trim();
+                        // TimeStamp = messageAsText.Trim();
 
                     }
                     break;
@@ -307,7 +347,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         VatAmount = messageAsText.Trim();
                         break;
                     }
-                   
+
 
                 case 6:
                     {
@@ -315,7 +355,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         Debug.WriteLine($"invoic eHash {messageAsText}");
                         break;
                     }
-                    
+
 
                 case 7:
                     {
@@ -352,7 +392,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "Empty Seller Name";
             }
-            else if(String.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
+            else if (String.IsNullOrEmpty(qRcodeModelDetails.vatNumber))
             {
                 result = "Empty Vat Number";
             }
@@ -360,7 +400,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "VAT numbers is not Valid ";
             }
-            else if (qRcodeModelDetails.vatNumber.Length>15)
+            else if (qRcodeModelDetails.vatNumber.Length > 15)
             {
                 result = "VAT numbers more  than 10 digit";
             }
@@ -381,6 +421,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 result = "Date is not Valid";
             }
+
             return result;
         }
 
@@ -389,16 +430,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             string pattern = @"(\\.[0-9]+)?$";
             bool result = false;
             Regex regExp = new Regex(pattern);
-           result= !regExp.IsMatch(value) ?  false : true;
+            result = !regExp.IsMatch(value) ? false : true;
             return result;
         }
 
         bool compareTwoDates(string dateValue)
         {
-          
-            var now =DateTime.Now;
-           var tempDate = DateTime.Parse(dateValue);
-            if (tempDate.Date<now.Date)
+
+            var now = DateTime.Now;
+            var tempDate = DateTime.Parse(dateValue);
+            if (tempDate.Date < now.Date)
             {
                 return false;
             }
@@ -409,14 +450,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         {
             try
             {
-               var culture = CultureInfo.InvariantCulture;
+                var culture = CultureInfo.InvariantCulture;
                 DateTime myDate = DateTime.Now;
                 DateTimeStyles styles = DateTimeStyles.AdjustToUniversal;
 
-                if (DateTime.TryParse(dateValue,culture,styles, out myDate))
-                
-               /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
-    DateTimeStyles.AdjustToUniversal, out myDate))*/
+                if (DateTime.TryParse(dateValue, culture, styles, out myDate))
+                /*if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture,
+       DateTimeStyles.AdjustToUniversal, out myDate))*/
+                /* if(DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
+     DateTimeStyles.AdjustToUniversal, out myDate))*/
                 {//2023-05-13T19:25:59Z
                     /* var date = DateTime.TryParseExact(dateValue, "yyyy-MM-ddTHH:mm:ssZ", CultureInfo.InvariantCulture,
        DateTimeStyles.AdjustToUniversal,out myDate);*/
@@ -429,7 +471,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         myDate = myDate.ToUniversalTime();
                         olddate = myDate;
                     }
-                   TimeStamp = olddate.ToString("dd/MM/yyyy HH:mm");
+                    TimeStamp = olddate.ToString("dd/MM/yyyy HH:mm");
                     return true;
 
                 }
@@ -447,7 +489,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             try
             {
                 var request = new GeolocationRequest(GeolocationAccuracy.Medium, TimeSpan.FromSeconds(10));
-               var cts = new CancellationTokenSource();
+                var cts = new CancellationTokenSource();
                 var location = await Geolocation.GetLocationAsync(request, cts.Token);
 
                 return location;
@@ -485,7 +527,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                     {
 
                     }
-                   
+
                 });
             }
         }
@@ -494,7 +536,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         {
             get
             {
-                return new Command(async() =>
+                return new Command(async () =>
 
                 {
 
@@ -503,8 +545,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         if (!String.IsNullOrEmpty(scanCode))
                         {
 
-                        FromCheckWithCode = true;
-                       await CheckQr();
+                            FromCheckWithCode = true;
+                            await CheckQr();
                         }
                         else
                         {
@@ -529,23 +571,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 return new Command(() =>
                 {
                     scanCode = "";
-                    if (IsCheckWithCode|| IsShowRsltView||IsShowFailRsltView)
+                    if (IsCheckWithCode || IsShowRsltView || IsShowFailRsltView)
                     {
                         if (FromCheckWithCode)
                         {
-                            IsShowRsltView = IsShowFailRsltView= FromCheckWithCode = false;
+                            IsShowRsltView = IsShowFailRsltView = FromCheckWithCode = false;
                             IsCheckWithCode = true;
                             return;
                         }
-                        IsCheckWithCode=IsShowRsltView=IsShowFailRsltView= FromCheckWithCode = false;
-                         IsShowScanView = true;
+                        IsCheckWithCode = IsShowRsltView = IsShowFailRsltView = FromCheckWithCode = false;
+                        IsShowScanView = true;
                         IsAnalyzing = IsScanning = true;
-
+                        _navigationService.GoBack();
 
                         return;
                     }
                     _navigationService.GoBack();
-                   
+
                 });
             }
         }
@@ -559,27 +601,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (Helper.NetworkCheck.IsInternet())
                 {
 
-                var data = await _tahqaqServices.GetEInvoiceData(vatId);
-                if (data.IsSuccessStatusCode)
-                {
-                    RegisterStatus = AppResources.Registered;
-                    IsShowSubmitReport = false;
-                }
-                else if (data.StatusCode==System.Net.HttpStatusCode.BadRequest)
-                {
-                    RegisterStatus = AppResources.NotRegistered;
-                    IsShowSubmitReport = true;
-                }
-                else
-                {
+                    var data = await _tahqaqServices.GetEInvoiceData(vatId);
+                    if (data.IsSuccessStatusCode)
+                    {
+                        RegisterStatus = AppResources.Registered;
+                        IsShowSubmitReport = false;
+                    }
+                    else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
+                    {
+                        RegisterStatus = AppResources.NotRegistered;
+                        IsShowSubmitReport = true;
+                    }
+                    else
+                    {
                         RegisterStatus = AppResources.unableToVerify;
-                }
+                    }
 
 
                 }
                 else
                 {
-                    RegisterStatus= AppResources.unableToVerify;
+                    RegisterStatus = AppResources.unableToVerify;
                 }
 
                 IsLoading = false;
@@ -588,10 +630,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
 
             }
-            finally {
+            finally
+            {
                 IsLoading = false;
             }
-       
+
         }
 
         public async Task GetQrDataEradApi(string TinNo)
@@ -602,20 +645,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 if (Helper.NetworkCheck.IsInternet())
                 {
                     IsClearedStatusVisible = false;
-                    var body = new EradQrBody() { IDTYPE="3", IDNUMBER=TinNo};
+                    var body = new EradQrBody() { IDTYPE = "3", IDNUMBER = TinNo };
                     VATLookUp vatLookUp = await WebServiceManager.GAZTGetVATLookUp("A", "3", TinNo);
                     //// Old APi T2
                     // var body = new EradQrBody() { IDTYPE="1",IDNUMBER= "3001720579" };
-                   // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
+                    // var data = await _tahqaqServices.GetEInvoiceDataEradAPI(body);
                     if (vatLookUp.d != null)
                     {
                         //   var content =await data.Content.ReadAsStringAsync();
                         ///  var qrResponseData = JsonConvert.DeserializeObject<EradQRResponseModel>(content);
-                        var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus==""?0:int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
+                        var EInvEnfStatus = vatLookUp.d.results[0].EinvEnfStatus == "" ? 0 : int.Parse(vatLookUp.d.results[0].EinvEnfStatus);
                         if (string.IsNullOrEmpty(vatLookUp.d.results[0].Description))
                         {
-                           
-                            if (NoofTags==5&& EInvEnfStatus == 0)
+
+                            if (NoofTags == 5 && EInvEnfStatus == 0)
                             {
                                 RegistredStatusWithDisplaQRRslt();
                             }
@@ -635,10 +678,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 IsClearedStatusVisible = true;
 
                             }
-                            if (NoofTags==8)
+                            if (NoofTags == 8)
                             {
                                 RegistredStatusWithDisplaQRRslt();
-                               // IsShowSubmitReport = false;
+                                // IsShowSubmitReport = false;
                             }
                             else
                             {
@@ -647,20 +690,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         }
                         else
                         {
-                            if (NoofTags == 5)
-                            {
-                                RegisterStatus = AppResources.NotRegistered;
-                                IsShowSubmitReport = true;
-                                IsShowRsltView = true;
-                                IsShowScanView = false;
-                            }
-                           else
-                            {
-                                IsShowMsgView = true;
-                                MessageTxt = AppResources.InvalidQrMessage;
-                            }
+                            /* if (NoofTags == 5)
+                             {*/
+                            RegisterStatus = AppResources.NotRegistered;
+                            IsShowSubmitReport = true;
+                            IsShowRsltView = true;
+                            IsShowScanView = false;
+                            /* }
+                            else
+                             {
+                                 IsShowMsgView = true;
+                                 MessageTxt = AppResources.InvalidQrMessage;
+                             }*/
                         }
-                  
+
                     }
                     /*else if (data.StatusCode == System.Net.HttpStatusCode.BadRequest)
                     {
@@ -680,7 +723,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 {
                     IsShowMsgView = true;
                     MessageTxt = AppResources.unableToVerify;
-                   // RegisterStatus = AppResources.unableToVerify;
+                    // RegisterStatus = AppResources.unableToVerify;
                 }
 
                 IsLoading = false;
@@ -710,27 +753,27 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         {
             IsLoading = true;
             var location = await GetCurrentLocation();
-            if (location!=null)
+            if (location != null)
             {
-      eInvoiceQRModel.latitude = location.Latitude.ToString();
-      eInvoiceQRModel.longitude = location.Longitude.ToString();
+                eInvoiceQRModel.latitude = location.Latitude.ToString();
+                eInvoiceQRModel.longitude = location.Longitude.ToString();
             }
             var model = new List<EInvoiceQRModel>();
             model.Add(eInvoiceQRModel);
             var data = await _tahqaqServices.AddQrData(model);
             if (data.IsSuccessStatusCode)
             {
-              //  RegisterStatus = AppResources.Registered;
+                //  RegisterStatus = AppResources.Registered;
             }
             else
             {
-               // RegisterStatus = AppResources.NotRegistered;
+                // RegisterStatus = AppResources.NotRegistered;
             }
             IsLoading = false;
         }
 
 
-        public ZXing.Result Result { get; set; } 
+        public ZXing.Result Result { get; set; }
         public async Task CheckQr()
         {
             IsLoading = true;
@@ -742,7 +785,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 ScanCustomerId = 1,
                 ScanDateTime = DateTime.Now,
                 ScanDeviceId = "9DF468D3-C8914EFE-BC19-121E35AB598",
-                ScanDeviceLanguage =App.IsArabic?"Arabic":"English",
+                ScanDeviceLanguage = App.IsArabic ? "Arabic" : "English",
                 ScanDeviceName = Xamarin.Essentials.DeviceInfo.Name,
                 ScanDeviceOS = Xamarin.Essentials.DeviceInfo.Platform.ToString(),
                 ScanDeviceOSVersion = Xamarin.Essentials.DeviceInfo.VersionString,
@@ -755,11 +798,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 var contet = await data.Content.ReadAsStringAsync();
                 var res = JsonConvert.DeserializeObject<QRResponseModel>(contet);
-                if (res.IsValid&& res.IsPackCode)
+                if (res.IsValid && res.IsPackCode)
                 {
                     IsShowRsltView = true;
                     IsShowScanView = false;
-             
+
                     QrRslt = res.pack;
 
                 }

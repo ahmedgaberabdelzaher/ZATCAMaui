@@ -10416,4 +10416,7 @@ info@zatca.gov.sa</value>
       <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
+    <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>نود ان نخبرك بآخر تحديث لدينا ويرجي تحديث التطبيق</value>
+  </data>
 </root>

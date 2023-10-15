@@ -37,7 +37,7 @@ namespace GAZT.Droid
             PreventLinkerFromStrippingCommonLocalizationReferences();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            Firebase.FirebaseApp.InitializeApp(this);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();

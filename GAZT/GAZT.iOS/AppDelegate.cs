@@ -51,6 +51,7 @@ namespace GAZT.iOS
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
+            Firebase.Core.App.Configure();
             Xamarin.Forms.Forms.Init();
             KeyboardOverlapRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();

@@ -12,6 +12,7 @@ using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Converters;
 using Xamarin.Essentials;
 using Acr.UserDialogs;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -23,6 +24,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
         TravelerDeclarationResponse _TravelerDeclarationResponse = new TravelerDeclarationResponse();
         public TravelerDeclarationResponse TravelerDeclarationResponse { get { return _TravelerDeclarationResponse; } set { _TravelerDeclarationResponse = value; RaisePropertyChanged(); } }
 
+        string sADADNewTXT { get; set; }
+
+        public string SADADNewTXT
+        {
+            get { return sADADNewTXT; }
+
+            set
+            {
+                sADADNewTXT = value;
+                RaisePropertyChanged();
+            }
+        }
         public PaymentTypes SelctedPaymentType { get; set; }
 
         string priceText;
@@ -72,15 +85,26 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command(async () =>
                 {
-                    if (SelctedPaymentType == PaymentTypes.SADAD)
+                    try
                     {
-                        IsShowMsgView = true;
-                        MessageTxt = AppResources.EDEcelarationSADADFrstMsg + TravelerDeclarationResponse.sadadNumber + $"\n{AppResources.EDEcelarationSADADSecondMsg}";
+                        if (SelctedPaymentType == PaymentTypes.SADAD)
+                        {
+
+                            MessageTxt = $"{AppResources.EDEcelarationSADADFrstMsg} {TravelerDeclarationResponse.sadadNumber}";
+                            SADADNewTXT=   AppResources.EDEcelarationSADADSecondMsg;
+                            IsShowMsgView = true;
+                        }
+                        else
+                        {
+                            SADADNewTXT = string.Empty;
+                            _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                       _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
+
                     }
+                  
 
                 });
             }

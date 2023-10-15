@@ -9506,7 +9506,7 @@ the Zakat, Tax and Customs
       <value>VAT Registered</value>
   </data>
   <data name="NotRegistered" xml:space="preserve">
-      <value>Not a VAT Registered</value>
+      <value>Not VAT Registered</value>
   </data>
   <data name="ThetotalamountplusVAT" xml:space="preserve">
       <value>The total amount plus VAT</value>
@@ -10484,5 +10484,8 @@ We regret that you are unable to use the service at this time. Please sign up fo
   </data>
     <data name="PrivacyPolicy" xml:space="preserve">
        <value>Privacy Policy</value>
+  </data>
+  <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>We would like to inform you about our latest update, and we kindly request that you update the application.</value>
   </data>
 </root>

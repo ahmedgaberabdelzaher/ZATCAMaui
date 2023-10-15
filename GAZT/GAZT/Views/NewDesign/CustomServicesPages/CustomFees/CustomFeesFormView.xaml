@@ -9,7 +9,6 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:numericinput="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
     HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}">
