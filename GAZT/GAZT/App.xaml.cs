@@ -26,6 +26,7 @@ using Newtonsoft.Json;
 using GAZT.Helper;
 using EGAZT.AppConfigurations;
 using Environment = System.Environment;
+using EGAZT.Views.NewDesign.Common.NativeNafath;
 
 namespace EGAZT
 {
@@ -472,11 +473,12 @@ namespace EGAZT
             if (!hasKey)
             {
                 navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
-
+                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
             }
             else
             {
                 navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
 
             }
 
@@ -510,10 +512,10 @@ namespace EGAZT
                             _ = Task.Run(() => WebServiceManager.GAZTLogOff());
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                     });
                 }
@@ -752,11 +754,11 @@ namespace EGAZT
                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
                });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
