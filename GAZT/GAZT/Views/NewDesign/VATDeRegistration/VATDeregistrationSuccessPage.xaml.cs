@@ -90,10 +90,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -104,10 +104,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

@@ -88,9 +88,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.MobileCodes = this.mobileData;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
        
@@ -101,13 +101,12 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             MessagingCenter.Send(this, "SelectedItem", dataItem.Telefto.ToString());
 
             MessagingCenter.Send(this, "SelectedCountryCode", dataItem.Land1.ToString());
-            Console.WriteLine("MobileCountryCode", dataItem.Land1.ToString());
             PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void Close_Tapped(object sender, EventArgs e)

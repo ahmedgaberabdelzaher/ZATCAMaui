@@ -175,7 +175,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
@@ -188,8 +188,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FAQPage_ViewModel
                     }
                     _navigationService.NavigateTo(App.SFLoginPageView);
                     _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
                 });
             }
         }

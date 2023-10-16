@@ -216,7 +216,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VAT
                         IsShowMsgView = true;
                         // MessageTxt = Tax.ToString();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

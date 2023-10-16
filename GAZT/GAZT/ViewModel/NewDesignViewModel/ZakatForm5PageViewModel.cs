@@ -3142,12 +3142,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                        // IsLoading = false;
                     }
                 }
-                catch (Exception e)
+                catch (Exception ex)
                 {
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
+                        await _dialogService.ShowMessageBox(ex.Message, AppResources.Information);
                         _navigationService.GoBack();
                     });
                     IsLoading = false;

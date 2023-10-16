@@ -50,10 +50,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 this.Padding = safeInsets;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -94,10 +94,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
 
             }

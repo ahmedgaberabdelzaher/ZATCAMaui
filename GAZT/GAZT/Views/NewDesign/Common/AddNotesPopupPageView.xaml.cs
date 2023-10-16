@@ -28,7 +28,7 @@ namespace EGAZT.Views.NewDesign.Common
                 viewModel.IsEdit = isEdit;
 
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }
@@ -72,12 +72,12 @@ namespace EGAZT.Views.NewDesign.Common
                 MessagingCenter.Send<Object, string>(this, "Notes", viewModel.NoteText);
                 PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                Console.Write(ex.StackTrace.ToString());
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 

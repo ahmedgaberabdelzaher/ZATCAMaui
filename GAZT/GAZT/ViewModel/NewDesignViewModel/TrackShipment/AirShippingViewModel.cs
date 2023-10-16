@@ -30,7 +30,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
                 IsShowMsgView = true;

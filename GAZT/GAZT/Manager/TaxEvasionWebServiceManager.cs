@@ -71,10 +71,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -120,10 +120,10 @@ namespace EGAZT.Manager
                     sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
                     return sendSmsResponse;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -175,10 +175,10 @@ namespace EGAZT.Manager
 
                     return verifySmsResponse;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     if (errorReponseModel.Data.Contains("Invalid code") || errorReponseModel.Data.Contains("الرمز غير صحيح"))
                     {
@@ -239,10 +239,10 @@ namespace EGAZT.Manager
 
                     return verifySmsResponse;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -293,10 +293,10 @@ namespace EGAZT.Manager
 
                     return sendSmsResponse;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -340,10 +340,10 @@ namespace EGAZT.Manager
 
                     return registrationResponseModel;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -401,10 +401,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -461,10 +461,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -552,10 +552,10 @@ namespace EGAZT.Manager
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     errorReponseModel = JsonConvert.DeserializeObject<TaxEvasionErrorReponseModel>(response);
                     throw new Exception(errorReponseModel.Data);
                 }
@@ -606,10 +606,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -682,10 +682,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
 
@@ -757,10 +757,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -838,10 +838,10 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -931,15 +931,15 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTNetworkConnectivityIssueException();
                 }
 
 
-                //catch (Exception ex)
+                //catch (Exception)
                 //{
                 //    return null;
                 //}
@@ -969,10 +969,10 @@ namespace EGAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
 

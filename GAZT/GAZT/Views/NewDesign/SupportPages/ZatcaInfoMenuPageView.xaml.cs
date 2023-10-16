@@ -174,10 +174,10 @@ namespace EGAZT.Views.NewDesign
                 viewModel.IsLoading = true;
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -199,10 +199,10 @@ namespace EGAZT.Views.NewDesign
                 viewModel.IsLoading = true;
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

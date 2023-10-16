@@ -1,14 +1,11 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Graphics;
 using Android.Support.V4.App;
-using Android.Text;
 using GAZT.Droid;
 using GAZT.PUSH_Notification;
-using Org.Json;
 using System;
 using Xamarin.Forms;
-[assembly:Dependency(typeof(NotificationHelper))]
+[assembly: Dependency(typeof(NotificationHelper))]
 namespace GAZT.PUSH_Notification
 {
     class NotificationHelper : INotification
@@ -73,7 +70,7 @@ namespace GAZT.PUSH_Notification
                 //publish notification
                 notificationManager.Notify(0, mBuilder.Build());
             }
-            catch (Exception e) { }
+            catch (Exception) { }
         }
     }
 }

@@ -205,10 +205,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     App.HasToRefreshLoaderOnDashboard = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void OnSupportTapped(object sender, EventArgs e)

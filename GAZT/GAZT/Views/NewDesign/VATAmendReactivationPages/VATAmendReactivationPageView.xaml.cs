@@ -106,13 +106,13 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -172,7 +172,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -188,7 +188,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string year = selectedItem[2].ToString();
                 viewModel.VatEligibleStartDate = day + "/" + month + "/" + year;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -257,7 +257,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -416,7 +416,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -834,7 +834,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {
@@ -902,7 +902,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     await Task.Run(() =>
                     {
@@ -976,7 +976,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1040,7 +1040,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         });
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }
@@ -1166,7 +1166,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 triggerIban(message);
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -1272,7 +1272,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 });
                 viewModel.IsNewFinancialRepVisible = viewModel.IsAddNewRepresentativeChecked;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1284,7 +1284,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 await viewModel.onPageLoad();
                 setIban();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1491,7 +1491,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.FrameIDError = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1587,7 +1587,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1732,7 +1732,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 sendtoPopup.vatRegOthrDetailtoPopup = viewModel.VATRegistrationOtherDetails;
                 await PopupNavigation.Instance.PushAsync(new FinancialDetailAttachmentPopupPageView(sendtoPopup, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -1755,7 +1755,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1791,7 +1791,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 setAttachmentImporterExporterVisibility();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1988,7 +1988,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -2021,7 +2021,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     lblDOB.IsVisible = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -2069,7 +2069,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -2112,7 +2112,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 await PopupNavigation.Instance.PushAsync(new FileAttachmentPopUpPageView(viewModel.VATRegistrationDetailsData, Models.ZakatInstalationModels.WhichAttachment.VATAmendRegistration, isImporter));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -2125,7 +2125,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             {
                 ((Xamarin.Forms.CollectionView)sender).SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -2269,7 +2269,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2387,7 +2387,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2525,7 +2525,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -2649,7 +2649,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2756,7 +2756,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2881,7 +2881,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -2927,7 +2927,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 await ValidateIDNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3199,7 +3199,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string DOB = year + month + day;
                 ValidateIDNumberContact();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3317,7 +3317,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3425,7 +3425,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3563,7 +3563,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     string MessageForTheUser = AppResources.ZZSomethingwentwrong;
@@ -3656,7 +3656,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
@@ -3732,7 +3732,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     viewModel.SliderLable1EligibilityText = eligibilityText;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -3985,7 +3985,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return;
             }
@@ -4082,7 +4082,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 viewModel.TxtIDTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR].Name;
                 viewModel.SelectedIdTypeSR = viewModel.IdTypeListSR[viewModel.IDTypeIndexSR];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -4107,7 +4107,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 }
                 await ValidateIDNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -4125,7 +4125,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
                 string DOB = year + month + day;
                 ValidateIDNumberContact();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -4428,10 +4428,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try { 
             viewModel.IsFDChangeSectionEnabled = e.IsChecked == true ? true : false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4441,10 +4441,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             viewModel.IsTaxPayerIBANEnabled = e.IsChecked == true ? true : false;
             viewModel.IsTaxPayerEligDateEnabled = e.IsChecked == true ? true : false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4454,10 +4454,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             viewModel.IsTaxPayerIBANEnabled = e;
             viewModel.IsTaxPayerEligDateEnabled = e;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4470,10 +4470,10 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
             try { 
             viewModel.IsFDChangeSectionEnabled = e;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

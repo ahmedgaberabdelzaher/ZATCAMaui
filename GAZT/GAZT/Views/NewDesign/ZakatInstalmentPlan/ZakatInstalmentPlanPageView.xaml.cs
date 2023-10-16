@@ -78,10 +78,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -111,10 +111,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var selectedItem = e.ItemData as InstalmentAgreementFrequencyModel;
             viewModel.updateInstalmentsOnSlider(selectedItem);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         void outletDecisionOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -150,10 +150,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -181,10 +181,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             viewModel.DownPaymentAmount = args.NewValue;
             downPaymentEntry.Text = viewModel.DownPaymentAmount.ToString();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -194,10 +194,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var newVal = args.NewValue;
             viewModel.NoOfInstalments = Convert.ToInt32(newVal);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -238,10 +238,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -592,10 +592,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -307,10 +307,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 _navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 //   _dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
             }
@@ -349,10 +349,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
              
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -369,10 +369,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
                 };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 

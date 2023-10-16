@@ -45,7 +45,7 @@ namespace EGAZT.Manager
             {
                 throw;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

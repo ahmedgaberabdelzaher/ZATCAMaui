@@ -340,10 +340,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                                                                     }
                                                                 }
                                                             }
-                                                            catch (Exception ex)
+                                                            catch (Exception)
                                                             {
-                                                                Console.Write(ex.ToString());
-                                                                Console.Write(ex.StackTrace.ToString());
+                                                                
+                                                                
                                                             }
                                                         }
                                                         AttachmentCount++;
@@ -432,7 +432,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                     });
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -463,11 +463,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //  return null;
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             await Task.Run(() =>
@@ -559,10 +559,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AttachmentPage_ViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

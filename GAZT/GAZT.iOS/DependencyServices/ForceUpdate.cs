@@ -46,7 +46,7 @@ namespace GAZT.iOS.DependencyServices
                      RemoteConfig.SharedInstance.ActivateFetched();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                
             }

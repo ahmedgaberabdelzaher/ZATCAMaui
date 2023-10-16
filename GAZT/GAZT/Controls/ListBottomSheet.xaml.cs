@@ -18,7 +18,7 @@ namespace EGAZT.Controls
             {
                 InitializeComponent();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 

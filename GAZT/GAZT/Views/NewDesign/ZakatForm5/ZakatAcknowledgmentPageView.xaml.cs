@@ -88,7 +88,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //        viewModel.IsLoading = false;
             //    });
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
             //    await Task.Run(() =>
             //    {
@@ -107,7 +107,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //        // BPicker.SelectedIndex = 14;
             //    }
             //}
-            //catch (Exception e)
+            //catch (Exception)
             //{
             //}
         }

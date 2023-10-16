@@ -29,7 +29,7 @@ using static EGAZT.ViewModel.NewDesignViewModel.GAZTNewDesignDashBoardPageViewMo
 using Application = Xamarin.Forms.Application;
 
 namespace EGAZT.Views.NewDesign.DashBoardPages
-{       
+{
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class GAZTNewDesignDashBoardPageView : ContentPage
@@ -42,7 +42,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         #endregion
 
         private bool isFirstTime = true;
-        public GAZTNewDesignDashBoardPageView(bool isMenu=false)
+        public GAZTNewDesignDashBoardPageView(bool isMenu = false)
         {
             try
             {
@@ -62,7 +62,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.IfnotRegInVATAndZakat = false;
                 viewModel.IsBodyMyTaxVisible = false;
 
-                if(viewModel.AccountStatementsList != null) {
+                if (viewModel.AccountStatementsList != null)
+                {
 
                     viewModel.AccountStatementsList.Clear();
                 }
@@ -113,10 +114,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 });
                 SetLTR();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -155,10 +156,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 SetLTR();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -188,17 +189,18 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.IsLoading = true;
             Task.Run(async () =>
             {
-               viewModel.IsLoading = true;
+                viewModel.IsLoading = true;
 
                 string response = await TaxpayerSubsidyWebServiceManager.TaxpayerSubsidyPostRequestAsync();
 
-                if(response != null && response.Length > 0)
+                if (response != null && response.Length > 0)
                 {
                     SubsidyResponseModel subsidyResponseModel = JsonConvert.DeserializeObject<SubsidyResponseModel>(response);
-                    if(subsidyResponseModel != null && subsidyResponseModel.D != null)
+                    if (subsidyResponseModel != null && subsidyResponseModel.D != null)
                     {
-                       
-                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid)) {
+
+                        if (!string.IsNullOrEmpty(subsidyResponseModel.D.Fbguid))
+                        {
 
                             String url = subsidyResponseModel.D.ExternalPortal;
                             url += "?";
@@ -209,26 +211,28 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             Constants.TaxpayerSubsidyRequest = url;
 
 
-                            Device.BeginInvokeOnMainThread(async () => {
+                            Device.BeginInvokeOnMainThread(async () =>
+                            {
                                 viewModel.IsLoading = false;
 
                                 viewModel._navigationService.NavigateTo(App.TaxpayerSubsidyRequest);
                             });
                             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
                         }
-                        else {
+                        else
+                        {
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 viewModel.IsLoading = false;
 
-                           //     await viewModel._dialogService.ShowMessage(AppResources.UnderDevelopment, AppResources.Information);
+                                //     await viewModel._dialogService.ShowMessage(AppResources.UnderDevelopment, AppResources.Information);
                             });
                         }
 
-                       
+
                     }
                 }
-               
+
 
             });
         }
@@ -291,9 +295,9 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             viewModel.PartiallyPaidString = AppResources.Partiallynewui + " " + viewModel.PartiallyPaidBillCount;
             viewModel.TotalString = AppResources.NDTotalNumberOfBills;
 
-          
 
-           
+
+
             ChangeArrowDirection();
             MessagingCenter.Subscribe<Object>(this, "UpdateProgressBar", (sender) =>
             {
@@ -306,7 +310,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             StartTimer();
             viewModel.IsLoading = false;
 
-           
+
 
             if (isFirstTime)
             {
@@ -328,109 +332,94 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             }
 
 
-            if (App.isMybillsRefresh) {
+            if (App.isMybillsRefresh)
+            {
 
                 await viewModel.LoadDashboardData();
-              
+
             }
 
 
-           //code to refresh Dashboard Returns count 
+            //code to refresh Dashboard Returns count 
 
-            if(viewModel.SubmittedCount != null) {
+            if (viewModel.SubmittedCount != null)
+            {
 
                 viewModel.IsLoading = true;
 
-                try {
+                try
+                {
 
                     viewModel.DashboardData = await WebServiceManager.GAZTGetDashboardData(UtilityManager.GetLanguageParameter(), App.TP.Userid);
 
                     viewModel.PopulateReturnsInformation();
                     viewModel.IsLoading = false;
                 }
-                catch(GAZTErrorException ex) {
+                catch (GAZTErrorException ex)
+                {
 
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
 
 
 
-               
+
 
 
             }
 
-
-
-
-
-
-
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", (sender, arg) =>
                 {
-                    Console.WriteLine("MultipleBillsContinue Clicked");
-
                     viewModel.showPaymentOptions();
                     viewModel.isPayNowTapped = false;
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
                 {
-                    Console.WriteLine("Card Payment Clicked");
-
                     viewModel.MadaPaymentSelected();
                     viewModel.isPayNowTapped = false;
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
 
             try
             {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    viewModel.ApplePaySelected();
+                    await viewModel.ApplePaySelected();
                     viewModel.isPayNowTapped = false;
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
 
             try
             {
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
-
-                    Console.WriteLine("SADAD Clicked");
-                    viewModel.SadadPaymentSelected();
+                    await viewModel.SadadPaymentSelected();
                     viewModel.isPayNowTapped = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
+
             try
             {
                 MessagingCenter.Subscribe<App, string>(this, "DashboardApplePayData", async (sender, arg) =>
@@ -444,24 +433,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
             }
-
-
-
         }
 
         public void SetPickerFont()
         {
             try
             {
-                switch (Xamarin.Forms.Device.RuntimePlatform)
+                switch (Device.RuntimePlatform)
                 {
 
-                    case Xamarin.Forms.Device.iOS:
+                    case Device.iOS:
                         {
                             CommitmentsPicker.HeaderFontFamily = "Somar-SemiBold";
                             CommitmentsPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
@@ -469,14 +454,8 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                             CommitmentsPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
-                    case Xamarin.Forms.Device.Android:
+                    case Device.Android:
                         {
-
-                            /*  TaxTypePicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                              TaxTypePicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                              TaxTypePicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                              TaxTypePicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
-  */
                             CommitmentsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
                             CommitmentsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
                             CommitmentsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
@@ -485,22 +464,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
 
         }
 
         private void ProfitOnGoods_Tapped(object sender, EventArgs e)
         {
-            //  var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "ProfitOnGoods_Tapped", "Profit On Goods");
             Device.BeginInvokeOnMainThread(() =>
             {
                 viewModel._navigationService.NavigateTo(App.NewYesorNoPageView);
             });
-            // AppDynamics.Agent.Instrumentation.EndCall(callTracker);
         }
 
         public void getYesCommandToLogout()
@@ -513,10 +490,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                     await viewModel.LogOut();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -528,149 +505,144 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
         private void OnDataLoad()
         {
-            //if (App.HasToRefreshLoaderOnDashboard == true)
+
+            App.IsComingFromSleepMode = false;
+
+
+            try
             {
-                App.IsComingFromSleepMode = false;
+                LoadData();
 
-
-                try
+                if (App.LoginDataRetrieved != null)
                 {
-                    LoadData();
-
-                    if (App.LoginDataRetrieved != null)
+                    if (App.TP.VtpmFg == "X")
                     {
-                        if (App.TP.VtpmFg == "X")
+                        viewModel.istileUpdated = true;
+                    }
+                    else
+                    {
+                        viewModel.istileUpdated = false;
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        viewModel.IsVatRegistrationTileVisible = true;
+                        viewModel.IsRegistrationDetailsTileVisible = true;
+                        viewModel.IfRegInZakat = true;
+                        refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = false;
+                        fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "U")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = true;
+                        viewModel.IsRegistrationDetailsTileVisible = false;
+
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "N")
+                    {
+                        viewModel.IsEstablishmentRegistrationTileVisible = false;
+                        viewModel.IsRegistrationDetailsTileVisible = false;
+                    }
+
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IsVatRegistrationTileVisible = false;
+                        viewModel.IfRegInZakat = false;
+                        viewModel.IsSubsidyTileVisible = true;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "R")
+                    {
+                        //viewModel.IsVatRegistrationTileVisible = false;
+                        //viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        //viewModel.IfSignUpnNotRegInVAT = false;
+                        //viewModel.IsRegistrationDetailsTileVisible = true;
+                        viewModel.IsVatRegistrationTileVisible = false;
+                        viewModel.IfRegInZakat = false;
+                        viewModel.IfnotRegInVATAndZakat = true;
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        viewModel.IsSubsidyTileVisible = false;
+                        //viewModel.IsRegistrationDetailsTileVisible = true;
+                        //refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                        //fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
+
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == "")
+                    {
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                    }
+
+                    if (App.LoginDataRetrieved.ZkSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.ZkReg == string.Empty)
                         {
-                            viewModel.istileUpdated = true;
+                            viewModel.IsVatRegistrationTileVisible = false;
+                            viewModel.IsEstablishmentRegistrationTileVisible = true;
                         }
-                        else
-                        {
-                            viewModel.istileUpdated = false;
-                        }
-                        if (App.LoginDataRetrieved.ZkReg == "X")
+
+                    }
+                    else if (App.LoginDataRetrieved.VtSignup == "X")
+                    {
+                        if (App.LoginDataRetrieved.VtReg == string.Empty)
                         {
                             viewModel.IsEstablishmentRegistrationTileVisible = false;
                             viewModel.IsVatRegistrationTileVisible = true;
-                            viewModel.IsRegistrationDetailsTileVisible = true;
-                            viewModel.IfRegInZakat = true;
-                            refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = false;
-                            fillingMenu.IsVisible = fillingMenuBox.IsVisible = false;
-                        }
-                        else if (App.LoginDataRetrieved.ZkReg == "U")
-                        {
-                            viewModel.IsEstablishmentRegistrationTileVisible = true;
-                            viewModel.IsRegistrationDetailsTileVisible = false;
-
-                        }
-                        else if (App.LoginDataRetrieved.ZkReg == "N")
-                        {
-                            viewModel.IsEstablishmentRegistrationTileVisible = false;
-                            viewModel.IsRegistrationDetailsTileVisible = false;
-                        }
-
-                        if (App.LoginDataRetrieved.VtReg == "X")
-                        {
-                            viewModel.IsVatRegistrationTileVisible = false;
-                            viewModel.IfRegInZakat = false;
-                            viewModel.IsSubsidyTileVisible = true;
-
-                        }
-                        else if (App.LoginDataRetrieved.VtReg == "R")
-                        {
-                            //viewModel.IsVatRegistrationTileVisible = false;
-                            //viewModel.IfSignUpnNotRegInVATShowVATServie = true;
-                            //viewModel.IfSignUpnNotRegInVAT = false;
-                            //viewModel.IsRegistrationDetailsTileVisible = true;
-                            viewModel.IsVatRegistrationTileVisible = false;
-                            viewModel.IfRegInZakat = false;
-                           viewModel.IfnotRegInVATAndZakat = true;
-                            viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                            viewModel.IfSignUpnNotRegInVAT = true;
                             viewModel.IsSubsidyTileVisible = false;
-                            //viewModel.IsRegistrationDetailsTileVisible = true;
-                            //refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
-                            //fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
-
-                        }
-                        else if (App.LoginDataRetrieved.VtReg == "")
-                        {
-                            viewModel.IfSignUpnNotRegInVATShowVATServie = false;
-                        }
-
-                        if (App.LoginDataRetrieved.ZkSignup == "X")
-                        {
-                            if (App.LoginDataRetrieved.ZkReg == string.Empty)
-                            {
-                                viewModel.IsVatRegistrationTileVisible = false;
-                                viewModel.IsEstablishmentRegistrationTileVisible = true;
-                            }
-
-                        }
-                        else if (App.LoginDataRetrieved.VtSignup == "X")
-                        {
-                            if (App.LoginDataRetrieved.VtReg == string.Empty)
-                            {
-                                viewModel.IsEstablishmentRegistrationTileVisible = false;
-                                viewModel.IsVatRegistrationTileVisible = true;
-                                viewModel.IfSignUpnNotRegInVAT = true;
-                                viewModel.IsSubsidyTileVisible = false;
-                            }
-                        }
-                        if (App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg == "X")
-                        {
-                            viewModel.IfRegInZakat = true;
-                            refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
-                            fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
-
-
-                        }
-
-                        if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
-                        {
-                            viewModel.IfnotRegInVATAndZakat = false;
-                        }
-                        if (App.LoginDataRetrieved.VtReg == "X")
-                        {
-                            viewModel.IfnotRegInVATAndZakat = true;
-                            viewModel.IfSignUpnNotRegInVATShowVATServie = true;
-                            viewModel.IfSignUpnNotRegInVAT = false;
-                        }
-                        else if (App.LoginDataRetrieved.VtReg == string.Empty)
-                        {
-                            viewModel.IfSignUpnNotRegInVATShowVATServie = false;
-                            viewModel.IfSignUpnNotRegInVAT = true;
-                        }
-                        else if (App.LoginDataRetrieved.ZkReg == "X")
-                        {
-                            viewModel.IfSignUpnNotRegInVAT = true;
-                        }
-                        if (App.LoginDataRetrieved.ZkReg == "X")
-                        {
-                            viewModel.IfnotRegInVATAndZakat = true;
                         }
                     }
+                    if (App.LoginDataRetrieved.ZkReg == "X" && App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IfRegInZakat = true;
+                        refundreqMenu.IsVisible = refundreqMenuBox.IsVisible = true;
+                        fillingMenu.IsVisible = fillingMenuBox.IsVisible = true;
 
-                }
-                catch
-                {
-                    viewModel.IsVatRegistrationTileVisible = true;
-                }
 
-                ChangeArrowDirection();
-                App.HasToRefreshLoaderOnDashboard = false;
+                    }
+
+                    if ((App.LoginDataRetrieved.VtSignup == "X" || App.LoginDataRetrieved.ZkSignup == "X") && (App.LoginDataRetrieved.ZkReg == string.Empty && App.LoginDataRetrieved.VtReg == string.Empty))
+                    {
+                        viewModel.IfnotRegInVATAndZakat = false;
+                    }
+                    if (App.LoginDataRetrieved.VtReg == "X")
+                    {
+                        viewModel.IfnotRegInVATAndZakat = true;
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = true;
+                        viewModel.IfSignUpnNotRegInVAT = false;
+                    }
+                    else if (App.LoginDataRetrieved.VtReg == string.Empty)
+                    {
+                        viewModel.IfSignUpnNotRegInVATShowVATServie = false;
+                        viewModel.IfSignUpnNotRegInVAT = true;
+                    }
+                    else if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IfSignUpnNotRegInVAT = true;
+                    }
+                    if (App.LoginDataRetrieved.ZkReg == "X")
+                    {
+                        viewModel.IfnotRegInVATAndZakat = true;
+                    }
+                }
 
             }
-          /*  else
+            catch
             {
+                viewModel.IsVatRegistrationTileVisible = true;
+            }
 
-            }*/
+            ChangeArrowDirection();
+            App.HasToRefreshLoaderOnDashboard = false;
+
+
         }
 
         private void StartTimer()
@@ -681,18 +653,20 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 counter = counter - 1;
                 if (counter == 0)
                 {
-                    if(App.TP != null) {
+                    if (App.TP != null)
+                    {
 
                         counter = 120;
                         App.HasToRefreshLoaderOnDashboard = true;
                         OnDataLoad();
                     }
-                    else {
+                    else
+                    {
                         isTimerOff = true;
 
                     }
 
-                   
+
                 }
                 return !isTimerOff;
             });
@@ -708,7 +682,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.AccountStatementVisible = false;
                 viewModel.LiveChatVisible = false;
                 viewModel.HomeIndicatorColor = Color.White;
-                viewModel.MenuIndicatorColor =  (Color)Application.Current.Resources["Primary"];
+                viewModel.MenuIndicatorColor = (Color)Application.Current.Resources["Primary"];
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
                 viewModel.IsToolbarTaxVisible = false;
@@ -784,10 +758,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                           }
                       }
-                      catch (Exception ex)
+                      catch (Exception)
                       {
-                          Console.Write(ex.ToString());
-                          Console.Write(ex.StackTrace.ToString());
+                          
+                          
                       }*/
                     viewModel.IsLoading = false;
                 });
@@ -825,7 +799,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         }
         void HOmeView()
         {
-       
+
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "OnHomeTapped", "Home Page");
             viewModel.MenuViewVisible = false;
             viewModel.HomeViewVisible = true;
@@ -842,7 +816,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             isFirstTime = true;
-           // OnAppearing();
+            // OnAppearing();
         }
         void menuView()
         {
@@ -966,7 +940,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 frameToolbar.IsVisible = false;
                 isFirstTime = true;
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-               // OnAppearing();
+                // OnAppearing();
             }
             else
             {
@@ -983,7 +957,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.AccountStatementVisible = false;
                 viewModel.LiveChatVisible = false;
                 viewModel.HomeIndicatorColor = Color.White;
-                viewModel.MenuIndicatorColor =  (Color)Application.Current.Resources["Primary"];
+                viewModel.MenuIndicatorColor = (Color)Application.Current.Resources["Primary"];
                 viewModel.StackMenuColor = Color.Transparent;
                 viewModel.TabbarColor = Color.Transparent;
                 viewModel.IsToolbarTaxVisible = false;
@@ -1114,10 +1088,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 await PopupNavigation.Instance.PushAsync(new QuickActionPopUpPageView());
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -1136,10 +1110,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.AccountStatementBillsPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -1158,10 +1132,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel._navigationService.NavigateTo(App.SupportPageView);
                 AppDynamics.Agent.Instrumentation.EndCall(callTracker);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -1196,10 +1170,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
             {
                 await PopupNavigation.Instance.PushAsync(new LogoutPageView(AppResources.LogoutConfirmationMessage));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
         private void Label_MyBills(object sender, EventArgs e)
@@ -1271,7 +1245,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
-                   
+
                     var vUpdatedPage = new GAZTNewDesignDashBoardPageView();
                     vUpdatedPage.Padding = safeInsets;
 
@@ -1317,10 +1291,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
 
                 OnAppearing();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -1344,7 +1318,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 String langName = "ar-AE";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-               // this.FlowDirection = FlowDirection.RightToLeft;
+                // this.FlowDirection = FlowDirection.RightToLeft;
                 viewModel.TranslateText = "English";
 
                 viewModel.NextCommitmentsString = AppResources.ZZMyCommitments;
@@ -1358,10 +1332,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 180;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
         public void SetLTRDirection()
@@ -1371,7 +1345,7 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 String langName = "en-US";
                 CultureInfo ci = new CultureInfo(langName);
                 AppResources.Culture = ci;
-               // this.FlowDirection = FlowDirection.LeftToRight;
+                // this.FlowDirection = FlowDirection.LeftToRight;
                 viewModel.TranslateText = "عربي";
 
                 viewModel.NextCommitmentsString = AppResources.ZZMyCommitments;
@@ -1385,10 +1359,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 viewModel.WelcomeText = AppResources.ZZZWelcomeOnLanding;
                 viewModel.Rotation = 0;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
 
         }
@@ -1402,10 +1376,10 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
                 {
                     viewModel._navigationService.NavigateTo(App.TaxpayerCorrespondancePageView);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
 
             });
@@ -1447,18 +1421,19 @@ namespace EGAZT.Views.NewDesign.DashBoardPages
         {
             try
             {
-var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TinRegistrationDetails_Tapped", "Registration Details");
+                var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDashBoardPageView", "TinRegistrationDetails_Tapped", "Registration Details");
 
-            Device.BeginInvokeOnMainThread(() =>
-            {
-                viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
-            });
-            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-            }catch(Exception ex)
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    viewModel._navigationService.NavigateTo(App.ZakatRegistrationDetailsListPageView);
+                });
+                AppDynamics.Agent.Instrumentation.EndCall(callTracker);
+            }
+            catch (Exception)
             {
 
             }
-            
+
         }
 
         private void VatRegistrationTile_Tapped(object sender, EventArgs e)
@@ -1542,7 +1517,7 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
             viewModel.IsLoading = true;
             Device.BeginInvokeOnMainThread(() =>
             {
-              //  viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
+                //  viewModel._navigationService.NavigateTo(App.TaxEvasionPageWebView);
                 viewModel._navigationService.NavigateTo("InquiryAboutAddOrShowReportsPage");
             });
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -1682,10 +1657,10 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
             {
                 await Xamarin.Forms.Application.Current.MainPage.Navigation.PushAsync(new TestPage());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
         }
 
@@ -1743,41 +1718,22 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
             });
         }
 
-        private async void BillsPayNowTapped(object sender, EventArgs e)
+        private  void BillsPayNowTapped(object sender, EventArgs e)
         {
             if (!viewModel.isPayNowTapped)
             {
                 viewModel.isPayNowTapped = true;
                 SfBorder payNowCard = sender as SfBorder;
                 OverduePaymentAndUnSubmittedReturn BModel = (OverduePaymentAndUnSubmittedReturn)payNowCard.BindingContext;
-                Console.WriteLine("Clicked on: Amount: " + BModel.Amount + " ,FbNum: " + BModel.Fbnum);
-                //viewModel.DoValidatePayment(BModel.Fbnum, BModel.Amount);
 
                 viewModel.verifyPaymentAndShowBillsPopup(BModel);
             }
-
-
-            /*if (BModel.MadabutFg == "X")
-                {
-                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-
-                }
-                else
-                {
-                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
-                }
-                viewModel.selectedFbNum = BModel.Fbnum;
-                viewModel.selectedSadadNo = BModel.Sopbel;
-                viewModel.selectedAmount = BModel.Amount;
-
-                viewModel.selectedTaxablePeriod = BModel.Persl;*/
 
         }
         private void OnEduLinkTapped(object sender, EventArgs e)
         {
 
             var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("DashboardPageView", "EduLink_Tapped", "Education Link");
-            //  viewModel._navigationService.NavigateTo(App.PrivacyAndPolicyPageView);
             Uri uri = new Uri("https://edujourneys.zatca.gov.sa/home/tracks");
             OpenBrowser(uri);
             AppDynamics.Agent.Instrumentation.EndCall(callTracker);
@@ -1797,7 +1753,7 @@ var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("GAZTNewDesignDash
 
         void OnChatTapped(System.Object sender, System.EventArgs e)
         {
-           
+
         }
     }
 }

@@ -2,15 +2,10 @@
 using System.Linq;
 using EGAZT;
 using EGAZT.Helper;
-using EGAZT.Models.PaymentModel;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 using Foundation;
 using GAZT.iOS.CustomRenderer;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using PassKit;
 using UIKit;
-using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(ApplePayAuthorizer))]

@@ -63,10 +63,10 @@ namespace EGAZT.Views.NewDesign.Template
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.Template
                 //InitializeComponent();
                 this.FlowDirection = FlowDirection.LeftToRight;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }

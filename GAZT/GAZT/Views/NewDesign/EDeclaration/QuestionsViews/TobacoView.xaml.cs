@@ -13,7 +13,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.QuestionsViews
             {
                 InitializeComponent();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

@@ -674,8 +674,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             catch (GAZTUnlockAccountException ex)
             {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             catch (InternetException ex)
@@ -864,7 +864,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
         {
             //For first item list
 
-            //Console.WriteLine("Index: " + index);
+            //("Index: " + index);
 
             await GetVATInstalmentPlanDetails(index);
 
@@ -874,9 +874,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
         public async Task GetDisplayDetailsClicked(int index)
         {
-            //
-            Console.WriteLine("Index: " + index);
-            //GetVATDisplaySchedule();
 
             await GetVATDisplayScheduleDetails(index);
 
@@ -991,8 +988,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                     catch (GAZTVATRegistrationInProcessException ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         throw ex;
                     }
                     catch (InternetException ex)
@@ -1028,11 +1025,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
                     
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1133,10 +1130,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1271,10 +1268,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 await Task.Run(() =>
                 {
                     IsLoading = false;

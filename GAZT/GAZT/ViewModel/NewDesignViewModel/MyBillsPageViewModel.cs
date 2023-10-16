@@ -670,8 +670,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -702,10 +702,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             list.Add(dropdown.Txt30.ToUpper());
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
 
@@ -722,10 +722,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

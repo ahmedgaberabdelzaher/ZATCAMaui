@@ -111,7 +111,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     {
                         Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -163,7 +163,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                 SetPassangerData(payload);
                 return payload;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

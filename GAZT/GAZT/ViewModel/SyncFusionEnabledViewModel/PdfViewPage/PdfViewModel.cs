@@ -215,10 +215,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -267,11 +267,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                     myReq.CookieContainer = cookieContainer;
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
                 }
 
                 WebResponse myResp = myReq.GetResponse();
@@ -321,11 +321,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                                     IsShareButtonEnable = false;
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 IsShareButtonEnable = false;
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         }
                         else
@@ -360,11 +360,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.Pdf_ViewModel
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShareButtonEnable = false;
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

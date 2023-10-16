@@ -52,11 +52,11 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 MessagingCenter.Unsubscribe<App, string>(this, "ApplePayData");
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 scrollView.ScrollToAsync(0, 500, true);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
 
@@ -260,10 +260,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.MadaPaymentSelectedAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -273,10 +273,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.ApplePaySelected();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -286,10 +286,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.gotoSuccessPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -305,10 +305,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -929,10 +929,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     RealEstateValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -950,7 +950,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     RealEstateValue.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

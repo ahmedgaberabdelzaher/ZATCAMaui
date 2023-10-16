@@ -59,7 +59,7 @@ namespace EGAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return null;
                 }
@@ -112,7 +112,7 @@ namespace EGAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return DeleteToken;
                 }

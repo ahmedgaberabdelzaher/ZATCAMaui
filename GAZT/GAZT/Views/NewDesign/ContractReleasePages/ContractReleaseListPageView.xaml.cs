@@ -48,7 +48,7 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 viewModel.ResetData();
                 _ = viewModel.OnPageLoad();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -168,9 +168,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     await email(attachment.Doguid, attachment);
                 }
             }
-            catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception) {
+                
+                
             }
 
 
@@ -244,10 +244,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 

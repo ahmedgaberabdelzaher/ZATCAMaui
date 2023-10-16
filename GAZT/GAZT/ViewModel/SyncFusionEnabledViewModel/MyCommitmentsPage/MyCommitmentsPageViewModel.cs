@@ -128,13 +128,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     PopToRootPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 IsLoading = false;
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -395,10 +395,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             return amountWithComma;
@@ -505,10 +505,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -638,10 +638,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -690,10 +690,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCommitmentsPage
                     BillsAndReturnsSchedule.Add(BillOrReturnDueEvent);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

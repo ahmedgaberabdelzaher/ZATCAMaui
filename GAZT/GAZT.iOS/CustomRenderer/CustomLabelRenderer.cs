@@ -93,8 +93,8 @@ namespace GAZT.iOS.CustomRenderer
             }
             catch (Exception Ex)
             {
-                Console.Write(Ex.ToString());
-                Console.Write(Ex.StackTrace.ToString());
+                
+                
             }
 
         }

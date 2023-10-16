@@ -143,7 +143,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

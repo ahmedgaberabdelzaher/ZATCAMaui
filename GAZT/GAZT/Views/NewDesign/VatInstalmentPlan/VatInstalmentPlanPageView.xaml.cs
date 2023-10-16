@@ -56,10 +56,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.setMoreOptioButtons();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -136,10 +136,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -219,10 +219,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -279,10 +279,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 viewModel.EnableBillsContinue();
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         void attachmentsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -488,10 +488,10 @@ namespace EGAZT.Views.NewDesign.VatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -427,7 +427,7 @@ namespace EGAZT
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     //  return null;
                 }
@@ -486,7 +486,7 @@ namespace EGAZT
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

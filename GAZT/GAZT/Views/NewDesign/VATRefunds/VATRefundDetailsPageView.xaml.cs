@@ -89,10 +89,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                         {
                             viewModel.ConfirmSummaryBtnClicked();
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.StackTrace.ToString());
-                            Console.WriteLine(ex.Message);
+                            
+                            
                         }
                     }
                 });
@@ -129,10 +129,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -184,10 +184,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 viewModel._navigationService.NavigateTo(App.VATRefundsSuccessPageView);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -245,10 +245,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                        
+                        
                     }
                 }
             }
@@ -298,10 +298,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                        
+                        
                     }
                 }
             }

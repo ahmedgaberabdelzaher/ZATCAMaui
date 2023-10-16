@@ -136,10 +136,10 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 viewModel.TxtFBtype = selectedfbtyp.Txt50;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -162,10 +162,10 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
                 //var selectedItem = item.SelectedItem as FormBundleApplicationNumberModelResult;
                 viewModel.populate();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -188,10 +188,10 @@ namespace EGAZT.Views.NewDesign.FormBundleStatusPages
             try { 
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

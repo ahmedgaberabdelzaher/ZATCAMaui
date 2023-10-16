@@ -255,7 +255,7 @@ namespace EGAZT.Models
                                     //    CultureInfo arCI = new CultureInfo("en-US");
                                     //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                                     //}
-                                    //catch (Exception ex) {
+                                    //catch (Exception) {
 
                                     //}
 
@@ -272,7 +272,7 @@ namespace EGAZT.Models
                                     //    CultureInfo arCI = new CultureInfo("ar-SA");
                                     //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                                     //}
-                                    //catch (Exception ex)
+                                    //catch (Exception)
                                     //{
 
                                     //}
@@ -293,7 +293,7 @@ namespace EGAZT.Models
                                     //    CultureInfo arCI = new CultureInfo("en-US");
                                     //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                                     //}
-                                    //catch (Exception ex)
+                                    //catch (Exception)
                                     //{
 
                                     //}
@@ -307,7 +307,7 @@ namespace EGAZT.Models
                                     //    CultureInfo arCI = new CultureInfo("ar-SA");
                                     //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
                                     //}
-                                    //catch (Exception ex)
+                                    //catch (Exception)
                                     //{
 
                                     //}

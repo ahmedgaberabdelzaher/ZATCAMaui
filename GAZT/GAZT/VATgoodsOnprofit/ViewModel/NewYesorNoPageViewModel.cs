@@ -197,7 +197,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZprofitsOnGoodsfailuremessage));
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

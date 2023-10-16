@@ -74,9 +74,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     // put Mesage already latest SADADID available
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
            
         }
@@ -102,10 +102,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.MadaPaymentSelectedAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -115,10 +115,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.ApplePaySelected();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -128,10 +128,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     viewModel.gotoSuccessPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -147,10 +147,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

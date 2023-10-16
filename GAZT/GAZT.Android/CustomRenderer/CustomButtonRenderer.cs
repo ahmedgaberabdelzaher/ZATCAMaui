@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using Android.Content;
-using Android.Graphics;
 using Android.Views;
 using GAZT;
 using Xamarin.Forms;

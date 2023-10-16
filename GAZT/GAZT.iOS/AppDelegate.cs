@@ -127,18 +127,18 @@ namespace GAZT.iOS
         #endregion
         public override void OnActivated(UIApplication application)
         {
-            Console.WriteLine("OnActivated called, App is active.");
+            
         }
 
         public override void WillEnterForeground(UIApplication application)
         {
 
-            Console.WriteLine("App will enter foreground");
+           
         }
 
         public override void OnResignActivation(UIApplication application)
         {
-            Console.WriteLine("OnResignActivation called, App moving to inactive state.");
+            
         }
 
         void EndTimerTask()
@@ -162,7 +162,7 @@ namespace GAZT.iOS
         // not guaranteed that this will run
         public override void WillTerminate(UIApplication application)
         {
-            Console.WriteLine("App is terminating.");
+            
         }
 
         private static void InitArabicCalendarCrashFix()

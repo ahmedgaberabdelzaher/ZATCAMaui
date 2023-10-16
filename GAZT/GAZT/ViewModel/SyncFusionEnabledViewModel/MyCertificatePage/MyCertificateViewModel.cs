@@ -389,7 +389,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
             //            }
             //        }
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //    }
             //});
@@ -424,7 +424,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
             //            }
             //        }
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //    }
             //});
@@ -447,7 +447,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
             //            }
             //        }
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //    }
             //});
@@ -495,10 +495,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                             localPath =
                           Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                     }
                     //    using (var httpClient = new HttpClient())
@@ -529,14 +529,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
             {
                 if (pdfUrl != null)
                 {
-                    //Uri uri = new Uri(pdfUrl);
-                    //Device.OpenUri(uri);
-                    // _navigationService.NavigateTo(App.PdfiOSView, pdfUrl);
                     _navigationService.NavigateTo(App.PdfView, pdfUrl);
                 }
                 else
                 {
-                    //pop that certificate is not available
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
@@ -566,25 +562,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                 IsCertificateAvailableVATTab = true;
                 IsCertificateAvailableZakatTab = true;
                 IsCertificateAvailableETTab = true;
-                //if (!string.IsNullOrEmpty(UtilityManager.TPTaxAvalable))
-                //{
-                //    string[] TpTypes = UtilityManager.TPTaxAvalable.Split(',');
-                //    foreach (string ItemType in TpTypes)
-                //    {
-                //        if (ItemType == "05")
-                //        {
-                //            IsCertificateAvailableZakatTab = true;
-                //        }
-                //        if (ItemType == "03" || ItemType == "13")
-                //        {
-                //            IsCertificateAvailableVATTab = true;
-                //        }
-                //        if (ItemType == "07")
-                //        {
-                //            IsCertificateAvailableETTab = true;
-                //        }
-                //    }
-                //}
+               
                 string lang = UtilityManager.GetLanguageParameter();
                 TaxPayerProfile = App.TP;
                 allCertificate = WebServiceManager.GAZTGetAllCertificate(lang, App.TP.Userid);
@@ -641,14 +619,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                         IsCertificateAvailableET = false;
                         SetNoDataLabelVisibilityET = true;
                     }
-                    //ZAKATCertificateList = allCertificate.ZakatSet.results;
-                    //EXICISECertificateList = allCertificate.ExciseSet.results;
-                    //if ((VATCertificateList != null && VATCertificateList.Count == 0) && (ZAKATCertificateList != null && ZAKATCertificateList.Count == 0) && (EXICISECertificateList != null && EXICISECertificateList.Count == 0))
-                    //{
-                    //    await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    //      _navigationService.GoBack();
-                    //}
-                    // SetLayoutVisibility();
+                   
                 }
                 else
                 {
@@ -656,8 +627,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                     SetNoDataLabelVisibilityVAT = true;
                     SetNoDataLabelVisibilityZakat = true;
                     
-                    //   _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
-                    // _navigationService.GoBack();
+                   
                 }
             }
             catch(InternetException ex)
@@ -666,33 +636,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                 _navigationService.GoBack();
             }
         }
-        //private void SetLayoutVisibility()
-        //{
-        //    if(VATCertificateList != null && VATCertificateList.Count > 0)
-        //    {
-        //        IsVATCertificateAvailable = true;
-        //    }
-        //    else
-        //    {
-        //        IsVATCertificateAvailable = false;
-        //    }
-        //    if (ZAKATCertificateList != null && ZAKATCertificateList.Count > 0)
-        //    {
-        //        IsZAKATCertificateAvailable = true;
-        //    }
-        //    else
-        //    {
-        //        IsZAKATCertificateAvailable = false;
-        //    }
-        //    if (EXICISECertificateList != null && EXICISECertificateList.Count > 0)
-        //    {
-        //        IsEXISECertificateAvailable = true;
-        //    }
-        //    else
-        //    {
-        //        IsEXISECertificateAvailable = false;
-        //    }
-        //}
+       
         public void PopToRootPage()
         {
             if (App.IsSessionExpired)
@@ -703,16 +647,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyCertificate_ViewModel
                 });
             }
         }
-        //private void SetCertificateListViewVisibility()
-        //{
-        //    IsCertificateAvailable = true;
-        //    SetNoDataLabelVisibility = false;
-        //}
-        //private void SetNoDataLabelViewVisibility()
-        //{
-        //    IsCertificateAvailable = false;
-        //    SetNoDataLabelVisibility = true;
-        //}
+       
         #endregion
     }
 }

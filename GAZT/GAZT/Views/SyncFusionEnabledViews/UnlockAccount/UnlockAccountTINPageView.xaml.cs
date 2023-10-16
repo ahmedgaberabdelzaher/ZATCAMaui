@@ -101,7 +101,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 
         void Otp_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            Console.WriteLine("Otp_Unfocused");
         }
 
         void btnVerify_Clicked(System.Object sender, System.EventArgs e)
@@ -111,7 +110,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.UnlockAccount
 
         void FrmTIN_Focused(System.Object sender, Xamarin.Forms.FocusEventArgs e)
         {
-            Console.WriteLine("FrmTIN_Focused");
         }
 
         void OtpFourthEntry_Unfocused(System.Object sender, Xamarin.Forms.FocusEventArgs e)

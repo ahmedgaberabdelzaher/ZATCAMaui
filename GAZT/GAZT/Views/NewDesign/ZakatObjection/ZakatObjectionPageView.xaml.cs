@@ -104,10 +104,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 viewModel.IsLoading = false;
             });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
 
@@ -138,10 +138,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -164,10 +164,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -199,10 +199,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

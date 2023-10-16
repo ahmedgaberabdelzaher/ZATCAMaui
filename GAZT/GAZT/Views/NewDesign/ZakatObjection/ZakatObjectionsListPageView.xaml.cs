@@ -47,10 +47,10 @@ namespace EGAZT.Views.NewDesign.ZAKATObjectionPages
                 this.Padding = safeInsets;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

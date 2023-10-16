@@ -74,10 +74,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
             }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -95,10 +95,10 @@ namespace EGAZT.Views.NewDesign.ZakatObjection
                 _viewModel.AddSelectionOptions();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

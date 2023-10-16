@@ -50,10 +50,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 viewModel.VATRefundInstructionsConfirmedBtnTapped();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
     }

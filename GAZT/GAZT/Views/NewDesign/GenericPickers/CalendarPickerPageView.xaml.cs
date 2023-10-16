@@ -91,7 +91,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -144,7 +144,7 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
