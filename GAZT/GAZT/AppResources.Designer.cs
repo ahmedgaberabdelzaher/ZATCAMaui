@@ -229,7 +229,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work.
+        ///   Looks up a localized string similar to I hereby acknowledge that this e-Declaration is owned by General Zakat, Tax and Customs Authority which has the rights to use the information entered for statistical purposes related to its work..
         /// </summary>
         public static string AcknowledgeNote1 {
             get {
@@ -238,7 +238,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I take full responsibility for the correctness and accuracy of the information provided by me.
+        ///   Looks up a localized string similar to I take full responsibility for the correctness and accuracy of the information provided by me..
         /// </summary>
         public static string AcknowledgeNote2 {
             get {
@@ -247,7 +247,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Customs Authority.
+        ///   Looks up a localized string similar to I am responsible for the consequences of my use of the Electronic Acknowledgment for the intended purposes, such as custom duty, taxes, or other financial obligations applied by the General Zakat, Tax and Customs Authority..
         /// </summary>
         public static string AcknowledgeNote3 {
             get {
@@ -256,7 +256,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I further assume full responsibility in case the General Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability.
+        ///   Looks up a localized string similar to I further assume full responsibility in case the General Zakat, Tax and Customs Authority ascertained that the information provided by me is incorrect, and violates the applicable regulations and legislation; and, then, I shall be subject to legal accountability..
         /// </summary>
         public static string AcknowledgeNote4 {
             get {
@@ -265,7 +265,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the customs officer.
+        ///   Looks up a localized string similar to Refund of the collected amounts (duty and taxes) is not allowed except in the case of referring to the declaration office at the entrance port upon arrival to the kingdom and before leaving the port so that the correspondence of possession can be carried out by the Zakat, Tax and Customs Authority officer..
         /// </summary>
         public static string AcknowledgeNote5 {
             get {
@@ -3378,7 +3378,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Acknowledge.
+        ///   Looks up a localized string similar to Acknowledgment.
         /// </summary>
         public static string DeclarationAcknowledge {
             get {
@@ -12641,7 +12641,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I have Read the terms and conditions.
+        ///   Looks up a localized string similar to I have read the terms and policies.
         /// </summary>
         public static string TermsConditions {
             get {
