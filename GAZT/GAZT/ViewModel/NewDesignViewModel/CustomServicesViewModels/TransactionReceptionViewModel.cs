@@ -412,14 +412,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     if (response.Item1.header.status.code == "I000000")
                     {
                         var data = response.Item1.data;
-
-
-                        if (!String.IsNullOrEmpty(data.TINNumber))
-                        {
-                            TIN =int.Parse(data.TINNumber);
-                            IsTinNoVisible = true;
-                        }
-                      
+                     
+                            if (data.taxpayers != null && data.taxpayers.Count > 0)
+                            {
+                                var act = data.taxpayers.FirstOrDefault(c => c.idStatus == "ACTIVE");
+                                if (act != null)
+                                {
+                                    if (!String.IsNullOrEmpty(act.TINNumber))
+                                    {
+                                        TIN = long.Parse(act.TINNumber);
+                                        IsTinNoVisible = true;
+                                    }
+                                }
+                            }
+                 
                     }
                     else
                     {
@@ -438,15 +444,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                             return;
                         }
-                        MessageTxt = AppResources.RequestTimeoutDescription;
-                        IsShowMsgView = true;
+                     //   MessageTxt = AppResources.RequestTimeoutDescription;
+                     //   IsShowMsgView = true;
                     }
 
                 }
                 else
                 {
-                    MessageTxt = AppResources.RequestTimeoutDescription;
-                    IsShowMsgView = true;
+                   // MessageTxt = AppResources.RequestTimeoutDescription;
+                   // IsShowMsgView = true;
                 }
 
             }
