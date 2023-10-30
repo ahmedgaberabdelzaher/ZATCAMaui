@@ -149,7 +149,7 @@
                     </listView:SfListView.SelectedItemTemplate>
                     <listView:SfListView.LayoutManager>
 
-                        <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=1, Tablet=4, Desktop=5}" />
+                        <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=1, Tablet=1, Desktop=5}" />
 
                     </listView:SfListView.LayoutManager>
 
