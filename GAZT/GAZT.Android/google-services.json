@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "976093875605",
+    "project_id": "zatca-adb9a",
+    "storage_bucket": "zatca-adb9a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976093875605:android:c8d2e6ae8aea014fb87a9c",
+        "android_client_info": {
+          "package_name": "com.gazt.egazt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBrw2A4YgUOC4QvEy_C9MzLdqpCcfD_RCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

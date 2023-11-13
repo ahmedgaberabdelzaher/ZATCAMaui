@@ -5,17 +5,9 @@ using UIKit;
 using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using CoreGraphics;
-using EGAZT;
-using System;
 using System.ComponentModel;
 using CoreAnimation;
-using CoreGraphics;
-using EGAZT.CustomControl;
 using EGAZT.Enums;
-using GAZT.iOS.CustomRenderer;
-using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace GAZT.iOS.CustomRenderer

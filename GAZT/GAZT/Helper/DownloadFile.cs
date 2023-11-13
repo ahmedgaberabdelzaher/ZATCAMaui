@@ -39,7 +39,7 @@ namespace EGAZT.Helper
                 await dependency.Save(pdfStream, $"{fileName}.pdf");
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -73,62 +73,26 @@ namespace EGAZT.Helper
             }
             return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
         }
 
 
-        public async Task<bool> DownloadAttachmentAsync(string url, IDialogService _dialogService)
+        public Task<bool> DownloadAttachmentAsync(string url, IDialogService _dialogService)
         {
-            /*var dependency = DependencyService.Get<IPrintService>();
-
-            if (dependency == null)
-            {
-                await _dialogService.ShowMessage("Unable to Download file.", AppResources.Information);
-
-                return false;
-            }
-            var fileName = Guid.NewGuid().ToString();
-
-            Uri uri = new Uri(url);
-            // Download PDF locally for viewing
-            using (var httpClient = new HttpClient())
-            {
-                System.IO.MemoryStream pdfStream = new MemoryStream();
-
-                await httpClient.GetStreamAsync(uri).Result.CopyToAsync(pdfStream);
-                await dependency.Save(pdfStream, $"{fileName}.pdf");
-            }*/
-            return true;
+            
+            return Task.FromResult(true);
         }
 
         public bool DownloadApplicationForm(string url)
         {
-            /*var dependency = DependencyService.Get<IPrintService>();
-
-            if (dependency == null)
-            {
-                await DisplayAlert("Error loading PDF", "Computer says no", "OK");
-
-                return false;
-            }
-            var fileName = Guid.NewGuid().ToString();
-
-            Uri uri = new Uri(url);
-            // Download PDF locally for viewing
-            using (var httpClient = new HttpClient())
-            {
-                System.IO.MemoryStream pdfStream = new MemoryStream();
-
-                await httpClient.GetStreamAsync(uri).Result.CopyToAsync(pdfStream);
-                await dependency.Save(pdfStream, $"{fileName}.pdf");
-            }*/
+           
             return true;
         }
 
-        public async System.Threading.Tasks.Task<bool> DownloadFileAsync(string url,string fileExtention, IDialogService _dialogService)
+        public async Task<bool> DownloadFileAsync(string url,string fileExtention, IDialogService _dialogService)
         {
             try
             {
@@ -147,13 +111,13 @@ namespace EGAZT.Helper
                 // Download PDF locally for viewing
                 using (var httpClient = new HttpClient())
                 {
-                    System.IO.MemoryStream pdfStream = new MemoryStream();
+                    MemoryStream pdfStream = new MemoryStream();
 
                     await httpClient.GetStreamAsync(uri).Result.CopyToAsync(pdfStream);
                     await dependency.Save(pdfStream, $"{fileName}.{fileExtention}");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

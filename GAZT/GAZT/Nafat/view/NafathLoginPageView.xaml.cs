@@ -80,7 +80,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
                                         //API Call
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
 
                                     }
@@ -159,7 +159,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                     }
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
                                     await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                                 }
@@ -167,7 +167,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         });
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                 }

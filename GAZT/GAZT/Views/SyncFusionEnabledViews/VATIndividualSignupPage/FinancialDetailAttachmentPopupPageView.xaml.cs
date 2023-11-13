@@ -62,10 +62,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         //AttachmentTypePicker.SelectedItem = "1";
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 if (viewModel.IsComeForWhichAttachment == WhichAttachment.VATAmendRegistration)
                 {
@@ -82,10 +82,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             
         }
@@ -122,19 +122,19 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         //AttachmentTypePicker.SelectedItem = "1";
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 viewModel.IsComeForWhichAttachment = attachment;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -164,10 +164,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -199,7 +199,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -234,7 +234,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 MessagingCenter.Send<Object, ELGBL_DOCSetforsubmit>(this, "EligibilitySetAttachmentReceived", viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet);
                 //viewModel.VATRegistrationDetailsForAttach.d.ELGBL_DOCSet
             }
-            catch(Exception ex)
+            catch(Exception)
             { 
             
             }
@@ -297,10 +297,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                     //}
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
             catch (InternetException ex)
@@ -373,7 +373,7 @@ ResultsItemForDOCSetforsubmit();
 
                                 
                             }
-                            catch(Exception ex)
+                            catch(Exception)
                             { 
                             
                             }
@@ -387,10 +387,10 @@ ResultsItemForDOCSetforsubmit();
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void OnDownloadAttachmentClicked(object sender, EventArgs e)
@@ -406,10 +406,10 @@ ResultsItemForDOCSetforsubmit();
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void DDlIDTypee_OkButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -429,10 +429,10 @@ ResultsItemForDOCSetforsubmit();
                 viewModel.CloneAttachmentList(viewModel.VatAttachmentsList);
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -470,10 +470,10 @@ ResultsItemForDOCSetforsubmit();
                     DeleteAttachmentForMessagingCenterCall();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -505,10 +505,10 @@ ResultsItemForDOCSetforsubmit();
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -522,7 +522,7 @@ ResultsItemForDOCSetforsubmit();
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -549,10 +549,10 @@ ResultsItemForDOCSetforsubmit();
             //viewModel.SelectedResultsItemForDOCSet = selectedtyp;
             //viewModel.AttachmentTypeTxt = selectedtyp.Txt50;
             }
-            catch (Exception ex) 
+            catch (Exception) 
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             }
 
@@ -562,7 +562,7 @@ ResultsItemForDOCSetforsubmit();
             {
                 AttachmentTypePicker.IsOpen = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             { 
             
             }

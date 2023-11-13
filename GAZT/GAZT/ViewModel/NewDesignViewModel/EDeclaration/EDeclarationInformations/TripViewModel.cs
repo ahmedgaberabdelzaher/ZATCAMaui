@@ -114,7 +114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         HeaderTitle = AppResources.ZZZZCountry;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -137,7 +137,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             _navigationService.NavigateTo("PassengerInformationPage");
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 
@@ -157,7 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -179,7 +179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         if (SubmitModel.travelerDeclaration.travelDate.Date == DateTime.Now.Date)
                             ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -213,7 +213,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -247,7 +247,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }

@@ -69,10 +69,10 @@ namespace EGAZT.Views.NewDesign.VATReview
             try { 
             viewModel.OpenAttachment(e.ItemData as Attachment);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 

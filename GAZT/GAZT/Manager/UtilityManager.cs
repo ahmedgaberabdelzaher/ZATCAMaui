@@ -471,7 +471,7 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new InvalidDataException();
                 }
@@ -1057,7 +1057,7 @@ namespace GAZT.Manager
                     amountWithComma = _testDueAmount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return string.Empty;
             }
@@ -1135,7 +1135,7 @@ namespace GAZT.Manager
                 DateTime tempDate = DateTime.ParseExact(hijri, allFormats, arCul.DateTimeFormat, DateTimeStyles.AllowWhiteSpaces);
                 return tempDate.ToString("yyyy/MM/dd", enCul.DateTimeFormat);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }
@@ -1155,14 +1155,14 @@ namespace GAZT.Manager
                     var var2 = tempDate.ToString("yyyy/MM/dd", arSA.DateTimeFormat);
                     return var2;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     return null;
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "";
             }
@@ -1176,7 +1176,7 @@ namespace GAZT.Manager
                 arSA.DateTimeFormat.Calendar = new GregorianCalendar();
                 return DateTime.ParseExact(date, "yyyy/MM/dd", arSA).ToString("yyyy/MM/dd");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "";
             }
@@ -1343,7 +1343,7 @@ namespace GAZT.Manager
                 };
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.ProductDeclarationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.ProductDeclarationPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:questionsviews="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.QuestionsViews"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:questionsviews="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.QuestionsViews"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -19,12 +19,12 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+             <ResourceDictionary.MergedDictionaries>
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+               <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
             </ResourceDictionary.MergedDictionaries>
-            <ResourceDictionary>
-                <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+             <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -38,13 +38,13 @@
                 <!--  Back Button  -->
                 <StackLayout>
 
-                    <!--  Back Image  -->
+                     <!--  Back Image  -->
                     <Image
                         HorizontalOptions="Start"
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand">
+                        VerticalOptions="CenterAndExpand" >
 
                         <Image.Triggers>
                             <DataTrigger
@@ -66,29 +66,28 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    FontSize="15"
                     HorizontalOptions="Center"
+                    FontSize="15"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{Binding HeaderTitle}"
                     VerticalOptions="Center" />
 
-                <!--  Cart Image  -->
-                <StackLayout
-                    Grid.Column="2"
-                    HorizontalOptions="End"
-                    Spacing="0">
+                <!--  Cart Image -->
+                <StackLayout Grid.Column="2"
+                             Spacing="0"
+                             HorizontalOptions="End">
 
-                    <!--  Count Label  -->
+                     <!--  Count Label  -->
                     <custom:CustomLabel
-                        FontSize="14"
                         HorizontalOptions="Center"
+                        FontSize="14"
                         HorizontalTextAlignment="Center"
-                        Text="{Binding CardData.Count}"
                         TextColor="#4FBBBD"
+                        Text="{Binding CardData.Count}"
                         VerticalOptions="End" />
 
-                    <!--  Cart Image  -->
+                     <!--  Cart Image -->
                     <Image
                         HorizontalOptions="End"
                         Source="eCart.png"
@@ -115,29 +114,28 @@
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
-                        <!--  Circle view  -->
-                        <Grid
-                            Margin="0,30,0,10"
-                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-                            ColumnSpacing="0"
-                            HorizontalOptions="CenterAndExpand"
-                            RowDefinitions="Auto"
-                            VerticalOptions="Start">
+                        <!--Circle view-->
+                        <Grid RowDefinitions="Auto"
+                              Margin="0,30,0,10"
+                              ColumnSpacing="0"
+                              VerticalOptions="Start"
+                              HorizontalOptions="CenterAndExpand"
+                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
 
-                            <!--  Circle button 1  -->
-                            <Button
-                                BackgroundColor="Transparent"
-                                BorderColor="#0996D4"
-                                BorderWidth="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="EndAndExpand"
-                                InputTransparent="True"
-                                Text="1"
-                                TextColor="#0996D4"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <Button.Padding>
+                            <!--Circle button 1-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    BorderWidth="1"
+                                    InputTransparent="True"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="EndAndExpand"
+                                    BorderColor="#0996D4"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#0996D4"
+                                    Text="1">
+                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
@@ -148,86 +146,86 @@
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="1"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
                                 BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
+                                HeightRequest="2" />
 
-                            <!--  Circle button 2  -->
-                            <Button
-                                Grid.Column="2"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="2"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <Button.Padding>
+                            <!--Circle button 2-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="2"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="2">
+                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
                                 </Button.Padding>
 
-                            </Button>
+                             </Button>
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="3"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
                                 BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
+                                HeightRequest="2" />
 
-                            <!--  Circle button 3  -->
-                            <Button
-                                Grid.Column="4"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="3"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <Button.Padding>
+                            <!--Circle button 3-->
+                            <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="4"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="3">
+                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
                                 </Button.Padding>
 
-                            </Button>
+                             </Button>
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="5"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20"
                                 BackgroundColor="#B8BABA"
-                                HeightRequest="2"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20" />
+                                HeightRequest="2" />
 
-                            <!--  Circle button 4  -->
-                            <Button
-                                Grid.Column="6"
-                                BackgroundColor="Transparent"
-                                BorderColor="#B8BABA"
-                                BorderWidth="1"
-                                CornerRadius="15"
-                                HeightRequest="30"
-                                HorizontalOptions="StartAndExpand"
-                                InputTransparent="True"
-                                Text="4"
-                                TextColor="#565655"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="30">
-                                <Button.Padding>
+                            <!--Circle button 4-->
+                             <Button 
+                                    WidthRequest="30"
+                                    HeightRequest="30"
+                                    CornerRadius="15"
+                                    InputTransparent="True"
+                                    BorderWidth="1"
+                                    Grid.Column="6"
+                                    VerticalOptions="CenterAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    BorderColor="#B8BABA"
+                                    BackgroundColor="Transparent"
+                                    TextColor="#565655"
+                                    Text="4">
+                                 <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
@@ -249,16 +247,16 @@
 
                         <!--  Horizontal Line  -->
                         <BoxView
+                            WidthRequest="20"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
-                            WidthRequest="20" />
+                            HeightRequest="2" />
 
-                        <!--  Welcome Label for logged in only  -->
+                        <!--  Welcome Label for logged in only -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="20"
-                            HorizontalOptions="StartAndExpand"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            HorizontalOptions="StartAndExpand"
                             MaxLines="1"
                             Text="{x:Static ResourceManager:AppResources.Hi}"
                             TextColor="#0996D4" />
@@ -267,139 +265,135 @@
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="20"
-                            HorizontalOptions="StartAndExpand"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            HorizontalOptions="StartAndExpand"
                             MaxLines="1"
                             Text="{Binding SubmitModel.travelerDeclaration.FullName}"
                             TextColor="{StaticResource Primary}" />
 
                         <!--  Question Title Field Label  -->
                         <custom:CustomLabel
-                            Margin="0,0,0,10"
                             FontSize="14"
                             LineSpacing="1"
+                            Margin="0,0,0,10"
                             Style="{StaticResource CaptionLabelGrey}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Question}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    <Span Text="{Binding Question}"/>
+                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
 
                         <!--  Horizontal Line  -->
                         <BoxView
+                            WidthRequest="20"
                             Margin="0,0,0,10"
-                            BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2"
                             IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
-                            WidthRequest="20" />
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
 
                         <!--#region Questions View-->
-                        <StackLayout>
+                        <StackLayout >
 
                             <!--#region Hint view-->
-                            <Frame
-                                Padding="10"
-                                BackgroundColor="White"
-                                BorderColor="#E6E6E6"
-                                CornerRadius="10"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand">
+                            <Frame Padding="10"
+                               BackgroundColor="White"
+                               BorderColor="#E6E6E6"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               CornerRadius="10">
 
                                 <Frame.Triggers>
-                                    <DataTrigger
-                                        Binding="{Binding QFlow}"
-                                        TargetType="Frame"
-                                        Value="4">
-                                        <Setter Property="IsVisible" Value="false" />
+                                    <DataTrigger TargetType="Frame"
+                                                 Binding="{Binding QFlow}"
+                                                 Value="4">
+                                        <Setter Property="IsVisible"
+                                                Value="false"/>
 
                                     </DataTrigger>
 
                                 </Frame.Triggers>
 
                                 <StackLayout
-                                    HorizontalOptions="StartAndExpand"
                                     Orientation="Horizontal"
-                                    Spacing="10"
-                                    VerticalOptions="StartAndExpand">
+                                    VerticalOptions="StartAndExpand"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="10">
 
-                                    <!--  info icon  -->
+                                    <!--info icon-->
                                     <Image
                                         Aspect="AspectFit"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="20"
                                         HeightRequest="20"
                                         HorizontalOptions="CenterAndExpand"
-                                        Source="information.png"
-                                        VerticalOptions="StartAndExpand"
-                                        WidthRequest="20" />
+                                        Source="information.png"/>
 
                                     <!--  Question Hint Label  -->
                                     <custom:CustomLabel
-                                        FontSize="12"
-                                        HorizontalOptions="StartAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}"
-                                        TextColor="#999999">
-                                        <custom:CustomLabel.Triggers>
+                                            HorizontalOptions="StartAndExpand"
+                                            FontSize="12"
+                                            TextColor="#999999"
+                                            Text="{x:Static ResourceManager:AppResources.ProductDeclarationDisclaimer}">
+                                            <custom:CustomLabel.Triggers>
 
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="2">
-                                                <Setter Property="Text" Value="" />
-                                            </DataTrigger>
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="2">
+                                                    <Setter Property="Text" Value=""/>
+                                                </DataTrigger>
 
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="3">
-                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.Q2Hint}" />
-                                            </DataTrigger>
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="3">
+                                                    <Setter Property="Text"
+                                                            Value="{x:Static ResourceManager:AppResources.Q2Hint}"/>
+                                                </DataTrigger>
 
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="custom:CustomLabel"
-                                                Value="4">
+                                                <DataTrigger TargetType="custom:CustomLabel"
+                                                             Binding="{Binding QFlow}"
+                                                             Value="4">
 
-                                                <Setter Property="IsVisible" Value="false" />
-                                            </DataTrigger>
+                                                     <Setter Property="IsVisible"
+                                                             Value="false"/>
+                                                </DataTrigger>
 
-                                        </custom:CustomLabel.Triggers>
+                                            </custom:CustomLabel.Triggers>
 
                                     </custom:CustomLabel>
 
-                                    <!--  Hint With Two Line  -->
+                                    <!-- Hint With Two Line -->
                                     <StackLayout IsVisible="false">
 
-                                        <StackLayout.Triggers>
+                                         <StackLayout.Triggers>
 
-                                            <DataTrigger
-                                                Binding="{Binding QFlow}"
-                                                TargetType="StackLayout"
-                                                Value="2">
-                                                <Setter Property="IsVisible" Value="true" />
+                                            <DataTrigger TargetType="StackLayout"
+                                                         Binding="{Binding QFlow}" Value="2">
+                                                        <Setter Property="IsVisible" Value="true"/>
                                             </DataTrigger>
 
-                                        </StackLayout.Triggers>
+                                         </StackLayout.Triggers>
 
-                                        <!--  Hint Label  -->
-                                        <custom:CustomLabel
-                                            FontSize="12"
-                                            HorizontalOptions="StartAndExpand"
-                                            LineSpacing="1"
-                                            Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
-                                            TextColor="#999999" />
+                                        <!--Hint Label-->
+                                         <custom:CustomLabel  
+                                                HorizontalOptions="StartAndExpand"
+                                                FontSize="12"
+                                                LineSpacing="1"
+                                                Text="{x:Static ResourceManager:AppResources.DeclerationSecondSecurityQuestionYesHint}"
+                                                TextColor="#999999"/>
 
-                                        <!--  View List Label  -->
-                                        <custom:CustomLabel
-                                            FontSize="12"
+                                        <!-- View List Label -->
+                                        <custom:CustomLabel 
                                             HorizontalOptions="StartAndExpand"
-                                            LineSpacing="1"
+                                            TextDecorations="Underline"
                                             Text="{x:Static ResourceManager:AppResources.Viewlist}"
-                                            TextColor="#002447"
-                                            TextDecorations="Underline">
+                                            FontSize="12"
+                                            LineSpacing="1"
+                                            TextColor="#002447">
 
                                             <custom:CustomLabel.GestureRecognizers>
-                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}" />
+                                                <TapGestureRecognizer Command="{Binding GoToProhibitedGoodsLstURlCommand}"/>
                                             </custom:CustomLabel.GestureRecognizers>
 
                                         </custom:CustomLabel>
@@ -412,60 +406,57 @@
                             <!--#endregion Hint view-->
 
                             <!--#region TobacoProduct-->
-                            <questionsviews:TobacoView />
+                            <questionsviews:TobacoView/>
                             <!--#endregion TobacoProduct-->
 
                             <!--#region ProductView-->
-                            <questionsviews:ProductView />
+                            <questionsviews:ProductView/>
                             <!--#endregion ProductView-->
 
                             <!--#region CurrencyView-->
-                            <questionsviews:CurrencyView />
+                            <questionsviews:CurrencyView/>
                             <!--#endregion CurrencyView-->
 
                             <!--#region Security Restricted QuestionView-->
                             <questionsviews:RestrictedView />
-
+                    
                             <!--#endregion RestrictedView-->
 
-                        </StackLayout>
-                        <!--#endregion Questions View-->
-
+                        </StackLayout> 
+                         <!--#endregion Questions View-->
+                        
                         <!--#region Submit and Card-->
-                        <StackLayout>
+                        <StackLayout >
                             <!--  Add Item Button  -->
                             <buttons:SfButton
-                                Command="{Binding AddCommand}"
-                                Style="{StaticResource PrimaryButtonStyle}"
-                                Text="{x:Static ResourceManager:AppResources.AddItem}" />
+                            Command="{Binding AddCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.AddItem}" />
 
-                            <!--  Card Frame  -->
-                            <Frame
-                                Padding="10"
-                                BackgroundColor="{StaticResource Primary}"
-                                CornerRadius="10"
-                                HorizontalOptions="FillAndExpand"
-                                VerticalOptions="StartAndExpand">
+                            <!--Card Frame -->
+                            <Frame Padding="10"
+                               BackgroundColor="{StaticResource Primary}"
+                               VerticalOptions="StartAndExpand"
+                               HorizontalOptions="FillAndExpand"
+                               CornerRadius="10">
 
-                                <StackLayout Orientation="Horizontal" Spacing="10">
+                                <StackLayout
+                                Orientation="Horizontal"
+                                Spacing="10">
 
-                                    <Frame
-                                        Padding="10"
-                                        BackgroundColor="White"
-                                        CornerRadius="10"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
+                                    <Frame Padding="10"
+                                      BackgroundColor="White"
+                                      VerticalOptions="Center"
+                                      HorizontalOptions="Start"
+                                      CornerRadius="10">
 
                                         <!--  Total Number Label  -->
-                                        <custom:CustomLabel
-                                            FontFamily="{StaticResource SomarRegular}"
-                                            FontSize="14"
-                                            Style="{StaticResource CaptionLabelGrey}">
+                                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" FontFamily="{StaticResource SomarRegular}"  FontSize="14">
                                             <custom:CustomLabel.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment}" />
-                                                    <Span Text="  " />
-                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{0:n}'}"/>
+                                                    <Span  Text="  " />
+                                                    <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                                 </FormattedString>
                                             </custom:CustomLabel.FormattedText>
                                         </custom:CustomLabel>
@@ -474,39 +465,38 @@
 
                                     <!--  Total Fees Payable Label  -->
                                     <Label
-                                        FontFamily="{StaticResource SomarRegular}"
-                                        FontSize="14"
-                                        HorizontalOptions="End"
-                                        Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
-                                        TextColor="White"
-                                        VerticalOptions="CenterAndExpand" />
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    HorizontalOptions="End" VerticalOptions="CenterAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                    TextColor="White" />
 
                                 </StackLayout>
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}" />
+                                    <TapGestureRecognizer Command="{Binding OpenCartCommand}"/>
                                 </Frame.GestureRecognizers>
                             </Frame>
                         </StackLayout>
                         <!--#endregion Submit and Card-->
 
-                        <!--  GoTo Second Product Declaration Button  -->
+                        <!-- GoTo Second Product Declaration Button  -->
                         <buttons:SfButton
                             Margin="0,5"
+                            VerticalOptions="EndAndExpand"
                             Command="{Binding NextCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
-                            VerticalOptions="EndAndExpand" />
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
 
                         <!--  Prevoius Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
                             Command="{Binding PrevoiusCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
-                            TextColor="{StaticResource Secondary}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
 
                     </StackLayout>
 
@@ -523,7 +513,7 @@
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
-
+        
         </Grid>
     </ContentPage.Content>
 </ContentPage>

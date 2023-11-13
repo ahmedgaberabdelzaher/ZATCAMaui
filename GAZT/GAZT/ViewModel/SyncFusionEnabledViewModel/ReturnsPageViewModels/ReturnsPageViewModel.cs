@@ -338,10 +338,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                     }
                     RaisePropertyChanged("SelectedICRVATSubmitted");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -468,7 +468,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
@@ -481,8 +481,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                     }
                     _navigationService.NavigateTo(App.SFAnonymousLandingPageView);
                     _navigation.NavigationStack.ToList().Clear();
-                    //var _navigation = Application.Current.MainPage.Navigation;
-                    //_navigation.PopToRootAsync();
                 });
             }
         }
@@ -490,10 +488,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
         {
             try
             {
-                await Task.Run(() =>
-                {
-                    //  IsLoading = true;
-                });
+               
                 await Task.Run(async () =>
                 {
                     if(App.IsArabic)
@@ -702,11 +697,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
                             Device.BeginInvokeOnMainThread(async () =>
                             {
-                                _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                               await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                                 _navigationService.GoBack();
                             });
                         }
@@ -715,61 +708,18 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
-                            _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                            // IsLoading = false;
+                           await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                             _navigationService.GoBack();
                         });
                     }
                 });
-                await Task.Run(() =>
-                {
-                    //  IsLoading = false;
-                });
-                //int k = 5;
-                //List<ICRStatus> icrStatus = new List<ICRStatus>();
-                //ICRStatusList = new List<ICRStatus>();
-                //for (k = 0; k < 6; k++)
-                //{
-                //    ICRStatus m = new ICRStatus();
-                //    m.Estat = "Abc";
-                //    m.Ltext = "Abc";
-                //    m.Spras = "Abc";
-                //    m.Txt04 = "Abc";
-                //    m.Txt30 = "Abc";
-                //    icrStatus.Add(m);
-                //}
-                //ICRStatusList = icrStatus;
-                //int i = 5;
-                //List<ICRListSet> icrList = new List<ICRListSet>();
-                //ICRList = new List<ICRListSet>();
-                //for (i = 0; i < 6; i++)
-                //{
-                //    ICRListSet m = new ICRListSet();
-                //    m.Incotext = "Abc";
-                //    m.Txt50 = "100";
-                //    m.DueDt = "12:02:20";
-                //    m.TaxPeriod = "P";
-                //    icrList.Add(m);
-                //}
-                //int j = 5;
-                ////S MyBills = new List<MyBills>();
-                //for (j = 0; j < 6; j++)
-                //{
-                //    ICRListSet m = new ICRListSet();
-                //    m.Incotext = "Abc";
-                //    m.Txt50 = "100";
-                //    m.DueDt = "12:02:20";
-                //    m.TaxPeriod = "P";
-                //    icrList.Add(m);
-                //}
-                //ICRList = icrList;
+                
             }
             catch (InternetException ex)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                    //  IsLoading = false;
+                   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     _navigationService.GoBack();
                 });
             }
@@ -783,10 +733,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ReturnsListCountsByStatus_V
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Year);
                 return SortedList.Reverse();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
                 return ICRList;
             }
         }

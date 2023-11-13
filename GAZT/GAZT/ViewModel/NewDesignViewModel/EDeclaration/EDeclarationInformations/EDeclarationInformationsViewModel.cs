@@ -154,7 +154,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         SearchText = string.Empty;
                     }
@@ -245,7 +245,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -302,7 +302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
                     IsLoading = false;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     IsLoading = false;
                 }

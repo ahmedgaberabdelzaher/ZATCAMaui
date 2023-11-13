@@ -9451,9 +9451,6 @@ info@zatca.gov.sa</value>
   <data name="AddNewReport" xml:space="preserve">
       <value>بلاغ جديد</value>
    </data>
-  <data name="Reports" xml:space="preserve">
-      <value>بلاغات</value>
-   </data>
   <data name="MyOpenedReports" xml:space="preserve">
       <value>بلاغاتي المفتوحة</value>
    </data>
@@ -9629,9 +9626,6 @@ info@zatca.gov.sa</value>
     </data>
   <data name="EmptyReports" xml:space="preserve">
         <value>لا توجد لديك أي بلاغات</value>
-    </data>
-  <data name="Viewservices" xml:space="preserve">
-        <value>عرض الخدمات</value>
     </data>
   <data name="ReportOTPMSG" xml:space="preserve">
          <value>الرجاء إدخال رمز التحقق الذي تم إرساله إلى جوالك</value>
@@ -10224,9 +10218,6 @@ info@zatca.gov.sa</value>
       <data name="ExciseTax2" xml:space="preserve">
     <value>الضريبة الانتقائية</value>
   </data>
-    <data name="Customsdeclarationissuancefees" xml:space="preserve">
-    <value>رسوم إصدار البيان الجمركي</value>
-  </data>
   <data name="Total2" xml:space="preserve">
     <value>المجموع</value>
   </data>
@@ -10416,6 +10407,12 @@ info@zatca.gov.sa</value>
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
+    <data name="RegisterUserInZATCA" xml:space="preserve">
+       <value>التسجيل</value>
+  </data>
+  <data name="RegisterZATCA" xml:space="preserve">
+       <value>سجل</value>
+  </data>
   <data name="PlatesNumber" xml:space="preserve">
     <value>أرقام اللوحة</value>
   </data>
@@ -10424,5 +10421,23 @@ info@zatca.gov.sa</value>
   </data>
   <data name="ChooseCity" xml:space="preserve">
     <value>برجاء اختيار المدينة</value>
+  </data>
+    <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>نود ان نخبرك بآخر تحديث لدينا ويرجي تحديث التطبيق</value>
+  </data>
+  <data name="NafathLoginHeader" xml:space="preserve">
+       <value>النفاذ الوطني الموحد</value>
+  </data>
+  <data name="NafathLoginSubHeader" xml:space="preserve">
+       <value>يمكنك تسجيل الدخول عن طريق نفاذ</value>
+  </data>
+  <data name="NationalIqamaID" xml:space="preserve">
+       <value>رقم الهوية/الاقامة</value>
+  </data>
+  <data name="OpenNafath" xml:space="preserve">
+       <value>الرجاء فتح تطبيق نفاذ</value>
+  </data>
+    <data name="ConfirmOpenningNafath" xml:space="preserve">
+       <value>وتأكيد الطلب بإختيار الرقم التالي</value>
   </data>
 </root>

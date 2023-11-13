@@ -201,7 +201,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     MessageTxt = AppResources.ZZPleasefillthemandatoryfields;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -336,7 +336,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     Ports = data.Item1.Data;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

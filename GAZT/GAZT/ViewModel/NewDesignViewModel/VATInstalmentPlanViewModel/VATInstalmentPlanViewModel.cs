@@ -899,10 +899,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 2, Filter = "Income Tax" });
                 CorresFilterZakat = FiltersZAKAT;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private List<CorrespondenceFiltersModel> _corresFilterZakat;
@@ -1027,10 +1027,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 FiltersZAKAT.Add(new CorrespondenceFiltersModel { ID = 3, Filter = "Other Reason" });
                 SubCorresFilterZakat = FiltersZAKAT;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private List<CorrespondenceFiltersModel> _subCorresFilterZakat;
@@ -1710,10 +1710,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1852,10 +1852,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
          
@@ -1964,10 +1964,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -2222,10 +2222,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -2297,7 +2297,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 //    VATPenalityAmount = Math.Abs(double.Parse(VATBillDueAmount) - double.Parse(TotalAmountSAR.Replace(" SAR", "").Replace(",", ""))) + "";
 
                 //}
-                //catch (Exception e)
+                //catch (Exception)
                 //{
 
                 //}
@@ -2556,8 +2556,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             catch (InternetException ex)
@@ -2589,8 +2589,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
 
             }
@@ -2693,8 +2693,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2770,8 +2770,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2859,7 +2859,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -2869,10 +2869,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         public async void NewAttachmentClicked()
@@ -2885,7 +2885,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -2895,10 +2895,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         public void SummaryInstallmentDetailsBtnClicked()
@@ -2910,8 +2910,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2933,7 +2933,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -2943,10 +2943,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -2959,7 +2959,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -2969,10 +2969,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         //OutletContinueButtonTapped
@@ -3233,10 +3233,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3305,10 +3305,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -3806,11 +3806,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         return response;
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         return null;
                     }
                 }
@@ -3829,10 +3829,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                 return response;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return response;
             }
 
@@ -3880,10 +3880,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
                         localPath =
                       Task.Run(() => dependency.SaveFileToDisk(StreamForDownloadURL, $"{fileName}.pdf")).Result;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                     //    using (var httpClient = new HttpClient())
@@ -3912,8 +3912,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATInstalmentPlanViewModel
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 throw ex;
             }
         }

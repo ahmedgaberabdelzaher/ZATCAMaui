@@ -128,7 +128,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -231,7 +231,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

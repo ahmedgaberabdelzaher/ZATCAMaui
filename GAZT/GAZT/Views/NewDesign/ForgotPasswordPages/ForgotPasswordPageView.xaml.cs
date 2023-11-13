@@ -60,10 +60,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -171,10 +171,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -191,10 +191,10 @@ namespace EGAZT.Views.NewDesign.ForgotPasswordPages
             Picker_Tins.SelectedItem = selectedTinId;
             viewModel.SelectedTinId = selectedTinId;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -78,10 +78,10 @@ namespace EGAZT.Views.NewDesign.Template
                 // InitializeComponent();
                 this.FlowDirection = FlowDirection.RightToLeft;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -98,10 +98,10 @@ namespace EGAZT.Views.NewDesign.Template
                 this.FlowDirection = FlowDirection.LeftToRight;
                 Resources["BackButtonArrow"] = Resources["ArrowImageForArabicStyle"];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void OnTaxEvasionTapped(object sender, EventArgs e)

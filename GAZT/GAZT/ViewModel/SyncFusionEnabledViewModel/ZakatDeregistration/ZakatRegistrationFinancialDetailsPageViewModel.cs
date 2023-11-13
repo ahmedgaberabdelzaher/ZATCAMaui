@@ -61,9 +61,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
 
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -74,24 +73,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-                //await Task.Run(() =>
-                //{
-                //    App.HideProgressView();
-                //});
-
-                //string message = ex.Message;
-                //await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
-                //{
-                //    _navigationService.GoBack();
-                //});
+               
             }
-            catch (Exception mex)
+            catch (Exception )
             {
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
                 });
-                Console.WriteLine(mex.Message);
             }
         }
     }

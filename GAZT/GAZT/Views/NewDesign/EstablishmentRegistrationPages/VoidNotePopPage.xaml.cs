@@ -50,10 +50,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             try { 
             notesInputLayout.HasError = string.IsNullOrWhiteSpace(notes.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

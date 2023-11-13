@@ -34,10 +34,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 viewModel = App.Locator.ChangeFillingPeriodListPageView;
                 this.BindingContext = viewModel;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -53,7 +53,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                 viewModel.ResetData();
                 _ = viewModel.GetVATChangeFillingList();
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -110,7 +110,7 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                     }
 
                 }
-                catch(Exception ex) {
+                catch(Exception) {
 
                 }
 
@@ -118,10 +118,10 @@ namespace EGAZT.Views.NewDesign.ChangeFillingPeriodPages
                
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -78,7 +78,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     viewModel.IsInstructionChecked = arg;
 
                 }
-                //Console.WriteLine(arg);
+                //(arg);
             });
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
@@ -167,10 +167,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                         }
                     }
@@ -197,10 +197,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 ValidateIDNumberContact();
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                         }
                     }
@@ -244,10 +244,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
             }
         }
@@ -433,10 +433,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -572,10 +572,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -656,10 +656,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
             }
             viewModel.AddOutletDocumentOptions();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -694,10 +694,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                         }
 
                         viewModel.filterList();
@@ -775,10 +775,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 viewModel.IsLoading = false;
             }
             await Task.Run(() =>
@@ -813,7 +813,7 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
         void Button_Clicked(System.Object sender, System.EventArgs e)
         {
-            Console.WriteLine("Clicked event");
+            
         }
 
         void outletDocumentOptionsListView_SelectionChanged(System.Object sender, Syncfusion.ListView.XForms.ItemSelectionChangedEventArgs e)
@@ -834,10 +834,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                 RemovedItem.ImgSource = "vat_tile_listofsignup_W";
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         async void VATDeregStartDateClicked(System.Object sender, System.EventArgs e)
@@ -1142,10 +1142,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
 
             }
@@ -1279,10 +1279,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1416,10 +1416,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                                 //_navigationService.GoBack();
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                             string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                             Device.BeginInvokeOnMainThread(async () =>
@@ -1503,10 +1503,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -1572,10 +1572,10 @@ namespace EGAZT.Views.NewDesign.VATDeRegistration
 
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

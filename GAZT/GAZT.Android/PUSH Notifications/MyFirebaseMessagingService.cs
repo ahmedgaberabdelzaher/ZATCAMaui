@@ -1,10 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
-using Android.Net;
 using Firebase.Iid;
 using Firebase.Messaging;
-using Newtonsoft.Json;
-using Org.Json;
 namespace GAZT.PUSH_Notification
 {
     [Service(Exported = true)]
@@ -20,8 +17,6 @@ namespace GAZT.PUSH_Notification
             base.OnMessageReceived(message);
             var title = message.Data["Title"];
             var body = message.Data["Body"];
-            //JSONObject jsonObject =(JSONObject) JsonConvert.SerializeObject(message.GetNotification().Body, Formatting.Indented);
-            //new NotificationHelper().CreateNotification(jsonObject);
             new NotificationHelper().CreateNotification(title,body);
         }
     }

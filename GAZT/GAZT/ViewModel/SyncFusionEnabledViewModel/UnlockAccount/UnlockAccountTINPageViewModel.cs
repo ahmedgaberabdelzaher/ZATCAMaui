@@ -808,9 +808,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     }
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -1036,7 +1036,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                             
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -1056,10 +1056,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 IsOtpAPICalled = false;
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -1225,7 +1225,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                         await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {

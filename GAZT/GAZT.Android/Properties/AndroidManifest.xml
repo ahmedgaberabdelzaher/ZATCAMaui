@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gazt.egazt" android:installLocation="internalOnly" android:versionName="1.1.8" android:versionCode="3818">
-	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="32" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.gazt.egazt" android:installLocation="internalOnly" android:versionName="1.2.7" android:versionCode="3827">
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="33" />
 	<uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -12,7 +12,6 @@
 	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.FLASHLIGHT" />
-	<uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 	<uses-feature android:name="android.hardware.location" android:required="false" />
 	<uses-feature android:name="android.hardware.location.gps" android:required="false" />
 	<uses-feature android:name="android.hardware.location.network" android:required="false" />

@@ -7,8 +7,6 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Views;
 using EGAZT;
-using Plugin.Permissions;
-using AppDynamics.Agent;
 using Plugin.Media;
 using Java.Lang;
 using System;
@@ -16,7 +14,6 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using System.Threading.Tasks;
 using System.IO;
 using Newtonsoft.Json;
-using Android.Content;
 using Acr.UserDialogs;
 using MediaManager;
 using Rg.Plugins.Popup.Services;
@@ -37,7 +34,7 @@ namespace GAZT.Droid
             PreventLinkerFromStrippingCommonLocalizationReferences();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
+            Firebase.FirebaseApp.InitializeApp(this);
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             base.OnCreate(savedInstanceState);
             ZXing.Net.Mobile.Forms.Android.Platform.Init();

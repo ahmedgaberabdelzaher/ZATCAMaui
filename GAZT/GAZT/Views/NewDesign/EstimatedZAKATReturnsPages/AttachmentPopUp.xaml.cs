@@ -34,9 +34,9 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 viewModel.OnPageLoad();
                 SetLTR();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                
             }
           
@@ -62,7 +62,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     //  await viewModel.OnReleaseOrBillsClicked();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -95,7 +95,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 await PopupNavigation.Instance.PopAsync();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -142,10 +142,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                 //}
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public async Task email(string doguid, ZakatAttachment attachment)
@@ -191,7 +191,7 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
                     });
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             });
@@ -226,10 +226,10 @@ namespace EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

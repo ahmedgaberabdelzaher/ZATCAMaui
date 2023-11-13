@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <pages:PopupPage
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.PopUpPages.EDeclarationCartPopUpPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:EGAZT"
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.PopUpPages.EDeclarationCartPopUpPage"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:converter="clr-namespace:EGAZT.Converters"
-    xmlns:custom="clr-namespace:GAZT"
-    xmlns:effects="clr-namespace:Plugin.myToolTip;assembly=Plugin.myToolTip"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:effects="clr-namespace:Plugin.myToolTip;assembly=Plugin.myToolTip"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:custom="clr-namespace:GAZT" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:converter="clr-namespace:EGAZT.Converters"
     FlowDirection="{Binding AppDirection}">
 
     <pages:PopupPage.Resources>
@@ -19,7 +18,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
@@ -37,36 +36,36 @@
 
         <yummy:PancakeView
             Padding="20"
+            HeightRequest="500"
             BackgroundColor="White"
             CornerRadius="15,15,0,0"
-            HeightRequest="500"
             Style="{StaticResource CommonTopCurves}"
             VerticalOptions="EndAndExpand">
 
             <ScrollView VerticalScrollBarVisibility="Never">
 
-                <StackLayout Spacing="0">
+                <StackLayout Spacing="0" >
 
                     <!--#region Header & close-->
                     <StackLayout Orientation="Horizontal">
 
                         <!--  Checkout Header Label  -->
                         <custom:CustomLabel
-                            Margin="0,0,0,20"
-                            FontSize="18"
                             HorizontalOptions="StartAndExpand"
+                            FontSize="18"
+                            Margin="0,0,0,20"
+                            TextColor="#232323" 
                             Text="{x:Static ResourceManager:AppResources.CartHeader}"
-                            TextColor="#232323"
                             VerticalOptions="Center" />
 
 
-                        <!--  Close Image  -->
+                        <!--Close Image-->
                         <Image
-                            Margin="0,0,0,10"
                             Aspect="AspectFit"
                             HeightRequest="25"
                             HorizontalOptions="EndAndExpand"
                             Source="darkClose"
+                            Margin="0,0,0,10"
                             VerticalOptions="Center"
                             WidthRequest="25">
 
@@ -81,65 +80,66 @@
 
                     <!--#region Frame Contains Product list-->
                     <Frame
-                        Margin="0,0,0,20"
-                        Padding="15"
-                        BorderColor="#EBEBEB"
-                        CornerRadius="15"
-                        HorizontalOptions="FillAndExpand"
-                        Style="{StaticResource CommonTopCurves}"
-                        VerticalOptions="FillAndExpand">
+                           Padding="15"
+                            Margin="0,0,0,20"
+                            CornerRadius="15"
+                            BorderColor="#EBEBEB"
+                            VerticalOptions="FillAndExpand"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{StaticResource CommonTopCurves}">
 
-                        <!--  Frame Content  -->
+                        <!--Frame Content-->
                         <StackLayout>
 
                             <!--#region Label and Icon-->
-                            <StackLayout Orientation="Horizontal" Spacing="0">
+                            <StackLayout Orientation="Horizontal"
+                                            Spacing="0">
 
-                                <!--  Doc Image  -->
+                                <!--Doc Image-->
                                 <Image
                                     Aspect="AspectFit"
                                     HeightRequest="25"
                                     HorizontalOptions="Start"
                                     Source="DocBlue"
                                     VerticalOptions="Center"
-                                    WidthRequest="25" />
+                                    WidthRequest="25"/>
 
                                 <!--  Product Name Label  -->
                                 <custom:CustomLabel
-                                    Padding="15"
-                                    FontSize="18"
                                     HorizontalOptions="StartAndExpand"
+                                    FontSize="18"
+                                    Padding="15"
+                                    TextColor="#002447" 
                                     Text="{x:Static ResourceManager:AppResources.ProductName}"
-                                    TextColor="#002447"
                                     VerticalOptions="Start" />
 
                             </StackLayout>
                             <!--#endregion Label and Icon-->
-
+                           
 
                             <!--  Horizontal Line  -->
                             <BoxView
+                                WidthRequest="20"
                                 Margin="0,0,0,10"
-                                BackgroundColor="#E6E6E6"
-                                HeightRequest="2"
                                 HorizontalOptions="FillAndExpand"
-                                WidthRequest="20" />
+                                BackgroundColor="#E6E6E6"
+                                HeightRequest="2" />
 
                             <!--#region Item List-->
-                            <StackLayout x:Name="productList" BindableLayout.ItemsSource="{Binding CardData}">
+                            <StackLayout x:Name="productList"
+                                         BindableLayout.ItemsSource="{Binding CardData}">
 
-                                <BindableLayout.ItemTemplate>
+                                 <BindableLayout.ItemTemplate>
 
                                     <DataTemplate>
 
-                                        <Grid
-                                            x:Name="selectedProduct"
-                                            ColumnDefinitions="Auto,*,*"
-                                            ColumnSpacing="0"
-                                            RowDefinitions="Auto,Auto,Auto,Auto"
-                                            RowSpacing="5">
+                                        <Grid x:Name="selectedProduct"
+                                              RowDefinitions="Auto,Auto,Auto,Auto"
+                                              RowSpacing="5"
+                                              ColumnSpacing="0"
+                                              ColumnDefinitions="Auto,*,*">
 
-                                            <!--  Delete Icon  -->
+                                            <!--Delete Icon-->
                                             <Image
                                                 Aspect="AspectFit"
                                                 HeightRequest="30"
@@ -149,87 +149,86 @@
                                                 WidthRequest="30">
 
                                                 <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference productList}, Path=BindingContext}"
-                                                        Command="{Binding RemoveItemFromCardCommand}"
-                                                        CommandParameter="{Binding Source={x:Reference selectedProduct}, Path=BindingContext}" />
+                                                        <TapGestureRecognizer
+                                                            BindingContext="{Binding Source={x:Reference productList}, Path=BindingContext}"
+                                                            Command="{Binding RemoveItemFromCardCommand}"
+                                                            CommandParameter="{Binding Source={x:Reference selectedProduct}, Path=BindingContext}" />
                                                 </Image.GestureRecognizers>
 
                                             </Image>
 
-                                            <!--  Product name  -->
+                                            <!--Product name-->
                                             <custom:CustomLabel
+                                                HorizontalOptions="Start"
+                                                FontSize="12"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
-                                                FontSize="12"
-                                                HorizontalOptions="Start"
-                                                Text="{Binding Name}"
                                                 TextColor="#565655"
+                                                Text="{Binding Name}"
                                                 VerticalOptions="Start" />
 
-                                            <!--  Product Desc.  -->
+                                            <!--Product Desc.-->
                                             <custom:CustomLabel
+                                                HorizontalOptions="Start"
+                                                FontSize="12"
                                                 Grid.Row="1"
                                                 Grid.Column="1"
                                                 Grid.ColumnSpan="2"
-                                                FontSize="12"
-                                                HorizontalOptions="Start"
+                                                TextColor="#999999"
                                                 LineBreakMode="WordWrap"
                                                 Text="{Binding desc}"
-                                                TextColor="#999999"
                                                 VerticalOptions="Start" />
 
-                                            <!--  QTY Items  -->
-                                            <StackLayout
-                                                Grid.Row="2"
-                                                Grid.ColumnSpan="3"
-                                                HorizontalOptions="Fill"
-                                                Orientation="Horizontal"
-                                                VerticalOptions="Start">
+                                            <!--QTY Items-->
+                                            <StackLayout Grid.Row="2"
+                                                         Grid.ColumnSpan="3"
+                                                         VerticalOptions="Start"
+                                                         HorizontalOptions="Fill"
+                                                         Orientation="Horizontal">
 
-                                                <!--  QTY Icon  -->
+                                                <!--QTY Icon-->
                                                 <Image
                                                     Aspect="AspectFit"
                                                     HorizontalOptions="Start"
                                                     Source="quantity"
-                                                    VerticalOptions="Start" />
+                                                    VerticalOptions="Start"/>
 
-                                                <!--  QTY Value  -->
+                                                <!--QTY Value-->
                                                 <custom:CustomLabel
-                                                    FontSize="14"
                                                     HorizontalOptions="Start"
+                                                    FontSize="14"
                                                     LineBreakMode="WordWrap"
                                                     TextColor="#232323"
-                                                    VerticalOptions="Start">
+                                                    VerticalOptions="Start" >
 
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.QTY}" />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.QTY}"/>
                                                             <Span Text=": " />
-                                                            <Span Text="{Binding QTY}" />
+                                                            <Span Text="{Binding QTY}"/>
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
 
                                                 </custom:CustomLabel>
 
-                                                <!--  Total value Icon  -->
+                                                <!--Total value Icon-->
                                                 <Image
                                                     Aspect="AspectFit"
                                                     HorizontalOptions="EndAndExpand"
                                                     Source="product"
-                                                    VerticalOptions="Start" />
+                                                    VerticalOptions="Start"/>
 
-                                                <!--  Total value  Value  -->
+                                                <!--Total value  Value-->
                                                 <custom:CustomLabel
-                                                    FontSize="14"
                                                     HorizontalOptions="End"
+                                                    FontSize="14"
                                                     LineBreakMode="WordWrap"
                                                     TextColor="#232323"
-                                                    VerticalOptions="Start">
+                                                    VerticalOptions="Start" >
 
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"/>
                                                             <Span Text=": " />
                                                             <Span Text="{Binding Price}" />
                                                         </FormattedString>
@@ -238,212 +237,215 @@
                                                 </custom:CustomLabel>
 
                                             </StackLayout>
-
-                                            <!--  Horizontal Line  -->
+                                            
+                                            <!--Horizontal Line-->  
                                             <BoxView
                                                 Grid.Row="4"
                                                 Grid.ColumnSpan="3"
-                                                BackgroundColor="#EBEBEB"
-                                                HeightRequest="2"
-                                                HorizontalOptions="FillAndExpand"
                                                 VerticalOptions="End"
-                                                WidthRequest="20" />
+                                                HorizontalOptions="FillAndExpand"
+                                                WidthRequest="20"
+                                                BackgroundColor="#EBEBEB"
+                                                HeightRequest="2" />
 
                                         </Grid>
 
                                     </DataTemplate>
 
-                                </BindableLayout.ItemTemplate>
-
+                                 </BindableLayout.ItemTemplate>
+                            
                             </StackLayout>
                             <!--#endregion Item List-->
 
                         </StackLayout>
-
+                    
                     </Frame>
                     <!--#endregion Frame Contains Product list-->
 
-                    <!--#region Fees Details-->
-                    <yummy:PancakeView
-                        Padding="15"
-                        Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                                    Thickness='1'}"
-                        CornerRadius="15,15,0,0"
-                        Style="{StaticResource CommonTopCurves}">
+                    <!--#region Fees Details-->  
+                    <yummy:PancakeView 
+                           Padding="15"
+                           CornerRadius="15,15,0,0"
+                           Style="{StaticResource CommonTopCurves}"
+                           Border="{yummy:BorderMarkup Color=#EBEBEB,
+                                                            Thickness='1'}">
 
-                        <StackLayout>
+                            <StackLayout>
 
-                            <!--  Customsdeclarationissuancefees  -->
-                            <StackLayout Orientation="Horizontal">
+                                <!--Customsdeclarationissuancefees-->
+                                <StackLayout Orientation="Horizontal">
 
-                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.Customsdeclarationissuancefees}" />
 
-                                <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                            HorizontalOptions="EndAndExpand">
 
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.extraFees}" />
-                                            <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding FeesCalculatorResponse.extraFees}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
 
-                                </Label>
+                                    </Label>
+
+                                </StackLayout>
+
+                                <!--ExciseTax2 Label-->
+                                <StackLayout Orientation="Horizontal">
+                      
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                            HorizontalOptions="EndAndExpand">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                <Span Text="{Binding FeesCalculatorResponse.excise}" />
+                                                <Span Text=" " />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                    </Label>
+
+                                </StackLayout>
+
+                                <!--CustomsFees-->
+                                <StackLayout Orientation="Horizontal">
+                      
+                                    <Label Style="{StaticResource BodyLabelGrey}">
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="5%" />
+                                                </FormattedString>
+                                        </Label.FormattedText>
+
+                                    </Label>
+
+                                    <!--CustomsFeesDisclaimer Image-->
+                                    <Image Source="info"
+                                           Aspect="AspectFit"
+                                           effects:ToolTipEffect.BackgroundColor="#1D3761"
+                                           effects:ToolTipEffect.TextColor="White"
+                                           effects:ToolTipEffect.TextSize="12"
+                                           effects:ToolTipEffect.IsVisible="True"
+                                           effects:ToolTipEffect.Padding="5"
+                                           effects:ToolTipEffect.Position="Bottom"
+                                           effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}"/>
+
+                                    <Label Style="{StaticResource BodyLabelBlack}"
+                                            HorizontalOptions="EndAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
+                                                <Span Text=" " />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                </StackLayout>
+
+                                <!--VATCertificates-->
+                                <StackLayout Orientation="Horizontal">
+
+                                    <Label Style="{StaticResource BodyLabelGrey}"
+                                            Text="{x:Static ResourceManager:AppResources.VATCertificates}" >
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
+                                                    <Span Text=" " />
+                                                    <Span Text="15%" />
+                                                </FormattedString>
+                                        </Label.FormattedText>
+
+                                    </Label>
+
+                                    <!--VATCertificates Image-->
+                                    <Image Source="info"
+                                           Aspect="AspectFit"
+                                           effects:ToolTipEffect.BackgroundColor="#1D3761"
+                                           effects:ToolTipEffect.TextColor="White"
+                                           effects:ToolTipEffect.TextSize="12"
+                                           effects:ToolTipEffect.IsVisible="True"
+                                           effects:ToolTipEffect.Padding="5"
+                                           effects:ToolTipEffect.Position="Bottom"
+                                           effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}"/>
+
+                                    <Label HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource BodyLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{0:n}'}" />
+                                                <Span Text=" " />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+
+                                </StackLayout>
 
                             </StackLayout>
-
-                            <!--  ExciseTax2 Label  -->
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.ExciseTax2}" />
-
-                                <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.excise}" />
-                                            <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                            </StackLayout>
-
-                            <!--  CustomsFees  -->
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Style="{StaticResource BodyLabelGrey}">
-
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.CustomsFees}" />
-                                            <Span Text=" " />
-                                            <Span Text="5%" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-
-                                </Label>
-
-                                <!--  CustomsFeesDisclaimer Image  -->
-                                <Image
-                                    effects:ToolTipEffect.BackgroundColor="#1D3761"
-                                    effects:ToolTipEffect.IsVisible="True"
-                                    effects:ToolTipEffect.Padding="5"
-                                    effects:ToolTipEffect.Position="Bottom"
-                                    effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.CustomsdeclarationDisclaimer}"
-                                    effects:ToolTipEffect.TextColor="White"
-                                    effects:ToolTipEffect.TextSize="12"
-                                    Aspect="AspectFit"
-                                    Source="info" />
-
-                                <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.totalDuty}" />
-                                            <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                            </StackLayout>
-
-                            <!--  VATCertificates  -->
-                            <StackLayout Orientation="Horizontal">
-
-                                <Label Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.VATCertificates}">
-
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{x:Static ResourceManager:AppResources.VATCertificates}" />
-                                            <Span Text=" " />
-                                            <Span Text="15%" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-
-                                </Label>
-
-                                <!--  VATCertificates Image  -->
-                                <Image
-                                    effects:ToolTipEffect.BackgroundColor="#1D3761"
-                                    effects:ToolTipEffect.IsVisible="True"
-                                    effects:ToolTipEffect.Padding="5"
-                                    effects:ToolTipEffect.Position="Bottom"
-                                    effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.VATCertificatesDisclaimer}"
-                                    effects:ToolTipEffect.TextColor="White"
-                                    effects:ToolTipEffect.TextSize="12"
-                                    Aspect="AspectFit"
-                                    Source="info" />
-
-                                <Label HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlack}">
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.vat}" />
-                                            <Span Text=" " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-
-                            </StackLayout>
-
-                        </StackLayout>
 
                     </yummy:PancakeView>
 
-                    <!--  Total Label  -->
+                    <!--Total Label-->
                     <Grid>
 
-                        <yummy:PancakeView
-                            BackgroundColor="#0996D4"
-                            Border="{yummy:BorderMarkup Color=#EBEBEB,
-                                                        Thickness='1'}"
-                            CornerRadius="0,0,15,15"
-                            HorizontalOptions="FillAndExpand"
-                            Opacity="0.1"
-                            Style="{StaticResource CommonTopCurves}"
-                            VerticalOptions="FillAndExpand" />
+                        <yummy:PancakeView 
+                                CornerRadius="0,0,15,15"
+                                Opacity="0.1"
+                                VerticalOptions="FillAndExpand"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="#0996D4"
+                                Style="{StaticResource CommonTopCurves}"
+                                Border="{yummy:BorderMarkup Color=#EBEBEB,
+                                                                Thickness='1'}"/>
 
-                        <!--  Total  -->
-                        <StackLayout
-                            Padding="10"
-                            HorizontalOptions="FillAndExpand"
-                            Spacing="0"
-                            VerticalOptions="FillAndExpand">
+                        <!--Total-->
+                        <StackLayout Spacing="0"
+                                    Padding="10"
+                                    VerticalOptions="FillAndExpand"
+                                    HorizontalOptions="FillAndExpand">
 
                             <StackLayout Orientation="Horizontal">
 
-                                <!--  Total Label  -->
+                                <!--Total Label-->
                                 <custom:CustomLabel
-                                    FontSize="18"
                                     HorizontalOptions="Start"
-                                    Text="{x:Static ResourceManager:AppResources.NDTotal}"
+                                    FontSize="18"
                                     TextColor="#002447"
+                                    Text="{x:Static ResourceManager:AppResources.NDTotal}"
                                     VerticalOptions="Start" />
 
-                                <!--  Total Disclaimer Image  -->
-                                <Image
-                                    effects:ToolTipEffect.BackgroundColor="#1D3761"
-                                    effects:ToolTipEffect.IsVisible="True"
-                                    effects:ToolTipEffect.Padding="5"
-                                    effects:ToolTipEffect.Position="Bottom"
-                                    effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}"
-                                    effects:ToolTipEffect.TextColor="White"
-                                    effects:ToolTipEffect.TextSize="12"
-                                    Aspect="AspectFit"
-                                    Source="info" />
+                                <!--Total Disclaimer Image-->
+                                <Image Source="info"
+                                        Aspect="AspectFit"
+                                        effects:ToolTipEffect.BackgroundColor="#1D3761"
+                                        effects:ToolTipEffect.TextColor="White"
+                                        effects:ToolTipEffect.TextSize="12"
+                                        effects:ToolTipEffect.IsVisible="True"
+                                        effects:ToolTipEffect.Padding="5"
+                                        effects:ToolTipEffect.Position="Bottom"
+                                        effects:ToolTipEffect.Text="{x:Static ResourceManager:AppResources.NDTotalDisclaimer}"/>
 
-                                <!--  Price Label  -->
+                                <!--Price Label-->
                                 <custom:CustomLabel
-                                    FontSize="18"
                                     HorizontalOptions="EndAndExpand"
+                                    FontSize="18"
                                     TextColor="Black"
-                                    VerticalOptions="Start">
+                                    VerticalOptions="Start" >
                                     <custom:CustomLabel.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment}" />
-                                            <Span Text="  " />
-                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{0:n}'}"/>
+                                            <Span  Text="  " />
+                                            <Span  Text="{x:Static ResourceManager:AppResources.ZSAR}" />
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
@@ -460,8 +462,8 @@
                     <buttons:SfButton
                         Margin="0,20"
                         Command="{Binding CloseCartCommand}"
-                        FontFamily="{StaticResource SomarBold}"
                         Style="{StaticResource PrimaryButtonStyle}"
+                        FontFamily="{StaticResource SomarBold}"
                         Text="{x:Static ResourceManager:AppResources.ZClose}" />
 
                 </StackLayout>
@@ -470,7 +472,7 @@
 
         </yummy:PancakeView>
 
-    </Grid>
+     </Grid>
 
 </pages:PopupPage>
 

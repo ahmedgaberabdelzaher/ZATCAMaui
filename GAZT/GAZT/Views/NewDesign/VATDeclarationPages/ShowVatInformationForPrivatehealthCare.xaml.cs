@@ -44,10 +44,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PickerResourceManager.Manager = new ResourceManager("GAZT.AppResources", Xamarin.Forms.Application.Current.GetType().Assembly);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void DoneButtonClicked(object sender, EventArgs e)

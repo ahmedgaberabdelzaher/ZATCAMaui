@@ -101,7 +101,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                         ShowOnlyInfoIcon();
                     }
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                 }
                 //if ((_selectedSalesDetails != null) && (SubmitButtonVisibility || ConfirmButtonVisibility))
@@ -370,10 +370,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                     CheckBoxStatus = false;
                     //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 
@@ -406,7 +406,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                         });
                     }
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                     IsLoading = false;
                 }
@@ -558,10 +558,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                     OnAmendReturnClicked();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -794,10 +794,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                     }
                // }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             AttachSet attachSet = new AttachSet();
             attachSet.results = EstimateZakatAttachmentList;
@@ -965,7 +965,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 }
                 SalesDetailsList = _salesDetailsList;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -1006,7 +1006,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
         //        }
         //        zakatReturnDetailsD.d.AttachSet.results = listOfAttachments;
         //    }
-        //    catch(Exception ex)
+        //    catch(Exception)
         //    {
         //    }
         //}
@@ -1272,7 +1272,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 SalesDetailsList = SalesDetailsDummyList;
                 SalesDetailsDataList = SalesDetailsDummyList;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }  
         }
@@ -1297,7 +1297,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 double d1 = Convert.ToDouble(zakatReturnDetailsD.d.ThresholdSet.results[0].Value);
                  IsThresholdGreaterLessVATAmount = d1 < d;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return false;
             }
@@ -1336,10 +1336,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SalesDetailsPage_ViewModel
                 CheckBoxStatus = false;
                 //  _navigationService.NavigateTo(App.AmendSalesDetailsPageView, SelectedSalesDetails);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         #endregion

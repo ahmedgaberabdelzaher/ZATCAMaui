@@ -335,7 +335,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
                 SelectedParameterTypePrev = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -498,7 +498,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATLookupPage_ViewModel
                     return;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 isMendatoryDataEntered = false;
             }

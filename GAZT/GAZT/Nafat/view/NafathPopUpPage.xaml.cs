@@ -52,12 +52,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             await PopupNavigation.Instance.PopAsync();
             try
             {
-                 //await this.Navigation.PushAsync(new NafathLoginPageView());
                 viewModel._navigationService.NavigateTo(App.NafathLoginPageView);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.Message);
             }
             
         }

@@ -438,7 +438,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return uploadedFiles;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.Somethingwentwrong;
@@ -482,7 +482,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 var payload = JWT.JsonWebToken.DecodeToObject(token, secretKey);
                 return payload;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

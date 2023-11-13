@@ -114,7 +114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     {
                      Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetCustomDeclarationInformationURl());
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -162,7 +162,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 
                 SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["EndDate"].ToString());
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

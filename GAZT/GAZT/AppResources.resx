@@ -9506,7 +9506,7 @@ the Zakat, Tax and Customs
       <value>VAT Registered</value>
   </data>
   <data name="NotRegistered" xml:space="preserve">
-      <value>Not a VAT Registered</value>
+      <value>Not VAT Registered</value>
   </data>
   <data name="ThetotalamountplusVAT" xml:space="preserve">
       <value>The total amount plus VAT</value>
@@ -10298,7 +10298,7 @@ Zakat, Tax and Customs Authority
     <value>Customs declaration issuance fees</value>
   </data>
   <data name="Total2" xml:space="preserve">
-    <value>المجموع</value>
+    <value>Total</value>
   </data>
   <data name="Productvalue" xml:space="preserve">
     <value>Product value</value>
@@ -10493,5 +10493,23 @@ We regret that you are unable to use the service at this time. Please sign up fo
   </data>
    <data name="ChooseCity" xml:space="preserve">
     <value>Please select city</value>
+    </data>
+  <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>We would like to inform you about our latest update, and we kindly request that you update the application.</value>
+  </data>
+  <data name="NafathLoginHeader" xml:space="preserve">
+       <value>National Single Sign-On</value>
+  </data>
+    <data name="NafathLoginSubHeader" xml:space="preserve">
+       <value>Login throw National Single Sign-On</value>
+  </data>
+    <data name="NationalIqamaID" xml:space="preserve">
+       <value>National/Iqama ID</value>
+  </data>
+    <data name="OpenNafath" xml:space="preserve">
+       <value>Please open the Nafath application</value>
+  </data>
+    <data name="ConfirmOpenningNafath" xml:space="preserve">
+       <value>and Confirm the order by choosing the following number</value>
   </data>
 </root>

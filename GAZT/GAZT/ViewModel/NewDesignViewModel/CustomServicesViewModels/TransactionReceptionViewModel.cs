@@ -184,7 +184,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
                       
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -257,7 +257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -331,7 +331,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -350,7 +350,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         SelectedCRNo = e.Name;
                         IsShowBottomSheet = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;

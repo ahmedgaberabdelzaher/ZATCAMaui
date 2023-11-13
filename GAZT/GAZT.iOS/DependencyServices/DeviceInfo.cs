@@ -110,9 +110,9 @@ namespace GAZT.iOS.DependencyServices
             {
                 return UIDevice.CurrentDevice.IdentifierForVendor.AsString();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                 return "";
             }
         }
@@ -168,11 +168,11 @@ namespace GAZT.iOS.DependencyServices
                 return paths.Any(System.IO.File.Exists);
                 //return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
                 return false;
             }
         }
@@ -185,11 +185,11 @@ namespace GAZT.iOS.DependencyServices
             {
                 base64Image = System.IO.File.ReadAllBytes(filePath);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
                 base64Image = null;
             }
 

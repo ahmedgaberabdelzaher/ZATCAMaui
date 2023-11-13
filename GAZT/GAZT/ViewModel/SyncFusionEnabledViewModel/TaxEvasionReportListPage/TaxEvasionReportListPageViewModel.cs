@@ -51,10 +51,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     }
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -210,10 +210,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     //    SetNoDataLabelVisibility = true;
                     //}
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             OnOpenClicked_Tapped = new RelayCommand(async () =>
@@ -230,10 +230,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     //    SetNoDataLabelVisibility = true;
                     //}
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
         }
@@ -265,10 +265,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     });
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopToRootPage()
@@ -321,10 +321,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     //viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -426,10 +426,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportListPage_Vi
                     //viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 SetNoDataLabelVisibilityforOpen = true;
                 SetNoDataLabelVisibilityforClose = true;
 

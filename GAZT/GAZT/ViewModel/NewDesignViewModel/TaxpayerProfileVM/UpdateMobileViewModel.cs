@@ -191,10 +191,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 RaisePropertyChanged("NewMobileNumberEntryText");
@@ -518,7 +518,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
                 ShowValidationPopup(ex.Message);
             }
 
@@ -556,10 +555,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("VERIFY OTP ERROR : {0}", ex.Message);
                 ShowValidationPopup(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             return TP;

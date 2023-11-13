@@ -81,11 +81,11 @@ namespace EGAZT.Views.NewDesign.VatReview
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }

@@ -36,11 +36,9 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 this.BindingContext = viewModel;
                 viewModel.PopulateZakatRegListData();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                viewModel.HandleExceptipon(ex);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                viewModel.HandleExceptipon();
             }
 
         }
@@ -54,7 +52,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 safeInsets.Bottom = -10;
                 this.Padding = safeInsets;
             }
-            catch (Exception e)
+            catch (Exception)
             {
 
             }
@@ -88,10 +86,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -224,10 +222,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {

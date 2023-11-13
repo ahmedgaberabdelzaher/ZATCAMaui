@@ -736,7 +736,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                                 }
                             }
-                            catch (Exception e)
+                            catch (Exception)
                             {
 
 
@@ -797,10 +797,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                               .GroupBy(p => UtilityManager.GetMonthName(p.Bldat?.ToString("MMMM", System.Globalization.CultureInfo.GetCultureInfo("en"))))
                                 .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
@@ -824,15 +824,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 agroupedData = Items.OrderBy(p => p.Bldat)
                                     .GroupBy(p => p.Bldat?.ToString("MMMM"))
                                     .Select(p => new ObservableGroupCollection<string, ASResult>(p)).ToList();
 
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
                             }
                         }
 
@@ -1450,7 +1447,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsSortByVisible = false;
             FiltersTapped = new Command(FiltersClicked);
             FlowDirect = App.IsArabic ? FlowDirection.RightToLeft : FlowDirection.LeftToRight;
-         //   GetDashBoardMenuLst(2);
+         
         }
 
         public void ApplyFilter()
@@ -1463,16 +1460,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
            
 
             var statementsLineItems = new ObservableCollection<ASResult>();
-            Console.WriteLine(statementsLineItems);
-            Console.WriteLine(statementsLineItems.Count);
             if (HeaderSet.D.StatmenetLineItemsSet != null)
             {
                 if (HeaderSet.D.StatmenetLineItemsSet.Results.Count() > 0)
                 {
                     statementsLineItems = new ObservableCollection<ASResult>(HeaderSet.D.StatmenetLineItemsSet.Results);
                 }
-                Console.WriteLine(statementsLineItems);
-                Console.WriteLine(statementsLineItems.Count);
             }
 
             
@@ -1481,8 +1474,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             if (TxFromDate != "" && TxToDate != "")
             {
                 var filterItems = statementsLineItems;
-                Console.WriteLine(statementsLineItems);
-                Console.WriteLine(statementsLineItems.Count);
                 if (IsHijriCal)
                 {
                     CultureInfo arCI = new CultureInfo("ar-SA");
@@ -1501,16 +1492,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     DateTime FormatedTxToDate = DateTime.ParseExact(TxToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
                     statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
-                    Console.WriteLine(statementsLineItems);
-                    Console.WriteLine(statementsLineItems.Count);
+                    
                 }
             }
 
             if (TPFromDate != "" && TPToDate != "")
             {
                 var filterItems = statementsLineItems;
-                Console.WriteLine(statementsLineItems);
-                Console.WriteLine(statementsLineItems.Count);
 
                 if (IsHijriCal)
                 {
@@ -1520,7 +1508,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", arCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
 
-                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
                     statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
                 }
                 else
@@ -1530,37 +1517,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                         DateTimeStyles.AllowInnerWhite);
                     DateTime FormatedTpToDate = DateTime.ParseExact(TPToDate, "yyyy", enCI.DateTimeFormat,
                         DateTimeStyles.AllowInnerWhite);
-                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Bldat >= FormatedTxFromDate && p.Bldat <= FormatedTxToDate));
-                    //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(FormatedTpFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(FormatedTpToDate))));
                     statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) >= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpFromDate))) && (Convert.ToInt32(String.Format("{0:yyyy}", p.PeriodStartDt)) <= Convert.ToInt32(String.Format("{0:yyyy}", FormatedTpToDate)))));
 
-                    Console.WriteLine(statementsLineItems);
-                    Console.WriteLine(statementsLineItems.Count);
                 }
-                //statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) >= Convert.ToInt32(TPFromDate)) && (Convert.ToInt32(String.Format("{0:yyyy}",p.PeriodStartDt)) <= Convert.ToInt32(TPToDate))));
-                // statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => (p.Persl) == "2021"));
-                Console.WriteLine(statementsLineItems);
-                Console.WriteLine(statementsLineItems.Count);
-                /*if (IsHijriCal)
-                {
-                    CultureInfo arCI = new CultureInfo("ar-SA");
-                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                        DateTimeStyles.AllowInnerWhite);
-                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                        DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
-                }
-                else
-                {
-                    CultureInfo arCI = new CultureInfo("en-US");
-                    DateTime FormatedTPFromDate = DateTime.ParseExact(TPFromDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                        DateTimeStyles.AllowInnerWhite);
-                    DateTime FormatedTPToDate = DateTime.ParseExact(TPToDate, "yyyy/MM/dd", arCI.DateTimeFormat,
-                        DateTimeStyles.AllowInnerWhite);
-                    statementsLineItems = new ObservableCollection<ASResult>(filterItems.Where(p => p.Persl >= FormatedTPFromDate && p.Persl <= FormatedTPToDate));
-                    Console.WriteLine(statementsLineItems);
-                    Console.WriteLine(statementsLineItems.Count);
-                }*/
+               
 
             }
 
@@ -1581,8 +1541,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
                 {
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AccountStatementsEnterAmount));
-
-                    //                _dialogService.ShowMessage(AppResources.AccountStatementsTransactionDate, AppResources.Information);
                     return;
                 }
                 else if ((string.IsNullOrEmpty(FromTxAmount) && !string.IsNullOrEmpty(ToTxAmount)) || (!string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)))
@@ -1704,10 +1662,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
 
                 return "";
@@ -1813,12 +1771,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
             }
         }
 
@@ -1854,11 +1808,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     });
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            { 
             }
         }
 
@@ -1886,10 +1837,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1948,15 +1899,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     //IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -2027,11 +1978,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 ChipDataFilterlistForYears = orderedChipDataFilterlistForYears;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {  
             }
             finally
             {
@@ -2202,10 +2150,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -2233,8 +2181,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2278,10 +2226,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

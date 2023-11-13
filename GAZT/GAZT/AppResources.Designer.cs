@@ -1636,6 +1636,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to and Confirm the order by choosing the following number.
+        /// </summary>
+        public static string ConfirmOpenningNafath {
+            get {
+                return ResourceManager.GetString("ConfirmOpenningNafath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Password.
         /// </summary>
         public static string ConfirmPassword {
@@ -6087,6 +6096,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We would like to inform you about our latest update, and we kindly request that you update the application..
+        /// </summary>
+        public static string ForceUpdateMsg {
+            get {
+                return ResourceManager.GetString("ForceUpdateMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot password.
         /// </summary>
         public static string ForgotPassword {
@@ -8317,6 +8335,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National Single Sign-On.
+        /// </summary>
+        public static string NafathLoginHeader {
+            get {
+                return ResourceManager.GetString("NafathLoginHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login throw National Single Sign-On.
+        /// </summary>
+        public static string NafathLoginSubHeader {
+            get {
+                return ResourceManager.GetString("NafathLoginSubHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IBAN.
         /// </summary>
         public static string NAIBAN {
@@ -8367,6 +8403,15 @@ namespace EGAZT {
         public static string NationaID {
             get {
                 return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National/Iqama ID.
+        /// </summary>
+        public static string NationalIqamaID {
+            get {
+                return ResourceManager.GetString("NationalIqamaID", resourceCulture);
             }
         }
         
@@ -10234,7 +10279,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a VAT Registered.
+        ///   Looks up a localized string similar to Not VAT Registered.
         /// </summary>
         public static string NotRegistered {
             get {
@@ -10353,6 +10398,15 @@ namespace EGAZT {
         public static string OldZakatInstructions {
             get {
                 return ResourceManager.GetString("OldZakatInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please open the Nafath application.
+        /// </summary>
+        public static string OpenNafath {
+            get {
+                return ResourceManager.GetString("OpenNafath", resourceCulture);
             }
         }
         
@@ -13526,7 +13580,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المجموع.
+        ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string Total2 {
             get {

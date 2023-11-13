@@ -67,6 +67,8 @@ namespace EGAZT.AppConfigurations
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
+        public static string CustomPaymentProdURl = "https://payments-eservices.zatca.gov.sa/payment/initiate/";
+
         public static string CustomPeserviceBaseURl = "https://pre-eservices.zatca.gov.sa";
         public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
@@ -93,7 +95,7 @@ namespace EGAZT.AppConfigurations
         public static string FasahBaseUrl;
         public static string FasahApiKey = "Av549-e756Z-4c29-a16a-287de9c04755";
 
-        private static string CheckTarget_Environment(string environment = "STG")
+        public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
             if (string.IsNullOrWhiteSpace(Target_Environment))
@@ -166,12 +168,7 @@ namespace EGAZT.AppConfigurations
 
         public static string GetClientID()
         {
-            Target_Environment = CheckTarget_Environment();
-
             string key = "";
-#if (DEBUG)
-            Target_Environment = "STG";
-#endif
             switch (Target_Environment)
             {
                 case "STG":
@@ -188,10 +185,6 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetClientSecret()
         {
-            Target_Environment = CheckTarget_Environment();
-#if (DEBUG)
-            Target_Environment = "STG";
-#endif
             string key = "";
             switch (Target_Environment)
             {
@@ -249,13 +242,27 @@ namespace EGAZT.AppConfigurations
         }
         public static string GetCustomsPaymentUrl()
         {
-            if (App.IsArabic)
+            if (Target_Environment == "Prod")
             {
-                return CustomPaymentSTGURl;
+                if (App.IsArabic)
+                {
+                    return CustomPaymentProdURl;
+                }
+                else
+                {
+                    return CustomPaymentProdURl;
+                }
             }
             else
             {
-                return CustomPaymentSTGURl;
+                if (App.IsArabic)
+                {
+                    return CustomPaymentSTGURl;
+                }
+                else
+                {
+                    return CustomPaymentSTGURl;
+                }
             }
         }
 

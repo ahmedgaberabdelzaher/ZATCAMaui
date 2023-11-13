@@ -64,7 +64,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddPop
                     }
                     viewModel.FlowDirections = objPopUP.FlowDirections;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     viewModel.PopMessage = objPopUP.Message;
                     viewModel.IsVisibleLink = objPopUP.IsLinkAvailable;

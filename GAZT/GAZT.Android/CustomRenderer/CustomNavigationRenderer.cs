@@ -1,14 +1,12 @@
 ﻿using System;
 using Android.Content;
 using Android.Graphics;
-using Android.Widget;
 using GAZT.CustomControl;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using Android.Content.Res;
-using Support = Android.Support.V7.Widget;
 using EGAZT;
 
 [assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
@@ -25,7 +23,7 @@ namespace GAZT.Droid.CustomRenderer
             {
                 base.OnLayout(changed, l, t, r, b);
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
 			//var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);

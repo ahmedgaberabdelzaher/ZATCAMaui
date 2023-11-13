@@ -586,10 +586,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -629,10 +629,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -720,10 +720,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -881,10 +881,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -963,10 +963,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZAKATObjectionPages
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

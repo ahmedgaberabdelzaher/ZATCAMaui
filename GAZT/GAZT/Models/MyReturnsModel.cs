@@ -111,9 +111,9 @@ namespace GAZT.Models
                     }
                 }
     
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
             }
         }

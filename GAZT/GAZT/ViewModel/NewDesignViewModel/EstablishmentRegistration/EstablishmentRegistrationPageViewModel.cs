@@ -1502,7 +1502,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 poupWindow.OnItemSelect = async (item) =>
                 {
                     var actionName = item as string;
-                    Console.WriteLine(item);
                     if (actionName == AppResources.ZZSaveAsDraft)
                     {
                         IsLoading = true;
@@ -1521,7 +1520,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.StackTrace);
                             if (e is HTTPBadRequestException)
                             {
                                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
@@ -1560,7 +1558,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                     }
                                     catch (Exception e)
                                     {
-                                        Console.WriteLine(e.StackTrace);
                                         if (e is HTTPBadRequestException)
                                         {
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
@@ -1678,10 +1675,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -2105,10 +2102,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     else
@@ -2141,12 +2138,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+            catch (Exception)
+            { }
         }
 
 
@@ -2168,12 +2161,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+            catch (Exception)
+            { }
             finally
             {
                 IsLoading = false;
@@ -2306,10 +2295,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     TabList.Remove(AppResources.ESTPassportDetailsTabTitleLabel);
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            catch (Exception)
+            {}
             finally
             {
                 IsLoading = false;
@@ -2651,9 +2638,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                Console.WriteLine(e.StackTrace);
             }
         }
         private async void udpdateDates(string selectedDate = null)
@@ -2746,11 +2732,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.Somethingwentwrong));
 
             }
@@ -2785,7 +2771,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         private void deleteOutlet(OutletItem item)
         {
             IsLoading = true;
-            Console.WriteLine(item.ToString());
             var delete = EstablishmentRegistrationWebServiceManager.ESTDeleteOutletItem(taxPayerDetails?.Fbnumx, item?.Actno, taxPayerDetails?.PortalUsrx);
             if (!string.IsNullOrEmpty(delete) && delete == "delete")
             {
@@ -3031,11 +3016,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //ex.ToString();
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return true;
         }
@@ -3194,10 +3179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             catch (Exception ex)
             {
                 IsLoading = false;
-                // ex.ToString();
-
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
                 if (ex is HTTPBadRequestException)
                 {
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -3372,10 +3354,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

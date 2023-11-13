@@ -33,10 +33,10 @@ namespace EGAZT.Views.NewDesign.InstalmentPlan
                 this.BindingContext = viewModel;
                 viewModel.AddOutletDecisionOptions();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

@@ -195,7 +195,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -244,7 +244,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         await MoveMapToLocation();
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -280,7 +280,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         var x = await GetCurrentLocation();
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -326,7 +326,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -510,7 +510,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         SearchText = string.Empty;
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -544,7 +544,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -572,7 +572,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -602,7 +602,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         HeaderTitle = AppResources.ReportMissingField;
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -633,7 +633,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -663,7 +663,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -747,7 +747,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.SubmitReport
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.Somethingwentwrong;

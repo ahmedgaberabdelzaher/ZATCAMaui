@@ -130,10 +130,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
 
@@ -1687,7 +1687,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //        //Captcha = captcha.ToString();
             //        //EnteredCaptchaValue = string.Empty;
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //    }
             //});
@@ -2223,10 +2223,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IDNumber = String.Empty;
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 });
                 await Task.Run(() =>
@@ -2813,10 +2813,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsLoading = false;
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                             IsAPICalledSuccessfully = false;
 
                             IsVisibleTinIds = false;

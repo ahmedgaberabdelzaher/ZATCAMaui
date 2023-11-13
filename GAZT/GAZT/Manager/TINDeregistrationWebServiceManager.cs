@@ -109,14 +109,14 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //App.IsSessionExpired = true;
                     return null;
                 }
@@ -172,11 +172,11 @@ namespace EGAZT.Manager
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
+                
             }
 
             tinDeregistrationSendResponseModel.Metadata = tinDeregistrationResponseModel.Metadata;
@@ -361,14 +361,13 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
-                    Console.WriteLine(ex);
                     throw new GAZTErrorException(ex.Message);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }
@@ -456,10 +455,10 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTErrorException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //App.IsSessionExpired = true;
                     return null;
                 }

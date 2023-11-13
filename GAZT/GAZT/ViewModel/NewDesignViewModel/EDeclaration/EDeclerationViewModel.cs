@@ -6,6 +6,7 @@ using EGAZT.Controls;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
 using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
+using Syncfusion.SfRangeSlider.XForms;
 using Xamarin.Forms;
 using ZXing.Aztec.Internal;
 
@@ -90,13 +91,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         }
                         else
                         {
+                            if (result.Item1?.header.moreInformation != null && result.Item1.header.moreInformation.Errordetails != null && result.Item1?.header.moreInformation.Errordetails.Count > 0)
+                            {
+                                MessageTxt = result.Item1?.header.moreInformation.Errordetails[0];
+                                IsShowMsgView = true;
+
+                                return;
+                            }
                             IsShowMsgView = true;
                             MessageTxt = AppResources.RequestTimeoutDescription;
                             IsLoading = false;
                              
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

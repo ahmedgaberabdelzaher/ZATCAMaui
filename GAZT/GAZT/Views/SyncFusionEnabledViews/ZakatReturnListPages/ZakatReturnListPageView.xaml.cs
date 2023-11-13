@@ -183,10 +183,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
             viewModel.SelectedICRStatusPrev = selectedZakatStatus;
             viewModel.TxtSelectedStatus = selectedZakatStatus.Value;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void ICRStatusChnaged(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -211,10 +211,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ZakatReturnList
                     viewModel.PreviousSelectedICRStatus = selectedICRStatus;
                     viewModel.GetFilteredZAKATICRList(selectedICRStatus);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
             else

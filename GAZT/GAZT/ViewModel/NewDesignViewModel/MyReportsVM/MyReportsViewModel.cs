@@ -77,7 +77,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -109,7 +109,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -174,7 +174,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                             SearchValue = string.Empty;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -213,7 +213,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                             _navigationService.NavigateTo("MyReportDetailsPage", reportDetails);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.Somethingwentwrong;
@@ -242,7 +242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.MyReportsVM
                         ReportsCount = $"{MyReportsList?.Count} {AppResources.Reports}";
                         IsLoading = false;
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;

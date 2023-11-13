@@ -184,7 +184,7 @@ namespace EGAZT.ViewModel
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -308,7 +308,7 @@ namespace EGAZT.ViewModel
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

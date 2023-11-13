@@ -18,7 +18,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.PopUpPages
                 viewModel = App.Locator.ProductDeclarationViewModel;
                 BindingContext = viewModel;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

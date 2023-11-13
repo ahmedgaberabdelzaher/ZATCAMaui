@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Windows.Input;
 using EGAZT.AppConfigurations;
-using EGAZT.Converters;
 using EGAZT.Models;
-using EGAZT.Models.TahqaqModels;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Views.NewDesign.EDeclaration;
-using EGAZT.Views.NewDesign.MyReports;
 using GalaSoft.MvvmLight.Views;
-using Newtonsoft.Json;
 using Xamarin.Forms;
-using ZXing.Aztec.Internal;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 {

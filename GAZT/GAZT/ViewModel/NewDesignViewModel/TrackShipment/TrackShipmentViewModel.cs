@@ -157,7 +157,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
 
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -201,7 +201,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         SetDefaultDate();
                         control.IsOpen = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         DeclarationDateString = "dd-MM-yyyy";
                     }
@@ -239,7 +239,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -270,7 +270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -317,7 +317,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 
@@ -415,7 +415,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TrackShipment
                 IsLoading = false;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
                 IsShowMsgView = true;

@@ -448,10 +448,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     _tName = value;
                     RaisePropertyChanged("TName");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -469,10 +469,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     _tCategory = value;
                     RaisePropertyChanged("TCategory");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -904,10 +904,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.WriteLine(ex.Message);
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     else
@@ -970,7 +970,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -1124,10 +1124,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
             //        //viewModel._navigationService.GoBack();
             //    });
             //}
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 //    Device.BeginInvokeOnMainThread(async () =>
                 //    {
                 //        await Task.Run(() =>
@@ -1162,10 +1162,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportFormPage_Vi
                 ListFacilityCompanyType.Add(new FacilityCompanyType() { Id = "12", Name = AppResources.ZTERReportDetailCompanyType12 });
                 DListFacilityCompanyType = ListFacilityCompanyType;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopToRootPage()
