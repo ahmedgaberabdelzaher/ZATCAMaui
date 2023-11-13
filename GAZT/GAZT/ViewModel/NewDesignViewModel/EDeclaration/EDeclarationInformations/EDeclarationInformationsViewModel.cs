@@ -8,13 +8,10 @@ using GAZT;
 using System.Linq;
 using System.Collections.Generic;
 using EGAZT.Services.Interface;
-using System.Linq.Expressions;
 using Rg.Plugins.Popup.Services;
-using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 using EGAZT.Helper;
-using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
