@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.HomePages;
 using GalaSoft.MvvmLight.Views;
@@ -335,7 +336,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.CustomFeesCalculator);
                             break;
                         case "IAMLoginView":
-                            _navigationService.NavigateTo("IAMLoginView", 2);
+                           
+                            _navigationService.NavigateTo("NativeNafathPage", "TransactionReceptionView");
                             break;
                         default:
                             _navigationService.NavigateTo(menuItem.ID);

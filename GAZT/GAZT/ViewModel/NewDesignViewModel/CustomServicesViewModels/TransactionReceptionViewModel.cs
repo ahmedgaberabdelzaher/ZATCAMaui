@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
+using EGAZT.Models.NativeNafath;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
@@ -462,10 +463,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         {
             if (payload != null)
             {
-                IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
-                NationalId = iamLoginPayloadData["NationlId"].ToString();
-                MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
-                IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());
+                // IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
+                /* NationalId = iamLoginPayloadData["NationlId"].ToString();
+                 MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
+                 IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());*/
+                ///
+                var data = payload as CustomsNafathUserProfile;
+                NationalId = data.nationalid.ToString();
+                MobileNo = "+966" + data.mobilenumber.ToString();
+                IamRegisteredUserID = data.id;
             }
         }
 

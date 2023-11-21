@@ -111,6 +111,7 @@ namespace EGAZT.AppConfigurations
             {
                 case "STG":
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
@@ -129,6 +130,7 @@ namespace EGAZT.AppConfigurations
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
+                    CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatProdBaseUrl;
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
@@ -147,6 +149,7 @@ namespace EGAZT.AppConfigurations
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
+                    CustomBaseUrl = CustomSTGBaseUrl;
                     App.VatBaseUrl = VatSTGBaseUrl;
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;

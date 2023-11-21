@@ -122,7 +122,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
             User.birthDate = iamLoginPayloadData["dob"].ToString();
 
-            User.identityTypeId = int.Parse(iamLoginPayloadData["IdType"].ToString());
+            User.identityTypeId =int.Parse(iamLoginPayloadData["IdType"].ToString());
 
             User.cityId = 30;
 

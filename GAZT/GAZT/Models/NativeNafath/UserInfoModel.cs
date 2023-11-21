@@ -5,7 +5,7 @@ namespace EGAZT.Models.NativeNafath
 {
 	public class UserInfoModel
 	{
-		public int id { get; set; }
+		public long id { get; set; }
 		public IdInfoModel idInfo { get; set; }
 		public NameModel arName { get; set; }
 		public NameModel enName { get; set; }
