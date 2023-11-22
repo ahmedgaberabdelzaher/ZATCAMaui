@@ -10431,4 +10431,7 @@ info@zatca.gov.sa</value>
   <data name="PlatesLetter" xml:space="preserve">
     <value>أحرف اللوحة</value>
   </data>
+  <data name="ChooseCity" xml:space="preserve">
+    <value>برجاء اختيار المدينة</value>
+  </data>
 </root>

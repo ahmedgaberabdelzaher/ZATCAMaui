@@ -10509,4 +10509,7 @@ We regret that you are unable to use the service at this time. Please sign up fo
   <data name="PlatesLetter" xml:space="preserve">
      <value>Plates letter</value>
   </data>
+   <data name="ChooseCity" xml:space="preserve">
+    <value>Please select city</value>
+  </data>
 </root>
