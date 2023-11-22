@@ -190,6 +190,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
 
                                 _navigationService.NavigateTo("/EDeclarationSuccessPage");
+
+                                TripCard.AirImage = "QSelected.png";
+                                TripCard.SeaImage = "QUnselected.png";
+                                TripCard.LandImage = "QUnselected.png";
+
+                                TripCard.AirTextColor = Color.White;
+                                TripCard.SeaTextColor = Color.FromHex("#002447");
+                                TripCard.LandTextColor = Color.FromHex("#002447");
+
                                 MobileNumber = string.Empty;
                             }
                             
