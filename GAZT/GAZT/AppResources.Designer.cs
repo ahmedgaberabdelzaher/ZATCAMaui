@@ -10762,6 +10762,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Plates letter.
+        /// </summary>
+        public static string PlatesLetter {
+            get {
+                return ResourceManager.GetString("PlatesLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plates number.
+        /// </summary>
+        public static string PlatesNumber {
+            get {
+                return ResourceManager.GetString("PlatesNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please attach a document.
         /// </summary>
         public static string PleaseAttach {

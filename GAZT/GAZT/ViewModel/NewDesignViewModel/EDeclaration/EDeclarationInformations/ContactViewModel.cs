@@ -69,6 +69,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     isPortSelected = false;
                     isComingGoingSelected = false;
                     isTravelPurposeSelected = false;
+                    isPlatesCountrySelected = false;
+                    isPlatesCitySelected = false;
                     BottomSheetList = new ObservableCollection<BottomSheetModel>();
 
                     if (countryWithFlags.Count == 0)

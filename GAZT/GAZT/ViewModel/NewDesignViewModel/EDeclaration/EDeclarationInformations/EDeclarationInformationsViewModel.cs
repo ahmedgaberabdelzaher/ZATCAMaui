@@ -27,6 +27,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool isComingGoingSelected;
         private bool isPortSelected;
         private bool isTravelPurposeSelected;
+        private bool isPlatesCountrySelected;
+        private bool isPlatesCitySelected;
         private bool isFirstTime = true;
         public bool isPassengerPage = true;
         public bool isTripPage;
@@ -206,6 +208,23 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isTravelPurposeSelected = false;
 
                         }
+                        else if (isPlatesCountrySelected)
+                        {
+                            SubmitModel.travelerDeclaration.plateCountryCode = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.PlatesCountryName = e.Name;
+                            isPlatesCountrySelected = false;
+                            HasPlatesCity = true;
+                            SubmitModel.travelerDeclaration.plateCityCode = 0;
+                            SubmitModel.travelerDeclaration.PlatesCityName = string.Empty;
+
+                        }
+                        else if (isPlatesCitySelected)
+                        {
+                            SubmitModel.travelerDeclaration.plateCityCode = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.PlatesCityName = e.Name;
+                            isPlatesCitySelected = false;
+
+                        }
                         else
                         {
                             SubmitModel.travelerDeclaration.CountryCode = $"+{Regex.Replace(e.Name, @"[^\d]", "")}";
@@ -333,6 +352,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
         #endregion
+
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
         {
         }

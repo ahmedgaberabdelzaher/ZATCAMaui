@@ -10392,7 +10392,7 @@ info@zatca.gov.sa</value>
     <data name="ElectronicDevicesDisc" xml:space="preserve">
        <value>عفواً ... الكمية المدخلة تتطلب زيارة مكتب الإقرار فور الوصول</value>
   </data>
-<data name="AddingItems" xml:space="preserve">
+  <data name="AddingItems" xml:space="preserve">
        <value>إضافة المقتنيات</value>
   </data>
   <data name="EDeclarationArrivalHeader" xml:space="preserve">
@@ -10404,7 +10404,7 @@ info@zatca.gov.sa</value>
       <data name="EmptyCart" xml:space="preserve">
        <value>عفواً، السلة فارغة</value>
   </data>
-      <data name="PrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
     <data name="ForceUpdateMsg" xml:space="preserve">
@@ -10424,5 +10424,11 @@ info@zatca.gov.sa</value>
   </data>
     <data name="ConfirmOpenningNafath" xml:space="preserve">
        <value>وتأكيد الطلب بإختيار الرقم التالي</value>
+  </data>
+  <data name="PlatesNumber" xml:space="preserve">
+    <value>أرقام اللوحة</value>
+  </data>
+  <data name="PlatesLetter" xml:space="preserve">
+    <value>أحرف اللوحة</value>
   </data>
 </root>

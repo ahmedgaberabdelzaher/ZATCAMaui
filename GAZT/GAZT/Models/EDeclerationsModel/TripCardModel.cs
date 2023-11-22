@@ -34,6 +34,9 @@ namespace EGAZT.Models.EDeclerationsModel
         bool _IsAirTripSelected = true;
         public bool IsAirTripSelected { get { return _IsAirTripSelected; } set { _IsAirTripSelected = value; RaisePropertyChanged(); } }
 
+        bool _IsLandTripSelected;
+        public bool IsLandTripSelected { get { return _IsLandTripSelected; } set { _IsLandTripSelected = value; RaisePropertyChanged(); } }
+
 	}
 
 	public enum TripName

@@ -10503,4 +10503,10 @@ We regret that you are unable to use the service at this time. Please sign up fo
     <data name="ConfirmOpenningNafath" xml:space="preserve">
        <value>and Confirm the order by choosing the following number</value>
   </data>
+    <data name="PlatesNumber" xml:space="preserve">
+    <value>Plates number</value>
+  </data>
+  <data name="PlatesLetter" xml:space="preserve">
+     <value>Plates letter</value>
+  </data>
 </root>
