@@ -692,7 +692,7 @@
                         </StackLayout>
 
                         <!--  Plates City Field  -->
-                        <StackLayout Spacing="0"
+                        <StackLayout Spacing="0" 
                                      IsVisible="{Binding HasPlatesCity}">
 
                             <!-- Plates City Label  -->
@@ -700,6 +700,7 @@
                                 <custom:CustomLabel.FormattedText>
                                     <FormattedString>
                                         <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
                             </custom:CustomLabel>
@@ -724,6 +725,7 @@
                                     TextColor="#58595B">
                                     <custom:BorderlessEntry.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+
                                     </custom:BorderlessEntry.GestureRecognizers>
                                 </custom:BorderlessEntry>
                                 <inputLayout:SfTextInputLayout.TrailingView>
@@ -739,7 +741,7 @@
 
                         <!--  Plates Number Field  -->
                         <StackLayout Spacing="0"
-                                     IsVisible="{Binding HasPlatesCity}">
+                                      IsVisible="{Binding TripCard.IsLandTripSelected}">
 
                             <!--  Plates Number Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -772,7 +774,7 @@
 
                          <!--  Plates Letter Field  -->
                         <StackLayout Spacing="0"
-                                     IsVisible="{Binding HasPlatesCity}">
+                                  IsVisible="{Binding TripCard.IsLandTripSelected}"    >
 
                             <!--  Plates Letter Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
@@ -796,7 +798,7 @@
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
-                                    Style="{StaticResource DefaultEntry}"
+                                    Style="{StaticResource DefaultEntry}" TextChanged="BorderlessEntry_TextChanged"
                                     Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
                                     TextColor="#58595B" />
                             </inputLayout:SfTextInputLayout>

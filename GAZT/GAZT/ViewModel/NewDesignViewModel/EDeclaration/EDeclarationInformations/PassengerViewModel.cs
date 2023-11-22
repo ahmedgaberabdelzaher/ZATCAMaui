@@ -35,6 +35,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         Keyboard iDNumberKeyboard = Keyboard.Text;
         public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; RaisePropertyChanged(); } }
 
+      
+
+
         public ICommand IDSelectionCommand
         {
             get
