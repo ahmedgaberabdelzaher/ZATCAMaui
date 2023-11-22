@@ -2,12 +2,9 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Controls;
-using System.Collections.Generic;
 using System.Linq;
-using EGAZT.Models.EDeclerationsModel;
 using System.Collections.ObjectModel;
 using EGAZT.Helper;
-using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
