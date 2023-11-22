@@ -144,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         MessageTxt = AppResources.QuantityValidation;
                         return;
                     }
-                    if (Double.Parse(TotalValue) < 3000)
+                    if (Double.Parse(TotalValue) <= 3000)
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
