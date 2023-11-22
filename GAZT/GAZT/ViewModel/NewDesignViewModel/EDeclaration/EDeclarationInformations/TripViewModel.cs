@@ -57,7 +57,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         // if the user select the Tobacco & Product
                         // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"
                         TripCard.IsAirTripSelected = SubmitModel.travelerDeclaration.IsDisclosure ? true : false;
-                        TripCard.IsLandTripSelected =false;
+                        TripCard.IsLandTripSelected = false;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 1=>Air
                     }
 
@@ -183,7 +183,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     {
 
                     }
-                   
+
                 });
             }
         }
@@ -335,6 +335,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        public ICommand PlateLLetterTextChangedCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    if (!string.IsNullOrEmpty(SubmitModel.travelerDeclaration.plateLetters)
+                        && SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                    {
+                        HasPlatesCity = false;
+                    }
+                    else if (string.IsNullOrEmpty(SubmitModel.travelerDeclaration.plateLetters)
+                    && SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                    {
+                        HasPlatesCity = true;
+                    }
+                });
+            }
+        }
 
         private bool IsValidateTripInfo()
         {
@@ -402,7 +421,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         return false;
                     }
                 }
-               
+
             }
 
             return true;

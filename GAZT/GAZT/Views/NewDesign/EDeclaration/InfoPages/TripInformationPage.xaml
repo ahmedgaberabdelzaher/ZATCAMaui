@@ -767,7 +767,13 @@
                                     Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+
+                                     <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
@@ -798,9 +804,16 @@
                                 <custom:BorderlessEntry
                                     Keyboard="Text"
                                     Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
-                                    Style="{StaticResource DefaultEntry}" TextChanged="BorderlessEntry_TextChanged"
+                                    Style="{StaticResource DefaultEntry}"
                                     Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
-                                    TextColor="#58595B" />
+                                    TextColor="#58595B" >
+
+                                    <custom:BorderlessEntry.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding PlateLLetterTextChangedCommand}"
+                                                                        EventName="TextChanged" />
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                </custom:BorderlessEntry>
                             </inputLayout:SfTextInputLayout>
 
                         </StackLayout>
