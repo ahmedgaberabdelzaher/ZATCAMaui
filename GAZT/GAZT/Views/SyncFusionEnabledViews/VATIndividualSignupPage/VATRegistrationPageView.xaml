@@ -102,7 +102,7 @@
                                                 <Label HorizontalTextAlignment="Start" TextColor="{StaticResource Primary}" Text="{x:Static custom2:AppResources.ZZZVATRInstrunctionsAndConditionsFirst}"  Style="{StaticResource GAZTSmallGoldLabel}" Margin="0"/>
 
 
-                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTTermsConditions}"  Margin="0">
+                                                <custom:CustomLabel HorizontalOptions="Start" HorizontalTextAlignment="Start" Style="{StaticResource GAZTTermsConditions}" LineHeight="1"  Margin="0">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="{x:Static custom2:AppResources.ZZZZVATRFAQ1}" TextColor="{StaticResource Secondary}">
@@ -118,7 +118,7 @@
                                                         </FormattedString>
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
-                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" LineHeight="1" HorizontalTextAlignment="Start"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="1."  />
@@ -127,7 +127,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel HorizontalTextAlignment="Start" HorizontalOptions="StartAndExpand" VerticalOptions="EndAndExpand" LineHeight="1" Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="2."   FontSize="11"/>
@@ -136,7 +136,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  VerticalOptions="EndAndExpand"  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel  VerticalOptions="EndAndExpand" LineHeight="1" Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="3." />
@@ -145,7 +145,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}" LineHeight="1">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="4."  />
@@ -154,7 +154,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  VerticalOptions="EndAndExpand" Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel LineHeight="1" VerticalOptions="EndAndExpand" Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="5." />
@@ -163,7 +163,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel LineHeight="1"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="6."  />
@@ -172,7 +172,7 @@
                                                     </custom:CustomLabel.FormattedText>
                                                 </custom:CustomLabel>
 
-                                                <custom:CustomLabel  Style="{StaticResource GAZTTermsConditions}">
+                                                <custom:CustomLabel LineHeight="1"  Style="{StaticResource GAZTTermsConditions}">
                                                     <custom:CustomLabel.FormattedText>
                                                         <FormattedString>
                                                             <Span Text="7."  />
@@ -631,9 +631,9 @@
                                                 <Label  Text="{Binding Iban}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="Start" VerticalOptions="Start"
                                                                         Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
                                                 </Label>
-                                                <Label Text="{x:Static custom2:AppResources.VATRInmaBank}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"
-                                                                        Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
-                                                </Label>
+                                               <!-- <Label Text="{x:Static custom2:AppResources.VATRInmaBank}" Style="{StaticResource CaptionLabelBlack}" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand"
+                                                                    Margin="20,0,20,0" TextColor="White" HorizontalTextAlignment="Start"    >
+                                                </Label>  -->  
                                             </StackLayout>
 
                                         </Grid>
@@ -794,7 +794,9 @@
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
                                                             </Grid>
-
+                                                            <StackLayout>
+                                                                <Label Text="{x:Static custom2:AppResources.SelectAnswerMessage}" TextColor="Blue" Style="{StaticResource GAZTSmallBlackLblMediumFont}" x:Name="Question3_Error" IsVisible="True"/>
+                                                            </StackLayout>
 
 
 
@@ -861,6 +863,9 @@
                                                                     </cards:SfCardView.GestureRecognizers>
                                                                 </cards:SfCardView>
                                                             </Grid>
+                                                               <StackLayout>
+                                                                <Label Text="{x:Static custom2:AppResources.SelectAnswerMessage}" TextColor="Blue" Style="{StaticResource GAZTSmallBlackLblMediumFont}" x:Name="Question4_Error" IsVisible="True"/>
+                                                            </StackLayout>
                                                         </StackLayout>
 
                                                     </Frame>
@@ -1257,9 +1262,9 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                                                     HorizontalTextAlignment="Start" x:Name="EntryPhoneNumber"
                                                                                     Placeholder="{x:Static custom2:AppResources.MobileNumber}" Unfocused="EntryPhoneNumber_Unfocused_1"
                                                                                     IsSpellCheckEnabled="False" MaxLength="9" Keyboard="Telephone" Style="{StaticResource DefaultEntry}">
-                                                                <Entry.Behaviors>
+                                                               <!-- <Entry.Behaviors>
                                                                     <custom1:OnlyNumericValuesBehaviour/>
-                                                                </Entry.Behaviors>
+                                                                </Entry.Behaviors>-->
                                                             </custom:BorderlessEntry>
                                                         </inputLayout:SfTextInputLayout>
                                                     </StackLayout>
@@ -1426,7 +1431,7 @@ UnSelectedItemTextColor="{StaticResource NeutralGreay}"
                                                         <custom:CustomLabel Grid.Row="5" Grid.Column="1" HorizontalOptions="EndAndExpand" Style="{StaticResource BodyLabelBlackMedium}">
                                                             <custom:CustomLabel.FormattedText>
                                                                 <FormattedString>
-                                                                    <Span Text="(0966)" TextColor="{StaticResource PrimaryColor}" Style="{StaticResource BodyLabelBlackMedium}" />
+                                                                    <Span TextColor="{StaticResource PrimaryColor}" Style="{StaticResource BodyLabelBlackMedium}" />
                                                                     <Span   Text="{Binding Source={x:Reference Name=VATRMainGrid}, Path=BindingContext.MobNumberFR}" Style="{StaticResource BodyLabelBlackMedium}"/>
                                                                 </FormattedString>
                                                             </custom:CustomLabel.FormattedText>

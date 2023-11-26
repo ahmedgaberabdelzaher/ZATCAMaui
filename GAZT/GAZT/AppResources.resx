@@ -1311,7 +1311,7 @@ Choose only file with extension DOC, DOCX, XLS, XLSX, PDF, JPG</value>
 • Please refer to the below FAQ URL for standard rated 5% goods and services.</value>
   </data>
   <data name="ZToolTipCorrectionsfrompreviousperiod" xml:space="preserve">
-    <value>• If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
+<value>• If corrections to the previous return entail a VAT liability adjustment less than SAR {0} or VAT credit position of greater than SAR {1}, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a "Self-Amendment" form</value>
   </data>
   <data name="ZToolTipcreditcarriedforwardfrompreviousperiod" xml:space="preserve">
     <value>• Total amount of credit in your VAT account from previous returns that have not been used to offset any subsequent liabilities or not been refunded. This amount will be used to offset the VAT liability (if any) for this return.</value>

@@ -6322,5 +6322,77 @@ namespace GAZT.Manager
 
         }
 
+        public async static Task<string> GAZTValidateIDTypesDelecration(string IDType, string IDNumber, string DBO)
+        {
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                IDTypeValidateRootObject SignupIsIDTypeValid = new IDTypeValidateRootObject();
+                string IsIDTypeValidList = string.Empty;
+                string NewToken = string.Empty;
+                try
+                {
+                    HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+                    crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = GetLangZParameter();
+                    HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+                    String url = Constants.GAZTSiguupValidateIDTypesDecl + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+                    var uri = new Uri(url);
+                    HttpResponseMessage SignupIsIDTypeValidList = await client.GetAsync(uri);
+                    if (SignupIsIDTypeValidList != null)
+                    {
+                        if (SignupIsIDTypeValidList.StatusCode == HttpStatusCode.Unauthorized)
+                        {
+                            App.IsSessionExpired = true;
+                            return null;
+                        }
+                        HttpHeaders headers = SignupIsIDTypeValidList.Headers;
+                        IEnumerable<string> values;
+                        if (headers.TryGetValues("token", out values))
+                        {
+                            NewToken = values.First();
+                        }
+                        if ((!string.IsNullOrEmpty(NewToken)))
+                        {
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+                            {
+                                App.IsSessionExpired = true;
+                                return null;
+                            }
+                            App.Token = NewToken;
+                        }
+                        IsIDTypeValidList = await SignupIsIDTypeValidList.Content.ReadAsStringAsync();
+                    }
+                    return IsIDTypeValidList;
+                }
+
+                catch (JsonReaderException)
+                {
+                    throw new GAZTInvalidDataException();
+                }
+                catch (HttpRequestException ex)
+                {
+                    throw ex;
+                }
+                catch (GAZTSessionExpiredException gex)
+                {
+                    throw gex;
+                }
+                catch (GAZTException gex)
+                {
+                    throw gex;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                    Console.Write(ex.StackTrace.ToString());
+                    throw new GAZTNetworkConnectivityIssueException();
+                }
+            }
+            else
+            {
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+            }
+        }
     }
 }

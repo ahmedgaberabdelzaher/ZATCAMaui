@@ -1797,7 +1797,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 RaisePropertyChanged("ListOfActionButtonsApplicable");
             }
         }
-
+        public bool isLoadedAlready { get; private set; }
         #endregion
 
         public VATRegistrationPageViewModel(INavigationService navigationService, IDialogService dialogService)
@@ -2131,11 +2131,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
         public async Task onPageLoad()
         {
+            isLoadedAlready = true;
             try
             {
                     IsLoading = true;
                     GetSignUpIdType();
-                    IsLoading = true;
+              //      IsLoading = true;
                     VATRegistrationDetailsData = null;
                     VATRegistrationOtherDetails = null;
                     ADDRESSSetData = null;

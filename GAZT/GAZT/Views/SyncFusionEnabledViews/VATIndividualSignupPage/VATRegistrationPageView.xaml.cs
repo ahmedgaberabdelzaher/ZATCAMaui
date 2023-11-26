@@ -1362,13 +1362,16 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                 });
                 await Task.Run(async () =>
                 {
-                    await viewModel.onPageLoad();
-                    setIban();
+                    if (!viewModel.isLoadedAlready)
+                    {
+                        await viewModel.onPageLoad();
+                        setIban();
+                    }
                 });
-                //await Task.Run(() =>
-                //{
-                //    viewModel.IsLoading = false;
-                //});
+                await Task.Run(() =>
+                {
+                    viewModel.IsLoading = false;
+                });
             }
             catch (Exception ex)
             {
@@ -2138,15 +2141,17 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try
             {
                 VATRegistrationPageViewModel.IsComeFromForAttachment = IsComeFromForAttachment.Import;
-                if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
-                {
+               // if (viewModel.ImporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ImporterImageSource == "selected171x136.png")
+                 {
                     viewModel.VATRegistrationDetailsData.d.ImFg = "1";
                 }
                 else
                 {
                     viewModel.VATRegistrationDetailsData.d.ImFg = "0";
                 }
-                if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                // if (viewModel.ExporterImageSource == "vat_tile_IbanCard_background.png")
+                if (viewModel.ExporterImageSource == "selected171x136.png")
                 {
                     viewModel.VATRegistrationDetailsData.d.ExFg = "1";
                 }
@@ -2242,7 +2247,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                             viewModel.SelectedIdTypeFR = viewModel.IdTypeListFR.Where(x => x.ID == vATSignUpData.d.Idtype).FirstOrDefault();
                             if (vATSignUpData.d.Mobile != null && !string.IsNullOrEmpty(vATSignUpData.d.Mobile))
                             {
-                                viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                                viewModel.MobNumberFR = vATSignUpData.d.Mobile;
                             }
                             viewModel.FrameIDError = false;
                         }
@@ -2785,7 +2790,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
+                        //  string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0001", viewModel.IdNumberSR, dob);
+                          string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0001", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2812,7 +2818,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdNumberSR, dob);
+                            // string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0001", viewModel.IdNumberSR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypesDelecration("ZS0001", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -2898,7 +2905,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     try
                     {
 
-                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
+                        // string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp("ZS0002", viewModel.IdNumberSR, dob);
+                        string Result = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDDeclaration("ZS0002", viewModel.IdNumberSR, dob);
                         VATSignUp vATSignUpData = new VATSignUp();
                         vATSignUpData = JsonConvert.DeserializeObject<VATSignUp>(Result);
                         if (vATSignUpData.d == null)
@@ -2926,7 +2934,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     {
                         try
                         {
-                            string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdNumberSR, dob);
+                            // string Result = await WebServiceManager.GAZTValidateIDTypes("ZS0002", viewModel.IdNumberSR, dob);
+                            string Result = await WebServiceManager.GAZTValidateIDTypesDelecration("ZS0002", viewModel.IdNumberSR, dob);
                             IDTypeValidateRootObject SignupIsIDTypeValid = JsonConvert.DeserializeObject<IDTypeValidateRootObject>(Result);
                             if (SignupIsIDTypeValid.error.message.value == "An exception was raised.")
                             {
@@ -3044,7 +3053,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.DOB = vATSignUpData.d.Birthdt10;
                     viewModel.FirstnmFR = vATSignUpData.d.Name1;
                     viewModel.LastnmFR = vATSignUpData.d.Name2;
-                    viewModel.MobNumberFR = vATSignUpData.d.Mobile.Substring(5);
+                    viewModel.MobNumberFR = vATSignUpData.d.Mobile;
                     viewModel.IdnumberFR = vATSignUpData.d.Idnum;
                     viewModel.SmtpAddrFR = vATSignUpData.d.Email;
                     FrmTINNumber.HasError = false;

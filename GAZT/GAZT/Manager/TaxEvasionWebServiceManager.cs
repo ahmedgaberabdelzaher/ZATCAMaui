@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -769,6 +770,158 @@ namespace EGAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
+        public async static Task<String> GAZTVATSignUpValidateIDDeclaration(string IDType, string IDNumber, string DBO)
+
+        {
+
+            if (CrossConnectivity.Current.IsConnected)
+
+            {
+
+                VATSignUp vATSignUp = new VATSignUp();
+
+                string IsIDTypeValidList = string.Empty;
+
+                string NewToken = string.Empty;
+
+                String SignUpCityList = string.Empty;
+
+                try
+
+                {
+
+                    //HttpClientHandler crmSignUphttpClientHandler = new HttpClientHandler();
+
+                    //crmSignUphttpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+
+                    char lang = WebServiceManager.GetLangZParameter();
+
+                    //HttpClient client = new HttpClient(crmSignUphttpClientHandler);
+
+                    HttpClient client = new HttpClient(App.httpClientHandler);
+
+                    client.DefaultRequestHeaders.Add("X-Requested-With", "X");
+
+                    client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+                    client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
+
+                    String url = Constants.GAZTVATSignUpValidateIdDeclaration + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+
+                    // For VAT register String url = Constants.GAZTSiguupValidateIDTypes + "(Tin='',Idtype='" + IDType + "',Idnum='" + IDNumber + "',Country='',PassExpDt='',TaxpDob='" + DBO + "')?sap-language=" + lang + "&$format=json&saml2=enabled";
+
+                    var uri = new Uri(url);
+
+                    HttpResponseMessage VATSignUpIdValidateObject = await client.GetAsync(uri);
+
+                    if (VATSignUpIdValidateObject != null)
+
+                    {
+
+                        if (VATSignUpIdValidateObject.StatusCode == HttpStatusCode.Unauthorized)
+
+                        {
+
+                            App.IsSessionExpired = true;
+
+                            return null;
+
+                        }
+
+                        HttpHeaders headers = VATSignUpIdValidateObject.Headers;
+
+                        IEnumerable<string> values;
+
+                        if (headers.TryGetValues("token", out values))
+
+                        {
+
+                            NewToken = values.First();
+
+                        }
+
+                        if ((!string.IsNullOrEmpty(NewToken)))
+
+                        {
+
+                            if ((0 == String.Compare(NewToken, "Token has expaired")) || (0 == String.Compare(NewToken, "Invalid Token")))
+
+                            {
+
+                                App.IsSessionExpired = true;
+
+                                return null;
+
+                            }
+
+                            App.Token = NewToken;
+
+                        }
+
+                        SignUpCityList = await VATSignUpIdValidateObject.Content.ReadAsStringAsync();
+
+                    }
+
+                    return SignUpCityList;
+
+                }
+
+                catch (JsonReaderException ex)
+
+                {
+
+                    throw new GAZTInvalidDataException();
+
+                }
+
+                catch (HttpRequestException ex)
+
+                {
+
+                    throw ex;
+
+                }
+
+                catch (GAZTSessionExpiredException gex)
+
+                {
+
+                    throw gex;
+
+                }
+
+                catch (GAZTException gex)
+
+                {
+
+                    throw gex;
+
+                }
+
+                catch (Exception ex)
+
+                {
+
+                    Console.WriteLine(ex.Message);
+
+                    Console.Write(ex.StackTrace.ToString());
+
+                    throw new GAZTNetworkConnectivityIssueException();
+
+                }
+
+            }
+
+            else
+
+            {
+
+                throw new InternetException(AppResources.ZZInternetConnectionMessage);
+
+            }
+
+        }
+
 
         public async static Task<VATSignUp> GAZTVATSignUpValidateIDTypes(string IDType, string IDNumber, string DBO)
         {

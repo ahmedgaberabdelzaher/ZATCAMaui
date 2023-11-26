@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using Xamarin.Forms.Internals;
 
 namespace GAZT.Helper
@@ -53,10 +54,10 @@ namespace GAZT.Helper
 
         #endregion
 
-        //public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
-        //public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
-        //public static string DomainUrlForCookies = DevDomainForCookies;
-        //public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
+        public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
+        public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
+        public static string DomainUrlForCookies = DevDomainForCookies;
+        public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;
      /*
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
@@ -73,12 +74,12 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = PreprodDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
     */  
-       
+       /*
         public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = ProdDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
-     
+     */
     
         public static string GAZTSAMLLoginServicePart = "/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
         public static string GAZTSAMLLoginService = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet";
@@ -487,6 +488,9 @@ namespace GAZT.Helper
 
         public static string TaxpayerSubsidyRequest = string.Empty;
         public static string GetVatEligilibilityDate = BaseUrlOfODataServices + "/sap/opu/odata/SAP/ZDP_VAT_NW_RG_SRV";
+        public static string GAZTVATSignUpValidateIdDeclaration = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TP_NAME_SRV/taxpayer_nameSet";//CRPENTEST(Tin='',Idtype='ZS0015',Idnum='1048089609',Country='',PassExpDt='',TaxpDob='19650224')?sap-language=A&$format=json&saml2=enabled
+        public static string GAZTSiguupValidateIDTypesDecl = BaseUrlOfODataServices + "/sap/opu/odata/SAP/Z_REG_GET_TAXPAYER_SIGNUP_N_SRV/taxpayer_nameSet";//PENTEST Chnage
+
 
     }
 }

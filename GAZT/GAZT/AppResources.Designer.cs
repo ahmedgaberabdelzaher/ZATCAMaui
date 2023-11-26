@@ -21539,7 +21539,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than SAR 5000.00 or VAT credit position of greater than SAR -5000.00, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
+        ///   Looks up a localized string similar to • If corrections to the previous return entail a VAT liability adjustment less than SAR {0} or VAT credit position of greater than SAR {1}, then specify the VAT adjustment (and not supplies or purchases amount) in this field. For any other VAT adjustments, please submit a &quot;Self-Amendment&quot; form.
         /// </summary>
         public static string ZToolTipCorrectionsfrompreviousperiod {
             get {
