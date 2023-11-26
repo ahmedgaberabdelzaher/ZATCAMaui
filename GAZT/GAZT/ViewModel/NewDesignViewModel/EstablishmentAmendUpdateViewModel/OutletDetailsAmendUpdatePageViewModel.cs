@@ -597,9 +597,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -666,7 +666,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                 }
                 catch (InternetException ex)
                 {
@@ -676,9 +676,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                 }
             });
             OnProvinanceSelectButtonClick = new Command((str) =>
@@ -727,7 +727,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                         
                     }
                     catch (InternetException ex)
                     {
@@ -737,9 +737,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                         
                     }
 
                 }
@@ -790,7 +790,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                         
                     }
                     catch (InternetException ex)
                     {
@@ -800,9 +800,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                         
                     }
 
                 }
@@ -857,7 +857,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
         }
         private void openNewActivity(EstablishmentOutletActivitiesTabsEnum _enum)
         {
-            Console.WriteLine(_enum);
             if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
             {
                 var mainactivity = taxPayerDetails?.Nreg_ActivitySet.results?.Where(i => i.Type == "ZS0004").ToList();
@@ -987,7 +986,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
                             await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1016,9 +1014,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -1127,10 +1124,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             PreLoadedLicenseItem = null;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 else if (_enum == EstablishmentRegistrationOutletTabsEnum.AddressDetails)
@@ -1212,10 +1209,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {

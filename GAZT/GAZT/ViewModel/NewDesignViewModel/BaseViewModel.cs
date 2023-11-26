@@ -438,7 +438,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return uploadedFiles;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.Somethingwentwrong;
@@ -485,7 +485,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return payload;
                 //  var mobile = payload["Mobile"];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

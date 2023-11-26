@@ -765,10 +765,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     //Captcha = captcha.ToString();
                     //EnteredCaptchaValue = string.Empty;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             OnCaptchaRegenerateClicked = new Command(async () =>
@@ -796,10 +796,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                         //}
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             //OnResendOTPClicked = new Command(async () =>
@@ -861,10 +861,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                     ForgotTypeIndex = 1;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             VerifyButtonDisableColor =  (Color)Application.Current.Resources["Primary"];
             IsVerifyOTPEnabled = true;
@@ -1086,10 +1086,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                             });
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 });
                 await Task.Run(() =>
@@ -1477,7 +1477,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ForgotUsernamePasswordPage_
                                 IsLoading = false;
                             });
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
                             IsVisibleTinIds = false;
                             Device.BeginInvokeOnMainThread(async () =>

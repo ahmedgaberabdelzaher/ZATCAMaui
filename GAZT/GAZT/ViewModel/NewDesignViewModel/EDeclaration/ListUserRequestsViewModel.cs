@@ -64,7 +64,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -91,7 +91,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             InquireListOfUser = new ObservableCollection<TravelerDeclarationResponse>(result);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         SearchInput = string.Empty;
                     }
@@ -136,7 +136,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 

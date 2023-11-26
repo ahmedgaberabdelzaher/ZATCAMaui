@@ -79,7 +79,7 @@ namespace GAZT.Droid.DependencyServices
                     var context = Android.App.Application.Context;
                     id = Android.Provider.Settings.Secure.GetString(context.ContentResolver, Android.Provider.Settings.Secure.AndroidId);
                 }
-                catch (System.Exception ex)
+                catch (System.Exception)
                 {
                     id = "";
                     //Android.Util.Log.Warn("DeviceInfo", "Unable to get id: " + ex.ToString());
@@ -103,9 +103,8 @@ namespace GAZT.Droid.DependencyServices
                 streamWriter.Close();
                 System.IO.File.WriteAllBytes(filePath, myByte);
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
-                System.Console.WriteLine(e.ToString());
             }
 
             return filePath;
@@ -151,7 +150,7 @@ namespace GAZT.Droid.DependencyServices
 
         //        return false;
         //    }
-        //    catch(System.Exception ex)
+        //    catch(System.Exception)
         //    {
         //        return false;
         //    }
@@ -181,7 +180,7 @@ namespace GAZT.Droid.DependencyServices
                 //base64Image = Convert.ToBase64String(imageArray);
 
             }
-            catch (System.Exception e)
+            catch (System.Exception)
             {
 
             }

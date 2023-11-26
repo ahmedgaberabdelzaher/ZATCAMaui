@@ -1257,7 +1257,7 @@ namespace EGAZT.Models
                     isHijiri = value;
                     OnPropertyRaised("IsHijiri");
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
 
                 }

@@ -113,7 +113,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                         BPicker.SelectedIndex = 14;
                     }
             }
-            catch(Exception e)
+            catch(Exception)
             {
             }
         }
@@ -139,7 +139,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                     viewModel.SetICRListData(selectedICR);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -161,7 +161,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                     // BPicker.SelectedIndex = indexofPreviousSelectedFilter;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }
@@ -216,10 +216,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -253,7 +253,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                 }
                 Count++;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -275,7 +275,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                 viewModel.SelectedICRStatusPrev = selectedfbtyp;
                 viewModel.TxtSelectedStatus = selectedfbtyp.Txt30;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -292,7 +292,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.ICRList
                     viewModel.TxtSelectedStatus = string.Empty;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

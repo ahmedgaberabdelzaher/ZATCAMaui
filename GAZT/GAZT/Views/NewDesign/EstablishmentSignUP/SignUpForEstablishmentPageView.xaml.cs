@@ -173,10 +173,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -389,11 +389,11 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             {
                 mobileData = WebServiceManager.GAZTGetMobileRegionDropdown();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
         //email otp text changed events
@@ -1622,7 +1622,7 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //    }
 
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
             //}
         }
@@ -2263,8 +2263,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
             //License Number Validation
             else
             {
-                Console.WriteLine(viewModel.TxtLOrCIssuedByCity);
-                Console.WriteLine(viewModel.TxtLOrCIssuedBy);
                 bool flag = true;
                 //AllValid Data Entered
                 if (string.IsNullOrEmpty(viewModel.TxtLicenseNumber))
@@ -2518,12 +2516,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                 viewModel.CurrentTab = EstablishmentSignUPTabEnum.EmailVerification;
                 OTPFirstEntry.Focus();
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-            }
+            catch (Exception)
+            { }
         }
 
         public async Task EstablishmentSignUpDataAsync()
@@ -2625,10 +2619,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                             }
                                             SiguupModel.ACommId = "";
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.WriteLine(ex.Message);
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                         //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                         //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
@@ -3196,10 +3190,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
                                         }
                                         SiguupModel.ACommId = "";
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
-                                        Console.WriteLine(ex.Message);
-                                        Console.Write(ex.StackTrace.ToString());
+                                        
+                                        
                                     }
                                     //SiguupModel.ACity = viewModel.SelectCityList.CityName;
                                     //SiguupModel.ACityCode = viewModel.SelectCityList.CityCode;
@@ -4267,10 +4261,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4434,10 +4428,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentSignUP
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

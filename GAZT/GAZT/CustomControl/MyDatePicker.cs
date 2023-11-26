@@ -1,4 +1,5 @@
 ﻿using System;
+using EGAZT.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -8,7 +9,11 @@ namespace GAZT.CustomControl
     public class MyDatePicker : DatePicker
     {
         private string _format = null;
-        public static readonly BindableProperty NullableDateProperty = BindableProperty.Create<MyDatePicker, DateTime?>(p => p.NullableDate, null);
+        public static readonly BindableProperty NullableDateProperty = BindableProperty.Create(
+                                                        propertyName: "NullableDate",
+                                                        returnType: typeof(DateTime),
+                                                        declaringType: typeof(MyDatePicker),
+                                                        defaultValue: null);
         public DateTime? NullableDate
         {
             get { return (DateTime?)GetValue(NullableDateProperty); }

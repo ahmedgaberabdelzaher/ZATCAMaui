@@ -85,7 +85,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.FAQPage
         //            viewModel.IsLoading = false;
         //        });
         //    }
-        //    catch(Exception ex)
+        //    catch(Exception)
         //    {
         //        Task.Run(() =>
         //        {

@@ -83,29 +83,20 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
                 MessagingCenter.Subscribe<string>(this, "UnlockAccountBackButtonClicked", message =>
                 {
-                    Console.WriteLine("UnlockAccountBackButtonClicked");
                     OnAppearing();
                 });
 
                 MessagingCenter.Subscribe<object, string>(this, "RefreshLoginPage", async (sender, arg) =>
                 {
-                    Console.WriteLine("RefreshLoginPage");
                     OnAppearing();
                 });
 
                 MessagingCenter.Subscribe<string>(this, "OnActivated", message =>
                 {
-                    Console.WriteLine("OnActivated");
                     OnAppearing();
                 });
                 MessagingCenter.Subscribe<object, string>(this, "SessionExpired", (sender, arg) =>
                 {
-                    //var objSession = Xamarin.Forms.Application.Current.Properties["IsSessionExpired"];
-                    //if (objSession != null && bool.Parse(objSession.ToString()))
-                    //{
-                    //    loginGrid.Opacity = 0;
-                    //    sessionExpiredView.IsVisible = true;
-                    //}
                 });
 
                 DependencyService.Get<IStatusBar>().HideStatusBar();
@@ -121,10 +112,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 viewModel.TINIndex = 0;
               
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             // ParentContainer.RaiseChild(BusyIndicator);
         }
@@ -142,7 +133,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             {
                 if (arg == "RequestTimedOut")
                 {
-                    Console.WriteLine(arg);
                     viewModel.IsLoading = false;
                     GoBackToOnaboardingScreen();
                 }
@@ -273,10 +263,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                     loginGrid.Margin = new Thickness(0, -50, 0, -30);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -406,10 +396,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 await LogoffUser();
                                 GoBackToOnaboardingScreen();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                                 GoBackToOnaboardingScreen();
                             }
                         }
@@ -463,7 +453,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                     }
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
                             }
@@ -583,10 +573,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                                 App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                                 App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
 
                             viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
@@ -595,9 +585,9 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         }
                     }
 
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
+                        
                     }
                 });
             });
@@ -654,10 +644,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                 App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                 App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
@@ -738,11 +728,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
                         }
                     }
 
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
+                        
                     }
                 });
             }
@@ -807,10 +797,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
             viewModel.SelectedTinId = SelectedTin;
             viewModel.SelectedTinIdPrev = SelectedTin;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -830,7 +820,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
 
         void hybridWebView_Navigating(System.Object sender, Xamarin.Forms.WebNavigatingEventArgs e)
         {
-            Console.WriteLine("hybridWebView_Navigating");
         }
 
 
@@ -843,7 +832,6 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SFLogin
         private void btnLoginClicked(object sender, EventArgs e)
         {
             sessionExpiredView.IsVisible = false;
-            Console.WriteLine("Login clicked");
             loginGrid.Opacity = 1;
             App.Current.Properties["IsSessionExpired"] = false;
             App.isAndroidUrlloaded = false;

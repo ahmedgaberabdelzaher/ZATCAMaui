@@ -139,10 +139,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
                         viewModel.filterList();
@@ -311,10 +311,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             await Task.Run(() =>
@@ -352,10 +352,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
            
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -392,10 +392,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                         viewModel.IsLoading = false;
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;

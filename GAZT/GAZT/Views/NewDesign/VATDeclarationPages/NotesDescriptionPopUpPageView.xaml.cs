@@ -65,10 +65,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //}
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -95,10 +95,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 await PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

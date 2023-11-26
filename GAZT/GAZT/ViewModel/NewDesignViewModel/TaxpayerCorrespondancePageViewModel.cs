@@ -508,10 +508,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             childZakat.TaxtpFg = itemZakat.TaxtpFg;
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemZakat.Cdate != null)
@@ -629,9 +629,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             childVAT.TaxtpFg = itemVAT.TaxtpFg;
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
-                            Console.WriteLine(ex.Message);
+                            
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemVAT.Cdate != null)
@@ -743,10 +743,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             childET.TaxtpFg = itemET.TaxtpFg;
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                         DateTime? BegDate = DateTime.Now;
                         if (itemET.Cdate != null)
@@ -830,10 +830,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 SelectedDropdownItem = FilterListForDropDown.FirstOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopulateFilterDropdownList()
@@ -849,10 +849,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 FilterListForDropDown = new List<ReturnTypes>();
                 FilterListForDropDown = FilterList;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopulateDataInChips()
@@ -1002,10 +1002,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ListToDisplay = new ObservableCollection<CorrespondanceModel>(ListToDisplay.OrderByDescending(x => x.StartDate).ThenByDescending(x => x.Ctime).ToList());
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             
         }

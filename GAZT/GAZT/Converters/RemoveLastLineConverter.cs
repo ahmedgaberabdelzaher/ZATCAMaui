@@ -28,7 +28,7 @@ namespace EGAZT.Converters
                 
                 return (bool)value;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return (bool)value;
             }

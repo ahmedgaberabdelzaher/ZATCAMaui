@@ -1,8 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Rg.Plugins.Popup.Services;
 using System.Windows.Input;
 using Xamarin.Forms.Internals;

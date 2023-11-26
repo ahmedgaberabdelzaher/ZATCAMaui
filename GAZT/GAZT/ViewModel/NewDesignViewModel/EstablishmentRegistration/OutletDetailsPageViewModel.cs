@@ -613,9 +613,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             Country = item as CountryDropdownItem;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -655,9 +654,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 Provinance = item as StateDropdownItem;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
-                            Console.WriteLine(e.StackTrace);
                         }
                     };
                     PopupNavigation.Instance.PushAsync(poupWindow);
@@ -698,9 +696,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                 City = item as CityDropdownItem;
                             }
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
-                            Console.WriteLine(e.StackTrace);
                         }
                     };
                     PopupNavigation.Instance.PushAsync(poupWindow);
@@ -717,7 +714,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
         {
             try
             {
-                Console.WriteLine(_enum);
                 if(taxPayerDetails != null && taxPayerDetails.Nreg_ActivitySet != null)
                 {
                     if (_enum == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
@@ -747,7 +743,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 }
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -852,7 +848,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     catch (Exception ex)
                     {
                         IsLoading = false;
-                        Console.WriteLine(ex.StackTrace);
                         if (ex is HTTPBadRequestException)
                         {
                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
@@ -879,9 +874,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 taxPayerDetails?.AttDetSet.results?.Clear();
                 taxPayerDetails?.AttDetSet.results?.AddRange(_taxPayerDetails?.AttDetSet.results);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.StackTrace);
             }
             finally
             {
@@ -1038,10 +1032,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {

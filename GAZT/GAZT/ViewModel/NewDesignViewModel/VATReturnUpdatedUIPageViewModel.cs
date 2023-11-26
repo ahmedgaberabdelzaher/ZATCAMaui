@@ -1277,10 +1277,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (string.IsNullOrEmpty(Preperiodcorr) || string.IsNullOrEmpty("0.00"))
                         IsSwitchToggled = false;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 RaisePropertyChanged("Preperiodcorr");
             }
@@ -1545,10 +1545,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Preperiodcorr = Preperiodcorr.Replace("-", "");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 RaisePropertyChanged("IsSwitchToggled");
             }
@@ -2811,10 +2811,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //_navigationService.GoBack();
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 
@@ -2824,10 +2824,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
                     PopupNavigation.Instance.PushAsync(new VATCreditCarriedForwardPopUpPageView(VATDeclarationData));
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 
@@ -2881,10 +2881,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     PopupNavigation.Instance.PushAsync(VisitPortalPopup);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 // await _dialogService.ShowMessage(AppResources.ZZZChangeRegistationNote, AppResources.ZInstructions);
             });
@@ -3307,7 +3307,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsNewLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -4208,10 +4208,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         await SetButtons(VATDeclarationData);
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         return null;
                     }
                 }
@@ -4219,8 +4219,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
@@ -4402,10 +4402,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4571,7 +4571,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 result = false;
                 return result;
@@ -4638,10 +4638,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //    VATDeclarationData.d.RefundFg = "0";
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public VATDeclarationD Set15PercentChangeData(VATDeclarationD vATDeclarationD)
@@ -4684,10 +4684,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             return vATDeclarationD;
@@ -4731,10 +4731,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return vATDeclarationD;
         }
@@ -4896,10 +4896,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return vATDeclarationD;
         }
@@ -5103,10 +5103,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void createIBANType()
@@ -5168,10 +5168,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5213,10 +5213,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5283,10 +5283,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5339,10 +5339,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5407,10 +5407,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5469,10 +5469,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5532,10 +5532,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5591,10 +5591,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5625,10 +5625,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5678,10 +5678,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5730,10 +5730,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return TotalAmount;
         }
@@ -5773,10 +5773,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5818,10 +5818,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5868,10 +5868,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5912,10 +5912,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return VATAmount;
         }
@@ -5959,10 +5959,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 NetVatDue = isTrue ? "0.00" : NetVatDue;
                 return NetVatDue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return NetVatDue;
         }
@@ -6126,10 +6126,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //amountWithComma = amount;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return iSValiedNumber;
         }
@@ -6394,9 +6394,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             Device.BeginInvokeOnMainThread(() =>
                             {
 
-                                //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                                //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
                                 PaymentSucess paymentInfo = new PaymentSucess();
                                 paymentInfo.Paymentref = response.d.PayRef;
                                 if (response.d.PerslTxt != null)
@@ -6414,31 +6411,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             {
 
                                 await PopupNavigation.Instance.PushAsync(new PaymentExceptionPageView());
-                                //PaymentSucess paymentInfo = new PaymentSucess();
-                                //paymentInfo.Paymentref = "";
-                                //if (response.d.PerslTxt != null)
-                                //{
-                                //    paymentInfo.Period = response.d.PerslTxt;
-                                //}
-
-                                //_navigationService.NavigateTo(App.VatReturnNewSuccessPageView, paymentInfo);
 
                             });
 
                         }
-
-
-
-                        //Device.BeginInvokeOnMainThread(() =>
-                        //{
-
-                        //    //_navigationService.NavigateTo(App.ZakatReturnNewSuccessPageView, PaymentData.d.PayRef);
-                        //    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
-
-                        //    _navigationService.NavigateTo(App.VatReturnNewSuccessPageView, "");
-
-                        //});
                     }
                     IsLoading = false;
 
@@ -6457,7 +6433,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         IsLoading = false;
-                        //   await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                         _navigationService.GoBack();
                     });
@@ -6468,7 +6443,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
-                    //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
                     _navigationService.GoBack();
                 });
@@ -6477,11 +6451,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
         private async Task<bool> ProcessApplePay()
         {
-
-
-
-            //var VatAmount = NetdueVat.Replace(",", "");
-
             var Amount = Convert.ToDouble(PaymentData.d.Amount);
             var VatAmount = Math.Round(Amount, 2);
 
@@ -6496,23 +6465,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
             DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "M");
 
-            //Device.BeginInvokeOnMainThread(async () => {
-
-            //    _navigationService.NavigateTo(App.PaymentProcessWebview,1);
-            //    //await App.Current.MainPage.Navigation.PushAsync(new PaymentProcessWebview());
-
-            //});
-
         }
 
-        public void ApplePaySelected()
+        public async void ApplePaySelected()
         {
-            //DoProcessApplePayPayment(VATDeclarationData.d.Fbnum);
-
-            DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "A");
-
-            //var payment = DependencyService.Get<IApplePayAuthorizer>().AuthorizePayment("1","VAT Return");
-
+           await DoValidatePayment(fbNum: VATDeclarationData.d.Fbnum, "A");
 
         }
 
@@ -6527,12 +6484,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         public async void ApplePaySucess()
         {
 
-            Console.WriteLine("Apple pay status", ApplePayTokenData);
 
             if (ApplePayTokenData != null)
             {
 
-                UpdateApplePayPaymentGuid();
+               await UpdateApplePayPaymentGuid();
             }
 
 

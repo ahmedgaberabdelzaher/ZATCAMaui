@@ -168,10 +168,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                     }
                     RaisePropertyChanged("SelectedICR");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -510,10 +510,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ICRListPage_ViewModel
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 TxtSelectedStatus = selectedICRStat.Txt30;
             }

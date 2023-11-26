@@ -175,7 +175,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ReportOTPVM
                         }
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;

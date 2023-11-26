@@ -192,9 +192,8 @@ namespace GAZT.CustomControl
                     // message please remove extra decimal number
                 }
             }
-            catch(Exception er)
+            catch(Exception)
             {
-                Console.WriteLine(er.Message);
             }
         }
     }

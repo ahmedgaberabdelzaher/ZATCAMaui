@@ -31,10 +31,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 var selectedItem = items.FirstOrDefault(x => x.Id == sSelectedTaxTypeForFilter.Id && x.TaxType == sSelectedTaxTypeForFilter.TaxType);
                 TaxTypePicker.SelectedItem = selectedItem;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             await picker.TranslateTo(0, 500, 0);
             await picker.TranslateTo(0, 0, 250);
@@ -86,10 +86,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -101,10 +101,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 ReturnTypes selectedReturntype = (ReturnTypes)e.NewValue;
                 TaxTypePicker.SelectedItem = selectedReturntype;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

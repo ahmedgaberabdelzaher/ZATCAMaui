@@ -180,9 +180,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
 
-
-                Console.WriteLine(arg);
-
             });
 
             MessagingCenter.Subscribe<object, Attachments>(this, "AttachmentReceived", (sender, arg) =>
@@ -270,7 +267,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         }
                     }
                 }
-                Console.WriteLine(arg);
             });
 
 
@@ -353,7 +349,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //    var dataItem = e.ItemData as TINDeregistrationModel;
             //    dataItem.ActiveOutletDecisionOptionsIsSelected = true;
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
             //}
         }
@@ -383,10 +379,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
             viewModel.TinDeregistrationData.AttDetSet.Results = new List<Attachment>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         void GetSelectedDataTemplate(bool isIndex1 = false)
@@ -761,10 +757,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -857,10 +853,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -898,10 +894,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -912,10 +908,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         Device.BeginInvokeOnMainThread(() => HijriCalSwitch3.IsToggled = viewModel.IsHijriCal);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
             }
@@ -985,10 +981,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -1151,10 +1147,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1213,10 +1209,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1238,7 +1234,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //    }
 
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
             //}
         }
@@ -1258,7 +1254,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             //    }
 
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
             //}
         }
@@ -1496,11 +1492,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
 
         }
@@ -1550,10 +1546,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1583,10 +1579,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1616,10 +1612,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1649,10 +1645,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1682,10 +1678,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1715,10 +1711,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1753,10 +1749,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             var view = sender as SfListView;
             view.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -1785,11 +1781,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -1804,7 +1800,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 var obj = viewModel.TinDeregistrationData.AttDetSet.Results;
                 viewModel.NewAttachmentClicked();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 return;
@@ -1837,7 +1833,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         //            viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
         //        }
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    {
         //        return;
         //    }
@@ -1898,10 +1894,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.AttachmentsListViewData = new List<TinDeregestrationAttachmentsModel>(viewModel.AttachmentsListViewData);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return;
             }
         }
@@ -1943,11 +1939,11 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -1962,10 +1958,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             if (((StackLayout)sender).Height > 0)
                 attachmentsListView.HeightRequest = (viewModel.AttachmentsListViewData.Count + childElements) * ((StackLayout)sender).Height;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -1986,10 +1982,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

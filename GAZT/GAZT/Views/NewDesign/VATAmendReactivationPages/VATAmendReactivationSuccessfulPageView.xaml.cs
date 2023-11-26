@@ -123,7 +123,7 @@ namespace EGAZT.Views.NewDesign.VATAmendReactivationPages
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

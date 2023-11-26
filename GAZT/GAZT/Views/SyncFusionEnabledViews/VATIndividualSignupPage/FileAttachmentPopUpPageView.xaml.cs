@@ -78,10 +78,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
                         viewModel.filterList();
@@ -150,10 +150,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
             try { 
             ((Xamarin.Forms.ListView)sender).SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -207,10 +207,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     }
                    
                 }
-                    catch (Exception ex)
+                    catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     await Task.Run(() =>
                     {
                         viewModel.IsLoading = false;
@@ -261,10 +261,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -286,10 +286,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     DeleteAttachmentForMessagingCenterCall();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -303,10 +303,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -364,10 +364,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 viewModel.IsLoading = false;
             }
             await Task.Run(() =>

@@ -4,13 +4,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:controls1="clr-namespace:EGAZT.Views.NewDesign.EDeclaration.QuestionsViews"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:numericinput="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
     HasBackButton="True"
     TitleText="{x:Static ResourceManager:AppResources.CustomFeesCalculator}">
@@ -18,7 +16,9 @@
     <newdesign:BaseContentPage.PancakeView>
 
         <Grid>
-            <ScrollView Grid.Row="0" VerticalScrollBarVisibility="Never">
+            <ScrollView Grid.Row="0"
+                        Margin="0,0,0,30"
+                        VerticalScrollBarVisibility="Never">
 
                 <ScrollView.Triggers>
                     <DataTrigger
@@ -213,6 +213,7 @@
                                 InputViewPadding="16,0,16,0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
+                                FlowDirection="LeftToRight"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
 
                                    <numericinput:SfNumericTextBox
@@ -220,6 +221,7 @@
                                         Value="{Binding Quantity}"
                                         FontFamily="{StaticResource SomarRegular}"
                                         FontSize="15"
+                                        FlowDirection="LeftToRight"
                                         HeightRequest="48"
                                         WidthRequest="150"
                                         EnableGroupSeparator="True"
@@ -402,7 +404,8 @@
                     <!--#region Fees Details-->
 
                     <!--  Fees Details frame  -->
-                    <ScrollView VerticalScrollBarVisibility="Never">
+                    <ScrollView VerticalScrollBarVisibility="Never"
+                                Margin="0,0,0,30">
                          <Frame
                             Padding="10"
                             BorderColor="#E6E6E6"
@@ -441,7 +444,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding ProductValue,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding ProductValue,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -481,7 +484,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.totalDuty,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -510,7 +513,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.extraFees,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.extraFees,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -546,7 +549,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.excise,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.excise,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -590,7 +593,7 @@
                                         <Label Style="{StaticResource BodyLabelBlack}">
                                             <Label.FormattedText>
                                                 <FormattedString>
-                                                    <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{}{0:#,##,#}'}" />
+                                                    <Span Text="{Binding FeesCalculatorResponse.vat,StringFormat='{0:n}'}" />
                                                     <Span Text=" " />
                                                     <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                 </FormattedString>
@@ -632,7 +635,7 @@
                                                        Style="{StaticResource BodyLabelBlack}">
                                                     <Label.FormattedText>
                                                         <FormattedString>
-                                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{}{0:#,##,#}'}" />
+                                                            <Span Text="{Binding FeesCalculatorResponse.totalPayment,StringFormat='{0:n}'}" />
                                                             <Span Text=" " />
                                                             <Span Text="{x:Static ResourceManager:AppResources.FORM5SAR}" />
                                                         </FormattedString>

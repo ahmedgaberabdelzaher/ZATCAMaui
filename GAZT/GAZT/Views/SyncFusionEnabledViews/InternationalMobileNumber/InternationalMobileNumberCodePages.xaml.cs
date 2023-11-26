@@ -77,10 +77,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
                 viewModel.refreshList();
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private  void List_ItemTapped(object sender, ItemTappedEventArgs e)
@@ -92,10 +92,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.InternationalMobileNumber
 
             viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
     }

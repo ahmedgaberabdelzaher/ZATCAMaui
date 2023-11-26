@@ -113,10 +113,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
             catch (Exception ex)
             {
                 IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 ShowValidationPopup(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             return TP;

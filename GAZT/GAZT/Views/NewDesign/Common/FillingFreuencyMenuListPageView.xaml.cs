@@ -64,10 +64,10 @@ namespace EGAZT.Views.NewDesign.Common
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -93,10 +93,10 @@ namespace EGAZT.Views.NewDesign.Common
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

@@ -66,7 +66,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -114,7 +114,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                             IsLoading = false;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -144,7 +144,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                         MessageTxt = AppResources.QuantityValidation;
                         return;
                     }
-                    if (Double.Parse(TotalValue) < 3000)
+                    if (Double.Parse(TotalValue) <= 3000)
                     {
                         IsShowMsgView = true;
                         MessageTxt = AppResources.EDeclerationenteredValuedoesnotrequirethedeclaration;
@@ -191,7 +191,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -270,7 +270,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                 TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
             }

@@ -690,10 +690,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -781,9 +779,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //            LicenseIssueCity = null;
                 //        }
                 //    }
-                //    catch (Exception e)
+                //    catch (Exception)
                 //    {
-                //        Console.WriteLine(e.StackTrace);
+                //        (e.StackTrace);
                 //    }
                 //};
                 //PopupNavigation.Instance.PushAsync(poupWindow);
@@ -807,9 +805,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException )
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -819,9 +816,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
 
                 }
 
@@ -839,9 +835,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                 //            LicenseIssueBy = item as string;
                 //    }
-                //    catch (Exception e)
+                //    catch (Exception)
                 //    {
-                //        Console.WriteLine(e.StackTrace);
+                //        (e.StackTrace);
                 //    }
                 //};
                 //PopupNavigation.Instance.PushAsync(poupWindow);
@@ -879,9 +875,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                 }
                 catch (InternetException ex)
                 {
@@ -891,10 +886,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
                 }
 
             }, CanIssueByExecuteClickCommand);
@@ -924,9 +917,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                     //            LicenseIssueCity = item as CityDropdownItem;
                     //    }
-                    //    catch (Exception e)
+                    //    catch (Exception)
                     //    {
-                    //        Console.WriteLine(e.StackTrace);
+                    //        (e.StackTrace);
                     //    }
                     //};
                     //PopupNavigation.Instance.PushAsync(poupWindow);
@@ -949,9 +942,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
 
                         PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                     }
-                    catch (GAZTUnlockAccountException ex)
+                    catch (GAZTUnlockAccountException )
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     }
                     catch (InternetException ex)
                     {
@@ -961,10 +953,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
                     }
 
                 }
@@ -974,12 +964,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 var typeValue = type as string;
                 if (CRsCopies.Count < 5 && typeValue == "RG01")
                 {
-                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
                 }
                 else if (TransferCRsCopies.Count < 5 && typeValue == "RG12")
                 {
-                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
                 }
                 else if (TransferCRsCopies.Count == 5 || CRsCopies.Count == 5)
@@ -1022,9 +1010,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //        }
 
                 //    }
-                //    catch (Exception e)
+                //    catch (Exception)
                 //    {
-                //        Console.WriteLine(e.StackTrace);
+                //        (e.StackTrace);
                 //    }
                 //};
                 //PopupNavigation.Instance.PushAsync(poupWindow);
@@ -1050,7 +1038,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     throw new GAZTErrorException(ex.Message.ToString());
 
                 }
@@ -1062,10 +1049,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
                 }
 
             });
@@ -1094,9 +1079,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 //            LicenseAcitivity = null;
                 //        }
                 //    }
-                //    catch (Exception e)
+                //    catch (Exception)
                 //    {
-                //        Console.WriteLine(e.StackTrace);
+                //        (e.StackTrace);
                 //    }
                 //};
                 //PopupNavigation.Instance.PushAsync(poupWindow);
@@ -1123,7 +1108,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     throw new GAZTErrorException(ex.Message.ToString());
 
                 }
@@ -1135,11 +1119,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
-                }
+                catch (Exception)
+                { }
 
             });
             OnAcitivitySelectButtonClick = new Command(() =>
@@ -1152,30 +1133,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                     subGroupList = activityList?.activitySet?.results?.Where(i => i.IndSector.StartsWith(LicenseSubGroup?.IndSector)).ToList();
 
-                //ListPopUpViewPage poupWindow = new ListPopUpViewPage(dropDownData);
-                //poupWindow.OnItemSelect = (item) =>
-                //{
-                //    try
-                //    {
-                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.CRDetails)
-                //        {
-                //            CRAcitivity = item as ActivityGroupSubGroup;
-                //            CRMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
-                //            CRSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(CRAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
-                //        }
-                //        if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
-                //        {
-                //            LicenseAcitivity = item as ActivityGroupSubGroup;
-                //            LicenseMainGroup = activityList.act_groupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 2))).FirstOrDefault();
-                //            LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
-                //        }
-                //    }
-                //    catch (Exception e)
-                //    {
-                //        Console.WriteLine(e.StackTrace);
-                //    }
-                //};
-                //PopupNavigation.Instance.PushAsync(poupWindow);
+              
                 try
                 {
                     List<string> reportingBranchData = new List<string>();
@@ -1198,7 +1156,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
                     throw new GAZTErrorException(ex.Message.ToString());
 
                 }
@@ -1210,11 +1167,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
-
-                }
+                catch (Exception)
+                { }
 
             });
 
@@ -1444,10 +1398,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            catch (Exception)
+            { }
             finally
             {
                 CanExecute = true;
@@ -1546,10 +1498,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     else
@@ -1591,13 +1543,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                 }
 
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
-            }
+            catch (Exception)
+            { }
         }
         private async void updateActivityList(string indSector)
         {
@@ -1739,10 +1686,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             finally
@@ -1955,11 +1902,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
             finally
             {

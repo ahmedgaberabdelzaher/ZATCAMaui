@@ -51,9 +51,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                         return;
                     } ((Xamarin.Forms.ListView)sender).SelectedItem = null;
                 }
-                catch (Exception ex) {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                catch (Exception) {
+                    
+                    
                 }
             };
        // SetPickerFont();
@@ -129,11 +129,11 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                
-                Console.Write(ex.StackTrace.ToString());
+                
             }
 
             
@@ -187,7 +187,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
         //        //viewModel.SelectedReturnTypeForFilter = selectedReturntype;
 
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    { 
 
         //    }
@@ -221,10 +221,10 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             
         }
@@ -240,9 +240,9 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
             {
                 MyReturnsResult SelectedItem = (MyReturnsResult)viewModel.ListToDisplay[0];
             }
-            catch (Exception ex) {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception) {
+                
+                
             }
             //await viewModel.DoValidatePayment(SelectedItem.Fbnum);
 

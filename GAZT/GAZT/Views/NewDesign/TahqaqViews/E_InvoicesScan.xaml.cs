@@ -37,7 +37,7 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 UseCode39ExtendedMode = true, UseNativeScanning = true, 
                 DelayBetweenContinuousScans = 0,
                 CameraResolutionSelector = availableResolutions =>
-                {
+                { 
                     var displayOrientationHeight = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Height : DeviceDisplay.MainDisplayInfo.Width;
                     var displayOrientationWidth = DeviceDisplay.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ? DeviceDisplay.MainDisplayInfo.Width : DeviceDisplay.MainDisplayInfo.Height;
 
@@ -81,25 +81,38 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
                 },
 
             };
+            bool scanFinished = false;
             zxing.OnScanResult += (result) =>
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    viewModel.IsScanning = false;
-                 //   zxing.IsScanning = false;
-                    // Stop analysis until we navigate away so we don't keep reading barcodes
-                    // zxing.IsAnalyzing = false;
-                    viewModel.scanCode = result.Text;
-                    viewModel.ScanEnvoiceQrCommand.Execute(null);
-                    // Show an alert
-                    //  await DisplayAlert("Scanned Barcode", result.Text, "OK");
+                    if (!scanFinished)
+                    {
+                        if (int.TryParse(result.Text,out int res))
+                        {
+                            return;
+                        }
+                        viewModel.IsScanning = false;
+                        //   zxing.IsScanning = false;
+                        // Stop analysis until we navigate away so we don't keep reading barcodes
+                        // zxing.IsAnalyzing = false;
+                        viewModel.scanCode = result.Text;
+                        viewModel.ScanEnvoiceQrCommand.Execute(null);
+                        // Show an alert
+                        //  await DisplayAlert("Scanned Barcode", result.Text, "OK");
 
-                    // Navigate away
-                    // await Navigation.PopAsync();
+                        // Navigate away
+                        // await Navigation.PopAsync();
+                        zxing.IsScanning = false;
+                        viewModel.IsScanning = false;
+                        scanFinished = true;
+                    }
+                 
                 });
 
             InitializeComponent();
             MainGrid.Children.Add(zxing);
             zxing.AutoFocus();
+       //viewModel.ScanEnvoiceQrCommand.Execute(null);
            
         }
         protected override async void OnAppearing()
@@ -112,6 +125,18 @@ namespace EGAZT.Views.NewDesign.TahqaqViews
            // zxing.IsScanning = viewModel.IsScanning;
             base.OnAppearing();
       
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            if (viewModel.IsShowRsltView)
+            {
+
+                viewModel.BackCommand.Execute(null);
+                return false;
+            }
+
+            return base.OnBackButtonPressed();
         }
     }
 }

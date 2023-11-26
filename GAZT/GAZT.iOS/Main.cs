@@ -2,7 +2,6 @@
 using System.IO;
 using Newtonsoft.Json;
 using UIKit;
-using Xamarin.Essentials;
 
 namespace GAZT.iOS
 {
@@ -17,12 +16,11 @@ namespace GAZT.iOS
             {
                 //rohith-login
                 UIApplication.Main(args, typeof(CustomApplication), typeof(AppDelegate));
-                //UIApplication.Main(args, null, "AppDelegate");
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 LogUnhandledException(ex);
             }
         }
@@ -36,11 +34,8 @@ namespace GAZT.iOS
                 var errorFilePath = Path.Combine(libraryPath, errorFileName);
                 File.WriteAllText(errorFilePath, JsonConvert.SerializeObject(exception));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-
-                Console.WriteLine(ex.Message);
-                // just suppress any error logging exceptions
             }
         }
         

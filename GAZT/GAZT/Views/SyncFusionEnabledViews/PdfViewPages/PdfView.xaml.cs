@@ -45,10 +45,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                 SetLTR();
                 this.BindingContext = viewModel;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         protected async override void OnAppearing()
@@ -100,10 +100,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
             {
                 await email();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public async Task email()
@@ -147,10 +147,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                             //await viewModel._dialogService.ShowMessage(AppResources.ZZThefileisstillloading, AppResources.Information);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 });
                 await Task.Run(() =>
@@ -158,7 +158,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.PdfView
                     viewModel.Loading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }

@@ -775,10 +775,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         PopToRootPage();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         //await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -894,10 +894,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -987,10 +987,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1081,10 +1081,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -1174,10 +1174,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void FilterETData()
@@ -1266,10 +1266,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void FilterWTData()
@@ -1358,10 +1358,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         //public void FilterIfTypeAndStausFilterSelected()
@@ -1438,7 +1438,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //        }
 
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    { }
         //    }
         public void PopulateReturnTypeList()
@@ -1463,10 +1463,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         {
                             list.Add(dropdown.Txt30.ToUpper());
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
 
@@ -1483,10 +1483,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -1504,10 +1504,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //    ReturnTypeForFilter = new List<ReturnTypes>();
             //    ReturnTypeForFilter = ReturnTypesList;
             //}
-            //catch (Exception ex)
+            //catch (Exception)
             //{
-            //    Console.Write(ex.ToString());
-            //    Console.Write(ex.StackTrace.ToString());
+            //    
+            //    
             //}
 
 
@@ -1531,8 +1531,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {

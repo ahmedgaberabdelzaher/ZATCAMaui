@@ -179,7 +179,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -253,13 +253,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         {
                             VatPercenntage = "";
                         }
-                        if (FeesCalculatorResponse.totalDuty != null && FeesCalculatorResponse.totalDuty > 0)
+                        if (FeesCalculatorResponse.totalDuty > 0)
                         {
-                            //CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.totalDuty}";
                             if (FeesCalculatorResponse.excise != null && FeesCalculatorResponse.excise > 0)
                             {
                                 CustomFeesPercentage = "";
-                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation.ToString()}";
+                                CustomFeesCalculate = $"{AppResources.CustomsFees} ={FeesCalculatorResponse.tobaccoCustomsTaxEquation}";
                             }
                             else
                             {
@@ -286,7 +285,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

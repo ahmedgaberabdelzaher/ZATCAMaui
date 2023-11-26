@@ -1570,10 +1570,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1592,7 +1592,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -1602,9 +1602,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -1640,10 +1640,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 VATDeregistrationLastICRDateRootObject obj = await VATDeregistrationWebServiceManager.GAZTGETVATDeregSuspensionDate(reqType);
                 LastIcrDate = obj.d.results[0].Lasticrdt;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -1673,7 +1673,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         //                        }
         //                    }
         //                }
-        //                catch (Exception ex)
+        //                catch (Exception)
         //                {
         //                }
 
@@ -1746,8 +1746,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1808,7 +1808,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (GAZTUnlockAccountException ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        
                     }
                     catch (InternetException ex)
                     {
@@ -1818,16 +1818,16 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                             _navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
+                        
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1839,8 +1839,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             catch (InternetException ex)
@@ -2032,17 +2032,17 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         //    }
                         //}
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
 
@@ -2115,8 +2115,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2169,8 +2169,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2241,8 +2241,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2271,8 +2271,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -2284,9 +2284,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
         public void EnableReasonView()
@@ -2313,10 +2313,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             {
                 AddOutletDocumentOptions();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -2484,10 +2484,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 IsAttachmentAttached = false
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
                     }
@@ -2496,9 +2496,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
         #endregion
@@ -2535,8 +2535,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             catch (Exception ex)
             {
                 App.Current.MainPage.DisplayAlert("", ex.Message, "ok");
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -2577,10 +2577,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                 VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void setDocType()
@@ -2688,10 +2688,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                                                 }
                                                             }
                                                         }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
-                                                            Console.Write(ex.ToString());
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                             await Task.Run(() =>
                                                             {
                                                                 IsLoading = false;
@@ -2795,9 +2795,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
@@ -2831,10 +2831,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //  return null;
                 }
             });
@@ -2863,10 +2863,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     VatAttachmentsListtofilter = new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -3038,9 +3038,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         VATDeRegistrationDetailsData.d.NotesSet.results[0].Strline = string.Empty;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
                 VATDeregNote vATDeregNote = new VATDeregNote();
 
@@ -3094,9 +3094,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //}
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -3166,10 +3166,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                         return null;
                     }
@@ -3190,10 +3190,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return response;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return response;
             }
         }
@@ -3253,10 +3253,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                         return null;
                     }
@@ -3278,10 +3278,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 return response;
             }
 
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 return response;
             }
         }

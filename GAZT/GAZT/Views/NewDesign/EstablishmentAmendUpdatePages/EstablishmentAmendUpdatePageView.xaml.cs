@@ -157,10 +157,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -245,10 +245,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception ex) {
+            catch (Exception) {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -315,10 +315,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception) {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -366,10 +366,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
             var dob = viewModel.SelectedDOB.Replace("/", "");
             await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -391,10 +391,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -416,10 +416,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

@@ -645,8 +645,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     }
                     catch (InternetException ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -670,8 +670,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 //{
 
                 //});
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
@@ -680,10 +680,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

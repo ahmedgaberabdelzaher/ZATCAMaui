@@ -15,7 +15,7 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.CustomFees
                 
                 InitializeComponent();
             }
-			catch (Exception ex)
+			catch (Exception)
 			{
 
 			}

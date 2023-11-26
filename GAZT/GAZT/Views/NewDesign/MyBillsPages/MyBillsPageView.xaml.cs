@@ -58,7 +58,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     if (billInfo.BillTypeName.Equals(AppResources.UnPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.UnPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["Secondary"];
+                        ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Secondary"];
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipPaidColor"];
                         viewModel.FilterIfTypeAndStausFilterSelected(false);
 
@@ -66,7 +66,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     if (billInfo.BillTypeName.Equals(AppResources.PartiallyPaid))
                     {
                         viewModel.SelectedChipFilterItem = viewModel.ChipDataFilterlist.Where(x => x.TemplateType.Equals(AppResources.PartiallyPaid)).FirstOrDefault();
-                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["Secondary"];
+                        ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["Secondary"];
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipUnPaidColor"];
                         viewModel.FilterIfTypeAndStausFilterSelected(false);
                     }
@@ -80,10 +80,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
             ChangeAeroIcon();
             SetLTR();
@@ -105,101 +105,70 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             base.OnAppearing();
 
-            // On<iOS>().SetUseSafeArea(true);
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = -10;
-            this.Padding = safeInsets;
-
-            viewModel.isPayNowTapped = false;
-
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
-                viewModel.PickerModel = arg;
-                viewModel.updatePicker();
-            });
-
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", async (sender, arg) =>
+
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = -10;
+                this.Padding = safeInsets;
+
+                viewModel.isPayNowTapped = false;
+
+
+
+
+                MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
                 {
-                    Console.WriteLine("MultipleBillsContinue Clicked");
+                    viewModel.PickerModel = arg;
+                    viewModel.updatePicker();
+                });
+
+                MessagingCenter.Subscribe<object, string>(this, "MultipleBillsContinue", (sender, arg) =>
+                {
+
 
                     viewModel.showPaymentOptions();
                     viewModel.isPayNowTapped = false;
 
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", (sender, arg) =>
                 {
-                    Console.WriteLine("Card Payment Clicked");
 
                     viewModel.MadaPaymentSelected();
-                    viewModel.isPayNowTapped= false;
+                    viewModel.isPayNowTapped = false;
 
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
 
-            try
-            {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
-                    viewModel.ApplePaySelected();
-                    Console.WriteLine("Apple pay Clicked");
+                    await viewModel.ApplePaySelected();
                     viewModel.isPayNowTapped = false;
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
 
-            try
-            {
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
-
-                    Console.WriteLine("SADAD Clicked");
-                    viewModel.SadadPaymentSelected();
+                    await viewModel.SadadPaymentSelected();
                     viewModel.isPayNowTapped = false;
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-            
-            try
-            {
+
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
 
                     viewModel.ApplePayTokenData = arg.ToString();
-                    
+
                     await viewModel.UpdateApplePayPaymentGuid();
 
 
                 });
+            }
+            catch (Exception)
+            {
 
             }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+
+
+
+
         }
 
         protected override void OnDisappearing()
@@ -215,11 +184,8 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 MessagingCenter.Unsubscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem");
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-                //scrollView.ScrollToAsync(0, 500, true);
             }
         }
 
@@ -252,12 +218,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
 
             viewModel.showPickerDialog();
-            //MessagingCenter.Subscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew", (a, arg) =>
-            //{
-            //    viewModel.SelectedTaxTypeForFilter = arg;
-            //    MessagingCenter.Unsubscribe<GAZTNewDesignMyBillsPageView, ReturnTypes>(this, "pickerNew");
-            //});
-            //PopupNavigation.Instance.PushAsync(new NewPopupPageView(viewModel.TaxTypeForFilter, viewModel.SelectedTaxTypeForFilter), false);
+          
         }
 
 
@@ -267,14 +228,14 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
         {
             try
             {
-               
+
                 ChipModel selectedReturntype = (ChipModel)e.AddedItem;
                 //ChipGroup_statusFilter.SelectedItem = selectedReturntype;
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     if (selectedReturntype.Text == AppResources.UnPaid)
                     {
-                        ChipGroup_statusFilter.SelectedChipTextColor =  (Color)Application.Current.Resources["ErrorColor"];
+                        ChipGroup_statusFilter.SelectedChipTextColor = (Color)Application.Current.Resources["ErrorColor"];
                         ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)Application.Current.Resources["ChipPaidColor"];
                     }
                     else if (selectedReturntype.Text == AppResources.PartiallyPaid)
@@ -288,10 +249,10 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                 //viewModel.AmountTitle = AppResources.MyBillsTotalUnPaidAmount;
                 viewModel.SelectedChipFilterItem = selectedReturntype;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
             //
         }
@@ -347,40 +308,23 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
 
         }
-        private async void payNow_Tapped(object sender, EventArgs eventArgs)
+        private void payNow_Tapped(object sender, EventArgs eventArgs)
         {
-            //var dataItem = e.Item as MyBills;
-
             if (!viewModel.isPayNowTapped)
             {
                 viewModel.isPayNowTapped = true;
                 StackLayout payNowCard = sender as StackLayout;
                 MyBills BModel = (MyBills)payNowCard.BindingContext;
-                Console.WriteLine("Clicked on: Amount: " + BModel.TestDueAmount + " ,FbNum: " + BModel.Fbnum);
 
                 viewModel.verifyPaymentAndShowBillsPopup(BModel);
             }
-        
-/*                if (BModel.MadabutFg == "X")
-                {
-                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, false, ""));
-
-                }
-                else
-                {
-                    PopupNavigation.Instance.PushAsync(new PaymentOptionsPageView(true, false, true, BModel.OpenliMsg));
-                }
-                viewModel.selectedFbNum = BModel.Fbnum;
-                viewModel.selectedSadadNo = BModel.VTRE2;
-                viewModel.selectedAmount = BModel.TestDueAmount;
-                viewModel.selectedTaxablePeriod = BModel.Persl;*/
 
         }
     }

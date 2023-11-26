@@ -50,8 +50,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void GetIAMToken(string url)
         {
+           
             string token = HttpUtility.ParseQueryString(new Uri(url).Query).Get("token");
-            if (token == "UserNotFound")
+
+            if (token == "UserNotFound" && CommingFrom == 1) return;
+
+            if (token == "UserNotFound" && CommingFrom != 1)
             {
                 IsNoUserShowMsg = true;
                 MessageTxt = AppResources.IAMUsernNotFoundMSg;
@@ -89,7 +93,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         //        return payload;
         //        //  var mobile = payload["Mobile"];
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    {
         //        return null;
         //    }

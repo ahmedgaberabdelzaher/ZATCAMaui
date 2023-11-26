@@ -133,7 +133,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 }
             }
-            catch(Exception ex)
+            catch (Exception)
             {
 
             }
@@ -148,53 +148,20 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
             try
             {
-                MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Card_Payment",  (sender, arg) =>
                 {
-                    Console.WriteLine("Card Payment Clicked");
-
                     viewModel.MadaPaymentSelected();
 
                 });
-            }
-            catch (Exception ex)
-                {
-                    
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "Apple_Pay",  (sender, arg) =>
                 {
                     viewModel.ApplePaySelected();
-                    Console.WriteLine("Apple pay Clicked");
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
-                MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
+                MessagingCenter.Subscribe<object, string>(this, "SADAD",  (sender, arg) =>
                 {
 
-                    Console.WriteLine("SADAD Clicked");
                     viewModel.gotoSuccessPage();
                 });
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
 
@@ -205,12 +172,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 });
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
         }
         public void ChangeAeroIcon()
@@ -253,10 +217,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
@@ -335,7 +299,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         }
 
 
-        public async Task doValidateVATReturnAmount() {
+        public async Task doValidateVATReturnAmount()
+        {
 
             VATDeclaration _vATDeclaration = await WebServiceManager.GAZTGetVATReturns(viewModel.VATDeclarationData.d.Fbguid, viewModel.VATDeclarationData.d.Fbnum, App.TP.Tin, viewModel.VATDeclarationData.d.Persl);
 

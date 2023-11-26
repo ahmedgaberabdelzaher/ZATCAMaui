@@ -590,10 +590,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -700,10 +700,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

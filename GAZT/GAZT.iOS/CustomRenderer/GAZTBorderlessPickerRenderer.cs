@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using EGAZT;
-using Foundation;
+﻿using EGAZT;
 using GAZT;
-using GAZT.CustomControl;
 using GAZT.iOS.CustomRenderer;
 using UIKit;
 using Xamarin.Forms;

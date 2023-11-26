@@ -50,9 +50,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 SetLTR();
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                Console.WriteLine(e.Message);
             }
         }
         private async void Checked_IBAN()
@@ -157,9 +156,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     IbanTwo.Focus();
                 }
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
             
         }
@@ -181,9 +179,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //    IbanOne.Focus();
                 //}
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -195,18 +193,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     IbanFour.Focus();
                 }
-                //if (viewModel.IbanPartTwo != null && viewModel.IbanPartTwo.Length == 8)
-                //{
-
-                //}
-                //else
-                //{
-                //    IbanTwo.Focus();
-                //}
+                
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -218,18 +208,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 {
                     IbanFive.Focus();
                 }
-                //if (viewModel.IbanPartThree != null && viewModel.IbanPartThree.Length == 4)
-                //{
-
-                //}
-                //else
-                //{
-                //    IbanThree.Focus();
-                //}
+               
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -239,20 +221,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 if (viewModel.IbanPartFive != null && viewModel.IbanPartFive.Length >= 4)
                 {
-                    //IbanFour.Focus();
+                   
                 }
-                //if (viewModel.IbanPartFour != null && viewModel.IbanPartFour.Length == 4)
-                //{
-
-                //}
-                //else
-                //{
-                //    IbanFour.Focus();
-                //}
+               
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -260,11 +234,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-              //  SetFocus();
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -272,11 +244,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-               // SetFocus();
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -284,11 +254,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                //SetFocus();
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
 
             }
         }
@@ -297,11 +265,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-               // SetFocus();
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
 
@@ -309,12 +275,12 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
         {
             try
             {
-                //  SetFocus();
+               
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -340,10 +306,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     IbanFour.Focus();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

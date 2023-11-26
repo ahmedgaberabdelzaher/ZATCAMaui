@@ -473,7 +473,6 @@ namespace GAZT.CustomControl
             for (int i = days; i <= dayHijri; i++)
             {
                 Day.Add($"{i:00}");
-                Console.WriteLine(Day[i]);
             }
             Date.Add(Day);
             Date.Add(Month);

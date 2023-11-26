@@ -55,7 +55,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.DisplayNotes
                 //}
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
-            catch(Exception e)
+            catch(Exception)
             {
             }
         }

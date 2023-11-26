@@ -2,12 +2,9 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Controls;
-using System.Collections.Generic;
 using System.Linq;
-using EGAZT.Models.EDeclerationsModel;
 using System.Collections.ObjectModel;
 using EGAZT.Helper;
-using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -34,6 +31,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         Keyboard iDNumberKeyboard = Keyboard.Text;
         public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; RaisePropertyChanged(); } }
+
+      
+
 
         public ICommand IDSelectionCommand
         {
@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -130,7 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         else
                             BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -156,6 +156,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
@@ -165,7 +167,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -216,6 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
@@ -224,7 +228,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -309,7 +313,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

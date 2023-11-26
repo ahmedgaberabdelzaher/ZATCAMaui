@@ -60,10 +60,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 viewModel.setMoreOptioButtons();
                 downPaymentSlider.ValueChanged += (a,e)=>{ downPaymentEntry.Text = UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString()); };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 viewModel.IsLoading = false;
 
             }
@@ -88,10 +88,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -181,10 +181,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
             var newVal = args.NewValue;
             viewModel.NoOfInstalments = Convert.ToInt32(newVal);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void SearchItem_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -225,11 +225,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
 
         }
@@ -430,7 +430,7 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 {
                     viewModel.YesNoPickerModel = arg;
                     viewModel.updatePicker();
-                    // Console.WriteLine(arg);
+                    // (arg);
 
                 });
 
@@ -544,10 +544,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         });
                     }
@@ -618,10 +618,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -651,10 +651,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                    downPaymentEntry.Text= UtilityManager.GetCommaSeparatedAmount(viewModel.DownPaymentAmount.ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -773,10 +773,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -801,10 +801,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

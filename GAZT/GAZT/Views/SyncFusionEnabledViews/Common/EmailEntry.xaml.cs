@@ -64,10 +64,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -159,10 +159,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.EmailEntry
             viewModel.SelectedTinIdPrev = selectedtin;//selectedregion
             viewModel.TINID = selectedtin.Tin;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         private void TinsPicker_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)

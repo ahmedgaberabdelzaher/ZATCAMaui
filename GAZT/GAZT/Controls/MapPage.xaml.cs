@@ -23,7 +23,7 @@ namespace EGAZT.Controls
                 BindingContext = viewModel;
                 viewModel.GoogleMap = map;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -99,7 +99,7 @@ namespace EGAZT.Controls
 
 
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }
@@ -157,7 +157,7 @@ namespace EGAZT.Controls
 
 
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }

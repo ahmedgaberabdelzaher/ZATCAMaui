@@ -217,6 +217,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox">
       <Version>20.3.0.47</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.AndroidX.Core">
+      <Version>1.12.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Config">
+      <Version>71.1610.0</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_Android.cs" />
@@ -252,6 +258,7 @@
     <Compile Include="AndroidDownloader.cs" />
     <Compile Include="CustomRenderer\CustomPdfRenderer.cs" />
     <Compile Include="CustomRenderer\CustomWebViewRenderer.cs" />
+    <Compile Include="DependencyServices\ForceUpdate.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\pdfjs\web\compressed.tracemonkey-pldi-09.pdf" />
@@ -529,7 +536,6 @@
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-CN\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zh-TW\viewer.properties" />
     <AndroidAsset Include="Assets\pdfjs\web\locale\zu\viewer.properties" />
-    <GoogleServicesJson Include="PUSH Notifications\google-services.json" />
     <AndroidAsset Include="Assets\UIFontIcons.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -9956,6 +9962,9 @@
     <AndroidResource Include="Resources\drawable\vat_tile_listofsignup.png" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

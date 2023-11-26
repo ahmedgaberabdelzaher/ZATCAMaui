@@ -234,10 +234,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     _tName = value;
                     RaisePropertyChanged("TName");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -834,10 +834,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                     RaisePropertyChanged("SelectedReportTypeListItem");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -1118,8 +1118,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (InternetException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         //_dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
@@ -1257,10 +1257,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 ListFacilityCompanyType.Add(new FacilityCompanyType() { Id = "12", Name = AppResources.ZTERReportDetailCompanyType12 });
                 DListFacilityCompanyType = ListFacilityCompanyType;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1288,8 +1288,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                 }
                 catch (InternetException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //Device.BeginInvokeOnMainThread(async () =>
                     //{
                     //   await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -1315,7 +1315,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         //            {
         //                filetypes = DependencyService.Get<IDeviceInfo>().GetAttachmentTypeStringForTaxEvasion();
         //            }
-        //            catch (Exception ex)
+        //            catch (Exception)
         //            {
         //            }
         //            var fileData = await CrossFilePicker.Current.PickFile(filetypes);
@@ -1382,7 +1382,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         //                                        //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
         //                                    }
-        //                                    catch (Exception ex)
+        //                                    catch (Exception)
         //                                    {
         //                                    }
         //                                }
@@ -1410,7 +1410,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
         //        }
 
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    {
 
         //    }
@@ -1547,15 +1547,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                     //viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
                     IsLoading = false;
                 });
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -1679,10 +1679,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                                 //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
                                                             }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
-                                                            Console.Write(ex.ToString());
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                         }
                                                     }
                                                     else
@@ -1712,10 +1712,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
 
@@ -1843,10 +1843,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
                                                             //  UploadedDocumentsListObj = new List<UploadedDocumentsList>();
 
                                                         }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
-                                                            Console.WriteLine(ex.Message);
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                         }
                                                     }
                                                     else
@@ -1876,10 +1876,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionPageViewModel
 
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
 

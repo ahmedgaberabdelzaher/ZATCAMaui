@@ -185,10 +185,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                             await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     await Task.Run(() =>
                         {
                             IsLoading = false;
