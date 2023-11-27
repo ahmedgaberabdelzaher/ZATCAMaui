@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Models;
 using EGAZT.Models.BaseModels;
+using EGAZT.Models.NativeNafath;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign;
@@ -123,15 +124,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 if (result.IsSuccessStatusCode)
                 {
                     var conent = await result.Content.ReadAsStringAsync();
-                    var data = JsonConvert.DeserializeObject<Header>(conent);
-                    if (data.status.code == "I000000")
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponse<RegisterationResponseModel>>(conent);
+                    if (data.header.status.code == "I000000")
                     {
                         HandleSuccessUserNavigation();
                         ResetData();
                     }
-                    else if (!string.IsNullOrWhiteSpace(data.moreInformation?.backendErrors))
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
                     {
-                        MessageTxt = data.moreInformation?.backendErrors;
+                        MessageTxt = data.header.moreInformation?.backendErrors;
                         IsShowMsgView = true;
                         IsLoading = false;
                     }
@@ -165,8 +166,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
 
             var payload = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
 
-            if (payload != null)
-            {
+          
                 if (CommingFrom == 1)
                 {
                     navigation.InsertPageBefore(new NewDeclarationPage(payload), currentPage);
@@ -177,7 +177,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     navigation.InsertPageBefore(new TransactionReceptionView(payload), currentPage);
                     _navigationService.GoBack();
                 }
-            }
+            
 
         }
     }

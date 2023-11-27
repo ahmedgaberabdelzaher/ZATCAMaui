@@ -182,7 +182,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             try
             {
                 IsLoading = true;
-                HBD = "1380/07/13";
+               // HBD = "1380/07/13";
                 
                 var submitRes = await NativeNafath.GetNfathProfile( HBD.Replace("/", "%2F"), NationalIqamaId);
                 if (submitRes.Item2)
