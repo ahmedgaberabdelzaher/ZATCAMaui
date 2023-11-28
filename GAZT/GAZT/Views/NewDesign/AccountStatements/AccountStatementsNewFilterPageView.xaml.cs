@@ -250,12 +250,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-
-                        Console.WriteLine("Date exception", ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
                     }
 
 
@@ -266,10 +262,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -379,10 +375,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void DateCancelClicked(object sender, EventArgs e)
@@ -763,12 +759,9 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         }
 
                     }
-                    catch (Exception ex)
-                    {
-
-                        Console.WriteLine("Date exception", ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {  
+                        
                     }
 
 
@@ -776,10 +769,10 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -811,15 +804,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                             viewModel.TPToDate = year;
                         }
 
-                        //if (viewModel.isTaxPeriodStartDate)
-                        //{
-                        //    viewModel.TPFromDate = year + "/" + month + "/" + day;
-                        //}
-                        //else
-                        //{
-                        //    viewModel.TPToDate = year + "/" + month + "/" + day;
-                        //}
-
                     }
                 }
                 else
@@ -839,17 +823,6 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         {
                             viewModel.TPToDate = year;
                         }
-
-                        //if (viewModel.isTaxPeriodStartDate)
-                        //{
-                        //    viewModel.TPFromDate = year + "/" + month + "/" + day;
-                        //}
-                        //else
-                        //{
-                        //    viewModel.TPToDate = year + "/" + month + "/" + day;
-                        //}
-
-
 
                     }
                 }
@@ -882,44 +855,16 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                         }
 
                     }
-                    catch (Exception ex)
-                    {
-
-                        Console.WriteLine("Date exception", ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-                    }
+                    catch (Exception)
+                    { }
 
 
                 }
 
 
-                //CultureInfo calCul;
-
-                //if (viewModel.IsHijriCal)
-                //{
-                //    calCul = new CultureInfo("ar-SA");
-                //}
-                //else
-                //{
-                //    calCul = new CultureInfo("en-US");
-                //}
-
-
-                //if (DateTime.ParseExact(viewModel.TPFromDate, "yyyy", calCul) > DateTime.ParseExact(viewModel.TPToDate, "yyyy", calCul))
-                //{
-                //    viewModel.TPToDate = "";
-                //    ShowValidationMessage(AppResources.ACFilterYearValidation);
-
-                //}
-
-
             }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
+            catch (Exception)
+            {}
 
         }
 

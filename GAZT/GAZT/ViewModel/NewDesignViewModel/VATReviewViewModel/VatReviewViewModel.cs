@@ -3086,7 +3086,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -3096,9 +3096,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -3123,7 +3123,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -3133,9 +3133,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -3283,8 +3283,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3309,8 +3309,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3335,8 +3335,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3361,8 +3361,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3389,8 +3389,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3422,8 +3422,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3456,8 +3456,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3487,8 +3487,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3513,8 +3513,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3550,8 +3550,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3576,10 +3576,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     Convert.ToDecimal(selectedApplicationRef.Liaamt),
                     Convert.ToDecimal(selectedApplicationRef.Clramt));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -3632,8 +3632,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3971,10 +3971,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
                 VATDeregistrationSummaryReasonData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopulateVatDeRegAttachments(List<Attachment> attachments)
@@ -4035,10 +4035,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
                 VATDeregistrationSummaryDeclarationData = new ObservableCollection<VATDeregistrationSummaryModel>(check);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4357,10 +4357,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     }
                     EnableSecurityPaymentsConButton();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 if (selectedApplicationRef.Msgflg == "X")
@@ -4652,10 +4652,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }
@@ -5182,10 +5182,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -5324,10 +5324,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -5387,9 +5387,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5426,9 +5426,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -5476,7 +5476,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5566,9 +5566,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5605,10 +5605,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
 
                         EnableSecurityPaymentsConButton();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 }
@@ -5640,9 +5640,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5700,9 +5700,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -5935,10 +5935,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6398,10 +6398,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         return response;
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         IsLoading = false;
                         return null;
 
@@ -6429,10 +6429,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 return response;
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return response;
             }
 
@@ -6541,10 +6541,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6683,18 +6683,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
             }
             catch (GAZTVATRegistrationInProcessException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6786,10 +6786,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -6896,10 +6896,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7006,10 +7006,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7049,7 +7049,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                             try{
                                 VRVGEffectivedate = _VATReviewRequestVTGR.d.EFFDATESet.results.Where(x => x.Persl == _VATReviewRequestVTGR.d.Persl).FirstOrDefault().Txt50;
                             }
-                            catch (Exception e) {
+                            catch (Exception) {
 
                             }
 
@@ -7159,10 +7159,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -7350,10 +7350,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

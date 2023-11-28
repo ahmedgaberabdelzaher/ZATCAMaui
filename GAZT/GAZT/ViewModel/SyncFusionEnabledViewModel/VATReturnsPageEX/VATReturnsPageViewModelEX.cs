@@ -411,10 +411,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             Preperiodcorr = Preperiodcorr.Replace("-", "");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 RaisePropertyChanged("IsSwitchToggled");
             }
@@ -1620,10 +1620,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     if (string.IsNullOrEmpty(Preperiodcorr) || string.IsNullOrEmpty("0.00"))
                         IsSwitchToggled = false;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 RaisePropertyChanged("Preperiodcorr");
             }
@@ -2676,10 +2676,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     //};
                     await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                 }
             });
@@ -2752,10 +2752,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             //    IsLoading = false;
                             //});
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
 
                         }
                     }
@@ -2773,10 +2773,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                 IsLoading = false;
                             });
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                             IsLoading = false;
                         }
                     }
@@ -3252,10 +3252,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
         }
         public void InstrunctionClicked()
@@ -3579,10 +3579,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             await Task.Run(() =>
             {
@@ -4347,7 +4347,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -4470,7 +4470,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
         //        });
         //    }
-        //    catch(Exception ex)
+        //    catch(Exception)
         //    {
 
         //    }
@@ -4600,7 +4600,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }
@@ -5023,10 +5023,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         await SetButtons(VATDeclarationData);
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                         return null;
                     }
                 }
@@ -5098,10 +5098,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     VATDeclarationData.d.RefundFg = "0";
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
         }
         public VATDeclarationD Set15PercentChangeData(VATDeclarationD vATDeclarationD)
@@ -5142,7 +5142,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -5187,7 +5187,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -5351,10 +5351,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return vATDeclarationD;
         }
@@ -5489,10 +5489,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -5534,10 +5534,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -5650,10 +5650,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5718,10 +5718,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5775,10 +5775,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5835,10 +5835,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5891,10 +5891,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
                 return TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5925,10 +5925,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -5970,10 +5970,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -6023,10 +6023,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 bool isTrue = IsTextNullOrEmpty(TotalAmount);
                 TotalAmount = isTrue ? "0.00" : TotalAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return TotalAmount;
         }
@@ -6066,10 +6066,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -6111,10 +6111,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -6161,10 +6161,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -6205,10 +6205,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 VATAmount = isTrue ? "0.00" : VATAmount;
                 return VATAmount;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return VATAmount;
         }
@@ -6252,10 +6252,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 NetVatDue = isTrue ? "0.00" : NetVatDue;
                 return NetVatDue;
             }
-            catch (Exception ex)
+            catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
             }
             return NetVatDue;
         }

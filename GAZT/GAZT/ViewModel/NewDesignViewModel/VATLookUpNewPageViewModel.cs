@@ -329,10 +329,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 ParameterTypeList = VATParameterList;
                 SelectedParameterType = ParameterTypeList.Where(x => x.id == "3").FirstOrDefault();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void SetSelectedParameterTypeData()
@@ -445,10 +445,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     return;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 IsLoading = false;
                 isMandatoryDataEntered = false;
             }
@@ -634,10 +634,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //  viewModel._navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {

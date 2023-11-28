@@ -180,7 +180,7 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
 
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -220,15 +220,15 @@ namespace EGAZT.Views.NewDesign.MyBillsPages
                     _VatReturnSuccessPageViewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await Task.Run(() =>
                 {
                     _VatReturnSuccessPageViewModel.IsLoading = false;
                 });
 
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         

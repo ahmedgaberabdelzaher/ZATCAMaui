@@ -121,11 +121,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                     //}
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
         }
         #endregion
@@ -147,7 +144,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AcknowledgementDetails
                     viewModel.IsLoading = false;
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 await Task.Run(() =>
                 {

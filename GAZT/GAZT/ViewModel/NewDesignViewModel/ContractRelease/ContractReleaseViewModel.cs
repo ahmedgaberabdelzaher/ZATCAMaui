@@ -1053,8 +1053,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1074,8 +1074,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1132,8 +1132,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1157,8 +1157,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1178,8 +1178,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1203,8 +1203,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -1439,10 +1439,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 }
                 return DateTime.Now.ToString("yyyy/MM/dd", calCul.DateTimeFormat);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
                 return "";
             }
@@ -1649,10 +1649,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 request.d.Savez = "X";
                 request.d.Submitz = "X";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             return request;
         }
@@ -1713,7 +1713,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             {
                 IsLoading1 = false;
                 await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-                throw new GAZTVATRegistrationInProcessException(ex.ToString());
+                throw new GAZTVATRegistrationInProcessException(ex.Message);
             }
 
             catch (Exception ex)
@@ -1723,8 +1723,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 //throw;
             }
             return true;
@@ -1898,10 +1898,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     IsLoading1 = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading1 = false;
@@ -1932,7 +1932,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -1942,9 +1942,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -1967,7 +1967,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             catch (InternetException ex)
             {
@@ -1977,9 +1977,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -2131,10 +2131,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                 EstimatedProfitForZakatPercent = Convert.ToDouble(ContractReleaseData.d.AZakatProfit);
                 EstimatedProfitForTaxPercent = Convert.ToDouble(ContractReleaseData.d.ATaxProfi);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

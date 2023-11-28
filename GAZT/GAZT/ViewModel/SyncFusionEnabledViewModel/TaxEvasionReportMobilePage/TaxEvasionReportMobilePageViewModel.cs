@@ -174,10 +174,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                             //viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         Device.BeginInvokeOnMainThread(async () =>
                         {
                             await Task.Run(() =>
@@ -202,7 +202,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.TaxEvasionReportMobilePage_
                     _navigationService.GoBack();
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {

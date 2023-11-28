@@ -107,10 +107,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.SignUpTAndCPage_ViewModel
                         await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             GoBackClick = new Command(async () =>

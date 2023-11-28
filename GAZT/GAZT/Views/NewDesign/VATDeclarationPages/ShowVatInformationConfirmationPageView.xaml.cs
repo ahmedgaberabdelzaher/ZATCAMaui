@@ -40,9 +40,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 SetMargin();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -105,9 +105,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
         //            MessagingCenter.Send<Object, string>(this, "YesReceived", "Yes");
@@ -141,9 +141,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             //MessagingCenter.Send<Object, string>(this, "NoReceived", "No");
         }

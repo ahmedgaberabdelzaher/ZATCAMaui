@@ -45,7 +45,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
                 ChangeAeroIcon();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
             this.BindingContext = viewModel;
@@ -92,7 +92,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
                     //   viewModel.SetChangedValueToUploadAttachment();//Called to Highlight the required document
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -199,10 +199,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.SalesDetailsView
                     ///viewModel.zakatReturnDetailsD.TvtslResn = AmendSalesDetailsPageViewModel.SelectedSalesDetails.NewValue;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         protected void OnCheckBoxCheckedChanged(Object sender, EventArgs e)

@@ -56,7 +56,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         CloseWhenBackgroundIsClicked = false
                     };
 
-                    someThingWhentWrong.OnDone = async () =>
+                    someThingWhentWrong.OnDone = () =>
                     {
                         isLoading = false;
                         if (PopupNavigation.PopupStack.Count > 0)
@@ -82,8 +82,6 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 {
                     
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZInternetConnectionMessage));
-
-                    // await _dialogService.ShowMessage(AppResources.ZZInternetConnectionMessage, AppResources.Information);
                 });
 
             }
@@ -107,24 +105,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
 
-
-                //if (PopupNavigation.PopupStack.Count > 0)
-                //    await PopupNavigation.PopAsync();
-
-                //string message = ex.Message;
-
-                //await _dialogService.ShowMessage(message, AppResources.Information, AppResources.ZZZOkayText, () =>
-                //{
-                //   // isLoading = false;
-                //    _navigationService.GoBack();
-                //});
             }
-            catch (Exception mex)
+            catch (Exception )
             {
-               // isLoading = false;
                 if (PopupNavigation.PopupStack.Count > 0)
                     await PopupNavigation.PopAsync();
-                Console.WriteLine(mex.Message);
             }
            
         }

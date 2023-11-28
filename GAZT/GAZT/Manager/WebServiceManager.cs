@@ -1,11 +1,5 @@
 ﻿using EGAZT;
 using EGAZT.Models;
-using EGAZT.Models.EstablishmentRegistration;
-using EGAZT.Models.Form5Models;
-using EGAZT.Models.VATRefunds;
-using EGAZT.Models.VATInstalationModels;
-using EGAZT.Models.ZakatInstalationModels;
-using EGAZT.ViewModel.NewDesignViewModel;
 using GAZT.Helper;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
@@ -21,31 +15,16 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Xamarin.Forms;
-using ZakatForm5Model;
 using static GAZT.ErrorMessage;
-using Metadata = EGAZT.Models.ZakatInstalationModels.Metadata;
-using EGAZT.Models.VATInstalmentModels;
-using NotesSet = EGAZT.Models.NotesSet;
-using EGAZT.Models.ContractRelease;
-using EGAZT.Models.ChageFillingPeriodModel;
 using EGAZT.Models.ZakatInstalmentModels;
-using static EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
-using RequestToVATInstallmentPlanDetails = EGAZT.Models.VATInstalmentModels.RequestToVATInstallmentPlanDetails;
-using EGAZT.Models.VatReviewModel;
-using static EGAZT.Models.VatReviewModel.VATObjectionFormModel;
-using EGAZT.Models.ZakatObjectionsModel;
 using EGAZT.Helper;
 using EGAZT.Models.TPProfile;
-using static EGAZT.Models.VatReviewModel.VATObjectionSummaryInputModel;
-using Xamarin.Essentials;
 using EGAZT.Models.AccountStatements;
-using Formatting = Newtonsoft.Json.Formatting;
 using Xamarin.Forms.Internals;
 using EGAZT.Manager;
 using EGAZT.Models.PaymentModel;
@@ -53,7 +32,6 @@ using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using Rg.Plugins.Popup.Services;
 using static EGAZT.Models.NewYesorNoPageModel;
 using static EGAZT.Models.LoginSSOModel;
-using static Xamarin.Essentials.Permissions;
 
 
 namespace GAZT.Manager
@@ -95,20 +73,20 @@ namespace GAZT.Manager
         }
 
         //<Summary>
-         public static async Task<bool> GAZTCheckConnectivity()
+        public static async Task<bool> GAZTCheckConnectivity()
         {
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
                 {
                     String url = Constants.BaseUrlOfODataServices;
-                    HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty);
+                    HttpResponseMessage GAZTGetTINsResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
             }
@@ -157,9 +135,9 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                  
+
+
+
                     if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
                     {
                         throw new Exception(AppResources.NoTINsAvailable);
@@ -238,9 +216,9 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                   
+
+
+
                     if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
                     {
                         throw new Exception(AppResources.NoBillsAvailable);
@@ -263,7 +241,7 @@ namespace GAZT.Manager
             {
 
                 List<MyBillsFilterDropdown> myBillsFilters = new List<MyBillsFilterDropdown>();
-              
+
                 string NewToken = string.Empty;
                 try
                 {
@@ -319,9 +297,9 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                   
+
+
+
                     if (string.Equals(ex.Message, AppResources.NoBillsAvailable))
                     {
                         throw new Exception(AppResources.NoBillsAvailable);
@@ -401,10 +379,8 @@ namespace GAZT.Manager
                     }
                     return myICRs;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -414,7 +390,7 @@ namespace GAZT.Manager
             }
         }
 
-        public static AllCertificate GAZTGetAllCertificate(String Lang, String Tin)
+        public static AllCertificate GAZTGetAllCertificate(string Lang, string Tin)
         {
             if (CrossConnectivity.Current.IsConnected)
             {
@@ -459,10 +435,9 @@ namespace GAZT.Manager
                     }
                     return allCertificate;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
                     return null;
                 }
             }
@@ -471,82 +446,10 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-        //public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(String Lang, String Tin)
-        //{
-        //    if (CrossConnectivity.Current.IsConnected)
-        //    {
-        //        DateTime dt = DateTime.Now;
-        //        ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-        //        char lang = GetLangZParameter();
-        //        string NewToken = string.Empty;
-        //        try
-        //        {
-        //            try
-        //            {
-        //                App.httpClientHandler.CookieContainer = null;
-        //            }
-        //            catch (Exception ex)
-        //            {
 
-        //            }
-        //            string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
-        //            HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
-        //            if (GAZTFogotPasswordSendOTPResponse != null)
-        //            {
-        //                HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
-        //                String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
-        //                forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
-        //            }
-        //            return forgotPasswordOTP;
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new InternetException(AppResources.ZZInternetConnectionMessage);
-        //    }
-        //}
 
         public static async Task<ForgotPasswordOTP> GAZTFogotPasswordSendOTP(ForgotPasswordOTP forgotPasswordOTP)
         {
-            //if (CrossConnectivity.Current.IsConnected)
-            //{
-            //    DateTime dt = DateTime.Now;
-            //    ForgotPasswordOTP forgotPasswordOTP = new ForgotPasswordOTP();
-            //    char lang = GetLangZParameter();
-            //    string NewToken = string.Empty;
-            //    try
-            //    {
-            //        try
-            //        {
-            //            App.httpClientHandler.CookieContainer = null;
-            //        }
-            //        catch (Exception ex)
-            //        {
-
-            //        }
-            //        string uri = Constants.FogotPasswordSendOTP + Tin + "'" + ",EmailId='" + "" + "'" + ",TpType='" + "" + "'" + ",MobileNo='" + "" + "'" + ",SubType='" + "" + "'" + ",Idnumber='" + "" + "'" + ",Otp='" + "" + "'" + ",NewPwd='" + "" + "'" + ",RdBt='" + "P'" + ",Dob=datetime'" + "2015-07-05T15:13:49" + "'" + ",Langu='" + lang + "'" + ")?saml2=enabled&$format=json";
-            //        HttpResponseMessage GAZTFogotPasswordSendOTPResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
-            //        if (GAZTFogotPasswordSendOTPResponse != null)
-            //        {
-            //            HttpHeaders headers = GAZTFogotPasswordSendOTPResponse.Headers;
-            //            String GAZTGetSendOTPResponseJSON = GAZTFogotPasswordSendOTPResponse.Content.ReadAsStringAsync().Result;
-            //            forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(GAZTGetSendOTPResponseJSON);
-            //        }
-            //        return forgotPasswordOTP;
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        return null;
-            //    }
-            //}
-            //else
-            //{
-            //    throw new InternetException(AppResources.ZZInternetConnectionMessage);
-            //}
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
@@ -590,10 +493,10 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -606,7 +509,7 @@ namespace GAZT.Manager
 
         public static async Task<GenerateCaptchaGUID> GAZTCaptchaAndGUID(GenerateCaptchaGUID readCaptcha)
         {
-            
+
             if (CrossConnectivity.Current.IsConnected)
             {
                 try
@@ -631,10 +534,10 @@ namespace GAZT.Manager
                     forgotPasswordCaptcha = JsonConvert.DeserializeObject<GenerateCaptchaGUID>(detailJson);
                     return forgotPasswordCaptcha;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -658,10 +561,10 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+
+
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -676,7 +579,7 @@ namespace GAZT.Manager
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
                     return forgotPasswordOTP;
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     return null;
                 }
@@ -712,10 +615,10 @@ namespace GAZT.Manager
                     forgotPasswordOTP = JsonConvert.DeserializeObject<ForgotPasswordOTP>(detailJson);
                     return forgotPasswordOTP;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -738,10 +641,10 @@ namespace GAZT.Manager
                     {
                         App.httpClientHandler.CookieContainer = null;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+
+
                     }
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
@@ -772,10 +675,8 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -794,7 +695,7 @@ namespace GAZT.Manager
                 {
                     char _language = WebServiceManager.GetLangZParameter();
                     String url = Constants.GetTinStatus + _language + "',Tin='" + Tin + "" + "'" + ")?saml2=enabled&sap-language=’" + lang + "" + "'" + "&$expand=ItemSet&$format=json";
-                    HttpResponseMessage GAZTTinStatus = await GetServiceManager.MakeGetAPICall(url,false,string.Empty); 
+                    HttpResponseMessage GAZTTinStatus = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTTinStatus != null)
                     {
                         if (GAZTTinStatus.StatusCode == HttpStatusCode.Unauthorized)
@@ -825,8 +726,8 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     if (string.Equals(ex.Message, AppResources.Nodataavailable))
                     {
                         throw new Exception(AppResources.Nodataavailable);
@@ -857,7 +758,7 @@ namespace GAZT.Manager
 
                     String url = Constants.GetVATLookUpDetails + lang + "'" + "&$filter=Idtype eq " + IdType + "  and Idnumber eq '" + IdNumber + "'&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTVATLookUp = await  client.GetAsync(uri);
+                    HttpResponseMessage GAZTVATLookUp = await client.GetAsync(uri);
                     if (GAZTVATLookUp != null)
                     {
                         if (GAZTVATLookUp.StatusCode == HttpStatusCode.Unauthorized)
@@ -903,9 +804,7 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                    throw new GAZTNetworkConnectivityIssueException(ex.ToString());
+                    throw new GAZTNetworkConnectivityIssueException(ex.Message);
                 }
             }
 
@@ -955,10 +854,8 @@ namespace GAZT.Manager
                     }
                     return _vATDeclaration;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -967,7 +864,7 @@ namespace GAZT.Manager
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }
         }
-       
+
         public static async Task<VATDeclaration> SaveVATDeclarationData(VATDeclaration vATDeclaration)
         {
             VATDeclaration RequestVATDeclaration = new VATDeclaration();
@@ -1065,7 +962,7 @@ namespace GAZT.Manager
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
                             {
                                 ErrorMessageForVAT = errorMesg.error.innererror.errordetails[0].message;
-                                ErrorMessageForVAT += " "+errorMesg.error.innererror.errordetails[1].message;
+                                ErrorMessageForVAT += " " + errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = ErrorMessageForVAT.Replace("An exception was raised", string.Empty);
                                 ErrorMessageForVAT = WithReplacedString;
                             }
@@ -1074,10 +971,10 @@ namespace GAZT.Manager
                     }
                     return _vATDeclarationD;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     if (_vATDeclarationD != null && _vATDeclarationD.d == null)
                     {
                         return _vATDeclarationD;
@@ -1134,7 +1031,7 @@ namespace GAZT.Manager
                             }
                             App.Token = NewToken;
                         }
-                       String GAZTInternationalNumberResponseJSON = GAZTInternationalMobileNumDataResponse.Content.ReadAsStringAsync().Result;
+                        String GAZTInternationalNumberResponseJSON = GAZTInternationalMobileNumDataResponse.Content.ReadAsStringAsync().Result;
                         if (!string.IsNullOrEmpty(GAZTInternationalNumberResponseJSON))
                         {
                             GAZTInternationalNumberResponseJSON = JObject.Parse(GAZTInternationalNumberResponseJSON)["d"].ToString();
@@ -1142,7 +1039,7 @@ namespace GAZT.Manager
                             if (string.IsNullOrEmpty(GAZTInternationalNumberResponseJSONJToken) != true)
                             {
                                 internationalCodes = JsonConvert.DeserializeObject<ObservableCollection<InternationalMobileData>>(GAZTInternationalNumberResponseJSONJToken);
-                               
+
                             }
                             else
                             {
@@ -1160,10 +1057,10 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -1183,7 +1080,7 @@ namespace GAZT.Manager
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                   String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";
+                    String url = Constants.GAZTGetIdNumber + App.TP.Tin + "'" + "and Type eq '" + IBANType + "'" + "&saml2=enabled&sap-langauge='" + lang + "'&$format=json";
                     HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
@@ -1218,10 +1115,10 @@ namespace GAZT.Manager
                     }
                     return iBANIDNumbers;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
             }
@@ -1241,9 +1138,9 @@ namespace GAZT.Manager
                 {
                     string lang = UtilityManager.GetLanguageParameter();
                     HttpClient client = new HttpClient(App.httpClientHandler);
-                   String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";
+                    String url = Constants.GAZTCheckIBANNumber + IBAN + "')" + "?saml2=enabled&sap-langauge=" + lang + "&$format=json";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTValidateOTPResponse =  client.GetAsync(uri).Result;
+                    HttpResponseMessage GAZTValidateOTPResponse = client.GetAsync(uri).Result;
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1276,19 +1173,19 @@ namespace GAZT.Manager
                                 IbanNumber = IBANIdNumber;
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+
+
                             return null;
                         }
                     }
                     return IbanNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new Exception(AppResources.NetworkConnectivityIssue);
                 }
             }
@@ -1307,7 +1204,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     String url = Constants.GAZTGetVATDeclarationCalculationDataUrl + "'" + FormBundleNumber + "'" + ",Lang='" + lang + "'" + ",Operation='" + "'" + ",Gpart='" + Gpart + "'" + ",Status='" + status + "'" + ",TxnTp='" + TxnTp + "'" + ",Formproc='" + "'" + ",Periodkey='" + periodKey + "'" + ")?saml2=enabled&$expand=IBANSet,IGRTSet,ITUDSet,UI_BTNSet,VATRSet,VTTHSet&$format=json";
-                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url,false,string.Empty); 
+                    HttpResponseMessage GAZTValidateOTPResponse = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTValidateOTPResponse != null)
                     {
                         if (GAZTValidateOTPResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -1338,8 +1235,8 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     if (string.Equals(ex.Message, AppResources.InvalidOTP))
                     {
                         throw new Exception(AppResources.InvalidEmail);
@@ -1379,10 +1276,10 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -1417,10 +1314,9 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception Ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(Ex.Message);
-                    Console.Write(Ex.StackTrace.ToString());
+
                     return null;
                 }
             }
@@ -1440,7 +1336,7 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                   String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + RetGuid + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; //",RetGuid='005056B1F8FB1EDA8FF041CFF05E83A9',Flag='N',Dotyp='VTA0',SchGuid='',Srno=1,Doguid='',AttBy='TP')/AttachMedSet";// Constants.SaveVATDeclarationData;
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -1463,10 +1359,10 @@ namespace GAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return DeleteToken;
                 }
             }
@@ -1485,15 +1381,15 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string lang = UtilityManager.GetLanguageParameter();
                     String url = Constants.GAZTGetSADADNumber + lang + "'" + "&$format=json&$filter=Langu eq'" + LangZ + "'and Fbnum eq '" + FormBundleID + "'" + "";
-                    var response = await GetServiceManager.MakeGetAPICall(url,true, "123");
+                    var response = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     var responsestr = response.Content.ReadAsStringAsync().Result;
                     sadadNumber = JsonConvert.DeserializeObject<SadadNumber>(responsestr);
                     return sadadNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -1512,7 +1408,7 @@ namespace GAZT.Manager
                 {
                     string _language = UtilityManager.GetLanguageParameter();
                     String url = Constants.GAZTGetZakatReturnList + App.TP.Userid + "'" + ",Auditor='" + "'" + ",Lang='" + _language + "'" + ",UserTin='" + App.TP.Userid + "'" + ")?saml2=enabled&sap-language='" + _language + "'" + "&$expand=listSet&$format=json";
-                    HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url,true, "123");
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, true, "123");
                     if (GAZTEstimateZakatReturnList != null)
                     {
                         if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -1540,10 +1436,10 @@ namespace GAZT.Manager
                     }
                     return zAKATICRList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -1561,10 +1457,8 @@ namespace GAZT.Manager
                 {
                     RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                 }
                 return RequestVATDeclaration;
             }
@@ -1582,10 +1476,10 @@ namespace GAZT.Manager
                 {
                     RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
                 return RequestVATDeclaration;
             }
@@ -1601,10 +1495,10 @@ namespace GAZT.Manager
             {
                 RequestVATDeclaration = await SaveVATDeclarationData(vATDeclaration);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
             return RequestVATDeclaration;
         }
@@ -1645,10 +1539,10 @@ namespace GAZT.Manager
                                 NewToken = values.First();
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.WriteLine(ex.Message);
-                            Console.Write(ex.StackTrace.ToString());
+
+
                         }
 
                         if ((!string.IsNullOrEmpty(NewToken)))
@@ -1674,10 +1568,10 @@ namespace GAZT.Manager
                     }
                     return zakatReturnDetails;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -1722,10 +1616,10 @@ namespace GAZT.Manager
                     }
                     return _zakatReturnDetailsD;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -1782,10 +1676,10 @@ namespace GAZT.Manager
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
                 //beforoe returning buttons we need to sest the value based on Buttons emumeration
                 foreach (ApplicableButton button in VATApplicableButtons)
@@ -1824,10 +1718,8 @@ namespace GAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1886,10 +1778,8 @@ namespace GAZT.Manager
                     }
                     return _estimatedZAKATReturnsSADADNumber;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -1934,10 +1824,8 @@ namespace GAZT.Manager
                 }
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
                 return null;
             }
         }
@@ -1952,7 +1840,7 @@ namespace GAZT.Manager
                     char LangZ = GetLangZParameter();
                     string Dotyp = "VTA0";
                     string AttBy = "TP";
-                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled"; 
+                    String url = Constants.GAZTDeteleAttachment + "'" + "'" + ",RetGuid='undefined'" + ",Flag='" + "N" + "'" + ",Dotyp='" + Dotyp + "'" + ",SchGuid='" + "'" + ",Srno=" + "1" + ",Doguid='" + DocumentID + "'" + ",AttBy='" + AttBy + "'" + ")/$value?saml2=enabled";
                     var uri = new Uri(url);
                     HttpClient client = new HttpClient();
 
@@ -1975,10 +1863,8 @@ namespace GAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return DeleteToken;
                 }
             }
@@ -2000,7 +1886,7 @@ namespace GAZT.Manager
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     String url = Constants.GAZTGetEstimatedZAKATReturnInvoicePdf + Cokey + "',Cotyp='FZ01')/$value?saml2=enabled";
                     var uri = new Uri(url);
-                    HttpResponseMessage GAZTEstimateZakatReturnList = await  GetServiceManager.MakeGetAPICall(url, false, string.Empty);
+                    HttpResponseMessage GAZTEstimateZakatReturnList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTEstimateZakatReturnList != null)
                     {
                         if (GAZTEstimateZakatReturnList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2028,10 +1914,8 @@ namespace GAZT.Manager
                     }
                     return null;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return DeleteToken;
                 }
             }
@@ -2082,10 +1966,8 @@ namespace GAZT.Manager
                     }
                     return ZakatCorrespondenceList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2138,10 +2020,8 @@ namespace GAZT.Manager
                     }
                     return VATCorrespondenceList;// tINStatus;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2192,10 +2072,8 @@ namespace GAZT.Manager
                     }
                     return ETReturnCorrespondenceList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2246,10 +2124,8 @@ namespace GAZT.Manager
                     }
                     return CorrespondenceDetailsList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2277,10 +2153,8 @@ namespace GAZT.Manager
                     var detailJson = res.Content.ReadAsStringAsync().Result;
                     return null;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2299,7 +2173,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     String url = Constants.GAZTGetFormBundleModel + " '" + lang + "' and Gpart eq '" + App.TP.Tin + "'";
-                    HttpResponseMessage GAZTFormBundleList =  await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
+                    HttpResponseMessage GAZTFormBundleList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
                         if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2327,10 +2201,8 @@ namespace GAZT.Manager
                     }
                     return ReturnFormBundleList;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
             }
@@ -2349,7 +2221,7 @@ namespace GAZT.Manager
                 {
                     char lang = GetLangZParameter();
                     String url = Constants.GAZTGetFormBunleAccountNumberModel + "'" + lang + "' and Gpart eq '" + App.TP.Tin + "' and Fbtyp eq '" + ApplicationNumber + "'";
-                    HttpResponseMessage GAZTFormBundleList =  await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
+                    HttpResponseMessage GAZTFormBundleList = await GetServiceManager.MakeGetAPICall(url, false, string.Empty);
                     if (GAZTFormBundleList != null)
                     {
                         if (GAZTFormBundleList.StatusCode == HttpStatusCode.Unauthorized)
@@ -2394,10 +2266,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -2461,10 +2333,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
 
@@ -2529,11 +2401,8 @@ namespace GAZT.Manager
                             sortedIssuedByList.Remove(otherObj);
                             sortedIssuedByList.Add(otherObj);
                         }
-                        catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                            Console.WriteLine("Unable to Find Other Value");
+                        catch (Exception)
+                        {
                         }
 
                         SignupIssuedByList = new List<IssuedByResponse>(sortedIssuedByList);
@@ -2556,10 +2425,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -2628,10 +2497,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -2681,10 +2550,10 @@ namespace GAZT.Manager
                     }
                     return CRValidationModelValid;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -2743,10 +2612,10 @@ namespace GAZT.Manager
                     }
                     return ValidateDuplicate;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -2776,10 +2645,10 @@ namespace GAZT.Manager
                     FirstSignupSubmit = await res.Content.ReadAsStringAsync();
                     return FirstSignupSubmit;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -2809,10 +2678,10 @@ namespace GAZT.Manager
                     FirstSignupSubmit = res.Content.ReadAsStringAsync().Result;
                     return FirstSignupSubmit;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -2857,10 +2726,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -2885,7 +2754,7 @@ namespace GAZT.Manager
                     char lang = GetLangZParameter();
                     HttpClient client = new HttpClient(crmSignUphttpClientHandler);
                     String url = Constants.GAZTSignUpGetGuid;
-                   var uri = new Uri(url);
+                    var uri = new Uri(url);
                     HttpResponseMessage GAZTGuidList = client.GetAsync(uri).Result;
                     if (GAZTGuidList != null)
                     {
@@ -2931,10 +2800,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -2968,10 +2837,10 @@ namespace GAZT.Manager
                     terfregion = JsonConvert.DeserializeObject<TERFRegionRootObject>(response);
                     return terfregion;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -3005,10 +2874,10 @@ namespace GAZT.Manager
                     terfcity = JsonConvert.DeserializeObject<TERFCityRetrieveRootObject>(response);
                     return terfcity;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new InternetException(AppResources.ZZInternetConnectionMessage);
                 }
             }
@@ -3042,10 +2911,10 @@ namespace GAZT.Manager
                     terffaq = JsonConvert.DeserializeObject<TERFAQs>(response);
                     return terffaq;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -3079,10 +2948,10 @@ namespace GAZT.Manager
                     terfcity = JsonConvert.DeserializeObject<TEReportResponsePostRootObject>(response);
                     return terfcity;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -3118,10 +2987,10 @@ namespace GAZT.Manager
                     terfreport = JsonConvert.DeserializeObject<ReportRetriveByMobNoRootObject>(response);
                     return terfreport;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -3144,7 +3013,7 @@ namespace GAZT.Manager
                     {
                         throw new GAZTInternetException();
                     }
-                   string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
+                    string uri = Constants.GAZTGetReturnList + TIN + "' and Lang eq '" + lang + "'&saml2=enabled&$format=json";
                     HttpResponseMessage GAZTGetDashboardResponse = await GetServiceManager.MakeGetAPICall(uri, false, string.Empty);
                     if (GAZTGetDashboardResponse != null)
                     {
@@ -3193,8 +3062,8 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException(ex.Message);
                 }
             }
@@ -3261,10 +3130,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
             }
             else
@@ -3275,7 +3144,7 @@ namespace GAZT.Manager
         }
         public static async Task<List<OverduePaymentAndUnSubmittedReturn>> GAZTGetUnSubmittedReturnSetForDashboardData(string lang, string TIN)
         {
-           List<OverduePaymentAndUnSubmittedReturn> overduePayments = null;
+            List<OverduePaymentAndUnSubmittedReturn> overduePayments = null;
             if (CrossConnectivity.Current.IsConnected)
             {
                 DateTime currentDate = DateTime.Now;
@@ -3332,10 +3201,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
             }
             else
@@ -3416,10 +3285,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                 }
             }
             else
@@ -3544,10 +3413,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -3577,11 +3446,11 @@ namespace GAZT.Manager
                         App.httpClientHandler = new HttpClientHandler();
                         App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     }
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                     CookieContainer cookieContainer = new CookieContainer();
@@ -3605,11 +3474,11 @@ namespace GAZT.Manager
                         App.httpClientHandler.CookieContainer = cookieContainer;
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -3617,7 +3486,6 @@ namespace GAZT.Manager
                     LoginModel loginModel = new LoginModel();
 
                     HttpResponseMessage GAZTGetLoginDataResponseJSON = client.GetAsync(uri).Result;
-                    Console.WriteLine(GAZTGetLoginDataResponseJSON);
 
                     if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.OK)
                     {
@@ -3689,10 +3557,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -3716,11 +3584,11 @@ namespace GAZT.Manager
                         App.httpClientHandler = new HttpClientHandler();
                         App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                     }
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                     CookieContainer cookieContainer = new CookieContainer();
@@ -3754,11 +3622,11 @@ namespace GAZT.Manager
                         App.httpClientHandler.CookieContainer = cookieContainer;
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -3766,7 +3634,6 @@ namespace GAZT.Manager
                     LoginModel loginModel = new LoginModel();
 
                     HttpResponseMessage GAZTGetLoginDataResponseJSON = await client.GetAsync(uri);
-                    Console.WriteLine(GAZTGetLoginDataResponseJSON);
 
                     if (GAZTGetLoginDataResponseJSON.StatusCode == HttpStatusCode.OK)
                     {
@@ -3838,10 +3705,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -3891,10 +3758,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -3917,15 +3784,13 @@ namespace GAZT.Manager
 
                     if (GAZTLogOffResponse != null)
                     {
-                       // GAZTGetLogoffResponseResult = GAZTLogOffResponse.Content.ReadAsStringAsync().Result;
+                        // GAZTGetLogoffResponseResult = GAZTLogOffResponse.Content.ReadAsStringAsync().Result;
                     }
 
                     App.CreateClientHandler();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
                     {
                         throw new Exception(AppResources.NoTINsAvailable);
@@ -3988,11 +3853,11 @@ namespace GAZT.Manager
                         App.httpClientHandler.CookieContainer = cookieContainer;
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
@@ -4052,11 +3917,11 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                   // throw new GAZTNetworkConnectivityIssueException();
+
+
+                    // throw new GAZTNetworkConnectivityIssueException();
                 }
             }
             else
@@ -4074,9 +3939,9 @@ namespace GAZT.Manager
             string message = messageforsms;
             if (CrossConnectivity.Current.IsConnected)
             {
-               try
+                try
                 {
-                     string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=" + userName + "&password=" + password + "&tagName=" + tagName + "&recepientNumber=" + recepientNumber + "&message=" + message + "&sendDateTime=0";
+                    string url = "http://10.50.11.203/ZPService/SMSAPI.asmx/SendSingleSMS?userName=" + userName + "&password=" + password + "&tagName=" + tagName + "&recepientNumber=" + recepientNumber + "&message=" + message + "&sendDateTime=0";
                     HttpResponseMessage res = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var response = await res.Content.ReadAsStringAsync();
                     XElement xmlroot = XElement.Parse(response);
@@ -4099,10 +3964,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     throw new GAZTNetworkConnectivityIssueException();
                 }
             }
@@ -4138,8 +4003,8 @@ namespace GAZT.Manager
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     if (string.Equals(ex.Message, AppResources.NoTINsAvailable))
                     {
                         throw new Exception(AppResources.NoTINsAvailable);
@@ -4157,7 +4022,7 @@ namespace GAZT.Manager
         }
         #endregion
 
-        
+
         public async static Task<ZakatRevokeValidateModel> GAZTGetZakatRevokeValidate(string fbnum)
         {
             ZakatRevokeValidateModel _zakatRevokeValidateModel = new ZakatRevokeValidateModel();
@@ -4207,7 +4072,7 @@ namespace GAZT.Manager
                                 errorMessage += errorMesg.error.innererror.errordetails[1].message;
                                 String WithReplacedString = errorMessage.Replace("An exception was raised", string.Empty);
                                 errorMessage = WithReplacedString;
-                               throw new GAZTVATRegistrationInProcessException(errorMessage);
+                                throw new GAZTVATRegistrationInProcessException(errorMessage);
                             }
                         }
                     }
@@ -4217,10 +4082,10 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -4290,10 +4155,10 @@ namespace GAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -4305,7 +4170,7 @@ namespace GAZT.Manager
             }
         }
 
-        
+
 
         #region Download File
 
@@ -4360,10 +4225,10 @@ namespace GAZT.Manager
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     App.IsSessionExpired = true;
                     return false;
                 }
@@ -4419,10 +4284,10 @@ namespace GAZT.Manager
                     }
                     return _vATDeclaration;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -4477,18 +4342,18 @@ namespace GAZT.Manager
                         App.httpClientHandler.CookieContainer = cookieContainer;
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                    catch (Exception)
+                    {
+
+
+
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                 }
 
@@ -4585,12 +4450,8 @@ namespace GAZT.Manager
                 else
                     throw new Exception(AppResources.NetworkConnectivityIssue);
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
-
+            catch (Exception)
+            {
                 if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                 {
                     ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(GAZTTPProfileResponseJSON);
@@ -4627,10 +4488,10 @@ namespace GAZT.Manager
                     var uri = new Uri(url);
 
                     try { App.httpClientHandler.CookieContainer = null; }
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString()); }
+                    catch (Exception)
+                    {
+
+                    }
 
                     HttpClient client = new HttpClient(App.httpClientHandler);
 
@@ -4648,10 +4509,10 @@ namespace GAZT.Manager
                         TP = JsonConvert.DeserializeObject<TaxPayerProfile>(GAZTTPProfileResponseJSON);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                     if (!string.IsNullOrEmpty(GAZTTPProfileResponseJSON))
                     {
@@ -4669,7 +4530,6 @@ namespace GAZT.Manager
                         }
                     }
 
-                    System.Diagnostics.Debug.WriteLine("API RESPONSE ERROR : {0}", ex.Message);
                     if (APIType.Equals("GETOTPMOBILE"))
                         throw new Exception(AppResources.EnterValidMobileNumber);
                     else if (APIType.Equals("VERIFYOTPMOBILE"))
@@ -4737,10 +4597,10 @@ namespace GAZT.Manager
                     }
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -4797,10 +4657,10 @@ namespace GAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -4855,10 +4715,10 @@ namespace GAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     return null;
                 }
             }
@@ -4947,10 +4807,10 @@ namespace GAZT.Manager
 
             }
 
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
 
 
@@ -4990,10 +4850,10 @@ namespace GAZT.Manager
                     {
                         GAZTGetDashboardInstalmentResponse = client.GetAsync(uri).Result;
                     }
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {
+
+
 
                     }
                     if (GAZTGetDashboardInstalmentResponse != null)
@@ -5041,10 +4901,10 @@ namespace GAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                 }
             }
@@ -5101,10 +4961,10 @@ namespace GAZT.Manager
 
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {
+
+
 
 
 
@@ -5222,10 +5082,10 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
 
                 }
@@ -5296,10 +5156,10 @@ namespace GAZT.Manager
 
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {
+
+
 
 
 
@@ -5417,10 +5277,10 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
 
                 }
@@ -5485,10 +5345,10 @@ namespace GAZT.Manager
 
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {
+
+
 
 
 
@@ -5610,10 +5470,10 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                     //throw new GAZTNetworkConnectivityIssueException();
 
@@ -5719,10 +5579,10 @@ namespace GAZT.Manager
 
             }
 
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
 
 
@@ -5846,10 +5706,10 @@ namespace GAZT.Manager
 
             }
 
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
 
                 return null;
@@ -5874,7 +5734,7 @@ namespace GAZT.Manager
 
 
 
-        public static async Task<ASStatementHeaderSet> GAZTGetAccountStatementHeaderSet(string statementFilter, string fiscalYear, string taxType , bool isFromDashboard)
+        public static async Task<ASStatementHeaderSet> GAZTGetAccountStatementHeaderSet(string statementFilter, string fiscalYear, string taxType, bool isFromDashboard)
 
         {
 
@@ -5903,7 +5763,8 @@ namespace GAZT.Manager
                     if (!string.IsNullOrEmpty(statementFilter) && statementFilter == "10")
 
                     {
-                        if (isFromDashboard) {
+                        if (isFromDashboard)
+                        {
 
                             isLoad = "X";
                         }
@@ -5986,10 +5847,10 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                     return null;
 
@@ -6053,10 +5914,10 @@ namespace GAZT.Manager
 
                     }
 
-                    catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    catch (Exception)
+                    {
+
+
                     }
 
                     if (GAZTGetDashboardResponse != null)
@@ -6126,7 +5987,7 @@ namespace GAZT.Manager
                             }
 
                         }
-                      
+
 
                     }
 
@@ -6164,10 +6025,10 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                 }
 
@@ -6234,11 +6095,8 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                    //App.IsSessionExpired = true;
                     return null;
                 }
 
@@ -6266,19 +6124,18 @@ namespace GAZT.Manager
                     else
                     {
                         List<string> strings = new List<string>(
-    App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
-                     //   string[] strings = App.GUIDFrSSO.Split("Testvd");
+                        App.GUIDFrSSO.Split(new string[] { "guid=" }, StringSplitOptions.None));
+                        //   string[] strings = App.GUIDFrSSO.Split("Testvd");
                         guid = strings[1];
-                       
+
                     }
-                    String url = Constants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language="+LangZAREN;
-                    Console.WriteLine("GetLoginDetaialsSSO" + url);
+                    String url = Constants.GetLoginDetaialsSSO + guid + "'&$format=json&sap-language=" + LangZAREN;
                     HttpClient client = new HttpClient(App.httpClientHandler);
                     client.DefaultRequestHeaders.Add("Token", "123");
                     client.DefaultRequestHeaders.Add("ichannel", App.IncomingChannel);
                     client.DefaultRequestHeaders.Add("X-Requested-With", "X");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    
+
                     HttpResponseMessage res = await GetServiceManager.MakeGetAPICall(url, false, "");
                     var _zakatReturnDetailsDesponsestr = res.Content.ReadAsStringAsync().Result;
                     _zakatReturnDetailsDesponsestr = JObject.Parse(_zakatReturnDetailsDesponsestr)["d"].ToString();
@@ -6307,10 +6164,8 @@ namespace GAZT.Manager
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
                     return null;
                 }
 

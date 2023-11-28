@@ -34,7 +34,7 @@ namespace EGAZT.Views.NewDesign.Common
                 ChangeAeroIcon();
                 MakeFalse();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                
             }
@@ -126,9 +126,9 @@ namespace EGAZT.Views.NewDesign.Common
                     MakeFalse();
                     viewModel._navigationService.GoBack();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
             }
         }
@@ -150,9 +150,9 @@ namespace EGAZT.Views.NewDesign.Common
                     viewModel.basedonQ1 = false;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -160,7 +160,7 @@ namespace EGAZT.Views.NewDesign.Common
         {
             try
             {
-                Console.WriteLine(e.CurrentItem.ToString());
+                (e.CurrentItem.ToString());
                 if (e.CurrentItem.Text == AppResources.ZProfitOnGoodsQOptionsYes)
                 {
                     viewModel.QA2 = "X";
@@ -170,9 +170,9 @@ namespace EGAZT.Views.NewDesign.Common
                     viewModel.QA2 = "R";
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
             
         }*/
@@ -192,7 +192,7 @@ namespace EGAZT.Views.NewDesign.Common
                 viewModel.IsYesQ2Checked = false;
                 viewModel.IsNoQ2Checked = false;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -222,9 +222,9 @@ namespace EGAZT.Views.NewDesign.Common
                 }
                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -245,7 +245,7 @@ namespace EGAZT.Views.NewDesign.Common
                 }
             }
             
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }

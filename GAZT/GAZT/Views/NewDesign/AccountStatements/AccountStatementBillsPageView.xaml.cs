@@ -60,9 +60,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
                 }
 
                 try
@@ -73,13 +72,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-
-
                 }
             });
 
@@ -225,12 +219,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     viewModel.SearchText = keyword;
                     viewModel.FilterIfTypeAndStausFilterSelected(false);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-
                 }
             }
             else
@@ -248,10 +238,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             if (e.Item == null) return;
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            { 
             }
 
         }

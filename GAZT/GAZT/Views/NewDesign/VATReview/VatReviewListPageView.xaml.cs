@@ -104,10 +104,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -141,10 +141,10 @@ namespace EGAZT.Views.NewDesign.VatReview
                 _viewModel.IsLoading = false;
             });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -179,10 +179,10 @@ namespace EGAZT.Views.NewDesign.VatReview
                 _viewModel.IsLoading = false;
             });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
        

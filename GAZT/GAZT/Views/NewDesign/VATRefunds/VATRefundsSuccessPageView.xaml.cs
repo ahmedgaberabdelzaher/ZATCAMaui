@@ -72,10 +72,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -91,10 +91,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

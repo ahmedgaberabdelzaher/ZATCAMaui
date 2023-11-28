@@ -111,7 +111,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.OnPageLoad();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -141,7 +141,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -161,7 +161,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -206,7 +206,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -235,7 +235,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         //    DeleteAttachment(result, attachment);
                         //}
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -292,7 +292,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -349,7 +349,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                                     var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
 
                                 }
@@ -414,7 +414,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }*/
                 // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -451,10 +451,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             return getFilePath;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return null;
             }
 }
@@ -481,10 +481,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public async Task email(string doguid, VATAttachment attachment)

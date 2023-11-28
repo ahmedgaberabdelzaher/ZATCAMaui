@@ -155,7 +155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                     Convert.FromBase64String(base64String);
                     return true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     return false;
                 }
@@ -314,7 +314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             await AddQRLog(eInvoiceQRModel);
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -506,7 +506,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 }
                 return false;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -532,7 +532,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             catch (PermissionException pEx)
             {
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
             return new Location(54.9221801757813, -1.61353372482901);
@@ -552,7 +552,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                         IsShowScanView = false;
                         IsCheckWithCode = true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -584,7 +584,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsShowMsgView = true;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -655,7 +655,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -760,7 +760,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsShowMsgView = true;
                 MessageTxt = AppResources.unableToVerify;

@@ -1,6 +1,4 @@
-﻿using System;
-using Android.Content;
-using Android.Graphics;
+﻿using Android.Content;
 using EGAZT;
 using GAZT;
 using GAZT.Droid.CustomRenderer;

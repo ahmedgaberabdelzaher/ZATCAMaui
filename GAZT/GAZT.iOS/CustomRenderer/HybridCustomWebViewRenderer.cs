@@ -8,7 +8,6 @@ using GAZT.Manager;
 using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
 using ObjCRuntime;
-using Syncfusion.SfRangeSlider.XForms;
 using UIKit;
 using WebKit;
 using Xamarin.Forms;
@@ -88,13 +87,12 @@ namespace GAZT.iOS.CustomRenderer
 
         public override void ContentProcessDidTerminate(WKWebView webView)
         {
-            Console.WriteLine("ContentProcessDidTerminate");
+            
         }
 
         [Foundation.Export("webView:didFailProvisionalNavigation:withError:")]
         public override void DidFailProvisionalNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
-            Console.WriteLine("DidFailProvisionalNavigation");
             try
             {
                 if (error != null && error.Code == -1001)
@@ -113,10 +111,10 @@ namespace GAZT.iOS.CustomRenderer
                     element.InvokeAction("requestTimedout");
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -124,7 +122,7 @@ namespace GAZT.iOS.CustomRenderer
 
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
-            Console.WriteLine("DidStartNavigation -" + webView.Url.ToString());
+            
             isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
 
@@ -179,18 +177,18 @@ namespace GAZT.iOS.CustomRenderer
                         element.InvokeAction("displayLoginLoadingIndicator");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
                 }
             }
         }
        
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
-            Console.WriteLine("DidFinishNavigation -" + webView.Url.ToString());
+            
             WKHttpCookieStore wKHttpCookieStore = webView.Configuration.WebsiteDataStore.HttpCookieStore;
 
             Uri tempUrl = webView.Url;
@@ -231,7 +229,7 @@ namespace GAZT.iOS.CustomRenderer
                                     cookieModel.Domain = cookie.Domain;
 
                                     App.LoginCookiesRetrieved.Add(cookieModel);
-                                    Console.WriteLine("FinishNav: Cookie Name: " + cookieModel.CName);
+                                   
                                 }
 
                                 try
@@ -239,11 +237,11 @@ namespace GAZT.iOS.CustomRenderer
                                     App.httpClientHandler = new HttpClientHandler();
                                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.WriteLine(ex.Message);
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
+                                    
                                 }
 
                                 App.LoginDataRetrieved = new LoginModel();
@@ -281,18 +279,18 @@ namespace GAZT.iOS.CustomRenderer
                 }
                 catch (GAZTInvalidDataException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
                     element.InvokeAction("error");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);                  
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                                      
+                    
+                    
                     IsError = true;
                     App.IsLoginCalled = false;
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
@@ -303,7 +301,7 @@ namespace GAZT.iOS.CustomRenderer
 
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
         {
-            Console.WriteLine("DidFailNavigation");
+            
         }
 
         NSMutableArray multiCookieArr = new NSMutableArray();
@@ -326,7 +324,7 @@ namespace GAZT.iOS.CustomRenderer
                     multiCookieArr.Add(cookieArr);
                 }
 
-                Console.WriteLine("cookie is :" + cookiesAll);
+                
             }
 
             decisionHandler(WKNavigationResponsePolicy.Allow);

@@ -48,10 +48,10 @@ namespace EGAZT.Manager
                     _attachment = JsonConvert.DeserializeObject<AttachmentRootOject>(responsestr);
                     return _attachment;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -94,10 +94,10 @@ namespace EGAZT.Manager
                     }
                     return DeleteToken;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return DeleteToken;
                 }
             }
@@ -169,10 +169,10 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -248,10 +248,10 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -327,10 +327,10 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -399,10 +399,10 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATRegistrationInProcessException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     App.IsSessionExpired = true;
                     return null;
                 }
@@ -476,7 +476,6 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
-                    Console.WriteLine(ex);
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }
@@ -557,7 +556,6 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
-                    Console.WriteLine(ex);
                     throw new GAZTErrorException(ex.Message);
                 }
             }
@@ -627,7 +625,6 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTErrorException ex)
                 {
-                    Console.WriteLine(ex);
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }
@@ -715,16 +712,15 @@ namespace EGAZT.Manager
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.WriteLine(ex);
                     throw new GAZTUnlockAccountException(ex.Message);
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
+                    
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }
             }

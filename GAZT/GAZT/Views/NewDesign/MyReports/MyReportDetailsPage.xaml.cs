@@ -16,7 +16,7 @@ namespace EGAZT.Views.NewDesign.MyReports
                 BindingContext = viewModel;
                 InitializeComponent();
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
 
             }

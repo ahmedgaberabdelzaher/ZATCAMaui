@@ -34,10 +34,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             {
                 viewModel.ResidenceText = App.TP.TpType;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             // * Page content direction
@@ -99,11 +99,11 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 viewModel.IsLoading = false;
                 PopupNavigation.Instance.PushAsync(new UpdateMobilePopUp(mobileData));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
+                
                 viewModel.IsLoading = false;
             }
         }
@@ -161,10 +161,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 
@@ -179,10 +179,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

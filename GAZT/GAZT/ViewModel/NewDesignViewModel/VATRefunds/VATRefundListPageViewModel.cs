@@ -303,14 +303,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                    Console.WriteLine(ex.Message);
+                    
                 });
             }
         }
@@ -330,9 +330,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                 WiDtlSetResult[] sortedWidtlSet = VatRefundsListResultModel.WiDtlSet.Results.Where(m => m.Fbnum == vatRefHeaderSetResult.RefundFbnum).ToArray();
                 VatRefundsListResultModel.WiDtlSet.Results = sortedWidtlSet;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -357,8 +357,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                    IsLoading = false;
@@ -382,14 +382,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
-                    Console.WriteLine(ex.Message);
+                    
                 });
             }
         }

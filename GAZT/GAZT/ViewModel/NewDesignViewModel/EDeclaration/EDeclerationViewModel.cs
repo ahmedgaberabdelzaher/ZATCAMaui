@@ -105,7 +105,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                              
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

@@ -64,10 +64,10 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -85,10 +85,10 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                 viewModel.SelectedTaxTypeForFilter = selectedReturntype;
            
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -139,10 +139,10 @@ namespace EGAZT.Views.NewDesign.TaxpayersCertificatesPages
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -189,9 +189,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         }
                     }
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
                 
 
@@ -470,10 +470,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public async void VoidMsg()
@@ -592,10 +592,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -661,8 +661,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -677,9 +677,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     });
                    
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -712,15 +711,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     _navigationService.GoBack();
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 try
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -730,9 +728,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     });
 
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
         }
@@ -762,10 +759,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                         IBANType idType = IBANTypesList.Where(m => m.key == SelectedIDTypeCode).FirstOrDefault();
                         SelectedIdtype = idType.Text;
                     }
-                    catch(Exception ex)
+                    catch(Exception)
                     {
-                        Console.WriteLine("No ID type");
-                        Console.WriteLine(ex.Message);
+                        
                     }
                 }
 
@@ -815,8 +811,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                      IsLoading = false;
@@ -831,9 +827,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     });
                    
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -866,15 +861,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
                     _navigationService.GoBack();
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 try
                 {
                     await Task.Run(() =>
@@ -889,9 +883,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     });
                    
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
         }
@@ -929,9 +922,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     IsAddAccountVisisble = false;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
             //VatRefundsIbanDataModel.IbanSet.Results
@@ -1049,10 +1042,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1115,10 +1108,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new VATRefundDetailsPageView(VatRefundsDisplayDataModel));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -1154,8 +1147,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1180,9 +1173,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     await _dialogService.ShowMessage(message, AppResources.Information);
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
         }

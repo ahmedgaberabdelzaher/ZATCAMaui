@@ -99,7 +99,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                         });
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -131,7 +131,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LiveVideoVM
                             IsLoading = false;
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

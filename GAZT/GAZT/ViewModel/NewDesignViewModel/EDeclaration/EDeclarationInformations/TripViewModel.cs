@@ -2,11 +2,9 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Models.EDeclerationsModel;
-using System.Collections.Generic;
 using System.Linq;
 using EGAZT.Controls;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using EGAZT.Helper;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
@@ -18,6 +16,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         string _ArrivalDepartureDateString;
         public string ArrivalDepartureDateString { get { return _ArrivalDepartureDateString; } set { _ArrivalDepartureDateString = value; RaisePropertyChanged(); } }
+
+        bool hasPlatesCity;
+        public bool HasPlatesCity { get { return hasPlatesCity; } set { hasPlatesCity = value; RaisePropertyChanged(); } }
+
+        bool isCityVisible;
+        public bool IsCityVisible { get { return isCityVisible; } set { isCityVisible = value; RaisePropertyChanged(); } }
 
         public ICommand TripCardCommand
         {
@@ -31,6 +35,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     SubmitModel.travelerDeclaration.portName = string.Empty;
                     SubmitModel.travelerDeclaration.travelDate = DateTime.Now;
                     SubmitModel.travelerDeclaration.flightNumber = string.Empty;
+                    SubmitModel.travelerDeclaration.plateCityCode = 0;
+                    SubmitModel.travelerDeclaration.PlatesCityName = string.Empty;
+                    SubmitModel.travelerDeclaration.plateCountryCode = 0;
+                    SubmitModel.travelerDeclaration.PlatesCountryName = string.Empty;
+                    SubmitModel.travelerDeclaration.plateNumber = string.Empty;
+                    SubmitModel.travelerDeclaration.plateLetters = string.Empty;
+                    HasPlatesCity = false;
                     if (selectedTrip == (int)TripName.AirTrip)
                     {
                         TripCard.AirImage = "QSelected.png";
@@ -44,6 +55,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         // if the user select the Tobacco & Product
                         // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"
                         TripCard.IsAirTripSelected = SubmitModel.travelerDeclaration.IsDisclosure ? true : false;
+                        TripCard.IsLandTripSelected = false;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 1=>Air
                     }
 
@@ -58,6 +70,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TripCard.LandTextColor = Color.White;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 2=>Land
                         TripCard.IsAirTripSelected = false;
+                        TripCard.IsLandTripSelected = true;
                     }
                     else
                     {
@@ -70,6 +83,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TripCard.LandTextColor = Color.FromHex("#002447");
 
                         TripCard.IsAirTripSelected = false;
+                        TripCard.IsLandTripSelected = false;
                         SubmitModel.travelerDeclaration.tripeType = int.Parse(e); // 3> Sea
                     }
 
@@ -90,13 +104,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         isPortSelected = false;
                         isComingGoingSelected = true;
                         isTravelPurposeSelected = false;
+                        isPlatesCountrySelected = false;
+                        isPlatesCitySelected = false;
                         var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.ZZZZCountry;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -119,7 +135,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             _navigationService.NavigateTo("PassengerInformationPage");
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     }
 
@@ -139,7 +155,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -161,11 +177,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         if (SubmitModel.travelerDeclaration.travelDate.Date == DateTime.Now.Date)
                             ArrivalDepartureDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
-                   
+
                 });
             }
         }
@@ -184,6 +200,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         isPortSelected = true;
                         isComingGoingSelected = false;
                         isTravelPurposeSelected = false;
+                        isPlatesCountrySelected = false;
+                        isPlatesCitySelected = false;
                         var result = await DeclerationServices.GetPorts(SubmitModel.travelerDeclaration.tripeType);
                         var ports = result?.Item1?.data?.ToList();
                         var bottom = ports?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
@@ -193,7 +211,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -216,12 +234,78 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         isPortSelected = false;
                         isComingGoingSelected = false;
                         isTravelPurposeSelected = true;
+                        isPlatesCountrySelected = false;
+                        isPlatesCitySelected = false;
                         var result = await DeclerationServices.GetTravelPurpose();
                         var travelPurposes = result?.Item1?.data?.ToList();
                         var bottom = travelPurposes?.Select(c => new BottomSheetModel() { Id = c.ID.ToString(), Name = c.Name });
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TravelPurpose;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                        IsLoading = false;
+                    }
+                    catch (Exception)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
+        public ICommand OpenPlatesCountryCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    try
+                    {
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
+                        isPlatesCountrySelected = true;
+                        isPlatesCitySelected = false;
+                        var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZCountry;
+                        TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+                    }
+                    catch (Exception ex)
+                    {
+                        IsLoading = false;
+                    }
+
+                });
+            }
+        }
+
+        public ICommand OpenPlatesCityCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    try
+                    {
+                        IsLoading = true;
+                        isNationalitySelected = false;
+                        isItsSourceSelected = false;
+                        isPortSelected = false;
+                        isComingGoingSelected = false;
+                        isTravelPurposeSelected = false;
+                        isPlatesCountrySelected = false;
+                        isPlatesCitySelected = true;
+                        var result = await DeclerationServices.GetPlatesCity(SubmitModel.travelerDeclaration.plateCountryCode);
+                        var platesCity = result?.Item1?.data?.ToList();
+                        var bottom = platesCity?.Select(pc => new BottomSheetModel() { Id = pc.cityCode.ToString(), Name = pc.Name });
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(bottom);
+                        IsShowBottomSheet = true;
+                        HeaderTitle = AppResources.ZZZZCity;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                         IsLoading = false;
                     }
@@ -249,6 +333,25 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
+        public ICommand PlateLLetterTextChangedCommand
+        {
+            get
+            {
+                return new Command(_ =>
+                {
+                    if (!string.IsNullOrEmpty(SubmitModel.travelerDeclaration.plateLetters)
+                        && SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                    {
+                        HasPlatesCity = false;
+                    }
+                    else if (string.IsNullOrEmpty(SubmitModel.travelerDeclaration.plateLetters)
+                    && SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                    {
+                        HasPlatesCity = true;
+                    }
+                });
+            }
+        }
 
         private bool IsValidateTripInfo()
         {
@@ -259,6 +362,31 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 MessageTxt = AppResources.RequiredData;
                 return false;
             }
+
+            else if (SubmitModel.travelerDeclaration.plateCountryCode == 120 ||
+                     SubmitModel.travelerDeclaration.plateCountryCode == 110 ||
+                     SubmitModel.travelerDeclaration.plateCountryCode == 115)
+            {
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCityName))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ChooseCity;
+                    return false;
+                }
+            }
+
+            else if (SubmitModel.travelerDeclaration.plateCountryCode == 113)
+            {
+                if (string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.PlatesCityName)
+                    && !string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.plateNumber)
+                    && string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.plateLetters))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.ChooseCity;
+                    return false;
+                }
+            }
+
             else if (SubmitModel.travelerDeclaration.travelDate.Date < DateTime.Now.Date)
             {
                 IsShowMsgView = true;
@@ -291,7 +419,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         return false;
                     }
                 }
-               
+
             }
 
             return true;

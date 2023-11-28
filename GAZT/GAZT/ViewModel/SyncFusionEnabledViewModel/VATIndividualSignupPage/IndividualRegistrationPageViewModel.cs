@@ -1,5 +1,4 @@
-﻿//using CalendarView;
-using EGAZT.Helper;
+﻿
 using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
@@ -914,10 +913,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                         }
                         TxtIDType = _selectedIdType.Name;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 RaisePropertyChanged("SelectedIdType");
@@ -1857,8 +1856,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (HttpRequestException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -1880,10 +1879,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1932,10 +1931,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     IsLoading = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -2176,8 +2175,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                     }
                                     catch (HttpRequestException ex)
                                     {
-                                        Console.Write(ex.ToString());
-                                        Console.Write(ex.StackTrace.ToString());
+                                        
+                                        
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                                         Device.BeginInvokeOnMainThread(async () =>
@@ -2199,10 +2198,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                             await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                                         });
                                     }
-                                    catch (Exception ex)
+                                    catch (Exception)
                                     {
-                                        Console.Write(ex.ToString());
-                                        Console.Write(ex.StackTrace.ToString());
+                                        
+                                        
 
                                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                                         Device.BeginInvokeOnMainThread(async () =>
@@ -2415,7 +2414,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             else
             {
-                Console.WriteLine(modelSSOID.results[0].Idnumber);
+                
                 if (modelSSOID.results[0].Idnumber.Substring(0,1) == "1")
                 {
                     lst = signUpIdTypeListCitizenNC;
@@ -2452,10 +2451,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 string resposne = await TaxEvasionWebServiceManager.GAZTVATSignUpValidateIDTypesStringResp(IdTypeList[IDTypeIndex].ID, IdNumber, dob);
                 return resposne;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return null;
             }
         }
@@ -2475,10 +2474,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return false;
             }
         }
@@ -2503,10 +2502,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     CountryName = AppResources.ZZZZSaudiArabia;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
 
@@ -2524,10 +2523,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     RegionList = vATSignUpData.d.State_dropdownSet.results.Where(x => x.Land1 == "SA").ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -2550,10 +2549,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -2581,10 +2580,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -2953,8 +2952,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
                 string MessageForTheUser = AppResources.Somethingwentwrong;
 
@@ -3148,10 +3147,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
                 string MessageForTheUser = AppResources.Somethingwentwrong;
 
@@ -3280,7 +3279,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         //            _navigationService.NavigateTo(App.RegistrationSuccessfulPageView);
         //        }
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    { 
 
         //    }

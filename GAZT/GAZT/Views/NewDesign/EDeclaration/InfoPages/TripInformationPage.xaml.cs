@@ -25,7 +25,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.InfoPages
             viewModel.isTripPage = true;
             // if the user select the Tobacco & Product & Air is selected before
             // so we will remove "Traveler Count in XAML","Trip Number" & "Travel Purpose in XAML"
-            if(viewModel.TripCard.IsAirTripSelected)
+            if (viewModel.TripCard.IsAirTripSelected)
                 viewModel.TripCard.IsAirTripSelected = viewModel.SubmitModel.travelerDeclaration.IsDisclosure ? true : false;
             base.OnAppearing();
         }
@@ -34,6 +34,7 @@ namespace EGAZT.Views.NewDesign.EDeclaration.InfoPages
             viewModel.BackMethod();
             return true;
         }
+          
     }
 }
 

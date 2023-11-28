@@ -4,7 +4,6 @@ using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using Newtonsoft.Json;
-using Plugin.FilePicker;
 using System;
 using System.Collections.Generic;
 using Rg.Plugins.Popup.Services;
@@ -698,10 +697,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                                 VATRegistrationDetailsForAttach.d.ELGBL_DOCSet.results.Add(_eligibledocset);
                                                             }
                                                         }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
-                                                            Console.Write(ex.ToString());
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                         }
                                                         VATRegistrationDetailsForAttach.d.ATTDETSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATRegistrationDetailsForAttach.d.ATTDETSet.results as List<Attachment>);
@@ -733,10 +732,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                                                                     }
                                                                 }
                                                             }
-                                                            catch (Exception ex)
+                                                            catch (Exception)
                                                             {
-                                                                Console.Write(ex.ToString());
-                                                                Console.Write(ex.StackTrace.ToString());
+                                                                
+                                                                
                                                             }
                                                         }
                                                         AttachmentCount++;
@@ -819,10 +818,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void filterList()
@@ -858,10 +857,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                 //    VatAttachmentsList = new ObservableCollection<Attachment>(attachmentsList);
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private async Task<AttachmentRootOject> SaveAttachment(byte[] attachmentByteData, string contentType, string Doctype)
@@ -911,10 +910,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
                     }
                    
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //  return null;
                 }
             });

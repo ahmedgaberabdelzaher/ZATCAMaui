@@ -47,9 +47,9 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                     }
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
            
         }
@@ -118,10 +118,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 var view = sender as SfListView;
                 view.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -133,10 +133,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                 await PopupNavigation.Instance.PushAsync(new VATRefundsInstructionsPageView());
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -176,11 +176,11 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             else
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
     }

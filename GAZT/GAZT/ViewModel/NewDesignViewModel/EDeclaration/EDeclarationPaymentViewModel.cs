@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

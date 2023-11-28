@@ -5,6 +5,7 @@ using System.Collections.Specialized;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using EGAZT.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -29,14 +30,25 @@ namespace GAZT
         #endregion Constructor
         #region Fields
         //Bindable property for the items source
-        public static readonly BindableProperty DisplayMemberBindingProperty =
-            BindableProperty.Create<CustomPicker, string>(p => p.DisplayMemberBinding, string.Empty, BindingMode.TwoWay);
+
+        public static readonly BindableProperty DisplayMemberBindingProperty = BindableProperty.Create(
+                                                        propertyName: "DisplayMemberBinding",
+                                                        returnType: typeof(string),
+                                                        declaringType: typeof(CustomPicker),
+                                                        defaultValue: string.Empty,
+                                                        defaultBindingMode: BindingMode.TwoWay);
         //Bindable property for the selected item
-        public static readonly BindableProperty SelectedItemProperty =
-            BindableProperty.Create<CustomPicker, object>(p => p.SelectedItem, null, BindingMode.TwoWay, propertyChanged: OnSelectedItemPropertyChanged);
+        public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(
+                                                        propertyName: "SelectedItem",
+                                                        returnType: typeof(object),
+                                                        declaringType: typeof(CustomPicker),
+                                                        defaultValue: null,
+                                                        defaultBindingMode: BindingMode.TwoWay,
+                                                        propertyChanged: OnSelectedItemPropertyChanged);
         //Bindable property for the items source
         public static readonly BindableProperty ItemsSourceProperty =
             BindableProperty.Create<CustomPicker, IList>(p => p.ItemsSource, null, propertyChanged: OnItemsSourcePropertyChanged);
+
         public string DoneButtonText
         {
             get
@@ -209,7 +221,7 @@ namespace GAZT
                         }
                         picker.Items.Add((actualValue ?? "").ToString());
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         //throw;
                     }

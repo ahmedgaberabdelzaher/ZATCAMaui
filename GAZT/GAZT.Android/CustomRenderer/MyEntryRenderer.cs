@@ -1,5 +1,4 @@
-﻿using System;
-using Android.Content;
+﻿using Android.Content;
 using GAZT.CustomControl;
 using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms;

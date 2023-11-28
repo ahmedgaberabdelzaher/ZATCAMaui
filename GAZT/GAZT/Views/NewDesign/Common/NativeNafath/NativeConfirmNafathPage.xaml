@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="EGAZT.Views.NewDesign.Common.NativeNafath.NativeConfirmNafathPage"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+      <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />  
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand" >
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    FontSize="20"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Text="{Binding NafathLoginHeader}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--  OpenNafath Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.OpenNafath}"
+                            TextColor="{StaticResource Primary}" />
+
+                         <!--  ConfirmOpenningNafath Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ConfirmOpenningNafath}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            WidthRequest="20"
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2" />
+
+                        <!--  NationalIqamaID Field  -->
+                        <inputLayout:SfTextInputLayout
+                                Margin="0,-8,0,0"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+
+                             <custom:BorderlessEntry
+                                    FontFamily="{StaticResource SomarSemiBold}"
+                                    FontSize="16"
+                                    HorizontalTextAlignment="Center"
+                                    MaxLength="1"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding OTPNumber}"
+                                    TextColor="#0996D4"/>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <!-- Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            BackgroundColor="Transparent"
+                            BorderColor="Transparent"
+                            TextColor="{StaticResource Secondary}"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.CancelText}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Loader  -->
+            <controls:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
+

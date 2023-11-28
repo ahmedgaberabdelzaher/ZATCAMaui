@@ -104,10 +104,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel._navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         void Download_Clicked(System.Object sender, System.EventArgs e)
@@ -117,10 +117,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -131,10 +131,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
                 viewModel.downloadConfirmation();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

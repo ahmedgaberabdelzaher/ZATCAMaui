@@ -24,24 +24,9 @@ using System.IO;
 using AppDynamics.Agent;
 using Newtonsoft.Json;
 using GAZT.Helper;
-using EGAZT.Views.NewDesign.CustomServicesPages;
-using EGAZT.Views.NewDesign.Template;
-using EGAZT.Views.NewDesign.TahqaqViews;
-using EGAZT.Views.NewDesign.VAT;
-using EGAZT.Views.NewDesign.LiveVideo;
-using EGAZT.Views.NewDesign.LoginPages;
-using EGAZT.Views.NewDesign.ForgotPasswordPages;
-using EGAZT.Views.NewDesign.ReportOTP;
-using EGAZT.Views.NewDesign.SubmitReport;
 using EGAZT.AppConfigurations;
 using Environment = System.Environment;
-using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
-using EGAZT.Views.NewDesign.EDeclaration;
-using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
-using EGAZT.Views.NewDesign.Zakaty;
-using EGAZT.Views.NewDesign.Common;
-using System.Runtime.InteropServices;
-using EGAZT.Views.NewDesign.LoginPages.FasahLogin;
+using EGAZT.Views.NewDesign.Common.NativeNafath;
 
 namespace EGAZT
 {
@@ -305,14 +290,15 @@ namespace EGAZT
         public static string NewYesorNoPageView = "NewYesorNoPageView";//cr6264
 
         //cr6094
-              public static string NafathPopUpPage = "NafathPopUpPage";
-              public static string NafathLoginPageView = "NafathLoginPageView";
+        public static string NafathPopUpPage = "NafathPopUpPage";
+        public static string NafathLoginPageView = "NafathLoginPageView";
 
         //AccountStatementsFiltersPageViewModel
         //AccountStatementsPageView
 
         //VATRefundsListPageView
         #endregion
+
         #region CustomsView
         public static string InquiryAboutCustomsDeclarationView = "InquiryAboutCustomsDeclarationView";
         public static string TraifSectionsView = "TraifSections";
@@ -402,17 +388,13 @@ namespace EGAZT
 
         public static ActivityIndicatorPageView ActivityIndicatorView;
         public static HttpClientHandler httpClientHandler = null;
+
         public App()
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
-            PageSettings.CheckTarget_Environment("Prod");
-            PageSettings.GetBaseURL("Prod");
-            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjUxNzIyQDMxMzgyZTMxMmUzMExDZ2JwR3BUT3I4TzkwSFhHSWRxTTJxS0VldkFsTGRzemt5QUVkNXJhY2s9");18v
-            //Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NTg0Njg3QDMxMzkyZTM0MmUzMGV2eDFmY1Q4NStIODd6blRudmN5SzdVdXBlNW1vaVNya0hkSmFWTUdOSWs9");19v
-
-
-            // Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjA0NjIyQDMyMzAyZTMxMmUzMElHeGNPa25sMVBueHdHZW9ZWXRyQ05nQlg3czJwWENqYXdpS2tVWXE3NEE9");//20v
+            PageSettings.CheckTarget_Environment("STG");
+            PageSettings.GetBaseURL("STG");
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;
@@ -485,57 +467,18 @@ namespace EGAZT
 
             ActivityIndicatorView = new ActivityIndicatorPageView();
 
-            //VATDeclaration vAT = null;
             CustomNavigation navigationPage;
             bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
             //NEw
             if (!hasKey)
             {
-                // navigationPage=new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
-
-                //  navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
-
-              navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
-
-                //navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-               //   navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
-              //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
-             //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
-              //   navigationPage = new CustomNavigation(new FasahLoginView()) { BarTextColor = Color.White };
-               //  navigationPage = new CustomNavigation(new ReiewPreviousDeclerations()) { BarTextColor = Color.White };
-
+                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
             }
             else
             {
-                //  navigationPage = new CustomNavigation(new TraifSections()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new ReportFinancialViolation()) { BarTextColor = Color.White };
-
-                //navigationPage = new CustomNavigation(new InquiryAboutCustomsDeclaration()) { BarTextColor = Color.White };
-
-                   navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
-
-                // navigationPage = new CustomNavigation(new DashboardAnonymousMenuPageView()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new LaboratoryPaymentOfInsuranceFees()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new TahqaqScanPage()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new LiveVideoPage()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new GAZTNewDesignDashBoardPageView()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new CustomLogin()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new LoginSelectionView()) { BarTextColor = Color.White };
-                //navigationPage = new CustomNavigation(new InquiryAboutMyReportsPage()) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new TransactionReceptionView()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new IAMLoginView(2)) { BarTextColor = Color.White };
-                // navigationPage = new CustomNavigation(new AboutZakatyView()) { BarTextColor = Color.White };
-                //  navigationPage = new CustomNavigation(new PaymentWebView(AppResources.eDeclaration)) { BarTextColor = Color.White };
-             //  navigationPage = new CustomNavigation(new FasahLoginView()) { BarTextColor = Color.White };
-              // navigationPage = new CustomNavigation(new ReiewPreviousDeclerations()) { BarTextColor = Color.White };
+                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Color.White };
+                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
 
             }
 
@@ -569,10 +512,10 @@ namespace EGAZT
                             _ = Task.Run(() => WebServiceManager.GAZTLogOff());
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                     });
                 }
@@ -587,6 +530,7 @@ namespace EGAZT
             httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
             httpClientHandler.CookieContainer = new System.Net.CookieContainer();
         }
+
         private static ViewModelLocator _locator;
         public static ViewModelLocator Locator
         {
@@ -595,6 +539,7 @@ namespace EGAZT
                 return _locator ?? (_locator = new ViewModelLocator());
             }
         }
+
         private static App _Instance;
         public static App GetInstance()
         {
@@ -602,6 +547,7 @@ namespace EGAZT
                 _Instance = new App();
             return _Instance;
         }
+
         public static void changeFontFamily(App app)
         {
             PreviousIsArabic = App.IsArabic;
@@ -624,6 +570,7 @@ namespace EGAZT
             }
 
         }
+
         public void onFontFamilyChanged()
         {
             if (PreviousIsArabic)
@@ -723,6 +670,7 @@ namespace EGAZT
             }
             //SYNCFUSION INTEGRATION
         }
+
         protected override void OnStart()
         {
             IsJailBrokenDevice = false;
@@ -787,17 +735,15 @@ namespace EGAZT
 
         public static void InitializeAppDynamics()
         {
-            var config = AppDynamics.Agent.AgentConfiguration.Create("EUM-AAB-AUM");
-            config.LoggingLevel = AppDynamics.Agent.LoggingLevel.Debug;
+            var config = AgentConfiguration.Create("EUM-AAB-AUM");
+            config.LoggingLevel = LoggingLevel.Debug;
 
-            AppDynamics.Agent.Instrumentation.enableAggregateExceptionReporting = true;
+            Instrumentation.enableAggregateExceptionReporting = true;
 
             config.EnableAggregateExceptionReporting = true;
             config.CollectorURL = "https://eum.gazt.gov.sa";
-            AppDynamics.Agent.Instrumentation.InitWithConfiguration(config);
+            Instrumentation.InitWithConfiguration(config);
         }
-
-
 
         public static void DisplayProgressView()
         {
@@ -808,11 +754,11 @@ namespace EGAZT
                    PopupNavigation.Instance.PushAsync(ActivityIndicatorView, true);
                });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -842,8 +788,8 @@ namespace EGAZT
             return false;
         }
 
-
         public static bool isTimerOn = false;
+
         public static void StartTimer(int h, int m, int sec)
         {
             int hour = h;
@@ -851,12 +797,7 @@ namespace EGAZT
             int counter = sec;
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
-                //if (IsTimerCancel)
-                //{
-                //    return false;
-                //}
-                //else
-                //{
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
@@ -876,10 +817,6 @@ namespace EGAZT
                             }
                         }
                     }
-
-
-
-                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
                 });
                 if (hour == 0 && mins == 0 && counter == 0)
                 {
@@ -893,9 +830,9 @@ namespace EGAZT
                     isTimerOn = true;
                     return true;
                 }
-                // }
             });
         }
+
         public static bool ShouldStopTimer = false;
 
         public static void StartTimerForBackground(int h, int m, int sec)
@@ -906,12 +843,7 @@ namespace EGAZT
 
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
-                //if (IsTimerCancel)
-                //{
-                //    return false;
-                //}
-                //else
-                //{
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
@@ -951,7 +883,6 @@ namespace EGAZT
                 {
                     return true;
                 }
-                // }
             });
         }
 
@@ -965,12 +896,7 @@ namespace EGAZT
 
             Device.StartTimer(new TimeSpan(0, 0, 1), () =>
             {
-                //if (IsTimerCancel)
-                //{
-                //    return false;
-                //}
-                //else
-                //{
+
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     counter = counter - 1;
@@ -992,7 +918,6 @@ namespace EGAZT
                     }
 
 
-                    // LblCountDownTimer = string.Format("{0:00}:{1:00}", mins, counter);
                 });
 
                 if (ShouldStopLoginRefreshTimer == true)
@@ -1012,12 +937,8 @@ namespace EGAZT
                 {
                     return true;
                 }
-
-
-                // }
             });
         }
-
 
         public static void HideProgressView()
         {
@@ -1049,10 +970,6 @@ namespace EGAZT
             }
         }
 
-        public static void HandleSessionActionAfterUnlock()
-        {
-
-        }
         public static void OnBackPressed()
         {
             MessagingCenter.Send<Application>(Application.Current, "BackButtonPressed");

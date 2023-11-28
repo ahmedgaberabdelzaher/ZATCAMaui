@@ -74,10 +74,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 IntilizeAsync();
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
 
@@ -194,10 +194,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -216,15 +216,15 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
                 viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
 
-       
+
         public void TaxpayerDetailsclicked()
         {
             if (viewModel.IsDeclarationCheckedForInstruction)
@@ -613,8 +613,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 viewModel.IsFivePersenctVisible = false;
                 viewModel.IsSaleSubjecttoTaxVisible = false;
             }
-        
-    }
+
+        }
         public void SetNewVATRate()
         {
 
@@ -666,10 +666,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -708,10 +708,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -721,10 +721,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new VATDeclarationAttachmentPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -740,10 +740,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                    });
                });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -759,10 +759,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                    });
                });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -776,10 +776,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                    AddNote();
                });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -793,10 +793,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                    AddNote();
                });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -823,10 +823,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -988,10 +988,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1009,10 +1009,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1030,10 +1030,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1044,10 +1044,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1058,10 +1058,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 PopupNavigation.Instance.PushAsync(new NotesDescriptionPopUpPageView(viewModel.VATDeclarationData));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1093,10 +1093,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     MessagingCenter.Unsubscribe<object, string>(this, "SADAD");
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
                     //scrollView.ScrollToAsync(0, 500, true);
 
 
@@ -1108,105 +1108,61 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsNewLoading = false;
                 });
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
 
         protected override void OnAppearing()
         {
-            var safeInsets = On<iOS>().SafeAreaInsets();
-            safeInsets.Bottom = 0;
-
-            this.Padding = safeInsets;
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                viewModel.IsSwitchVisible = true;
-            }
-            else
-            {
-                viewModel.IsSwitchVisible = false;
-            }
-
-            //if (Preferences.ContainsKey("ApplePayString") &&!string.IsNullOrEmpty(Preferences.Get("ApplePayString", string.Empty)))
-            //{
-            //    viewModel.ApplePayTokenData = Preferences.Get("ApplePayString", string.Empty);
-            //    await viewModel.UpdateApplePayPaymentGuid();
-            //    Preferences.Remove("ApplePayString");
-            //}
-
-            getActionCommand();
-            getYesCommand();
-            getNoCommand();
-            getRefundClickedCommand();
-            getSubmittedFromRefundCommand();
-            getRefundClickedForStopLoaderCommand();
-            getAddNoteCommand();
-            getClearNoteCommand();
-
-            getRefundYesMsgCommand();
-            getRefundNoMsgCommand();
-
-
-            AddNote();
-
             try
             {
+                var safeInsets = On<iOS>().SafeAreaInsets();
+                safeInsets.Bottom = 0;
+
+                this.Padding = safeInsets;
+                if (Device.RuntimePlatform == Device.iOS)
+                {
+                    viewModel.IsSwitchVisible = true;
+                }
+                else
+                {
+                    viewModel.IsSwitchVisible = false;
+                }
+                getActionCommand();
+                getYesCommand();
+                getNoCommand();
+                getRefundClickedCommand();
+                getSubmittedFromRefundCommand();
+                getRefundClickedForStopLoaderCommand();
+                getAddNoteCommand();
+                getClearNoteCommand();
+
+                getRefundYesMsgCommand();
+                getRefundNoMsgCommand();
+
+
+                AddNote();
+
+
                 MessagingCenter.Subscribe<object, string>(this, "Card_Payment", async (sender, arg) =>
                 {
-                    Console.WriteLine("Card Payment Clicked");
 
                     viewModel.MadaPaymentSelected();
 
                 });
-            }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-
-            try
-            {
                 MessagingCenter.Subscribe<object, string>(this, "Apple_Pay", async (sender, arg) =>
                 {
                     viewModel.ApplePaySelected();
-                    Console.WriteLine("Apple pay Clicked");
                 });
-            }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
                 MessagingCenter.Subscribe<object, string>(this, "SADAD", async (sender, arg) =>
                 {
 
-                    Console.WriteLine("SADAD Clicked");
                     viewModel.gotoSuccessPage();
                 });
-            }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
-            try
-            {
                 MessagingCenter.Subscribe<App, string>(this, "ApplePayData", async (sender, arg) =>
                 {
 
@@ -1217,23 +1173,21 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 });
+            }
+            catch (Exception)
+            {
+
+
+
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-            }
-
         }
 
         public void AddNote()
         {
             try
             {
-                if(NotesPopUpPageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(NotesPopUpPageViewModel.NoteString))
+                if (NotesPopUpPageViewModel.IsComingFromNotePage == true && !string.IsNullOrEmpty(NotesPopUpPageViewModel.NoteString))
                 {
                     if (App.ICRStatus == "E0001")
                     {
@@ -1357,10 +1311,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     NotesPopUpPageViewModel.NoteString = string.Empty;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1410,10 +1364,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1472,10 +1426,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 NotesPopUpPageViewModel.IsComingFromNotePage = false;
                 //AddNotePageViewModel.NoteString = string.Empty;
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1518,10 +1472,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     SetEnabledProperty();
                     //viewModel.IsMainButtonVisible = true;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+
+
 
                 }
             });
@@ -1669,10 +1623,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 //  PopupNavigation.Instance.PushAsync(new AddPopPageView(popUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -1725,7 +1679,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.TaxNoBackgroundImage = "re_Property_Tile_Background_White";
 
             viewModel.TaxYesLabelColor = Color.White;
-            viewModel.TaxNoLabelColor =  (Color)Application.Current.Resources["LightBlack"];
+            viewModel.TaxNoLabelColor = (Color)Application.Current.Resources["LightBlack"];
             viewModel.TaxIsMainButtonEnabled = true;
         }
 
@@ -1987,10 +1941,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
             return IsAllEntered;
         }
@@ -2047,10 +2001,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
             return IsAllEntered;
         }
@@ -2188,10 +2142,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
             return IsAllEntered;
         }
@@ -2361,10 +2315,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
             return IsAllEntered;
@@ -2842,10 +2796,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
             return IsAllEntered;
@@ -2990,10 +2944,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
             return IsAllEntered;
         }
@@ -3294,10 +3248,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //  BtnNextStep.IsEnabled = true;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
             return IsAllEntered;
@@ -3342,7 +3296,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.TaxYesBackgroundImage = "re_Property_Tile_Background_White";
 
             viewModel.TaxNoLabelColor = Color.White;
-            viewModel.TaxYesLabelColor =  (Color)Application.Current.Resources["LightBlack"];
+            viewModel.TaxYesLabelColor = (Color)Application.Current.Resources["LightBlack"];
             viewModel.TaxIsMainButtonEnabled = true;
 
             EntryVatSalesTaxAmount.Text = "";
@@ -3408,26 +3362,26 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //viewModel.TotalsalesAmt = viewModel.TotalAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
                 //viewModel.TotalsalesAdj = viewModel.TotalAdjustment(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
                 //viewModel.TotalsalesVat = viewModel.StdsalesVat15;
-               // viewModel.StdsalesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATRate003For5Percent);
+                // viewModel.StdsalesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATRate003For5Percent);
                 viewModel.StdsalesVatGovt = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.GovsupsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAdj, viewModel.VATRate002For15Percent);
                 viewModel.StdsalesVat5 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATRate003For5Percent);
                 viewModel.StdsalesVat15 = viewModel.StandardRatedSalesVatAmountForNewChangeRate(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATRate002For15Percent);
 
 
                 viewModel.StdsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
-                    viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
-                    viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
+                viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
+                viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
 
 
-                    viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
-                    viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
-                    viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
-                
+                viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
+                viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
+                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
+
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -3487,7 +3441,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccAdj5.Text = "0.00";
                 EntryImportsaccVat5.Text = "0.00";*/
 
-           
+
                 EntryVatAmount.Text = "0.00";
                 EntryVatAdjustmentWithSAR.Text = "0.00";
                 EntryStdsalesVat.Text = "0.00";
@@ -3549,19 +3503,19 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
 
                 viewModel.StdsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
-                    viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
-                    viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
+                viewModel.ResponseVATDeclarationD.StdsalesAmt = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
+                viewModel.ResponseVATDeclarationD.StdsalesAdj = viewModel.AddTwoAmount(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
 
-                    viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
-                    viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
-                    viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
-               
+                viewModel.TotalsalesAmt = viewModel.TotalAmountForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAmt, viewModel.VATNewModelFor5Percent.StdsalesAmt, viewModel.ResponseVATDeclarationD.SalesGccAmt, viewModel.ResponseVATDeclarationD.ZerosalesAmt, viewModel.ResponseVATDeclarationD.ExportsAmt, viewModel.ResponseVATDeclarationD.ExemptsalesAmt, viewModel.VATNewModelFor15Percent.GovsupsalesAmt);
+                viewModel.TotalsalesAdj = viewModel.TotalAdjustmentForSixVar(viewModel.VATNewModelFor15Percent.StdsalesAdj, viewModel.VATNewModelFor5Percent.StdsalesAdj, viewModel.ResponseVATDeclarationD.SalesGccAdj, viewModel.ResponseVATDeclarationD.ZerosalesAdj, viewModel.ResponseVATDeclarationD.ExportsAdj, viewModel.ResponseVATDeclarationD.ExemptsalesAdj, viewModel.VATNewModelFor15Percent.GovsupsalesAdj);
+                viewModel.TotalsalesVat = viewModel.AddTwoAmount(viewModel.StdsalesVat15, viewModel.StdsalesVat5, viewModel.StdsalesVatGovt);
+
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
 
@@ -3625,10 +3579,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 EntryImportsaccAdj5.Text = "0.00";//string.Empty;
                 EntryImportsaccVat5.Text = "0.00";
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
 
@@ -3660,13 +3614,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatAmount.Text) && EntryVatAmount.Text.Contains(","))
                 {
                     EntryVatAmount.Text = EntryVatAmount.Text.Replace(",", "");
-                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -3687,7 +3641,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount.Text);
                     EntryVatAmount.Text = ValueWithComma;
-                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -3696,10 +3650,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -3755,10 +3709,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -3790,13 +3744,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryVatAdjustmentWithSAR.Text) && EntryVatAdjustmentWithSAR.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR.Text = EntryVatAdjustmentWithSAR.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -3818,13 +3772,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntrySalesGccAmt.Text) && EntrySalesGccAmt.Text.Contains(","))
                 {
                     EntrySalesGccAmt.Text = EntrySalesGccAmt.Text.Replace(",", "");
-                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntrySalesGccAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3844,13 +3798,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntrySalesGccAdj.Text) && EntrySalesGccAdj.Text.Contains(","))
                 {
                     EntrySalesGccAdj.Text = EntrySalesGccAdj.Text.Replace(",", "");
-                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZerosalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3870,13 +3824,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZerosalesAmt.Text) && EntryZerosalesAmt.Text.Contains(","))
                 {
                     EntryZerosalesAmt.Text = EntryZerosalesAmt.Text.Replace(",", "");
-                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZerosalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3896,13 +3850,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZerosalesAdj.Text) && EntryZerosalesAdj.Text.Contains(","))
                 {
                     EntryZerosalesAdj.Text = EntryZerosalesAdj.Text.Replace(",", "");
-                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExportsAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3922,13 +3876,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExportsAmt.Text) && EntryExportsAmt.Text.Contains(","))
                 {
                     EntryExportsAmt.Text = EntryExportsAmt.Text.Replace(",", "");
-                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExportsAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3948,13 +3902,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExportsAdj.Text) && EntryExportsAdj.Text.Contains(","))
                 {
                     EntryExportsAdj.Text = EntryExportsAdj.Text.Replace(",", "");
-                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptsalesAmt_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -3974,13 +3928,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExemptsalesAmt.Text) && EntryExemptsalesAmt.Text.Contains(","))
                 {
                     EntryExemptsalesAmt.Text = EntryExemptsalesAmt.Text.Replace(",", "");
-                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptsalesAdj_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -4044,13 +3998,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt.Text) && EntryStdpurchaseAmt.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt.Text = EntryStdpurchaseAmt.Text.Replace(",", "");
-                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryStdpurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -4066,13 +4020,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj.Text) && EntryStdpurchaseAdj.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj.Text = EntryStdpurchaseAdj.Text.Replace(",", "");
-                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZVatAmountWithSARFocused(object sender, FocusEventArgs e)
@@ -4088,13 +4042,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR.Text) && EntryZVatAmountWithSAR.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR.Text = EntryZVatAmountWithSAR.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryImportspaidAdjFocused(object sender, FocusEventArgs e)
@@ -4110,13 +4064,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj.Text) && EntryImportspaidAdj.Text.Contains(","))
                 {
                     EntryImportspaidAdj.Text = EntryImportspaidAdj.Text.Replace(",", "");
-                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryImportsaccAmtFocused(object sender, FocusEventArgs e)
@@ -4132,13 +4086,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt.Text) && EntryImportsaccAmt.Text.Contains(","))
                 {
                     EntryImportsaccAmt.Text = EntryImportsaccAmt.Text.Replace(",", "");
-                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryImportsaccAdjFocused(object sender, FocusEventArgs e)
@@ -4154,13 +4108,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj.Text) && EntryImportsaccAdj.Text.Contains(","))
                 {
                     EntryImportsaccAdj.Text = EntryImportsaccAdj.Text.Replace(",", "");
-                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZeropurchaseAmtFocused(object sender, FocusEventArgs e)
@@ -4176,13 +4130,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAmt.Text) && EntryZeropurchaseAmt.Text.Contains(","))
                 {
                     EntryZeropurchaseAmt.Text = EntryZeropurchaseAmt.Text.Replace(",", "");
-                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZeropurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -4198,13 +4152,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZeropurchaseAdj.Text) && EntryZeropurchaseAdj.Text.Contains(","))
                 {
                     EntryZeropurchaseAdj.Text = EntryZeropurchaseAdj.Text.Replace(",", "");
-                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptpurchaseAmtFocused(object sender, FocusEventArgs e)
@@ -4220,13 +4174,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAmt.Text) && EntryExemptpurchaseAmt.Text.Contains(","))
                 {
                     EntryExemptpurchaseAmt.Text = EntryExemptpurchaseAmt.Text.Replace(",", "");
-                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptpurchaseAdjFocused(object sender, FocusEventArgs e)
@@ -4242,13 +4196,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExemptpurchaseAdj.Text) && EntryExemptpurchaseAdj.Text.Contains(","))
                 {
                     EntryExemptpurchaseAdj.Text = EntryExemptpurchaseAdj.Text.Replace(",", "");
-                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryPreperiodcorrFocused(object sender, FocusEventArgs e)
@@ -4264,13 +4218,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryPreperiodcorr.Text) && EntryPreperiodcorr.Text.Contains(","))
                 {
                     EntryPreperiodcorr.Text = EntryPreperiodcorr.Text.Replace(",", "");
-                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -4287,7 +4241,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR.Text);
                     EntryVatAdjustmentWithSAR.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4296,10 +4250,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckOneaOneb(decimal EntryVatAmount, decimal EntryVatAdjustmentWithSAR)
@@ -4385,7 +4339,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAmt.Text);
                     EntrySalesGccAmt.Text = ValueWithComma;
-                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntrySalesGccAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4394,10 +4348,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntrySalesGccAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4413,7 +4367,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntrySalesGccAdj.Text);
                     EntrySalesGccAdj.Text = ValueWithComma;
-                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntrySalesGccAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4422,10 +4376,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     CheckSalesMandetoryFields();
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckTwoaTwob(decimal EntrySalesGccAmt, decimal EntrySalesGccAdj)
@@ -4504,10 +4458,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZerosalesAmt_Unfocused(object sender, FocusEventArgs e)
@@ -4567,7 +4521,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAmt.Text);
                     EntryZerosalesAmt.Text = ValueWithComma;
-                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZerosalesAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4577,10 +4531,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZerosalesAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4596,7 +4550,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZerosalesAdj.Text);
                     EntryZerosalesAdj.Text = ValueWithComma;
-                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZerosalesAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4606,10 +4560,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckThreeaThreeb(decimal EntryZerosalesAmt, decimal EntryZerosalesAdj, string Massege)
@@ -4739,7 +4693,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAmt.Text);
                     EntryExportsAmt.Text = ValueWithComma;
-                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExportsAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4749,10 +4703,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExportsAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4791,7 +4745,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExportsAdj.Text);
                     EntryExportsAdj.Text = ValueWithComma;
-                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExportsAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4801,10 +4755,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckFouraFourb(decimal EntryExportsAmt, decimal EntryExportsAdj, string Massege)
@@ -4941,7 +4895,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAmt.Text);
                     EntryExemptsalesAmt.Text = ValueWithComma;
-                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptsalesAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -4951,10 +4905,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptsalesAdj_Unfocused(object sender, FocusEventArgs e)
@@ -4998,7 +4952,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptsalesAdj.Text);
                     EntryExemptsalesAdj.Text = ValueWithComma;
-                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5008,10 +4962,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckFiveaFiveb(decimal EntryExemptsalesAmt, decimal EntryExemptsalesAdj, string Message)
@@ -5161,7 +5115,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt.Text);
                     EntryStdpurchaseAmt.Text = ValueWithComma;
-                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5171,10 +5125,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryStdpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5190,7 +5144,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj.Text);
                     EntryStdpurchaseAdj.Text = ValueWithComma;
-                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5200,10 +5154,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckSevenaSixa(decimal EntryStdpurchaseAmt, decimal LabelTotalsalesAmt)
@@ -5304,7 +5258,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR.Text);
                     EntryZVatAmountWithSAR.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5314,10 +5268,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryImportspaidAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5333,7 +5287,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj.Text);
                     EntryImportspaidAdj.Text = ValueWithComma;
-                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5343,10 +5297,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckEightaEightb(decimal EntryZVatAmountWithSAR, decimal EntryImportspaidAdj)
@@ -5407,7 +5361,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt.Text);
                     EntryImportsaccAmt.Text = ValueWithComma;
-                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5417,10 +5371,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryImportsaccAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5436,7 +5390,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj.Text);
                     EntryImportsaccAdj.Text = ValueWithComma;
-                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5446,10 +5400,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckNineaNineb(decimal EntryImportsaccAmt, decimal EntryImportsaccAdj)
@@ -5511,7 +5465,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAmt.Text);
                     EntryZeropurchaseAmt.Text = ValueWithComma;
-                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZeropurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5521,10 +5475,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryZeropurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5540,7 +5494,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZeropurchaseAdj.Text);
                     EntryZeropurchaseAdj.Text = ValueWithComma;
-                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZeropurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5550,10 +5504,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckTenaTenb(decimal EntryZeropurchaseAmt, decimal EntryZeropurchaseAdj)
@@ -5612,7 +5566,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAmt.Text);
                     EntryExemptpurchaseAmt.Text = ValueWithComma;
-                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptpurchaseAmt.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5622,10 +5576,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryExemptpurchaseAdj_Unfocused(object sender, FocusEventArgs e)
@@ -5641,7 +5595,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryExemptpurchaseAdj.Text);
                     EntryExemptpurchaseAdj.Text = ValueWithComma;
-                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptpurchaseAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5651,10 +5605,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         public void CheckElevenaElevenb(decimal EntryExemptpurchaseAmt, decimal EntryExemptpurchaseAdj)
@@ -5808,7 +5762,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryPreperiodcorr.Text);
                     EntryPreperiodcorr.Text = ValueWithComma;
-                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryPreperiodcorr.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5845,13 +5799,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatAmount15.Text) && EntryVatAmount15.Text.Contains(","))
                 {
                     EntryVatAmount15.Text = EntryVatAmount15.Text.Replace(",", "");
-                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -5867,13 +5821,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR15.Text) && EntryVatAdjustmentWithSAR15.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR15.Text = EntryVatAdjustmentWithSAR15.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
 
 
@@ -5896,7 +5850,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount15.Text);
                     EntryVatAmount15.Text = ValueWithComma;
-                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5906,10 +5860,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -5926,7 +5880,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR15.Text);
                     EntryVatAdjustmentWithSAR15.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -5936,10 +5890,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6019,10 +5973,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6102,13 +6056,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
-       
+
         private void EntryVatAmount5_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             CheckSalesMandetoryFields();
@@ -6126,13 +6080,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatAmount5.Text) && EntryVatAmount5.Text.Contains(","))
                 {
                     EntryVatAmount5.Text = EntryVatAmount5.Text.Replace(",", "");
-                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6153,7 +6107,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAmount5.Text);
                     EntryVatAmount5.Text = ValueWithComma;
-                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAmount5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6163,10 +6117,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryVatSalesSubjecttoTaxAmount_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -6186,13 +6140,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatSalesTaxAmount.Text) && EntryVatSalesTaxAmount.Text.Contains(","))
                 {
                     EntryVatSalesTaxAmount.Text = EntryVatSalesTaxAmount.Text.Replace(",", "");
-                    EntryVatSalesTaxAmount.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatSalesTaxAmount.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryVatSalesSubjecttoTaxAmount_Unfocused(object sender, FocusEventArgs e)
@@ -6212,7 +6166,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatSalesTaxAmount.Text);
                     EntryVatSalesTaxAmount.Text = ValueWithComma;
-                    EntryVatSalesTaxAmount.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatSalesTaxAmount.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6222,10 +6176,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6249,13 +6203,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatAdjustmentWithSAR5.Text) && EntryVatAdjustmentWithSAR5.Text.Contains(","))
                 {
                     EntryVatAdjustmentWithSAR5.Text = EntryVatAdjustmentWithSAR5.Text.Replace(",", "");
-                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
 
         }
@@ -6277,7 +6231,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatAdjustmentWithSAR5.Text);
                     EntryVatAdjustmentWithSAR5.Text = ValueWithComma;
-                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatAdjustmentWithSAR5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6287,10 +6241,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryVatSalesSubjectToTaxAdjustmentFocused(object sender, FocusEventArgs e)
@@ -6305,13 +6259,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!String.IsNullOrEmpty(EntryVatSalesTaxAdjustmentWithSAR.Text) && EntryVatSalesTaxAdjustmentWithSAR.Text.Contains(","))
                 {
                     EntryVatSalesTaxAdjustmentWithSAR.Text = EntryVatSalesTaxAdjustmentWithSAR.Text.Replace(",", "");
-                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
 
         }
@@ -6333,7 +6287,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryVatSalesTaxAdjustmentWithSAR.Text);
                     EntryVatSalesTaxAdjustmentWithSAR.Text = ValueWithComma;
-                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryVatSalesTaxAdjustmentWithSAR.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6343,10 +6297,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void EntryStdpurchaseAmt15Focused(object sender, FocusEventArgs e)
@@ -6362,13 +6316,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt15.Text) && EntryStdpurchaseAmt15.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt15.Text = EntryStdpurchaseAmt15.Text.Replace(",", "");
-                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6385,13 +6339,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj15.Text) && EntryStdpurchaseAdj15.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj15.Text = EntryStdpurchaseAdj15.Text.Replace(",", "");
-                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6425,7 +6379,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt15.Text);
                     EntryStdpurchaseAmt15.Text = ValueWithComma;
-                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6435,10 +6389,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6455,7 +6409,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj15.Text);
                     EntryStdpurchaseAdj15.Text = ValueWithComma;
-                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6465,10 +6419,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6485,13 +6439,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAmt5.Text) && EntryStdpurchaseAmt5.Text.Contains(","))
                 {
                     EntryStdpurchaseAmt5.Text = EntryStdpurchaseAmt5.Text.Replace(",", "");
-                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6520,7 +6474,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAmt5.Text);
                     EntryStdpurchaseAmt5.Text = ValueWithComma;
-                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAmt5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6530,10 +6484,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6550,13 +6504,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryStdpurchaseAdj5.Text) && EntryStdpurchaseAdj5.Text.Contains(","))
                 {
                     EntryStdpurchaseAdj5.Text = EntryStdpurchaseAdj5.Text.Replace(",", "");
-                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6578,7 +6532,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryStdpurchaseAdj5.Text);
                     EntryStdpurchaseAdj5.Text = ValueWithComma;
-                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryStdpurchaseAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6588,10 +6542,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6608,13 +6562,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR15.Text) && EntryZVatAmountWithSAR15.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR15.Text = EntryZVatAmountWithSAR15.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6636,7 +6590,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR15.Text);
                     EntryZVatAmountWithSAR15.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6646,10 +6600,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6666,13 +6620,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj15.Text) && EntryImportspaidAdj15.Text.Contains(","))
                 {
                     EntryImportspaidAdj15.Text = EntryImportspaidAdj15.Text.Replace(",", "");
-                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6694,7 +6648,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj15.Text);
                     EntryImportspaidAdj15.Text = ValueWithComma;
-                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6704,10 +6658,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6724,13 +6678,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryZVatAmountWithSAR5.Text) && EntryZVatAmountWithSAR5.Text.Contains(","))
                 {
                     EntryZVatAmountWithSAR5.Text = EntryZVatAmountWithSAR5.Text.Replace(",", "");
-                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6752,7 +6706,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryZVatAmountWithSAR5.Text);
                     EntryZVatAmountWithSAR5.Text = ValueWithComma;
-                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryZVatAmountWithSAR5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6762,10 +6716,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6782,13 +6736,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportspaidAdj5.Text) && EntryImportspaidAdj5.Text.Contains(","))
                 {
                     EntryImportspaidAdj5.Text = EntryImportspaidAdj5.Text.Replace(",", "");
-                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6810,7 +6764,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportspaidAdj5.Text);
                     EntryImportspaidAdj5.Text = ValueWithComma;
-                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportspaidAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6820,10 +6774,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6840,13 +6794,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt15.Text) && EntryImportsaccAmt15.Text.Contains(","))
                 {
                     EntryImportsaccAmt15.Text = EntryImportsaccAmt15.Text.Replace(",", "");
-                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6868,7 +6822,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt15.Text);
                     EntryImportsaccAmt15.Text = ValueWithComma;
-                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6878,10 +6832,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6898,13 +6852,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj15.Text) && EntryImportsaccAdj15.Text.Contains(","))
                 {
                     EntryImportsaccAdj15.Text = EntryImportsaccAdj15.Text.Replace(",", "");
-                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6926,7 +6880,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj15.Text);
                     EntryImportsaccAdj15.Text = ValueWithComma;
-                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj15.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6936,10 +6890,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6956,13 +6910,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAmt5.Text) && EntryImportsaccAmt5.Text.Contains(","))
                 {
                     EntryImportsaccAmt5.Text = EntryImportsaccAmt5.Text.Replace(",", "");
-                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -6984,7 +6938,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAmt5.Text);
                     EntryImportsaccAmt5.Text = ValueWithComma;
-                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAmt5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -6994,10 +6948,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7014,13 +6968,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryImportsaccAdj5.Text) && EntryImportsaccAdj5.Text.Contains(","))
                 {
                     EntryImportsaccAdj5.Text = EntryImportsaccAdj5.Text.Replace(",", "");
-                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7042,7 +6996,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.IsUnFocusedTextBox = true;
                     string ValueWithComma = UtilityManager.GetCommaSeparatedAmount(EntryImportsaccAdj5.Text);
                     EntryImportsaccAdj5.Text = ValueWithComma;
-                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryImportsaccAdj5.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
                 else
                 {
@@ -7052,10 +7006,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     // UserName.TextColor = (Color)App.Current.Resources["Primary"];;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7131,10 +7085,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7203,10 +7157,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7274,10 +7228,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms15(object sender, TextChangedEventArgs e)
@@ -7365,10 +7319,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -7457,10 +7411,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -7540,10 +7494,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7622,10 +7576,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7644,10 +7598,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -7667,10 +7621,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -7744,10 +7698,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7820,10 +7774,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -7867,10 +7821,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void ClickGestureRecognizer_ClickedForVatPaidatcustoms(object sender, TextChangedEventArgs e)
@@ -7930,10 +7884,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
             //   viewModel.ResponseVATDeclarationD.ImportspaidVat=viewModel.
         }
@@ -7984,10 +7938,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void ClickGestureRecognizer_ClickedForAllPurchaseAmount(object sender, TextChangedEventArgs e)
@@ -8049,10 +8003,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
         private void ClickGestureRecognizer_ClickedForAllPurchaseAdjustment(object sender, TextChangedEventArgs e)
@@ -8116,10 +8070,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -8190,10 +8144,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         senderObj.Text = senderObj.Text.Substring(0, senderObj.Text.Length - 1).ToString();
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -8210,13 +8164,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 if (!string.IsNullOrEmpty(EntryExemptsalesAdj.Text) && EntryExemptsalesAdj.Text.Contains(","))
                 {
                     EntryExemptsalesAdj.Text = EntryExemptsalesAdj.Text.Replace(",", "");
-                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"];;
+                    EntryExemptsalesAdj.TextColor = (Color)App.Current.Resources["Primary"]; ;
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -8259,10 +8213,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
             }
         }
 
@@ -8326,10 +8280,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8397,10 +8351,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8453,10 +8407,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8512,10 +8466,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 //PopupNavigation.Instance.PushAsync(new ShowVatInformationForPrivatehealthCare());
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8575,10 +8529,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
 
@@ -8639,10 +8593,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8700,10 +8654,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
 
@@ -8763,10 +8717,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8825,10 +8779,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8884,10 +8838,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -8945,10 +8899,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9005,10 +8959,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9064,10 +9018,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9124,10 +9078,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9184,10 +9138,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9245,10 +9199,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9305,10 +9259,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
 
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9365,10 +9319,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9402,10 +9356,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9443,10 +9397,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9480,10 +9434,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9575,10 +9529,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                             case VATReturnUpdatedUITabEnum.Instrunction:
                                 Instrunctionsclicked();
                                 break;
-
-                            //case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                            //    TaxpayerDetailsclicked();
-                            //    break;
                             case VATReturnUpdatedUITabEnum.VATReturns:
                                 VatReturnclicked();
                                 break;
@@ -9693,19 +9643,13 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                         PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
                     }
-
-
-                    //if (viewModel.IsDeclarationCheckedForSummary && (App.ICRStatus == "E0001" || App.ICRStatus == "E0013"))
-                    //    {
-                    //        await viewModel.SubmitClicked();
-                    //    }
                 }
 
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }
@@ -9729,10 +9673,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 switch (viewModel.currentTab)
                 {
-                    //case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                    //    viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
-                    //    ManageButtonsName();
-                    //    break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         ComeToInstrunctionsclicked();
                         viewModel.IsCheckedTaxPayerDetailsInfo = false;
@@ -9764,11 +9704,6 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 switch (viewModel.currentTab)
                 {
-                    //case VATReturnUpdatedUITabEnum.TaxpayerDetails:
-                    //    viewModel.currentTab = VATReturnUpdatedUITabEnum.Instrunction;
-                    //    viewModel.IsCheckedTaxPayerDetailsInfo = false;
-                    //    ManageButtonsName();
-                    //    break;
                     case VATReturnUpdatedUITabEnum.VATReturns:
                         ComeToInstrunctionsclicked();
                         viewModel.ManageButtonsNameOnViewModel();
@@ -9816,10 +9751,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 await viewModel.VATReturnAmendAsync();
             }
-            catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            {
+
+
 
             }
         }

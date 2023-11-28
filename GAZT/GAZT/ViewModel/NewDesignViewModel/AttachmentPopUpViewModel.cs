@@ -363,7 +363,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -533,7 +533,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                 }
             }

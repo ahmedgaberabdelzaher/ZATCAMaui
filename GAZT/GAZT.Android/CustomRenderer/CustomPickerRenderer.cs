@@ -4,8 +4,6 @@ using Android.Content;
 using Android.Text;
 using GAZT;
 using GAZT.Droid.CustomRenderer;
-using Android.Graphics.Drawables;
-using Android.Support.V4.Content;
 using EGAZT;
 
 [assembly: ExportRenderer(typeof(CustomPicker), typeof(CustomPickerRenderer))]

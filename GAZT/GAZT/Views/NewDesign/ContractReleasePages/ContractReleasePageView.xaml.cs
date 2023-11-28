@@ -63,10 +63,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     viewModel.IsHijriCal = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -137,10 +137,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -164,10 +164,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -197,7 +197,6 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
                 viewModel.updatePicker();
-                Console.WriteLine(arg);
                 OnAppearing();
             });
 
@@ -278,10 +277,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -306,10 +305,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             viewModel.MakeCalculations();
@@ -395,10 +394,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 ContractTotalAmountText.Text = String.Format("{0:N}", Convert.ToDouble(ContractTotalAmountText.Text));
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -416,10 +415,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 AmountoReleaseTxt.Text = String.Format("{0:N}", Convert.ToDouble(AmountoReleaseTxt.Text));
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -477,10 +476,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -514,10 +513,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

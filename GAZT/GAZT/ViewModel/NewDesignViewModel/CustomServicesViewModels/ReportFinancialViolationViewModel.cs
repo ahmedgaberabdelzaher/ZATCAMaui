@@ -557,7 +557,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
                 //return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // The user canceled or something went wrong
             }
@@ -577,7 +577,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     Ports = data.Item1.Data;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -595,7 +595,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     BalaghTypes = data.Item1.data;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -665,7 +665,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

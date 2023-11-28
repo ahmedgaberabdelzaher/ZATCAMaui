@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -11,7 +10,6 @@ using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.Views.NewDesign.EstimatedZAKATReturnsPages;
 using EGAZT.Views.NewDesign.GenericPickers;
-using EGAZT.Views.NewDesign.VATDeclarationPages;
 using EGAZT.Views.NewDesign.ZakatDeregistration;
 using EGAZT.Views.NewDesign.ZakatInstalmentPlan;
 using GalaSoft.MvvmLight;
@@ -1723,9 +1721,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                 }
 
                 RaisePropertyChanged("PickerModel");
@@ -2932,10 +2930,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             MessagingCenter.Send<TINDeregistrationPageViewModel>(this, "SelectedOutletDecisionOption");
                             // MessagingCenter.Send<TINDeregistrationModel>(SelectedOutletOption, "selectedOutletOption");
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
                     }
                     if (TinDeregistrationData.ADregOpt == "1" || TinDeregistrationData.ADregOpt == "2")
@@ -3009,8 +3007,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -3025,15 +3023,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     });
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (GAZTErrorException ex)
+            catch (GAZTErrorException)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -3090,7 +3087,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
             catch (InternetException ex)
             {
@@ -3102,9 +3099,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
 
         }
@@ -3126,7 +3123,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
             catch (InternetException ex)
             {
@@ -3138,9 +3135,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
 
         }
@@ -3156,8 +3153,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3183,8 +3180,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -3385,8 +3382,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                     catch (HttpRequestException ex)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                         Device.BeginInvokeOnMainThread(async () =>
@@ -3400,10 +3397,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             //_navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -3638,10 +3635,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             //_navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
                         {
@@ -3847,10 +3844,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             //_navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
 
                         string MessageForTheUser = AppResources.ZZSomethingwentwrong;
                         Device.BeginInvokeOnMainThread(async () =>
@@ -3901,10 +3898,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             IDTypeDataModel = JsonConvert.DeserializeObject<VATSignUpD>(_responseData);
                             FirstNameFromIdType = IDTypeDataModel.Name1;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             Console.Write("---------------------------");
-                            Console.Write(ex.StackTrace.ToString());
+                            
 
                             ErrorObj errorMesg = JsonConvert.DeserializeObject<ErrorObj>(resultData);
                             if (errorMesg != null && errorMesg.error != null && errorMesg.error.innererror != null && errorMesg.error.innererror.errordetails != null && errorMesg.error.innererror.errordetails[0].message != null)
@@ -4036,8 +4033,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTErrorException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -4046,10 +4043,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -4172,8 +4169,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTVATChangeFillingPeriodException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
@@ -4185,8 +4182,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -4228,10 +4225,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 PermitOutletDecisionOptions = new List<TINDeregistrationModel>(tempValues);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -4284,10 +4281,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -4557,9 +4554,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
         }
 
@@ -4645,10 +4642,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 //}
 
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                                 return;
                             }
 
@@ -4668,9 +4665,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                             {
                                 EnableAttachmentsView();
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                                 
                             }
 
                             break;
@@ -4685,8 +4682,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -4825,10 +4822,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                                             permitInfo.APermitEffDtTb = ConvertDateFormat(DeregistrationDate);
 
                                                         }
-                                                        catch (Exception ex)
+                                                        catch (Exception)
                                                         {
-                                                            Console.WriteLine(ex.Message);
-                                                            Console.Write(ex.StackTrace.ToString());
+                                                            
+                                                            
                                                         }
 
                                                     }
@@ -4907,16 +4904,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                     }
 
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
 
                         }
@@ -4929,10 +4926,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         }
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 if (SelectedOutletOption.OutletOptionIndex == "2")
@@ -5046,8 +5043,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5241,13 +5238,13 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     //await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -5276,7 +5273,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
             catch (InternetException ex)
             {
@@ -5288,9 +5285,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
 
         }
@@ -5327,16 +5324,16 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     {
                         EnableAttachmentsView();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                         
                     }
                 }
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5348,9 +5345,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
         }
 
@@ -5387,8 +5384,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 App.HideProgressView();
             }
             catch (InternetException ex)
@@ -5430,8 +5427,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5475,7 +5472,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
         //        }
         //        return list;
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    {
         //        return new List<Attachment>();
         //    }
@@ -5500,8 +5497,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5513,10 +5510,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -5581,8 +5578,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 catch (InternetException ex)
                 {
@@ -5597,8 +5594,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5626,8 +5623,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 catch (InternetException ex)
                 {
@@ -5642,8 +5639,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (InternetException ex)
             {
@@ -5940,10 +5937,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 //// attachmentsListViewDataString = JsonConvert.SerializeObject(attachmentsListViewData);
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopulateAttachments(List<Attachment> attachments)
@@ -6051,7 +6048,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
             catch (InternetException ex)
             {
@@ -6063,9 +6060,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
             }
         }
 
@@ -6102,10 +6099,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 TinDeregistrationSummaryReasonData = new List<TINDeregistrationSummaryModel>(summaryReasonData);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -6141,10 +6138,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 TinDeregistrationSummaryDeclarationData = new List<TINDeregistrationSummaryModel>(summaryDeclarationData);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -6267,10 +6264,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return;
             }
         }
@@ -6285,8 +6282,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -6315,9 +6312,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -6439,7 +6436,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     //    TinDeregistrationData.AIdType = SelectedIdtype;
                     //}
-                    //catch(Exception ex)
+                    //catch(Exception)
                     //{
 
                     //}
@@ -6507,10 +6504,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 }
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
                         try
@@ -6546,10 +6543,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                 //permitInfo.APermitDobTb = ConvertDateFormat(permitInfo.APermitDobTb);
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                         }
 
                         if (permitInfo.APermitIdNoTb == null)
@@ -6565,14 +6562,14 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         //}
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     //await Task.Run(() =>
                     //{
                     //    App.HideProgressView();
                     //});
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                 }
 
                 List<Attachment> tempAttachDetSet = new List<Attachment>();
@@ -6663,8 +6660,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 catch (InternetException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     isSubmitted = false;
                     //await Task.Run(() =>
                     //{
@@ -6696,11 +6693,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     isSubmitted = false;
 
-                    Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                     
                     //await Task.Run(() =>
                     //{
                     //    App.HideProgressView();
@@ -6713,8 +6710,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 isSubmitted = false;
 
                 //await Task.Run(() =>
@@ -6747,11 +6744,11 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 isSubmitted = false;
 
-                Console.WriteLine(ex.Message); Console.WriteLine(ex.ToString());
+                 
                 //await Task.Run(() =>
                 //{
                 //    App.HideProgressView();
@@ -6867,7 +6864,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 });
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -6898,10 +6895,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -6916,7 +6913,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     //   _navigationService.NavigateTo(AppResources.Somethingwentwrong, AppResources.ZError);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -6940,10 +6937,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 return list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return new List<Attachment>();
             }
 
@@ -7138,10 +7135,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

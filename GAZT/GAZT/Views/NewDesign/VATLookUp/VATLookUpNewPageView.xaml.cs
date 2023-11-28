@@ -143,7 +143,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                    // viewModel.LookupNumber = result.Text;
                     viewModel.getBarcodeData(result.Text);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -178,7 +178,7 @@ namespace EGAZT.Views.NewDesign.VATLookUp
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }

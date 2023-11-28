@@ -70,10 +70,10 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -121,11 +121,11 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 viewModel.DataSource.SelectedValue = e.NewValue.ToString();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -139,11 +139,11 @@ namespace EGAZT.Views.NewDesign.GenericPickers
                 MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -160,11 +160,11 @@ namespace EGAZT.Views.NewDesign.GenericPickers
             {
                 MessagingCenter.Send<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", viewModel.DataSource);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
     }

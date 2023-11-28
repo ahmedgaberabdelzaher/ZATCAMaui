@@ -139,12 +139,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     });
                 }
             }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            { 
             }
         }
 

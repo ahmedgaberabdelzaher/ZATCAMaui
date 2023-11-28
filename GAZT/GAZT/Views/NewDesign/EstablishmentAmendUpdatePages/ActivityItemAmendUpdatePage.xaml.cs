@@ -143,10 +143,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
 
@@ -166,7 +166,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
         void CRSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
-            Console.WriteLine("CR Main " + CRMainActivity.IsOn);
             if (CRMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -175,7 +174,6 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
 
          void LicenseSwitch_StateChanged(System.Object sender, Syncfusion.XForms.Buttons.SwitchStateChangedEventArgs e)
         {
-            Console.WriteLine("License Main " + LicenseMainActivity.IsOn);
             if (LicenseMainActivity?.IsOn == true && viewModel?.NregActivityList?.Count > 0)
             {
                 viewModel?.NregActivityList?.ForEach(i => i.Actcat = "S");
@@ -230,10 +228,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.CRValidFrom = _crvalidFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+            catch (Exception)
+            { 
             }
         }
 
@@ -255,10 +251,8 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                 viewModel.ValidFrom = _validFrom.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
             }
         }
     }

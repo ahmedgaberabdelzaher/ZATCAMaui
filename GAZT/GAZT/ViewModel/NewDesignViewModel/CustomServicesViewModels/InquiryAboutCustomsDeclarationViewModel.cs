@@ -745,7 +745,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                    // SelectedPort = null;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -763,7 +763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     FeesDescription = data.Item1;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -782,7 +782,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     DeclartionTpesStaticLst = DeclarationTypes;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -800,7 +800,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                      CarriersStaticLst=Carriers;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -868,7 +868,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsMainPage = true;
                     }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -919,7 +919,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     TotalFees = total;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -946,7 +946,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -982,7 +982,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsMainPage = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1238,7 +1238,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                             MessageTxt = AppResources.InvalidOTP;
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                        
                     }
@@ -1342,7 +1342,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1537,7 +1537,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     }*/
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

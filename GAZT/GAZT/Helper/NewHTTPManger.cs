@@ -83,7 +83,7 @@ namespace EGAZT.Helper
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
@@ -157,7 +157,7 @@ namespace EGAZT.Helper
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
@@ -251,7 +251,7 @@ namespace EGAZT.Helper
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 await UserDialogs.Instance.AlertAsync(AppResources.ServerErrorOrNoInternetConnection, AppResources.ServerError, AppResources.OKText);
                 return null;

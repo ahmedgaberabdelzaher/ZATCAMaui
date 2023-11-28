@@ -8,13 +8,10 @@ using GAZT;
 using System.Linq;
 using System.Collections.Generic;
 using EGAZT.Services.Interface;
-using System.Linq.Expressions;
 using Rg.Plugins.Popup.Services;
-using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
 using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 using EGAZT.Helper;
-using System.Threading.Tasks;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -27,6 +24,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
         private bool isComingGoingSelected;
         private bool isPortSelected;
         private bool isTravelPurposeSelected;
+        private bool isPlatesCountrySelected;
+        private bool isPlatesCitySelected;
         private bool isFirstTime = true;
         public bool isPassengerPage = true;
         public bool isTripPage;
@@ -152,7 +151,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         SearchText = string.Empty;
                     }
@@ -206,6 +205,32 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isTravelPurposeSelected = false;
 
                         }
+                        else if (isPlatesCountrySelected)
+                        {
+                            HasPlatesCity = false;
+                            SubmitModel.travelerDeclaration.plateCountryCode = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.PlatesCountryName = e.Name;
+                            isPlatesCountrySelected = false;
+                            if (SubmitModel.travelerDeclaration.plateCountryCode == 120 || SubmitModel.travelerDeclaration.plateCountryCode == 110 || SubmitModel.travelerDeclaration.plateCountryCode == 115 | SubmitModel.travelerDeclaration.plateCountryCode == 113)
+                            {
+                                HasPlatesCity = true;
+                            }
+                            else
+                            {
+                                HasPlatesCity = false;
+                            }
+                           
+                            SubmitModel.travelerDeclaration.plateCityCode = 0;
+                            SubmitModel.travelerDeclaration.PlatesCityName = string.Empty;
+
+                        }
+                        else if (isPlatesCitySelected)
+                        {
+                            SubmitModel.travelerDeclaration.plateCityCode = int.Parse(e.Id);
+                            SubmitModel.travelerDeclaration.PlatesCityName = e.Name;
+                            isPlatesCitySelected = false;
+
+                        }
                         else
                         {
                             SubmitModel.travelerDeclaration.CountryCode = $"+{Regex.Replace(e.Name, @"[^\d]", "")}";
@@ -217,7 +242,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         SearchText = string.Empty;
                         TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         IsShowMsgView = true;
@@ -274,7 +299,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     await downloadFile.DownloadAcknowledgementAsync($"{App.VatCustom}Reports?refCode={TravelerDeclarationResponse.ReferenceID}&travelId={TravelerDeclarationResponse.travelID}&languageCode={Lang}", _dialogService);
                     IsLoading = false;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     IsLoading = false;
                 }
@@ -333,6 +358,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
 
         #endregion
+
         public EDeclarationInformationsViewModel(INavigationService navigationService, IDialogService dialogService, IE_DeclerationServices declerationServices) : base(navigationService, dialogService, declerationServices)
         {
         }

@@ -42,9 +42,8 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     if (sender is ListView lv) lv.SelectedItem = null;
                 };
             }
-            catch(Exception er)
+            catch(Exception )
             {
-                Console.WriteLine(er.Message);
             }
         }
         private void SetLTR()
@@ -86,10 +85,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

@@ -50,10 +50,10 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 }
                 viewModel.NextButtonText = AppResources.ZZNext;
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -74,10 +74,10 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 }
                 viewModel.NextButtonText = AppResources.ZZNext;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -95,10 +95,10 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                 
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -117,10 +117,10 @@ namespace EGAZT.Views.NewDesign.OnboardingPages
                
               
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

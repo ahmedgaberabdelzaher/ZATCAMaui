@@ -513,10 +513,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                         //viewModel._navigationService.GoBack();
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                         Device.BeginInvokeOnMainThread(async () =>
                     {
                         await Task.Run(() =>
@@ -535,8 +535,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
         }
         catch (InternetException ex)
         {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.NetworkConnectivityIssue));
@@ -544,10 +544,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 _navigationService.GoBack();
             });
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
             {
                 await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.ZZSomethingwentwrong));
@@ -655,20 +655,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                 {
                                     ClearOTPForm();
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
 
                                 }
                                 await navigateToListPage();
                                 MobileNumber = string.Empty;
                             }
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                             Device.BeginInvokeOnMainThread(async () =>
                             {
                                 await Task.Run(() =>
@@ -720,8 +720,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await Task.Run(() =>

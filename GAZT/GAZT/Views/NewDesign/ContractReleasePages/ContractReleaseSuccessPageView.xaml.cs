@@ -100,10 +100,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -169,10 +169,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

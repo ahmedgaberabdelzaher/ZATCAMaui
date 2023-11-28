@@ -93,7 +93,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         //        return payload;
         //        //  var mobile = payload["Mobile"];
         //    }
-        //    catch (Exception ex)
+        //    catch (Exception)
         //    {
         //        return null;
         //    }

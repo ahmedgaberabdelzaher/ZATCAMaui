@@ -115,11 +115,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 
             }
 
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
 
             viewModel.IsLoading = true;
@@ -216,11 +216,11 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                 }
 
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
                 }
 
 
@@ -244,9 +244,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
         }
         protected async void OnNavigating(object sender, WebNavigatingEventArgs e)
         {
-            Console.WriteLine("WebViewURL: " + e.Url);
-
-            //viewModel.pushSomething();
+           
 
             isLoginLoaded = false;
 
@@ -257,7 +255,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
                 {
 
                     var responseGUID = splitString[1];
-                    //Console.WriteLine("Payment Successful:" + e.Url);
+                    //("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;
@@ -287,7 +285,7 @@ namespace EGAZT.Views.NewDesign.PaymentOptions
 
                     var responseMessage = splitString[1].Replace("msg","");
 
-                    //Console.WriteLine("Payment Successful:" + e.Url);
+                    //("Payment Successful:" + e.Url);
 
                     webView.IsVisible = false;
                     viewModel.IsLoading = true;

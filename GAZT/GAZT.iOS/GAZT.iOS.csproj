@@ -50,7 +50,7 @@
     <Commandlineparameters>
     </Commandlineparameters>
     <RunWithWarnings>true</RunWithWarnings>
-    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
+    <CodesignProvision></CodesignProvision>
     <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -163,7 +163,7 @@
     <MtouchSdkVersion>15.5</MtouchSdkVersion>
     <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
     <CodesignKey>iPhone Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements></CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BaseUrl_iOS.cs" />
@@ -1098,6 +1098,9 @@
     </PackageReference>
     <PackageReference Include="Plugin.myToolTip">
       <Version>1.0.0.7</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox">
+      <Version>20.3.0.47</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig">
       <Version>3.0.0</Version>

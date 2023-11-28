@@ -35,9 +35,8 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                 viewModel.WebUrl = Constants.TaxpayerSubsidyRequest;
                
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.Message);
             }
         }
         #endregion

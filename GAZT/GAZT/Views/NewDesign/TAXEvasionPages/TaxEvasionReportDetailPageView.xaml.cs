@@ -87,18 +87,18 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 {
                     // Handle permission exception
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Unable to get location
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void ChangeAeroIcon()

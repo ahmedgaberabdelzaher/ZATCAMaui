@@ -88,10 +88,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             try
@@ -112,10 +112,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -136,7 +136,7 @@ namespace EGAZT.Views.NewDesign.VatReview
                         dt1 = dts[2] + "-" + UtilityManager.GetMonthName(dts[1]) + "-" + dts[0];
                         viewModel.PickedDateFullMonth = dt1;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
 
                     }
@@ -266,10 +266,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -295,10 +295,10 @@ namespace EGAZT.Views.NewDesign.VatReview
                     // await viewModel.VATSetReturnVoidAsync();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -328,10 +328,10 @@ namespace EGAZT.Views.NewDesign.VatReview
             viewModel.ReportDetails = Report_Details_Tx.Text;
             viewModel.EnableReportDetailsConButton();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -377,10 +377,10 @@ namespace EGAZT.Views.NewDesign.VatReview
 
             viewModel.EnableSecurityPaymentsConButton();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -401,10 +401,10 @@ namespace EGAZT.Views.NewDesign.VatReview
             try { 
             viewModel._idNumber = e.NewTextValue;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -458,10 +458,10 @@ namespace EGAZT.Views.NewDesign.VatReview
                 viewModel.VRRequesttoReviewtheAmountValue = AppResources.VRInpartial;
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 

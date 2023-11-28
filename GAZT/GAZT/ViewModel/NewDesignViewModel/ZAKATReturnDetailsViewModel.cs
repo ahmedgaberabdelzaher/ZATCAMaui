@@ -844,10 +844,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
 
                     //  await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
 
@@ -882,10 +882,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     //};
                     await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 
@@ -924,7 +924,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
             //            });
             //        }
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //        IsLoading = false;
             //    }
@@ -1656,10 +1656,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
 
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         }
                         else
@@ -1689,10 +1689,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                                 });
                                 //}
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.WriteLine(ex.Message);
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                             //Device.BeginInvokeOnMainThread(async () => {
                             //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
@@ -1743,10 +1743,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 IsLoading = false;
             }
         }
@@ -2127,10 +2127,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     ReleaseOrBillDetailsVisible = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

@@ -82,10 +82,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
                     }
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
             }
@@ -118,14 +118,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentSignUPVM
 
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     Device.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong + " " + AppResources.ZZInternetConnectionMessage, AppResources.Information);
                     });
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
             });
