@@ -15,11 +15,7 @@ namespace GAZT.Droid
 {
 	
 	
-<<<<<<< HEAD
 	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.0.93")]
-=======
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.2.120")]
->>>>>>> 203cda1f6e8dca6c81171872a59901511d8d7de9
 	public partial class Resource
 	{
 		

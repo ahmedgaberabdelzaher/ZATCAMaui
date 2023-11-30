@@ -311,6 +311,7 @@ namespace EGAZT.Helper
                         }
                         else
                         {
+                            var responseJsonf = await response.Content.ReadAsStringAsync();
                             return response;
                         }
                     }

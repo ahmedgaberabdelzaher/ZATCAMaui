@@ -8,6 +8,9 @@ using EGAZT.Controls;
 using System.Linq;
 using EGAZT.Helper;
 using EGAZT.Models.EDeclerationsModel.SubmitModels;
+using Xamarin.Essentials;
+using EGAZT.AppConfigurations;
+
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
 	public class ReviewRequestViewModel:BaseViewModel
@@ -27,8 +30,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 return new Command( _ =>
                 {
-                    if(Inquire.IsNotPaid)
-                        _navigationService.NavigateTo("EDeclarationPaymentPage",Inquire);
+                    if (Inquire.IsNotPaid)
+                    {
+                        var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{Inquire.ReferenceID}&travilID={Inquire.travelID}";
+                        Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                        {
+                            LaunchMode = BrowserLaunchMode.SystemPreferred,
+                            TitleMode = BrowserTitleMode.Show,
+                            PreferredToolbarColor = Color.AliceBlue,
+                            PreferredControlColor = Color.Violet
+                        });
+                        //_navigationService.NavigateTo("EDeclarationPaymentPage", Inquire);
+                    }
                 });
             }
         }

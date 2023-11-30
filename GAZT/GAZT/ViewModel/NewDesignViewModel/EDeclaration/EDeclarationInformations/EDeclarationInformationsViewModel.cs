@@ -12,6 +12,9 @@ using Rg.Plugins.Popup.Services;
 using System.Text.RegularExpressions;
 using EGAZT.Models.EDeclerationsModel;
 using EGAZT.Helper;
+using System.Threading.Tasks;
+using Xamarin.Essentials;
+using EGAZT.AppConfigurations;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -338,7 +341,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    _navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                    //_navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                    var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}";
+                     Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                    {
+                        LaunchMode = BrowserLaunchMode.SystemPreferred,
+                        TitleMode = BrowserTitleMode.Show,
+                        PreferredToolbarColor = Color.AliceBlue,
+                        PreferredControlColor = Color.Violet
+                    });
+
+                  
+
+                   // Xamarin.Essentials.Launcher.OpenAsync(paymentRedirectURL);
 
                 });
             }
