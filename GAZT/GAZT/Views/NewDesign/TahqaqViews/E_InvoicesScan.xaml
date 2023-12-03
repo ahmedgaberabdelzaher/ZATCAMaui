@@ -19,6 +19,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <Grid RowDefinitions="auto,*">
+
         <!--#region Scan View-->
         <yummy:PancakeView
             Grid.Row="1"
@@ -26,7 +27,9 @@
             Padding="0"
             IsVisible="{Binding IsShowScanView}"
             Style="{StaticResource CommonTopCurves}">
+
             <Grid Padding="0,0,0,0" RowDefinitions="1.2*,*,*,*,*">
+
                 <Grid
                     x:Name="MainGrid"
                     Grid.RowSpan="5"
@@ -34,8 +37,11 @@
                 <!-- <zxing:ZXingScannerView  x:Name="zxing"  Margin="0,0,0,0" Grid.RowSpan="5" IsAnalyzing="True" IsScanning="True"
                      BackgroundColor="White">
                                 </zxing:ZXingScannerView>-->
+
                 <Grid Grid.Row="0" HorizontalOptions="FillAndExpand">
-                    <Frame BackgroundColor="Black" Opacity=".44" />
+
+                    <Frame BackgroundColor="Black"
+                           Opacity=".44" />
 
                     <StackLayout Margin="0,30,0,30">
 
@@ -45,14 +51,10 @@
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.ScantheQRcode}"
                             TextColor="White" />
-                        <!--<Label
-                            Margin="0,0,0,30"
-                            FontSize="14"
-                            HorizontalOptions="CenterAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.PlacetheQRCodeinsidetheframe}"
-                            TextColor="White" />-->
                         <BoxView HeightRequest="30" />
+
                     </StackLayout>
+
                 </Grid>
 
                 <Grid
@@ -60,6 +62,7 @@
                     Grid.RowSpan="3"
                     Margin="2,0,2,-7"
                     FlowDirection="RightToLeft">
+
                     <Path
                         Margin="-3,-7,-3,0"
                         Data="M 0,0 L 36,0 36,36Z"
@@ -69,6 +72,7 @@
                         Rotation="-90"
                         Stroke="transparent"
                         VerticalOptions="Start" />
+
                     <Image
                         Margin="-5,-15,-5,0"
                         HeightRequest="90"
@@ -76,6 +80,7 @@
                         Rotation="-90"
                         Source="Path"
                         VerticalOptions="Start" />
+
                     <Path
                         Margin="-7,-6,-15,0"
                         Data="M 0,0 L 30,0 30,30Z"
@@ -83,6 +88,7 @@
                         HorizontalOptions="Start"
                         Opacity=".45"
                         VerticalOptions="Start" />
+
                     <Image
                         Margin="-3,-15,-5,0"
                         HeightRequest="90"
@@ -100,12 +106,14 @@
                         Rotation="90"
                         Stroke="transparent"
                         VerticalOptions="End" />
+
                     <Image
                         Margin="-3,0,-3,0"
                         HeightRequest="90"
                         HorizontalOptions="StartAndExpand"
                         Source="Path"
                         VerticalOptions="End" />
+
                     <Path
                         Margin="-3,0,-3,0"
                         Data="M 0,0 L 45,0 45,45"
@@ -115,6 +123,7 @@
                         Rotation="180"
                         Stroke="transparent"
                         VerticalOptions="End" />
+
                     <Image
                         Margin="-3,0,-3,0"
                         HeightRequest="90"
@@ -125,10 +134,12 @@
 
                 </Grid>
 
-
                 <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
+
                     <Frame BackgroundColor="Black" Opacity=".44" />
+
                     <StackLayout>
+
                         <Label
                             Grid.Row="3"
                             Margin="0,40,27,0"
@@ -141,6 +152,7 @@
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
+
                         <Frame
                             Grid.Row="4"
                             Margin="21,27,27,40"
@@ -154,39 +166,45 @@
                                 HorizontalOptions="CenterAndExpand"
                                 TextColor="White" />
                         </Frame>
+
                     </StackLayout>
+
                 </Grid>
+
             </Grid>
         </yummy:PancakeView>
+        <!--#endregion Scan View-->
 
-        <!--#endregion-->
         <!--#region Success Result View-->
         <yummy:PancakeView
             Grid.Row="1"
             Padding="20,20,20,0"
             IsVisible="{Binding IsShowRsltView}"
             Style="{StaticResource CommonTopCurves}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+
+            <Grid RowDefinitions="*">
+
                 <ScrollView
                     Grid.Row="0"
                     Padding="0,0,0,32"
                     VerticalScrollBarVisibility="Never">
+
                     <StackLayout Padding="0,12,0,0">
+
                         <Image
                             Margin="0,10,0,10"
                             HeightRequest="70"
                             HorizontalOptions="CenterAndExpand"
                             Source="SuccessQr"
                             WidthRequest="70" />
+
                         <Label
                             FontFamily="{StaticResource FontSomarBold}"
                             FontSize="24"
                             HorizontalOptions="CenterAndExpand"
                             Text="{x:Static ResourceManager:AppResources.Correcttaxinvoice}"
                             TextColor="{StaticResource PrimaryColor}" />
+
                         <Frame
                             Margin="0"
                             Padding="0"
@@ -194,6 +212,7 @@
                             CornerRadius="8"
                             HasShadow="False">
                             <StackLayout Margin="16">
+
                                 <Grid Padding="8,0" ColumnDefinitions="1.25*,*">
                                     <Label
                                         Grid.Row="0"
@@ -238,7 +257,9 @@
 
                                     </Grid>
                                 </Grid>
+
                                 <BoxView Style="{StaticResource lineSeperator}" />
+
                                 <Grid
                                     ColumnDefinitions="*,*"
                                     ColumnSpacing="10"
@@ -264,50 +285,66 @@
                                         Style="{StaticResource BodyLabelBlack}"
                                         Text="{Binding TimeStamp,StringFormat='{0:dd/MM/yyyy}'}" />
                                 </Grid>
+
                                 <Label
                                     Grid.Row="0"
                                     Grid.Column="0"
                                     Style="{StaticResource BodyLabelGrey}"
                                     Text="{x:Static ResourceManager:AppResources.InvoiceAmount}" />
+
                                 <Label
                                     Grid.Row="1"
                                     Grid.Column="0"
                                     Style="{StaticResource BodyLabelBlack}"
                                     Text="{Binding InvoiceAmount}" />
-                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
-                                <Label
-                                    Grid.Row="0"
-                                    Grid.Column="0"
-                                    Style="{StaticResource BodyLabelGrey}"
-                                    Text="{x:Static ResourceManager:AppResources.VATAmount}" />
-                                <Label
-                                    Grid.Row="1"
-                                    Grid.Column="0"
-                                    Style="{StaticResource BodyLabelBlack}"
-                                    Text="{Binding VatAmount}" />
-                                          <!--#region Cleared Status-->
-                           <Grid IsVisible="{Binding IsClearedStatusVisible}" HorizontalOptions="End"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" RowDefinitions="auto">
-                                        <Frame
-                                            Padding="0"
-                                            BackgroundColor="#62B34F"
-                                            CornerRadius="14"
-                                            HasShadow="False"
-                                            Opacity=".1"
-                                            VerticalOptions="FillAndExpand">
-                                         
-                                        </Frame>
-                                        <Label
-                                            Margin="10,3,10,3"
-                                            HorizontalOptions="CenterAndExpand"
-                                               Text="{x:Static ResourceManager:AppResources.cleared}"
-                                            TextColor="#62B34F"
-                                            VerticalOptions="CenterAndExpand">
-                                        </Label>
 
-                                    </Grid>
-                        <!--#endregion-->
+                                <Grid RowDefinitions="*,*" ColumnDefinitions="*,*">
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.VATAmount}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Style="{StaticResource BodyLabelBlack}"
+                                        Text="{Binding VatAmount}" />
+
+                                    <!--#region Cleared Status-->
+                                    <Grid IsVisible="{Binding IsClearedStatusVisible}"
+                                          HorizontalOptions="End"
+                                          Grid.Row="0"
+                                          Grid.RowSpan="2"
+                                          Grid.Column="1"
+                                          RowDefinitions="auto">
+
+                                            <Frame
+                                                Padding="0"
+                                                BackgroundColor="#62B34F"
+                                                CornerRadius="14"
+                                                HasShadow="False"
+                                                Opacity=".1"
+                                                VerticalOptions="FillAndExpand">
+                                         
+                                            </Frame>
+
+                                            <Label
+                                                Margin="10,3,10,3"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.cleared}"
+                                                TextColor="#62B34F"
+                                                VerticalOptions="CenterAndExpand">
+                                            </Label>
+
+                                        </Grid>
+                                    <!--#endregion Cleared Status-->
+
                                 </Grid>
+
                             </StackLayout>
+
                         </Frame>
                   
                         <Frame
@@ -317,27 +354,29 @@
                             CornerRadius="14"
                             HasShadow="False"
                             IsVisible="{Binding IsShowSubmitReport}">
+
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
                             </Frame.GestureRecognizers>
+
                             <Label
                                 FontSize="16"
                                 HorizontalOptions="CenterAndExpand"
                                 Text="{x:Static ResourceManager:AppResources.Submitareport}"
                                 TextColor="White" />
+
                         </Frame>
 
                     </StackLayout>
+
                 </ScrollView>
 
-
-
-
             </Grid>
-        </yummy:PancakeView>
-        <!--#endregion-->
-        <!--  Header  -->
 
+        </yummy:PancakeView>
+        <!--#endregion Success Result View-->
+
+        <!--  Header  -->
         <controls:Header
             Grid.Row="0"
             Padding="0,35,0,10"
@@ -350,13 +389,16 @@
             </controls:Header.Padding>
 
         </controls:Header>
+
         <controls:MsgView
             Grid.Row="0"
             Grid.RowSpan="2"
             IsVisible="{Binding IsShowMsgView}" />
+
         <controls:Loader
             Grid.Row="0"
             Grid.RowSpan="2"
             IsVisible="{Binding IsLoading}" />
+
     </Grid>
 </ContentPage>
