@@ -65,7 +65,7 @@ namespace EGAZT.Helper
 
         }
 
-        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl, bool isBasicAuth = true, string routPortCode = "99") where T : class
+        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl, bool isBasicAuth = true, string routPortCode = "99",bool isIBMCLient=false) where T : class
         {
             try
             {
@@ -80,13 +80,31 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Remove("routePortCode");
 
                     }
+                    if (client.DefaultRequestHeaders.Contains("X-IBM-Client-Id"))
+                    {
+
+                        client.DefaultRequestHeaders.Remove("X-IBM-Client-Id");
+                        client.DefaultRequestHeaders.Remove("X-IBM-Client-Secret");
+                        client.DefaultRequestHeaders.Remove("LanguageCode");
+                        client.DefaultRequestHeaders.Remove("routePortCode");
+
+                    }
                     if (isBasicAuth)
                     {
                         AddBasicAuthToHeader(client);
 
                     }
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    if (isIBMCLient)
+                    {
+                        client.DefaultRequestHeaders.Add("X-IBM-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", PageSettings.GetClientSecret());
+                    }
+                    else
+                    {
+
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    }
                     client.DefaultRequestHeaders.Remove("zatca-apikey");
                     client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     if (App.IsArabic)

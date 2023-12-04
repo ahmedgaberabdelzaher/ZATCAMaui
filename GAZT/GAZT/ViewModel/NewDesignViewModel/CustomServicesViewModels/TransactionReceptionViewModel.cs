@@ -6,10 +6,12 @@ using System.Security.Principal;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using EGAZT.AppConfigurations;
 using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
 using EGAZT.Models.NativeNafath;
 using EGAZT.Models.SubmitReportModel;
+using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using EGAZT.Views.NewDesign.EDeclaration.PopUpPages;
@@ -53,6 +55,35 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         bool isOpenAddNewCr;
         public bool IsOpenAddNewCr { get { return isOpenAddNewCr; } set { isOpenAddNewCr = value; RaisePropertyChanged(); } }
 
+    int buildingNo;
+        public int BuildingNo { get { return buildingNo; } set { buildingNo = value; RaisePropertyChanged(); } }
+
+        string streetName;
+        public string StreetName { get { return streetName; } set { streetName = value; RaisePropertyChanged(); } }
+
+        string districtName;
+        public string DistrictName{ get { return districtName; } set { districtName = value; RaisePropertyChanged(); } }
+
+        string cityName;
+        public string CityName { get { return cityName; } set { cityName = value; RaisePropertyChanged(); } }
+
+        string postalCode;
+        public string PostalCode { get { return postalCode; } set { postalCode = value; RaisePropertyChanged(); } }
+
+
+        string seconderyNo;
+        public string SeconderyNo { get { return seconderyNo; } set { seconderyNo = value; RaisePropertyChanged(); } }
+
+        string registrationNo;
+        public string RegistrationNo { get { return registrationNo; } set { registrationNo = value; RaisePropertyChanged(); } }
+
+  long tIN;
+        public long TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
+
+        bool isTinNoVisible;
+        public bool IsTinNoVisible { get { return isTinNoVisible; } set { isTinNoVisible = value; RaisePropertyChanged(); } }
+
+
 
         ObservableCollection<UserCRResponseModel> cRLst;
         public ObservableCollection<UserCRResponseModel> CRLst { get { return cRLst; } set { cRLst = value; RaisePropertyChanged(); } }
@@ -78,6 +109,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                     IsEntity = selectedType == "2" ? true : false;
                     UserType = selectedType;
                     IsAddNewCR = false;
+                    if (!IsEntity)
+                    {
+                        IsTinNoVisible = false;
+                    }
+                
                 });
             }
         }
@@ -112,10 +148,29 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                 {
                     try
                     {
-                        IsLoading = true;
+
+                       IsLoading = true;
+                        if (!int.TryParse(BuildingNo.ToString(),out int value)||BuildingNo.ToString().Length!=4)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.BuildingNoValidationMsg;
+                            return;
+                        }
+                        if (!int.TryParse(postalCode, out int e) || postalCode.Length != 5)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.PostalValidationMsg;
+                            return;
+                        }
+                        if (!int.TryParse(SeconderyNo, out int a) || SeconderyNo.Length != 4)
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.additionalNoValidationMsg;
+                            return;
+                        }
                         Regex EmailRgx = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
 
-                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email))
+                        if (!string.IsNullOrWhiteSpace(Description)&& !string.IsNullOrWhiteSpace(Subject)&& !string.IsNullOrWhiteSpace(Email)&& !string.IsNullOrWhiteSpace(CityName)&& !string.IsNullOrWhiteSpace(StreetName))
                     {
                      if (!EmailRgx.IsMatch(Email.ToLower()))
                             {
@@ -152,7 +207,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                                 fileName = TransactionUploadedFiles.FirstOrDefault().fileFullName
 
                             },
-                            IamRegisteredUserID= IamRegisteredUserID
+                            iamRegisteredUserID= IamRegisteredUserID,
+                            buildingNumber=BuildingNo,
+                            streetNumber=StreetName,
+                            districtNumber=DistrictName,
+                             cityName=CityName,
+                              additionalNumber=int.Parse(SeconderyNo),
+                               postCode=int.Parse(PostalCode),
+                                TIN=TIN
                         };
                         var response =await _twareedServices.TawreedSubmitForm(model);
                         if (response.IsSuccessStatusCode)
@@ -304,7 +366,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
                         var data = response.Item1.data;
 
                        CRCashedList = data;
-                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = "1", Name = c.Name==""?c.crType:c.Name }).ToList() ?? new List<BottomSheetModel>();
+                        var result = CRCashedList.Select(c => new BottomSheetModel() { Id = c.crType, Name = c.Name==""?c.crType:c.Name }).ToList() ?? new List<BottomSheetModel>();
                         BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                         IsShowBottomSheet = true;
                         HeaderTitle = AppResources.TypeItem;
@@ -338,17 +400,83 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
             }
             finally { IsLoading = false; }
         }
+        private async Task GetCurrentUserCRTinNO(string crNo)
+        {
+            try
+            {
+                IsLoading = true;
+                TIN = 0;
+                IsTinNoVisible = false;
+                var response = await _twareedServices.GetCurrentCRTiNo(crNo);
+                if (response.Item2)
+                {
+                    if (response.Item1.header.status.code == "I000000")
+                    {
+                        var data = response.Item1.data;
+                        if (data.taxpayers!=null&&data.taxpayers.Count>0)
+                        {
+                            if (data.taxpayers != null && data.taxpayers.Count > 0)
+                            {
+                                var act = data.taxpayers.FirstOrDefault(c => c.idStatus == "ACTIVE");
+                                if (act != null)
+                                {
+                                    if (!String.IsNullOrEmpty(act.TINNumber))
+                                    {
+                                        TIN = long.Parse(act.TINNumber);
+                                        IsTinNoVisible = true;
+                                    }
+                                }
+                            }
+                         
+                        }
+                    }
+                    else
+                    {
+
+                        if (response.Item1?.header.status.code== "E200405")
+                        {
+                            MessageTxt = response.Item1.header.status.description;
+                            IsShowMsgView = true;
+
+                            return;
+                        }
+                        if (response.Item1.header.moreInformation != null && response.Item1.header.moreInformation.Errordetails != null && response.Item1.header.moreInformation.Errordetails.Count > 0)
+                        {
+                            MessageTxt = response.Item1.header.moreInformation.Errordetails[0];
+                            IsShowMsgView = true;
+
+                            return;
+                        }
+                     //   MessageTxt = AppResources.RequestTimeoutDescription;
+                     //   IsShowMsgView = true;
+                    }
+
+                }
+                else
+                {
+                   // MessageTxt = AppResources.RequestTimeoutDescription;
+                   // IsShowMsgView = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally { IsLoading = false; }
+        }
 
         public ICommand SelectedBottomItemCommand
         {
             get
             {
-                return new Command<BottomSheetModel>((e) =>
+                return new Command<BottomSheetModel>(async (e) =>
                 {
                     try
                     {
                       //  IsLoading = true;
                         SelectedCRNo = e.Name;
+                      await  GetCurrentUserCRTinNO(e.Id);
                         IsShowBottomSheet = false;
                     }
                     catch (Exception)
@@ -365,12 +493,15 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
 
         public void clearData()
         {
-            Email = Subject = Description =CRNo= SelectedCRNo = "";
+            Email = Subject = Description =CRNo= SelectedCRNo =StreetName=CityName=DistrictName=PostalCode=SeconderyNo ="";
+            TIN = 0;
+            BuildingNo = 0;
             TransactionUploadedFiles = new ObservableCollection<ReportFileModel>();
             UserType = "1"; 
             IsEntity = false; isCRDataFetched = false;
             IsShowBottomSheet=IsShowMsgView = false;
-            IsAddNewCR = false;
+            IsTinNoVisible= IsAddNewCR = false;
+
         }
 
         public override ICommand BackCommand {

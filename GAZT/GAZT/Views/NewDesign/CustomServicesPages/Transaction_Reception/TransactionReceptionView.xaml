@@ -1,211 +1,169 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
-    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.TransactionReceptionView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-    HasBackButton="True"
-    TitleText="{x:Static ResourceManager:AppResources.TransactionReception}">
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
+        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+     xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
+         xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+      TitleText="{x:Static ResourceManager:AppResources.TransactionReception}"
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.TransactionReceptionView">
     <newdesign:BaseContentPage.PancakeView>
         <Grid>
             <ScrollView VerticalScrollBarVisibility="Never">
-                <StackLayout>
-                    <Label
-                        FontFamily="{StaticResource SomarSemiBold}"
-                        FontSize="18"
-                        Text="{x:Static ResourceManager:AppResources.NewTransactionReception}"
-                        TextColor="#002447" />
-                    <Label
-                        FontSize="12"
-                        Text="{x:Static ResourceManager:AppResources.Pleasecompletethedata}"
-                        TextColor="#999999" />
-                    <custom:CustomLabel Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
-                        <custom:CustomLabel.FormattedText>
-                            <FormattedString>
-                                <Span Text="{x:Static ResourceManager:AppResources.UserType}" />
-                                <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
-                            </FormattedString>
-                        </custom:CustomLabel.FormattedText>
-                    </custom:CustomLabel>
-                    <!--#region Selection Options-->
-                    <Grid ColumnDefinitions="*,15,*" RowDefinitions="auto">
-                        <!--#region Individula Option-->
-                        <Frame
-                            Grid.Column="0"
-                            Margin="0"
-                            Padding="0"
-                            CornerRadius="14">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1" />
+            <StackLayout>
+<Label Text="{x:Static ResourceManager:AppResources.NewTransactionReception}" FontFamily="{StaticResource SomarSemiBold}" FontSize="18" TextColor="#002447"></Label>
+<Label Text="{x:Static ResourceManager:AppResources.Pleasecompletethedata}" TextColor="#999999" FontSize="12"></Label>
+   <custom:CustomLabel  Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.UserType}"/>
+                                            <Span  Text="*" Style="{StaticResource MandatoryRedColorLabel}" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+                                </custom:CustomLabel>
+                <!--#region Selection Options-->
+                 <Grid ColumnDefinitions="*,15,*"   RowDefinitions="auto">
+                    <!--#region Individula Option-->
+                        <Frame Padding="0"  Grid.Column="0" Margin="0" CornerRadius="14" >
+                             <Frame.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="1"></TapGestureRecognizer>
 
-                            </Frame.GestureRecognizers>
-                            <Grid Grid.Column="0">
-
-
-                                <Image Aspect="Fill" Source="QSelected">
+                                       </Frame.GestureRecognizers>
+                                   <Grid Grid.Column="0">
+                                      
+                           
+                                       <Image Source="QSelected" Aspect="Fill">
+                                           <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
+                                                   <Setter Property="Source" Value="QUnselected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                            <StackLayout>
+                            <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    Source="Taxpayer.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding UserType}"
+                                            TargetType="Image"
+                                            Value="1">
+                                            <Setter Property="Source" Value="SelectefTaxpayer" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+                                       <Label Text="{x:Static ResourceManager:AppResources.Individual}" FontSize="16" TextColor="#FFFFFF" Margin="10,10,10,10" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
+                                                   <Setter Property="TextColor" Value="{StaticResource Primary}"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                  </StackLayout> </Grid>
+                  </Frame>  <!--#endregion-->
+                       <!--#region Entity Option-->
+                           <Frame Padding="0" Grid.Column="2" Margin="0" CornerRadius="14" >
+                                    <Grid Grid.Column="2">
+                                                                       <Grid.GestureRecognizers>
+                                           <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}"  CommandParameter="2"></TapGestureRecognizer>
+                             
+                                       </Grid.GestureRecognizers>
+                         
+                                       <Image Source="QUnselected.png" Grid.Row="0" Aspect="Fill">
+                                             <Image.Triggers>
+                                               <DataTrigger TargetType="Image" Binding="{Binding UserType}" Value="2">
+                                                   <Setter Property="Source" Value="QSelected"></Setter>
+                                               </DataTrigger>
+                                           </Image.Triggers>
+                                       </Image>
+                          
+                            <StackLayout>
+                             <Image
+                                    Margin="17,25,17,10"
+                                    HeightRequest="50"
+                                    HorizontalOptions="Start"
+                                    Source="Entity.png"
+                                    VerticalOptions="Start"
+                                    WidthRequest="30">
                                     <Image.Triggers>
                                         <DataTrigger
                                             Binding="{Binding UserType}"
                                             TargetType="Image"
                                             Value="2">
-                                            <Setter Property="Source" Value="QUnselected" />
+                                            <Setter Property="Source" Value="SelectedEntity" />
                                         </DataTrigger>
                                     </Image.Triggers>
                                 </Image>
-                                <StackLayout>
-                                    <Image
-                                        Margin="17,25,17,10"
-                                        HeightRequest="50"
-                                        HorizontalOptions="Start"
-                                        Source="Taxpayer.png"
-                                        VerticalOptions="Start"
-                                        WidthRequest="30">
-                                        <Image.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding UserType}"
-                                                TargetType="Image"
-                                                Value="1">
-                                                <Setter Property="Source" Value="SelectefTaxpayer" />
-                                            </DataTrigger>
-                                        </Image.Triggers>
-                                    </Image>
-                                    <Label
-                                        Margin="10,10,10,10"
-                                        FontSize="16"
-                                        Text="{x:Static ResourceManager:AppResources.Individual}"
-                                        TextColor="#FFFFFF"
-                                        VerticalOptions="EndAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding UserType}"
-                                                TargetType="Label"
-                                                Value="2">
-                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </StackLayout> 
-                            </Grid>
-                        </Frame>  
-                        <!--#endregion-->
-                        <!--#region Entity Option-->
-                        <Frame
-                            Grid.Column="2"
-                            Margin="0"
-                            Padding="0"
-                            CornerRadius="14">
-                            <Grid Grid.Column="2">
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SelectUserTypeCommand}" CommandParameter="2" />
-
-                                </Grid.GestureRecognizers>
-
-                                <Image
-                                    Grid.Row="0"
-                                    Aspect="Fill"
-                                    Source="QUnselected.png">
-                                    <Image.Triggers>
-                                        <DataTrigger
-                                            Binding="{Binding UserType}"
-                                            TargetType="Image"
-                                            Value="2">
-                                            <Setter Property="Source" Value="QSelected" />
-                                        </DataTrigger>
-                                    </Image.Triggers>
-                                </Image>
-
-                                <StackLayout>
-                                    <Image
-                                        Margin="17,25,17,10"
-                                        HeightRequest="50"
-                                        HorizontalOptions="Start"
-                                        Source="Entity.png"
-                                        VerticalOptions="Start"
-                                        WidthRequest="30">
-                                        <Image.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding UserType}"
-                                                TargetType="Image"
-                                                Value="2">
-                                                <Setter Property="Source" Value="SelectedEntity" />
-                                            </DataTrigger>
-                                        </Image.Triggers>
-                                    </Image>
-                                    <Label
-                                        Margin="10"
-                                        FontSize="16"
-                                        Text="{x:Static ResourceManager:AppResources.Entity}"
-                                        TextColor="{StaticResource Primary}"
-                                        VerticalOptions="EndAndExpand">
-                                        <Label.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding UserType}"
-                                                TargetType="Label"
-                                                Value="2">
-                                                <Setter Property="TextColor" Value="#FFFFFF" />
-                                            </DataTrigger>
-                                        </Label.Triggers>
-                                    </Label>
-                                </StackLayout>   
-                            </Grid>
-                        </Frame>
-                        <!--#endregion-->
-                    </Grid>
+                                       <Label Text="{x:Static ResourceManager:AppResources.Entity}" TextColor="{StaticResource Primary}" FontSize="16" Margin="10" VerticalOptions="EndAndExpand">
+                                             <Label.Triggers>
+                                               <DataTrigger TargetType="Label" Binding="{Binding UserType}" Value="2">
+                                                   <Setter Property="TextColor" Value="#FFFFFF"></Setter>
+                                               </DataTrigger>
+                                           </Label.Triggers>
+                                       </Label>
+                                </StackLayout>   </Grid>
+                            </Frame>
                     <!--#endregion-->
+                               </Grid>
+                <!--#endregion-->
 
 
-                    <!--#region  Email Field-->
-                    <StackLayout Spacing="0">
-
-                        <!--  Email Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                    <!--#region  Email Field -->
+                        <StackLayout Spacing="0">
+                   
+                            <!--  Email Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
                             <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
-                        <!--  Email Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackgroundColor="White"
-                            ContainerType="Outlined"
-                            FocusedColor="{StaticResource NeutralGreay}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            UnfocusedColor="{StaticResource NeutralGreay}">
-                            <custom:BorderlessEntry
-                                Keyboard="Email"
-                                Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding Email}"
-                                TextColor="#58595B" />
-                        </inputLayout:SfTextInputLayout>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}"/>
+                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  Email Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Email}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
                     </StackLayout>
                     <!--#endregion-->
 
-                    <!--#region CR-->
+                     <!--#region CR-->
                     <StackLayout IsVisible="{Binding IsEntity}">
                         <StackLayout Spacing="0">
-
+                   
                             <!--  CR Label  -->
-                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                                <custom:CustomLabel.FormattedText>
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
+                            <custom:CustomLabel.FormattedText>
                                     <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.UnifiedNumber}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.UnifiedNumber}"/>
+                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
                                     </FormattedString>
                                 </custom:CustomLabel.FormattedText>
-                            </custom:CustomLabel>
+                             </custom:CustomLabel>
                             <!--  CR DropDown Entry  -->
-                            <inputLayout:SfTextInputLayout
+                 <inputLayout:SfTextInputLayout
                                 ContainerBackgroundColor="White"
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
@@ -226,217 +184,424 @@
                                         <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
                                     </custom:BorderlessEntry.GestureRecognizers>
                                 </custom:BorderlessEntry>
-                                <inputLayout:SfTextInputLayout.TrailingView>
+                             <inputLayout:SfTextInputLayout.TrailingView>
                                     <Image Aspect="AspectFit" Source="greyDropDown" />
                                 </inputLayout:SfTextInputLayout.TrailingView>
                             </inputLayout:SfTextInputLayout>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding GetCurrentUserCRCommand}" />
                             </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                        <!--  ADD Button  -->
-                        <Frame
-                            Padding="12"
-                            BackgroundColor="White"
-                            BorderColor="#4FBBBD"
-                            CornerRadius="14">
-                            <Label
-                                FontFamily="{StaticResource FontSomarBold}"
-                                FontSize="16"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.AddNewCR}"
-                                TextColor="#4FBBBD"
-                                VerticalOptions="CenterAndExpand" />
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="1" />
+                    </StackLayout>
+                    <!--ADD Button-->
+                      <Frame BorderColor="#4FBBBD" BackgroundColor="White" Padding="12" CornerRadius="14">
+                        <Label Text="{x:Static ResourceManager:AppResources.AddNewCR}" HorizontalOptions="CenterAndExpand" FontSize="16" FontFamily="{StaticResource FontSomarBold}" TextColor="#4FBBBD"  VerticalOptions="CenterAndExpand"></Label>
+<Frame.GestureRecognizers>
+                  <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="1"></TapGestureRecognizer>
 
                             </Frame.GestureRecognizers>
-                        </Frame>
-                    </StackLayout>
+                    </Frame>
+                  </StackLayout>
                     <!--#endregion-->
-                    <!--#region  Subject Field-->
-                    <StackLayout Spacing="0">
-                        <!--  Subject Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                    <!--#region TinNo View-->
+                                        <StackLayout IsVisible="{Binding IsTinNoVisible}">
+                        <StackLayout Spacing="0">
+                   
+                            <!--  Tin Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
                             <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Subject}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
-                        <!--  Subject Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackgroundColor="White"
-                            ContainerType="Outlined"
-                            FocusedColor="{StaticResource NeutralGreay}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            UnfocusedColor="{StaticResource NeutralGreay}">
-                            <custom:BorderlessEntry
-                                Keyboard="Text"
-                                Placeholder="{x:Static ResourceManager:AppResources.Enterthesubjectofthetransaction}"
-                                Style="{StaticResource DefaultEntry}"
-                                Text="{Binding Subject}"
-                                TextColor="#58595B" />
-                        </inputLayout:SfTextInputLayout>
-
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TIN}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  Tin Entry  -->
+                 <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="TinEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TIN}"
+                                    TextColor="#58595B">
+                                </custom:BorderlessEntry>
+                           
+                            </inputLayout:SfTextInputLayout>
+                       
                     </StackLayout>
+                 
+                  </StackLayout>
+
                     <!--#endregion-->
 
-                    <!--#region description Field-->
-                    <StackLayout Spacing="0">
+                    <!--#region National Address-->
+                    <Frame Padding="7" CornerRadius="15" BorderColor="Gray">
+                        <StackLayout>
+                        <Label Text="{x:Static ResourceManager:AppResources.nationaladdress}" TextColor="{StaticResource PrimaryColor}" FontSize="20" FontAttributes="Bold"></Label>
+                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*">
+                                <Label Grid.Row="0" Grid.Column="0">
+                                       <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Buildingnumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
 
-                        <!--  description Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
-                            <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Transactiondescription}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                                </Label>
+                                      <!--  Buildingnumber Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding BuildingNo}"
+                                    TextColor="#58595B" >
+                                          <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
 
-                        <!--  description Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackgroundColor="White"
-                            ContainerType="Outlined"
-                            ErrorColor="#B00020"
-                            FocusedColor="{StaticResource NeutralGreay}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            UnfocusedColor="{StaticResource NeutralGreay}">
-                            <custom:GAZTBorderlessEditor
-                                x:Name="reportReportDetailsEntry"
-                                AutoSize="TextChanges"
-                                HeightRequest="100"
-                                HorizontalOptions="FillAndExpand"
-                                IsSpellCheckEnabled="True"
-                                IsTextPredictionEnabled="False"
-                                MaxLength="1000"
-                                MinimumHeightRequest="100"
-                                Style="{StaticResource BodyLabelBlack}"
-                                Text="{Binding Description}" />
-                        </inputLayout:SfTextInputLayout>
-                    </StackLayout>
+                                    </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                                  <Label  Grid.Row="0" Grid.Column="1">
+                                    <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Streetname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                   <!--  Streetname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Streetname}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding StreetName}" MaxLength="50"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                 <Label Grid.Row="2" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Districtname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                        <!--  Districtname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Districtname}"
+                                    Style="{StaticResource DefaultEntry}" MaxLength="50"
+                                    Text="{Binding DistrictName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                <Label Grid.Row="2" Grid.Column="1">
+                                            <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Cityname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                    <!--  Cityname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15" 
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text" MaxLength="100"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Cityname}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CityName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+
+
+                                  <Label Text="{x:Static ResourceManager:AppResources.PostalCode}"  Grid.Row="4" Grid.Column="0">
+                                                                                <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PostalCode}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                         <!--  PostalCode Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PostalCode}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding PostalCode}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                  <Label Grid.Row="4" Grid.Column="1">
+                                                                   <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.SecondaryNumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+
+                                </Label>
+                                         <!--   Number Secondar Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.SecondaryNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SeconderyNo}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
                     <!--#endregion-->
-                    <!--#region Upload File-->
-                    <!--  Uploaded file Field  -->
-                    <StackLayout Spacing="0">
 
-                        <!--  Uploaded files Label  -->
-                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                    <!--#region  Subject Field -->
+                        <StackLayout Spacing="0">
+                            <!--  Subject Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
                             <custom:CustomLabel.FormattedText>
-                                <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.Attachments}" />
-                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                </FormattedString>
-                            </custom:CustomLabel.FormattedText>
-                        </custom:CustomLabel>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Subject}"/>
+                                        <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  Subject Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Enterthesubjectofthetransaction}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding Subject}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                 
+                        </StackLayout>
+                    <!--#endregion-->
 
-                        <!--  Uploaded files Entry  -->
-                        <inputLayout:SfTextInputLayout
-                            ContainerBackgroundColor="White"
-                            ContainerType="Outlined"
-                            ErrorColor="#B00020"
-                            FocusedColor="{StaticResource NeutralGreay}"
-                            HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
-                            InputViewPadding="16,0,16,0"
-                            LeadingViewPosition="Inside"
-                            OutlineCornerRadius="15"
-                            UnfocusedColor="{StaticResource NeutralGreay}"
-                            VerticalOptions="StartAndExpand">
-                            <custom:BorderlessEntry
-                                IsReadOnly="True"
-                                Keyboard="Text"
-                                Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
-                                Style="{StaticResource DefaultEntry}"
-                                TextColor="#58595B" />
-                            <inputLayout:SfTextInputLayout.TrailingView>
-                                <Image Aspect="AspectFit" Source="newui_ic_pdf" />
-                            </inputLayout:SfTextInputLayout.TrailingView>
+                         <!--#region description Field-->
+                        <StackLayout Spacing="0">
 
-                            <inputLayout:SfTextInputLayout.GestureRecognizers>
+                            <!--  description Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Transactiondescription}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  description Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:GAZTBorderlessEditor
+                                    x:Name="reportReportDetailsEntry"
+                                    AutoSize="TextChanges"
+                                    HeightRequest="100"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsSpellCheckEnabled="True"
+                                    IsTextPredictionEnabled="False"
+                                    MaxLength="1000"
+                                    MinimumHeightRequest="100"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding Description}" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                <!--#endregion-->
+                <!--#region Upload File-->
+                             <!--  Uploaded file Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Uploaded files Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Attachments}"/>
+                                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Uploaded files Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                HelperText="{x:Static ResourceManager:AppResources.PDFFileHint}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}"
+                                VerticalOptions="StartAndExpand">
+                                <custom:BorderlessEntry
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Addattachments}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B" />
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="newui_ic_pdf" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
-                            </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </StackLayout.GestureRecognizers>
 
-                        </inputLayout:SfTextInputLayout>
-
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding UploadFileCommand}" />
-                        </StackLayout.GestureRecognizers>
-
-                    </StackLayout>
-
-                    <!--  PDfUploaded List  -->
-                    <StackLayout Spacing="0">
-                        <!--  Files List  -->
-                        <StackLayout
-                            x:Name="filesLst"
-                            BindableLayout.ItemsSource="{Binding TransactionUploadedFiles}"
-                            Spacing="0">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <StackLayout x:Name="Item">
-
-                                        <!--  PDfUploaded Entry  -->
-                                        <inputLayout:SfTextInputLayout
-                                            ContainerBackgroundColor="White"
-                                            ContainerType="Outlined"
-                                            ErrorColor="#B00020"
-                                            FocusedColor="{StaticResource NeutralGreay}"
-                                            InputViewPadding="16,0,16,0"
-                                            LeadingViewPosition="Inside"
-                                            OutlineCornerRadius="15"
-                                            UnfocusedColor="{StaticResource NeutralGreay}">
-                                            <custom:BorderlessEntry
-                                                IsReadOnly="True"
-                                                Keyboard="Text"
-                                                Style="{StaticResource DefaultEntry}"
-                                                Text="{Binding fileFullName}"
-                                                TextColor="#58595B" />
-                                            <inputLayout:SfTextInputLayout.LeadingView>
-                                                <Image Aspect="AspectFit" Source="Generic_attachment_icon" />
-                                            </inputLayout:SfTextInputLayout.LeadingView>
-
-                                            <inputLayout:SfTextInputLayout.TrailingView>
-                                                <Image Aspect="AspectFit" Source="reportClose.png">
-                                                    <Image.GestureRecognizers>
-                                                        <TapGestureRecognizer
-                                                            BindingContext="{Binding Source={x:Reference filesLst}, Path=BindingContext}"
-                                                            Command="{Binding DeleteAttatchementCommand}"
-                                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                                    </Image.GestureRecognizers>
-                                                </Image>
-                                            </inputLayout:SfTextInputLayout.TrailingView>
-
-                                        </inputLayout:SfTextInputLayout>
-                                    </StackLayout>
-
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
                         </StackLayout>
 
-                    </StackLayout>
-                    <!--#endregion-->
-                    <!--  Send Button  -->
-                    <buttons:SfButton
-                        Margin="0,40"
-                        BackgroundColor="#0996D4"
-                        Command="{Binding SendTransactionCommand}"
-                        Style="{StaticResource PrimaryButtonStyle}"
-                        Text="{x:Static ResourceManager:AppResources.Send}" />
-                </StackLayout>
-            </ScrollView>
+                        <!--  PDfUploaded List  -->
+                        <StackLayout  Spacing="0">
+                            <!--  Files List  -->
+                            <StackLayout
+                                x:Name="filesLst"
+                                BindableLayout.ItemsSource="{Binding TransactionUploadedFiles}"
+                                Spacing="0">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout x:Name="Item">
 
-            <!--#region Display All Crc-->
-            <!--  Bottom Sheet List  -->
+                                            <!--  PDfUploaded Entry  -->
+                                            <inputLayout:SfTextInputLayout
+                                                ContainerBackgroundColor="White"
+                                                ContainerType="Outlined"
+                                                ErrorColor="#B00020"
+                                                FocusedColor="{StaticResource NeutralGreay}"
+                                                InputViewPadding="16,0,16,0"
+                                                LeadingViewPosition="Inside"
+                                                OutlineCornerRadius="15"
+                                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                                <custom:BorderlessEntry
+                                                    IsReadOnly="True"
+                                                    Keyboard="Text"
+                                                    Style="{StaticResource DefaultEntry}"
+                                                    Text="{Binding fileFullName}"
+                                                    TextColor="#58595B" />
+                                                <inputLayout:SfTextInputLayout.LeadingView>
+                                                    <Image Aspect="AspectFit" Source="Generic_attachment_icon" />
+                                                </inputLayout:SfTextInputLayout.LeadingView>
+
+                                                <inputLayout:SfTextInputLayout.TrailingView>
+                                                    <Image Aspect="AspectFit" Source="reportClose.png">
+                                                        <Image.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                BindingContext="{Binding Source={x:Reference filesLst}, Path=BindingContext}"
+                                                                Command="{Binding DeleteAttatchementCommand}"
+                                                                CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                                        </Image.GestureRecognizers>
+                                                    </Image>
+                                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                            </inputLayout:SfTextInputLayout>
+                                        </StackLayout>
+
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
+
+                        </StackLayout>
+ <!--#endregion-->
+                       <!--  Send Button  -->
+                        <buttons:SfButton
+                            Margin="0,40"
+                            BackgroundColor="#0996D4"
+                            Command="{Binding SendTransactionCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.Send}" />
+            </StackLayout>
+    </ScrollView>
+            
+              <!--#region Display All Crc-->
+                   <!--  Bottom Sheet List  -->
             <controls:ListBottomSheet Grid.Row="0" IsVisible="{Binding IsShowBottomSheet}" />
 
-        </Grid>
-
+        </Grid> 
+    
     </newdesign:BaseContentPage.PancakeView>
 
 </newdesign:BaseContentPage>

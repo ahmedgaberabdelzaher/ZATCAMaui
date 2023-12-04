@@ -9790,7 +9790,7 @@ info@zatca.gov.sa</value>
     <value>برجاء إكمال البيانات </value>
   </data>
   <data name="Entity" xml:space="preserve">
-    <value>كيان</value>
+    <value>شركات</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>الموضوع</value>
@@ -10439,5 +10439,35 @@ info@zatca.gov.sa</value>
   </data>
     <data name="ConfirmOpenningNafath" xml:space="preserve">
        <value>وتأكيد الطلب بإختيار الرقم التالي</value>
+</data>
+        <data name="nationaladdress" xml:space="preserve">
+    <value>العنوان الوطني</value>
+  </data>
+      <data name="Buildingnumber" xml:space="preserve">
+    <value> رقم المبنى</value>
+  </data>
+      <data name="Streetname" xml:space="preserve">
+    <value> اسم الشارع</value>
+  </data>
+      <data name="Districtname" xml:space="preserve">
+    <value> اسم الحي</value>
+  </data>
+  <data name="Cityname" xml:space="preserve">
+    <value>اسم المدينة </value>
+  </data>
+    <data name="PostalCode" xml:space="preserve">
+    <value> الرمز البريدي</value>
+  </data>
+  <data name="BuildingNoValidationMsg" xml:space="preserve">
+    <value>يجب ادخال أربعة ارقام فريدة تمثل مبنى سكني او تجاري</value>
+  </data>
+    <data name="PostalValidationMsg" xml:space="preserve">
+    <value>يجب ادخال خمسة ارقام للرمز البريدي</value>
+  </data>
+    <data name="additionalNoValidationMsg" xml:space="preserve">
+    <value>يجب ادخال اربعة ارقام للرقم الإضافي</value>
+  </data>
+     <data name="SecondaryNumber" xml:space="preserve">
+    <value>الرقم الإضافي</value>
   </data>
 </root>
