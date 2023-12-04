@@ -55,12 +55,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
 
                     if (CommingFrom == 1)
                     {
-                        navigation.InsertPageBefore(new EDeclarationPage(), currentPage);
+                       // navigation.InsertPageBefore(new EDeclarationPage(), currentPage);
                         _navigationService.GoBack();
                     }
                     else
                     {
-                        navigation.InsertPageBefore(new Home(), currentPage);
+                       // navigation.InsertPageBefore(new Home(), currentPage);
                         _navigationService.GoBack();
                     }
 

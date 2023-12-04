@@ -7,6 +7,7 @@ using EGAZT.Models;
 using EGAZT.Models.NativeNafath;
 using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.Common;
+using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
@@ -74,8 +75,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                                 RandomNumber = login.randomNumber.ToString();
                                 TransactionId = login.transactionId;
                                 IsLoading = false;
-                                _navigationService.NavigateTo("NativeConfirmNafathPage");
-                                await Task.Delay(25000);
+                                var navigation = Application.Current.MainPage.Navigation;
+                                var currentPage = navigation.NavigationStack.LastOrDefault();
+                                //_navigationService.NavigateTo("NativeConfirmNafathPage");
+                                navigation.InsertPageBefore(new NativeConfirmNafathPage(), currentPage);
+
+                                _navigationService.GoBack();
+                                // _navigationService.NavigateTo("NativeConfirmNafathPage");
+                                await Task.Delay(10000);
                                 await GetNafathStatus();
                             }
                         }
@@ -127,11 +134,22 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     {
                         if (data.result != null)
                         {
-                            if (data.result.status== "WAITING")
+                            if (data.result.status == "EXPIRED")
                             {
-                                GetNafathStatus();
+                                var navigation = Application.Current.MainPage.Navigation;
+                                var currentPage = navigation.NavigationStack.LastOrDefault();
+                                IsLoading = false;
+                               // navigation.InsertPageBefore(new NativeNafathPage(""),currentPage);
+                                _navigationService.GoBack();
                                 return;
                             }
+                            if (data.result.status== "WAITING")
+                            {
+                              await  GetNafathStatus();
+                                //return;
+                            }
+                          
+                            
                              userData = data;
                             if (userData != null)
                             {
@@ -184,7 +202,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 IsLoading = true;
                // HBD = "1380/07/13";
                 
-                var submitRes = await NativeNafath.GetNfathProfile( HBD.Replace("/", "%2F"), NationalIqamaId);
+                var submitRes = await NativeNafath.GetNfathProfile(HBD.Replace('/','-'), NationalIqamaId);
                 if (submitRes.Item2)
                 {
                     var data = submitRes.Item1;
@@ -192,6 +210,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                     {
                         var navigation = Application.Current.MainPage.Navigation;
                         var currentPage = navigation.NavigationStack.LastOrDefault();
+                        IsLoading = false;
+                        NationalIqamaId = "";
                         navigation.InsertPageBefore(new TransactionReceptionView(data.data), currentPage);
                         _navigationService.GoBack();
                         return;
@@ -202,9 +222,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                         HandleUnRegisteredUser();
                         var navigation = Application.Current.MainPage.Navigation;
                         var currentPage = navigation.NavigationStack.LastOrDefault();
+                        //  _navigationService.NavigateTo("RegisterZATCAUserPage",2);
+                        IsLoading = false;
+                        NationalIqamaId = "";
+                      navigation.InsertPageBefore(new RegisterZATCAUserPage(2), currentPage);
                         _navigationService.GoBack();
-                        _navigationService.NavigateTo("RegisterZATCAUserPage",2);
-                     //   navigation.InsertPageBefore(new RegisterZATCAUserPage(2), currentPage);
                         return;
                     }
                   
@@ -263,7 +285,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
 
             User.cardIssueDateHijri = userData.result.userInfo.idInfo.idExpiryDateH.ToString();
 
-            User.dateOfBirthHijri = userData.result.userInfo.idInfo.ToString();
+            User.dateOfBirthHijri = userData.result.userInfo.dateOfBirthH.Replace('/', '-');
             User.mobileNumber = "";
             User.emailAddress = "";
             User.address = "";
