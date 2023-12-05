@@ -22,6 +22,7 @@ using System;
 using System.Threading.Tasks;
 using MediaManager;
 using KeyboardOverlap.Forms.Plugin.iOSUnified;
+using Syncfusion.SfNumericTextBox.XForms.iOS;
 
 namespace GAZT.iOS
 {
@@ -50,6 +51,7 @@ namespace GAZT.iOS
             .ServerCertificateValidationCallback +=
             (sender, cert, chain, sslPolicyErrors) => true;
             Xamarin.FormsMaps.Init();
+            Firebase.Core.App.Configure();
             Xamarin.Forms.Forms.Init();
             KeyboardOverlapRenderer.Init();
             Rg.Plugins.Popup.Popup.Init();
@@ -64,6 +66,7 @@ namespace GAZT.iOS
             SfPickerRenderer.Init();
             SfCalendarRenderer.Init();
             new SfBusyIndicatorRenderer();
+            new SfNumericTextBoxRenderer();
             SfCardLayoutRenderer.Init();
             CrossMediaManager.Current.Init();
             new SfRotator();
@@ -124,18 +127,18 @@ namespace GAZT.iOS
         #endregion
         public override void OnActivated(UIApplication application)
         {
-            Console.WriteLine("OnActivated called, App is active.");
+            
         }
 
         public override void WillEnterForeground(UIApplication application)
         {
 
-            Console.WriteLine("App will enter foreground");
+           
         }
 
         public override void OnResignActivation(UIApplication application)
         {
-            Console.WriteLine("OnResignActivation called, App moving to inactive state.");
+            
         }
 
         void EndTimerTask()
@@ -159,7 +162,7 @@ namespace GAZT.iOS
         // not guaranteed that this will run
         public override void WillTerminate(UIApplication application)
         {
-            Console.WriteLine("App is terminating.");
+            
         }
 
         private static void InitArabicCalendarCrashFix()

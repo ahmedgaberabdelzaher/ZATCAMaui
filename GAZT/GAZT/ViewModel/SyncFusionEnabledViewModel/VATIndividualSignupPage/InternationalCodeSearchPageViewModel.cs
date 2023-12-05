@@ -108,9 +108,9 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.VATIndividualSignupPage
         {
             MobileCodes = new ObservableCollection<InternationalMobileData>(MobileCodesAllValues.OrderBy(x => x.Telefto).ToList());
         }
-        catch(Exception ex)
+        catch(Exception)
         {
-            Console.WriteLine(ex.Message);
+            
         }
     }
 

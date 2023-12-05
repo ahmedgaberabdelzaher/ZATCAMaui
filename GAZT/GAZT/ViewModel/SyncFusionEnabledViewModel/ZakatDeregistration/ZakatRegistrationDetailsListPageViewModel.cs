@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Manager;
 using EGAZT.Models;
 using EGAZT.ViewModel.NewDesignViewModel;
-using EGAZT.Views.SyncFusionEnabledViews.AddPop;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
-using GAZT.Manager;
-using GAZT.Models;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
-using static GAZT.ErrorMessage;
 
 namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
 {
@@ -225,17 +218,15 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                 }
                 ZakatRegListData = new List<ZakatDeregistrationDetailsListModel>(tempZakatRegListData);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+               
             }
         }
 
-        public void HandleExceptipon(Exception ex)
+        public void HandleExceptipon()
         {
-            Console.Write(ex.ToString());
-            Console.Write(ex.StackTrace.ToString());
+          
             try
             {
                 _navigationService.GoBack();
@@ -244,9 +235,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                 });
             }
-            catch (Exception mex)
+            catch (Exception)
             {
-                Console.WriteLine(mex.Message);
             }
         }
 
@@ -275,8 +265,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     App.HideProgressView();
@@ -290,9 +280,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                     });
 
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
             catch (GAZTErrorException ex)
@@ -371,9 +360,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                                          });
 
                                      }
-                                     catch (Exception mex)
+                                     catch (Exception )
                                      {
-                                         Console.WriteLine(mex.Message);
                                      }
                                  }
 
@@ -389,15 +377,12 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         });
                     }
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
                 try
                 {
                     Device.BeginInvokeOnMainThread(async () =>
@@ -405,9 +390,8 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatDeregistration
                         await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     });
                 }
-                catch (Exception mex)
+                catch (Exception )
                 {
-                    Console.WriteLine(mex.Message);
                 }
             }
         }

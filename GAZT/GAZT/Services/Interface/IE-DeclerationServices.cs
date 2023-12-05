@@ -20,6 +20,7 @@ namespace EGAZT.Services.Interface
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CurrencyModel>>, bool, string>> GetCurrencies();
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<UnitsModel>>, bool, string>> GetUnits();
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryModel>>, bool, string>> GetCountries();
+        Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CityModel>>, bool, string>> GetPlatesCity(int countryCode);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetPorts(int tripType);
         Task<Tuple<DATAPowerBaseResponse<ObservableCollection<PortsModel>>, bool, string>> GetTravelPurpose();
         Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body);

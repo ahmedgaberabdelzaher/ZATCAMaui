@@ -643,7 +643,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                             */
                            await TariffSearch();
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
 
                         }
@@ -775,7 +775,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -869,7 +869,7 @@ Title= AppResources.CustomsZATCAIntegrat;
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -927,7 +927,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                               }
 
                           }
-                          catch (Exception ex)
+                          catch (Exception)
                           {
 
                           }
@@ -989,7 +989,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                         IsHarmonizedTariffs2lvl = true;
                     }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -1060,7 +1060,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                     }
                     
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -1106,7 +1106,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                     }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -1135,7 +1135,7 @@ Title= AppResources.CustomsZATCAIntegrat;
                     }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -1376,7 +1376,7 @@ IsLoading = false;
                     traiffSectionsLst = res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1396,7 +1396,7 @@ IsLoading = false;
                     TraiffChapters = res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1416,7 +1416,7 @@ IsLoading = false;
                     MainHarmonizedTariffs = res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1436,7 +1436,7 @@ IsLoading = false;
                     SubHarmonizedTariffs = res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1457,7 +1457,7 @@ IsLoading = false;
                     IsSearchFilterVisbible = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
@@ -1486,7 +1486,7 @@ IsLoading = false;
                 }
                 return new ObservableCollection<HarmonizedTarrif>();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new ObservableCollection<HarmonizedTarrif>();
             }

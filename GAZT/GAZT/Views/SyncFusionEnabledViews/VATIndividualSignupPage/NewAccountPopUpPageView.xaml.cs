@@ -57,10 +57,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
                     viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 //Bind Iban and remove name
@@ -98,10 +98,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     viewModel.IbanPartFour = SAremovedIban.Substring(13, 4);
                     viewModel.IbanPartFive = SAremovedIban.Substring(17, 4);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 //Bind Iban and remove name
@@ -164,10 +164,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.VATIndividualSignupPage
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
                 viewModel.IsIBANValid = false;
                 Device.BeginInvokeOnMainThread(async () =>
                 {

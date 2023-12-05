@@ -171,10 +171,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                         IsCPickerEnable = true;
                         onSelectedFormBindleFbtyp();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
                 ListFormBudles = null;
@@ -339,10 +339,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 string MessageForTheUser = AppResources.ZZSomethingwentwrong;
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -407,10 +407,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.FormBundleStatusPage_ViewMo
                 }
                 return list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return null;
             }
         }

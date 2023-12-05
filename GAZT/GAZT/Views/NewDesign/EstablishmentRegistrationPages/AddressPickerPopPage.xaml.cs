@@ -42,10 +42,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             OnItemSelect?.Invoke(e.CurrentSelection.FirstOrDefault());
             await PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

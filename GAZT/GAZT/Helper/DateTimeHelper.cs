@@ -18,7 +18,7 @@ namespace EGAZT.Helper
                 DTFormat.ShortDatePattern = dateFormat;
                 return dateTime.Date.ToString(DTFormat.ShortDatePattern, new CultureInfo("en-US"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return "dd/MM/yyyy";
             }
@@ -43,7 +43,7 @@ namespace EGAZT.Helper
                                         "M-dd-yyyy","yyyy-MM-dd'T'hh:mm:ss","yyyy-MM-dd'T'HH:mm:ss"};
                 return DateTime.ParseExact(dateTimeString, formates, cu, DateTimeStyles.None);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return new DateTime();
             }
@@ -61,7 +61,7 @@ namespace EGAZT.Helper
                 var gregorianDateString = gregorianDate.ToString(format);
                 return Tuple.Create(gregorianDate, gregorianDateString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Tuple.Create(new DateTime(), "dd/MM/yyyy");
             }
@@ -78,7 +78,7 @@ namespace EGAZT.Helper
                 var gregorianDateString = gregorianDate.ToString(format);
                 return Tuple.Create(gregorianDate, gregorianDateString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Tuple.Create(new DateTime(), "dd/MM/yyyy");
             }
@@ -93,7 +93,7 @@ namespace EGAZT.Helper
                 DateTime.TryParse(GregorianDateTime.ToString("MM/dd/yyyy", arSA).Replace(' ', '/'), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime hijriDate);
                 return Tuple.Create(hijriDate, hijriDateString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Tuple.Create(new DateTime(), "dd/MM/yyyy");
             }
@@ -109,7 +109,7 @@ namespace EGAZT.Helper
                 DateTime.TryParse(date.ToString("MM/dd/yyyy", arSA).Replace(' ', '/'), new CultureInfo("en-US"), DateTimeStyles.None, out DateTime hijriDate);
                 return Tuple.Create(hijriDate, hijriDateString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return Tuple.Create(new DateTime(), "dd/MM/yyyy");
             }

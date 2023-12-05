@@ -117,15 +117,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         public DateTime passIssuingDate { get; set; } = DateTime.Now.Date.AddHours(-24);
 
-        // public string passIssuingDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassIssuingDate); } }
-
         public DateTime passExpiryDate { get; set; }
 
-        //public string passExpiryDate { set { value = DateTimeHelper.DatetimeFormater(SelectedPassExpiryDate); } }
-
         public DateTime birthDate { get; set; } = DateTime.Now.Date.AddHours(-24);
-
-        //public string birthDate { set { value = DateTimeHelper.DatetimeFormater(SelectedBirthDate); } }
 
         string _travelersCount;
         public string travelersCount { get { return _travelersCount; } set { _travelersCount = value; RaisePropertyChanged(); } }
@@ -158,7 +152,24 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         public DateTime travelDate { get; set; } = DateTime.Now;
 
-        //public string travelDate { set { value = DateTimeHelper.DatetimeFormater(SelectedArrivalDepartureDate); } }
+        string _plateLetters;
+        public string plateLetters { get { return _plateLetters; } set { _plateLetters = value; RaisePropertyChanged(); } }
+
+        string _plateNumber;
+        public string plateNumber { get { return _plateNumber; } set { _plateNumber = value; RaisePropertyChanged(); } }
+
+        string _platesCountryName;
+        public string PlatesCountryName { get { return _platesCountryName; } set { _platesCountryName = value; RaisePropertyChanged(); } }
+
+        int _plateCountryCode;
+        public int plateCountryCode { get { return _plateCountryCode; } set { _plateCountryCode = value; } }
+
+        string _PlatesCityName;
+        public string PlatesCityName { get { return _PlatesCityName; } set { _PlatesCityName = value; RaisePropertyChanged(); } }
+
+        int _plateCityCode;
+        public int plateCityCode { get { return _plateCityCode; } set { _plateCityCode = value; } }
+
         #endregion
 
         #region Contact Model
@@ -176,6 +187,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         bool _IsTermsChecked;
         public bool IsTermsChecked { get { return _IsTermsChecked; } set { _IsTermsChecked = value; RaisePropertyChanged(); } }
+
+        bool _isUserExists;
+        public bool IsUserExists { get { return _isUserExists; } set { _isUserExists = value; RaisePropertyChanged(); } }
         #endregion
 
         

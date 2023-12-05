@@ -2,27 +2,15 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using WebView = Xamarin.Forms.WebView;
-using System.Net;
 using Android.Graphics;
 using Android.Webkit;
-using GAZT.Droid.CustomRenderer;
-using Org.Apache.Http.Impl.Client;
-using System.Runtime.Remoting.Contexts;
-using Android.Content;
 using Java.Interop;
 using GAZT.Models;
 using System.Collections.Generic;
 using Android.Net.Http;
-using Android.OS;
 using EGAZT;
 using EGAZT.Droid.CustomRenderer;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Text.RegularExpressions;
-using System.Net.Http;
 using GAZT.Manager;
-using EGAZT.Views.SyncFusionEnabledViews.SFLogin;
-using System.ComponentModel;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 namespace EGAZT.Droid.CustomRenderer
@@ -143,62 +131,18 @@ namespace EGAZT.Droid.CustomRenderer
         public override void OnReceivedError(Android.Webkit.WebView view, ClientError errorCode, string description, string failingUrl)
         {
             base.OnReceivedError(view, errorCode, description, failingUrl);
-            Console.WriteLine(failingUrl, errorCode, description);
         }
 
         public override void OnReceivedLoginRequest(Android.Webkit.WebView view, string realm, string account, string args)
         {
             base.OnReceivedLoginRequest(view, realm, account, args);
-            Console.WriteLine("OnReceivedLoginRequest");
         }
 
-        //@Override
-        //    public void onReceivedSslError(WebView view, SslErrorHandler handler,
-        //                                   SslError error)
-        //{
-
-        //    switch (error.getPrimaryError())
-        //    {
-        //        case SslError.SSL_UNTRUSTED:
-        //            LogUtility.debug("SslError : The certificate authority is not trusted.");
-        //            break;
-        //        case SslError.SSL_EXPIRED:
-        //            LogUtility.debug("SslError : The certificate has expired.");
-        //            break;
-        //        case SslError.SSL_IDMISMATCH:
-        //            LogUtility.debug("The certificate Hostname mismatch.");
-        //            break;
-        //        case SslError.SSL_NOTYETVALID:
-        //            LogUtility.debug("The certificate is not yet valid.");
-        //            break;
-        //    }
-        //    handler.proceed();
-        //}
-
+     
         public override void OnReceivedSslError(Android.Webkit.WebView view, SslErrorHandler handler, SslError error)
         {
-            //base.OnReceivedSslError(view, handler, error);
-            //System.String message = "Certificate error.";
-
-            //switch (error.PrimaryError)
-            //{
-            //    case SslErrorType.Untrusted:
-            //        message = "The certificate authority is not trusted.";
-            //        break;
-            //    case SslErrorType.Expired:
-            //        message = "The certificate has expired.";
-            //        break;
-            //    case SslErrorType.Idmismatch:
-            //        message = "The certificate Hostname mismatch.";
-            //        break;
-            //    case SslErrorType.Notyetvalid:
-            //        message = "The certificate is not yet valid.";
-            //        break;
-            //}
-
+           
             handler.Proceed();
-
-            //Console.WriteLine(message);
         }
 
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
@@ -211,9 +155,9 @@ namespace EGAZT.Droid.CustomRenderer
                 App.LoginCookiesRetrieved = new List<CookieModel>();
                 view.EvaluateJavascript(_javascript, null);
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
         }
@@ -302,11 +246,11 @@ namespace EGAZT.Droid.CustomRenderer
                         _hybridWebView.InvokeAction("displayLoginLoadingIndicator");
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
+                    
                 }
             }
 
@@ -328,28 +272,10 @@ namespace EGAZT.Droid.CustomRenderer
 
         public override void OnReceivedSslError(Android.Webkit.WebView view, SslErrorHandler handler, SslError error)
         {
-           // base.OnReceivedSslError(view, handler, error);
-            System.String message = "Certificate error.";
-
-            //switch (error.PrimaryError)
-            //{
-            //    case SslErrorType.Untrusted:
-            //        message = "The certificate authority is not trusted.";
-            //        break;
-            //    case SslErrorType.Expired:
-            //        message = "The certificate has expired.";
-            //        break;
-            //    case SslErrorType.Idmismatch:
-            //        message = "The certificate Hostname mismatch.";
-            //        break;
-            //    case SslErrorType.Notyetvalid:
-            //        message = "The certificate is not yet valid.";
-            //        break;
-            //}
+           
 
             handler.Proceed();
 
-            Console.WriteLine(message);
         }
 
         public override void OnReceivedHttpError(Android.Webkit.WebView view, IWebResourceRequest request, WebResourceResponse errorResponse)
@@ -359,26 +285,7 @@ namespace EGAZT.Droid.CustomRenderer
 
         public override void OnReceivedError(Android.Webkit.WebView view, IWebResourceRequest request, WebResourceError error)
         {
-            //_hybridWebView.InvokeAction("requestTimedOut");
             base.OnReceivedError(view, request, error);
-            //try
-            //{
-            //    if (error != null && error.ErrorCode == ClientError.Timeout)
-            //    {
-            //        _hybridWebView.Opacity = 0;
-            //        IsError = true;
-            //        App.IsLoginCalled = false;
-            //        App.IsSamlApiCalledAndroid = false;
-            //        App.LoginDataRetrieved = new LoginModel();
-            //        App.LoginDataRetrieved.ResponseStatusMessage = "requestTimedout";
-            //        _hybridWebView.InvokeAction("requestTimedout");
-            //    }
-
-            //}
-            //catch(Exception ex)
-            //{
-
-            //}
         }
 
         public override void OnPageFinished(global::Android.Webkit.WebView view, string url)
@@ -394,8 +301,6 @@ namespace EGAZT.Droid.CustomRenderer
                 webView = view;
             }
 
-            //Hide element by class name
-            //view.LoadUrl("javascript:document.getElementById('taxTypes_items').style.display = 'none'; void(0);");
 
             if (url.ToString().Contains(GAZT.Helper.Constants.DomainUrlForCookies))
             {
@@ -405,8 +310,7 @@ namespace EGAZT.Droid.CustomRenderer
             //https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZTP_ACCOUNT_SRV/GetInfoSet(Euser='',DeviceId='',FcmId='',DeviceTyp='')?sap-language=EN&$format=json
             if (url.ToString().Contains(GAZT.Helper.Constants.GAZTSAMLLoginServicePart) && App.IsLoginCalled == true)
             {
-                //view.LoadUrl("javascript:window.HTMLOUT.processHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');")
-                App.LoginCookiesRetrieved = new List<CookieModel>();
+                 App.LoginCookiesRetrieved = new List<CookieModel>();
                 for (int i = 0; i < cookiePairs.Length; i++)
                 {
                     try
@@ -421,13 +325,11 @@ namespace EGAZT.Droid.CustomRenderer
                             cookie.Domain = httpCookie.Domain;
                             App.LoginCookiesRetrieved.Add(cookie);
                         }
-
-                        Console.WriteLine(allCookies);
                     }
-                    catch (System.Exception ex)
+                    catch (System.Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                 }
 
@@ -436,10 +338,10 @@ namespace EGAZT.Droid.CustomRenderer
                     App.httpClientHandler = new System.Net.Http.HttpClientHandler();
                     App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
 
                 App.LoginDataRetrieved = new LoginModel();
@@ -448,9 +350,9 @@ namespace EGAZT.Droid.CustomRenderer
                 {
                     App.LoginDataRetrieved = WebServiceManager.SFGAZTGetLoginDataAndroid(url);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
 
                 if (App.LoginDataRetrieved.TIN != null && App.LoginDataRetrieved.ResponseStatusMessage == null)
@@ -480,50 +382,8 @@ namespace EGAZT.Droid.CustomRenderer
                     App.LoginDataRetrieved.ResponseStatusMessage = "errorGeneric";
                     _hybridWebView.InvokeAction("errorGeneric");
                 }
-                //rohith changes
-
-                //view.EvaluateJavascript("javascript:document.getElementsByTagName('pre')[0].innerHTML.toString();", this);
             }
             base.OnPageFinished(view, url);
         }
-
-
-        //public void OnReceiveValue(Java.Lang.Object value)
-        //{
-        //    Console.WriteLine(Convert.ToString(value));
-
-        //    Console.WriteLine(value.ToString());
-
-        //    try
-        //    {
-        //        HtmlDocument document = new HtmlDocument();
-        //        document.LoadHtml(value.ToString());
-
-        //        var htmlResponse = document.DocumentNode.InnerText;
-
-        //        string LoginConfirmation = Convert.ToString(value);
-
-        //        if (!string.IsNullOrEmpty(LoginConfirmation))
-        //        {
-        //            LoginConfirmation = JObject.Parse(LoginConfirmation)["d"].ToString();
-        //            App.LoginDataRetrieved = JsonConvert.DeserializeObject<LoginModel>(LoginConfirmation.ToString());
-        //        }
-
-        //        if (App.LoginDataRetrieved.TIN != null)
-        //        {
-        //            App.LoginDataRetrieved.ResponseStatusMessage = "success";
-        //            _hybridWebView.InvokeAction("success");
-        //        }
-        //        else
-        //        {
-        //            App.LoginDataRetrieved.ResponseStatusMessage = "error";
-        //            _hybridWebView.InvokeAction("error");
-        //        }
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
     }
 }

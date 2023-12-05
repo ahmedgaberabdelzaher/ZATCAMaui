@@ -25,16 +25,6 @@ namespace EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception
                 viewModel.GetIAMToken(e.Url);
             }
         }
-
-        // Not Used
-        //private async void GetCookies(string url)
-        //{
-        //    var uri = new Uri(url);
-        //    var handler = new HttpClientHandler();
-        //    IAMWebView.Cookies = handler.CookieContainer;
-        //    HttpClient client = new HttpClient(handler);
-        //  var data=  await client.GetAsync(uri);
-        //}
     }
 }
 

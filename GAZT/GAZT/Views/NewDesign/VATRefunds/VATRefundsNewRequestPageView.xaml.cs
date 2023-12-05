@@ -35,7 +35,6 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             DraftsRequestDataModel = null;
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
-                Console.WriteLine(arg);
             });
             viewModel.setMoreOptioButtons();
 
@@ -55,7 +54,6 @@ namespace EGAZT.Views.NewDesign.VATRefunds
 
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
                 viewModel.PickerModel = arg;
-                Console.WriteLine(arg);
             });
             viewModel.setMoreOptioButtons();
 
@@ -187,12 +185,12 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             }
             catch(GAZTErrorException ex)
             {
-                Console.WriteLine(ex.Message);
+                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
         }
@@ -246,10 +244,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                        
+                        
                     }
                 }
             }
@@ -299,10 +297,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
                             viewModel._navigationService.GoBack();
                         });
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.StackTrace.ToString());
-                        Console.WriteLine(ex.Message);
+                        
+                        
                     }
                 }
             }
@@ -372,10 +370,10 @@ namespace EGAZT.Views.NewDesign.VATRefunds
             {
                 viewModel.ContinueBtnClicked();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 

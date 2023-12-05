@@ -164,7 +164,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
                 }
                 return false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -236,7 +236,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
                 return res;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

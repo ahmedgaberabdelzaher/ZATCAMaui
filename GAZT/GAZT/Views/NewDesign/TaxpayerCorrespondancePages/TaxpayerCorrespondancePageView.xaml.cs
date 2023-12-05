@@ -60,10 +60,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -94,10 +94,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 }
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -113,10 +113,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     viewModel.IsLoading = false;
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 viewModel.IsLoading = false;
             }
         }
@@ -148,10 +148,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                     TaxTypeDownPicker.SelectedItem = viewModel.TaxTypeListForDropDown.FirstOrDefault();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -175,10 +175,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -192,10 +192,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
                 viewModel.SelectedTaxTypeDropdownItem = selectedReturntype;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -213,10 +213,10 @@ namespace EGAZT.Views.NewDesign.TaxpayerCorrespondancePages
             CorrespondanceModel Correspondence = e.ItemData as CorrespondanceModel;
             viewModel.ShowCorrespondenceDetails(Correspondence);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

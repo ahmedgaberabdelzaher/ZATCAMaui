@@ -7,6 +7,7 @@
     xmlns:behaviour="clr-namespace:GAZT.CustomControl"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:numericinput="clr-namespace:Syncfusion.SfNumericTextBox.XForms;assembly=Syncfusion.SfNumericTextBox.XForms"
     IsVisible="false">
 
     <StackLayout.Resources>
@@ -136,48 +137,66 @@
         <!--  Total Price Field  -->
         <StackLayout Spacing="0">
 
-            <!--  Total Price Label  -->
+            <!--  Total Value Label  -->
             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                 <custom:CustomLabel.FormattedText>
                     <FormattedString>
-                        <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}"/>
-                        <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                        <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
+                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                     </FormattedString>
                 </custom:CustomLabel.FormattedText>
             </custom:CustomLabel>
 
-            <!--  Total Price Entry  -->
+            <!--  Total Value Entry  -->
             <inputLayout:SfTextInputLayout
-                        ContainerBackgroundColor="White"
-                        ContainerType="Outlined"
-                        ErrorColor="#B00020"
-                        FocusedColor="{StaticResource NeutralGreay}"
-                        InputViewPadding="16,0,16,0"
-                        LeadingViewPosition="Inside"
-                        HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
-                        OutlineCornerRadius="15"
-                        UnfocusedColor="{StaticResource NeutralGreay}">
-                <custom:BorderlessEntry
-                        Keyboard="Numeric"
-                        Placeholder="{x:Static ResourceManager:AppResources.TotalPriceValue}"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding TotalValue}"
-                        TextColor="#58595B" >
+                ContainerBackgroundColor="White"
+                ContainerType="Outlined"
+                ErrorColor="#B00020"
+                FocusedColor="{StaticResource NeutralGreay}"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                OutlineCornerRadius="15"
+                FlowDirection="LeftToRight"
+                UnfocusedColor="{StaticResource NeutralGreay}">
 
-                        <custom:BorderlessEntry.Behaviors>
-                            <behaviour:OnlyNumericWithDecimalValuesBehaviour/>
-                        </custom:BorderlessEntry.Behaviors>
+                <StackLayout Orientation="Horizontal"
+                             FlowDirection="LeftToRight">
 
-                </custom:BorderlessEntry>
+                      <numericinput:SfNumericTextBox
+                            Watermark="{x:Static ResourceManager:AppResources.Productvalue}"
+                            Value="{Binding TotalValue}"
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="15"
+                            WidthRequest="180"
+                            HeightRequest="48"
+                            EnableGroupSeparator="True"
+                            GroupSeparatorMode="Always"
+                            AllowDefaultDecimalDigits="False"
+                            WatermarkColor="{StaticResource NeutralGreay}"
+                            FormatString="n"
+                            HorizontalOptions="FillAndExpand"
+                            TextAlignment="Start"
+                            TextColor="#58595B"/>
 
-                  <inputLayout:SfTextInputLayout.TrailingView>
-                     <custom:CustomLabel
-                            Text="{x:Static ResourceManager:AppResources.ZSAR}"
+                    
+                      <custom:CustomLabel
+                            HorizontalOptions="EndAndExpand"
+                            VerticalTextAlignment="Center"
+                            VerticalOptions="Center"
+                            Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
                             Style="{StaticResource CaptionLabelGrey}" />
-                  </inputLayout:SfTextInputLayout.TrailingView>
+
+                </StackLayout>
+
             </inputLayout:SfTextInputLayout>
 
-        </StackLayout>
+            <Label
+                FontSize="12"
+                Margin="3,-10,3,0"
+                Text="{x:Static ResourceManager:AppResources.ProductValueHint}"
+                TextColor="#58595B" />
+
+         </StackLayout>
 
         <!--  Weight Field  -->
         <StackLayout Spacing="0"
@@ -213,20 +232,25 @@
                     LeadingViewPosition="Inside"
                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     OutlineCornerRadius="15"
+                    FlowDirection="LeftToRight"
                     UnfocusedColor="{StaticResource NeutralGreay}">
 
-                <custom:BorderlessEntry
-                    Keyboard="Numeric"
-                    Placeholder="{x:Static ResourceManager:AppResources.Weight}"
-                    Style="{StaticResource DefaultEntry}"
-                    Text="{Binding Weight}"
-                    TextColor="#58595B" >
-
-                    <custom:BorderlessEntry.Behaviors>
-                        <behaviour:OnlyNumericValuesBehaviour/>
-                    </custom:BorderlessEntry.Behaviors>
-
-                </custom:BorderlessEntry>
+                <numericinput:SfNumericTextBox
+                    Watermark="{x:Static ResourceManager:AppResources.Weight}"
+                    Value="{Binding Weight}"
+                    FlowDirection="LeftToRight"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    WidthRequest="150"
+                    EnableGroupSeparator="True"
+                    GroupSeparatorMode="Always"
+                    AllowDefaultDecimalDigits="False"
+                    WatermarkColor="{StaticResource NeutralGreay}"
+                    FormatString="n"
+                    TextAlignment="Start"
+                    HorizontalOptions="Fill"
+                    TextColor="#58595B"/>
 
             </inputLayout:SfTextInputLayout>
                                        
@@ -253,24 +277,28 @@
                     FocusedColor="{StaticResource NeutralGreay}"
                     InputViewPadding="16,0,16,0"
                     LeadingViewPosition="Inside"
+                    FlowDirection="LeftToRight"
                     OutlineCornerRadius="15"
                     HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                     UnfocusedColor="{StaticResource NeutralGreay}">
 
-                <custom:BorderlessEntry
-                        x:Name="quantityEntry"
-                        Keyboard="Numeric"
-                        Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
-                        Style="{StaticResource DefaultEntry}"
-                        Text="{Binding Quantity}"
-                        TextColor="#58595B" >
-
-                    <custom:BorderlessEntry.Behaviors>
-                        <behaviour:OnlyNumericValuesBehaviour/>
-                    </custom:BorderlessEntry.Behaviors>
-
-                </custom:BorderlessEntry>
-
+                    <numericinput:SfNumericTextBox
+                        Watermark="{x:Static ResourceManager:AppResources.Quantity}"
+                        Value="{Binding Quantity}"
+                        FlowDirection="LeftToRight"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="15"
+                        HeightRequest="48"
+                        WidthRequest="150"
+                        EnableGroupSeparator="True"
+                        GroupSeparatorMode="Always"
+                        AllowDefaultDecimalDigits="False"
+                        WatermarkColor="{StaticResource NeutralGreay}"
+                        FormatString="n"
+                        TextAlignment="Start"
+                        HorizontalOptions="Fill"
+                        TextColor="#58595B"/>
+             
             </inputLayout:SfTextInputLayout>
 
         </StackLayout>

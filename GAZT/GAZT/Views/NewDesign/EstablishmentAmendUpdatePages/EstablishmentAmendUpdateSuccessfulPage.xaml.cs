@@ -40,16 +40,16 @@ namespace EGAZT.Views.NewDesign.EstablishmentAmendUpdatePages
                     Navigation.RemovePage(firstPageToRemove);
                     viewModel._navigationService.GoBack();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

@@ -25,7 +25,7 @@ namespace pdfjs.Droid.PlatformSpecifics
                 }
                 return filePath;
             }
-            catch(Exception e)
+            catch(Exception)
             {
             }
             return filePath;

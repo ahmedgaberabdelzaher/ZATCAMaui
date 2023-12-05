@@ -147,6 +147,7 @@
 	  <None Remove="Views\NewDesign\EDeclaration\InfoPages\" />
 	  <None Remove="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 	  <None Remove="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
+	  <None Remove="Views\NewDesign\Common\NativeNafath\" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
@@ -188,6 +189,7 @@
 	        <PackageReference Include="Plugin.MediaManager.Forms" Version="1.1.1" />
 	        <PackageReference Include="Portable.JWT" Version="1.0.5" />
 	        <PackageReference Include="Plugin.myToolTip" Version="1.0.0.7" />
+	        <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="20.3.0.47" /> 
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Remove="LogInView.cs" />
@@ -294,6 +296,7 @@
 		<Folder Include="Views\NewDesign\EDeclaration\InfoPages\" />
 		<Folder Include="Views\NewDesign\EDeclaration\InquireRequestPages\" />
 		<Folder Include="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\" />
+		<Folder Include="Views\NewDesign\Common\NativeNafath\" />
 	</ItemGroup>
 	<ItemGroup>
 		<EmbeddedResource Remove="Views\BorderlessEntry.xaml" />

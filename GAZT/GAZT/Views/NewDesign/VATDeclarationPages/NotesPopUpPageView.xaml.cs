@@ -118,10 +118,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //}
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
 
@@ -169,10 +169,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                 MessagingCenter.Send<Object, string>(this, "ClearNoteForVATDeclaration", "ClearNoteForVATDeclaration");
                 PopupNavigation.Instance.PopAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

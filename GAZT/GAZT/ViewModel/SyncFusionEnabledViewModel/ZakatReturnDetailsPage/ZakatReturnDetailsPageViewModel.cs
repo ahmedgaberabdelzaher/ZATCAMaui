@@ -180,10 +180,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     IsAmendButtonClicked = true;
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             GoBackClick = new Command(async () =>
@@ -202,10 +202,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     await OnPageLoad(Fbguid);// Called again to get the latest status so buttton visibility can behaves properly as per web 
                     _navigationService.NavigateTo(App.SalesDetailsPageView, ZakatReturnDetails);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
 
@@ -216,10 +216,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                 //    await _dialogService.ShowMessage(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType, AppResources.Information);
 
                 //}
-                //catch (Exception ex)
+                //catch (Exception)
                 //{
-                //    Console.Write(ex.ToString());
-                //    Console.Write(ex.StackTrace.ToString());
+                //    
+                //    
                 //}
 
 
@@ -254,10 +254,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     //};
                     await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             
@@ -333,7 +333,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                         //            Abrzo = UtilityManager.ToArabicDate(Abrzo);
                         //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
                         //        }
-                        //        catch (Exception ex)
+                        //        catch (Exception)
                         //        {
                         //        }
                         //        // itemCR.Udate = UtilityManager.ToArabicDate(itemCR.Udate);
@@ -346,7 +346,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                         //            Abrzo = JsonConvert.DeserializeObject<DateTime>(@"""" + zakatReturnDetails.d.Abrzo + @"""").ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                         //            Abrzu = Abrzu + "  " + AppResources.To + "  " + Abrzo;
                         //        }
-                        //        catch (Exception ex)
+                        //        catch (Exception)
                         //        {
                         //        }
                         //    }
@@ -472,10 +472,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     SalesDetailsAndReleaseButtonVisibility = false;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -507,10 +507,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                             //});
                             // 
                         }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         }
                         else
@@ -536,10 +536,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                             });
                             //}
                         }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                         //Device.BeginInvokeOnMainThread(async () => {
                         //    await _dialogService.ShowMessageBox(AppResources.ZZSomethingwentwrong, AppResources.ZError);
@@ -575,10 +575,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnDetailsPage_View
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
       private ZakatReturnDetailsD GetUpdatedDataAfterAddingComma()

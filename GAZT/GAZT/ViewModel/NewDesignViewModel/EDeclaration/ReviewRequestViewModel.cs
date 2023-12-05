@@ -53,7 +53,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                             Inquire.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

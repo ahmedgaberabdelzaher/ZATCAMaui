@@ -360,7 +360,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 RaisePropertyChanged("isFromFilter");
             }
         }
-        
+
         private ObservableCollection<object> _todayDateinHijri;
         public ObservableCollection<object> TodayDateinHijri
         {
@@ -632,7 +632,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 try
                 {
                     string lang = UtilityManager.GetLanguageParameter();
-                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang,"AccountStatements");
+                    MyBills = WebServiceManager.GAZTGetMyBills(App.TP.Tin, lang, "AccountStatements");
                     PopToRootPage();// If seesion Expired it will navigate to Dashboard page
 
                     if (MyBills != null && MyBills.Count != 0)
@@ -703,7 +703,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                     Device.BeginInvokeOnMainThread(async () =>
                     {
-                        // await _dialogService.ShowMessageBox(e.Message, AppResources.Information);
                         await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(e.Message));
                         _navigationService.GoBack();
                     });
@@ -715,7 +714,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    // await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
                     _navigationService.GoBack();
                 });
@@ -724,27 +722,6 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             IsLoading = false;
         }
 
-        //public void PopulateReturnTypeList()
-        //{
-        //    try
-        //    {
-        //        TaxTypeForFilter = new List<ReturnTypes>
-        //        {
-        //                new ReturnTypes {Id = "00",TaxType = AppResources.ASAllTransactions},
-        //                new ReturnTypes {Id = "01",TaxType = AppResources.ZakatnewUi},
-        //                new ReturnTypes {Id = "02",TaxType = AppResources.ZZVAT},
-        //                new ReturnTypes {Id = "03",TaxType = AppResources.ZZET},
-        //                new ReturnTypes {Id = "04",TaxType = AppResources.ZZWithholding},
-        //                new ReturnTypes {Id = "05",TaxType = AppResources.ZZIncomeTax}
-        //        };
-
-        //        SelectedTaxTypeForFilter = TaxTypeForFilter.FirstOrDefault();
-        //    }
-        //    catch
-        //    {
-        //    }
-
-        //}
 
         public async Task PopulateDataForTransactionTypes(string taxType)
         {
@@ -767,7 +744,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 TabIdentification = await WebServiceManager.GAZTGetAccountStatementsTabIdentification();
                 TaxTypeForFilter = new ObservableCollection<ASReturnTypes>();
 
-               
+
                 var tempDirectTax = new ASReturnTypes { Id = "D", TaxType = AppResources.ASAccountStatementDirectTax };
                 var tempInDirectTax = new ASReturnTypes { Id = "I", TaxType = AppResources.ASAccountStatementInDirectTax };
 
@@ -781,14 +758,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                     TaxTypeForFilter.Add(tempInDirectTax);
                 }
 
-               // IsLoading = false;
+                // IsLoading = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 IsLoading = false;
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
 
             }
 
@@ -822,7 +796,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                 HeaderSet = await WebServiceManager.GAZTGetAccountStatementHeaderSet
                     (AllTransactionFilters.FirstOrDefault().StatementFilter, string.Empty, AllTransactionFilters.FirstOrDefault().TaxType, false);
-                
+
                 foreach (ASReturnTypes aSReturnTypes in TaxTypeForFilter)
                 {
                     if (HeaderSet.D.TaxType == aSReturnTypes.Id)
@@ -890,24 +864,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
 
                 var list = new List<string>();
-               
-                    foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
-                     {
-                        try
-                        {
-                                list.Add(dropdown.Txt30.ToUpper());
-                        }
-                        catch (Exception ex)
-                        {
 
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                foreach (TaxRelationSetResult dropdown in TransactionTypeFilter)
+                {
+                    try
+                    {
+                        list.Add(dropdown.Txt30.ToUpper());
+                    }
+                    catch (Exception)
+                    {
                     }
 
 
                 }
-                
+
 
                 GenericPickerModel genericPickerModel = new GenericPickerModel();
                 genericPickerModel.PickerData = list;
@@ -934,16 +904,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
-             
-                _navigationService.GoBack();
-                });
-              
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
 
+                    _navigationService.GoBack();
+                });
+
+            }
+            catch (Exception)
+            {
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -958,12 +925,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         public async void FilterIfTypeAndStausFilterSelected(bool isTaxTypeFilter)
         {
 
-            
+
             await Task.Run(() =>
             {
                 IsLoading = true;
             });
-            if(SelectedTransactionTypeFilter != null)
+            if (SelectedTransactionTypeFilter != null)
             {
 
 
@@ -997,12 +964,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-
                 }
 
 
@@ -1038,12 +1001,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             FilterOnTaxType(MyBills);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-
                     }
 
 
@@ -1104,13 +1063,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
-
                     }
 
 
@@ -1201,7 +1155,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             MyBills = new ObservableCollection<MyBills>(suggestion);
                             FilterOnTaxType(MyBills);
                         }
-                        else {
+                        else
+                        {
 
                             MyBills = new ObservableCollection<MyBills>(MyBillsOriginal.Where(x => x.Status == Enum.GetName(typeof(BillStatus), 0) || x.Status == Enum.GetName(typeof(BillStatus), 1) || x.Status == Enum.GetName(typeof(BillStatus), 2)).ToList());
 
@@ -1221,7 +1176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
                     }
 
-                    
+
 
                     isFromFilter = false;
 
@@ -1250,9 +1205,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                 IsLoading = true;
             });
 
-            if(SelectedTransactionTypeFilter != null) {
+            if (SelectedTransactionTypeFilter != null)
+            {
 
-                try{
+                try
+                {
 
                     switch (SelectedTransactionTypeFilter.StatementFilter)
                     {
@@ -1311,23 +1268,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
                             break;
                     }
                 }
-                catch (Exception ex) {
-
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
-
-
-
+                catch (Exception)
+                {
                 }
-
-
-
-
             }
 
 
-           
+
 
 
             if (MyBills != null)
@@ -1355,11 +1302,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
         public void ApplyFilter()
         {
-
-            //if (FromStatus != "")
-            //{
-                FilterIfTypeAndStausFilterSelected(false);
-            //}
+            FilterIfTypeAndStausFilterSelected(false);
 
         }
 
@@ -1378,13 +1321,13 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
         {
             try
             {
-                if(PickerModel!=null)
-                await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+                if (PickerModel != null)
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+
+
             }
             catch (InternetException ex)
             {
@@ -1401,7 +1344,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
 
 
             var statusList = new ObservableCollection<ChipModel>();
-            var chipmodelPaid = new ChipModel { TemplateType = "00FF00", Text = AppResources.Paid, ImageSource = null , TextColor = (Color)App.Current.Resources["Success"] };
+            var chipmodelPaid = new ChipModel { TemplateType = "00FF00", Text = AppResources.Paid, ImageSource = null, TextColor = (Color)App.Current.Resources["Success"] };
             var chipmodelPartiallyPaid = new ChipModel { TemplateType = "FFFFE0", Text = AppResources.PartiallyPaid, ImageSource = null, TextColor = (Color)App.Current.Resources["Partial"] };
             var chipmodelUnPaid = new ChipModel { TemplateType = "FF7F50", Text = AppResources.UnPaid, ImageSource = null, TextColor = (Color)App.Current.Resources["Error"] };
             statusList.Add(chipmodelPaid);
@@ -1473,19 +1416,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.AccountStatements
             FilterBtnCommand = new Command(() =>
             {
 
-                if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate)&& string.IsNullOrEmpty(TPToDate)&& string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount)) {
+                if (string.IsNullOrEmpty(TxFromDate) && string.IsNullOrEmpty(TxToDate) && string.IsNullOrEmpty(TPFromDate) && string.IsNullOrEmpty(TPToDate) && string.IsNullOrEmpty(FromTxAmount) && string.IsNullOrEmpty(ToTxAmount))
+                {
 
                     PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.AcFilterEmptyState));
 
                 }
-                else {
+                else
+                {
 
                     isFromFilter = true;
                     FilterIfTypeAndStausFilterSelected(false);
                 }
 
 
-            
+
 
             });
             FiltersTapped = new Command(() =>

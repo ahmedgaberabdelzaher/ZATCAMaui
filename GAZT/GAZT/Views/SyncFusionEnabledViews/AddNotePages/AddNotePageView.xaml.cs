@@ -113,7 +113,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AddNote
                     //}
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }

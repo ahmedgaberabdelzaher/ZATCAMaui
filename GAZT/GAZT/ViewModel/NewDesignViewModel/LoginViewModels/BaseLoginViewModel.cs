@@ -71,7 +71,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.LoginViewModels
                 return res;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return null;
             }

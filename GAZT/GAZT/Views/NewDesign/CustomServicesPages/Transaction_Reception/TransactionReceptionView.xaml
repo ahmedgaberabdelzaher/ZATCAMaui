@@ -5,6 +5,7 @@
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:controls="clr-namespace:EGAZT.Controls"
+    xmlns:behaviour="clr-namespace:GAZT.CustomControl"
         xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
      xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign" HasBackButton="True"
          xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
@@ -201,7 +202,223 @@
                     </Frame>
                   </StackLayout>
                     <!--#endregion-->
-          <!--#region  Subject Field -->
+                    <!--#region TinNo View-->
+                                        <StackLayout IsVisible="{Binding IsTinNoVisible}">
+                        <StackLayout Spacing="0">
+                   
+                            <!--  Tin Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
+                                                 >
+                            <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TIN}"/>
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                             </custom:CustomLabel>
+                            <!--  Tin Entry  -->
+                 <inputLayout:SfTextInputLayout
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                ErrorColor="#B00020"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    x:Name="TinEntry"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding TIN}"
+                                    TextColor="#58595B">
+                                </custom:BorderlessEntry>
+                           
+                            </inputLayout:SfTextInputLayout>
+                       
+                    </StackLayout>
+                 
+                  </StackLayout>
+
+                    <!--#endregion-->
+
+                    <!--#region National Address-->
+                    <Frame Padding="7" CornerRadius="15" BorderColor="Gray">
+                        <StackLayout>
+                        <Label Text="{x:Static ResourceManager:AppResources.nationaladdress}" TextColor="{StaticResource PrimaryColor}" FontSize="20" FontAttributes="Bold"></Label>
+                        <Grid RowDefinitions="auto,auto,auto,auto,auto,auto" ColumnDefinitions="*,*">
+                                <Label Grid.Row="0" Grid.Column="0">
+                                       <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Buildingnumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                      <!--  Buildingnumber Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Buildingnumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding BuildingNo}"
+                                    TextColor="#58595B" >
+                                          <custom:BorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour/>
+                                    </custom:BorderlessEntry.Behaviors>
+
+                                    </custom:BorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                                  <Label  Grid.Row="0" Grid.Column="1">
+                                    <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Streetname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                   <!--  Streetname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="1" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Streetname}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding StreetName}" MaxLength="50"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                 <Label Grid.Row="2" Grid.Column="0">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Districtname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                        <!--  Districtname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Districtname}"
+                                    Style="{StaticResource DefaultEntry}" MaxLength="50"
+                                    Text="{Binding DistrictName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                <Label Grid.Row="2" Grid.Column="1">
+                                            <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.Cityname}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                    <!--  Cityname Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="3" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15" 
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text" MaxLength="100"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Cityname}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CityName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+
+
+                                  <Label Text="{x:Static ResourceManager:AppResources.PostalCode}"  Grid.Row="4" Grid.Column="0">
+                                                                                <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PostalCode}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+                                </Label>
+                                         <!--  PostalCode Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="0"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PostalCode}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding PostalCode}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                                  <Label Grid.Row="4" Grid.Column="1">
+                                                                   <Label.FormattedText>
+                                            <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.SecondaryNumber}"/>
+                                         <Span Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    </FormattedString>
+                                    </Label.FormattedText>
+
+
+                                </Label>
+                                         <!--   Number Secondar Entry  -->
+                            <inputLayout:SfTextInputLayout Grid.Row="5" Grid.Column="1"
+                                ContainerBackgroundColor="White"
+                                ContainerType="Outlined"
+                                FocusedColor="{StaticResource NeutralGreay}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                <custom:BorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.SecondaryNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SeconderyNo}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                            </Grid>
+                        </StackLayout>
+                    </Frame>
+
+                    <!--#endregion-->
+
+                    <!--#region  Subject Field -->
                         <StackLayout Spacing="0">
                             <!--  Subject Label  -->
                             <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"

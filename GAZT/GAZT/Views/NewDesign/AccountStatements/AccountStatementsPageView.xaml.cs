@@ -38,11 +38,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     await viewModel.PopulateASFilterData();
                     viewModel.PopulateFiltersData();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
                 }
             });
         }
@@ -110,12 +107,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             this.Padding = safeInsets;
 
 
-            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+            MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
+            {
                 viewModel.PickerModel = arg;
                 viewModel.updatePicker();
 
-             
-               
+
+
             });
         }
         protected override void OnDisappearing()
@@ -161,11 +159,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                     || c.FormattedBldat2.ToLower().Contains(keyword.ToLower()) || c.FormattedBldat.ToLower().Contains(keyword.ToLower())).ToList();
                     viewModel.StatementsLineItems = new ObservableCollection<ASResult>(suggestion);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
                 }
             }
             else
@@ -193,11 +188,8 @@ namespace EGAZT.Views.NewDesign.AccountStatements
                 viewModel.IsOpeningBalanceVisible = true;
                 viewModel.PopulateStatements(viewModel.SelectedTransactionTypeFilter.TaxType, viewModel.SelectedTransactionTypeFilter.StatementFilter, viewModel.SelectedYear.Text);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
             }
 
         }
@@ -389,14 +381,13 @@ namespace EGAZT.Views.NewDesign.AccountStatements
             /*var item = e.Item as ASResult;
 
             await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
-            try { 
-            if (e.Item == null) return;
-            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-            }
-            catch (Exception ex)
+            try
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                if (e.Item == null) return;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -404,43 +395,29 @@ namespace EGAZT.Views.NewDesign.AccountStatements
         {
             /*var item = e.Item as ASResult;
             await Application.Current.MainPage.Navigation.PushAsync(new AccountStatementsDetailPageView(item));*/
-            try { 
-            if (e.Item == null) return;
-            if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
-            }
-            catch (Exception ex)
+            try
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                if (e.Item == null) return;
+                if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception)
+            {
             }
         }
-
-        /*     private void StatusList_Tapped(object sender, Syncfusion.ListView.XForms.ItemTappedEventArgs e)
-             {
-                 var item = e.ItemData as ASResult;
-
-                 if (item != null)
-                 {
-                     viewModel.FromStatus = item.StatusDesc;
-                     viewModel.ApplyFilter();
-                 }
-             }*/
-
         private void ChipsData_Tapped(object sender, EventArgs e)
         {
-            try { 
-            Grid chipGrid = sender as Grid;
-            ASResult chipModel = (ASResult)chipGrid.BindingContext;
-            if (chipModel != null)
+            try
             {
-                viewModel.FromStatus = chipModel.StatusDesc;
-                viewModel.ApplyFilter();
+                Grid chipGrid = sender as Grid;
+                ASResult chipModel = (ASResult)chipGrid.BindingContext;
+                if (chipModel != null)
+                {
+                    viewModel.FromStatus = chipModel.StatusDesc;
+                    viewModel.ApplyFilter();
+                }
             }
-            }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
             }
         }
 

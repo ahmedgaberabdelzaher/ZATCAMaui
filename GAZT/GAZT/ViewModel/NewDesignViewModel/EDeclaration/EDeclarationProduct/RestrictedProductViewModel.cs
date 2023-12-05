@@ -61,7 +61,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     {
                         IsPermit = e == "0" ? false : true;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -86,7 +86,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationProduct
                     {
                         Xamarin.Essentials.Launcher.OpenAsync(PageSettings.GetProhibitedGoodsLstURl());
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

@@ -18,7 +18,7 @@ namespace EGAZT.Converters
                     var v = (decimal)value;
                     return (v == 0) ? "" : v.ToString();
                 }
-                catch(Exception e)
+                catch(Exception)
                 {
                     Console.Write("");
                 }

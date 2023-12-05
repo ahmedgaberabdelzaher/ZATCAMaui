@@ -9383,7 +9383,7 @@ info@zatca.gov.sa</value>
      <value>المبلغ الإجمالي مضافا إليه ضريبة القيمة المضافة</value>
     </data>
   <data name="TotalPriceValue" xml:space="preserve">
-         <value>القيمة الإجمالية</value>
+    <value>القيمة الإجمالية للسلع</value>
     </data>
   <data name="ReportDetails" xml:space="preserve">
      <value>تفاصيل البلاغ</value>
@@ -9450,9 +9450,6 @@ info@zatca.gov.sa</value>
    </data>
   <data name="AddNewReport" xml:space="preserve">
       <value>بلاغ جديد</value>
-   </data>
-  <data name="Reports" xml:space="preserve">
-      <value>بلاغات</value>
    </data>
   <data name="MyOpenedReports" xml:space="preserve">
       <value>بلاغاتي المفتوحة</value>
@@ -9630,9 +9627,6 @@ info@zatca.gov.sa</value>
   <data name="EmptyReports" xml:space="preserve">
         <value>لا توجد لديك أي بلاغات</value>
     </data>
-  <data name="Viewservices" xml:space="preserve">
-        <value>عرض الخدمات</value>
-    </data>
   <data name="ReportOTPMSG" xml:space="preserve">
          <value>الرجاء إدخال رمز التحقق الذي تم إرساله إلى جوالك</value>
     </data>
@@ -9796,7 +9790,7 @@ info@zatca.gov.sa</value>
     <value>برجاء إكمال البيانات </value>
   </data>
   <data name="Entity" xml:space="preserve">
-    <value>كيان</value>
+    <value>شركات</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>الموضوع</value>
@@ -10144,7 +10138,7 @@ info@zatca.gov.sa</value>
     <value>إخلاء المسؤولية:</value>
   </data>
     <data name="FeesCalcDisclaimerTXt" xml:space="preserve">
-    <value>يرجى ملاحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم ، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي والضرائب ولا يعتد بها قانونيا .</value>
+       <value>يرجى ملاحظة أن حاسبة الرسوم الجمركية والضرائب تساعدك فقط على حساب النتيجة التقريبية لقيمة الرسوم والضرائب ولا يعتد بها قانونياً، ولمعرفة القيمة الفعلية بشكل دقيق يجب تقديم البيان الجمركي.</value>
   </data>
   <data name="CustomsFeesValue" xml:space="preserve">
     <value>قيمة الرسوم الجمركية والضرائب</value>
@@ -10223,9 +10217,6 @@ info@zatca.gov.sa</value>
   </data>
       <data name="ExciseTax2" xml:space="preserve">
     <value>الضريبة الانتقائية</value>
-  </data>
-    <data name="Customsdeclarationissuancefees" xml:space="preserve">
-    <value>رسوم إصدار البيان الجمركي</value>
   </data>
   <data name="Total2" xml:space="preserve">
     <value>المجموع</value>
@@ -10401,7 +10392,7 @@ info@zatca.gov.sa</value>
     <data name="ElectronicDevicesDisc" xml:space="preserve">
        <value>عفواً ... الكمية المدخلة تتطلب زيارة مكتب الإقرار فور الوصول</value>
   </data>
-<data name="AddingItems" xml:space="preserve">
+  <data name="AddingItems" xml:space="preserve">
        <value>إضافة المقتنيات</value>
   </data>
   <data name="EDeclarationArrivalHeader" xml:space="preserve">
@@ -10413,10 +10404,73 @@ info@zatca.gov.sa</value>
       <data name="EmptyCart" xml:space="preserve">
        <value>عفواً، السلة فارغة</value>
   </data>
-      <data name="PrivacyPolicy" xml:space="preserve">
+  <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
     <data name="InquiryaboutCustomsIssuesView" xml:space="preserve">
        <value> الاستعلام عن القضايا الجمركية</value>
+</data>
+    <data name="RegisterUserInZATCA" xml:space="preserve">
+       <value>التسجيل</value>
+  </data>
+  <data name="RegisterZATCA" xml:space="preserve">
+       <value>سجل</value>
+  </data>
+  <data name="PlatesNumber" xml:space="preserve">
+    <value>أرقام اللوحة</value>
+  </data>
+  <data name="PlatesLetter" xml:space="preserve">
+    <value>أحرف اللوحة</value>
+  </data>
+  <data name="ChooseCity" xml:space="preserve">
+    <value>برجاء اختيار المدينة</value>
+  </data>
+    <data name="ForceUpdateMsg" xml:space="preserve">
+       <value>نود ان نخبرك بآخر تحديث لدينا ويرجي تحديث التطبيق</value>
+  </data>
+  <data name="NafathLoginHeader" xml:space="preserve">
+       <value>النفاذ الوطني الموحد</value>
+  </data>
+  <data name="NafathLoginSubHeader" xml:space="preserve">
+       <value>يمكنك تسجيل الدخول عن طريق نفاذ</value>
+  </data>
+  <data name="NationalIqamaID" xml:space="preserve">
+       <value>رقم الهوية/الاقامة</value>
+  </data>
+  <data name="OpenNafath" xml:space="preserve">
+       <value>الرجاء فتح تطبيق نفاذ</value>
+  </data>
+    <data name="ConfirmOpenningNafath" xml:space="preserve">
+       <value>وتأكيد الطلب بإختيار الرقم التالي</value>
+</data>
+        <data name="nationaladdress" xml:space="preserve">
+    <value>العنوان الوطني</value>
+  </data>
+      <data name="Buildingnumber" xml:space="preserve">
+    <value> رقم المبنى</value>
+  </data>
+      <data name="Streetname" xml:space="preserve">
+    <value> اسم الشارع</value>
+  </data>
+      <data name="Districtname" xml:space="preserve">
+    <value> اسم الحي</value>
+  </data>
+  <data name="Cityname" xml:space="preserve">
+    <value>اسم المدينة </value>
+  </data>
+    <data name="PostalCode" xml:space="preserve">
+    <value> الرمز البريدي</value>
+  </data>
+  <data name="BuildingNoValidationMsg" xml:space="preserve">
+    <value>يجب ادخال أربعة ارقام فريدة تمثل مبنى سكني او تجاري</value>
+  </data>
+    <data name="PostalValidationMsg" xml:space="preserve">
+    <value>يجب ادخال خمسة ارقام للرمز البريدي</value>
+  </data>
+    <data name="additionalNoValidationMsg" xml:space="preserve">
+    <value>يجب ادخال اربعة ارقام للرقم الإضافي</value>
+  </data>
+     <data name="SecondaryNumber" xml:space="preserve">
+    <value>الرقم الإضافي</value>
   </data>
 </root>

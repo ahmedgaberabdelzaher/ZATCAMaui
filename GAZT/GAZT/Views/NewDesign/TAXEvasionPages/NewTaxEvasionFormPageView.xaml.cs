@@ -83,10 +83,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -136,10 +136,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                      viewModel.UploadAttachment();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -152,10 +152,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                      viewModel.AddAttachment();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -169,10 +169,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 MessagingCenter.Unsubscribe<object, string>(this, "OnCameraClicked");
                 MessagingCenter.Unsubscribe<object, string>(this, "OnGalleryClicked");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -218,10 +218,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.CList.Clear();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 }
@@ -232,10 +232,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         viewModel.RList.Clear();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 }
@@ -260,10 +260,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
 
                 TFSAddress.Text = string.Empty;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -327,32 +327,32 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     catch (FeatureNotSupportedException ex)
                     {
                     // Handle not supported on device exception
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                     catch (FeatureNotEnabledException ex)
                     {
                     // Handle not enabled on device exception
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                     catch (PermissionException ex)
                     {
                     // Handle permission exception
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                     // Unable to get location
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             //});
@@ -389,10 +389,10 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                     {
                         mapView.Pins.Clear();
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                     mapView.Pins.Add(pin);
 
@@ -411,12 +411,12 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
                 {
                     // Handle permission exception
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // Unable to get location
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
         }
@@ -556,26 +556,26 @@ namespace EGAZT.Views.NewDesign.TAXEvasionPages
             catch (FeatureNotSupportedException ex)
             {
                 // Handle not supported on device exception
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (FeatureNotEnabledException ex)
             {
                 // Handle not enabled on device exception
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             catch (PermissionException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 // Handle permission exception
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 // Unable to get location
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }

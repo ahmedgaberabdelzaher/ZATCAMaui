@@ -65,10 +65,10 @@ namespace EGAZT.Manager
                     }
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -125,10 +125,10 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -188,10 +188,10 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }
@@ -246,10 +246,10 @@ namespace EGAZT.Manager
 
                     return _asTabIdentification;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     return null;
                 }
             }

@@ -93,11 +93,11 @@ namespace GAZT.iOS
                 UIView presentingView = UIApplication.SharedApplication.KeyWindow.RootViewController.View;
                 documentController.PresentOpenInMenu(CGRect.Empty, presentingView, true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //Exception Logging
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

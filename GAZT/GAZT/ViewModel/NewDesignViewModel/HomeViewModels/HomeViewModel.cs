@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using EGAZT.Models;
+using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.eDeclarations;
 using EGAZT.Views.NewDesign.HomePages;
 using GalaSoft.MvvmLight.Views;
@@ -224,7 +225,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                  new MenuModel()
                 {
                 Name=AppResources.Reports, ID="InquiryAboutAddOrShowReportsPage",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
-               //  Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
+                // Name=AppResources.Reports, ID="TaxEvasionPageWebView",ImageSource="Reports",ColumnNo=0,Row=0,IsVerticalView=isvertical
 
                  }
 
@@ -249,18 +250,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 {
                 Name=AppResources.CustomsDeclarationforTravelers, ID="EDeclarationPage",ImageSource="TravellerDecleration",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.EDeclerationDesc:""
 
-                  // Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?2:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
+
                 } ,
                  new MenuModel()
                 {
-                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesFormView",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+                   Name=AppResources.CustomFeesCalculator, ID="CustomFeesCalculator",ImageSource="TransactionReceptionIcon",ColumnNo=isvertical?0:1,Row=isvertical?3:1,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.CustomFeesCalculator:""
+
                 }
                  ,
                  new MenuModel()
                 {
                    Name=AppResources.TransactionReception, ID="IAMLoginView",ImageSource="TransactionReceptionIcon",ColumnNo=0,Row=isvertical?4:2,IsVerticalView=isvertical,ServiceDesc=isvertical?AppResources.TawreedServiceDesc:""
                 }
-               
+
                  ,
                   new MenuModel()
                 {
@@ -270,7 +272,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
 
                   new MenuModel()
                 {
-                     
+
                    Name=AppResources.CarImport, ID="FasahLoginView",ImageSource="BrokerOptionality",ColumnNo=0,Row=isvertical?6:3,IsVerticalView=isvertical,ServiceDesc=isvertical?"":""
                 }
                     ,
@@ -285,7 +287,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                 }
            };
 
-            
+
         }
 
         public ICommand NavigateCommand
@@ -298,7 +300,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                     switch (MenuItem.ID)
                     {
                         case "1":
-                          
+
                             _navigationService.NavigateTo("CusromServiceMenu");
                             break;
                         case "2":
@@ -330,7 +332,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.eDeclaration);
                             break;
 
-                            // Depercated
+                        // Depercated
                         case "TransactionReception":
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.Transactiondescription);
                             break;
@@ -338,7 +340,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.HomeViewModels
                             _navigationService.NavigateTo("CreateE_Declaration", AppResources.CustomFeesCalculator);
                             break;
                         case "IAMLoginView":
-                            _navigationService.NavigateTo("IAMLoginView", 2);
+                           
+                            _navigationService.NavigateTo("NativeNafathPage", "TransactionReceptionView");
                             break;
                         default:
                             _navigationService.NavigateTo(menuItem.ID);

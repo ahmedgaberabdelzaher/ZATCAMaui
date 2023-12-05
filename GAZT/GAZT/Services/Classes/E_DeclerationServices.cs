@@ -65,6 +65,11 @@ namespace EGAZT.Services.Classes
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CountryModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/countries").ConfigureAwait(false);
             return response;
         }
+        public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CityModel>>, bool, string>> GetPlatesCity(int countryCode)
+        {
+            var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CityModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/country-cities?countryCode={countryCode}").ConfigureAwait(false);
+            return response;
+        }
         public async Task<Tuple<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>, bool, string>> GetCountriesCode()
         {
             var response = await HttpManager.GetAsync<DATAPowerBaseResponse<ObservableCollection<CountryCodeModel>>>($"{PageSettings.ZATCABaseURL}{version}/references/customs/nibras/phone-country-codes").ConfigureAwait(false);
@@ -95,7 +100,7 @@ namespace EGAZT.Services.Classes
 
         public async Task<HttpResponseMessage> SubmitDecleration(EDeclerationSubmitModel body)
         {
-            var response = await HttpManager.PostAsync<EDeclerationSubmitModel>($"{PageSettings.ZATCABaseURL}{version}/zatca/customs/declaration/submit-declaration", body).ConfigureAwait(false);
+            var response = await HttpManager.PostAsync<EDeclerationSubmitModel>($"{PageSettings.ZATCABaseURL}v2/zatca/customs/declaration/submit-declaration", body).ConfigureAwait(false);
             return response;
         }
 

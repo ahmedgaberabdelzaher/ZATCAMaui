@@ -1225,10 +1225,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.MyReturnsPage_ViewModel
                     PopToRootPage();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);

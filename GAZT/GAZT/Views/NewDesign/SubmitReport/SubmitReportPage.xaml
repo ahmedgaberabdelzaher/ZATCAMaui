@@ -86,11 +86,12 @@
                     <StackLayout>
 
                         <!--  Circle view  -->
-                        <Grid IsVisible="false"
+                        <Grid
                             Margin="0,30,0,0"
                             ColumnDefinitions="Auto,Auto,Auto"
                             ColumnSpacing="0"
                             HorizontalOptions="CenterAndExpand"
+                            IsVisible="false"
                             RowDefinitions="Auto,Auto"
                             VerticalOptions="CenterAndExpand">
 
@@ -451,7 +452,7 @@
 
                         </StackLayout>
 
-                            <!--  Uploaded file Field  -->
+                        <!--  Uploaded file Field  -->
                         <StackLayout Spacing="0">
 
                             <!--  Uploaded files Label  -->
@@ -499,7 +500,7 @@
 
                         </StackLayout>
 
-                                           <!--  PDfUploaded List  -->
+                        <!--  PDfUploaded List  -->
                         <StackLayout IsVisible="{Binding IsTherePDFUploaded}" Spacing="0">
 
                             <!--  PDfUploaded Label  -->
@@ -873,472 +874,474 @@
 
                         </StackLayout>
 
-                    
-     
-                            <!--#region Reward  Body-->
-                    <StackLayout Spacing="0">                 
-                  <!--  Check Box  -->
-                        <StackLayout
-                            Margin="0,0,0,25"
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="15">
 
-                            <Image
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                Source="emptyCheck.png"
-                                Style="{DynamicResource BackButtonArrow}"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20">
 
-                                <Image.Triggers>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="Image"
-                                        Value="true">
-                                        <Setter Property="Source" Value="CheckMark.png" />
-                                    </DataTrigger>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="Image"
-                                        Value="false">
-                                        <Setter Property="Source" Value="emptyCheck.png" />
-                                    </DataTrigger>
-
-                                </Image.Triggers>
-
-                            </Image>
-
-                            <Label
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="14"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.NeedReward}"
-                                TextColor="#002447" />
-
-                            <StackLayout.GestureRecognizers>
-
-                                <TapGestureRecognizer Command="{Binding CheckBoxCommand}" />
-
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                          <!--  Not need Reward Hinf Note  -->
-                        <Frame
-                            Padding="10"
-                            BackgroundColor="White"
-                            BorderColor="#E6E6E6"
-                            CornerRadius="10"
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="StartAndExpand">
+                        <!--#region Reward  Body-->
+                        <StackLayout Spacing="0">
+                            <!--  Check Box  -->
                             <StackLayout
-                                HorizontalOptions="CenterAndExpand"
+                                Margin="0,0,0,25"
+                                HorizontalOptions="FillAndExpand"
                                 Orientation="Horizontal"
-                                Spacing="10"
-                                VerticalOptions="CenterAndExpand">
-   <!-- reward hint text Label  -->
-                                <custom:CustomLabel
-                                    FontSize="12"
-                                    HorizontalOptions="StartAndExpand"
-                                    LineSpacing="0.8"
-                                    Text="{x:Static ResourceManager:AppResources.NeedRewardHint}"
-                                     />
+                                Spacing="15">
 
+                                <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="Start"
+                                    Source="emptyCheck.png"
+                                    Style="{DynamicResource BackButtonArrow}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20">
+
+                                    <Image.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="Image"
+                                            Value="true">
+                                            <Setter Property="Source" Value="CheckMark.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="Image"
+                                            Value="false">
+                                            <Setter Property="Source" Value="emptyCheck.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.NeedReward}"
+                                    TextColor="#002447" />
+
+                                <StackLayout.GestureRecognizers>
+
+                                    <TapGestureRecognizer Command="{Binding CheckBoxCommand}" />
+
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+                            <!--  Not need Reward Hinf Note  -->
+                            <Frame
+                                Padding="10"
+                                BackgroundColor="White"
+                                BorderColor="#E6E6E6"
+                                CornerRadius="10"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="StartAndExpand">
+                                <StackLayout
+                                    HorizontalOptions="CenterAndExpand"
+                                    Orientation="Horizontal"
+                                    Spacing="10"
+                                    VerticalOptions="CenterAndExpand">
+                                    <!--  reward hint text Label  -->
+                                    <custom:CustomLabel
+                                        FontSize="12"
+                                        HorizontalOptions="StartAndExpand"
+                                        LineSpacing="0.8"
+                                        Text="{x:Static ResourceManager:AppResources.NeedRewardHint}" />
+
+                                </StackLayout>
+
+                            </Frame>
+
+
+                            <!--  Full name Field  -->
+                            <StackLayout Spacing="0">
+
+                                <!--  Name Label  -->
+                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
+
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+
+                                <custom:CustomLabel
+                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ReportFullName}">
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+                                <!--  Name Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackgroundColor="White"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource NeutralGreay}"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15"
+                                    UnfocusedColor="{StaticResource NeutralGreay}">
+                                    <custom:BorderlessEntry
+                                        x:Name="nameEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterNameAr}"
+                                        TextColor="#58595B" />
+                                </inputLayout:SfTextInputLayout>
                             </StackLayout>
 
-                        </Frame>
-                         
+                            <!--  Nationl Id Field  -->
+                            <StackLayout Spacing="0">
 
-                        <!--  Full name Field  -->
-                        <StackLayout Spacing="0">
-
-                              <!--  Name Label  -->
-                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
-
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ReportFullName}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-
-                                <custom:CustomLabel.Triggers>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
-
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                <!--  Nationl Id Label  -->
 
 
-                            <custom:CustomLabel
-                                IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ReportFullName}">
-                                <custom:CustomLabel.Triggers>
+                                <!--  Name Label  -->
+                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.NationaID}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
+                                    <custom:CustomLabel.Triggers>
 
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
 
-                            <!--  Name Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    x:Name="nameEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ReportFullName}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterNameAr}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                                       <!--  Nationl Id Field  -->
-                        <StackLayout Spacing="0">
-
-                            <!--  Nationl Id Label  -->
-                          
-
-                            <!--  Name Label  -->
-                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
-
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NationaID}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-
-                                <custom:CustomLabel.Triggers>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
-
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
 
-                            <custom:CustomLabel
-                                IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.NationaID}">
-                                <custom:CustomLabel.Triggers>
+                                <custom:CustomLabel
+                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.NationaID}">
+                                    <custom:CustomLabel.Triggers>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
 
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
-                            <!--  Name Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    x:Name="NationalIdEntry"
-                                    Keyboard="Text"
-                                    Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterNationalId}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                                <!--  Name Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackgroundColor="White"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource NeutralGreay}"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15"
+                                    UnfocusedColor="{StaticResource NeutralGreay}">
+                                    <custom:BorderlessEntry
+                                        x:Name="NationalIdEntry"
+                                        Keyboard="Text"
+                                        Placeholder="{x:Static ResourceManager:AppResources.NationaID}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterNationalId}"
+                                        TextColor="#58595B" />
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
 
-                        <!--  Email Field  -->
-                        <StackLayout Spacing="0">
+                            <!--  Email Field  -->
+                            <StackLayout Spacing="0">
 
-                            <!--  Email Label  -->
-                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                <!--  Email Label  -->
+                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
 
-                                <custom:CustomLabel.Triggers>
+                                    <custom:CustomLabel.Triggers>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
-
-
-                            <custom:CustomLabel
-                                IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
-                                <custom:CustomLabel.Triggers>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
-
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
 
-                            <!--  Email Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    Keyboard="Email"
-                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterEmail}"
-                                    TextColor="#58595B" />
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                                <custom:CustomLabel
+                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}">
+                                    <custom:CustomLabel.Triggers>
 
-                        <!--  Phone Field  -->
-                        <StackLayout Spacing="0">
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                            <!--  Phone Label  -->
-                            <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
 
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
-                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
-
-                                <custom:CustomLabel.Triggers>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
-
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
-
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
 
-                            <custom:CustomLabel
-                                IsVisible="{Binding SubmitReport.IsNeedReward}"
-                                Style="{StaticResource CaptionLabelGrey}"
-                                Text="{x:Static ResourceManager:AppResources.MobileNumber}">
-                                <custom:CustomLabel.Triggers>
+                                <!--  Email Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackgroundColor="White"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource NeutralGreay}"
+                                    InputViewPadding="16,0,16,0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15"
+                                    UnfocusedColor="{StaticResource NeutralGreay}">
+                                    <custom:BorderlessEntry
+                                        Keyboard="Email"
+                                        Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterEmail}"
+                                        TextColor="#58595B" />
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="false">
-                                        <Setter Property="IsVisible" Value="true" />
-                                    </DataTrigger>
+                            <!--  Phone Field  -->
+                            <StackLayout Spacing="0">
 
-                                    <DataTrigger
-                                        Binding="{Binding SubmitReport.IsNeedReward}"
-                                        TargetType="custom:CustomLabel"
-                                        Value="true">
-                                        <Setter Property="IsVisible" Value="false" />
-                                    </DataTrigger>
+                                <!--  Phone Label  -->
+                                <custom:CustomLabel IsVisible="{Binding SubmitReport.IsNeedReward}" Style="{StaticResource CaptionLabelGrey}">
 
-                                </custom:CustomLabel.Triggers>
-                            </custom:CustomLabel>
+                                    <custom:CustomLabel.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                        </FormattedString>
+                                    </custom:CustomLabel.FormattedText>
 
-                            <!--  Phone Entry  -->
-                            <inputLayout:SfTextInputLayout
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
-                                <custom:BorderlessEntry
-                                    x:Name="phoneEntry"
-                                    Keyboard="Telephone"
-                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding SubmitReport.ReporterMobileNumber}"
-                                    TextColor="#58595B" />
-                                <inputLayout:SfTextInputLayout.LeadingView>
-                                    <Image Aspect="AspectFit" Source="ic_Version" />
-                                </inputLayout:SfTextInputLayout.LeadingView>
-                            </inputLayout:SfTextInputLayout>
-                        </StackLayout>
+                                    <custom:CustomLabel.Triggers>
 
-                                  <!--  Check Box  -->
-                        <StackLayout
-                            Margin="0,0,0,25"
-                            HorizontalOptions="FillAndExpand"
-                            Orientation="Horizontal"
-                            Spacing="10">
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
 
-                            <Image 
-                                HeightRequest="20"
-                                HorizontalOptions="Start"
-                                Source="emptyCheck.png"
-                                Style="{DynamicResource BackButtonArrow}"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20">
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                                <Image.Triggers>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
 
-                                    <DataTrigger
-                                        Binding="{Binding IsReadTermsandCondition}"
-                                        TargetType="Image"
-                                        Value="true">
-                                        <Setter Property="Source" Value="CheckMark.png" />
-                                    </DataTrigger>
 
-                                    <DataTrigger
-                                        Binding="{Binding IsReadTermsandCondition}"
-                                        TargetType="Image"
-                                        Value="false">
-                                        <Setter Property="Source" Value="emptyCheck.png" />
-                                    </DataTrigger>
+                                <custom:CustomLabel
+                                    IsVisible="{Binding SubmitReport.IsNeedReward}"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.MobileNumber}">
+                                    <custom:CustomLabel.Triggers>
 
-                                </Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="false">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
 
-                            </Image>
-<StackLayout Orientation="Horizontal">
-                            <Label
+                                        <DataTrigger
+                                            Binding="{Binding SubmitReport.IsNeedReward}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="true">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+                                <!--  Phone Entry  -->
+                                <inputLayout:SfTextInputLayout
+                                    ContainerBackgroundColor="White"
+                                    ContainerType="Outlined"
+                                    ErrorColor="#B00020"
+                                    FocusedColor="{StaticResource NeutralGreay}"
+                                    InputViewPadding="0"
+                                    LeadingViewPosition="Inside"
+                                    OutlineCornerRadius="15"
+                                    UnfocusedColor="{StaticResource NeutralGreay}">
+                                    <custom:BorderlessEntry
+                                        x:Name="phoneEntry"
+                                        Keyboard="Telephone"
+                                        Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding SubmitReport.ReporterMobileNumber}"
+                                        TextColor="#58595B" />
+                                    <inputLayout:SfTextInputLayout.LeadingView>
+                                        <Image Aspect="AspectFit" Source="ic_Version" />
+                                    </inputLayout:SfTextInputLayout.LeadingView>
+                                </inputLayout:SfTextInputLayout>
+                            </StackLayout>
+
+                            <!--  Check Box  -->
+                            <StackLayout
+                                Margin="0,0,0,25"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                Spacing="10">
+
+                                <Image
+                                    HeightRequest="20"
+                                    HorizontalOptions="Start"
+                                    Source="emptyCheck.png"
+                                    Style="{DynamicResource BackButtonArrow}"
                                     VerticalOptions="CenterAndExpand"
-                                FontFamily="{StaticResource SomarRegular}"
-                                FontSize="14" Margin="0" 
-                                HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.ViewRestofTermsConditions}"
-                                TextColor="#002447" />
-                                 <Label Margin="0"
-                            VerticalOptions="CenterAndExpand"
-                            FontFamily="{StaticResource SomarRegular}"
-                            FontSize="14"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.Clickhere}"
-                            TextColor="#0996D4"
-                            TextDecorations="Underline">
+                                    WidthRequest="20">
 
-                            <Label.GestureRecognizers>
+                                    <Image.Triggers>
 
-                                <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
+                                        <DataTrigger
+                                            Binding="{Binding IsReadTermsandCondition}"
+                                            TargetType="Image"
+                                            Value="true">
+                                            <Setter Property="Source" Value="CheckMark.png" />
+                                        </DataTrigger>
 
-                            </Label.GestureRecognizers>
+                                        <DataTrigger
+                                            Binding="{Binding IsReadTermsandCondition}"
+                                            TargetType="Image"
+                                            Value="false">
+                                            <Setter Property="Source" Value="emptyCheck.png" />
+                                        </DataTrigger>
 
-                        </Label></StackLayout>
-                            <StackLayout.GestureRecognizers>
+                                    </Image.Triggers>
 
-                                <TapGestureRecognizer Command="{Binding TermsAndConditionsCheckBoxCommand}" />
+                                </Image>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        Margin="0"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ViewRestofTermsConditions}"
+                                        TextColor="#002447"
+                                        VerticalOptions="CenterAndExpand" />
+                                    <Label
+                                        Margin="0"
+                                        FontFamily="{StaticResource SomarRegular}"
+                                        FontSize="14"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.Clickhere}"
+                                        TextColor="#0996D4"
+                                        TextDecorations="Underline"
+                                        VerticalOptions="CenterAndExpand">
 
-                            </StackLayout.GestureRecognizers>
-                        </StackLayout>
-                       
+                                        <Label.GestureRecognizers>
+
+                                            <TapGestureRecognizer Command="{Binding OpenTermsLinkCommand}" />
+
+                                        </Label.GestureRecognizers>
+
+                                    </Label>
+                                </StackLayout>
+                                <StackLayout.GestureRecognizers>
+
+                                    <TapGestureRecognizer Command="{Binding TermsAndConditionsCheckBoxCommand}" />
+
+                                </StackLayout.GestureRecognizers>
+                            </StackLayout>
+
 
                             <!--  Send Report Button  -->
-                        <buttons:SfButton
-                            Margin="0,40"
-                            Command="{Binding SendReportCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.SendReportButton}" />
+                            <buttons:SfButton
+                                Margin="0,40"
+                                Command="{Binding SendReportCommand}"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Text="{x:Static ResourceManager:AppResources.SendReportButton}" />
 
-                    </StackLayout>
+                        </StackLayout>
 
 
-   
-            <!--#endregion Body-->
+
+                        <!--#endregion Body-->
                     </StackLayout>
 
                 </ScrollView>

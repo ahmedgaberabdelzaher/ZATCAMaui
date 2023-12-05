@@ -364,10 +364,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -425,11 +425,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -486,8 +486,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -539,8 +539,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATRefunds
             }
             catch (InternetException ex)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;

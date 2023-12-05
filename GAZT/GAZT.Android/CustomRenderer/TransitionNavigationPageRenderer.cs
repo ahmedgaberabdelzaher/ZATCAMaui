@@ -1,11 +1,8 @@
-﻿using System;
-using GAZT.Droid.CustomRenderer;
+﻿using GAZT.Droid.CustomRenderer;
 using Xamarin.Forms.Platform.Android.AppCompat;
 using System.ComponentModel;
 using Android.Content;
-using Android.Support.V4.App;
 using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android.AppCompat;
 using EGAZT.Enums;
 using EGAZT.CustomControl;
 

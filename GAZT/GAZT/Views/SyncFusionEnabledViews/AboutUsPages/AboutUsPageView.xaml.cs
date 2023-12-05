@@ -59,9 +59,8 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AboutUs
                 }
             }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                Console.WriteLine(e.Message);
             }
         }
         #endregion

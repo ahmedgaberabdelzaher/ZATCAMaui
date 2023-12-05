@@ -1,22 +1,184 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using EGAZT.Models;
+using EGAZT.Models.BaseModels;
+using EGAZT.Models.NativeNafath;
+using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
+using EGAZT.Views.NewDesign;
+using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration;
 using GalaSoft.MvvmLight.Views;
+using Newtonsoft.Json;
+using Prism.Navigation.Xaml;
+using Xamarin.Forms;
 namespace EGAZT.ViewModel.NewDesignViewModel.Common
 {
-	public class RegisterZATCAUserViewModel: BaseViewModel
+    public class RegisterZATCAUserViewModel : BaseViewModel
     {
-        string email;
-        public string Email { get { return email; } set { email = value; RaisePropertyChanged(); } }
+        public int CommingFrom { get; set; }
 
-        string mobileNumber;
-        public string MobileNumber { get { return mobileNumber; } set { mobileNumber = value; RaisePropertyChanged(); } }
+        private readonly ICommonServices CommonServices;
 
-        string address;
-        public string Address { get { return address; } set { address = value; RaisePropertyChanged(); } }
+        ZATCAUserRegisterModel unRegisteredUser;
+        public ZATCAUserRegisterModel UnRegisteredUser { get { return unRegisteredUser; } set { unRegisteredUser = value; RaisePropertyChanged(); } }
 
-
-        public RegisterZATCAUserViewModel( INavigationService navigationService, IDialogService dialogService) : base(navigationService, dialogService)
+        public RegisterZATCAUserViewModel(INavigationService navigationService, IDialogService dialogService, ICommonServices commonServices) : base(navigationService, dialogService)
         {
+            this.CommonServices = commonServices;
+        }
+
+        public ICommand SubmitUserCommand
+        {
+            get
+            {
+                return new Command(async() =>
+                {
+                    if(IsValidInfo())
+                        await RegisterUser(UnRegisteredUser);
+                });
+            }
+        }
+        public override ICommand BackCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    var navigation = Application.Current.MainPage.Navigation;
+
+                    var currentPage = navigation.NavigationStack.LastOrDefault();
+
+                    if (CommingFrom == 1)
+                    {
+                       // navigation.InsertPageBefore(new EDeclarationPage(), currentPage);
+                        _navigationService.GoBack();
+                    }
+                    else
+                    {
+                       // navigation.InsertPageBefore(new Home(), currentPage);
+                        _navigationService.GoBack();
+                    }
+
+                    ResetData();
+                });
+            }
+        }
+
+        private void ResetData()
+        {
+            UnRegisteredUser.mobileNumber = string.Empty;
+            UnRegisteredUser.emailAddress = string.Empty;
+            UnRegisteredUser.address = string.Empty;
+        }
+
+        private bool IsValidInfo()
+        {
+
+            Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");
+            Regex phoneRegex = new Regex(@"^[0-9]+$");
+            Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]");
+            if (string.IsNullOrWhiteSpace(UnRegisteredUser.mobileNumber)
+                    || string.IsNullOrWhiteSpace(UnRegisteredUser.emailAddress)
+                    || string.IsNullOrWhiteSpace(UnRegisteredUser.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+
+            }
+            else if (!Email.IsMatch(UnRegisteredUser.emailAddress.ToLower()))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.InvalidEmailFormat;
+                return false;
+            }
+            else if (!KSAphoneRegex.IsMatch(UnRegisteredUser.mobileNumber))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
+            else if (address.IsMatch(UnRegisteredUser.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.AddressKSAValidation;
+                return false;
+            }
+            return true;
+
+        }
+
+        private async Task RegisterUser(ZATCAUserRegisterModel UnRegisteredUser)
+        {
+            try
+            {
+                IsLoading = true;
+                var result = await this.CommonServices.ZATCAUserRegister(UnRegisteredUser);
+                if (result.IsSuccessStatusCode)
+                {
+                    var conent = await result.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponse<RegisterationResponseModel>>(conent);
+                    if (data.header.status.code == "I000000")
+                    {
+                        HandleSuccessUserNavigation();
+                        ResetData();
+                    }
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    {
+                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+
+                    }
+                }
+                else
+                {
+                    MessageTxt = AppResources.RequestTimeoutDescription;
+                    IsShowMsgView = true;
+                    IsLoading = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                IsLoading = false;
+            }
+        }
+
+        private void HandleSuccessUserNavigation()
+        {
+            var navigation = Application.Current.MainPage.Navigation;
+
+            var currentPage = navigation.NavigationStack.LastOrDefault();
+
+            var payload = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
+
+          
+                if (CommingFrom == 1)
+                {
+                    navigation.InsertPageBefore(new NewDeclarationPage(payload), currentPage);
+                    _navigationService.GoBack();
+                }
+                else
+                {
+                    navigation.InsertPageBefore(new TransactionReceptionView(payload), currentPage);
+                    _navigationService.GoBack();
+                }
+            
+
         }
     }
 }

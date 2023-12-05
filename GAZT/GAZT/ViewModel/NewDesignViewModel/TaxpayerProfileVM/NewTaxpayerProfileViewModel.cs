@@ -182,12 +182,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxpayerProfileVM
                 // Session Expired Or Not
                 PopToRootPage();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 IsLoading = false;
                 TinStatusLabelText = " - ";
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

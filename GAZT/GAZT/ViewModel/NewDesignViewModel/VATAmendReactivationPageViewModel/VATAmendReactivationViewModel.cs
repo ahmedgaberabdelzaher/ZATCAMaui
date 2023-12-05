@@ -1878,10 +1878,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         }
                         TxtIDTypeFR = _selectedIdTypeFR.Name;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
 
                     }
 
@@ -2691,10 +2691,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 VATRegistrationDetailsData.d.DecidNo = IdNumberSR;
                 VATRegistrationDetailsData.d.Decname = FirstNameSR;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -2771,7 +2771,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                         IsLoading = false;
                         return response;
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                         return null;
@@ -2789,10 +2789,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 });
                 return response;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return response;
             }
         }
@@ -2984,10 +2984,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 {
                                     TxtIDTypeFR = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
 
                                 GpartSum = vATRegistration.d.CONTACT_PERSONSet.results[0].Gpart;
@@ -3000,10 +3000,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                 {
                                     TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type)?.FirstOrDefault()?.Name;
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
 
                                 if (App.VATType == Enums.PageExecutionType.Amend)
@@ -3052,10 +3052,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                                             });
                                             count++;
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
                                         }
                                     }
                                     ListFinanceRepresenatives = listFRep;
@@ -3066,10 +3066,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
 
                                     TxtIDTypeSum = IdTypeListFR.Where(x => x.ID == vATRegistration.d.CONTACT_PERSONSet.results[0].Type).FirstOrDefault()?.Name;
                                 }
-                                catch (Exception ex)
+                                catch (Exception)
                                 {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
                                 ATTDETSetObject = new ATTDETSet();
                                 ATTDETSetObject = vATRegistration.d.ATTDETSet;
@@ -3281,10 +3281,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -3356,10 +3356,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 SelectedIdTypeFR = IdTypeListFR[IDTypeIndexFR];
                 SelectedIdTypeSR = IdTypeListSR[IDTypeIndexSR];
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -3436,10 +3436,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             }
                             IsLoading = false;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                             IsLoading = false;
                         }
                     }
@@ -3480,10 +3480,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                             }
                             IsLoading = false;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                            Console.Write(ex.ToString());
-                            Console.Write(ex.StackTrace.ToString());
+                            
+                            
                             IsLoading = false;
                             NewVatEligibleStartDate = string.Empty;
                         }
@@ -3534,10 +3534,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VATAmendReactivationPageViewModel
                 string sub = uri.Substring(startPos, length);
                 return sub;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return "";
             }
 

@@ -42,10 +42,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 _ = viewModel.onPageLoad();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -88,10 +88,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                 await viewModel.GetZakatRevokList();
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
 
@@ -144,10 +144,10 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
 
 

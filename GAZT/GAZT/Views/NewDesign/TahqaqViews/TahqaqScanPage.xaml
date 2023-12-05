@@ -154,7 +154,7 @@
     <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" X2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
     <Line Stroke="gray" custom:RoundCornersEffect.CornerRadius="10" StrokeThickness="20" Y2="100" HorizontalOptions="EndAndExpand" VerticalOptions="End"/>
 </Grid>
-                    -->    
+                    -->
                     <!--
                                 <Path Fill="#00000000"
        Data="M5,65C5,51.8 5,31.8 5,5L30.79,5L65,5"
@@ -411,8 +411,8 @@
                                     Text="{x:Static ResourceManager:AppResources.Submitareport}"
                                     TextColor="White" />
                                 <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
-                            </Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding OpenReportsCommand}" />
+                                </Frame.GestureRecognizers>
                             </Frame>
                             <Label
                                 FontSize="16"

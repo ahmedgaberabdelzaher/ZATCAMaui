@@ -179,18 +179,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             passSelectedTaxEvasionItem(_selectedTaxEvasionListItem);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                     
                     RaisePropertyChanged("SelectedTaxEvasionListItem");
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             }
         }
@@ -214,10 +214,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                                new ChipModel(){Text =AppResources.ZTEReportStatusCompleted, TemplateType = AppResources.ZReportStatusClose,ImageSource = "ic_money.png"}
             };
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             
         }
@@ -232,10 +232,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     {
                         ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(TERListReportbymobnoAll);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
                     
                     if (SelectedChipFilterItemList != null)
@@ -266,10 +266,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                             {
                                 ListToDisplay = new ObservableCollection<TaxEvasionReportDetails>(list.OrderByDescending(c => c.TicketId));
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                             
 
@@ -378,10 +378,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                     await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(MessageForTheUser));
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 Device.BeginInvokeOnMainThread(async () =>
                 {
                     await Task.Run(() =>
@@ -410,10 +410,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TaxEvasionViewModels
                 });
                 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

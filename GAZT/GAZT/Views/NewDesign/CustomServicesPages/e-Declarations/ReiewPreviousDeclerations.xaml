@@ -13,10 +13,11 @@
             Padding="20,20,20,0"
             Style="{StaticResource CommonTopCurves}">
             <WebView
-                Margin="-20,0,-20,0" Navigating="WebView_Navigating"
+                x:Name="webc"
+                Margin="-20,0,-20,0"
                 HorizontalOptions="FillAndExpand"
                 IsTabStop="True"
-                x:Name="webc"
+                Navigating="WebView_Navigating"
                 VerticalOptions="FillAndExpand" />
         </yummy:PancakeView>
         <controls:Header TitleText="{x:Static ResourceManager:AppResources.CarImport}" />
@@ -50,5 +51,4 @@
         <controls:Header TitleText="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"></controls:Header>
         <controls:Loader  Grid.Row="0" Grid.RowSpan="2" IsVisible="{Binding IsLoading}"></controls:Loader>
         </Grid>
-</ContentPage>
--->
+</ContentPage>-->

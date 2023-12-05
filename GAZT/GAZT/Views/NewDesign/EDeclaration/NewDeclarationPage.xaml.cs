@@ -9,28 +9,49 @@ namespace EGAZT.Views.NewDesign.EDeclaration
     public partial class NewDeclarationPage : ContentPage
     {
         BaseEDeclarationViewModel viewModel;
-        string token = string.Empty;
-        public NewDeclarationPage(string token="")
+
+        object payload;
+
+        public NewDeclarationPage()
         {
             InitializeComponent();
             viewModel = App.Locator.BaseEDeclarationViewModel;
+
             viewModel.SubmitModel.travelerDeclaration = new Models.EDeclerationsModel.SubmitModels.TravelerDeclaration();
+
             viewModel.SubmitModel.travelerDeclaration.Isvisitor = true;
-            this.token = token;
-            if (token!="")
+
+            App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
+
+            BindingContext = viewModel;
+        }
+
+        public NewDeclarationPage(object payload = null)
+        {
+            InitializeComponent();
+            viewModel = App.Locator.BaseEDeclarationViewModel;
+
+            viewModel.SubmitModel.travelerDeclaration = new Models.EDeclerationsModel.SubmitModels.TravelerDeclaration();
+
+            viewModel.SubmitModel.travelerDeclaration.Isvisitor = true;
+
+            App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
+
+            this.payload = payload;
+
+            if (this.payload != null)
             {
-               
-                viewModel.GetTokenData(token);
+                viewModel.SetPassangerData(this.payload);
                 viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
 
             }
             BindingContext = viewModel;
-            App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);
 
         }
+
         protected override void OnAppearing()
         {
-            if (this.token != "")
+            if (this.payload != null)
             {
                 viewModel.SubmitModel.travelerDeclaration.Isvisitor = false;
                 App.Locator.StateManager.SetItem("IsLoggedIn", viewModel.SubmitModel.travelerDeclaration.Isvisitor);

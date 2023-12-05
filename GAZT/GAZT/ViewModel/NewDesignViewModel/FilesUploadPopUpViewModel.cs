@@ -602,10 +602,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
-                                                                    Console.WriteLine(ex.Message);
-                                                                    Console.Write(ex.StackTrace.ToString());
+                                                                    
+                                                                    
                                                                     await Task.Run(() =>
                                                                     {
                                                                         IsLoading = false;
@@ -723,10 +723,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
-                                                                    Console.WriteLine(ex.Message);
-                                                                    Console.Write(ex.StackTrace.ToString());
+                                                                    
+                                                                    
                                                                     await Task.Run(() =>
                                                                     {
                                                                         IsLoading = false;
@@ -866,10 +866,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                                                                         }
                                                                     }
                                                                 }
-                                                                catch (Exception ex)
+                                                                catch (Exception)
                                                                 {
-                                                                    Console.WriteLine(ex.Message);
-                                                                    Console.Write(ex.StackTrace.ToString());
+                                                                    
+                                                                    
                                                                     await Task.Run(() =>
                                                                     {
                                                                         IsLoading = false;
@@ -990,10 +990,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     });
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     IsLoading = false;
@@ -1122,10 +1122,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 IsLoading = false;
             }
             await Task.Run(() =>
@@ -1152,10 +1152,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                     // VatAttachmentsListtofilter= new ObservableCollection<Attachment>(attachmentsList); ;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1247,10 +1247,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatInstalmentViewModel
                         _attachment = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine(ex.Message);
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                     //  return null;
                 }
             });

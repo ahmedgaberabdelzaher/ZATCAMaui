@@ -41,10 +41,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 viewModel.PopulateUI();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 return;
             }
         }
@@ -218,10 +218,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -287,10 +287,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -349,10 +349,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -412,10 +412,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             finally
             {
@@ -480,10 +480,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -539,10 +539,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                ).ToList();
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -599,10 +599,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                ).ToList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -655,10 +655,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -769,21 +769,7 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //if (viewModel.SelectedPermitTypeOutletOption != null && viewModel.PermitOutletDecisionOptions != null && viewModel.PermitOutletDecisionOptions.Count > 0)
-            //{
-            //    Device.BeginInvokeOnMainThread(() =>
-            //    {
-
-            //        int index = Convert.ToInt16(viewModel.SelectedPermitTypeOutletOption.OutletOptionIndex) - 1;
-            //        viewModel.SelectedPermitOutletOptionIndex = index;
-            //        viewModel.SelectedPermitTypeOutletOption = viewModel.PermitOutletDecisionOptions[index];
-            //        SetLayoutVisibilityOnPageAppearing(viewModel.SelectedPermitTypeOutletOption);
-            //        viewModel.GetSelectedDataTemplate();
-            //        //TINDeregistrationModel selectedPermitTypeOutletOption = new TINDeregistrationModel();
-            //        //selectedPermitTypeOutletOption = viewModel.SelectedPermitTypeOutletOption;
-            //        //viewModel.SelectedPermitTypeOutletOption = selectedPermitTypeOutletOption;
-            //    });
-            //}
+           
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
@@ -792,7 +778,6 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             MessagingCenter.Subscribe<PickerPageView, GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) =>
             {
                 viewModel.PickerModel = arg;
-                Console.WriteLine(arg);
             });
 
 
@@ -877,10 +862,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 }
                 viewModel.GetSelectedDataTemplate();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                // throw;
             }
         }
@@ -1114,10 +1099,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                     viewModel.FrameIDError = true;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -1388,20 +1373,20 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
             }
             catch (GAZTUnlockAccountException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
             catch (InternetException ex)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
+                
             }
         }
 
@@ -1685,10 +1670,10 @@ namespace EGAZT.Views.NewDesign.ZakatDeregistration
                 //    viewModel.FrameIDError = true;
                 //}
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 

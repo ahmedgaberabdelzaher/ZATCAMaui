@@ -123,8 +123,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 }
                 catch (GAZTUnlockAccountException ex)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
                 catch (InternetException ex)
                 {
@@ -134,9 +134,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
-                    Console.WriteLine(ex.Message);
+                    
                 }
             }
         }

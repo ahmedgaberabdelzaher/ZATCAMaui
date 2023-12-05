@@ -1492,6 +1492,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select city.
+        /// </summary>
+        public static string ChooseCity {
+            get {
+                return ResourceManager.GetString("ChooseCity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string ChooseReports {
@@ -1623,6 +1632,15 @@ namespace EGAZT {
         public static string Confirm {
             get {
                 return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to and Confirm the order by choosing the following number.
+        /// </summary>
+        public static string ConfirmOpenningNafath {
+            get {
+                return ResourceManager.GetString("ConfirmOpenningNafath", resourceCulture);
             }
         }
         
@@ -6078,6 +6096,15 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We would like to inform you about our latest update, and we kindly request that you update the application..
+        /// </summary>
+        public static string ForceUpdateMsg {
+            get {
+                return ResourceManager.GetString("ForceUpdateMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Forgot password.
         /// </summary>
         public static string ForgotPassword {
@@ -8317,6 +8344,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to National Single Sign-On.
+        /// </summary>
+        public static string NafathLoginHeader {
+            get {
+                return ResourceManager.GetString("NafathLoginHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Login throw National Single Sign-On.
+        /// </summary>
+        public static string NafathLoginSubHeader {
+            get {
+                return ResourceManager.GetString("NafathLoginSubHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to IBAN.
         /// </summary>
         public static string NAIBAN {
@@ -8367,6 +8412,15 @@ namespace EGAZT {
         public static string NationaID {
             get {
                 return ResourceManager.GetString("NationaID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to National/Iqama ID.
+        /// </summary>
+        public static string NationalIqamaID {
+            get {
+                return ResourceManager.GetString("NationalIqamaID", resourceCulture);
             }
         }
         
@@ -10234,7 +10288,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not a VAT Registered.
+        ///   Looks up a localized string similar to Not VAT Registered.
         /// </summary>
         public static string NotRegistered {
             get {
@@ -10353,6 +10407,15 @@ namespace EGAZT {
         public static string OldZakatInstructions {
             get {
                 return ResourceManager.GetString("OldZakatInstructions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please open the Nafath application.
+        /// </summary>
+        public static string OpenNafath {
+            get {
+                return ResourceManager.GetString("OpenNafath", resourceCulture);
             }
         }
         
@@ -10713,6 +10776,24 @@ namespace EGAZT {
         public static string PlacetheQRCodeinsidetheframe {
             get {
                 return ResourceManager.GetString("PlacetheQRCodeinsidetheframe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plates letter.
+        /// </summary>
+        public static string PlatesLetter {
+            get {
+                return ResourceManager.GetString("PlatesLetter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plates number.
+        /// </summary>
+        public static string PlatesNumber {
+            get {
+                return ResourceManager.GetString("PlatesNumber", resourceCulture);
             }
         }
         
@@ -11388,6 +11469,24 @@ namespace EGAZT {
         public static string RegisteredVAT {
             get {
                 return ResourceManager.GetString("RegisteredVAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        public static string RegisterUserInZATCA {
+            get {
+                return ResourceManager.GetString("RegisterUserInZATCA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string RegisterZATCA {
+            get {
+                return ResourceManager.GetString("RegisterZATCA", resourceCulture);
             }
         }
         
@@ -13490,7 +13589,7 @@ namespace EGAZT {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to المجموع.
+        ///   Looks up a localized string similar to Total.
         /// </summary>
         public static string Total2 {
             get {
@@ -28426,6 +28525,100 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string BuildingNoValidationMsg
+        {
+            get {
+                return ResourceManager.GetString("BuildingNoValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string PostalValidationMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("PostalValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string additionalNoValidationMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("additionalNoValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string nationaladdress
+        {
+            get
+            {
+                return ResourceManager.GetString("nationaladdress", resourceCulture);
+            }
+        }
+
+
+        public static string Buildingnumber
+        {
+            get
+            {
+                return ResourceManager.GetString("Buildingnumber", resourceCulture);
+            }
+        }
+
+
+        public static string Streetname
+        {
+            get
+            {
+                return ResourceManager.GetString("Streetname", resourceCulture);
+            }
+        }
+
+
+        public static string Districtname
+        {
+            get
+            {
+                return ResourceManager.GetString("Districtname", resourceCulture);
+            }
+        }
+
+        public static string Cityname
+        {
+            get
+            {
+                return ResourceManager.GetString("Cityname", resourceCulture);
+            }
+        }
+
+        public static string PostalCode
+        {
+            get
+            {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+
+        public static string SecondaryNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("SecondaryNumber", resourceCulture);
             }
         }
     }

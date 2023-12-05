@@ -84,7 +84,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -129,7 +129,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -206,7 +206,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -280,7 +280,7 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
@@ -367,11 +367,11 @@ namespace EGAZT.Manager
                 {
                     throw gex;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw new GAZTNetworkConnectivityIssueException();
                 }
-                //catch (Exception ex)
+                //catch (Exception)
                 //{
                 //    return null;
                 //}
@@ -447,7 +447,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;
@@ -523,7 +523,7 @@ namespace EGAZT.Manager
                 {
                     throw new GAZTVATChangeFillingPeriodException(ex.Message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     App.IsSessionExpired = true;
                     return null;

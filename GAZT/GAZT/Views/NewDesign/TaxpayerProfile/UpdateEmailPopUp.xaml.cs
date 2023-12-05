@@ -99,7 +99,7 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
                                          App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
                                          App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
                                      }
-                                     catch (Exception ex)
+                                     catch (Exception)
                                      {
                                      }
                                      await App.Current.MainPage.Navigation.PopToRootAsync();
@@ -141,10 +141,9 @@ namespace EGAZT.Views.NewDesign.TaxpayerProfile
             catch (Exception ex)
             {
                 viewModel.IsLoading = false;
-                System.Diagnostics.Debug.WriteLine("Exception : ", ex.Message);
                 PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(ex.Message));
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
             return TP;

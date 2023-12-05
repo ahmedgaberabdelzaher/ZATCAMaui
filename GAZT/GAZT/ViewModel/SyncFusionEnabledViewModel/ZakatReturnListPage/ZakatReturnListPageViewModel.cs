@@ -368,7 +368,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -501,7 +501,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                     HideNoDataMessage();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }
@@ -560,7 +560,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.ZakatReturnListPage_ViewMod
                               .ThenBy(x => Convert.ToDateTime(x.DueDtC).Year);
                 return SortedList.OrderByDescending(x => Convert.ToDateTime(x.DueDtC)).ToList();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return ICRList;
             }

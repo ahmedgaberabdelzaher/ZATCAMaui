@@ -42,7 +42,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.CreditCarried
                     }
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
             }
         }

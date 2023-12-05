@@ -239,7 +239,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
             //    {
             //        DeleteSelectedAttachment();
             //    }
-            //    catch (Exception ex)
+            //    catch (Exception)
             //    {
             //    }
             //});
@@ -420,10 +420,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                         IsLoading = false;
                     });
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
         }
@@ -440,10 +440,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 IsSaveButtonPressed = true;
                 _navigationService.GoBack();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
             public void PopToRootPage()
@@ -502,10 +502,10 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                 }
                 isOnLoad = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
                       // int k = 5;
             //ObservableCollection<EstimateZakatAttachment> ZakatAttachment = new ObservableCollection<EstimateZakatAttachment>();
@@ -644,7 +644,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                     _zakatAttachment.UploadededDateToShow = uploadedDate;
                     _estimateZakatAttachment.Add(_zakatAttachment);
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
                 }
             }
@@ -688,7 +688,7 @@ namespace EGAZT.ViewModel.SyncFusionEnabledViewModel.AmendSalesDetailsPage_ViewM
                     }
                 });
             }
-            catch(Exception ex)
+            catch(Exception)
             {
             }
         }

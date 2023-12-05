@@ -379,14 +379,25 @@
 
                         <StackLayout Orientation="Horizontal" >
 
-                            <Label
-                                HorizontalTextAlignment="Start"
-                                Style="{StaticResource BodyLabelBlack}"
-                                Text="{Binding MessageTxt}" />
+                            <StackLayout>
+
+                                <custom:CustomLabel
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding MessageTxt}" />
+
+                                <custom:CustomLabel
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding SADADNewTXT}" />
+
+                            </StackLayout>
+                            
 
                             <Image Source="Copy"
                                    Aspect="AspectFit"
                                    VerticalOptions="Start"
+                                   HorizontalOptions="EndAndExpand"
                                    WidthRequest="25"
                                    HeightRequest="25"/>
 

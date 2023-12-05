@@ -32,16 +32,18 @@
             Grid.Row="1"
             Padding="20,20,20,0"
             Style="{StaticResource CommonTopCurves}">
-            <WebView x:Name="wbview"
+            <WebView
+                x:Name="wbview"
                 Margin="-20,-40,-20,0"
                 HorizontalOptions="FillAndExpand"
-                IsTabStop="True" Navigating="wbview_Navigating"
+                IsTabStop="True"
+                Navigating="wbview_Navigating"
                 VerticalOptions="FillAndExpand" />
         </yummy:PancakeView>
         <!--                Source="{Binding EFormWebViewUrl}"
 <controls:Header TitleText="{x:Static ResourceManager:AppResources.eDeclaration}" />
-       -->
-        <controls:Header x:Name="header"/>
+        -->
+        <controls:Header x:Name="header" />
         <controls:Loader
             Grid.Row="0"
             Grid.RowSpan="2"

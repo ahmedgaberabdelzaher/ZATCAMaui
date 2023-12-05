@@ -76,10 +76,10 @@ namespace EGAZT.Views.NewDesign.VATRegistrationDetails
                 //    viewModel.IsLoading = false;
                 //});
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

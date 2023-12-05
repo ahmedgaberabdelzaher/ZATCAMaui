@@ -62,9 +62,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
 
         }
@@ -106,10 +106,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                         break;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
 
         }
@@ -190,10 +190,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void triggerIban(string messagestring)
@@ -255,10 +255,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     //                viewModel.IsNewAccountClicked = false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         private void OnPageSelectedForIban(object sender, SelectionChangedEventArgs e)
@@ -396,9 +396,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
         public void ManageValidations()
@@ -593,10 +593,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             viewModel.TxtSelectedIBANType = selectedIBANType.Text;
             await viewModel.SetIBANIdNumber();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
             //if (viewModel.IsVisibleSummary == true)
             //{
@@ -635,9 +635,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.TxtSelectedIBANIDNumber = string.Empty;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
         private void IDTypeDropdown_CancelButtonClicked(object sender, Syncfusion.SfPicker.XForms.SelectionChangedEventArgs e)
@@ -689,9 +689,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -709,9 +709,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     await viewModel.SetIBANIdNumber();
                 }
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
 
@@ -728,10 +728,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
                     }
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void getNoRefundMsgCommand()
@@ -748,10 +748,10 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -927,7 +927,7 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
 
         //        }
         //    }
-        //    catch(Exception ex)
+        //    catch(Exception)
         //    {
 
         //    }

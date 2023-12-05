@@ -46,7 +46,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(async _ =>
                 {
-                    if (IsValidateContactInfo())
+                    if (IsValidContactInfo())
                     {
 
                         AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
@@ -56,19 +56,21 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 });
             }
         }
-        
+
         public ICommand GetCountryCodeCommand
         {
             get
             {
-                return new Command( async _ =>
+                return new Command(async _ =>
                 {
-                    
+
                     isNationalitySelected = false;
                     isItsSourceSelected = false;
                     isPortSelected = false;
                     isComingGoingSelected = false;
                     isTravelPurposeSelected = false;
+                    isPlatesCountrySelected = false;
+                    isPlatesCitySelected = false;
                     BottomSheetList = new ObservableCollection<BottomSheetModel>();
 
                     if (countryWithFlags.Count == 0)
@@ -92,7 +94,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     IsShowBottomSheet = true;
                     HeaderTitle = AppResources.ZZZZCountry;
                     TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
-                  
+
                 });
             }
         }
@@ -106,22 +108,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 if (submitRes.IsSuccessStatusCode)
                 {
                     var conent = await submitRes.Content.ReadAsStringAsync();
-                    var data = JsonConvert.DeserializeObject<EDeclerationSubmitResponseModel>(conent);
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<Result>>(conent);
                     if (data.header.status.code == "I000000")
                     {
-                        if (data.result != null)
+                        if (data?.result?.travelerDeclarationResponse != null)
                         {
                             TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
-                            if (TravelerDeclarationResponse != null)
-                            {
-                                IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
-                                    false;
-
-                            }
+                            IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
+                                     false;
                         }
                         return true;
                     }
-                    else if( !string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
                     {
                         MessageTxt = data.header.moreInformation?.backendErrors;
                         IsShowMsgView = true;
@@ -143,14 +141,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
             }
             finally
             {
                 IsLoading = false;
-               
+
             }
             return false;
         }
@@ -170,7 +168,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         if (res)
                         {
                             var date = DateTime.Now;
-                          
+
                             if (TravelerDeclarationResponse != null)
                             {
                                 TravelerDeclarationResponse.TravelDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
@@ -188,9 +186,18 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                                 TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
 
                                 _navigationService.NavigateTo("/EDeclarationSuccessPage");
+
+                                TripCard.AirImage = "QSelected.png";
+                                TripCard.SeaImage = "QUnselected.png";
+                                TripCard.LandImage = "QUnselected.png";
+
+                                TripCard.AirTextColor = Color.White;
+                                TripCard.SeaTextColor = Color.FromHex("#002447");
+                                TripCard.LandTextColor = Color.FromHex("#002447");
+
                                 MobileNumber = string.Empty;
                             }
-                            
+
                         }
                         else
                         {
@@ -227,13 +234,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        private bool IsValidateContactInfo()
+        private bool IsValidContactInfo()
         {
 
             Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");
             Regex phoneRegex = new Regex(@"^[0-9]+$");
             Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
-            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]"); 
+
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]");
             if (string.IsNullOrWhiteSpace(MobileNumber)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.address)
                     || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.email))
@@ -263,7 +271,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     MessageTxt = AppResources.EnterValidMobileNumber;
                     return false;
                 }
-               
+
             }
             else if (address.IsMatch(SubmitModel.travelerDeclaration.address))
             {

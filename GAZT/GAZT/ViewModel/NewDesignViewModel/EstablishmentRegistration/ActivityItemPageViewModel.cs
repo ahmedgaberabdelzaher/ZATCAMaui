@@ -612,9 +612,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             LicenseIssueCity = null;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -632,9 +631,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                             LicenseIssueBy = item as string;
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -665,9 +663,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             if (CurrentTab == EstablishmentOutletActivitiesTabsEnum.LicenseDetails)
                                 LicenseIssueCity = item as CityDropdownItem;
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         {
-                            Console.WriteLine(e.StackTrace);
                         }
                     };
                     PopupNavigation.Instance.PushAsync(poupWindow);
@@ -678,12 +675,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                 var typeValue = type as string;
                 if (CRsCopies.Count < 5 && typeValue == "RG01")
                 {
-                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
                 }
                 else if (TransferCRsCopies.Count < 5 && typeValue == "RG12")
                 {
-                    Console.WriteLine("OnTransferCopyOfCRChoiceButtonClick");
                     await AddAttachment(type as string);
                 }
                 else if (TransferCRsCopies.Count == 5 || CRsCopies.Count == 5)
@@ -726,9 +721,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                         }
 
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -757,9 +751,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             LicenseAcitivity = null;
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -790,9 +783,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                             LicenseSubGroup = activityList.act_subgroupSet.results.Where(i => i.IndSector.StartsWith(LicenseAcitivity?.IndSector?.Substring(0, 4))).FirstOrDefault();
                         }
                     }
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        Console.WriteLine(e.StackTrace);
                     }
                 };
                 PopupNavigation.Instance.PushAsync(poupWindow);
@@ -877,10 +869,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     }
                 }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.StackTrace);
-            }
+            catch (Exception)
+            {}
             finally
             {
                 CanExecute = true;
@@ -929,10 +919,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                                             string attachmentType = UtilityManager.GetContentType(Extention);
                                             await SaveAttachment(attachmentByte, attachmentName, docType, attachmentType);
                                         }
-                                        catch (Exception ex)
+                                        catch (Exception)
                                         {
-                                            Console.Write(ex.ToString());
-                                            Console.Write(ex.StackTrace.ToString());
+                                            
+                                            
 
                                         }
                                     }
@@ -965,13 +955,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
 
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
-            }
+            catch (Exception)
+            {}
         }
         private async void fetchTabDataAndBind()
         {
@@ -1093,10 +1078,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicenseData = NregActivityList.Where(i => i.Type == "ZS0004").ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
             finally
@@ -1294,13 +1279,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
                     LicensesCopies.Add(dd);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
-
-            }
+            catch (Exception)
+            { }
             finally
             {
                 IsLoading = false;
@@ -1529,10 +1509,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EstablishmentRegistration
             {
                 return date.ToString("yyyy/MM/dd", new CultureInfo("ar-sa"));
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 HijriCalendar hijriCalendar = new HijriCalendar();
                 return $"{hijriCalendar.GetYear(date):0000}/{hijriCalendar.GetMonth(date):00}/{hijriCalendar.GetDayOfMonth(date):00}";
             }

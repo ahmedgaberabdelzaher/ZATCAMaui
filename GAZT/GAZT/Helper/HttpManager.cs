@@ -2,7 +2,6 @@
 using GAZT.Helper;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,7 +9,6 @@ using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 
 namespace EGAZT.Helper
 {
@@ -18,12 +16,6 @@ namespace EGAZT.Helper
     {
         private static readonly Lazy<HttpClient> _client = new Lazy<HttpClient>(() => new HttpClient() { Timeout = new TimeSpan(0, 3, 0) });
 
-        /*   private static HttpClient getClient()
-           {
-               HttpClient _client = null;
-              _client = new HttpClient();
-               return _client
-           }*/
         public static HttpClient client => _client.Value;
 
 
@@ -40,9 +32,6 @@ namespace EGAZT.Helper
                 if (NetworkCheck.IsInternet())
                 {
                     var client = new System.Net.Http.HttpClient();
-                    // var client = App.Locator.httpClient;
-
-                    //  client.DefaultRequestHeaders.Add("Authorization",app.CurrentToken);
                     var response = client.GetAsync(requestUrl).GetAwaiter().GetResult();
                     if (response != null)
                     {
@@ -69,24 +58,19 @@ namespace EGAZT.Helper
                 }
 
             }
-            catch (System.Exception exp)
+            catch (Exception )
             {
                 return Tuple.Create((T)Activator.CreateInstance(typeof(T)), false, AppResources.ServerErrorOrNoInternetConnection);
             }
 
         }
 
-        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl, bool isBasicAuth = true, string routPortCode = "99") where T : class
+        public static async Task<Tuple<T, bool, string>> GetAsync<T>(string requestUrl, bool isBasicAuth = true, string routPortCode = "99",bool isIBMCLient=false) where T : class
         {
             try
             {
                 if (NetworkCheck.IsInternet())
                 {
-
-                    //var client = new System.Net.Http.HttpClient();
-                    //  var client = App.Locator.httpClient;
-
-                    //  client.Timeout = new TimeSpan(0,3,0);
                     if (client.DefaultRequestHeaders.Contains("X-ZATCA-Client-Id"))
                     {
 
@@ -96,13 +80,31 @@ namespace EGAZT.Helper
                         client.DefaultRequestHeaders.Remove("routePortCode");
 
                     }
+                    if (client.DefaultRequestHeaders.Contains("X-IBM-Client-Id"))
+                    {
+
+                        client.DefaultRequestHeaders.Remove("X-IBM-Client-Id");
+                        client.DefaultRequestHeaders.Remove("X-IBM-Client-Secret");
+                        client.DefaultRequestHeaders.Remove("LanguageCode");
+                        client.DefaultRequestHeaders.Remove("routePortCode");
+
+                    }
                     if (isBasicAuth)
                     {
                         AddBasicAuthToHeader(client);
 
                     }
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
-                    client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    if (isIBMCLient)
+                    {
+                        client.DefaultRequestHeaders.Add("X-IBM-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", PageSettings.GetClientSecret());
+                    }
+                    else
+                    {
+
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Id", PageSettings.GetClientID());
+                        client.DefaultRequestHeaders.Add("X-ZATCA-Client-Secret", PageSettings.GetClientSecret());
+                    }
                     client.DefaultRequestHeaders.Remove("zatca-apikey");
                     client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     if (App.IsArabic)
@@ -126,14 +128,6 @@ namespace EGAZT.Helper
                         if (response.IsSuccessStatusCode)
                         {
                             var responseJson = await response.Content.ReadAsStringAsync();
-                            /* if (requestUrl== "https://payments-eservices.zatca.gov.sa/payment/dummy")
-                             {
-                                 string data =(T)responseJson ;
-                                 var dataobject= (T)Activator.CreateInstance(typeof(T));
-                                 dataobject = data;
-                                 return Tuple.Create((T)data.ToString(), true, "");
-                             }
-                            */
                             var JsonObject = JsonConvert.DeserializeObject<T>(responseJson);
                             return Tuple.Create(JsonObject, true, "");
                         }
@@ -176,11 +170,6 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-
-                    //var client = new System.Net.Http.HttpClient();
-                    //  var client = App.Locator.httpClient;
-
-                    //  client.Timeout = new TimeSpan(0,3,0);
                     if (client.DefaultRequestHeaders.Contains("X-ZATCA-Client-Id"))
                     {
 
@@ -300,12 +289,6 @@ namespace EGAZT.Helper
 
                     // Pass the handler to httpclient(from you are calling api)
                     HttpClient client = new HttpClient(clientHandler);
-                    // var client = new System.Net.Http.HttpClient();
-                    //var h = new HttpClientHandler();
-                    //   h.ServerCertificateCustomValidationCallback = ValidateCertificate;
-
-                    //  var client = App.Locator.httpClient;
-
                     client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
                     client.DefaultRequestHeaders.Add("LanguageCode", App.IsArabic ? "ar" : "en");
                     //var JsonObject = JsonConvert.SerializeObject(Data);
@@ -331,12 +314,11 @@ namespace EGAZT.Helper
                     AddBasicAuthToHeader(client, isEradQr);
 
                     var JsonObject = JsonConvert.SerializeObject(Data);
-                    Console.WriteLine("Json : ", JsonObject);
-                    // var JsonObject =jobject;
 
                     var content = new StringContent(JsonObject, Encoding.UTF8, "application/json");
-                    // var response = await client.PostAsync(requestUrl, content);
+
                     var response = await client.PostAsync(requestUrl, content).ConfigureAwait(false);
+
                     if (response != null)
                     {
 
@@ -348,7 +330,6 @@ namespace EGAZT.Helper
                         else
                         {
                             return response;
-                            // return new HttpResponseMessage() { StatusCode = response.StatusCode, ReasonPhrase = AppResources.ServerError };
                         }
                     }
                     else
@@ -363,7 +344,7 @@ namespace EGAZT.Helper
                 }
 
             }
-            catch (System.Exception exp)
+            catch (Exception)
             {
                 return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
             }
@@ -414,7 +395,7 @@ namespace EGAZT.Helper
                 }
 
             }
-            catch (System.Exception exp)
+            catch (Exception)
             {
                 return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
             }
@@ -427,10 +408,7 @@ namespace EGAZT.Helper
             {
                 if (NetworkCheck.IsInternet())
                 {
-                    var client = new System.Net.Http.HttpClient();
-                    // var client = App.Locator.httpClient;
-
-                    //   client.DefaultRequestHeaders.Add("Authorization", app.CurrentToken);
+                    var client = new HttpClient();
                     var JsonObject = JsonConvert.SerializeObject(Data);
                     var content = new StringContent(JsonObject, Encoding.UTF8, "application/json");
                     var response = await client.PutAsync(requestUrl, content);
@@ -458,7 +436,7 @@ namespace EGAZT.Helper
                 }
 
             }
-            catch (System.Exception exp)
+            catch (Exception)
             {
                 return new HttpResponseMessage() { StatusCode = System.Net.HttpStatusCode.BadRequest, ReasonPhrase = AppResources.ServerErrorOrNoInternetConnection };
             }

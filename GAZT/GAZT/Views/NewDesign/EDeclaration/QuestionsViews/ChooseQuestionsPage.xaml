@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.ChooseQuestionsPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.QuestionsViews.ChooseQuestionsPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Name="page"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
@@ -22,15 +22,15 @@
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-             <ResourceDictionary>
-                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <ResourceDictionary>
+                <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
 
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
@@ -43,7 +43,7 @@
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
                             <DataTrigger
@@ -65,8 +65,8 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    HorizontalOptions="Center"
                     FontSize="15"
+                    HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{Binding HeaderTitle}"
@@ -87,21 +87,21 @@
 
                         <!--  AddingItems Label  -->
                         <Label
+                            Margin="0,20"
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
                             MaxLines="1"
-                            Margin="0,20"
                             Text="{x:Static ResourceManager:AppResources.AddingItems}"
                             TextColor="{StaticResource Primary}" />
 
 
-                        <!--  Welcome Label for logged in only -->
+                        <!--  Welcome Label for logged in only  -->
                         <Label
                             FontFamily="{StaticResource SomarRegular}"
                             FontSize="20"
-                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             MaxLines="1"
                             Text="{x:Static ResourceManager:AppResources.Hi}"
                             TextColor="#0996D4" />
@@ -110,29 +110,30 @@
                         <Label
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="20"
-                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
                             MaxLines="1"
                             Text="{Binding SubmitModel.travelerDeclaration.FullName}"
                             TextColor="{StaticResource Primary}" />
 
                         <!--#region Question view-->
-                        <StackLayout BindableLayout.ItemsSource="{Binding QuestionList}"
-                                     x:Name="itemList"
-                                     Spacing="25">
+                        <StackLayout
+                            x:Name="itemList"
+                            BindableLayout.ItemsSource="{Binding QuestionList}"
+                            Spacing="25">
 
                             <BindableLayout.ItemTemplate>
 
                                 <DataTemplate>
 
                                     <Frame
-                                        Padding="10"
-                                        BorderColor="#E6E6E6"
                                         x:Name="selectedItem"
+                                        Padding="10"
                                         BackgroundColor="{Binding QuestionBackgroundColor}"
-                                        VerticalOptions="StartAndExpand"
+                                        BorderColor="#E6E6E6"
+                                        CornerRadius="10"
                                         HorizontalOptions="FillAndExpand"
-                                        CornerRadius="10">
+                                        VerticalOptions="StartAndExpand">
 
                                         <StackLayout
                                             Margin="0,0,0,25"
@@ -140,7 +141,7 @@
                                             Orientation="Horizontal"
                                             Spacing="15">
 
-                                            <!--Check Box-->
+                                            <!--  Check Box  -->
                                             <Image
                                                 HeightRequest="20"
                                                 HorizontalOptions="Start"
@@ -169,27 +170,27 @@
 
                                             </Image>
 
-                                            <!-- Question Text Label-->
+                                            <!--  Question Text Label  -->
                                             <Label
                                                 FontFamily="{StaticResource SomarRegular}"
                                                 FontSize="14"
                                                 HorizontalOptions="StartAndExpand"
                                                 Text="{Binding QuestionName}"
-                                                TextColor="#002447" >
+                                                TextColor="#002447">
 
                                                 <Label.Triggers>
 
                                                     <DataTrigger
-                                                    Binding="{Binding IsChecked}"
-                                                    TargetType="Label"
-                                                    Value="true">
+                                                        Binding="{Binding IsChecked}"
+                                                        TargetType="Label"
+                                                        Value="true">
                                                         <Setter Property="TextColor" Value="White" />
                                                     </DataTrigger>
                                                     <DataTrigger
-                                                            Binding="{Binding IsChecked}"
-                                                            TargetType="Label"
-                                                            Value="false">
-                                                            <Setter Property="TextColor" Value="#002447" />
+                                                        Binding="{Binding IsChecked}"
+                                                        TargetType="Label"
+                                                        Value="false">
+                                                        <Setter Property="TextColor" Value="#002447" />
                                                     </DataTrigger>
 
                                                 </Label.Triggers>
@@ -198,25 +199,25 @@
 
                                         </StackLayout>
 
-                                         <Frame.GestureRecognizers>
-                                                 <TapGestureRecognizer
-                                                        BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
-                                                        Command="{Binding SelectedCheckBoxQuestionsCommand}"
-                                                        CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
-                                         </Frame.GestureRecognizers>
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                BindingContext="{Binding Source={x:Reference itemList}, Path=BindingContext}"
+                                                Command="{Binding SelectedCheckBoxQuestionsCommand}"
+                                                CommandParameter="{Binding Source={x:Reference selectedItem}, Path=BindingContext}" />
+                                        </Frame.GestureRecognizers>
 
                                         <Frame.Triggers>
-                                             <DataTrigger
-                                                    Binding="{Binding IsChecked}"
-                                                    TargetType="Frame"
-                                                    Value="true">
-                                                    <Setter Property="BackgroundColor" Value="#0996D4" />
+                                            <DataTrigger
+                                                Binding="{Binding IsChecked}"
+                                                TargetType="Frame"
+                                                Value="true">
+                                                <Setter Property="BackgroundColor" Value="#0996D4" />
                                             </DataTrigger>
                                             <DataTrigger
-                                                    Binding="{Binding IsChecked}"
-                                                    TargetType="Frame"
-                                                    Value="false">
-                                                    <Setter Property="BackgroundColor" Value="Transparent" />
+                                                Binding="{Binding IsChecked}"
+                                                TargetType="Frame"
+                                                Value="false">
+                                                <Setter Property="BackgroundColor" Value="Transparent" />
                                             </DataTrigger>
 
                                         </Frame.Triggers>
@@ -228,27 +229,27 @@
                             </BindableLayout.ItemTemplate>
 
                         </StackLayout>
-                       
+
                         <!--#endregion Question view-->
 
-                        <!-- GoTo Question View Button  -->
+                        <!--  GoTo Question View Button  -->
                         <buttons:SfButton
                             Margin="0,8"
-                            VerticalOptions="EndAndExpand"
                             Command="{Binding GoToSelectedQuestionsViewCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
 
                         <!--  Pervious Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
-                            TextColor="{StaticResource Secondary}"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                            TextColor="{StaticResource Secondary}" />
 
                     </StackLayout>
 
@@ -259,8 +260,8 @@
 
             <!--  Popup Msg  -->
             <controls:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
-        
-         </Grid>
+
+        </Grid>
 
     </ContentPage.Content>
 </ContentPage>

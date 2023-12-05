@@ -58,9 +58,9 @@ namespace EGAZT.Views.NewDesign.VATDeclarationPages
             {
                 await PopupNavigation.Instance.PopAsync();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
-                Console.WriteLine(ex.Message);
+                
             }
         }
     }

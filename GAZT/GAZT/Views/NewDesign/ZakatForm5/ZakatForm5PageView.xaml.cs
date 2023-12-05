@@ -101,10 +101,10 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
                 //}
               
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() =>
                 {
                     viewModel.IsLoading = false;
@@ -122,7 +122,7 @@ namespace EGAZT.Views.NewDesign.ZakatForm5
             //       // BPicker.SelectedIndex = 14;
             //    }
             //}
-            //catch (Exception e)
+            //catch (Exception)
             //{
             //}
 

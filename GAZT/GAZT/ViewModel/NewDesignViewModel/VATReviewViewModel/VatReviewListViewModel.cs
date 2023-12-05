@@ -777,10 +777,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -852,10 +852,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                     _navigationService.GoBack();
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
                 await Task.Run(() => { IsLoading = false; });
                 Device.BeginInvokeOnMainThread(async () =>
                 {
@@ -1143,10 +1143,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.VatReviewViewModel
                         }
                         await PopupNavigation.Instance.PushAsync(VisitPortalPopup);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.WriteLine(ex.Message);
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 });

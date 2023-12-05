@@ -20,7 +20,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels
                     {
                         Xamarin.Essentials.Launcher.OpenAsync(PageSettings.ZakatyPortalURl);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -39,7 +39,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels
                     {
                         Xamarin.Essentials.Launcher.OpenAsync(PageSettings.ZakatyPlayStoreURl);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -58,7 +58,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ZakatyViewModels
                     {
                         Xamarin.Essentials.Launcher.OpenAsync(PageSettings.ZakatyAppStoreURl);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

@@ -47,10 +47,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 SetDynamicBehaviour();
                 ChangeAeroIcon();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         #endregion
@@ -111,10 +111,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                             var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
-                                Console.Write(ex.ToString());
-                                Console.Write(ex.StackTrace.ToString());
+                                
+                                
                             }
                     }
                     else
@@ -131,10 +131,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
             }
         }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
             /* Image DownloadImage = sender as Image;
              ZakatAttachment attachment = (ZakatAttachment)DownloadImage.BindingContext;
@@ -221,10 +221,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                 }
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         public async Task email(string doguid, ZakatAttachment attachment)
@@ -270,10 +270,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AmendSalesDetails
                     });
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             await Task.Run(() =>

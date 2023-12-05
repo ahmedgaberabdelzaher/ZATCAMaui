@@ -60,11 +60,11 @@ namespace EGAZT.Views.NewDesign.ZakatInstalmentPlan
                   
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
 
             }
         }

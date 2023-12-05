@@ -63,7 +63,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }

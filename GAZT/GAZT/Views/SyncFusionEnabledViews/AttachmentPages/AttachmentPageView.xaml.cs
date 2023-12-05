@@ -116,7 +116,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 viewModel.OnPageLoad();
                 Xamarin.Forms.NavigationPage.SetBackButtonTitle(this, "");
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
         }
@@ -166,10 +166,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
 
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
 
@@ -195,10 +195,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                         //    DeleteAttachment(result, attachment);
                         //}
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Console.Write(ex.ToString());
-                        Console.Write(ex.StackTrace.ToString());
+                        
+                        
                     }
 
                 }
@@ -252,10 +252,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     viewModel.IsLoading = false;
                 });
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
         public void PopToRootPage()
@@ -312,10 +312,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                                 var downloadDirectoryFilePath = DependencyService.Get<IDeviceInfo>().GetAttachmentToDownloadsPath(tempAttachmentDocumentModel.Filename, tempAttachmentDocumentModel.Content);
 
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                    Console.Write(ex.ToString());
-                                    Console.Write(ex.StackTrace.ToString());
+                                    
+                                    
                                 }
                         }
                         else
@@ -376,7 +376,7 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                 }*/
                 // await Navigation.PushAsync(new PdfView(attachment.DocUrl));
             }
-            catch(Exception ex)
+            catch(Exception)
             {
 
             }
@@ -432,10 +432,10 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
             }
             if (sender is Xamarin.Forms.ListView lv) lv.SelectedItem = null;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.StackTrace.ToString());
-                Console.WriteLine(ex.Message);
+                
+                
             }
         }
         public async Task email(string doguid, VATAttachment attachment)
@@ -481,11 +481,11 @@ namespace EGAZT.Views.SyncFusionEnabledViews.AttachmentPage
                     });
 
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     viewModel.IsLoading = false;
-                    Console.Write(ex.ToString());
-                    Console.Write(ex.StackTrace.ToString());
+                    
+                    
                 }
             });
             await Task.Run(async () =>

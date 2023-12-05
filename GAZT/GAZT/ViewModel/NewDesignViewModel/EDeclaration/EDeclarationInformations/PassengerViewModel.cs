@@ -2,12 +2,9 @@
 using System.Windows.Input;
 using Xamarin.Forms;
 using EGAZT.Controls;
-using System.Collections.Generic;
 using System.Linq;
-using EGAZT.Models.EDeclerationsModel;
 using System.Collections.ObjectModel;
 using EGAZT.Helper;
-using System.Text.RegularExpressions;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -34,6 +31,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
         Keyboard iDNumberKeyboard = Keyboard.Text;
         public Keyboard IDNumberKeyboard { get { return iDNumberKeyboard; } set { iDNumberKeyboard = value; RaisePropertyChanged(); } }
+
+      
+
 
         public ICommand IDSelectionCommand
         {
@@ -68,7 +68,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -100,7 +100,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         }
 
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -130,7 +130,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                         else
                             BirthDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.birthDate);
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
 
                     }
@@ -156,6 +156,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
@@ -165,7 +167,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -216,6 +218,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                             isPortSelected = false;
                             isComingGoingSelected = false;
                             isTravelPurposeSelected = false;
+                            isPlatesCountrySelected = false;
+                            isPlatesCitySelected = false;
                             var result = countries?.Select(c => new BottomSheetModel() { Id = c.countryCode.ToString(), Name = c.Name });
                             BottomSheetList = new ObservableCollection<BottomSheetModel>(result);
                             IsShowBottomSheet = true;
@@ -224,7 +228,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
 
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         IsLoading = false;
                     }
@@ -243,7 +247,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     // in case visitor (navigation => Passenger, Trip, contact & payment)
                     if (SubmitModel.travelerDeclaration.Isvisitor)
                     {
-                        if (IsValidatePassenger())
+                        if (IsValidPassenger())
                         {
                             isTripPage = true;
                             _navigationService.NavigateTo("TripInformationPage");
@@ -253,7 +257,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                     // in case loggedIn (navigation => come from trip to show passenger, contact & payment)
                     else
                     {
-                        if (IsValidatePassenger())
+                        if (IsValidPassenger())
                         {
                             isContactPage = true;
                             _navigationService.NavigateTo("ContactInformationPage");
@@ -264,7 +268,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             }
         }
 
-        private bool IsValidatePassenger()
+        private bool IsValidPassenger()
         {
             try
             {
@@ -309,7 +313,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
                 }
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }

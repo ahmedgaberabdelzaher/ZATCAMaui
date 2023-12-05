@@ -126,10 +126,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 var index = TabSfChipGroup.ItemsSource.IndexOf(e.AddedItem);
                 TabScrollView.ScrollToAsync(TabSfChipGroup.ChipLayout.Children.ElementAtOrDefault(index), ScrollToPosition.MakeVisible, true);
             }
-            catch (Exception ex) {
+            catch (Exception) {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -159,10 +159,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -191,10 +191,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
             };
             await PopupNavigation.Instance.PushAsync(confirmPopup);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -213,10 +213,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                     viewModel.currentTab = newselectedTab;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception) {
 
-                Console.Write(ex.ToString());
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -263,10 +263,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -288,10 +288,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
 
@@ -313,10 +313,10 @@ namespace EGAZT.Views.NewDesign.EstablishmentRegistrationPages
                 viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
             }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
-                Console.Write(ex.StackTrace.ToString());
+                
+                
             }
         }
     }

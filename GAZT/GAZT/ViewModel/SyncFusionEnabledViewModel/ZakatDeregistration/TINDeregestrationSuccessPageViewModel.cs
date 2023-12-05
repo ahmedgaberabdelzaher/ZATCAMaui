@@ -1,14 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using EGAZT.ViewModel.NewDesignViewModel;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
-using GAZTeServicesBusinessLibrary.GAZTExceptions;
-using pdfjs.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
