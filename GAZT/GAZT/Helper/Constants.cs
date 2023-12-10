@@ -23,8 +23,8 @@ namespace GAZT.Helper
         public static string PreProdPaymentSapClinet = "500";
         public static string ProdPaymentSapClinet = "500";
 
-        public static string DevBaseUrlForODataServices = "https://tstdg1as1.mygazt.gov.sa:8080";
-        public static string DevBaseUrlForAuthentication = "https://tstdp1as1.mygazt.gov.sa:50001";
+        public static string DevBaseUrlForODataServices = "https://sapgatewayd.zatca.gov.sa:443";
+        public static string DevBaseUrlForAuthentication = "https://logind.zatca.gov.sa:443";
 
         public static string QABaseUrlForODataServices = "https://sapgatewayqa.zatca.gov.sa";
         public static string QABaseUrlForAuthentication = "https://loginqa.zatca.zatca.sa:443";
@@ -40,25 +40,25 @@ namespace GAZT.Helper
 
         #region Cookie Info
 
-        public static string DevDomainForCookies = "tstdp1as1.mygazt.gov.sa";
+        public static string DevDomainForCookies = "logind.zatca.gov.sa";
         public static string QADomainForCookies = "loginqa.zatca.gov.sa";
         public static string PreprodDomainForCookies = "logint.zatca.gov.sa";
         public static string UatDomainForCookies = "loginu.zatca.gov.sa";
 
         public static string ProdDomainForCookies = "login.zatca.gov.sa";
 
-        public static string DevPartialDomainForCookies = ".mygazt.gov.sa";
+        public static string DevPartialDomainForCookies = ".zatca.gov.sa";
         public static string QAPrepprodProdPartialDomainForCookies = ".zatca.gov.sa";
 
         public static string LanguageCookieNameForLogin = "langMobile";
 
         #endregion
-/*
+        /*
         public static string BaseUrlOfODataServices = DevBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = DevBaseUrlForAuthentication;
         public static string DomainUrlForCookies = DevDomainForCookies;
         public static string PartialDomainUrlForCookies = DevPartialDomainForCookies;*/
-     /*
+    /*
         public static string BaseUrlOfODataServices = QABaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = QABaseUrlForAuthentication;
         public static string DomainUrlForCookies = QADomainForCookies;
@@ -74,7 +74,7 @@ namespace GAZT.Helper
         public static string DomainUrlForCookies = PreprodDomainForCookies;
         public static string PartialDomainUrlForCookies = QAPrepprodProdPartialDomainForCookies;
     */
-      
+     
         public static string BaseUrlOfODataServices = ProdBaseUrlForODataServices;
         public static string BaseUrlOfAuthentication = ProdBaseUrlForAuthentication;
         public static string DomainUrlForCookies = ProdDomainForCookies;

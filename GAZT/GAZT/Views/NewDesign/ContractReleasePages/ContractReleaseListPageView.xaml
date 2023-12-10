@@ -60,12 +60,13 @@
                                 VerticalOptions="FillAndExpand" />
                         </Grid>
                     </yummy:PancakeView>
+                <!--
                     <Grid Grid.Row="0" Padding="24,10,24,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <!--<ColumnDefinition Width="20*" />-->
+                           <ColumnDefinition Width="20*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="auto" />
                         </Grid.ColumnDefinitions>
@@ -89,6 +90,34 @@
                             </Image.GestureRecognizers>
                         </Image>
                     </Grid>
+               -->
+                    <Grid Padding="24,10,24,10" Grid.Row="0">
+<Grid.RowDefinitions>
+<RowDefinition Height="auto" />
+</Grid.RowDefinitions>
+<Grid.ColumnDefinitions>
+<ColumnDefinition Width="20*" />
+<ColumnDefinition Width="60*" />
+<ColumnDefinition Width="20*" />
+</Grid.ColumnDefinitions>
+ 
+                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
+<Image Grid.Row="0" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" Source="arrowLeftwhite" x:Name="Image_BacKIcon"
+                               Style="{DynamicResource BackButtonArrow}">
+<Image.GestureRecognizers>
+<TapGestureRecognizer Command="{TemplateBinding BindingContext.GoBackBtnTapped}"/>
+</Image.GestureRecognizers>
+</Image>
+<Image  Grid.Row="0" Grid.Column="2"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"
+                               Source="close"
+                               HeightRequest="24"
+                               WidthRequest="24">
+<Image.GestureRecognizers>
+<TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}"/>
+</Image.GestureRecognizers>
+</Image>
+</Grid>
                 </Grid>
             </Grid>
         </ControlTemplate>
@@ -111,6 +140,7 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
+                  <!--
                     <Grid Grid.Row="0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto" />
@@ -127,7 +157,26 @@
                             Text="{x:Static ResourceManager:AppResources.ContractRelease}" />
 
                     </Grid>
-
+-->
+                    <Grid Grid.Row="0">
+ 
+                        <StackLayout Orientation="Horizontal">
+ 
+                            <custom:CustomLabel Text="{Binding FilterLabelTxt}" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"
+                                        Style="{StaticResource SectionTitleBlack}" FontSize="28" FontAttributes="Bold"/>
+<Image Source="arrowDropdown" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+<Image.Margin>
+<OnPlatform x:TypeArguments="Thickness">
+<On Platform="iOS" Value="5"/>
+<On Platform="Android" Value="5,10,5,0"/>
+</OnPlatform>
+</Image.Margin>
+<Image.GestureRecognizers>
+<TapGestureRecognizer Tapped="btn_Clicked"/>
+</Image.GestureRecognizers>
+</Image>
+</StackLayout>
+</Grid>
                     <Grid
                         Grid.Row="1"
                         BackgroundColor="Transparent"
@@ -275,7 +324,7 @@
                                                             Text="{Binding StatText}"
                                                             TextColor="{StaticResource Partial}"
                                                             VerticalOptions="CenterAndExpand">
-                                                            <Label.Triggers>
+                                                          <!-- <Label.Triggers>
 
                                                                 <DataTrigger
                                                                     Binding="{Binding StatText}"
@@ -285,7 +334,7 @@
                                                                     <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                                                     <Setter Property="HorizontalTextAlignment" Value="Center" />
                                                                 </DataTrigger>
-                                                            </Label.Triggers>
+                                                            </Label.Triggers>--> 
                                                         </Label>
                                                     </yummy:PancakeView>
                                                 </StackLayout>
