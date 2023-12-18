@@ -5,8 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:pages="clr-namespace:RGPopup.Maui;assembly=RGPopup.Maui"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False">
 

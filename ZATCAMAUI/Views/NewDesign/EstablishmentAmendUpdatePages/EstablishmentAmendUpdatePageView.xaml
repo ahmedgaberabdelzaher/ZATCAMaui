@@ -16,7 +16,7 @@
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:models="clr-namespace:EGAZT.Models"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     x:Name="ESTAmendReactivationPage"
     Title="{Binding PageTitle}"
     ios:Page.UseSafeArea="true"

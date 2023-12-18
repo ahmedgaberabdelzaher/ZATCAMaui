@@ -3,11 +3,9 @@
     x:Class="ZATCAMAUI.App"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:textInputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:themes="clr-namespace:ZATCAMAUI.Resources.Styles"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat">
+    xmlns:themes="clr-namespace:ZATCAMAUI.Resources.Styles">
 
     <Application.Resources>
         <ResourceDictionary>
@@ -1328,49 +1326,7 @@
                 <Setter Property="HasShadow" Value="False" />
             </Style>
         </ResourceDictionary>
-        <!--  <ControlTemplate x:Key="MainTemplet">
-            <Grid>
-
-                <StackLayout>
-                    <Grid  Padding="15,5,15,5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20*"/>
-                            <ColumnDefinition Width="60*"/>
-                            <ColumnDefinition Width="20*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="1" Grid.Row="0"   Text="{x:Static ResourceManager:AppResources.TariffSections}" Style="{StaticResource SectionTitleWhiteBold}" HorizontalOptions="Center"/>
-
-                        <Image HeightRequest="25" WidthRequest="25"  Grid.Row="0" Rotation="180" Grid.Column="0" IsVisible="{Binding IsBackStepButtonVisible}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"
-                               Source="GrayBackButton" x:Name="Image_BacKIcon"  >
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.BackCommand}"/>
-                            </Image.GestureRecognizers>
-                            <Image.Triggers>
-                                <DataTrigger TargetType="Image" Binding="{TemplateBinding BindingContext.IsArabicLang}" Value="False">
-                                    <Setter Property="Rotation" Value="0"></Setter>
-                                </DataTrigger>
-                            </Image.Triggers>
-                        </Image>
-                    </Grid>
-                    <yummy:PancakeView  VerticalOptions="FillAndExpand" CornerRadius="14,14,0,0" Padding="0">
-                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  Margin="0"
-                  Padding="0,0,0,0" BackgroundColor="White">
-
-
-                            <ContentPresenter VerticalOptions="FillAndExpand"
-                        HorizontalOptions="FillAndExpand"
-                        Grid.Column="0"
-                        Grid.Row="0" BackgroundColor="White"/>
-                        </Grid>
-                    </yummy:PancakeView>
-                </StackLayout>
-
-            </Grid>
-        </ControlTemplate>-->
+      
     </Application.Resources>
 
 

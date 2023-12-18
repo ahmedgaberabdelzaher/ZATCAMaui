@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat">
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
     <!--<ContentView.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

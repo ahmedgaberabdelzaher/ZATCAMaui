@@ -18,7 +18,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
     xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     ios:Page.UseSafeArea="True"
     BackgroundImageSource="partials_background"
     NavigationPage.HasNavigationBar="False"

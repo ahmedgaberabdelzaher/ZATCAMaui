@@ -9,9 +9,9 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:pages="clr-namespace:RGPopup.Maui;assembly=RGPopup.Maui"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
     xmlns:templateSelector="clr-namespace:ZATCAMAUI.Views.NewDesign.TemplateSelector"
-    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     FlowDirection="RightToLeft"
     mc:Ignorable="d">
     <pages:PopupPage.Resources>

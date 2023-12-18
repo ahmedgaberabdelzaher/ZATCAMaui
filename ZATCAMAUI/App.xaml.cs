@@ -18,6 +18,7 @@ using DialogService = ZATCAMAUI.Core.Helper.DialogService;
 using NavigationService = ZATCAMAUI.Core.Helper.NavigationService;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
+using AppDynamics.Agent;
 
 namespace ZATCAMAUI
 {
@@ -724,7 +725,7 @@ namespace ZATCAMAUI
             var config = AgentConfiguration.Create("EUM-AAB-AUM");
             config.LoggingLevel = LoggingLevel.Debug;
 
-            Instrumentation.enableAggregateExceptionReporting = true;
+            //Instrumentation.enableAggregateExceptionReporting = true;
 
             config.EnableAggregateExceptionReporting = true;
             config.CollectorURL = "https://eum.gazt.gov.sa";

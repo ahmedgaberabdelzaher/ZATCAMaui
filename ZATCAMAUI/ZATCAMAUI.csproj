@@ -23,6 +23,9 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -44,6 +47,7 @@
 	<ItemGroup>
 	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodListViewModel.cs" />
 	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodViewModel.cs" />
+	  <Compile Remove="AgentConfiguration.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -77,6 +81,8 @@
 		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="23.2.7" />
 		<PackageReference Include="Syncfusion.Maui.TabView" Version="23.2.7" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+		<PackageReference Include="AppDynamics.Agent" Version="2023.2.0" />
+		<PackageReference Include="AppDynamics.Agent.Maui" Version="2023.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
