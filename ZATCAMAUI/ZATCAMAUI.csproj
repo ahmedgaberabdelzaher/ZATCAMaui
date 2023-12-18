@@ -47,7 +47,6 @@
 	<ItemGroup>
 	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodListViewModel.cs" />
 	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodViewModel.cs" />
-	  <Compile Remove="AgentConfiguration.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,7 +84,7 @@
 		<PackageReference Include="AppDynamics.Agent.Maui" Version="2023.2.0" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <MauiXaml Update="App.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -176,7 +175,7 @@
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\LoginPages\SFLoginPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
+	</ItemGroup>-->
 
 	<ItemGroup>
 	  <Folder Include="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\" />

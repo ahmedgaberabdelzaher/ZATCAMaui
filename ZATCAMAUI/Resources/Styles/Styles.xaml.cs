@@ -7,7 +7,7 @@ namespace ZATCAMAUI.Resources.Styles
     /// </summary>
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Styles
+    public partial class Styles : ResourceDictionary
     {
         public static string strGAZTFontBold = string.Empty;
         public static string strGAZTFontMedium = string.Empty;

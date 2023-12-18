@@ -2,7 +2,7 @@
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
 
-    public partial class StylesNewUI
+    public partial class StylesNewUI : ResourceDictionary
     {
         public StylesNewUI()
         {

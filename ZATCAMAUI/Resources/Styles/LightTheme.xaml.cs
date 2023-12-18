@@ -3,7 +3,7 @@ namespace ZATCAMAUI.Resources.Styles
 {
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LightTheme
+    public partial class LightTheme : ResourceDictionary
     {
         public static string strGAZTFontBold = string.Empty;
         public static string strGAZTFontMedium = string.Empty;
