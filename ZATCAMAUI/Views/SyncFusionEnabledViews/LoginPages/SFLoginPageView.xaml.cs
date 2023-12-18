@@ -19,7 +19,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
     /// Page to login with user name and password
     /// </summary>
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SFLoginPageView:ContentPage
+    public partial class SFLoginPageView : ContentPage
     {
         SFLoginPageViewModel viewModel;
 
@@ -155,7 +155,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         {
             if (App.IsArabic)
             {
-                Resources["StyleReverseBack"] =Application.Current.Resources["ReverseBack"];
+                Resources["StyleReverseBack"] = Application.Current.Resources["ReverseBack"];
             }
             else
             {
@@ -261,7 +261,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         private void ContinuedFunc(string lang)
         {
 
-            MainThread.BeginInvokeOnMainThread( () =>
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 if (hybridWebView != null)
                 {
@@ -308,11 +308,11 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         private void anotherFunc(string lang)
         {
 
-            MainThread.BeginInvokeOnMainThread( () =>
+            MainThread.BeginInvokeOnMainThread(() =>
             {
                 viewModel.IsLoading = true;
                 hybridWebView.Opacity = 0;
-                var objSession = Preferences.Default.ContainsKey("IsSessionExpired") ? Preferences.Default.Get("IsSessionExpired",false) : false;
+                var objSession = Preferences.Default.ContainsKey("IsSessionExpired") ? Preferences.Default.Get("IsSessionExpired", false) : false;
                 if (objSession)
                 {
                     loginGrid.Opacity = 0;
@@ -410,7 +410,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                                     if (currVer >= minVer && currVer <= maxVer)
                                     {
                                         App.IsUserLoggedIn = true;
-                                        Preferences.Default.Set("timeOut", DateTime.Now) ;
+                                        Preferences.Default.Set("timeOut", DateTime.Now);
                                         await viewModel.LoginCompletedInWebView();
                                     }
                                     else
@@ -741,7 +741,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         private void GoBackToOnaboardingScreen()
         {
             viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-            var _navigation =Application.Current.MainPage.Navigation;
+            var _navigation = Application.Current.MainPage.Navigation;
             _navigation.NavigationStack.ToList().Clear();
         }
 
