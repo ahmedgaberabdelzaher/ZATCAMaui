@@ -1,0 +1,21 @@
+﻿using ZATCAMAUI.Core.Helper;
+
+namespace ZATCAMAUI.Models.EDeclerationsModel
+{
+    public class PurposeModel
+    {
+        public string Name_English { get; set; }
+        public string Name_Arabic { get; set; }
+        public int ID { get; set; }
+        public string Name
+        {
+            get
+            {
+                return NameLocalization.GetLocalizedName(Name_Arabic, Name_English);
+            }
+        }
+    }
+
+
+}
+

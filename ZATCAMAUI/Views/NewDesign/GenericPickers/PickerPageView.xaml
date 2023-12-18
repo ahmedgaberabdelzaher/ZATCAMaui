@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.GenericPickers.PickerPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:pages="clr-namespace:RGPopup.Maui;assembly=RGPopup.Maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    BackgroundClicked="PopupPage_BackgroundClicked">
+
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+
+    <yummy:PancakeView
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        HorizontalOptions="EndAndExpand"
+        IsVisible="true"
+        VerticalOptions="EndAndExpand">
+        <StackLayout
+            BackgroundColor="Transparent"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="End">
+            <Border
+                Margin="0,0,0,5"
+                Padding="0"
+                Style="{StaticResource GreyBorderFrameWithShadow}">
+                <StackLayout Orientation="Horizontal">
+                    <Button
+                        x:Name="PickerDoneButton"
+                        Margin="10,0,10,0"
+                        BackgroundColor="Transparent"
+                        Clicked="PopupClose_Clicked"
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Medium"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.ZDone}"
+                        TextColor="{StaticResource Primary}"
+                        VerticalOptions="Center" />
+                    <Button
+                        x:Name="PickerCancelButton"
+                        Margin="10,0,10,0"
+                        BackgroundColor="Transparent"
+                        Clicked="PopupCancel_Clicked"
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="Medium"
+                        HorizontalOptions="End"
+                        Text="{x:Static ResourceManager:AppResources.ZZClose}"
+                        TextColor="{StaticResource Primary}"
+                        VerticalOptions="Center" />
+                </StackLayout>
+            </Border>
+            <StackLayout
+                Margin="0,8,0,0"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+                <Label
+                    x:Name="PickerTitle"
+                    Margin="0,16,0,0"
+                    BackgroundColor="Transparent"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource SectionTitleBlack}"
+                    Text="{Binding PickerTitle}" />
+
+                <syncfusion:SfPicker
+                    x:Name="genericPicker"
+                    Margin="2"
+                    FlowDirection="RightToLeft"
+                    HeaderBackgroundColor="Transparent"
+                    HeaderFontFamily="{StaticResource SomarBoldForSfPicker}"
+                    HeaderTextColor="{StaticResource NeutralBlack}"
+                    IsOpen="True"
+                    ItemHeight="36"
+                    ItemsSource="{Binding PickerItemSource}"
+                    SelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}"
+                    SelectedItemFontSize="13"
+                    SelectedItemTextColor="{StaticResource NeutralBlack}"
+                    SelectionChanged="genericPicker_SelectionChanged"
+                    Style="{StaticResource PickerStyle}"
+                    UnSelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}"
+                    UnSelectedItemFontSize="13"
+                    UnSelectedItemTextColor="{StaticResource NeutralBlack}">
+                    <syncfusion:SfPicker.Behaviors>
+                        <behavior:SfPickerBehavior />
+                    </syncfusion:SfPicker.Behaviors>
+                </syncfusion:SfPicker>
+            </StackLayout>
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

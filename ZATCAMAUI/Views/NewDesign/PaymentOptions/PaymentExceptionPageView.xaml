@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.PaymentOptions.PaymentExceptionPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:pages="clr-namespace:RGPopup.Maui;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ScrollView>
+        <StackLayout
+            Margin="0"
+            BackgroundColor="Transparent"
+            IsVisible="true">
+            <StackLayout
+                Padding="40"
+                BackgroundColor="Transparent"
+                VerticalOptions="CenterAndExpand">
+                <Image Aspect="AspectFit" Source="errorNew.png" />
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static ResourceManager:AppResources.ZZSomethingwentwrong}"
+                    TextColor="White" />
+                <Label
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{x:Static ResourceManager:AppResources.ErrorOccuredContactCustomerService}"
+                    TextColor="White" />
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                Margin="30,60,30,80"
+                HorizontalOptions="Center"
+                VerticalOptions="End">
+                <buttons:SfButton
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Margin="0,8,0,16"
+                    Clicked="TryAgainClicked"
+                    HeightRequest="46"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.tryAgain}" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</pages:PopupPage>

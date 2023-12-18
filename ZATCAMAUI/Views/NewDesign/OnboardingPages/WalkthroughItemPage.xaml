@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="ZATCAMAUI.Views.NewDesign.OnboardingPages.WalkthroughItemPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    NavigationPage.HasNavigationBar="False">
+    <!--<ContentView.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>-->
+    <ContentView.Content>
+        <Grid
+            BackgroundColor="Transparent"
+            ColumnSpacing="0"
+            RowSpacing="0"
+            VerticalOptions="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  Image for display svg image  -->
+            <Image
+                Grid.Row="0"
+                Margin="0"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                Source="{Binding ImagePath}"
+                Style="{StaticResource SFOnboardingCenterImage}"
+                VerticalOptions="Center" />
+
+            <!--  Label to display header  -->
+
+            <custom:CustomLabel
+                Grid.Row="1"
+                Margin="0,20,0,5"
+                FontSize="18.6"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource PageTitleWhite}"
+                StyleId="OnBoardText"
+                Text="{Binding Header}"
+                VerticalOptions="Center" />
+
+            <!--  Label to display content  -->
+            <Label
+                Grid.Row="2"
+                Margin="10,0,0,10"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="CharacterWrap"
+                LineHeight="1.3"
+                Style="{StaticResource BodyLabelWhite}"
+                StyleId="OnBoardText"
+                Text="{Binding Content}"
+                VerticalTextAlignment="Center" />
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>

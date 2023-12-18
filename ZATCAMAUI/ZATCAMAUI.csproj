@@ -1,0 +1,179 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>;net7.0-ios;net7.0-android33.0</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>ZATCAMAUI</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<!-- Display name -->
+		<ApplicationTitle>ZATCAMAUI</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.zatcamaui</ApplicationId>
+		<ApplicationIdGuid>c26ce74b-6e11-469c-a8c0-b07fe33a9b2d</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodListViewModel.cs" />
+	  <Compile Remove="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\ChangeFillingPeriodViewModel.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\UIFontIcons.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Acr.UserDialogs" Version="8.0.1" />
+		<PackageReference Include="CardsView.Maui" Version="0.0.4" />
+		<PackageReference Include="CommonServiceLocator" Version="2.0.7" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
+		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
+		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="PancakeViewCompat" Version="7.0.0" />
+		<PackageReference Include="Plugin.MediaManager.Forms" Version="1.2.2" />
+		<PackageReference Include="Portable.JWT" Version="1.0.3" />
+		<PackageReference Include="Prism.Core" Version="8.1.97" />
+		<PackageReference Include="RGPopup.Maui" Version="1.0.2" />
+		<PackageReference Include="Syncfusion.Licensing" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="23.2.7" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="23.2.7" />
+		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="App.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\BottomMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\CheckboxCustom.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\CustomNavigation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\EDeclerationControls\SecurityDestrictedQuestionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\NavMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\LightTheme.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\OnBoardingPageIndicator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\PageIndicatorView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\DashBoardPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\PopUpPages\InfoPopUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\PopUpPages\SurveyPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\QuickActionPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdatePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentInformationPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\GenericPickers\CalendarPickerPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\GenericPickers\PickerPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\Styles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\StylesNewUI.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\OnboardingPages\OnBoardingAnimationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\OnboardingPages\WalkthroughItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\PaymentOptions\PaymentExceptionPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\PaymentOptions\PaymentOptionsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\SelectedItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\SelectedItemTemplateNoIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\UnSelectedItemTemplate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\UnSelectedItemTemplateNoIcon.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ActivityIndicator\ActivityIndicatorPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\LoginPages\SFLoginPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\" />
+	</ItemGroup>
+
+</Project>

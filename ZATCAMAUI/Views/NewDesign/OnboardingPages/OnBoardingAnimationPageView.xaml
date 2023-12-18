@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.OnboardingPages.GAZTNewDesignOnBoardingAnimationPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+    ios:Page.UseSafeArea="False"
+    NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <Grid ColumnSpacing="0" RowSpacing="5">
+            <Grid.RowDefinitions>
+                <!--  Skip Button  -->
+                <RowDefinition Height="96" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+
+            <Image
+                Grid.RowSpan="5"
+                Aspect="AspectFill"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Source="partials_background.png"
+                VerticalOptions="FillAndExpand" />
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <!--  Skip button  -->
+
+                <buttons:SfButton
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Command="{Binding SkipCommand}"
+                    CornerRadius="20"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="Start"
+                    IsVisible="false"
+                    Text="{x:Static ResourceManager:AppResources.NDSkip}"
+                    TextColor="{x:StaticResource WhiteTextColor}"
+                    VerticalOptions="EndAndExpand" />
+
+                <buttons:SfButton
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Clicked="ChangeLangButton_Clicked"
+                    CornerRadius="20"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="EndAndExpand"
+                    IsVisible="{Binding IsSkipButtonVisible}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
+                    TextColor="{x:StaticResource WhiteTextColor}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+
+            <Image
+                Grid.Row="1"
+                Margin="{OnPlatform Android='0,-35,0,0',
+                                    iOS='0,-45,0,0'}"
+                Aspect="AspectFit"
+                Source="centered.png" />
+
+            <!--  Rotator used to navigate the view  -->
+            <rotator:SfRotator
+                Grid.Row="2"
+                Margin="{OnPlatform Android='0,0,0,0',
+                                    iOS='0,10,0,0'}"
+                BackgroundColor="Transparent"
+                DotPlacement="None"
+                DotsBorderColor="Transparent"
+                EnableLooping="False"
+                EnableSwiping="True"
+                FlowDirection="LeftToRight"
+                HorizontalOptions="Start"
+                ItemTemplate="{StaticResource ItemTemplate}"
+                ItemsSource="{Binding Boardings}"
+                NavigationDirection="Horizontal"
+                NavigationStripPosition="Bottom"
+                SelectedDotColor="{StaticResource Primary}"
+                SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}"
+                VerticalOptions="CenterAndExpand">
+                <rotator:SfRotator.Behaviors>
+                    <behavior:SfRotatorBehavior />
+                </rotator:SfRotator.Behaviors>
+
+            </rotator:SfRotator>
+
+            <!--  Next button  -->
+            <buttons:SfButton
+                Grid.Row="4"
+                Margin="40,40,40,50"
+                Command="{Binding NextCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{Binding NextButtonText}" />
+
+            <commonView:OnBoardingPageIndicator
+                Grid.Row="3"
+                DotSize="12"
+                FlowDirection="LeftToRight"
+                HorizontalOptions="Center"
+                MaxNum="{Binding MaxIndex}"
+                MinNum="{Binding SelectedIndex}" />
+            <StackLayout Grid.Row="0" Orientation="Horizontal">
+                <StackLayout.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,35,0,0" />
+                        <On Platform="Android, WinPhone, Windows" Value="0,0,0,0" />
+                    </OnPlatform>
+                </StackLayout.Margin>
+                <!--  Skip button  -->
+
+                <buttons:SfButton
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Command="{Binding SkipCommand}"
+                    CornerRadius="20"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="Start"
+                    IsEnabled="True"
+                    IsVisible="{Binding IsSkipButtonVisible}"
+                    Text="{x:Static ResourceManager:AppResources.NDSkip}"
+                    TextColor="{x:StaticResource WhiteTextColor}"
+                    VerticalOptions="StartAndExpand" />
+
+                <buttons:SfButton
+                    Margin="10"
+                    BackgroundColor="Transparent"
+                    Clicked="ChangeLangButton_Clicked"
+                    CornerRadius="20"
+                    FontFamily="{StaticResource SomarBold}"
+                    HorizontalOptions="EndAndExpand"
+                    IsVisible="{Binding IsSkipButtonVisible}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZSetToEn}"
+                    TextColor="{x:StaticResource WhiteTextColor}"
+                    VerticalOptions="EndAndExpand" />
+            </StackLayout>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

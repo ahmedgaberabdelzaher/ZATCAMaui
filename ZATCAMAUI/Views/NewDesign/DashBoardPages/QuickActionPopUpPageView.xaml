@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.QuickActionPopUpPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:pages="clr-namespace:RGPopup.Maui;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:PancakeViewCompat;assembly=PancakeViewCompat"
+    BackgroundColor="Transparent">
+
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView CornerRadius="20" VerticalOptions="FillAndExpand">
+
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60*" />
+                <RowDefinition Height="40*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*" />
+                <ColumnDefinition Width="80*" />
+                <ColumnDefinition Width="10*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid
+                Grid.Row="0"
+                Grid.RowSpan="{x:OnPlatform iOS=2,
+                                            Android=2,
+                                            UWP=2}"
+                Grid.Column="0"
+                Grid.ColumnSpan="3"
+                BackgroundColor="Black"
+                Opacity="0.5"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100*" />
+                </Grid.RowDefinitions>
+
+            </Grid>
+            <StackLayout
+                Grid.Row="1"
+                Grid.Column="1"
+                Padding="20"
+                Orientation="Vertical"
+                Spacing="24"
+                VerticalOptions="End">
+
+                <Border
+                    x:Name="ZAKATReturn"
+                    BackgroundColor="White"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+
+                        <custom:CustomLabel
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.QuickActionShowOverDueReturns}"
+                            VerticalOptions="Center">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnOverdueReturnClicked" />
+                    </Border.GestureRecognizers>
+
+                </Border>
+
+                <Border
+                    x:Name="ReadInbox"
+                    BackgroundColor="White"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+
+                        <custom:CustomLabel
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.QuickActionShowCertificates}"
+                            VerticalOptions="Center">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCorrespondanceClicked" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Border>
+
+
+                <Border
+                    x:Name="GetSupport"
+                    BackgroundColor="White"
+                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout
+                        HeightRequest="50"
+                        HorizontalOptions="Center"
+                        Orientation="Horizontal">
+
+                        <custom:CustomLabel
+                            Style="{StaticResource CustomButtonTextStyle}"
+                            Text="{x:Static ResourceManager:AppResources.GetSupport}"
+                            VerticalOptions="Center">
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnGetSupportClicked" />
+                            </custom:CustomLabel.GestureRecognizers>
+                        </custom:CustomLabel>
+
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGetSupportClicked" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </Border>
+
+
+            </StackLayout>
+            <Frame
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                CornerRadius="10"
+                HeightRequest="24"
+                Opacity="0.5"
+                WidthRequest="24">
+                <Frame.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="2,-6,2,0" />
+                        <On Platform="Android" Value="2,-6,2,0" />
+                    </OnPlatform>
+                </Frame.Margin>
+                <Frame.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="4" />
+                        <On Platform="Android" Value="4" />
+                    </OnPlatform>
+                </Frame.HeightRequest>
+            </Frame>
+
+            <StackLayout
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Padding="0,0,0,16">
+
+                <Image
+                    x:Name="CloseIcon"
+                    Margin="0,8,0,0"
+                    HeightRequest="56"
+                    Source="quick_Actions_Close.png"
+                    WidthRequest="56">
+
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnCloseTapped" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+        </Grid>
+
+    </yummy:PancakeView>
+</pages:PopupPage>

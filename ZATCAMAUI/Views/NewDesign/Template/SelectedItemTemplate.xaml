@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ViewCell
+    x:Class="ZATCAMAUI.Views.NewDesign.Template.SelectedItemTemplate"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms">
+    <ViewCell.View>
+        <cards:SfCardView
+            BackgroundColor="Transparent"
+            CornerRadius="20"
+            HasShadow="False"
+            HeightRequest="104"
+            WidthRequest="171">
+            <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="104" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    Aspect="Fill"
+                    HorizontalOptions="FillAndExpand"
+                    Source="re_Tile_Background_S"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout Style="{DynamicResource CardParentStacklayout}" VerticalOptions="EndAndExpand">
+                    <Image
+                        Margin="0"
+                        IsVisible="{Binding IsSelectedCardIconVisible}"
+                        Source="{Binding SelectedCardIcon}"
+                        Style="{DynamicResource CardIcon}" />
+                    <Label
+                        Padding="0"
+                        FontSize="Small"
+                        Style="{DynamicResource CardLabelBlack}"
+                        Text="{Binding CardLabel}" />
+                </StackLayout>
+            </Grid>
+        </cards:SfCardView>
+    </ViewCell.View>
+</ViewCell>

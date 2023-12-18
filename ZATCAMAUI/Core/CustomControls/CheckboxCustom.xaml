@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="ZATCAMAUI.Core.CustomControls.CheckboxCustom"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HeightRequest="20"
+    WidthRequest="20">
+    <ContentView.Content>
+        <Image
+            x:Name="img"
+            HorizontalOptions="FillAndExpand"
+            Source="unchecked_box.png"
+            VerticalOptions="FillAndExpand">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Image.GestureRecognizers>
+        </Image>
+    </ContentView.Content>
+</ContentView>
