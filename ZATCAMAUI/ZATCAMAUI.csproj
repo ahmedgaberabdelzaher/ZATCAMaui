@@ -89,6 +89,10 @@
 	    <Generator>PublicResXFileCodeGenerator</Generator>
 	    <LastGenOutput>AppResources.ar.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
+	  <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Syncfusion.SfPicker.XForms.ar-AE.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Syncfusion.SfPicker.XForms.ar-AE.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="AppResources.Designer.cs">
@@ -96,6 +100,9 @@
 	  </Compile>
 	  <Compile Update="AppResources.ar.Designer.cs">
 	    <DependentUpon>AppResources.ar.resx</DependentUpon>
+	  </Compile>
+	  <Compile Update="Syncfusion.SfPicker.XForms.ar-AE.Designer.cs">
+	    <DependentUpon>Syncfusion.SfPicker.XForms.ar-AE.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
