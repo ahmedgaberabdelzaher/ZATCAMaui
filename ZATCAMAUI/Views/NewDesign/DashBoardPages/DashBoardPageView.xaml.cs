@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using RGPopup.Maui.Services;
 using Syncfusion.Maui.Picker;
 using Syncfusion.Maui.ProgressBar;
-using System;
 using System.Globalization;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
@@ -14,8 +13,10 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages;
+using ZATCAMAUI.Views.NewDesign.VATDeRegistration;
 using Application = Microsoft.Maui.Controls.Application;
 using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
+using ScrollView = Microsoft.Maui.Controls.ScrollView;
 
 namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 {
@@ -417,18 +418,18 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                     case Device.iOS:
                         {
-                            CommitmentsPicker.HeaderFontFamily = "Somar-SemiBold";
-                            CommitmentsPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            CommitmentsPicker.SelectedItemFontFamily = "Somar-SemiBold";
-                            CommitmentsPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            CommitmentsPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            CommitmentsPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            CommitmentsPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            CommitmentsPicker.TextStyle.FontFamily = "Somar-SemiBold";//ddlLIssuedBy
                         }
                         break;
                     case Device.Android:
                         {
-                            CommitmentsPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";//"Somar-SemiBold.otf#Somar-SemiBold";
-                            CommitmentsPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            CommitmentsPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                            CommitmentsPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                            CommitmentsPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            CommitmentsPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            CommitmentsPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                            CommitmentsPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
                         }
                         break;
                 }
@@ -1696,7 +1697,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
             var screenWidth = Application.Current.MainPage.Width;
             var btnWidth = btn_frameToolbar.Width;
             var xPosition = screenWidth - btnWidth - 20;
-            var scrollView = sender as Xamarin.Forms.ScrollView;
+            var scrollView = sender as ScrollView;
             var yPostion = e.ScrollY;
 
             if (e.ScrollY > 120)

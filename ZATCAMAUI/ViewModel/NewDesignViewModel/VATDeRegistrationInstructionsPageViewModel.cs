@@ -1,0 +1,140 @@
+﻿using System.Windows.Input;
+using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Views;
+using RGPopup.Maui.Services;
+using ZATCAMAUI.Core.Exceptions;
+
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel
+{
+    public class VATDeRegistrationInstructionsPageViewModel : ViewModelBase
+    {
+        #region Variable
+        public readonly INavigationService _navigationService;
+        public readonly IDialogService _dialogService;
+        public ICommand GoBackClick { get; set; }
+        #endregion
+        private Color _continueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
+        public Color ContinueButtonnBackroundColor
+        {
+            get
+            {
+                return _continueButtonnBackroundColor;
+            }
+            set
+            {
+                if (_continueButtonnBackroundColor == value) return;
+                _continueButtonnBackroundColor = value;
+                RaisePropertyChanged("ContinueButtonnBackroundColor");
+            }
+        }
+        private bool _isInstructionChecked = false;
+        public bool IsInstructionChecked
+        {
+            get
+            {
+                return _isInstructionChecked;
+            }
+            set
+            {
+                _isInstructionChecked = value;
+
+                if (_isInstructionChecked)
+                {
+                    IsContinueButtonEnable = true;
+                }
+                else
+                {
+                    IsContinueButtonEnable = false;
+
+                }
+
+                RaisePropertyChanged("IsInstructionChecked");
+            }
+        }
+        private bool _isContinueButtonEnable = false;
+        public bool IsContinueButtonEnable
+        {
+            get
+            {
+                return _isContinueButtonEnable;
+            }
+            set
+            {
+                _isContinueButtonEnable = value;
+                if (_isContinueButtonEnable)
+                {
+                    ContinueButtonnBackroundColor = (Color)Application.Current.Resources["Secondary"];
+                }
+                else
+                {
+                    ContinueButtonnBackroundColor = (Color)Application.Current.Resources["ButtonGray"];
+                }
+                RaisePropertyChanged("IsContinueButtonEnabled");
+            }
+        }
+        private bool _isInstructionCheckedEnable = true;
+        public bool isInstructionCheckedEnable
+        {
+            get => _isInstructionCheckedEnable;
+            set
+            {
+                _isInstructionCheckedEnable = value;
+                RaisePropertyChanged(nameof(isInstructionCheckedEnable));
+            }
+        }
+        public ICommand VATDeregistrationClicked { get; set; }
+
+        public VATDeRegistrationInstructionsPageViewModel(INavigationService navigationService, IDialogService dialogService)
+        {
+            if (navigationService == null)
+            {
+                throw new ArgumentNullException("navigationService");
+            }
+            _navigationService = navigationService;
+            if (dialogService == null)
+            {
+                throw new ArgumentNullException("dialogService");
+            }
+            _dialogService = dialogService;
+            GoBackClick = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+
+            IsContinueButtonEnable = false;
+            VATDeregistrationClicked = new Command(VATDeregistrationTapped);
+        }
+
+        public async void VATDeregistrationTapped()
+        {
+            if (_isInstructionChecked)
+            {
+                IsContinueButtonEnable = true;
+
+                MessagingCenter.Send(this, "SelectedCheckboxItem", IsInstructionChecked);
+                try
+                {
+                    await PopupNavigation.Instance.PopAsync();
+                    _navigationService.NavigateTo(App.VATDeregistrationDetailsPage);
+                }
+                catch (GAZTUnlockAccountException)
+                {
+
+
+                }
+                catch (InternetException ex)
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                        _navigationService.GoBack();
+                    });
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+    }
+}

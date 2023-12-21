@@ -1,4 +1,6 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+﻿
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using RGPopup.Maui.Services;
 using Syncfusion.Maui.Picker;
 using System.Globalization;
@@ -10,6 +12,8 @@ using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
+using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
+using ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount;
 using Application = Microsoft.Maui.Controls.Application;
 using NavigationPage = Microsoft.Maui.Controls.NavigationPage;
 
@@ -56,7 +60,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                     this.FlowDirection = FlowDirection.RightToLeft;
                     CultureInfo.CurrentUICulture = new CultureInfo("ar-AE");
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("EGAZT.SyncfusionControl", Application.Current.GetType().Assembly);
+                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.SyncfusionControl", Application.Current.GetType().Assembly);
                 }
                 else
                 {
@@ -65,7 +69,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                     this.FlowDirection = FlowDirection.LeftToRight;
                     CultureInfo.CurrentUICulture = new CultureInfo("en-US");
                     Thread.CurrentThread.CurrentUICulture = CultureInfo.CurrentUICulture;
-                    SfPickerResources.ResourceManager = new ResourceManager("GAZT.AppResources", Application.Current.GetType().Assembly);
+                    SfPickerResources.ResourceManager = new ResourceManager("ZATCAMAUI.AppResources", Application.Current.GetType().Assembly);
                 }
 
 
@@ -268,7 +272,6 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                     loginGrid.Children.Remove(hybridWebView);
                 }
                 hybridWebView = new HybridWebView();
-                // App.isAndroidUrlloaded = true;
                 anotherFunc(lang);
 
 
@@ -279,7 +282,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
             hybridWebView.Url = viewModel.CreateLoginURL(lang);
 
-            hybridWebView.RegisterAction(async (data) =>
+            hybridWebView.RegisterAction((data) =>
             {
                 if (platform == DevicePlatform.iOS)
                 {
@@ -307,283 +310,290 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
         private void anotherFunc(string lang)
         {
-
-            MainThread.BeginInvokeOnMainThread(() =>
+            try
             {
-                viewModel.IsLoading = true;
-                hybridWebView.Opacity = 0;
-                var objSession = Preferences.Default.ContainsKey("IsSessionExpired") ? Preferences.Default.Get("IsSessionExpired", false) : false;
-                if (objSession)
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
-                    loginGrid.Opacity = 0;
-                    sessionExpiredView.IsVisible = true;
-                }
-            });
-
-            hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
-            hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
-
-            hybridWebView.Url = viewModel.CreateLoginURL(lang);
-
-            hybridWebView.RegisterAction(async (data) =>
-            {
-                Device.BeginInvokeOnMainThread(async () =>
-                {
-                    try
+                    viewModel.IsLoading = true;
+                    hybridWebView.Opacity = 0;
+                    var objSession = Preferences.Default.ContainsKey("IsSessionExpired") ? Preferences.Default.Get("IsSessionExpired", false) : false;
+                    if (objSession)
                     {
-                        if (data == "displayLoginLoadingIndicator")
+                        loginGrid.Opacity = 0;
+                        sessionExpiredView.IsVisible = true;
+                    }
+                });
+
+                hybridWebView.HorizontalOptions = LayoutOptions.FillAndExpand;
+                hybridWebView.VerticalOptions = LayoutOptions.FillAndExpand;
+
+                hybridWebView.Url = viewModel.CreateLoginURL(lang);
+
+                hybridWebView.RegisterAction((data) =>
+                {
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
                         {
-                            hybridWebView.Opacity = 0;
-                            viewModel.IsLoading = true;
-                        }
-
-                        if (data == "displayLoadingIndicator")
-                        {
-                            viewModel.IsLoading = true;
-                        }
-
-                        if (data == "hideLoadingIndicator")
-                        {
-                            hybridWebView.Opacity = 1;
-                            viewModel.IsLoading = false;
-
-                        }
-
-                        if (data == "hideLoginLoadingIndicator")
-                        {
-                            viewModel.IsLoading = false;
-                        }
-
-                        if (data == "IsloginControl")
-                        {
-                            hybridWebView.Url = viewModel.CreateLoginURL(lang);
-                        }
-
-                        if (data == "requestTimedout")
-                        {
-                            hybridWebView.Opacity = 0;
-                            viewModel.IsLoading = false;
-                            App.isAndroidUrlloaded = false;
-
-                            if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                            if (data == "displayLoginLoadingIndicator")
                             {
-                                App.LoginDataRetrieved.AppMsg = AppResources.RequestTimeoutDescription;
+                                hybridWebView.Opacity = 0;
+                                viewModel.IsLoading = true;
                             }
 
-                            if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                            if (data == "displayLoadingIndicator")
                             {
-                                App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
+                                viewModel.IsLoading = true;
+                            }
+
+                            if (data == "hideLoadingIndicator")
+                            {
+                                hybridWebView.Opacity = 1;
+                                viewModel.IsLoading = false;
 
                             }
 
-                            await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                            //hybridWebView.RefreshCommand();
-
-                            try
+                            if (data == "hideLoginLoadingIndicator")
                             {
-                                await LogoffUser();
-                                GoBackToOnaboardingScreen();
+                                viewModel.IsLoading = false;
                             }
-                            catch (Exception)
+
+                            if (data == "IsloginControl")
                             {
-
-
-                                GoBackToOnaboardingScreen();
+                                hybridWebView.Url = viewModel.CreateLoginURL(lang);
                             }
-                        }
 
-                        if (data == "success")
-                        {
-                            //App.IsUserLoggedIn = true;
-                            //await viewModel.LoginCompletedInWebView();
-
-                            try
+                            if (data == "requestTimedout")
                             {
-                                string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+                                hybridWebView.Opacity = 0;
+                                viewModel.IsLoading = false;
+                                App.isAndroidUrlloaded = false;
 
-                                if (minMaxVersions.Count() > 1)
+                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
                                 {
-                                    double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
-                                    double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
-                                    double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+                                    App.LoginDataRetrieved.AppMsg = AppResources.RequestTimeoutDescription;
+                                }
 
-                                    if (currVer >= minVer && currVer <= maxVer)
+                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                                {
+                                    App.LoginDataRetrieved.MsgTitle = AppResources.RequestTimeoutTitle;
+
+                                }
+
+                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                //hybridWebView.RefreshCommand();
+
+                                try
+                                {
+                                    await LogoffUser();
+                                    GoBackToOnaboardingScreen();
+                                }
+                                catch (Exception)
+                                {
+
+
+                                    GoBackToOnaboardingScreen();
+                                }
+                            }
+
+                            if (data == "success")
+                            {
+                                //App.IsUserLoggedIn = true;
+                                //await viewModel.LoginCompletedInWebView();
+
+                                try
+                                {
+                                    string[] minMaxVersions = App.LoginDataRetrieved.AppVersion.Split('-');
+
+                                    if (minMaxVersions.Count() > 1)
                                     {
-                                        App.IsUserLoggedIn = true;
-                                        Preferences.Default.Set("timeOut", DateTime.Now);
-                                        await viewModel.LoginCompletedInWebView();
+                                        double minVer = Convert.ToDouble(minMaxVersions[0].Replace(".", string.Empty));
+                                        double maxVer = Convert.ToDouble(minMaxVersions[1].Replace(".", string.Empty));
+                                        double currVer = Convert.ToDouble(App.AppVersion.Replace(".", string.Empty));
+
+                                        if (currVer >= minVer && currVer <= maxVer)
+                                        {
+                                            App.IsUserLoggedIn = true;
+                                            Preferences.Default.Set("timeOut", DateTime.Now);
+                                            await viewModel.LoginCompletedInWebView();
+                                        }
+                                        else
+                                        {
+                                            hybridWebView.Opacity = 0;
+                                            viewModel.IsLoading = false;
+
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                            await LogoffUser();
+                                        }
                                     }
                                     else
                                     {
-                                        hybridWebView.Opacity = 0;
-                                        viewModel.IsLoading = false;
+                                        App.LoginDataRetrieved.AppVersion = string.Empty;
 
-                                        await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                        await LogoffUser();
+                                        if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
+                                        {
+                                            App.IsUserLoggedIn = true;
+                                            await viewModel.LoginCompletedInWebView();
+                                        }
+                                        else
+                                        {
+                                            hybridWebView.Opacity = 0;
+                                            viewModel.IsLoading = false;
+
+                                            await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
+                                            await LogoffUser();
+                                        }
                                     }
+                                }
+                                catch (Exception)
+                                {
+                                    await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
+                                }
+                            }
+
+                            if (data == "navigateToForgotUsernamePage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
+                            }
+
+                            if (data == "navigateToUnlockAccountPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
+                            }
+
+                            if (data == "navigateToVATIndividualSignupPage")
+                            {
+                                hybridWebView.Opacity = 0;
+                                viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
+                            }
+
+                            if (data == "navigateToVATIndividualSignupPageSSO")
+                            {
+                                viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
+                            }
+
+                            if (data == "navigateBackToLoginPage")
+                            {
+                                App.IsLoginCalled = false;
+                                OnAppearing();
+                            }
+
+                            if (data == "error")
+                            {
+                                hybridWebView.Opacity = 0;
+                                viewModel.IsLoading = false;
+
+                                if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
+                                {
+                                    App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
+                                }
+
+                                if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
+                                {
+                                    App.LoginDataRetrieved.MsgTitle = AppResources.Information;
+                                };
+
+                                if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
+                                {
+                                    App.IsUserLoggedIn = true;
+                                    await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
                                 }
                                 else
                                 {
-                                    App.LoginDataRetrieved.AppVersion = string.Empty;
-
-                                    if (App.LoginDataRetrieved.AppVersion == App.AppVersion)
-                                    {
-                                        App.IsUserLoggedIn = true;
-                                        await viewModel.LoginCompletedInWebView();
-                                    }
-                                    else
-                                    {
-                                        hybridWebView.Opacity = 0;
-                                        viewModel.IsLoading = false;
-
-                                        await viewModel._dialogService.ShowMessageBox(AppResources.VersonCheckErrorMsg, AppResources.VersonCheckErrorTitle);
-                                        await LogoffUser();
-                                    }
+                                    await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
+                                    await LogoffUser();
                                 }
                             }
-                            catch (Exception)
+
+                            if (data == "errorGeneric")
                             {
+                                hybridWebView.Opacity = 0;
+                                viewModel.IsLoading = false;
+
                                 await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                            }
-                        }
+                                viewModel.IsLoading = true;
 
-                        if (data == "navigateToForgotUsernamePage")
-                        {
-                            hybridWebView.Opacity = 0;
-                            //  viewModel._navigationService.NavigateTo(App.GAZTNewDesignForgotPasswordPageView);
-                            await Navigation.PushModalAsync(new GAZTNewDesignForgotPasswordPageView(), true);
-                            //viewModel._navigationService.NavigateTo(App.ForgotUsernamePasswordPageView);
-                        }
-
-                        if (data == "navigateToUnlockAccountPage")
-                        {
-                            hybridWebView.Opacity = 0;
-                            await PopupNavigation.Instance.PushAsync(new UnlockAccountTINPageView());
-                        }
-
-                        if (data == "navigateToVATIndividualSignupPage")
-                        {
-                            hybridWebView.Opacity = 0;
-                            //viewModel._navigationService.NavigateTo(App.VATIndividualSignupPageView);
-                            viewModel._navigationService.NavigateTo(App.EstablishmentSignUPPageView);
-                        }
-
-                        if (data == "navigateToVATIndividualSignupPageSSO")
-                        {
-                            //await viewModel.getSSODetails();
-                            // viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView);
-                            viewModel._navigationService.NavigateTo(App.IndividualRegistrationPageView, "RegisterPageSSO");
-                        }
-
-                        if (data == "navigateBackToLoginPage")
-                        {
-                            App.IsLoginCalled = false;
-                            OnAppearing();
-                        }
-
-                        if (data == "error")
-                        {
-                            hybridWebView.Opacity = 0;
-                            viewModel.IsLoading = false;
-
-                            if (App.LoginDataRetrieved.AppMsg == "" || App.LoginDataRetrieved.AppMsg == null)
-                            {
-                                App.LoginDataRetrieved.AppMsg = AppResources.Somethingwentwrong;
-                            }
-
-                            if (App.LoginDataRetrieved.MsgTitle == "" || App.LoginDataRetrieved.MsgTitle == null)
-                            {
-                                App.LoginDataRetrieved.MsgTitle = AppResources.Information;
-                            };
-
-                            if (App.LoginDataRetrieved.AppMsg == "Please complete registration process on Portal to Login into the app." || App.LoginDataRetrieved.AppMsg == "الرجاء اكمال التسجيل من خلال الموقع الإلكتروني للدخول للتطبيق")
-                            {
-                                App.IsUserLoggedIn = true;
-                                await viewModel.LoginCompletedInWebViewForVATRegistrationTestPurpose();
-                            }
-                            else
-                            {
-                                await viewModel._dialogService.ShowMessageBox(App.LoginDataRetrieved.AppMsg, App.LoginDataRetrieved.MsgTitle);
-                                await LogoffUser();
-                            }
-                        }
-
-                        if (data == "errorGeneric")
-                        {
-                            hybridWebView.Opacity = 0;
-                            viewModel.IsLoading = false;
-
-                            await viewModel._dialogService.ShowMessageBox(AppResources.Somethingwentwrong, AppResources.Information);
-                            viewModel.IsLoading = true;
-
-                            if (App.TP != null)
-                                App.TP = null;
-                            if (App.PreviousIsArabic)
-                            {
-                                string langName = "ar-AE";
-                                AppResources.Culture = new CultureInfo(langName);
-                            }
-                            else
-                            {
-                                string langName = "en-US";
-                                AppResources.Culture = new CultureInfo(langName);
-                            }
-
-                            try
-                            {
-                                await WebServiceManager.GAZTLogOff();
-                            }
-                            catch
-                            {
-
-                            }
-
-
-                            viewModel.IsLoading = false;
-
-                            var _navigation = Application.Current.MainPage.Navigation;
-                            foreach (var item in _navigation.NavigationStack)
-                            {
-                                if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                if (App.TP != null)
+                                    App.TP = null;
+                                if (App.PreviousIsArabic)
                                 {
-                                    _navigation.RemovePage(item);
-                                    break;
+                                    string langName = "ar-AE";
+                                    AppResources.Culture = new CultureInfo(langName);
                                 }
+                                else
+                                {
+                                    string langName = "en-US";
+                                    AppResources.Culture = new CultureInfo(langName);
+                                }
+
+                                try
+                                {
+                                    await WebServiceManager.GAZTLogOff();
+                                }
+                                catch
+                                {
+
+                                }
+
+
+                                viewModel.IsLoading = false;
+
+                                var _navigation = Application.Current.MainPage.Navigation;
+                                foreach (var item in _navigation.NavigationStack)
+                                {
+                                    if (item.GetType().Name == App.SFAnonymousLandingPageView)
+                                    {
+                                        _navigation.RemovePage(item);
+                                        break;
+                                    }
+                                }
+
+                                App.IsLogOut = true;
+                                App.IsLoginCalled = false;
+                                App.IsSamlApiCalledAndroid = false;
+
+                                try
+                                {
+                                    App.httpClientHandler = new HttpClientHandler();
+                                    App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                                    App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
+                                }
+                                catch (Exception)
+                                {
+
+
+                                }
+
+                                viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
+                                _navigation.NavigationStack.ToList().Clear();
+
                             }
+                        }
 
-                            App.IsLogOut = true;
-                            App.IsLoginCalled = false;
-                            App.IsSamlApiCalledAndroid = false;
-
-                            try
-                            {
-                                App.httpClientHandler = new HttpClientHandler();
-                                App.httpClientHandler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
-                                App.httpClientHandler.CookieContainer = new System.Net.CookieContainer();
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-
-                            viewModel._navigationService.NavigateTo(App.GAZTNewDesignOnBoardingAnimationPageView);
-                            _navigation.NavigationStack.ToList().Clear();
+                        catch (Exception)
+                        {
 
                         }
-                    }
-
-                    catch (Exception)
-                    {
-
-                    }
+                    });
                 });
-            });
 
-            loginGrid.Children.Add(hybridWebView, 0, 0);
-            loginGrid.LowerChild(hybridWebView);
+                loginGrid.Add(hybridWebView, 0, 0);
+
+                //TODO
+                // send the child to back because LowerChild() is not available in MAUI
+                loginGrid.Children.RemoveAt(loginGrid.Children.IndexOf(hybridWebView));
+                loginGrid.Insert(0, hybridWebView);
+                //loginGrid.LowerChild(hybridWebView);
+            }
+            catch (Exception)
+            {
+            }
+
+            
+           
         }
-
         private async Task LogoffUser()
         {
             viewModel.IsLoading = true;

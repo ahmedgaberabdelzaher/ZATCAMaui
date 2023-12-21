@@ -40,5 +40,15 @@
 		<provider android:name="android.support.v4.content.FileProvider" android:authorities="com.gazt.egazt.fileprovider" android:exported="false" android:grantUriPermissions="true">
 			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
 		</provider>
+		<queries>
+			<intent>
+				<action android:name="android.intent.action.VIEW" />
+				<data android:scheme="http"/>
+			</intent>
+			<intent>
+				<action android:name="android.intent.action.VIEW" />
+				<data android:scheme="https"/>
+			</intent>
+		</queries>
 	</application>
 </manifest>

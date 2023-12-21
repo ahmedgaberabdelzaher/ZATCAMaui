@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages.ReturnPortalNavigationPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView
+        Padding="20,20,20,10"
+        BackgroundColor="White"
+        CornerRadius="15,15,0,0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
+
+        <StackLayout Margin="0,0,0,0" VerticalOptions="Center">
+            <!--<Image HorizontalOptions="EndAndExpand">
+                <Image.Source>
+                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
+                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
+                </Image.GestureRecognizers>
+            </Image>-->
+
+            <Label
+                x:Name="InfromatationText"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource BodyLabelBlack}" />
+            <buttons:SfButton
+                x:Name="btnprimary"
+                Margin="0,0,0,10"
+                Clicked="DoneButtonClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                VerticalOptions="CenterAndExpand" />
+            <buttons:SfButton
+                x:Name="btnGotoPortal"
+                Margin="0,0,0,10"
+                Clicked="GotoPortalButtonClicked"
+                Style="{StaticResource SecondaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZVisitPortal}"
+                VerticalOptions="CenterAndExpand" />
+
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

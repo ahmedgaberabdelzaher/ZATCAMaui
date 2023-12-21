@@ -1,0 +1,826 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.UnlockAccount.UnlockAccountTINPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    CloseWhenBackgroundIsClicked="False"
+    mc:Ignorable="d">
+    <pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>-->
+            <Style TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="WidthRequest" Value="10" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="{StaticResource SomarBold}" />
+            </Style>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>
+    <yummy:PancakeView
+        x:Name="mainContentView"
+        BackgroundColor="Transparent"
+        CornerRadius="22,22,0,0"
+        VerticalOptions="FillAndExpand">
+        <StackLayout>
+            <ScrollView
+                HorizontalScrollBarVisibility="Never"
+                IsVisible="{Binding IsTinContentViewVisible}"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding IsTinContentViewVisible}"
+                    VerticalOptions="FillAndExpand">
+                    <yummy:PancakeView
+                        BackgroundColor="White"
+                        CornerRadius="22,22,0,0"
+                        VerticalOptions="EndAndExpand">
+                        <StackLayout
+                            Margin="15,10,15,0"
+                            BackgroundColor="Transparent"
+                            VerticalOptions="EndAndExpand">
+                            <Grid
+                                BackgroundColor="Transparent"
+                                IsVisible="{Binding IsTinContentViewVisible}"
+                                VerticalOptions="EndAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="35*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsVisible="true"
+                                    Rotation="270"
+                                    Style="{StaticResource IconLabelStyle}"
+                                    Text="{DynamicResource Back}"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TappedOnTinContentBackButton" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HeightRequest="40"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="ic_logo_gazt.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40" />
+
+                                <custom:CustomLabel
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,25,0,0"
+                                    BackgroundColor="Transparent"
+                                    Style="{StaticResource SectionTitleBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" />
+                                <!--<custom:CustomLabel Text="{x:Static ResourceManager:AppResources.NDSelectTheOptionAndCompleteDetails}" Style="{StaticResource BodyLabelGrey}"/>-->
+
+                                <StackLayout
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,0,0,0">
+                                    <!--<Label Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" FontFamily="{StaticResource GAZT_FONT_MEDIUM}" Padding="0,0,0,0"/>-->
+                                    <custom:CustomLabel
+                                        Grid.Row="0"
+                                        Margin="0,20,0,0"
+                                        Style="{StaticResource CaptionLabelGrey}">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.TIN}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+                                    </custom:CustomLabel>
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="FrmTIN"
+                                        Margin="0,-6,0,-6"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="False"
+                                        HorizontalOptions="FillAndExpand"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="8"
+                                        TrailingViewPosition="Inside"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="EntryTIN"
+                                            Focused="FrmTIN_Focused"
+                                            FontSize="Small"
+                                            IsSpellCheckEnabled="False"
+                                            Keyboard="Numeric"
+                                            MaxLength="10"
+                                            Placeholder="{x:Static ResourceManager:AppResources.TIN}"
+                                            PlaceholderColor="Gray"
+                                            Text="{Binding TxtTIN}"
+                                            TextChanged="EntryTINNumber_TextChanged"
+                                            TextColor="{StaticResource PrimaryColor}"
+                                            Unfocused="FrmTIN_Unfocused">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:OnlyNumericValuesBehaviour />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--<inputLayout:SfTextInputLayout  Margin="0,10,0,10"
+                                        ContainerType="Outlined" UnfocusedColor="#B1B1B1"
+                                        OutlineCornerRadius="12" FocusedColor="{StaticResource Primary}" ErrorColor="#B00020" HasError="False" >
+                                                                <custom:GAZTBorderlessEntry  BackgroundColor="Green"
+                                                                                         Style="{StaticResource GAZTEntry}"  TextColor="#bbbbbb"
+                                                                  >
+
+                                                                </custom:GAZTBorderlessEntry>
+                                                            </inputLayout:SfTextInputLayout>-->
+                                </StackLayout>
+                            </Grid>
+
+                            <buttons:SfButton
+                                x:Name="btnVerify"
+                                Margin="0,60,0,60"
+                                BackgroundColor="{StaticResource Secondary}"
+                                BorderWidth="0"
+                                Clicked="btnVerify_Clicked"
+                                CornerRadius="10"
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}"
+                                TextColor="{DynamicResource Gray-White}"
+                                VerticalOptions="End" />
+                        </StackLayout>
+                    </yummy:PancakeView>
+                </StackLayout>
+            </ScrollView>
+            <ScrollView
+                HorizontalScrollBarVisibility="Never"
+                IsVisible="{Binding IsOTPContentViewVisible}"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding IsOTPContentViewVisible}"
+                    VerticalOptions="FillAndExpand">
+                    <yummy:PancakeView
+                        BackgroundColor="White"
+                        CornerRadius="22,22,0,0"
+                        VerticalOptions="EndAndExpand">
+                        <StackLayout
+                            Margin="15,10,15,0"
+                            Padding="0,0,0,0"
+                            IsVisible="{Binding IsOTPContentViewVisible}"
+                            VerticalOptions="End">
+                            <Grid
+                                ColumnSpacing="0"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding IsOTPContentViewVisible}"
+                                RowSpacing="0"
+                                VerticalOptions="End">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="35*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsVisible="true"
+                                    Rotation="270"
+                                    Style="{StaticResource IconLabelStyle}"
+                                    Text="{DynamicResource Back}"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TappedOnTinContentBackButton" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HeightRequest="40"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="ic_logo_gazt.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40" />
+
+                                <custom:CustomLabel
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,25,0,0"
+                                    Style="{StaticResource SectionTitleBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
+                                <custom:CustomLabel
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.EnterVerificationCodeSentToMobile}" />
+
+                                <BoxView
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,10,0,25"
+                                    Style="{StaticResource lineSeperator}" />
+                                <StackLayout
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="4">
+                                    <Label
+                                        Margin="0"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource GAZTDarkGrayLabelStyle}"
+                                        Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                    <Label
+                                        Margin="0"
+                                        FlowDirection="LeftToRight"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Style="{StaticResource GAZTDarkGrayLabelStyle}"
+                                        Text="{Binding MobileNumberMasked}" />
+                                </StackLayout>
+
+                                <Grid
+                                    x:Name="OtpEntryGrid"
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="20"
+                                    ColumnSpacing="20"
+                                    FlowDirection="LeftToRight"
+                                    HorizontalOptions="CenterAndExpand"
+                                    RowSpacing="0"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="1"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="False"
+                                        OutlineCornerRadius="12"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OtpFirstEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            IsPassword="True"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Style="{StaticResource GAZTOTPEntry}"
+                                            Text="{Binding OtpFirstDigit}"
+                                            TextChanged="OtpFirstEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="8">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OtpSecondEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Grid.ColumnSpan="1"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="False"
+                                        OutlineCornerRadius="12"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OtpSecondEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            IsPassword="True"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Style="{StaticResource GAZTOTPEntry}"
+                                            Text="{Binding OtpSecondDigit}"
+                                            TextChanged="OtpSecondEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="8">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OtpThirdEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Row="0"
+                                        Grid.Column="2"
+                                        Grid.ColumnSpan="1"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="False"
+                                        OutlineCornerRadius="12"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OtpThirdEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            IsPassword="True"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Style="{StaticResource GAZTOTPEntry}"
+                                            Text="{Binding OtpThirdDigit}"
+                                            TextChanged="OtpThirdEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="8">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OtpFourthEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+
+                                    <inputLayout:SfTextInputLayout
+                                        x:Name="OtpFourthEntry"
+                                        Grid.Row="0"
+                                        Grid.Column="3"
+                                        Grid.ColumnSpan="1"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="False"
+                                        OutlineCornerRadius="12"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OtpGAZTDarkGrayLabelStyleFourthEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            IsPassword="True"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            Style="{StaticResource GAZTOTPEntry}"
+                                            Text="{Binding OtpFourthDigit}"
+                                            TextChanged="OtpGAZTDarkGrayLabelStyleFourthEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="8" />
+                                    </inputLayout:SfTextInputLayout>
+
+                                </Grid>
+                                <StackLayout
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,-10,0,0"
+                                    HorizontalOptions="Center"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    VerticalOptions="Center">
+
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="24"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Source="unlockaccount_clock.png"
+                                        VerticalOptions="End"
+                                        WidthRequest="24" />
+                                    <Label
+                                        Margin="10,0,10,0"
+                                        Padding="0"
+                                        LineHeight="1"
+                                        Style="{StaticResource GAZTDarkGrayLabelStyle}"
+                                        Text="{Binding OTPValidDuration}" />
+
+                                </StackLayout>
+                                <!--<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3">
+
+                        </StackLayout>-->
+                            </Grid>
+                            <buttons:SfButton
+                                x:Name="btnResendVerificationCode"
+                                Margin="0,60,0,0"
+                                BackgroundColor="{Binding ButtonDisableColor}"
+                                BorderWidth="0"
+                                Command="{Binding OnResendOTPClicked}"
+                                CornerRadius="10"
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                IsEnabled="{Binding IsResendOTPEnabled}"
+                                IsVisible="false"
+                                Text="{x:Static ResourceManager:AppResources.ResendVerificationCode}"
+                                TextColor="{DynamicResource Gray-White}"
+                                VerticalOptions="End" />
+
+                            <buttons:SfButton
+                                Margin="0,50,0,50"
+                                BackgroundColor="Transparent"
+                                Command="{Binding OnResendOTPClicked}"
+                                IsEnabled="{Binding IsResendOTPEnabled}"
+                                Text="{x:Static ResourceManager:AppResources.ResendVerificationCode}"
+                                TextColor="{Binding ButtonDisableColor}"
+                                VerticalOptions="EndAndExpand" />
+
+                            <buttons:SfButton
+                                x:Name="btnConfirmOtp"
+                                Margin="0,30,0,60"
+                                BackgroundColor="{Binding VerifyButtonDisableColor}"
+                                BorderWidth="0"
+                                Command="{Binding ConfirmOtpBtnClicked}"
+                                CornerRadius="10"
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                IsEnabled="{Binding IsVerifyOTPEnabled}"
+                                IsVisible="false"
+                                Text="{x:Static ResourceManager:AppResources.UnlockAccountVerify}"
+                                TextColor="{DynamicResource Gray-White}"
+                                VerticalOptions="End" />
+                        </StackLayout>
+
+                    </yummy:PancakeView>
+                </StackLayout>
+
+            </ScrollView>
+            <ScrollView
+                HorizontalScrollBarVisibility="Never"
+                IsVisible="{Binding IsChangePasswordViewVisible}"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <StackLayout
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    BackgroundColor="Transparent"
+                    IsVisible="{Binding IsChangePasswordViewVisible}"
+                    VerticalOptions="FillAndExpand">
+                    <yummy:PancakeView
+                        BackgroundColor="White"
+                        CornerRadius="22,22,0,0"
+                        VerticalOptions="EndAndExpand">
+                        <StackLayout
+                            x:Name="ChangePasswordView"
+                            Margin="15,10,15,0"
+                            Padding="0,0,0,0"
+                            IsVisible="{Binding IsChangePasswordViewVisible}">
+                            <Grid
+                                ColumnSpacing="0"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding IsChangePasswordViewVisible}"
+                                RowSpacing="0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="35*" />
+                                    <ColumnDefinition Width="30*" />
+                                    <ColumnDefinition Width="35*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    HorizontalOptions="StartAndExpand"
+                                    IsVisible="true"
+                                    Rotation="270"
+                                    Style="{StaticResource IconLabelStyle}"
+                                    Text="{DynamicResource Back}"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TappedOnTinContentBackButton" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HeightRequest="40"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="ic_logo_gazt.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="40" />
+
+                                <custom:CustomLabel
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,25,0,0"
+                                    Style="{StaticResource SectionTitleBlack}"
+                                    Text="{x:Static ResourceManager:AppResources.UnlockAccountResetPassword}" />
+                                <custom:CustomLabel
+                                    Grid.Row="2"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.UnlockAccountCreateNewPassword}" />
+
+                                <BoxView
+                                    Grid.Row="3"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,10,0,25"
+                                    Style="{StaticResource lineSeperator}" />
+
+                                <StackLayout
+                                    Grid.Row="4"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3">
+                                    <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static behaviors:AppResources.NewPassword}"  Padding="0,0,0,0"/>-->
+
+                                    <custom:CustomLabel
+                                        Padding="0,0,0,0"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.NDNewPassword}" />
+                                    <inputLayout:SfTextInputLayout
+                                        Margin="0,-6,0,-6"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="{Binding FramePasswordError}"
+                                        HorizontalOptions="FillAndExpand"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="8"
+                                        TrailingViewPosition="Inside"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            FontSize="Small"
+                                            IsPassword="{Binding IsPasswordEncripted}"
+                                            IsSpellCheckEnabled="False"
+                                            Keyboard="Default"
+                                            MaxLength="16"
+                                            Placeholder="{x:Static ResourceManager:AppResources.NDNewPassword}"
+                                            PlaceholderColor="Gray"
+                                            Text="{Binding Password}"
+                                            TextChanged="NewPassword_TextChanged"
+                                            TextColor="{StaticResource PrimaryColor}" />
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image x:Name="ImageSeePassword" HorizontalOptions="Center">
+                                                <Image.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIconFont"
+                                                        Glyph="{x:Static FontImage:IconFonts.Eye}"
+                                                        Size="25"
+                                                        Color="{StaticResource SecondaryNew}" />
+                                                </Image.Source>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ImageSeePassword_Tapped" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+
+                                <StackLayout
+                                    Grid.Row="5"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3">
+                                    <!--<Label Style="{StaticResource GAZTSmallGrayLabelStyle}" Text="{x:Static behaviors:AppResources.ZZZZRepeatPassword}"  Padding="0,0,0,0"/>-->
+                                    <custom:CustomLabel
+                                        Padding="0,0,0,0"
+                                        Style="{StaticResource CaptionLabelGrey}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}" />
+                                    <inputLayout:SfTextInputLayout
+                                        Margin="0,-6,0,-6"
+                                        ContainerType="Outlined"
+                                        ErrorColor="#B00020"
+                                        FocusedColor="{StaticResource Primary}"
+                                        HasError="{Binding FrameConfirmPasswordError}"
+                                        HorizontalOptions="FillAndExpand"
+                                        LeadingViewPosition="Inside"
+                                        OutlineCornerRadius="8"
+                                        TrailingViewPosition="Inside"
+                                        UnfocusedColor="#B1B1B1">
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="EntryConfirmPassword"
+                                            FontSize="Small"
+                                            IsPassword="{Binding IsConfirmPasswordEncripted}"
+                                            IsSpellCheckEnabled="False"
+                                            Keyboard="Default"
+                                            MaxLength="16"
+                                            Placeholder="{x:Static ResourceManager:AppResources.ZZZZRepeatPassword}"
+                                            PlaceholderColor="Gray"
+                                            Text="{Binding ConfirmPassword}"
+                                            TextChanged="EntryConfirmPassword_TextChanged"
+                                            TextColor="{StaticResource PrimaryColor}" />
+                                        <inputLayout:SfTextInputLayout.TrailingView>
+                                            <Image x:Name="ImageSeeConfirmPassword" HorizontalOptions="Center">
+                                                <Image.Source>
+                                                    <FontImageSource
+                                                        FontFamily="UserIconFont"
+                                                        Glyph="{x:Static FontImage:IconFonts.Eye}"
+                                                        Size="25"
+                                                        Color="{StaticResource SecondaryNew}" />
+                                                </Image.Source>
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ImageSeeConfirmPassword_Tapped" />
+                                                </Image.GestureRecognizers>
+                                            </Image>
+                                        </inputLayout:SfTextInputLayout.TrailingView>
+
+                                    </inputLayout:SfTextInputLayout>
+                                </StackLayout>
+                                <StackLayout
+                                    x:Name="PasswordChecks"
+                                    Grid.Row="6"
+                                    Grid.Column="0"
+                                    Grid.ColumnSpan="3"
+                                    Margin="0,16,0,0">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MinEight}" />
+                                        <custom:CustomLabel
+                                            Padding="5,0,0,0"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.NDAtleast8character}" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding CapsSmall}" />
+                                        <custom:CustomLabel
+                                            Padding="5,0,0,0"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.NDEnglishcapitalandsmallletters}"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MaxSixteen}" />
+                                        <custom:CustomLabel
+                                            Padding="5,0,0,0"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.ZZZZNotexceed16characters}"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding NumSymbol}" />
+                                        <custom:CustomLabel
+                                            Padding="5,0,0,0"
+                                            Style="{StaticResource CaptionLabelBlack}"
+                                            Text="{x:Static ResourceManager:AppResources.NDNumbersAndSymbols}"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Grid>
+
+                            <buttons:SfButton
+                                x:Name="btnConfirmNewPassword"
+                                Margin="0,16,0,60"
+                                BackgroundColor="{StaticResource Secondary}"
+                                BorderWidth="0"
+                                Command="{Binding ConfirmPasswordBtnClicked}"
+                                CornerRadius="10"
+                                FontAttributes="Bold"
+                                FontFamily="{StaticResource SomarSemiBold}"
+                                FontSize="15"
+                                HeightRequest="48"
+                                Text="{x:Static ResourceManager:AppResources.Submit}"
+                                TextColor="{DynamicResource Gray-White}"
+                                VerticalOptions="End" />
+                        </StackLayout>
+
+                    </yummy:PancakeView>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Margin="-10" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
+                <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsAccountUnlockedSuccessViewVisible}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="35*" />
+                    </Grid.ColumnDefinitions>
+
+
+                    <Image
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="partials_background"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Padding="40"
+                        VerticalOptions="CenterAndExpand">
+                        <Image Aspect="AspectFit" Source="vat_ic_success.png" />
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.AccountUnlocked}"
+                            TextColor="White" />
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding PasswordChangedSuccessfully}"
+                            TextColor="White" />
+                    </StackLayout>
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="30,60,30,80"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End">
+                        <buttons:SfButton
+                            x:Name="btnLogin"
+                            BackgroundColor="{StaticResource Secondary}"
+                            BorderWidth="0"
+                            Clicked="TappedOnTinContentBackButton"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="15"
+                            HeightRequest="48"
+                            Text="{x:Static ResourceManager:AppResources.LogIn}"
+                            TextColor="{DynamicResource Gray-White}"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

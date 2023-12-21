@@ -1,0 +1,47 @@
+﻿using RGPopup.Maui.Pages;
+
+namespace ZATCAMAUI.Views.NewDesign.Common
+{
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class SingleButtonPopupView : PopupPage
+    {
+        public SingleButtonPopupView(string buttonName, string message)
+        {
+            InitializeComponent();
+            MessageText.Text = message;
+            btnOK.Text = buttonName;
+            SetLTR();
+        }
+        public SingleButtonPopupView(string buttonName, string message, string header)
+        {
+            InitializeComponent();
+            MessageText.Text = message;
+            btnOK.Text = buttonName;
+            SetLTR();
+            lblPopupHeader.Text = header;
+
+            if (string.IsNullOrEmpty(header))
+                lblPopupHeader.IsVisible = false;
+            else
+                lblPopupHeader.IsVisible = true;
+        }
+
+        private void OnOkayButtonClicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send<SingleButtonPopupView, bool>(this, "SingleButtonPopupResponse", true);
+        }
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+
+        private void OnBackGroundClicked(object sender, EventArgs e)
+        {
+            MessagingCenter.Send<SingleButtonPopupView, bool>(this, "SingleButtonPopupBackgroundClickedResponse", true);
+        }
+    }
+}

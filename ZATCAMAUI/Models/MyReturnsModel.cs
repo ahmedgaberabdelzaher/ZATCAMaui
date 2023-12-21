@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.Models
 {
@@ -49,14 +50,14 @@ namespace ZATCAMAUI.Models
 
                             string[] dts = AbrzuC.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzu = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedAbrzu =UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
                         }
                         if (AbrzoC != null)
                         {
                             string[] dts = AbrzoC.Split('/');
 
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzo = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedAbrzo =UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
                         }
                     }
                 }
@@ -164,7 +165,7 @@ namespace ZATCAMAUI.Models
 
                             string[] dts = _AbrzuC.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzu = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedAbrzu = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
                         }
                     }
                 }
@@ -218,7 +219,7 @@ namespace ZATCAMAUI.Models
 
                             string[] dts = _AbrzoC.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedAbrzo = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedAbrzo = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
                         }
                     }
                 }
@@ -276,7 +277,7 @@ namespace ZATCAMAUI.Models
 
                             dts = _dueDTC.Split('/');
                             string DUEdate = dts[2] + "/" + dts[1] + "/" + dts[0];
-                            FormatedSingleDueDate = GAZT.Manager.UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
+                            FormatedSingleDueDate = UtilityManager.FormatAccordingToDeviceHijriEnglish(DUEdate);
                         }
                     }
 

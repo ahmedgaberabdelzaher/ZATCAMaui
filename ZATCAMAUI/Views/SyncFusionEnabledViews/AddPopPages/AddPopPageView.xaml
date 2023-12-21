@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.AddPopPages.AddPopPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    FlowDirection="{Binding FlowDirections}"
+    mc:Ignorable="d">
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Frame
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="10,0,10,0"
+                BackgroundColor="White"
+                BorderColor="Gray"
+                CornerRadius="2"
+                HorizontalOptions="CenterAndExpand"
+                Opacity="2"
+                VerticalOptions="Center">
+                <StackLayout
+                    BackgroundColor="White"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center">
+                    <StackLayout
+                        BackgroundColor="White"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
+                        <Label
+                            Margin="0,0,0,0"
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                            Text="{Binding HeaderText}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="End"
+                            Source="ic_close.png">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CloseImage_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <Label
+                        x:Name="Message_label"
+                        Margin="0,0,0,0"
+                        Padding="2"
+                        FlowDirection="{Binding FlowDirections}"
+                        FontAttributes="{Binding IsBold}"
+                        FontFamily="{StaticResource SomarSemiBold}"
+                        HorizontalOptions="CenterAndExpand"
+                        LineHeight="0.8"
+                        Style="{StaticResource GAZTGrayLabelStyleForCaptionFont}"
+                        Text="{Binding PopMessage}"
+                        TextColor="{Binding IsRed}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        x:Name="xyz"
+                        Margin="0,0,0,0"
+                        FlowDirection="{Binding FlowDirections}"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding IsVisibleLink}"
+                        Style="{StaticResource GAZTGoldLabelStyleForCaptionFont}"
+                        Text="{Binding LinkMessage}"
+                        TextDecorations="Underline"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding onLinkClicked}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</pages:PopupPage>

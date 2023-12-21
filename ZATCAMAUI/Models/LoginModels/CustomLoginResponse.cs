@@ -1,11 +1,4 @@
-﻿/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-using System;
-namespace EGAZT.Models.LoginModels
-After:
-namespace EGAZT.Models.LoginModels
-*/
-
+﻿
 namespace ZATCAMAUI.Models.LoginModels
 {
     public class USerDate

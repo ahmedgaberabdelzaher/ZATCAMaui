@@ -60,15 +60,17 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                             FutureCalendarTitle.FontFamily = "Somar-SemiBold";
                             CalendarDoneButton.FontFamily = "Somar-SemiBold";
 
-                            calendarPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            futureCalendarPicker.ColumnHeaderFontFamily = "Somar-SemiBold";
-                            calendarPicker.HeaderFontFamily = "Somar-SemiBold";
-                            futureCalendarPicker.HeaderFontFamily = "Somar-SemiBold";
+                            calendarPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.ColumnHeaderView.TextStyle.FontFamily = "Somar-SemiBold";
 
-                            calendarPicker.SelectedItemFontFamily = "Somar-SemiBold";
-                            calendarPicker.UnSelectedItemFontFamily = "Somar-SemiBold";
-                            futureCalendarPicker.SelectedItemFontFamily = "Somar-SemiBold";
-                            futureCalendarPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                            calendarPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+
+                            calendarPicker.TextStyle.FontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.TextStyle.FontFamily = "Somar-SemiBold";
+
+                            calendarPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                            futureCalendarPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
                         }
                         break;
                     case Device.Android:
@@ -77,15 +79,18 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
                         FutureCalendarTitle.FontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
                         CalendarDoneButton.FontFamily = "GAZT_FONT_MEDIUM";
 
-                        calendarPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                        futureCalendarPicker.ColumnHeaderFontFamily = "GAZT_FONT_MEDIUM";
-                        calendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
-                        futureCalendarPicker.HeaderFontFamily = "GAZT_FONT_MEDIUM";
+                        calendarPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.ColumnHeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
 
-                        calendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        calendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
-                        futureCalendarPicker.SelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";
-                        futureCalendarPicker.UnSelectedItemFontFamily = "GAZT_FONT_MEDIUM";// "Somar-SemiBold.otf#Somar-SemiBold";//ddlLIssuedBy
+                        calendarPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.HeaderView.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
+                        calendarPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.TextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
+                        calendarPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+                        futureCalendarPicker.SelectedTextStyle.FontFamily = "GAZT_FONT_MEDIUM";
+
                         break;
                 }
             }

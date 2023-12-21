@@ -363,7 +363,7 @@
                                                             HorizontalOptions="FillAndExpand"
                                                             ItemsSource="{Binding PendingBills}"
                                                             MinimumHeightRequest="{Binding PendingBillsListHeight}"
-                                                            SelectionBackgroundColor="Transparent"
+                                                            SelectionBackground="Transparent"
                                                             VerticalOptions="Center">
                                                             <listView:SfListView.Behaviors>
                                                                 <behaviors:ListViewBehavior />
@@ -542,33 +542,59 @@
                                                             Grid.Column="0"
                                                             Margin="10,0,10,0"
                                                             BackgroundColor="White"
-                                                            BorderColor="Black"
-                                                            CancelButtonBackgroundColor="#EAF7CC"
-                                                            CancelButtonTextColor="{StaticResource Primary}"
-                                                            ColumnHeaderHeight="46"
                                                             FlowDirection="RightToLeft"
-                                                            HeaderBackgroundColor="{StaticResource Primary}"
-                                                            HeaderHeight="55"
-                                                            HeaderText="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}"
-                                                            HeaderTextColor="White"
                                                             ItemHeight="40"
-                                                            ItemsSource="{Binding CommitmentsListFilter}"
-                                                            OKButtonBackgroundColor="#EAF7CC"
-                                                            OKButtonTextColor="{StaticResource Primary}"
-                                                            PickerHeight="250"
-                                                            PickerMode="Dialog"
-                                                            PickerWidth="300"
-                                                            SelectedItemFontAttribute="Bold"
-                                                            SelectedItemFontSize="15"
-                                                            SelectedItemTextColor="{StaticResource NeutralBlack}"
-                                                            SelectionChanged="CommitmentsPicker_SelectionChanged"
-                                                            ShowColumnHeader="False"
-                                                            ShowFooter="False"
-                                                            ShowHeader="False"
-                                                            UnSelectedItemTextColor="{StaticResource NeutralGreay}">
+                                                            Mode="Dialog"
+                                                            SelectionChanged="CommitmentsPicker_SelectionChanged">
+
+                                                            <syncfusion:SfPicker.TextStyle>
+                                                                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                                                            </syncfusion:SfPicker.TextStyle>
+
+                                                            <syncfusion:SfPicker.Columns>
+                                                                <syncfusion:PickerColumn Width="300" ItemsSource="{Binding CommitmentsListFilter}" />
+                                                            </syncfusion:SfPicker.Columns>
+
+                                                            <syncfusion:SfPicker.SelectedTextStyle>
+                                                                <syncfusion:PickerTextStyle
+                                                                    FontAttributes="Bold"
+                                                                    FontSize="15"
+                                                                    TextColor="{StaticResource NeutralBlack}" />
+                                                            </syncfusion:SfPicker.SelectedTextStyle>
+
+                                                            <syncfusion:SfPicker.ColumnHeaderView>
+                                                                <syncfusion:PickerColumnHeaderView Height="46" />
+                                                            </syncfusion:SfPicker.ColumnHeaderView>
+
+                                                            <syncfusion:SfPicker.HeaderView>
+
+                                                                <syncfusion:PickerHeaderView
+                                                                    Height="55"
+                                                                    Background="{StaticResource Primary}"
+                                                                    Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                                                    <syncfusion:PickerHeaderView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="White" />
+                                                                    </syncfusion:PickerHeaderView.TextStyle>
+                                                                </syncfusion:PickerHeaderView>
+
+                                                            </syncfusion:SfPicker.HeaderView>
+
+                                                            <syncfusion:SfPicker.FooterView>
+
+                                                                <syncfusion:PickerFooterView Background="#EAF7CC">
+
+                                                                    <syncfusion:PickerFooterView.TextStyle>
+                                                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                                                </syncfusion:PickerFooterView>
+
+                                                            </syncfusion:SfPicker.FooterView>
+
                                                             <syncfusion:SfPicker.Behaviors>
                                                                 <behaviors:SfPickerBehavior />
                                                             </syncfusion:SfPicker.Behaviors>
+
                                                         </syncfusion:SfPicker>
                                                     </Grid>
 
@@ -948,7 +974,7 @@
                                                             HeightRequest="{Binding LastTransactionsListHeight}"
                                                             HorizontalOptions="FillAndExpand"
                                                             ItemsSource="{Binding ACStatementBills, Mode=TwoWay}"
-                                                            SelectionBackgroundColor="Transparent"
+                                                            SelectionBackground="Transparent"
                                                             VerticalOptions="Center">
 
                                                             <listView:SfListView.ItemTemplate>
@@ -1118,14 +1144,12 @@
                                                                 <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
                                                                     <busyindicator:SfBusyIndicator
                                                                         AnimationType="SingleCircle"
-                                                                        EnableAnimation="True"
                                                                         HorizontalOptions="CenterAndExpand"
-                                                                        IsBusy="True"
+                                                                        IsRunning="True"
+                                                                        SizeFactor="0.7"
                                                                         TextColor="{StaticResource Secondary}"
                                                                         TitlePlacement="Bottom"
-                                                                        VerticalOptions="CenterAndExpand"
-                                                                        ViewBoxHeight="70"
-                                                                        ViewBoxWidth="70" />
+                                                                        VerticalOptions="CenterAndExpand" />
                                                                 </StackLayout>
                                                             </StackLayout>
                                                         </Grid>
@@ -1828,12 +1852,12 @@
 
                                 <buttons:SfButton
                                     BackgroundColor="Transparent"
-                                    BackgroundImage="Flash.png"
-                                    BorderWidth="0"
+                                    BackgroundImageSource="Flash.png"
                                     Clicked="OnQuickActionClicked"
                                     CornerRadius="28"
                                     HeightRequest="56"
                                     HorizontalOptions="Center"
+                                    StrokeThickness="0"
                                     WidthRequest="56" />
                             </StackLayout>
 
@@ -1928,14 +1952,12 @@
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
                                 AnimationType="SingleCircle"
-                                EnableAnimation="True"
                                 HorizontalOptions="CenterAndExpand"
-                                IsBusy="True"
+                                IsRunning="True"
+                                SizeFactor="0.7"
                                 TextColor="{StaticResource Secondary}"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand"
-                                ViewBoxHeight="70"
-                                ViewBoxWidth="70" />
+                                VerticalOptions="CenterAndExpand" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

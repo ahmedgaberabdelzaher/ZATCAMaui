@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.NewAccountPopPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="EndAndExpand">
+        <StackLayout>
+            <Image
+                Margin="15,10,15,0"
+                HorizontalOptions="EndAndExpand"
+                Source="close.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Closed_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+            <StackLayout>
+                <custom:CustomLabel
+                    Style="{StaticResource ValueLabelBlackBold}"
+                    Text="{Binding AccountText}"
+                    VerticalOptions="Center" />
+
+                <custom:CustomLabel Style="{StaticResource ValueLabelBlackBold}" Text="{x:Static custom2:AppResources.NAIBAN}" />
+            </StackLayout>
+
+            <StackLayout Padding="0,0,0,15" FlowDirection="LeftToRight">
+                <Frame
+                    Padding="0"
+                    BorderColor="LightGray"
+                    CornerRadius="8"
+                    HasShadow="False">
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout
+                            Padding="5,8,0,8"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView
+                                    BackgroundColor="{StaticResource Primary}"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    WidthRequest="30" />
+                                <custom:CustomLabel
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource ValueLabelBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.NASA}"
+                                    VerticalTextAlignment="Center" />
+
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView BackgroundColor="LightGray" WidthRequest="1" />
+                        <StackLayout Padding="0,5,0,5" Orientation="Horizontal">
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanOne"
+                                Focused="IbanOneFocused"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="2"
+                                Placeholder="03"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartOne}"
+                                TextChanged="IbanOne_TextChanged" />
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanTwo"
+                                Focused="IbanTwoFocused"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="8"
+                                Placeholder="80000000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartTwo}"
+                                TextChanged="IbanTwo_TextChanged">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:EntryFocusBehaviour NextFocusElementName="IbanThree" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanThree"
+                                Focused="IbanThreeFocused"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartThree}"
+                                TextChanged="IbanThree_TextChanged">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:EntryFocusBehaviour NextFocusElementName="IbanFour" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanFour"
+                                Focused="IbanFourFocused"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartFour}"
+                                TextChanged="IbanFour_TextChanged">
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <behavior:EntryFocusBehaviour NextFocusElementName="IbanFive" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+                            </custom:GAZTBorderlessEntry>
+
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanFive"
+                                Focused="IbanFiveFocused"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                Text="{Binding IbanPartFive}"
+                                TextChanged="IbanFive_TextChanged" />
+
+                        </StackLayout>
+                    </StackLayout>
+
+                </Frame>
+            </StackLayout>
+
+            <buttons:SfButton
+                Clicked="IbanAddButtonClicked"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZZZZConfirmRefund}" />
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

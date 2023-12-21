@@ -6,9 +6,12 @@ using Newtonsoft.Json;
 using RGPopup.Maui.Services;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Exceptions;
+using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
 using ZATCAMAUI.Models.EstablishmentRegistration;
+using ZATCAMAUI.Views.NewDesign.Common;
+using ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
 using ZATCAMAUI.Views.NewDesign.GenericPickers;
 
@@ -2551,8 +2554,6 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                     {
                         if (taxPayerDetails?.Atype == "2")
                         {
-                            //await PopupNavigation.Instance.PushAsync(new AttachmentInformationPopUp(AppResources.PleaseVisitGAZTPortalToChangeTheRegistrationType));
-
                             try
                             {
 
@@ -2573,7 +2574,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     VisitPortalPopup.OnGotoPortal = () =>
                                     {
 
-                                        Launcher.OpenAsync(Constants.GAZTVisitPortalUrlAR);
+                                        Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlAR);
 
                                     };
                                 }
@@ -2582,7 +2583,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
                                     VisitPortalPopup.OnGotoPortal = () =>
                                     {
 
-                                        Launcher.OpenAsync(Constants.GAZTVisitPortalUrlEN);
+                                        Launcher.OpenAsync(ZATCAConstants.GAZTVisitPortalUrlEN);
 
                                     };
                                 }

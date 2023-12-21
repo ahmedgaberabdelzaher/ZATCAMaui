@@ -64,77 +64,90 @@ namespace ZATCAMAUI.Views.NewDesign.Common
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == MarkSizeProperty.PropertyName)
+            try
             {
-                MinimumHeightRequest = MarkSize;
-            }
-            if (propertyName == MaxNumProperty.PropertyName)
-            {
-                Children.Clear();
-                for (int i = 1; i <= MaxNum; i++)
+                base.OnPropertyChanged(propertyName);
+                if (propertyName == MarkSizeProperty.PropertyName)
                 {
-                    Children.Add(new BoxView()
+                    MinimumHeightRequest = MarkSize;
+                }
+                if (propertyName == MaxNumProperty.PropertyName)
+                {
+                    Children.Clear();
+                    for (int i = 1; i <= MaxNum; i++)
                     {
-                        ClassId = i.ToString(),
-                        BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"],
-                        HeightRequest = DotSize,
-                        WidthRequest = DotSize,
-                        CornerRadius = DotSize / 2,
+                        Children.Add(new BoxView()
+                        {
+                            ClassId = i.ToString(),
+                            AutomationId = i.ToString(),
+                            BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"],
+                            HeightRequest = DotSize,
+                            WidthRequest = DotSize,
+                            CornerRadius = DotSize / 2,
+                            HorizontalOptions = LayoutOptions.Center,
+                            VerticalOptions = LayoutOptions.Center
+                        });
+                        Children.Add(new BoxView()
+                        {
+                            BackgroundColor = Colors.Transparent,
+                            Margin = new Thickness(-DotSize / 2, 0),
+                            HeightRequest = DotSize,
+                            WidthRequest = DotSize + 5,
+                            HorizontalOptions = LayoutOptions.Fill,
+                            VerticalOptions = LayoutOptions.Center
+                        });
+                    }
+                    Image completeMark = new Image()
+                    {
+                        Source = "ic_vat_check.png",
+                        Margin = new Thickness(5, 0),
+                        IsVisible = false,
+                        HeightRequest = MarkSize,
+                        WidthRequest = MarkSize,
                         HorizontalOptions = LayoutOptions.Center,
                         VerticalOptions = LayoutOptions.Center
-                    });
-                    Children.Add(new BoxView()
+                    };
+                    Children.Add(completeMark);
+                }
+                if (propertyName == MinNumProperty.PropertyName)
+                {
+                    int counter = 0, childCounter = 0;
+                    Children.Where(c => c is BoxView).ToList().ForEach(box =>
                     {
-                        BackgroundColor = Colors.Transparent,
-                        Margin = new Thickness(-DotSize / 2, 0),
-                        HeightRequest = DotSize,
-                        WidthRequest = DotSize + 5,
-                        HorizontalOptions = LayoutOptions.Fill,
-                        VerticalOptions = LayoutOptions.Center
+                        //TODO
+                        if (!string.IsNullOrEmpty(box.AutomationId))
+                        {
+                            if (counter < MinNum)
+                            {
+                                box.Background.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                                if (childCounter - 1 > 0)
+                                    Children[childCounter - 1].Background.BackgroundColor = (Color)Application.Current.Resources["Primary"];
+                            }
+                            else
+                            {
+                                box.Background.BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"];
+                                if (childCounter - 1 > 0)
+                                    Children[childCounter - 1].Background.BackgroundColor = Colors.Transparent;
+                            }
+                            counter++;
+                        }
+
+                        childCounter++;
                     });
                 }
-                Image completeMark = new Image()
+                if (propertyName == CompletedProperty.PropertyName)
                 {
-                    Source = "ic_vat_check.png",
-                    Margin = new Thickness(5, 0),
-                    IsVisible = false,
-                    HeightRequest = MarkSize,
-                    WidthRequest = MarkSize,
-                    HorizontalOptions = LayoutOptions.Center,
-                    VerticalOptions = LayoutOptions.Center
-                };
-                Children.Add(completeMark);
+                    //TODO
+                    var view = (View)Children.LastOrDefault();
+                    if (view != null)
+                        view.IsVisible = Completed;
+                    //Children.LastOrDefault().IsVisible = Completed;
+                }
             }
-            if (propertyName == MinNumProperty.PropertyName)
+            catch (Exception)
             {
-                int counter = 0, childCounter = 0;
-                Children.Where(c => c is BoxView).ToList().ForEach(box =>
-                {
-                    if (!string.IsNullOrEmpty(box.ClassId))
-                    {
-                        if (counter < MinNum)
-                        {
-                            box.BackgroundColor = (Color)Application.Current.Resources["Primary"];
-                            if (childCounter - 1 > 0)
-                                Children[childCounter - 1].BackgroundColor = (Color)Application.Current.Resources["Primary"];
-                        }
-                        else
-                        {
-                            box.BackgroundColor = (Color)Application.Current.Resources["NeutralLightGrey"];
-                            if (childCounter - 1 > 0)
-                                Children[childCounter - 1].BackgroundColor = Colors.Transparent;
-                        }
-                        counter++;
-                    }
-
-                    childCounter++;
-                });
             }
-            if (propertyName == CompletedProperty.PropertyName)
-            {
-                Children.LastOrDefault().IsVisible = Completed;
-            }
+            
         }
     }
 }

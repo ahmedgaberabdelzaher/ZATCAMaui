@@ -5071,18 +5071,6 @@ namespace ZATCAMAUI.Core.Mangers
             return paymentResponse;
 
         }
-
-
-
-
-
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-        public static async Task<EGAZT.Models.PaymentModel.ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
-After:
-        public static async Task<Models.PaymentModel.ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
-*/
         public static async Task<ValidatePaymentResponse> GAZTValidateMyBillsPayment(string fbNum, string TIN, string devicetype, string sadadNo, string paymentType)
 
         {
@@ -5575,15 +5563,6 @@ After:
 
         }
 
-
-
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-        public async static Task<EGAZT.Models.PaymentModel.ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
-After:
-        public async static Task<Models.PaymentModel.ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
-*/
         public async static Task<ApplePayTokenResponse> GAZTUpdateApplePayGuid(ApplePayToken applePayDetails)
 
         {

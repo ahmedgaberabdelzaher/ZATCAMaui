@@ -1,11 +1,4 @@
 ﻿
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-using EGAZT.Models;
-using System;
-After:
-using System;
-*/
 namespace ZATCAMAUI.Models
 {
 
