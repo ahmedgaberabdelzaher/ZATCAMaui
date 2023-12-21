@@ -165,9 +165,9 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
             var currentPage = navigation.NavigationStack.LastOrDefault();
 
             var payload = App.Locator.StateManager.GetItem("IAMLoginPassengerData");
-
-          
-                if (CommingFrom == 1)
+            _navigationService.GoBack();
+            IsLoading = false;
+           /* if (CommingFrom == 1)
                 {
                     navigation.InsertPageBefore(new NewDeclarationPage(payload), currentPage);
                     _navigationService.GoBack();
@@ -176,7 +176,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                 {
                     navigation.InsertPageBefore(new TransactionReceptionView(payload), currentPage);
                     _navigationService.GoBack();
-                }
+                }*/
             
 
         }
