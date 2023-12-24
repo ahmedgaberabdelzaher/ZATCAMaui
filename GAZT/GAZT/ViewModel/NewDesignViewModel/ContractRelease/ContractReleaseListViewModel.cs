@@ -1,18 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using EGAZT.Manager;
+using EGAZT.Models;
 using EGAZT.Models.ContractRelease;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Helper;
 using GAZT.Manager;
 using GAZTeServicesBusinessLibrary.GAZTExceptions;
+using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using static EGAZT.Models.ContractRelease.ContractReLeaseApplicationFormModel;
 using static EGAZT.Models.ContractRelease.ContractReleaseSummaryModel;
+using Attachment = EGAZT.Models.Attachment;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 {
@@ -25,7 +32,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         public ICommand GoBackClick { get; set; }
         public ICommand CloseClick { get; set; }
         public ICommand RequestContractReleaseBtnTapped { get; set; }
-
+        public ICommand GoBackBtnTapped { get; set; }
         private ContractReleaseSummaryModel.ContractReleaseSummaryData _contractReleaseSummaryData;
         public ContractReleaseSummaryModel.ContractReleaseSummaryData ContractReLeaseSummaryData
         {
@@ -354,6 +361,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
+        private GenericPickerModel _pickerModel { get; set; }
+        public GenericPickerModel PickerModel
+        {
+            get { return _pickerModel; }
+            set
+            {
+                if (_pickerModel == value) return;
+
+                _pickerModel = value;
+                RaisePropertyChanged("PickerModel");
+            }
+        }
+
         public ObservableCollection<Attachment> contractCopyAttachmentsListViewData { get; set; }
 
         public ObservableCollection<Attachment> ContractCopyAttachmentsListViewData
@@ -390,12 +410,80 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
             }
         }
 
-        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService) 
+
+        public ContractResult _SelectedTypeFilter = new ContractResult();
+
+        public ContractResult SelectedTypeFilter
+
+        {
+
+            get
+
+            {
+
+                return _SelectedTypeFilter;
+
+            }
+
+            set
+
+            {
+
+                _SelectedTypeFilter = value;
+
+                if (_SelectedTypeFilter != null)
+
+                {
+
+                    // FilterLabelTxt = _SelectedTypeFilter.StatText;
+
+                    //FilterOnBasisOfTaxType();
+
+                }
+
+                RaisePropertyChanged("SelectedTaxTypeForFilter");
+
+            }
+
+        }
+
+        public string _filterLabelTxt;
+
+        public string FilterLabelTxt
+
+        {
+
+            get
+
+            {
+
+                return _filterLabelTxt;
+
+            }
+
+            set
+
+            {
+
+                if (_filterLabelTxt == value) return;
+
+                _filterLabelTxt = value;
+
+                RaisePropertyChanged("FilterLabelTxt");
+
+            }
+
+        }
+        public ContractReleaseListViewModel(INavigationService navigationService, IDialogService dialogService)
         {
             _navigationService = navigationService;
             _dialogService = dialogService;
 
             CloseClick = new Command(() =>
+            {
+                _navigationService.GoBack();
+            });
+            GoBackBtnTapped = new Command(() =>
             {
                 _navigationService.GoBack();
             });
@@ -483,9 +571,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
 
             foreach (var attach in ContractReLeaseSummaryData.AttDetSet.results)
             {
-                if(attach.Dotyp == "N11A") {
+                if (attach.Dotyp == "N11A")
+                {
                     invoiceAttachments.Add(attach);
-                }else  {
+                }
+                else
+                {
                     ccAttachments.Add(attach);
                 }
 
@@ -518,10 +609,37 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
         public void UpdateDataToUI()
         {
             PopulateContractList();
+            PopulateFilter();
             // ContractReLeaseListSet.results[0]
         }
 
         #region OnPageLoad
+
+        public void PopulateFilter()
+        {
+            var list = new List<string>();
+            try
+            {
+                list.Add("ALL");
+                var distinctList = ContractReLeaseListSet.results.Select(i => i.StatText).Distinct().ToList();
+                foreach (var item in distinctList)
+                {
+                    list.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            GenericPickerModel genericPickerModel = new GenericPickerModel();
+            genericPickerModel.PickerData = list;
+            genericPickerModel.PickerTitle = "";
+            genericPickerModel.PickerId = "ConractRelease";
+            genericPickerModel.SelectedValue = _SelectedTypeFilter.StatText;
+            PickerModel = genericPickerModel;
+        }
         public async Task OnPageLoad()
         {
             try
@@ -535,12 +653,12 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     IsLoading = true;
                     cRApplicationFormData = null;
                     ContractReLeaseListSet = null;
-
+                    FilterLabelTxt = "ALL";
 
                     try
                     {
-                      
-                           
+
+
 
                         cRApplicationFormData = await ContractReleaseWebServiceManager.GetContractReleaseList();
 
@@ -645,7 +763,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                         ContractReLeaseSummaryData.znotesSet = resultData.d.znotesSet;
                         ContractReLeaseSummaryData.Remark = resultData.d.ARemark;
 
-                        if(resultData.d.znotesSet.results.Length != 0)
+                        if (resultData.d.znotesSet.results.Length != 0)
                         {
 
                             ContractReLeaseSummaryData.DetaiiledDesc = resultData.d.znotesSet.results[0].Tdline;
@@ -713,6 +831,45 @@ namespace EGAZT.ViewModel.NewDesignViewModel.ContractRelease
                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     _navigationService.GoBack();
                 });
+            }
+        }
+
+        public async void showPickerDialog()
+        {
+            try
+            {
+                if (PickerModel != null)
+                    await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
+            }
+            catch (GAZTUnlockAccountException ex)
+            {
+                Console.Write(ex.ToString());
+                Console.Write(ex.StackTrace.ToString());
+            }
+            catch (InternetException ex)
+            {
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    await _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                    _navigationService.GoBack();
+                });
+            }
+        }
+
+        public void updatePicker(Models.GenericPickerModel arg)
+        {
+            if (!string.IsNullOrEmpty(arg.SelectedValue))
+            {
+                FilterLabelTxt = arg.SelectedValue.ToUpper();
+                if (arg.SelectedValue.Equals("ALL"))
+                {
+                    PopulateContractList();
+                }
+                else
+                {
+                    var selectedFilter = new ObservableCollection<ContractResult>(ContractReLeaseListSet.results.Where(temp => temp.StatText.ToUpper().Equals(arg.SelectedValue.ToUpper())));
+                    ContractListViewData = selectedFilter;
+                }
             }
         }
 

@@ -72,53 +72,12 @@ namespace GAZT.Models
             } 
         public string Msg { get; set; } 
         public bool Open { get; set; }
-        public string Due 
-        {get;set;}
+        public string Due { get; set; }
 
-        private string _StatusTxt;
-        public string StatusTxt
-        {
-            get
-            {
-                return _StatusTxt;
-            }
-            set
-            {
-                _StatusTxt = value;
-                try
-                {
-                    if (_StatusTxt != null)
-                    {
-                        if (_StatusTxt == "Submitted")
-                        {
-                            StatusMessage = "submitted";
-            
-                        }
-                        if (_StatusTxt == "Non Submitted")
-                        {
-                                StatusMessage = "unsubmitted";
-                       
-                            if (Due != null)
-                            { 
-                            if (Due.Equals('X'))
-                            {
-                                StatusMessage = "overdue";
-                               
-                                }
 
-                            }
-                        }
-                    }
-                }
-    
-                catch(Exception)
-                {
-                    
-                }
-            }
-        }
-   
-       public string StatusMessage
+        public string StatusTxt { get; set; }
+
+        public string StatusMessage
         {
             get;set;
         }
@@ -291,7 +250,7 @@ namespace GAZT.Models
                 
             } 
         }
-   
+        public string TaxtpText { get; set; }
         public string Sortperiod { get; set; }
         public string TaxType { get; set; }
         public string Fbnum { get; set; }

@@ -57,7 +57,8 @@ namespace EGAZT.Models.ContractRelease
         [Preserve(AllMembers = true)]
         public class AttDetSet
         {
-            public List<Attachment> results { get; set; }
+            //public List<Attachment> results { get; set; }
+            public List<Models.Attachment> results { get; set; }
         }
         [Preserve(AllMembers = true)]
         public partial class ZnotesSet

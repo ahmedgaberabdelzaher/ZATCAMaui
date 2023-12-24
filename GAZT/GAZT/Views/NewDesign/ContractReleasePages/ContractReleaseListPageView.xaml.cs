@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using EGAZT.Models.ContractRelease;
 using EGAZT.ViewModel.NewDesignViewModel.ContractRelease;
+using EGAZT.Views.NewDesign.GenericPickers;
 using GAZT.Helper;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -63,6 +64,9 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
             var safeInsets = On<iOS>().SafeAreaInsets();
             safeInsets.Bottom = -10;
             this.Padding = safeInsets;
+            MessagingCenter.Subscribe<PickerPageView, Models.GenericPickerModel>(this, "PickerSelectedItem", (sender, arg) => {
+                viewModel.updatePicker(arg);
+            });
         }
 
         private void SetLTR()
@@ -251,6 +255,10 @@ namespace EGAZT.Views.NewDesign.ContractReleasePages
                 }
             });
 
+        }
+        private void btn_Clicked(object sender, System.EventArgs e)
+        {
+            viewModel.showPickerDialog();
         }
 
     }

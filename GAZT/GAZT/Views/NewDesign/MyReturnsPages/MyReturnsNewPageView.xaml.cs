@@ -83,7 +83,7 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
 
               
                 await viewModel.OnPageLoad();
-              
+                viewModel.PopulateDataInChips();
                 
                 viewModel.SelectedChipFilterItem = null;
                // viewModel.FilterAllData();
@@ -201,20 +201,20 @@ namespace EGAZT.Views.NewDesign.MyReturnsNewPages
                 ChipGroup_statusFilter.SelectedItem = selectedReturntype;//Fbnum
                 viewModel.SelectedChipFilterItem = selectedReturntype;
 
-                if (selectedReturntype.Text == AppResources.UnSubmitted)
+                if (selectedReturntype.TemplateType.ToLower() == AppResources.UnSubmitted.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
                     ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorBg"];
 
 
                 }
-                else if (selectedReturntype.Text == AppResources.OverDue)
+                else if (selectedReturntype.TemplateType.ToLower() == AppResources.OverDue.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Error"];
                     ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["ErrorBg"];
 
                 }
-                else if (selectedReturntype.Text == AppResources.Submitted)
+                else if (selectedReturntype.TemplateType.ToLower() == AppResources.Submitted.ToLower())
                 {
                     ChipGroup_statusFilter.SelectedChipTextColor = (Color)App.Current.Resources["Success"];
                     ChipGroup_statusFilter.SelectedChipBackgroundColor = (Color)App.Current.Resources["SuccessBg"];
