@@ -14,6 +14,7 @@ using EGAZT.AppConfigurations;
 using Xamarin.Forms;
 using static Org.BouncyCastle.Bcpg.Attr.ImageAttrib;
 using EGAZT.Models.TahqaqModels;
+using EGAZT.Models.NativeNafath;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
 {
@@ -137,30 +138,30 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
             {
                 if (data == null) return;
 
-                IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-
-                SubmitModel.travelerDeclaration.email = iamLoginPayloadData["Email"].ToString();
-                SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData["Mobile"].ToString();
-                SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData["FirstName"].ToString();
-                SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData["MiddleName"].ToString();
-                SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData["LastName"].ToString();
+                //IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
+                 var iamLoginPayloadData = data as CustomsNafathUserProfile;
+                SubmitModel.travelerDeclaration.email = iamLoginPayloadData.email.ToString();
+                SubmitModel.travelerDeclaration.phoneNumber = iamLoginPayloadData.mobilenumber.ToString();
+                SubmitModel.travelerDeclaration.firstName = iamLoginPayloadData.firstname.ToString();
+                SubmitModel.travelerDeclaration.middleName = iamLoginPayloadData.secondname.ToString();
+                SubmitModel.travelerDeclaration.lastName = iamLoginPayloadData.thirdname.ToString();
                 SubmitModel.travelerDeclaration.FullName = $"{SubmitModel.travelerDeclaration.firstName} {SubmitModel.travelerDeclaration.lastName}";
                 App.Locator.StateManager.SetItem("FullName", SubmitModel.travelerDeclaration.FullName);
-                SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData["Nationality"].ToString();
-                SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData["NationalityId"].ToString());
+                SubmitModel.travelerDeclaration.NationalityName = iamLoginPayloadData.nationalitynamearabic?? iamLoginPayloadData.nationalitynameenglish.ToString();
+                SubmitModel.travelerDeclaration.nationality = int.Parse(iamLoginPayloadData.nationalityid.ToString());
 
                 // Its source is empty so it must be KSA as the user maybe resident or citizen.
                 SubmitModel.travelerDeclaration.travelIssuerName = App.IsArabic ? "السعودية" : "SAUDI ARABIA";
                 SubmitModel.travelerDeclaration.travelIssuerID = 100; // it must be KSA => 100 because the user is resident or citizen
 
-                SubmitModel.travelerDeclaration.gender = iamLoginPayloadData["Gender"].ToString() == "Male" ? 1 : 2;
-                SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData["NationlId"].ToString();
+                SubmitModel.travelerDeclaration.gender = iamLoginPayloadData.gender.ToString() == "Male" ? 1 : 2;
+                SubmitModel.travelerDeclaration.travelID = iamLoginPayloadData.nationalid.ToString();
                 App.Locator.StateManager.SetItem("TravelId", SubmitModel.travelerDeclaration.travelID);
-                SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["BirthDate"].ToString());
+                SubmitModel.travelerDeclaration.birthDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.birthdate.ToString());
 
-                SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["ReleaseDate"].ToString());
+                SubmitModel.travelerDeclaration.passIssuingDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.cardissuedatehijri.ToString());
 
-                SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData["EndDate"].ToString());
+                SubmitModel.travelerDeclaration.passExpiryDate = DateTimeHelper.DateTimeFormater(iamLoginPayloadData.idexpirydatehijri.ToString());
             }
             catch (Exception)
             {

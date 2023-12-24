@@ -9,6 +9,7 @@ using EGAZT.Services.Interface;
 using EGAZT.Views.NewDesign.Common;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
 using EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception;
+using EGAZT.Views.NewDesign.EDeclaration;
 using GalaSoft.MvvmLight.Views;
 using Newtonsoft.Json;
 using Prism.Navigation.Xaml;
@@ -212,7 +213,14 @@ namespace EGAZT.ViewModel.NewDesignViewModel.Common
                         var currentPage = navigation.NavigationStack.LastOrDefault();
                         IsLoading = false;
                         NationalIqamaId = "";
-                        navigation.InsertPageBefore(new TransactionReceptionView(data.data), currentPage);
+                        if (PageName == "NewDeclarationPage")
+                        {
+                            navigation.InsertPageBefore(new NewDeclarationPage(data.data), currentPage);
+                        }
+                        else
+                        {
+                            navigation.InsertPageBefore(new TransactionReceptionView(data.data), currentPage);
+                        }
                         _navigationService.GoBack();
                         return;
 

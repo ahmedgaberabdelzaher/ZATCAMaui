@@ -59,7 +59,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                     }
                     else
                     {
-                         _navigationService.NavigateTo("IAMLoginView", 1);
+                         //_navigationService.NavigateTo("IAMLoginView", 1);
+                        _navigationService.NavigateTo("NativeNafathPage", "NewDeclarationPage");
 
                     }
                     ShowReviewEntries = false;
