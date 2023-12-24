@@ -2,31 +2,101 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Please grant access to camera usage to capture needed document images . </string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
 		<integer>2</integer>
 	</array>
-	<key>UIRequiredDeviceCapabilities</key>
+	<key>UIAppFonts</key>
 	<array>
-		<string>arm64</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>fa-brands-400.ttf</string>
+		<string>UIFontIcons.ttf</string>
+		<string>Somar-SemiBold.otf</string>
+		<string>Somar-Regular.otf</string>
+		<string>Somar-Light.otf</string>
+		<string>Somar-Bold.otf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ar</string>
+	</array>
+	<key>MinimumOSVersion</key>
+	<string>11.0</string>
+	<key>CFBundleName</key>
+	<string>GAZT</string>
 	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/appicon.appiconset</string>
+	<string>Assets.xcassets/AppIcon-2.appiconset</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please grant access to share supported images of docuemts</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Please grant access to your calender to schedule notifications.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Please grant Location access for guiding you to ZATCA HQ Office.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array/>
+		</dict>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>  UIViewControllerBasedStatusBarAppearance</key>
+	<string>false</string>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access for saving attchments to Photo Library.</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>gamekit</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>CFBundleDisplayName</key>
+	<string>ZATCA</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSContactsUsageDescription</key>
+	<string>please grant access to ZATCA app to your contacts list</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Please Grant Access to Microphone Usage </string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Please Grant Access to Bluetooth</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Please grant access to siri </string>
+	<key>kTCCServiceMediaLibrary</key>
+	<string>Please grant us access to use music for library usage and we are not going to do anything with it.</string>
+	<key>NSAppleMusicUsageDescription </key>
+	<string>Allow us access for Music library as it is part of library we are using, but data shall not be collected from it .</string>
+	<key>CFBundleShortVersionString</key>
+	<string>229</string>
+	<key>CFBundleVersion</key>
+	<string>5.0.229</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.gazt.enterprise.zatca</string>
 </dict>
 </plist>

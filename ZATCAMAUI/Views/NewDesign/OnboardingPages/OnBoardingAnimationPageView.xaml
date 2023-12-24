@@ -8,7 +8,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
-    xmlns:rotator="clr-namespace:Syncfusion.SfRotator.XForms;assembly=Syncfusion.SfRotator.XForms"
+    xmlns:rotator="clr-namespace:ZATCAMAUI.Core"
     ios:Page.UseSafeArea="False"
     NavigationPage.HasNavigationBar="False">
     <!--<ContentPage.Resources>
@@ -74,7 +74,7 @@
                 Source="centered.png" />
 
             <!--  Rotator used to navigate the view  -->
-            <rotator:SfRotator
+            <!--<rotator:SfRotator
                 Grid.Row="2"
                 Margin="{OnPlatform Android='0,0,0,0',
                                     iOS='0,10,0,0'}"
@@ -96,7 +96,7 @@
                     <behavior:SfRotatorBehavior />
                 </rotator:SfRotator.Behaviors>
 
-            </rotator:SfRotator>
+            </rotator:SfRotator>-->
 
             <!--  Next button  -->
             <buttons:SfButton

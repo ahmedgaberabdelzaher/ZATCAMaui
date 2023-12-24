@@ -4853,7 +4853,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -5018,7 +5018,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
 
                 {
 
@@ -5208,7 +5208,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
 
                 {
 
@@ -5401,7 +5401,7 @@ namespace ZATCAMAUI.Core.Mangers
 
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
 
                 {
 

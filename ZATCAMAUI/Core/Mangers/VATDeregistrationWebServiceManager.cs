@@ -469,7 +469,7 @@ namespace ZATCAMAUI.Core.Mangers
                     }
                     return VatRefundsListResultModelSet;
                 }
-                catch (GAZTErrorException ex)
+                catch (GAZTErrorException )
                 {
                     throw new GAZTErrorException(AppResources.Somethingwentwrong);
                 }

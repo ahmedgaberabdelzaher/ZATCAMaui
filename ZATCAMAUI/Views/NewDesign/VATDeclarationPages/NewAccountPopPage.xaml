@@ -36,7 +36,7 @@
                     Text="{Binding AccountText}"
                     VerticalOptions="Center" />
 
-                <custom:CustomLabel Style="{StaticResource ValueLabelBlackBold}" Text="{x:Static custom2:AppResources.NAIBAN}" />
+                <custom:CustomLabel Style="{StaticResource ValueLabelBlackBold}" Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
             </StackLayout>
 
             <StackLayout Padding="0,0,0,15" FlowDirection="LeftToRight">

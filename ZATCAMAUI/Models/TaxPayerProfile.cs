@@ -4,105 +4,6 @@
     //ideally it should be UserId, TIN etc. but based on API responsethe naming of variable has been matched 
     public class TaxPayerProfile
     {
-        /*
-        public String FirstName{ get; set; }
-        public String LastName { get; set; }
-        public int Attempts { get; set; }
-        public int CurrAttmps { get; set; }
-        public string Langz { get; set; }
-        public int Minutes { get; set; }
-        public string Result { get; set; }
-        public string Otp { get; set; }
-        public string TpType { get; set; }
-        public string NameOrg1 { get; set; }
-        public String Name
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(NameFirst) && string.IsNullOrEmpty(NameLast))
-                {
-                    return NameOrg1;
-                }
-                else
-                {
-                    return NameFirst + " " + NameLast;
-                }
-                
-            }
-        }
-        public String Email { get; set; }
-        private String _NewEmail = String.Empty;
-        public string NewEmail
-        {
-            get
-            {
-                return _NewEmail;
-            }
-            set
-            {
-                _NewEmail = value;
-            }
-        }
-
-        public String Userid { get; set; }
-        public String Tin
-        {
-            get
-            {
-                return Partner;
-            }
-            set
-            {
-                Partner = value;
-            }
-        }
-
-        private String _Mobile = String.Empty;
-        public string Mobile
-        {
-            get
-            {
-                return _Mobile;
-            }
-            set
-            {
-                _Mobile = value;
-            }
-        }
-
-        private String _NewMobile = String.Empty;
-        public string NewMobile
-        {
-            get
-            {
-                return _NewMobile;
-            }
-            set
-            {
-                _NewMobile = value;
-            }
-        }
-        public String Password { get; set; }
-        private String _NewPassword = String.Empty;
-        public string NewPassword
-        {
-            get
-            {
-                return _NewPassword;
-            }
-            set
-            {
-                _NewPassword = value;
-            }
-        }
-
-        public string Partner { get; set; }
-        public string NameFirst { get; set; }
-        public string NameLast { get; set; }
-
-        */
-
-        //public TPMetadata __metadata { get; set; }
         public string UserId { get; set; }
         public string Auditorz { get; set; }
         public string PrevEmail { get; set; }
@@ -168,10 +69,6 @@
                 else
                     return NameOrg1;
 
-                //if (string.IsNullOrEmpty(NameFirst) && string.IsNullOrEmpty(NameLast))                
-                //    return NameOrg1;
-                //else
-                //    return NameFirst + " " + NameLast; 
             }
         }
 
@@ -182,25 +79,11 @@
             get { return _NewEmail; }
             set { _NewEmail = value; }
         }
-
-        /*public string Userid
-        {
-            get { return UserId; }
-            set { UserId = value; }
-        }*/
-
         public string Tin
         {
             get { return Taxpayerz; }
             set { Taxpayerz = Partner = value; }
         }
-
-        /*private string _Mobile = string.Empty;
-        public string Mobile
-        {
-            get { return _Mobile; }
-            set { _Mobile = value; }
-        }*/
 
         // Need to check
         private string _NewMobile = string.Empty;

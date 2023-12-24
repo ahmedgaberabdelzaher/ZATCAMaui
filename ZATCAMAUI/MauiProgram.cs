@@ -20,7 +20,27 @@ public static class MauiProgram
             .UsePancakeViewCompat()
             .ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                fonts.AddFont("GE_SS_Two_Bold.ttf", "GE_SS_Two_Bold");
+                fonts.AddFont("GE_SS_Two_Light.ttf", "GE_SS_Two_Light");
+                fonts.AddFont("GE_SS_Two_Medium.ttf", "GE_SS_Two_Medium");
+
+                fonts.AddFont("Mada-Regular.ttf", "Mada-Regular");
+
+                fonts.AddFont("MyMaterialIcon.ttf", "MyMaterialIcon");
+
+                fonts.AddFont("Somar-Bold.otf", "Somar-Bold");
+                fonts.AddFont("Somar-Light.otf", "Somar-Light");
+                fonts.AddFont("Somar-Regular.otf", "Somar-Regular");
+                fonts.AddFont("Somar-SemiBold.otf", "Somar-SemiBold");
+
+                fonts.AddFont("SSTArabic-Bold.ttf", "SSTArabic-Bold");
+                fonts.AddFont("SSTArabic-Light.ttf", "SSTArabic-Light");
+                fonts.AddFont("SSTArabic-Medium.ttf", "SSTArabic-Medium");
+                fonts.AddFont("SSTArabic-Roman.ttf", "SSTArabic-Roman");
+
+                fonts.AddFont("UIFontIcons.ttf", "UIFontIcons");
+
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 

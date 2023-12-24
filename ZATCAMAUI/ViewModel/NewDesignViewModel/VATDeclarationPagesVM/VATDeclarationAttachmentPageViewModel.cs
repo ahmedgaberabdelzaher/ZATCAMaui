@@ -288,7 +288,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.VATDeclarationPagesVM
                                                         _attachment.d.Erfdt = uploadedDate;
                                                         VATDeclarationDataForAttch.d.ATTACHSet.results.Add(_attachment.d);
                                                         ObservableCollection<Attachment> myCollection = new ObservableCollection<Attachment>(VATDeclarationDataForAttch.d.ATTACHSet.results as List<Attachment>);
-                                                        Device.BeginInvokeOnMainThread(() =>
+                                                        MainThread.BeginInvokeOnMainThread(() =>
                                                         {
                                                             VatAttachmentsList = myCollection;
 

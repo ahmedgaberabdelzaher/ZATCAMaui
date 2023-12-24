@@ -189,8 +189,8 @@ namespace ZATCAMAUI.Views.NewDesign.ForgotPasswordPages
             try
             {
                 //TODO
-                TIN selectedTinId = new TIN {Tin = e.NewValue.ToString() };
-                Picker_Tins.Columns[0].SelectedIndex = e.NewValue;
+                TIN selectedTinId = viewModel.TINs[e.NewValue];
+                //Picker_Tins.Columns[0].SelectedIndex = e.NewValue;
                 viewModel.SelectedTinId = selectedTinId;
             }
             catch (Exception)

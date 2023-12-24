@@ -103,7 +103,7 @@ namespace ZATCAMAUI.Core.Mangers
                     client.DefaultRequestHeaders.Add("Accept-Language", langVal);
 
                     var serilized = JsonConvert.SerializeObject(sendSmsModel);
-                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, Constants.ContentType);
+                    HttpContent contentPost = new StringContent(serilized, Encoding.UTF8, ZATCAConstants.ContentType);
                     HttpResponseMessage res = await client.PostAsync(uri, contentPost);
                     response = res.Content.ReadAsStringAsync().Result;
                     sendSmsResponse = JsonConvert.DeserializeObject<TaxEvasionSendSmsResponseModel>(response);
@@ -375,7 +375,7 @@ namespace ZATCAMAUI.Core.Mangers
                     regionsModel = JsonConvert.DeserializeObject<TaxEvasionRegionsCityModel>(response);
                     return regionsModel;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -584,7 +584,7 @@ namespace ZATCAMAUI.Core.Mangers
                     vATSignUpCaseId = JsonConvert.DeserializeObject<VATSignUpCaseId>(response);
                     return vATSignUpCaseId;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -661,7 +661,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -736,7 +736,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return SignUpCityList;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -817,7 +817,7 @@ namespace ZATCAMAUI.Core.Mangers
                     return vATSignUp;
                 }
 
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }

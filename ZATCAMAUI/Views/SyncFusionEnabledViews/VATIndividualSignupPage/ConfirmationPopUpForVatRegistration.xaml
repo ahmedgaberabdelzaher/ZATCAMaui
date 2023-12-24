@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.ConfirmationPopUpForVatRegistration"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView
+        BackgroundColor="White"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" Spacing="0">
+
+
+                <custom:CustomLabel
+                    x:Name="confirmationText"
+                    Margin="10"
+                    Style="{StaticResource BodyLabelBlack}" />
+
+            </StackLayout>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*" />
+                    <ColumnDefinition Width="50*" />
+
+                </Grid.ColumnDefinitions>
+                <buttons:SfButton
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Clicked="OnOkayButtonClicked"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.ZYes}" />
+                <buttons:SfButton
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Clicked="OnCancelClicked"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.ZNo}"
+                    VerticalOptions="FillAndExpand" />
+            </Grid>
+
+            <!--  Footer Section Ends  -->
+
+            <!--  End of Attachment Visible  -->
+
+
+
+
+
+        </Grid>
+    </yummy:PancakeView>
+</pages:PopupPage>

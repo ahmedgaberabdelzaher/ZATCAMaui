@@ -43,6 +43,15 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
+	  <Compile Remove="Platforms\Android\DependencyServices\ForceUpdate.cs" />
+	  <Compile Remove="Platforms\Android\SplashScreen.cs" />
+	  <Compile Remove="Platforms\iOS\DependencyServices\ForceUpdate.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\MyMaterialIcon.ttf" />
+	</ItemGroup>
 
 
 	<ItemGroup>
@@ -106,7 +115,19 @@
 	  </Compile>
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Views\NewDesign\ChangeFillingPeriodPages\ChangeFillingPeriodSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\FilesUploadPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\InstructionsBottomPopUpView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\Common\ListPopUpViewPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\MoreMenuPopUpPageViewRTwo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\Common\SingleButtonPopupView.xaml">
@@ -131,6 +152,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ForgotPasswordPages\GAZTNewDesignRecoverUsername.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyBillsPages\MyBillsMultiplePayableList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondanceDetailPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\FileAttachmentPopupPageView.xaml">
@@ -164,6 +191,15 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\UnlockAccount\UnlockAccountTINPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\ConfirmationPopUpForVatRegistration.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FileAttachmentPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\NewAccountPopUpPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

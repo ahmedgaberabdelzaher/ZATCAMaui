@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.NewAccountPopUpPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+
+    <yummy:PancakeView
+        BackgroundColor="White"
+        CornerRadius="22,22,0,0"
+        VerticalOptions="EndAndExpand">
+        <StackLayout>
+            <Image
+                Margin="15,10,15,0"
+                HorizontalOptions="EndAndExpand"
+                IsVisible="false">
+                <Image.Source>
+                    <FontImageSource
+                        FontFamily="UserIconFont"
+                        Glyph="{x:Static FontImage:IconFonts.Close}"
+                        Size="25"
+                        Color="{StaticResource SecondaryNew}" />
+                </Image.Source>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseIban_Tapped" />
+                </Image.GestureRecognizers>
+            </Image>
+
+            <StackLayout Padding="22,22,22,0">
+
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="Large"
+                    Text="{Binding AccountText}"
+                    TextColor="{StaticResource PrimaryColor}"
+                    VerticalOptions="Center" />
+                <Label FontFamily="{StaticResource SomarBold}" Text="{x:Static ResourceManager:AppResources.NAIBAN}" />
+            </StackLayout>
+            <StackLayout Padding="15,0,15,15">
+                <Frame
+                    Padding="0"
+                    BorderColor="LightGray"
+                    CornerRadius="8"
+                    HasShadow="False">
+                    <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal">
+                        <StackLayout
+                            Padding="5,8,0,8"
+                            HorizontalOptions="Center"
+                            Orientation="Horizontal">
+                            <StackLayout Orientation="Horizontal">
+                                <BoxView
+                                    BackgroundColor="{StaticResource Primary}"
+                                    CornerRadius="15"
+                                    HeightRequest="30"
+                                    WidthRequest="30" />
+                                <Label
+                                    FontFamily="{StaticResource SomarBold}"
+                                    HorizontalTextAlignment="Center"
+                                    Text="{x:Static ResourceManager:AppResources.NASA}"
+                                    TextColor="{StaticResource PrimaryColor}"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                        <BoxView BackgroundColor="LightGray" WidthRequest="1" />
+                        <StackLayout Padding="0,5,0,5" Orientation="Horizontal">
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanOne"
+                                Completed="IbanOne_Completed"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="2"
+                                Placeholder="03"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartOne}"
+                                TextChanged="IbanOne_TextChanged" />
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanTwo"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="8"
+                                Placeholder="80000000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartTwo}"
+                                TextChanged="IbanTwo_TextChanged" />
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanThree"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartThree}"
+                                TextChanged="IbanThree_TextChanged" />
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanFour"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                ReturnType="Next"
+                                Text="{Binding IbanPartFour}"
+                                TextChanged="IbanFour_TextChanged" />
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="30"
+                                WidthRequest="1" />
+                            <custom:GAZTBorderlessEntry
+                                x:Name="IbanFive"
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="Small"
+                                Keyboard="Numeric"
+                                MaxLength="4"
+                                Placeholder="0000"
+                                Text="{Binding IbanPartFive}"
+                                TextChanged="IbanFive_TextChanged" />
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <buttons:SfButton
+                x:Name="btnAddAccount"
+                Margin="10,0,10,10"
+                BackgroundColor="{StaticResource Secondary}"
+                Clicked="IbanAddButtonClicked"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource SomarSemiBold}"
+                FontSize="15"
+                HeightRequest="48"
+                StrokeThickness="0"
+                Text="{x:Static ResourceManager:AppResources.Save}"
+                TextColor="{DynamicResource Gray-White}"
+                VerticalOptions="End" />
+            <buttons:SfButton
+                x:Name="btnDone"
+                Margin="10,0,10,10"
+                BackgroundColor="{StaticResource Secondary}"
+                Clicked="CloseIban_Tapped"
+                CornerRadius="14"
+                FontAttributes="Bold"
+                FontFamily="{StaticResource SomarSemiBold}"
+                FontSize="15"
+                HeightRequest="48"
+                StrokeThickness="0"
+                Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                TextColor="{DynamicResource Gray-White}"
+                VerticalOptions="End" />
+        </StackLayout>
+
+    </yummy:PancakeView>
+</pages:PopupPage>

@@ -5,18 +5,7 @@
     {
         public EsimatedZAKATReturnsButtonSetsD d { get; set; }
     }
-    //public class Metadata
-    //{
-    //    public string id { get; set; }
-    //    public string uri { get; set; }
-    //    public string type { get; set; }
-    //}
-    //public class Metadata2
-    //{
-    //    public string id { get; set; }
-    //    public string uri { get; set; }
-    //    public string type { get; set; }
-    //}
+
     
     public class EsimatedZAKATReturnsButtonSetsUIButton
     {

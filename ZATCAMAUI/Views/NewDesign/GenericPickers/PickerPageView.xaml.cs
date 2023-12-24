@@ -37,9 +37,9 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
                         PickerTitle.FontFamily = "Somar-SemiBold";
 
-                        genericPicker.HeaderFontFamily = "Somar-SemiBold";
-                        genericPicker.SelectedItemFontFamily = "Somar-SemiBold";
-                        genericPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                        genericPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                        genericPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                        genericPicker.TextStyle.FontFamily = "Somar-SemiBold";
 
                         break;
                     case var _ when DeviceInfo.Current.Platform == DevicePlatform.Android:
@@ -49,9 +49,9 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
                         PickerTitle.FontFamily = "Somar-SemiBold";
 
-                        genericPicker.HeaderFontFamily = "Somar-SemiBold";
-                        genericPicker.SelectedItemFontFamily = "Somar-SemiBold";
-                        genericPicker.UnSelectedItemFontFamily = "Somar-SemiBold";//ddlLIssuedBy
+                        genericPicker.HeaderView.TextStyle.FontFamily = "Somar-SemiBold";
+                        genericPicker.SelectedTextStyle.FontFamily = "Somar-SemiBold";
+                        genericPicker.TextStyle.FontFamily = "Somar-SemiBold";
 
                         break;
                 }
@@ -85,19 +85,26 @@ namespace ZATCAMAUI.Views.NewDesign.GenericPickers
 
         public PickerPageView(GenericPickerModel _pickerSource)
         {
-            InitializeComponent();
-
-            viewModel = App.Locator.PickerPageView;
-            viewModel.DataSource = _pickerSource;
-            viewModel.PickerItemSource = viewModel.DataSource.PickerData;
-            viewModel.PickerTitle = viewModel.DataSource.PickerTitle;
-            if (viewModel.DataSource.SelectedValue != null)
+            try
             {
-                viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
-                genericPicker.SelectedItem = viewModel.SelectedItem;
+                InitializeComponent();
+
+                viewModel = App.Locator.PickerPageView;
+                viewModel.DataSource = _pickerSource;
+                viewModel.PickerItemSource = viewModel.DataSource.PickerData;
+                viewModel.PickerTitle = viewModel.DataSource.PickerTitle;
+                if (viewModel.DataSource.SelectedValue != null)
+                {
+                    viewModel.SelectedItem = viewModel.DataSource.SelectedValue;
+                    //genericPicker.Columns[0].SelectedIndex = int.Parse(viewModel.SelectedItem);
+                }
+                this.BindingContext = viewModel;
+                // SetPickerFont();
             }
-            this.BindingContext = viewModel;
-            // SetPickerFont();
+            catch (Exception)
+            {
+            }
+           
         }
 
         void genericPicker_SelectionChanged(object sender, PickerSelectionChangedEventArgs e)

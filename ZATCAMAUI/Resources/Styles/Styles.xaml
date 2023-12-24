@@ -7,6 +7,7 @@
     xmlns:control="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+    xmlns:sfControl="clr-namespace:ZATCAMAUI.Core.CustomControls.SyncFusionEnabledControls"
     xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
 
     <Color x:Key="OrangeyYellow">#0996d4</Color>
@@ -42,7 +43,6 @@
     <Color x:Key="FacebookBlue">#4267B2</Color>
     <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
     <x:String x:Key="AvatarIcon">&#xe723;</x:String>
-    <Color x:Key="OrangeyYellow">#0996d4</Color>
     <Color x:Key="Transparent">Transparent</Color>
     <x:String x:Key="Cart">&#xe708;</x:String>
     <x:String x:Key="Bell">&#xe700;</x:String>
@@ -80,7 +80,7 @@
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
         <Setter Property="BackgroundColor" Value="{OnIdiom Default={DynamicResource Gray-White}, Desktop={DynamicResource Gray-100}, Converter={StaticResource DynamicResourceToColorConverter}}" />
     </Style>
-    <Style TargetType="control:TitleView">
+    <Style TargetType="sfControl:TitleView">
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
     </Style>
     <!--  Common style for entries  -->

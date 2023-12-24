@@ -1451,7 +1451,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException )
                 {
 
                 }
@@ -1498,7 +1498,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException )
                 {
 
                 }
@@ -1620,7 +1620,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EstablishmentAmendUpdateViewMod
 
                     PopupNavigation.Instance.PushAsync(new PickerPageView(genericPickerModel));
                 }
-                catch (GAZTUnlockAccountException ex)
+                catch (GAZTUnlockAccountException )
                 {
 
                 }

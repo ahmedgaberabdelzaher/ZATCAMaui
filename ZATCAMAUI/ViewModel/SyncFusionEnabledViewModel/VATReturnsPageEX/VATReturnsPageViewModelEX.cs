@@ -3067,7 +3067,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             catch (InternetException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
@@ -3093,7 +3093,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         {
             try
             {
-                Device.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = true;
                 });
@@ -3122,7 +3122,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     var res = await SaveReturnAndGetReturnAndSetButtons();
                     if (res != null && res.d != null)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             if (IsVisibleInstrunction)
                             {
@@ -3147,7 +3147,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
@@ -3155,20 +3155,20 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 //_navigationService.GoBack();
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
                         }
-                        //Device.BeginInvokeOnMainThread(async () =>
+                        //MainThread.BeginInvokeOnMainThread(async () =>
                         //{
                         //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         //});
                     }
                 });
-                Device.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     IsLoading = false;
                 });
@@ -3522,7 +3522,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         {
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     await _navigation.PopToRootAsync();
@@ -3614,7 +3614,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                     _navigationService.GoBack();
@@ -3623,7 +3623,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
@@ -3640,13 +3640,13 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     VATDeclarationData.d.Operationz = operation;
                     //IsLoading = false;
                     var res = await SaveReturnAndGetReturnAndSetButtons();
-                    //Device.BeginInvokeOnMainThread(async () =>
+                    //MainThread.BeginInvokeOnMainThread(async () =>
                     //{
                     //   _dialogService.ShowMessage(string.Format(AppResources.ZZGeneralMessage_VATReturnFormSubmittedSuccessfullyAndFormBundleNumber, VATDeclarationData.d.Fbnum), AppResources.Information);
                     //});
                     if (res != null && res.d != null)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
                             IsEnableSwitchToggledFor15PercentChange = false;
@@ -3671,7 +3671,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
@@ -3679,7 +3679,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 // _navigationService.GoBack();
@@ -3750,7 +3750,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             {
                                 if (resNew.d.SubmitFg == "" || resNew.d.SubmitFg == string.Empty)
                                 {
-                                    Device.BeginInvokeOnMainThread(async () =>
+                                    MainThread.BeginInvokeOnMainThread(async () =>
                                     {
                                         await ManageEnabledAsyncProperty(false);
                                         IsEnableSwitchToggledFor15PercentChange = false;
@@ -3790,7 +3790,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             IsLoading = false;
                             if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                     _navigationService.GoBack();
@@ -3798,7 +3798,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                     //_navigationService.GoBack();
@@ -3817,7 +3817,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
             }
             catch (InternetException ex)
             {
-                Device.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
@@ -4010,7 +4010,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         //        else
         //        {
         //            //pop that certificate is not available
-        //            Device.BeginInvokeOnMainThread(async () =>
+        //            MainThread.BeginInvokeOnMainThread(async () =>
         //            {
         //                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
         //            });
@@ -4025,7 +4025,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         //        else
         //        {
         //            //pop that certificate is not available
-        //            Device.BeginInvokeOnMainThread(async () =>
+        //            MainThread.BeginInvokeOnMainThread(async () =>
         //            {
         //                await _dialogService.ShowMessageBox(AppResources.PdfIsNoteAvailable, AppResources.Information);
         //            });
@@ -4087,7 +4087,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         var res = await SaveReturnAndGetReturnAndSetButtons();
                         if (res != null && res.d != null && response != null)
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await ManageEnabledAsyncProperty(false);
                                 IsMainButtonVisible = false;
@@ -4099,7 +4099,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                                 IsMoreButtonEnabled = false;
                             });
                             // ManageEnabledProperty(false);
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_VATReturnFormCancelled, AppResources.ZInstructions);
                             });
@@ -4109,7 +4109,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             IsLoading = false;
                             if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                     _navigationService.GoBack();
@@ -4117,14 +4117,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             }
                             else
                             {
-                                Device.BeginInvokeOnMainThread(async () =>
+                                MainThread.BeginInvokeOnMainThread(async () =>
                                 {
                                     await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                     // _navigationService.GoBack();
                                     WebServiceManager.ErrorMessageForVAT = string.Empty;
                                 });
                             }
-                            //Device.BeginInvokeOnMainThread(async () =>
+                            //MainThread.BeginInvokeOnMainThread(async () =>
                             //{
                             //    await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.ZInstructions);
                             //});
@@ -4132,7 +4132,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     catch (InternetException ex)
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(ex.Message, AppResources.Information);
                         });
@@ -4197,7 +4197,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         }
 
 
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await ManageEnabledAsyncProperty(false);
                             IsMainButtonVisible = false;
@@ -4208,7 +4208,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             IsEnableIBANIdNumber = false;
                             IsMoreButtonEnabled = false;
                         });
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnRestoredToTheLastBilledVersion, AppResources.Information);
                         });
@@ -4218,7 +4218,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         IsLoading = false;
                         if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                                 _navigationService.GoBack();
@@ -4226,14 +4226,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         }
                         else
                         {
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                                 // _navigationService.GoBack();
                                 WebServiceManager.ErrorMessageForVAT = string.Empty;
                             });
                         }
-                        //Device.BeginInvokeOnMainThread(async () =>
+                        //MainThread.BeginInvokeOnMainThread(async () =>
                         //{
                         //    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                         //});
@@ -4241,7 +4241,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 catch (InternetException ex)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         _dialogService.ShowMessage(ex.Message, AppResources.Information);
                     });
@@ -4291,7 +4291,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 double Years = TS.TotalDays / 365.25;
                 if (Years >= 5)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_IfTimePeriodOfAmendmentIsLapsed, AppResources.Information);
                     });
@@ -4324,7 +4324,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 var res = await SaveReturnAndGetReturnAndSetButtons();
                 if (res != null && res.d != null)
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         await ManageEnabledAsyncProperty(true);
                         if ((App.ICRStatus == "E0045" || App.ICRStatus == "E0006") && VATDeclarationData.d.Yesno == "X")
@@ -4348,7 +4348,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     IsLoading = false;
                     if (string.IsNullOrEmpty(WebServiceManager.ErrorMessageForVAT))
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                             _navigationService.GoBack();
@@ -4356,14 +4356,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                     }
                     else
                     {
-                        Device.BeginInvokeOnMainThread(async () =>
+                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
                             await _dialogService.ShowMessage(WebServiceManager.ErrorMessageForVAT, AppResources.Information);
                             // _navigationService.GoBack();
                             WebServiceManager.ErrorMessageForVAT = string.Empty;
                         });
                     }
-                    //Device.BeginInvokeOnMainThread(async () =>
+                    //MainThread.BeginInvokeOnMainThread(async () =>
                     //{
                     //    _dialogService.ShowMessage(AppResources.ZZSomethingwentwrong, AppResources.Information);
                     //});
@@ -4379,7 +4379,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
         //{
         //    try
         //    {
-        //        Device.BeginInvokeOnMainThread(async () =>
+        //        MainThread.BeginInvokeOnMainThread(async () =>
         //        {
         //            if (IsVisibleDropdownForRefund == false)
         //            {
@@ -4570,7 +4570,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 string status = VATDeclarationData.d.Statusz;
                 if (status == "E057" || status == "E0057" || status == "E058" || status == "E0058")
                 {
-                    //Device.BeginInvokeOnMainThread(async () =>
+                    //MainThread.BeginInvokeOnMainThread(async () =>
                     //{
                     //    await _dialogService.ShowMessage(AppResources.ZZGeneralMessage_ReturnUnderReviewWithGAZT, AppResources.Information);
                     //});
@@ -4637,21 +4637,21 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 if (VATDeclarationData.d.TcFg == "1")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         IsDeclarationCheckedForInstruction = true;
                     });
                 }
                 if (VATDeclarationData.d.ConfStp2 == "1")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         IsCheckedTaxPayerDetailsInfo = true;
                     });
                 }
                 if (VATDeclarationData.d.DecFg == "1")
                 {
-                    Device.BeginInvokeOnMainThread(async () =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
                         IsDeclarationCheckedForSummary = true;
                     });
@@ -4760,43 +4760,14 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                         ResponseAddressSET = VATDeclarationData.d.ADRSet.results;
                     }
                 }
-                //});
-                //await Task.Run(() =>
-                //{
-                //    IsLoading = false;
-                //});
-                //int j = 5;
-                //List<CreditCarried> creditsCrarriedDummy = new List<CreditCarried>();
-                //CreditCarriedsList = new List<CreditCarried>();
-                //for (j = 0; j < 6; j++)
-                //{
-                //    CreditCarried m = new CreditCarried();
-                //    m.SerialNumber = "0001";
-                //    m.ReturnReferenceNumber = "000000000001";
-                //    m.DocumentNumber = "0102000010202";
-                //    m.Amount = "100000000,00";
-                //    creditsCrarriedDummy.Add(m);
-                //}
-                //CreditCarriedsList = creditsCrarriedDummy;
-                //int k = 5;
-                //List<VATAttachments> vatAttachment = new List<VATAttachments>();
-                //VatAttachmentsList = new List<VATAttachments>();
-                //for (k = 0; k < 6; k++)
-                //{
-                //    VATAttachments m = new VATAttachments();
-                //    m.Id = "0001";
-                //    m.DocumentName = "Test-Document.pdf";
-                //    m.Size = "20.00";
-                //    vatAttachment.Add(m);
-                //}
-                //VatAttachmentsList = vatAttachment;
+                
                 ManageThePreperiodcorrSwitch();
             }
             catch (InternetException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
-                    _dialogService.ShowMessage(ex.Message, AppResources.Information);
+                  await  _dialogService.ShowMessage(ex.Message, AppResources.Information);
                 });
             }
         }
@@ -4942,7 +4913,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                             //    ResponseVATDeclarationD = VATDeclarationData.d;
                             //    SetData();
                             //}
-                            Device.BeginInvokeOnMainThread(async () =>
+                            MainThread.BeginInvokeOnMainThread(async () =>
                             {
                                 await ManageEnabledAsyncProperty(true);
                             });
@@ -4959,7 +4930,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.VATReturnsPageEX
                 }
                 return response;
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 throw new InternetException(AppResources.ZZInternetConnectionMessage);
             }

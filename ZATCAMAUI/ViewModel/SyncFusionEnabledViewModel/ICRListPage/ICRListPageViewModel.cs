@@ -380,7 +380,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                         }
                     }
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -390,7 +390,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.ICRListPage
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

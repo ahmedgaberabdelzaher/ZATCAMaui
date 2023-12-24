@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using ZATCAMAUI.Core.Mangers;
 
 namespace ZATCAMAUI.Models
 {
@@ -21,17 +22,9 @@ namespace ZATCAMAUI.Models
                 if (!string.IsNullOrEmpty(_TaxPeriod))
                 {
                     FormatTaxPeriod = _TaxPeriod;
-                    //if (App.IsArabic)
-                    //{
-                    //    FormatTaxPeriod = UtilityManager.ConvertNumerals(_TaxPeriod);
-                    //}
-                    //else
-                    //{
-                    //    FormatTaxPeriod = _TaxPeriod;
-                    //}
                 }
             }
-        }//TaxPeriodDescription
+        }
         public string FormatTaxPeriod { get; set; }
         public string _Fbnum;
         public string Fbnum
@@ -44,14 +37,6 @@ namespace ZATCAMAUI.Models
             {
                 _Fbnum = value;
                 FormBundleNumber = _Fbnum;
-                //if (App.IsArabic)
-                //    {
-                //        FormBundleNumber = UtilityManager.ConvertNumerals(_Fbnum);
-                //    }
-                //    else
-                //    {
-                //        FormBundleNumber = _Fbnum;
-                //    }
             }
         }
         public string FormBundleNumber { get; set; }
@@ -109,17 +94,6 @@ namespace ZATCAMAUI.Models
                 {
                     FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
                     DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    //if (App.IsArabic)
-                    //{
-                    //    string date = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    //    FormatedSingleDueDate = UtilityManager.ToArabicDate(date);
-                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    //}
-                    //else
-                    //{
-                    //    FormatedSingleDueDate = Convert.ToDateTime(_dueDate).ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
-                    //    DueDateDateTime = Convert.ToDateTime(_dueDate);
-                    //}
                 }
             }
         }
@@ -209,37 +183,6 @@ namespace ZATCAMAUI.Models
             set
             {
                 _statusTxt = value;
-                //if (!string.IsNullOrEmpty(_statusTxt))
-                //{
-                //    //For Border Colour
-                //    if (string.Equals(_statusTxt, "To be filled") || string.Equals(_statusTxt, "In Draft") || string.Equals(_statusTxt, "Draft in Amendment by Taxpayer"))
-                //    {
-                //        BorderColour = "#bfbebe";
-                //    }
-                //    else if (string.Equals(_statusTxt, "Amended") || string.Equals(_statusTxt, "Billed") || string.Equals(_statusTxt, "GSTC – Escalation Completed"))
-                //    {
-                //        BorderColour = "#003672";
-                //        StatusImage = "ic_Paid.png";
-                //    }
-                //    else if (string.Equals(_statusTxt, "In Additional Clarif. with TP") || string.Equals(_statusTxt, "Submitted") || string.Equals(_statusTxt, "Draft in Amendment by GAZT") || string.Equals(_statusTxt, "Amendment Submitted") || string.Equals(_statusTxt, "In Supervisor's Pool") || string.Equals(_statusTxt, "For Supervisor's Review") || string.Equals(_statusTxt, "For Officer's Review") || string.Equals(_statusTxt, "GSTC – Escalation In Process"))
-                //    {
-                //        BorderColour = "#c49b2d";
-                //        StatusImage = "ic_Check_golden.png";
-                //    }
-                //    //For Image
-                //    if (string.Equals(_statusTxt, "To be filled"))
-                //    {
-                //        StatusImage = "ic_Check_Gray.png";
-                //    }
-                //    else if (string.Equals(_statusTxt, "In Draft") || string.Equals(_statusTxt, "Draft in Amendment by Taxpayer"))
-                //    {
-                //        StatusImage = "ic_save_Gray.png";
-                //    }
-                //    else if (string.Equals(_statusTxt, "Draft in Amendment by GAZT"))
-                //    {
-                //        StatusImage = "ic_save_golden.png";
-                //    }
-                //}
             }
         }
         //StatusDescription

@@ -45,18 +45,18 @@ namespace ZATCAMAUI.Views.NewDesign.PaymentOptions
                 }
                 var CancelAPI = await WebServiceManager.GAZTCancelPayment(App.PaymentGuid, platform);
 
-                //    Device.BeginInvokeOnMainThread(() =>
+                //    MainThread.BeginInvokeOnMainThread(() =>
                 //{
                 //    _navigationService.GoBack();
                 //});
 
 
             }
-            catch (GAZTValidatePaymentInProcessException ex)
+            catch (GAZTValidatePaymentInProcessException )
             {
 
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
 
             }

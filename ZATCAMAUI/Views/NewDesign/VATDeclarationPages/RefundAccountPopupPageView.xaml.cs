@@ -564,12 +564,16 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             return result;
         }
 
-        private async void IDTypeDropdown_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private async void IDTypeDropdown_OkButtonClicked(object sender, EventArgs e)
         {
             try
             {
+
                 //TODO
-                IBANType selectedIBANType = viewModel.IBANTypesList[e.NewValue];
+                var picker = (SfPicker)sender;
+                if (picker == null) return;
+
+                IBANType selectedIBANType = viewModel.IBANTypesList[picker.Columns[0].SelectedIndex];
                 //IDTypeDropdown.SelectedItem = selectedIBANType;
                 viewModel.SelectedIBANType = selectedIBANType;
                 viewModel.SelectedIBANTypePrev = selectedIBANType;
@@ -582,9 +586,13 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
             }
         }
-        private void IDNumberDropdown_OkButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void IDNumberDropdown_OkButtonClicked(object sender, EventArgs e)
         {
-            IBANIDNumber selectedIBANIDNumber = viewModel.IBANIDNumberList[e.NewValue];
+            //TODO
+            var picker = (SfPicker)sender;
+            if (picker == null) return;
+            
+            IBANIDNumber selectedIBANIDNumber = viewModel.IBANIDNumberList[picker.Columns[0].SelectedIndex];
             if (selectedIBANIDNumber != null)
             {
                 //TODO
@@ -594,7 +602,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
                 viewModel.TxtSelectedIBANIDNumber = selectedIBANIDNumber.Idnumber;
             }
         }
-        private void IDNumberDropdown_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void IDNumberDropdown_CancelButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -611,7 +619,7 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
 
             }
         }
-        private void IDTypeDropdown_CancelButtonClicked(object sender, PickerSelectionChangedEventArgs e)
+        private void IDTypeDropdown_CancelButtonClicked(object sender, EventArgs e)
         {
             //TODO
             // IDTypeDropdown.SelectedItem = viewModel.SelectedIBANTypePrev;
@@ -873,5 +881,6 @@ namespace ZATCAMAUI.Views.NewDesign.VATDeclarationPages
             await PopupNavigation.Instance.PushAsync(new GAZTNewDesignShowVatInformationPopUpPageView(newDesignPopUp));
         }
 
+      
     }
 }

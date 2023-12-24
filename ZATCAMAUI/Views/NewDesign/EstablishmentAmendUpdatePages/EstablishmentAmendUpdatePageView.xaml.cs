@@ -318,120 +318,114 @@ namespace ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages
             }
             catch (Exception)
             {
-
-
-
-                {
-
-
-
-                }
             }
 
-            EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
+
+        }
+
+        EstablishmentRegistrationTabsEnum getEnumFromChipsLabel(string label)
+        {
+            if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel))
             {
-                if (label.Equals(AppResources.ESTTaxpayerPersonalDetailsTabTitleLabel))
-                {
-                    return EstablishmentRegistrationTabsEnum.TaxpayerDetail;
-                }
-                if (label.Equals(AppResources.ESTPassportDetailsTabTitleLabel))
-                {
-                    return EstablishmentRegistrationTabsEnum.PassportDetails;
-                }
-                if (label.Equals(AppResources.ESTOutletsTabTitleLabel))
-                {
-                    return EstablishmentRegistrationTabsEnum.Outlets;
-                }
-                if (label.Equals(AppResources.VATRFinancialDetails))
-                {
-                    return EstablishmentRegistrationTabsEnum.FinancialDetail;
-                }
-                if (label.Equals(AppResources.ZVatSummary))
-                {
-                    return EstablishmentRegistrationTabsEnum.Declaration;
-                }
-                return EstablishmentRegistrationTabsEnum.RegistrationType;
+                return EstablishmentRegistrationTabsEnum.TaxpayerDetail;
             }
-
-            async void dobPicker_Closed(object sender, EventArgs e)
+            if (label.Equals(AppResources.ESTPassportDetailsTabTitleLabel))
             {
-                ObservableCollection<object> selectedItem = null;
-
-                try
-                {
-                    if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
-                    {
-                        selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        viewModel.SelectedDOB = viewModel?.DisplaySelectedDOB;
-                    }
-                    else
-                    {
-                        selectedItem = dobHijiriPicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
-                        viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    }
-                    var dob = viewModel.SelectedDOB.Replace("/", "");
-                    await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
-                }
-                catch (Exception)
-                {
-
-
-                }
+                return EstablishmentRegistrationTabsEnum.PassportDetails;
             }
-
-            void passportIssuePicker_Closed(object sender, EventArgs e)
+            if (label.Equals(AppResources.ESTOutletsTabTitleLabel))
             {
-                ObservableCollection<object> selectedItem = null;
-                try
+                return EstablishmentRegistrationTabsEnum.Outlets;
+            }
+            if (label.Equals(AppResources.VATRFinancialDetails))
+            {
+                return EstablishmentRegistrationTabsEnum.FinancialDetail;
+            }
+            if (label.Equals(AppResources.ZVatSummary))
+            {
+                return EstablishmentRegistrationTabsEnum.Declaration;
+            }
+            return EstablishmentRegistrationTabsEnum.RegistrationType;
+        }
+
+        async void dobPicker_Closed(object sender, EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+
+            try
+            {
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
                 {
-                    if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
-                    {
-                        selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        viewModel.PassportIssueDate = viewModel?.DisplayPassportIssueDate;
-                    }
-                    else
-                    {
-                        selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);
-                        viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    }
+                    selectedItem = dobPicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    viewModel.SelectedDOB = viewModel?.DisplaySelectedDOB;
                 }
-                catch (Exception)
+                else
                 {
+                    selectedItem = dobHijiriPicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplaySelectedDOB = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    DateTime.TryParseExact(viewModel?.DisplaySelectedDOB, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _dob);
+                    viewModel.SelectedDOB = _dob.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                }
+                var dob = viewModel.SelectedDOB.Replace("/", "");
+                await viewModel.ValidateIDAndDOB(viewModel.idItem?.Type, viewModel.GCCIDTypeIdNumberValue, dob);
+            }
+            catch (Exception)
+            {
 
 
+            }
+        }
+
+        void passportIssuePicker_Closed(object sender, EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            try
+            {
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+                {
+                    selectedItem = passportIssuePicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    viewModel.PassportIssueDate = viewModel?.DisplayPassportIssueDate;
+                }
+                else
+                {
+                    selectedItem = passportIssueHijiriPicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplayPassportIssueDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    DateTime.TryParseExact(viewModel?.DisplayPassportIssueDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _issueDate);
+                    viewModel.PassportIssueDate = _issueDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
                 }
             }
-
-            void passportExpiryPicker_Closed(object sender, EventArgs e)
+            catch (Exception)
             {
-                ObservableCollection<object> selectedItem = null;
-                try
-                {
-                    if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
-                    {
-                        selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        viewModel.PassportExpireDate = viewModel?.DisplayPassportExpireDate;
-                    }
-                    else
-                    {
-                        selectedItem = passportExpiryHijiriPicker.SelectedItem as ObservableCollection<object>;
-                        viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
-                        DateTime.TryParseExact(viewModel?.DisplayPassportExpireDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _expiryDate);
-                        viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
-                    }
-                }
-                catch (Exception)
-                {
 
 
+            }
+        }
+
+        void passportExpiryPicker_Closed(object sender, EventArgs e)
+        {
+            ObservableCollection<object> selectedItem = null;
+            try
+            {
+                if (EstablishmentAmendUpdatePageViewModel.taxPayerDetails?.Caltp == "G")
+                {
+                    selectedItem = passportExpiryPicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    viewModel.PassportExpireDate = viewModel?.DisplayPassportExpireDate;
                 }
+                else
+                {
+                    selectedItem = passportExpiryHijiriPicker.SelectedItem as ObservableCollection<object>;
+                    viewModel.DisplayPassportExpireDate = $"{selectedItem[2]}/{selectedItem[1]}/{selectedItem[0]}";
+                    DateTime.TryParseExact(viewModel?.DisplayPassportExpireDate, "yyyy/MM/dd", new CultureInfo("ar-sa"), DateTimeStyles.None, out DateTime _expiryDate);
+                    viewModel.PassportExpireDate = _expiryDate.ToString("yyyy/MM/dd", new CultureInfo("en-US"));
+                }
+            }
+            catch (Exception)
+            {
+
+
             }
         }
     }

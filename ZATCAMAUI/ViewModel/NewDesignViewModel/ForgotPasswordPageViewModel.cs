@@ -2759,7 +2759,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     TotalSec = TotalSec - 1;
                     numberOfSeconds = TotalSec;
                     TimeSpan _TimeSpan = TimeSpan.FromSeconds(TotalSec);
-                    Device.BeginInvokeOnMainThread(() =>
+                    MainThread.BeginInvokeOnMainThread(() =>
                     {
                         OTPValidDuration = " " + string.Format("{0:00}:{1:00}", _TimeSpan.Minutes, _TimeSpan.Seconds);
                     });

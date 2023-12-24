@@ -883,7 +883,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             }
             catch (GAZTErrorException ex)
             {
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     IsLoading = false;
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
@@ -892,7 +892,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
             catch (InternetException ex)
             {
                 IsLoading = false;
-                Device.BeginInvokeOnMainThread(async () =>
+                MainThread.BeginInvokeOnMainThread(async () =>
                 {
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
@@ -1315,7 +1315,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.AccountStatements
                 if (PickerModel != null)
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 

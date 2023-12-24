@@ -1345,7 +1345,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 if (PickerModel != null)
                     await PopupNavigation.Instance.PushAsync(new PickerPageView(PickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 

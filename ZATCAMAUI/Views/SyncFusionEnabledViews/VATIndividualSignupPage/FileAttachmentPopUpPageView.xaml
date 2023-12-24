@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.SyncFusionEnabledViews.VATIndividualSignupPage.FileAttachmentPopUpPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:cards1="clr-namespace:ZATCAMAUI.Core"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Common\Styles.xaml" />
+                <ResourceDictionary Source="..\CommonStyle\StylesNewUI.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <yummy:PancakeView
+        BackgroundColor="White"
+        CornerRadius="22,22,0,0"
+        VerticalOptions="End">
+        <Grid>
+            <StackLayout Margin="10,0,10,0" Padding="0,0,0,0">
+
+
+                <Grid HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsImpoterAndExporter}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="30*" />
+                        <ColumnDefinition Width="35*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                        Text="{x:Static ResourceManager:AppResources.VATRUploadingDocumentsFor}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                        Text="{x:Static ResourceManager:AppResources.FAPImporter}"
+                        VerticalOptions="Center" />
+
+                    <Switch
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="CenterAndExpand"
+                        IsToggled="{Binding IsSwitchToggled}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <custom:CustomButton
+                        x:Name="btnForNewChange"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        BackgroundColor="Transparent"
+                        Clicked="btnSwitch_ClickedForNewVATChange"
+                        FontSize="13"
+                        HeightRequest="15"
+                        WidthRequest="15" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Start"
+                        Style="{StaticResource GAZTSmallGreenLabelStyle}"
+                        Text="{x:Static ResourceManager:AppResources.FAPExporter}"
+                        VerticalOptions="Center" />
+                </Grid>
+
+                <Label
+                    Margin="5,10,5,0"
+                    FontSize="11"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource BodyLabelGrey}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZVATRAttachmentNote1}" />
+                <Label
+                    Margin="5,0,5,0"
+                    FontSize="11"
+                    HorizontalTextAlignment="Start"
+                    Style="{StaticResource BodyLabelGrey}"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZVATRAttachmentNote2}" />
+                <BoxView Margin="0,0,0,10" Style="{StaticResource lineSeperator}" />
+
+                <ListView
+                    x:Name="List"
+                    HasUnevenRows="True"
+                    HeightRequest="300"
+                    HorizontalOptions="FillAndExpand"
+                    ItemTapped="Attachmentlist_ItemTapped"
+                    ItemsSource="{Binding AttachmentList}"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView>
+                                    <cards1:SfCardView
+                                        Margin="10"
+                                        BackgroundColor="White"
+                                        BorderColor="{StaticResource EntryTextColor}"
+                                        BorderWidth=".05"
+                                        CornerRadius="8"
+                                        HasShadow="False"
+                                        IndicatorColor="{StaticResource Primary}"
+                                        IndicatorPosition="Left"
+                                        IndicatorThickness="5"
+                                        Opacity=".9"
+                                        ShadowColor="{StaticResource EntryTextColor}">
+                                        <StackLayout
+                                            Padding="10"
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Grid
+                                                BackgroundColor="White"
+                                                ColumnSpacing="0"
+                                                HorizontalOptions="FillAndExpand"
+                                                RowSpacing="2"
+                                                Style="{DynamicResource GridStyle}"
+                                                VerticalOptions="Center">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="70*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                    <ColumnDefinition Width="15*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="30" />
+                                                    <RowDefinition Height="30" />
+                                                </Grid.RowDefinitions>
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="0"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    LineBreakMode="TailTruncation"
+                                                    Style="{StaticResource MicroGrayLabelStyleNew}"
+                                                    Text="{Binding Filename}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <!--<Image Grid.Row="0"  Grid.Column="1" Grid.RowSpan="2"  HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Source="ic_file_download.png"  >
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnDownloadAttachmentClicked" />
+                                                </Image.GestureRecognizers>
+                                            </Image>-->
+                                                <Image
+                                                    Grid.Row="0"
+                                                    Grid.RowSpan="2"
+                                                    Grid.Column="2"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Source="ic_delete.png"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Image.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnDeleteAttachmentClicked" />
+                                                    </Image.GestureRecognizers>
+                                                </Image>
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="0"
+                                                    Grid.ColumnSpan="2"
+                                                    Margin="3,0,3,-5"
+                                                    FlowDirection="LeftToRight"
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MiniGrayLabelStyle}"
+                                                    Text="{Binding Erfdt}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                            </Grid>
+                                        </StackLayout>
+                                    </cards1:SfCardView>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <buttons:SfButton
+                    x:Name="btnAddAttachment"
+                    Margin="0,0,0,10"
+                    BackgroundColor="{StaticResource Secondary}"
+                    Command="{Binding OnAttachmentClick}"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    StrokeThickness="0"
+                    Text="{x:Static ResourceManager:AppResources.FAPAddAttachment}"
+                    TextColor="{DynamicResource Gray-White}"
+                    VerticalOptions="End" />
+                <buttons:SfButton
+                    x:Name="btnDone"
+                    Margin="0,0,0,20"
+                    BackgroundColor="{StaticResource Secondary}"
+                    Command="{Binding GoButtonClick}"
+                    CornerRadius="14"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource SomarSemiBold}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    StrokeThickness="0"
+                    Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                    TextColor="{DynamicResource Gray-White}"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+            <Grid
+                Grid.Row="0"
+                Grid.Column="0"
+                IsVisible="{Binding IsLoading}">
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand" />
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Padding="15,15"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center"
+                    Opacity="0.8"
+                    Orientation="Vertical"
+                    VerticalOptions="Center">
+                    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                        <busyindicator:SfBusyIndicator
+                            x:Name="busyindicatorForLanding"
+                            AnimationType="SingleCircle"
+                            HorizontalOptions="CenterAndExpand"
+                            IsRunning="{Binding IsLoading}"
+                            SizeFactor="0.7"
+                            TextColor="{StaticResource Primary}"
+                            TitlePlacement="Bottom"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </Grid>
+
+    </yummy:PancakeView>
+</pages:PopupPage>

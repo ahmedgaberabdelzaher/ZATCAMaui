@@ -12,6 +12,7 @@ namespace ZATCAMAUI.Core.CustomControls
         ObservableCollection<string> day = new ObservableCollection<string>();
         ObservableCollection<string> month = new ObservableCollection<string>();
         ObservableCollection<string> year = new ObservableCollection<string>();
+        ObservableCollection<PickerColumn> pickerColumns = new ObservableCollection<PickerColumn>();
         string newDay, newMonth, newYear;
         int noOfDays;
 
@@ -151,12 +152,16 @@ namespace ZATCAMAUI.Core.CustomControls
                 SelectedIndex = int.Parse(year.Last()),
             };
 
-            this.Columns.Add(dayColumn);
-            this.Columns.Add(monthColumn);
-            this.Columns.Add(yearColumn);
+            pickerColumns.Add(dayColumn);
+            pickerColumns.Add(monthColumn);
+            pickerColumns.Add(yearColumn);
+
+            this.Columns = pickerColumns;
+
             this.SelectionChanged += Picker_SelectionChanged;
             //this.HeaderView.Text = $"{dayColumn.HeaderText}-{monthColumn.HeaderText}-{yearColumn.HeaderText}";
             newDay = day[0]; newMonth = month[0]; newYear = year[0];
+            SelectedItem = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
         }
         private void InitializeFutureDatePicker()
         {
@@ -202,12 +207,15 @@ namespace ZATCAMAUI.Core.CustomControls
                 SelectedIndex = 0,
             };
 
-            this.Columns.Add(dayColumn);
-            this.Columns.Add(monthColumn);
-            this.Columns.Add(yearColumn);
+            pickerColumns.Add(dayColumn);
+            pickerColumns.Add(monthColumn);
+            pickerColumns.Add(yearColumn);
+
+            this.Columns = pickerColumns;
             this.SelectionChanged += Picker_SelectionChanged;
             // this.HeaderView.Text = $"{dayColumn.HeaderText}-{monthColumn.HeaderText}-{yearColumn.HeaderText}";
             newDay = day[0]; newMonth = month[0]; newYear = year[0];
+            SelectedItem = new DateTime(int.Parse(newYear), int.Parse(newMonth), int.Parse(newDay));
         }
     }
 }

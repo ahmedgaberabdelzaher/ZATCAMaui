@@ -28,7 +28,7 @@ namespace ZATCAMAUI.Core.Mangers
                     {
                         throw new GAZTInternetException();
                     }
-                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", Constants.ESTBranchesDropDown, lang), false, "");
+                    HttpResponseMessage ESTBranchesDropDownResponse = await GetServiceManager.MakeGetAPICall(string.Format("{0}?&$format=json&$filter=Spras eq '{1}'", ZATCAConstants.ESTBranchesDropDown, lang), false, "");
                     if (ESTBranchesDropDownResponse != null)
                     {
                         if (ESTBranchesDropDownResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -273,7 +273,7 @@ namespace ZATCAMAUI.Core.Mangers
                 {
                     throw ex;
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -374,7 +374,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException)
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -445,7 +445,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -594,7 +594,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -661,7 +661,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -730,7 +730,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -799,7 +799,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -866,7 +866,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -958,7 +958,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -1028,7 +1028,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }
@@ -1145,7 +1145,7 @@ namespace ZATCAMAUI.Core.Mangers
                         }
                     }
                 }
-                catch (JsonReaderException ex)
+                catch (JsonReaderException )
                 {
                     throw new GAZTInvalidDataException();
                 }

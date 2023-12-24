@@ -18,6 +18,7 @@ using ZATCAMAUI.Models.SurveyModels;
 using ZATCAMAUI.Models.SyncfusionEnabledModels;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages.PopUpPages;
 using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Views.NewDesign.MyBillsPages;
 using ZATCAMAUI.Views.NewDesign.PaymentOptions;
 using ReturnType = ZATCAMAUI.Models.SyncfusionEnabledModels.ReturnType;
 
@@ -2043,7 +2044,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         //_navigationService.GoBack();
                     });
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2053,7 +2054,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (GAZTNetworkConnectivityIssueException ex)
+                catch (GAZTNetworkConnectivityIssueException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2064,7 +2065,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -2160,7 +2161,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -2171,7 +2172,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -3013,7 +3014,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
                 }
             }
-            catch (GAZTSessionExpiredException ex)
+            catch (GAZTSessionExpiredException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using ZATCAMAUI.Core.CustomControls;
+using ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage;
 
 namespace ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters
 {

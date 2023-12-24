@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards="clr-namespace:Syncfusion.XForms.Cards;assembly=Syncfusion.Cards.XForms"
+    xmlns:cards="clr-namespace:ZATCAMAUI.Core"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:listView="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
@@ -46,10 +46,10 @@
                 <listView:SfListView
                     x:Name="paymentItemsListView"
                     HorizontalOptions="EndAndExpand"
-                    IsScrollBarVisible="False"
                     IsScrollingEnabled="False"
                     ItemSpacing="12"
-                    SelectionBackgroundColor="Transparent"
+                    ScrollBarVisibility="Never"
+                    SelectionBackground="Transparent"
                     SelectionChanged="paymentItemSelectionChanged"
                     SelectionMode="Single"
                     VerticalOptions="Center">
@@ -147,11 +147,11 @@
                         </DataTemplate>
 
                     </listView:SfListView.SelectedItemTemplate>
-                    <listView:SfListView.LayoutManager>
+                    <listView:SfListView.ItemsLayout>
 
                         <listView:GridLayout x:Name="GridLayout" SpanCount="{OnIdiom Phone=1, Tablet=4, Desktop=5}" />
 
-                    </listView:SfListView.LayoutManager>
+                    </listView:SfListView.ItemsLayout>
 
                 </listView:SfListView>
 

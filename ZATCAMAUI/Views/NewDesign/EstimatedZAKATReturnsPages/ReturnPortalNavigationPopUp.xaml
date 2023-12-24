@@ -24,16 +24,6 @@
         VerticalOptions="EndAndExpand">
 
         <StackLayout Margin="0,0,0,0" VerticalOptions="Center">
-            <!--<Image HorizontalOptions="EndAndExpand">
-                <Image.Source>
-                    <FontImageSource FontFamily="UserIconFont" Color="{StaticResource NeutralGreay}" Size="25"
-                                             Glyph="{x:Static FontImage:IconFonts.Close}"/>
-                </Image.Source>
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnCloseTapped"/>
-                </Image.GestureRecognizers>
-            </Image>-->
-
             <Label
                 x:Name="InfromatationText"
                 HorizontalTextAlignment="Start"

@@ -47,7 +47,7 @@ namespace ZATCAMAUI.Models
                 OnPropertyRaised("InformationFromPartieToCompare");
             }
         }
-        private Color _disableItemBackgroundColor = Color.Gray;
+        private Color _disableItemBackgroundColor = Colors.Gray;
         public Color DisableItemBackgroundColor
         {
             get

@@ -1,4 +1,6 @@
-﻿namespace ZATCAMAUI.Models
+﻿using ZATCAMAUI.Core.Mangers;
+
+namespace ZATCAMAUI.Models
 {
 
     public class TERRegion
@@ -179,7 +181,7 @@
                 if (!string.IsNullOrEmpty(_fileNameWithExtension))
                 {
                     string extension = _fileNameWithExtension.Split('.')[1]; ;
-                    CorrespondingImageAccoringtoext = Manager.UtilityManager.GetFileImage(extension);
+                    CorrespondingImageAccoringtoext = UtilityManager.GetFileImage(extension);
                 }
             }
 

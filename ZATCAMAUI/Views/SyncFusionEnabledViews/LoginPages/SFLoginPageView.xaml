@@ -16,11 +16,11 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:BooleanToColorConverter x:Key="ColorConverter" />
-            <ResourceDictionary.MergedDictionaries>
+            <!--<ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Common\Styles.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            </ResourceDictionary.MergedDictionaries>-->
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -116,14 +116,12 @@
                             <busyindicator:SfBusyIndicator
                                 x:Name="busyindicatorForLanding"
                                 AnimationType="SingleCircle"
-                                EnableAnimation="True"
                                 HorizontalOptions="CenterAndExpand"
-                                IsBusy="True"
+                                IsRunning="True"
+                                SizeFactor="0.7"
                                 TextColor="{StaticResource Secondary}"
                                 TitlePlacement="Bottom"
-                                VerticalOptions="CenterAndExpand"
-                                ViewBoxHeight="70"
-                                ViewBoxWidth="70" />
+                                VerticalOptions="CenterAndExpand" />
                         </StackLayout>
                     </StackLayout>
                 </Grid>

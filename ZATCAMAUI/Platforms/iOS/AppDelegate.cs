@@ -1,17 +1,142 @@
 ﻿using Foundation;
 using MediaManager;
+using System.Net;
 using UIKit;
-
+using AppDynamics.Agent;
 namespace ZATCAMAUI.Platforms.iOS;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
 {
+    static nint timerTaskID;
     protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
+
+        AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+        TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
         CrossMediaManager.Current.Init();
+        ServicePointManager
+        .ServerCertificateValidationCallback +=
+        (sender, cert, chain, sslPolicyErrors) => true;
+        App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
+        //App iosapp = new App();
+        //App.appObj = iosapp;
+      
+
+
+        var config = AgentConfiguration.Create("EUM-AAB-AUM");
+        config.LoggingLevel = LoggingLevel.Debug;
+
+        Instrumentation.enableAggregateExceptionReporting = true;
+        config.CollectorURL = "https://eum.gazt.gov.sa:443";
+        Instrumentation.InitWithConfiguration(config);
+
+
+       // Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
+
+        App.InitializeAppDynamics();
+        //LoadApplication(iosapp);
+
+
+
+        
         return base.FinishedLaunching(application, launchOptions);
+    }
+    #region unhandled exceptions
+    private static void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs unhandledExceptionEventArgs)
+    {
+        var newExc = new System.Exception("CurrentDomainOnUnhandledException", unhandledExceptionEventArgs.ExceptionObject as System.Exception);
+
+        Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+    }
+    private static void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs unobservedTaskExceptionEventArgs)
+    {
+        var newExc = new System.Exception("TaskSchedulerOnUnobservedTaskException", unobservedTaskExceptionEventArgs.Exception);
+
+        Instrumentation.ReportError(newExc, ErrorSeverityLevel.CRITICAL);
+    }
+    #endregion
+    public override void OnActivated(UIApplication application)
+    {
+
+    }
+
+    public override void WillEnterForeground(UIApplication application)
+    {
+
+
+    }
+
+    public override void OnResignActivation(UIApplication application)
+    {
+
+    }
+
+    void EndTimerTask()
+    {
+
+        if (timerTaskID != 0)
+        {
+            UIApplication.SharedApplication.EndBackgroundTask(timerTaskID);
+        }
+    }
+
+    public override void DidEnterBackground(UIApplication application)
+    {
+        timerTaskID = UIApplication.SharedApplication.BeginBackgroundTask(() =>
+        {
+            EndTimerTask();
+        });
+
+    }
+
+    // not guaranteed that this will run
+    public override void WillTerminate(UIApplication application)
+    {
+
+    }
+
+    private static void InitArabicCalendarCrashFix()
+    {
+        var localeIdentifier = NSLocale.CurrentLocale.LocaleIdentifier;
+        if (localeIdentifier == "ar_SA")
+        {
+            new System.Globalization.UmAlQuraCalendar();
+        }
+    }
+
+    //Export("AEDMApplicationDidBecomeActive:")]
+    //private static void AEDMApplicationDidBecomeActive(UIApplication application)
+    //{
+    //    DidBecomeActive(application);
+    //}
+    [Export("oneSignalApplicationDidBecomeActive:")]
+    public void OneSignalApplicationDidBecomeActive(UIApplication application)
+    {
+        // Remove line if you don't have a OnActivated method.
+        OnActivated(application);
+    }
+
+    [Export("oneSignalApplicationWillResignActive:")]
+    public void OneSignalApplicationWillResignActive(UIApplication application)
+    {
+        // Remove line if you don't have a OnResignActivation method.
+        OnResignActivation(application);
+    }
+
+    [Export("oneSignalApplicationDidEnterBackground:")]
+    public void OneSignalApplicationDidEnterBackground(UIApplication application)
+    {
+        // Remove line if you don't have a DidEnterBackground method.
+        DidEnterBackground(application);
+    }
+
+    [Export("oneSignalApplicationWillTerminate:")]
+    public void OneSignalApplicationWillTerminate(UIApplication application)
+    {
+        // Remove line if you don't have a WillTerminate method.
+        WillTerminate(application);
     }
 }

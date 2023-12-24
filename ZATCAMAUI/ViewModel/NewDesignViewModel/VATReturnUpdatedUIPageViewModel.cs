@@ -4157,7 +4157,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                 }
                 return response;
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
 
 
@@ -6150,7 +6150,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -6161,7 +6161,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (GAZTNetworkConnectivityIssueException ex)
+                catch (GAZTNetworkConnectivityIssueException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -6172,7 +6172,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -6256,7 +6256,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                         _navigationService.GoBack();
                     });
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                     MainThread.BeginInvokeOnMainThread(async () =>
                     {
@@ -6267,7 +6267,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {
@@ -6369,7 +6369,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
                     });
                 }
             }
-            catch (InternetException ex)
+            catch (InternetException )
             {
                 MainThread.BeginInvokeOnMainThread(async () =>
                 {

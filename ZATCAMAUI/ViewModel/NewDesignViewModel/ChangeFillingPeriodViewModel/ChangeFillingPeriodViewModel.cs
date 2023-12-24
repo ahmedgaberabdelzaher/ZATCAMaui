@@ -14,6 +14,11 @@ using ZATCAMAUI.ViewModel.NewDesignViewModel.Instructions;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Enums;
 using ZATCAMAUI.Core.Helper;
+using ZATCAMAUI.Views.NewDesign.Common;
+using ZATCAMAUI.Views.NewDesign.VATDeclarationPages;
+using ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages;
+using ZATCAMAUI.Views.NewDesign.GenericPickers;
+using ZATCAMAUI.Views.NewDesign.ChangeFillingPeriodPages;
 
 namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 {
@@ -1178,7 +1183,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 selectedPicker = PickerEnum.EffectiveDate;
                 await PopupNavigation.Instance.PushAsync(new PickerPageView(EffectiveDatePickerModel));
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1280,7 +1285,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
 
             try
             {
-                if (Rg.Plugins.Popup.Services.PopupNavigation.Instance.PopupStack.Count > 0) return;
+                if (PopupNavigation.Instance.PopupStack.Count > 0) return;
                 if (SelectedOutletOptionIndex == 0)
                 {
                     if (YearsattachmentsListViewData == null)
@@ -1288,7 +1293,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         YearsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
                     await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 YearsattachmentsListViewData.ToList(),WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
+                 YearsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod2Years, ChangeFillingResponse.d.ReturnIdz));
                 }
                 else if (SelectedOutletOptionIndex == 1)
                 {
@@ -1297,7 +1302,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         MonthsattachmentsListViewData = new ObservableCollection<Attachment>();
                     }
                     await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 MonthsattachmentsListViewData.ToList(),WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
+                 MonthsattachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriod12Months, ChangeFillingResponse.d.ReturnIdz));
                 }
                 else
                 {
@@ -1306,10 +1311,10 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         OtherAttachmentsListViewData = new ObservableCollection<Attachment>();
                     }
                     await PopupNavigation.Instance.PushAsync(new FilesUploadPopUpPageView(
-                 OtherAttachmentsListViewData.ToList(),WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
+                 OtherAttachmentsListViewData.ToList(), WhichAttachment.ChangeFillingPeriodOtherDoc, ChangeFillingResponse.d.ReturnIdz));
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
             }
@@ -1657,7 +1662,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     EnableAttachmentsView();
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1709,7 +1714,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 EnableDeclarationView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1730,7 +1735,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 EnableDeclarationView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1770,7 +1775,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 EnableAttachmentsView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1790,7 +1795,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
             {
                 EnableFrequencyDetailsView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1876,7 +1881,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                 }
                 EnableSummaryView();
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 
@@ -1913,7 +1918,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                     }
                 }
             }
-            catch (GAZTUnlockAccountException ex)
+            catch (GAZTUnlockAccountException )
             {
 
 

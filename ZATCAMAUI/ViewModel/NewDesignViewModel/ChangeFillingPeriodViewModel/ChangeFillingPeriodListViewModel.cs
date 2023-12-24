@@ -389,7 +389,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel.ChangeFillingPeriodViewModel
                         }
                         IsLoading = false;
                     }
-                    catch (GAZTVATRegistrationInProcessException ex)
+                    catch (GAZTVATRegistrationInProcessException )
                     {
 
 

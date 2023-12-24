@@ -18,14 +18,14 @@
             PositionIn="Bottom"
             PositionOut="Bottom" />
     </pages:PopupPage.Animation>
-    <pages:PopupPage.Resources>
+    <!--<pages:PopupPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </pages:PopupPage.Resources>
+    </pages:PopupPage.Resources>-->
     <!--#region SurveyView {Binding IsShowMsgView}-->
     <Grid
         Grid.Row="0"

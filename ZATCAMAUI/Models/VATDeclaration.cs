@@ -5,12 +5,7 @@ using Font = Microsoft.Maui.Font;
 
 namespace ZATCAMAUI.Models
 {
-    //public class Metadata
-    //{
-    //    public string id { get; set; }
-    //    public string uri { get; set; }
-    //    public string type { get; set; }
-    //}
+
     [Serializable]
    
     [DataContract]

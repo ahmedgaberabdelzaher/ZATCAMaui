@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using ZATCAMAUI.Models;
+using ZATCAMAUI.Core.Enums;
 
 namespace ZATCAMAUI.Core.Converters
 {

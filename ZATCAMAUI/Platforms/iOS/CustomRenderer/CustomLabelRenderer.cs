@@ -89,7 +89,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     }
                 }
             }
-            catch (Exception Ex)
+            catch (Exception )
             {
 
 

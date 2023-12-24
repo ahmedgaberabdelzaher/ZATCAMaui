@@ -792,6 +792,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
         {
             try
             {
+                //TODO
                 TIN SelectedTin = new TIN { Tin = e.NewValue.ToString() };
                 viewModel.SelectedTinId = SelectedTin;
                 viewModel.SelectedTinIdPrev = SelectedTin;

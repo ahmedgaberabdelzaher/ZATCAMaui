@@ -83,7 +83,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                     OnDataLoad();
 
-                    //         Device.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
+                    //         MainThread.BeginInvokeOnMainThread(() => TaxBalanceProgress.RangeColors = rangeColors);
 
                 });
                 SetLTR();

@@ -77,20 +77,41 @@
                     x:Name="genericPicker"
                     Margin="2"
                     FlowDirection="RightToLeft"
-                    HeaderBackgroundColor="Transparent"
-                    HeaderFontFamily="{StaticResource SomarBoldForSfPicker}"
-                    HeaderTextColor="{StaticResource NeutralBlack}"
                     IsOpen="True"
                     ItemHeight="36"
-                    ItemsSource="{Binding PickerItemSource}"
-                    SelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}"
-                    SelectedItemFontSize="13"
-                    SelectedItemTextColor="{StaticResource NeutralBlack}"
                     SelectionChanged="genericPicker_SelectionChanged"
-                    Style="{StaticResource PickerStyle}"
-                    UnSelectedItemFontFamily="{StaticResource SomarBoldForSfPicker}"
-                    UnSelectedItemFontSize="13"
-                    UnSelectedItemTextColor="{StaticResource NeutralBlack}">
+                    Style="{StaticResource PickerStyle}">
+
+
+                    <syncfusion:SfPicker.TextStyle>
+                        <syncfusion:PickerTextStyle
+                            FontFamily="{StaticResource SomarBoldForSfPicker}"
+                            FontSize="13"
+                            TextColor="{StaticResource NeutralBlack}" />
+                    </syncfusion:SfPicker.TextStyle>
+
+                    <syncfusion:SfPicker.Columns>
+                        <syncfusion:PickerColumn ItemsSource="{Binding PickerItemSource}" />
+                    </syncfusion:SfPicker.Columns>
+
+                    <syncfusion:SfPicker.SelectedTextStyle>
+                        <syncfusion:PickerTextStyle
+                            FontFamily="{StaticResource SomarBoldForSfPicker}"
+                            FontSize="13"
+                            TextColor="{StaticResource NeutralBlack}" />
+                    </syncfusion:SfPicker.SelectedTextStyle>
+
+
+                    <syncfusion:SfPicker.HeaderView>
+
+                        <syncfusion:PickerHeaderView Background="Transparent">
+                            <syncfusion:PickerHeaderView.TextStyle>
+                                <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarBoldForSfPicker}" TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:PickerHeaderView.TextStyle>
+                        </syncfusion:PickerHeaderView>
+
+                    </syncfusion:SfPicker.HeaderView>
+
                     <syncfusion:SfPicker.Behaviors>
                         <behavior:SfPickerBehavior />
                     </syncfusion:SfPicker.Behaviors>

@@ -1014,7 +1014,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
 
 
                     }
-                    catch (InternetException ex)
+                    catch (InternetException )
                     {
                        MainThread.BeginInvokeOnMainThread(async () =>
                         {
@@ -1207,7 +1207,7 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.UnlockAccount
                     await _dialogService.ShowMessage(ex.Message, AppResources.Information);
 
                 }
-                catch (InternetException ex)
+                catch (InternetException )
                 {
                    MainThread.BeginInvokeOnMainThread(async () =>
                     {

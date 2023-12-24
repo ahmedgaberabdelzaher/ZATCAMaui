@@ -187,7 +187,7 @@ namespace ZATCAMAUI.ViewModel.NewDesignViewModel
 
             if (App.IsSessionExpired)
             {
-                Device.BeginInvokeOnMainThread(() =>
+                MainThread.BeginInvokeOnMainThread(() =>
                 {
                     var _navigation = Application.Current.MainPage.Navigation;
                     foreach (var item in _navigation.NavigationStack)
