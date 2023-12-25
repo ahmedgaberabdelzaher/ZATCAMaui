@@ -97,6 +97,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         else
                         {
                             SADADNewTXT = string.Empty;
+
                             _navigationService.NavigateTo("PaymentWebView", TravelerDeclarationResponse.paymentOrder);
                         }
                     }

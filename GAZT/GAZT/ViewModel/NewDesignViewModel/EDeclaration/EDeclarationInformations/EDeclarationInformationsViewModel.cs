@@ -15,6 +15,8 @@ using EGAZT.Helper;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using EGAZT.AppConfigurations;
+using GAZT.Models;
+using System.Net;
 
 namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
 {
@@ -341,19 +343,24 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformatio
             {
                 return new Command(_ =>
                 {
-                    //_navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
-                    var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}";
-                     Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
+                //_navigationService.NavigateTo("EDeclarationPaymentPage", TravelerDeclarationResponse);
+                 var decreptedURlParam = EncryptionHelper.EncryptStringAES($"\\refCode={TravelerDeclarationResponse.ReferenceID}&travilID={ TravelerDeclarationResponse.travelID}\\");
+
+
+                    //     var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{TravelerDeclarationResponse.ReferenceID}&travilID={TravelerDeclarationResponse.travelID}";
+                    var paymentRedirectURL = $"{PageSettings.GetPaymentWebViewURl()}{decreptedURlParam}";
+
+                    Browser.OpenAsync(paymentRedirectURL, new BrowserLaunchOptions
                     {
                         LaunchMode = BrowserLaunchMode.SystemPreferred,
                         TitleMode = BrowserTitleMode.Show,
-                        PreferredToolbarColor = Color.AliceBlue,
-                        PreferredControlColor = Color.Violet
+                        PreferredToolbarColor = Color.FromHex("#002447"),
+                        PreferredControlColor = Color.FromHex("#0996d4"),
                     });
 
                   
 
-                   // Xamarin.Essentials.Launcher.OpenAsync(paymentRedirectURL);
+                  //  Xamarin.Essentials.Launcher.OpenAsync(paymentRedirectURL);
 
                 });
             }

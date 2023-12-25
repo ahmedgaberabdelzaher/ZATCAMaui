@@ -73,7 +73,7 @@ namespace EGAZT.AppConfigurations
         public static string CustomPaymentProdURl = "https://payments-eservices.zatca.gov.sa/payment/initiate/";
 
         public static string CustomPeserviceBaseURl = "https://pre-eservices.zatca.gov.sa";
-        public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
+        public static string ProhibitedGoodsLstURl = "https://eservices.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
         public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
@@ -97,11 +97,11 @@ namespace EGAZT.AppConfigurations
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
         public static string FasahBaseUrl;
         public static string ZATCAPaymentWebViewStgBaseURL = "https://peservices.zatca.gov.sa";
-        public static string ZATCAPaymentWebViewProdBaseURL = "https://e-services.zatca.gov.sa";
+        public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewBaseURL;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
 
-        public static string CheckTarget_Environment(string environment = "STG")
+        public static string CheckTarget_Environment(string environment = "Prod")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
             if (string.IsNullOrWhiteSpace(Target_Environment))
@@ -350,11 +350,14 @@ namespace EGAZT.AppConfigurations
         {
             if (App.IsArabic)
             {
-                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?refCode=";
+                //  return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?refCode=";
+                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/app-view/Pages/ViewEDeclarationPage.aspx?";
             }
             else
             {
-                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?refCode=";
+                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/app-view/Pages/ViewEDeclarationPage.aspx?";
+
+                //   return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?";
             }
         }
 
