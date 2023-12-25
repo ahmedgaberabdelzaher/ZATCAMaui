@@ -37,8 +37,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.EDeclaration
                         {
                             LaunchMode = BrowserLaunchMode.SystemPreferred,
                             TitleMode = BrowserTitleMode.Show,
-                            PreferredToolbarColor = Color.AliceBlue,
-                            PreferredControlColor = Color.Violet
+                            PreferredToolbarColor = Color.FromHex("#002447"),
+                            PreferredControlColor = Color.FromHex("#0996d4")
                         });
                         //_navigationService.NavigateTo("EDeclarationPaymentPage", Inquire);
                     }

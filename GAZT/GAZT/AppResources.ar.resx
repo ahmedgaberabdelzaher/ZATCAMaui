@@ -10434,4 +10434,7 @@ info@zatca.gov.sa</value>
   <data name="ChooseCity" xml:space="preserve">
     <value>برجاء اختيار المدينة</value>
   </data> 
+    <data name="InquiryaboutCustomsIssuesView" xml:space="preserve">
+       <value> الاستعلام عن القضايا الجمركية</value>
+  </data>
 </root>

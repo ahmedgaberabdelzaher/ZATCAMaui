@@ -81,6 +81,10 @@ namespace EGAZT.AppConfigurations
         public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
         public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
 
+           public static string CustomsIssuesSTG = "https://peservices.zatca.gov.sa";
+        public static string CustomsIssuesProd = "https://eservices.zatca.gov.sa";
+            public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+
 
         public static string CustomBaseUrl;
         public static string IAMLoginBaseUrl;
@@ -100,8 +104,8 @@ namespace EGAZT.AppConfigurations
         public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
         public static string ZATCAPaymentWebViewBaseURL;
         public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
-
-        public static string CheckTarget_Environment(string environment = "Prod")
+        public static string CurrentEnvironment="STG";
+        public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
             if (string.IsNullOrWhiteSpace(Target_Environment))
@@ -112,7 +116,7 @@ namespace EGAZT.AppConfigurations
         }
         public static void GetBaseURL(string environment = "STG")
         {
-            Target_Environment = CheckTarget_Environment(environment);
+           // Target_Environment = CheckTarget_Environment(environment);
             switch (Target_Environment)
             {
                 case "STG":
@@ -358,6 +362,17 @@ namespace EGAZT.AppConfigurations
                 return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/app-view/Pages/ViewEDeclarationPage.aspx?";
 
                 //   return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?";
+}
+}
+        public static string GetCustomsIssueUrl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+            }
+            else
+            {
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
         }
 

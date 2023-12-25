@@ -264,3 +264,6 @@ __pycache__/
 *.pyc
 /GAZT/GAZT/Properties/launchSettings.json
 .DS_Store
+GAZT/GAZT/AppResources.ar_BASE_63492.resx
+GAZT/GAZT/AppResources.ar_LOCAL_63492.resx
+GAZT/GAZT/AppResources.ar_REMOTE_63492.resx

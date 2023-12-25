@@ -180,6 +180,7 @@ using EGAZT.Views.NewDesign.EDeclaration.QuestionsViews;
 using EGAZT.Views.NewDesign.EDeclaration.InfoPages;
 using EGAZT.Views.NewDesign.EDeclaration.InquireRequestPages;
 using EGAZT.Views.NewDesign.Common.NativeNafath;
+using EGAZT.Views.NewDesign.CustomServicesPages.InquiryaboutCustomsIssuesViews;
 
 namespace EGAZT
 {
@@ -460,6 +461,7 @@ namespace EGAZT
             SimpleIoc.Default.Register<ChatViewModel>();
             SimpleIoc.Default.Register<FasahLoginViewModel>();
             SimpleIoc.Default.Register<BaseLoginViewModel>();
+            SimpleIoc.Default.Register<InquiryaboutCustomsIssuesViewModel>();
             #endregion
         }
 
@@ -2924,7 +2926,8 @@ namespace EGAZT
             navigationService.Configure(App.NafathLoginPageView, typeof(NafathLoginPageView));
             navigationService.Configure(App.NewYesorNoPageView, typeof(NewYesorNoPageView));//Cr6264
             navigationService.Configure("FasahLoginView", typeof(FasahLoginView));
-            #endregion
+            navigationService.Configure("InquiryaboutCustomsIssuesView", typeof(InquiryaboutCustomsIssuesView));
+#endregion
 
             return navigationService;
         }
@@ -3255,6 +3258,22 @@ namespace EGAZT
                 }
             }
         }
+
+        public InquiryaboutCustomsIssuesViewModel InquiryaboutCustomsIssuesViewModel
+        {
+            get
+            {
+                try
+                {
+                    return ServiceLocator.Current.GetInstance<InquiryaboutCustomsIssuesViewModel>();
+                }
+                catch (Exception ex)
+                {
+                    return null;
+                }
+            }
+        }
+
         #region Release2 FileUpload
 
         public FilesUploadPopUpViewModel FilesUploadPopUpView
