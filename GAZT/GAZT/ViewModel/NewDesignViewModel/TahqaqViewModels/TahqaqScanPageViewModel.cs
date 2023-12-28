@@ -171,7 +171,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
         int NoofTags;
 
-        public ICommand ScanEnvoiceQrCommand
+        public ICommand ScanEnvoiceQrCommandOld
         {
             get
             {
@@ -314,7 +314,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             await AddQRLog(eInvoiceQRModel);
 
                         }
-                        catch (Exception)
+                        catch (Exception ex)
                         {
 
                         }
@@ -329,7 +329,102 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                 });
             }
         }
+
+        public ICommand ScanEnvoiceQrCommand
+        {
+            get
+            {
+                return new Command(() =>
+
+                {
+                    Device.BeginInvokeOnMainThread(async () =>
+                    {
+                        try
+                        {
+
+                            IsLoading = true;
+
+                            string code = scanCode;
+
+                            if (code == "-1")
+                            {
+                                return;
+                            }
+
+                            if (!IsBase64(code))
+                            {
+                                eInvoiceQRModel.InvalidData = code;
+                                await AddQRLog(eInvoiceQRModel);
+                                IsLoading = false;
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+                                return;
+                            }
+                            byte[] byteList = Convert.FromBase64String(code);
+                            int currentPosition = 1;
+                            int TagIndex = 0;
+                            int noOfTags = 0;
+                            while (currentPosition < byteList.Length)
+                            {
+                                // Read Length
+                                int msgLength = byteList[TagIndex + 1];
+
+                                int nextTagPositionIndex = TagIndex + msgLength + 2;
+
+                                var message = byteList.Take(currentPosition + 1);
+
+                                currentPosition++;
+                              
+
+                                if (nextTagPositionIndex == currentPosition)
+                                {
+                                      noOfTags++;
+                                    var messageAsText = Encoding.UTF8.GetString(message.Skip(TagIndex + 1).Take(nextTagPositionIndex).ToArray());
+                                    TagIndex = currentPosition;
+                                    currentPosition++;
+
+                                    SetDataToModel(noOfTags, messageAsText);
+                                    NoofTags = noOfTags;
+                                }
+                            }
+
+                            var res = qrValidation(eInvoiceQRModel);
+
+                            if (string.IsNullOrWhiteSpace(res))
+                            {
+                                bool isIntegrated = NoofTags == 9 || NoofTags == 8 ? true : false;
+                                await GetQrDataEradApi(eInvoiceQRModel.vatNumber);//1 open qr res // 2 cannot verify  //3 
+
+                            }
+                            else
+                            {
+                                IsShowMsgView = true;
+                                MessageTxt = AppResources.InvalidQrMessage;
+
+                            }
+                            await AddQRLog(eInvoiceQRModel);
+
+                            IsLoading = false;
+                        }
+                        catch (Exception exp)
+                        {
+                            IsLoading = false;
+                            IsScanning = false;
+                        }
+                        finally
+                        {
+                            IsLoading = false;
+                            IsScanning = false;
+                        }
+                    });
+
+
+                });
+            }
+        }
+
         int tag = 0;
+
         private void SetDataToModel(int tagNumber, string messageAsText)
         {
             tag = tagNumber;
@@ -337,8 +432,10 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 case 1:
                     {
-                        eInvoiceQRModel.sellerName = messageAsText.Trim();
-                        SellerName = messageAsText.Trim();
+                        eInvoiceQRModel.sellerName = new string(messageAsText.Trim().Where(c => !char.IsControl(c)).ToArray());
+                        // eInvoiceQRModel.sellerName = messageAsText.Trim();
+                        //  SellerName = messageAsText.Trim();
+                        SellerName=new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
                         Debug.WriteLine($"Seller Name {messageAsText}");
                         break;
                     }
@@ -346,16 +443,19 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 case 2:
                     {
-                        eInvoiceQRModel.vatNumber = messageAsText.Trim();
-                        VatNumber = messageAsText.Trim();
-                        Debug.WriteLine($"Vat No {messageAsText}");
+                        //eInvoiceQRModel.vatNumber = messageAsText.TrimStart().Trim();
+                        eInvoiceQRModel.vatNumber = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
+                        VatNumber = messageAsText.TrimStart().Trim();
+                        Debug.WriteLine($"Vat No {messageAsText.TrimStart()}");
                         break;
                     }
 
 
                 case 3:
                     {
-                        eInvoiceQRModel.timeStamp = messageAsText.Trim();
+                       // eInvoiceQRModel.timeStamp = messageAsText.TrimStart().Trim().Replace(" ","");
+                        eInvoiceQRModel.timeStamp = new string(messageAsText.Where(c => !char.IsControl(c)).ToArray());
+
                         // TimeStamp = messageAsText.Trim();
 
                     }
@@ -371,8 +471,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                 case 5:
                     {
-                        eInvoiceQRModel.vatAmount = messageAsText.Trim();
-                        Debug.WriteLine($"vat Amount {messageAsText}");
+                        eInvoiceQRModel.vatAmount = messageAsText.Trim().Replace(" ","");
+                        Debug.WriteLine($"vat Amount {messageAsText.Trim()}");
                         VatAmount = messageAsText.Trim();
                         break;
                     }
@@ -417,6 +517,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         string qrValidation(EInvoiceQRModel qRcodeModelDetails)
         {
             var result = "";
+          //  double vat =double.Parse(vatAmount.Replace(" ",""));
+          //  int vat = int.Parse(qRcodeModelDetails.vatAmount);
             if (String.IsNullOrEmpty(qRcodeModelDetails.sellerName))
             {
                 result = "Empty Seller Name";
@@ -429,7 +531,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "VAT numbers is not Valid ";
             }
-            else if (qRcodeModelDetails.vatNumber.Length > 15)
+            else if (qRcodeModelDetails.vatNumber.Replace(" ", "").Length-1 > 15)
             {
                 result = "VAT numbers more  than 10 digit";
             }
@@ -441,11 +543,11 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
             {
                 result = "VAT Amount not Valid ";
             }
-            else if (double.Parse(qRcodeModelDetails.vatAmount) < 0)
+           /* else if (vat < 0)
             {
                 result = "VAT Amount is Negative ";
-            }
-            else if (checkValidDate(qRcodeModelDetails.timeStamp) == false)
+            }*/
+            else if (checkValidDate(qRcodeModelDetails.timeStamp.Replace(" ", "")) == false)
             {
 
                 result = "Date is not Valid";

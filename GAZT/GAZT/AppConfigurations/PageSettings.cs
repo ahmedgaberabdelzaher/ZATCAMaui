@@ -29,8 +29,8 @@ namespace EGAZT.AppConfigurations
 
         /// Prod MApping <summary>
         public static string SurveyIDProd = "6307638a380faf6b91c907f4";
-        public static string CollectorIdProd = "630b389e380faf6b91c910a7";
-        public static string SurveyTokenProd = "I/70744d53";
+        public static string CollectorIdProd = "657053b2f9bfdf03a3ffed88";
+        public static string SurveyTokenProd = "r/b5cce7cb";
         public static string Q1IDProd = "6307638b380faf6b91c907f8";
         public static string Q2IDProd = "6307638b380faf6b91c90800";
         public static string Q3IDProd = "6307638b380faf6b91c90814";
@@ -58,9 +58,9 @@ namespace EGAZT.AppConfigurations
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
         /// <summary>
         /// Old one
-        ///         // public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
+               public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
         /// </summary>
-        public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
+        //public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
 
         //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
