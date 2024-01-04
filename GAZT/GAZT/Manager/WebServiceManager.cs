@@ -5138,7 +5138,7 @@ namespace GAZT.Manager
 
                     // String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='"+devicetype+"')" + "?$format=json";
 
-                    String uri = Constants.ValidatePaymentInformation + "'" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
+                    String uri = Constants.ValidatePaymentInformation + "(Fbnum='" + fbNum + "',Tin='" + TIN + "',Srcid='" + devicetype + "',Sadad='" + sadadNo + "',Pymntty='" + paymentType + "')" + "?$format=json";
 
 
 
