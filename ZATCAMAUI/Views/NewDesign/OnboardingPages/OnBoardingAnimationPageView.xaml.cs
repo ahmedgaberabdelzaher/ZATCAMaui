@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using AppDynamics.Agent;
 using ZATCAMAUI.ViewModel.NewDesignViewModel;
 
 namespace ZATCAMAUI.Views.NewDesign.OnboardingPages
@@ -31,23 +32,23 @@ namespace ZATCAMAUI.Views.NewDesign.OnboardingPages
                 {
 
 
-                    var callTracker = ZATCAMAUI.Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to English");
+                    var callTracker =Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to English");
                     App.IsArabic = false;
                     App.changeFontFamily(App.appObj);
                     SetLTRDirection();
 
 
-                    ZATCAMAUI.Instrumentation.EndCall(callTracker);
+                   Instrumentation.EndCall(callTracker);
                 }
                 else
                 {
 
-                    var callTracker = ZATCAMAUI.Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to Arabic");
+                    var callTracker = Instrumentation.BeginCall("GAZTNewDesignOnBoardingAnimationPageView", "ChangeLangButton_Clicked", "Language Changed to Arabic");
                     App.IsArabic = true;
                     App.changeFontFamily(App.appObj);
                     SetRTLDirection();
 
-                    ZATCAMAUI.Instrumentation.EndCall(callTracker);
+                    Instrumentation.EndCall(callTracker);
                 }
                 viewModel.NextButtonText = AppResources.ZZNext;
             }

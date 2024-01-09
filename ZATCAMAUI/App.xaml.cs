@@ -19,6 +19,7 @@ using NavigationService = ZATCAMAUI.Core.Helper.NavigationService;
 using ZATCAMAUI.Views.NewDesign.DashBoardPages;
 using ZATCAMAUI.Views.NewDesign.EstablishmentAmendUpdatePages;
 using AppDynamics.Agent;
+using ZATCAMAUI.Views.NewDesign.ForgotPasswordPages;
 
 namespace ZATCAMAUI
 {
@@ -366,7 +367,6 @@ namespace ZATCAMAUI
         public static string selectedVATItem = "";
         public static string selectedVatFillingItem = "";
         public static string selectedVATItemFbust = "";
-        public static string idleTime = string.Empty;
         public static double idleTimeSpan = 0;
         public static bool IsAppRunningInBackground = false;
 
@@ -382,137 +382,136 @@ namespace ZATCAMAUI
 
         public App()
         {
-            IsAppRunningInBackground = false;
-            Preferences.Default.Set("timeOut", DateTime.Now);
-            PageSettings.CheckTarget_Environment("STG");
-            PageSettings.GetBaseURL("STG");
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
-           // Device.SetFlags(new[] { "Expander_Experimental" });
-            AppResources.Culture = CultureInfo.CurrentUICulture;
-            bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
-
-            if (hasLanguageKey)
-            {
-                var LanguageKey = Preferences.Get("Preferences_DefaultLanguage", "");
-                {
-                    if (LanguageKey != null)
-                    {
-                        if (LanguageKey.Equals("Ar"))
-                        {
-                            PreviousIsArabic = true;
-                        }
-                        if (LanguageKey.Equals("En"))
-                        {
-                            PreviousIsArabic = false;
-                        }
-                    }
-
-                }
-            }
-            else
-            {
-                PreviousIsArabic = true;
-            }
-
-            if (PreviousIsArabic)
-            {
-                String langName = "ar-AE";//"en-US";// "ar-AE";
-                ci = new CultureInfo(langName);
-                AppResources.Culture = ci;
-            }
-
-            InitializeComponent();
-            onFontFamilyChanged();
-            if (PreviousIsArabic)
-            {
-                IsArabic = true;
-            }
-            else
-            {
-                IsArabic = false;
-            }
-
             try
             {
+
+
+                IsAppRunningInBackground = false;
+                Preferences.Default.Set("timeOut", DateTime.Now);
+                PageSettings.CheckTarget_Environment("STG");
+                PageSettings.GetBaseURL("STG");
+                Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
+                                                                                                                                                                        // Device.SetFlags(new[] { "Expander_Experimental" });
+                AppResources.Culture = CultureInfo.CurrentUICulture;
+                bool hasLanguageKey = Preferences.ContainsKey("Preferences_DefaultLanguage");
+
+                if (hasLanguageKey)
+                {
+                    var LanguageKey = Preferences.Get("Preferences_DefaultLanguage", "");
+                    {
+                        if (LanguageKey != null)
+                        {
+                            if (LanguageKey.Equals("Ar"))
+                            {
+                                PreviousIsArabic = true;
+                            }
+                            if (LanguageKey.Equals("En"))
+                            {
+                                PreviousIsArabic = false;
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+                    PreviousIsArabic = true;
+                }
+
+                if (PreviousIsArabic)
+                {
+                    String langName = "ar-AE";//"en-US";// "ar-AE";
+                    ci = new CultureInfo(langName);
+                    AppResources.Culture = ci;
+                }
+
+                InitializeComponent();
+                onFontFamilyChanged();
+                if (PreviousIsArabic)
+                {
+                    IsArabic = true;
+                }
+                else
+                {
+                    IsArabic = false;
+                }
                 CreateClientHandler();
                 ResetAndContinueSession();
-            }
-            catch (Exception)
-            {
 
-            }
-
-            switch (Device.RuntimePlatform)
-            {
-                case Device.Android:
-                    {
-                        IncomingChannel = "241";
-                    }
-                    break;
-                case Device.iOS:
-                    {
-                        IncomingChannel = "242";
-                    }
-                    break;
-            }
-
-            ActivityIndicatorView = new ActivityIndicatorPageView();
-
-            CustomNavigation navigationPage;
-            bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
-            //NEw
-            if (!hasKey)
-            {
-                navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
-                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
-            }
-            else
-            {
-                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
-                //navigationPage = new CustomNavigation(new NativeNafathPage()) { BarTextColor = Color.White };
-
-            }
-
-            var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
-            navigationService.Initialize(navigationPage);
-            _navigationService = navigationService;
-            var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
-            dialogService.Initialize(navigationPage);
-            _dialogService = dialogService;
-            MainPage = navigationPage;
-
-            MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", (sender, arg) =>
-            {
-                if (App.DoesLoginNeedToBeRefreshed == true)
+                switch (Device.RuntimePlatform)
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
-                    {
-                        try
+                    case Device.Android:
                         {
-                            Preferences.Default.Set("IsSessionExpired", true);
-                            App.DoesLoginNeedToBeRefreshed = false;
-                            navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
-                            var navigationService1 = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
-                            navigationService1.Initialize(navigationPage);
-                            _navigationService = navigationService1;
-                            var dialogService1 = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
-                            dialogService1.Initialize(navigationPage);
-                            _dialogService = dialogService1;
-
-                            MainPage = navigationPage;
-                            _ = Task.Run(() => WebServiceManager.GAZTLogOff());
-
+                            IncomingChannel = "241";
                         }
-                        catch (Exception)
+                        break;
+                    case Device.iOS:
                         {
-                            
-                            
+                            IncomingChannel = "242";
                         }
-                    });
+                        break;
                 }
-            });
 
-            InitializeAppDynamics();
+                ActivityIndicatorView = new ActivityIndicatorPageView();
+
+                CustomNavigation navigationPage;
+                bool hasKey = Preferences.ContainsKey("first_TimeLoging_key");
+                //NEw
+                if (!hasKey)
+                {
+                    navigationPage = new CustomNavigation(new GAZTNewDesignOnBoardingAnimationPageView()) { BarTextColor = Colors.White };
+                }
+                else
+                {
+                    navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+
+
+                }
+                var navigationService = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+                navigationService.Initialize(navigationPage);
+                _navigationService = navigationService;
+                var dialogService = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+                dialogService.Initialize(navigationPage);
+                _dialogService = dialogService;
+                MainPage = navigationPage;
+
+                MessagingCenter.Subscribe<object, string>(this, "LogoutUserFromApp", (sender, arg) =>
+                {
+                    if (App.DoesLoginNeedToBeRefreshed == true)
+                    {
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            try
+                            {
+                                Preferences.Default.Set("IsSessionExpired", true);
+                                App.DoesLoginNeedToBeRefreshed = false;
+                                navigationPage = new CustomNavigation(new SFLoginPageView(App.GAZTNewDesignDashBoardPageView)) { BarTextColor = Colors.White };
+                                var navigationService1 = (NavigationService)ServiceLocator.Current.GetInstance<INavigationService>();
+                                navigationService1.Initialize(navigationPage);
+                                _navigationService = navigationService1;
+                                var dialogService1 = (DialogService)ServiceLocator.Current.GetInstance<IDialogService>();
+                                dialogService1.Initialize(navigationPage);
+                                _dialogService = dialogService1;
+
+                                MainPage = navigationPage;
+                                _ = Task.Run(() => WebServiceManager.GAZTLogOff());
+
+                            }
+                            catch (Exception)
+                            {
+
+
+                            }
+                        });
+                    }
+                });
+
+                //InitializeAppDynamics();
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public static void CreateClientHandler()
@@ -564,103 +563,177 @@ namespace ZATCAMAUI
 
         public void onFontFamilyChanged()
         {
-            if (PreviousIsArabic)
+            try
             {
-                String langName = "ar-AE";//"en-US";// "ar-AE";
-                ci = new CultureInfo(langName);
-                AppResources.Culture = ci;
-            }
-            else
-            {
-                String langName = "en-US";//"en-US";// "ar-AE";
-                ci = new CultureInfo(langName);
-                AppResources.Culture = ci;
-            }
-            if (PreviousIsArabic)
-            {
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        fontFamilyBold = "Somar-Bold";
-                        fontFamilyMedium = "Somar-SemiBold";
-                        fontFamilyLight = "Somar-Light";
-                        fontFamilyRoman = "Somar-Regular";
-                        break;
-                    case Device.Android:
-                        fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
-                        fontFamilyMedium = "Somar-SemiBold.otf#Somar-SemiBold";//GE_SS_Two_Medium
-                        fontFamilyLight = "Somar-Light.otf#Somar-Light";
-                        fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
-                        break;
-                }
-            }
-            else
-            {
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        fontFamilyBold = "Somar-Bold";
-                        fontFamilyMedium = "Somar-SemiBold";
-                        fontFamilyLight = "Somar-Light";
-                        fontFamilyRoman = "Somar-Regular";
-                        break;
-                    case Device.Android:
-                        fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
-                        fontFamilyMedium = "Somar-SemiBold.otf#SomarSemiBold";
-                        fontFamilyLight = "Somar-Light.otf#Somar-Light";
-                        fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
-                        break;
-                }
-            }
 
-            GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "Somar-Bold" });
-            GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            InformationRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            MandatoryRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            InformationGrayColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            SmallWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            SmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            MyBillsSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            MyBillsMediumMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            MiniGrayLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            MiniBlackLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            PickerStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTSmallGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTGreenLabelStyleForDashboardIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            GAZTCaptionGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            GAZTVerifyButton.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            GAZTGreenLabelStyleForEservicesIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            GAZTGreenLabelStyleForMicro.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTGoldLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTGoldLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTGrayLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTGrayLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTDropdownStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            GAZTSmallGreenLabelStyleForSteps.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            GAZTGreyLabelStyleForOptionMenu.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            TabbedPageSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            TabbedPageMediumMiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
-            forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
-            forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
-            MicroGrayLabelStyleNew.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
-            MicroGrayLabelStyleNewEn.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
-            //SYNCFUSION INTEGRATION
-            if (App.IsArabic)
-            {
-                Current.Resources["GAZT_FONT_BOLD"] = Current.Resources["GAZT_Arabic_FONT_BOLD"];
-                Current.Resources["GAZT_FONT_MEDIUM"] = Current.Resources["GAZT_Arabic_FONT_MEDIUM"];
-                Current.Resources["GAZT_FONT_REGULAR"] = Current.Resources["GAZT_Arabic_FONT_REGULAR"];
+
+                if (PreviousIsArabic)
+                {
+                    String langName = "ar-AE";//"en-US";// "ar-AE";
+                    ci = new CultureInfo(langName);
+                    AppResources.Culture = ci;
+                }
+                else
+                {
+                    String langName = "en-US";//"en-US";// "ar-AE";
+                    ci = new CultureInfo(langName);
+                    AppResources.Culture = ci;
+                }
+                if (PreviousIsArabic)
+                {
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            fontFamilyBold = "Somar-Bold";
+                            fontFamilyMedium = "Somar-SemiBold";
+                            fontFamilyLight = "Somar-Light";
+                            fontFamilyRoman = "Somar-Regular";
+                            break;
+                        case Device.Android:
+                            fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
+                            fontFamilyMedium = "Somar-SemiBold.otf#Somar-SemiBold";//GE_SS_Two_Medium
+                            fontFamilyLight = "Somar-Light.otf#Somar-Light";
+                            fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.iOS:
+                            fontFamilyBold = "Somar-Bold";
+                            fontFamilyMedium = "Somar-SemiBold";
+                            fontFamilyLight = "Somar-Light";
+                            fontFamilyRoman = "Somar-Regular";
+                            break;
+                        case Device.Android:
+                            fontFamilyBold = "Somar-Bold.otf#Somar-Bold";
+                            fontFamilyMedium = "Somar-SemiBold.otf#SomarSemiBold";
+                            fontFamilyLight = "Somar-Light.otf#Somar-Light";
+                            fontFamilyRoman = "Somar-Regular.otf#Somar-Regular";
+                            break;
+                    }
+                }
+
+                GAZTTextBoxStyleForEntry.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = "Somar-Bold" });
+                GAZTSmallGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                MiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                ForgotPasswordTextColor.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                InformationRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                MandatoryRedColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                InformationGrayColorLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                SmallWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                SmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                MyBillsSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                MyBillsMediumMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                MiniGrayLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                MiniBlackLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                PickerStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTSmallGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTGreenLabelStyleForDashboardIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                GAZTCaptionGreenLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                GAZTVerifyButton.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                GAZTGreenLabelStyleForEservicesIcon.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                GAZTGreenLabelStyleForMicro.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTGoldLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTGoldLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTGrayLabelStyleForSmallFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTGrayLabelStyleForCaptionFont.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTDropdownStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                GAZTSmallGreenLabelStyleForSteps.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                GAZTGreyLabelStyleForOptionMenu.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                TabbedPageSmallMiniWhiteLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                TabbedPageMediumMiniGoldLabelStyle.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyMedium });
+                forBoldLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyBold });
+                forLightLabel.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyLight });
+                MicroGrayLabelStyleNew.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
+                MicroGrayLabelStyleNewEn.Setters.Add(new Setter { Property = Entry.FontFamilyProperty, Value = fontFamilyRoman });
+                //SYNCFUSION INTEGRATION
+                if (App.IsArabic)
+                {
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_BOLD", out var GAZT_Arabic_FONT_BOLD);
+                            var afb = (OnPlatform<string>)GAZT_Arabic_FONT_BOLD;
+                            Current.Resources["GAZT_FONT_BOLD"] = afb.Platforms[0].Value;
+
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_MEDIUM", out var GAZT_Arabic_FONT_MEDIUM);
+                            var afm = (OnPlatform<string>)GAZT_Arabic_FONT_BOLD;
+                            Current.Resources["GAZT_FONT_MEDIUM"] = afm.Platforms[0].Value;
+
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_REGULAR", out var GAZT_Arabic_FONT_REGULAR);
+                            var afr = (OnPlatform<string>)GAZT_Arabic_FONT_REGULAR;
+                            Current.Resources["GAZT_FONT_REGULAR"] = afr.Platforms[0].Value;
+
+                            break;
+
+                        case Device.iOS:
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_BOLD", out var GAZT_Arabic_FONTBOLD);
+                            var iafb = (OnPlatform<string>)GAZT_Arabic_FONTBOLD;
+                            Current.Resources["GAZT_FONT_BOLD"] = iafb.Platforms[1].Value;
+
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_MEDIUM", out var GAZT_Arabic_FONTMEDIUM);
+                            var iafm = (OnPlatform<string>)GAZT_Arabic_FONTMEDIUM;
+                            Current.Resources["GAZT_FONT_MEDIUM"] = iafm.Platforms[1].Value;
+
+                            Current.Resources.TryGetValue("GAZT_Arabic_FONT_REGULAR", out var GAZT_Arabic_FONTREGULAR);
+                            var iafr = (OnPlatform<string>)GAZT_Arabic_FONTREGULAR;
+                            Current.Resources["GAZT_FONT_REGULAR"] = iafr.Platforms[1].Value;
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.Android:
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONT_REGULAR_test);
+                            var afrt = (OnPlatform<string>)GAZT_English_FONT_REGULAR_test;
+                            Current.Resources["LargeLabelTest"] = afrt.Platforms[0].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_BOLD", out var GAZT_English_FONT_BOLD);
+                            var afb = (OnPlatform<string>)GAZT_English_FONT_BOLD;
+                            Current.Resources["GAZT_FONT_BOLD"] = afb.Platforms[0].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_MEDIUM", out var GAZT_English_FONT_MEDIUM);
+                            var afm = (OnPlatform<string>)GAZT_English_FONT_MEDIUM;
+                            Current.Resources["GAZT_FONT_MEDIUM"] = afm.Platforms[0].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONT_REGULAR);
+                            var afr = (OnPlatform<string>)GAZT_English_FONT_REGULAR;
+                            Current.Resources["GAZT_FONT_REGULAR"] = afr.Platforms[0].Value;
+
+                            break;
+
+                        case Device.iOS:
+                            Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONT_REGULARtest);
+                            var iafrt = (OnPlatform<string>)GAZT_English_FONT_REGULARtest;
+                            Current.Resources["LargeLabelTest"] = iafrt.Platforms[1].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_BOLD", out var GAZT_English_FONTBOLD);
+                            var iafb = (OnPlatform<string>)GAZT_English_FONTBOLD;
+                            Current.Resources["GAZT_FONT_BOLD"] = iafb.Platforms[1].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_MEDIUM", out var GAZT_English_FONTMEDIUM);
+                            var iafm = (OnPlatform<string>)GAZT_English_FONTMEDIUM;
+                            Current.Resources["GAZT_FONT_MEDIUM"] = iafm.Platforms[1].Value;
+
+                            Current.Resources.TryGetValue("GAZT_English_FONT_REGULAR", out var GAZT_English_FONTREGULAR);
+                            var iafr = (OnPlatform<string>)GAZT_English_FONTREGULAR;
+                            Current.Resources["GAZT_FONT_REGULAR"] = iafr.Platforms[1].Value;
+
+                            break;
+                    }
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                Current.Resources["LargeLabelTest"] = Current.Resources["GAZT_English_FONT_REGULAR"];
-                Current.Resources["GAZT_FONT_BOLD"] = Current.Resources["GAZT_English_FONT_BOLD"];
-                Current.Resources["GAZT_FONT_MEDIUM"] = Current.Resources["GAZT_English_FONT_MEDIUM"];
-                Current.Resources["GAZT_FONT_REGULAR"] = Current.Resources["GAZT_English_FONT_REGULAR"];
+
             }
-            //SYNCFUSION INTEGRATION
         }
 
         protected override void OnStart()
@@ -688,14 +761,14 @@ namespace ZATCAMAUI
                     timeSpan = defaultTimespanForLogin;
                 }
 
-                idleTime = Preferences.Default.Get("timeOut",DateTime.Now.ToString());
-                idleTimeSpan = DateTime.Now.Subtract(DateTime.Parse(idleTime)).TotalMinutes;
+                var idleTime = Preferences.Default.Get("timeOut", DateTime.Now);
+                idleTimeSpan = DateTime.Now.Subtract(idleTime).TotalMinutes;
 
                 if (idleTimeSpan >= timeSpan)
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                    Preferences.Default.Set("timeOut",DateTime.Now);
+                        Preferences.Default.Set("timeOut", DateTime.Now);
                         HandleSessionTimeout();
                     });
 
@@ -744,9 +817,9 @@ namespace ZATCAMAUI
             }
             catch (Exception)
             {
-                
-                
-                
+
+
+
             }
         }
 

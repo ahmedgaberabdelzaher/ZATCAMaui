@@ -43,7 +43,7 @@
 
                 <buttons:SfButton
                     Margin="10"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Command="{Binding SkipCommand}"
                     CornerRadius="20"
                     FontFamily="{StaticResource SomarBold}"
@@ -55,7 +55,7 @@
 
                 <buttons:SfButton
                     Margin="10"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Clicked="ChangeLangButton_Clicked"
                     CornerRadius="20"
                     FontFamily="{StaticResource SomarBold}"
@@ -124,7 +124,7 @@
 
                 <buttons:SfButton
                     Margin="10"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Command="{Binding SkipCommand}"
                     CornerRadius="20"
                     FontFamily="{StaticResource SomarBold}"
@@ -137,7 +137,7 @@
 
                 <buttons:SfButton
                     Margin="10"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Clicked="ChangeLangButton_Clicked"
                     CornerRadius="20"
                     FontFamily="{StaticResource SomarBold}"

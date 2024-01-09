@@ -9,12 +9,10 @@
 
     <Application.Resources>
         <ResourceDictionary>
-            <!--  SYNCFUSION INTEGRATION  -->
-
             <ResourceDictionary.MergedDictionaries>
-                <themes:LightTheme />
-                <themes:Styles />
-                <themes:StylesNewUI />
+                <ResourceDictionary Source="Resources/Styles/LightTheme.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+                <ResourceDictionary Source="Resources/Styles/StylesNewUI.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <!--  Vat New UI  -->
             <Style TargetType="Label">
@@ -68,7 +66,7 @@
             <Color x:Key="SuccessBg">#1A008000</Color>
             <Color x:Key="PartialBg">#1A0996d4</Color>
             <Color x:Key="ErrorBg">#1AAA0C19</Color>
-            <Color x:Key="TiffanyBG">#4D4FBBBD</Color>
+            
 
 
             <!--  Vat New UI  -->

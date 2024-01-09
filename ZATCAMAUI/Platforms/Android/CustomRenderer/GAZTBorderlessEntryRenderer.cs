@@ -2,13 +2,9 @@
 using Android.Text;
 using Android.Text.Method;
 using Android.Views;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class GAZTBorderlessEntryRenderer : EntryRenderer

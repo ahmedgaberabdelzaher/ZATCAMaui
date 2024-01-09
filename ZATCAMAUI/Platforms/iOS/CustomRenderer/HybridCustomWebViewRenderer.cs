@@ -1,9 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 using WebKit;
-using Microsoft.Maui.Controls.Compatibility;
 using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Controls.Platform;
 using Foundation;
@@ -12,7 +10,6 @@ using ZATCAMAUI.Models;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Core.Exceptions;
 
-[assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridCustomWebViewRenderer))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class HybridCustomWebViewRenderer : WkWebViewRenderer
@@ -35,6 +32,10 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
+            try
+            {
+
+           
             base.OnElementChanged(e);
 
             if (e.OldElement != null)
@@ -67,7 +68,14 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 
             App.ArePreLoginLangCookiesSet = true;
             this.NavigationDelegate = new DisplayLinkWebViewDelegateNew((HybridWebView)Element);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
+
+
     }
 
     public class DisplayLinkWebViewDelegateNew : WKNavigationDelegate
@@ -108,7 +116,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     element.InvokeAction("requestTimedout");
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 
@@ -119,6 +127,10 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 
         public override void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
+            try
+            {
+
+           
 
             isUserLogingApiCalled = false;
             Uri apiUrl = webView.Url;
@@ -174,18 +186,26 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                         element.InvokeAction("displayLoginLoadingIndicator");
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
 
 
                 }
             }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public override void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
+            try
+            {
 
+            
             WKHttpCookieStore wKHttpCookieStore = webView.Configuration.WebsiteDataStore.HttpCookieStore;
 
             Uri tempUrl = webView.Url;
@@ -274,7 +294,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                         }
                     }
                 }
-                catch (GAZTInvalidDataException )
+                catch (GAZTInvalidDataException ex)
                 {
 
 
@@ -283,7 +303,7 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     App.LoginDataRetrieved.ResponseStatusMessage = "error";
                     element.InvokeAction("error");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
 
@@ -294,6 +314,11 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
                     element.InvokeAction("error");
                 }
             });
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         public override void DidFailNavigation(WKWebView webView, WKNavigation navigation, NSError error)
@@ -306,25 +331,33 @@ namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 
         public override void DecidePolicy(WKWebView webView, WKNavigationResponse navigationResponse, [BlockProxy(typeof(Action))] Action<WKNavigationResponsePolicy> decisionHandler)
         {
-            if (UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
+            try
             {
-
-            }
-            else
-            {
-                NSHttpUrlResponse response = navigationResponse.Response as NSHttpUrlResponse;
-                NSHttpCookie[] cookiesAll = NSHttpCookie.CookiesWithResponseHeaderFields(response.AllHeaderFields, response.Url);
-
-                foreach (NSHttpCookie cookie in cookiesAll)
+                if (UIDevice.CurrentDevice.CheckSystemVersion(12, 0))
                 {
-                    NSArray cookieArr = NSArray.FromObjects(cookie.Name, cookie.Value, cookie.Domain, cookie.Path);
-                    multiCookieArr.Add(cookieArr);
+
+                }
+                else
+                {
+                    NSHttpUrlResponse response = navigationResponse.Response as NSHttpUrlResponse;
+                    NSHttpCookie[] cookiesAll = NSHttpCookie.CookiesWithResponseHeaderFields(response.AllHeaderFields, response.Url);
+
+                    foreach (NSHttpCookie cookie in cookiesAll)
+                    {
+                        NSArray cookieArr = NSArray.FromObjects(cookie.Name, cookie.Value, cookie.Domain, cookie.Path);
+                        multiCookieArr.Add(cookieArr);
+                    }
+
+
                 }
 
+                decisionHandler(WKNavigationResponsePolicy.Allow);
+            }
+            catch (Exception ex)
+            {
 
             }
-
-            decisionHandler(WKNavigationResponsePolicy.Allow);
+            
         }
 
         public void Clear()

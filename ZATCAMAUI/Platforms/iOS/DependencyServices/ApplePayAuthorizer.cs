@@ -1,10 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿
 using Foundation;
 using PassKit;
 using UIKit;
 using ZATCAMAUI.Core.Interfaces;
+using ZATCAMAUI.Platforms.iOS.DependencyServices;
 
+[assembly: Dependency(typeof(ApplePayAuthorizer))]
 namespace ZATCAMAUI.Platforms.iOS.DependencyServices
 {
     public class ApplePayAuthorizer : PKPaymentAuthorizationViewControllerDelegate, IApplePayAuthorizer

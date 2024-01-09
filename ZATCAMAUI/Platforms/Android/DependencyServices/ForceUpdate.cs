@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Firebase.RemoteConfig;
 using ZATCAMAUI.Core.Interfaces;
 using ZATCAMAUI.Platforms.Android.DependencyServices;
 
@@ -20,9 +16,8 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
         private void SetDefault()
         {
             FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-               .SetDeveloperModeEnabled(false)
                .Build();
-            FirebaseRemoteConfig.Instance.SetConfigSettings(configSettings);
+            FirebaseRemoteConfig.Instance.SetConfigSettingsAsync(configSettings);
 
             Dictionary<string, Java.Lang.Object> dic = new Dictionary<string, Java.Lang.Object>
             {
@@ -32,7 +27,7 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
 
             };
 
-            FirebaseRemoteConfig.Instance.SetDefaults(dic);
+            FirebaseRemoteConfig.Instance.SetDefaultsAsync(dic);
         }
 
         public async Task FetchAndActivateAsync()
@@ -41,7 +36,7 @@ namespace ZATCAMAUI.Platforms.Android.DependencyServices
             await FirebaseRemoteConfig.Instance.FetchAsync(0);
 
             //Activate new values
-            FirebaseRemoteConfig.Instance.ActivateFetched();
+            FirebaseRemoteConfig.Instance.FetchAndActivate();
         }
 
 

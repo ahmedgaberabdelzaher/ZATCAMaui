@@ -146,7 +146,7 @@
             <buttons:SfButton
                 x:Name="btnAddAccount"
                 Margin="10,0,10,10"
-                BackgroundColor="{StaticResource Secondary}"
+                Background="{StaticResource Secondary}"
                 Clicked="IbanAddButtonClicked"
                 CornerRadius="14"
                 FontAttributes="Bold"
@@ -160,7 +160,7 @@
             <buttons:SfButton
                 x:Name="btnDone"
                 Margin="10,0,10,10"
-                BackgroundColor="{StaticResource Secondary}"
+                Background="{StaticResource Secondary}"
                 Clicked="CloseIban_Tapped"
                 CornerRadius="14"
                 FontAttributes="Bold"

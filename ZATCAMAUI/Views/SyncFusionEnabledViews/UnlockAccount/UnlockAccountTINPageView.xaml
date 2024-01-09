@@ -162,7 +162,7 @@
                             <buttons:SfButton
                                 x:Name="btnVerify"
                                 Margin="0,60,0,60"
-                                BackgroundColor="{StaticResource Secondary}"
+                                Background="{StaticResource Secondary}"
                                 Clicked="btnVerify_Clicked"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
@@ -461,7 +461,7 @@
                             <buttons:SfButton
                                 x:Name="btnResendVerificationCode"
                                 Margin="0,60,0,0"
-                                BackgroundColor="{Binding ButtonDisableColor}"
+                                Background="{Binding ButtonDisableColor}"
                                 Command="{Binding OnResendOTPClicked}"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
@@ -477,7 +477,7 @@
 
                             <buttons:SfButton
                                 Margin="0,50,0,50"
-                                BackgroundColor="Transparent"
+                                Background="Transparent"
                                 Command="{Binding OnResendOTPClicked}"
                                 IsEnabled="{Binding IsResendOTPEnabled}"
                                 Text="{x:Static ResourceManager:AppResources.ResendVerificationCode}"
@@ -487,7 +487,7 @@
                             <buttons:SfButton
                                 x:Name="btnConfirmOtp"
                                 Margin="0,30,0,60"
-                                BackgroundColor="{Binding VerifyButtonDisableColor}"
+                                Background="{Binding VerifyButtonDisableColor}"
                                 Command="{Binding ConfirmOtpBtnClicked}"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
@@ -736,7 +736,7 @@
                             <buttons:SfButton
                                 x:Name="btnConfirmNewPassword"
                                 Margin="0,16,0,60"
-                                BackgroundColor="{StaticResource Secondary}"
+                                Background="{StaticResource Secondary}"
                                 Command="{Binding ConfirmPasswordBtnClicked}"
                                 CornerRadius="10"
                                 FontAttributes="Bold"
@@ -802,7 +802,7 @@
                         VerticalOptions="End">
                         <buttons:SfButton
                             x:Name="btnLogin"
-                            BackgroundColor="{StaticResource Secondary}"
+                            Background="{StaticResource Secondary}"
                             Clicked="TappedOnTinContentBackButton"
                             CornerRadius="10"
                             FontAttributes="Bold"

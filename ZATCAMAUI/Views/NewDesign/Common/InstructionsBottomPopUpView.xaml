@@ -225,7 +225,7 @@
 
                         <buttons:SfButton
                             Margin="0,24,0,24"
-                            BackgroundColor="{Binding ContinueBackGroundColor}"
+                            Background="{Binding ContinueBackGroundColor}"
                             Command="{Binding InstructionsContinueClick}"
                             IsEnabled="{Binding IsContinueEnabled}"
                             Style="{StaticResource PrimaryButtonStyle}"
@@ -409,7 +409,7 @@
 
                         <buttons:SfButton
                             Margin="0,24,0,24"
-                            BackgroundColor="{Binding ContinueBackGroundColor}"
+                            Background="{Binding ContinueBackGroundColor}"
                             Command="{Binding InstructionsContinueClick}"
                             IsEnabled="{Binding IsContinueEnabled}"
                             Style="{StaticResource PrimaryButtonStyle}"
@@ -547,7 +547,7 @@
 
                         <buttons:SfButton
                             Margin="0,24,0,24"
-                            BackgroundColor="{Binding ContinueBackGroundColor}"
+                            Background="{Binding ContinueBackGroundColor}"
                             Command="{Binding TermsContinueClick}"
                             IsEnabled="{Binding IsContinueEnabled}"
                             Style="{StaticResource PrimaryButtonStyle}"

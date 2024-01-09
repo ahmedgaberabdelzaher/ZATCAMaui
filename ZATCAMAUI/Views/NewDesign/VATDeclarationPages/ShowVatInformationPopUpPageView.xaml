@@ -101,7 +101,7 @@
                 <buttons:SfButton
                     x:Name="FirstLink"
                     Margin="0,-10,0,3"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Clicked="FirstLinkClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding FirstLinkText}"
@@ -120,7 +120,7 @@
                 <buttons:SfButton
                     x:Name="SecondLink"
                     Margin="0,-10,0,3"
-                    BackgroundColor="Transparent"
+                    Background="Transparent"
                     Clicked="SecondLinkClicked"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{Binding SecondLinkText}"

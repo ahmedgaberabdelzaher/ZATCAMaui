@@ -24,9 +24,8 @@
     <Color x:Key="NeturalInProgress">#fcf5e9</Color>
     <Color x:Key="White">#FFFFFF</Color>
     <Color x:Key="Yellow">#0996d4</Color>
-
-
-
+    <Color x:Key="TiffanyBG">#4D4FBBBD</Color>
+    <Color x:Key="WhiteTextColor">#FFFFFF</Color>
 
 
     <!--#endregion-->
@@ -41,7 +40,7 @@
         <Setter Property="WidthRequest" Value="366" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
+        <Setter Property="Background" Value="{StaticResource Secondary}" />
     </Style>
 
     <Style x:Key="SecondaryButtonStyle" TargetType="buttons:SfButton">
@@ -53,8 +52,8 @@
         <Setter Property="WidthRequest" Value="366" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="BorderColor" Value="White" />
+        <Setter Property="Background" Value="White" />
+        <Setter Property="Stroke" Value="White" />
     </Style>
 
     <Style x:Key="NoBackgroundButtonStylePrimary" TargetType="buttons:SfButton">
@@ -65,7 +64,7 @@
         <Setter Property="HeightRequest" Value="48" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
     <Style x:Key="ButtonBlackBold16" TargetType="buttons:SfButton">
@@ -76,7 +75,7 @@
         <Setter Property="HeightRequest" Value="48" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
     <!--  Label Styles which is inside the frame and used as a button  -->
@@ -96,7 +95,7 @@
         <Setter Property="HeightRequest" Value="48" />
         <Setter Property="CornerRadius" Value="14" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 
 
@@ -353,7 +352,7 @@
         <!--<Setter Property="Margin" Value="10,0,10,0" />
          <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 14,14,14,14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="Shadow" Value="{StaticResource NeutralLightGrey}" />-->
@@ -370,7 +369,7 @@
     <Style x:Key="GreyBorderFrameButtonWithShadow" TargetType="Border">
         <Setter Property="HeightRequest" Value="56" />
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 14,14,14,14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />-->
@@ -380,7 +379,7 @@
         <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 14,14,14,14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="HeightRequest" Value="56" />
         <Setter Property="WidthRequest" Value="366" />
@@ -392,7 +391,7 @@
         <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 14,14,14,14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
@@ -400,9 +399,9 @@
     </Style>
     <Style x:Key="GreyBorderFrame" TargetType="Border">
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 14,14,14,14" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 14,14,14,14" />
         <!--<Setter Property="HasShadow" Value="False" />-->
-        <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="Stroke" Value="{StaticResource NeutralLightGrey}" />
         <!--<Setter Property="ShadowColor" Value="{StaticResource NeutralLightGrey}" />-->
     </Style>
 
@@ -416,10 +415,14 @@
     <Style x:Key="InputTableTextInputLayoutStyle" TargetType="inputLayout:SfTextInputLayout">
         <Setter Property="Margin" Value="10,-6,10,-6" />
         <Setter Property="ContainerType" Value="Outlined" />
-        <Setter Property="UnfocusedColor" Value="#B1B1B1" />
         <Setter Property="OutlineCornerRadius" Value="14" />
-        <Setter Property="FocusedColor" Value="{StaticResource Primary}" />
-        <Setter Property="ErrorColor" Value="#B00020" />
+        <Setter Property="Stroke" Value="{StaticResource Primary}" />
+        <Setter Property="ErrorLabelStyle" >
+            <Setter.Value >
+                <inputLayout:LabelStyle TextColor="#B00020"/>
+            </Setter.Value>
+
+        </Setter>
         <Setter Property="HasError" Value="False" />
         <Setter Property="HeightRequest" Value="48" />
         <Setter Property="WidthRequest" Value="171" />
@@ -459,10 +462,14 @@
     <Style x:Key="InputTableTextInputLayoutStyleWuthoutHeighandWidth" TargetType="inputLayout:SfTextInputLayout">
         <Setter Property="Margin" Value="10,-6,10,-6" />
         <Setter Property="ContainerType" Value="Outlined" />
-        <Setter Property="UnfocusedColor" Value="#B1B1B1" />
         <Setter Property="OutlineCornerRadius" Value="14" />
-        <Setter Property="FocusedColor" Value="{StaticResource Primary}" />
-        <Setter Property="ErrorColor" Value="#B00020" />
+        <Setter Property="Stroke" Value="{StaticResource Primary}" />
+         <Setter Property="ErrorLabelStyle" >
+            <Setter.Value >
+                <inputLayout:LabelStyle TextColor="#B00020"/>
+            </Setter.Value>
+
+        </Setter>
         <Setter Property="HasError" Value="False" />
 
     </Style>
@@ -491,45 +498,115 @@
 
     <!--  Calendar Picker Styles  -->
     <Style x:Key="CalendarPickerStyle" TargetType="customControl:CustomDatePicker">
-        <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeaderBackgroundColor" Value="Transparent" />
-        <Setter Property="SelectionBackgroundColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="ShowFooter" Value="False" />
-        <Setter Property="ShowHeader" Value="False" />
-        <Setter Property="ShowColumnHeader" Value="True" />
-        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent" />
-        <Setter Property="ColumnHeaderHeight" Value="40" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Mode" Value="Default" />
-        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="ColumnHeaderFontAttribute" Value="Bold" />
-        <Setter Property="ColumnHeaderFontSize" Value="16" />
-        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="SelectedItemFontSize" Value="16" />
-        <Setter Property="BorderColor" Value="Transparent" />
         <Setter Property="HeightRequest" Value="250" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+
+         <Setter Property="TextStyle">
+            <Setter.Value>
+                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+            </Setter.Value>
+        </Setter>
+
+         <Setter Property="SelectionView">
+            <Setter.Value>
+                <syncfusion:PickerSelectionView
+                        Background="{StaticResource NeutralGreay}" />
+
+            </Setter.Value>
+
+        </Setter>
+
+         <Setter Property="SelectedTextStyle">
+            <Setter.Value>
+                <syncfusion:PickerTextStyle
+                        FontSize="16"
+                        TextColor="{StaticResource NeutralBlack}" />
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="HeaderView">
+            <Setter.Value>
+                 <syncfusion:PickerHeaderView
+                    Background="Transparent"/>
+            </Setter.Value>
+        </Setter>
+
+         <Setter Property="ColumnHeaderView">
+            <Setter.Value>
+                 <syncfusion:PickerColumnHeaderView Height="40" >
+                    <syncfusion:PickerColumnHeaderView.TextStyle  >
+                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"/>
+
+                    </syncfusion:PickerColumnHeaderView.TextStyle>
+
+                </syncfusion:PickerColumnHeaderView>
+            </Setter.Value>
+
+        </Setter>
+
     </Style>
 
     <!--  Picker Style  -->
     <Style x:Key="PickerStyle" TargetType="syncfusion:SfPicker">
-        <Setter Property="SelectedItemTextColor" Value="{StaticResource NeutralBlack}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeaderBackgroundColor" Value="Transparent" />
-        <Setter Property="SelectionBackgroundColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="ShowFooter" Value="False" />
-        <Setter Property="ShowHeader" Value="False" />
-        <Setter Property="ShowColumnHeader" Value="True" />
-        <Setter Property="ColumnHeaderBackgroundColor" Value="Transparent" />
-        <Setter Property="ColumnHeaderHeight" Value="0" />
-        <Setter Property="PickerMode" Value="Default" />
-        <Setter Property="ShowHeader" Value="False" />
-        <Setter Property="ColumnHeaderTextColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="ColumnHeaderFontAttribute" Value="Bold" />
-        <Setter Property="ColumnHeaderFontSize" Value="16" />
-        <Setter Property="UnSelectedItemTextColor" Value="{StaticResource NeutralGreay}" />
-        <Setter Property="SelectedItemFontSize" Value="16" />
-        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Mode" Value="Default" />
+
+        <Setter Property="TextStyle">
+            <Setter.Value>
+                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="ColumnHeaderView">
+            <Setter.Value>
+                 <syncfusion:PickerColumnHeaderView Height="0" >
+                    <syncfusion:PickerColumnHeaderView.TextStyle  >
+                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}"
+                                                    FontAttributes="Bold"
+                                                    FontSize="16"/>
+
+                    </syncfusion:PickerColumnHeaderView.TextStyle>
+
+                </syncfusion:PickerColumnHeaderView>
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="HeaderView">
+            <Setter.Value>
+                 <syncfusion:PickerHeaderView
+                    Background="Transparent"/>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="SelectionView">
+            <Setter.Value>
+                <syncfusion:PickerSelectionView
+                        Background="{StaticResource NeutralGreay}" />
+
+            </Setter.Value>
+
+        </Setter>
+
+        <Setter Property="SelectedTextStyle">
+            <Setter.Value>
+                <syncfusion:PickerTextStyle
+                        FontSize="16"
+                        TextColor="{StaticResource NeutralBlack}" />
+
+            </Setter.Value>
+
+        </Setter>
+
+
         <Setter Property="HeightRequest" Value="200" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
@@ -644,7 +721,7 @@
         <Setter Property="HorizontalOptions" Value="End" />
         <Setter Property="VerticalOptions" Value="Center" />-->
         <Setter Property="BackgroundColor" Value="White" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 12,12,12,12" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 12,12,12,12" />
         <!--<Setter Property="HasShadow" Value="False" />-->
         <Setter Property="Stroke" Value="{StaticResource NeutralGreay}" />
         <!--<Setter Property="ShadowColor" Value="{StaticResource NeutralGreay}" />-->
@@ -725,19 +802,37 @@
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HeightRequest" Value="32" />
-        <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
-        <Setter Property="ChipBorderWidth" Value="1" />
+        <Setter Property="ChipStroke" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ChipStrokeThickness" Value="1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="SelectedChipBackgroundColor" Value="#1A0996d4" />
+        <Setter Property="ChipBackground" >
+            <Setter.Value>
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <!--<VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="ChipBackground" Value="white" />
+                            </VisualState.Setters>
+                        </VisualState>-->
+                        <VisualState x:Name="Selected">
+                            <VisualState.Setters>
+                                <Setter Property="ChipBackground" Value="#1A0996d4" />
+                                </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style x:Key="ReturnsChipGroup" TargetType="inputLayout:SfChipGroup">
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HeightRequest" Value="32" />
-        <Setter Property="ChipBorderColor" Value="{StaticResource NeutralLightGrey}" />
-        <Setter Property="ChipBorderWidth" Value="1" />
+        <Setter Property="ChipStroke" Value="{StaticResource NeutralLightGrey}" />
+        <Setter Property="ChipStrokeThickness" Value="1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
 

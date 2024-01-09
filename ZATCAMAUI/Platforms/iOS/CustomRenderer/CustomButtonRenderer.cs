@@ -1,11 +1,7 @@
-﻿using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+﻿using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using Microsoft.Maui.Controls.Platform;
 using UIKit;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class CustomButtonRenderer : ButtonRenderer

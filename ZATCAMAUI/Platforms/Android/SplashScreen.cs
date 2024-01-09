@@ -1,8 +1,9 @@
-﻿using System;
-using Android.App;
+﻿using Android.App;
 using Android.OS;
 using Android.Runtime;
 using Android.Content.PM;
+using Android.Gms.Common;
+
 namespace ZATCAMAUI.Platforms.Android
 {
     [Activity(MainLauncher = true, Theme = "@style/Theme.Splash", NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait)]

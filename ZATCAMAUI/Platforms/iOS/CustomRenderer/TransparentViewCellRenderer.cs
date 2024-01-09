@@ -3,7 +3,6 @@ using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using UIKit;
 using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(ViewCell), typeof(TransparentViewCellRenderer))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class TransparentViewCellRenderer : ViewCellRenderer

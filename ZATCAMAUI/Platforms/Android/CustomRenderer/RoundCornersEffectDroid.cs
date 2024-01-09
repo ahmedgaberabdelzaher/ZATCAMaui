@@ -3,11 +3,9 @@ using Android.Views;
 using Microsoft.Maui.Controls.Platform;
 using System.ComponentModel;
 using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 using View = Android.Views.View;
 
 [assembly: ResolutionGroupName("MyComany")]
-[assembly: ExportEffect(typeof(RoundCornersEffectDroid), nameof(RoundCornersEffect))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class RoundCornersEffectDroid : PlatformEffect

@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:behavior="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards="clr-namespace:ZATCAMAUI.Core"
+    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
@@ -68,7 +68,6 @@
                                 BorderColor="{StaticResource NeutralLightGrey}"
                                 BorderWidth="1"
                                 CornerRadius="16"
-                                HasShadow="False"
                                 HorizontalOptions="FillAndExpand"
                                 VerticalOptions="FillAndExpand">
 
@@ -118,19 +117,19 @@
                                                 <Border.Triggers>
                                                     <DataTrigger
                                                         Binding="{Binding StatusText}"
-                                                        TargetType="border:SfBorder"
+                                                        TargetType="Border"
                                                         Value="{x:Static ResourceManager:AppResources.BillsNotPaid}">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource ErrorBg}" />
                                                     </DataTrigger>
                                                     <DataTrigger
                                                         Binding="{Binding StatusText}"
-                                                        TargetType="border:SfBorder"
+                                                        TargetType="Border"
                                                         Value="{x:Static ResourceManager:AppResources.PartiallyPaid}">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource PartialBg}" />
                                                     </DataTrigger>
                                                     <DataTrigger
                                                         Binding="{Binding StatusText}"
-                                                        TargetType="border:SfBorder"
+                                                        TargetType="Border"
                                                         Value="{x:Static ResourceManager:AppResources.Paid}">
                                                         <Setter Property="BackgroundColor" Value="{StaticResource SuccessBg}" />
                                                     </DataTrigger>

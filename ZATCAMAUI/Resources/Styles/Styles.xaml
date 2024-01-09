@@ -12,6 +12,8 @@
 
     <Color x:Key="OrangeyYellow">#0996d4</Color>
     <Color x:Key="Transparent">Transparent</Color>
+    <Color x:Key="SecondaryNew">#4FBBBD</Color>
+    <Color x:Key="Primary">#002447</Color>
     <x:String x:Key="Cart">&#xe708;</x:String>
     <x:String x:Key="Bell">&#xe700;</x:String>
     <x:String x:Key="Filter">&#xe702;</x:String>
@@ -43,32 +45,9 @@
     <Color x:Key="FacebookBlue">#4267B2</Color>
     <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
     <x:String x:Key="AvatarIcon">&#xe723;</x:String>
-    <Color x:Key="Transparent">Transparent</Color>
-    <x:String x:Key="Cart">&#xe708;</x:String>
-    <x:String x:Key="Bell">&#xe700;</x:String>
-    <x:String x:Key="Filter">&#xe702;</x:String>
-    <x:String x:Key="Sort">&#xe70a;</x:String>
-    <x:String x:Key="BurgerMenu">&#xe72e;</x:String>
-    <x:String x:Key="Back">&#xe709;</x:String>
-    <x:String x:Key="Search">&#xe705;</x:String>
-    <x:String x:Key="Share">&#xe704;</x:String>
-    <x:String x:Key="Next">&#xe71a;</x:String>
-    <x:String x:Key="Account">&#xe70e;</x:String>
-    <x:String x:Key="Mail">&#xe725;</x:String>
-    <x:String x:Key="Help">&#xe72c;</x:String>
-    <x:String x:Key="Close">&#xe724;</x:String>
-    <x:String x:Key="Edit">&#xe727;</x:String>
-    <x:String x:Key="Menu">&#xe72e;</x:String>
     <x:String x:Key="DownLoad">&#xe711;</x:String>
-    <x:String x:Key="More">&#xe719;</x:String>
-    <x:String x:Key="Show">&#xe711;</x:String>
-    <x:String x:Key="More2">&#xe715;</x:String>
-    <x:String x:Key="Phone">&#xe71c;</x:String>
-    <x:String x:Key="contactus">&#xe723;</x:String>
-    <x:String x:Key="Viewd">&#xe71b;</x:String>
     <x:String x:Key="ReverseBack">&#xe71a;</x:String>
     <x:String x:Key="Home">&#xe706;</x:String>
-    <Color x:Key="Green">#7ed321</Color>
     <x:String x:Key="ContactUS">&#xe71c;</x:String>
     <x:String x:Key="Attach">&#xe71e;</x:String>
     <x:String x:Key="Delete">&#xe716;</x:String>
@@ -77,12 +56,28 @@
 
     <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
     <!--  Common style for Content pages  -->
-    <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+    <Style x:Key="ContentPageStyle1" TargetType="ContentPage">
         <Setter Property="BackgroundColor" Value="{OnIdiom Default={DynamicResource Gray-White}, Desktop={DynamicResource Gray-100}, Converter={StaticResource DynamicResourceToColorConverter}}" />
     </Style>
     <Style TargetType="sfControl:TitleView">
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
     </Style>
+
+     <!--  Common button style  -->
+    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
+        <Setter Property="Margin" Value="0,10,0,24" />
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="WidthRequest" Value="245" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
+        <Setter Property="Background" Value="{StaticResource Secondary}" />
+        <!--  Value="{StaticResource Gray-White}"/>  -->
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
     <!--  Common style for entries  -->
     <Style x:Key="ChatSearchEntryStyle" TargetType="control:GAZTBorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
@@ -102,14 +97,14 @@
         <Setter Property="Padding" Value="0" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalOptions" Value="Fill" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
     <!--  Common style for icon buttons  -->
     <Style x:Key="IconButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="Background" Value="{StaticResource Transparent}" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
@@ -130,12 +125,6 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
-    <Style x:Key="IconImageStyle" TargetType="Image">
-        <Setter Property="Margin" Value="5,8" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-    </Style>
     <!--  Common style for  Label  -->
     <Style x:Key="LabelStyle" TargetType="Label">
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_MEDIUM}" />
@@ -149,17 +138,12 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
         <Setter Property="MaxLines" Value="2" />
     </Style>
-    <!--  Common style for separator BoxView  -->
-    <Style x:Key="SeparatorStyle" TargetType="BoxView">
-        <Setter Property="HeightRequest" Value="1" />
-        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-200}" />
-    </Style>
     <!--  Common style for SfListView  -->
     <Style x:Key="SfListViewStyle" TargetType="listView:SfListView">
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
-        <Setter Property="FocusBorderThickness" Value="0" />
-        <Setter Property="SelectionBackgroundColor" Value="Transparent" />
-        <Setter Property="IsScrollBarVisible" Value="False" />
+        <!--<Setter Property="FocusBorderThickness" Value="0" />-->
+        <Setter Property="SelectionBackground" Value="Transparent" />
+        <Setter Property="ScrollBarVisibility" Value="Never" />
         <Setter Property="VerticalOptions" Value="FillAndExpand" />
     </Style>
     <!--  Header Template for Catalog SfListView  -->
@@ -178,7 +162,7 @@
                 CornerRadius="4"
                 HeightRequest="32"
                 Style="{StaticResource SfButtonStyle}">
-                <buttons:SfButton.Content>
+                <!--<buttons:SfButton.Content>
                     <StackLayout
                         Padding="8,5,8,6"
                         Orientation="Horizontal"
@@ -196,14 +180,14 @@
                             Text="Filter"
                             VerticalTextAlignment="Center" />
                     </StackLayout>
-                </buttons:SfButton.Content>
+                </buttons:SfButton.Content>-->
             </buttons:SfButton>
             <!--  Sort Button  -->
             <buttons:SfButton
                 Command="{Binding SortCommand}"
                 CornerRadius="4"
                 Style="{StaticResource SfButtonStyle}">
-                <buttons:SfButton.Content>
+                <!--<buttons:SfButton.Content>
                     <StackLayout
                         Padding="8,5,8,6"
                         Orientation="Horizontal"
@@ -219,13 +203,13 @@
                             Style="{StaticResource OptionButtonLabelStyle}"
                             Text="Sorting" />
                     </StackLayout>
-                </buttons:SfButton.Content>
+                </buttons:SfButton.Content>-->
             </buttons:SfButton>
         </StackLayout>
     </DataTemplate>
     <!--  Common style for SfButtons  -->
-    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
-        <Setter Property="BackgroundColor" Value="Transparent" />
+    <Style x:Key="SfButtonStyle2" TargetType="buttons:SfButton">
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_REGULAR}" />
         <Setter Property="FontSize" Value="16" />
@@ -265,8 +249,8 @@
         <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
     </Style>
     <!--  Common style for various Lables  -->
@@ -302,14 +286,14 @@
         x:Key="RoundButtonStyle"
         BasedOn="{StaticResource SfButtonStyle}"
         TargetType="buttons:SfButton">
-        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
-        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="Stroke" Value="{DynamicResource Gray-300}" />
+        <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="CornerRadius" Value="22" />
         <Setter Property="WidthRequest" Value="44" />
         <Setter Property="HeightRequest" Value="44" />
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="BackgroundGradient">
+        <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush>
                     <GradientStop Offset="0" Color="{DynamicResource PrimaryColor}" />
@@ -332,44 +316,15 @@
     </Style>
 
 
-    <Style x:Key="LabelStyle" TargetType="Label">
+    <Style x:Key="LabelStyle1" TargetType="Label">
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
         <Setter Property="LineHeight" Value="{OnPlatform Android=1.25, Default=-1}" />
         <Setter Property="TextColor" Value="White" />
     </Style>
 
-    <!--  Common button style  -->
-    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-        <Setter Property="VerticalOptions" Value="EndAndExpand" />
-        <Setter Property="Margin" Value="0,10,0,24" />
-        <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="WidthRequest" Value="245" />
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
-        <!--  Value="{StaticResource Gray-White}"/>  -->
-        <Setter Property="TextColor" Value="White" />
-    </Style>
+   
 
-
-
-    <!--  Common style for navigation bar buttons  -->
-    <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
-        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="WidthRequest" Value="38" />
-        <Setter Property="HeightRequest" Value="38" />
-        <Setter Property="CornerRadius" Value="4" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalOptions" Value="Fill" />
-        <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="BorderWidth" Value="0" />
-        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
-    </Style>
     <!--  Common style for search entries  -->
     <Style x:Key="SearchEntryStyle" TargetType="control:GAZTBorderlessEntry">
         <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
@@ -416,36 +371,14 @@
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
         <Setter Property="BackgroundImageSource">
             <OnPlatform
-                x:TypeArguments="ImageSource"
-                Android="sf_LoginBackground.png"
-                WinPhone="sf_LoginBackground.png"
-                iOS="sf_LoginBackground.png" />
+                x:TypeArguments="ImageSource">
+                <On Platform="Android" Value="sf_LoginBackground.png"/>
+                <On Platform="iOS" Value="sf_LoginBackground.png"/>
+
+            </OnPlatform>
         </Setter>
     </Style>
-    <!--  Common style for icon label  -->
-    <Style x:Key="IconLabelStyle" TargetType="Label">
-        <Setter Property="Margin" Value="5,8" />
-        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
-        <Setter Property="FontSize" Value="28" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
-    </Style>
-    <!--  Common style for icon buttons  -->
-    <Style x:Key="IconButtonStyle" TargetType="buttons:SfButton">
-        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
-        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
-        <Setter Property="FontSize" Value="18" />
-        <Setter Property="HorizontalTextAlignment" Value="Center" />
-        <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
-    </Style>
+
     <!--  Common style for VAT Label Icon  -->
     <Style x:Key="IconLabelStyleVAT" TargetType="Label">
         <Setter Property="Margin" Value="5" />
@@ -495,7 +428,7 @@
         <Setter Property="LineHeight" Value="{OnPlatform Default=0.7, Android=0.7}" />
     </Style>
     <!--  Common style for labels  -->
-    <Style x:Key="LabelStyle" TargetType="Label">
+    <Style x:Key="LabelStyle2" TargetType="Label">
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="LineHeight" Value="1.25" />
@@ -531,15 +464,15 @@
         </Setter>
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
-        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="Background" Value="{StaticResource Primary}" />
     </Style>
     <!--  Common style for buttons  -->
-    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+    <Style x:Key="SfButtonStyle1" TargetType="buttons:SfButton">
         <!--<Setter Property="BackgroundGradient">
             <Setter.Value>
                 <graphics:SfLinearGradientBrush>
@@ -552,7 +485,7 @@
         </Setter>-->
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
-        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="StrokeThickness" Value="0" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="CornerRadius" Value="4" />
@@ -560,7 +493,7 @@
     </Style>
     <!--  Common style for flat buttons  -->
     <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
-        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="TextColor" Value="{StaticResource Secondary}" />
         <Setter Property="FontFamily" Value="{StaticResource GAZT_FONT_BOLD}" />
         <Setter Property="FontSize" Value="14" />
@@ -570,7 +503,7 @@
     <Style x:Key="SfBorderStyle" TargetType="Border">
         <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
         <Setter Property="Stroke" Value="Transparent" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 4,4,4,4" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
         <Setter Property="StrokeThickness" Value="1" />
     </Style>
     <!--  Common style for gradient view  -->
@@ -597,14 +530,14 @@
     </Style>
     <Style x:Key="FormBorderStyle" TargetType="Border">
         <Setter Property="Stroke" Value="{DynamicResource Gray-300}" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 4,4,4,4" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
         <Setter Property="Padding" Value="12,8" />
         <Setter Property="Margin" Value="0,8" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
     </Style>
     <Style x:Key="BusinessFormBorderStyle" TargetType="Border">
         <Setter Property="Stroke" Value="{DynamicResource Gray-300}" />
-        <Setter Property="CornerRadius" Value="RoundRectangle 4,4,4,4" />
+        <Setter Property="StrokeShape" Value="RoundRectangle 4,4,4,4" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
     </Style>

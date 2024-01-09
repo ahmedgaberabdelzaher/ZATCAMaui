@@ -1,15 +1,11 @@
 ﻿using Android.Content;
 using Android.Views;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Platform;
 using System.ComponentModel;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 using Color = Android.Graphics.Color;
 
-[assembly: ExportRenderer(typeof(CustomButton), typeof(CustomButtonRenderer))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class CustomButtonRenderer : ButtonRenderer

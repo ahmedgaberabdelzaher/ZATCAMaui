@@ -1,10 +1,7 @@
 ﻿using Foundation;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using UIKit;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(Page), typeof(KeyboardRender))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class KeyboardRender : PageRenderer

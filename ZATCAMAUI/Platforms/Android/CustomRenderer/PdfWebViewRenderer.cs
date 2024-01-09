@@ -1,12 +1,8 @@
 ﻿using Android.Content;
 using Android.Views;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(MyWebView), typeof(PdfWebViewRenderer))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class PdfWebViewRenderer : WebViewRenderer

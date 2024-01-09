@@ -2,10 +2,8 @@
 using Microsoft.Maui.Controls.Platform;
 using System.ComponentModel;
 using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 
 [assembly: ResolutionGroupName("MyCompany")]
-[assembly: ExportEffect(typeof(RoundCornersEffectIOS), nameof(RoundCornersEffect))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class RoundCornersEffectIOS : PlatformEffect

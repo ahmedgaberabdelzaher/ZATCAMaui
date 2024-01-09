@@ -1,11 +1,8 @@
 ﻿using Android.Content;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
 using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(CustomLabel), typeof(CustomLabelRenderer))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class CustomLabelRenderer : LabelRenderer

@@ -8,7 +8,7 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards="clr-namespace:ZATCAMAUI.Core"
+    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:commonView="clr-namespace:ZATCAMAUI.Views.NewDesign.Common"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -153,7 +153,7 @@
                                 <buttons:SfButton
                                     Grid.Row="0"
                                     Grid.Column="1"
-                                    BackgroundColor="#cee0dd"
+                                    Background="#cee0dd"
                                     CornerRadius="20"
                                     HorizontalOptions="EndAndExpand"
                                     ImageSize="25"
@@ -192,7 +192,6 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                             WidthRequest="171">
@@ -217,7 +216,6 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedStayMoreThanKSAOption}"
                                             WidthRequest="171">
@@ -251,7 +249,6 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedOwnRentOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                             WidthRequest="171">
@@ -277,7 +274,6 @@
                                             Grid.Row="0"
                                             Grid.Column="0"
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedOwnRentOption}"
                                             WidthRequest="171">
@@ -310,7 +306,6 @@
                                         <cards:SfCardView
                                             x:Name="NoneOfTheAboveCard"
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedNoneOfTheAboveOption, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                             WidthRequest="171">
@@ -333,7 +328,6 @@
                                         </cards:SfCardView>
                                         <cards:SfCardView
                                             CornerRadius="20"
-                                            HasShadow="False"
                                             HeightRequest="104"
                                             IsVisible="{Binding IsClickedNoneOfTheAboveOption}"
                                             WidthRequest="171">
@@ -509,7 +503,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedPermanentLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -532,7 +525,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedPermanentLegalEntity}"
                                                 WidthRequest="171">
@@ -568,7 +560,6 @@
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -593,7 +584,6 @@
                                                 Grid.Row="0"
                                                 Grid.Column="0"
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedOtherTaxableIncomeLegalEntity}"
                                                 WidthRequest="171">
@@ -648,7 +638,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -671,7 +660,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedABranchOfNonResidentCompanyPE}"
                                                 WidthRequest="171">
@@ -705,7 +693,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedConstructionSitePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -728,7 +715,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedConstructionSitePE}"
                                                 WidthRequest="171">
@@ -762,7 +748,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedInstallationPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -785,7 +770,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedInstallationPE}"
                                                 WidthRequest="171">
@@ -819,7 +803,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedAFixedBasePE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -842,7 +825,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedAFixedBasePE}"
                                                 WidthRequest="171">
@@ -876,7 +858,6 @@
                                             </Grid.GestureRecognizers>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedNonResidentPartnerPE, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}"
                                                 WidthRequest="171">
@@ -899,7 +880,6 @@
                                             </cards:SfCardView>
                                             <cards:SfCardView
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 IsVisible="{Binding IsClickedNonResidentPartnerPE}"
                                                 WidthRequest="171">
@@ -950,7 +930,6 @@
                                             <cards:SfCardView
                                                 Margin="0,0,24,0"
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -991,7 +970,6 @@
                                             <cards:SfCardView
                                                 Margin="0,0,24,0"
                                                 CornerRadius="20"
-                                                HasShadow="False"
                                                 HeightRequest="104"
                                                 WidthRequest="171">
                                                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1444,7 +1422,6 @@
                                                 <cards:SfCardView
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
-                                                    HasShadow="False"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -1472,7 +1449,6 @@
                                                 <cards:SfCardView
                                                     Margin="0,0,24,0"
                                                     CornerRadius="20"
-                                                    HasShadow="False"
                                                     HeightRequest="104"
                                                     WidthRequest="171">
                                                     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2139,8 +2115,7 @@
                                     BackgroundColor="White"
                                     BorderColor="{StaticResource NeutralLightGrey}"
                                     BorderWidth="0.7"
-                                    CornerRadius="10"
-                                    HasShadow="False">
+                                    CornerRadius="10">
                                     <Grid
                                         x:Name="GridItem"
                                         Padding="12"
@@ -2224,7 +2199,6 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
-                                        HasShadow="False"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2252,7 +2226,6 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
-                                        HasShadow="False"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2300,7 +2273,6 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
-                                        HasShadow="False"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2327,7 +2299,6 @@
                                     <cards:SfCardView
                                         Margin="0,0,24,0"
                                         CornerRadius="20"
-                                        HasShadow="False"
                                         HeightRequest="104"
                                         WidthRequest="171">
                                         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
@@ -2449,8 +2420,7 @@
                             Padding="0"
                             BackgroundColor="Transparent"
                             BorderColor="{StaticResource NeutralLightGrey}"
-                            BorderWidth="1"
-                            HasShadow="False">
+                            BorderWidth="1">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid
                                     Padding="16"
@@ -2593,8 +2563,7 @@
                             Padding="0"
                             BackgroundColor="Transparent"
                             BorderColor="{StaticResource NeutralLightGrey}"
-                            BorderWidth="1"
-                            HasShadow="False">
+                            BorderWidth="1">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid
                                     Padding="16"
@@ -2896,7 +2865,6 @@
                             BackgroundColor="Transparent"
                             BorderColor="{StaticResource NeutralLightGrey}"
                             BorderWidth="1"
-                            HasShadow="False"
                             IsVisible="{Binding IsSaudi, Converter={StaticResource xBoolToVisibilityConverter}, ConverterParameter='invert'}">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid
@@ -3029,8 +2997,7 @@
                             Padding="0"
                             BackgroundColor="Transparent"
                             BorderColor="{StaticResource NeutralLightGrey}"
-                            BorderWidth="1"
-                            HasShadow="False">
+                            BorderWidth="1">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid
                                     Padding="16"
@@ -3173,8 +3140,7 @@
                             Padding="0"
                             BackgroundColor="Transparent"
                             BorderColor="{StaticResource NeutralLightGrey}"
-                            BorderWidth="1"
-                            HasShadow="False">
+                            BorderWidth="1">
                             <StackLayout Orientation="Vertical" Spacing="0">
                                 <Grid
                                     Padding="16"

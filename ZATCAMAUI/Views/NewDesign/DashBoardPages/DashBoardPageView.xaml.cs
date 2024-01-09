@@ -1,4 +1,5 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
+﻿using AppDynamics.Agent;
+using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Newtonsoft.Json;
 using RGPopup.Maui.Services;
@@ -1187,7 +1188,7 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
         {
             try
             {
-                var safeInsets = On<Microsoft.Maui.Controls.PlatformConfiguration.iOS>().SafeAreaInsets();
+                var safeInsets = On<iOS>().SafeAreaInsets();
                 safeInsets.Bottom = -10;
                 Padding = safeInsets;
 

@@ -3,14 +3,13 @@
     x:Class="ZATCAMAUI.Views.NewDesign.Template.SelectedItemTemplateNoIcon"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:cards="clr-namespace:ZATCAMAUI.Core"
+    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls">
     <ViewCell.View>
         <Grid Padding="4">
             <cards:SfCardView
                 BackgroundColor="Transparent"
                 CornerRadius="20"
-                HasShadow="False"
                 HeightRequest="104"
                 WidthRequest="171">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

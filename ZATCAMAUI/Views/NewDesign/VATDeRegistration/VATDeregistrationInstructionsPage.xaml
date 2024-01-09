@@ -112,7 +112,7 @@
                 x:Name="btnVATDeregistration"
                 Grid.ColumnSpan="2"
                 Margin="0,24,0,24"
-                BackgroundColor="{Binding ContinueButtonnBackroundColor}"
+                Background="{Binding ContinueButtonnBackroundColor}"
                 Command="{Binding VATDeregistrationClicked}"
                 IsEnabled="{Binding IsContinueButtonEnable}"
                 Style="{StaticResource PrimaryButtonStyle}"

@@ -31,11 +31,9 @@
 		<string>ar</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>11.0</string>
+	<string>14.2</string>
 	<key>CFBundleName</key>
 	<string>GAZT</string>
-	<key>XSAppIconAssets</key>
-	<string>Assets.xcassets/AppIcon-2.appiconset</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please grant access to share supported images of docuemts</string>
 	<key>NSCalendarsUsageDescription</key>

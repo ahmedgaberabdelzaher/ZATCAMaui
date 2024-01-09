@@ -8,7 +8,7 @@
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards="clr-namespace:ZATCAMAUI.Core"
+    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
     xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
@@ -81,10 +81,6 @@
                     Aspect="AspectFill"
                     BackgroundColor="Transparent"
                     Source="partials_background.png" />
-
-
-
-
 
                 <Grid
                     Grid.Row="0"
@@ -354,8 +350,7 @@
                                                 <cards:SfCardView
                                                     Margin="0,5,0,0"
                                                     BackgroundColor="White"
-                                                    CornerRadius="10"
-                                                    HasShadow="False">
+                                                    CornerRadius="10">
                                                     <StackLayout>
 
                                                         <listView:SfListView
@@ -376,7 +371,6 @@
                                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                                         BorderWidth="1"
                                                                         CornerRadius="16"
-                                                                        HasShadow="False"
                                                                         HorizontalOptions="FillAndExpand"
                                                                         VerticalOptions="FillAndExpand">
 
@@ -624,15 +618,13 @@
                                                                         Margin="0,0,0,5"
                                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                                         BorderWidth="1"
-                                                                        CornerRadius="14"
-                                                                        HasShadow="False">
+                                                                        CornerRadius="14">
                                                                         <StackLayout Orientation="Horizontal">
                                                                             <cards:SfCardView
                                                                                 Margin="{OnPlatform UWP='*',
                                                                                                     iOS='1',
                                                                                                     Android='0,0,0,-5'}"
                                                                                 CornerRadius="14"
-                                                                                HasShadow="False"
                                                                                 HeightRequest="80"
                                                                                 IsVisible="{Binding IsUnSubmittedReturn}"
                                                                                 WidthRequest="80">
@@ -677,7 +669,6 @@
                                                                                                     Android='0,0,0,-5'}"
                                                                                 BackgroundColor="Red"
                                                                                 CornerRadius="14"
-                                                                                HasShadow="False"
                                                                                 HeightRequest="80"
                                                                                 IsVisible="{Binding IsPaymentOverdue}"
                                                                                 WidthRequest="80">
@@ -830,7 +821,6 @@
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
                                                         CornerRadius="8"
-                                                        HasShadow="False"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
                                                         <StackLayout
@@ -864,7 +854,6 @@
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
                                                         CornerRadius="8"
-                                                        HasShadow="False"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
                                                         <StackLayout
@@ -899,7 +888,6 @@
                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                         BorderWidth="1"
                                                         CornerRadius="10"
-                                                        HasShadow="False"
                                                         HorizontalOptions="FillAndExpand"
                                                         VerticalOptions="FillAndExpand">
                                                         <StackLayout
@@ -941,8 +929,7 @@
                                             <cards:SfCardView
                                                 Margin="15,15,15,10"
                                                 BackgroundColor="White"
-                                                CornerRadius="10"
-                                                HasShadow="False">
+                                                CornerRadius="10">
 
                                                 <StackLayout
                                                     HorizontalOptions="FillAndExpand"
@@ -985,7 +972,6 @@
                                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                                         BorderWidth="1"
                                                                         CornerRadius="16"
-                                                                        HasShadow="False"
                                                                         VerticalOptions="Fill">
 
                                                                         <StackLayout
@@ -1169,8 +1155,7 @@
                                             <cards:SfCardView
                                                 Margin="0,15,15,10"
                                                 BackgroundColor="White"
-                                                CornerRadius="10"
-                                                HasShadow="False">
+                                                CornerRadius="10">
                                                 <StackLayout>
                                                     <StackLayout
                                                         Margin="16,10,0,0"
@@ -1211,7 +1196,6 @@
                                                                         BorderColor="{StaticResource NeutralLightGrey}"
                                                                         BorderWidth="1"
                                                                         CornerRadius="14"
-                                                                        HasShadow="False"
                                                                         HorizontalOptions="FillAndExpand">
                                                                         <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
 
@@ -1847,11 +1831,11 @@
                                 <yummy:PancakeView
                                     Margin="10,0,10,0"
                                     Padding="3"
-                                    BackgroundColor="Transparent"
+                                    Background="Transparent"
                                     CornerRadius="5" />
 
                                 <buttons:SfButton
-                                    BackgroundColor="Transparent"
+                                    Background="Transparent"
                                     BackgroundImageSource="Flash.png"
                                     Clicked="OnQuickActionClicked"
                                     CornerRadius="28"

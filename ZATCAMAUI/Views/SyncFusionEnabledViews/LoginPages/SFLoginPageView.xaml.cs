@@ -29,7 +29,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
 
         private double width = 0;
         private double height = 0;
-        HybridWebView hybridWebView;
+        HybridWebView hybridWebView = new HybridWebView();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LoginPage" /> class.
@@ -104,7 +104,7 @@ namespace ZATCAMAUI.Views.SyncFusionEnabledViews.LoginPages
                 viewModel.TINIndex = 0;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
 

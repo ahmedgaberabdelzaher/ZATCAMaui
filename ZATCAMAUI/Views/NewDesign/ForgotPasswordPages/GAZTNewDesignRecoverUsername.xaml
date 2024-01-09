@@ -8,7 +8,7 @@
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    BackgroundImageSource="partials_background.png"
+    BackgroundImageSource="partials_background"
     mc:Ignorable="d">
     <!--<ContentPage.Resources>
         <ResourceDictionary>
@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <StackLayout Padding="20">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Image Margin="0,0,0,20" Source="Forget_ic_success" />
+                <Image Margin="0,0,0,20" Source="forget_ic_success"/>
                 <custom:CustomLabel
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"

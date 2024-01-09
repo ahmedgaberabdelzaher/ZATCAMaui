@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight.Views;
+﻿using AppDynamics.Agent;
+using GalaSoft.MvvmLight.Views;
 using System.Windows.Input;
 using ZATCAMAUI.Core.Exceptions;
 using ZATCAMAUI.Core.Helper;
@@ -562,24 +563,9 @@ namespace ZATCAMAUI.ViewModel.SyncFusionEnabledViewModel.LoginPage
         private void HamburgerMenuClicked()
         {
 
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-            var callTracker = AppDynamics.Agent.Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
-After:
             var callTracker = Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
-*/
-            var callTracker = ZATCAMAUI.Instrumentation.BeginCall("SFLoginPageView", "HamburgerMenuClicked", "Anonymous Menu Opened");
             _navigationService.NavigateTo(App.DashboardAnonymousMenuPageView);
-            //_navigationService.NavigateTo(App.TaxEvasionVerifyMobileNumberPage);
-            //_dialogService.ShowMessage("Anonymous menu will appear", "Menu");
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-            AppDynamics.Agent.Instrumentation.EndCall(callTracker);
-After:
             Instrumentation.EndCall(callTracker);
-*/
-            ZATCAMAUI.Instrumentation.EndCall(callTracker);
         }
         #endregion
         #region New Authentication

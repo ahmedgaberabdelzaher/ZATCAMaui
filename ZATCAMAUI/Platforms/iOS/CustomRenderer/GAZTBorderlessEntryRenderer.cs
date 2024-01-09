@@ -1,12 +1,8 @@
-﻿using Microsoft.Maui.Controls.Compatibility;
-using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
+﻿using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using System.ComponentModel;
 using System.Drawing;
 using UIKit;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 
-[assembly: ExportRenderer(typeof(GAZTBorderlessEntry), typeof(GAZTBorderlessEntryRenderer))]
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {
     public class GAZTBorderlessEntryRenderer : EntryRenderer

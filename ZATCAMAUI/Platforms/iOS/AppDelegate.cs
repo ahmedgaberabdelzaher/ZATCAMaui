@@ -13,35 +13,41 @@ public class AppDelegate : MauiUIApplicationDelegate
 
     public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
     {
-
-        AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
-        TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
-        CrossMediaManager.Current.Init();
-        ServicePointManager
-        .ServerCertificateValidationCallback +=
-        (sender, cert, chain, sslPolicyErrors) => true;
-        App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
-        //App iosapp = new App();
-        //App.appObj = iosapp;
-      
+        try
+        {
 
 
-        var config = AgentConfiguration.Create("EUM-AAB-AUM");
-        config.LoggingLevel = LoggingLevel.Debug;
-
-        Instrumentation.enableAggregateExceptionReporting = true;
-        config.CollectorURL = "https://eum.gazt.gov.sa:443";
-        Instrumentation.InitWithConfiguration(config);
-
-
-       // Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
-
-        App.InitializeAppDynamics();
-        //LoadApplication(iosapp);
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomainOnUnhandledException;
+            TaskScheduler.UnobservedTaskException += TaskSchedulerOnUnobservedTaskException;
+            CrossMediaManager.Current.Init();
+            ServicePointManager
+            .ServerCertificateValidationCallback +=
+            (sender, cert, chain, sslPolicyErrors) => true;
+            App.AppVersion = NSBundle.MainBundle.InfoDictionary["CFBundleShortVersionString"].ToString();
+            App iosapp = new App();
+            App.appObj = iosapp;
 
 
 
-        
+            //var config = AgentConfiguration.Create("EUM-AAB-AUM");
+            //config.LoggingLevel = LoggingLevel.Debug;
+
+            //// Instrumentation.enableAggregateExceptionReporting = true;
+            //config.CollectorURL = "https://eum.gazt.gov.sa:443";
+            //Instrumentation.InitWithConfiguration(config);
+
+
+            // Xamarin.FormsGoogleMaps.Init("AIzaSyCnIhK1NNzYNX-pZ1JjZpsLAXzHPgQOgSM");
+
+            //App.InitializeAppDynamics();
+
+        }
+        catch (Exception ex)
+        {
+
+        }
+
+
         return base.FinishedLaunching(application, launchOptions);
     }
     #region unhandled exceptions

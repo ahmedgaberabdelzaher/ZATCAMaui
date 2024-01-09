@@ -6,7 +6,7 @@
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
-    xmlns:cards1="clr-namespace:ZATCAMAUI.Core"
+    xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
     xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -114,18 +114,16 @@
                         <DataTemplate>
                             <ViewCell>
                                 <ContentView>
-                                    <cards1:SfCardView
+                                    <cards:SfCardView
                                         Margin="10"
                                         BackgroundColor="White"
                                         BorderColor="{StaticResource EntryTextColor}"
                                         BorderWidth=".05"
                                         CornerRadius="8"
-                                        HasShadow="False"
                                         IndicatorColor="{StaticResource Primary}"
                                         IndicatorPosition="Left"
                                         IndicatorThickness="5"
-                                        Opacity=".9"
-                                        ShadowColor="{StaticResource EntryTextColor}">
+                                        Opacity=".9">
                                         <StackLayout
                                             Padding="10"
                                             HorizontalOptions="FillAndExpand"
@@ -185,7 +183,7 @@
                                                     VerticalOptions="CenterAndExpand" />
                                             </Grid>
                                         </StackLayout>
-                                    </cards1:SfCardView>
+                                    </cards:SfCardView>
                                 </ContentView>
                             </ViewCell>
                         </DataTemplate>
@@ -194,7 +192,7 @@
                 <buttons:SfButton
                     x:Name="btnAddAttachment"
                     Margin="0,0,0,10"
-                    BackgroundColor="{StaticResource Secondary}"
+                    Background="{StaticResource Secondary}"
                     Command="{Binding OnAttachmentClick}"
                     CornerRadius="14"
                     FontAttributes="Bold"

@@ -1,17 +1,11 @@
 ﻿using Android.Graphics;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android.AppCompat;
 using Microsoft.Maui.Controls.Platform;
-using ZATCAMAUI.Core.CustomControls;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 using Toolbar = AndroidX.AppCompat.Widget.Toolbar;
-using Resources = Android.Content.Res.Resources;
 using View = Android.Views.View;
 using AndroidX.AppCompat.Widget;
-using Android.Content.Res;
 using Android.Content;
 
-[assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
     public class CustomNavigationRenderer : NavigationPageRenderer
@@ -35,7 +29,7 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
         {
             base.OnElementChanged(e);
             var height = 0;
-            Resources resources = Context.Resources;
+            var resources = Context.Resources;
             int resourceId = resources.GetIdentifier("navigation_bar_height", "dimen", "android");
             if (resourceId > 0)
             {
@@ -52,14 +46,6 @@ namespace ZATCAMAUI.Platforms.Android.CustomRenderer
                 _toolbar.ChildViewAdded += Toolbar_ChildViewAdded;
             }
         }
-        //protected override void Dispose(bool disposing)
-        //{
-        //    base.Dispose(disposing);
-        //    if (disposing)
-        //    {
-        //        _toolbar.ChildViewAdded -= Toolbar_ChildViewAdded;
-        //    }
-        //}
         private void Toolbar_ChildViewAdded(object sender, ChildViewAddedEventArgs e)
         {
             var view = e.Child.GetType();

@@ -3,14 +3,11 @@ using UIKit;
 using CoreGraphics;
 using System.ComponentModel;
 using CoreAnimation;
-using ZATCAMAUI.Platforms.iOS.CustomRenderer;
 using ZATCAMAUI.Core.CustomControls;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.iOS;
 using ZATCAMAUI.Core.Enums;
 using Microsoft.Maui.Controls.Platform;
 
-[assembly: ExportRenderer(typeof(CustomNavigation), typeof(CustomNavigationRenderer))]
 
 namespace ZATCAMAUI.Platforms.iOS.CustomRenderer
 {

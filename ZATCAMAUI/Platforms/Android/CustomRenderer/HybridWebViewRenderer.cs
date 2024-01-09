@@ -3,17 +3,14 @@ using Android.Graphics;
 using Android.Net.Http;
 using Android.Webkit;
 using Java.Interop;
-using Microsoft.Maui.Controls.Compatibility;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
 using ZATCAMAUI.Core.CustomControls;
 using ZATCAMAUI.Core.Helper;
 using ZATCAMAUI.Core.Mangers;
 using ZATCAMAUI.Models;
-using ZATCAMAUI.Platforms.Android.CustomRenderer;
 using WebView = Android.Webkit.WebView;
 
-[assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 
 namespace ZATCAMAUI.Platforms.Android.CustomRenderer
 {
