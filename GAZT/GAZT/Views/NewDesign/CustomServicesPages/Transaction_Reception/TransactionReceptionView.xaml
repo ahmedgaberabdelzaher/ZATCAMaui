@@ -344,7 +344,7 @@
                                 OutlineCornerRadius="15" 
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
-                                    Keyboard="Text" MaxLength="50"
+                                    Keyboard="Text" MaxLength="100"
                                     Placeholder="{x:Static ResourceManager:AppResources.Cityname}"
                                     Style="{StaticResource DefaultEntry}"
                                     Text="{Binding CityName}"
