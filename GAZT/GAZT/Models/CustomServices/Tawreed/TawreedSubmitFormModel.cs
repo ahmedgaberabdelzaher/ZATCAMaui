@@ -20,7 +20,7 @@ namespace EGAZT.Models.CustomServices.Tawreed
         public string mobileNumber { get; set; }
         public Attachement attachement { get; set; }
         public int crNumber { get; set; }
-        public int TIN { get; set; }
+        public long TIN { get; set; }
         public int buildingNumber { get; set; }
         public string streetNumber { get; set; }
         public string districtNumber { get; set; }

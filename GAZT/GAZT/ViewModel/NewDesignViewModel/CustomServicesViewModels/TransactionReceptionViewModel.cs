@@ -76,8 +76,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string registrationNo;
         public string RegistrationNo { get { return registrationNo; } set { registrationNo = value; RaisePropertyChanged(); } }
 
-  int tIN;
-        public int TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
+  long tIN;
+        public long TIN { get { return tIN; } set { tIN = value; RaisePropertyChanged(); } }
 
         bool isTinNoVisible;
         public bool IsTinNoVisible { get { return isTinNoVisible; } set { isTinNoVisible = value; RaisePropertyChanged(); } }
