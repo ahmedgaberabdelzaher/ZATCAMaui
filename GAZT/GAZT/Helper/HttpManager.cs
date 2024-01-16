@@ -286,7 +286,6 @@ namespace EGAZT.Helper
                 {
                     HttpClientHandler clientHandler = new HttpClientHandler();
                     clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
-
                     // Pass the handler to httpclient(from you are calling api)
                     HttpClient client = new HttpClient(clientHandler);
                     client.DefaultRequestHeaders.Add("zatca-apikey", "z8KEZALrDtrZflr35Sw48cN592YVv2fa1cPeNHTKuTE=");
@@ -329,7 +328,6 @@ namespace EGAZT.Helper
                         }
                         else
                         {
-                            var responseJsonf = await response.Content.ReadAsStringAsync();
                             return response;
                         }
                     }

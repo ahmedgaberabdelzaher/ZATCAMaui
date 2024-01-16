@@ -5153,6 +5153,7 @@ namespace GAZT.Manager
                     {
 
                         GAZTValidatePaymentResponse = await client.GetAsync(uri);
+                        var data = await GAZTValidatePaymentResponse.Content.ReadAsStringAsync();
 
                     }
 

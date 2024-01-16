@@ -153,7 +153,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
         }
 
 
-        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "61c32bf2527cacedb5d3192c" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "61c32bf2527cacedb5d3192d" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "61c32bf2527cacedb5d3192e" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "61c32bf2527cacedb5d3192f" },new SurveyQuestions() { ImojieSource = "Angry", ID = "61c32bf2527cacedb5d31930" }};
+        ObservableCollection<SurveyQuestions> imojiesLst=new ObservableCollection<SurveyQuestions>() { new SurveyQuestions() { ImojieSource = "Stronglysatisfied", ID = "64087eadfe688b43c294529d" }, new SurveyQuestions() { ImojieSource = "Satisfied", ID = "64087eadfe688b43c294529c" },  new SurveyQuestions() { ImojieSource = "NeitherDissatisfiednorSatisfied",ID= "64087eadfe688b43c294529b" }, new SurveyQuestions() { ImojieSource = "Dissatisfied", ID = "64087eadfe688b43c294529a" },new SurveyQuestions() { ImojieSource = "Angry", ID = "64087eadfe688b43c2945299" } };
         public ObservableCollection<SurveyQuestions> ImojiesLst
         {
             get
@@ -3690,7 +3690,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                 {
 
                     SelctedImojy = selected;
-                    if (selected.ID== "61c32bf2527cacedb5d31930" || selected.ID== "61c32bf2527cacedb5d3192f")
+                    if (selected.ID== "64087eadfe688b43c294529a" || selected.ID== "64087eadfe688b43c2945299")
                     {
                         QuestionTxt = AppResources.SurveyQ2;
                         QNumber = 2;
@@ -3748,7 +3748,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                     if (!IsShowMsgView)
                     {
                  IsShowMsgView = await HaveSurveyForToday();
-                        if (IsShowMsgView)
+                                     if (IsShowMsgView)
                         {
                             Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp poupWindow = new Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp();
                             await PopupNavigation.Instance.PushAsync(poupWindow);
@@ -3830,7 +3830,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                              {
                                  new An()
                                  {
-                                     rowId=PageSettings.Q1AnsID,
+                                     rowID=PageSettings.Q1AnsID,
                                      columnID=SelctedImojy.ID
                                  }
                              }
@@ -3842,7 +3842,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel
                              {
                                  new An()
                                  {
-                                     rowId=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
+                                     rowID=QNumber==2?PageSettings.Q2AnsID:PageSettings.Q3AnsID,
                                      text=SQAnswer
                                  }
                              }

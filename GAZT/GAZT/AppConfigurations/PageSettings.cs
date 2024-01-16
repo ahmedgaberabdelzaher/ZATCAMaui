@@ -28,15 +28,15 @@ namespace EGAZT.AppConfigurations
         public static string Q3AnsIDStg = "61c32e14aa59caed43d24e7e";
 
         /// Prod MApping <summary>
-        public static string SurveyIDProd = "6307638a380faf6b91c907f4";
-        public static string CollectorIdProd = "657053b2f9bfdf03a3ffed88";
+        public static string SurveyIDProd = "64087b56419c3e4317132e3b";
+        public static string CollectorIdProd = "640880e56527b043165f34d9";
         public static string SurveyTokenProd = "r/b5cce7cb";
-        public static string Q1IDProd = "6307638b380faf6b91c907f8";
-        public static string Q2IDProd = "6307638b380faf6b91c90800";
-        public static string Q3IDProd = "6307638b380faf6b91c90814";
-        public static string Q1AnsIDProd = "61c32bf2527cacedb5d31931";
-        public static string Q2AnsIDProd = "61c32c8a527cacedb5d31970";
-        public static string Q3AnsIDProd = "61c32e14aa59caed43d24e7e";
+        public static string Q1IDProd = "64087eadfe688b43c2945297";
+        public static string Q2IDProd = "64087edb11a01beb1c5c0546";
+        public static string Q3IDProd = "64087ef19ce394ebab52071c";
+        public static string Q1AnsIDProd = "64087eadfe688b43c2945298";
+        public static string Q2AnsIDProd = "64087edb11a01beb1c5c0547";
+        public static string Q3AnsIDProd = "64087ef19ce394ebab52071d";
         /// </summary>
         #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
