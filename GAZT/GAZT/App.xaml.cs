@@ -723,10 +723,6 @@ namespace EGAZT
 
         protected override void OnResume()
         {
-            foreach (var item in Application.Current.MainPage.Navigation.NavigationStack)
-            {
-                Debug.WriteLine(item.Title);
-            }
             TimeAtResume = DateTime.Now;
             TimeDifference = (TimeAtResume - TimeAtSleep).TotalSeconds;
             IsComingFromSleepMode = true;
