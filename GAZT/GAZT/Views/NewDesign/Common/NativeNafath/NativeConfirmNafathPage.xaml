@@ -7,7 +7,6 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
-    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     ios:Page.UseSafeArea="true"
@@ -28,7 +27,7 @@
         <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
-            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+            <Grid Padding="20,10" ColumnDefinitions="*,3*,*">
 
                 <StackLayout>
 
@@ -61,10 +60,10 @@
                 <custom:CustomLabel
                     Grid.Column="1"
                     HorizontalOptions="Center"
-                    FontSize="20"
+                    FontSize="18"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}" 
-                    Text="{Binding NafathLoginHeader}"
+                    Text="{x:Static ResourceManager:AppResources.NafathLoginHeader}"
                     VerticalOptions="Center" />
 
             </Grid>
@@ -74,60 +73,61 @@
             <!--#region Body-->
             <yummy:PancakeView
                 Grid.Row="1"
-                Padding="20,5,20,0"
+                Padding="20,35,20,0"
                 Style="{StaticResource CommonTopCurves}">
 
                 <ScrollView VerticalScrollBarVisibility="Never">
 
-                    <StackLayout VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="FillAndExpand"
+                                 Spacing="20">
 
-                        <!--  OpenNafath Label  -->
+                        <!--  OpenNafath/Confirm Openning Nafath Label  -->
                         <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="24"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.OpenNafath}"
-                            TextColor="{StaticResource Primary}" />
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                LineHeight="1"
+                                LineBreakMode="WordWrap"
+                                TextColor="#002447">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.OpenNafath}" />
+                                        <Span Text="&#10;" />
+                                        <Span Text="{x:Static ResourceManager:AppResources.ConfirmOpenningNafath}"
+                                              FontFamily="{StaticResource SomarRegular}"/>
+                                    </FormattedString>
+                                </Label.FormattedText>
 
-                         <!--  ConfirmOpenningNafath Label  -->
-                        <Label
-                            FontFamily="{StaticResource SomarBold}"
-                            FontSize="20"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.ConfirmOpenningNafath}"
-                            TextColor="{StaticResource Primary}" />
+                        </Label>
 
                         <!--  Horizontal Line  -->
                         <BoxView
                             WidthRequest="20"
-                            Margin="0,0,0,10"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
                             HeightRequest="2" />
 
-                        <!--  NationalIqamaID Field  -->
-                        <inputLayout:SfTextInputLayout
-                                Margin="0,-8,0,0"
-                                HorizontalOptions="CenterAndExpand"
+                        <!--  ConfirmOpenningNafath Label  -->
+                        <Frame CornerRadius="20"
+                               Margin="0,30,0,0"
+                               Padding="10"
+                               HasShadow="False"
+                               WidthRequest="50"
+                               HeightRequest="50"
+                               BorderColor="Black"
+                               VerticalOptions="Start"
+                               HorizontalOptions="CenterAndExpand">
+
+                             <!--  ConfirmOpenningNafath Label  -->
+                             <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="20"
                                 VerticalOptions="CenterAndExpand"
-                                ContainerBackgroundColor="White"
-                                ContainerType="Outlined"
-                                ErrorColor="#B00020"
-                                FocusedColor="{StaticResource NeutralGreay}"
-                                InputViewPadding="16,0,16,0"
-                                LeadingViewPosition="Inside"
-                                OutlineCornerRadius="15"
-                                UnfocusedColor="{StaticResource NeutralGreay}">
+                                HorizontalOptions="CenterAndExpand"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                Text="{Binding RandomNumber}"
+                                TextColor="{StaticResource Primary}" />
 
-                             <custom:BorderlessEntry
-                                    FontFamily="{StaticResource SomarSemiBold}"
-                                    FontSize="16"
-                                    HorizontalTextAlignment="Center"
-                                    MaxLength="1"
-                                    Style="{StaticResource DefaultEntry}"
-                                    Text="{Binding OTPNumber}"
-                                    TextColor="#0996D4"/>
-
-                        </inputLayout:SfTextInputLayout>
+                        </Frame>
 
                         <!-- Cancel Button  -->
                         <buttons:SfButton

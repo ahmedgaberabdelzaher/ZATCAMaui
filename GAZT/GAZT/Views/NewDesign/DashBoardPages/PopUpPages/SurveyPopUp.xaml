@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <pages:PopupPage
+    x:Class="EGAZT.Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.DashBoardPages.PopUpPages.SurveyPopUp"
-    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:custom="clr-namespace:GAZT"
-    FlowDirection="{Binding AppDirection}"
-    >
-        <pages:PopupPage.Animation>
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    FlowDirection="{Binding AppDirection}">
+    <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             DurationIn="400"
             DurationOut="300"
@@ -23,233 +22,235 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </pages:PopupPage.Resources>
     <!--#region SurveyView {Binding IsShowMsgView}-->
-            <Grid
-                Grid.Row="0"
-                Margin="0,0,0,0"
-                IsVisible="{Binding IsShowMsgView}"
-                VerticalOptions="FillAndExpand">
+    <Grid
+        Grid.Row="0"
+        Margin="0,0,0,0"
+        IsVisible="{Binding IsShowMsgView}"
+        VerticalOptions="FillAndExpand">
 
+        <StackLayout
+            BackgroundColor="Black"
+            Opacity="0.4"
+            VerticalOptions="FillAndExpand" />
+
+        <yummy:PancakeView
+            Padding="20,20,20,25"
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
+            <Grid Margin="0,0,0,0">
+                <!--#region SurveyIntro-->
                 <StackLayout
-                    BackgroundColor="Black"
-                    Opacity="0.4"
-                    VerticalOptions="FillAndExpand" />
-
-                <yummy:PancakeView
-                    Padding="20,20,20,25"
-                    BackgroundColor="White"
-                    CornerRadius="15,15,0,0"
-                    Style="{StaticResource CommonTopCurves}"
-                    VerticalOptions="EndAndExpand">
-                    <Grid Margin="0,0,0,0">
-                        <!--#region SurveyIntro-->
-                        <StackLayout
-                            Margin="0"
-                            IsVisible="false"
-                            VerticalOptions="Center">
-                            <StackLayout.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding SurveyCurrentStep}"
-                                    TargetType="StackLayout"
-                                    Value="0">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
-                            <Image
-                                Margin="0,20,0,20"
-                                HeightRequest="65"
-                                HorizontalOptions="CenterAndExpand"
-                                Source="SurveyStart"
-                                WidthRequest="65" />
-                            <Label
-                                HorizontalTextAlignment="Start" HorizontalOptions="CenterAndExpand"
-                                Style="{StaticResource BodyLabelBlack}"
-                                Text="{x:Static ResourceManager:AppResources.SurveyIntroMsg}" />
-                            <Grid Margin="10" ColumnDefinitions="*,*">
-                                <Frame
-                                    Grid.Column="0"
-                                    Padding="12"
-                                    BackgroundColor="#0996D4"
-                                    CornerRadius="14">
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="1" />
-                                    </Frame.GestureRecognizers>
-                                    <Label
-                                        FontSize="16"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.questionnaire}"
-                                        TextColor="White" />
-                                </Frame>
-                                <Frame
-                                    Grid.Column="1"
-                                    Padding="12"
-                                    BackgroundColor="White"
-                                    BorderColor="#4FBBBD"
-                                    CornerRadius="14">
-                                    <Label
-                                        FontSize="16"
-                                        HorizontalOptions="CenterAndExpand"
-                                        Text="{x:Static ResourceManager:AppResources.NDSkip}"
-                                        TextColor="#0996D4" />
-                                    <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="0" />
-                                    </Frame.GestureRecognizers>
-                                </Frame>
-                            </Grid>
-
-                        </StackLayout>
-                        <!--#endregion-->
-                        <!--#region FstQuestion-->
-                        <StackLayout
-                            Margin="0,0,0,20"
-                            IsVisible="false"
-                            VerticalOptions="Center">
-                            <StackLayout.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding SurveyCurrentStep}"
-                                    TargetType="StackLayout"
-                                    Value="1">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
-                            <Frame
-                                Padding="9" Margin="0"
-                                BackgroundColor="White"
-                                BorderColor="#4FBBBD"
-                                CornerRadius="14">
-                                <Label
-                                    FontSize="16" 
-                                    HorizontalOptions="FillAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
-                                    TextColor="#0996D4" />
-                            </Frame>
-                            <StackLayout
-                                x:Name="menu" 
-                                BindableLayout.ItemsSource="{Binding ImojiesLst}"
-                                HorizontalOptions="CenterAndExpand"
-                                Orientation="Horizontal">
-
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <StackLayout x:Name="Item" Margin="10">
-                                            <StackLayout.GestureRecognizers>
-                                                <TapGestureRecognizer
-                                                    BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
-                                                    Command="{Binding SlectedImojieCommand}"
-                                                    CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
-                                            </StackLayout.GestureRecognizers>
-                                            <Image
-                                                HeightRequest="36"
-                                                Source="{Binding ImojieSource}"
-                                                WidthRequest="36" />
-                                        </StackLayout>
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
-                        </StackLayout>
-                        <!--#endregion-->
-                        <!--#region SecQuestion-->
-                        <StackLayout
-                            Margin="0"
-                            IsVisible="false"
-                            Spacing="15"
-                            VerticalOptions="Center">
-                            <StackLayout.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding SurveyCurrentStep}"
-                                    TargetType="StackLayout"
-                                    Value="2">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
-                            <Label
-                                FontSize="18"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{Binding QuestionTxt}"
-                                TextColor="{StaticResource Primary}" />
-                            <Frame
-                                Padding="9"
-                                BackgroundColor="White"
-                                BorderColor="#4FBBBD"
-                                CornerRadius="14"
-                                HeightRequest="100">
-                                <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
-                            </Frame>
-                            <Frame
-                                Grid.Column="0"
-                                Padding="12"
-                                BackgroundColor="#0996D4"
-                                CornerRadius="14">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="0"  />
-                                </Frame.GestureRecognizers>
-                                <Label
-                                    FontSize="16"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.Send}"
-                                    TextColor="White" />
-                            </Frame>
-                        </StackLayout>
-                        <!--#endregion-->
-                        <!--#endregion SurveyEnd-->
-                        <StackLayout
-                            Margin="0"
-                            IsVisible="false"
-                            VerticalOptions="CenterAndExpand">
-                                 <StackLayout.Triggers>
-                                <DataTrigger
-                                    Binding="{Binding SurveyCurrentStep}"
-                                    TargetType="StackLayout"
-                                    Value="3">
-                                    <Setter Property="IsVisible" Value="true" />
-                                </DataTrigger>
-                            </StackLayout.Triggers>
-                            <Image
-                                Margin="0,20,0,20"
-                                HeightRequest="47"
-                                HorizontalOptions="CenterAndExpand"
-                                Source="SurveyEnd"
-                                WidthRequest="45" />
-                            <Label
-                                FontSize="25"
-                                HorizontalOptions="CenterAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.ThankYou}"
-                                TextColor="{StaticResource Primary}" />
+                    Margin="0"
+                    IsVisible="false"
+                    VerticalOptions="Center">
+                    <StackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SurveyCurrentStep}"
+                            TargetType="StackLayout"
+                            Value="0">
+                            <Setter Property="IsVisible" Value="true" />
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                    <Image
+                        Margin="0,20,0,20"
+                        HeightRequest="65"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="SurveyStart"
+                        WidthRequest="65" />
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Start"
+                        Style="{StaticResource BodyLabelBlack}"
+                        Text="{x:Static ResourceManager:AppResources.SurveyIntroMsg}" />
+                    <Grid Margin="10" ColumnDefinitions="*,*">
+                        <Frame
+                            Grid.Column="0"
+                            Padding="12"
+                            BackgroundColor="#0996D4"
+                            CornerRadius="14">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="1" />
+                            </Frame.GestureRecognizers>
                             <Label
                                 FontSize="16"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.DearCustomer}"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.questionnaire}"
+                                TextColor="White" />
+                        </Frame>
+                        <Frame
+                            Grid.Column="1"
+                            Padding="12"
+                            BackgroundColor="White"
+                            BorderColor="#4FBBBD"
+                            CornerRadius="14">
+                            <Label
+                                FontSize="16"
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.NDSkip}"
                                 TextColor="#0996D4" />
-                            <Label
-                                FontSize="16"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{x:Static ResourceManager:AppResources.SurveyThankMsg}"
-                                TextColor="{StaticResource Primary}" />
-                            <Frame
-                                Grid.Column="0"
-                                Padding="12"
-                                BackgroundColor="#0996D4"
-                                CornerRadius="14">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="4" />
-                                </Frame.GestureRecognizers>
-                                <Label
-                                    FontSize="16"
-                                    HorizontalOptions="CenterAndExpand"
-                                    Text="{x:Static ResourceManager:AppResources.Form5Finish}"
-                                    TextColor="White" />
-                            </Frame>
-                        </StackLayout>
-                        <!--#endregion-->
-
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SurveyActionCommand}" CommandParameter="0" />
+                            </Frame.GestureRecognizers>
+                        </Frame>
                     </Grid>
-                </yummy:PancakeView>
+
+                </StackLayout>
+                <!--#endregion-->
+                <!--#region FstQuestion-->
+                <StackLayout
+                    Margin="0,0,0,20"
+                    IsVisible="false"
+                    VerticalOptions="Center">
+                    <StackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SurveyCurrentStep}"
+                            TargetType="StackLayout"
+                            Value="1">
+                            <Setter Property="IsVisible" Value="true" />
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                    <Frame
+                        Margin="0"
+                        Padding="9"
+                        BackgroundColor="White"
+                        BorderColor="#4FBBBD"
+                        CornerRadius="14">
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.SurveyQ1}"
+                            TextColor="#0996D4" />
+                    </Frame>
+                    <StackLayout
+                        x:Name="menu"
+                        BindableLayout.ItemsSource="{Binding ImojiesLst}"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal">
+
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout x:Name="Item" Margin="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference menu}, Path=BindingContext}"
+                                            Command="{Binding SlectedImojieCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                    </StackLayout.GestureRecognizers>
+                                    <Image
+                                        HeightRequest="36"
+                                        Source="{Binding ImojieSource}"
+                                        WidthRequest="36" />
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </StackLayout>
+                <!--#endregion-->
+                <!--#region SecQuestion-->
+                <StackLayout
+                    Margin="0"
+                    IsVisible="false"
+                    Spacing="15"
+                    VerticalOptions="Center">
+                    <StackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SurveyCurrentStep}"
+                            TargetType="StackLayout"
+                            Value="2">
+                            <Setter Property="IsVisible" Value="true" />
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                    <Label
+                        FontSize="18"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding QuestionTxt}"
+                        TextColor="{StaticResource Primary}" />
+                    <Frame
+                        Padding="9"
+                        BackgroundColor="White"
+                        BorderColor="#4FBBBD"
+                        CornerRadius="14"
+                        HeightRequest="100">
+                        <custom:GAZTBorderlessEditor Placeholder="اكتب النص هنا " Text="{Binding SQAnswer}" />
+                    </Frame>
+                    <Frame
+                        Grid.Column="0"
+                        Padding="12"
+                        BackgroundColor="#0996D4"
+                        CornerRadius="14">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddSurveyCommand}" CommandParameter="0" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.Send}"
+                            TextColor="White" />
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
+                <!--#endregion SurveyEnd-->
+                <StackLayout
+                    Margin="0"
+                    IsVisible="false"
+                    VerticalOptions="CenterAndExpand">
+                    <StackLayout.Triggers>
+                        <DataTrigger
+                            Binding="{Binding SurveyCurrentStep}"
+                            TargetType="StackLayout"
+                            Value="3">
+                            <Setter Property="IsVisible" Value="true" />
+                        </DataTrigger>
+                    </StackLayout.Triggers>
+                    <Image
+                        Margin="0,20,0,20"
+                        HeightRequest="47"
+                        HorizontalOptions="CenterAndExpand"
+                        Source="SurveyEnd"
+                        WidthRequest="45" />
+                    <Label
+                        FontSize="25"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.ThankYou}"
+                        TextColor="{StaticResource Primary}" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.DearCustomer}"
+                        TextColor="#0996D4" />
+                    <Label
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{x:Static ResourceManager:AppResources.SurveyThankMsg}"
+                        TextColor="{StaticResource Primary}" />
+                    <Frame
+                        Grid.Column="0"
+                        Padding="12"
+                        BackgroundColor="#0996D4"
+                        CornerRadius="14">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SurveyNextCommand}" CommandParameter="4" />
+                        </Frame.GestureRecognizers>
+                        <Label
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.Form5Finish}"
+                            TextColor="White" />
+                    </Frame>
+                </StackLayout>
+                <!--#endregion-->
 
             </Grid>
-            <!--#endregion-->
+        </yummy:PancakeView>
+
+    </Grid>
+    <!--#endregion-->
 </pages:PopupPage>
 

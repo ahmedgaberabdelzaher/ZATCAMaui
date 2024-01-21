@@ -10407,6 +10407,12 @@ info@zatca.gov.sa</value>
   <data name="PrivacyPolicy" xml:space="preserve">
     <value>سياسة الخصوصية</value>
   </data>
+    <data name="RegisterUserInZATCA" xml:space="preserve">
+       <value>التسجيل</value>
+  </data>
+  <data name="RegisterZATCA" xml:space="preserve">
+       <value>سجل</value>
+  </data>
     <data name="ForceUpdateMsg" xml:space="preserve">
        <value>نود ان نخبرك بآخر تحديث لدينا ويرجي تحديث التطبيق</value>
   </data>
@@ -10437,7 +10443,7 @@ info@zatca.gov.sa</value>
     <data name="InquiryaboutCustomsIssuesView" xml:space="preserve">
        <value> الاستعلام عن القضايا الجمركية</value>
 </data>
-<data name="nationaladdress" xml:space="preserve">
+        <data name="nationaladdress" xml:space="preserve">
     <value>العنوان الوطني</value>
   </data>
       <data name="Buildingnumber" xml:space="preserve">

@@ -381,7 +381,7 @@
                                         </FormattedString>
                                     </custom:CustomLabel.FormattedText>
                                 </custom:CustomLabel>
-                                <!--  HasError="{Binding BalaghTxtHasError}"  -->    
+                                <!--  HasError="{Binding BalaghTxtHasError}"  -->
                                 <inputLayout:SfTextInputLayout
                                     ContainerType="Outlined"
                                     ErrorColor="#B00020"

@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
-    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.IAMLoginView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.IAMLoginView"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     TitleText="{x:Static ResourceManager:AppResources.IAMLogin}">
 
     <newdesign:BaseContentPage.PancakeView>
@@ -16,16 +16,18 @@
                      Source="{Binding IAMWbViewSrc}"
                      Navigating="WebView_Navigating"/>
 
-            <Grid VerticalOptions="Fill"
-                  Margin="-20"
-                  IsVisible="{Binding IsNoUserShowMsg}"
-                  BackgroundColor="Gray"
-                  Opacity=".5"/>
+            <Grid
+                Margin="-20"
+                BackgroundColor="Gray"
+                IsVisible="{Binding IsNoUserShowMsg}"
+                Opacity=".5"
+                VerticalOptions="Fill" />
 
-            <Grid Margin="-20,0,-20,0"
-                  IsVisible="{Binding IsNoUserShowMsg}"
-                  Grid.Row="0"
-                  VerticalOptions="EndAndExpand">
+            <Grid
+                Grid.Row="0"
+                Margin="-20,0,-20,0"
+                IsVisible="{Binding IsNoUserShowMsg}"
+                VerticalOptions="EndAndExpand">
 
                 <Grid.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
@@ -45,8 +47,8 @@
                             Style="{StaticResource BodyLabelBlack}"
                             Text="{Binding MessageTxt}" />
 
-              
-                        <buttons:SfButton 
+
+                        <buttons:SfButton
                             Margin="0,0,0,10"
                             Command="{Binding OpenIAMRegistrationUrlCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"

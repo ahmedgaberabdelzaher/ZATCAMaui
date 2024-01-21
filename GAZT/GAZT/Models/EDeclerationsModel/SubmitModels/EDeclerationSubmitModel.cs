@@ -187,6 +187,9 @@ namespace EGAZT.Models.EDeclerationsModel.SubmitModels
 
         bool _IsTermsChecked;
         public bool IsTermsChecked { get { return _IsTermsChecked; } set { _IsTermsChecked = value; RaisePropertyChanged(); } }
+
+        bool _isUserExists;
+        public bool IsUserExists { get { return _isUserExists; } set { _isUserExists = value; RaisePropertyChanged(); } }
         #endregion
 
         

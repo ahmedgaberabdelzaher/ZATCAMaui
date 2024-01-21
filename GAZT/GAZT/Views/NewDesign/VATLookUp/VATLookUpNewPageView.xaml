@@ -112,7 +112,7 @@
 
             </Grid>
         </ControlTemplate>
-    </ContentPage.ControlTemplate>    -->
+    </ContentPage.ControlTemplate>-->
     <ContentPage.Content>
         <Grid RowDefinitions="auto,*">
             <yummy:PancakeView

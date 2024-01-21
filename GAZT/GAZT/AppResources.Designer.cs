@@ -11545,6 +11545,24 @@ namespace EGAZT {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registration.
+        /// </summary>
+        public static string RegisterUserInZATCA {
+            get {
+                return ResourceManager.GetString("RegisterUserInZATCA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register.
+        /// </summary>
+        public static string RegisterZATCA {
+            get {
+                return ResourceManager.GetString("RegisterZATCA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Registration certificate.
         /// </summary>
         public static string RegistrationCertificate {
@@ -28597,6 +28615,100 @@ namespace EGAZT {
         public static string ZZZZZakatReturnSubmittedNew {
             get {
                 return ResourceManager.GetString("ZZZZZakatReturnSubmittedNew", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string BuildingNoValidationMsg
+        {
+            get {
+                return ResourceManager.GetString("BuildingNoValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string PostalValidationMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("PostalValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string additionalNoValidationMsg
+        {
+            get
+            {
+                return ResourceManager.GetString("additionalNoValidationMsg", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Your Zakat estimate return is submitted successfully and bill generated for.
+        /// </summary>
+        public static string nationaladdress
+        {
+            get
+            {
+                return ResourceManager.GetString("nationaladdress", resourceCulture);
+            }
+        }
+
+
+        public static string Buildingnumber
+        {
+            get
+            {
+                return ResourceManager.GetString("Buildingnumber", resourceCulture);
+            }
+        }
+
+
+        public static string Streetname
+        {
+            get
+            {
+                return ResourceManager.GetString("Streetname", resourceCulture);
+            }
+        }
+
+
+        public static string Districtname
+        {
+            get
+            {
+                return ResourceManager.GetString("Districtname", resourceCulture);
+            }
+        }
+
+        public static string Cityname
+        {
+            get
+            {
+                return ResourceManager.GetString("Cityname", resourceCulture);
+            }
+        }
+
+        public static string PostalCode
+        {
+            get
+            {
+                return ResourceManager.GetString("PostalCode", resourceCulture);
+            }
+        }
+
+        public static string SecondaryNumber
+        {
+            get
+            {
+                return ResourceManager.GetString("SecondaryNumber", resourceCulture);
             }
         }
     }

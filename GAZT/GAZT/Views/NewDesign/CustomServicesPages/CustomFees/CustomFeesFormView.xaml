@@ -215,7 +215,6 @@
                                 OutlineCornerRadius="15"
                                 FlowDirection="LeftToRight"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
-
                                    <numericinput:SfNumericTextBox
                                         Watermark="{x:Static ResourceManager:AppResources.Quantity}"
                                         Value="{Binding Quantity}"

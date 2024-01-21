@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.InfoPages.ContactInformationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.InfoPages.ContactInformationPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:EGAZT.Controls"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
@@ -20,17 +20,17 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />      
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-     <ContentPage.Behaviors>
+    <ContentPage.Behaviors>
         <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
     </ContentPage.Behaviors>
 
     <ContentPage.Content>
-         <Grid RowDefinitions="Auto,*">
+        <Grid RowDefinitions="Auto,*">
 
             <!--#region Header-->
             <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
@@ -43,7 +43,7 @@
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
                         <Image.Triggers>
                             <DataTrigger
@@ -65,10 +65,10 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    HorizontalOptions="Center"
                     FontSize="15"
+                    HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource SectionTitleWhiteBold}" 
+                    Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{Binding HeaderTitle}"
                     VerticalOptions="Center" />
 
@@ -85,98 +85,99 @@
 
                     <StackLayout VerticalOptions="FillAndExpand">
 
-                        <!--Circle view-->
-                        <Grid RowDefinitions="Auto"
-                              Margin="0,30,0,10"
-                              ColumnSpacing="0"
-                              VerticalOptions="Start"
-                              HorizontalOptions="CenterAndExpand"
-                              ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                        <!--  Circle view  -->
+                        <Grid
+                            Margin="0,30,0,10"
+                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                            ColumnSpacing="0"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="Auto"
+                            VerticalOptions="Start">
 
-                            <!--Circle button 1-->
-                            <ImageButton 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    BorderWidth="1"
-                                    InputTransparent="True"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="EndAndExpand"
-                                    BackgroundColor="#0996D4"
-                                    BorderColor="#0996D4"
-                                    Padding="5"
-                                    Source="reportCheckMark.png"/>
+                            <!--  Circle button 1  -->
+                            <ImageButton
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="1"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
                                 BackgroundColor="#0996D4"
-                                HeightRequest="2" />
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                            <!--Circle button 2-->
-                             <ImageButton 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="2"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BackgroundColor="#0996D4"
-                                    BorderColor="#0996D4"
-                                    Padding="5"
-                                    Source="reportCheckMark.png"/>
+                            <!--  Circle button 2  -->
+                            <ImageButton
+                                Grid.Column="2"
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
 
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="3"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
                                 BackgroundColor="#0996D4"
-                                HeightRequest="2" />
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                            <!--Circle button 3-->
-                            <ImageButton 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="4"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BackgroundColor="#0996D4"
-                                    BorderColor="#0996D4"
-                                    Padding="5"
-                                    Source="reportCheckMark.png"/>
+                            <!--  Circle button 3  -->
+                            <ImageButton
+                                Grid.Column="4"
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
 
                             <!--  Horizontal Line  -->
                             <BoxView
                                 Grid.Column="5"
-                                VerticalOptions="CenterAndExpand"
-                                WidthRequest="20"
                                 BackgroundColor="#0996D4"
-                                HeightRequest="2" />
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
 
-                            <!--Circle button 4-->
-                            <Button 
-                                    WidthRequest="30"
-                                    HeightRequest="30"
-                                    CornerRadius="15"
-                                    InputTransparent="True"
-                                    BorderWidth="1"
-                                    Grid.Column="6"
-                                    VerticalOptions="CenterAndExpand"
-                                    HorizontalOptions="StartAndExpand"
-                                    BorderColor="#0996D4"
-                                    BackgroundColor="Transparent"
-                                    TextColor="#0996D4"
-                                    Text="4">
-                                 <Button.Padding>
+                            <!--  Circle button 4  -->
+                            <Button
+                                Grid.Column="6"
+                                BackgroundColor="Transparent"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="4"
+                                TextColor="#0996D4"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
                                     <OnPlatform x:TypeArguments="Thickness">
                                         <On Platform="Android">0</On>
                                     </OnPlatform>
@@ -216,10 +217,10 @@
                                 ContainerType="Outlined"
                                 ErrorColor="#B00020"
                                 FocusedColor="{StaticResource NeutralGreay}"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 InputViewPadding="0"
                                 LeadingViewPosition="Inside"
                                 OutlineCornerRadius="15"
-                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
                                 UnfocusedColor="{StaticResource NeutralGreay}">
                                 <custom:BorderlessEntry
                                     Keyboard="Telephone"
@@ -228,25 +229,26 @@
                                     Text="{Binding MobileNumber}"
                                     TextColor="#58595B" />
                                 <inputLayout:SfTextInputLayout.LeadingView>
-                                    <StackLayout Orientation="Horizontal"
-                                                 Padding="2"
-                                                 Spacing="0">
+                                    <StackLayout
+                                        Padding="2"
+                                        Orientation="Horizontal"
+                                        Spacing="0">
 
                                         <custom:CustomLabel
-                                                Style="{StaticResource CaptionLabelGrey}"
-                                                FontSize="14"
-                                                TextColor="#002447"
-                                                VerticalOptions="CenterAndExpand"
-                                                Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"/>
-                                        <BoxView 
-                                            VerticalOptions="Fill"
-                                            WidthRequest="2"
+                                            FontSize="14"
+                                            Style="{StaticResource CaptionLabelGrey}"
+                                            Text="{Binding SubmitModel.travelerDeclaration.CountryCode}"
+                                            TextColor="#002447"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <BoxView
+                                            BackgroundColor="#EBEBEB"
                                             HorizontalOptions="Center"
-                                            BackgroundColor="#EBEBEB"/>
+                                            VerticalOptions="Fill"
+                                            WidthRequest="2" />
 
-                                         <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}"/>
-                                         </StackLayout.GestureRecognizers>
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GetCountryCodeCommand}" />
+                                        </StackLayout.GestureRecognizers>
 
                                     </StackLayout>
                                 </inputLayout:SfTextInputLayout.LeadingView>
@@ -287,7 +289,7 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                         <!--  Address Field  -->
+                        <!--  Address Field  -->
                         <StackLayout Spacing="0">
 
                             <!--  Address Label  -->
@@ -321,24 +323,24 @@
                             </inputLayout:SfTextInputLayout>
                         </StackLayout>
 
-                        <!-- GoTo Success Button  -->
+                        <!--  GoTo Success Button  -->
                         <buttons:SfButton
                             Margin="0,5"
-                            VerticalOptions="EndAndExpand"
                             Command="{Binding GoToSuccessCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
 
                         <!--  Pervious Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
-                            TextColor="{StaticResource Secondary}"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.PerviousButton}" />
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                            TextColor="{StaticResource Secondary}" />
 
                     </StackLayout>
 

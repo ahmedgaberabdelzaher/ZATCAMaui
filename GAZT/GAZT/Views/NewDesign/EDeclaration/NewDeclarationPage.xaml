@@ -1,28 +1,28 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
+    x:Class="EGAZT.Views.NewDesign.EDeclaration.NewDeclarationPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="EGAZT.Views.NewDesign.EDeclaration.NewDeclarationPage"
     xmlns:ResourceManager="clr-namespace:EGAZT"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:custom="clr-namespace:GAZT"
     xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     x:Name="page"
     ios:Page.UseSafeArea="true"
     BackgroundImageSource="partials_background.png"
     FlowDirection="{Binding AppDirection}"
     NavigationPage.HasNavigationBar="False">
 
-     <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-             <ResourceDictionary>
-                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <ResourceDictionary>
+                <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
             </ResourceDictionary>
         </ResourceDictionary>
     </ContentPage.Resources>
@@ -41,9 +41,9 @@
                         Rotation="0"
                         Source="whiteRightBack.png"
                         Style="{DynamicResource BackButtonArrow}"
-                        VerticalOptions="CenterAndExpand" >
+                        VerticalOptions="CenterAndExpand">
 
-                            <Image.Triggers>
+                        <Image.Triggers>
                             <DataTrigger
                                 Binding="{Binding AppDirection}"
                                 TargetType="Image"
@@ -63,8 +63,8 @@
                 <!--  Header Label  -->
                 <custom:CustomLabel
                     Grid.Column="1"
-                    HorizontalOptions="Center"
                     FontSize="20"
+                    HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource SectionTitleWhiteBold}"
                     Text="{x:Static ResourceManager:AppResources.eDeclaration}"
@@ -89,108 +89,109 @@
                             FontFamily="{StaticResource SomarBold}"
                             FontSize="24"
                             HorizontalOptions="StartAndExpand"
-                            Text="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}"/>
+                            Text="{x:Static ResourceManager:AppResources.CustomsDeclarationforTravelers}" />
 
-                         <!--  Declaration Note Label  -->
-                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}"
-                                             FontSize="16"
-                                             Margin="0,0,0,10"
-                                             LineSpacing="1"
-                                             LineBreakMode="WordWrap">
-                                <custom:CustomLabel.FormattedText>
-                                    <FormattedString>
-                                        <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}"
-                                              TextColor="{StaticResource NeutralGreay}"/>
-                                        <Span TextColor="{StaticResource Primary}"
-                                              Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" />
-                                    </FormattedString>
-                                </custom:CustomLabel.FormattedText>
+                        <!--  Declaration Note Label  -->
+                        <custom:CustomLabel
+                            Margin="0,0,0,10"
+                            FontSize="16"
+                            LineBreakMode="WordWrap"
+                            LineSpacing="1"
+                            Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
 
-                                <custom:CustomLabel.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}"/>
-                                </custom:CustomLabel.GestureRecognizers>
+                            <custom:CustomLabel.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}" />
+                            </custom:CustomLabel.GestureRecognizers>
 
-                         </custom:CustomLabel>
-                       
+                        </custom:CustomLabel>
+
                         <!--  Horizontal Line  -->
                         <BoxView
-                            WidthRequest="20"
                             Margin="0,0,0,25"
                             BackgroundColor="{StaticResource NeutralLightGrey}"
-                            HeightRequest="2" />
+                            HeightRequest="2"
+                            WidthRequest="20" />
 
                         <!--  Question Field Label  -->
                         <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
                             <custom:CustomLabel.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationQuestion}"/>
-                                    <Span  Text="*" Style="{StaticResource MandatoryRedColorSpan}" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationQuestion}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
                                 </FormattedString>
                             </custom:CustomLabel.FormattedText>
                         </custom:CustomLabel>
 
                         <!--#region Cards-->
-                        <StackLayout VerticalOptions="Start"
-                                     HorizontalOptions="FillAndExpand"
-                                     Spacing="10"
-                                     Orientation="Horizontal">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="Start">
 
-                            <!--Arriving Card-->
+                            <!--  Arriving Card  -->
                             <Grid
-                                WidthRequest="171"
                                 Padding="0"
-                                VerticalOptions="StartAndExpand"
+                                HeightRequest="136"
                                 HorizontalOptions="StartAndExpand"
-                                HeightRequest="136">
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
 
-                                <!--Background image selected-->
-                                <Image Aspect="AspectFill"
-                                       Source="Unselected.png">
+                                <!--  Background image selected  -->
+                                <Image Aspect="AspectFill" Source="Unselected.png">
 
-                                        <Image.Triggers>
-                                            <DataTrigger
-                                                Binding="{Binding IsArrivingPlaneSelected}"
-                                                TargetType="Image"
-                                                Value="True">
-                                                    <Setter Property="Source" Value="Unselected.png"/>
-                                            </DataTrigger>
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsArrivingPlaneSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="Unselected.png" />
+                                        </DataTrigger>
 
-                                                <DataTrigger
-                                                    Binding="{Binding IsArrivingPlaneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
-                                            </DataTrigger>
+                                        <DataTrigger
+                                            Binding="{Binding IsArrivingPlaneSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="UnselectedCard.png" />
+                                        </DataTrigger>
 
-                                        </Image.Triggers>
+                                    </Image.Triggers>
 
                                 </Image>
 
-                                <StackLayout VerticalOptions="EndAndExpand"
-                                            HorizontalOptions="StartAndExpand"
-                                             Margin="15,10"
-                                            Spacing="5">
+                                <StackLayout
+                                    Margin="15,10"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="5"
+                                    VerticalOptions="EndAndExpand">
 
-                                    <!--Arriving plane icon-->
-                                    <Image Aspect="AspectFit"
-                                            WidthRequest="40"
-                                            HeightRequest="30"
-                                            HorizontalOptions="StartAndExpand"
-                                            Source="arrivingPlane.png">
+                                    <!--  Arriving plane icon  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="30"
+                                        HorizontalOptions="StartAndExpand"
+                                        Source="arrivingPlane.png"
+                                        WidthRequest="40">
 
                                         <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="Image"
                                                 Value="True">
-                                                    <Setter Property="Source" Value="arrivingPlane.png"/>
+                                                <Setter Property="Source" Value="arrivingPlane.png" />
                                             </DataTrigger>
 
-                                                <DataTrigger
+                                            <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="Image"
                                                 Value="False">
-                                                    <Setter Property="Source" Value="fillArriving.png"/>
+                                                <Setter Property="Source" Value="fillArriving.png" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
@@ -199,25 +200,25 @@
 
                                     <!--  Arriving Label  -->
                                     <custom:CustomLabel
-                                        HorizontalOptions="StartAndExpand"
                                         FontSize="16"
-                                        TextColor="White"
-                                        Text="{x:Static ResourceManager:AppResources.ArrivingToKSA}">
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ArrivingToKSA}"
+                                        TextColor="White">
 
-                                            <custom:CustomLabel.Triggers>
+                                        <custom:CustomLabel.Triggers>
 
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="custom:CustomLabel"
                                                 Value="True">
-                                                    <Setter Property="TextColor" Value="White"/>
+                                                <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="custom:CustomLabel"
                                                 Value="False">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
 
 
@@ -228,82 +229,82 @@
                                 </StackLayout>
 
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}"
-                                                           CommandParameter="1"/>
+                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="1" />
                                 </Grid.GestureRecognizers>
 
                             </Grid>
 
 
-                            <!--Departing card-->
+                            <!--  Departing card  -->
                             <Grid
-                                WidthRequest="171"
                                 Padding="0"
-                                VerticalOptions="StartAndExpand"
+                                HeightRequest="136"
                                 HorizontalOptions="StartAndExpand"
-                                HeightRequest="136">
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
 
-                                <!--Background image selected-->
-                                <Image Aspect="AspectFill"
-                                        Source="UnselectedCard.png">
+                                <!--  Background image selected  -->
+                                <Image Aspect="AspectFill" Source="UnselectedCard.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsArrivingPlaneSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="Unselected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsArrivingPlaneSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="UnselectedCard.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout
+                                    Margin="15,10"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="5"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <!--  Departing Plane image  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="30"
+                                        HorizontalOptions="StartAndExpand"
+                                        Source="DepartingPlane.png"
+                                        VerticalOptions="StartAndExpand"
+                                        WidthRequest="40">
 
                                         <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="Image"
-                                                Value="False">
-                                                    <Setter Property="Source" Value="Unselected.png"/>
-                                            </DataTrigger>
-
-                                                <DataTrigger
-                                                Binding="{Binding IsArrivingPlaneSelected}"
-                                                TargetType="Image"
                                                 Value="True">
-                                                    <Setter Property="Source" Value="UnselectedCard.png"/>
+                                                <Setter Property="Source" Value="DepartingPlane.png" />
                                             </DataTrigger>
 
-                                        </Image.Triggers>
-
-                                </Image>
-
-                                <StackLayout VerticalOptions="EndAndExpand"
-                                            HorizontalOptions="StartAndExpand"
-                                            Margin="15,10"
-                                            Spacing="5">
-
-                                    <!--Departing Plane image-->
-                                    <Image Aspect="AspectFit"
-                                            VerticalOptions="StartAndExpand"
-                                            HorizontalOptions="StartAndExpand"
-                                            WidthRequest="40"
-                                            HeightRequest="30"
-                                            Source="DepartingPlane.png">
-
-                                            <Image.Triggers>
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="Image"
-                                                Value="True">
-                                                    <Setter Property="Source" Value="DepartingPlane.png"/>
-                                            </DataTrigger>
-
-                                                <DataTrigger
-                                                    Binding="{Binding IsArrivingPlaneSelected}"
-                                                    TargetType="Image"
-                                                    Value="False">
-                                                    <Setter Property="Source" Value="unFillDepartingPlane.png"/>
+                                                Value="False">
+                                                <Setter Property="Source" Value="unFillDepartingPlane.png" />
                                             </DataTrigger>
 
                                         </Image.Triggers>
 
                                     </Image>
 
-                                    <!--Departing label-->
+                                    <!--  Departing label  -->
                                     <custom:CustomLabel
-                                        HorizontalOptions="StartAndExpand"
                                         FontSize="16"
-                                        TextColor="{StaticResource Primary}"
-                                        Text="{x:Static ResourceManager:AppResources.DepartingToKSA}">
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.DepartingToKSA}"
+                                        TextColor="{StaticResource Primary}">
 
                                         <custom:CustomLabel.Triggers>
 
@@ -311,14 +312,14 @@
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="custom:CustomLabel"
                                                 Value="False">
-                                                    <Setter Property="TextColor" Value="White"/>
+                                                <Setter Property="TextColor" Value="White" />
                                             </DataTrigger>
 
                                             <DataTrigger
                                                 Binding="{Binding IsArrivingPlaneSelected}"
                                                 TargetType="custom:CustomLabel"
                                                 Value="True">
-                                                    <Setter Property="TextColor" Value="{StaticResource Primary}"/>
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
                                             </DataTrigger>
                                         </custom:CustomLabel.Triggers>
                                     </custom:CustomLabel>
@@ -326,7 +327,7 @@
                                 </StackLayout>
 
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="2"/>
+                                    <TapGestureRecognizer Command="{Binding CardSelectionCommand}" CommandParameter="2" />
                                 </Grid.GestureRecognizers>
 
                             </Grid>
@@ -334,21 +335,21 @@
                         </StackLayout>
                         <!--#endregion Cards-->
 
-                         <!--#region Review previous LoggedIn Option-->
-                         <Grid VerticalOptions="Start"
-                               Margin="0,10"
-                               HorizontalOptions="Start"
-                               IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor,Converter={StaticResource InvertedBoolConverter}}"
-                               HeightRequest="130"
-                               WidthRequest="175">
+                        <!--#region Review previous LoggedIn Option-->
+                        <Grid
+                            Margin="0,10"
+                            HeightRequest="130"
+                            HorizontalOptions="Start"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            VerticalOptions="Start"
+                            WidthRequest="175">
 
                             <Grid.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ReviewPreviousLoggedInCommand}"/>
+                                <TapGestureRecognizer Command="{Binding ReviewPreviousLoggedInCommand}" />
 
                             </Grid.GestureRecognizers>
 
-                            <Image Source="QUnselected.png"
-                                    Aspect="Fill"/>
+                            <Image Aspect="Fill" Source="QUnselected.png" />
 
                             <Image
                                 Margin="17,25,17,10"
@@ -356,36 +357,37 @@
                                 HorizontalOptions="Start"
                                 Source="reviewapreviousrequest"
                                 VerticalOptions="Start"
-                                WidthRequest="30"/>
+                                WidthRequest="30" />
 
-                            <Label Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
-                                    TextColor="{StaticResource Primary}"
-                                    FontSize="16"
-                                    LineBreakMode="WordWrap"
-                                    Margin="25,10,25,15"
-                                    VerticalOptions="EndAndExpand"/>
+                            <Label
+                                Margin="25,10,25,15"
+                                FontSize="16"
+                                LineBreakMode="WordWrap"
+                                Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="EndAndExpand" />
 
-                         </Grid>
-                         <!--#endregion Review previous LoggedIn-->
+                        </Grid>
+                        <!--#endregion Review previous LoggedIn-->
 
-                        <!-- GoTo Product Declaration Button  -->
+                        <!--  GoTo Product Declaration Button  -->
                         <buttons:SfButton
                             Margin="0,5"
-                            VerticalOptions="EndAndExpand"
                             Command="{Binding GoToEDeclarationTermsPopupPageCommand}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZNext}" />
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
 
                         <!--  Cancel Button  -->
                         <buttons:SfButton
                             Margin="0,0,0,25"
                             BackgroundColor="Transparent"
                             BorderColor="Transparent"
-                            TextColor="{StaticResource Secondary}"
                             Command="{Binding BackCommand}"
                             FontFamily="{StaticResource SomarLight}"
                             Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZZCancel}" />
+                            Text="{x:Static ResourceManager:AppResources.ZZCancel}"
+                            TextColor="{StaticResource Secondary}" />
 
                     </StackLayout>
 
@@ -395,7 +397,7 @@
             <!--#endregion Body-->
 
 
-         </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
 

@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <newdesign:BaseContentPage
- xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"    xmlns="http://xamarin.com/schemas/2014/forms"
+    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.SuccessView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-        xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
-        xmlns:ResourceManager="clr-namespace:EGAZT"
-    x:Class="EGAZT.Views.NewDesign.CustomServicesPages.Transaction_Reception.SuccessView">
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:newdesign="clr-namespace:EGAZT.Views.NewDesign"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
     <newdesign:BaseContentPage.Content>
-               <Grid>
+        <Grid>
             <!--#region Header-->
             <StackLayout>
 
@@ -19,9 +20,9 @@
 
                     <!--  Success icon  -->
                     <Image
+                        Margin="0,0,0,30"
                         Aspect="AspectFit"
                         HeightRequest="150"
-                        Margin="0,0,0,30"
                         Source="Forget_ic_success"
                         WidthRequest="150" />
 
@@ -35,48 +36,49 @@
 
                     <!--  Success Msg2 Label  -->
                     <Label
+                        Margin="40,0"
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="18"
-                        HorizontalTextAlignment="Center"
                         HorizontalOptions="CenterAndExpand"
-                        Margin="40,0"
+                        HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         Text="{x:Static ResourceManager:AppResources.Youwillbenotifiedofthestatusoftherequestviamobilephone}"
                         TextColor="White" />
 
-                         <!--  Refrence No Label  -->
+                    <!--  Refrence No Label  -->
                     <Label
+                        Margin="40,30,40,0"
                         FontFamily="{StaticResource SomarRegular}"
                         FontSize="18"
-                        HorizontalTextAlignment="Center"
                         HorizontalOptions="CenterAndExpand"
-                        Margin="40,30,40,0"
+                        HorizontalTextAlignment="Center"
                         LineBreakMode="WordWrap"
                         Text="{x:Static ResourceManager:AppResources.Referencenumber}"
                         TextColor="White" />
-                       <!--  Refrence No value Label  -->
+                    <!--  Refrence No value Label  -->
                     <Label
-                        FontFamily="{StaticResource SomarRegular}"
-                        FontSize="18" Margin="0" 
-                        HorizontalTextAlignment="Center"
-                        HorizontalOptions="CenterAndExpand"
-                        LineBreakMode="WordWrap"
                         x:Name="RefNoValue"
+                        Margin="0"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
                         TextColor="White" />
-                     <!--  Back to Home Button  -->
-                        <buttons:SfButton
-                            Margin="20,50,20,0"
-                            BackgroundColor="#0996D4"
-                            Command="{Binding BackToHomeCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.BackToHome}" />
-                         <!--  Back to ZATCA Services Button  -->
-                        <buttons:SfButton
-                            Margin="20,20,20,20"
-                            BackgroundColor="#0996D4"
-                            Command="{Binding BackToCustomServicesCommand}"
-                            Style="{StaticResource PrimaryButtonStyle}"
-                            Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
+                    <!--  Back to Home Button  -->
+                    <buttons:SfButton
+                        Margin="20,50,20,0"
+                        BackgroundColor="#0996D4"
+                        Command="{Binding BackToHomeCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.BackToHome}" />
+                    <!--  Back to ZATCA Services Button  -->
+                    <buttons:SfButton
+                        Margin="20,20,20,20"
+                        BackgroundColor="#0996D4"
+                        Command="{Binding BackToCustomServicesCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
                 </StackLayout>
 
 
