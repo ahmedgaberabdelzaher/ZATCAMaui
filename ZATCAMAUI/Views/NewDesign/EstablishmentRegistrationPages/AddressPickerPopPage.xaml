@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EstablishmentRegistrationPages.AddressPickerPopPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    ios:Page.UseSafeArea="true"
+    NavigationPage.HasNavigationBar="False">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+    <pages:PopupPage.Content>
+        <yummy:PancakeView
+            Padding="10"
+            BackgroundColor="White"
+            VerticalOptions="EndAndExpand">
+            <yummy:PancakeView.Border>
+                <yummy:Border Thickness="1" Color="Black" />
+            </yummy:PancakeView.Border>
+            <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <CollectionView
+                    x:Name="addressList"
+                    Grid.Row="0"
+                    Margin="10"
+                    HorizontalScrollBarVisibility="Never"
+                    SelectionChanged="AddressList_SelectionChanged"
+                    SelectionMode="Single"
+                    VerticalScrollBarVisibility="Never">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout ItemSpacing="10" Orientation="Vertical" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid
+                                ColumnSpacing="10"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="1" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Column="0"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding BuildingNo}"
+                                    VerticalOptions="Center" />
+                                <BoxView
+                                    Grid.Column="1"
+                                    BackgroundColor="Black"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="1" />
+                                <custom:CustomLabel
+                                    Grid.Column="2"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding DistrictName}"
+                                    VerticalOptions="Center" />
+                                <BoxView
+                                    Grid.Column="3"
+                                    BackgroundColor="Black"
+                                    VerticalOptions="Fill"
+                                    WidthRequest="1" />
+                                <custom:CustomLabel
+                                    Grid.Column="4"
+                                    HorizontalOptions="Start"
+                                    Text="{Binding StreetName}"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <StackLayout
+                    Grid.Row="1"
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <buttons:SfButton
+                        Padding="20,0"
+                        Clicked="CancelButton_Clicked"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZZZCancelText}" />
+                </StackLayout>
+            </Grid>
+        </yummy:PancakeView>
+    </pages:PopupPage.Content>
+</pages:PopupPage>

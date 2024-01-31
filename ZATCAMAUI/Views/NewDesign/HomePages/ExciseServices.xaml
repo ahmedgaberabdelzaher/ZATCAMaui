@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.HomePages.ExciseServices"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    TitleText="{x:Static ResourceManager:AppResources.EXCISETAXServices}">
+    <newdesign:BaseContentPage.PancakeView>
+        <Grid>
+            <controls:ServiceMenuControl />
+        </Grid>
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>

@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.GenericPickers.NewPopupPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:customcontrol="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <BoxView
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="Transparent">
+
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <yummy:PancakeView
+                x:Name="picker"
+                Padding="0"
+                AbsoluteLayout.LayoutBounds="1,1,1,.4"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="White"
+                CornerRadius="14,14,0,0"
+                VerticalOptions="FillAndExpand">
+                <StackLayout Orientation="Vertical">
+
+                    <Border
+                        Margin="0,0,0,5"
+                        Padding="0"
+                        Style="{StaticResource GreyBorderFrameWithShadow}">
+                        <StackLayout Orientation="Vertical">
+                            <BoxView
+                                HorizontalOptions="Center"
+                                Style="{StaticResource NeutralGrayBoxViewDrag}"
+                                VerticalOptions="Start" />
+                            <Button
+                                x:Name="PickerDoneButton"
+                                Margin="10,0,10,0"
+                                BackgroundColor="Transparent"
+                                Clicked="PopupClose_Clicked"
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.CRDone}"
+                                TextColor="{StaticResource Primary}" />
+                        </StackLayout>
+                    </Border>
+
+
+                    <StackLayout
+                        Margin="0,8,0,0"
+                        Padding="24,0"
+                        Orientation="Vertical">
+                        <syncfusion:SfPicker
+                            x:Name="TaxTypePicker"
+                            Background="White"
+                            FlowDirection="RightToLeft"
+                            IsOpen="True"
+                            ItemHeight="56"
+                            Mode="Default">
+
+                            <syncfusion:SfPicker.TextStyle>
+                                <syncfusion:PickerTextStyle
+                                    FontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                            Android=GAZT_FONT_BOLD}"
+                                    FontSize="15"
+                                    TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.TextStyle>
+
+                            <syncfusion:SfPicker.Columns>
+                                <syncfusion:PickerColumn Width="300" DisplayMemberPath="TaxType" />
+                            </syncfusion:SfPicker.Columns>
+
+                            <syncfusion:SfPicker.ColumnHeaderView>
+                                <syncfusion:PickerColumnHeaderView Height="46">
+                                    <syncfusion:PickerColumnHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle FontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}" />
+                                    </syncfusion:PickerColumnHeaderView.TextStyle>
+                                </syncfusion:PickerColumnHeaderView>
+                            </syncfusion:SfPicker.ColumnHeaderView>
+
+                            <syncfusion:SfPicker.SelectionView>
+                                <syncfusion:PickerSelectionView Background="LightGray" />
+                            </syncfusion:SfPicker.SelectionView>
+
+                            <syncfusion:SfPicker.SelectedTextStyle>
+                                <syncfusion:PickerTextStyle
+                                    FontAttributes="Bold"
+                                    FontFamily="{OnPlatform iOS=Somar-SemiBold,
+                                                            Android=GAZT_FONT_BOLD}"
+                                    FontSize="15"
+                                    TextColor="{StaticResource NeutralBlack}" />
+                            </syncfusion:SfPicker.SelectedTextStyle>
+
+
+                            <syncfusion:SfPicker.HeaderView>
+
+                                <syncfusion:PickerHeaderView
+                                    Height="55"
+                                    Background="{StaticResource Primary}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZPleaseselectFormBundleType}">
+                                    <syncfusion:PickerHeaderView.TextStyle>
+                                        <syncfusion:PickerTextStyle FontFamily="{OnPlatform iOS=Somar-SemiBold, Android=GAZT_FONT_BOLD}" TextColor="White" />
+                                    </syncfusion:PickerHeaderView.TextStyle>
+                                </syncfusion:PickerHeaderView>
+
+                            </syncfusion:SfPicker.HeaderView>
+
+                            <syncfusion:SfPicker.FooterView>
+
+                                <syncfusion:PickerFooterView Height="46">
+
+                                    <syncfusion:PickerFooterView.TextStyle>
+                                        <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
+                                    </syncfusion:PickerFooterView.TextStyle>
+
+                                </syncfusion:PickerFooterView>
+
+                            </syncfusion:SfPicker.FooterView>
+
+
+                            <syncfusion:SfPicker.Behaviors>
+                                <behaviors:SfPickerBehavior />
+                            </syncfusion:SfPicker.Behaviors>
+                        </syncfusion:SfPicker>
+                    </StackLayout>
+
+                </StackLayout>
+
+
+
+            </yummy:PancakeView>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</pages:PopupPage>

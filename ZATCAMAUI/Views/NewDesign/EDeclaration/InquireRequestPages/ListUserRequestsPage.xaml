@@ -1,0 +1,313 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.InquireRequestPages.ListUserRequestsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout>
+
+                        <!--  EDeclaration Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.PreviousRequestsName}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  EDeclaration Note Label  -->
+                        <Label
+                            Margin="0,0,0,5"
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding PreviousRequests}"
+                            TextColor="{StaticResource NeutralGreay}" />
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2"
+                            WidthRequest="20" />
+
+
+                        <!--  Search Entry  -->
+                        <inputLayout:SfTextInputLayout
+                            ContainerBackground="White"
+                            ContainerType="Outlined"
+                            InputViewPadding="0"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="10"
+                            Stroke="{StaticResource NeutralGreay}"
+                            VerticalOptions="Start">
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <inputLayout:LabelStyle TextColor="#B00020" />
+                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <custom:GAZTBorderlessEntry
+                                Keyboard="Text"
+                                Placeholder="{x:Static ResourceManager:AppResources.SearchRerfrenceID}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding SearchInput}"
+                                TextColor="#002447">
+
+                                <custom:GAZTBorderlessEntry.Behaviors>
+                                    <xct:EventToCommandBehavior Command="{Binding SearchCommand}" EventName="TextChanged" />
+                                </custom:GAZTBorderlessEntry.Behaviors>
+
+                            </custom:GAZTBorderlessEntry>
+
+                            <inputLayout:SfTextInputLayout.LeadingView>
+                                <Image Aspect="AspectFit" Source="reportSearchBar.png" />
+                            </inputLayout:SfTextInputLayout.LeadingView>
+
+                        </inputLayout:SfTextInputLayout>
+
+                        <StackLayout
+                            Margin="0,0,0,10"
+                            BindableLayout.ItemsSource="{Binding InquireListOfUser}"
+                            Spacing="20">
+
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+
+                                    <Frame
+                                        Padding="10,15"
+                                        BorderColor="#EBEBEB"
+                                        CornerRadius="12"
+                                        HasShadow="False">
+
+                                        <Grid
+                                            ColumnDefinitions="*,*,*"
+                                            RowDefinitions="Auto,Auto,15,Auto,Auto"
+                                            RowSpacing="5">
+
+                                            <!--  User Name  -->
+                                            <Label
+                                                Grid.ColumnSpan="2"
+                                                FontFamily="{StaticResource SomarBold}"
+                                                FontSize="16"
+                                                HorizontalOptions="StartAndExpand"
+                                                LineBreakMode="WordWrap"
+                                                Text="{Binding fullName}"
+                                                TextColor="{StaticResource Primary}" />
+
+                                            <!--  Total Amount Label Not used now  -->
+                                            <custom:CustomLabel
+                                                Grid.Row="1"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                IsVisible="false"
+                                                TextColor="#575756">
+                                                <custom:CustomLabel.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{x:Static ResourceManager:AppResources.ZZTotalAmount}" />
+                                                        <Span Text="  " />
+                                                        <Span Text="3" />
+                                                    </FormattedString>
+                                                </custom:CustomLabel.FormattedText>
+                                            </custom:CustomLabel>
+
+                                            <!--  Total fees payable Label  -->
+                                            <Label
+                                                Grid.Column="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                                TextColor="#575756" />
+
+                                            <!--  Price value Frame & label  -->
+                                            <Grid Grid.Row="1" Grid.Column="2">
+
+                                                <Frame
+                                                    Padding="15"
+                                                    BackgroundColor="#0996D4"
+                                                    CornerRadius="15"
+                                                    HasShadow="False"
+                                                    Opacity="0.15"
+                                                    VerticalOptions="Start" />
+
+                                                <!--  Price Label  -->
+                                                <custom:CustomLabel
+                                                    FontFamily="{StaticResource SomarBold}"
+                                                    FontSize="12"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    TextColor="#0996D4"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding totalFees}" />
+                                                            <Span Text="  " />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+                                                </custom:CustomLabel>
+
+                                            </Grid>
+
+                                            <!--  Date Value Label  -->
+                                            <Label
+                                                Grid.Row="3"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding TravelDateString}"
+                                                TextColor="#575756" />
+
+                                            <!--  Date Label  -->
+                                            <Label
+                                                Grid.Row="4"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.Date}"
+                                                TextColor="{StaticResource Primary}" />
+
+                                            <!--  Coming/Going value Label  -->
+                                            <Label
+                                                Grid.Row="3"
+                                                Grid.Column="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding ArrivingName}"
+                                                TextColor="#575756" />
+
+                                            <!--  Coming/Going Label  -->
+                                            <Label
+                                                Grid.Row="4"
+                                                Grid.Column="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                LineBreakMode="WordWrap"
+                                                Text="{x:Static ResourceManager:AppResources.ArrivingFromORDepartingTo}"
+                                                TextColor="{StaticResource Primary}" />
+
+                                            <!--  Reference No. Value Label  -->
+                                            <Label
+                                                Grid.Row="3"
+                                                Grid.Column="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding ReferenceID}"
+                                                TextColor="#575756" />
+
+                                            <!--  Reference No Label  -->
+                                            <Label
+                                                Grid.Row="4"
+                                                Grid.Column="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.ZZReferenceNumber}"
+                                                TextColor="{StaticResource Primary}" />
+
+                                        </Grid>
+
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Path=BindingContext.SelectedItemCommand, Source={x:Reference page}}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
+
+                                    </Frame>
+
+                                </DataTemplate>
+
+                            </BindableLayout.ItemTemplate>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

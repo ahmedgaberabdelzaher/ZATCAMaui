@@ -104,7 +104,7 @@
 
                     <syncfusion:SfPicker.HeaderView>
 
-                        <syncfusion:PickerHeaderView Background="Transparent">
+                        <syncfusion:PickerHeaderView Height="46" Background="Transparent">
                             <syncfusion:PickerHeaderView.TextStyle>
                                 <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarBoldForSfPicker}" TextColor="{StaticResource NeutralBlack}" />
                             </syncfusion:PickerHeaderView.TextStyle>

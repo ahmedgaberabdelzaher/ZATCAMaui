@@ -1,0 +1,880 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.InfoPages.TripInformationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
+                <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{Binding HeaderTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--  Circle view  -->
+                        <Grid
+                            Margin="0,30,0,10"
+                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                            ColumnSpacing="0"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="Auto"
+                            VerticalOptions="Start">
+
+                            <!--  Circle button 1  -->
+                            <ImageButton
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 2  -->
+                            <ImageButton
+                                Grid.Column="2"
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 3  -->
+                            <Button
+                                Grid.Column="4"
+                                BackgroundColor="Transparent"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="3"
+                                TextColor="#0996D4"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 4  -->
+                            <Button
+                                Grid.Column="6"
+                                BackgroundColor="Transparent"
+                                BorderColor="#B8BABA"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="4"
+                                TextColor="#565655"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                        </Grid>
+
+                        <!--  Trip Information Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.TripInformation}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Welcome Label for logged in only  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            MaxLines="1"
+                            Text="{x:Static ResourceManager:AppResources.Hi}"
+                            TextColor="#0996D4" />
+
+                        <!--  User Label for logged in only  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            MaxLines="1"
+                            Text="{Binding SubmitModel.travelerDeclaration.FullName}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Type Of Trip Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.TypeOfTrip}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+                        <!--#region Trip Cards-->
+                        <StackLayout
+                            Margin="0,0,0,5"
+                            Padding="5"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="FillAndExpand">
+
+                            <!--  Air Card  -->
+                            <Grid
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="{Binding TripCard.AirImage}" />
+
+                                <!--  Air Label  -->
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.AirTrip}"
+                                    TextColor="{Binding TripCard.AirTextColor}"
+                                    VerticalOptions="EndAndExpand" />
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TripCardCommand}" CommandParameter="1" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                            <!--  Land card  -->
+                            <Grid
+                                Padding="5"
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="{Binding TripCard.LandImage}" />
+
+                                <!--  Land label  -->
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.LandTrip}"
+                                    TextColor="{Binding TripCard.LandTextColor}"
+                                    VerticalOptions="EndAndExpand" />
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding TripCardCommand}" CommandParameter="2" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                        <!--  Sea card  -->
+                        <Grid
+                            Padding="5"
+                            HeightRequest="94"
+                            HorizontalOptions="StartAndExpand"
+                            WidthRequest="171">
+
+                            <!--  Background image selected  -->
+                            <Image Aspect="Fill" Source="{Binding TripCard.SeaImage}" />
+
+                            <!--  Sea label  -->
+                            <custom:CustomLabel
+                                Padding="15"
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.SeaTrip}"
+                                TextColor="{Binding TripCard.SeaTextColor}"
+                                VerticalOptions="EndAndExpand" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TripCardCommand}" CommandParameter="3" />
+                            </Grid.GestureRecognizers>
+
+                        </Grid>
+                        <!--#endregion Trip Cards-->
+
+                        <!--  Coming From/Going To Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Coming From/Going To Label  -->
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ComingFrom}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.GoingTo}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Coming From/Going To Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.arrivingFromDepartingToName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenComingGoingCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Entrance/Exit Port Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Entrance/Exit Port Label  -->
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.EntrancePort}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ExitPort}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Entrance/Exit Port Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.portName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenEntranceExitPortCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Arrival/Departure Date Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Arrival/Departure Date Label  -->
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ArrivalDate}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <custom:CustomLabel IsVisible="{Binding IsArrivingPlaneSelected, Converter={StaticResource InvertedBoolConverter}}" Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.DepartureDate}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <!--  Arrival/Departure Date Label  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <Grid>
+
+                                    <DatePicker
+                                        x:Name="ArivalDate"
+                                        Date="{Binding SubmitModel.travelerDeclaration.travelDate}"
+                                        Format="dd/MM/yyyy"
+                                        IsVisible="false"
+                                        MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior
+                                                Command="{Binding ArrivalSelectedDateCommand}"
+                                                CommandParameter="{x:Reference ArivalDateEntry}"
+                                                EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="ArivalDateEntry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ArrivalDepartureDateString}"
+                                        TextColor="#58595B" />
+                                </Grid>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ArrivalDateClickedCommand}" CommandParameter="{x:Reference ArivalDate}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Trip Number Field  -->
+                        <StackLayout IsVisible="{Binding TripCard.IsAirTripSelected}" Spacing="0">
+
+                            <!--  Trip Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TripNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Trip Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="SV0000"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.flightNumber}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Travel Purpose Field  -->
+                        <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}" Spacing="0">
+
+                            <!--  Travel Purpose Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TravelPurpose}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Travel Purpose Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TravelPurpose}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelPurposeName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenTravelPurposeCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Traveler Count Field  -->
+                        <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.IsDisclosure}" Spacing="0">
+
+                            <!--  Traveler Count Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.TravelerCount}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Traveler Count Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.TravelerCount}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelersCount}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--#region Plates-->
+
+                        <!--  Plates Country Field  -->
+                        <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
+
+                            <!--  Plates Country Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.CountryText}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates Country Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.CountryText}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCountryName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPlatesCountryCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Plates City Field  -->
+                        <StackLayout IsVisible="{Binding HasPlatesCity}" Spacing="0">
+
+                            <!--  Plates City Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZZCity}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates City Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZZCity}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.PlatesCityName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPlatesCityCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Plates Number Field  -->
+                        <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
+
+                            <!--  Plates Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesNumber}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    MaxLength="30"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.plateNumber}"
+                                    TextColor="#58595B">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Plates Letter Field  -->
+                        <StackLayout IsVisible="{Binding TripCard.IsLandTripSelected}" Spacing="0">
+
+                            <!--  Plates Letter Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PlatesLetter}" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Plates Letter Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    MaxLength="4"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PlatesLetter}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.plateLetters}"
+                                    TextColor="#58595B">
+
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <xct:EventToCommandBehavior Command="{Binding PlateLLetterTextChangedCommand}" EventName="TextChanged" />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--#endregion Plates-->
+
+                        <!--  Passenger Label for logged in only  -->
+                        <Label
+                            Margin="0,20"
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="16"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}"
+                            MaxLines="1"
+                            TextColor="#0996D4">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="+ " />
+                                    <Span Text="{x:Static ResourceManager:AppResources.PassengerInformation}" />
+
+                                </FormattedString>
+                            </Label.FormattedText>
+                            <Label.GestureRecognizers>
+
+                                <TapGestureRecognizer Command="{Binding GoToPersonalInfoCommand}" />
+
+                            </Label.GestureRecognizers>
+
+                        </Label>
+
+                        <!--  GoTo Contact Information Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            Command="{Binding GoToContactCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            Background="Transparent"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                            TextColor="{StaticResource Secondary}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <custom:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

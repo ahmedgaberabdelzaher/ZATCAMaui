@@ -7,7 +7,6 @@ namespace ZATCAMAUI.Models
 
     public class MyBills
     {
-        //public string Abtypt { get; set; } //TaxType
         public string VTRE2 { get; set; } //SadadPaymentNumber
         public string MadabutFg { get; set; } //Mada Payment
         public string OpenliMsg { get; set; } //Mada Payment Message
@@ -140,19 +139,6 @@ namespace ZATCAMAUI.Models
             }
         }
 
-
-/* Unmerged change from project 'ZATCAMAUI (net7.0-android33.0)'
-Before:
-        public bool IsPeriodVisible { get; set; }
-        
-
-        private string _paidamt = string.Empty;
-After:
-        public bool IsPeriodVisible { get; set; }
-
-
-        private string _paidamt = string.Empty;
-*/
         public bool IsPeriodVisible { get; set; }
 
 
@@ -264,32 +250,14 @@ After:
                                 {
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
 
-                                    //try{
-                                    //    CultureInfo arCI = new CultureInfo("en-US");
-                                    //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                                    //}
-                                    //catch (Exception) {
-
-                                    //}
-
-
-
+                                 
                                 }
 
 
                                 else
                                 {
                                     PeriodPart1 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
-                                    //try
-                                    //{
-                                    //    CultureInfo arCI = new CultureInfo("ar-SA");
-                                    //    FormatedFromTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                                    //}
-                                    //catch (Exception)
-                                    //{
-
-                                    //}
-
+                                  
                                 }
 
                             }
@@ -301,30 +269,12 @@ After:
                                 if (CalTyp.Equals("G"))
                                 {
                                     PeriodPart2 = UtilityManager.FormatAccordingToDeviceForVAT(day + "/" + month + "/" + year);
-                                    //try
-                                    //{
-                                    //    CultureInfo arCI = new CultureInfo("en-US");
-                                    //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                                    //}
-                                    //catch (Exception)
-                                    //{
-
-                                    //}
-
+                                  
                                 }
                                 else
                                 {
                                     PeriodPart2 = UtilityManager.FormatAccordingToDeviceHijriEnglish(day + "/" + month + "/" + year);
-                                    //try
-                                    //{
-                                    //    CultureInfo arCI = new CultureInfo("ar-SA");
-                                    //    FormatedToTaxPeriod = DateTime.ParseExact(year + "/" + month + "/" + day, "yyyy/MM/dd", arCI.DateTimeFormat, DateTimeStyles.AllowInnerWhite);
-                                    //}
-                                    //catch (Exception)
-                                    //{
-
-                                    //}
-
+                                  
                                 }
 
                             }
@@ -373,11 +323,11 @@ After:
                 }
             }
         } //DueDate
-          // public string Faedn { get; set; } //DueDate
+
         public string FormattedFaednar { get; set; } //DueDate
         public string StatusImage { get; set; }
         public string Colorcode { get; set; }
-        // FormatedAbrzu = _abrzu.ToString("dd-MMMM-yyyy", new CultureInfo("en-US"));
+
         public DateTime _faedn;
         public DateTime Faedn
         {
@@ -451,23 +401,6 @@ After:
                 }
             }
         }
-
-
-
-
-        //public string _cal_typ = String.Empty;
-        //public string CalTyp
-        //{
-        //    get
-        //    {
-
-        //        return _cal_typ;
-        //    }
-        //    set
-        //    {
-        //        _cal_typ = value;
-        //    }
-        //}
     }
 
 

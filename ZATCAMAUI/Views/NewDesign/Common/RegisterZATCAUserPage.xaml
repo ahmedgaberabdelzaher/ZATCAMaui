@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.Common.RegisterZATCAUserPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.RegisterUserInZATCA}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--  Contact Information Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.ContactInformation}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--  Welcome Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{x:Static ResourceManager:AppResources.Hi}"
+                            TextColor="#0996D4" />
+
+                        <!--  Username Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            MaxLines="1"
+                            Text="{Binding UnRegisteredUser.FullName}"
+                            TextColor="{StaticResource Primary}" />
+
+
+                        <!--  MobileNumber Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  MobileNumber Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  MobileNumber Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Telephone"
+                                    Placeholder="{x:Static ResourceManager:AppResources.MobileNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding UnRegisteredUser.mobileNumber}"
+                                    TextColor="#58595B" />
+
+                                <inputLayout:SfTextInputLayout.LeadingView>
+                                    <Label Text="+966" />
+                                </inputLayout:SfTextInputLayout.LeadingView>
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Email Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Email Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZEmailAddress}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Email Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Email"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZEmailAddress}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding UnRegisteredUser.emailAddress}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  Address Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Address Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.AddressKSA}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+
+                            </custom:CustomLabel>
+
+                            <!--  Address Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.AddressKSA}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding UnRegisteredUser.address}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+
+                        <!--  GoTo Success Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            Command="{Binding SubmitUserCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.RegisterZATCA}"
+                            VerticalOptions="EndAndExpand" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            Background="Transparent"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.CancelText}"
+                            TextColor="{StaticResource Secondary}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.NotesDescriptionPopUpPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView
+        Margin="0,150,0,0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="End">
+        <StackLayout>
+            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.ZZDisplayNotes}" />
+            <ListView
+                BackgroundColor="White"
+                HasUnevenRows="True"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsDisplayNoteVisible}"
+                ItemsSource="{Binding NoteList}"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="20" Spacing="-5">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.Number}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Sect}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Strline}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <!--<Span Text="{x:Static ResourceManager:AppResources.ZDescription}"/>
+                                                    <Span Text=" : "/>-->
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Namez}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Strdt}" />
+                                                    <Span Text="  " />
+                                                    <Span Style="{StaticResource ValueLabelGrey}" Text="{Binding Strtime}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+
+                                </StackLayout>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsNoDataLabelVisible}"
+                Style="{StaticResource ValueLabelBlack}"
+                Text="{x:Static ResourceManager:AppResources.Nodataavailable}"
+                VerticalOptions="Center" />
+            <buttons:SfButton
+                Clicked="OnCloseTapped"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Text="{x:Static ResourceManager:AppResources.ZDone}" />
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

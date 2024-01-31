@@ -206,7 +206,7 @@
                 <buttons:SfButton
                     x:Name="btnDone"
                     Margin="0,0,0,20"
-                    BackgroundColor="{StaticResource Secondary}"
+                    Background="{StaticResource Secondary}"
                     Command="{Binding GoButtonClick}"
                     CornerRadius="14"
                     FontAttributes="Bold"

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Controls.MapPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:gmaps="clr-namespace:Maui.GoogleMaps;assembly=Maui.GoogleMaps"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\Views\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+
+    <Grid VerticalOptions="EndAndExpand">
+
+        <yummy:PancakeView
+            Padding="0"
+            BackgroundColor="White"
+            CornerRadius="15,15,0,0"
+            HeightRequest="400"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
+
+            <gmaps:Map
+                x:Name="map"
+                IsIndoorEnabled="True"
+                MapClicked="map_MapClicked"
+                MapLongClicked="map_MapLongClicked"
+                MapType="Street"
+                MyLocationEnabled="True" />
+
+        </yummy:PancakeView>
+
+        <Image
+            Margin="10"
+            Aspect="AspectFit"
+            HeightRequest="25"
+            HorizontalOptions="StartAndExpand"
+            Source="CloseIcon"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="25">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseMapCommand}" />
+            </Image.GestureRecognizers>
+
+        </Image>
+
+    </Grid>
+</pages:PopupPage>
+
+
+

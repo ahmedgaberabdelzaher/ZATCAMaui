@@ -184,7 +184,6 @@
                             TitlePlacement="Bottom"
                             VerticalOptions="Center" />
                     </StackLayout>
-                    <!--  Title="{x:Static local:AppResources.ActivityIndicatorTitle}"  -->
                 </StackLayout>
             </Grid>
         </Grid>

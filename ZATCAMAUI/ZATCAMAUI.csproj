@@ -62,11 +62,803 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="KeyStore\**" />
+	  <EmbeddedResource Remove="KeyStore\**" />
+	  <MauiCss Remove="KeyStore\**" />
+	  <MauiXaml Remove="KeyStore\**" />
+	  <None Remove="KeyStore\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <BundleResource Remove="Platforms\iOS\Resources\LaunchScreen.storyboard" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="Platforms\Android\DependencyServices\CustomPdfRenderer.cs" />
 	  <Compile Remove="MainPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <InterfaceDefinition Remove="Platforms\iOS\Resources\LaunchScreen.storyboard" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiCss Remove="Platforms\iOS\Resources\zatca.css" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Platforms\iOS\Resources\ SuccessQr.png" />
+	  <None Remove="Platforms\iOS\Resources\AboutZatca.png" />
+	  <None Remove="Platforms\iOS\Resources\AboutZatca@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\AboutZatca@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\About_AR.html" />
+	  <None Remove="Platforms\iOS\Resources\About_EN.html" />
+	  <None Remove="Platforms\iOS\Resources\Account.png" />
+	  <None Remove="Platforms\iOS\Resources\Account@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Account@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\AccountSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\AccountSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\AccountSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Account_statment.png" />
+	  <None Remove="Platforms\iOS\Resources\Account_statment_Gray.png" />
+	  <None Remove="Platforms\iOS\Resources\add@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\AddNew.png" />
+	  <None Remove="Platforms\iOS\Resources\AddNew@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\AddNew@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\addReportIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\addReportIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\addReportIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\airBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\airBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\airBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\airDark.png" />
+	  <None Remove="Platforms\iOS\Resources\airDark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\airDark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\amount@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\amount_white@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Angry.png" />
+	  <None Remove="Platforms\iOS\Resources\Angry@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Angry@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\AppleStore.png" />
+	  <None Remove="Platforms\iOS\Resources\AppleStore@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\AppleStore@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrivingPlane.png" />
+	  <None Remove="Platforms\iOS\Resources\arrivingPlane@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrivingPlane@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrowDropdown@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrowLeft@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrowLeftwhite@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\arrowRight@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ArrowUp@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Bg_Bottom_nav@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\billBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\billBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\billBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\billWhite.png" />
+	  <None Remove="Platforms\iOS\Resources\billWhite@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\billWhite@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\blueCard.png" />
+	  <None Remove="Platforms\iOS\Resources\blueCard@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\blueCard@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\branchLocator@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\BrokerOptionality.png" />
+	  <None Remove="Platforms\iOS\Resources\BrokerOptionality@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\BrokerOptionality@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Burger.png" />
+	  <None Remove="Platforms\iOS\Resources\calendar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\calendar_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CallUS.png" />
+	  <None Remove="Platforms\iOS\Resources\CallUS@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CallUS@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\cancel.png" />
+	  <None Remove="Platforms\iOS\Resources\cancel@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\cancel@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\centered@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ChartBar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\chat@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\chat_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckedCheckbox.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckedCheckbox@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckedCheckbox@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\checked_box.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckMark.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckMark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CheckMark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\check_oval@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\circle_arrow_right@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\citizien.png" />
+	  <None Remove="Platforms\iOS\Resources\citizien@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\citizien@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\clock@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\clockNew@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\close@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\closeGrey@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseWhiteIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseWhiteIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CloseWhiteIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ColorChat@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ColorSadad.png" />
+	  <None Remove="Platforms\iOS\Resources\ColorSadad@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ColorSadad@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\committments_onboarding@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\committments_onboarding_ar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Copy.png" />
+	  <None Remove="Platforms\iOS\Resources\Copy@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Copy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomDeclerationsforTravellers.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomDeclerationsforTravellers@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomDeclerationsforTravellers@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomerService.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomerService@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\customerService@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\customerServiceColor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomServices.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomServices@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\CustomServices@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\darkClose.png" />
+	  <None Remove="Platforms\iOS\Resources\darkClose@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\darkClose@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\darkSucces.png" />
+	  <None Remove="Platforms\iOS\Resources\darkSucces@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\darkSucces@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\date.png" />
+	  <None Remove="Platforms\iOS\Resources\DDlIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\DDlIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\DDlIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\declaration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationWhite.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationWhite@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\declarationWhite@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\declaration_blue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\deIIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\delIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\delIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\DepartingPlane.png" />
+	  <None Remove="Platforms\iOS\Resources\DepartingPlane@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\DepartingPlane@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\deregistration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\details@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Dissatisfied.png" />
+	  <None Remove="Platforms\iOS\Resources\Dissatisfied@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Dissatisfied@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\DocBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\DocBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\DocBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\documents_Green@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\documents_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\download@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\eCart.png" />
+	  <None Remove="Platforms\iOS\Resources\eCart@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\eCart@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\EDeclerationicon.png" />
+	  <None Remove="Platforms\iOS\Resources\EDeclerationicon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\EDeclerationicon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Education.png" />
+	  <None Remove="Platforms\iOS\Resources\Education@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\education@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\EinvoiceScanning.png" />
+	  <None Remove="Platforms\iOS\Resources\EinvoiceScanning@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\EinvoiceScanning@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Ellipse.png" />
+	  <None Remove="Platforms\iOS\Resources\Ellipse@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Ellipse@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyCheck.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyCheck@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyCheck@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyReport.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyReport@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\emptyReport@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Entity.png" />
+	  <None Remove="Platforms\iOS\Resources\Entity@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Entity@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Entry_DropDown@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\error@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\errorNew@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\establishments@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\establishments_BigGreen@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\establishments_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ExciseTaxServices.png" />
+	  <None Remove="Platforms\iOS\Resources\ExciseTaxServices@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ExciseTaxServices@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\expressBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\expressBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\expressBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\expressDark.png" />
+	  <None Remove="Platforms\iOS\Resources\expressDark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\expressDark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\FailedIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\FailedIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\FailedIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\failQR.png" />
+	  <None Remove="Platforms\iOS\Resources\failQR@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\failQR@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\FAQ.png" />
+	  <None Remove="Platforms\iOS\Resources\FAQ@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\FAQ@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\faQs@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\faQs_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\file@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\fileUpload.png" />
+	  <None Remove="Platforms\iOS\Resources\fileUpload@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\fileUpload@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\file_2@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\fillArriving.png" />
+	  <None Remove="Platforms\iOS\Resources\fillArriving@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\fillArriving@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\fillCircle.png" />
+	  <None Remove="Platforms\iOS\Resources\fillCircle@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\fillCircle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\filter@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\finances.png" />
+	  <None Remove="Platforms\iOS\Resources\finances@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\finances@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Flash@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Forget_ic_success@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\FP_selected_tile@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\FP_unselected_tile@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GeneralServices.png" />
+	  <None Remove="Platforms\iOS\Resources\GeneralServices@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GeneralServices@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Generic_attachment_icon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Generic_attachment_iconGeneric_attachment_icon.png" />
+	  <None Remove="Platforms\iOS\Resources\GooglePlay.png" />
+	  <None Remove="Platforms\iOS\Resources\GooglePlay@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GooglePlay@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Grabber.png" />
+	  <None Remove="Platforms\iOS\Resources\Grabber@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Grabber@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayBackButton.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayBackButton@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayBackButton@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayDDLArrow.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayDDLArrow@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GrayDDLArrow@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GreenRightArrow.png" />
+	  <None Remove="Platforms\iOS\Resources\GreenRightArrow@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GreenRightArrow@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Green_Key@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\greyCalender.png" />
+	  <None Remove="Platforms\iOS\Resources\greyCalender@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\greyCalender@4x.png" />
+	  <None Remove="Platforms\iOS\Resources\greyDropDown.png" />
+	  <None Remove="Platforms\iOS\Resources\greyDropDown@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\greyDropDown@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Grey_message@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Grey_phone@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\grey_search@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIconNotSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIconNotSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\GridViewIconNotSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Group_114.png" />
+	  <None Remove="Platforms\iOS\Resources\Group_114@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Group_114@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\hidePassword@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Home.png" />
+	  <None Remove="Platforms\iOS\Resources\Home@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\home@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeNotSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeNotSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeNotSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\HomeSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_add1@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_add_plus@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Application_Status@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_attachment@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_burger@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_certificate@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_certificateColor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_check_circle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Check_golden@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Check_Gray@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_circleBg@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_close@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_company@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_delete@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Delete_disabled@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_download@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_downloadWhite.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_downloadWhite@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_downloadWhite@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_dropdownOne@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Edit@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_edit_gray@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Edit_red@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_envelop@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_file_download@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_FillingFrequency@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Gazt@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_GAZT_Logo_Text.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_iconpay.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_iconpay_white.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_icon_applelogo.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_icon_applelogo_white.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Installplan@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_language@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_loading@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_location@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_location_Outline@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_logo_Dashboard@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_logo_gazt@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_maincheck.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_menu_cr@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_menu_cr_g@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_menu_cr_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_menu_Tax_check@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_menu_vfp@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_money@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Paid@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Payments@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_pdf@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_PrivacyPolicy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_refresh@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_RefundR@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_RegistrationDetails@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_ReportTaxEvasion@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_reviewDetails@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_sadad.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_sadad_white.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_save_golden@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_save_Gray@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_star@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_star_180.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_star_border@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_unpaid@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_unsubmitted@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_unsubmitted_box@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vatDe@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_VATservices@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vat_amount@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vat_bill@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vat_check@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vat_info@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_VAT_reg@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_VAT_reg_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_vat_return@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_VAT_service@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_VAT_service_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_Version@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ic_White_info@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\imageFile.png" />
+	  <None Remove="Platforms\iOS\Resources\imageFile@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\imageFile@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\inbox_onboarding@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\inbox_onboarding_ar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\individual_32@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\individual_32White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\info.png" />
+	  <None Remove="Platforms\iOS\Resources\info@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\info@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\InfoIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\InfoIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\InfoIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Information.png" />
+	  <None Remove="Platforms\iOS\Resources\Information@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\information@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\infoWhiteIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\infoWhiteIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\infoWhiteIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\InquireCustomDeclerations.png" />
+	  <None Remove="Platforms\iOS\Resources\InquireCustomDeclerations@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\InquireCustomDeclerations@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\installment_plan@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\installment_planColor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LabFees.png" />
+	  <None Remove="Platforms\iOS\Resources\LabFees@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LabFees@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LabfeesInquiry.png" />
+	  <None Remove="Platforms\iOS\Resources\LabfeesInquiry@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LabfeesInquiry@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\landBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\landBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\landBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\landDark.png" />
+	  <None Remove="Platforms\iOS\Resources\landDark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\landDark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LangaugeIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\LangaugeIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LangaugeIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\language@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LiveVideonIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\LiveVideonIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LiveVideonIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\location_Green@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\logo_gazt@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\log_out@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\log_out@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstArrow.png" />
+	  <None Remove="Platforms\iOS\Resources\LstArrow@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstArrow@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstDetailsIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\LstDetailsIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstDetailsIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIconSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIconSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\LstViewIconSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\MainGrayCopy.png" />
+	  <None Remove="Platforms\iOS\Resources\MainGrayCopy@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\MainGrayCopy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Menu.png" />
+	  <None Remove="Platforms\iOS\Resources\Menu@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Menu@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\MenuSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\MenuSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\MenuSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_bill@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_calendar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_help@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_individual@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_installment_plan@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_manage_tax@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_objections@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_objectionsColor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_refund@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_return@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\menu_settings@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\message@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ministryJustice@3x@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\money@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\negative@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\NeitherDissatisfiednorSatisfied.png" />
+	  <None Remove="Platforms\iOS\Resources\NeitherDissatisfiednorSatisfied@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\NeitherDissatisfiednorSatisfied@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\newdeclaration.png" />
+	  <None Remove="Platforms\iOS\Resources\newdeclaration@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\newdeclaration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\newui_ic_pdf@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\non_submitted@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedAccountStatlement.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedAccountStatlement@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedAccountStatlement@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedDashBoardicon.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedDashBoardicon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\NotSelectedDashBoardicon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\onboarding@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\OrangeCircle@1.5x.png" />
+	  <None Remove="Platforms\iOS\Resources\OrangeCircle@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\OrangeCircle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\other@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Overdue_clock@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\overdue_Returns@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Paid_check@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\partiallay_paid_returns@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\partially_clock@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\partials_background.png" />
+	  <None Remove="Platforms\iOS\Resources\password@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\password_key@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Path.png" />
+	  <None Remove="Platforms\iOS\Resources\Path@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Path@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\paymentmethod_onboarding@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\paywhiteCard.png" />
+	  <None Remove="Platforms\iOS\Resources\paywhiteCard@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\paywhiteCard@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\PDF.png" />
+	  <None Remove="Platforms\iOS\Resources\PDF@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\PDF@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\phoneIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\phoneIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\phoneIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\phone_Green@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\positive@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\PrivacyandPolicy.png" />
+	  <None Remove="Platforms\iOS\Resources\PrivacyandPolicy@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\PrivacyandPolicy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\PrivacyPolicy_AR.html" />
+	  <None Remove="Platforms\iOS\Resources\PrivacyPolicy_EN.html" />
+	  <None Remove="Platforms\iOS\Resources\product.png" />
+	  <None Remove="Platforms\iOS\Resources\product@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\product@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\QrScanImage.png" />
+	  <None Remove="Platforms\iOS\Resources\QrScanImage@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\QrScanImage@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\QSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\QSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\QSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\quantity.png" />
+	  <None Remove="Platforms\iOS\Resources\quantity@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\quantity@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\quickAction2@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\quick_actions@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\quick_Actions_Close@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\quick_action_2@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\QUnselected.png" />
+	  <None Remove="Platforms\iOS\Resources\QUnselected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\QUnselected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\RateUS.png" />
+	  <None Remove="Platforms\iOS\Resources\RateUS@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\RateUS@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\RealStateVAT@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Rectangle.png" />
+	  <None Remove="Platforms\iOS\Resources\Rectangle@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Rectangle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\refund@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\registration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\registration_w@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportAdd.png" />
+	  <None Remove="Platforms\iOS\Resources\reportAdd@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportAdd@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportCheckMark.png" />
+	  <None Remove="Platforms\iOS\Resources\reportCheckMark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportCheckMark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportClose.png" />
+	  <None Remove="Platforms\iOS\Resources\reportClose@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportClose@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportDetails.png" />
+	  <None Remove="Platforms\iOS\Resources\reportDetails@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportDetails@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportlocation.png" />
+	  <None Remove="Platforms\iOS\Resources\reportlocation@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportlocation@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Reports.png" />
+	  <None Remove="Platforms\iOS\Resources\Reports@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Reports@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearch.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearch@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearch@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearchBar.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearchBar@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reportSearchBar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\requestVerification@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\request_verification@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\returnsubmission_onboarding@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\returnsubmission_onboarding_ar@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\return_vatRefunds@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\reviewapreviousrequest.png" />
+	  <None Remove="Platforms\iOS\Resources\reviewapreviousrequest@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\reviewapreviousrequest@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Property_Registration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Property_Registration_G@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Property_Tile_Background_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Request_Verification@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Request_Verification_W@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Termination_Request@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Termination_Request_W@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Tile_Background@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Tile_Background_S@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\re_Tile_Background_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Satisfied.png" />
+	  <None Remove="Platforms\iOS\Resources\Satisfied@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Satisfied@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\seaBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\seaBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\seaBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\seaDark.png" />
+	  <None Remove="Platforms\iOS\Resources\seaDark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\seaDark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\search@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SearchExciseTax.png" />
+	  <None Remove="Platforms\iOS\Resources\SearchExciseTax@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SearchExciseTax@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Selctednewdeclaration.png" />
+	  <None Remove="Platforms\iOS\Resources\Selctednewdeclaration@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Selctednewdeclaration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\selected171x136@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedAccountStatlement.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedAccountStatlement@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedAccountStatlement@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedConsumer.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedConsumer@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedConsumer@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedDashBoardicon.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedDashBoardicon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedDashBoardicon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedEntity.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedEntity@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedEntity@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedLiveVideonIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedLiveVideonIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedLiveVideonIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedMerchant.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedMerchant@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedMerchant@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\selectedPhone.png" />
+	  <None Remove="Platforms\iOS\Resources\selectedPhone@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\selectedPhone@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedReport.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedReport@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectedReport@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectefTaxpayer.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectefTaxpayer@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SelectefTaxpayer@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\service_6@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Cancel_payment@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Estimated_Zakat_Returns@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Form_Bundle_Status@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Overdue_Returns_Commitments@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Overdue_Returns_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Paid@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Partially_Paid@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Submited_Returns_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Unpaid@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Unpaid_Commitments@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_ic_Unsubmited_Returns_White@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_My_Bills@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_My_Certificate@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Payment@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Sadad_logo@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Service_6@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_Tax_Evasion@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_TIN_Status@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_VAT_Declaration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_VAT_Lookup@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\sf_VerifyRequest@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\shipmentIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\shipmentIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\shipmentIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\showPassword@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\showReports.png" />
+	  <None Remove="Platforms\iOS\Resources\showReports@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\showReports@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\startCircle.png" />
+	  <None Remove="Platforms\iOS\Resources\startCircle@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\startCircle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\StronglyDissatisfied.png" />
+	  <None Remove="Platforms\iOS\Resources\StronglyDissatisfied@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\StronglyDissatisfied@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Stronglysatisfied.png" />
+	  <None Remove="Platforms\iOS\Resources\Stronglysatisfied@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Stronglysatisfied@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\submited@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\submited_check@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Success.png" />
+	  <None Remove="Platforms\iOS\Resources\Success@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Success@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SuccessIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\SuccessIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SuccessIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SuccessQr@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SuccessQr@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyEnd.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyEnd@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyEnd@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyStart.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyStart@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\SurveyStart@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\TarrrifSectionIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\TarrrifSectionIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\TarrrifSectionIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\TaxCalcultor.png" />
+	  <None Remove="Platforms\iOS\Resources\TaxCalcultor@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\TaxCalcultor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\taxEvasion@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\taxEvasion_green@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Taxpayer.png" />
+	  <None Remove="Platforms\iOS\Resources\Taxpayer@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Taxpayer@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\taxpayer_subsidy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\tax_evasion_green@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\TermsAndConditionsAR.html" />
+	  <None Remove="Platforms\iOS\Resources\TermsAndConditionsEN.html" />
+	  <None Remove="Platforms\iOS\Resources\ThaqaqIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\ThaqaqIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ThaqaqIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\thumbnail_chat@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\timeline@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\topsearchicon.png" />
+	  <None Remove="Platforms\iOS\Resources\topsearchicon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\topsearchicon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\trainBlue.png" />
+	  <None Remove="Platforms\iOS\Resources\trainBlue@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\trainBlue@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\trainDark.png" />
+	  <None Remove="Platforms\iOS\Resources\trainDark@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\trainDark@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\TransactionReceptionIcon.png" />
+	  <None Remove="Platforms\iOS\Resources\TransactionReceptionIcon@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\TransactionReceptionIcon@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\TravellerDecleration.png" />
+	  <None Remove="Platforms\iOS\Resources\TravellerDecleration@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\TravellerDecleration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\UncheckedCheckBox.png" />
+	  <None Remove="Platforms\iOS\Resources\UncheckedCheckBox@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\UncheckedCheckBox@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unchecked_box.png" />
+	  <None Remove="Platforms\iOS\Resources\unFillDepartingPlane.png" />
+	  <None Remove="Platforms\iOS\Resources\unFillDepartingPlane@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unFillDepartingPlane@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unlockaccount_clock@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unReportNumber.png" />
+	  <None Remove="Platforms\iOS\Resources\unReportNumber@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unReportNumber@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Unselected.png" />
+	  <None Remove="Platforms\iOS\Resources\unselected171x136@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Unselected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\Unselected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedCard.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedCard@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedCard@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedcitizien.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedcitizien@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedcitizien@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedConsumer.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedConsumer@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnselectedConsumer@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnSelectedMerchant.png" />
+	  <None Remove="Platforms\iOS\Resources\UnSelectedMerchant@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\UnSelectedMerchant@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unSelectedPhone.png" />
+	  <None Remove="Platforms\iOS\Resources\unSelectedPhone@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unSelectedPhone@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedreviewapreviousrequest.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedreviewapreviousrequest@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedreviewapreviousrequest@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedvisitor.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedvisitor@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\unselectedvisitor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\unsubmitted@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\user_profile@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\VatRegCheck.png" />
+	  <None Remove="Platforms\iOS\Resources\VatRegCheck@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\VatRegCheck@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\VatServices.png" />
+	  <None Remove="Platforms\iOS\Resources\VatServices@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\VatServices@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_ic_individaualregistration@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_ic_location@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_ic_phone@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_ic_success@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_ic_taxpayerDetail@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_Establishment_G@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_Establishment_W@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_Iconawesomephonealt@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_Iconmetrolocation@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_individual.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_individual@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_new_individual_G@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_tile_IbanCard_backgroun@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_tile_IbanCard_background@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_tile_IbanCard_background_white@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_tile_listofsignup.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_tile_listofsignup_W.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_user@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\vat_user_summary@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\visitor.png" />
+	  <None Remove="Platforms\iOS\Resources\visitor@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\visitor@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\warning.png" />
+	  <None Remove="Platforms\iOS\Resources\warning@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\warning@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteCard.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteCard@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteCard@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\WhiteCircle_arrow_right@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\Whiteclock@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteRightBack.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteRightBack@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteRightBack@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\WhiteSadad.png" />
+	  <None Remove="Platforms\iOS\Resources\WhiteSadad@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\WhiteSadad@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteSelected.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteSelected@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\whiteSelected@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATyLogo.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATyLogo@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATyLogo@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATYlogoInMenu.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATYlogoInMenu@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZAKATYlogoInMenu@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\zakat_copy@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\zakat_details@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\zakat_manageTax@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZatcaLogoWithTitle.png" />
+	  <None Remove="Platforms\iOS\Resources\ZatcaLogoWithTitle@2x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZatcaLogoWithTitle@3x.png" />
+	  <None Remove="Platforms\iOS\Resources\ZATCA_MAIN LOGO-01@3x.png" />
 	  <None Remove="Resources\Fonts\MyMaterialIcon.ttf" />
 	  <None Remove="Platforms\iOS\GoogleService-Info.plist" />
 	  <None Remove="Platforms\Android\xml\" />
@@ -83,8 +875,6 @@
 	  <None Remove="Platforms\Android\Resources\drawable\zatca_logo.png" />
 	  <None Remove="Platforms\Android\Resources\drawable\zatcaname.png" />
 	  <None Remove="Platforms\Android\Resources\layout\" />
-	  <None Remove="Platforms\Android\Resources\layout\Tabbar.axml" />
-	  <None Remove="Platforms\Android\Resources\layout\Toolbar.axml" />
 	  <None Remove="Resources\Images\Forget_ic_success%403x.png" />
 	  <None Remove="Resources\Images\partialsbackground.png" />
 	  <None Remove="Resources\Images\forgeticsuccess.png" />
@@ -2609,6 +3399,7 @@
 		<PackageReference Include="CardsView.Maui" Version="0.0.4" />
 		<PackageReference Include="CommonServiceLocator" Version="2.0.7" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="6.1.0" />
+		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="1.0.4" />
 		<PackageReference Include="MvvmLight" Version="5.4.1.1" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -2617,33 +3408,33 @@
 		<PackageReference Include="Portable.JWT" Version="1.0.3" />
 		<PackageReference Include="Prism.Core" Version="8.1.97" />
 		<PackageReference Include="RGPopup.Maui" Version="1.0.3" />
-		<PackageReference Include="Syncfusion.Licensing" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Buttons" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Calendar" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Charts" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Core" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Inputs" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Picker" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="24.1.44" />
-		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.1.44" />
+		<PackageReference Include="Syncfusion.Licensing" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Core" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Expander" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.ListView" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.PdfViewer" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Picker" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.ProgressBar" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.Scheduler" Version="24.1.47" />
+		<PackageReference Include="Syncfusion.Maui.TabView" Version="24.1.47" />
+		<PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
+		<PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
 		<PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
 		<PackageReference Include="AppDynamics.Agent" Version="2023.12.0" />
 		<PackageReference Include="AppDynamics.Agent.Maui" Version="2023.12.0" />
 		<PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig" Version="8.10.0.3" />
-		<PackageReference Include="Syncfusion.Maui.Cards" Version="24.1.44" />
+		<PackageReference Include="Syncfusion.Maui.Cards" Version="24.1.47" />
 		<PackageReference Include="Onion.Maui.GoogleMaps" Version="5.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="ViewModel\NewDesignViewModel\ChangeFillingPeriodViewModel\" />
 	  <Folder Include="Platforms\Android\xml\" />
-	  <Folder Include="Platforms\Android\Resources\values-v31\" />
 	  <Folder Include="Platforms\Android\Resources\drawable\" />
-	  <Folder Include="Platforms\Android\Resources\layout\" />
 	  <Folder Include="Resources\Images\" />
 	</ItemGroup>
 
@@ -2665,6 +3456,8 @@
 	<ItemGroup>
 	  <Compile Update="AppResources.Designer.cs">
 	    <DependentUpon>AppResources.resx</DependentUpon>
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
 	  </Compile>
 	  <Compile Update="AppResources.ar.Designer.cs">
 	    <DependentUpon>AppResources.ar.resx</DependentUpon>
@@ -2678,10 +3471,82 @@
 	  <MauiXaml Remove="MainPage.xaml" />
 	</ItemGroup>
 	<ItemGroup>
+	  <MauiXaml Update="Core\CustomControls\EntryWithSAR.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\Header.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\ListBottomSheet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\Loader.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\MapPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\MsgView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\OTP.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\OTP6Digit.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\PickerWithSearch.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\ServiceMenuControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\TraifItemsControl.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Core\CustomControls\UploadingPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementBillsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementsDetailPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementsDownloadPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementsFiltersPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementsNewFilterPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\AccountStatements\AccountStatementsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\BaseContentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ChangeFillingPeriodPages\ChangeFillingPeriodListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ChangeFillingPeriodPages\ChangeFillingPeriodPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ChangeFillingPeriodPages\ChangeFillingPeriodSuccessPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\AddNotesPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\Common\FilesUploadPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\FillingFreuencyMenuListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\GeneralServicesListPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\Common\InstructionsBottomPopUpView.xaml">
@@ -2693,19 +3558,202 @@
 	  <MauiXaml Update="Views\NewDesign\Common\MoreMenuPopUpPageViewRTwo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\NativeNafath\NativeConfirmNafathPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\NativeNafath\NativeNafathPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\PaymentWebView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\RefundRequestMenuListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\RegisterZATCAUserPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\Common\SingleButtonPopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\ViewNotesPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Common\YesNoAlertPopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleaseInfoPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleaseListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleasePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ContractReleasePages\ContractReleaseSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Controls\TobacoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\CustomDashBoard\CustomDashBoardVi.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\CustomFees\CustomFeesFormView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\e-Declarations\CreateE_Declaration.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\e-Declarations\EDecleration.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\e-Declarations\ReiewPreviousDeclerations.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\ExciseTax.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\InquiryAboutCustomsDeclaration.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\InquiryaboutCustomsIssuesViews\InquiryaboutCustomsIssuesView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\LaboratoryPaymentOfInsuranceFees.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\ReportFinancialViolation.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\ReportsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\SearchIndiactivePriceForExciseGoods.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\TraifSections.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\IAMLoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\NewCrPopupView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\SuccessView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\CustomServicesPages\Transaction_Reception\TransactionReceptionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\ChatPotView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\DashBoardPages\LogoutPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\DashBoardPages\TaxManagementPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\EDeclarationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\EDeclarationPaymentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\EDeclarationSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\InfoPages\ContactInformationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\InfoPages\PassengerInformationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\InfoPages\TripInformationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\InquireRequestPages\ListUserRequestsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\InquireRequestPages\ReviewRequestPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\NewDeclarationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\PopUpPages\AcknowledgePopUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\PopUpPages\EDeclarationCartPopUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\PopUpPages\EDeclarationTermsPopupPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\ChooseQuestionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\CurrencyView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\ProductDeclarationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\ProductView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\RestrictedView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EDeclaration\QuestionsViews\TobacoView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\ActivityItemAmendUpdatePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\EstablishmentAmendUpdateSuccessfulPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentAmendUpdatePages\OutletDetailsAmendUpdatePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\ActivityItemPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\AddressPickerPopPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\EstablishmentRegistrationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\OutletDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\RegistrationSuccessfulPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\EstablishmentRegistrationPages\VoidNotePopPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\AttachmentPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\ReturnPortalNavigationPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZAKATOkCancelPopUpView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnDetailsSuccessfullPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZAKATReturnDetailsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\EstimatedZAKATReturnsPages\ZakatReturnNewSuccessPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\ForgotPasswordPages\ForgotPasswordPageView.xaml">
@@ -2717,13 +3765,196 @@
 	  <MauiXaml Update="Views\NewDesign\ForgotPasswordPages\GAZTNewDesignRecoverUsername.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\FormBundleStatusPages\FormBundleStatusPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\GenericPickers\NewPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\ContactUs.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\CusromServiceMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\ExciseServices.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\GeneralServices.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\Home.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\SideMenuView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\HomePages\VatServicesMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\InstalmentPlan\InstalmentPlanPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\LiveVideo\LiveVideoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\LoginPages\CustomLogin.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\LoginPages\FasahLogin\FasahLoginView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\LoginPages\LoginSelectionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\MyBillsPages\MyBillsMultiplePayableList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyBillsPages\MyBillsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyBillsPages\MyBillsSadadDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyBillsPages\MyBillsSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyReports\FilterBottomSheetPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyReports\MyReportDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyReports\MyReportsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\MyReturnsPages\MyReturnsNewPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Nafat\NafathLoginPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Nafat\NafathPopUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\PaymentOptions\PaymentProcessWebview.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ReportOTP\InquiryAboutAddOrShowReportsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ReportOTP\InquiryAboutMyReportsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ReportOTP\ReportOTPPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\SubmitReport\ReportSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\SubmitReport\SubmitReportPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\SubmitReport\TermsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\SupportPages\SupportPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\SupportPages\ZatcaInfoMenuPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Survey\RateUs.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TahqaqViews\E_InvoicesScan.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TahqaqViews\TahqaqScanPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\NewTaxEvasionFormSuccessPaveView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\TaxEvasionMyReportsListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\TaxEvasionPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\TaxEvasionPageWebView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\TaxEvasionReportDetailPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TAXEvasionPages\TaxEvasionVerifyMobileNumberPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondanceDetailPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerCorrespondancePages\TaxpayerCorrespondancePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfilePageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\TaxpayerProfileSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\TaxpayerSubsidyRequest.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\UpdateEmailPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\UpdateMobilePopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\UpdatePasswordPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayerProfile\VerificationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TaxpayersCertificatesPages\TaxpayersCertificatesPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\DashboardAnonymousMenuPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Template\NewPublicMenuPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TrackShipment\ShipmentStatusPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TrackShipment\ShipmentTrackingTypesPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\TrackShipment\TrackShipmentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationMoreOptionPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATAmendReactivationPages\VATAmendReactivationSuccessfulPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\AdjustmentPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\FileAttachmentPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\InstructionPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\MorePopUpPageView.xaml">
@@ -2732,13 +3963,28 @@
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\NewAccountPopPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\NotesDescriptionPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\NotesPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\RefundAccountPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\RefundInstrunctions.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationConfirmationPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationForPrivatehealthCare.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\ShowVatInformationPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\SummaryInstruction.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\VATCreditCarriedForwardPopUpPageView.xaml">
@@ -2747,7 +3993,172 @@
 	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\VATDeclarationAttachmentPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\VatReturnNewSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\VATReturnSuccessfullPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeclarationPages\VATReturnUpdatedUIPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeRegistration\VATDeregistrationDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\NewDesign\VATDeRegistration\VATDeregistrationInstructionsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATDeRegistration\VATDeregistrationSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATgoodsOnprofit\NewYesorNoPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VatInstalmentPlan\VatInstalmentPlanBottomPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VatInstalmentPlan\VatInstalmentPlanListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VatInstalmentPlan\VatInstalmentPlanPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VatInstalmentPlan\VatInstalmentPlanSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATLookUp\VATLookUpNewPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRefunds\VATRefundDetailsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRefunds\VATRefundsInstructionsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRefunds\VATRefundsListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRefunds\VATRefundsNewRequestPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRefunds\VATRefundsSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATRegistrationDetails\VATRegistrationDisplayDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VatReviewBillViewBottomPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VatReviewListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VatReviewPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VatReviewSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VatReviewViewApplicationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VRInputTDViewAppPageViewApp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VRSuspensionViewAppPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VRVatDeRegViewAppPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VRVatGroupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATReview\VRVatRegViewPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VATServices\VATServicesPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\VAT\TaxCalculator.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\TINDeregestrationSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\TINDeregistrationCloseIndividualOutletsPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\TINDeregistrationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatDeregistrationPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationDetailsListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationFinancialDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationOutletsDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatDeregistration\ZakatRegistrationTaxPayerDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatForm5\DummyPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatForm5\ZakatAcknowledgmentPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatForm5\ZakatForm5PageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\OldZakatInstalmentPlanBottomPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\OldZakatInstalmentPlanListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\OldZakatInstalmentPlanPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\OldZakatInstalmentPlanSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\ZakatInstalmentPlanBottomPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\ZakatInstalmentPlanListView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\ZakatInstalmentPlanPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatInstalmentPlan\ZakatInstalmentPlanSuccessPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZAKATObjectionPages\NewZakatObjectionPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZAKATObjectionPages\ZakatObjectionSuccessfullPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatObjection\ObjectionsSelectionPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatObjection\ZakatObjectionPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatObjection\ZakatObjectionsListPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\ZakatObjection\ZakatObjectionSuccessPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewDesign\Zakaty\AboutZakatyView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\AddPopPages\AddPopPageView.xaml">
@@ -2762,7 +4173,19 @@
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FileAttachmentPopUpPageView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\FinancialDetailAttachmentPopupPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\InternationalCodeSearchPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\NewAccountPopUpPageView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\VATIndividualSignupPage\VATRegistrationMenuPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SyncFusionEnabledViews\ZakatDeregistration\TINDeRegistrationPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -5316,5 +6739,10 @@
 <!--	  <PackageReference Include="Xamarin.AndroidX.Collection.Jvm" Version="1.3.0.2" />
 	  <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.3.0.2" />-->
 	  <PackageReference Include="Xamarin.Firebase.Iid" Version="121.1.0.13" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="Platforms\Android\Resources\values-v31\themes.xml" />
+	  <Content Include="Platforms\Android\Resources\values\colors.xml" />
+	  <Content Include="Platforms\Android\Resources\values\styles.xml" />
 	</ItemGroup>
 </Project>

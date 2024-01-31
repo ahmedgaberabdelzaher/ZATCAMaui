@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.InfoPages.PassengerInformationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
+                <ResourceDictionary>
+                    <xct:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding OnAppearingInfoPagesCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,10" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="15"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{Binding HeaderTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--  Circle view  -->
+                        <Grid
+                            Margin="0,30,0,10"
+                            ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                            ColumnSpacing="0"
+                            HorizontalOptions="CenterAndExpand"
+                            RowDefinitions="Auto"
+                            VerticalOptions="Start">
+
+                            <!--  Circle button 1  -->
+                            <ImageButton
+                                Padding="5"
+                                BackgroundColor="#0996D4"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                InputTransparent="True"
+                                Source="reportCheckMark.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30" />
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="#0996D4"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 2  -->
+                            <Button
+                                Grid.Column="2"
+                                BackgroundColor="Transparent"
+                                BorderColor="#0996D4"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="2"
+                                TextColor="#0996D4"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="3"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 3  -->
+                            <Button
+                                Grid.Column="4"
+                                BackgroundColor="Transparent"
+                                BorderColor="#B8BABA"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="3"
+                                TextColor="#565655"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                            <!--  Horizontal Line  -->
+                            <BoxView
+                                Grid.Column="5"
+                                BackgroundColor="#B8BABA"
+                                HeightRequest="2"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="20" />
+
+                            <!--  Circle button 4  -->
+                            <Button
+                                Grid.Column="6"
+                                BackgroundColor="Transparent"
+                                BorderColor="#B8BABA"
+                                BorderWidth="1"
+                                CornerRadius="15"
+                                HeightRequest="30"
+                                HorizontalOptions="StartAndExpand"
+                                InputTransparent="True"
+                                Text="4"
+                                TextColor="#565655"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="30">
+                                <Button.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness">
+                                        <On Platform="Android">0</On>
+                                    </OnPlatform>
+                                </Button.Padding>
+
+                            </Button>
+
+                        </Grid>
+
+                        <!--  Passenger Information Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.PassengerInformation}"
+                            TextColor="{StaticResource Primary}" />
+
+                        <!--#region Cards-->
+                        <StackLayout
+                            Margin="0,0,0,5"
+                            Padding="5"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="FillAndExpand">
+
+                            <!--  Passport Card  -->
+                            <Grid
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="QSelected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="QSelected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="QUnselected.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <!--  Passport Label  -->
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.Passport}"
+                                    TextColor="White"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                        </DataTrigger>
+
+
+                                    </custom:CustomLabel.Triggers>
+
+                                </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IDSelectionCommand}" CommandParameter="4" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                            <!--  National ID card  -->
+                            <Grid
+                                Padding="5"
+                                HeightRequest="94"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="QUnselected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="QSelected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="QUnselected.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+
+                                <!--  National ID label  -->
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.GccNationalID}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsYesSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IDSelectionCommand}" CommandParameter="16" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+                        <!--#endregion Cards-->
+
+                        <!--  First Name Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  First Name Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  First Name Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ZZZVATRFirstName}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.firstName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Middle Name Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Middle Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.MiddleName}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Middle Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.MiddleName}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.middleName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Last Name Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Last Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ESTLastNameLabel}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Last Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTLastNameLabel}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.lastName}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Nationality Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Nationality Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PassengerNationality}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Nationality Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PassengerNationality}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.NationalityName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenNationalityCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  ID Number Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  ID Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding IDName}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  ID Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="{Binding IDNumberKeyboard}"
+                                    Placeholder="{Binding IDNumberPlaceHolder}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelID}"
+                                    TextColor="#58595B" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Gender Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ESTGenderLabel}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+                        <!--#region Gender Cards-->
+                        <!--  In case visitor  -->
+                        <StackLayout
+                            Margin="0,0,0,5"
+                            Padding="5"
+                            HeightRequest="100"
+                            HorizontalOptions="FillAndExpand"
+                            IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="FillAndExpand">
+
+                            <!--  Male card  -->
+                            <Grid
+                                Padding="5"
+                                HeightRequest="94"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="QSelected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="QSelected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="QUnselected.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <!--  Male label  -->
+
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ESTMaleLabel}"
+                                    TextColor="White"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                        </DataTrigger>
+
+
+                                    </custom:CustomLabel.Triggers>
+                                </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GenderSelectionCommand}" CommandParameter="1" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                            <!--  Female Card  -->
+                            <Grid
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="QUnselected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="QSelected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="QUnselected.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <!--  Female Label  -->
+                                <custom:CustomLabel
+                                    Padding="15"
+                                    FontSize="16"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{x:Static ResourceManager:AppResources.ESTFemaleLabel}"
+                                    TextColor="{StaticResource Primary}"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <custom:CustomLabel.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="False">
+                                            <Setter Property="TextColor" Value="White" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding IsMaleSelected}"
+                                            TargetType="custom:CustomLabel"
+                                            Value="True">
+                                            <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                        </DataTrigger>
+                                    </custom:CustomLabel.Triggers>
+
+                                </custom:CustomLabel>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GenderSelectionCommand}" CommandParameter="2" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                        </StackLayout>
+
+                        <!--  In case not visitor  -->
+                        <StackLayout IsVisible="{Binding SubmitModel.travelerDeclaration.Isvisitor, Converter={StaticResource InvertedBoolConverter}}" Spacing="0">
+
+                            <!--  Gender Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ESTGenderLabel}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.Triggers>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                            TargetType="custom:BorderlessEntry"
+                                            Value="1">
+                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTMaleLabel}" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding SubmitModel.travelerDeclaration.gender}"
+                                            TargetType="custom:BorderlessEntry"
+                                            Value="2">
+                                            <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ESTFemaleLabel}" />
+                                        </DataTrigger>
+
+                                    </custom:GAZTBorderlessEntry.Triggers>
+
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+                        <!--#endregion Gender Cards-->
+
+                        <!--  Its Source Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Its Source Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ItsSource}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Its Source Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ItsSource}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SubmitModel.travelerDeclaration.travelIssuerName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenItsSourceCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Release Date Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Release Date Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ReleaseDate}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <!--  Release Date Label  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                <Grid>
+
+                                    <DatePicker
+                                        x:Name="ReleaseDate"
+                                        ClassId="releasedateentry"
+                                        Date="{Binding SubmitModel.travelerDeclaration.passIssuingDate}"
+                                        Format="dd/MM/yyyy"
+                                        IsVisible="false"
+                                        MaximumDate="{Binding MaximumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior
+                                                Command="{Binding SelectedDateCommand}"
+                                                CommandParameter="{x:Reference releaseDateEntry}"
+                                                EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="releaseDateEntry"
+                                        ClassId="releasedateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding ReleaseDateString}"
+                                        TextColor="#58595B" />
+                                </Grid>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference ReleaseDate}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  End Date Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  End Date Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ESTExpiryDateLabel}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <!--  End Date Label  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                <Grid>
+
+                                    <DatePicker
+                                        x:Name="EndDate"
+                                        ClassId="enddateentry"
+                                        Date="{Binding SubmitModel.travelerDeclaration.passExpiryDate}"
+                                        Format="dd/MM/yyyy"
+                                        IsVisible="false"
+                                        MinimumDate="{Binding MinimumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior
+                                                Command="{Binding SelectedDateCommand}"
+                                                CommandParameter="{x:Reference endDateEntry}"
+                                                EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="endDateEntry"
+                                        ClassId="enddateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding EndDateString}"
+                                        TextColor="#58595B" />
+
+                                </Grid>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference EndDate}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Date of Birth Field  -->
+                        <StackLayout Spacing="0">
+
+                            <!--  Date of Birth Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <!--  Date of Birth Label  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                IsEnabled="{Binding SubmitModel.travelerDeclaration.Isvisitor}"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                <Grid>
+
+                                    <DatePicker
+                                        x:Name="DateBirth"
+                                        ClassId="birthdateentry"
+                                        Date="{Binding SubmitModel.travelerDeclaration.birthDate}"
+                                        Format="dd/MM/yyyy"
+                                        IsVisible="false"
+                                        MaximumDate="{Binding MaximumDate}">
+
+                                        <DatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior
+                                                Command="{Binding SelectedDateCommand}"
+                                                CommandParameter="{x:Reference birthDateEntry}"
+                                                EventName="DateSelected" />
+                                        </DatePicker.Behaviors>
+
+                                    </DatePicker>
+
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="birthDateEntry"
+                                        ClassId="birthdateentry"
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding BirthDateString}"
+                                        TextColor="#58595B" />
+
+                                </Grid>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference DateBirth}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+
+
+                        <!--  GoTo Trip Information Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            Command="{Binding GoToTripInfoCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZNext}"
+                            VerticalOptions="EndAndExpand" />
+
+                        <!--  Pervious Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            Background="Transparent"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                            TextColor="{StaticResource Secondary}" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <custom:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

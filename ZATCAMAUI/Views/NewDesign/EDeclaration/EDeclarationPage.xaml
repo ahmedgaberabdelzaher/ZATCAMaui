@@ -1,0 +1,353 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.EDeclarationPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    HasBackButton="True"
+    TitleText="{x:Static ResourceManager:AppResources.eDeclaration}">
+    <newdesign:BaseContentPage.PancakeView>
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <StackLayout>
+
+                <!--#region Header-->
+
+                <!--  Product Declaration Label  -->
+                <Label
+                    FontFamily="{StaticResource SomarBold}"
+                    FontSize="24"
+                    HorizontalOptions="StartAndExpand"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    TextColor="{StaticResource Primary}" />
+
+                <!--  Declaration Note Label  -->
+                <custom:CustomLabel
+                    Margin="0,0,0,10"
+                    FontSize="16"
+                    LineBreakMode="WordWrap"
+                    LineSpacing="1"
+                    Style="{StaticResource CaptionLabelGrey}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static ResourceManager:AppResources.NewDeclarationNote}" TextColor="{StaticResource NeutralGreay}" />
+                            <Span Text="{x:Static ResourceManager:AppResources.CustomDeclarationInformation}" TextColor="{StaticResource Primary}" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+
+                    <custom:CustomLabel.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenCustomInformationLinkCommand}" />
+                    </custom:CustomLabel.GestureRecognizers>
+
+                </custom:CustomLabel>
+
+
+                <!--  Horizontal Line  -->
+                <BoxView
+                    Margin="0,0,0,0"
+                    BackgroundColor="{StaticResource NeutralLightGrey}"
+                    HeightRequest="2"
+                    WidthRequest="20" />
+
+                <!--#endregion-->
+
+                <!--  Identity type Label  -->
+                <custom:CustomLabel Margin="0,18,0,6" Style="{StaticResource CaptionLabelGrey}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static ResourceManager:AppResources.Identitytype}" />
+                            <Span Style="{StaticResource MandatoryRedColorLabel}" Text="*" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+
+                <!--#region Visitor&Citizen/Review previous Options-->
+                <StackLayout Margin="0,0,0,10" Spacing="20">
+
+                    <!--#region Visitor/Citizen Options-->
+                    <Grid
+                        ColumnDefinitions="*,*"
+                        ColumnSpacing="15"
+                        HeightRequest="130">
+
+                        <!--#region Visitor Option-->
+                        <Grid HorizontalOptions="Start">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="1" />
+                            </Grid.GestureRecognizers>
+
+                            <Image
+                                Aspect="Fill"
+                                Source="QUnselected"
+                                WidthRequest="171">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Image"
+                                        Value="1">
+                                        <Setter Property="Source" Value="QSelected" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+
+                            <Image
+                                Margin="17,25,17,10"
+                                HeightRequest="33"
+                                HorizontalOptions="Start"
+                                Source="unselectedvisitor.png"
+                                VerticalOptions="Start"
+                                WidthRequest="30">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Image"
+                                        Value="1">
+                                        <Setter Property="Source" Value="visitor" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+
+                            <Label
+                                Margin="25,10,25,15"
+                                FontSize="16"
+                                Text="{x:Static ResourceManager:AppResources.Visitor}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="EndAndExpand">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Label"
+                                        Value="1">
+                                        <Setter Property="TextColor" Value="#FFFFFF" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </Grid>
+                        <!--#endregion Visitor-->
+
+                        <!--#region Citizen Option-->
+                        <Grid Grid.Column="1" HorizontalOptions="Start">
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelcectIdentityTypeCommand}" CommandParameter="2" />
+
+                            </Grid.GestureRecognizers>
+
+                            <Image Aspect="Fill" Source="QUnselected.png">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Image"
+                                        Value="2">
+                                        <Setter Property="Source" Value="QSelected" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+
+                            <Image
+                                Margin="17,25,17,10"
+                                HeightRequest="33"
+                                HorizontalOptions="Start"
+                                Source="citizien.png"
+                                VerticalOptions="Start"
+                                WidthRequest="30">
+                                <Image.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Image"
+                                        Value="2">
+                                        <Setter Property="Source" Value="unselectedcitizien" />
+                                    </DataTrigger>
+                                </Image.Triggers>
+                            </Image>
+
+                            <Label
+                                Margin="25,10,25,15"
+                                FontSize="16"
+                                Text="{x:Static ResourceManager:AppResources.Citizen}"
+                                TextColor="{StaticResource Primary}"
+                                VerticalOptions="EndAndExpand">
+                                <Label.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding IdentityType}"
+                                        TargetType="Label"
+                                        Value="2">
+                                        <Setter Property="TextColor" Value="#FFFFFF" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+
+                        </Grid>
+                        <!--#endregion Citizen-->
+
+                    </Grid>
+                    <!--#endregion Visitor/Citizen-->
+
+                    <!--#region Review previous Option-->
+                    <Grid
+                        HeightRequest="130"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        WidthRequest="175">
+
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ReviewPreviousCommand}" />
+
+                        </Grid.GestureRecognizers>
+
+                        <Image Aspect="Fill" Source="QUnselected.png">
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowReviewEntries}"
+                                    TargetType="Image"
+                                    Value="true">
+                                    <Setter Property="Source" Value="QSelected" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+
+                        <Image
+                            Margin="17,25,17,10"
+                            HeightRequest="33"
+                            HorizontalOptions="Start"
+                            Source="reviewapreviousrequest"
+                            VerticalOptions="Start"
+                            WidthRequest="30">
+                            <Image.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowReviewEntries}"
+                                    TargetType="Image"
+                                    Value="true">
+                                    <Setter Property="Source" Value="unselectedreviewapreviousrequest.png" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+
+                        <Label
+                            Margin="25,10,25,15"
+                            FontSize="16"
+                            LineBreakMode="WordWrap"
+                            Text="{x:Static ResourceManager:AppResources.Reviewapreviousrequest}"
+                            TextColor="{StaticResource Primary}"
+                            VerticalOptions="EndAndExpand">
+                            <Label.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding ShowReviewEntries}"
+                                    TargetType="Label"
+                                    Value="true">
+                                    <Setter Property="TextColor" Value="#FFFFFF" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                    </Grid>
+                    <!--#endregion Review previous-->
+
+                </StackLayout>
+                <!--#endregion Visitor&Citizen/Review previous View-->
+
+                <!--#region Review Option Entries-->
+                <StackLayout IsVisible="{Binding ShowReviewEntries}">
+
+
+                    <!--  Reference Number Field  -->
+                    <StackLayout Spacing="0">
+
+                        <!--  Reference Number Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+
+                        </custom:CustomLabel>
+
+                        <!--  Reference Number Entry  -->
+                        <inputLayout:SfTextInputLayout
+                            ContainerBackground="White"
+                            ContainerType="Outlined"
+                            InputViewPadding="16,0,16,0"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="15"
+                            Stroke="{StaticResource NeutralGreay}">
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <inputLayout:LabelStyle TextColor="#B00020" />
+                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <custom:GAZTBorderlessEntry
+                                Keyboard="Text"
+                                Placeholder="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding ReferenceNumber}"
+                                TextColor="#58595B" />
+                        </inputLayout:SfTextInputLayout>
+                    </StackLayout>
+
+                    <!--  ID/Passport Field  -->
+                    <StackLayout Spacing="0">
+
+                        <!--  ID/Passport Label  -->
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+
+                        </custom:CustomLabel>
+
+                        <!--  ID/Passport Entry  -->
+                        <inputLayout:SfTextInputLayout
+                            ContainerBackground="White"
+                            ContainerType="Outlined"
+                            InputViewPadding="16,0,16,0"
+                            LeadingViewPosition="Inside"
+                            OutlineCornerRadius="15"
+                            Stroke="{StaticResource NeutralGreay}">
+                            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <inputLayout:LabelStyle TextColor="#B00020" />
+                            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                            <custom:GAZTBorderlessEntry
+                                Keyboard="Text"
+                                Placeholder="{x:Static ResourceManager:AppResources.IDResidencePassportNumber}"
+                                Style="{StaticResource DefaultEntry}"
+                                Text="{Binding IDResidencePassportNumber}"
+                                TextColor="#58595B" />
+                        </inputLayout:SfTextInputLayout>
+                    </StackLayout>
+
+                    <!--  GoTo Review Page Button  -->
+                    <buttons:SfButton
+                        Margin="0,5"
+                        Command="{Binding GoToReviewPageCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ReviewRequest}"
+                        VerticalOptions="EndAndExpand" />
+
+                    <!--  Pervious Button  -->
+                    <buttons:SfButton
+                        Margin="0,0,0,25"
+                        Background="Transparent"
+                        Command="{Binding BackCommand}"
+                        FontFamily="{StaticResource SomarLight}"
+                        Stroke="Transparent"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.PerviousButton}"
+                        TextColor="{StaticResource Secondary}" />
+
+                </StackLayout>
+                <!--#endregion Review Option Entries-->
+
+            </StackLayout>
+        </ScrollView>
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>
+

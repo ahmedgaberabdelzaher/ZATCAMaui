@@ -417,9 +417,9 @@
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="OutlineCornerRadius" Value="14" />
         <Setter Property="Stroke" Value="{StaticResource Primary}" />
-        <Setter Property="ErrorLabelStyle" >
-            <Setter.Value >
-                <inputLayout:LabelStyle TextColor="#B00020"/>
+        <Setter Property="ErrorLabelStyle">
+            <Setter.Value>
+                <inputLayout:LabelStyle TextColor="#B00020" />
             </Setter.Value>
 
         </Setter>
@@ -464,9 +464,9 @@
         <Setter Property="ContainerType" Value="Outlined" />
         <Setter Property="OutlineCornerRadius" Value="14" />
         <Setter Property="Stroke" Value="{StaticResource Primary}" />
-         <Setter Property="ErrorLabelStyle" >
-            <Setter.Value >
-                <inputLayout:LabelStyle TextColor="#B00020"/>
+        <Setter Property="ErrorLabelStyle">
+            <Setter.Value>
+                <inputLayout:LabelStyle TextColor="#B00020" />
             </Setter.Value>
 
         </Setter>
@@ -504,26 +504,23 @@
         <Setter Property="HeightRequest" Value="250" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
 
-         <Setter Property="TextStyle">
+        <Setter Property="TextStyle">
             <Setter.Value>
-                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
             </Setter.Value>
         </Setter>
 
-         <Setter Property="SelectionView">
+        <Setter Property="SelectionView">
             <Setter.Value>
-                <syncfusion:PickerSelectionView
-                        Background="{StaticResource NeutralGreay}" />
+                <syncfusion:PickerSelectionView Background="{StaticResource NeutralGreay}" />
 
             </Setter.Value>
 
         </Setter>
 
-         <Setter Property="SelectedTextStyle">
+        <Setter Property="SelectedTextStyle">
             <Setter.Value>
-                <syncfusion:PickerTextStyle
-                        FontSize="16"
-                        TextColor="{StaticResource NeutralBlack}" />
+                <syncfusion:PickerTextStyle FontSize="16" TextColor="{StaticResource NeutralBlack}" />
 
             </Setter.Value>
 
@@ -531,18 +528,18 @@
 
         <Setter Property="HeaderView">
             <Setter.Value>
-                 <syncfusion:PickerHeaderView
-                    Background="Transparent"/>
+                <syncfusion:PickerHeaderView Background="Transparent" />
             </Setter.Value>
         </Setter>
 
-         <Setter Property="ColumnHeaderView">
+        <Setter Property="ColumnHeaderView">
             <Setter.Value>
-                 <syncfusion:PickerColumnHeaderView Height="40" >
-                    <syncfusion:PickerColumnHeaderView.TextStyle  >
-                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}"
-                                                    FontAttributes="Bold"
-                                                    FontSize="16"/>
+                <syncfusion:PickerColumnHeaderView Height="40">
+                    <syncfusion:PickerColumnHeaderView.TextStyle>
+                        <syncfusion:PickerTextStyle
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            TextColor="{StaticResource NeutralGreay}" />
 
                     </syncfusion:PickerColumnHeaderView.TextStyle>
 
@@ -561,17 +558,18 @@
 
         <Setter Property="TextStyle">
             <Setter.Value>
-                 <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
+                <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}" />
             </Setter.Value>
         </Setter>
 
         <Setter Property="ColumnHeaderView">
             <Setter.Value>
-                 <syncfusion:PickerColumnHeaderView Height="0" >
-                    <syncfusion:PickerColumnHeaderView.TextStyle  >
-                        <syncfusion:PickerTextStyle TextColor="{StaticResource NeutralGreay}"
-                                                    FontAttributes="Bold"
-                                                    FontSize="16"/>
+                <syncfusion:PickerColumnHeaderView Height="0">
+                    <syncfusion:PickerColumnHeaderView.TextStyle>
+                        <syncfusion:PickerTextStyle
+                            FontAttributes="Bold"
+                            FontSize="16"
+                            TextColor="{StaticResource NeutralGreay}" />
 
                     </syncfusion:PickerColumnHeaderView.TextStyle>
 
@@ -582,15 +580,13 @@
 
         <Setter Property="HeaderView">
             <Setter.Value>
-                 <syncfusion:PickerHeaderView
-                    Background="Transparent"/>
+                <syncfusion:PickerHeaderView Background="Transparent" />
             </Setter.Value>
         </Setter>
 
         <Setter Property="SelectionView">
             <Setter.Value>
-                <syncfusion:PickerSelectionView
-                        Background="{StaticResource NeutralGreay}" />
+                <syncfusion:PickerSelectionView Background="{StaticResource NeutralGreay}" />
 
             </Setter.Value>
 
@@ -598,9 +594,7 @@
 
         <Setter Property="SelectedTextStyle">
             <Setter.Value>
-                <syncfusion:PickerTextStyle
-                        FontSize="16"
-                        TextColor="{StaticResource NeutralBlack}" />
+                <syncfusion:PickerTextStyle FontSize="16" TextColor="{StaticResource NeutralBlack}" />
 
             </Setter.Value>
 
@@ -806,7 +800,7 @@
         <Setter Property="ChipStrokeThickness" Value="1" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="ChipBackground" >
+        <Setter Property="ChipBackground">
             <Setter.Value>
                 <VisualStateGroupList>
                     <VisualStateGroup x:Name="CommonStates">
@@ -818,7 +812,7 @@
                         <VisualState x:Name="Selected">
                             <VisualState.Setters>
                                 <Setter Property="ChipBackground" Value="#1A0996d4" />
-                                </VisualState.Setters>
+                            </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
                 </VisualStateGroupList>

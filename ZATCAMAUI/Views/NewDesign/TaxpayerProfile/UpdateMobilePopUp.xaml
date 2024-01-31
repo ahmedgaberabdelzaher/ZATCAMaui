@@ -1,0 +1,400 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.TaxpayerProfile.UpdateMobilePopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:FontImage="clr-namespace:ZATCAMAUI.Core.Helper"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView
+        Padding="0"
+        Style="{StaticResource CommonTopCurves}"
+        VerticalOptions="EndAndExpand">
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0">
+
+                    <StackLayout
+                        x:Name="UpdateMobile"
+                        Grid.Row="0"
+                        IsVisible="True">
+                        <Image Margin="24,16,24,8" HorizontalOptions="Start">
+                            <Image.Source>
+                                <FontImageSource
+                                    FontFamily="UserIconFont"
+                                    Glyph="{x:Static FontImage:IconFonts.Close}"
+                                    Size="25"
+                                    Color="{StaticResource SecondaryNew}" />
+                            </Image.Source>
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnBackArrowTapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" Style="{StaticResource SeparatorStyle}" />
+                        <StackLayout Padding="24,16,24,0">
+
+                            <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.TPUpdateMobile}" />
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZCurrentMobileNumber}" />
+
+                            <inputLayout:SfTextInputLayout
+                                Margin="0,-10,0,0"
+                                ContainerType="Outlined"
+                                HorizontalOptions="FillAndExpand"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="8"
+                                Stroke="{StaticResource Primary}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <Entry
+                                    x:Name="Mobile_Entry"
+                                    FlowDirection="LeftToRight"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsReadOnly="True"
+                                    Keyboard="Telephone"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding CurrentMobileNumberEntryText}"
+                                    TextColor="{StaticResource NeutralBlack}"
+                                    VerticalTextAlignment="Center" />
+                            </inputLayout:SfTextInputLayout>
+
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{x:Static ResourceManager:AppResources.NewMobileNumber}" />
+
+                            <!--<Frame BorderColor="LightGray" Padding="8" HeightRequest="45" HasShadow="False" CornerRadius="8"
+                                   Grid.Row="2" Grid.Column="0" Margin="0,-6,0,12">-->
+                            <Frame
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,-6,0,12"
+                                Padding="18,0,18,6"
+                                BorderColor="LightGray"
+                                CornerRadius="8"
+                                HasShadow="False">
+                                <StackLayout
+                                    FlowDirection="LeftToRight"
+                                    Orientation="Horizontal"
+                                    Spacing="0"
+                                    VerticalOptions="CenterAndExpand">
+                                    <Image HorizontalOptions="Start" Source="arrowDropdown.png">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <custom:CustomButton
+                                        x:Name="Label_InternationalnoCode"
+                                        BackgroundColor="Transparent"
+                                        Clicked="TapGestureRecognizer_Tapped"
+                                        HorizontalOptions="Center"
+                                        Text="{Binding CountryCode}"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalOptions="Center" />
+                                    <custom:GAZTBorderlessEntry
+                                        x:Name="Mobile_entry"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsSpellCheckEnabled="False"
+                                        Keyboard="Telephone"
+                                        MaxLength="{Binding MaxDigids}"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding NewMobileNumberEntryText}"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        Unfocused="Mobile_entry_Unfocused">
+                                        <Entry.Behaviors>
+                                            <behaviors:OnlyNumericValuesBehaviour />
+                                        </Entry.Behaviors>
+                                    </custom:GAZTBorderlessEntry>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+
+                    <!--  OTP View  -->
+                    <StackLayout
+                        x:Name="VerificationView"
+                        Grid.Row="0"
+                        Padding="24"
+                        IsVisible="False">
+                        <custom:CustomLabel Style="{StaticResource SectionTitleBlackBold}" Text="{x:Static ResourceManager:AppResources.VerificationCode}" />
+                        <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="{x:Static ResourceManager:AppResources.NDPleaseEnterVerificationSenttomobile}" />
+                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+
+                        <StackLayout Padding="0,15,0,0">
+
+                            <StackLayout
+                                FlowDirection="LeftToRight"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding engText}"
+                                Orientation="Horizontal"
+                                Spacing="5"
+                                VerticalOptions="CenterAndExpand">
+                                <custom:CustomLabel
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                                <custom:CustomLabel
+                                    x:Name="OTPSentOnThisMobileNumberLbl"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding OTPSentOnThisMobileNumber}" />
+                            </StackLayout>
+
+                            <StackLayout
+                                FlowDirection="LeftToRight"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding Arabictext}"
+                                Orientation="Horizontal"
+                                Spacing="5"
+                                VerticalOptions="CenterAndExpand">
+                                <custom:CustomLabel
+                                    x:Name="OTPSentOnThisMobileNumberLbl2"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{Binding OTPSentOnThisMobileNumber2}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource BodyLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.MobileNumber}" />
+                            </StackLayout>
+
+                            <Grid Margin="0,-10,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid
+                                    Grid.Row="0"
+                                    Padding="30,20,30,20"
+                                    ColumnSpacing="20"
+                                    FlowDirection="LeftToRight">
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--  First OTP Digit Start  -->
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Column="0"
+                                        ContainerType="Outlined"
+                                        HasError="False"
+                                        OutlineCornerRadius="8"
+                                        Stroke="{StaticResource Primary}">
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OTPFirstEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Text="{Binding OTPFirstDigit}"
+                                            TextChanged="OtpFirstEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="10">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPSecondEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--  First OTP Digit End  -->
+
+                                    <!--  Second OTP Digit Start  -->
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Column="1"
+                                        ContainerType="Outlined"
+                                        HasError="False"
+                                        OutlineCornerRadius="8"
+                                        Stroke="{StaticResource Primary}">
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OTPSecondEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Text="{Binding OTPSecondDigit}"
+                                            TextChanged="OtpSecondEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="10">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPThirdEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--  Second OTP Digit End  -->
+
+                                    <!--  Third OTP Digit Start  -->
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Column="2"
+                                        ContainerType="Outlined"
+                                        HasError="False"
+                                        OutlineCornerRadius="8"
+                                        Stroke="{StaticResource Primary}">
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OTPThirdEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Text="{Binding OTPThirdDigit}"
+                                            TextChanged="OtpThirdEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            WidthRequest="10">
+                                            <custom:GAZTBorderlessEntry.Behaviors>
+                                                <behaviors:EntryFocusBehaviour NextFocusElementName="OTPFourthEntry" />
+                                            </custom:GAZTBorderlessEntry.Behaviors>
+                                        </custom:GAZTBorderlessEntry>
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--  Third OTP Digit End  -->
+
+                                    <!--  Fourth OTP Digit Start  -->
+                                    <inputLayout:SfTextInputLayout
+                                        Grid.Column="3"
+                                        ContainerType="Outlined"
+                                        HasError="False"
+                                        OutlineCornerRadius="8"
+                                        Stroke="{StaticResource Primary}">
+                                        <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                            <inputLayout:LabelStyle TextColor="#B00020" />
+                                        </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                        <custom:GAZTBorderlessEntry
+                                            x:Name="OTPFourthEntry"
+                                            FontAttributes="Bold"
+                                            FontSize="Small"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            IsEnabled="{Binding IsOTPEntryEnable}"
+                                            Keyboard="Numeric"
+                                            MaxLength="1"
+                                            ReturnType="Next"
+                                            Text="{Binding OTPFourthDigit}"
+                                            TextChanged="OtpFourthEntry_TextChanged"
+                                            TextColor="#bbbbbb"
+                                            Unfocused="OtpFourthEntry_Unfocused"
+                                            WidthRequest="10" />
+                                    </inputLayout:SfTextInputLayout>
+                                    <!--  Fourth OTP Digit End  -->
+
+                                </Grid>
+                            </Grid>
+
+                            <StackLayout
+                                Margin="0,10,0,0"
+                                HorizontalOptions="CenterAndExpand"
+                                Orientation="Horizontal">
+                                <Image Source="clock" />
+                                <custom:CustomLabel
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="{Binding LblCountDownTimer}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <buttons:SfButton
+                                Margin="0,10,0,0"
+                                Background="Transparent"
+                                Clicked="OnResendOTPBtnClicked"
+                                FontFamily="{StaticResource SomarRegular}"
+                                Text="{x:Static ResourceManager:AppResources.NDResendVerificationCode}"
+                                TextColor="{Binding ResendOTPTextColor}"
+                                VerticalOptions="EndAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="1">
+                        <buttons:SfButton
+                            x:Name="btn"
+                            Margin="24,0,24,24"
+                            Clicked="UpdatedClicked"
+                            IsEnabled="{Binding BtnEnableFlag}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.TPUpdate}" />
+                    </StackLayout>
+                </StackLayout>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.RowSpan="1"
+                    Margin="-20"
+                    IsVisible="{Binding IsLoading}">
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        BackgroundColor="Black"
+                        Opacity="0.4"
+                        Orientation="Vertical"
+                        VerticalOptions="FillAndExpand" />
+                    <StackLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Padding="15,15"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="Center"
+                        Opacity="0.8"
+                        Orientation="Vertical"
+                        VerticalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <busyindicator:SfBusyIndicator
+                                x:Name="busyindicatorForLanding"
+                                AnimationType="SingleCircle"
+                                HorizontalOptions="CenterAndExpand"
+                                IsRunning="True"
+                                SizeFactor="0.7"
+                                TextColor="{StaticResource Primary}"
+                                TitlePlacement="Bottom"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+
+            </Grid>
+        </ScrollView>
+    </yummy:PancakeView>
+</pages:PopupPage>

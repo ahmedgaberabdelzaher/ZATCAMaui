@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="EGAZT.Views.NewDesign.DashBoardPages.TaxManagementPageView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:EGAZT"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:custom="clr-namespace:GAZT"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <Color x:Key="ShadowLvl0">#EFEFEF</Color>
+            <Style x:Key="GreyBorderFrameWithShadow" TargetType="border:SfBorder">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="CornerRadius" Value="14" />
+                <Setter Property="HasShadow" Value="True" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="BorderColor" Value="{StaticResource NeutralLightGrey}" />
+                <Setter Property="ShadowColor" Value="{StaticResource ShadowLvl0}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout Spacing="16">
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="vat_user.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDNewProfile}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Label_MyProfile_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.MyBills}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Label_MyBills" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDReturns}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDCertificates}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDRegistrationDetails}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <xct:Expander>
+                                    <xct:Expander.Header>
+                                        <Grid Padding="16,8,16,8" ColumnSpacing="20">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto" />
+                                                <ColumnDefinition Width="auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Image Grid.Column="0" Source="ic_vat_return.png" />
+                                            <custom:CustomLabel
+                                                Grid.Column="1"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="{x:Static ResourceManager:AppResources.NDVATServices}"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                        </Grid>
+                                    </xct:Expander.Header>
+                                    <StackLayout>
+                                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
+                                        <StackLayout Padding="45,5,5,5" Spacing="16">
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <StackLayout
+                                                    Padding="16,8,16,8"
+                                                    Orientation="Horizontal"
+                                                    Spacing="20">
+                                                    <Image Source="ic_vat_return.png" />
+                                                    <custom:CustomLabel
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{x:Static ResourceManager:AppResources.NDRefundsRequest}"
+                                                        VerticalOptions="Center"
+                                                        VerticalTextAlignment="Center" />
+
+                                                </StackLayout>
+                                                <border:SfBorder.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
+                                                </border:SfBorder.GestureRecognizers>
+                                            </border:SfBorder>
+
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <StackLayout
+                                                    Padding="16,8,16,8"
+                                                    Orientation="Horizontal"
+                                                    Spacing="20">
+                                                    <Image Source="ic_vat_return.png" />
+                                                    <custom:CustomLabel
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{x:Static ResourceManager:AppResources.NDFillingFrequency}"
+                                                        VerticalOptions="Center"
+                                                        VerticalTextAlignment="Center" />
+
+                                                </StackLayout>
+                                                <border:SfBorder.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
+                                                </border:SfBorder.GestureRecognizers>
+                                            </border:SfBorder>
+
+                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                                <StackLayout
+                                                    Padding="16,8,16,8"
+                                                    Orientation="Horizontal"
+                                                    Spacing="20">
+                                                    <Image Source="ic_vat_return.png" />
+                                                    <custom:CustomLabel
+                                                        Style="{StaticResource ValueLabelBlack}"
+                                                        Text="{x:Static ResourceManager:AppResources.DBSMVATDeregistration}"
+                                                        VerticalOptions="Center"
+                                                        VerticalTextAlignment="Center" />
+
+                                                </StackLayout>
+                                                <border:SfBorder.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
+                                                </border:SfBorder.GestureRecognizers>
+                                            </border:SfBorder>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </xct:Expander>
+                            </border:SfBorder>
+
+
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDInstallmentPlan}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.VRObjectionsReviews}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Vat_Review_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_menu_cr.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDContractReleaseRequest}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_Application_Status.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZFormBundleStatus}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDRegistertoVAT}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDVATRegistrationVerification}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDTaxEvasionReport}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="TaxEvasion_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image
+                                        HeightRequest="25"
+                                        Source="ic_logo_gazt.png"
+                                        WidthRequest="25" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZAboutUs}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Aboutus_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.NDPrivacyPolicy}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="customerServiceColor.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZSupport}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="OnSupportTapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{x:Static ResourceManager:AppResources.AppVersion}" />
+                                                <Span Text="&#160;&#160;" />
+                                                <Span Text="{Binding AppVersion}" />
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZZZChangetoLanguage}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout
+                                    Padding="16,8,16,8"
+                                    Orientation="Horizontal"
+                                    Spacing="20">
+                                    <Image Source="ic_vat_return.png" />
+                                    <custom:CustomLabel
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="{x:Static ResourceManager:AppResources.ZLogout}"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                                <border:SfBorder.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="Logout_Tapped" />
+                                </border:SfBorder.GestureRecognizers>
+                            </border:SfBorder>
+
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </yummy:PancakeView>
+
+            <Grid Grid.Row="0" Padding="15,5,15,5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15*" />
+                    <ColumnDefinition Width="70*" />
+                    <ColumnDefinition Width="15*" />
+                </Grid.ColumnDefinitions>
+
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.NDTaxManagement}" />
+                <Image
+                    Grid.Column="0"
+                    HorizontalOptions="Start"
+                    Source="arrowLeftwhite.png"
+                    Style="{DynamicResource BackButtonArrow}"
+                    VerticalOptions="CenterAndExpand">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackButtonClicked}" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

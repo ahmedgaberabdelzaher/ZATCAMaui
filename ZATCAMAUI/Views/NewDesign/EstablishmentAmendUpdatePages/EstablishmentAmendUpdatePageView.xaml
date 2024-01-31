@@ -1163,13 +1163,16 @@
 
                                         <custom:CustomHijriDatePicker.HeaderView>
 
-                                            <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="#EAF7CC"
+                                                Text="{x:Static ResourceManager:AppResources.ZZDateofBirth}" />
 
                                         </custom:CustomHijriDatePicker.HeaderView>
 
                                         <custom:CustomHijriDatePicker.FooterView>
 
-                                            <syncfusion:PickerFooterView Background="#EAF7CC">
+                                            <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                 <syncfusion:PickerFooterView.TextStyle>
                                                     <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1784,13 +1787,16 @@
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView
+                                            Height="46"
+                                            Background="#EAF7CC"
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomHijriDatePicker.HeaderView>
 
                                     <custom:CustomHijriDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -1915,13 +1921,16 @@
 
                                     <custom:CustomHijriDatePicker.HeaderView>
 
-                                        <syncfusion:PickerHeaderView Background="#EAF7CC" Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
+                                        <syncfusion:PickerHeaderView
+                                            Height="46"
+                                            Background="#EAF7CC"
+                                            Text="{x:Static ResourceManager:AppResources.ESTIssueDateLabel}" />
 
                                     </custom:CustomHijriDatePicker.HeaderView>
 
                                     <custom:CustomHijriDatePicker.FooterView>
 
-                                        <syncfusion:PickerFooterView Background="#EAF7CC">
+                                        <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                             <syncfusion:PickerFooterView.TextStyle>
                                                 <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />

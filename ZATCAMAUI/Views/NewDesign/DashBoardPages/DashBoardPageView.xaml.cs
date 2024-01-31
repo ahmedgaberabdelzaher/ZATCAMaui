@@ -925,10 +925,6 @@ namespace ZATCAMAUI.Views.NewDesign.DashBoardPages
 
                 Instrumentation.EndCall(callTracker);
             }
-            else
-            {
-                PopupNavigation.Instance.PushAsync(new InfoPopUpPage());
-            }
         }
         private void TappedOnMyBills(object sender, EventArgs e)
         {

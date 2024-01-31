@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.VATReview.VatReviewViewApplicationPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:converters="clr-namespace:ZATCAMAUI.Core.Converters"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background.png"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <Grid BackgroundColor="Transparent">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <yummy:PancakeView
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="Black"
+                        CornerRadius="15,15,0,0">
+                        <Grid
+                            Margin="0"
+                            Padding="0,0,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <!--<RowDefinition Height="10*" />-->
+                                <RowDefinition Height="100*" />
+                            </Grid.RowDefinitions>
+                            <ContentPresenter
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                BackgroundColor="White"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="FillAndExpand" />
+                        </Grid>
+                    </yummy:PancakeView>
+                    <Grid Grid.Row="0" Padding="24,10,24,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20*" />
+                            <ColumnDefinition Width="60*" />
+                            <ColumnDefinition Width="20*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            HorizontalOptions="Center"
+                            Style="{StaticResource SectionTitleWhiteBold}"
+                            Text="{x:Static ResourceManager:AppResources.VatReview}" />
+                        <Image
+                            Grid.Row="0"
+                            Grid.Column="2"
+                            HeightRequest="24"
+                            HorizontalOptions="EndAndExpand"
+                            Source="close"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="24">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{TemplateBinding BindingContext.CloseClick}" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </Grid>
+                </Grid>
+            </Grid>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <StackLayout Margin="15,0,15,0">
+                <Grid Margin="0,5,0,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <custom:CustomLabel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource PageTitleBlack}"
+                        Text="{x:Static ResourceManager:AppResources.VRViewApplication}" />
+                    <custom:CustomLabel
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,-10,0,15"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource BodyLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.CRReviewthebelowinformation}" />
+                    <BoxView
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Style="{StaticResource NeutralGrayOpacity90BoxView}" />
+
+                </Grid>
+
+                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout>
+
+                        <Grid Padding="15" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="8,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="vat_user"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Label
+                                    Padding="8,0"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZTaxPayerDetails}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+
+                        </Grid>
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout Padding="10" Spacing="10">
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.TIN}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VATinNumber}" />
+                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVATAccountNumber}" />
+                                <custom:CustomLabel
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAAccNumber}" />
+                            </Grid>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatIdentificationNumber}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAIdnumber}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatTaxpayersName}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VATaxpayerName}" />
+                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatAddress}" />
+                                <custom:CustomLabel
+                                    Grid.Column="1"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAAddress}" />
+                            </Grid>
+                        </StackLayout>
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+                        <custom:CustomLabel
+                            Padding="10"
+                            HorizontalOptions="Start"
+                            Style="{StaticResource CaptionLabelBlack}"
+                            VerticalOptions="CenterAndExpand"
+                            VerticalTextAlignment="Center">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZVatNote}" />
+                                    <Span Text="&#160;" />
+                                    <Span Text=":" />
+                                    <Span Text="&#160;" />
+                                    <Span Text="{x:Static ResourceManager:AppResources.ZZZChageOfRegistration}" TextColor="{StaticResource Primary}">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+
+                        </custom:CustomLabel>
+                    </StackLayout>
+
+                </Border>
+
+                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout>
+
+                        <Grid Padding="15" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="8,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="ic_vat_return"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Label
+                                    Padding="8,0"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatTaxReturnDetails}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+
+                        </Grid>
+
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout Padding="10" Spacing="10">
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatReturnType}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAVATReturnType}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZVatReturnReferenceNo}" />
+                                <custom:CustomLabel
+                                    HorizontalOptions="EndAndExpand"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAVatReturnReferenceNo}" />
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZTaxPeriod}" />
+                                <StackLayout HorizontalOptions="EndAndExpand" Spacing="0">
+                                    <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{Binding VATaxPeriod}" />
+                                </StackLayout>
+                            </StackLayout>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZVATAccountNumber}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAVatAccountNum}" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout>
+
+                        <Grid Padding="15" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="8,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="ic_vat_bill"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Label
+                                    Padding="8,0"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatOnSales}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+
+                        </Grid>
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+                        <StackLayout Padding="10" Spacing="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VASalesAmount, Converter={StaticResource commaSeparatorConverter}}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VASalesVatAdjustment, Converter={StaticResource commaSeparatorConverter}}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatOnSales}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAVatOnSales, Converter={StaticResource commaSeparatorConverter}}" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout>
+                        <Grid Padding="15" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="8,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="ic_vat_bill"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Label
+                                    Padding="8,0"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+
+                        </Grid>
+
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout Padding="10" Spacing="10">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatAmountWithSAR}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAPurchaseAmount, Converter={StaticResource commaSeparatorConverter}}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatAdjustmentWithSAR}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAPurchaseVatAdjustment, Converter={StaticResource commaSeparatorConverter}}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZVatOnPurchases}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VAVatOnPurchase}" />
+                            </Grid>
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+                <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                    <StackLayout>
+                        <Grid Padding="15" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackLayout
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Padding="8,0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal">
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="24"
+                                    HorizontalOptions="Start"
+                                    Source="ic_vat_amount"
+                                    VerticalOptions="Center"
+                                    WidthRequest="24" />
+                                <Label
+                                    Padding="8,0"
+                                    Style="{StaticResource SectionTitleBlackBold}"
+                                    Text="{x:Static ResourceManager:AppResources.ZTotalVat}"
+                                    VerticalOptions="CenterAndExpand" />
+                            </StackLayout>
+
+                        </Grid>
+
+                        <BoxView
+                            BackgroundColor="LightGray"
+                            HeightRequest="1"
+                            HorizontalOptions="FillAndExpand" />
+
+                        <StackLayout Padding="10" Spacing="10">
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZVATDue}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VATotalDueVAT}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZFromPreviousPeriods}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VATotalCreditVAT}" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource ValueLabelGrey}"
+                                    Text="{x:Static ResourceManager:AppResources.ZZZZCorrections}" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    HorizontalOptions="EndAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    MaxLines="1"
+                                    Style="{StaticResource ValueLabelBlack}"
+                                    Text="{Binding VACorrrections}" />
+                            </Grid>
+                        </StackLayout>
+                        <StackLayout
+                            Padding="10"
+                            BackgroundColor="LightBlue"
+                            Orientation="Horizontal">
+                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="{x:Static ResourceManager:AppResources.ZZZZNetVAT}" />
+                            <custom:CustomLabel
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="End"
+                                Style="{StaticResource ValueLabelBlack}"
+                                Text="{Binding VANetVat}" />
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

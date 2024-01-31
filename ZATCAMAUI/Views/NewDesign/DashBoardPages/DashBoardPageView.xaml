@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
-    xmlns:Sfconverters="clr-namespace:ZATCAMAUI.Core.Converters.SyncFusionEnabledConverters"
     xmlns:behaviors="clr-namespace:ZATCAMAUI.Core.Behaviors"
     xmlns:busyindicator="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
     xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
@@ -31,7 +30,6 @@
         <ResourceDictionary>
             <converters:NegetiveToPositiveValueConverter x:Key="negetiveToPositiveValueConverter" />
             <converters:CommaSeparatorConverter x:Key="commaSeparatorConverter" />
-            <Sfconverters:StringToColorConvertor x:Key="StringToColorConvertor" />
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
                 <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
@@ -575,7 +573,7 @@
 
                                                             <syncfusion:SfPicker.FooterView>
 
-                                                                <syncfusion:PickerFooterView Background="#EAF7CC">
+                                                                <syncfusion:PickerFooterView Height="46" Background="#EAF7CC">
 
                                                                     <syncfusion:PickerFooterView.TextStyle>
                                                                         <syncfusion:PickerTextStyle TextColor="{StaticResource Primary}" />
@@ -621,8 +619,7 @@
                                                                         CornerRadius="14">
                                                                         <StackLayout Orientation="Horizontal">
                                                                             <cards:SfCardView
-                                                                                Margin="{OnPlatform UWP='*',
-                                                                                                    iOS='1',
+                                                                                Margin="{OnPlatform iOS='1',
                                                                                                     Android='0,0,0,-5'}"
                                                                                 CornerRadius="14"
                                                                                 HeightRequest="80"
@@ -664,8 +661,7 @@
                                                                             </cards:SfCardView>
 
                                                                             <cards:SfCardView
-                                                                                Margin="{OnPlatform UWP='*',
-                                                                                                    iOS='1',
+                                                                                Margin="{OnPlatform iOS='1',
                                                                                                     Android='0,0,0,-5'}"
                                                                                 BackgroundColor="Red"
                                                                                 CornerRadius="14"

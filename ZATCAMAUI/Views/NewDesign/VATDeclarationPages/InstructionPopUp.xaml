@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.VATDeclarationPages.InstructionPopUp"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    mc:Ignorable="d">
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+    <yummy:PancakeView Style="{StaticResource CommonTopCurves}" VerticalOptions="End">
+        <StackLayout BackgroundColor="White">
+            <Label
+                BackgroundColor="White"
+                Style="{StaticResource CaptionLabelGrey}"
+                Text="{x:Static ResourceManager:AppResources.ZVatReadInstructions}" />
+
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource CaptionLabelGrey}"
+                VerticalOptions="EndAndExpand">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="1." />
+                        <Span Text="{x:Static ResourceManager:AppResources.ZZPleasefilltherequestedinformationforeachstep}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Start"
+                Style="{StaticResource CaptionLabelGrey}"
+                VerticalOptions="EndAndExpand">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="2." />
+                        <Span Text="{x:Static ResourceManager:AppResources.ZVatSubmittedInstructions}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" VerticalOptions="EndAndExpand">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="3." />
+                        <Span Text="{x:Static ResourceManager:AppResources.ZVatDateInstructions}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="4." />
+                        <Span Text="{x:Static ResourceManager:AppResources.ZVatFaqSectionInstructions}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+
+            <custom:CustomLabel
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource CaptionLabelGrey}"
+                Text="{x:Static ResourceManager:AppResources.ZVatClickFaqInstructions}"
+                TextColor="{StaticResource NewDullOrangeColor}"
+                VerticalOptions="EndAndExpand">
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnClickedFAQ" />
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+
+            <custom:CustomLabel Style="{StaticResource CaptionLabelBlack}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.ZVatDeclarationInstructions}" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+        </StackLayout>
+    </yummy:PancakeView>
+</pages:PopupPage>

@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception.SuccessView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat">
+    <newdesign:BaseContentPage.Content>
+        <Grid>
+            <!--#region Header-->
+            <StackLayout>
+
+                <!--  Success Icon and Msg  -->
+                <StackLayout
+                    HorizontalOptions="Start"
+                    Spacing="10"
+                    VerticalOptions="CenterAndExpand">
+
+                    <!--  Success icon  -->
+                    <Image
+                        Margin="0,0,0,30"
+                        Aspect="AspectFit"
+                        HeightRequest="150"
+                        Source="Forget_ic_success"
+                        WidthRequest="150" />
+
+                    <!--  Success Msg1 Label  -->
+                    <Label
+                        FontFamily="{StaticResource SomarBold}"
+                        FontSize="28"
+                        HorizontalTextAlignment="Center"
+                        Text="{x:Static ResourceManager:AppResources.ThankYou_}"
+                        TextColor="White" />
+
+                    <!--  Success Msg2 Label  -->
+                    <Label
+                        Margin="40,0"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.Youwillbenotifiedofthestatusoftherequestviamobilephone}"
+                        TextColor="White" />
+
+                    <!--  Refrence No Label  -->
+                    <Label
+                        Margin="40,30,40,0"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        Text="{x:Static ResourceManager:AppResources.Referencenumber}"
+                        TextColor="White" />
+                    <!--  Refrence No value Label  -->
+                    <Label
+                        x:Name="RefNoValue"
+                        Margin="0"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="18"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineBreakMode="WordWrap"
+                        TextColor="White" />
+                    <!--  Back to Home Button  -->
+                    <buttons:SfButton
+                        Margin="20,50,20,0"
+                        Background="#0996D4"
+                        Command="{Binding BackToHomeCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.BackToHome}" />
+                    <!--  Back to ZATCA Services Button  -->
+                    <buttons:SfButton
+                        Margin="20,20,20,20"
+                        Background="#0996D4"
+                        Command="{Binding BackToCustomServicesCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Text="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}" />
+                </StackLayout>
+
+
+            </StackLayout>
+        </Grid>
+    </newdesign:BaseContentPage.Content>
+</newdesign:BaseContentPage>
+

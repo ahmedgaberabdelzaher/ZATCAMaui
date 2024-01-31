@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.Common.PaymentWebView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    TitleText="{x:Static ResourceManager:AppResources.PaymentDetails}">
+
+    <newdesign:BaseContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding GoTransactionPageCommand}" EventName="Appearing" />
+    </newdesign:BaseContentPage.Behaviors>
+
+    <newdesign:BaseContentPage.PancakeView>
+
+        <WebView
+            x:Name="PaymentView"
+            Navigating="PaymentView_Navigating"
+            Source="{Binding PageURL}" />
+
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>
+

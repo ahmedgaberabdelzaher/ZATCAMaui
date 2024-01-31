@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<StackLayout
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.QuestionsViews.TobacoView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:numericinput="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+    IsVisible="false">
+
+    <!--<StackLayout.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </StackLayout.Resources>-->
+
+    <StackLayout.Triggers>
+        <DataTrigger
+            Binding="{Binding QFlow}"
+            TargetType="StackLayout"
+            Value="1">
+            <Setter Property="IsVisible" Value="true" />
+        </DataTrigger>
+    </StackLayout.Triggers>
+
+    <!--  TypeItem Field  -->
+    <StackLayout Spacing="0">
+
+        <!--  TypeItem Label  -->
+        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel.FormattedText>
+                <FormattedString>
+                    <Span Text="{x:Static ResourceManager:AppResources.TypeItem}" />
+                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                </FormattedString>
+            </custom:CustomLabel.FormattedText>
+        </custom:CustomLabel>
+
+        <!--  TypeItem Entry  -->
+        <inputLayout:SfTextInputLayout
+            ContainerBackground="White"
+            ContainerType="Outlined"
+            HelperText="{x:Static ResourceManager:AppResources.TobacoTypeNotehint}"
+            InputViewPadding="16,0,16,0"
+            LeadingViewPosition="Inside"
+            OutlineCornerRadius="15"
+            Stroke="{StaticResource NeutralGreay}">
+            <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                <inputLayout:LabelStyle TextColor="#B00020" />
+            </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+            <custom:GAZTBorderlessEntry
+                x:Name="typeItemEntry"
+                InputTransparent="True"
+                IsReadOnly="True"
+                Keyboard="Text"
+                Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                Style="{StaticResource DefaultEntry}"
+                Text="{Binding SelectedTobacoType.Name}"
+                TextColor="#58595B">
+
+                <custom:GAZTBorderlessEntry.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+                </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+            </custom:GAZTBorderlessEntry>
+
+            <inputLayout:SfTextInputLayout.TrailingView>
+                <Image Aspect="AspectFit" Source="greyDropDown" />
+            </inputLayout:SfTextInputLayout.TrailingView>
+
+        </inputLayout:SfTextInputLayout>
+
+        <StackLayout.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding OpenTobacoTypesCommand}" />
+        </StackLayout.GestureRecognizers>
+
+    </StackLayout>
+
+    <!--  ProductName Field  -->
+    <StackLayout Spacing="0">
+
+        <!--  ProductName Label  -->
+        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+            <custom:CustomLabel.FormattedText>
+                <FormattedString>
+                    <Span Text="{x:Static ResourceManager:AppResources.ProductName}" />
+                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                </FormattedString>
+            </custom:CustomLabel.FormattedText>
+        </custom:CustomLabel>
+
+        <!--  ProductName Entry  -->
+        <StackLayout>
+
+            <inputLayout:SfTextInputLayout
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                OutlineCornerRadius="15"
+                Stroke="{StaticResource NeutralGreay}">
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#B00020" />
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                <custom:GAZTBorderlessEntry
+                    x:Name="productNameEntry"
+                    InputTransparent="True"
+                    IsReadOnly="True"
+                    Keyboard="Text"
+                    Placeholder="{x:Static ResourceManager:AppResources.Select}"
+                    Style="{StaticResource DefaultEntry}"
+                    Text="{Binding SelectedTobacoItem.Name}"
+                    TextColor="#58595B">
+
+                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
+                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+
+                </custom:GAZTBorderlessEntry>
+
+                <inputLayout:SfTextInputLayout.TrailingView>
+                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                </inputLayout:SfTextInputLayout.TrailingView>
+
+            </inputLayout:SfTextInputLayout>
+
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OpenTobacoItemssCommand}" />
+            </StackLayout.GestureRecognizers>
+
+        </StackLayout>
+
+        <!--  Total Price Field  -->
+        <StackLayout Spacing="0">
+
+            <!--  Total Value Label  -->
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.TotalPriceValue}" />
+                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <!--  Total Value Entry  -->
+            <inputLayout:SfTextInputLayout
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                FlowDirection="LeftToRight"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                OutlineCornerRadius="15"
+                Stroke="{StaticResource NeutralGreay}">
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#B00020" />
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                <StackLayout FlowDirection="LeftToRight" Orientation="Horizontal">
+
+                    <numericinput:SfNumericEntry
+                        CustomFormat="n"
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="15"
+                        HeightRequest="48"
+                        HorizontalOptions="FillAndExpand"
+                        Placeholder="{x:Static ResourceManager:AppResources.Productvalue}"
+                        PlaceholderColor="{StaticResource NeutralGreay}"
+                        TextColor="#58595B"
+                        WidthRequest="180"
+                        Value="{Binding TotalValue}" />
+
+
+                    <custom:CustomLabel
+                        HorizontalOptions="EndAndExpand"
+                        Style="{StaticResource CaptionLabelGrey}"
+                        Text="{x:Static ResourceManager:AppResources.FORM5SAR}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+            </inputLayout:SfTextInputLayout>
+
+            <Label
+                Margin="3,-10,3,0"
+                FontSize="12"
+                Text="{x:Static ResourceManager:AppResources.ProductValueHint}"
+                TextColor="#58595B" />
+
+        </StackLayout>
+
+        <!--  Weight Field  -->
+        <StackLayout IsVisible="{Binding IsWeighVisible}" Spacing="0">
+
+            <!--  Weight Label  -->
+            <StackLayout Orientation="Horizontal">
+
+                <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                    <custom:CustomLabel.FormattedText>
+                        <FormattedString>
+                            <Span Text="{x:Static ResourceManager:AppResources.Weight}" />
+                            <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                        </FormattedString>
+                    </custom:CustomLabel.FormattedText>
+                </custom:CustomLabel>
+
+                <!--  MeasureUnit label  -->
+                <Label
+                    FontSize="14"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource CaptionLabelGrey}"
+                    Text="{Binding SelectedTobacoItem.MeasureUnitName}" />
+
+            </StackLayout>
+
+            <!--  Weight Entry  -->
+            <inputLayout:SfTextInputLayout
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                FlowDirection="LeftToRight"
+                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                OutlineCornerRadius="15"
+                Stroke="{StaticResource NeutralGreay}">
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#B00020" />
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                <numericinput:SfNumericEntry
+                    CustomFormat="n"
+                    FlowDirection="LeftToRight"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    HorizontalOptions="Fill"
+                    Placeholder="{x:Static ResourceManager:AppResources.Weight}"
+                    PlaceholderColor="{StaticResource NeutralGreay}"
+                    TextColor="#58595B"
+                    WidthRequest="150"
+                    Value="{Binding Weight}" />
+
+            </inputLayout:SfTextInputLayout>
+
+        </StackLayout>
+
+        <!--  Quantity Field  -->
+        <StackLayout Spacing="0">
+
+            <!--  Quantity Label  -->
+            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                <custom:CustomLabel.FormattedText>
+                    <FormattedString>
+                        <Span Text="{x:Static ResourceManager:AppResources.Quantity}" />
+                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                    </FormattedString>
+                </custom:CustomLabel.FormattedText>
+            </custom:CustomLabel>
+
+            <!--  Quantity Entry  -->
+            <inputLayout:SfTextInputLayout
+                ContainerBackground="White"
+                ContainerType="Outlined"
+                FlowDirection="LeftToRight"
+                HelperText="{x:Static ResourceManager:AppResources.NumberHint}"
+                InputViewPadding="16,0,16,0"
+                LeadingViewPosition="Inside"
+                OutlineCornerRadius="15"
+                Stroke="{StaticResource NeutralGreay}">
+                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                    <inputLayout:LabelStyle TextColor="#B00020" />
+                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                <numericinput:SfNumericEntry
+                    CustomFormat="n"
+                    FlowDirection="LeftToRight"
+                    FontFamily="{StaticResource SomarRegular}"
+                    FontSize="15"
+                    HeightRequest="48"
+                    HorizontalOptions="Fill"
+                    Placeholder="{x:Static ResourceManager:AppResources.Quantity}"
+                    PlaceholderColor="{StaticResource NeutralGreay}"
+                    TextColor="#58595B"
+                    WidthRequest="150"
+                    Value="{Binding Quantity}" />
+
+            </inputLayout:SfTextInputLayout>
+
+        </StackLayout>
+
+    </StackLayout>
+
+</StackLayout>
+

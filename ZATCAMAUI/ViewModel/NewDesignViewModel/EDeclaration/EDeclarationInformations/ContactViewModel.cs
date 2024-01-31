@@ -1,0 +1,280 @@
+﻿using System.Windows.Input;
+using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Acr.UserDialogs;
+using System.Collections.ObjectModel;
+using ZATCAMAUI.Models.EDeclerationsModel.SubmitModels;
+using ZATCAMAUI.Models;
+using ZATCAMAUI.Core.Helper;
+using RGPopup.Maui.Services;
+using ZATCAMAUI.Views.NewDesign.EDeclaration.PopUpPages;
+using ZATCAMAUI.Models.BaseModels;
+
+namespace ZATCAMAUI.ViewModel.NewDesignViewModel.EDeclaration.EDeclarationInformations
+{
+    public partial class EDeclarationInformationsViewModel
+    {
+
+        TravelerDeclarationResponse travelerDeclarationResponse;
+        public TravelerDeclarationResponse TravelerDeclarationResponse { get { return travelerDeclarationResponse; } set { travelerDeclarationResponse = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> _TotalFeesList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> TotalFeesList { get { return _TotalFeesList; } set { _TotalFeesList = value; RaisePropertyChanged(); } }
+
+        ObservableCollection<BottomSheetModel> _DetailsTotalFeesList = new ObservableCollection<BottomSheetModel>();
+        public ObservableCollection<BottomSheetModel> DetailsTotalFeesList { get { return _DetailsTotalFeesList; } set { _DetailsTotalFeesList = value; RaisePropertyChanged(); } }
+
+        bool isPaymentRequired;
+        public bool IsPaymentRequired { get { return isPaymentRequired; } set { isPaymentRequired = value; RaisePropertyChanged(); } }
+
+        string mobileNumber;
+        public string MobileNumber { get { return mobileNumber; } set { mobileNumber = value; RaisePropertyChanged(); } }
+
+        private ObservableCollection<BottomSheetModel> countryWithFlags { get; set; } = new ObservableCollection<BottomSheetModel>();
+
+
+        public ICommand GoToSuccessCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+                    if (IsValidContactInfo())
+                    {
+
+                        AcknowledgePopUpPage poupWindow = new AcknowledgePopUpPage();
+                        await PopupNavigation.Instance.PushAsync(poupWindow);
+                    }
+
+                });
+            }
+        }
+
+        public ICommand GetCountryCodeCommand
+        {
+            get
+            {
+                return new Command(async _ =>
+                {
+
+                    isNationalitySelected = false;
+                    isItsSourceSelected = false;
+                    isPortSelected = false;
+                    isComingGoingSelected = false;
+                    isTravelPurposeSelected = false;
+                    isPlatesCountrySelected = false;
+                    isPlatesCitySelected = false;
+                    BottomSheetList = new ObservableCollection<BottomSheetModel>();
+
+                    if (countryWithFlags.Count == 0)
+                    {
+                        IsLoading = true;
+                        await Task.Delay(1000);
+                        foreach (var item in CountryCodeHelper.CountriesWithFlags)
+                        {
+                            BottomSheetList.Add(new BottomSheetModel()
+                            {
+                                Name = $"({item[0]}) {item[1]} {item[2]}"
+                            });
+                        }
+                        countryWithFlags = BottomSheetList;
+                        IsLoading = false;
+                    }
+
+                    else
+                        BottomSheetList = new ObservableCollection<BottomSheetModel>(countryWithFlags);
+
+                    IsShowBottomSheet = true;
+                    HeaderTitle = AppResources.ZZZZCountry;
+                    TempBottomSheetList = new ObservableCollection<BottomSheetModel>(BottomSheetList);
+
+                });
+            }
+        }
+
+        private async Task<bool> SubmitDecleration()
+        {
+            try
+            {
+                IsLoading = true;
+                var submitRes = await DeclerationServices.SubmitDecleration(SubmitModel);
+                if (submitRes.IsSuccessStatusCode)
+                {
+                    var conent = await submitRes.Content.ReadAsStringAsync();
+                    var data = JsonConvert.DeserializeObject<DATAPowerBaseResponseResult<Result>>(conent);
+                    if (data.header.status.code == "I000000")
+                    {
+                        if (data?.result?.travelerDeclarationResponse != null)
+                        {
+                            TravelerDeclarationResponse = data.result.travelerDeclarationResponse;
+                            IsPaymentRequired = TravelerDeclarationResponse.paymentIsRequired && !TravelerDeclarationResponse.paymentIsCompleted ? true :
+                                     false;
+                        }
+                        return true;
+                    }
+                    else if (!string.IsNullOrWhiteSpace(data.header.moreInformation?.backendErrors))
+                    {
+                        MessageTxt = data.header.moreInformation?.backendErrors;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+                    }
+                    else
+                    {
+                        MessageTxt = AppResources.RequestTimeoutDescription;
+                        IsShowMsgView = true;
+                        IsLoading = false;
+
+                    }
+                }
+                else
+                {
+                    MessageTxt = AppResources.RequestTimeoutDescription;
+                    IsShowMsgView = true;
+                    IsLoading = false;
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            finally
+            {
+                IsLoading = false;
+
+            }
+            return false;
+        }
+
+
+        public ICommand ApproveDeclarationCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    if (SubmitModel.travelerDeclaration.IsTermsChecked)
+                    {
+                        await PopupNavigation.Instance.PopAsync(true);
+                        SubmitModel.travelerDeclaration.phoneNumber = SubmitModel.travelerDeclaration.CountryCode + MobileNumber;
+                        var res = await SubmitDecleration();
+                        if (res)
+                        {
+                            var date = DateTime.Now;
+
+                            if (TravelerDeclarationResponse != null)
+                            {
+                                TravelerDeclarationResponse.TravelDateString = DateTimeHelper.DateTimeFormater(SubmitModel.travelerDeclaration.travelDate);
+
+                                TravelerDeclarationResponse.totalFees = Math.Round(TravelerDeclarationResponse.totalFees, 2);
+
+                                TravelerDeclarationResponse.tobacco?.ForEach(t => { TotalFeesList.Add(new BottomSheetModel { Name = t.Name, Id = $"(x {t.count.ToString()})" }); });
+
+                                TravelerDeclarationResponse.product?.ForEach(p => { TotalFeesList.Add(new BottomSheetModel { Name = p.Name, Id = $"(x {p.count.ToString()})" }); });
+
+                                TravelerDeclarationResponse.currency?.ForEach(c => { TotalFeesList.Add(new BottomSheetModel { Name = c.Name }); });
+
+                                TravelerDeclarationResponse.restricted?.ForEach(r => { TotalFeesList.Add(new BottomSheetModel { Name = r.Name, Id = $"(x {r.count.ToString()})" }); });
+
+                                TravelerDeclarationResponse.fees?.ForEach(f => { DetailsTotalFeesList.Add(new BottomSheetModel { Name = f.Name, Id = (Math.Round(f.value, 2)).ToString() }); });
+
+                                _navigationService.NavigateTo("/EDeclarationSuccessPage");
+
+                                TripCard.AirImage = "QSelected.png";
+                                TripCard.SeaImage = "QUnselected.png";
+                                TripCard.LandImage = "QUnselected.png";
+
+                                TripCard.AirTextColor = Colors.White;
+                                TripCard.SeaTextColor = Color.FromHex("#002447");
+                                TripCard.LandTextColor = Color.FromHex("#002447");
+
+                                MobileNumber = string.Empty;
+                            }
+
+                        }
+                        else
+                        {
+                            IsShowMsgView = true;
+                            MessageTxt = AppResources.RequestTimeoutDescription;
+                        }
+
+                    }
+
+                });
+            }
+        }
+
+        public ICommand CheckBoxCommand
+        {
+            get
+            {
+                return new Command(() =>
+                {
+                    SubmitModel.travelerDeclaration.IsTermsChecked = SubmitModel.travelerDeclaration.IsTermsChecked == true ? false : true;
+                });
+            }
+        }
+
+        public ICommand CopyCommand
+        {
+            get
+            {
+                return new Command(async () =>
+                {
+                    await Clipboard.SetTextAsync(travelerDeclarationResponse.ReferenceID);
+                    UserDialogs.Instance.Toast(AppResources.Copied, TimeSpan.FromSeconds(1));
+                });
+            }
+        }
+
+        private bool IsValidContactInfo()
+        {
+
+            Regex KSAphoneRegex = new Regex(@"^5[0-9]{8}$");
+            Regex phoneRegex = new Regex(@"^[0-9]+$");
+            Regex Email = new Regex(@"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z");
+
+            Regex address = new Regex(@"[^a-zA-Z0-9\u0621-\u064Aa\u0660-\u0669\s]");
+            if (string.IsNullOrWhiteSpace(MobileNumber)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.address)
+                    || string.IsNullOrWhiteSpace(SubmitModel.travelerDeclaration.email))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.RequiredData;
+                return false;
+
+            }
+            else if (!Email.IsMatch(SubmitModel.travelerDeclaration.email.ToLower()))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.InvalidEmailFormat;
+                return false;
+            }
+            else if (!phoneRegex.IsMatch(MobileNumber))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.EnterValidMobileNumber;
+                return false;
+            }
+            else if (SubmitModel.travelerDeclaration.CountryCode.Equals("+966"))
+            {
+                if (!KSAphoneRegex.IsMatch(MobileNumber))
+                {
+                    IsShowMsgView = true;
+                    MessageTxt = AppResources.EnterValidMobileNumber;
+                    return false;
+                }
+
+            }
+            else if (address.IsMatch(SubmitModel.travelerDeclaration.address))
+            {
+                IsShowMsgView = true;
+                MessageTxt = AppResources.AddressKSAValidation;
+                return false;
+            }
+            return true;
+
+        }
+    }
+}
+

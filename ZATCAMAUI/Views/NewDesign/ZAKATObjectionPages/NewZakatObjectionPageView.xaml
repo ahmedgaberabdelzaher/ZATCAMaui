@@ -1,0 +1,605 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.ZAKATObjectionPages.NewZakatObjectionPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    BackgroundImageSource="partials_background"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <!--<ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>-->
+            <Style x:Key="boxIndicator" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource NeutralLightGrey}" />
+                <Setter Property="HeightRequest" Value="10" />
+                <Setter Property="WidthRequest" Value="10" />
+                <Setter Property="CornerRadius" Value="5" />
+            </Style>
+            <Style x:Key="HorizontalEnd" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+            <Style x:Key="SectionTitleBlackTopNegative10" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource NeutralBlack}" />
+                <Setter Property="FontFamily" Value="{StaticResource SomarSemiBold}" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="Margin" Value="0,-10,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <!--  Header Section Starts  -->
+                    <StackLayout x:Name="ObjectionDetailsView" Grid.Row="0">
+                        <StackLayout Orientation="Horizontal">
+                            <BoxView BackgroundColor="{StaticResource Primary}" Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                        </StackLayout>
+
+                        <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{Binding HeaderTitle}" />
+                        <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="{Binding subHeaderTitle}" />
+                        <BoxView Style="{StaticResource lineSeperator}" />
+                    </StackLayout>
+                    <!--  Header Section Ends  -->
+
+                    <!--  Footer Section Starts  -->
+                    <StackLayout Grid.Row="2" BackgroundColor="White">
+                        <buttons:SfButton
+                            Command="{Binding OnContinueClicked}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="Continue" />
+                    </StackLayout>
+                    <!--  Footer Section Ends  -->
+
+                    <!--  Body Section Starts  -->
+
+                    <!--  Start of Objectioin Details  -->
+                    <ScrollView
+                        x:Name="ObjectionDetailView"
+                        Grid.Row="1"
+                        IsVisible="{Binding IsObjectionDetailVisible}">
+                        <StackLayout>
+                            <Border Margin="0,10,0,10" Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout>
+                                    <StackLayout
+                                        Padding="10"
+                                        Orientation="Horizontal"
+                                        Spacing="10">
+
+                                        <Image Source="ic_vat_return" />
+
+                                        <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="{x:Static ResourceManager:AppResources.FORM5ReturnDetails}" />
+
+
+                                        <custom:CustomLabel
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="View Return"
+                                            TextColor="{StaticResource Primary}" />
+                                    </StackLayout>
+
+                                    <BoxView
+                                        BackgroundColor="LightGray"
+                                        HeightRequest="1"
+                                        HorizontalOptions="FillAndExpand" />
+
+                                    <StackLayout
+                                        Padding="10"
+                                        BindingContext="{Binding ZakatReturnDetail}"
+                                        Spacing="10">
+                                        <StackLayout Orientation="Horizontal">
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.FiscalYear}" />
+                                            <custom:CustomLabel Style="{StaticResource HorizontalEnd}" Text="2020" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="Financial Period" />
+                                            <custom:CustomLabel
+                                                HorizontalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="May 2019 - May 2020" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="{x:Static ResourceManager:AppResources.ZReturnReferenceNumber}" />
+                                            <custom:CustomLabel
+                                                HorizontalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="{Binding Fbnum}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal" Spacing="10">
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelGrey}" Text="Tax Type" />
+                                            <custom:CustomLabel
+                                                HorizontalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="Zakat" />
+                                        </StackLayout>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="60*" />
+                                                <ColumnDefinition Width="40*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel
+                                                Grid.Column="0"
+                                                Style="{StaticResource ValueLabelGrey}"
+                                                Text="Assessment Amount GAZT" />
+                                            <custom:CustomLabel
+                                                Grid.Column="1"
+                                                HorizontalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="End"
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="500.00 SAR" />
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Border>
+                            <custom:CustomLabel Style="{StaticResource SectionTitleBlack}" Text="Dispute Amounts" />
+                            <custom:CustomLabel Style="{StaticResource BodyLabelGrey}" Text="The Following data has been changed by GAZT. Please edit all the data you want to dispute" />
+                            <Grid ColumnSpacing="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto" />
+                                    <RowDefinition Height="auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="Internal Procurement for Saudi" />
+                                <custom:CustomLabel
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Style="{StaticResource CaptionLabelGrey}"
+                                    Text="Sales" />
+
+                                <inputLayout:SfTextInputLayout
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Margin="0"
+                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
+                                </inputLayout:SfTextInputLayout>
+
+                                <inputLayout:SfTextInputLayout
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0"
+                                    Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="400.00" />
+
+                                </inputLayout:SfTextInputLayout>
+                            </Grid>
+                        </StackLayout>
+                    </ScrollView>
+                    <!--  End of Objectioin Details  -->
+
+                    <!--  Start Of Objection Reason  -->
+                    <ScrollView
+                        x:Name="ObjectionReasonView"
+                        Grid.Row="1"
+                        IsVisible="{Binding IsObjectionReasonVisible}">
+                        <StackLayout>
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="Write Your Objection Reason" />
+                            <inputLayout:SfTextInputLayout Margin="0" Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" />
+                            </inputLayout:SfTextInputLayout>
+                        </StackLayout>
+                    </ScrollView>
+                    <!--  End Of Objection Reason  -->
+
+                    <!--  Start of Attachment Visible  -->
+                    <ScrollView Grid.Row="1" IsVisible="{Binding IsAttachmentsVisible}">
+                        <StackLayout>
+                            <custom:CustomLabel
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="Attachment" />
+                            <Border
+                                Margin="0"
+                                Stroke="{StaticResource DarkGrayTextColor}"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.FilePdf}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                    </Image>
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelBlack}"
+                                        Text="File1.pdf" />
+
+                                    <Image HorizontalOptions="EndAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.Close}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                    </Image>
+
+
+                                </StackLayout>
+                            </Border>
+                            <custom:CustomLabel
+                                Margin="0,-5,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="20MB max" />
+
+                            <custom:CustomLabel
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="New Attachment (Optional)" />
+
+                            <Border
+                                Margin="0"
+                                Stroke="{StaticResource DarkGrayTextColor}"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
+                                    <Label
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelGrey}"
+                                        Text="Please Upload your docuument" />
+
+                                    <Image HorizontalOptions="EndAndExpand" Rotation="90">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.Attachment}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                            </Border>
+                            <custom:CustomLabel
+                                Margin="0,-5,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="50MB max" />
+                        </StackLayout>
+                    </ScrollView>
+                    <!--  End of Attachment Visible  -->
+
+                    <!--  Start of Declaration Visible  -->
+                    <ScrollView Grid.Row="1" IsVisible="{Binding IsDeclarationVisible}">
+                        <Grid ColumnSpacing="15">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <custom:CustomLabel
+                                Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="ID Type" />
+
+                            <Border
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="0"
+                                Stroke="{StaticResource DarkGrayTextColor}"
+                                StrokeThickness="1"
+                                Style="{StaticResource GreyBorderFrameWithShadow}">
+                                <StackLayout Padding="15,10,15,10" Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="None"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource ValueLabelBlackMedium}"
+                                        Text="National ID" />
+
+                                    <Image HorizontalOptions="EndAndExpand">
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.ArrowDown}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                    </Image>
+                                </StackLayout>
+                            </Border>
+                            <custom:CustomLabel
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="ID Number" />
+
+                            <custom:CustomLabel
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="Date of Birth" />
+
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Margin="0,-10,0,0"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Q1720187" />
+                            </inputLayout:SfTextInputLayout>
+
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Margin="0,-10,0,0"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="7 jun 1995" />
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image>
+                                        <Image.Source>
+                                            <FontImageSource
+                                                FontFamily="UserIconFont"
+                                                Glyph="{x:Static FontImage:IconFonts.Calendar}"
+                                                Size="25"
+                                                Color="{StaticResource SecondaryNew}" />
+                                        </Image.Source>
+                                    </Image>
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                            </inputLayout:SfTextInputLayout>
+
+
+                            <custom:CustomLabel
+                                Grid.Row="4"
+                                Grid.ColumnSpan="2"
+                                Margin="0,10,0,0"
+                                Style="{StaticResource CaptionLabelGrey}"
+                                Text="Contact Person Name" />
+
+                            <inputLayout:SfTextInputLayout
+                                Grid.Row="5"
+                                Grid.ColumnSpan="2"
+                                Margin="0,-10,0,0"
+                                Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="Zaed Hardy" />
+                            </inputLayout:SfTextInputLayout>
+
+                        </Grid>
+                    </ScrollView>
+                    <!--  End of Declaration Visible  -->
+
+                    <!--  Start of Summary Visible  -->
+                    <ScrollView Grid.Row="1" IsVisible="{Binding IsSummaryVisible}" />
+                    <!--  End of Summary Visible  -->
+
+                    <!--  Select Returns View Starts  -->
+                    <StackLayout x:Name="SelectReturnsView" IsVisible="False">
+                        <StackLayout Orientation="Horizontal">
+                            <BoxView BackgroundColor="{StaticResource Primary}" Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                            <BoxView Style="{StaticResource boxIndicator}" />
+                        </StackLayout>
+                        <Label Style="{StaticResource SectionTitleBlack}" Text="Select Return" />
+                        <Label Style="{StaticResource CaptionLabelGrey}" Text="Choose one Return" />
+                        <BoxView Style="{StaticResource lineSeperator}" />
+                        <ScrollView>
+                            <StackLayout>
+                                <inputLayout:SfTextInputLayout Margin="0" Style="{StaticResource InputTableTextInputLayoutStyle}">
+                                    <custom:GAZTBorderlessEntry Style="{StaticResource InputTableEntryLayoutStyle}" Text="500" />
+                                    <inputLayout:SfTextInputLayout.TrailingView>
+                                        <Image>
+                                            <Image.Source>
+                                                <FontImageSource
+                                                    FontFamily="UserIconFont"
+                                                    Glyph="{x:Static FontImage:IconFonts.SearchWeb}"
+                                                    Size="25"
+                                                    Color="{StaticResource SecondaryNew}" />
+                                            </Image.Source>
+                                        </Image>
+                                    </inputLayout:SfTextInputLayout.TrailingView>
+                                </inputLayout:SfTextInputLayout>
+
+                                <Border
+                                    Margin="0,10,0,10"
+                                    BackgroundColor="{StaticResource Primary}"
+                                    Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Padding="14,10,14,10" Spacing="-5">
+                                            <custom:CustomLabel
+                                                Style="{StaticResource ValueLabelBlack}"
+                                                Text="Zakat"
+                                                TextColor="White" />
+                                            <custom:CustomLabel
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="May 2019 - May 2020"
+                                                TextColor="White" />
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <custom:CustomLabel
+                                            Padding="14,10,14,10"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="1,200.00 SAR"
+                                            TextColor="White" />
+
+                                        <Grid Padding="14,0,14,10" RowSpacing="-10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="Reference Number"
+                                                TextColor="White" />
+                                            <custom:CustomLabel
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="Year"
+                                                TextColor="White" />
+                                            <custom:CustomLabel
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Style="{StaticResource BodyLabelBlack}"
+                                                Text="1234567890   "
+                                                TextColor="White" />
+                                            <custom:CustomLabel
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Style="{StaticResource BodyLabelBlack}"
+                                                Text="2020   "
+                                                TextColor="White" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Border>
+
+                                <Border Style="{StaticResource GreyBorderFrameWithShadow}">
+                                    <StackLayout>
+                                        <StackLayout Padding="14,10,14,10" Spacing="-5">
+                                            <custom:CustomLabel Style="{StaticResource ValueLabelBlack}" Text="Zakat" />
+                                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}" Text="May 2019 - May 2020" />
+                                        </StackLayout>
+                                        <BoxView Style="{StaticResource lineSeperator}" />
+
+                                        <custom:CustomLabel
+                                            Padding="14,10,14,10"
+                                            Style="{StaticResource ValueLabelBlack}"
+                                            Text="1,200.00 SAR" />
+
+                                        <Grid Padding="14,0,14,10" RowSpacing="-10">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <custom:CustomLabel
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="Reference Number" />
+                                            <custom:CustomLabel
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Style="{StaticResource CaptionLabelGrey}"
+                                                Text="Year" />
+                                            <custom:CustomLabel
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Style="{StaticResource BodyLabelBlack}"
+                                                Text="1234567890   " />
+                                            <custom:CustomLabel
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                Style="{StaticResource BodyLabelBlack}"
+                                                Text="2020   " />
+                                        </Grid>
+                                    </StackLayout>
+                                </Border>
+
+                            </StackLayout>
+                        </ScrollView>
+
+                    </StackLayout>
+                    <!--  Select Returns View Ends  -->
+
+
+                    <!--  Body Section Ends  -->
+                </Grid>
+            </yummy:PancakeView>
+
+            <Grid Grid.Row="0" Padding="15,10,15,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*" />
+                    <ColumnDefinition Width="60*" />
+                    <ColumnDefinition Width="20*" />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    FontSize="Large"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Zakat Objection"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+                <StackLayout Grid.Row="0" Grid.Column="0">
+                    <Image
+                        HorizontalOptions="StartAndExpand"
+                        Source="arrowLeftwhite"
+                        VerticalOptions="CenterAndExpand" />
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OnBackStepClicked}" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    IsVisible="{Binding isLabelVisible}">
+                    <Image
+                        HorizontalOptions="EndAndExpand"
+                        Source="close"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

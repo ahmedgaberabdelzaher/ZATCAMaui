@@ -20,6 +20,7 @@ using ZXing.Net.Maui.Controls;
 using IDeviceInfo = ZATCAMAUI.Core.Interfaces.IDeviceInfo;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 using Maui.GoogleMaps.Hosting;
+using CommunityToolkit.Maui.Maps;
 
 namespace ZATCAMAUI;
 
@@ -38,6 +39,8 @@ public static class MauiProgram
                 .ConfigureSyncfusionCore()
                 .UsePancakeViewCompat()
                 .UseMauiCompatibility()
+                .UseMauiMaps()
+                //.UseMauiCommunityToolkitMaps("key")
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("GE_SS_Two_Bold.ttf", "GE_SS_Two_Bold");

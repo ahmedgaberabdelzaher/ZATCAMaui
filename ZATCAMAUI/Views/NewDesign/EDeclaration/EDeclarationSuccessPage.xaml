@@ -1,0 +1,635 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.EDeclarationSuccessPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="Auto">
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    VerticalOptions="CenterAndExpand" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView Grid.Row="1" Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+                        <!--  Success icon  -->
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="150"
+                            Source="darkSucces"
+                            WidthRequest="150" />
+
+                        <!--  Success Msg1 Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="28"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="{x:Static ResourceManager:AppResources.CreatedSuccessfully}"
+                            TextColor="#002447" />
+
+                        <!--  Success Msg2 Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarSemiBold}"
+                            FontSize="16"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            LineBreakMode="WordWrap"
+                            Text="{x:Static ResourceManager:AppResources.CreatedSuccessfullyMsg}"
+                            TextColor="#002447" />
+
+                        <!--#region Disclaimer-->
+                        <Frame
+                            Margin="0,0,0,5"
+                            Padding="5"
+                            BackgroundColor="#FCECCD"
+                            BorderColor="#FCECCD"
+                            CornerRadius="8"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <StackLayout Orientation="Horizontal" Spacing="8">
+
+                                <!--  Check Mark Image  -->
+                                <Image Aspect="AspectFit" Source="OrangeCircle" />
+
+                                <!--  Feedback Name Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="14"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding TravelerDeclarationResponse.FeedbackName}"
+                                    TextColor="#F5BF58" />
+
+                            </StackLayout>
+
+                        </Frame>
+                        <!--#endregion Disclaimer-->
+
+                        <!--#region Frame Declaration Values-->
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="15"
+                            BorderColor="#EBEBEB"
+                            CornerRadius="15"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--  Frame Content  -->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                    <!--  Doc Image  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Source="DocBlue"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25" />
+
+                                    <!--  Declaration Label  -->
+                                    <custom:CustomLabel
+                                        Padding="10"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.FORM5Declaration}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--#region Declaration Values-->
+                                <Grid
+                                    ColumnDefinitions="2*,*"
+                                    RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                                    RowSpacing="15">
+
+                                    <!--  Reference number Label  -->
+                                    <custom:CustomLabel
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.ZakatInstalmentReferenceNumber}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start">
+
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding CopyCommand}" />
+                                        </custom:CustomLabel.GestureRecognizers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Reference number value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.ReferenceID}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start">
+
+                                        <custom:CustomLabel.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding CopyCommand}" />
+                                        </custom:CustomLabel.GestureRecognizers>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Payment Status Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding TravelerDeclarationResponse.paymentIsRequired}"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.VATInstalmentListInstalmentPaymentStatus}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Payment status value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        IsVisible="{Binding TravelerDeclarationResponse.paymentIsRequired}"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start">
+
+                                        <custom:CustomLabel.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding TravelerDeclarationResponse.IsNotPaid}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.NotPaidPaymentStatus}" />
+
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding TravelerDeclarationResponse.IsNotPaid}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="false">
+                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.PaidPaymentStatus}" />
+
+                                            </DataTrigger>
+
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+
+                                    <!--  Name Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="2"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.ZZName}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Name value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.fullName}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Traveller passport Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="3"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TravellerPassport}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Traveller passport value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.travelID}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+
+
+                                    <!--  Coming/Going from/to Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="4"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.ArrivingFromORDepartingTo}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Coming/Going from/to Value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.ArrivingName}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Port Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="5"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.Port}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Port value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.PortName}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+
+
+                                    <!--  Trip number Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="6"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TripNumber}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Trip number value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.flightNumber}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Trip Date Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="7"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TripDate}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Trip Date Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="7"
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding TravelerDeclarationResponse.TravelDateString}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </Grid>
+                                <!--#endregion Declaration Values-->
+
+                            </StackLayout>
+
+                        </Frame>
+                        <!--#endregion Frame Declaration Values-->
+
+                        <!--#region Frame Contains Total Fees-->
+                        <Frame
+                            Margin="0,0,0,10"
+                            Padding="15"
+                            BorderColor="#EBEBEB"
+                            CornerRadius="15"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--  Frame Content  -->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                    <!--  Doc Image  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Source="DocBlue"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25" />
+
+                                    <!--  Total fees Label  -->
+                                    <custom:CustomLabel
+                                        Padding="10"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--#region Total Product Fees Values-->
+                                <StackLayout x:Name="totalFeesList" BindableLayout.ItemsSource="{Binding TotalFeesList}">
+
+                                    <BindableLayout.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <!--  Items List  -->
+                                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+
+                                                <!--  Item Name Label  -->
+                                                <custom:CustomLabel
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    HorizontalOptions="Start"
+                                                    LineBreakMode="WordWrap"
+                                                    Text="{Binding Name}"
+                                                    TextColor="#999999"
+                                                    VerticalOptions="Start" />
+
+                                                <!--  Count value Label  -->
+                                                <custom:CustomLabel
+                                                    Grid.Column="1"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    HorizontalOptions="End"
+                                                    LineBreakMode="WordWrap"
+                                                    Text="{Binding Id}"
+                                                    TextColor="#002447"
+                                                    VerticalOptions="Start" />
+
+                                            </Grid>
+
+                                        </DataTemplate>
+
+                                    </BindableLayout.ItemTemplate>
+
+                                </StackLayout>
+                                <!--#endregion Total Product Fees Values-->
+
+                                <Grid ColumnDefinitions="2*,*">
+
+                                    <!--  Total amount Label  -->
+                                    <custom:CustomLabel
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TotalAmount}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Total amount value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Column="1"
+                                        FontFamily="{StaticResource SomarSemiBold}"
+                                        FontSize="14"
+                                        HorizontalOptions="End"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TravelerDeclarationResponse.totalFees}" />
+                                                <Span Text="  " />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+
+                                    </custom:CustomLabel>
+
+                                </Grid>
+
+                            </StackLayout>
+
+                        </Frame>
+                        <!--#endregion Frame Contains Total Fees-->
+
+                        <!--#region Frame Contains Details Fees-->
+                        <Frame
+                            Margin="0,0,0,15"
+                            Padding="15"
+                            BorderColor="#EBEBEB"
+                            CornerRadius="15"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--  Frame Content  -->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                    <!--  Doc Image  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Source="DocBlue"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25" />
+
+                                    <!--  Details Total fees Label  -->
+                                    <custom:CustomLabel
+                                        Padding="10"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.DetailsTotalFeesPayable}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--#region Details Fees Values-->
+                                <StackLayout BindableLayout.ItemsSource="{Binding DetailsTotalFeesList}">
+
+                                    <BindableLayout.ItemTemplate>
+
+                                        <DataTemplate>
+
+                                            <!--  Items List  -->
+                                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto">
+
+                                                <!--  Item Name Label  -->
+                                                <custom:CustomLabel
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    HorizontalOptions="Start"
+                                                    LineBreakMode="WordWrap"
+                                                    Text="{Binding Name}"
+                                                    TextColor="#999999"
+                                                    VerticalOptions="Start" />
+
+                                                <!--  Value Label  -->
+                                                <custom:CustomLabel
+                                                    Grid.Column="1"
+                                                    FontFamily="{StaticResource SomarSemiBold}"
+                                                    FontSize="14"
+                                                    HorizontalOptions="End"
+                                                    LineBreakMode="WordWrap"
+                                                    TextColor="#002447"
+                                                    VerticalOptions="Start">
+                                                    <custom:CustomLabel.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding Id}" />
+                                                            <Span Text="  " />
+                                                            <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                                        </FormattedString>
+                                                    </custom:CustomLabel.FormattedText>
+
+                                                </custom:CustomLabel>
+
+                                            </Grid>
+
+                                        </DataTemplate>
+
+                                    </BindableLayout.ItemTemplate>
+
+                                </StackLayout>
+                                <!--#endregion Payment Values-->
+                            </StackLayout>
+
+                        </Frame>
+                        <!--#endregion Frame Contains Fees-->
+
+                        <!--  Pay Now Button  -->
+                        <buttons:SfButton
+                            Background="#0996D4"
+                            Command="{Binding GoToPaymentCommand}"
+                            IsVisible="{Binding IsPaymentRequired}"
+                            Stroke="#0996D4"
+                            StrokeThickness="1"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
+                            TextColor="White" />
+
+                        <!--  DownLoad Pdf Button  -->
+                        <buttons:SfButton
+                            Background="#0996D4"
+                            Command="{Binding DownlOadFileCommand}"
+                            Stroke="#0996D4"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.DownloadEdecleraton}"
+                            TextColor="White" />
+
+                        <!--  Back to Home Button  -->
+                        <buttons:SfButton
+                            Background="Transparent"
+                            Command="{Binding BackToHomeCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.BackToHome}"
+                            TextColor="#0996D4" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+            <custom:Loader
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsLoading}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

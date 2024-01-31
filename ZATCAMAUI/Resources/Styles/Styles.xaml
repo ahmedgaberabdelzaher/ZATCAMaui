@@ -63,7 +63,7 @@
         <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
     </Style>
 
-     <!--  Common button style  -->
+    <!--  Common button style  -->
     <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="VerticalOptions" Value="EndAndExpand" />
@@ -323,7 +323,7 @@
         <Setter Property="TextColor" Value="White" />
     </Style>
 
-   
+
 
     <!--  Common style for search entries  -->
     <Style x:Key="SearchEntryStyle" TargetType="control:GAZTBorderlessEntry">
@@ -370,10 +370,9 @@
     <!--  Common style for content pages  -->
     <Style x:Key="ContentPageStyle" TargetType="ContentPage">
         <Setter Property="BackgroundImageSource">
-            <OnPlatform
-                x:TypeArguments="ImageSource">
-                <On Platform="Android" Value="sf_LoginBackground.png"/>
-                <On Platform="iOS" Value="sf_LoginBackground.png"/>
+            <OnPlatform x:TypeArguments="ImageSource">
+                <On Platform="Android" Value="sf_LoginBackground.png" />
+                <On Platform="iOS" Value="sf_LoginBackground.png" />
 
             </OnPlatform>
         </Setter>

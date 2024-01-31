@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.TaxpayerProfile.TaxpayerProfileSuccessPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    BackgroundImageSource="partials_background.png">
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+    <ContentPage.Content>
+        <StackLayout Padding="24" Orientation="Vertical">
+            <Image Margin="0,90,0,0" Source="Forget_ic_success.png" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource SectionTitleWhiteBold}"
+                Text="{Binding SuccessTitleLbl}" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource CaptionLabelWhite}"
+                Text="{Binding successCaptionLbl}" />
+            <custom:CustomLabel
+                HorizontalOptions="Center"
+                Style="{StaticResource ButtonLabelBlackBold}"
+                Text="{Binding ButtonLabelText}"
+                TextColor="{StaticResource NewDullOrangeColor}"
+                VerticalOptions="EndAndExpand">
+                <custom:CustomLabel.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnGoToProfileLblTapped" />
+                </custom:CustomLabel.GestureRecognizers>
+            </custom:CustomLabel>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

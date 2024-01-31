@@ -21,7 +21,7 @@
     <ContentPage.Content>
         <StackLayout Padding="20">
             <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
-                <Image Margin="0,0,0,20" Source="forget_ic_success"/>
+                <Image Margin="0,0,0,20" Source="forget_ic_success" />
                 <custom:CustomLabel
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -41,7 +41,6 @@
                     Command="{Binding OnLoginButtonClicked}"
                     Style="{StaticResource PrimaryButtonStyle}"
                     Text="{x:Static ResourceManager:AppResources.LogIn}" />
-                <!--<buttons:SfButton Text="{x:Static ResourceManager:AppResources.CheckEmail}" Style="{StaticResource PrimaryButtonStyle}" BackgroundColor="Transparent"/>-->
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

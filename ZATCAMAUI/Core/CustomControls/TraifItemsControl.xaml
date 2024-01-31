@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="ZATCAMAUI.Core.CustomControls.TraifItemsControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    FlowDirection="{Binding AppDirection}">
+    <Grid x:Name="TraiffPage" Padding="24,6,24,6">
+        <Frame
+            Padding="20,15,17,15"
+            BorderColor="#D8D8D8"
+            CornerRadius="14"
+            HasShadow="False">
+            <StackLayout Orientation="Horizontal">
+                <Label
+                    x:Name="nameLabl"
+                    FontSize="16"
+                    HorizontalOptions="StartAndExpand"
+                    TextColor="{StaticResource Primary}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding Code}" />
+                            <Span Text=" - " />
+                            <Span Text="{Binding Name}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Image
+                    x:Name="arrow"
+                    HeightRequest="20"
+                    HorizontalOptions="EndAndExpand"
+                    Rotation="0"
+                    Source="LstArrow"
+                    VerticalOptions="CenterAndExpand"
+                    WidthRequest="10">
+                    <Image.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Source={x:Reference nameLabl}, Path=FlowDirection}"
+                            TargetType="Image"
+                            Value="RightToLeft">
+                            <Setter Property="Rotation" Value="180" />
+                        </DataTrigger>
+                    </Image.Triggers>
+                </Image>
+
+            </StackLayout>
+        </Frame>
+    </Grid>
+
+</ContentView>

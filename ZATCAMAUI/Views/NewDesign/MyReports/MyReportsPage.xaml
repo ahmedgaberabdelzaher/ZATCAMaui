@@ -1,0 +1,657 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.MyReports.MyReportsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:converter="clr-namespace:ZATCAMAUI.Core.Converters"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+            <xct:IsListNotNullOrEmptyConverter x:Key="ListIsNotNullOrEmptyConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
+                <ResourceDictionary>
+                    <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="180" />
+                    </Style>
+                    <Style x:Key="ArrowImageForEnglishStyle" TargetType="Image">
+                        <Setter Property="Rotation" Value="0" />
+                    </Style>
+                    <Style x:Key="ArrowImage" TargetType="Image">
+                        <Setter Property="HeightRequest" Value="30" />
+                        <Setter Property="WidthRequest" Value="30" />
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <xct:EventToCommandBehavior Command="{Binding GetMyReportsCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <!--  Back Button  -->
+                <StackLayout IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
+
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  My Reports Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.NDMyReports}"
+                    VerticalOptions="Center" />
+
+                <!--  Report Type Entry  -->
+                <inputLayout:SfTextInputLayout
+                    Grid.ColumnSpan="2"
+                    ContainerBackground="White"
+                    ContainerType="Outlined"
+                    HorizontalOptions="CenterAndExpand"
+                    InputViewPadding="10,0,10,0"
+                    IsVisible="{Binding IsSearching}"
+                    OutlineCornerRadius="15"
+                    Stroke="{StaticResource NeutralGreay}"
+                    VerticalOptions="CenterAndExpand">
+
+                    <custom:GAZTBorderlessEntry
+                        Keyboard="Text"
+                        Style="{StaticResource DefaultEntry}"
+                        Text="{Binding SearchValue}"
+                        TextColor="#58595B">
+                        <custom:GAZTBorderlessEntry.Behaviors>
+                            <xct:EventToCommandBehavior Command="{Binding SearchReportCommand}" EventName="Completed" />
+                        </custom:GAZTBorderlessEntry.Behaviors>
+                    </custom:GAZTBorderlessEntry>
+                </inputLayout:SfTextInputLayout>
+
+                <!--  Search Image  -->
+                <StackLayout Grid.Column="2" IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}">
+
+                    <Image
+                        HeightRequest="25"
+                        HorizontalOptions="End"
+                        Source="reportSearch.png"
+                        VerticalOptions="CenterAndExpand"
+                        WidthRequest="25" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Close Label  -->
+                <StackLayout
+                    Grid.Column="2"
+                    IsVisible="{Binding IsSearching}"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Label
+                        FontFamily="{StaticResource SomarRegular}"
+                        FontSize="16"
+                        HorizontalOptions="EndAndExpand"
+                        Style="{StaticResource SectionTitleWhiteBold}"
+                        Text="{x:Static ResourceManager:AppResources.ZClose}" />
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SearchCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <StackLayout Spacing="30">
+
+                    <!--  All Reports Layout  -->
+                    <Grid
+                        ColumnDefinitions="Auto,Auto"
+                        RowDefinitions="Auto,Auto"
+                        RowSpacing="0">
+
+
+                        <!--  All Reports Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="28"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
+                            Text="{Binding ReportsResultTitle}"
+                            TextColor="#58595B" />
+
+                        <!--  Down arrow Button  -->
+                        <Image
+                            Grid.Column="1"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
+                            Source="arrowDropdown.png"
+                            VerticalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding FilterCommand}" />
+                            </Image.GestureRecognizers>
+
+                        </Image>
+
+                        <!--  Reports Count Label  -->
+                        <Label
+                            Grid.Row="1"
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="12"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding IsSearching, Converter={StaticResource InverseBoolConverter}}"
+                            Text="{Binding ReportsCount}"
+                            TextColor="#999999" />
+
+                    </Grid>
+
+                    <!--  Add new report Frame  -->
+                    <Frame
+                        Padding="15"
+                        BorderColor="#EBEBEB"
+                        CornerRadius="12"
+                        IsVisible="{Binding MyReportsList, Converter={StaticResource ListIsNotNullOrEmptyConverter}}">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <!--  Add Report Image  -->
+                            <Image
+                                HeightRequest="25"
+                                HorizontalOptions="Start"
+                                Source="reportAdd.png"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="25" />
+
+                            <!--  Add new report Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarRegular}"
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.AddNewReport}"
+                                TextColor="#042E66"
+                                VerticalTextAlignment="Center" />
+
+                        </StackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AddNewReportCommand}" />
+                        </Frame.GestureRecognizers>
+
+                    </Frame>
+
+                    <!--  MyReports List  -->
+                    <CollectionView
+                        x:Name="reportsList"
+                        Margin="0,0,0,20"
+                        HorizontalOptions="FillAndExpand"
+                        ItemsSource="{Binding MyReportsList}"
+                        RemainingItemsThreshold="3"
+                        RemainingItemsThresholdReachedCommand="{Binding LoadMoreMyReportsCommand}"
+                        VerticalOptions="FillAndExpand"
+                        VerticalScrollBarVisibility="Never">
+
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" VerticalItemSpacing="20" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.EmptyView>
+
+                            <StackLayout
+                                HorizontalOptions="CenterAndExpand"
+                                Spacing="20"
+                                VerticalOptions="CenterAndExpand">
+
+                                <!--  Document icon  -->
+                                <Image
+                                    Aspect="AspectFit"
+                                    HeightRequest="80"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Source="emptyReport.png"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="80" />
+
+                                <!--  Empty Reports Label  -->
+                                <Label
+                                    FontFamily="{StaticResource SomarRegular}"
+                                    FontSize="18"
+                                    HorizontalOptions="CenterAndExpand"
+                                    HorizontalTextAlignment="Center"
+                                    LineBreakMode="WordWrap"
+                                    Text="{x:Static ResourceManager:AppResources.EmptyReports}"
+                                    TextColor="#999999"
+                                    VerticalOptions="CenterAndExpand" />
+
+                                <!--  Submita new report Button  -->
+                                <buttons:SfButton
+                                    Margin="0,40"
+                                    Background="#0996D4"
+                                    Command="{Binding AddNewReportCommand}"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    Text="{x:Static ResourceManager:AppResources.Submitanewreport}" />
+
+                            </StackLayout>
+
+                        </CollectionView.EmptyView>
+
+                        <CollectionView.ItemTemplate>
+
+                            <DataTemplate>
+
+                                <!--  Report list Frame  -->
+
+                                <Frame
+                                    x:Name="Item"
+                                    Padding="0"
+                                    BorderColor="#EBEBEB"
+                                    CornerRadius="12">
+
+                                    <StackLayout Padding="25,20">
+
+                                        <!--  First section  -->
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            RowDefinitions="Auto,Auto"
+                                            RowSpacing="0">
+
+
+                                            <!--  Facility name Label  -->
+                                            <Label
+                                                Grid.ColumnSpan="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="20"
+                                                HorizontalOptions="Fill"
+                                                LineBreakMode="WordWrap"
+                                                MaxLines="2"
+                                                Text="{Binding facilityName}"
+                                                TextColor="#232323" />
+
+                                            <!--  Status region  -->
+                                            <Grid
+                                                Grid.RowSpan="2"
+                                                Grid.Column="1"
+                                                ColumnDefinitions="80"
+                                                HorizontalOptions="EndAndExpand"
+                                                VerticalOptions="CenterAndExpand">
+
+                                                <Frame
+                                                    Padding="5"
+                                                    BackgroundColor="#0996D4"
+                                                    BorderColor="#EBEBEB"
+                                                    CornerRadius="15"
+                                                    Opacity="0.1">
+
+                                                    <Frame.Triggers>
+
+                                                        <!--  Closed status  -->
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="3">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="4">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="17">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="18">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="20">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="21">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="22">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="23">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="24">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="25">
+                                                            <Setter Property="BackgroundColor" Value="#62B34F" />
+                                                        </DataTrigger>
+
+
+                                                        <!--  Open status  -->
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="0">
+                                                            <Setter Property="BackgroundColor" Value="#0996D4" />
+                                                        </DataTrigger>
+
+                                                        <!--  Open status  -->
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="1">
+                                                            <Setter Property="BackgroundColor" Value="#0996D4" />
+                                                        </DataTrigger>
+
+                                                        <!--  In progress status  -->
+                                                        <DataTrigger
+                                                            Binding="{Binding reportStatus}"
+                                                            TargetType="Frame"
+                                                            Value="2">
+                                                            <Setter Property="BackgroundColor" Value="#0996D4" />
+                                                        </DataTrigger>
+
+                                                    </Frame.Triggers>
+
+                                                </Frame>
+
+                                                <!--  Status Label  -->
+                                                <Frame
+                                                    Padding="5"
+                                                    BackgroundColor="Transparent"
+                                                    CornerRadius="15">
+
+                                                    <Label
+                                                        FontFamily="{StaticResource SomarRegular}"
+                                                        FontSize="12"
+                                                        HorizontalOptions="CenterAndExpand"
+                                                        LineBreakMode="TailTruncation"
+                                                        MaxLines="2"
+                                                        Text="{Binding reportStatus}"
+                                                        TextColor="#0996D4"
+                                                        VerticalOptions="CenterAndExpand">
+                                                        <Label.Triggers>
+
+                                                            <!--  Open status  -->
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="1">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OpenReports}" />
+                                                                <Setter Property="TextColor" Value="#0996D4" />
+                                                            </DataTrigger>
+
+                                                            <!--  Open status  -->
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="0">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.OpenReports}" />
+                                                                <Setter Property="TextColor" Value="#0996D4" />
+                                                            </DataTrigger>
+
+
+                                                            <!--  In progress status  -->
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="2">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ZReportStatusInprogress}" />
+                                                                <Setter Property="TextColor" Value="#0996D4" />
+                                                            </DataTrigger>
+
+                                                            <!--  Closed status  -->
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="3">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="4">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="17">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="18">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="20">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="21">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="22">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="23">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="24">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                            <DataTrigger
+                                                                Binding="{Binding reportStatus}"
+                                                                TargetType="Label"
+                                                                Value="25">
+                                                                <Setter Property="Text" Value="{x:Static ResourceManager:AppResources.ClosedReports}" />
+                                                                <Setter Property="TextColor" Value="#62B34F" />
+                                                            </DataTrigger>
+                                                        </Label.Triggers>
+
+                                                    </Label>
+
+                                                </Frame>
+
+                                            </Grid>
+
+
+                                            <!--  Region Label  -->
+                                            <Label
+                                                Grid.Row="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding region}"
+                                                TextColor="#002447" />
+
+                                        </Grid>
+
+                                        <!--  Horizontal Line  -->
+                                        <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="2" />
+
+
+                                        <!--  Second section  -->
+                                        <Grid
+                                            ColumnDefinitions="*,*"
+                                            RowDefinitions="Auto,Auto,Auto"
+                                            RowSpacing="0">
+
+
+                                            <!--  Report type value  -->
+                                            <Label
+                                                Grid.ColumnSpan="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="20"
+                                                HorizontalOptions="FillAndExpand"
+                                                LineBreakMode="WordWrap"
+                                                Text="{Binding reportType}"
+                                                TextColor="#002447" />
+
+                                            <!--  Report number Label  -->
+                                            <Label
+                                                Grid.Row="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.VATRSAppNumber}"
+                                                TextColor="#999999" />
+
+                                            <!--  Report number value  -->
+                                            <Label
+                                                Grid.Row="2"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding reportNumber}"
+                                                TextColor="#002447" />
+
+                                            <!--  Report date Label  -->
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{x:Static ResourceManager:AppResources.ZTEReportReportDate}"
+                                                TextColor="#999999" />
+
+                                            <!--  Report date value  -->
+                                            <Label
+                                                Grid.Row="2"
+                                                Grid.Column="1"
+                                                FontFamily="{StaticResource SomarRegular}"
+                                                FontSize="12"
+                                                HorizontalOptions="StartAndExpand"
+                                                Text="{Binding ReportDate, StringFormat='{0:dd/MM/yyyy}'}"
+                                                TextColor="#002447" />
+
+                                        </Grid>
+
+                                    </StackLayout>
+
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            BindingContext="{Binding Source={x:Reference reportsList}, Path=BindingContext}"
+                                            Command="{Binding SelectedReportItemCommand}"
+                                            CommandParameter="{Binding Source={x:Reference Item}, Path=BindingContext}" />
+                                    </Frame.GestureRecognizers>
+
+                                </Frame>
+
+                            </DataTemplate>
+
+                        </CollectionView.ItemTemplate>
+
+                    </CollectionView>
+
+                </StackLayout>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

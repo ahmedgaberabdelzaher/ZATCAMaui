@@ -24,15 +24,15 @@
         public static string Q3AnsIDStg = "61c32e14aa59caed43d24e7e";
 
         /// Prod MApping <summary>
-        public static string SurveyIDProd = "6307638a380faf6b91c907f4";
-        public static string CollectorIdProd = "630b389e380faf6b91c910a7";
-        public static string SurveyTokenProd = "I/70744d53";
-        public static string Q1IDProd = "6307638b380faf6b91c907f8";
-        public static string Q2IDProd = "6307638b380faf6b91c90800";
-        public static string Q3IDProd = "6307638b380faf6b91c90814";
-        public static string Q1AnsIDProd = "61c32bf2527cacedb5d31931";
-        public static string Q2AnsIDProd = "61c32c8a527cacedb5d31970";
-        public static string Q3AnsIDProd = "61c32e14aa59caed43d24e7e";
+        public static string SurveyIDProd = "64087b56419c3e4317132e3b";
+        public static string CollectorIdProd = "640880e56527b043165f34d9";
+        public static string SurveyTokenProd = "r/b5cce7cb";
+        public static string Q1IDProd = "64087eadfe688b43c2945297";
+        public static string Q2IDProd = "64087edb11a01beb1c5c0546";
+        public static string Q3IDProd = "64087ef19ce394ebab52071c";
+        public static string Q1AnsIDProd = "64087eadfe688b43c2945298";
+        public static string Q2AnsIDProd = "64087edb11a01beb1c5c0547";
+        public static string Q3AnsIDProd = "64087ef19ce394ebab52071d";
         /// </summary>
         #endregion
         public static string TahqaqBaseURl = "https://dts.gazt.gov.sa/ECA/v2/";
@@ -52,27 +52,34 @@
         public static string VatCustomSTGURL = "https://vatapislb.zatca.gov.sa/api/";
         public static string VatCustomProdURL = "http://172.25.39.60:8443/api/";
         public static string DATAPowerSTGCustomBaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/v1/api/customs/";
-
+        /// <summary>
+        /// Old one
         public static string DATAPowerProdCustomBaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/v1/api/customs/";
+        /// </summary>
+        //public static string DATAPowerProdCustomBaseUrl = "https://api.zatca.gov.sa/integration/third-party/v1/api/customs/";
 
         //public static string DATAPowerSTGZATCABaseUrl = "https://stzgw-apic-gov.zatca.gov.sa/gazt-integration/test-third-party/"; Deprecated
         public static string DATAPowerSTGZATCABaseUrl = "https://test-api.zatca.gov.sa/test/third-party/";
-        public static string DATAPowerProdCZATCABaseUrl = "https://gw-apic-gov.zatca.gov.sa/gazt-integration/third-party/";
+        public static string DATAPowerProdCZATCABaseUrl = "https://api.zatca.gov.sa/integration/third-party/";
         public static string IAMLoginSTGBaseUrl = "https://peservices.zatca.gov.sa/Iamext/_iam/Iaminit.aspx?APPID=Mobile";
-       // public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/IamExt/_iam/Iaminit.aspx?APPID=New-Mobile";
+        // public static string IAMLoginSTGBaseUrl = "https://pre-eservices.zatca.gov.sa/IamExt/_iam/Iaminit.aspx?APPID=New-Mobile";
         public static string IAMLoginProdBaseUrl = "https://eservices.zatca.gov.sa/Iam/_iam/Iaminit.aspx?APPID=Mobile";
 
         public static string CustomPaymentSTGURl = "https://payments-peservices.zatca.gov.sa/payment/initiate/";
         public static string CustomPaymentProdURl = "https://payments-eservices.zatca.gov.sa/payment/initiate/";
 
         public static string CustomPeserviceBaseURl = "https://pre-eservices.zatca.gov.sa";
-        public static string ProhibitedGoodsLstURl = "https://e-services.zatca.gov.sa/";
+        public static string ProhibitedGoodsLstURl = "https://eservices.zatca.gov.sa/";
         public static string ZakatyPortalURl = "https://zakaty.gov.sa/";
         public static string ZakatyPlayStoreURl = "https://play.google.com/store/apps/details?id=com.sa.gazt.ZakatCalculator";
         public static string ZakatyAppStoreURl = "https://apps.apple.com/sa/app/zakaty-%D8%B2%D9%83%D8%A7%D8%AA%D9%8A/id1374131337";
 
         public static string IAMRegistraionProd = "https://eservices.zatca.gov.sa/sites/sc/ar/PublicIAMServices/Pages/TawreedClientPages/NewTRRequest.aspx";
         public static string IAMRegistraionStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/publiciamservices/Pages/TawreedClientPages/NewTRRequest.aspx";
+
+        public static string CustomsIssuesSTG = "https://peservices.zatca.gov.sa";
+        public static string CustomsIssuesProd = "https://eservices.zatca.gov.sa";
+        public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
 
 
         public static string CustomBaseUrl;
@@ -89,8 +96,11 @@
         public static string FasahBaseUrlStG = "https://soga.fasah.sa/";
         public static string FasahRedirectUrl = "https://soga.fasah.sa/";
         public static string FasahBaseUrl;
-        public static string FasahApiKey= "Av549-e756Z-4c29-a16a-287de9c04755";
-
+        public static string ZATCAPaymentWebViewStgBaseURL = "https://peservices.zatca.gov.sa";
+        public static string ZATCAPaymentWebViewProdBaseURL = "https://eservices.zatca.gov.sa";
+        public static string ZATCAPaymentWebViewBaseURL;
+        public static string FasahApiKey = "Av549-e756Z-4c29-a16a-287de9c04755";
+        public static string CurrentEnvironment = "STG";
         public static string CheckTarget_Environment(string environment = "STG")
         {
             Target_Environment = System.Environment.GetEnvironmentVariable("Target_Environment");
@@ -102,7 +112,7 @@
         }
         public static void GetBaseURL(string environment = "STG")
         {
-            Target_Environment = CheckTarget_Environment(environment);
+            // Target_Environment = CheckTarget_Environment(environment);
             switch (Target_Environment)
             {
                 case "STG":
@@ -111,17 +121,18 @@
                     App.VatCustom = VatCustomSTGURL;
                     ZATCABaseURL = DATAPowerSTGZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginSTGBaseUrl;
-                    SurveyID=SurveyIDStg;
-                    CollectorId=CollectorIdStg;
-                    SurveyToken=SurveyTokenStg;
-                    Q1ID=Q1IDStg;
-                    Q2ID=Q2IDStg;
-                    Q3ID=Q3IDStg;
-                    Q1AnsID=Q1AnsIDStg;
-                    Q2AnsID=Q2AnsIDStg;
-                    Q3AnsID=Q3AnsIDStg;
+                    SurveyID = SurveyIDStg;
+                    CollectorId = CollectorIdStg;
+                    SurveyToken = SurveyTokenStg;
+                    Q1ID = Q1IDStg;
+                    Q2ID = Q2IDStg;
+                    Q3ID = Q3IDStg;
+                    Q1AnsID = Q1AnsIDStg;
+                    Q2AnsID = Q2AnsIDStg;
+                    Q3AnsID = Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
+                    ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
                     break;
                 case "Prod":
                     App.CustomBaseUrl = DATAPowerProdCustomBaseUrl;
@@ -129,17 +140,18 @@
                     App.VatCustom = VatCustomProdURL;
                     ZATCABaseURL = DATAPowerProdCZATCABaseUrl;
                     IAMLoginBaseUrl = IAMLoginProdBaseUrl;
-                    SurveyID=SurveyIDProd;
-                    CollectorId=CollectorIdProd;
-                    SurveyToken=SurveyTokenProd;
-                    Q1ID=Q1IDProd;
-                    Q2ID=Q2IDProd;
-                    Q3ID=Q3IDProd;
-                    Q1AnsID=Q1AnsIDProd;
-                    Q2AnsID=Q2AnsIDProd;
-                    Q3AnsID=Q3AnsIDProd;
+                    SurveyID = SurveyIDProd;
+                    CollectorId = CollectorIdProd;
+                    SurveyToken = SurveyTokenProd;
+                    Q1ID = Q1IDProd;
+                    Q2ID = Q2IDProd;
+                    Q3ID = Q3IDProd;
+                    Q1AnsID = Q1AnsIDProd;
+                    Q2AnsID = Q2AnsIDProd;
+                    Q3AnsID = Q3AnsIDProd;
                     IAMRegistration = IAMRegistraionProd;
                     FasahBaseUrl = FasahBaseUrlProd;
+                    ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewProdBaseURL;
                     break;
                 default:
                     App.CustomBaseUrl = DATAPowerSTGCustomBaseUrl;
@@ -158,6 +170,7 @@
                     Q3AnsID = Q3AnsIDStg;
                     IAMRegistration = IAMRegistraionStG;
                     FasahBaseUrl = FasahBaseUrlStG;
+                    ZATCAPaymentWebViewBaseURL = ZATCAPaymentWebViewStgBaseURL;
                     break;
             }
         }
@@ -330,6 +343,32 @@
             else
             {
                 return $"{FasahRedirectUrl}en/redirection/1.0/?s=Brokers_optionality&t=";
+            }
+        }
+
+        public static string GetPaymentWebViewURl()
+        {
+            if (App.IsArabic)
+            {
+                //  return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?refCode=";
+                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/ar/app-view/Pages/ViewEDeclarationPage.aspx?";
+            }
+            else
+            {
+                return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/app-view/Pages/ViewEDeclarationPage.aspx?";
+
+                //   return $"{ZATCAPaymentWebViewBaseURL}/sites/sc/en/edeclaration/Pages/EDeclarationPages/ViewEDeclarationPage.aspx?";
+            }
+        }
+        public static string GetCustomsIssueUrl()
+        {
+            if (App.IsArabic)
+            {
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
+            }
+            else
+            {
+                return $"{CustomsIssuesProd}/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
             }
         }
 

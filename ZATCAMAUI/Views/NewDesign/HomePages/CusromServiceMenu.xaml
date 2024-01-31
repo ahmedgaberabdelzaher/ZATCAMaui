@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<newdesign:BaseContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.HomePages.CusromServiceMenu"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:controls="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:newdesign="clr-namespace:ZATCAMAUI.Views.NewDesign"
+    TitleText="{x:Static ResourceManager:AppResources.ZatcaInfoMenu}">
+    <newdesign:BaseContentPage.PancakeView>
+        <Grid>
+            <ScrollView VerticalScrollBarVisibility="Never">
+                <controls:ServiceMenuControl />
+            </ScrollView>
+        </Grid>
+    </newdesign:BaseContentPage.PancakeView>
+</newdesign:BaseContentPage>

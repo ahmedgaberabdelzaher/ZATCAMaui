@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.TrackShipment.TrackShipmentPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:behaviour="clr-namespace:ZATCAMAUI.Core.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:syncfusion="clr-namespace:Syncfusion.Maui.Picker;assembly=Syncfusion.Maui.Picker"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{Binding HeaderTitle}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout Spacing="20">
+
+                        <!--  Title  -->
+                        <StackLayout Margin="0,30,0,-15" Orientation="Horizontal">
+
+                            <!--  Select Shipment Type Label  -->
+                            <Label
+                                FontFamily="{StaticResource SomarBold}"
+                                FontSize="24"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding DrawShipmentTrack.ShipmentTrackName}"
+                                TextColor="{StaticResource Primary}" />
+
+                            <!--  Shipment icon  -->
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="30"
+                                HorizontalOptions="EndAndExpand"
+                                Source="{Binding DrawShipmentTrack.ShipmentCardImage}"
+                                WidthRequest="40" />
+
+                        </StackLayout>
+
+                        <!--  Shipment Tracking Sub Title Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarRegular}"
+                            FontSize="14"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="{Binding DrawShipmentTrack.HasSubTitle}"
+                            Text="{x:Static ResourceManager:AppResources.ShipmentTrackingSubTitle}"
+                            TextColor="#999999" />
+
+                        <!--  Port Field  -->
+                        <StackLayout IsVisible="{Binding DrawShipmentTrack.HasPortName}" Spacing="0">
+
+                            <!--  Port Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.PortName}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Port Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    InputTransparent="True"
+                                    IsReadOnly="True"
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.PortName}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding SelectedPortName}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                                    </custom:GAZTBorderlessEntry.GestureRecognizers>
+                                </custom:GAZTBorderlessEntry>
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyDropDown" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+                            </inputLayout:SfTextInputLayout>
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenPortCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <!--  Search by Label  -->
+                        <custom:CustomLabel
+                            Margin="0,0,0,-15"
+                            IsVisible="{Binding DrawShipmentTrack.HasSearchBy}"
+                            Style="{StaticResource CaptionLabelGrey}">
+                            <custom:CustomLabel.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{x:Static ResourceManager:AppResources.SearchBy}" />
+                                    <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                </FormattedString>
+                            </custom:CustomLabel.FormattedText>
+                        </custom:CustomLabel>
+
+                        <!--  Declaration Cards  -->
+                        <StackLayout
+                            IsVisible="{Binding DrawShipmentTrack.HasDeclarationCards}"
+                            Orientation="Horizontal"
+                            Spacing="10">
+
+                            <!--  Declaration card  -->
+                            <Grid
+                                Padding="5"
+                                HeightRequest="108"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="Unselected.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="Unselected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="UnselectedCard.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout
+                                    Padding="15,10"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <!--  Declaration image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="StartAndExpand"
+                                        Source="declarationWhite.png"
+                                        VerticalOptions="EndAndExpand">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                <Setter Property="Source" Value="declarationBlue.png" />
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="declarationWhite.png" />
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                    </Image>
+
+                                    <!--  Declaration Details label  -->
+                                    <custom:CustomLabel
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationDetails}"
+                                        TextColor="White"
+                                        VerticalOptions="EndAndExpand">
+
+                                        <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                <Setter Property="TextColor" Value="White" />
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                            </DataTrigger>
+
+
+                                        </custom:CustomLabel.Triggers>
+                                    </custom:CustomLabel>
+                                </StackLayout>
+
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DeclarationSelectionCommand}" CommandParameter="1" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                            <!--  Bill Number Card  -->
+                            <Grid
+                                HeightRequest="108"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background image selected  -->
+                                <Image Aspect="Fill" Source="UnselectedCard.png">
+
+                                    <Image.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                            TargetType="Image"
+                                            Value="False">
+                                            <Setter Property="Source" Value="Unselected.png" />
+                                        </DataTrigger>
+
+                                        <DataTrigger
+                                            Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                            TargetType="Image"
+                                            Value="True">
+                                            <Setter Property="Source" Value="UnselectedCard.png" />
+                                        </DataTrigger>
+
+                                    </Image.Triggers>
+
+                                </Image>
+
+                                <StackLayout
+                                    Padding="15,10"
+                                    HorizontalOptions="StartAndExpand"
+                                    Spacing="10"
+                                    VerticalOptions="EndAndExpand">
+
+                                    <!--  Bill image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="StartAndExpand"
+                                        Source="billBlue.png"
+                                        VerticalOptions="EndAndExpand">
+
+                                        <Image.Triggers>
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="Image"
+                                                Value="False">
+                                                <Setter Property="Source" Value="billWhite.png" />
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="Image"
+                                                Value="True">
+                                                <Setter Property="Source" Value="billBlue.png" />
+                                            </DataTrigger>
+
+                                        </Image.Triggers>
+
+                                    </Image>
+
+                                    <!--  Bill Number Label  -->
+                                    <custom:CustomLabel
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.BillNumber}"
+                                        TextColor="{StaticResource Primary}"
+                                        VerticalOptions="EndAndExpand">
+
+                                        <custom:CustomLabel.Triggers>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="False">
+                                                <Setter Property="TextColor" Value="White" />
+                                            </DataTrigger>
+
+                                            <DataTrigger
+                                                Binding="{Binding DrawShipmentTrack.IsDeclarationSelected}"
+                                                TargetType="custom:CustomLabel"
+                                                Value="True">
+                                                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                                            </DataTrigger>
+                                        </custom:CustomLabel.Triggers>
+
+                                    </custom:CustomLabel>
+
+                                </StackLayout>
+
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DeclarationSelectionCommand}" CommandParameter="2" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                        </StackLayout>
+
+                        <!--  Declaration Number Field  -->
+                        <StackLayout IsVisible="{Binding DrawShipmentTrack.HasDeclarationNumber}" Spacing="0">
+
+                            <!--  Declaration Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Declaration Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Numeric"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ShipmentDeclarationNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding ShipmentDeclarationNumber}"
+                                    TextColor="#58595B">
+                                    <custom:GAZTBorderlessEntry.Behaviors>
+                                        <behaviour:OnlyNumericValuesBehaviour />
+                                    </custom:GAZTBorderlessEntry.Behaviors>
+                                </custom:GAZTBorderlessEntry>
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Declaration Date Field  -->
+                        <StackLayout IsVisible="{Binding DrawShipmentTrack.HasDeclarationDate}" Spacing="0">
+
+                            <!--  Declaration Date Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.DeclarationDate}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+
+                            <!--  Declaration Date Label  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+
+                                <Grid>
+                                    <!--  HijriDatePicker  -->
+                                    <custom:CustomHijriDatePicker
+                                        x:Name="declarationDate"
+                                        Margin="2"
+                                        Background="White"
+                                        FlowDirection="RightToLeft"
+                                        HorizontalOptions="FillAndExpand"
+                                        IsVisible="false"
+                                        ItemHeight="45"
+                                        Mode="Dialog"
+                                        SelectedItem="{Binding TodayDateinHijri}">
+
+                                        <custom:CustomHijriDatePicker.ColumnHeaderView>
+                                            <syncfusion:PickerColumnHeaderView Height="50" Background="White">
+                                                <syncfusion:PickerColumnHeaderView.TextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource NeutralBlack}" />
+                                            </syncfusion:PickerColumnHeaderView>
+                                        </custom:CustomHijriDatePicker.ColumnHeaderView>
+
+                                        <custom:CustomHijriDatePicker.SelectedTextStyle>
+                                            <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" TextColor="{StaticResource NeutralBlack}" />
+                                        </custom:CustomHijriDatePicker.SelectedTextStyle>
+
+                                        <custom:CustomHijriDatePicker.HeaderView>
+
+                                            <syncfusion:PickerHeaderView
+                                                Height="46"
+                                                Background="White"
+                                                Text="{x:Static ResourceManager:AppResources.DeclarationDate}">
+
+                                                <syncfusion:PickerHeaderView.TextStyle>
+                                                    <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
+                                                </syncfusion:PickerHeaderView.TextStyle>
+                                            </syncfusion:PickerHeaderView>
+
+                                        </custom:CustomHijriDatePicker.HeaderView>
+
+                                        <custom:CustomHijriDatePicker.TextStyle>
+                                            <syncfusion:PickerTextStyle FontFamily="{StaticResource SomarSemiBold}" />
+                                        </custom:CustomHijriDatePicker.TextStyle>
+
+                                        <custom:CustomHijriDatePicker.FooterView>
+
+                                            <syncfusion:PickerFooterView Height="46" Background="White">
+
+                                                <syncfusion:PickerFooterView.TextStyle>
+                                                    <syncfusion:PickerTextStyle TextColor="{StaticResource Secondary}" />
+                                                </syncfusion:PickerFooterView.TextStyle>
+
+                                            </syncfusion:PickerFooterView>
+
+                                        </custom:CustomHijriDatePicker.FooterView>
+
+                                        <custom:CustomHijriDatePicker.Behaviors>
+                                            <xct:EventToCommandBehavior Command="{Binding SelectedDateCommand}" EventName="SelectionChanged" />
+                                        </custom:CustomHijriDatePicker.Behaviors>
+                                    </custom:CustomHijriDatePicker>
+
+                                    <custom:GAZTBorderlessEntry
+                                        InputTransparent="True"
+                                        IsReadOnly="True"
+                                        Keyboard="Text"
+                                        Placeholder="dd/MM/yyyy"
+                                        Style="{StaticResource DefaultEntry}"
+                                        Text="{Binding DeclarationDateString}"
+                                        TextColor="#58595B" />
+
+                                </Grid>
+
+                                <inputLayout:SfTextInputLayout.TrailingView>
+                                    <Image Aspect="AspectFit" Source="greyCalender" />
+                                </inputLayout:SfTextInputLayout.TrailingView>
+
+                                <inputLayout:SfTextInputLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding DateClickedCommand}" CommandParameter="{x:Reference declarationDate}" />
+                                </inputLayout:SfTextInputLayout.GestureRecognizers>
+                            </inputLayout:SfTextInputLayout>
+
+
+
+                        </StackLayout>
+
+                        <!--  Bill Number Field  -->
+                        <StackLayout IsVisible="{Binding DrawShipmentTrack.HasBillNumber}" Spacing="0">
+
+                            <!--  Bill Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.BillNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Bill Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.BillNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding ShipmentBillNumber}"
+                                    TextColor="#58595B" />
+
+
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  Container Number Field  -->
+                        <StackLayout IsVisible="{Binding DrawShipmentTrack.HasContainerNumber}" Spacing="0">
+
+                            <!--  Container Number Label  -->
+                            <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                                <custom:CustomLabel.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{x:Static ResourceManager:AppResources.ContainerNumber}" />
+                                        <Span Style="{StaticResource MandatoryRedColorSpan}" Text="*" />
+                                    </FormattedString>
+                                </custom:CustomLabel.FormattedText>
+                            </custom:CustomLabel>
+
+                            <!--  Container Number Entry  -->
+                            <inputLayout:SfTextInputLayout
+                                ContainerBackground="White"
+                                ContainerType="Outlined"
+                                InputViewPadding="16,0,16,0"
+                                LeadingViewPosition="Inside"
+                                OutlineCornerRadius="15"
+                                Stroke="{StaticResource NeutralGreay}">
+                                <inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                    <inputLayout:LabelStyle TextColor="#B00020" />
+                                </inputLayout:SfTextInputLayout.ErrorLabelStyle>
+                                <custom:GAZTBorderlessEntry
+                                    Keyboard="Text"
+                                    Placeholder="{x:Static ResourceManager:AppResources.ContainerNumber}"
+                                    Style="{StaticResource DefaultEntry}"
+                                    Text="{Binding ShipmentContainerNumber}"
+                                    TextColor="#58595B" />
+
+
+                            </inputLayout:SfTextInputLayout>
+
+                        </StackLayout>
+
+                        <!--  GoTo TShipment Status Button  -->
+                        <buttons:SfButton
+                            Margin="0,15"
+                            Command="{Binding GoToTShipmentStatusCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.SearchText}"
+                            VerticalOptions="EndAndExpand" />
+
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Bottom Sheet List  -->
+            <custom:ListBottomSheet Grid.Row="1" IsVisible="{Binding IsShowBottomSheet}" />
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <custom:MsgView Grid.RowSpan="2" IsVisible="{Binding IsShowMsgView}" />
+
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>
+

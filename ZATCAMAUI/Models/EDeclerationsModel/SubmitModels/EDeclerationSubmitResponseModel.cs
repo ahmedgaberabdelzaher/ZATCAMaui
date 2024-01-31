@@ -86,12 +86,6 @@ namespace ZATCAMAUI.Models.EDeclerationsModel.SubmitModels
         public TravelerDeclarationResponse travelerDeclarationResponse { get; set; }
     }
 
-    public class EDeclerationSubmitResponseModel
-    {
-        public Header header { get; set; }
-        public Result result { get; set; }
-        public MoreInformation moreInformation { get; set; }
-    }
 
     public class SubmitResponseTobacco
     {

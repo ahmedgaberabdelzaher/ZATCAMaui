@@ -35,7 +35,6 @@
                     TitlePlacement="Bottom"
                     VerticalOptions="CenterAndExpand"
                     WidthRequest="70" />
-                <!--  Title="{x:Static local:AppResources.ActivityIndicatorTitle}"  -->
             </StackLayout>
         </StackLayout>
     </Grid>

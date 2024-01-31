@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pages:PopupPage
+    x:Class="ZATCAMAUI.Views.NewDesign.CustomServicesPages.Transaction_Reception.NewCrPopupView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:animations="clr-namespace:RGPopup.Maui.Animations;assembly=RGPopup.Maui"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:inputLayout="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+    xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    FlowDirection="{Binding AppDirection}">
+
+    <!--<pages:PopupPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </pages:PopupPage.Resources>-->
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            DurationIn="400"
+            DurationOut="300"
+            HasBackgroundAnimation="True"
+            PositionIn="Bottom"
+            PositionOut="Bottom" />
+    </pages:PopupPage.Animation>
+
+    <Grid VerticalOptions="EndAndExpand">
+
+        <yummy:PancakeView
+            Grid.Row="0"
+            Style="{StaticResource CommonTopCurves}"
+            VerticalOptions="EndAndExpand">
+            <StackLayout>
+                <Image
+                    HeightRequest="22"
+                    HorizontalOptions="EndAndExpand"
+                    Source="CloseIcon"
+                    WidthRequest="22">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DisplayAddNewCRViewCommand}" CommandParameter="false" />
+
+                    </Image.GestureRecognizers>
+
+                </Image>
+                <!--#region New CR Field-->
+                <StackLayout Spacing="0">
+                    <!--  New CR Label  -->
+                    <custom:CustomLabel Style="{StaticResource CaptionLabelGrey}">
+                        <custom:CustomLabel.FormattedText>
+                            <FormattedString>
+                                <Span Text="{x:Static ResourceManager:AppResources.AddNewCRTitle}" />
+                            </FormattedString>
+                        </custom:CustomLabel.FormattedText>
+                    </custom:CustomLabel>
+                    <!--  New CR  Entry  -->
+                    <inputLayout:SfTextInputLayout
+                        ContainerBackground="White"
+                        ContainerType="Outlined"
+                        InputViewPadding="16,0,16,0"
+                        LeadingViewPosition="Inside"
+                        OutlineCornerRadius="15"
+                        Stroke="{StaticResource NeutralGreay}">
+                        <custom:GAZTBorderlessEntry
+                            Keyboard="Text"
+                            MaxLength="10"
+                            Placeholder="{x:Static ResourceManager:AppResources.AddNewCRTitle}"
+                            Style="{StaticResource DefaultEntry}"
+                            Text="{Binding CRNo}"
+                            TextColor="#58595B" />
+                    </inputLayout:SfTextInputLayout>
+
+                </StackLayout>
+                <!--#endregion-->
+                <!--  Add Button  -->
+                <buttons:SfButton
+                    Margin="0,40"
+                    Background="#0996D4"
+                    Command="{Binding AddNewCRCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Text="{x:Static ResourceManager:AppResources.Add}" />
+            </StackLayout>
+
+        </yummy:PancakeView>
+
+
+    </Grid>
+</pages:PopupPage>
+
+
+

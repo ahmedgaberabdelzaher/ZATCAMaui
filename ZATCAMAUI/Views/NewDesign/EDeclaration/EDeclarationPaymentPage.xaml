@@ -1,0 +1,424 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="ZATCAMAUI.Views.NewDesign.EDeclaration.EDeclarationPaymentPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:buttons="clr-namespace:Syncfusion.Maui.Buttons;assembly=Syncfusion.Maui.Buttons"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
+    x:Name="page"
+    Title="{x:Static ResourceManager:AppResources.PaymentDetails}"
+    ios:Page.UseSafeArea="true"
+    BackgroundImageSource="partials_background.png"
+    FlowDirection="{Binding AppDirection}"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--<ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>-->
+
+    <ContentPage.Content>
+
+        <Grid RowDefinitions="Auto,*">
+
+            <!--#region Header-->
+            <Grid Padding="20,15" ColumnDefinitions="*,2*,*">
+
+                <!--  Back Button  -->
+                <StackLayout>
+
+                    <!--  Back Button  -->
+                    <Image
+                        HorizontalOptions="Start"
+                        Rotation="0"
+                        Source="whiteRightBack.png"
+                        Style="{DynamicResource BackButtonArrow}"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Image.Triggers>
+                            <DataTrigger
+                                Binding="{Binding AppDirection}"
+                                TargetType="Image"
+                                Value="LeftToRight">
+                                <Setter Property="Rotation" Value="180" />
+                            </DataTrigger>
+                        </Image.Triggers>
+
+                    </Image>
+
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding BackCommand}" />
+                    </StackLayout.GestureRecognizers>
+
+                </StackLayout>
+
+                <!--  Header Label  -->
+                <custom:CustomLabel
+                    Grid.Column="1"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource SectionTitleWhiteBold}"
+                    Text="{x:Static ResourceManager:AppResources.eDeclaration}"
+                    VerticalOptions="Center" />
+
+            </Grid>
+            <!--#endregion Header-->
+
+
+            <!--#region Body-->
+            <yummy:PancakeView
+                Grid.Row="1"
+                Padding="20,5,20,0"
+                Style="{StaticResource CommonTopCurves}">
+
+                <ScrollView VerticalScrollBarVisibility="Never">
+
+                    <StackLayout VerticalOptions="FillAndExpand">
+
+
+                        <!--  Payment Details Label  -->
+                        <Label
+                            FontFamily="{StaticResource SomarBold}"
+                            FontSize="24"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{x:Static ResourceManager:AppResources.PaymentDetails}"
+                            TextColor="{StaticResource Primary}" />
+
+
+                        <!--  Horizontal Line  -->
+                        <BoxView
+                            Margin="0,0,0,10"
+                            BackgroundColor="{StaticResource NeutralLightGrey}"
+                            HeightRequest="2"
+                            WidthRequest="20" />
+
+                        <!--#region Frame Contains Fees-->
+                        <Frame
+                            Padding="15"
+                            BorderColor="#EBEBEB"
+                            CornerRadius="15"
+                            Style="{StaticResource CommonTopCurves}">
+
+                            <!--  Frame Content  -->
+                            <StackLayout>
+
+                                <!--#region Label and Icon-->
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+
+                                    <!--  Doc Image  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HeightRequest="25"
+                                        HorizontalOptions="Start"
+                                        Source="DocBlue"
+                                        VerticalOptions="Center"
+                                        WidthRequest="25" />
+
+                                    <!--  Total fees Label  -->
+                                    <custom:CustomLabel
+                                        Padding="10"
+                                        FontSize="20"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.TotalFeesPayable}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </StackLayout>
+                                <!--#endregion Label and Icon-->
+
+                                <!--  Horizontal Line  -->
+                                <BoxView
+                                    BackgroundColor="#E6E6E6"
+                                    HeightRequest="2"
+                                    HorizontalOptions="FillAndExpand"
+                                    WidthRequest="20" />
+
+                                <!--#region Payment Values-->
+                                <Grid
+                                    ColumnDefinitions="2*,*"
+                                    RowDefinitions="Auto,Auto"
+                                    RowSpacing="15">
+
+                                    <!--  Total amount in number Label  -->
+                                    <custom:CustomLabel
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TotalAmountNumeric}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Total amount value Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start">
+                                        <custom:CustomLabel.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding TravelerDeclarationResponse.totalFees}" />
+                                                <Span Text="  " />
+                                                <Span Text="{x:Static ResourceManager:AppResources.ZSAR}" />
+                                            </FormattedString>
+                                        </custom:CustomLabel.FormattedText>
+
+                                    </custom:CustomLabel>
+
+                                    <!--  Total amount in words Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="1"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{x:Static ResourceManager:AppResources.TotalAmountWriting}"
+                                        TextColor="#999999"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Total amount value in words Label  -->
+                                    <custom:CustomLabel
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        LineBreakMode="WordWrap"
+                                        Text="{Binding PriceText}"
+                                        TextColor="#002447"
+                                        VerticalOptions="Start" />
+
+                                </Grid>
+                                <!--#endregion Payment Values-->
+                            </StackLayout>
+                        </Frame>
+                        <!--#endregion Frame Contains Fees-->
+
+                        <!--#region Payment Cards-->
+                        <StackLayout
+                            Padding="5"
+                            HeightRequest="100"
+                            HorizontalOptions="StartAndExpand"
+                            Orientation="Horizontal"
+                            Spacing="10"
+                            VerticalOptions="StartAndExpand">
+
+                            <!--  Visa Card  -->
+                            <Grid
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background Visa image selected  -->
+                                <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundVisaCardImage}" />
+
+                                <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <!--  Visa image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding PaymentCard.VisaCardImage}"
+                                        VerticalOptions="Start" />
+
+                                    <!--  Visa Card Label  -->
+                                    <custom:CustomLabel
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.MasterVisa}"
+                                        TextColor="{Binding PaymentCard.VisaCardTextColor}"
+                                        VerticalOptions="EndAndExpand" />
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="1" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+
+                            <Grid
+                                Padding="5"
+                                HeightRequest="94"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="171">
+
+                                <!--  Background SADAD image selected  -->
+                                <Image Aspect="AspectFill" Source="{Binding PaymentCard.BackgroundSADADImage}" />
+
+
+                                <!--  SADAD card  -->
+                                <StackLayout
+                                    Padding="15,20"
+                                    HorizontalOptions="FillAndExpand"
+                                    Spacing="15"
+                                    VerticalOptions="FillAndExpand">
+
+                                    <!--  SADAD image selected  -->
+                                    <Image
+                                        Aspect="AspectFit"
+                                        HorizontalOptions="Start"
+                                        Source="{Binding PaymentCard.SADADImage}"
+                                        VerticalOptions="Start" />
+
+                                    <!--  SADAD label  -->
+                                    <custom:CustomLabel
+                                        FontSize="16"
+                                        HorizontalOptions="StartAndExpand"
+                                        Text="{x:Static ResourceManager:AppResources.Sadad}"
+                                        TextColor="{Binding PaymentCard.SADADTextColor}"
+                                        VerticalOptions="EndAndExpand" />
+
+                                </StackLayout>
+
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="2" />
+                                </Grid.GestureRecognizers>
+
+                            </Grid>
+
+                        </StackLayout>
+
+                        <!--  Apple card Not Used now  -->
+                        <Grid
+                            Padding="5"
+                            HeightRequest="94"
+                            HorizontalOptions="StartAndExpand"
+                            IsVisible="false"
+                            WidthRequest="171">
+
+                            <!--  Background image selected  -->
+                            <Image Aspect="AspectFill" Source="{Binding PaymentCard.SeaImage}" />
+
+                            <!--  Apple label  -->
+                            <custom:CustomLabel
+                                Padding="15"
+                                FontSize="16"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{x:Static ResourceManager:AppResources.SeaTrip}"
+                                TextColor="{Binding PaymentCard.SeaTextColor}"
+                                VerticalOptions="EndAndExpand" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PaymentCardCommand}" CommandParameter="3" />
+                            </Grid.GestureRecognizers>
+
+                        </Grid>
+
+                        <!--#endregion Trip Cards-->
+
+                        <!--  Pay now Button  -->
+                        <buttons:SfButton
+                            Margin="0,5"
+                            Command="{Binding PaymentCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.PaymentMethodPayNow}"
+                            VerticalOptions="EndAndExpand" />
+
+                        <!--  Cancel Button  -->
+                        <buttons:SfButton
+                            Margin="0,0,0,25"
+                            Background="Transparent"
+                            Command="{Binding BackCommand}"
+                            FontFamily="{StaticResource SomarLight}"
+                            Stroke="Transparent"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZCancel}"
+                            TextColor="{StaticResource Secondary}" />
+                    </StackLayout>
+
+                </ScrollView>
+
+            </yummy:PancakeView>
+            <!--#endregion Body-->
+
+            <!--  Loader  -->
+            <custom:Loader Grid.RowSpan="2" IsVisible="{Binding IsLoading}" />
+
+            <!--  Popup Msg  -->
+            <Grid
+                Grid.RowSpan="2"
+                Margin="0"
+                IsVisible="{Binding IsShowMsgView}"
+                VerticalOptions="FillAndExpand">
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseMsgViewCommand}" />
+                </Grid.GestureRecognizers>
+
+                <StackLayout
+                    BackgroundColor="Black"
+                    Opacity="0.4"
+                    VerticalOptions="FillAndExpand" />
+
+                <yummy:PancakeView
+                    Padding="20,20,20,10"
+                    BackgroundColor="White"
+                    CornerRadius="15,15,0,0"
+                    Style="{StaticResource CommonTopCurves}"
+                    VerticalOptions="EndAndExpand">
+
+                    <StackLayout Margin="0" VerticalOptions="Center">
+
+                        <StackLayout Orientation="Horizontal">
+
+                            <StackLayout>
+
+                                <custom:CustomLabel
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding MessageTxt}" />
+
+                                <custom:CustomLabel
+                                    HorizontalTextAlignment="Start"
+                                    Style="{StaticResource BodyLabelBlack}"
+                                    Text="{Binding SADADNewTXT}" />
+
+                            </StackLayout>
+
+
+                            <Image
+                                Aspect="AspectFit"
+                                HeightRequest="25"
+                                HorizontalOptions="EndAndExpand"
+                                Source="Copy"
+                                VerticalOptions="Start"
+                                WidthRequest="25" />
+
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CopyCommand}" />
+                            </StackLayout.GestureRecognizers>
+
+                        </StackLayout>
+
+                        <buttons:SfButton
+                            Margin="0,0,0,10"
+                            Command="{Binding CloseMsgViewCommand}"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Text="{x:Static ResourceManager:AppResources.ZZZZDone}"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+                </yummy:PancakeView>
+
+            </Grid>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+

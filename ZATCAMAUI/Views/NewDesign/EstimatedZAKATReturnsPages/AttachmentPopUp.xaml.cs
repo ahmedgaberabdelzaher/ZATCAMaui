@@ -1,0 +1,242 @@
+﻿using RGPopup.Maui.Pages;
+using RGPopup.Maui.Services;
+using System.Collections.ObjectModel;
+using System.Net;
+using ZATCAMAUI.Models;
+using ZATCAMAUI.ViewModel.NewDesignViewModel;
+
+namespace ZATCAMAUI.Views.NewDesign.EstimatedZAKATReturnsPages
+{
+
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class AttachmentPopUp : PopupPage
+    {
+        AttachmentPopUpViewModel viewModel;
+        ZakatAttachment estimateZakatAttachment;
+        public AttachmentPopUp(ZakatReturnDetailsD ZakatReturnDetail)
+        {
+            try
+            {
+                viewModel = App.Locator.AttachmentPopUp;
+                InitializeComponent();
+                this.BindingContext = viewModel;
+                viewModel.ClearData();
+                ZAKATReturnDetailsView.IsComingFromAttachmentPage = true;
+                viewModel.ZakatReturnDetail = ZakatReturnDetail;
+                viewModel.OnPageLoad();
+                SetLTR();
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            getYesCommandToDeleteTheAttachment();
+
+        }
+
+        public void getYesCommandToDeleteTheAttachment()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<object, string>(this, "YesCommandToDeleteTheAttachment", async (sender, arg) =>
+                {
+                    if (estimateZakatAttachment != null)
+                    {
+                        await viewModel.DeleteSelectedAttachment(estimateZakatAttachment.Filename, estimateZakatAttachment.Doguid);
+                    }
+                });
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void SetLTR()
+        {
+            if (!App.IsArabic)
+            {
+                this.FlowDirection = FlowDirection.LeftToRight;
+            }
+        }
+        private async void OnCloseTapped(object sender, EventArgs e)
+        {
+            try
+            {
+                if (viewModel.ZakatReturnAttachmentsList != null && viewModel.ZakatReturnAttachmentsList.Count > 0)
+                {
+                    ObservableCollection<ZakatAttachment> LocalZakatReturnAttachmentsList = new ObservableCollection<ZakatAttachment>();
+                    LocalZakatReturnAttachmentsList = viewModel.ZakatReturnAttachmentsList;
+                    foreach (ZakatAttachment obj in LocalZakatReturnAttachmentsList)
+                    {
+                        await viewModel.ClearAllAttachment(obj.Filename, obj.Doguid);
+                    }
+                    viewModel.ZakatReturnAttachmentsList.Clear();
+                    AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = string.Empty;
+                    AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].estimateZakatAttachment.Clear();
+                }
+                viewModel.ObjectionReason = string.Empty;
+                await PopupNavigation.Instance.PopAsync();
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void OnSaveClicked(object sender, EventArgs e)
+        {
+            AttachmentPopUpViewModel.SalesDetailList[viewModel.SelectedSalesTypeIndex].ChangeReason = viewModel.ObjectionReason;
+
+            viewModel.ObjectionReason = string.Empty;
+            PopupNavigation.Instance.PopAsync();
+        }
+
+        private async void OnAttachmentClicked(object sender, EventArgs e)
+        {
+            await viewModel.AddAttachment();
+
+        }
+
+        private async void OnDeleteAttachmentClickedTapped(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Image deleteImage = sender as Image;
+                estimateZakatAttachment = (ZakatAttachment)deleteImage.BindingContext;
+                if (estimateZakatAttachment != null)
+                {
+                    string QuestionMark = string.Empty;
+                    if (App.IsArabic)
+                    {
+                        QuestionMark = "؟";
+                    }
+                    else
+                    {
+                        QuestionMark = "?";
+                    }
+                    await PopupNavigation.Instance.PushAsync(new ZAKATOkCancelPopUpView(AppResources.ZZDeleteAttachmentConfirmationText + " " + estimateZakatAttachment.Filename + QuestionMark));
+
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+        public async Task email(string doguid, ZakatAttachment attachment)
+        {
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = true;
+            });
+            await Task.Run(() =>
+            {
+                try
+                {
+                    string attachmentURL = attachment.DocUrl;// "https://sapgatewayqa.gazt.gov.sa/sap/opu/odata/SAP/ZDP_IT_CORR_MOOB_SRV/corr_dataSet(Cokey='" + doguid + "',Cotyp='VTA0')/$value?saml2=disabled";
+                    byte[] PdfBytes;
+                    HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(attachmentURL);
+                    WebResponse myResp = myReq.GetResponse();
+                    using (Stream streams = myResp.GetResponseStream())
+                    using (MemoryStream Ms = new MemoryStream())
+                    {
+                        int count = 0;
+                        do
+                        {
+                            byte[] buf = new byte[1024];
+                            count = streams.Read(buf, 0, 1024);
+                            Ms.Write(buf, 0, count);
+                        } while (streams.CanRead && count > 0);
+                        PdfBytes = Ms.ToArray();
+                    }
+                    var message = new EmailMessage
+                    {
+                        Subject = "Attached Form :",
+                    };
+                    var fn = attachment.Filename;
+                    var file = Path.Combine(FileSystem.CacheDirectory, fn);
+                    File.WriteAllBytes(file, PdfBytes);
+                    MainThread.BeginInvokeOnMainThread(async () =>
+                    {
+                        await Share.RequestAsync(new ShareFileRequest
+                        {
+                            Title = Title,
+                            File = new ShareFile(file)
+                        });
+                    });
+
+                }
+                catch (Exception)
+                {
+                }
+            });
+            await Task.Run(() =>
+            {
+                viewModel.IsLoading = false;
+            });
+        }
+
+        private async void Attachmentlist_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            try
+            {
+                ListView Document = sender as ListView;
+                ZakatAttachment attachment = (ZakatAttachment)Document.SelectedItem;
+                //attachment.DocUrl;
+                //if (attachment.Filename.Contains(".")) ;
+                string Extention = attachment.Filename.Split('.')[1];
+                if (Extention.Equals("PDF") || Extention.Equals("pdf"))
+                {
+                    if (attachment.DocUrl != null)
+                    {
+                        viewModel._navigationService.NavigateTo(App.PdfView, attachment.DocUrl);
+                        await PopupNavigation.Instance.PopAsync();
+
+                    }
+                }
+                else
+                {
+                    await email(attachment.Doguid, attachment);
+                    await PopupNavigation.Instance.PopAsync();
+
+                }
+                if (sender is ListView lv) lv.SelectedItem = null;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            viewModel.ClearData();
+
+        }
+
+        private void OnObjectionReasonFocused(object sender, FocusEventArgs e)
+        {
+
+        }
+        private void OnObjectionReasonUnFocused(object sender, FocusEventArgs e)
+        {
+            
+        }
+
+       
+
+    }
+}

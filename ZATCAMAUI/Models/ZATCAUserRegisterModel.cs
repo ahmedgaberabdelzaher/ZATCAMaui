@@ -6,6 +6,7 @@
         public string secondName { get; set; }
         public string thirdName { get; set; }
         public string fourthName { get; set; }
+        public string FullName { get; set; }
         public bool gender { get; set; }
         public string nationalId { get; set; }
         public string birthDate { get; set; }
