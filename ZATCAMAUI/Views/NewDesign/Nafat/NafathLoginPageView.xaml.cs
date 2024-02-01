@@ -121,7 +121,7 @@ namespace ZATCAMAUI.Views.NewDesign.Nafat
                                         if (currVer >= minVer && currVer <= maxVer)
                                         {
                                             App.IsUserLoggedIn = true;
-                                            Application.Current.Properties["timeOut"] = DateTime.Now;
+                                            Preferences.Default.Set("timeOut", DateTime.Now);
                                             await viewModel.LoginCompletedInWebView();
                                         }
                                         else

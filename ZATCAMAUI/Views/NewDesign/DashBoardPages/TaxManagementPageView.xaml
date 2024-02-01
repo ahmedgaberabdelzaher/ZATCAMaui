@@ -1,23 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="EGAZT.Views.NewDesign.DashBoardPages.TaxManagementPageView"
-    xmlns="http://xamarin.com/schemas/2014/forms"
+    x:Class="ZATCAMAUI.Views.NewDesign.DashBoardPages.TaxManagementPageView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ResourceManager="clr-namespace:EGAZT"
-    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
-    xmlns:custom="clr-namespace:GAZT"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
+    xmlns:custom="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:xct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:yummy="clr-namespace:Maui.PancakeView;assembly=PancakeViewCompat"
     BackgroundImageSource="partials_background.png"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
-                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />
+                <!--<ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\StylesNewUI.xaml" />
+                <ResourceDictionary Source="..\..\SyncFusionEnabledViews\CommonStyle\Styles.xaml" />-->
                 <ResourceDictionary>
                     <Style x:Key="ArrowImageForArabicStyle" TargetType="Image">
                         <Setter Property="Rotation" Value="180" />
@@ -49,7 +48,7 @@
                 <ScrollView>
                     <StackLayout>
                         <StackLayout Spacing="16">
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -62,12 +61,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Label_MyProfile_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -80,12 +79,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Label_MyBills" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -98,12 +97,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Label_MyRetuns_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -116,12 +115,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TaxpayerCertificate_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -134,12 +133,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TinRegistrationDetails_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <xct:Expander>
                                     <xct:Expander.Header>
                                         <Grid Padding="16,8,16,8" ColumnSpacing="20">
@@ -159,7 +158,7 @@
                                     <StackLayout>
                                         <BoxView BackgroundColor="{StaticResource NeutralLightGrey}" HeightRequest="1" />
                                         <StackLayout Padding="45,5,5,5" Spacing="16">
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                                 <StackLayout
                                                     Padding="16,8,16,8"
                                                     Orientation="Horizontal"
@@ -172,12 +171,12 @@
                                                         VerticalTextAlignment="Center" />
 
                                                 </StackLayout>
-                                                <border:SfBorder.GestureRecognizers>
+                                                <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="VATRefundRequest_Tapped" />
-                                                </border:SfBorder.GestureRecognizers>
-                                            </border:SfBorder>
+                                                </Border.GestureRecognizers>
+                                            </Border>
 
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                                 <StackLayout
                                                     Padding="16,8,16,8"
                                                     Orientation="Horizontal"
@@ -190,12 +189,12 @@
                                                         VerticalTextAlignment="Center" />
 
                                                 </StackLayout>
-                                                <border:SfBorder.GestureRecognizers>
+                                                <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="ChnageFillingPeriod_Tapped" />
-                                                </border:SfBorder.GestureRecognizers>
-                                            </border:SfBorder>
+                                                </Border.GestureRecognizers>
+                                            </Border>
 
-                                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                                 <StackLayout
                                                     Padding="16,8,16,8"
                                                     Orientation="Horizontal"
@@ -208,18 +207,18 @@
                                                         VerticalTextAlignment="Center" />
 
                                                 </StackLayout>
-                                                <border:SfBorder.GestureRecognizers>
+                                                <Border.GestureRecognizers>
                                                     <TapGestureRecognizer Tapped="VATDeregistrationDetails_Tapped" />
-                                                </border:SfBorder.GestureRecognizers>
-                                            </border:SfBorder>
+                                                </Border.GestureRecognizers>
+                                            </Border>
                                         </StackLayout>
                                     </StackLayout>
                                 </xct:Expander>
-                            </border:SfBorder>
+                            </Border>
 
 
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -232,12 +231,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ZakatInstalmentPlan_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -250,12 +249,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Vat_Review_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -268,12 +267,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ContractRelease_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -286,12 +285,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnApplicationStatus_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -303,9 +302,9 @@
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
                                 </StackLayout>
-                            </border:SfBorder>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -317,9 +316,9 @@
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
                                 </StackLayout>
-                            </border:SfBorder>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -331,12 +330,12 @@
                                         VerticalOptions="Center"
                                         VerticalTextAlignment="Center" />
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="TaxEvasion_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -352,12 +351,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Aboutus_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -370,12 +369,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="PrivacyPolicy_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -388,12 +387,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="OnSupportTapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -412,9 +411,9 @@
                                         </Label.FormattedText>
                                     </custom:CustomLabel>
                                 </StackLayout>
-                            </border:SfBorder>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -427,12 +426,12 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="ChangeLanguage_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
-                            <border:SfBorder Style="{StaticResource GreyBorderFrameWithShadow}">
+                            <Border Style="{StaticResource GreyBorderFrameWithShadow}">
                                 <StackLayout
                                     Padding="16,8,16,8"
                                     Orientation="Horizontal"
@@ -445,10 +444,10 @@
                                         VerticalTextAlignment="Center" />
 
                                 </StackLayout>
-                                <border:SfBorder.GestureRecognizers>
+                                <Border.GestureRecognizers>
                                     <TapGestureRecognizer Tapped="Logout_Tapped" />
-                                </border:SfBorder.GestureRecognizers>
-                            </border:SfBorder>
+                                </Border.GestureRecognizers>
+                            </Border>
 
                         </StackLayout>
                     </StackLayout>

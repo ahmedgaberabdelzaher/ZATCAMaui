@@ -1,5 +1,5 @@
 ﻿
-using EGAZT.Models.NativeNafath;
+
 using ZATCAMAUI.Models.BaseModels;
 
 namespace ZATCAMAUI.Models.NativeNafath

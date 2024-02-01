@@ -3,8 +3,8 @@
     x:Class="ZATCAMAUI.Views.NewDesign.Nafat.NafathPopUpPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ResourceManager="clr-namespace:ZATCAMAUI"
     xmlns:cards="clr-namespace:Syncfusion.Maui.Cards;assembly=Syncfusion.Maui.Cards"
-    xmlns:custom1="clr-namespace:ZATCAMAUI.Core.CustomControls"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="clr-namespace:RGPopup.Maui.Pages;assembly=RGPopup.Maui"
@@ -23,7 +23,7 @@
             <StackLayout>
                 <Label
                     Style="{StaticResource GAZTMicroMediumGrayLabel}"
-                    Text="{x:Static custom1:AppResources.ESTNationalityLabel}"
+                    Text="{x:Static ResourceManager:AppResources.ESTNationalityLabel}"
                     TextColor="#010101" />
 
                 <Grid>
@@ -65,7 +65,7 @@
                                         x:Name="GulfText"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="Small"
-                                        Text="{x:Static custom1:AppResources.ZREGGulfCtzn}"
+                                        Text="{x:Static ResourceManager:AppResources.ZREGGulfCtzn}"
                                         TextColor="CadetBlue" />
                                 </StackLayout>
 
@@ -111,7 +111,7 @@
                                         x:Name="CitigenText"
                                         FontFamily="{StaticResource SomarSemiBold}"
                                         FontSize="Small"
-                                        Text="{x:Static custom1:AppResources.ZREGCitizen}"
+                                        Text="{x:Static ResourceManager:AppResources.ZREGCitizen}"
                                         TextColor="White"
                                         VerticalOptions="End" />
                                 </StackLayout>
