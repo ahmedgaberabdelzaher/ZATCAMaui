@@ -139,10 +139,10 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>VS: com.gazt.enterprise.zatca Development</CodesignProvision>
+    <CodesignProvision>eGAZT App Store Provisioning Profile</CodesignProvision>
     <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
     <MtouchLink>None</MtouchLink>
-    <CodesignKey>Apple Development: ahmed gaber (ZJL3S8K68J)</CodesignKey>
+    <CodesignKey>Apple Distribution: Department of Zakat and Income Tax (SB5JE2LC3K)</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
@@ -1105,6 +1105,9 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Firebase.iOS.RemoteConfig">
       <Version>3.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="TlvLib">
+      <Version>1.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

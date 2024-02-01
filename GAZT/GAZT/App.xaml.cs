@@ -393,8 +393,8 @@ namespace EGAZT
         {
             IsAppRunningInBackground = false;
             App.Current.Properties["timeOut"] = DateTime.Now;
-            PageSettings.CheckTarget_Environment("Prod");
-            PageSettings.GetBaseURL("Prod");
+            PageSettings.CheckTarget_Environment("STG");
+            PageSettings.GetBaseURL("STG");
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NzI5MDgxQDMyMzAyZTMzMmUzMEtpZFIza0FvZWw0N1F5cExTVStyZERJZzM2cWxKRWNyK3Ria042S0g1bm89"); //20.3.*
             Device.SetFlags(new[] { "Expander_Experimental" });
             AppResources.Culture = CultureInfo.CurrentUICulture;

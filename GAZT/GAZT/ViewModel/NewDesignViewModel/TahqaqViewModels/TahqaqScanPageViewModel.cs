@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -15,6 +16,7 @@ using EGAZT.Services.Interface;
 using GalaSoft.MvvmLight.Views;
 using GAZT.Manager;
 using GAZT.Models;
+using Greensoft.TlvLib;
 using Newtonsoft.Json;
 using Org.BouncyCastle.Utilities.Encoders;
 using Xamarin.Essentials;
@@ -33,8 +35,8 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
         public string VatNumber { get { return vatNumber; } set { vatNumber = value; RaisePropertyChanged(); } }
         string timeStamp;
         public string TimeStamp { get { return timeStamp; } set { timeStamp = value; RaisePropertyChanged(); } }
-        string invoiceAmount;
-        public string InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; RaisePropertyChanged(); } }
+        double invoiceAmount;
+        public double InvoiceAmount { get { return invoiceAmount; } set { invoiceAmount = value; RaisePropertyChanged(); } }
         string vatAmount;
         public string VatAmount { get { return vatAmount; } set { vatAmount = value; RaisePropertyChanged(); } }
 
@@ -187,7 +189,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
 
                             // string code = Result.Text;
                             string code = scanCode;
-                            //   code = "AYGO2KfZhNi02LHZg9ipINin2YTYudin2YTZhdmK2Kkg2KfZhNmF2YjYp9ivINin2YTYqNmG2KfYoSDYp9mE2YXYrdiv2YjYr9ipINio2YrZhtmD2LMgfCBUaGUgSW50ZXJuYXRpb25hbCBDby4gZm9yIEJ1aWxkaW5nIE1hdGVyaWFscyBMdGQiQklORVgiLgIPMzAwMjQ1MTk4NzAwMDAzAxQyMDIzLTA3LTEyVDE1OjIxOjQ1WgQGMTcyLjUwBQUyMi41MAYABwAIAAkA";
+                              code = "AYHd2LTYsdmD2Kkg2LnYtdin2YUg2YLYqNin2YbZiiDZiNi02LHZg9in2Ycg2YTZhNil2YbYtNin2KHYp9iqINmI2KfZhNi12YrYp9mG2KkgfCBJc2FtIEthYmJhbmkgJiBQYXJ0bmVycyAgRm9yIENvbnN0cnVjdGlvbiAmIE1haW50ZW5hbmNlIENvbXBhbnkg2LTYsdmD2Kkg2LnYtdin2YUg2YLYqNin2YbZiiDZiNi02LHZg9in2Ycg2YTZhNil2YbYtNin2KHYp9iqINmI2KfZhNi12YrYp9mG2KkCDzMwMDgwMzU3NjgxMDAwMwMTMjAyNC0wMS0xN1QwMDowMDowMAQJNDM3NDcwLjM1BQg1NzA2MS4zNQYsN2UrZVRTaEVLdWlhSlFaWjc3dnN5bTdWQjRjK1JnUTFtbHhIVThMUzYxST0HYE1FVUNJUUNuZ2YyZTNNMGtCMVM3MnAzWVRvL3hIQTlXL295Zm9taGFnd1Z4QnNpSGVBSWdHZnhmZm45eDBKaTNUNndxY1JkcEM5ZDBTVms5NXc3dkQwaFh0V2pJVkdNPQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEDPIPLT2044zYRvIVZo57gAfl5mNwAY5yUx67kGLP9s0cQ/T5wXshikXZU4rFMqdms9pZJWs+UVE/G3+Ar5QYrg==";
                             // code = "AT5KYWhleiBJbnRlcm5hdGlvbmFsIENvbXBhbnkgZm9yIEluZm9ybWF0aW9uIFN5c3RlbXMgVGVjaG5vbG9neQIPMzEwMTkxNjI3NDEwMDAzAxMyMDIzLTAxLTA2VDE0OjIyOjA4BAQ5LjAwBQQxLjE3";
                             if (code == "-1")
                             {
@@ -345,7 +347,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                             IsLoading = true;
 
                             string code = scanCode;
-
+                        //   code = "ASVaYW1pbCBPcGVyYXRpb25zICYgTWFpbnRlbmFuY2UgQ28gTHRkAg8zMTAxMzY4NDAzMDAwMDMDEzIwMjMtMTItMThUMDY6NDM6MjUEBzExNzYuOTEFBjE1My41MQYsVDI2RjBMYzVvTHpGenZTVjNIU1JLQnIwNSsvQmRmRG93bzU1VjhHNitwOD0HYE1FUUNJRGVnSUw5MStMTHN1c3F5Ukd2djd5cUZ5ZEtsTmQ0UnhXZ3JLQ1c0Vmd5cUFpQk04SDhYaWlMclhrZTZzVm9LeUo0TXRuS2NCZDUyV281VlpRUHZtcVByT1E9PQhYMFYwEAYHKoZIzj0CAQYFK4EEAAoDQgAEouqS1tSXHqT8suzSdB7CJVLlQZnGe8B12TYwC8O4PqJJVEFHOHV3nzdenUmVyRzExqlrGHhfJ1yB+jrEECWyZg==";
                             if (code == "-1")
                             {
                                 return;
@@ -361,10 +363,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                 return;
                             }
                             byte[] byteList = Convert.FromBase64String(code);
+                            MemoryStream stream = new MemoryStream(byteList);
+
+
+
                             int currentPosition = 1;
                             int TagIndex = 0;
                             int noOfTags = 0;
-                            while (currentPosition < byteList.Length)
+                            TlvEncoding.ProcessTlvStream(stream,
+    (tag, data) => {
+    var messageAsText = Encoding.UTF8.GetString(data);
+        SetDataToModel(int.Parse(tag.ToString()), messageAsText);
+        NoofTags = (int)tag;
+    });
+                       /*     while (currentPosition < byteList.Length)
                             {
                                 // Read Length
                                 int msgLength = byteList[TagIndex + 1];
@@ -386,7 +398,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                                     SetDataToModel(noOfTags, messageAsText);
                                     NoofTags = noOfTags;
                                 }
-                            }
+                            }*/
 
                             var res = qrValidation(eInvoiceQRModel);
 
@@ -465,7 +477,7 @@ namespace EGAZT.ViewModel.NewDesignViewModel.TahqaqViewModels
                     {
                         eInvoiceQRModel.invoiceAmount = messageAsText.Trim();
                         Debug.WriteLine($"invoice Amount {messageAsText}");
-                        InvoiceAmount = messageAsText.Trim();
+                        InvoiceAmount = double.Parse(messageAsText.Trim());
                     }
                     break;
 
