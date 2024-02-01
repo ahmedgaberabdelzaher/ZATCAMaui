@@ -86,7 +86,7 @@ namespace EGAZT.AppConfigurations
             public static string CustomsIssuesStG = "http://esvc-web1-stg.ga.customs.gov.sa/sites/sc/ar/app-view/Pages/NewSettlementRequest.aspx";
 
 
-        public static string CustomBaseUrl;
+        public static string CustomBaseUrl=CustomSTGBaseUrl;
         public static string IAMLoginBaseUrl;
         public static string ZATCABaseURL;
         public static string CustomPaymentBaseUrl;

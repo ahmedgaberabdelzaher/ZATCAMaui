@@ -9,6 +9,7 @@ using System.Windows.Input;
 using EGAZT.AppConfigurations;
 using EGAZT.Controls;
 using EGAZT.Models.CustomServices.Tawreed;
+using EGAZT.Models.NativeNafath;
 using EGAZT.Models.SubmitReportModel;
 using EGAZT.Models.TahqaqModels;
 using EGAZT.Services.Interface;
@@ -587,17 +588,20 @@ namespace EGAZT.ViewModel.NewDesignViewModel.CustomServicesViewModels
         string searchText;
         public string SearchText { get { return searchText; } set { searchText = value; RaisePropertyChanged(); } }
 
-        public void SetUserData(string token)
+        public void SetUserData(object payload)
         {
-         
-            var data = GetTokenData(token);
-            if (data!=null)
+
+            if (payload != null)
             {
-            IDictionary<string, object> iamLoginPayloadData = data as IDictionary<string, object>;
-            // IamLoginPayloadData.TryGetValue("FirstName",out SubmitModel.travelerDeclaration.firstName);
-            NationalId = iamLoginPayloadData["NationlId"].ToString();
-            MobileNo ="+966"+ iamLoginPayloadData["Mobile"].ToString();
-            IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());
+                // IDictionary<string, object> iamLoginPayloadData = payload as IDictionary<string, object>;
+                /* NationalId = iamLoginPayloadData["NationlId"].ToString();
+                 MobileNo = "+966" + iamLoginPayloadData["Mobile"].ToString();
+                 IamRegisteredUserID = int.Parse(iamLoginPayloadData["Id"].ToString());*/
+                ///
+                var data = payload as CustomsNafathUserProfile;
+                NationalId = data.nationalid.ToString();
+                MobileNo = "+966" + data.mobilenumber.ToString();
+                IamRegisteredUserID = data.id;
             }
         }
 

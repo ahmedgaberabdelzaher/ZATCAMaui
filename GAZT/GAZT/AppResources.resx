@@ -10018,13 +10018,8 @@ Zakat, Tax and Customs Authority
   <data name="DeclarationAcknowledge" xml:space="preserve">
     <value>Acknowledgment</value>
   </data>
-<<<<<<< HEAD
    <data name="AcknowledgeNote1" xml:space="preserve">
     <value>I hereby acknowledge that this e-Declaration is owned by General Zakat, Tax and Customs Authority which has the rights to use the information entered for statistical purposes related to its work.</value>
-=======
-  <data name="AcknowledgeNote1" xml:space="preserve">
-    <value>I hereby acknowledge that this e-Declaration is owned by General Customs Authority which has the rights to use the information entered for statistical purposes related to its work</value>
->>>>>>> feature/NafathNative
   </data>
   <data name="AcknowledgeNote2" xml:space="preserve">
     <value>I take full responsibility for the correctness and accuracy of the information provided by me.</value>
